@@ -214,3 +214,22 @@ a {
 .span-color {
 	color: var(--gray500);
 }
+
+@media screen and (max-width: 720px) {
+	.nav {
+		padding: 32px 16px;
+	}
+
+	.container {
+		padding: 0 16px 64px 16px;
+	}
+
+	.app-list {
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		grid-gap: 20px;
+	}
+
+	.app-page {
+		padding: 0 16px;
+	}
+}
