@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,9 +9,9 @@ const Nav = () => {
 	return (
 		<div className="nav">
 			<div>
-				<Link to="/">
+				<NavLink exact to="/" replace>
 					<h1 className="logo">icApps</h1>
-				</Link>
+				</NavLink>
 			</div>
 			<ul className="nav-list">
 				<li className="nav-list__item">

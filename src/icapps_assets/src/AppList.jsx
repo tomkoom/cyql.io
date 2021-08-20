@@ -37,6 +37,7 @@ const AppList = ({ data }) => {
 		handleSetCategory,
 		categoryActive,
 		icon,
+		appsNum,
 	}) => {
 		return (
 			<button
@@ -52,7 +53,8 @@ const AppList = ({ data }) => {
 					/>
 				) : null}
 				{/* {category === 'All' ? 'All' : `${category} (${category.length})`} */}
-				{category}
+				{`${category} ${appsNum}`}
+				{/* <span className="span-fontsize6">{appsNum}</span> */}
 			</button>
 		);
 	};
@@ -64,6 +66,7 @@ const AppList = ({ data }) => {
 					handleSetCategory={setCategory}
 					category="All"
 					categoryActive={category === "All" ? true : false}
+					appsNum={data.length}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -72,24 +75,37 @@ const AppList = ({ data }) => {
 						category === "Social Networks" ? true : false
 					}
 					icon={faUsers}
+					appsNum={
+						data.filter((app) => app.category === "Social Networks")
+							.length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="Games"
 					categoryActive={category === "Games" ? true : false}
 					icon={faGamepad}
+					appsNum={
+						data.filter((app) => app.category === "Games").length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="dApps"
 					categoryActive={category === "dApps" ? true : false}
 					icon={faProjectDiagram}
+					appsNum={
+						data.filter((app) => app.category === "dApps").length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="DeFi"
 					categoryActive={category === "DeFi" ? true : false}
 					icon={faCoins}
+					appsNum={
+						data.filter((app) => app.category === "DeFi").length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -98,43 +114,63 @@ const AppList = ({ data }) => {
 						category === "Infrastructure" ? true : false
 					}
 					icon={faCompass}
+					appsNum={
+						data.filter((app) => app.category === "Infrastructure")
+							.length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="Wallets"
 					categoryActive={category === "Wallets" ? true : false}
 					icon={faWallet}
+					appsNum={
+						data.filter((app) => app.category === "Wallets").length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="Tools"
 					categoryActive={category === "Tools" ? true : false}
 					icon={faTools}
+					appsNum={
+						data.filter((app) => app.category === "Tools").length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="Explorers"
 					categoryActive={category === "Explorers" ? true : false}
 					icon={faGlobe}
+					appsNum={
+						data.filter((app) => app.category === "Explorers")
+							.length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="NFTs"
-					categoryActive={category === "Explorers" ? true : false}
+					categoryActive={category === "NFTs" ? true : false}
 					icon={faPalette}
+					appsNum={
+						data.filter((app) => app.category === "NFTs").length
+					}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
 					category="DAOs"
 					categoryActive={category === "DAOs" ? true : false}
 					icon={faDiceD20}
+					appsNum={
+						data.filter((app) => app.category === "DAOs").length
+					}
 				/>
 			</div>
 
 			<div className="app-list">
 				{filteredApps.map((d) => (
 					<div key={d.id}>
-						<Link className="link-block" to={`/p/${d.id}`}>
+						<Link className="link-block" to={`/a/${d.id}`}>
 							<div
 								className="app-cover"
 								style={

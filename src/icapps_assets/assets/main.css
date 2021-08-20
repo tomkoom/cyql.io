@@ -215,6 +215,10 @@ a {
 	color: var(--gray500);
 }
 
+/* .span-fontsize5 {
+	font-size: var(--fontSize6);
+} */
+
 @media screen and (max-width: 720px) {
 	.nav {
 		padding: 32px 16px;

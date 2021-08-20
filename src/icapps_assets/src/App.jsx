@@ -20,7 +20,7 @@ const App = () => {
 					<AppList data={data} />
 				</Route>
 
-				<Route exact path="/p/:id">
+				<Route exact path="/a/:id">
 					<AppPage data={data} />
 				</Route>
 			</Switch>
