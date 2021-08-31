@@ -18,6 +18,7 @@ import {
 	faDiceD20,
 	faPalette,
 	faImage,
+	faInfinity,
 } from "@fortawesome/free-solid-svg-icons";
 
 const AppList = ({ data }) => {
@@ -31,8 +32,6 @@ const AppList = ({ data }) => {
 					data.filter((data) => data.category === category)
 			  );
 	}, [category]);
-
-
 
 	return (
 		<div className="container">
@@ -138,6 +137,19 @@ const AppList = ({ data }) => {
 					icon={faDiceD20}
 					appsNum={
 						data.filter((app) => app.category === "DAOs").length
+					}
+				/>
+				<TagButton
+					handleSetCategory={setCategory}
+					category="Dfinity Foundation Apps"
+					categoryActive={
+						category === "Dfinity Foundation Apps" ? true : false
+					}
+					icon={faInfinity}
+					appsNum={
+						data.filter(
+							(app) => app.category === "Dfinity Foundation Apps"
+						).length
 					}
 				/>
 			</div>
