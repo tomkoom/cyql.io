@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import TagButton from "./TagButton";
 
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// FontAwesome icons
 import {
 	faCompass,
 	faUsers,
@@ -32,32 +32,7 @@ const AppList = ({ data }) => {
 			  );
 	}, [category]);
 
-	const TagButton = ({
-		category,
-		handleSetCategory,
-		categoryActive,
-		icon,
-		appsNum,
-	}) => {
-		return (
-			<button
-				className={`category-btns__item ${
-					categoryActive ? "category-btns__item__active" : null
-				}`}
-				onClick={() => handleSetCategory(category)}
-			>
-				{icon ? (
-					<FontAwesomeIcon
-						icon={icon}
-						color={categoryActive ? "#fff" : "#718096"}
-					/>
-				) : null}
-				{/* {category === 'All' ? 'All' : `${category} (${category.length})`} */}
-				{`${category} ${appsNum}`}
-				{/* <span className="span-fontsize6">{appsNum}</span> */}
-			</button>
-		);
-	};
+
 
 	return (
 		<div className="container">

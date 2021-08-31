@@ -13,7 +13,6 @@ import {
 	faSlack,
 } from "@fortawesome/free-brands-svg-icons";
 
-// Make icons components
 
 const AppPage = ({ data }) => {
 	const { id } = useParams();
@@ -22,7 +21,7 @@ const AppPage = ({ data }) => {
 		<div className="app-page">
 			{data
 				.filter((d) => d.id === id)
-				.map((d, i) => (
+				.map((d) => (
 					<div key={d.id}>
 						<Link className="back-btn-link" to="/">
 							<div className="back-btn-link__div">
