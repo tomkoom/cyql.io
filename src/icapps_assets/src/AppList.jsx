@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import TagButton from "./TagButton";
 
@@ -19,20 +19,16 @@ import {
 	faPalette,
 	faImage,
 	faInfinity,
+	faSyncAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-const AppList = ({ data }) => {
-	const [category, setCategory] = useState("All");
-	const [filteredApps, setFilteredApps] = useState([]);
-
-	useEffect(() => {
-		category === "All"
-			? setFilteredApps(data)
-			: setFilteredApps(
-					data.filter((data) => data.category === category)
-			  );
-	}, [category]);
-
+const AppList = ({
+	data,
+	setCategory,
+	category,
+	filteredApps,
+	categoryLink,
+}) => {
 	return (
 		<div className="container">
 			<div className="category-btns">
@@ -41,6 +37,7 @@ const AppList = ({ data }) => {
 					category="All"
 					categoryActive={category === "All" ? true : false}
 					appsNum={data.length}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -53,6 +50,7 @@ const AppList = ({ data }) => {
 						data.filter((app) => app.category === "Social Networks")
 							.length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -62,6 +60,7 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "Games").length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -71,6 +70,7 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "dApps").length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -80,6 +80,7 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "DeFi").length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -92,6 +93,7 @@ const AppList = ({ data }) => {
 						data.filter((app) => app.category === "Infrastructure")
 							.length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -101,6 +103,7 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "Wallets").length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -110,6 +113,7 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "Tools").length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -120,6 +124,7 @@ const AppList = ({ data }) => {
 						data.filter((app) => app.category === "Explorers")
 							.length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -129,6 +134,7 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "NFTs").length
 					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -138,6 +144,17 @@ const AppList = ({ data }) => {
 					appsNum={
 						data.filter((app) => app.category === "DAOs").length
 					}
+					categoryLink={categoryLink}
+				/>
+				<TagButton
+					handleSetCategory={setCategory}
+					category="DEXes"
+					categoryActive={category === "DEXes" ? true : false}
+					icon={faSyncAlt}
+					appsNum={
+						data.filter((app) => app.category === "DEXes").length
+					}
+					categoryLink={categoryLink}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -151,6 +168,7 @@ const AppList = ({ data }) => {
 							(app) => app.category === "Dfinity Foundation Apps"
 						).length
 					}
+					categoryLink={categoryLink}
 				/>
 			</div>
 

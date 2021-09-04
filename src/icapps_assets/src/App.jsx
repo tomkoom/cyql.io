@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // ROUTER
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 
 // DATA
 import { data } from "./data";
@@ -12,12 +12,36 @@ import AppList from "./AppList";
 import AppPage from "./AppPage";
 
 const App = () => {
+	const [category, setCategory] = useState("All");
+	const [filteredApps, setFilteredApps] = useState([]);
+	const [categoryLink, setCategoryLink] = useState();
+
+	useEffect(() => {
+		category === "All"
+			? setFilteredApps(data)
+			: setFilteredApps(
+					data.filter((data) => data.category === category)
+			  );
+
+		setCategoryLink(category.replace(/\s+/g, "-").toLowerCase());
+	}, [category]);
+
+	console.log(category);
+	console.log(categoryLink);
+
 	return (
 		<div>
 			<Nav />
 			<Switch>
+				{/* <Redirect from="/" to="All" /> */}
 				<Route exact path="/">
-					<AppList data={data} />
+					<AppList
+						data={data}
+						category={category}
+						setCategory={setCategory}
+						filteredApps={filteredApps}
+						categoryLink={categoryLink}
+					/>
 				</Route>
 
 				<Route exact path="/a/:id">

@@ -9,7 +9,7 @@ const Nav = () => {
 	return (
 		<div className="nav">
 			<div>
-				<NavLink exact to="/" replace>
+				<NavLink exact to="/all" replace>
 					<h1 className="logo">icApps</h1>
 				</NavLink>
 			</div>
