@@ -14,7 +14,6 @@ import AppPage from "./AppPage";
 const App = () => {
 	const [category, setCategory] = useState("All");
 	const [filteredApps, setFilteredApps] = useState([]);
-	const [categoryLink, setCategoryLink] = useState();
 
 	useEffect(() => {
 		category === "All"
@@ -22,13 +21,7 @@ const App = () => {
 			: setFilteredApps(
 					data.filter((data) => data.category === category)
 			  );
-
-		setCategoryLink(category.replace(/\s+/g, "-").toLowerCase());
 	}, [category]);
-
-	console.log(category);
-	console.log(categoryLink);
-
 	return (
 		<div>
 			<Nav />
@@ -40,7 +33,6 @@ const App = () => {
 						category={category}
 						setCategory={setCategory}
 						filteredApps={filteredApps}
-						categoryLink={categoryLink}
 					/>
 				</Route>
 

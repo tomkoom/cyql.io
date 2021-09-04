@@ -1,12 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"); */
 
 :root {
 	/* https://chakra-ui.com/docs/theming/theme */
 	/* https://type-scale.com/ */
+	/* https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
 
 	--color: #304ffe;
 	--gray900: #171923;
+	--gray700: #2d3748;
 	--gray500: #718096;
+	--gray400: #a0aec0;
 	--gray300: #cbd5e0;
 	--gray100: #edf2f7;
 	--white: #fff;
@@ -19,8 +23,8 @@
 	--fontSize6: 18px;
 
 	--black: 900;
-	--bold: 700;
-	--medium: 500;
+	--bold: 600;
+	--medium: 400;
 }
 
 * {
@@ -31,7 +35,9 @@
 
 body {
 	font-family: "Mulish", sans-serif;
+	/* font-family: "Lato", sans-serif; */
 	font-size: var(--fontSize6);
+	font-weight: var(--bold);
 	color: var(--gray900);
 }
 
@@ -58,12 +64,11 @@ body {
 	flex-wrap: wrap;
 	gap: 24px;
 	font-size: var(--fontSize5);
-	font-weight: var(--bold);
 }
 
-.nav-list a {
+/* .nav-list a {
 	color: var(--gray500);
-}
+} */
 
 a {
 	text-decoration: none;
@@ -102,29 +107,34 @@ a {
 .category-btns {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 16px;
+	gap: 12px;
 	margin-bottom: 32px;
 }
 
 .category-btns__item {
+	font-family: "Mulish", sans-serif;
 	background-color: var(--gray100);
-	color: var(--gray500);
+	font-weight: var(--bold);
+	color: var(--gray900);
 	border: none;
-	padding: 16px 20px;
+	padding: 16px 10px;
 	text-align: center;
 	text-decoration: none;
 	display: flex;
 	align-items: center;
-	gap: 10px;
-	border-radius: 12px;
+	gap: 8px;
+	border-radius: 4px;
 	font-size: var(--fontSize5);
-	font-weight: bold;
 	cursor: pointer;
+	/* -webkit-box-shadow: inset 0px 0px 0px 1px var(--gray300);
+	box-shadow: inset 0px 0px 0px 1px var(--gray300); */
 }
 
 .category-btns__item__active {
 	background-color: var(--gray900);
 	color: var(--white);
+	/* -webkit-box-shadow: inset 0px 0px 0px 1px var(--gray900);
+	box-shadow: inset 0px 0px 0px 1px var(--gray900); */
 }
 
 .app-list__app-info {
@@ -215,10 +225,6 @@ a {
 	color: var(--gray500);
 }
 
-/* .span-fontsize5 {
-	font-size: var(--fontSize6);
-} */
-
 @media screen and (max-width: 720px) {
 	.nav {
 		padding: 32px 16px;
@@ -236,4 +242,8 @@ a {
 	.app-page {
 		padding: 0 16px;
 	}
+}
+
+.apps-num {
+	color: var(--gray400);
 }
