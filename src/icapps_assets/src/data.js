@@ -115,7 +115,7 @@ export const data = [
     {
         id: "dab",
         name: "DAB",
-        category: "",
+        category: "Infrastructure",
         website: "https://dab.ooo/",
         canister: "",
         logo: "https://i.postimg.cc/qBxs13hd/dab-logo.png",
@@ -954,8 +954,7 @@ export const data = [
         slack: "",
         discord: "",
         medium: "",
-        description: "",
-        twitterHandle: "",
+        description: "Stoic is a blockchain wallet for the Internet Computer and will provide basic wallet functionality as well as token storage (traditional and NFTs), token minting/distribution and direct application integration.",
     },
     {
         id: "texas-poker",

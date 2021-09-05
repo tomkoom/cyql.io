@@ -63,7 +63,7 @@ const AppList = ({
 					handleSetCategory={setCategory}
 					category="dApps"
 					categoryActive={category === "dApps" ? true : false}
-					icon={"🕸️"}
+					icon={"🔗"}
 					appsNum={
 						data.filter((app) => app.category === "dApps").length
 					}
@@ -75,6 +75,15 @@ const AppList = ({
 					icon={"‍🌾"}
 					appsNum={
 						data.filter((app) => app.category === "DeFi").length
+					}
+				/>
+				<TagButton
+					handleSetCategory={setCategory}
+					category="DAOs"
+					categoryActive={category === "DAOs" ? true : false}
+					icon={"🏠"}
+					appsNum={
+						data.filter((app) => app.category === "DAOs").length
 					}
 				/>
 				<TagButton
@@ -128,15 +137,6 @@ const AppList = ({
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
-					category="DAOs"
-					categoryActive={category === "DAOs" ? true : false}
-					icon={"🏠"}
-					appsNum={
-						data.filter((app) => app.category === "DAOs").length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
 					category="Dfinity Foundation Apps"
 					categoryActive={
 						category === "Dfinity Foundation Apps" ? true : false
@@ -176,14 +176,19 @@ const AppList = ({
 								/>
 								<div className="app-list__app-info_app-caption">
 									<h2 className="app-name">{d.name}</h2>
-									{/* <p className="body-text">
-										<span className="span-color">
-											{d.website}
+									<p className="body-text">
+										<span className="span-color span-bold">
+											{d.category}
 										</span>
-									</p> */}
+									</p>
 									<p className="body-text">
 										<span className="span-color">
-											{d.category}
+											{d.description.length > 105
+												? `${d.description.substring(
+														0,
+														105
+												  )}...`
+												: d.description}
 										</span>
 									</p>
 								</div>

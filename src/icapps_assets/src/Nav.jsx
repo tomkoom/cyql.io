@@ -10,7 +10,7 @@ const Nav = () => {
 		<div className="nav">
 			<div>
 				<NavLink exact to="/" replace>
-					<h1 className="logo">icApps</h1>
+					<h1 className="logo">🚀 icApps</h1>
 				</NavLink>
 			</div>
 			<ul className="nav-list">
@@ -25,7 +25,7 @@ const Nav = () => {
 				</li>
 				<li className="nav-list__item">
 					<a
-						href="https://t.me/icapps_xyz"
+						href="https://t.me/icapps"
 						target="_blank"
 						rel="noopener noreferrer"
 					>

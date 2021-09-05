@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap");
 
 :root {
 	/* https://chakra-ui.com/docs/theming/theme */
@@ -22,7 +23,7 @@
 	--fontSize5: 22.5px;
 	--fontSize6: 18px;
 
-	--black: 900;
+	--black: 800;
 	--bold: 600;
 	--medium: 400;
 }
@@ -34,8 +35,9 @@
 }
 
 body {
-	font-family: "Mulish", sans-serif;
+	/* font-family: "Mulish", sans-serif; */
 	/* font-family: "Lato", sans-serif; */
+	font-family: "Karla", sans-serif;
 	font-size: var(--fontSize6);
 	font-weight: var(--bold);
 	color: var(--gray900);
@@ -96,7 +98,7 @@ a {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	border-radius: 12px;
+	border-radius: 16px;
 }
 
 .app-name {
@@ -112,7 +114,8 @@ a {
 }
 
 .category-btns__item {
-	font-family: "Mulish", sans-serif;
+	/* font-family: "Mulish", sans-serif; */
+	font-family: "Karla", sans-serif;
 	background-color: var(--gray100);
 	font-weight: var(--bold);
 	color: var(--gray900);
@@ -139,14 +142,14 @@ a {
 
 .app-list__app-info {
 	display: flex;
-	align-items: center;
+
 	gap: 12px;
 	margin: 12px 0;
 }
 
 .app-list__app-info__logo {
-	width: 48px;
-	height: 48px;
+	width: 44px;
+	height: 44px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -217,12 +220,23 @@ a {
 
 .body-text {
 	line-height: 150%;
+	font-weight: var(--medium);
+	word-wrap: break-word;
+}
+
+.body-text {
+	line-height: 150%;
+	font-weight: var(--medium);
 }
 
 /* SPAN */
 
 .span-color {
 	color: var(--gray500);
+}
+
+.span-bold {
+	font-weight: var(--bold);
 }
 
 @media screen and (max-width: 720px) {
