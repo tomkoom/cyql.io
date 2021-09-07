@@ -141,7 +141,7 @@ const AppList = ({
 					categoryActive={
 						category === "Dfinity Foundation Apps" ? true : false
 					}
-					icon={"♾️"}
+					// icon={"♾️"}
 					appsNum={
 						data.filter(
 							(app) => app.category === "Dfinity Foundation Apps"

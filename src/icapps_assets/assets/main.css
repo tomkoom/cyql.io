@@ -45,9 +45,34 @@ body {
 
 /* NAV */
 
+.logo-container {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
 .logo {
 	font-size: var(--fontSize5);
 	font-weight: var(--black);
+}
+
+.icp-price-badge {
+	padding: 6px 12px;
+	background-color: var(--gray100);
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: var(--medium);
+}
+
+.icp-price-badge__logo {
+	background-image: url("https://i.postimg.cc/SxsG0RHw/dfinity-logo.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 24px;
+	height: 24px;
 }
 
 .nav {
@@ -242,6 +267,7 @@ a {
 @media screen and (max-width: 720px) {
 	.nav {
 		padding: 32px 16px;
+		gap: 24px;
 	}
 
 	.container {

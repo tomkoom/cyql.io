@@ -16,7 +16,11 @@ const TagButton = ({
 			}`}
 			onClick={() => handleSetCategory(category)}
 		>
-			{icon ? `${icon} ` : null}
+			{icon ? (
+				`${icon} `
+			) : category === "Dfinity Foundation Apps" ? (
+				<div className="icp-price-badge__logo"></div>
+			) : null}
 			{/* {icon ? (
 					<FontAwesomeIcon
 						icon={icon}
