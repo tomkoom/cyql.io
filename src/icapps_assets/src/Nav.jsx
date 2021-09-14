@@ -4,9 +4,12 @@ import { NavLink } from "react-router-dom";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import { data } from "./data";
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
+
+
 
 	fetch(
 		"https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
@@ -58,7 +61,7 @@ const Nav = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Submit an App
+						Submit Your App
 					</a>
 				</li>
 			</ul>

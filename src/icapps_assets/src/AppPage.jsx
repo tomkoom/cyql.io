@@ -13,7 +13,6 @@ import {
 	faSlack,
 } from "@fortawesome/free-brands-svg-icons";
 
-
 const AppPage = ({ data }) => {
 	const { id } = useParams();
 
@@ -94,6 +93,50 @@ const AppPage = ({ data }) => {
 											rel="noopener noreferrer"
 										>
 											{d.website}
+										</a>
+									</p>
+								</li>
+								<li
+									style={
+										d.dscvr === "" || !d.dscvr
+											? { display: "none" }
+											: null
+									}
+								>
+									<p className="body-text">
+										<span className="span-color">
+											Dscvr
+										</span>
+									</p>
+									<p className="body-text">
+										<a
+											href={d.website}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{d.dscvr}
+										</a>
+									</p>
+								</li>
+								<li
+									style={
+										d.distrikt === "" || !d.distrikt
+											? { display: "none" }
+											: null
+									}
+								>
+									<p className="body-text">
+										<span className="span-color">
+											Distrikt
+										</span>
+									</p>
+									<p className="body-text">
+										<a
+											href={d.website}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{d.distrikt}
 										</a>
 									</p>
 								</li>
