@@ -110,7 +110,7 @@ const AppPage = ({ data }) => {
 									</p>
 									<p className="body-text">
 										<a
-											href={d.website}
+											href={d.dscvr}
 											target="_blank"
 											rel="noopener noreferrer"
 										>
@@ -132,7 +132,7 @@ const AppPage = ({ data }) => {
 									</p>
 									<p className="body-text">
 										<a
-											href={d.website}
+											href={d.distrikt}
 											target="_blank"
 											rel="noopener noreferrer"
 										>
@@ -190,7 +190,7 @@ const AppPage = ({ data }) => {
 									}
 								>
 									<a
-										href={d.twitter}
+										href={d.telegram}
 										target="_blank"
 										rel="noopener noreferrer"
 									>

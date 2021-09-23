@@ -4,12 +4,36 @@ import { NavLink } from "react-router-dom";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
-import { data } from "./data";
+
+// const nnsCanisterId = "qoctq-giaaa-aaaaa-aaaea-cai";
+// const whitelist = [nnsCanisterId];
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
+	const [donateAmount, setDonateAmount] = useState("0.1");
 
+	const updateDonateAmount = (e) => {
+		setDonateAmount(e.target.value);
+	};
 
+	const handleDonateBtnClick = async (el) => {
+		el.target.disabled = true;
+
+		const hasAllowed = await window.ic?.plug?.requestConnect();
+
+		if (hasAllowed) {
+			const requestTransferArg = {
+				to: "edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1",
+				amount: donateAmount * 100000000,
+			};
+			await window.ic?.plug?.requestTransfer(requestTransferArg);
+		} else {
+		}
+
+		setTimeout(function () {
+			el.target.disabled = false;
+		}, 5000);
+	};
 
 	fetch(
 		"https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
@@ -63,6 +87,21 @@ const Nav = () => {
 					>
 						Submit Your App
 					</a>
+				</li>
+				<li className="nav-list__item">
+					<input
+						className="donate-amount"
+						type="number"
+						min="0"
+						onChange={updateDonateAmount}
+						value={donateAmount}
+					/>
+					<button
+						className="donate-btn"
+						onClick={handleDonateBtnClick}
+					>
+						Donate
+					</button>
 				</li>
 			</ul>
 		</div>

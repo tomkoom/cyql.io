@@ -84,6 +84,8 @@ body {
 }
 
 .nav-list {
+	display: flex;
+	align-items: center;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
@@ -101,6 +103,42 @@ a {
 	text-decoration: none;
 	color: var(--gray900);
 }
+
+/* donate button */
+
+.donate-btn {
+	border: none;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 24px;
+	background: linear-gradient(
+		94.95deg,
+		#ffe701 -1.41%,
+		#fa51d3 34.12%,
+		#10d9ed 70.19%,
+		#52ff53 101.95%
+	);
+	border-radius: 10px;
+	color: #fff;
+	padding: 6px 12px;
+	cursor: pointer;
+	transition: opacity 0.3s ease-in, transform 0.3s ease-in-out;
+	transform: scale(1);
+}
+
+.donate-btn:hover {
+	opacity: 0.94;
+	transform: scale(1.02);
+}
+
+.donate-amount {
+	max-width: 64px;
+	padding: 8px 4px;
+	margin-right: 12px;
+}
+
+
 
 /* APP-LIST */
 
@@ -263,6 +301,11 @@ a {
 .span-bold {
 	font-weight: var(--bold);
 }
+
+
+
+/* MEDIA SCREEN */
+
 
 @media screen and (max-width: 720px) {
 	.nav {
