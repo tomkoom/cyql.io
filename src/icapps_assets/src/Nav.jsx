@@ -9,8 +9,6 @@ import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 // const nnsCanisterId = "qoctq-giaaa-aaaaa-aaaea-cai";
 // const whitelist = [nnsCanisterId];
 
-console.log(Logo);
-
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
 	const [donateAmount, setDonateAmount] = useState("0.1");

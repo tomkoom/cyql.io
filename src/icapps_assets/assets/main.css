@@ -53,26 +53,27 @@ body {
 .logo {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: 4px;
 }
 
 .logo img {
-	width: 36px;
-	height: 36px;
+	width: 34px;
+	height: 34px;
 }
 
 .logo h1 {
 	font-size: var(--fontSize5);
 	font-weight: var(--black);
+	letter-spacing: -1px;
 }
 
 .icp-price-badge {
-	padding: 6px 12px;
+	padding: 8px 4px;
 	background-color: var(--gray100);
 	border-radius: 4px;
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: 4px;
 	font-weight: var(--medium);
 }
 
@@ -81,8 +82,8 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
 }
 
 .nav {
@@ -90,6 +91,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	flex-wrap: wrap;
+	gap: 16px;
 	padding: 32px;
 }
 
@@ -101,7 +103,7 @@ body {
 	margin: 0;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 24px;
+	gap: 16px;
 	font-size: var(--fontSize5);
 }
 
@@ -141,7 +143,7 @@ a {
 .donate-amount-input {
 	max-width: 64px;
 	padding: 6px 10px;
-	margin-right: 12px;
+	margin-right: 8px;
 	font-size: var(--fontSize6);
 	border: none;
 	-webkit-box-shadow: 0px 0px 0px 1px var(--gray400);
@@ -198,6 +200,7 @@ a {
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
+	letter-spacing: -0.5px;
 }
 
 .category-btns__item__active {
@@ -310,9 +313,13 @@ a {
 
 /* MEDIA SCREEN */
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 768px) {
 	html {
 		font-size: 16px;
+	}
+
+	.category-btns {
+		gap: 8px;
 	}
 
 	.nav {
