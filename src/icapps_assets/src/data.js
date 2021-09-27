@@ -416,7 +416,7 @@ export const data = [
         canister: "",
         logo: "https://i.postimg.cc/qBxs13hd/dab-logo.png",
         cover: "https://i.postimg.cc/sxm5xkd2/dab-cover.png",
-        twitter: "",
+        twitter: "https://twitter.com/dab_ooo",
         github: "",
         telegram: "",
         slack: "",
@@ -760,7 +760,7 @@ export const data = [
     {
         id: "internet-identity",
         name: "Internet Identity",
-        category: "Dfinity Foundation Apps",
+        category: "Dfinity Apps",
         website: "https://identity.ic0.app/",
         canister: "",
         logo: "https://i.postimg.cc/CLjcwNZZ/internet-identity-logo.png",
@@ -966,7 +966,7 @@ export const data = [
     {
         id: "internet-computer-dashboard",
         name: "Internet Computer Dashboard",
-        category: "Dfinity Foundation Apps",
+        category: "Dfinity Apps",
         website: "https://dashboard.internetcomputer.org/",
         canister: "",
         logo: "https://i.postimg.cc/8PvsLFRn/internet-computer-dashboard-logo.png",
@@ -1188,7 +1188,7 @@ export const data = [
     {
         id: "nns-dapp",
         name: "NNS Dapp",
-        category: "Dfinity Foundation Apps",
+        category: "Dfinity Apps",
         website: "https://nns.ic0.app/",
         canister: "",
         logo: "https://i.postimg.cc/3rmrQskh/nnsdapp-logo.png",

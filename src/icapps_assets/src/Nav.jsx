@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Logo from "../assets/logo.svg";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +8,8 @@ import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 
 // const nnsCanisterId = "qoctq-giaaa-aaaaa-aaaea-cai";
 // const whitelist = [nnsCanisterId];
+
+console.log(Logo);
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
@@ -52,7 +55,10 @@ const Nav = () => {
 		<div className="nav">
 			<div className="logo-container">
 				<NavLink exact to="/" replace>
-					<h1 className="logo">🚀 icApps</h1>
+					<div className="logo">
+						<img src={Logo} alt="icApps Logo" />
+						<h1>icApps</h1>
+					</div>
 				</NavLink>
 				<div className="icp-price-badge">
 					<div className="icp-price-badge__logo"></div>
@@ -90,7 +96,7 @@ const Nav = () => {
 				</li>
 				<li className="nav-list__item">
 					<input
-						className="donate-amount"
+						className="donate-amount-input"
 						type="number"
 						min="0"
 						onChange={updateDonateAmount}
@@ -100,7 +106,7 @@ const Nav = () => {
 						className="donate-btn"
 						onClick={handleDonateBtnClick}
 					>
-						Donate
+						Donate {donateAmount} ICP
 					</button>
 				</li>
 			</ul>

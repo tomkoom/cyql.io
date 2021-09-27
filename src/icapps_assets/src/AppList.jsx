@@ -137,15 +137,12 @@ const AppList = ({
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
-					category="Dfinity Foundation Apps"
-					categoryActive={
-						category === "Dfinity Foundation Apps" ? true : false
-					}
+					category="Dfinity Apps"
+					categoryActive={category === "Dfinity Apps" ? true : false}
 					// icon={"♾️"}
 					appsNum={
-						data.filter(
-							(app) => app.category === "Dfinity Foundation Apps"
-						).length
+						data.filter((app) => app.category === "Dfinity Apps")
+							.length
 					}
 				/>
 			</div>

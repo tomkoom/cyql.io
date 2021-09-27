@@ -80,7 +80,13 @@ module.exports = {
   // },
   module: {
     rules: [
-      { test: /\.(js|ts)x?$/, loader: "ts-loader" }
+      { test: /\.(js|ts)x?$/, loader: "ts-loader" },
+      // {
+      //   test: /\.svg$/, loader: 'svg-inline-loader'
+      // },
+      {
+        test: /\.svg$/, loader: 'file-loader'
+      },
     ]
   },
   plugins: [

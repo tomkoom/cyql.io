@@ -18,15 +18,9 @@ const TagButton = ({
 		>
 			{icon ? (
 				`${icon} `
-			) : category === "Dfinity Foundation Apps" ? (
+			) : category === "Dfinity Apps" ? (
 				<div className="icp-price-badge__logo"></div>
 			) : null}
-			{/* {icon ? (
-					<FontAwesomeIcon
-						icon={icon}
-						color={categoryActive ? "#fff" : "#718096"}
-					/>
-				) : null} */}
 			{category}
 			<p className="apps-num">{appsNum}</p>
 		</button>
