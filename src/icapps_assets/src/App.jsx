@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 
+
+
 // ROUTER
 import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 
 // DATA
-import { data } from "./data";
+import { apps } from "./apps";
 
 // COMPONENTS
 import Nav from "./Nav";
 import AppList from "./AppList";
 import AppPage from "./AppPage";
+import UpcomingNfts from "./UpcomingNfts";
+
+
 
 const App = () => {
 	const [category, setCategory] = useState("All");
@@ -17,11 +22,14 @@ const App = () => {
 
 	useEffect(() => {
 		category === "All"
-			? setFilteredApps(data)
+			? setFilteredApps(apps)
 			: setFilteredApps(
-					data.filter((data) => data.category === category)
+					apps.filter((apps) => apps.category === category)
 			  );
 	}, [category]);
+
+
+
 	return (
 		<div>
 			<Nav />
@@ -29,7 +37,7 @@ const App = () => {
 				{/* <Redirect from="/" to="All" /> */}
 				<Route exact path="/">
 					<AppList
-						data={data}
+						apps={apps}
 						category={category}
 						setCategory={setCategory}
 						filteredApps={filteredApps}
@@ -37,8 +45,15 @@ const App = () => {
 				</Route>
 
 				<Route exact path="/a/:id">
-					<AppPage data={data} />
+					<AppPage apps={apps} />
 				</Route>
+
+				<Route exact path="/upcoming">
+					<UpcomingNfts
+						
+					/>
+				</Route>
+				{/* <Route component={page404} /> */}
 			</Switch>
 		</div>
 	);

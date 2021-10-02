@@ -54,7 +54,12 @@ const Nav = () => {
 			<div className="logo-container">
 				<NavLink exact to="/" replace>
 					<div className="logo">
-						<img src={Logo} alt="icApps Logo" />
+						<img
+							src={Logo}
+							width="34"
+							height="34"
+							alt="icApps Logo"
+						/>
 						<h1>icApps</h1>
 					</div>
 				</NavLink>
@@ -84,12 +89,20 @@ const Nav = () => {
 					</a>
 				</li>
 				<li className="nav-list__item">
+					<NavLink exact to="/upcoming" replace>
+						<p className="body-text">
+							Upcoming NFT Sales &amp; Airdrops{" "}
+						</p>
+						<p className="body-text">🔥</p>
+					</NavLink>
+				</li>
+				<li className="nav-list__item">
 					<a
 						href="https://airtable.com/shrdxEhd19A8oY9bG"
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Submit Your App
+						<p className="body-text">Submit Your App</p>
 					</a>
 				</li>
 				<li className="nav-list__item">

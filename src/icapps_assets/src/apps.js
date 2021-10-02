@@ -1,30 +1,87 @@
-export const data = [
-    // {
-    //     id: "",
-    //     name: "",
-    //     category: "",
-    //     website: "",
-    //     canister: "",
-    //     logo: "",
-    //     cover: "",
-    //     twitter: "",
-    //     dscvr: "",
-    //     distrikt: "",
-    //     github: "",
-    //     telegram: "",
-    //     slack: "",
-    //     discord: "",
-    //     medium: "",
-    //     description: "",
-    // },
-    // написать dscvr коллаб
-    // https://icp123.org/categories/all
-    // https://twitter.com/ICdripland
-    // txa
-    // https://drip.land/info
-    // https://discord.gg/rZ4fZ2be
-    // 
-    // 
+// TEMPLATE
+// {
+//     id: "",
+//     name: "",
+//     category: "",
+//     website: "",
+//     canister: "",
+//     logo: "",
+//     cover: "",
+//     twitter: "",
+//     dscvr: "",
+//     distrikt: "",
+//     github: "",
+//     telegram: "",
+//     slack: "",
+//     discord: "",
+//     medium: "",
+//     description: "",
+// },
+
+// TO-DO's
+// написать dscvr коллаб
+// https://icp123.org/categories/all
+// https://drip.land/info
+// txa
+// https://discord.gg/rZ4fZ2be
+// https://twitter.com/CetoSwap
+// https://airtable.com/appwURLQgMaDAoJ8G/tblUBOnC35hfT5rPA/viw8h5VKM2K6tZqB3/recU5uu1GYut0tn0f?blocks=hide
+
+export const apps = [
+    {
+        id: "poked-studio-nft",
+        name: "Poked Studio NFT",
+        category: "NFTs",
+        website: "https://www.pokedstudiobotsnft.co.uk/",
+        canister: "",
+        logo: "https://i.postimg.cc/sDqMBG9Z/pokedstudionft-logo.jpg",
+        cover: "https://i.postimg.cc/Cx8zbMmr/pokedstudionft-cover.jpg",
+        twitter: "https://twitter.com/PokedStudioUK",
+        dscvr: "https://h5aet-waaaa-aaaab-qaamq-cai.raw.ic0.app/p/pokedstudionft",
+        distrikt: "https://az5sd-cqaaa-aaaae-aaarq-cai.ic0.app/u/PokedStudioNFT",
+        github: "",
+        telegram: "",
+        slack: "",
+        discord: "https://discord.gg/pokedstudionft",
+        medium: "",
+        description: "A collection of 10,000 individual ROBOTS, designed by Cardiff based creative agency - Poked Studio.",
+    },
+    {
+        id: "crowd-created-canvas",
+        name: "Crowd Created Canvas",
+        category: "NFTs",
+        website: "",
+        canister: "https://sdnoa-fiaaa-aaaah-aaubq-cai.ic0.app/",
+        logo: "https://i.postimg.cc/CMkDwsqt/ccc-logo.jpg",
+        cover: "https://i.postimg.cc/pXvjr5Qd/ccc-cover.jpg",
+        twitter: "https://twitter.com/CCCProtocol",
+        dscvr: "",
+        distrikt: "",
+        github: "https://github.com/C3-Protocol",
+        telegram: "https://t.me/joinchat/sfq9yoY39NUwMmZl",
+        slack: "",
+        discord: "",
+        medium: "",
+        description: "CCC(Crowd Created Canvas) is the first product of C3 Protocol and the first truly decentralized creation project of NFT in blockchain field. The products realized on CCC Dfinity (Internet Computer) really make NFT creation decentralized in all aspects. Its outstanding points are: users create canvases through decentralization and collaboration, and the creation and transaction data of paintings are stored in IC Canister.",
+    },
+    {
+        id: "dfinity-bulls-nft",
+        name: "Dfinity Bulls NFT",
+        category: "NFTs",
+        website: "",
+        canister: "",
+        logo: "https://i.postimg.cc/02LXBhvS/dfinity-bulls-nft-logo.jpg",
+        cover: "https://i.postimg.cc/MGwPWRvK/dfinity-bulls-nft-cover.jpg",
+        twitter: "https://twitter.com/DBulls_NFT",
+        dscvr: "",
+        distrikt: "",
+        github: "",
+        telegram: "",
+        slack: "",
+        discord: "https://discord.gg/rv5ab9KNXs",
+        medium: "",
+        description: "8,888 Awesome Badass Bulls will ever be minted! Exclusively on ICP!",
+    },
     {
         id: "overchute",
         name: "Overchute",
@@ -228,7 +285,7 @@ export const data = [
         name: "ICPBunny",
         category: "NFTs",
         website: "",
-        canister: "https://elsk4-daaaa-aaaaf-qaeca-cai.raw.ic0.app/",
+        canister: "https://hae47-fyaaa-aaaaf-qaeiq-cai.raw.ic0.app/",
         logo: "https://i.postimg.cc/G2SWqk7c/icpbunny-logo.jpg",
         cover: "https://i.postimg.cc/XNrq3x0k/icpbunny-cover.jpg",
         twitter: "https://twitter.com/ICPBunny",
@@ -992,7 +1049,7 @@ export const data = [
         github: "https://github.com/stopak/ICPunks/tree/dev",
         telegram: "",
         slack: "",
-        discord: "https://discord.gg/m8QWD7m62h",
+        discord: "https://discord.gg/Bkp8JcTxXs",
         medium: "",
         description: "First NFTs on the Internet Computer. 10,000 randomly generated, unique collectible clowns.",
         twitterHandle: "ICPunks",

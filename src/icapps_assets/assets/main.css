@@ -38,7 +38,6 @@ html {
 }
 
 body {
-	font-weight: var(--bold);
 	color: var(--gray900);
 }
 
@@ -54,11 +53,6 @@ body {
 	display: flex;
 	align-items: center;
 	gap: 4px;
-}
-
-.logo img {
-	width: 34px;
-	height: 34px;
 }
 
 .logo h1 {
@@ -97,14 +91,23 @@ body {
 
 .nav-list {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
-	display: flex;
-	flex-wrap: wrap;
 	gap: 16px;
-	font-size: var(--fontSize5);
+	font-size: var(--fontSize6);
+	/* background-color: #a0aec0; */
+}
+
+/* .nav-list__item {
+	display: flex;
+	gap: 24px;
+} */
+
+.nav-list__item .body-text {
+	display: inline;
 }
 
 a {
@@ -129,16 +132,16 @@ a {
 	);
 	border-radius: 10px;
 	color: #fff;
-	padding: 6px 12px;
+	padding: 6px 8px;
 	cursor: pointer;
-	transition: opacity 0.3s ease-in, transform 0.3s ease-in-out;
-	transform: scale(1);
+	/* transition: opacity 0.3s ease-in, transform 0.3s ease-in-out;
+	transform: scale(1); */
 }
 
-.donate-btn:hover {
+/* .donate-btn:hover {
 	opacity: 0.94;
 	transform: scale(1.02);
-}
+} */
 
 .donate-amount-input {
 	max-width: 64px;
@@ -148,7 +151,8 @@ a {
 	border: none;
 	-webkit-box-shadow: 0px 0px 0px 1px var(--gray400);
 	-moz-box-shadow: 0px 0px 0px 1px var(--gray400);
-	box-shadow: 0px 0px 0px 1px var(--gray300);
+	box-shadow: 0px 0px 0px 1px var(--gray400);
+	-webkit-appearance: none;
 	border-radius: 4px;
 }
 
@@ -234,7 +238,7 @@ a {
 /* APP-PAGE */
 
 .app-page {
-	max-width: 720px;
+	max-width: 768px;
 	margin: 0 auto;
 	margin-top: 24px;
 	padding: 0 32px;
@@ -263,7 +267,6 @@ a {
 .app-item__app-cover {
 	width: 100%;
 	padding-bottom: 33.33%;
-	/* overflow: hidden; */
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -296,11 +299,6 @@ a {
 	word-wrap: break-word;
 }
 
-.body-text {
-	line-height: 150%;
-	font-weight: var(--medium);
-}
-
 /* SPAN */
 
 .span-color {
@@ -311,6 +309,110 @@ a {
 	font-weight: var(--bold);
 }
 
+/* UPCOMING NFTS PAGE */
+
+.upcoming-nft {
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	margin: 0 auto;
+	padding: 32px;
+	justify-content: flex-start;
+}
+
+.upcoming-nft__card {
+	/* display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); */
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	border-radius: 8px;
+}
+
+.upcoming-nft__card__main {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-size: var(--fontSize5);
+	width: 100%;
+	/* background-color: var(--gray100); */
+}
+
+.upcoming-nft__card__main__title {
+	font-size: var(--fontSize4);
+}
+
+.upcoming-nft__card__img {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	place-items: center;
+	grid-gap: 12px;
+	max-width: 60%;
+	width: 100%;
+
+	/* border-top-left-radius: 16px;
+	border-bottom-left-radius: 16px;
+	border-top-right-radius: 16px;
+	border-bottom-right-radius: 16px;
+	overflow: hidden;
+	 */
+}
+
+/* .upcoming-nft__card__img div {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	place-items: center;
+	max-width: 60%;
+} */
+
+.upcoming-nft__card__img__item {
+	border-radius: 12px;
+	width: 100%;
+}
+
+.upcoming-nft__card__main__social-links-list {
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	font-size: var(--fontSize5);
+}
+
+.upcoming-nft__card__main__social-links-list__item a {
+	font-weight: var(--bold);
+	/* letter-spacing: -1px; */
+}
+
+.upcoming-nft__card__main__social-links-list__item a:hover {
+	background: rgb(98, 0, 234);
+	background-image: linear-gradient(
+		45deg,
+		rgba(98, 0, 234, 1) 0%,
+		rgba(48, 79, 254, 1) 100%
+	);
+	/* background: linear-gradient(
+		45deg,
+		rgba(98, 0, 234, 1) 0%,
+		rgba(48, 79, 254, 1) 100%
+	); */
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* OTHER */
+
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* .refetch-btn {
+	padding: 12px;
+	width: auto;
+} */
+
 /* MEDIA SCREEN */
 
 @media screen and (max-width: 768px) {
@@ -318,8 +420,8 @@ a {
 		font-size: 16px;
 	}
 
-	.category-btns {
-		gap: 8px;
+	.container {
+		padding: 0 16px 64px 16px;
 	}
 
 	.nav {
@@ -327,8 +429,8 @@ a {
 		gap: 24px;
 	}
 
-	.container {
-		padding: 0 16px 64px 16px;
+	.category-btns {
+		gap: 8px;
 	}
 
 	.app-list {
@@ -336,7 +438,16 @@ a {
 		grid-gap: 20px;
 	}
 
-	.app-page {
+	.app-page,
+	.upcoming-nft {
 		padding: 0 16px;
+	}
+
+	.upcoming-nft__card {
+		flex-direction: column;
+	}
+
+	.upcoming-nft__card__img {
+		max-width: 100%;
 	}
 }

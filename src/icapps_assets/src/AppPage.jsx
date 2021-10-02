@@ -13,12 +13,12 @@ import {
 	faSlack,
 } from "@fortawesome/free-brands-svg-icons";
 
-const AppPage = ({ data }) => {
+const AppPage = ({ apps }) => {
 	const { id } = useParams();
 
 	return (
 		<div className="app-page">
-			{data
+			{apps
 				.filter((d) => d.id === id)
 				.map((d) => (
 					<div key={d.id}>

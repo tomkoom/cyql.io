@@ -2,33 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TagButton from "./TagButton";
 
-// FontAwesome icons
-import {
-	faCompass,
-	faUsers,
-	faGamepad,
-	faProjectDiagram,
-	faWallet,
-	faMoneyBillWave,
-	faTools,
-	faSearch,
-	faGlobe,
-	faCoins,
-	faCubes,
-	faDiceD20,
-	faPalette,
-	faImage,
-	faInfinity,
-	faSyncAlt,
-} from "@fortawesome/free-solid-svg-icons";
-
-const AppList = ({
-	data,
-	setCategory,
-	category,
-	filteredApps,
-	categoryLink,
-}) => {
+const AppList = ({ apps, setCategory, category, filteredApps }) => {
 	return (
 		<div className="container">
 			<div className="category-btns">
@@ -36,7 +10,7 @@ const AppList = ({
 					handleSetCategory={setCategory}
 					category="All"
 					categoryActive={category === "All" ? true : false}
-					appsNum={data.length}
+					appsNum={apps.length}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -46,7 +20,7 @@ const AppList = ({
 					}
 					icon={"🎯"}
 					appsNum={
-						data.filter((app) => app.category === "Social Networks")
+						apps.filter((app) => app.category === "Social Networks")
 							.length
 					}
 				/>
@@ -56,7 +30,7 @@ const AppList = ({
 					categoryActive={category === "Games" ? true : false}
 					icon={"⚔️"}
 					appsNum={
-						data.filter((app) => app.category === "Games").length
+						apps.filter((app) => app.category === "Games").length
 					}
 				/>
 				<TagButton
@@ -65,7 +39,7 @@ const AppList = ({
 					categoryActive={category === "dApps" ? true : false}
 					icon={"🔗"}
 					appsNum={
-						data.filter((app) => app.category === "dApps").length
+						apps.filter((app) => app.category === "dApps").length
 					}
 				/>
 				<TagButton
@@ -74,7 +48,7 @@ const AppList = ({
 					categoryActive={category === "DeFi" ? true : false}
 					icon={"‍🌾"}
 					appsNum={
-						data.filter((app) => app.category === "DeFi").length
+						apps.filter((app) => app.category === "DeFi").length
 					}
 				/>
 				<TagButton
@@ -83,7 +57,7 @@ const AppList = ({
 					categoryActive={category === "DAOs" ? true : false}
 					icon={"🏠"}
 					appsNum={
-						data.filter((app) => app.category === "DAOs").length
+						apps.filter((app) => app.category === "DAOs").length
 					}
 				/>
 				<TagButton
@@ -94,7 +68,7 @@ const AppList = ({
 					}
 					icon={"🚀"}
 					appsNum={
-						data.filter((app) => app.category === "Infrastructure")
+						apps.filter((app) => app.category === "Infrastructure")
 							.length
 					}
 				/>
@@ -104,7 +78,7 @@ const AppList = ({
 					categoryActive={category === "Wallets" ? true : false}
 					icon={"👛"}
 					appsNum={
-						data.filter((app) => app.category === "Wallets").length
+						apps.filter((app) => app.category === "Wallets").length
 					}
 				/>
 				<TagButton
@@ -113,7 +87,7 @@ const AppList = ({
 					categoryActive={category === "Tools" ? true : false}
 					icon={"🛠️"}
 					appsNum={
-						data.filter((app) => app.category === "Tools").length
+						apps.filter((app) => app.category === "Tools").length
 					}
 				/>
 				<TagButton
@@ -122,7 +96,7 @@ const AppList = ({
 					categoryActive={category === "Explorers" ? true : false}
 					icon={"🌎"}
 					appsNum={
-						data.filter((app) => app.category === "Explorers")
+						apps.filter((app) => app.category === "Explorers")
 							.length
 					}
 				/>
@@ -132,7 +106,7 @@ const AppList = ({
 					categoryActive={category === "NFTs" ? true : false}
 					icon={"🎨"}
 					appsNum={
-						data.filter((app) => app.category === "NFTs").length
+						apps.filter((app) => app.category === "NFTs").length
 					}
 				/>
 				<TagButton
@@ -141,7 +115,7 @@ const AppList = ({
 					categoryActive={category === "Dfinity Apps" ? true : false}
 					// icon={"♾️"}
 					appsNum={
-						data.filter((app) => app.category === "Dfinity Apps")
+						apps.filter((app) => app.category === "Dfinity Apps")
 							.length
 					}
 				/>
