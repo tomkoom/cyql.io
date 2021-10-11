@@ -1,7 +1,3 @@
-// Categories: Dfinity Applications (motoko playground, nns, identity), Play-to-earn, ...
-
-// 🎮🎨
-
 [
     // {
     //     id: "nnsdao",

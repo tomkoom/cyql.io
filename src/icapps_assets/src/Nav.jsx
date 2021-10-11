@@ -90,10 +90,11 @@ const Nav = () => {
 				</li>
 				<li className="nav-list__item">
 					<NavLink exact to="/upcoming" replace>
-						<p className="body-text">
+						<p className="body-text gradient-text-highlight">
+							{" "}
 							Upcoming NFT Sales &amp; Airdrops{" "}
 						</p>
-						<p className="body-text">🔥</p>
+						<p className="body-text">🪂</p>
 					</NavLink>
 				</li>
 				<li className="nav-list__item">

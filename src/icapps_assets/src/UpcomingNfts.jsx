@@ -42,14 +42,21 @@ const UpcomingNfts = () => {
 						</div>
 					</Link>
 					{/* <button className="refetch-btn" onClick={refetch}>Refetch</button> */}
-					<div>
-						<p className="body-text center span-color">
+					<div className="center">
+						<p className="body-text span-color">
 							{/* Information on this page should not be considered as financial advice. */}
-							Please note: We do not guarantee information
-							provided on this page is 100% accurate.
-							<br />
+							Please pay attention: We do not guarantee
+							information provided on this page is 100% accurate.
 							Do your own research.
 						</p>
+						<br />
+						<a
+							href="https://forms.gle/rFsaFEj3N8mgF9tz6"
+							target="_blank"
+							rel="noreferrer noopener"
+						>
+							🎨 Submit your project to the list 🎨
+						</a>
 					</div>
 					{data[0].data.map((nft) => (
 						// Change key
@@ -65,10 +72,10 @@ const UpcomingNfts = () => {
 								{console.log(nft["Price"])}
 								<p className="body-text span-color">
 									{nft["Description"] &&
-									nft["Description"].length > 100
+									nft["Description"].length > 140
 										? `${nft["Description"].substring(
 												0,
-												100
+												140
 										  )}...`
 										: nft["Description"]}
 									{console.log(typeof nft["Description"])}
@@ -192,27 +199,37 @@ const UpcomingNfts = () => {
 								</ul>
 							</div>
 							<div className="upcoming-nft__card__img">
-								<img
-									className="upcoming-nft__card__img__item"
-									src={nft["Img1"]}
-									alt={nft["Name"]}
-								/>
-								<img
-									className="upcoming-nft__card__img__item"
-									src={nft["Img2"]}
-									alt={nft["Name"]}
-								/>
-								<img
-									className="upcoming-nft__card__img__item"
-									src={nft["Img3"]}
-									alt={nft["Name"]}
-								/>
-								<img
-									className="upcoming-nft__card__img__item"
-									src={nft["Img4"]}
-									alt={nft["Name"]}
-								/>
+								{nft["Img2"] ? (
+									<img
+										className="upcoming-nft__card__img__item"
+										src={nft["Img1"]}
+										alt={`${nft["Name"]} img #1`}
+									/>
+								) : null}
 
+								{nft["Img2"] ? (
+									<img
+										className="upcoming-nft__card__img__item"
+										src={nft["Img2"]}
+										alt={`${nft["Name"]} img #2`}
+									/>
+								) : null}
+
+								{nft["Img3"] ? (
+									<img
+										className="upcoming-nft__card__img__item"
+										src={nft["Img3"]}
+										alt={`${nft["Name"]} img #3`}
+									/>
+								) : null}
+
+								{nft["Img4"] ? (
+									<img
+										className="upcoming-nft__card__img__item"
+										src={nft["Img4"]}
+										alt={`${nft["Name"]} img #4`}
+									/>
+								) : null}
 							</div>
 						</div>
 					))}

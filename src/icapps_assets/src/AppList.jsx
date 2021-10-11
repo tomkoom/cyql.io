@@ -2,7 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TagButton from "./TagButton";
 
-const AppList = ({ apps, setCategory, category, filteredApps }) => {
+const AppList = ({
+	apps,
+	setCategory,
+	category,
+	filteredApps,
+	data,
+	loading,
+	error,
+}) => {
 	return (
 		<div className="container">
 			<div className="category-btns">
@@ -10,7 +18,7 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					handleSetCategory={setCategory}
 					category="All"
 					categoryActive={category === "All" ? true : false}
-					appsNum={apps.length}
+					appsNum={loading ? null : data[0].data.length}
 				/>
 				<TagButton
 					handleSetCategory={setCategory}
@@ -20,8 +28,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					}
 					icon={"🎯"}
 					appsNum={
-						apps.filter((app) => app.category === "Social Networks")
-							.length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Social Networks"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -30,7 +41,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "Games" ? true : false}
 					icon={"⚔️"}
 					appsNum={
-						apps.filter((app) => app.category === "Games").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Games"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -39,7 +54,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "dApps" ? true : false}
 					icon={"🔗"}
 					appsNum={
-						apps.filter((app) => app.category === "dApps").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "dApps"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -48,7 +67,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "DeFi" ? true : false}
 					icon={"‍🌾"}
 					appsNum={
-						apps.filter((app) => app.category === "DeFi").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "DeFi"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -57,7 +80,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "DAOs" ? true : false}
 					icon={"🏠"}
 					appsNum={
-						apps.filter((app) => app.category === "DAOs").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "DAOs"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -68,8 +95,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					}
 					icon={"🚀"}
 					appsNum={
-						apps.filter((app) => app.category === "Infrastructure")
-							.length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Infrastructure"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -78,7 +108,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "Wallets" ? true : false}
 					icon={"👛"}
 					appsNum={
-						apps.filter((app) => app.category === "Wallets").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Wallets"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -87,7 +121,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "Tools" ? true : false}
 					icon={"🛠️"}
 					appsNum={
-						apps.filter((app) => app.category === "Tools").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Tools"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -96,8 +134,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "Explorers" ? true : false}
 					icon={"🌎"}
 					appsNum={
-						apps.filter((app) => app.category === "Explorers")
-							.length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Explorers"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -106,7 +147,11 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "NFTs" ? true : false}
 					icon={"🎨"}
 					appsNum={
-						apps.filter((app) => app.category === "NFTs").length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "NFTs"
+							  ).length
 					}
 				/>
 				<TagButton
@@ -115,59 +160,76 @@ const AppList = ({ apps, setCategory, category, filteredApps }) => {
 					categoryActive={category === "Dfinity Apps" ? true : false}
 					// icon={"♾️"}
 					appsNum={
-						apps.filter((app) => app.category === "Dfinity Apps")
-							.length
+						loading
+							? null
+							: data[0].data.filter(
+									(app) => app.category === "Dfinity Apps"
+							  ).length
 					}
 				/>
 			</div>
 
-			<div className="app-list">
-				{filteredApps.map((d) => (
-					<div key={d.id}>
-						<Link className="link-block" to={`/a/${d.id}`}>
-							<div
-								className="app-cover"
-								style={
-									d.cover
-										? {
-												backgroundImage: `url(${d.cover})`,
-										  }
-										: {
-												backgroundImage:
-													'url("https://svgshare.com/i/_HK.svg")',
-												backgroundColor: "#edf2f7",
-										  }
-								}
-							></div>
-							<div className="app-list__app-info">
-								<img
-									className="app-list__app-info__logo"
-									src={d.logo}
-									alt={d.name}
-								/>
-								<div className="app-list__app-info_app-caption">
-									<h2 className="app-name">{d.name}</h2>
-									<p className="body-text">
-										<span className="span-color span-bold">
-											{d.category}
-										</span>
-									</p>
-									<p className="body-text">
-										<span className="span-color">
-											{d.description.length > 105
-												? `${d.description.substring(
-														0,
-														105
-												  )}...`
-												: d.description}
-										</span>
-									</p>
+			{loading ? (
+				<p>Loading... ⌛</p>
+			) : error ? (
+				<p>Error!</p>
+			) : (
+				<div className="app-list">
+					{/* {JSON.stringify(data[0].data)} */}
+					{filteredApps.map((d) => (
+						<div key={d.id}>
+							<Link className="link-block" to={`/a/${d.id}`}>
+								<div
+									className="app-cover"
+									style={
+										d.cover
+											? {
+													backgroundImage: `url(${d.cover})`,
+											  }
+											: {
+													backgroundImage:
+														'url("https://svgshare.com/i/_HK.svg")',
+													backgroundColor: "#edf2f7",
+											  }
+									}
+								></div>
+								<div className="app-list__app-info">
+									<img
+										className="app-list__app-info__logo"
+										src={d.logo}
+										alt={d.name}
+									/>
+									<div className="app-list__app-info_app-caption">
+										<h2 className="app-name">{d.name}</h2>
+										<p className="body-text">
+											<span className="span-color span-bold">
+												{d.category}
+											</span>
+										</p>
+										<p className="body-text">
+											<span className="span-color">
+												{/* {d.description.length > 105
+														? `${d.description.substring(
+																0,
+																105
+														  )}...`
+														: d.description} */}
+												{d.description &&
+												d.description.length > 105
+													? `${d.description.substring(
+															0,
+															105
+													  )}...`
+													: d.description}
+											</span>
+										</p>
+									</div>
 								</div>
-							</div>
-						</Link>
-					</div>
-				))}
-			</div>
+							</Link>
+						</div>
+					))}
+				</div>
+			)}
 		</div>
 	);
 };

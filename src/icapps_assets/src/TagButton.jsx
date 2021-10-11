@@ -16,6 +16,9 @@ const TagButton = ({
 			}`}
 			onClick={() => handleSetCategory(category)}
 		>
+
+
+			
 			{icon ? (
 				`${icon} `
 			) : category === "Dfinity Apps" ? (
