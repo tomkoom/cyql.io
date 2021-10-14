@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap");
 /* @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap"); */
 
 :root {
 	/* https://chakra-ui.com/docs/theming/theme */
@@ -10,6 +11,7 @@
 	--gray500: #718096;
 	--gray400: #a0aec0;
 	--gray300: #cbd5e0;
+	--gray200: #e2e8f0;
 	--gray100: #edf2f7;
 	--white: #fff;
 
@@ -31,6 +33,7 @@
 	margin: 0;
 	font-family: "Karla", sans-serif;
 	/* font-family: "Mulish", sans-serif; */
+	/* font-family: "Inter", sans-serif; */
 }
 
 html {
@@ -39,6 +42,34 @@ html {
 
 body {
 	color: var(--gray900);
+}
+
+/* TYPOGRAPHY */
+
+h3 {
+	font-size: var(--fontSize4);
+}
+
+.body-text {
+	line-height: 150%;
+	font-weight: var(--medium);
+	word-wrap: break-word;
+}
+
+.body-text2 {
+	font-size: var(--fontSize4);
+	line-height: 150%;
+}
+
+/* BUTTONS */
+
+.submit-btn {
+	background-color: var(--gray900);
+	color: white;
+	padding: 12px;
+	border-radius: 8px;
+	display: inline-block;
+	font-weight: var(--bold);
 }
 
 /* NAV */
@@ -149,10 +180,11 @@ a {
 	margin-right: 8px;
 	font-size: var(--fontSize6);
 	border: none;
-	-webkit-box-shadow: 0px 0px 0px 1px var(--gray400);
+	background-color: var(--gray200);
+	/* -webkit-box-shadow: 0px 0px 0px 1px var(--gray400);
 	-moz-box-shadow: 0px 0px 0px 1px var(--gray400);
 	box-shadow: 0px 0px 0px 1px var(--gray400);
-	-webkit-appearance: none;
+	-webkit-appearance: none; */
 	border-radius: 4px;
 }
 
@@ -262,7 +294,6 @@ a {
 	color: var(--gray500);
 	background-color: var(--gray100);
 	border-radius: 50%;
-	margin-bottom: 24px;
 }
 
 .app-item__app-cover {
@@ -292,14 +323,6 @@ a {
 	font-size: var(--fontSize3);
 }
 
-/* TYPOGRAPHY */
-
-.body-text {
-	line-height: 150%;
-	font-weight: var(--medium);
-	word-wrap: break-word;
-}
-
 /* SPAN */
 
 .span-color {
@@ -313,10 +336,10 @@ a {
 /* UPCOMING NFTS PAGE */
 
 .upcoming-nft {
-	max-width: 1200px;
+	max-width: 768px;
 	display: flex;
 	flex-direction: column;
-	gap: 42px;
+	gap: 32px;
 	margin: 0 auto;
 	padding: 32px;
 	justify-content: flex-start;
@@ -326,29 +349,44 @@ a {
 	/* display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); */
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	/* align-items: center; */
 	grid-gap: 16px;
-	border-radius: 8px;
+	border-radius: 24px;
+	/* background-color: var(--gray100); */
+	padding: 20px;
+	-webkit-box-shadow: 0px 0px 0px 1px var(--gray100);
+	-moz-box-shadow: 0px 0px 0px 1px var(--gray100);
+	box-shadow: 0px 0px 0px 1px var(--gray100);
+	-webkit-appearance: none;
 }
 
 .upcoming-nft__card__main {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	/* font-size: var(--fontSize5); */
+	font-size: var(--fontSize5);
 	width: 100%;
 }
 
-.upcoming-nft__card__main__title {
-	font-size: var(--fontSize4);
+.upcoming-nft__card__main__heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.upcoming-nft__card__main__heading__date {
+	display: flex;
+	/* align-items: center; */
+	gap: 8px;
 }
 
 .upcoming-nft__card__img {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
 	place-items: center;
 	grid-gap: 12px;
-	max-width: 60%;
+	/* max-width: 60%; */
 	width: 100%;
 
 	/* border-top-left-radius: 16px;
@@ -471,7 +509,7 @@ a {
 	}
 
 	.upcoming-nft__card {
-		flex-direction: column;
+		padding: 16px;
 	}
 
 	.upcoming-nft__card__img {

@@ -14,6 +14,10 @@ import {
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
+import {
+	faCalendar,
+	faCalendarAlt,
+} from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 // Google Sheets API key
 const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
@@ -42,34 +46,48 @@ const UpcomingNfts = () => {
 						</div>
 					</Link>
 					{/* <button className="refetch-btn" onClick={refetch}>Refetch</button> */}
-					<div className="center">
-						<p className="body-text span-color">
-							{/* Information on this page should not be considered as financial advice. */}
-							Please pay attention: We do not guarantee
-							information provided on this page is 100% accurate.
-							Do your own research.
-						</p>
-						<br />
-						<a
-							href="https://forms.gle/rFsaFEj3N8mgF9tz6"
-							target="_blank"
-							rel="noreferrer noopener"
-						>
-							🎨 Submit your project to the list 🎨
-						</a>
+					<div className="upcoming-nft-sales-intro">
+						<div className="center">
+							<h2>Upcoming NFT Sales &#38; Airdrops 🪂</h2>
+							<p className="body-text2 span-color">
+								{/* Information on this page should not be considered as financial advice. */}
+								Please note: We do not guarantee information
+								provided on this page is 100% accurate. Please
+								do your own research.
+							</p>
+							<br />
+							<a
+								className="submit-btn"
+								href="https://forms.gle/rFsaFEj3N8mgF9tz6"
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								Submit your project to the list
+							</a>
+						</div>
 					</div>
+
 					{data[0].data.map((nft) => (
 						// Change key
 						<div className="upcoming-nft__card" key={nft.Name}>
 							<div className="upcoming-nft__card__main">
-								<h3 className="upcoming-nft__card__main__title">
-									{nft["Name"]}
-								</h3>
+								<div className="upcoming-nft__card__main__heading">
+									<h3 className="upcoming-nft__card__main__heading__title">
+										{nft["Name"]}
+									</h3>
+									<div></div>
+									<div className="upcoming-nft__card__main__heading__date">
+										<FontAwesomeIcon
+											icon={faCalendarAlt}
+											color="#cbd5e0"
+											style={{ marginTop: "4px" }}
+										/>
+										<p className="body-text">
+											{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
+										</p>
+									</div>
+								</div>
 
-								<p className="body-text">
-									{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
-								</p>
-								{console.log(nft["Price"])}
 								<p className="body-text span-color">
 									{nft["Description"] &&
 									nft["Description"].length > 140
@@ -78,8 +96,6 @@ const UpcomingNfts = () => {
 												140
 										  )}...`
 										: nft["Description"]}
-									{console.log(typeof nft["Description"])}
-									{/* {console.log(nft["Description"])} */}
 								</p>
 
 								<ul className="upcoming-nft__card__main__social-links-list">

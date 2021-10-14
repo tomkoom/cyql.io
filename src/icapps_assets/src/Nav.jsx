@@ -79,7 +79,7 @@ const Nav = () => {
 						<FontAwesomeIcon icon={faTwitter} />
 					</a>
 				</li>
-				<li className="nav-list__item">
+				{/* <li className="nav-list__item">
 					<a
 						href="https://t.me/icapps"
 						target="_blank"
@@ -87,7 +87,7 @@ const Nav = () => {
 					>
 						<FontAwesomeIcon icon={faTelegram} />
 					</a>
-				</li>
+				</li> */}
 				<li className="nav-list__item">
 					<NavLink exact to="/upcoming" replace>
 						<p className="body-text gradient-text-highlight">

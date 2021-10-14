@@ -16,6 +16,9 @@ import useGoogleSheets from "use-google-sheets";
 const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
 const googleSheetId = "1gMBz0XnAu4FgiGGotrsi09EjOeIUyX7uO8fHi_k8E3c";
 
+// const googleSheetsApiKey = process.env.REACT_APP_GOOGLE_SHEETS_API;
+// const googleSheetId = process.env.REACT_APP_GOOGLE_SHEET_ID;
+
 const App = () => {
 	const [category, setCategory] = useState("All");
 	const [filteredApps, setFilteredApps] = useState([]);
@@ -55,7 +58,7 @@ const App = () => {
 				</Route>
 
 				<Route exact path="/a/:id">
-					<AppPage apps={loading ? null : data[0].data} />
+					<AppPage data={data} />
 				</Route>
 
 				<Route exact path="/upcoming">
