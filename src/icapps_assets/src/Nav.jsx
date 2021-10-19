@@ -89,7 +89,7 @@ const Nav = () => {
 				</li>
 				<li className="nav-list__item">
 					<div className="dropdown">
-						<span className="bold">For Developers</span>
+						<span className="bold">Developers</span>
 						<div className="dropdown-menu">
 							<ul>
 								<li>

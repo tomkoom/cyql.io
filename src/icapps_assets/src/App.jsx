@@ -12,6 +12,7 @@ import UpcomingNfts from "./UpcomingNfts";
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
 import Highlights from "./Highlights";
+import Developers from "./Developers";
 
 // Google Sheets API key
 const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
@@ -65,6 +66,11 @@ const App = () => {
 				<Route exact path="/upcoming">
 					<Nav />
 					<UpcomingNfts />
+				</Route>
+
+				<Route exact path="/developers">
+					<Nav />
+					<Developers />
 				</Route>
 				{/* <Route component={page404} /> */}
 			</Switch>

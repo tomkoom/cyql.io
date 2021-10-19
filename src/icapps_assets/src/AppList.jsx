@@ -144,7 +144,7 @@ const AppList = ({
 					handleSetCategory={setCategory}
 					category="NFTs"
 					categoryActive={category === "NFTs" ? true : false}
-					icon={"🎨"}
+					icon={"🗿"}
 					appsNum={
 						loading
 							? null
@@ -174,7 +174,6 @@ const AppList = ({
 				<p>Error!</p>
 			) : (
 				<div className="app-list">
-					{/* {JSON.stringify(data[0].data)} */}
 					{filteredApps.map((d) => (
 						<div key={d.id} className="app-list__item">
 							<Link className="link-block" to={`/a/${d.id}`}>
@@ -198,25 +197,45 @@ const AppList = ({
 										src={d.logo}
 										alt={d.name}
 									/>
-									<div className="app-list__app-info_app-caption">
-										<h2 className="app-name">{d.name}</h2>
-										<p className="body-text">
-											<span className="span-color span-bold">
-												{d.category}
-											</span>
-										</p>
-										<p className="body-text gray100">
-											{/* {d.description.length > 105
-														? `${d.description.substring(
-																0,
-																105
-														  )}...`
-														: d.description} */}
+									<div className="app-list__app-info__description">
+										<div className="app-list__app-info__description__title">
+											<h2 className="app-name">
+												{d.name}
+												&nbsp;
+												{d.category ===
+												"Social Networks"
+													? "🎯"
+													: d.category === "Games"
+													? "⚔️"
+													: d.category === "dApps"
+													? "🔗"
+													: d.category === "DeFi"
+													? "‍🌾"
+													: d.category === "DAOs"
+													? "🏠"
+													: d.category ===
+													  "Infrastructure"
+													? "🚀"
+													: d.category === "Wallets"
+													? "👛"
+													: d.category === "Tools"
+													? "🛠️"
+													: d.category === "Explorers"
+													? "🌎"
+													: d.category === "NFTs"
+													? "🗿"
+													: d.category === "DeFi"
+													? "‍🌾"
+													: null}
+											</h2>
+										</div>
+
+										<p className="body-text gray80">
 											{d.description &&
-											d.description.length > 105
+											d.description.length > 90
 												? `${d.description.substring(
 														0,
-														105
+														90
 												  )}...`
 												: d.description}
 										</p>

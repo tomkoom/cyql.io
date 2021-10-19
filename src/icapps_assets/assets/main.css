@@ -1,6 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap"); */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
 
 :root {
 	/* CHAKRA UI https://chakra-ui.com/docs/theming/theme */
@@ -36,9 +36,9 @@
 	--fontSize5: 1.25rem;
 	--fontSize6: 1rem;
 
-	--black: 900;
-	--bold: 700;
-	--medium: 500;
+	--black: 800;
+	--bold: 600;
+	--medium: 400;
 }
 
 * {
@@ -61,13 +61,8 @@ body {
 
 /* TYPOGRAPHY */
 
-h2 {
-	color: white;
-}
-
 h3 {
 	font-size: var(--fontSize4);
-	display: inline;
 	color: white;
 }
 
@@ -80,7 +75,6 @@ h3 {
 .body-text2 {
 	font-size: var(--fontSize4);
 	line-height: 150%;
-	letter-spacing: -0.33px;
 }
 
 .bold {
@@ -91,12 +85,8 @@ h3 {
 	font-weight: var(--black);
 }
 
-.gray100 {
-	color: var(--gray100);
-}
-
-.span-bold {
-	font-weight: var(--bold);
+.gray80 {
+	color: var(--gray80);
 }
 
 .gradient-text-highlight {
@@ -148,7 +138,7 @@ h3 {
 	color: white;
 	font-size: var(--fontSize5);
 	font-weight: var(--black);
-	letter-spacing: -1px;
+	letter-spacing: -0.5px;
 }
 
 .social-icons-containter {
@@ -300,7 +290,7 @@ a {
 	margin-bottom: 32px;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-	grid-gap: 24px;
+	grid-gap: 32px;
 }
 
 .highlights__item {
@@ -335,14 +325,19 @@ a {
 
 .app-list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
-	grid-gap: 24px;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-gap: 32px;
 	width: 100%;
 }
 
 .app-list__item {
-	background-color: var(--gray180);
+	background-color: var(--gray200);
 	border-radius: 16px;
+	transition: all 150ms ease-in-out;
+}
+
+.app-list__item:hover {
+	background-color: var(--gray180);
 }
 
 .app-cover {
@@ -379,7 +374,12 @@ a {
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
-	letter-spacing: -0.5px;
+	letter-spacing: -0.25px;
+	transition: all 150ms ease-in-out;
+}
+
+.category-btns__item:hover:not(.category-btns__item__active) {
+	background-color: var(--gray140);
 }
 
 .category-btns__item__active {
@@ -388,14 +388,13 @@ a {
 }
 
 .apps-num {
-	color: var(--gray140);
+	color: var(--gray100);
 }
 
 .app-list__app-info {
 	display: flex;
-	padding: 0 12px;
-	gap: 12px;
-	margin: 12px 0;
+	padding: 16px;
+	gap: 16px;
 }
 
 .app-list__app-info__logo {
@@ -405,10 +404,20 @@ a {
 	object-fit: cover;
 }
 
-.app-list__app-info_app-caption {
+.app-list__app-info__description {
 	display: flex;
-	gap: 2px;
+	gap: 4px;
 	flex-direction: column;
+}
+
+.app-list__app-info__description__title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.app-list__app-info__description__title p {
+	font-size: var(--fontSize5);
 }
 
 /* APP-PAGE */
@@ -557,7 +566,6 @@ a {
 
 .upcoming-nft__card__main__social-links-list__item a {
 	font-weight: var(--bold);
-	/* letter-spacing: -1px; */
 }
 
 .upcoming-nft__card__main__social-links-list__item a:hover {
@@ -591,13 +599,13 @@ a {
 		font-size: 16px;
 	}
 
+	.highlights,
 	.container {
-		padding: 0 16px 64px 16px;
+		padding: 0 16px;
 	}
 
 	.nav {
-		padding: 32px 16px;
-		gap: 24px;
+		padding: 16px;
 	}
 
 	.category-btns {
@@ -606,7 +614,6 @@ a {
 
 	.app-list {
 		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-		grid-gap: 20px;
 	}
 
 	.app-page,
