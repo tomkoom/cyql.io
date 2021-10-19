@@ -1,19 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700;900&display=swap");
 
 :root {
-	/* https://chakra-ui.com/docs/theming/theme */
-
+	/* CHAKRA UI https://chakra-ui.com/docs/theming/theme */
 	--color: #304ffe;
-	--gray900: #171923;
+	/* --gray900: #171923;
+	--gray800: #1a202c;
 	--gray700: #2d3748;
 	--gray500: #718096;
 	--gray400: #a0aec0;
 	--gray300: #cbd5e0;
 	--gray200: #e2e8f0;
 	--gray100: #edf2f7;
-	--white: #fff;
+	--black: #000;
+	--white: #fff; */
+
+	/* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
+	--gray220: #11100f;
+	--gray200: #1b1a19;
+	--gray180: #252423;
+	--gray160: #323130;
+	--gray140: #484644;
+	--gray120: #797775;
+	--gray100: #979593;
+	--gray80: #b3b0ad;
+	--gray60: #c8c6c4;
+	--gray40: #e1dfdd;
+	--gray20: #f3f2f1;
 
 	--fontSize1: 3.052rem;
 	--fontSize2: 2.441rem;
@@ -22,18 +36,18 @@
 	--fontSize5: 1.25rem;
 	--fontSize6: 1rem;
 
-	--black: 800;
-	--bold: 600;
-	--medium: 400;
+	--black: 900;
+	--bold: 700;
+	--medium: 500;
 }
 
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	font-family: "Karla", sans-serif;
+	/* font-family: "Karla", sans-serif; */
 	/* font-family: "Mulish", sans-serif; */
-	/* font-family: "Inter", sans-serif; */
+	font-family: "Inter", sans-serif;
 }
 
 html {
@@ -41,13 +55,20 @@ html {
 }
 
 body {
-	color: var(--gray900);
+	color: var(--gray60);
+	background-color: var(--gray220);
 }
 
 /* TYPOGRAPHY */
 
+h2 {
+	color: white;
+}
+
 h3 {
 	font-size: var(--fontSize4);
+	display: inline;
+	color: white;
 }
 
 .body-text {
@@ -59,13 +80,50 @@ h3 {
 .body-text2 {
 	font-size: var(--fontSize4);
 	line-height: 150%;
+	letter-spacing: -0.33px;
+}
+
+.bold {
+	font-weight: var(--bold);
+}
+
+.black {
+	font-weight: var(--black);
+}
+
+.gray100 {
+	color: var(--gray100);
+}
+
+.span-bold {
+	font-weight: var(--bold);
+}
+
+.gradient-text-highlight {
+	background: rgb(98, 0, 234);
+	background-image: linear-gradient(
+		45deg,
+		rgba(98, 0, 234, 1) 0%,
+		rgba(48, 79, 254, 1) 100%
+	);
+	/* background: linear-gradient(
+		45deg,
+		rgba(98, 0, 234, 1) 0%,
+		rgba(48, 79, 254, 1) 100%
+	); */
+	/* background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent; */
+	padding: 4px;
+	border-radius: 4px;
+	color: white;
 }
 
 /* BUTTONS */
 
 .submit-btn {
-	background-color: var(--gray900);
-	color: white;
+	background-color: white;
+	color: var(--gray220);
 	padding: 12px;
 	border-radius: 8px;
 	display: inline-block;
@@ -87,19 +145,35 @@ h3 {
 }
 
 .logo h1 {
+	color: white;
 	font-size: var(--fontSize5);
 	font-weight: var(--black);
 	letter-spacing: -1px;
 }
 
+.social-icons-containter {
+	font-size: var(--fontSize5);
+	width: 42px;
+	height: 42px;
+	background-color: rgba(29, 155, 240, 0.25);
+	border-radius: 100%;
+}
+
+.social-icons-containter a {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-items: center;
+}
+
 .icp-price-badge {
-	padding: 8px 4px;
-	background-color: var(--gray100);
-	border-radius: 4px;
 	display: flex;
 	align-items: center;
 	gap: 4px;
-	font-weight: var(--medium);
+	color: white;
+	background-color: var(--gray180);
+	border-radius: 4px;
+	padding: 8px;
 }
 
 .icp-price-badge__logo {
@@ -129,13 +203,7 @@ h3 {
 	margin: 0;
 	gap: 16px;
 	font-size: var(--fontSize6);
-	/* background-color: #a0aec0; */
 }
-
-/* .nav-list__item {
-	display: flex;
-	gap: 24px;
-} */
 
 .nav-list__item .body-text {
 	display: inline;
@@ -143,7 +211,43 @@ h3 {
 
 a {
 	text-decoration: none;
-	color: var(--gray900);
+	color: var(--gray40);
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	background-color: var(--gray180);
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	padding: 24px;
+	z-index: 1;
+	border-radius: 8px;
+	top: 24px;
+	width: 240px;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.dropdown span {
+	color: var(--gray40);
+	padding: 24px 0;
+	cursor: pointer;
+}
+
+.dropdown-menu ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 /* DONATE BUTTON */
@@ -151,7 +255,7 @@ a {
 .donate-btn {
 	border: none;
 	font-style: normal;
-	font-weight: bold;
+	font-weight: var(--black);
 	font-size: 16px;
 	line-height: 24px;
 	background: linear-gradient(
@@ -161,10 +265,11 @@ a {
 		#10d9ed 70.19%,
 		#52ff53 101.95%
 	);
-	border-radius: 10px;
-	color: #fff;
+	border-radius: 8px;
+	color: var(--gray220);
 	padding: 6px 8px;
 	cursor: pointer;
+	letter-spacing: -0.25px;
 	/* transition: opacity 0.3s ease-in, transform 0.3s ease-in-out;
 	transform: scale(1); */
 }
@@ -175,25 +280,57 @@ a {
 } */
 
 .donate-amount-input {
+	color: white;
+	background-color: var(--gray140);
 	max-width: 64px;
-	padding: 6px 10px;
+	padding: 8px 10px;
 	margin-right: 8px;
 	font-size: var(--fontSize6);
 	border: none;
-	background-color: var(--gray200);
+	border-radius: 4px;
 	/* -webkit-box-shadow: 0px 0px 0px 1px var(--gray400);
 	-moz-box-shadow: 0px 0px 0px 1px var(--gray400);
 	box-shadow: 0px 0px 0px 1px var(--gray400);
 	-webkit-appearance: none; */
-	border-radius: 4px;
+}
+
+/* HIGHLIGHTS */
+
+.highlights {
+	margin-bottom: 32px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-gap: 24px;
+}
+
+.highlights__item {
+	position: relative;
+	background-color: black;
+	border-radius: 12px;
+	overflow: hidden;
+	font-size: 0;
+}
+
+.highlights__item img {
+	width: 100%;
+	opacity: 0.75;
+}
+
+.highlights__item h3 {
+	position: absolute;
+	color: white;
+	left: 20px;
+	bottom: 16px;
+	background-color: var(--gray900);
 }
 
 /* APP-LIST */
 
+.highlights,
 .container {
 	max-width: 1440px;
-	margin: 0 auto;
-	padding: 0 32px 64px 32px;
+	margin: 32px auto;
+	padding: 0 32px;
 }
 
 .app-list {
@@ -203,13 +340,18 @@ a {
 	width: 100%;
 }
 
+.app-list__item {
+	background-color: var(--gray180);
+	border-radius: 16px;
+}
+
 .app-cover {
 	width: 100%;
 	padding-bottom: 33.33%;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	border-radius: 16px;
+	border-radius: 16px 16px 0 0;
 }
 
 .app-name {
@@ -232,8 +374,8 @@ a {
 	font-size: var(--fontSize5);
 	font-weight: var(--bold);
 	text-decoration: none;
-	background-color: var(--gray100);
-	color: var(--gray900);
+	background-color: var(--gray180);
+	color: var(--gray40);
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
@@ -241,17 +383,17 @@ a {
 }
 
 .category-btns__item__active {
-	background-color: var(--gray900);
-	color: var(--white);
+	background-color: white;
+	color: var(--gray220);
 }
 
 .apps-num {
-	color: var(--gray400);
+	color: var(--gray140);
 }
 
 .app-list__app-info {
 	display: flex;
-
+	padding: 0 12px;
 	gap: 12px;
 	margin: 12px 0;
 }
@@ -265,6 +407,7 @@ a {
 
 .app-list__app-info_app-caption {
 	display: flex;
+	gap: 2px;
 	flex-direction: column;
 }
 
@@ -277,22 +420,26 @@ a {
 	padding: 0 32px;
 }
 
+.app-item {
+	padding: 32px 0;
+}
+
 .app-item .app-name {
 	font-size: var(--fontSize4);
 }
 
-.back-btn-link {
+.back-btn {
 	display: inline-block;
 }
 
-.back-btn-link__div {
+.back-btn__div {
 	width: 48px;
 	height: 48px;
 	display: grid;
 	place-items: center;
 	font-size: var(--fontSize5);
 	color: var(--gray500);
-	background-color: var(--gray100);
+	background-color: var(--gray180);
 	border-radius: 50%;
 }
 
@@ -323,16 +470,6 @@ a {
 	font-size: var(--fontSize3);
 }
 
-/* SPAN */
-
-.span-color {
-	color: var(--gray500);
-}
-
-.span-bold {
-	font-weight: var(--bold);
-}
-
 /* UPCOMING NFTS PAGE */
 
 .upcoming-nft {
@@ -346,19 +483,16 @@ a {
 }
 
 .upcoming-nft__card {
-	/* display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); */
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
 	grid-gap: 16px;
 	border-radius: 24px;
-	/* background-color: var(--gray100); */
+	background-color: var(--gray200);
 	padding: 20px;
-	-webkit-box-shadow: 0px 0px 0px 1px var(--gray100);
+	/* -webkit-box-shadow: 0px 0px 0px 1px var(--gray100);
 	-moz-box-shadow: 0px 0px 0px 1px var(--gray100);
 	box-shadow: 0px 0px 0px 1px var(--gray100);
-	-webkit-appearance: none;
+	-webkit-appearance: none; */
 }
 
 .upcoming-nft__card__main {
@@ -403,6 +537,11 @@ a {
 	max-width: 60%;
 } */
 
+.upcoming-nft-sales-intro h2 {
+	color: white;
+	margin-bottom: 8px;
+}
+
 .upcoming-nft__card__img__item {
 	border-radius: 12px;
 	width: 100%;
@@ -444,39 +583,6 @@ a {
 	margin: 0 auto;
 	text-align: center;
 }
-
-.highlight-gray900 {
-	background-color: var(--gray900);
-	color: var(--white);
-	padding: 4px;
-	border-radius: 20px;
-}
-
-.highlight-gray900 .body-text {
-	color: white;
-}
-
-.gradient-text-highlight {
-	background: rgb(98, 0, 234);
-	background-image: linear-gradient(
-		45deg,
-		rgba(98, 0, 234, 1) 0%,
-		rgba(48, 79, 254, 1) 100%
-	);
-	/* background: linear-gradient(
-		45deg,
-		rgba(98, 0, 234, 1) 0%,
-		rgba(48, 79, 254, 1) 100%
-	); */
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
-/* .refetch-btn {
-	padding: 12px;
-	width: auto;
-} */
 
 /* MEDIA SCREEN */
 

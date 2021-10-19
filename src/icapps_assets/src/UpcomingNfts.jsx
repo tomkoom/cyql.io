@@ -40,8 +40,8 @@ const UpcomingNfts = () => {
 				<div className="center">Error!</div>
 			) : (
 				<div className="upcoming-nft">
-					<Link className="back-btn-link" to="/">
-						<div className="back-btn-link__div">
+					<Link className="back-btn" to="/">
+						<div className="back-btn__div">
 							<FontAwesomeIcon icon={faArrowLeft} />
 						</div>
 					</Link>
@@ -49,7 +49,7 @@ const UpcomingNfts = () => {
 					<div className="upcoming-nft-sales-intro">
 						<div className="center">
 							<h2>Upcoming NFT Sales &#38; Airdrops 🪂</h2>
-							<p className="body-text2 span-color">
+							<p className="body-text2">
 								{/* Information on this page should not be considered as financial advice. */}
 								Please note: We do not guarantee information
 								provided on this page is 100% accurate. Please
@@ -79,7 +79,7 @@ const UpcomingNfts = () => {
 									<div className="upcoming-nft__card__main__heading__date">
 										<FontAwesomeIcon
 											icon={faCalendarAlt}
-											color="#cbd5e0"
+											color="#484644"
 											style={{ marginTop: "4px" }}
 										/>
 										<p className="body-text">
@@ -88,7 +88,7 @@ const UpcomingNfts = () => {
 									</div>
 								</div>
 
-								<p className="body-text span-color">
+								<p className="body-text ">
 									{nft["Description"] &&
 									nft["Description"].length > 140
 										? `${nft["Description"].substring(
@@ -187,7 +187,6 @@ const UpcomingNfts = () => {
 										}
 									>
 										<a
-											className="span-color"
 											href={nft["Dscvr"]}
 											target="_blank"
 											rel="noopener noreferrer"
@@ -204,7 +203,6 @@ const UpcomingNfts = () => {
 										}
 									>
 										<a
-											className="span-color"
 											href={nft["Distrikt"]}
 											target="_blank"
 											rel="noopener noreferrer"

@@ -63,6 +63,15 @@ const Nav = () => {
 						<h1>icApps</h1>
 					</div>
 				</NavLink>
+				<div className="social-icons-containter">
+					<a
+						href="https://twitter.com/DfinityApps"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<FontAwesomeIcon icon={faTwitter} color="#1D9BF0" />
+					</a>
+				</div>
 				<div className="icp-price-badge">
 					<div className="icp-price-badge__logo"></div>
 					{`$${icpPrice}`}
@@ -71,31 +80,38 @@ const Nav = () => {
 
 			<ul className="nav-list">
 				<li className="nav-list__item">
-					<a
-						href="https://twitter.com/DfinityApps"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FontAwesomeIcon icon={faTwitter} />
-					</a>
-				</li>
-				{/* <li className="nav-list__item">
-					<a
-						href="https://t.me/icapps"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<FontAwesomeIcon icon={faTelegram} />
-					</a>
-				</li> */}
-				<li className="nav-list__item">
 					<NavLink exact to="/upcoming" replace>
-						<p className="body-text gradient-text-highlight">
-							{" "}
-							Upcoming NFT Sales &amp; Airdrops{" "}
+						<p className="body-text black gradient-text-highlight">
+							Upcoming NFT Sales &amp; Airdrops 🪂
 						</p>
-						<p className="body-text">🪂</p>
+						{/* <p className="body-text"></p> */}
 					</NavLink>
+				</li>
+				<li className="nav-list__item">
+					<div className="dropdown">
+						<span className="bold">For Developers</span>
+						<div className="dropdown-menu">
+							<ul>
+								<li>
+									<a
+										href="https://smartcontracts.org/docs/quickstart/quickstart-intro.html"
+										target="_blank"
+									>
+										Deploy your first app on Internet
+										Computer
+									</a>
+								</li>
+								<li>
+									<a
+										href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"
+										target="_blank"
+									>
+										Motoko Playground
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</li>
 				<li className="nav-list__item">
 					<a
@@ -103,7 +119,7 @@ const Nav = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						<p className="body-text">Submit Your App</p>
+						<p className="body-text bold">Submit Your App</p>
 					</a>
 				</li>
 				<li className="nav-list__item">

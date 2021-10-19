@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import TagButton from "./TagButton";
 
 const AppList = ({
-	apps,
-	setCategory,
 	category,
+	setCategory,
 	filteredApps,
 	data,
 	loading,
@@ -177,7 +176,7 @@ const AppList = ({
 				<div className="app-list">
 					{/* {JSON.stringify(data[0].data)} */}
 					{filteredApps.map((d) => (
-						<div key={d.id}>
+						<div key={d.id} className="app-list__item">
 							<Link className="link-block" to={`/a/${d.id}`}>
 								<div
 									className="app-cover"
@@ -206,22 +205,20 @@ const AppList = ({
 												{d.category}
 											</span>
 										</p>
-										<p className="body-text">
-											<span className="span-color">
-												{/* {d.description.length > 105
+										<p className="body-text gray100">
+											{/* {d.description.length > 105
 														? `${d.description.substring(
 																0,
 																105
 														  )}...`
 														: d.description} */}
-												{d.description &&
-												d.description.length > 105
-													? `${d.description.substring(
-															0,
-															105
-													  )}...`
-													: d.description}
-											</span>
+											{d.description &&
+											d.description.length > 105
+												? `${d.description.substring(
+														0,
+														105
+												  )}...`
+												: d.description}
 										</p>
 									</div>
 								</div>
