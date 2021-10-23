@@ -11,7 +11,7 @@ import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
-	const [donateAmount, setDonateAmount] = useState("0.1");
+	const [donateAmount, setDonateAmount] = useState("0.2");
 
 	const updateDonateAmount = (e) => {
 		setDonateAmount(e.target.value);
@@ -80,62 +80,62 @@ const Nav = () => {
 
 			<ul className="nav-list">
 				<li className="nav-list__item">
-					<NavLink exact to="/upcoming" replace>
-						<p className="body-text black gradient-text-highlight">
-							Upcoming NFT Sales &amp; Airdrops 🪂
-						</p>
-						{/* <p className="body-text"></p> */}
+					<NavLink
+						exact
+						to="/upcoming"
+						replace
+						className="nav-list__item__content black"
+					>
+						<span>Upcoming NFT Sales &amp; Airdrops</span>
+						<span></span>
 					</NavLink>
 				</li>
+				{/* <li className="nav-list__item">
+					<NavLink
+						exact
+						to="/developers"
+						replace
+						className="nav-list__item__content"
+					>
+						Developers
+					</NavLink>
+				</li> */}
 				<li className="nav-list__item">
-					<div className="dropdown">
-						<span className="bold">Developers</span>
-						<div className="dropdown-menu">
-							<ul>
-								<li>
-									<a
-										href="https://smartcontracts.org/docs/quickstart/quickstart-intro.html"
-										target="_blank"
-									>
-										Deploy your first app on Internet
-										Computer
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/"
-										target="_blank"
-									>
-										Motoko Playground
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
+					<NavLink
+						exact
+						to="/nft"
+						replace
+						className="nav-list__item__content"
+					>
+						NFT Collections
+					</NavLink>
 				</li>
 				<li className="nav-list__item">
 					<a
 						href="https://airtable.com/shrdxEhd19A8oY9bG"
 						target="_blank"
 						rel="noopener noreferrer"
+						className="nav-list__item__content"
 					>
-						<p className="body-text bold">Submit Your App</p>
+						Submit Your App
 					</a>
 				</li>
-				<li className="nav-list__item">
-					<input
-						className="donate-amount-input"
-						type="number"
-						min="0"
-						onChange={updateDonateAmount}
-						value={donateAmount}
-					/>
-					<button
-						className="donate-btn"
-						onClick={handleDonateBtnClick}
-					>
-						Donate {donateAmount} ICP
-					</button>
+				<li className="nav-list__item donate-container">
+					<div className="nav-list__item__content ">
+						<input
+							className="donate-amount-input"
+							type="number"
+							min="0"
+							onChange={updateDonateAmount}
+							value={donateAmount}
+						/>
+						<button
+							className="donate-btn"
+							onClick={handleDonateBtnClick}
+						>
+							Donate {donateAmount} ICP
+						</button>
+					</div>
 				</li>
 			</ul>
 		</div>

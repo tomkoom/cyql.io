@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
 
 // ROUTER
-import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
+
+// GOOGLE API
+import useGoogleSheets from "use-google-sheets";
 
 // COMPONENTS
 import Nav from "./Nav";
 import AppList from "./AppList";
 import AppPage from "./AppPage";
 import UpcomingNfts from "./UpcomingNfts";
-
-// GOOGLE API
-import useGoogleSheets from "use-google-sheets";
 import Highlights from "./Highlights";
 import Developers from "./Developers";
+import NftList from "./NftList";
 
-// Google Sheets API key
 const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
 const googleSheetId = "1gMBz0XnAu4FgiGGotrsi09EjOeIUyX7uO8fHi_k8E3c";
-
-// const googleSheetsApiKey = process.env.REACT_APP_GOOGLE_SHEETS_API;
-// const googleSheetId = process.env.REACT_APP_GOOGLE_SHEET_ID;
 
 const App = () => {
 	const [category, setCategory] = useState("All");
@@ -45,9 +42,9 @@ const App = () => {
 
 	return (
 		<div>
+			<Nav />
 			<Switch>
 				<Route exact path="/">
-					<Nav />
 					<Highlights />
 					<AppList
 						category={category}
@@ -64,14 +61,17 @@ const App = () => {
 				</Route>
 
 				<Route exact path="/upcoming">
-					<Nav />
 					<UpcomingNfts />
 				</Route>
 
-				<Route exact path="/developers">
-					<Nav />
+				{/* <Route exact path="/developers">
 					<Developers />
+				</Route> */}
+
+				<Route exact path="/nft">
+					<NftList />
 				</Route>
+
 				{/* <Route component={page404} /> */}
 			</Switch>
 		</div>

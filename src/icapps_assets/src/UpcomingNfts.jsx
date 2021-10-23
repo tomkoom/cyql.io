@@ -48,7 +48,7 @@ const UpcomingNfts = () => {
 					{/* <button className="refetch-btn" onClick={refetch}>Refetch</button> */}
 					<div className="upcoming-nft-sales-intro">
 						<div className="center">
-							<h2>Upcoming NFT Sales &#38; Airdrops 🪂</h2>
+							<h2>Upcoming NFT Sales &#38; Airdrops</h2>
 							<p className="body-text2">
 								{/* Information on this page should not be considered as financial advice. */}
 								Please note: We do not guarantee information
