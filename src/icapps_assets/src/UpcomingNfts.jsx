@@ -75,7 +75,6 @@ const UpcomingNfts = () => {
 									<h3 className="upcoming-nft__card__main__heading__title">
 										{nft["Name"]}
 									</h3>
-									<div></div>
 									<div className="upcoming-nft__card__main__heading__date">
 										<FontAwesomeIcon
 											icon={faCalendarAlt}
@@ -86,6 +85,9 @@ const UpcomingNfts = () => {
 											{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
 										</p>
 									</div>
+									{nft["Sale Info"] ? (
+										<p>{nft["Sale Info"]}</p>
+									) : null}
 								</div>
 
 								<p className="body-text ">

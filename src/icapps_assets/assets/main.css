@@ -539,13 +539,12 @@ a {
 
 .upcoming-nft__card__main__heading {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	flex-direction: column;
+	gap: 4px;
 }
 
 .upcoming-nft__card__main__heading__date {
 	display: flex;
-	/* align-items: center; */
 	gap: 8px;
 }
 
@@ -554,9 +553,7 @@ a {
 	grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
 	place-items: center;
 	grid-gap: 12px;
-	/* max-width: 60%; */
 	width: 100%;
-
 	/* border-top-left-radius: 16px;
 	border-bottom-left-radius: 16px;
 	border-top-right-radius: 16px;
@@ -586,7 +583,6 @@ a {
 	display: flex;
 	align-items: center;
 	gap: 16px;
-	/* font-size: var(--fontSize5); */
 }
 
 .upcoming-nft__card__main__social-links-list__item a {
@@ -619,67 +615,7 @@ a {
 	flex-direction: column;
 	align-items: center;
 	gap: 24px;
-}
-
-/* table */
-
-.nft-table {
-	margin: 0 auto;
-	/* border-collapse: collapse; */
-	border-collapse: separate;
-	border-spacing: 0 1em;
-	text-align: right;
-	border-radius: 12px;
-}
-
-.nft-table thead tr {
-	border-bottom: 1px solid var(--gray180);
-}
-
-.nft-table thead tr th,
-.nft-table tbody tr td {
-	padding: 16px 32px;
-}
-
-.nft-table tbody tr {
-	display: table-row;
-	border-radius: 8px;
-	border-bottom: 1px solid var(--gray180);
-	background-color: var(--gray200);
-}
-
-.nft-table tbody tr:last-child {
-	border-bottom: none;
-}
-
-.nft-table thead tr:nth-child(-n + 2),
-.nft-table tbody tr td:nth-child(-n + 2) {
-	text-align: left;
-}
-
-.nft-table tbody tr td a {
-	display: flex;
-	align-items: center;
-	gap: 16px;
-}
-
-.nft-table tbody tr td img {
-	height: 58px;
-	width: 58px;
-	border-radius: 12px;
-	object-fit: cover;
-}
-
-/* rounded table corners */
-
-td:first-child,
-th:first-child {
-	border-radius: 10px 0 0 10px;
-}
-
-td:last-child,
-th:last-child {
-	border-radius: 0 10px 10px 0;
+	padding: 0 16px;
 }
 
 /* OTHER */
@@ -729,5 +665,133 @@ th:last-child {
 
 	.upcoming-nft__card__img {
 		max-width: 100%;
+	}
+}
+
+/* TABLE */
+
+.nft-table {
+	margin: 0 auto;
+	border-collapse: separate;
+	border-spacing: 0 1em;
+	text-align: right;
+	border-radius: 16px;
+}
+
+.nft-table thead tr {
+	border-bottom: 1px solid var(--gray180);
+}
+
+.nft-table thead tr th,
+.nft-table tbody tr td {
+	padding: 16px 32px;
+}
+
+.nft-table tbody tr {
+	display: table-row;
+	border-radius: 16px;
+	border-bottom: 1px solid var(--gray180);
+	background-color: var(--gray200);
+}
+
+.nft-table tbody tr:last-child {
+	border-bottom: none;
+}
+
+.nft-table thead tr:nth-child(-n + 2),
+.nft-table tbody tr td:nth-child(-n + 2) {
+	text-align: left;
+}
+
+.nft-table tbody tr td a {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.nft-table tbody tr td img {
+	height: 58px;
+	width: 58px;
+	border-radius: 4px;
+	object-fit: cover;
+}
+
+/* rounded table corners */
+
+td:first-child,
+th:first-child {
+	border-radius: 16px 0 0 16px;
+}
+
+td:last-child,
+th:last-child {
+	border-radius: 0 16px 16px 0;
+}
+
+/* table responsive */
+
+@media screen and (max-width: 1280px) {
+	.nft-table thead tr th,
+	.nft-table tbody tr td {
+		padding: 16px;
+	}
+}
+
+@media screen and (max-width: 960px) {
+	.nft-table thead {
+		display: none;
+	}
+
+	.nft-table {
+		font-size: var(--fontSize5);
+	}
+
+	.nft-table,
+	.nft-table tbody,
+	.nft-table tbody tr {
+		display: block;
+		width: 100%;
+	}
+
+	.nft-table tbody tr td {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		position: relative;
+		border: 1px solid var(--gray160);
+	}
+
+	.nft-table tbody tr td a {
+		justify-content: flex-end;
+		gap: 8px;
+	}
+
+	.nft-table thead tr:nth-child(-n + 2),
+	.nft-table tbody tr td:nth-child(-n + 2) {
+		text-align: inherit;
+	}
+
+	.nft-table tbody tr {
+		margin-bottom: 24px;
+	}
+
+	.nft-table td::before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 50%;
+		padding-left: 24px;
+		font-weight: var(--bold);
+		text-align: left;
+	}
+
+	/* rounded table corners mobile */
+
+	td:first-child {
+		border-radius: 16px 16px 0 0;
+	}
+
+	td:last-child {
+		border-radius: 0 0 16px 16px;
 	}
 }
