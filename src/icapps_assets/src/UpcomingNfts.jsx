@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import { FramerStyles } from "./FramerStyles";
 
 import {
 	faTwitter,
@@ -15,8 +17,8 @@ import {
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
 import {
-	faCalendar,
 	faCalendarAlt,
+	faArrowRight,
 } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 // Google Sheets API key
@@ -41,9 +43,13 @@ const UpcomingNfts = () => {
 			) : (
 				<div className="upcoming-nft">
 					<Link className="back-btn" to="/">
-						<div className="back-btn__div">
+						<motion.div
+							whileHover={FramerStyles.buttons.whileHover}
+							transition={FramerStyles.buttons.transition}
+							className="back-btn__div"
+						>
 							<FontAwesomeIcon icon={faArrowLeft} />
-						</div>
+						</motion.div>
 					</Link>
 					{/* <button className="refetch-btn" onClick={refetch}>Refetch</button> */}
 					<div className="upcoming-nft-sales-intro">
@@ -75,16 +81,46 @@ const UpcomingNfts = () => {
 									<h3 className="upcoming-nft__card__main__heading__title">
 										{nft["Name"]}
 									</h3>
-									<div className="upcoming-nft__card__main__heading__date">
-										<FontAwesomeIcon
-											icon={faCalendarAlt}
-											color="#484644"
-											style={{ marginTop: "4px" }}
-										/>
-										<p className="body-text">
-											{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
-										</p>
-									</div>
+
+									{nft["Date"] === "Sale is open" ? (
+										<motion.div
+											data-value="sale-is-open-btn"
+											whileHover={
+												FramerStyles.buttons.whileHover
+											}
+											transition={
+												FramerStyles.buttons.transition
+											}
+											className="upcoming-nft__card__main__heading__date"
+										>
+											<a
+												href={nft["Marketplace Link"]}
+												target="_blank"
+												rel="norefferrer noopener"
+												className="sale-is-open-btn"
+											>
+												Sale is open{" "}
+												<FontAwesomeIcon
+													icon={faArrowRight}
+													color="rgba(255,255,255,0.3)"
+												/>
+											</a>
+										</motion.div>
+									) : (
+										<div className="upcoming-nft__card__main__heading__date">
+											<div>
+												<FontAwesomeIcon
+													icon={faCalendarAlt}
+													color="#484644"
+												/>
+
+												<p className="body-text">
+													{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
+												</p>
+											</div>
+										</div>
+									)}
+
 									{nft["Sale Info"] ? (
 										<p>{nft["Sale Info"]}</p>
 									) : null}
@@ -99,9 +135,20 @@ const UpcomingNfts = () => {
 										  )}...`
 										: nft["Description"]}
 								</p>
+								<p className="body-text opacity66">
+									{nft["Total NFTs"]
+										? `Total Assets 🗿 ${nft["Total NFTs"]}`
+										: null}
+								</p>
 
 								<ul className="upcoming-nft__card__main__social-links-list">
-									<li
+									<motion.li
+										whileHover={
+											FramerStyles.buttons.whileHover
+										}
+										transition={
+											FramerStyles.buttons.transition
+										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Website"]
@@ -114,14 +161,17 @@ const UpcomingNfts = () => {
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<FontAwesomeIcon
-												icon={faGlobe}
-												color="#718096"
-											/>
+											<FontAwesomeIcon icon={faGlobe} />
 										</a>
-									</li>
+									</motion.li>
 
-									<li
+									<motion.li
+										whileHover={
+											FramerStyles.buttons.whileHover
+										}
+										transition={
+											FramerStyles.buttons.transition
+										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Twitter"]
@@ -134,14 +184,17 @@ const UpcomingNfts = () => {
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<FontAwesomeIcon
-												icon={faTwitter}
-												color="#718096"
-											/>
+											<FontAwesomeIcon icon={faTwitter} />
 										</a>
-									</li>
+									</motion.li>
 
-									<li
+									<motion.li
+										whileHover={
+											FramerStyles.buttons.whileHover
+										}
+										transition={
+											FramerStyles.buttons.transition
+										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Discord"]
@@ -154,14 +207,17 @@ const UpcomingNfts = () => {
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<FontAwesomeIcon
-												icon={faDiscord}
-												color="#718096"
-											/>
+											<FontAwesomeIcon icon={faDiscord} />
 										</a>
-									</li>
+									</motion.li>
 
-									<li
+									<motion.li
+										whileHover={
+											FramerStyles.buttons.whileHover
+										}
+										transition={
+											FramerStyles.buttons.transition
+										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Telegram"]
@@ -176,11 +232,16 @@ const UpcomingNfts = () => {
 										>
 											<FontAwesomeIcon
 												icon={faTelegram}
-												color="#718096"
 											/>
 										</a>
-									</li>
-									<li
+									</motion.li>
+									<motion.li
+										whileHover={
+											FramerStyles.buttons.whileHover
+										}
+										transition={
+											FramerStyles.buttons.transition
+										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Dscvr"]
@@ -195,8 +256,14 @@ const UpcomingNfts = () => {
 										>
 											Dscvr
 										</a>
-									</li>
-									<li
+									</motion.li>
+									<motion.li
+										whileHover={
+											FramerStyles.buttons.whileHover
+										}
+										transition={
+											FramerStyles.buttons.transition
+										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Distrikt"]
@@ -211,7 +278,7 @@ const UpcomingNfts = () => {
 										>
 											Distrikt
 										</a>
-									</li>
+									</motion.li>
 								</ul>
 							</div>
 							<div className="upcoming-nft__card__img">

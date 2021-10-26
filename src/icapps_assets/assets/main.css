@@ -1,21 +1,6 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;600;800&display=swap"); */
-/* @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800;900&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap");
 
 :root {
-	/* CHAKRA UI https://chakra-ui.com/docs/theming/theme */
-	--color: #304ffe;
-	/* --gray900: #171923;
-	--gray800: #1a202c;
-	--gray700: #2d3748;
-	--gray500: #718096;
-	--gray400: #a0aec0;
-	--gray300: #cbd5e0;
-	--gray200: #e2e8f0;
-	--gray100: #edf2f7;
-	--black: #000;
-	--white: #fff; */
-
 	/* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
 	--gray220: #11100f;
 	--gray200: #1b1a19;
@@ -39,14 +24,24 @@
 	--black: 800;
 	--bold: 600;
 	--medium: 400;
+
+	/* CHAKRA UI https://chakra-ui.com/docs/theming/theme */
+	/* --gray900: #171923;
+	--gray800: #1a202c;
+	--gray700: #2d3748;
+	--gray500: #718096;
+	--gray400: #a0aec0;
+	--gray300: #cbd5e0;
+	--gray200: #e2e8f0;
+	--gray100: #edf2f7;
+	--black: #000;
+	--white: #fff; */
 }
 
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	/* font-family: "Karla", sans-serif; */
-	/* font-family: "Mulish", sans-serif; */
 	font-family: "Inter", sans-serif;
 }
 
@@ -100,17 +95,13 @@ h3 {
 		rgba(98, 0, 234, 1) 0%,
 		rgba(48, 79, 254, 1) 100%
 	);
-	/* background: linear-gradient(
-		45deg,
-		rgba(98, 0, 234, 1) 0%,
-		rgba(48, 79, 254, 1) 100%
-	); */
-	/* background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent; */
 	padding: 4px;
 	border-radius: 4px;
 	color: white;
+}
+
+.opacity66 {
+	opacity: 0.66;
 }
 
 .monospace {
@@ -153,7 +144,6 @@ h3 {
 	font-size: var(--fontSize5);
 	width: 42px;
 	height: 42px;
-	background-color: rgba(29, 155, 240, 0.25);
 	border-radius: 100%;
 }
 
@@ -303,10 +293,6 @@ a {
 	font-size: var(--fontSize6);
 	border: none;
 	border-radius: 4px;
-	/* -webkit-box-shadow: 0px 0px 0px 1px var(--gray400);
-	-moz-box-shadow: 0px 0px 0px 1px var(--gray400);
-	box-shadow: 0px 0px 0px 1px var(--gray400);
-	-webkit-appearance: none; */
 }
 
 /* HIGHLIGHTS */
@@ -339,7 +325,7 @@ a {
 	background-color: var(--gray900);
 }
 
-/* APP-LIST */
+/* APP LIST */
 
 .highlights,
 .container {
@@ -423,8 +409,8 @@ a {
 }
 
 .app-list__app-info__logo {
-	width: 44px;
-	height: 44px;
+	width: 58px;
+	height: 58px;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -445,7 +431,7 @@ a {
 	font-size: var(--fontSize5);
 }
 
-/* APP-PAGE */
+/* APP PAGE */
 
 .app-page {
 	max-width: 768px;
@@ -467,14 +453,18 @@ a {
 }
 
 .back-btn__div {
-	width: 48px;
-	height: 48px;
+	width: 58px;
+	height: 58px;
 	display: grid;
 	place-items: center;
 	font-size: var(--fontSize5);
 	color: var(--gray500);
 	background-color: var(--gray180);
 	border-radius: 50%;
+}
+
+.back-btn__div:hover {
+	background-color: var(--gray140);
 }
 
 .app-item__app-cover {
@@ -500,8 +490,64 @@ a {
 	padding: 0;
 	margin: 24px 0;
 	display: flex;
-	gap: 24px;
-	font-size: var(--fontSize3);
+	gap: 16px;
+	font-size: var(--fontSize4);
+}
+
+.app-item__social-icons-list__item {
+	width: 58px;
+	height: 58px;
+	border-radius: 16px;
+	background-color: var(--gray180);
+}
+
+.app-item__social-icons-list__item a {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.app-item__app-info {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin: 16px 0;
+}
+
+[data-social="Website"]:hover {
+	background-color: var(--gray140);
+}
+
+[data-social="Canister"]:hover {
+	background-color: var(--gray140);
+}
+
+[data-social="Twitter"]:hover {
+	background-color: #00acee;
+}
+
+[data-social="Discord"]:hover {
+	background-color: #5865f2;
+}
+
+[data-social="GitHub"]:hover {
+	background-color: #1b1f23;
+}
+
+[data-social="Telegram"]:hover {
+	background-color: #0088cc;
+}
+
+[data-social="Medium"]:hover {
+	background-color: var(--gray140);
+}
+
+[data-social="Dscvr"] a img,
+[data-social="Distrikt"] a img {
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
 }
 
 /* UPCOMING NFTS PAGE */
@@ -533,19 +579,54 @@ a {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	font-size: var(--fontSize5);
 	width: 100%;
 }
 
 .upcoming-nft__card__main__heading {
 	display: flex;
-	flex-direction: column;
-	gap: 4px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.upcoming-nft__card__main__heading__title {
+	font-size: var(--fontSize4);
 }
 
 .upcoming-nft__card__main__heading__date {
 	display: flex;
+	align-self: flex-start;
 	gap: 8px;
+	margin-bottom: 4px;
+}
+
+.upcoming-nft__card__main__heading__date a {
+	display: inline-block;
+}
+
+.upcoming-nft__card__main__heading__date div {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+.upcoming-nft__card__main__heading__date div p {
+	margin-top: 2px;
+	padding: 0;
+}
+
+.upcoming-nft__card__main__heading__date div,
+.sale-is-open-btn {
+	padding: 12px;
+	background-color: var(--gray180);
+	border-radius: 12px;
+}
+
+[data-value="sale-is-open-btn"] a:hover {
+	background-image: linear-gradient(
+		45deg,
+		rgba(98, 0, 234, 1) 0%,
+		rgba(48, 79, 254, 1) 100%
+	);
 }
 
 .upcoming-nft__card__img {
@@ -554,19 +635,7 @@ a {
 	place-items: center;
 	grid-gap: 12px;
 	width: 100%;
-	/* border-top-left-radius: 16px;
-	border-bottom-left-radius: 16px;
-	border-top-right-radius: 16px;
-	border-bottom-right-radius: 16px;
-	overflow: hidden; */
 }
-
-/* .upcoming-nft__card__img div {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-	place-items: center;
-	max-width: 60%;
-} */
 
 .upcoming-nft-sales-intro h2 {
 	color: white;
@@ -582,28 +651,19 @@ a {
 	list-style-type: none;
 	display: flex;
 	align-items: center;
-	gap: 16px;
+	gap: 10px;
+	margin: 16px 0;
 }
 
 .upcoming-nft__card__main__social-links-list__item a {
 	font-weight: var(--bold);
+	padding: 12px;
+	background-color: var(--gray180);
+	border-radius: 8px;
 }
 
 .upcoming-nft__card__main__social-links-list__item a:hover {
-	background: rgb(98, 0, 234);
-	background-image: linear-gradient(
-		45deg,
-		rgba(98, 0, 234, 1) 0%,
-		rgba(48, 79, 254, 1) 100%
-	);
-	/* background: linear-gradient(
-		45deg,
-		rgba(98, 0, 234, 1) 0%,
-		rgba(48, 79, 254, 1) 100%
-	); */
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	background-color: var(--gray140);
 }
 
 /* NFT LIST */
@@ -795,3 +855,7 @@ th:last-child {
 		border-radius: 0 0 16px 16px;
 	}
 }
+
+/* [data-social="Twitter"]:hover {
+	background-color: #10d9ed;
+} */

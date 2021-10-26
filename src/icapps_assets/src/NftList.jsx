@@ -11,8 +11,14 @@ const NftList = () => {
 				.split("\n")
 				.map((str) => str.replace(/ /g, "").toLowerCase());
 
-			const totalAssets = data
-				.filter((str) => str.includes("mintednfts:"))
+			const totalAssets = data.filter((str) =>
+				str.includes("mintednfts:")
+			)
+				? data.filter((str) => str.includes("mintednfts:")).toString()
+				: "";
+
+			const circulatingNfts = data
+				.filter((str) => str.includes("circulatingnfts:"))
 				.toString();
 
 			const listings = data
@@ -38,16 +44,24 @@ const NftList = () => {
 				totalAssets: totalAssets
 					.replace("mintednfts:", "")
 					.replace("_", ","),
+
+				circulatingNfts: circulatingNfts
+					.replace("circulatingnfts:", "")
+					.replace("_", ","),
+
 				listings: listings
 					.replace("marketplacelistings:", "")
 					.replace("_", ","),
+
 				sales: sales
 					.replace("soldviamarketplace:", "")
 					.replace("_", ","),
+
 				salesInIcp: salesInIcp
 					.replace("soldviamarketplaceinicp:", "")
 					.replace("_", ",")
 					.replace("icp", ""),
+
 				avgPrice: avgPrice
 					.replace("averagepriceicpviamarketplace:", "")
 					.replace("_", ",")
@@ -307,7 +321,9 @@ const NftList = () => {
 									{nftItem.listings ? nftItem.listings : "-"}
 								</td>
 								<td data-label="Total Assets">
-									{nftItem.totalAssets
+									{nftItem.circulatingNfts
+										? nftItem.circulatingNfts
+										: nftItem.totalAssets
 										? nftItem.totalAssets
 										: "-"}
 								</td>

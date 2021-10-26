@@ -11,7 +11,7 @@ import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
-	const [donateAmount, setDonateAmount] = useState("0.2");
+	const [donateAmount, setDonateAmount] = useState("0.5");
 
 	const updateDonateAmount = (e) => {
 		setDonateAmount(e.target.value);
