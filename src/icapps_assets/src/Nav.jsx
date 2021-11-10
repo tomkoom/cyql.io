@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/logo.svg";
+import { motion } from "framer-motion";
+import { FramerStyles } from "./FramerStyles";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 // const nnsCanisterId = "qoctq-giaaa-aaaaa-aaaea-cai";
 // const whitelist = [nnsCanisterId];
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
-	const [donateAmount, setDonateAmount] = useState("0.5");
+	const [donateAmount, setDonateAmount] = useState("0.4");
 
 	const updateDonateAmount = (e) => {
 		setDonateAmount(e.target.value);
@@ -63,7 +65,11 @@ const Nav = () => {
 						<h1>icApps</h1>
 					</div>
 				</NavLink>
-				<div className="social-icons-containter">
+				<motion.div
+					className="social-icons-containter"
+					whileHover={FramerStyles.buttons.whileHover}
+					transition={FramerStyles.buttons.transition}
+				>
 					<a
 						href="https://twitter.com/DfinityApps"
 						target="_blank"
@@ -71,7 +77,7 @@ const Nav = () => {
 					>
 						<FontAwesomeIcon icon={faTwitter} color="#1D9BF0" />
 					</a>
-				</div>
+				</motion.div>
 				<div className="icp-price-badge">
 					<div className="icp-price-badge__logo"></div>
 					{`$${icpPrice}`}
@@ -86,20 +92,11 @@ const Nav = () => {
 						replace
 						className="nav-list__item__content black"
 					>
-						<span>Upcoming NFT Sales &amp; Airdrops</span>
+						<span>Upcoming NFT Sales</span>
 						<span></span>
 					</NavLink>
 				</li>
-				{/* <li className="nav-list__item">
-					<NavLink
-						exact
-						to="/developers"
-						replace
-						className="nav-list__item__content"
-					>
-						Developers
-					</NavLink>
-				</li> */}
+
 				<li className="nav-list__item">
 					<NavLink
 						exact
@@ -110,6 +107,29 @@ const Nav = () => {
 						NFT Collections
 					</NavLink>
 				</li>
+
+				<li className="nav-list__item">
+					<NavLink
+						exact
+						to="/developers"
+						replace
+						className="nav-list__item__content"
+					>
+						Developers
+					</NavLink>
+				</li>
+
+				{/* <li className="nav-list__item">
+					<NavLink
+						exact
+						to="/developers"
+						replace
+						className="nav-list__item__content"
+					>
+						Tools
+					</NavLink>
+				</li> */}
+
 				<li className="nav-list__item">
 					<a
 						href="https://airtable.com/shrdxEhd19A8oY9bG"
@@ -120,6 +140,7 @@ const Nav = () => {
 						Submit Your App
 					</a>
 				</li>
+
 				<li className="nav-list__item donate-container">
 					<div className="nav-list__item__content ">
 						<input

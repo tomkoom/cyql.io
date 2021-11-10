@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TagButton from "./TagButton";
+import { motion } from "framer-motion";
+import { FramerStyles } from "./FramerStyles";
 
 const AppList = ({
 	category,
@@ -169,13 +171,18 @@ const AppList = ({
 			</div>
 
 			{loading ? (
-				<p>Loading... ⌛</p>
+				<p className="center">Loading... ⌛</p>
 			) : error ? (
-				<p>Error!</p>
+				<p className="center">Error!</p>
 			) : (
 				<div className="app-list">
 					{filteredApps.map((d) => (
-						<div key={d.id} className="app-list__item">
+						<motion.div
+							key={d.id}
+							className="app-list__item"
+							whileHover={FramerStyles.cards.whileHover}
+							transition={FramerStyles.cards.transition}
+						>
 							<Link className="link-block" to={`/a/${d.id}`}>
 								<div
 									className="app-cover"
@@ -242,7 +249,7 @@ const AppList = ({
 									</div>
 								</div>
 							</Link>
-						</div>
+						</motion.div>
 					))}
 				</div>
 			)}

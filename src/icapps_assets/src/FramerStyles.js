@@ -8,4 +8,13 @@ export const FramerStyles = {
             bounce: 0.75,
         },
     },
+    cards: {
+        whileHover: {
+            y: "-6px",
+        },
+        transition: {
+            type: "spring",
+            bounce: 0.5,
+        },
+    }
 };

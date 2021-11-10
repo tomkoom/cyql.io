@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-// ROUTER
 import { Switch, Route, withRouter } from "react-router-dom";
-
-// GOOGLE API
 import useGoogleSheets from "use-google-sheets";
 
 // COMPONENTS
@@ -22,7 +18,7 @@ const App = () => {
 	const [category, setCategory] = useState("All");
 	const [filteredApps, setFilteredApps] = useState([]);
 
-	const { data, loading, error, refetch } = useGoogleSheets({
+	const { data, loading, error } = useGoogleSheets({
 		apiKey: googleSheetsApiKey,
 		sheetId: googleSheetId,
 		sheetsNames: ["Apps"],
@@ -45,7 +41,7 @@ const App = () => {
 			<Nav />
 			<Switch>
 				<Route exact path="/">
-					<Highlights />
+					{/* <Highlights /> */}
 					<AppList
 						category={category}
 						setCategory={setCategory}
@@ -64,9 +60,9 @@ const App = () => {
 					<UpcomingNfts />
 				</Route>
 
-				{/* <Route exact path="/developers">
+				<Route exact path="/developers">
 					<Developers />
-				</Route> */}
+				</Route>
 
 				<Route exact path="/nft">
 					<NftList />

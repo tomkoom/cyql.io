@@ -20,6 +20,7 @@
 	--fontSize4: 1.563rem;
 	--fontSize5: 1.25rem;
 	--fontSize6: 1rem;
+	--fontSize7: 0.8rem;
 
 	--black: 800;
 	--bold: 600;
@@ -50,19 +51,28 @@ html {
 }
 
 body {
-	color: var(--gray20);
+	color: white;
 	background-color: var(--gray220);
 }
 
 /* TYPOGRAPHY */
 
 h2 {
+	font-size: var(--fontSize3);
 	color: white;
 }
 
 h3 {
 	font-size: var(--fontSize4);
 	color: white;
+}
+
+h3 {
+	font-size: var(--fontSize5);
+}
+
+.subtitle {
+	font-size: var(--fontSize7);
 }
 
 .body-text {
@@ -115,11 +125,22 @@ h3 {
 	color: var(--gray220);
 	padding: 12px;
 	border-radius: 8px;
-	display: inline-block;
+	display: flex;
+	align-self: center;
 	font-weight: var(--bold);
 }
 
 /* NAV */
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 24px;
+	/* background-color: var(--gray200); */
+}
 
 .logo-container {
 	display: flex;
@@ -145,6 +166,7 @@ h3 {
 	width: 42px;
 	height: 42px;
 	border-radius: 100%;
+	background-color: var(--gray180);
 }
 
 .social-icons-containter a {
@@ -173,16 +195,6 @@ h3 {
 	height: 20px;
 }
 
-.nav {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 8px;
-	padding: 24px;
-	background-color: var(--gray200);
-}
-
 .nav-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -196,9 +208,9 @@ h3 {
 }
 
 .nav-list__item {
-	padding: 0 8px;
-	height: 48px;
-	border-radius: 4px;
+	padding: 0 16px;
+	height: 44px;
+	border-radius: 8px;
 	transition: all 150ms ease-in-out;
 }
 
@@ -275,14 +287,7 @@ a {
 	padding: 6px 8px;
 	cursor: pointer;
 	letter-spacing: -0.25px;
-	/* transition: opacity 0.3s ease-in, transform 0.3s ease-in-out;
-	transform: scale(1); */
 }
-
-/* .donate-btn:hover {
-	opacity: 0.94;
-	transform: scale(1.02);
-} */
 
 .donate-amount-input {
 	color: white;
@@ -344,11 +349,6 @@ a {
 .app-list__item {
 	background-color: var(--gray180);
 	border-radius: 16px;
-	transition: all 150ms ease-in-out;
-}
-
-.app-list__item:hover {
-	background-color: var(--gray140);
 }
 
 .app-cover {
@@ -515,6 +515,11 @@ a {
 	margin: 16px 0;
 }
 
+.app-item__trade-btn {
+	display: inline-block;
+	padding: 8px 0 32px 0;
+}
+
 [data-social="Website"]:hover {
 	background-color: var(--gray140);
 }
@@ -615,13 +620,13 @@ a {
 }
 
 .upcoming-nft__card__main__heading__date div,
-.sale-is-open-btn {
+.btn {
 	padding: 12px;
 	background-color: var(--gray180);
 	border-radius: 12px;
 }
 
-[data-value="sale-is-open-btn"] a:hover {
+[data-value="btn"] a:hover {
 	background-image: linear-gradient(
 		45deg,
 		rgba(98, 0, 234, 1) 0%,
@@ -635,6 +640,15 @@ a {
 	place-items: center;
 	grid-gap: 12px;
 	width: 100%;
+}
+
+.upcoming-nft-sales-intro {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	flex-flow: column wrap;
+	justify-content: center;
 }
 
 .upcoming-nft-sales-intro h2 {
@@ -651,7 +665,7 @@ a {
 	list-style-type: none;
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: 8px;
 	margin: 16px 0;
 }
 
@@ -678,11 +692,57 @@ a {
 	padding: 0 16px;
 }
 
+/* DEVELOPERS */
+
+.developers {
+	margin: 24px auto;
+	max-width: 1024px;
+}
+
+.developer-resources {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-gap: 24px;
+}
+
+.developer-resources__link-block {
+	display: block;
+}
+
+.developer-resources__link-block__item {
+	background-color: var(--gray180);
+	padding: 16px;
+	border-radius: 12px;
+	height: 100%;
+}
+
 /* OTHER */
 
 .center {
-	margin: 0 auto;
 	text-align: center;
+	margin: 0 auto;
+}
+
+.entrepot-badge-container {
+	margin: 8px 0 20px 0;
+	background-color: var(--gray180);
+	display: flex;
+	align-items: center;
+	align-self: center;
+	gap: 4px;
+	padding: 4px 8px;
+	border-radius: 8px;
+}
+
+.entrepot-logo-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.entrepot-logo {
+	height: 32px;
 }
 
 /* MEDIA SCREEN */

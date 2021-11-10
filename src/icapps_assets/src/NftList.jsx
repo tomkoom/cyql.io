@@ -208,7 +208,9 @@ const NftList = () => {
 			);
 
 		// ICPBunny
-		const icpBunny = fetch("")
+		const icpBunny = fetch(
+			"https://q6hjz-kyaaa-aaaah-qcama-cai.raw.ic0.app/"
+		)
 			.then((res) => res.text())
 			.then((data) =>
 				handleFetchRes(
@@ -220,19 +222,21 @@ const NftList = () => {
 			);
 
 		// ICPunks
-		const icPunks = fetch("")
+		const icPunks = fetch(
+			"https://bxdf4-baaaa-aaaah-qaruq-cai.raw.ic0.app/"
+		)
 			.then((res) => res.text())
 			.then((data) =>
 				handleFetchRes(
 					data,
 					"ICPunks",
-					"https://entrepot.app/marketplace/icpbunny",
+					"https://entrepot.app/marketplace/icpunks",
 					"https://qcg3w-tyaaa-aaaah-qakea-cai.raw.ic0.app/Token/29"
 				)
 			);
 
 		// ICDrip
-		const icDrip = fetch("")
+		const icDrip = fetch("https://3db6u-aiaaa-aaaah-qbjbq-cai.raw.ic0.app/")
 			.then((res) => res.text())
 			.then((data) =>
 				handleFetchRes(
@@ -244,19 +248,19 @@ const NftList = () => {
 			);
 
 		await Promise.all([
+			icPunks,
 			cronics,
 			icPuppies,
+			icDrip,
 			icMojis,
 			starverse,
 			internetAstronauts,
 			icTuts,
+			icpBunny,
 			icPuzzle,
 			wing,
 			facetedMeninas,
 			icelebrity,
-			icPunks,
-			icDrip,
-			icpBunny,
 		]).then((nftData) => {
 			nftData.sort((a, b) =>
 				Math.floor(a.salesInIcp) > Math.floor(b.salesInIcp) ? -1 : 1

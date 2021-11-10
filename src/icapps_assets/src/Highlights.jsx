@@ -4,15 +4,21 @@ const Highlights = () => {
 	return (
 		<div className="highlights">
 			<div className="highlights__item">
-				<a href="https://dfinity.org/grants" target="_blank" rel="norefferrer noopener">
+				<a
+					href="https://entrepot.app/sale/poked"
+					target="_blank"
+					rel="norefferrer noopener"
+				>
 					<img
-						src="https://i.postimg.cc/kGRZHFr5/dfinity-grants-480x240.jpg"
-						alt="Dfinity Developer Grant Program"
+						src="https://i.postimg.cc/SsDpTmyQ/poked-cover.jpg"
+						alt="Poked Studio NFT"
 					/>
 					<h3>
-						Dfinity Developer
+						Poked Studio NFT
 						<br />
-						Grant Program
+						Airdrop &#38; Presale: 8th November
+						<br />
+						Main sale: 9th November
 					</h3>
 				</a>
 			</div>

@@ -1,34 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { FramerStyles } from "./FramerStyles";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import {
 	faTwitter,
 	faTelegram,
 	faDiscord,
-	faMedium,
-	faGithub,
-	faSlack,
 } from "@fortawesome/free-brands-svg-icons";
-
-// GOOGLE API
-import useGoogleSheets from "use-google-sheets";
 import {
 	faCalendarAlt,
 	faArrowRight,
 } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
-// Google Sheets API key
+// GOOGLE API
+import useGoogleSheets from "use-google-sheets";
 const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
 const googleSheetId = "1gMBz0XnAu4FgiGGotrsi09EjOeIUyX7uO8fHi_k8E3c";
 
 const UpcomingNfts = () => {
-	// Google Sheets API
-
-	const { data, loading, error, refetch } = useGoogleSheets({
+	const { data, loading, error } = useGoogleSheets({
 		apiKey: googleSheetsApiKey,
 		sheetId: googleSheetId,
 		sheetsNames: ["Upcoming-NFTs"],
@@ -51,26 +43,34 @@ const UpcomingNfts = () => {
 							<FontAwesomeIcon icon={faArrowLeft} />
 						</motion.div>
 					</Link>
-					{/* <button className="refetch-btn" onClick={refetch}>Refetch</button> */}
-					<div className="upcoming-nft-sales-intro">
-						<div className="center">
-							<h2>Upcoming NFT Sales &#38; Airdrops</h2>
-							<p className="body-text2">
-								{/* Information on this page should not be considered as financial advice. */}
-								Please note: We do not guarantee information
-								provided on this page is 100% accurate. Please
-								do your own research.
-							</p>
-							<br />
-							<a
-								className="submit-btn"
-								href="https://forms.gle/rFsaFEj3N8mgF9tz6"
-								target="_blank"
-								rel="noreferrer noopener"
-							>
-								Submit your project to the list
-							</a>
+
+					<div className="upcoming-nft-sales-intro center">
+						<h2>Upcoming NFT Sales &#38; Airdrops</h2>
+						<p className="body-text2">
+							{/* Information on this page should not be considered as financial advice. */}
+							Please note: We do not guarantee information
+							provided on this page is 100% accurate. Please do
+							your own research.
+						</p>
+						<div className="entrepot-badge-container">
+							<p className="subtitle opacity66">Media Partner</p>
+							<div className="entrepot-logo-container bold">
+								<img
+									className="entrepot-logo"
+									src="https://i.postimg.cc/PfZBxHVY/entrepot-branmark.png"
+									alt="Entrepot logo"
+								/>
+								Entrepot
+							</div>
 						</div>
+						<a
+							className="submit-btn"
+							href="https://forms.gle/rFsaFEj3N8mgF9tz6"
+							target="_blank"
+							rel="noreferrer noopener"
+						>
+							Submit your project to the list
+						</a>
 					</div>
 
 					{data[0].data.map((nft) => (
@@ -84,7 +84,7 @@ const UpcomingNfts = () => {
 
 									{nft["Date"] === "Sale is open" ? (
 										<motion.div
-											data-value="sale-is-open-btn"
+											data-value="btn"
 											whileHover={
 												FramerStyles.buttons.whileHover
 											}
@@ -97,7 +97,7 @@ const UpcomingNfts = () => {
 												href={nft["Marketplace Link"]}
 												target="_blank"
 												rel="norefferrer noopener"
-												className="sale-is-open-btn"
+												className="btn"
 											>
 												Sale is open{" "}
 												<FontAwesomeIcon
@@ -128,16 +128,24 @@ const UpcomingNfts = () => {
 
 								<p className="body-text ">
 									{nft["Description"] &&
-									nft["Description"].length > 140
+									nft["Description"].length > 280
 										? `${nft["Description"].substring(
 												0,
-												140
+												280
 										  )}...`
 										: nft["Description"]}
 								</p>
 								<p className="body-text opacity66">
 									{nft["Total NFTs"]
 										? `Total Assets 🗿 ${nft["Total NFTs"]}`
+										: null}
+									{nft["Total NFTs"] &&
+									nft["Price"] !== "TBA" &&
+									nft["Price"]
+										? " · "
+										: null}
+									{nft["Price"] !== "TBA" && nft["Price"]
+										? `Unit Price ${nft["Price"]}`
 										: null}
 								</p>
 

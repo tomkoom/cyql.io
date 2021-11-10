@@ -13,7 +13,10 @@ import {
 	faMedium,
 	faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { faGlobe } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import {
+	faGlobe,
+	faArrowRight,
+} from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 const AppPage = ({ data }) => {
 	const { id } = useParams();
@@ -58,6 +61,29 @@ const AppPage = ({ data }) => {
 
 								<p className="body-text">{d.description}</p>
 								<br />
+
+								<motion.div
+									className="app-item__trade-btn"
+									data-value="btn"
+									whileHover={FramerStyles.buttons.whileHover}
+									transition={FramerStyles.buttons.transition}
+									style={
+										d.marketUrl ? null : { display: "none" }
+									}
+								>
+									<a
+										href={d.marketUrl}
+										target="_blank"
+										rel="norefferrer noopener"
+										className="btn"
+									>
+										Trade{" "}
+										<FontAwesomeIcon
+											icon={faArrowRight}
+											color="rgba(255,255,255,0.3)"
+										/>
+									</a>
+								</motion.div>
 
 								<p
 									style={
@@ -150,8 +176,31 @@ const AppPage = ({ data }) => {
 										</a>
 									</motion.li>
 								</ul>
-								<p>Social Media</p>
-								<ul className="app-item__social-icons-list">
+								<p
+									style={
+										d.website ||
+										d.discord ||
+										d.github ||
+										d.telegram ||
+										d.medium
+											? null
+											: { display: "none" }
+									}
+								>
+									Social Media
+								</p>
+								<ul
+									className="app-item__social-icons-list"
+									style={
+										d.website ||
+										d.discord ||
+										d.github ||
+										d.telegram ||
+										d.medium
+											? null
+											: { display: "none" }
+									}
+								>
 									<motion.li
 										data-social="Website"
 										whileHover={
@@ -210,8 +259,8 @@ const AppPage = ({ data }) => {
 										className="app-item__social-icons-list__item"
 										style={
 											d.discord
-												? { display: "none" }
-												: null
+												? null
+												: { display: "none" }
 										}
 									>
 										<a

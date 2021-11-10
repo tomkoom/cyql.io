@@ -82,7 +82,9 @@ module.exports = {
     rules: [
       { test: /\.(js|ts)x?$/, loader: "ts-loader" },
       {
-        test: /\.svg$/, loader: 'file-loader'
+        test: /\.(svg)$/, use: [
+          { loader: 'file-loader' }
+        ]
       }, // added loader
     ]
   },
