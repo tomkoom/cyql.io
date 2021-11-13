@@ -1,8 +1,9 @@
 import React from "react";
+import "./Highlights.css";
 
 const Highlights = () => {
 	return (
-		<div className="highlights">
+		<div className="container1440">
 			<div className="highlights__item">
 				<a
 					href="https://entrepot.app/sale/poked"

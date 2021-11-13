@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import { motion } from "framer-motion";
-import { FramerStyles } from "./FramerStyles";
+import { FramerMotionStyles } from "./FramerMotionStyles";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -67,8 +68,8 @@ const Nav = () => {
 				</NavLink>
 				<motion.div
 					className="social-icons-containter"
-					whileHover={FramerStyles.buttons.whileHover}
-					transition={FramerStyles.buttons.transition}
+					whileHover={FramerMotionStyles.buttons.whileHover}
+					transition={FramerMotionStyles.buttons.transition}
 				>
 					<a
 						href="https://twitter.com/DfinityApps"

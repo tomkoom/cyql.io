@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import TagButton from "./TagButton";
 import { motion } from "framer-motion";
-import { FramerStyles } from "./FramerStyles";
+import { FramerMotionStyles } from "./FramerMotionStyles";
+import "./AppList.css";
 
 const AppList = ({
 	category,
@@ -13,7 +14,9 @@ const AppList = ({
 	error,
 }) => {
 	return (
-		<div className="container">
+		<div className="container1440">
+			{/* CATEGORY BUTTONS */}
+
 			<div className="category-btns">
 				<TagButton
 					handleSetCategory={setCategory}
@@ -159,7 +162,6 @@ const AppList = ({
 					handleSetCategory={setCategory}
 					category="Dfinity Apps"
 					categoryActive={category === "Dfinity Apps" ? true : false}
-					// icon={"♾️"}
 					appsNum={
 						loading
 							? null
@@ -180,8 +182,8 @@ const AppList = ({
 						<motion.div
 							key={d.id}
 							className="app-list__item"
-							whileHover={FramerStyles.cards.whileHover}
-							transition={FramerStyles.cards.transition}
+							whileHover={FramerMotionStyles.cards.whileHover}
+							transition={FramerMotionStyles.cards.transition}
 						>
 							<Link className="link-block" to={`/a/${d.id}`}>
 								<div

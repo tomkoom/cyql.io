@@ -1,0 +1,27 @@
+.highlights {
+	margin-bottom: 32px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-gap: 24px;
+}
+
+.highlights__item {
+	position: relative;
+	background-color: black;
+	border-radius: 12px;
+	overflow: hidden;
+	font-size: 0;
+}
+
+.highlights__item img {
+	width: 100%;
+	opacity: 0.75;
+}
+
+.highlights__item h3 {
+	position: absolute;
+	color: white;
+	left: 20px;
+	bottom: 16px;
+	background-color: var(--gray900);
+}

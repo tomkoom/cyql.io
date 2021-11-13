@@ -80,12 +80,27 @@ module.exports = {
   // },
   module: {
     rules: [
-      { test: /\.(js|ts)x?$/, loader: "ts-loader" },
       {
-        test: /\.(svg)$/, use: [
-          { loader: 'file-loader' }
-        ]
-      }, // added loader
+        test: /\.(js|ts)x?$/, loader: "ts-loader"
+      },
+      // Loading SVG
+      {
+        test: /\.(svg)$/,
+        use:
+          [
+            { loader: 'file-loader' }
+          ]
+      },
+      // Loading CSS
+      {
+        test: /\.css$/i,
+        use:
+          [
+            "style-loader",
+            "css-loader"
+          ],
+      },
+      // added loaders
     ]
   },
   plugins: [
@@ -122,7 +137,7 @@ module.exports = {
       },
     },
     hot: true,
-    contentBase: path.resolve(__dirname, "./src/icapps_assets"),
-    watchContentBase: true
+    // contentBase: path.resolve(__dirname, "./src/icapps_assets"),
+    // watchContentBase: true
   },
 };

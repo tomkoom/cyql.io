@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./NftList.css";
 
 const NftList = () => {
 	const [nftItems, setNftItems] = useState([]);

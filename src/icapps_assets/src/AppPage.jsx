@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./AppPage.css";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FramerStyles } from "./FramerStyles";
+import { FramerMotionStyles } from "./FramerMotionStyles";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,8 +27,8 @@ const AppPage = ({ data }) => {
 			<Link className="back-btn" to="/">
 				<motion.div
 					className="back-btn__div"
-					whileHover={FramerStyles.buttons.whileHover}
-					transition={FramerStyles.buttons.transition}
+					whileHover={FramerMotionStyles.buttons.whileHover}
+					transition={FramerMotionStyles.buttons.transition}
 				>
 					<FontAwesomeIcon icon={faArrowLeft} />
 				</motion.div>
@@ -65,8 +66,12 @@ const AppPage = ({ data }) => {
 								<motion.div
 									className="app-item__trade-btn"
 									data-value="btn"
-									whileHover={FramerStyles.buttons.whileHover}
-									transition={FramerStyles.buttons.transition}
+									whileHover={
+										FramerMotionStyles.buttons.whileHover
+									}
+									transition={
+										FramerMotionStyles.buttons.transition
+									}
 									style={
 										d.marketUrl ? null : { display: "none" }
 									}
@@ -105,10 +110,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Canister"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -128,10 +135,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Dscvr"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -152,10 +161,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Distrikt"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -204,10 +215,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Website"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -228,10 +241,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Twitter"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -251,10 +266,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Discord"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -274,10 +291,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="GitHub"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -297,10 +316,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Telegram"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={
@@ -323,10 +344,12 @@ const AppPage = ({ data }) => {
 									<motion.li
 										data-social="Medium"
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="app-item__social-icons-list__item"
 										style={

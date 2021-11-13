@@ -1,0 +1,23 @@
+/* DEVELOPERS */
+
+.developers {
+	margin: 24px auto;
+	max-width: 1024px;
+}
+
+.developer-resources {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-gap: 24px;
+}
+
+.developer-resources__link-block {
+	display: block;
+}
+
+.developer-resources__link-block__item {
+	background-color: var(--gray180);
+	padding: 16px;
+	border-radius: 12px;
+	height: 100%;
+}

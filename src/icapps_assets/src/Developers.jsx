@@ -1,12 +1,20 @@
 import React, { useEffect } from "react";
+import "./Developers.css";
+
+// GOOGLE API
 import useGoogleSheets from "use-google-sheets";
+import k from "../../../k/k";
+
+// FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { motion } from "framer-motion";
-import { FramerStyles } from "./FramerStyles";
 
-const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
-const googleSheetId = "1gMBz0XnAu4FgiGGotrsi09EjOeIUyX7uO8fHi_k8E3c";
+// FRAMER MOTION
+import { motion } from "framer-motion";
+import { FramerMotionStyles } from "./FramerMotionStyles";
+
+const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
+const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const Developers = () => {
 	const { data, loading, error } = useGoogleSheets({
@@ -14,8 +22,6 @@ const Developers = () => {
 		sheetId: googleSheetId,
 		sheetsNames: ["Developers"],
 	});
-
-	useEffect(() => {}, [loading]);
 
 	return (
 		<div className="developers">
@@ -34,8 +40,8 @@ const Developers = () => {
 							target="_blank"
 							rel="noreferrer noopener"
 							key={d["Name"]}
-							whileHover={FramerStyles.cards.whileHover}
-							transition={FramerStyles.cards.transition}
+							whileHover={FramerMotionStyles.cards.whileHover}
+							transition={FramerMotionStyles.cards.transition}
 							className="developer-resources__link-block"
 						>
 							<div className="developer-resources__link-block__item">

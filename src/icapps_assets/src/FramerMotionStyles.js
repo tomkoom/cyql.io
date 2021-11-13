@@ -1,4 +1,4 @@
-export const FramerStyles = {
+export const FramerMotionStyles = {
     buttons: {
         whileHover: {
             scale: 1.1,

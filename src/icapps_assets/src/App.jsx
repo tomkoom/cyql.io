@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
+
+// GOOGLE API
 import useGoogleSheets from "use-google-sheets";
+import k from "../../../k/k";
 
 // COMPONENTS
 import Nav from "./Nav";
@@ -11,8 +14,8 @@ import Highlights from "./Highlights";
 import Developers from "./Developers";
 import NftList from "./NftList";
 
-const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
-const googleSheetId = "1gMBz0XnAu4FgiGGotrsi09EjOeIUyX7uO8fHi_k8E3c";
+const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
+const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
 	const [category, setCategory] = useState("All");

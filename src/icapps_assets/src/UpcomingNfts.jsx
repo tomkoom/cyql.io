@@ -1,23 +1,31 @@
 import React from "react";
+import "./UpcomingNfts.css";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FramerStyles } from "./FramerStyles";
+
+// FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import {
+	faArrowLeft,
+	faGlobe,
+	faCalendarAlt,
+	faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import {
 	faTwitter,
 	faTelegram,
 	faDiscord,
 } from "@fortawesome/free-brands-svg-icons";
-import {
-	faCalendarAlt,
-	faArrowRight,
-} from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+
+// FRAMER MOTION
+import { motion } from "framer-motion";
+import { FramerMotionStyles } from "./FramerMotionStyles";
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
-const googleSheetsApiKey = "AIzaSyAYlQkmy6vZa13H5dRahcSaq08P35woTZk";
-const googleSheetId = "1gMBz0XnAu4FgiGGotrsi09EjOeIUyX7uO8fHi_k8E3c";
+import k from "../../../k/k";
+
+const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
+const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const UpcomingNfts = () => {
 	const { data, loading, error } = useGoogleSheets({
@@ -36,8 +44,8 @@ const UpcomingNfts = () => {
 				<div className="upcoming-nft">
 					<Link className="back-btn" to="/">
 						<motion.div
-							whileHover={FramerStyles.buttons.whileHover}
-							transition={FramerStyles.buttons.transition}
+							whileHover={FramerMotionStyles.buttons.whileHover}
+							transition={FramerMotionStyles.buttons.transition}
 							className="back-btn__div"
 						>
 							<FontAwesomeIcon icon={faArrowLeft} />
@@ -86,10 +94,12 @@ const UpcomingNfts = () => {
 										<motion.div
 											data-value="btn"
 											whileHover={
-												FramerStyles.buttons.whileHover
+												FramerMotionStyles.buttons
+													.whileHover
 											}
 											transition={
-												FramerStyles.buttons.transition
+												FramerMotionStyles.buttons
+													.transition
 											}
 											className="upcoming-nft__card__main__heading__date"
 										>
@@ -152,10 +162,12 @@ const UpcomingNfts = () => {
 								<ul className="upcoming-nft__card__main__social-links-list">
 									<motion.li
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
@@ -175,10 +187,12 @@ const UpcomingNfts = () => {
 
 									<motion.li
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
@@ -198,10 +212,12 @@ const UpcomingNfts = () => {
 
 									<motion.li
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
@@ -221,10 +237,12 @@ const UpcomingNfts = () => {
 
 									<motion.li
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
@@ -245,10 +263,12 @@ const UpcomingNfts = () => {
 									</motion.li>
 									<motion.li
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
@@ -267,10 +287,12 @@ const UpcomingNfts = () => {
 									</motion.li>
 									<motion.li
 										whileHover={
-											FramerStyles.buttons.whileHover
+											FramerMotionStyles.buttons
+												.whileHover
 										}
 										transition={
-											FramerStyles.buttons.transition
+											FramerMotionStyles.buttons
+												.transition
 										}
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
