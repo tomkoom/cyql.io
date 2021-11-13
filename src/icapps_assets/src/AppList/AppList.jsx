@@ -1,9 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import TagButton from "./TagButton";
-import { motion } from "framer-motion";
-import { FramerMotionStyles } from "./FramerMotionStyles";
 import "./AppList.css";
+import { Link } from "react-router-dom";
+
+// FRAMER MOTION
+import { motion } from "framer-motion";
+import { FramerMotionStyles } from "../FramerMotionStyles";
+
+// COMPONENTS
+import TagButton from "../TagButton/TagButton";
 
 const AppList = ({
 	category,

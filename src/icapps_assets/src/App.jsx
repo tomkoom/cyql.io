@@ -6,13 +6,13 @@ import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
 
 // COMPONENTS
-import Nav from "./Nav";
-import AppList from "./AppList";
-import AppPage from "./AppPage";
-import UpcomingNfts from "./UpcomingNfts";
-import Highlights from "./Highlights";
-import Developers from "./Developers";
-import NftList from "./NftList";
+import Nav from "./Nav/Nav";
+import AppList from "./AppList/AppList";
+import AppPage from "./AppPage/AppPage";
+import UpcomingNfts from "./UpcomingNfts/UpcomingNfts";
+import Developers from "./Developers/Developers";
+import NftList from "./NftList/NftList";
+import Highlights from "./Highlights/Highlights";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;

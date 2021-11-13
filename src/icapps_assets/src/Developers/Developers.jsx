@@ -3,15 +3,15 @@ import "./Developers.css";
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
-import k from "../../../k/k";
+import k from "../../../../k/k";
 
 // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import { faArrowRight } from "../../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "./FramerMotionStyles";
+import { FramerMotionStyles } from "../FramerMotionStyles";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;

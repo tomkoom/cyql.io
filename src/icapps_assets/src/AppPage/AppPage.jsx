@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AppPage.css";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "./FramerMotionStyles";
+import { FramerMotionStyles } from "../FramerMotionStyles";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,7 @@ import {
 import {
 	faGlobe,
 	faArrowRight,
-} from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+} from "../../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 const AppPage = ({ data }) => {
 	const { id } = useParams();

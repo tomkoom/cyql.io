@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
-import Logo from "../assets/logo.svg";
+import Logo from "../../assets/logo.svg";
+
+// FRAMER MOTION
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "./FramerMotionStyles";
+import { FramerMotionStyles } from "../FramerMotionStyles";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,0 +1,38 @@
+/* TAG BUTTON */
+
+.category-btns {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 32px;
+}
+
+.category-btns__item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 8px;
+	font-size: var(--fontSize5);
+	font-weight: var(--bold);
+	text-decoration: none;
+	background-color: var(--gray180);
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	letter-spacing: -0.25px;
+	transition: all 150ms ease-in-out;
+}
+
+.category-btns__item:hover:not(.category-btns__item__active) {
+	background-color: var(--gray140);
+}
+
+.category-btns__item__active {
+	background-color: white;
+	color: var(--gray220);
+}
+
+.apps-num {
+	color: var(--gray100);
+}

@@ -18,11 +18,11 @@ import {
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "./FramerMotionStyles";
+import { FramerMotionStyles } from "../FramerMotionStyles";
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
-import k from "../../../k/k";
+import k from "../../../../k/k";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
