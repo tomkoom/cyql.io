@@ -56,3 +56,10 @@
 .arrow-icon {
 	margin-right: 4px;
 }
+
+@media screen and (max-width: 768px) {
+	.developer-resources {
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		grid-gap: 20px;
+	}
+}

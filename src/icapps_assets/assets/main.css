@@ -49,23 +49,23 @@ body {
 	background-color: var(--gray220);
 }
 
+.container768,
+.container1280,
+.container1440 {
+	padding: 32px;
+	margin: 0 auto;
+}
+
 .container768 {
 	max-width: 768px;
-	margin: 0 auto;
-	margin-top: 24px;
-	padding: 0 32px;
 }
 
 .container1280 {
 	max-width: 1280px;
-	margin: 32px auto;
-	padding: 0 32px;
 }
 
 .container1440 {
 	max-width: 1440px;
-	margin: 32px auto;
-	padding: 0 32px;
 }
 
 /* GLOBAL STYLES */
@@ -163,17 +163,10 @@ h3 {
 	}
 
 	.highlights,
-	.container {
-		padding: 0 16px;
-	}
-
-	.nav {
+	.container768,
+	.container1280,
+	.container1440 {
 		padding: 16px;
-	}
-
-	.nav-list {
-		gap: 0;
-		font-size: var(--fontSize5);
 	}
 
 	.category-btns {
@@ -186,7 +179,7 @@ h3 {
 
 	.app-page,
 	.upcoming-nft {
-		padding: 0 16px;
+		padding: 24px 16px;
 	}
 
 	.upcoming-nft__card {

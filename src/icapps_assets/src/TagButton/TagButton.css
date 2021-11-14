@@ -11,7 +11,7 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	padding: 10px 8px;
+	padding: 8px;
 	font-size: var(--fontSize5);
 	font-weight: var(--bold);
 	text-decoration: none;
@@ -35,4 +35,10 @@
 
 .apps-num {
 	color: var(--gray100);
+}
+
+@media screen and (max-width: 768px) {
+	.category-btns {
+		gap: 8px;
+	}
 }
