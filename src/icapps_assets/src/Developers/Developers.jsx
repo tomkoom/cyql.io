@@ -24,7 +24,8 @@ const Developers = () => {
 	});
 
 	return (
-		<div className="developers container1280">
+		<section className="developers container1280">
+			{/* HERO */}
 			<div className="center">
 				<h2 className="">🛠️ Developer Resources</h2>
 				<p className="body-text2">
@@ -36,18 +37,19 @@ const Developers = () => {
 			<br />
 			<br />
 
+			{/* CONTENT */}
 			{loading ? (
 				<p className="center">Loading... ⌛</p>
 			) : error ? (
 				<p className="center">Error!</p>
 			) : (
 				<div className="developer-resources">
-					{data[0].data.map((d) => (
+					{data[0].data.map((d, i) => (
 						<motion.a
 							href={d["URL"]}
 							target="_blank"
 							rel="noreferrer noopener"
-							key={d["Name"]}
+							key={i}
 							whileHover={FramerMotionStyles.cards.whileHover}
 							transition={FramerMotionStyles.cards.transition}
 							className="developer-resources__link-block"
@@ -85,7 +87,7 @@ const Developers = () => {
 					))}
 				</div>
 			)}
-		</div>
+		</section>
 	);
 };
 

@@ -35,52 +35,55 @@ const UpcomingNfts = () => {
 	});
 
 	return (
-		<>
-			{loading ? (
-				<div className="center">Loading... ⌛</div>
-			) : error ? (
-				<div className="center">Error!</div>
-			) : (
-				<div className="upcoming-nft">
-					<Link className="back-btn" to="/">
-						<motion.div
-							whileHover={FramerMotionStyles.buttons.whileHover}
-							transition={FramerMotionStyles.buttons.transition}
-							className="back-btn__div"
-						>
-							<FontAwesomeIcon icon={faArrowLeft} />
-						</motion.div>
-					</Link>
+		<section className="upcoming-nft container768">
+			<Link className="back-btn" to="/">
+				<motion.div
+					whileHover={FramerMotionStyles.buttons.whileHover}
+					transition={FramerMotionStyles.buttons.transition}
+					className="back-btn__div"
+				>
+					<FontAwesomeIcon icon={faArrowLeft} />
+				</motion.div>
+			</Link>
 
-					<div className="upcoming-nft-sales-intro center">
-						<h2>Upcoming NFT Sales &#38; Airdrops</h2>
-						<p className="body-text2">
-							{/* Information on this page should not be considered as financial advice. */}
-							Please note: We do not guarantee information
-							provided on this page is 100% accurate. Please do
-							your own research.
-						</p>
-						<div className="entrepot-badge-container">
-							<p className="subtitle opacity66">Media Partner</p>
-							<div className="entrepot-logo-container bold">
-								<img
-									className="entrepot-logo"
-									src="https://i.postimg.cc/PfZBxHVY/entrepot-branmark.png"
-									alt="Entrepot logo"
-								/>
-								Entrepot
-							</div>
-						</div>
-						<a
-							className="submit-btn"
-							href="https://forms.gle/rFsaFEj3N8mgF9tz6"
-							target="_blank"
-							rel="noreferrer noopener"
-						>
-							Submit your project to the list
-						</a>
+			<div className="upcoming-nft-sales-intro center">
+				<h2>Upcoming NFT Sales &#38; Airdrops</h2>
+				<p className="body-text2">
+					{/* Information on this page should not be considered as financial advice. */}
+					Please note: We do not guarantee information provided on
+					this page is 100% accurate. Please do your own research.
+				</p>
+				<div className="entrepot-badge-container">
+					<p className="subtitle opacity66">Media Partner</p>
+					<div className="entrepot-logo-container bold">
+						<img
+							className="entrepot-logo"
+							src="https://i.postimg.cc/PfZBxHVY/entrepot-branmark.png"
+							alt="Entrepot logo"
+						/>
+						Entrepot
 					</div>
+				</div>
+				<a
+					className="submit-btn"
+					href="https://forms.gle/rFsaFEj3N8mgF9tz6"
+					target="_blank"
+					rel="noreferrer noopener"
+				>
+					Submit your project to the list
+				</a>
+			</div>
 
+			{loading ? (
+				<div className="center">
+					<p className="body-text">Loading... ⌛</p>
+				</div>
+			) : error ? (
+				<div className="center">
+					<p className="body-text">Error!</p>{" "}
+				</div>
+			) : (
+				<>
 					{data[0].data.map((nft) => (
 						// Change key
 						<div className="upcoming-nft__card" key={nft.Name}>
@@ -346,9 +349,9 @@ const UpcomingNfts = () => {
 							</div>
 						</div>
 					))}
-				</div>
+				</>
 			)}
-		</>
+		</section>
 	);
 };
 

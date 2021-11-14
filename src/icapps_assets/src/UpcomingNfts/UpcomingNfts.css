@@ -1,13 +1,10 @@
 /* UPCOMING NFTS*/
 
 .upcoming-nft {
-	max-width: 768px;
 	display: flex;
 	flex-direction: column;
-	gap: 32px;
-	margin: 0 auto;
-	padding: 32px;
 	justify-content: flex-start;
+	gap: 32px;
 }
 
 .upcoming-nft__card {

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
+import k from "../../../../k/k";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
@@ -11,12 +12,9 @@ import { FramerMotionStyles } from "../FramerMotionStyles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
-// const nnsCanisterId = "qoctq-giaaa-aaaaa-aaaea-cai";
-// const whitelist = [nnsCanisterId];
-
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
-	const [donateAmount, setDonateAmount] = useState("0.4");
+	const [donateAmount, setDonateAmount] = useState("0.2");
 
 	const updateDonateAmount = (e) => {
 		setDonateAmount(e.target.value);
@@ -24,16 +22,14 @@ const Nav = () => {
 
 	const handleDonateBtnClick = async (el) => {
 		el.target.disabled = true;
-
 		const hasAllowed = await window.ic?.plug?.requestConnect();
 
 		if (hasAllowed) {
 			const requestTransferArg = {
-				to: "edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1",
+				to: k.DONATION_WALLET,
 				amount: donateAmount * 100000000,
 			};
 			await window.ic?.plug?.requestTransfer(requestTransferArg);
-		} else {
 		}
 
 		setTimeout(function () {
@@ -41,18 +37,22 @@ const Nav = () => {
 		}, 5000);
 	};
 
-	fetch(
-		"https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
-	)
-		.then((res) => {
-			if (res.ok) {
-				return res.json();
-			} else {
-				console.log("Coingecko ICP price request was not successfull");
-			}
-		})
-		.then((data) => setIcpPrice(data["internet-computer"].usd))
-		.catch((error) => console.log("Error"));
+	useEffect(() => {
+		fetch(
+			"https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
+		)
+			.then((res) => {
+				if (res.ok) {
+					return res.json();
+				} else {
+					console.log(
+						"Coingecko ICP price request was not successfull."
+					);
+				}
+			})
+			.then((data) => setIcpPrice(data["internet-computer"].usd))
+			.catch((error) => console.log("Error"));
+	}, []);
 
 	return (
 		<div className="nav">
@@ -125,7 +125,7 @@ const Nav = () => {
 				{/* <li className="nav-list__item">
 					<NavLink
 						exact
-						to="/developers"
+						to="/tools"
 						replace
 						className="nav-list__item__content"
 					>

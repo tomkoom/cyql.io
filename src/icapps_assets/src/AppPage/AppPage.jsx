@@ -23,7 +23,7 @@ const AppPage = ({ data }) => {
 	const { id } = useParams();
 
 	return (
-		<div className="app-page">
+		<section className="app-page container768">
 			<Link className="back-btn" to="/">
 				<motion.div
 					className="back-btn__div"
@@ -370,7 +370,7 @@ const AppPage = ({ data }) => {
 							</div>
 						))
 				: null}
-		</div>
+		</section>
 	);
 };
 
