@@ -24,17 +24,25 @@ const Developers = () => {
 	});
 
 	return (
-		<div className="developers">
-			<h2 className="">Developer Resources</h2>
+		<div className="developers container1280">
+			<div className="center">
+				<h2 className="">🛠️ Developer Resources</h2>
+				<p className="body-text2">
+					Explore tools, documentations, tutorials and other resources
+					for developers.
+				</p>
+			</div>
+
 			<br />
 			<br />
-			<div className="developer-resources">
-				{loading ? (
-					<div className="center">Loading... ⌛</div>
-				) : error ? (
-					<div className="center">Error!</div>
-				) : (
-					data[0].data.map((d) => (
+
+			{loading ? (
+				<p className="center">Loading... ⌛</p>
+			) : error ? (
+				<p className="center">Error!</p>
+			) : (
+				<div className="developer-resources">
+					{data[0].data.map((d) => (
 						<motion.a
 							href={d["URL"]}
 							target="_blank"
@@ -45,16 +53,38 @@ const Developers = () => {
 							className="developer-resources__link-block"
 						>
 							<div className="developer-resources__link-block__item">
-								<h3>{d["Name"]}</h3>
-								<br />
-								<p>{d["Description"]}</p>
-								<br />
-								<FontAwesomeIcon icon={faArrowRight} />
+								{d["Cover"] ? (
+									<img
+										className="developer-resources__link-block__item__cover"
+										src={d["Cover"]}
+										alt={`${d["Name"]} Cover`}
+									/>
+								) : null}
+
+								<div className="developer-resources__link-block__item__info">
+									<div className="developer-resources__link-block__item__info__main">
+										<h3>{d["Name"]}</h3>
+										<p className="body-text gray80">
+											{d["Description"]}
+										</p>
+									</div>
+
+									<div className="developer-resources__link-block__item__info__foot">
+										<span className="developer-resources__link-block__item__info__tag">
+											{d["Tag"]}
+										</span>
+										<FontAwesomeIcon
+											icon={faArrowRight}
+											color="rgba(255,255,255,0.3)"
+											className="arrow-icon"
+										/>
+									</div>
+								</div>
 							</div>
 						</motion.a>
-					))
-				)}
-			</div>
+					))}
+				</div>
+			)}
 		</div>
 	);
 };

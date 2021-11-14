@@ -176,6 +176,8 @@ const AppList = ({
 				/>
 			</div>
 
+			{/* APP LIST */}
+
 			{loading ? (
 				<p className="center">Loading... ⌛</p>
 			) : error ? (

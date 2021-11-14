@@ -49,6 +49,12 @@ body {
 	background-color: var(--gray220);
 }
 
+.container1280 {
+	max-width: 1280px;
+	margin: 32px auto;
+	padding: 0 32px;
+}
+
 .container1440 {
 	max-width: 1440px;
 	margin: 32px auto;
@@ -65,7 +71,7 @@ a {
 /* TYPOGRAPHY */
 
 h2 {
-	font-size: var(--fontSize3);
+	font-size: var(--fontSize2);
 }
 
 h3 {
