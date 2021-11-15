@@ -84,9 +84,9 @@ th:last-child {
 		display: none;
 	}
 
-	.nft-table {
+	/* .nft-table {
 		font-size: var(--fontSize5);
-	}
+	} */
 
 	.nft-table,
 	.nft-table tbody,
@@ -100,7 +100,7 @@ th:last-child {
 		align-items: center;
 		justify-content: flex-end;
 		position: relative;
-		border: 1px solid var(--gray160);
+		/* border: 1px solid var(--gray160); */
 	}
 
 	.nft-table tbody tr td a {
@@ -129,11 +129,11 @@ th:last-child {
 
 	/* rounded table corners mobile */
 
-	td:first-child {
+	/* td:first-child {
 		border-radius: 16px 16px 0 0;
 	}
 
 	td:last-child {
 		border-radius: 0 0 16px 16px;
-	}
+	} */
 }
