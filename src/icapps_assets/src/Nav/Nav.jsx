@@ -55,7 +55,7 @@ const Nav = () => {
 	}, []);
 
 	return (
-		<div className="nav">
+		<nav className="nav">
 			<div className="logo-container">
 				<NavLink exact to="/" replace>
 					<div className="logo">
@@ -145,24 +145,22 @@ const Nav = () => {
 				</li>
 
 				<li className="nav-list__item donate-container">
-					<div className="nav-list__item__content ">
-						<input
-							className="donate-amount-input"
-							type="number"
-							min="0"
-							onChange={updateDonateAmount}
-							value={donateAmount}
-						/>
-						<button
-							className="donate-btn"
-							onClick={handleDonateBtnClick}
-						>
-							Donate {donateAmount} ICP
-						</button>
-					</div>
+					<input
+						className="donate-amount-input"
+						type="number"
+						min="0"
+						onChange={updateDonateAmount}
+						value={donateAmount}
+					/>
+					<button
+						className="donate-btn"
+						onClick={handleDonateBtnClick}
+					>
+						Donate {donateAmount} ICP
+					</button>
 				</li>
 			</ul>
-		</div>
+		</nav>
 	);
 };
 

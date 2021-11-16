@@ -41,7 +41,7 @@
 }
 
 html {
-	font-size: 17px; /* Root font size */
+	font-size: 16px; /* Root font size */
 }
 
 body {
@@ -158,10 +158,6 @@ h3 {
 /* MEDIA QUERY */
 
 @media screen and (max-width: 768px) {
-	html {
-		font-size: 16px;
-	}
-
 	.highlights,
 	.container768,
 	.container1280,

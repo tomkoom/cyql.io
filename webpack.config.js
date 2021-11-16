@@ -137,7 +137,7 @@ module.exports = {
       },
     },
     hot: true,
-    contentBase: path.resolve(__dirname, "./src/icapps_assets"),
-    watchContentBase: true
+    // contentBase: path.resolve(__dirname, "./src/icapps_assets"),
+    // watchContentBase: true
   },
 };

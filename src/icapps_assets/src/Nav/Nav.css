@@ -30,8 +30,8 @@
 
 .social-icons-containter {
 	font-size: var(--fontSize5);
-	width: 42px;
-	height: 42px;
+	width: 40px;
+	height: 40px;
 	border-radius: 100%;
 	background-color: var(--gray180);
 }
@@ -69,28 +69,27 @@
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
-	gap: 8px;
+	gap: 16px;
 	font-size: var(--fontSize6);
-	font-weight: var(--bold);
+	font-weight: var(--medium);
 }
 
 .nav-list__item {
-	padding: 0 12px;
-	height: 44px;
-	border-radius: 8px;
-	transition: all 150ms ease-in-out;
-}
-
-.nav-list__item:hover:not(.donate-container) {
-	background-color: var(--gray160);
+	height: 36px;
 }
 
 .nav-list__item__content {
-	width: 100%;
-	height: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.nav-list__item__content:hover:not(.donate-container) {
+	-webkit-box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 1);
+	-moz-box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 1);
+	box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 1);
 }
 
 /* DONATE BUTTON */
@@ -132,13 +131,14 @@
 	}
 
 	.nav-list {
+		margin-top: 8px;
 		flex-direction: column;
-		align-items: center;
-		gap: 0;
+		align-items: flex-start;
+		gap: 8px;
 		width: 100%;
 	}
 
 	.donate-container {
-		margin-top: 12px;
+		display: none;
 	}
 }

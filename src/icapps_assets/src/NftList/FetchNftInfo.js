@@ -309,7 +309,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 data,
                 "IC3D",
                 "https://entrepot.app/marketplace/ic3d",
-                "https://nfvlz-jaaaa-aaaah-qcciq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=drnzn-yykor-uwiaa-aaaaa-b4aqs-eaqca-aaen3-a",
+                "https://nfvlz-jaaaa-aaaah-qcciq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=gkr7e-4qkor-uwiaa-aaaaa-b4aqs-eaqca-aaajk-q",
                 "0.5 ICP"
             )
         );

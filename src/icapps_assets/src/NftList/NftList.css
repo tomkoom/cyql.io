@@ -1,12 +1,12 @@
 /* NFT LIST */
 
 .nft-list {
-	margin: 48px auto;
+	margin: 32px auto;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 24px;
+	gap: 16px;
 	padding: 0 16px;
 }
 
@@ -45,17 +45,25 @@
 	text-align: left;
 }
 
-.nft-table tbody tr td a {
+.nft-collection-link {
 	display: flex;
 	align-items: center;
 	gap: 16px;
 }
 
-.nft-table tbody tr td img {
-	height: 58px;
-	width: 58px;
+.nft-cover-container {
+	display: grid;
+	align-items: center;
+	height: 48px;
+	width: 48px;
 	border-radius: 4px;
+	overflow: hidden;
+}
+
+.nft-cover-container__item {
 	object-fit: cover;
+	width: 100%;
+	object-position: center;
 }
 
 /* rounded table corners */
@@ -100,7 +108,6 @@ th:last-child {
 		align-items: center;
 		justify-content: flex-end;
 		position: relative;
-		/* border: 1px solid var(--gray160); */
 	}
 
 	.nft-table tbody tr td a {

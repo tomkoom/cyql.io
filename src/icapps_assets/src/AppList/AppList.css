@@ -33,8 +33,8 @@
 }
 
 .app-list__app-info__logo {
-	width: 58px;
-	height: 58px;
+	width: 48px;
+	height: 48px;
 	border-radius: 50%;
 	object-fit: cover;
 }

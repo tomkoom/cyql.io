@@ -18,10 +18,7 @@ const NftList = () => {
 			</p>
 
 			{loading ? (
-				<tr>
-					<td>Loading...</td>
-					<td>⌛</td>
-				</tr>
+				<p className="body-text">Loading...⌛</p>
 			) : (
 				<table className="nft-table">
 					<thead>
@@ -42,14 +39,18 @@ const NftList = () => {
 								<td data-label="#">{index + 1}</td>
 								<td data-label="Name">
 									<a
+										className="nft-collection-link"
 										href={nftItem.link}
 										target="_blank"
 										rel="norefferer noopener"
 									>
-										<img
-											src={nftItem.img}
-											alt={nftItem.name}
-										/>{" "}
+										<div className="nft-cover-container">
+											<img
+												className="nft-cover-container__item"
+												src={nftItem.img}
+												alt={nftItem.name}
+											/>
+										</div>{" "}
 										{nftItem.name}
 									</a>
 								</td>
