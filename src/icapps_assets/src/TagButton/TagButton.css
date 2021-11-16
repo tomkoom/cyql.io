@@ -13,12 +13,12 @@
 	gap: 8px;
 	padding: 8px;
 	font-size: var(--fontSize5);
-	font-weight: var(--bold);
+	font-weight: var(--medium);
 	text-decoration: none;
 	background-color: var(--gray180);
 	color: white;
 	border: none;
-	border-radius: 4px;
+	border-radius: 8px;
 	cursor: pointer;
 	letter-spacing: -0.25px;
 	transition: all 150ms ease-in-out;

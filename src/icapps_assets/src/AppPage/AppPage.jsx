@@ -40,27 +40,37 @@ const AppPage = ({ data }) => {
 							<div key={d.id} className="app-item">
 								<div
 									className="app-item__app-cover"
-									style={{
-										backgroundImage: `url(${d.cover})`,
-									}}
+									style={
+										d.cover
+											? {
+													backgroundImage: `url(${d.cover})`,
+											  }
+											: { display: "none" }
+									}
 								></div>
 								<div className="app-item__app-info">
 									<img
-										className="app-list__app-info__logo"
+										className="app-item__app-info__logo"
 										src={d.logo}
 										alt={d.name}
+										style={{
+											display: d.logo ? "null" : "none",
+										}}
 									/>
-									<div className="app-item__app-info_app-caption">
-										<h2 className="app-name">{d.name}</h2>
-										<p className="body-text">
-											<span className="span-color">
-												{d.category}
-											</span>
-										</p>
+									<div className="app-item__app-info__app-caption">
+										<h2 className="app-item__app-info__app-caption__title">
+											{d.name}
+										</h2>
+
+										<span className="app-item__app-info__app-caption__tag">
+											{d.category}
+										</span>
 									</div>
 								</div>
 
-								<p className="body-text">{d.description}</p>
+								<p className="body-text-light">
+									{d.description}
+								</p>
 								<br />
 
 								<motion.div
@@ -188,6 +198,7 @@ const AppPage = ({ data }) => {
 									</motion.li>
 								</ul>
 								<p
+									className="body-text opacity66"
 									style={
 										d.website ||
 										d.discord ||

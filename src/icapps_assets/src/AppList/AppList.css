@@ -4,12 +4,17 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 	grid-gap: 24px;
-	width: 100%;
 }
 
 .app-list__item {
+	display: flex;
+	flex-direction: column;
 	background-color: var(--gray180);
 	border-radius: 16px;
+}
+
+.link-block {
+	height: 100%;
 }
 
 .app-cover {
@@ -21,36 +26,31 @@
 	border-radius: 16px 16px 0 0;
 }
 
-.app-name {
+.app-list__app-info__description__caption__title {
 	font-size: var(--fontSize5);
 	font-weight: var(--black);
 }
 
 .app-list__app-info {
 	display: flex;
-	padding: 16px;
+	padding: 16px 16px 16px;
 	gap: 16px;
 }
 
 .app-list__app-info__logo {
-	width: 48px;
-	height: 48px;
+	width: 44px;
+	height: 44px;
 	border-radius: 50%;
 	object-fit: cover;
 }
 
 .app-list__app-info__description {
 	display: flex;
-	gap: 4px;
 	flex-direction: column;
+	gap: 4px;
 }
 
-.app-list__app-info__description__title {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.app-list__app-info__description__title p {
-	font-size: var(--fontSize5);
+.app-list__app-info__description p {
+	font-weight: 300;
+	color: var(--gray60);
 }

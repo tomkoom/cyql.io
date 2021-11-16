@@ -75,6 +75,19 @@
 	margin: 16px 0;
 }
 
+.app-item__app-info__app-caption__title {
+	font-size: var(--fontSize4);
+	font-weight: var(--black);
+}
+
+.app-item__app-info__app-caption__tag {
+	display: inline-block;
+	padding: 4px 8px;
+	margin-top: 4px;
+	background-color: var(--gray180);
+	border-radius: 4px;
+}
+
 .app-item__trade-btn {
 	display: inline-block;
 	padding: 8px 0 32px 0;
@@ -113,4 +126,12 @@
 	height: 32px;
 	width: 32px;
 	border-radius: 50%;
+}
+
+
+.app-item__app-info__logo {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	object-fit: cover;
 }

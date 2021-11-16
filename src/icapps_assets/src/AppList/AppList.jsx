@@ -200,9 +200,7 @@ const AppList = ({
 													backgroundImage: `url(${d.cover})`,
 											  }
 											: {
-													backgroundImage:
-														'url("https://svgshare.com/i/_HK.svg")',
-													backgroundColor: "#edf2f7",
+													display: "none",
 											  }
 									}
 								></div>
@@ -211,10 +209,13 @@ const AppList = ({
 										className="app-list__app-info__logo"
 										src={d.logo}
 										alt={d.name}
+										style={
+											d.logo ? null : { display: "none" }
+										}
 									/>
 									<div className="app-list__app-info__description">
-										<div className="app-list__app-info__description__title">
-											<h2 className="app-name">
+										<div className="app-list__app-info__description__caption">
+											<h2 className="app-list__app-info__description__caption__title">
 												{d.name}
 												&nbsp;
 												{d.category ===
@@ -245,7 +246,7 @@ const AppList = ({
 											</h2>
 										</div>
 
-										<p className="body-text gray80">
+										<p className="body-text gray60">
 											{d.description &&
 											d.description.length > 90
 												? `${d.description.substring(

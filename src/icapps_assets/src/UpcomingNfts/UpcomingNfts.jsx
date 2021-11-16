@@ -53,12 +53,22 @@ const UpcomingNfts = () => {
 					Please note: We do not guarantee information provided on
 					this page is 100% accurate. Please do your own research.
 				</p>
-				<div className="entrepot-badge-container">
-					<p className="subtitle opacity66">Media Partner</p>
-					<div className="entrepot-logo-container bold">
+				<div className="media-partner-badge">
+					<p className="subtitle opacity66">Media Partners</p>
+
+					<div className="media-partner-badge__logo-container bold">
 						<img
-							className="entrepot-logo"
-							src="https://i.postimg.cc/PfZBxHVY/entrepot-branmark.png"
+							className="media-partner-logo"
+							src="https://i.postimg.cc/50PprTYH/golka-userimg-rec.png"
+							alt="Golka User Image"
+						/>
+						Golka
+					</div>
+
+					<div className="media-partner-badge__logo-container bold">
+						<img
+							className="media-partner-logo"
+							src="https://i.postimg.cc/bYVLq76L/entrepot-logo-168.png"
 							alt="Entrepot logo"
 						/>
 						Entrepot
