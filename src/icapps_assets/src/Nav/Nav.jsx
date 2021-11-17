@@ -135,7 +135,7 @@ const Nav = () => {
 
 				<li className="nav-list__item">
 					<a
-						href="https://airtable.com/shrdxEhd19A8oY9bG"
+						href="https://forms.gle/tsfFSEZki6mqWidy6"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="nav-list__item__content"

@@ -76,7 +76,7 @@ const UpcomingNfts = () => {
 				</div>
 				<a
 					className="submit-btn"
-					href="https://forms.gle/rFsaFEj3N8mgF9tz6"
+					href="https://forms.gle/rSxVndkZCkSpnfph7"
 					target="_blank"
 					rel="noreferrer noopener"
 				>
