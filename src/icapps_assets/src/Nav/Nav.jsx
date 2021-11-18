@@ -115,7 +115,11 @@ const Nav = () => {
 				{menuIsOpen ? iconTimes : iconBars}
 			</div>
 
-			<ul className={menuIsOpen ? "nav__list active" : "nav__list"}>
+			<ul
+				className={
+					menuIsOpen ? "nav__list__active" : "nav__list"
+				}
+			>
 				<li className="nav__list__item">
 					<NavLink
 						exact

@@ -6,7 +6,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 8px;
-	padding: 24px;
+	padding: 24px 32px;
 }
 
 .nav__logo-container {
@@ -118,11 +118,10 @@
 .nav__list {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: flex-start;
-	list-style-type: none;
 	gap: 16px;
 	font-size: var(--fontSize6);
 	font-weight: var(--medium);
+	list-style-type: none;
 }
 
 .nav__menu-btn {
@@ -151,18 +150,21 @@
 	}
 
 	.nav__list {
+		display: none;
+	}
+
+	.nav__list__active {
+		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
+		list-style-type: none;
 		gap: 8px;
 		position: absolute;
 		top: 72px;
-		right: 24px;
+		right: 32px;
 		padding: 24px 64px 24px 24px;
 		border-radius: 16px;
-		opacity: 0;
 		background-color: var(--gray180);
-	}
-
-	.active {
 		opacity: 1;
 		z-index: 1;
 	}
@@ -196,6 +198,9 @@
 		right: 16px;
 	}
 
+	.nav__list__active {
+		right: 16px;
+	}
 	.nav {
 		padding: 24px 16px;
 	}
