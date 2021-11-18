@@ -100,7 +100,6 @@ module.exports = {
             "css-loader"
           ],
       },
-      // added loaders
     ]
   },
   plugins: [

@@ -11,10 +11,15 @@ import { FramerMotionStyles } from "../FramerMotionStyles";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+
+const iconTimes = <FontAwesomeIcon icon={faTimes} color="#fff" />;
+const iconBars = <FontAwesomeIcon icon={faBars} color="#fff" />;
 
 const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
 	const [donateAmount, setDonateAmount] = useState("0.2");
+	const [menuIsOpen, setMenuIsOpen] = useState(false);
 
 	const updateDonateAmount = (e) => {
 		setDonateAmount(e.target.value);
@@ -56,20 +61,20 @@ const Nav = () => {
 
 	return (
 		<nav className="nav">
-			<div className="logo-container">
+			<div className="nav__logo-container">
 				<NavLink exact to="/" replace>
-					<div className="logo">
+					<div className="nav__logo-container__logo">
 						<img
 							src={Logo}
 							width="34"
 							height="34"
-							alt="icApps Logo"
+							alt="icApps.xyz Logo"
 						/>
 						<h1>icApps</h1>
 					</div>
 				</NavLink>
 				<motion.div
-					className="social-icons-containter"
+					className="nav__logo-container__social-icons"
 					whileHover={FramerMotionStyles.buttons.whileHover}
 					transition={FramerMotionStyles.buttons.transition}
 				>
@@ -87,64 +92,70 @@ const Nav = () => {
 				</div>
 			</div>
 
-			<ul className="nav-list">
-				<li className="nav-list__item">
+			<div
+				className="nav__menu-btn"
+				onClick={() => setMenuIsOpen(!menuIsOpen)}
+			>
+				{menuIsOpen ? iconTimes : iconBars}
+			</div>
+
+			<ul className={menuIsOpen ? "nav__list active" : "nav__list"}>
+				<li className="nav__list__item">
 					<NavLink
 						exact
 						to="/upcoming"
 						replace
-						className="nav-list__item__content black"
+						className="nav__list__item__content black"
 					>
-						<span>Upcoming NFT Sales</span>
-						<span></span>
+						Upcoming NFT Sales
 					</NavLink>
 				</li>
 
-				<li className="nav-list__item">
+				<li className="nav__list__item">
 					<NavLink
 						exact
 						to="/nft"
 						replace
-						className="nav-list__item__content"
+						className="nav__list__item__content"
 					>
 						NFT Collections
 					</NavLink>
 				</li>
 
-				<li className="nav-list__item">
+				<li className="nav__list__item">
 					<NavLink
 						exact
 						to="/developers"
 						replace
-						className="nav-list__item__content"
+						className="nav__list__item__content"
 					>
 						Developers
 					</NavLink>
 				</li>
 
-				{/* <li className="nav-list__item">
+				{/* <li className="nav__list__item">
 					<NavLink
 						exact
 						to="/tools"
 						replace
-						className="nav-list__item__content"
+						className="nav__list__item__content"
 					>
 						Tools
 					</NavLink>
 				</li> */}
 
-				<li className="nav-list__item">
+				<li className="nav__list__item">
 					<a
 						href="https://forms.gle/tsfFSEZki6mqWidy6"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="nav-list__item__content"
+						className="nav__list__item__content"
 					>
 						Submit Your App
 					</a>
 				</li>
 
-				<li className="nav-list__item donate-container">
+				<li className="nav__list__item donate-container">
 					<input
 						className="donate-amount-input"
 						type="number"
