@@ -3,6 +3,8 @@ import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import k from "../../../../k/k";
+import { useWindowSize } from "./useWindowSize";
+import { deviceSizes } from "../deviceSizes";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
@@ -20,7 +22,9 @@ const Nav = () => {
 	const [icpPrice, setIcpPrice] = useState("");
 	const [donateAmount, setDonateAmount] = useState("0.2");
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
+	const [deviceWidth, deviceHeight] = useWindowSize();
 
+	// donate btn
 	const updateDonateAmount = (e) => {
 		setDonateAmount(e.target.value);
 	};
@@ -42,6 +46,7 @@ const Nav = () => {
 		}, 5000);
 	};
 
+	// ICP price $
 	useEffect(() => {
 		fetch(
 			"https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
@@ -58,6 +63,17 @@ const Nav = () => {
 			.then((data) => setIcpPrice(data["internet-computer"].usd))
 			.catch((error) => console.log("Error"));
 	}, []);
+
+	//  reset menu
+	function resetMenu() {
+		if (deviceWidth > deviceSizes.desktop) {
+			setMenuIsOpen(false);
+		}
+	}
+
+	useEffect(() => {
+		resetMenu();
+	}, [deviceWidth]);
 
 	return (
 		<nav className="nav">

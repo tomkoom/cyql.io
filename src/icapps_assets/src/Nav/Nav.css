@@ -135,20 +135,31 @@
 	border-radius: 8px;
 }
 
-@media screen and (max-width: 1280px) {
+#overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: auto;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 1200px) {
 	.nav {
 		position: relative;
 	}
 
 	.nav__list {
 		flex-direction: column;
+		gap: 8px;
 		position: absolute;
-		top: 64px;
+		top: 72px;
 		right: 24px;
 		padding: 24px 64px 24px 24px;
-		border-radius: 8px;
+		border-radius: 16px;
 		opacity: 0;
-		background-color: white;
+		background-color: var(--gray180);
 	}
 
 	.active {
@@ -163,7 +174,7 @@
 
 	/* end responsive menu */
 
-	.nav__list__item__content {
+	/* .nav__list__item__content {
 		color: var(--gray220);
 	}
 
@@ -171,7 +182,7 @@
 		-webkit-box-shadow: 0px 2px 0px 0px var(--gray220);
 		-moz-box-shadow: 0px 2px 0px 0px var(--gray220);
 		box-shadow: 0px 2px 0px 0px var(--gray220);
-	}
+	} */
 
 	/* donate area */
 
