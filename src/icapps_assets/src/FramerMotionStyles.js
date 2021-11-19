@@ -16,5 +16,13 @@ export const FramerMotionStyles = {
             type: "spring",
             bounce: 0.5,
         },
+    },
+    navMenuItems: {
+        initial: { opacity: 0, y: -40 },
+        animate: { opacity: 1, y: 0 },
+    },
+    navMenu: {
+        initial: { opacity: 0, y: -40 },
+        animate: { opacity: 1, y: 0 },
     }
 };

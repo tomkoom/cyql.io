@@ -10,8 +10,8 @@ const TagButton = ({
 }) => {
 	return (
 		<button
-			className={`category-btns__item ${
-				categoryActive ? "category-btns__item__active" : null
+			className={`tags__item ${
+				categoryActive ? "tags__item__active" : null
 			}`}
 			onClick={() => handleSetCategory(category)}
 		>

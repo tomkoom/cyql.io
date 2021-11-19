@@ -1,5 +1,12 @@
 /* APP LIST */
 
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 32px;
+}
+
 .app-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

@@ -1,13 +1,8 @@
 /* TAG BUTTON */
 
-.category-btns {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 12px;
-	margin-bottom: 32px;
-}
 
-.category-btns__item {
+
+.tags__item {
 	display: flex;
 	align-items: center;
 	gap: 8px;
@@ -24,11 +19,11 @@
 	transition: all 150ms ease-in-out;
 }
 
-.category-btns__item:hover:not(.category-btns__item__active) {
+.tags__item:hover:not(.category-btns__item__active) {
 	background-color: var(--gray140);
 }
 
-.category-btns__item__active {
+.tags__item__active {
 	background-color: white;
 	color: var(--gray220);
 }

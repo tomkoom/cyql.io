@@ -115,12 +115,13 @@ const Nav = () => {
 				{menuIsOpen ? iconTimes : iconBars}
 			</div>
 
-			<ul
-				className={
-					menuIsOpen ? "nav__list__active" : "nav__list"
-				}
-			>
-				<li className="nav__list__item">
+			<ul className={menuIsOpen ? "nav__list__active" : "nav__list"}>
+				<li
+					className="nav__list__item"
+					onClick={() => {
+						menuIsOpen ? setMenuIsOpen(false) : null;
+					}}
+				>
 					<NavLink
 						exact
 						to="/upcoming"
@@ -131,7 +132,12 @@ const Nav = () => {
 					</NavLink>
 				</li>
 
-				<li className="nav__list__item">
+				<li
+					className="nav__list__item"
+					onClick={() => {
+						menuIsOpen ? setMenuIsOpen(false) : null;
+					}}
+				>
 					<NavLink
 						exact
 						to="/nft"
@@ -142,7 +148,12 @@ const Nav = () => {
 					</NavLink>
 				</li>
 
-				<li className="nav__list__item">
+				<li
+					className="nav__list__item"
+					onClick={() => {
+						menuIsOpen ? setMenuIsOpen(false) : null;
+					}}
+				>
 					<NavLink
 						exact
 						to="/developers"
@@ -153,18 +164,12 @@ const Nav = () => {
 					</NavLink>
 				</li>
 
-				{/* <li className="nav__list__item">
-					<NavLink
-						exact
-						to="/tools"
-						replace
-						className="nav__list__item__content"
-					>
-						Tools
-					</NavLink>
-				</li> */}
-
-				<li className="nav__list__item">
+				<li
+					className="nav__list__item"
+					onClick={() => {
+						menuIsOpen ? setMenuIsOpen(false) : null;
+					}}
+				>
 					<a
 						href="https://forms.gle/tsfFSEZki6mqWidy6"
 						target="_blank"

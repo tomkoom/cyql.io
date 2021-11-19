@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faArrowLeft,
 	faGlobe,
 	faCalendarAlt,
 	faArrowRight,
@@ -36,16 +35,6 @@ const UpcomingNfts = () => {
 
 	return (
 		<section className="upcoming-nft container768">
-			<Link className="back-btn" to="/">
-				<motion.div
-					whileHover={FramerMotionStyles.buttons.whileHover}
-					transition={FramerMotionStyles.buttons.transition}
-					className="back-btn__div"
-				>
-					<FontAwesomeIcon icon={faArrowLeft} />
-				</motion.div>
-			</Link>
-
 			<div className="upcoming-nft-sales-intro center">
 				<h2>Upcoming NFT Sales &#38; Airdrops</h2>
 				<p className="body-text2">

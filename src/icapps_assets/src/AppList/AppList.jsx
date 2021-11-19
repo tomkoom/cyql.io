@@ -7,7 +7,23 @@ import { motion } from "framer-motion";
 import { FramerMotionStyles } from "../FramerMotionStyles";
 
 // COMPONENTS
-import TagButton from "../TagButton/TagButton";
+import TagButton from "./TagButton/TagButton";
+
+const categoriesArr = [
+	{ name: "All", icon: "" },
+	{ name: "Social Networks", icon: "🎯" },
+	{ name: "Games", icon: "⚔️" },
+	{ name: "dApps", icon: "🔗" },
+	{ name: "DeFi", icon: "‍🌾" },
+	{ name: "DAOs", icon: "🏠" },
+	{ name: "Infrastructure", icon: "🚀" },
+	{ name: "Wallets", icon: "👛" },
+	{ name: "Tools", icon: "🛠️" },
+	{ name: "Explorers", icon: "🌎" },
+	{ name: "NFTs", icon: "🗿" },
+	{ name: "Dfinity Apps", icon: "♾️" },
+	{ name: "Communities", icon: "🕸️" },
+];
 
 const AppList = ({
 	category,
@@ -21,159 +37,16 @@ const AppList = ({
 		<div className="container1440">
 			{/* CATEGORY BUTTONS */}
 
-			<div className="category-btns">
-				<TagButton
-					handleSetCategory={setCategory}
-					category="All"
-					categoryActive={category === "All" ? true : false}
-					appsNum={loading ? null : data[0].data.length}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Social Networks"
-					categoryActive={
-						category === "Social Networks" ? true : false
-					}
-					icon={"🎯"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Social Networks"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Games"
-					categoryActive={category === "Games" ? true : false}
-					icon={"⚔️"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Games"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="dApps"
-					categoryActive={category === "dApps" ? true : false}
-					icon={"🔗"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "dApps"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="DeFi"
-					categoryActive={category === "DeFi" ? true : false}
-					icon={"‍🌾"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "DeFi"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="DAOs"
-					categoryActive={category === "DAOs" ? true : false}
-					icon={"🏠"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "DAOs"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Infrastructure"
-					categoryActive={
-						category === "Infrastructure" ? true : false
-					}
-					icon={"🚀"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Infrastructure"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Wallets"
-					categoryActive={category === "Wallets" ? true : false}
-					icon={"👛"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Wallets"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Tools"
-					categoryActive={category === "Tools" ? true : false}
-					icon={"🛠️"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Tools"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Explorers"
-					categoryActive={category === "Explorers" ? true : false}
-					icon={"🌎"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Explorers"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="NFTs"
-					categoryActive={category === "NFTs" ? true : false}
-					icon={"🗿"}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "NFTs"
-							  ).length
-					}
-				/>
-				<TagButton
-					handleSetCategory={setCategory}
-					category="Dfinity Apps"
-					categoryActive={category === "Dfinity Apps" ? true : false}
-					appsNum={
-						loading
-							? null
-							: data[0].data.filter(
-									(app) => app.category === "Dfinity Apps"
-							  ).length
-					}
-				/>
+			<div className="tags">
+				{categoriesArr.map((cat) => (
+					<TagButton
+						handleSetCategory={setCategory}
+						category={cat.name}
+						categoryActive={category === cat.name ? true : false}
+						icon={cat.icon}
+						appsNum={loading ? null : data[0].data.length}
+					/>
+				))}
 			</div>
 
 			{/* APP LIST */}
