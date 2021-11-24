@@ -4,26 +4,10 @@ import { Link } from "react-router-dom";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "../FramerMotionStyles";
+import { motionVariants } from "../FramerMotionStyles";
 
 // COMPONENTS
 import TagButton from "./TagButton/TagButton";
-
-const categoriesArr = [
-	{ name: "All", icon: "" },
-	{ name: "Social Networks", icon: "🎯" },
-	{ name: "Games", icon: "⚔️" },
-	{ name: "dApps", icon: "🔗" },
-	{ name: "DeFi", icon: "‍🌾" },
-	{ name: "DAOs", icon: "🏠" },
-	{ name: "Infrastructure", icon: "🚀" },
-	{ name: "Wallets", icon: "👛" },
-	{ name: "Tools", icon: "🛠️" },
-	{ name: "Explorers", icon: "🌎" },
-	{ name: "NFTs", icon: "🗿" },
-	{ name: "Dfinity Apps", icon: "♾️" },
-	{ name: "Communities", icon: "🕸️" },
-];
 
 const AppList = ({
 	category,
@@ -33,24 +17,48 @@ const AppList = ({
 	loading,
 	error,
 }) => {
+	const categories = [
+		{ name: "All", icon: "" },
+		{ name: "Social Networks", icon: "🎯" },
+		{ name: "Games", icon: "⚔️" },
+		{ name: "dApps", icon: "🔗" },
+		{ name: "DeFi", icon: "‍🌾" },
+		{ name: "DAOs", icon: "🏠" },
+		{ name: "Infrastructure", icon: "🚀" },
+		{ name: "Wallets", icon: "👛" },
+		{ name: "Tools", icon: "🛠️" },
+		{ name: "Explorers", icon: "🌎" },
+		{ name: "NFTs", icon: "🗿" },
+		{ name: "Dfinity Apps", icon: "♾️" },
+		{ name: "Communities", icon: "" },
+	];
+
 	return (
 		<div className="container1440">
 			{/* CATEGORY BUTTONS */}
 
 			<div className="tags">
-				{categoriesArr.map((cat) => (
+				{categories.map((cat, i) => (
 					<TagButton
 						handleSetCategory={setCategory}
 						category={cat.name}
 						categoryActive={category === cat.name ? true : false}
 						icon={cat.icon}
-						appsNum={loading ? null : data[0].data.length}
+						appsNum={
+							loading
+								? null
+								: cat.name === "All"
+								? data[0].data.length
+								: data[0].data.filter(
+										(item) => item.category === cat.name
+								  ).length
+						}
+						key={i}
 					/>
 				))}
 			</div>
 
 			{/* APP LIST */}
-
 			{loading ? (
 				<p className="center">Loading... ⌛</p>
 			) : error ? (
@@ -61,8 +69,9 @@ const AppList = ({
 						<motion.div
 							key={d.id}
 							className="app-list__item"
-							whileHover={FramerMotionStyles.cards.whileHover}
-							transition={FramerMotionStyles.cards.transition}
+							variants={motionVariants.cards}
+							whileHover="whileHover"
+							animate="transition"
 						>
 							<Link className="link-block" to={`/a/${d.id}`}>
 								<div

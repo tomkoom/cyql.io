@@ -1,12 +1,10 @@
 /* TAG BUTTON */
 
-
-
 .tags__item {
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	padding: 8px;
+	padding: 8px 10px;
 	font-size: var(--fontSize5);
 	font-weight: var(--medium);
 	text-decoration: none;
@@ -19,7 +17,7 @@
 	transition: all 150ms ease-in-out;
 }
 
-.tags__item:hover:not(.category-btns__item__active) {
+.tags__item:hover:not(.tags__item__active) {
 	background-color: var(--gray140);
 }
 

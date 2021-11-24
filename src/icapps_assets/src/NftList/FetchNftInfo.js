@@ -77,7 +77,8 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 data,
                 "Cronics",
                 "https://entrepot.app/marketplace/cronics",
-                "https://e3izy-jiaaa-aaaah-qacbq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=vfsjk-nakor-uwiaa-aaaaa-b4aaq-maqca-aadet-q"
+                "https://e3izy-jiaaa-aaaah-qacbq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=vfsjk-nakor-uwiaa-aaaaa-b4aaq-maqca-aadet-q",
+                "0.2-6 ICP"
             )
         );
 
@@ -106,7 +107,8 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 data,
                 "ICmojis",
                 "https://entrepot.app/marketplace/icmojis",
-                "https://gevsk-tqaaa-aaaah-qaoca-cai.raw.ic0.app/?tokenid=ydcn6-kikor-uwiaa-aaaaa-b4adq-qaqca-aaaj6-q"
+                "https://gevsk-tqaaa-aaaah-qaoca-cai.raw.ic0.app/?tokenid=ydcn6-kikor-uwiaa-aaaaa-b4adq-qaqca-aaaj6-q",
+                "0.5-3 ICP"
             )
         );
 
@@ -121,7 +123,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "Starverse",
                 "https://entrepot.app/marketplace/starverse",
                 "https://nbg4r-saaaa-aaaah-qap7a-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=gbxs5-sykor-uwiaa-aaaaa-b4ad7-yaqca-aabj4-a",
-                "0 ICP"
+                "Airdrop"
             )
         );
 
@@ -135,7 +137,8 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 data,
                 "Internet Astronauts",
                 "https://entrepot.app/marketplace/interastrosc",
-                "https://sr4qi-vaaaa-aaaah-qcaaq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=3yzwq-iykor-uwiaa-aaaaa-b4aqa-eaqca-aaad5-q"
+                "https://sr4qi-vaaaa-aaaah-qcaaq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=3yzwq-iykor-uwiaa-aaaaa-b4aqa-eaqca-aaad5-q",
+                "Airdrop"
             )
         );
 
@@ -163,6 +166,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "ICelebrity",
                 "https://entrepot.app/marketplace/icelebrity",
                 "https://kss7i-hqaaa-aaaah-qbvmq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=5qg5b-nykor-uwiaa-aaaaa-b4anl-eaqca-aaabb-q",
+                "2-12 ICP"
             )
         );
 
@@ -176,7 +180,8 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 data,
                 "Faceted Meninas",
                 "https://entrepot.app/marketplace/faceted-meninas",
-                "https://k4qsa-4aaaa-aaaah-qbvnq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=slywj-kykor-uwiaa-aaaaa-b4anl-maqca-aaabc-q"
+                "https://k4qsa-4aaaa-aaaah-qbvnq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=slywj-kykor-uwiaa-aaaaa-b4anl-maqca-aaabc-q",
+                "0.6 ICP"
             )
         );
 
@@ -233,7 +238,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "ICPunks",
                 "https://entrepot.app/marketplace/icpunks",
                 "https://qcg3w-tyaaa-aaaah-qakea-cai.raw.ic0.app/Token/29",
-                "0 ICP"
+                "Airdrop"
             )
         );
 
@@ -246,7 +251,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "ICDrip",
                 "https://entrepot.app/marketplace/icdrip",
                 "https://d3ttm-qaaaa-aaaai-qam4a-cai.raw.ic0.app/?tokenId=5316",
-                "0 ICP"
+                "Airdrop"
             )
         );
 
@@ -285,7 +290,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "Motoko Day Drop",
                 "https://entrepot.app/marketplace/motoko",
                 "https://oeee4-qaaaa-aaaak-qaaeq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=llmji-7akor-uwiaa-aaaaa-cuaab-eaqca-aadvo-q",
-                "0 ICP"
+                "Airdrop"
             )
         );
 
@@ -298,6 +303,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "Infinite Chimps",
                 "https://entrepot.app/marketplace/infinite-chimps",
                 "https://pnpu4-3aaaa-aaaah-qcceq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=5n2cg-tykor-uwiaa-aaaaa-b4aqr-eaqca-aaabt-a",
+                "5-10 ICP"
             )
         );
 
@@ -323,6 +329,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 "Wild and West",
                 "https://entrepot.app/marketplace/wildwest",
                 "https://b5el6-hqaaa-aaaah-qcdhq-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=xoufh-gqkor-uwiaa-aaaaa-b4aqz-4aqca-aaabt-q",
+                "5 ICP"
             )
         );
 

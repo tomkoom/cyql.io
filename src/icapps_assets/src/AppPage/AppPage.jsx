@@ -101,6 +101,7 @@ const AppPage = ({ data }) => {
 								</motion.div>
 
 								<p
+									className="body-text opacity66"
 									style={
 										d.canister || d.dscvr || d.distrikt
 											? null

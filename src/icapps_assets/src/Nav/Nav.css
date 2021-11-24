@@ -47,6 +47,7 @@
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	/* font-size: var(--fontSize7); */
 	color: white;
 	background-color: var(--gray180);
 	border-radius: 4px;
@@ -64,6 +65,12 @@
 
 .nav__list__item {
 	height: 36px;
+}
+
+.nav__list__item__active {
+	-webkit-box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 1);
+	-moz-box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 1);
+	box-shadow: 0px 2px 0px 0px rgba(255, 255, 255, 1);
 }
 
 .nav__list__item__content {
@@ -131,16 +138,6 @@
 	background-color: var(--gray180);
 	cursor: pointer;
 	border-radius: 8px;
-}
-
-#overlay {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: auto;
-	background: rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 1200px) {

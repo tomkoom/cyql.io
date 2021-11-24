@@ -79,7 +79,12 @@ const Nav = () => {
 		<nav className="nav">
 			<div className="nav__logo-container">
 				<NavLink exact to="/" replace>
-					<div className="nav__logo-container__logo">
+					<div
+						className="nav__logo-container__logo"
+						onClick={() => {
+							menuIsOpen ? setMenuIsOpen(false) : null;
+						}}
+					>
 						<img
 							src={Logo}
 							width="34"
@@ -108,12 +113,14 @@ const Nav = () => {
 				</div>
 			</div>
 
-			<div
+			{/* MENU BTN */}
+			<motion.div
 				className="nav__menu-btn"
 				onClick={() => setMenuIsOpen(!menuIsOpen)}
+				whileTap={{ scale: 0.9 }}
 			>
 				{menuIsOpen ? iconTimes : iconBars}
-			</div>
+			</motion.div>
 
 			<ul className={menuIsOpen ? "nav__list__active" : "nav__list"}>
 				<li
@@ -127,6 +134,7 @@ const Nav = () => {
 						to="/upcoming"
 						replace
 						className="nav__list__item__content black"
+						activeClassName="nav__list__item__active"
 					>
 						Upcoming NFT Sales
 					</NavLink>
@@ -143,6 +151,7 @@ const Nav = () => {
 						to="/nft"
 						replace
 						className="nav__list__item__content"
+						activeClassName="nav__list__item__active"
 					>
 						NFT Collections
 					</NavLink>
@@ -159,6 +168,7 @@ const Nav = () => {
 						to="/developers"
 						replace
 						className="nav__list__item__content"
+						activeClassName="nav__list__item__active"
 					>
 						Developers
 					</NavLink>
