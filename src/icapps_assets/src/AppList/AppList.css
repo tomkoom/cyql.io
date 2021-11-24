@@ -20,6 +20,10 @@
 	border-radius: 16px;
 }
 
+.app-list__item:hover {
+	background-color: var(--gray160);
+}
+
 .link-block {
 	height: 100%;
 }
@@ -31,11 +35,6 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	border-radius: 16px 16px 0 0;
-}
-
-.app-list__app-info__description__caption__title {
-	font-size: var(--fontSize5);
-	font-weight: var(--black);
 }
 
 .app-list__app-info {
@@ -55,6 +54,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
+	overflow-wrap: break-word;
+}
+
+.app-list__app-info__description__title {
+	font-size: var(--fontSize5);
+	font-weight: var(--black);
+	word-wrap: break-word;
 }
 
 .app-list__app-info__description p {

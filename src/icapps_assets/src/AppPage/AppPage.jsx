@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import "./AppPage.css";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "../FramerMotionStyles";
+import { btnVariants } from "../MotionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+	faArrowLeft,
+	faGlobe,
+	faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import {
 	faTwitter,
 	faTelegram,
@@ -14,23 +18,28 @@ import {
 	faMedium,
 	faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import {
-	faGlobe,
-	faArrowRight,
-} from "../../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+
+const iconArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
+const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
+const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
+const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
+const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
+const iconGithub = <FontAwesomeIcon icon={faGithub} />;
+const iconTelegram = <FontAwesomeIcon icon={faTelegram} />;
+const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 const AppPage = ({ data }) => {
 	const { id } = useParams();
 
 	return (
 		<section className="app-page container768">
-			<Link className="back-btn" to="/">
+			<Link className="backBtn" to="/">
 				<motion.div
-					className="back-btn__div"
-					whileHover={FramerMotionStyles.buttons.whileHover}
-					transition={FramerMotionStyles.buttons.transition}
+					className="backBtn__container"
+					variants={btnVariants}
+					whileHover="whileHover"
 				>
-					<FontAwesomeIcon icon={faArrowLeft} />
+					{iconArrowLeft}
 				</motion.div>
 			</Link>
 			{data[0]
@@ -76,12 +85,8 @@ const AppPage = ({ data }) => {
 								<motion.div
 									className="app-item__trade-btn"
 									data-value="btn"
-									whileHover={
-										FramerMotionStyles.buttons.whileHover
-									}
-									transition={
-										FramerMotionStyles.buttons.transition
-									}
+									variants={btnVariants}
+									whileHover="whileHover"
 									style={
 										d.marketUrl ? null : { display: "none" }
 									}
@@ -92,114 +97,92 @@ const AppPage = ({ data }) => {
 										rel="norefferrer noopener"
 										className="btn"
 									>
-										Trade{" "}
-										<FontAwesomeIcon
-											icon={faArrowRight}
-											color="rgba(255,255,255,0.3)"
-										/>
+										Trade {iconArrowRight}
 									</a>
 								</motion.div>
 
-								<p
-									className="body-text opacity66"
+								{/* IC ECOSYSTEM */}
+								<div
+									className="ic-ecosystem"
 									style={
 										d.canister || d.dscvr || d.distrikt
 											? null
 											: { display: "none" }
 									}
 								>
-									IC Ecosystem
-								</p>
-								<ul
-									className="app-item__social-icons-list"
-									style={
-										d.canister || d.dscvr || d.distrikt
-											? null
-											: { display: "none" }
-									}
-								>
-									<motion.li
-										data-social="Canister"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.canister
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.canister}
-											target="_blank"
-											rel="noopener noreferrer"
+									<p className="body-text opacity66">
+										IC Ecosystem
+									</p>
+
+									<ul className="app-item__social-icons-list">
+										<motion.li
+											data-social="Canister"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.canister
+													? null
+													: { display: "none" }
+											}
 										>
-											🛢️
-										</a>
-									</motion.li>
-									<motion.li
-										data-social="Dscvr"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.dscvr ? null : { display: "none" }
-										}
-									>
-										<a
-											href={d.dscvr}
-											target="_blank"
-											rel="noopener noreferrer"
+											<a
+												href={d.canister}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												🛢️
+											</a>
+										</motion.li>
+										<motion.li
+											data-social="Dscvr"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.dscvr
+													? null
+													: { display: "none" }
+											}
 										>
-											<img
-												src="https://i.postimg.cc/ZqN5BX1m/dscvr.jpg"
-												alt={`${d.name} Dscvr`}
-											/>
-										</a>
-									</motion.li>
-									<motion.li
-										data-social="Distrikt"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.distrikt
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.distrikt}
-											target="_blank"
-											rel="noopener noreferrer"
+											<a
+												href={d.dscvr}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												<img
+													src="https://i.postimg.cc/ZqN5BX1m/dscvr.jpg"
+													alt={`${d.name} Dscvr`}
+												/>
+											</a>
+										</motion.li>
+										<motion.li
+											data-social="Distrikt"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.distrikt
+													? null
+													: { display: "none" }
+											}
 										>
-											<img
-												src="https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg"
-												alt={`${d.name} Distrikt`}
-											/>
-										</a>
-									</motion.li>
-								</ul>
-								<p
-									className="body-text opacity66"
+											<a
+												href={d.distrikt}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												<img
+													src="https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg"
+													alt={`${d.name} Distrikt`}
+												/>
+											</a>
+										</motion.li>
+									</ul>
+								</div>
+
+								<div
+									className="social-media"
 									style={
 										d.website ||
 										d.discord ||
@@ -210,175 +193,129 @@ const AppPage = ({ data }) => {
 											: { display: "none" }
 									}
 								>
-									Social Media
-								</p>
-								<ul
-									className="app-item__social-icons-list"
-									style={
-										d.website ||
-										d.discord ||
-										d.github ||
-										d.telegram ||
-										d.medium
-											? null
-											: { display: "none" }
-									}
-								>
-									<motion.li
-										data-social="Website"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.website
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.website}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<FontAwesomeIcon icon={faGlobe} />
-										</a>
-									</motion.li>
+									<p className="body-text opacity66">
+										Social Media
+									</p>
 
-									<motion.li
-										data-social="Twitter"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.twitter
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.twitter}
-											target="_blank"
-											rel="noopener noreferrer"
+									<ul className="app-item__social-icons-list">
+										<motion.li
+											data-social="Website"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.website
+													? null
+													: { display: "none" }
+											}
 										>
-											<FontAwesomeIcon icon={faTwitter} />
-										</a>
-									</motion.li>
-									<motion.li
-										data-social="Discord"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.discord
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.discord}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<FontAwesomeIcon icon={faDiscord} />
-										</a>
-									</motion.li>
-									<motion.li
-										data-social="GitHub"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.github
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.github}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<FontAwesomeIcon icon={faGithub} />
-										</a>
-									</motion.li>
-									<motion.li
-										data-social="Telegram"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.telegram
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.telegram}
-											target="_blank"
-											rel="noopener noreferrer"
-										>
-											<FontAwesomeIcon
-												icon={faTelegram}
-											/>
-										</a>
-									</motion.li>
+											<a
+												href={d.website}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{iconGlobe}
+											</a>
+										</motion.li>
 
-									<motion.li
-										data-social="Medium"
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
-										className="app-item__social-icons-list__item"
-										style={
-											d.medium
-												? null
-												: { display: "none" }
-										}
-									>
-										<a
-											href={d.medium}
-											target="_blank"
-											rel="noopener noreferrer"
+										<motion.li
+											data-social="Twitter"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.twitter
+													? null
+													: { display: "none" }
+											}
 										>
-											<FontAwesomeIcon icon={faMedium} />
-										</a>
-									</motion.li>
-								</ul>
+											<a
+												href={d.twitter}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{iconTwitter}
+											</a>
+										</motion.li>
+										<motion.li
+											data-social="Discord"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.discord
+													? null
+													: { display: "none" }
+											}
+										>
+											<a
+												href={d.discord}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{iconDiscord}
+											</a>
+										</motion.li>
+										<motion.li
+											data-social="GitHub"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.github
+													? null
+													: { display: "none" }
+											}
+										>
+											<a
+												href={d.github}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{iconGithub}
+											</a>
+										</motion.li>
+										<motion.li
+											data-social="Telegram"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.telegram
+													? null
+													: { display: "none" }
+											}
+										>
+											<a
+												href={d.telegram}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{iconTelegram}
+											</a>
+										</motion.li>
+
+										<motion.li
+											data-social="Medium"
+											variants={btnVariants}
+											whileHover="whileHover"
+											className="app-item__social-icons-list__item"
+											style={
+												d.medium
+													? null
+													: { display: "none" }
+											}
+										>
+											<a
+												href={d.medium}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
+												{iconMedium}
+											</a>
+										</motion.li>
+									</ul>
+								</div>
 							</div>
 						))
 				: null}

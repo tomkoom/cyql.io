@@ -1,18 +1,11 @@
 /* APP PAGE */
 
-.app-item {
-	padding: 32px 0;
-}
-
-.app-item .app-name {
-	font-size: var(--fontSize4);
-}
-
-.back-btn {
+/* BACK BTN */
+.backBtn {
 	display: inline-block;
 }
 
-.back-btn__div {
+.backBtn__container {
 	width: 58px;
 	height: 58px;
 	display: grid;
@@ -23,8 +16,13 @@
 	border-radius: 50%;
 }
 
-.back-btn__div:hover {
+.backBtn__container:hover {
 	background-color: var(--gray140);
+}
+
+/* APP DATA */
+.app-item {
+	padding: 24px 0;
 }
 
 .app-item__app-cover {
@@ -34,38 +32,6 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	border-radius: 12px;
-}
-
-.app-item__links-list {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-}
-
-.app-item__social-icons-list {
-	list-style-type: none;
-	padding: 0;
-	margin: 24px 0;
-	display: flex;
-	gap: 16px;
-	font-size: var(--fontSize4);
-}
-
-.app-item__social-icons-list__item {
-	width: 58px;
-	height: 58px;
-	border-radius: 16px;
-	background-color: var(--gray180);
-}
-
-.app-item__social-icons-list__item a {
-	display: grid;
-	place-items: center;
-	width: 100%;
-	height: 100%;
 }
 
 .app-item__app-info {
@@ -88,9 +54,40 @@
 	border-radius: 4px;
 }
 
+.app-item__social-icons-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 12px 0;
+	display: flex;
+	gap: 12px;
+	font-size: var(--fontSize5);
+}
+
+.app-item__social-icons-list__item {
+	width: 48px;
+	height: 48px;
+	border-radius: 16px;
+	background-color: var(--gray180);
+	color: var(--gray100);
+}
+
+.app-item__social-icons-list__item a {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 100%;
+}
+
 .app-item__trade-btn {
 	display: inline-block;
 	padding: 8px 0 32px 0;
+}
+
+.app-item__app-info__logo {
+	width: 56px;
+	height: 56px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 [data-social="Website"]:hover {
@@ -126,12 +123,4 @@
 	height: 32px;
 	width: 32px;
 	border-radius: 50%;
-}
-
-
-.app-item__app-info__logo {
-	width: 56px;
-	height: 56px;
-	border-radius: 50%;
-	object-fit: cover;
 }

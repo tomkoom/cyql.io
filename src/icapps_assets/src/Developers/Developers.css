@@ -4,6 +4,11 @@
 	margin: 8px 0;
 }
 
+.developers__hero {
+	text-align: center;
+	padding-bottom: 32px;
+}
+
 .developer-resources {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(368px, 1fr));
@@ -35,6 +40,10 @@
 	justify-self: stretch;
 	padding: 16px;
 	height: 100%;
+}
+
+.developer-resources__link-block__item__info__main .body-text {
+	color: var(--gray60);
 }
 
 .developer-resources__link-block__item__info__foot {

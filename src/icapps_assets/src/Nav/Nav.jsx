@@ -8,7 +8,7 @@ import { deviceSizes } from "../deviceSizes";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "../FramerMotionStyles";
+import { btnVariants } from "../MotionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,7 +46,7 @@ const Nav = () => {
 		}, 5000);
 	};
 
-	// ICP price $
+	// ICP price
 	useEffect(() => {
 		fetch(
 			"https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
@@ -96,8 +96,8 @@ const Nav = () => {
 				</NavLink>
 				<motion.div
 					className="nav__logo-container__social-icons"
-					whileHover={FramerMotionStyles.buttons.whileHover}
-					transition={FramerMotionStyles.buttons.transition}
+					variants={btnVariants}
+					whileHover="whileHover"
 				>
 					<a
 						href="https://twitter.com/DfinityApps"

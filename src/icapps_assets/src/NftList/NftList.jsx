@@ -13,7 +13,7 @@ const NftList = () => {
 	return (
 		<section className="nft-list">
 			<h2>NFT Collections</h2>
-			<p className="body-text2">
+			<p className="body-text">
 				A list of NFT projects on the Internet Computer.
 			</p>
 

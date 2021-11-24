@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { motionVariants } from "../FramerMotionStyles";
+import { cardVariants } from "../MotionVariants";
 
 // COMPONENTS
 import TagButton from "./TagButton/TagButton";
@@ -69,9 +69,8 @@ const AppList = ({
 						<motion.div
 							key={d.id}
 							className="app-list__item"
-							variants={motionVariants.cards}
+							variants={cardVariants}
 							whileHover="whileHover"
-							animate="transition"
 						>
 							<Link className="link-block" to={`/a/${d.id}`}>
 								<div
@@ -96,39 +95,36 @@ const AppList = ({
 										}
 									/>
 									<div className="app-list__app-info__description">
-										<div className="app-list__app-info__description__caption">
-											<h2 className="app-list__app-info__description__caption__title">
-												{d.name}
-												&nbsp;
-												{d.category ===
-												"Social Networks"
-													? "🎯"
-													: d.category === "Games"
-													? "⚔️"
-													: d.category === "dApps"
-													? "🔗"
-													: d.category === "DeFi"
-													? "‍🌾"
-													: d.category === "DAOs"
-													? "🏠"
-													: d.category ===
-													  "Infrastructure"
-													? "🚀"
-													: d.category === "Wallets"
-													? "👛"
-													: d.category === "Tools"
-													? "🛠️"
-													: d.category === "Explorers"
-													? "🌎"
-													: d.category === "NFTs"
-													? "🗿"
-													: d.category === "DeFi"
-													? "‍🌾"
-													: null}
-											</h2>
-										</div>
+										<h2 className="app-list__app-info__description__title">
+											{d.name}
+											&nbsp;
+											{d.category === "Social Networks"
+												? "🎯"
+												: d.category === "Games"
+												? "⚔️"
+												: d.category === "dApps"
+												? "🔗"
+												: d.category === "DeFi"
+												? "‍🌾"
+												: d.category === "DAOs"
+												? "🏠"
+												: d.category ===
+												  "Infrastructure"
+												? "🚀"
+												: d.category === "Wallets"
+												? "👛"
+												: d.category === "Tools"
+												? "🛠️"
+												: d.category === "Explorers"
+												? "🌎"
+												: d.category === "NFTs"
+												? "🗿"
+												: d.category === "DeFi"
+												? "‍🌾"
+												: null}
+										</h2>
 
-										<p className="body-text gray60">
+										<p className="body-text">
 											{d.description &&
 											d.description.length > 90
 												? `${d.description.substring(

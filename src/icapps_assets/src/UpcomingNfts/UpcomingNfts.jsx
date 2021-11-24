@@ -1,6 +1,5 @@
 import React from "react";
 import "./UpcomingNfts.css";
-import { Link } from "react-router-dom";
 
 // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +16,7 @@ import {
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { FramerMotionStyles } from "../FramerMotionStyles";
+import { btnVariants } from "../MotionVariants";
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
@@ -37,7 +36,7 @@ const UpcomingNfts = () => {
 		<section className="upcoming-nft container768">
 			<div className="upcoming-nft-sales-intro center">
 				<h2>Upcoming NFT Sales &#38; Airdrops</h2>
-				<p className="body-text2">
+				<p className="body-text">
 					{/* Information on this page should not be considered as financial advice. */}
 					Please note: We do not guarantee information provided on
 					this page is 100% accurate. Please do your own research.
@@ -85,7 +84,7 @@ const UpcomingNfts = () => {
 				<>
 					{data[0].data.map((nft) => (
 						// Change key
-						<div className="upcoming-nft__card" key={nft.Name}>
+						<div className="upcoming-nft__card" key={nft["Name"]}>
 							<div className="upcoming-nft__card__main">
 								<div className="upcoming-nft__card__main__heading">
 									<h3 className="upcoming-nft__card__main__heading__title">
@@ -95,14 +94,8 @@ const UpcomingNfts = () => {
 									{nft["Date"] === "Sale is open" ? (
 										<motion.div
 											data-value="btn"
-											whileHover={
-												FramerMotionStyles.buttons
-													.whileHover
-											}
-											transition={
-												FramerMotionStyles.buttons
-													.transition
-											}
+											variants={btnVariants}
+											whileHover="whileHover"
 											className="upcoming-nft__card__main__heading__date"
 										>
 											<a
@@ -138,7 +131,7 @@ const UpcomingNfts = () => {
 									) : null}
 								</div>
 
-								<p className="body-text ">
+								<p className="body-text">
 									{nft["Description"] &&
 									nft["Description"].length > 280
 										? `${nft["Description"].substring(
@@ -163,14 +156,8 @@ const UpcomingNfts = () => {
 
 								<ul className="upcoming-nft__card__main__social-links-list">
 									<motion.li
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
+										variants={btnVariants}
+										whileHover="whileHover"
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Website"]
@@ -188,14 +175,8 @@ const UpcomingNfts = () => {
 									</motion.li>
 
 									<motion.li
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
+										variants={btnVariants}
+										whileHover="whileHover"
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Twitter"]
@@ -213,14 +194,8 @@ const UpcomingNfts = () => {
 									</motion.li>
 
 									<motion.li
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
+										variants={btnVariants}
+										whileHover="whileHover"
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Discord"]
@@ -238,14 +213,8 @@ const UpcomingNfts = () => {
 									</motion.li>
 
 									<motion.li
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
+										variants={btnVariants}
+										whileHover="whileHover"
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Telegram"]
@@ -264,14 +233,8 @@ const UpcomingNfts = () => {
 										</a>
 									</motion.li>
 									<motion.li
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
+										variants={btnVariants}
+										whileHover="whileHover"
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Dscvr"]
@@ -288,14 +251,8 @@ const UpcomingNfts = () => {
 										</a>
 									</motion.li>
 									<motion.li
-										whileHover={
-											FramerMotionStyles.buttons
-												.whileHover
-										}
-										transition={
-											FramerMotionStyles.buttons
-												.transition
-										}
+										variants={btnVariants}
+										whileHover="whileHover"
 										className="upcoming-nft__card__main__social-links-list__item"
 										style={
 											nft["Distrikt"]
