@@ -6,11 +6,7 @@ import { btnVariants } from "../MotionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faArrowLeft,
-	faGlobe,
-	faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faGlobe, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import {
 	faTwitter,
 	faTelegram,
@@ -28,11 +24,12 @@ const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 const iconTelegram = <FontAwesomeIcon icon={faTelegram} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
-const AppPage = ({ data }) => {
+const AppPage = ({ data, loading }) => {
 	const { id } = useParams();
 
 	return (
 		<section className="app-page container768">
+			{/* GO BACK BTN */}
 			<Link className="backBtn" to="/">
 				<motion.div
 					className="backBtn__container"
@@ -42,6 +39,8 @@ const AppPage = ({ data }) => {
 					{iconArrowLeft}
 				</motion.div>
 			</Link>
+
+			{/* CONTENT */}
 			{data[0]
 				? data[0].data
 						.filter((d) => d.id === id)
@@ -77,9 +76,7 @@ const AppPage = ({ data }) => {
 									</div>
 								</div>
 
-								<p className="body-text-light">
-									{d.description}
-								</p>
+								<p className="body-text-light">{d.description}</p>
 								<br />
 
 								<motion.div
@@ -87,9 +84,7 @@ const AppPage = ({ data }) => {
 									data-value="btn"
 									variants={btnVariants}
 									whileHover="whileHover"
-									style={
-										d.marketUrl ? null : { display: "none" }
-									}
+									style={d.marketUrl ? null : { display: "none" }}
 								>
 									<a
 										href={d.marketUrl}
@@ -110,9 +105,7 @@ const AppPage = ({ data }) => {
 											: { display: "none" }
 									}
 								>
-									<p className="body-text opacity66">
-										IC Ecosystem
-									</p>
+									<p className="body-text opacity66">IC Ecosystem</p>
 
 									<ul className="app-item__social-icons-list">
 										<motion.li
@@ -120,11 +113,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.canister
-													? null
-													: { display: "none" }
-											}
+											style={d.canister ? null : { display: "none" }}
 										>
 											<a
 												href={d.canister}
@@ -139,11 +128,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.dscvr
-													? null
-													: { display: "none" }
-											}
+											style={d.dscvr ? null : { display: "none" }}
 										>
 											<a
 												href={d.dscvr}
@@ -161,11 +146,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.distrikt
-													? null
-													: { display: "none" }
-											}
+											style={d.distrikt ? null : { display: "none" }}
 										>
 											<a
 												href={d.distrikt}
@@ -184,18 +165,12 @@ const AppPage = ({ data }) => {
 								<div
 									className="social-media"
 									style={
-										d.website ||
-										d.discord ||
-										d.github ||
-										d.telegram ||
-										d.medium
+										d.website || d.discord || d.github || d.telegram || d.medium
 											? null
 											: { display: "none" }
 									}
 								>
-									<p className="body-text opacity66">
-										Social Media
-									</p>
+									<p className="body-text opacity66">Social Media</p>
 
 									<ul className="app-item__social-icons-list">
 										<motion.li
@@ -203,11 +178,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.website
-													? null
-													: { display: "none" }
-											}
+											style={d.website ? null : { display: "none" }}
 										>
 											<a
 												href={d.website}
@@ -223,11 +194,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.twitter
-													? null
-													: { display: "none" }
-											}
+											style={d.twitter ? null : { display: "none" }}
 										>
 											<a
 												href={d.twitter}
@@ -242,11 +209,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.discord
-													? null
-													: { display: "none" }
-											}
+											style={d.discord ? null : { display: "none" }}
 										>
 											<a
 												href={d.discord}
@@ -261,11 +224,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.github
-													? null
-													: { display: "none" }
-											}
+											style={d.github ? null : { display: "none" }}
 										>
 											<a
 												href={d.github}
@@ -280,11 +239,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.telegram
-													? null
-													: { display: "none" }
-											}
+											style={d.telegram ? null : { display: "none" }}
 										>
 											<a
 												href={d.telegram}
@@ -300,11 +255,7 @@ const AppPage = ({ data }) => {
 											variants={btnVariants}
 											whileHover="whileHover"
 											className="app-item__social-icons-list__item"
-											style={
-												d.medium
-													? null
-													: { display: "none" }
-											}
+											style={d.medium ? null : { display: "none" }}
 										>
 											<a
 												href={d.medium}

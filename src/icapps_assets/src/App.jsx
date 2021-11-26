@@ -31,11 +31,7 @@ const App = () => {
 		if (data[0]) {
 			category === "All"
 				? setFilteredApps(data[0].data)
-				: setFilteredApps(
-						data[0].data.filter(
-							(apps) => apps.category === category
-						)
-				  );
+				: setFilteredApps(data[0].data.filter((apps) => apps.category === category));
 		}
 	}, [loading, category]);
 
@@ -56,7 +52,7 @@ const App = () => {
 				</Route>
 
 				<Route exact path="/a/:id">
-					<AppPage data={data} />
+					<AppPage data={data} loading={loading} />
 				</Route>
 
 				<Route exact path="/upcoming">

@@ -90,22 +90,22 @@ h3 {
 	font-size: var(--fontSize5);
 }
 
-.body-text,
-.body-text-light,
-.body-text2 {
+.bodyText,
+.bodyTextLight,
+.bodyText2 {
 	line-height: 150%;
 	word-wrap: break-word;
 }
 
-.body-text {
+.bodyText {
 	font-weight: var(--medium);
 }
 
-.body-text-light {
+.bodyTextTight {
 	font-weight: var(--light);
 }
 
-.body-text2 {
+.bodyText2 {
 	font-size: var(--fontSize4);
 }
 
@@ -121,18 +121,6 @@ h3 {
 	font-weight: var(--black);
 }
 
-/* BUTTONS */
-
-.submit-btn {
-	background-color: white;
-	color: var(--gray220);
-	padding: 12px;
-	border-radius: 8px;
-	display: flex;
-	align-self: center;
-	font-weight: var(--bold);
-}
-
 /* UNSORTED */
 
 .center {
@@ -142,11 +130,7 @@ h3 {
 
 .gradient-text-highlight {
 	background: rgb(98, 0, 234);
-	background-image: linear-gradient(
-		45deg,
-		rgba(98, 0, 234, 1) 0%,
-		rgba(48, 79, 254, 1) 100%
-	);
+	background-image: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
 	padding: 4px;
 	border-radius: 4px;
 	color: white;
