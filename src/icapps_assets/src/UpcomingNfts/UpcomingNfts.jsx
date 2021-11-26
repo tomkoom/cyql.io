@@ -4,7 +4,7 @@ import css from "./UpcomingNfts.module.css";
 // FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobe, faCalendarAlt, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faTelegram, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faTelegram, faDiscord, faMedium } from "@fortawesome/free-brands-svg-icons";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
@@ -23,6 +23,10 @@ const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 const iconTelegram = <FontAwesomeIcon icon={faTelegram} />;
+const iconMedium = <FontAwesomeIcon icon={faMedium} />;
+
+let socialLinks = [];
+let icLinks = [];
 
 const UpcomingNfts = () => {
 	const { data, loading, error } = useGoogleSheets({
@@ -34,6 +38,7 @@ const UpcomingNfts = () => {
 	return (
 		<section className={`${css.upcNft} container768`}>
 			{/* HERO */}
+
 			<div className={`${css.upcNft__hero} center`}>
 				<h2>Upcoming NFT Sales &#38; Airdrops</h2>
 				<p className="bodyText">
@@ -43,8 +48,9 @@ const UpcomingNfts = () => {
 				</p>
 
 				{/* MEDIA PARTNERS BADGE */}
+
 				<div className={css.mediaPartnerBadge}>
-					<p className="subtitle opacity66">Media Partners</p>
+					<p className="subtitle gray80">Media Partners</p>
 
 					<div className={css.mediaPartnerBadge__logoContainer}>
 						<img
@@ -66,6 +72,7 @@ const UpcomingNfts = () => {
 				</div>
 
 				{/* PROJECT SUBMIT BTN */}
+
 				<a
 					className={css.submitBtn}
 					href="https://forms.gle/rSxVndkZCkSpnfph7"
@@ -77,6 +84,7 @@ const UpcomingNfts = () => {
 			</div>
 
 			{/* CONTENT */}
+
 			{loading ? (
 				<div className="center">
 					<p className="bodyText">Loading... ⌛</p>
@@ -114,25 +122,23 @@ const UpcomingNfts = () => {
 									</motion.div>
 								) : (
 									<div className={css.upcNft__card__main__heading__date}>
-										<div>
-											{iconCalendar}
-											<p className="bodyText">
-												{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
-											</p>
-										</div>
+										{iconCalendar}
+										<p className="bodyText">
+											{`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
+										</p>
 									</div>
 								)}
 							</div>
 
-							{/* END HEADING */}
+							{/* DESCRIPTION */}
 
-							<p className="bodyText">
+							<p className="bodyTextLight gray40">
 								{nft["Description"] && nft["Description"].length > 280
 									? `${nft["Description"].substring(0, 280)}...`
 									: nft["Description"]}
 							</p>
 
-							<p className="bodyText opacity66">
+							<p className="bodyTextLight gray80">
 								{nft["Total NFTs"] && `Total assets 🗿 ${nft["Total NFTs"]}`}
 								{nft["Total NFTs"] && nft["Price"] !== "TBA" && nft["Price"]
 									? " · "
@@ -142,97 +148,71 @@ const UpcomingNfts = () => {
 									: null}
 							</p>
 
-							<ul className={css.upcNft__card__main__socialLinksList}>
-								<motion.li
-									variants={btnVariants}
-									whileHover="whileHover"
-									className={css.upcNft__card__main__socialLinksList__item}
-									style={nft["Website"] ? null : { display: "none" }}
-								>
-									<a
-										href={nft["Website"]}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{iconGlobe}
-									</a>
-								</motion.li>
+							{/* SOCIAL MEDIA LINKS */}
 
-								<motion.li
-									variants={btnVariants}
-									whileHover="whileHover"
-									className={css.upcNft__card__main__socialLinksList__item}
-									style={nft["Twitter"] ? null : { display: "none" }}
-								>
-									<a
-										href={nft["Twitter"]}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{iconTwitter}
-									</a>
-								</motion.li>
+							<div id={css.linkList}>
+								<ul className={css.upcNft__card__main__socialLinksList}>
+									{
+										((socialLinks = [
+											{ link: nft["Website"], icon: iconGlobe },
+											{ link: nft["Twitter"], icon: iconTwitter },
+											{ link: nft["Discord"], icon: iconDiscord },
+											{ link: nft["Telegram"], icon: iconTelegram },
+											{ link: nft["Medium"], icon: iconMedium },
+										]),
+										socialLinks.map(({ link, icon }, i) => (
+											<motion.li
+												key={i}
+												variants={btnVariants}
+												whileHover="whileHover"
+												className={
+													css.upcNft__card__main__socialLinksList__item
+												}
+												style={link ? null : { display: "none" }}
+											>
+												<a
+													href={link}
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													{icon}
+												</a>
+											</motion.li>
+										)))
+									}
+								</ul>
 
-								<motion.li
-									variants={btnVariants}
-									whileHover="whileHover"
-									className={css.upcNft__card__main__socialLinksList__item}
-									style={nft["Discord"] ? null : { display: "none" }}
-								>
-									<a
-										href={nft["Discord"]}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{iconDiscord}
-									</a>
-								</motion.li>
+								{/* IC LINKS */}
 
-								<motion.li
-									variants={btnVariants}
-									whileHover="whileHover"
-									className={css.upcNft__card__main__socialLinksList__item}
-									style={nft["Telegram"] ? null : { display: "none" }}
-								>
-									<a
-										href={nft["Telegram"]}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{iconTelegram}
-									</a>
-								</motion.li>
-
-								<motion.li
-									variants={btnVariants}
-									whileHover="whileHover"
-									className={css.upcNft__card__main__socialLinksList__item}
-									style={nft["Dscvr"] ? null : { display: "none" }}
-								>
-									<a
-										href={nft["Dscvr"]}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										Dscvr
-									</a>
-								</motion.li>
-
-								<motion.li
-									variants={btnVariants}
-									whileHover="whileHover"
-									className={css.upcNft__card__main__socialLinksList__item}
-									style={nft["Distrikt"] ? null : { display: "none" }}
-								>
-									<a
-										href={nft["Distrikt"]}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										Distrikt
-									</a>
-								</motion.li>
-							</ul>
+								<ul className={css.upcNft__card__main__socialLinksList}>
+									{
+										((icLinks = [
+											{ link: nft["Dscvr"], name: "Dscvr" },
+											{ link: nft["Distrikt"], name: "Distrikt" },
+											{ link: nft["Open Chat"], name: "Open Chat" },
+										]),
+										icLinks.map(({ link, name }, i) => (
+											<motion.li
+												key={i}
+												variants={btnVariants}
+												whileHover="whileHover"
+												className={
+													css.upcNft__card__main__socialLinksList__item
+												}
+												style={link ? null : { display: "none" }}
+											>
+												<a
+													href={link}
+													target="_blank"
+													rel="noopener noreferrer"
+												>
+													{name}
+												</a>
+											</motion.li>
+										)))
+									}
+								</ul>
+							</div>
 						</div>
 
 						{/* NFT IMAGES */}

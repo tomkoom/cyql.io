@@ -101,7 +101,7 @@ h3 {
 	font-weight: var(--medium);
 }
 
-.bodyTextTight {
+.bodyTextLight {
 	font-weight: var(--light);
 }
 
@@ -121,6 +121,18 @@ h3 {
 	font-weight: var(--black);
 }
 
+.gray40 {
+	color: var(--gray40);
+}
+
+.gray60 {
+	color: var(--gray60);
+}
+
+.gray80 {
+	color: var(--gray80);
+}
+
 /* UNSORTED */
 
 .center {
@@ -134,10 +146,6 @@ h3 {
 	padding: 4px;
 	border-radius: 4px;
 	color: white;
-}
-
-.opacity66 {
-	opacity: 0.66;
 }
 
 .monospace {
