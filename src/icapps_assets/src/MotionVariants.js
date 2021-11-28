@@ -17,6 +17,5 @@ export const btnVariants = {
             duration: 0.1,
         },
     },
-
 }
 
