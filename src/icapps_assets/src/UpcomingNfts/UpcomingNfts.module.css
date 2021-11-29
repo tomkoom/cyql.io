@@ -1,152 +1,156 @@
 /* UPCOMING NFTS*/
 
 .upcNft {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	gap: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 32px;
 }
 
 .upcNft__hero {
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	margin: 0 auto;
-	flex-flow: column wrap;
-	justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  flex-flow: column wrap;
+  justify-content: center;
 }
 
 .upcNft__hero h2 {
-	margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .upcNft__hero p {
-	color: var(--gray60);
+  color: var(--gray60);
 }
 
 /* MEDIA PARTNERS BADGE */
 
 .mediaPartnerBadge {
-	display: flex;
-	align-items: center;
-	align-self: center;
-	margin: 16px 0;
-	background-color: var(--gray180);
-	padding: 4px 12px;
-	border-radius: 8px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin: 16px 0;
+  background-color: var(--gray180);
+  padding: 4px 12px;
+  border-radius: 8px;
 }
 
 .mediaPartnerBadge__logoContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: var(--fontSize7);
-	font-weight: var(--bold);
-	gap: 4px;
-	margin-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fontSize7);
+  font-weight: var(--bold);
+  gap: 4px;
+  margin-left: 4px;
 }
 
 .mediaPartnerLogo {
-	height: 24px;
+  height: 24px;
 }
 
 .submitBtn {
-	background-color: white;
-	color: var(--gray220);
-	padding: 10px 12px;
-	border-radius: 8px;
-	display: flex;
-	align-self: center;
-	font-weight: var(--bold);
+  background-color: white;
+  color: var(--gray220);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-self: center;
+  font-weight: var(--bold);
 }
 
 /* CONTENT */
 
 .upcNft__card {
-	display: flex;
-	flex-direction: column;
-	gap: 16px;
-	border-radius: 24px;
-	background-color: var(--gray200);
-	padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 24px;
+  background-color: var(--gray200);
+  padding: 20px;
 }
 
 .upcNft__card__main {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .upcNft__card__main__heading {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .upcNft__card__main__heading__title {
-	font-size: var(--fontSize4);
+  font-size: var(--fontSize4);
 }
 
 .upcNft__card__main__heading__date {
-	display: flex;
-	align-items: center;
-	align-self: flex-start;
-	flex-wrap: nowrap;
-	gap: 8px;
-	margin-bottom: 4px;
-	padding: 10px 12px;
-	background-color: var(--gray180);
-	border-radius: 12px;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  flex-wrap: nowrap;
+  gap: 8px;
+  margin-bottom: 4px;
+  padding: 10px 12px;
+  background-color: var(--gray180);
+  border-radius: 12px;
 }
 
 .upcNft__card__main__heading__date p {
-	color: var(--gray40);
+  color: var(--gray40);
 }
 
 /* SOCIAL LINKS */
 
 #linkList {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .upcNft__card__main__socialLinksList {
-	list-style-type: none;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	margin: 16px 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
 }
 
 .upcNft__card__main__socialLinksList__item a {
-	font-weight: var(--bold);
-	padding: 12px;
-	border-radius: 12px;
-	color: var(--gray40);
-	background-color: var(--gray180);
+  font-weight: var(--bold);
+  padding: 12px;
+  border-radius: 12px;
+  color: var(--gray40);
+  background-color: var(--gray180);
 }
 
 .upcNft__card__main__socialLinksList__item a:hover {
-	color: white;
-	background-color: var(--gray140);
+  color: white;
+  background-color: var(--gray140);
 }
 
 [data-value="btn"]:hover {
-	background-image: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
+  background-image: linear-gradient(
+    45deg,
+    rgba(98, 0, 234, 1) 0%,
+    rgba(48, 79, 254, 1) 100%
+  );
 }
 
 /* NFT IMAGES */
 
 .upcNft__card__img {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
-	place-items: center;
-	grid-gap: 12px;
-	width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  place-items: center;
+  grid-gap: 12px;
+  width: 100%;
 }
 
 .upcNft__card__img__item {
-	border-radius: 12px;
-	width: 100%;
+  border-radius: 12px;
+  width: 100%;
 }

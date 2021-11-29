@@ -1,185 +1,191 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
 
 :root {
-	/* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
+  /* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
 
-	/* COLORS */
-	--gray220: #11100f;
-	--gray200: #1b1a19;
-	--gray180: #252423;
-	--gray160: #323130;
-	--gray140: #484644;
-	--gray120: #797775;
-	--gray100: #979593;
-	--gray80: #b3b0ad;
-	--gray60: #c8c6c4;
-	--gray40: #e1dfdd;
-	--gray20: #f3f2f1;
+  /* COLORS */
+  --gray220: #11100f;
+  --gray200: #1b1a19;
+  --gray180: #252423;
+  --gray160: #323130;
+  --gray140: #484644;
+  --gray120: #797775;
+  --gray100: #979593;
+  --gray80: #b3b0ad;
+  --gray60: #c8c6c4;
+  --gray40: #e1dfdd;
+  --gray20: #f3f2f1;
 
-	/* FONT SIZE */
-	--fontSize1: 3.052rem;
-	--fontSize2: 2.441rem;
-	--fontSize3: 1.953rem;
-	--fontSize4: 1.563rem;
-	--fontSize5: 1.25rem;
-	--fontSize6: 1rem;
-	--fontSize7: 0.8rem;
+  /* FONT SIZE */
+  --fontSize1: 3.052rem;
+  --fontSize2: 2.441rem;
+  --fontSize3: 1.953rem;
+  --fontSize4: 1.563rem;
+  --fontSize5: 1.25rem;
+  --fontSize6: 1rem;
+  --fontSize7: 0.8rem;
 
-	/* FONT WEIGHT */
-	--black: 800;
-	--bold: 600;
-	--medium: 400;
-	--light: 300;
+  /* FONT WEIGHT */
+  --black: 800;
+  --bold: 600;
+  --medium: 400;
+  --light: 300;
 }
 
 /* MAIN */
 
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-	font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
 }
 
 html {
-	font-size: 16px; /* Root font size */
+  font-size: 16px; /* Root font size */
 }
 
 body {
-	color: white;
-	background-color: var(--gray220);
+  color: white;
+  background-color: var(--gray220);
 }
 
 .container768,
 .container1280,
 .container1440 {
-	padding: 32px;
-	margin: 0 auto;
+  padding: 32px;
+  margin: 0 auto;
 }
 
 .container768 {
-	max-width: 768px;
+  max-width: 768px;
 }
 
 .container1280 {
-	max-width: 1280px;
+  max-width: 1280px;
 }
 
 .container1440 {
-	max-width: 1440px;
+  max-width: 1440px;
 }
 
 /* GLOBAL STYLES */
 
 a {
-	text-decoration: none;
-	color: white;
+  text-decoration: none;
+  color: white;
 }
 
 /* TYPOGRAPHY */
 
 h2 {
-	font-size: var(--fontSize2);
+  font-size: var(--fontSize2);
 }
 
 h3 {
-	font-size: var(--fontSize4);
+  font-size: var(--fontSize4);
 }
 
 h3 {
-	font-size: var(--fontSize5);
+  font-size: var(--fontSize5);
 }
 
 .bodyText,
 .bodyTextLight,
 .bodyText2 {
-	line-height: 150%;
-	word-wrap: break-word;
+  line-height: 150%;
+  word-wrap: break-word;
 }
 
 .bodyText {
-	font-weight: var(--medium);
+  font-weight: var(--medium);
 }
 
 .bodyTextLight {
-	font-weight: var(--light);
+  font-weight: var(--light);
 }
 
 .bodyText2 {
-	font-size: var(--fontSize4);
+  font-size: var(--fontSize4);
 }
 
 .subtitle {
-	font-size: var(--fontSize7);
+  font-size: var(--fontSize7);
 }
 
 .bold {
-	font-weight: var(--bold);
+  font-weight: var(--bold);
 }
 
 .black {
-	font-weight: var(--black);
+  font-weight: var(--black);
 }
 
 .gray40 {
-	color: var(--gray40);
+  color: var(--gray40);
 }
 
 .gray60 {
-	color: var(--gray60);
+  color: var(--gray60);
 }
 
 .gray80 {
-	color: var(--gray80);
+  color: var(--gray80);
 }
+
+/* BUTTONS */
 
 /* UNSORTED */
 
 .center {
-	text-align: center;
-	margin: 0 auto;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .gradient-text-highlight {
-	background: rgb(98, 0, 234);
-	background-image: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
-	padding: 4px;
-	border-radius: 4px;
-	color: white;
+  background: rgb(98, 0, 234);
+  background-image: linear-gradient(
+    45deg,
+    rgba(98, 0, 234, 1) 0%,
+    rgba(48, 79, 254, 1) 100%
+  );
+  padding: 4px;
+  border-radius: 4px;
+  color: white;
 }
 
 .monospace {
-	font-family: monospace;
+  font-family: monospace;
 }
 
 /* MEDIA QUERY */
 
 @media screen and (max-width: 768px) {
-	.highlights,
-	.container768,
-	.container1280,
-	.container1440 {
-		padding: 16px;
-	}
+  .highlights,
+  .container768,
+  .container1280,
+  .container1440 {
+    padding: 16px;
+  }
 
-	.category-btns {
-		gap: 8px;
-	}
+  .category-btns {
+    gap: 8px;
+  }
 
-	.app-list {
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-	}
+  .app-list {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 
-	.app-page,
-	.upcoming-nft {
-		padding: 24px 16px;
-	}
+  .app-page,
+  .upcoming-nft {
+    padding: 24px 16px;
+  }
 
-	.upcoming-nft__card {
-		padding: 16px;
-	}
+  .upcoming-nft__card {
+    padding: 16px;
+  }
 
-	.upcoming-nft__card__img {
-		max-width: 100%;
-	}
+  .upcoming-nft__card__img {
+    max-width: 100%;
+  }
 }
