@@ -18,6 +18,7 @@ import {
   faMedium,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import { icon } from "../../../../node_modules/@fortawesome/fontawesome-svg-core/index";
 
 const iconArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
@@ -29,6 +30,7 @@ const iconTelegram = <FontAwesomeIcon icon={faTelegram} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 let icLinks = [];
+let socialLinks = [];
 
 const AppPage = ({ data, loading }) => {
   const { id } = useParams();
@@ -106,26 +108,46 @@ const AppPage = ({ data, loading }) => {
 
               {/* IC ECOSYSTEM */}
               <div
-                className="ic-ecosystem"
+                className="icEcosystem"
                 style={
-                  d.canister || d.dscvr || d.distrikt
+                  d.canister || d.dscvr || d.distrikt || d.openChat
                     ? null
                     : { display: "none" }
                 }
               >
-                <p className="body-text opacity66">IC Ecosystem</p>
-
+                <p className="bodyText">IC Ecosystem</p>
                 <ul className="app-item__social-icons-list">
                   {
                     ((icLinks = [
-                      { link: d.canister, icon: "🛢️" },
-                      { link: d.dscvr },
-                      { link: d.distrikt },
+                      {
+                        name: "Canister",
+                        link: d.canister,
+                        icon: "🛢️",
+                        img: "",
+                      },
+                      {
+                        name: "Dscvr",
+                        link: d.dscvr,
+                        icon: "",
+                        img: "https://i.postimg.cc/ZqN5BX1m/dscvr.jpg",
+                      },
+                      {
+                        name: "Distrikt",
+                        link: d.distrikt,
+                        icon: "",
+                        img: "https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg",
+                      },
+                      {
+                        name: "Open Chat",
+                        link: d.openChat,
+                        icon: "",
+                        img: "",
+                      },
                     ]),
-                    icLinks.map(({ link }, i) => (
+                    icLinks.map(({ name, link, icon, img }) => (
                       <motion.li
-                        key={i}
-                        data-social="Canister"
+                        key={name}
+                        data-social={name}
                         variants={btnVariants}
                         whileHover="whileHover"
                         className="app-item__social-icons-list__item"
@@ -136,150 +158,82 @@ const AppPage = ({ data, loading }) => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          🛢️
+                          {icon ? (
+                            icon
+                          ) : img ? (
+                            <img src={img} alt={`${name} logo`} />
+                          ) : null}
                         </a>
                       </motion.li>
                     )))
                   }
-
-                  <motion.li
-                    data-social="Dscvr"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.dscvr ? null : { display: "none" }}
-                  >
-                    <a href={d.dscvr} target="_blank" rel="noopener noreferrer">
-                      <img
-                        src="https://i.postimg.cc/ZqN5BX1m/dscvr.jpg"
-                        alt={`${d.name} Dscvr`}
-                      />
-                    </a>
-                  </motion.li>
-                  <motion.li
-                    data-social="Distrikt"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.distrikt ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.distrikt}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        src="https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg"
-                        alt={`${d.name} Distrikt`}
-                      />
-                    </a>
-                  </motion.li>
                 </ul>
               </div>
 
+              {/* SOCIAL MEDIA LINKS */}
               <div
-                className="social-media"
+                className="socialMediaLinks"
                 style={
                   d.website || d.discord || d.github || d.telegram || d.medium
                     ? null
                     : { display: "none" }
                 }
               >
-                <p className="body-text opacity66">Social Media</p>
+                <p className="bodyText">Social Media</p>
 
                 <ul className="app-item__social-icons-list">
-                  <motion.li
-                    data-social="Website"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.website ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {iconGlobe}
-                    </a>
-                  </motion.li>
-
-                  <motion.li
-                    data-social="Twitter"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.twitter ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {iconTwitter}
-                    </a>
-                  </motion.li>
-                  <motion.li
-                    data-social="Discord"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.discord ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.discord}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {iconDiscord}
-                    </a>
-                  </motion.li>
-                  <motion.li
-                    data-social="GitHub"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.github ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {iconGithub}
-                    </a>
-                  </motion.li>
-                  <motion.li
-                    data-social="Telegram"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.telegram ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.telegram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {iconTelegram}
-                    </a>
-                  </motion.li>
-
-                  <motion.li
-                    data-social="Medium"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className="app-item__social-icons-list__item"
-                    style={d.medium ? null : { display: "none" }}
-                  >
-                    <a
-                      href={d.medium}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {iconMedium}
-                    </a>
-                  </motion.li>
+                  {
+                    ((socialLinks = [
+                      {
+                        name: "Website",
+                        link: d.website,
+                        icon: iconGlobe,
+                      },
+                      {
+                        name: "Twitter",
+                        link: d.twitter,
+                        icon: iconTwitter,
+                      },
+                      {
+                        name: "Discord",
+                        link: d.discord,
+                        icon: iconDiscord,
+                      },
+                      {
+                        name: "GitHub",
+                        link: d.github,
+                        icon: iconGithub,
+                      },
+                      {
+                        name: "Telegram",
+                        link: d.telegram,
+                        icon: iconTelegram,
+                      },
+                      {
+                        name: "Medium",
+                        link: d.medium,
+                        icon: iconMedium,
+                      },
+                    ]),
+                    socialLinks.map(({ name, link, icon }) => (
+                      <motion.li
+                        key={name}
+                        data-social={name}
+                        variants={btnVariants}
+                        whileHover="whileHover"
+                        className="app-item__social-icons-list__item"
+                        style={link ? null : { display: "none" }}
+                      >
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {icon}
+                        </a>
+                      </motion.li>
+                    )))
+                  }
                 </ul>
               </div>
               <a
