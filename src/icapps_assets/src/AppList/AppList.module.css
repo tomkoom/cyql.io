@@ -1,0 +1,69 @@
+/* APP LIST */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.li {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-gap: 24px;
+}
+
+.li__item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray180);
+  border-radius: 16px;
+}
+
+.li__item:hover {
+  background-color: var(--gray160);
+}
+
+.li__item__linkBlock {
+  height: 100%;
+}
+
+.li__item__linkBlock__coverImg {
+  width: 100%;
+  padding-bottom: 33.33%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px 16px 0 0;
+}
+
+.li__item__linkBlock__appInfo {
+  display: flex;
+  padding: 16px 16px 16px;
+  gap: 16px;
+}
+
+.li__item__linkBlock__appInfo__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.li__item__linkBlock__appInfo__description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description__title {
+  font-size: var(--fontSize5);
+  font-weight: var(--black);
+  word-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description p {
+  font-weight: 300;
+  color: var(--gray60);
+}
