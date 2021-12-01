@@ -47,11 +47,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  /* font-size: var(--fontSize7); */
+  font-size: var(--fontSize7);
   color: white;
   background-color: var(--gray180);
   border-radius: 4px;
-  padding: 8px;
+  padding: 6px 8px;
 }
 
 .icp-price-badge__logo {
@@ -189,7 +189,7 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .nav {
     padding: 24px;
   }
@@ -200,5 +200,11 @@
 
   .nav__list__active {
     right: 24px;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .icp-price-badge {
+    display: none;
   }
 }

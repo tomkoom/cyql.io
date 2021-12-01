@@ -144,10 +144,10 @@ const AppList = ({
         ) : error ? (
           <p className="center">Fetch error!</p>
         ) : (
-          data[1].data.map((add, i) => (
+          data[1].data.map((ad, i) => (
             <motion.a
               className={css.appList__ads__item}
-              href={add.link ? add.link : "#"}
+              href={ad.link ? ad.link : null}
               target="_blank"
               rel="norefferer noopener"
               variants={cardVariants}
@@ -156,13 +156,14 @@ const AppList = ({
             >
               <div
                 className={css.appList__ads__item__cover}
+                id={ad.name === "Your ad" ? css.yourAd : null}
                 style={{
-                  backgroundImage: `url(${add.cover})`,
+                  backgroundImage: `url(${ad.cover})`,
                 }}
-                alt={add.name}
+                alt={ad.name}
               />
               <div className={css.appList__ads__item__info}>
-                <p className="bodyText center">{add.description}</p>
+                <p className="bodyText center">{ad.description}</p>
               </div>
             </motion.a>
           ))

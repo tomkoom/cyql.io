@@ -19,7 +19,7 @@
 }
 
 .tags__item:hover:not(.tags__item.active) {
-  background-color: var(--gray180);
+  background-color: var(--gray160);
 }
 
 .active {
@@ -40,7 +40,7 @@
   color: var(--gray100);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .tags__item {
     background-color: var(--gray200);
   }

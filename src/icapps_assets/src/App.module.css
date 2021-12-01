@@ -5,7 +5,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .app {
     padding: 0 24px 24px 24px;
   }
