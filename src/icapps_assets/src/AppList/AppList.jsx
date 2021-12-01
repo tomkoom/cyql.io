@@ -28,10 +28,10 @@ const AppList = ({
     { name: "Infrastructure", icon: "🚀" },
     { name: "Wallets", icon: "👛" },
     { name: "Tools", icon: "🛠️" },
-    { name: "Domains", icon: "" },
+    { name: "Domains", icon: "🤖" },
     { name: "Explorers", icon: "🌎" },
     { name: "Dfinity Apps", icon: "♾️" },
-    { name: "Communities", icon: "" },
+    { name: "Communities", icon: "📣" },
   ];
 
   return (
@@ -42,7 +42,7 @@ const AppList = ({
       <div className={css.tags}>
         {categories.map((cat, i) => (
           <TagButton
-            handleSetCategory={setCategory}
+            setCategory={setCategory}
             category={cat.name}
             categoryActive={category === cat.name ? true : false}
             icon={cat.icon}
@@ -124,7 +124,7 @@ const AppList = ({
                         : null}
                     </h2>
 
-                    <p className="bodyText">
+                    <p className="bodyTextLight">
                       {d.description && d.description.length > 75
                         ? `${d.description.substring(0, 75)}…`
                         : d.description}
@@ -136,6 +136,7 @@ const AppList = ({
           ))}
         </div>
       )}
+
       {/* ADS */}
       <div className={css.appList__ads}>
         {loading ? (
@@ -161,7 +162,7 @@ const AppList = ({
                 alt={add.name}
               />
               <div className={css.appList__ads__item__info}>
-                <p className="bodyText">{add.description}</p>
+                <p className="bodyText center">{add.description}</p>
               </div>
             </motion.a>
           ))

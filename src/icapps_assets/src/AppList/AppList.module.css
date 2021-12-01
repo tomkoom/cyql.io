@@ -9,8 +9,6 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  /* flex-wrap: wrap; */
-  /* margin-bottom: 32px; */
 }
 
 /* ADS */
@@ -22,13 +20,13 @@
   position: sticky;
   top: 24px;
   align-self: flex-start;
-  max-width: 260px;
+  max-width: 240px;
   width: 100%;
 }
 
 .appList__ads__item {
   display: block;
-  border-radius: 8px;
+  border-radius: 12px;
   background-color: var(--gray200);
 }
 
@@ -38,7 +36,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
 }
 
 .appList__ads__item__info {
@@ -77,10 +75,6 @@
   background-color: var(--gray160);
 }
 
-.li__item__linkBlock {
-  height: 100%;
-}
-
 .li__item__linkBlock__coverImg {
   width: 100%;
   padding-bottom: 33.33%;
@@ -92,13 +86,13 @@
 
 .li__item__linkBlock__appInfo {
   display: flex;
-  padding: 16px 16px 16px;
-  gap: 16px;
+  padding: 12px;
+  gap: 12px;
 }
 
 .li__item__linkBlock__appInfo__logo {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -112,18 +106,29 @@
 }
 
 .li__item__linkBlock__appInfo__description__title {
-  font-size: var(--fontSize5);
-  font-weight: var(--bold);
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
   word-wrap: break-word;
 }
 
 .li__item__linkBlock__appInfo__description p {
-  font-weight: 300;
   color: var(--gray60);
 }
 
-@media screen and (max-width: 768px) {
-  .appList__heading {
-    font-size: var(--fontSize4);
+@media screen and (max-width: 1024px) {
+  .appList {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .tags {
+    position: inherit;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .appList__ads {
+    display: none;
   }
 }

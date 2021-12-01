@@ -5,8 +5,10 @@
   flex-wrap: nowrap;
   align-items: center;
   text-align: left;
+  gap: 4px;
   white-space: nowrap;
-  padding: 8px 10px;
+  height: 40px;
+  padding: 0 8px;
   font-size: var(--fontSize6);
   font-weight: var(--medium);
   background-color: var(--gray220);
@@ -14,15 +16,15 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 150ms ease-in-out;
 }
 
-.tags__item:hover:not(.tags__item__active) {
+.tags__item:hover:not(.tags__item.active) {
   background-color: var(--gray180);
 }
 
-.tags__item__active {
-  background-color: var(--gray180);
+.active {
+  background-color: white;
+  color: var(--gray220);
 }
 
 .tags__item__icon {
@@ -30,11 +32,21 @@
   height: 32px;
   display: grid;
   place-items: center;
-  background-color: var(--gray180);
-  border-radius: 4px;
-  margin-right: 6px;
+  font-size: var(--fontSize5);
+  border-radius: 8px;
 }
 
 .tags__item__appsNum {
   color: var(--gray100);
+}
+
+@media screen and (max-width: 1024px) {
+  .tags__item {
+    background-color: var(--gray200);
+  }
+
+  .active {
+    background-color: white;
+    color: var(--gray220);
+  }
 }
