@@ -2,13 +2,14 @@
 
 .tags__item {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 8px;
+  text-align: left;
+  white-space: nowrap;
   padding: 8px 10px;
-  font-size: var(--fontSize5);
+  font-size: var(--fontSize6);
   font-weight: var(--medium);
-  text-decoration: none;
-  background-color: var(--gray180);
+  background-color: var(--gray220);
   color: white;
   border: none;
   border-radius: 8px;
@@ -17,14 +18,23 @@
 }
 
 .tags__item:hover:not(.tags__item__active) {
-  background-color: var(--gray140);
+  background-color: var(--gray180);
 }
 
 .tags__item__active {
-  background-color: white;
-  color: var(--gray220);
+  background-color: var(--gray180);
 }
 
-.appsNum {
+.tags__item__icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background-color: var(--gray180);
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+.tags__item__appsNum {
   color: var(--gray100);
 }

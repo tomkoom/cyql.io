@@ -15,9 +15,12 @@ const TagButton = ({
       }`}
       onClick={() => handleSetCategory(category)}
     >
-      {icon ? `${icon} ` : null}
+      <span className={icon ? css.tags__item__icon : null}>
+        {icon ? `${icon}` : null}
+      </span>
       {category}
-      <span className={css.appsNum}>{appsNum}</span>
+      &nbsp;{" "}
+      <span className={css.tags__item__appsNum}>&#40;{appsNum}&#41;</span>
     </button>
   );
 };

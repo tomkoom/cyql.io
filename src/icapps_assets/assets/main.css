@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap");
 
 :root {
   /* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
@@ -38,7 +39,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: "Work Sans", sans-serif;
 }
 
 html {
@@ -53,7 +54,6 @@ body {
 .container768,
 .container1280,
 .container1440 {
-  padding: 32px;
   margin: 0 auto;
 }
 
@@ -67,6 +67,10 @@ body {
 
 .container1440 {
   max-width: 1440px;
+}
+
+.container1920 {
+  max-width: 1920px;
 }
 
 /* GLOBAL STYLES */

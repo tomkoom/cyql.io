@@ -3,8 +3,8 @@ import "./Nav.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import k from "../../../../k/k";
-import { useWindowSize } from "./useWindowSize";
-import { deviceSizes } from "../deviceSizes";
+import { useWindowSize } from "./UseWindowSize";
+import { deviceSizes } from "../DeviceSizes";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import css from "./App.module.css";
 import { Switch, Route, withRouter } from "react-router-dom";
 
 // GOOGLE API
@@ -18,59 +19,63 @@ const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
-	const [category, setCategory] = useState("All");
-	const [filteredApps, setFilteredApps] = useState([]);
+  const [category, setCategory] = useState("All");
+  const [filteredApps, setFilteredApps] = useState([]);
 
-	const { data, loading, error } = useGoogleSheets({
-		apiKey: googleSheetsApiKey,
-		sheetId: googleSheetId,
-		sheetsNames: ["Apps"],
-	});
+  const { data, loading, error } = useGoogleSheets({
+    apiKey: googleSheetsApiKey,
+    sheetId: googleSheetId,
+    sheetsNames: ["Apps", "Ads"],
+  });
 
-	useEffect(() => {
-		if (data[0]) {
-			category === "All"
-				? setFilteredApps(data[0].data)
-				: setFilteredApps(data[0].data.filter((apps) => apps.category === category));
-		}
-	}, [loading, category]);
+  useEffect(() => {
+    if (data[0]) {
+      category === "All"
+        ? setFilteredApps(data[0].data)
+        : setFilteredApps(
+            data[0].data.filter((apps) => apps.category === category)
+          );
+    }
+  }, [loading, category]);
 
-	return (
-		<div>
-			<Nav />
-			<Switch>
-				<Route exact path="/">
-					{/* <Highlights /> */}
-					<AppList
-						category={category}
-						setCategory={setCategory}
-						filteredApps={filteredApps}
-						data={data}
-						loading={loading}
-						error={error}
-					/>
-				</Route>
+  return (
+    <div>
+      <Nav />
+      <div className={css.app}>
+        <Switch>
+          <Route exact path="/">
+            {/* <Highlights /> */}
+            <AppList
+              category={category}
+              setCategory={setCategory}
+              filteredApps={filteredApps}
+              data={data}
+              loading={loading}
+              error={error}
+            />
+          </Route>
 
-				<Route exact path="/a/:id">
-					<AppPage data={data} loading={loading} />
-				</Route>
+          <Route exact path="/a/:id">
+            <AppPage data={data} loading={loading} />
+          </Route>
 
-				<Route exact path="/upcoming">
-					<UpcomingNfts />
-				</Route>
+          <Route exact path="/upcoming">
+            <UpcomingNfts />
+          </Route>
 
-				<Route exact path="/developers">
-					<Developers />
-				</Route>
+          <Route exact path="/developers">
+            <Developers />
+          </Route>
 
-				<Route exact path="/nft">
-					<NftList />
-				</Route>
+          <Route exact path="/nft">
+            <NftList />
+          </Route>
 
-				{/* <Route component={page404} /> */}
-			</Switch>
-		</div>
-	);
+          {/* <Route component={page404} /> */}
+        </Switch>
+      </div>
+    </div>
+  );
 };
 
 export default withRouter(App);
