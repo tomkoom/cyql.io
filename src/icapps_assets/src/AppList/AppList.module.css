@@ -5,9 +5,9 @@
 .tags {
   position: sticky;
   top: 24px;
-  align-self: flex-start;
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 4px;
 }
 
@@ -20,7 +20,7 @@
   position: sticky;
   top: 24px;
   align-self: flex-start;
-  max-width: 240px;
+  max-width: 200px;
   width: 100%;
 }
 
@@ -50,14 +50,14 @@
 
 /* CONTENT */
 
-.appList {
+.appList__heading {
+  margin: 0 0 32px 261px;
+}
+
+.appList__content {
   display: flex;
   gap: 48px;
   margin: 0 auto;
-}
-
-.appList__heading {
-  margin-bottom: 24px;
 }
 
 .li {
@@ -120,7 +120,11 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .appList {
+  .appList__heading {
+    margin: 0 0 32px 0;
+  }
+
+  .appList__content {
     flex-direction: column;
     gap: 24px;
   }

@@ -51,9 +51,12 @@ body {
   background-color: var(--gray220);
 }
 
+
+/* CONTAINERS */
 .container768,
 .container1280,
-.container1440 {
+.container1440,
+.container1600 {
   margin: 0 auto;
 }
 
@@ -69,8 +72,8 @@ body {
   max-width: 1440px;
 }
 
-.container1920 {
-  max-width: 1920px;
+.container1600 {
+  max-width: 1600px;
 }
 
 /* GLOBAL STYLES */
@@ -117,14 +120,6 @@ h3 {
   font-size: var(--fontSize7);
 }
 
-.bold {
-  font-weight: var(--bold);
-}
-
-.black {
-  font-weight: var(--black);
-}
-
 .gray40 {
   color: var(--gray40);
 }
@@ -160,36 +155,4 @@ h3 {
 
 .monospace {
   font-family: monospace;
-}
-
-/* MEDIA QUERY */
-
-@media screen and (max-width: 768px) {
-  .highlights,
-  .container768,
-  .container1280,
-  .container1440 {
-    padding: 16px;
-  }
-
-  .category-btns {
-    gap: 8px;
-  }
-
-  .app-list {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-
-  .app-page,
-  .upcoming-nft {
-    padding: 24px 16px;
-  }
-
-  .upcoming-nft__card {
-    padding: 16px;
-  }
-
-  .upcoming-nft__card__img {
-    max-width: 100%;
-  }
 }
