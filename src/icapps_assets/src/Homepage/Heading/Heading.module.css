@@ -1,0 +1,11 @@
+/* HOMEPAGE HEADING */
+
+.appList__heading {
+  margin: 0 0 32px 261px;
+}
+
+@media screen and (max-width: 1023px) {
+  .appList__heading {
+    margin: 0 0 32px 0;
+  }
+}

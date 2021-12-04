@@ -1,6 +1,6 @@
-/* TAG BUTTON */
+/* HOMEPAGE TAGS ITEM */
 
-.tags__item {
+.tagsItem {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-.tags__item:hover:not(.tags__item.active) {
+.tagsItem:hover:not(.tags__item.active) {
   background-color: var(--gray160);
 }
 
@@ -27,7 +27,7 @@
   color: var(--gray220);
 }
 
-.tags__item__icon {
+.tagsItem__icon {
   width: 32px;
   height: 32px;
   display: grid;
@@ -36,12 +36,12 @@
   border-radius: 8px;
 }
 
-.tags__item__appsNum {
+.tagsItem__appsNum {
   color: var(--gray100);
 }
 
 @media screen and (max-width: 1023px) {
-  .tags__item {
+  .tagsItem {
     background-color: var(--gray200);
   }
 

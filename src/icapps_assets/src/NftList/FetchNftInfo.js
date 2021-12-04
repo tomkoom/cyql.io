@@ -92,7 +92,7 @@ export const fetchNftInfo = async (setNftItems, setLoading) => {
                 data,
                 "ICPuppies",
                 "https://entrepot.app/marketplace/icpuppies",
-                "https://njgly-uaaaa-aaaah-qb6pa-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=slkgo-rakor-uwiaa-aaaaa-b4apt-yaqca-aacir-q",
+                "https://i.postimg.cc/j5pLTScZ/icpuppies-cover4.png",
                 "0.4-1 ICP"
             )
         );

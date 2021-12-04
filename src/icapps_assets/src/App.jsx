@@ -8,7 +8,7 @@ import k from "../../../k/k";
 
 // COMPONENTS
 import Nav from "./Nav/Nav";
-import AppList from "./AppList/AppList";
+import Homepage from "./Homepage/Homepage";
 import AppPage from "./AppPage/AppPage";
 import UpcomingNfts from "./UpcomingNfts/UpcomingNfts";
 import Developers from "./Developers/Developers";
@@ -45,7 +45,7 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             {/* <Highlights /> */}
-            <AppList
+            <Homepage
               category={category}
               setCategory={setCategory}
               filteredApps={filteredApps}

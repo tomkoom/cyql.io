@@ -1,0 +1,62 @@
+/* HOMEPAGE APP LIST */
+.appList {
+  width: 100%;
+}
+
+.li {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 24px;
+  /* max-height: 0; */
+}
+
+.li__item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray200);
+  border-radius: 16px;
+}
+
+.li__item:hover {
+  background-color: var(--gray160);
+}
+
+.li__item__linkBlock__coverImg {
+  width: 100%;
+  padding-bottom: 33.33%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px 16px 0 0;
+}
+
+.li__item__linkBlock__appInfo {
+  display: flex;
+  padding: 12px;
+  gap: 12px;
+}
+
+.li__item__linkBlock__appInfo__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.li__item__linkBlock__appInfo__description {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--fontSize6);
+  overflow-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description__title {
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
+  word-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description p {
+  color: var(--gray60);
+}
