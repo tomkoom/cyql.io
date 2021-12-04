@@ -20,8 +20,13 @@ const TagsItem = ({ category, setCategory, categoryActive, icon, appsNum }) => {
       >
         {icon ? `${icon}` : null}
       </span>
-      {category}&nbsp;
-      <span className={css.tagsItem__appsNum}>&#40;{appsNum}&#41;</span>
+      <p
+        className="bodyText"
+        style={categoryActive ? { textDecoration: "underline" } : null}
+      >
+        {category}&nbsp;
+        <span className={css.tagsItem__appsNum}>&#40;{appsNum}&#41;</span>
+      </p>
     </button>
   );
 };

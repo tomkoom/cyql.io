@@ -5,11 +5,16 @@ import css from "./Ads.module.css";
 import { motion } from "framer-motion";
 import { cardVariants } from "../../MotionVariants";
 
+// LOADER
+import Loader from "./../../ThreeDotsLoader";
+
 const Ads = ({ data, loading, error }) => {
   return (
     <div className={css.ads}>
       {loading ? (
-        <p className="center">Loading...</p>
+        <div className="center">
+          <Loader />
+        </div>
       ) : error ? (
         <p className="center">Error fetching data!</p>
       ) : (

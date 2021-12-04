@@ -1,0 +1,30 @@
+/* SEARCH */
+
+.search {
+  margin-top: 12px;
+}
+
+.search__input {
+  display: flex;
+  align-items: center;
+  max-width: 360px;
+  width: 100%;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-size: var(--fontSize6);
+  color: var(--white);
+  background-color: var(--gray180);
+  /* caret-color: white; */
+  /* transition: all 0.25s ease-out; */
+
+  /* clean default styles */
+  border: none;
+  outline: none;
+}
+
+.search__input:hover,
+.search__input:focus {
+  color: var(--gray220);
+  background-color: white;
+}

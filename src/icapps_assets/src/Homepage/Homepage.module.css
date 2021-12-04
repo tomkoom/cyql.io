@@ -1,5 +1,9 @@
 /* HOMEPAGE */
 
+.homepage__hero {
+  margin: 0 0 32px 261px;
+}
+
 .homepage__content {
   display: flex;
   justify-content: space-between;
@@ -8,6 +12,9 @@
 }
 
 @media screen and (max-width: 1023px) {
+  .homepage__hero {
+    margin: 0 0 32px 0;
+  }
   .homepage__content {
     flex-direction: column;
     gap: 24px;

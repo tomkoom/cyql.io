@@ -34,7 +34,7 @@ const Tags = ({ category, setCategory, data, loading }) => {
               ? null
               : cat.name === "All"
               ? data[0].data.length
-              : data[0].data.filter((item) => item.category === cat.name).length
+              : data[0].data.filter((item) => item.category == cat.name).length
           }
           key={i}
         />

@@ -18,13 +18,13 @@
   cursor: pointer;
 }
 
-.tagsItem:hover:not(.tags__item.active) {
+/* .tagsItem:hover:not(.tagsItem.active) {
   background-color: var(--gray160);
-}
+} */
 
 .active {
-  background-color: white;
-  color: var(--gray220);
+  background-color: var(--gray180);
+  /* color: var(--gray220); */
 }
 
 .tagsItem__icon {
