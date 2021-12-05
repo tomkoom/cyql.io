@@ -16,15 +16,15 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: all 0.25s ease-out;
 }
 
-/* .tagsItem:hover:not(.tagsItem.active) {
-  background-color: var(--gray160);
-} */
+.tagsItem:hover:not(.tagsItem.active) {
+  background-color: var(--gray180);
+}
 
 .active {
-  background-color: var(--gray180);
-  /* color: var(--gray220); */
+  background-color: var(--gray160);
 }
 
 .tagsItem__icon {
@@ -46,7 +46,6 @@
   }
 
   .active {
-    background-color: white;
-    color: var(--gray220);
+    background-color: var(--gray160);
   }
 }
