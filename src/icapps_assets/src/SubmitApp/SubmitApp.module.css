@@ -1,0 +1,20 @@
+/* SUBMIT APP */
+
+.submitApp__form {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+
+.submitApp__form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitApp__form__group__label {
+  margin-bottom: 12px;
+}
+
+.submitApp__form__group__submitBtn {
+  margin-top: 24px;
+}

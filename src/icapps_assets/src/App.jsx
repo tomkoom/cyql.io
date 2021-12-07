@@ -14,6 +14,7 @@ import UpcomingNfts from "./UpcomingNfts/UpcomingNfts";
 import Developers from "./Developers/Developers";
 import NftList from "./NftList/NftList";
 import Highlights from "./Highlights/Highlights";
+import SubmitApp from "./SubmitApp/SubmitApp";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
@@ -69,6 +70,10 @@ const App = () => {
 
           <Route exact path="/nft">
             <NftList />
+          </Route>
+
+          <Route exact path="/submit">
+            <SubmitApp />
           </Route>
 
           {/* <Route component={page404} /> */}
