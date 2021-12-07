@@ -1,20 +1,62 @@
 /* SUBMIT APP */
 
-.submitApp__form {
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-}
-
-.submitApp__form__group {
-  display: flex;
-  flex-direction: column;
-}
-
-.submitApp__form__group__label {
-  margin-bottom: 12px;
-}
-
-.submitApp__form__group__submitBtn {
+.sApp {
   margin-top: 24px;
+}
+
+.sApp__title {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.sApp__form {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+  margin-bottom: 48px;
+}
+
+.sApp__form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.sApp__form__group__label {
+  margin-bottom: 8px;
+  /* --- */
+  font-weight: var(--light);
+}
+
+.sApp__form__group__input {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-size: var(--fontSize6);
+  border-radius: 8px;
+  background-color: var(--gray180);
+  border: none;
+  caret-color: white;
+  color: white;
+  transition: all 100ms ease-out;
+}
+
+.sApp__form__group__input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--gr80);
+  background-color: var(--gray160);
+}
+
+.sApp__form__group__submitBtn {
+  margin-top: 24px;
+  /* --- */
+  display: flex;
+  align-self: center;
+  font-size: var(--fontSize5);
+  font-weight: var(--bold);
+  border: none;
+  color: var(--gray220);
+  background-color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
 }
