@@ -60,3 +60,11 @@
   padding: 12px 16px;
   border-radius: 8px;
 }
+
+.disabled {
+  opacity: 0.5;
+}
+
+.recaptcha {
+  margin: 0 auto;
+}

@@ -2,19 +2,31 @@ import React, { useState } from "react";
 import css from "./SubmitApp.module.css";
 import k from "../../../../k/k";
 
+// RECAPTCHA
+import ReCAPTCHA from "react-google-recaptcha";
+
 // FRAMER MOTION
 import { motion } from "framer-motion";
 
 // Submit button component
-export const SubmitBtn = ({ submitState }) => {
+export const SubmitBtn = ({ submissionLoader, isVerified }) => {
   return (
-    <button className={css.sApp__form__group__submitBtn} type="submit">
-      {submitState ? submitState : "Submit"}
+    <button
+      className={
+        !isVerified
+          ? `${css.sApp__form__group__submitBtn} ${css.disabled}`
+          : css.sApp__form__group__submitBtn
+      }
+      disabled={!isVerified}
+      type="submit"
+    >
+      {submissionLoader ? submissionLoader : "Submit"}
     </button>
   );
 };
 
 const SubmitApp = () => {
+  // STATES
   const [submissionData, setSubmissionData] = useState({
     name: "",
     website: "",
@@ -31,8 +43,13 @@ const SubmitApp = () => {
     logoUrl: "",
     coverUrl: "",
     notes: "",
+    // email
   });
-  const [submitState, setSubmitState] = useState("");
+  const [submissionLoader, setSubmissionLoader] = useState("");
+  const [isVerified, setIsVerified] = useState(false);
+  const [isSubmitted, setisSubmitted] = useState(false);
+
+  // END STATES
 
   // Destructure submission data
   const {
@@ -61,6 +78,7 @@ const SubmitApp = () => {
       data: name,
       placeholder: "Project's name",
       type: "text",
+      required: "required",
     },
     {
       label: "Website URL",
@@ -68,6 +86,7 @@ const SubmitApp = () => {
       data: website,
       placeholder: "Website",
       type: "url",
+      required: null,
     },
     {
       label: "Your Project's Twitter",
@@ -75,6 +94,7 @@ const SubmitApp = () => {
       data: twitter,
       placeholder: "Enter as https://twitter.com/yourProject",
       type: "url",
+      required: null,
     },
     {
       label:
@@ -83,6 +103,7 @@ const SubmitApp = () => {
       data: discord,
       placeholder: "Discord",
       type: "url",
+      required: null,
     },
     {
       label: "Your Project's GitHub",
@@ -90,6 +111,7 @@ const SubmitApp = () => {
       data: github,
       placeholder: "GitHub",
       type: "url",
+      required: null,
     },
     {
       label: "Your Project's Telegram",
@@ -97,6 +119,7 @@ const SubmitApp = () => {
       data: telegram,
       placeholder: "Telegram",
       type: "url",
+      required: null,
     },
     {
       label: "Your Project's Medium",
@@ -104,6 +127,7 @@ const SubmitApp = () => {
       data: medium,
       placeholder: "Medium",
       type: "url",
+      required: null,
     },
     {
       label: "Your Project's frontend canister address",
@@ -111,6 +135,7 @@ const SubmitApp = () => {
       data: canister,
       placeholder: "E.g. https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/",
       type: "text",
+      required: null,
     },
     {
       label: "Dscvr",
@@ -118,6 +143,7 @@ const SubmitApp = () => {
       data: dscvr,
       placeholder: "Dscvr",
       type: "url",
+      required: null,
     },
     {
       label: "Distrikt",
@@ -125,6 +151,7 @@ const SubmitApp = () => {
       data: distrikt,
       placeholder: "Distrikt",
       type: "url",
+      required: null,
     },
     {
       label: "Open Chat",
@@ -132,6 +159,7 @@ const SubmitApp = () => {
       data: openChat,
       placeholder: "Open Chat",
       type: "url",
+      required: null,
     },
     {
       label: "Almost done! Please enter a short description of your project",
@@ -139,6 +167,7 @@ const SubmitApp = () => {
       data: description,
       placeholder: "Short description",
       type: "text",
+      required: null,
     },
     {
       label: "Logo image URL",
@@ -146,6 +175,7 @@ const SubmitApp = () => {
       data: logoUrl,
       placeholder: "Logo img URL",
       type: "url",
+      required: null,
     },
     {
       label: "Cover image URL (min 1200x400px for best perfomance)",
@@ -153,6 +183,7 @@ const SubmitApp = () => {
       data: coverUrl,
       placeholder: "Cover img URL",
       type: "url",
+      required: null,
     },
     {
       label: "Any additional notes",
@@ -160,6 +191,7 @@ const SubmitApp = () => {
       data: notes,
       placeholder: "Notes",
       type: "text",
+      required: null,
     },
     // Category
   ];
@@ -172,7 +204,7 @@ const SubmitApp = () => {
   // Submit data to Google Sheets
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitState("Submitting...");
+    setSubmissionLoader("Submitting...");
     try {
       const res = await fetch(`${k.GOOGLE_SHEET_LINK}?tabId=SubmittedApps`, {
         method: "POST",
@@ -210,42 +242,67 @@ const SubmitApp = () => {
     } catch (err) {
       console.log(err);
     }
-    setSubmitState("Your project has been successfully submitted ✔️");
+    setisSubmitted(true);
+    // setSubmissionLoader("Your project has been successfully submitted ✔️");
   };
+
+  // RECAPTCHA
+  function onRecaptcha(value) {
+    setIsVerified(true);
+  }
 
   return (
     <section className={`${css.sApp} container768`}>
-      <h2 className={css.sApp__title}>Submit Your Project</h2>
-      <form className={css.sApp__form} onSubmit={handleSubmit}>
-        {/* NAME */}
+      {!isSubmitted ? (
+        <div>
+          <h2 className={css.sApp__title}>Submit Your Project</h2>
+          <form className={css.sApp__form} onSubmit={handleSubmit}>
+            {/* NAME */}
 
-        {inputs.map((input, i) => (
-          <motion.div
-            className={css.sApp__form__group}
-            whileTap={{ scale: 0.99 }}
-            key={i}
-          >
-            <label
-              className={css.sApp__form__group__label}
-              htmlFor={input.name}
-            >
-              {input.label}
-            </label>
-            <input
-              className={css.sApp__form__group__input}
-              type="text"
-              id={input.name}
-              name={input.name}
-              placeholder={input.placeholder}
-              autoComplete="off"
-              value={input.data}
-              onChange={handleInput}
+            {inputs.map((input, i) => (
+              <motion.div
+                className={css.sApp__form__group}
+                whileTap={{ scale: 0.99 }}
+                key={i}
+              >
+                <label
+                  className={css.sApp__form__group__label}
+                  htmlFor={input.name}
+                >
+                  {input.label}
+                </label>
+                <input
+                  className={css.sApp__form__group__input}
+                  type="text"
+                  id={input.name}
+                  name={input.name}
+                  placeholder={input.placeholder}
+                  autoComplete="off"
+                  value={input.data}
+                  onChange={handleInput}
+                  required={input.required}
+                />
+              </motion.div>
+            ))}
+            {/* Test recaptcha site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI */}
+            <div className={css.recaptcha}>
+              <ReCAPTCHA
+                sitekey={k.RECAPTCHA_SITE_KEY}
+                onChange={onRecaptcha}
+              />
+            </div>
+
+            <SubmitBtn
+              submissionLoader={submissionLoader}
+              isVerified={isVerified}
             />
-          </motion.div>
-        ))}
-
-        <SubmitBtn submitState={submitState} />
-      </form>
+          </form>
+        </div>
+      ) : (
+        <p style={{ textAlign: "center" }}>
+          Your project has been successfully submitted!
+        </p>
+      )}
     </section>
   );
 };
