@@ -2,6 +2,9 @@
 
 .sApp {
   margin-top: 24px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
 }
 
 .sApp__title {
@@ -67,4 +70,27 @@
 
 .recaptcha {
   margin: 0 auto;
+}
+
+/* SUCCESSFULL SUBMISSION */
+
+.submissionSuccess {
+  display: grid;
+  place-items: center;
+}
+
+.submissionSuccess__content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--gray200);
+  padding: 12px 24px;
+  border-radius: 12px;
+}
+
+.partyParrot {
+  background-image: url("https://emoji.discord.st/emojis/5613ff27-fb41-4716-8821-97e17e31c7bd.gif");
+  background-size: contain;
+  width: 48px;
+  height: 48px;
 }

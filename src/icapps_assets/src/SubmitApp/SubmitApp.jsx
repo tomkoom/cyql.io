@@ -247,7 +247,7 @@ const SubmitApp = () => {
   };
 
   // RECAPTCHA
-  function onRecaptcha(value) {
+  function onRecaptcha() {
     setIsVerified(true);
   }
 
@@ -299,9 +299,14 @@ const SubmitApp = () => {
           </form>
         </div>
       ) : (
-        <p style={{ textAlign: "center" }}>
-          Your project has been successfully submitted!
-        </p>
+        <div className={css.submissionSuccess}>
+          <div className={css.submissionSuccess__content}>
+            <div className={css.partyParrot} />
+            <p className="bodyTextLight">
+              Your project has been successfully submitted!
+            </p>
+          </div>
+        </div>
       )}
     </section>
   );
