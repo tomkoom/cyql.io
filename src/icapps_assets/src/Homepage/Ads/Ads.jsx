@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { cardVariants } from "../../MotionVariants";
 
 // LOADER
-import Loader from "./../../ThreeDotsLoader";
+import Loader from "../../Loader";
 
 const Ads = ({ data, loading, error }) => {
   return (
@@ -37,7 +37,10 @@ const Ads = ({ data, loading, error }) => {
               alt={ad.name}
             />
             <div className={css.ads__item__info}>
-              <p className="bodyText center">{ad.description}</p>
+              <h4 className={css.ads__item__info__title}>{ad.name}</h4>
+              <p className={`${css.ads__item__info__description} bodyText`}>
+                {ad.description}
+              </p>
             </div>
           </motion.a>
         ))

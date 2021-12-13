@@ -26,7 +26,7 @@ const App = () => {
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
     sheetId: googleSheetId,
-    sheetsNames: ["Apps", "Ads"],
+    sheetsNames: ["Apps", "Ads", "NftList"],
   });
 
   useEffect(() => {

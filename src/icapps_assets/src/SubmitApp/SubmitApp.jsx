@@ -201,7 +201,7 @@ const SubmitApp = () => {
     setSubmissionData({ ...submissionData, [e.target.name]: e.target.value });
   };
 
-  // Submit data to Google Sheets
+  // Submit data to db
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmissionLoader("Submitting...");
@@ -243,7 +243,6 @@ const SubmitApp = () => {
       console.log(err);
     }
     setisSubmitted(true);
-    // setSubmissionLoader("Your project has been successfully submitted ✔️");
   };
 
   // RECAPTCHA

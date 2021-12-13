@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { cardVariants } from "../../MotionVariants";
 
 // LOADER
-import Loader from "./../../ThreeDotsLoader";
+import Loader from "./../../Loader";
 
 const AppList = ({ loading, error, filteredApps, search }) => {
   return (

@@ -19,7 +19,8 @@
 
 .ads__item__cover {
   width: 100%;
-  padding-bottom: 66.66%;
+  /* padding-bottom: 66.66%; */
+  padding-bottom: 90%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -28,7 +29,15 @@
 
 .ads__item__info {
   padding: 16px;
+}
+
+.ads__item__info__title {
+  font-size: var(--fontSize6);
+}
+
+.ads__item__info__description {
   font-style: italic;
+  font-weight: var(--light);
 }
 
 #yourAd {

@@ -1,0 +1,163 @@
+/* NFT TABLE */
+
+.nftTable {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 32px auto;
+  padding: 0 16px;
+  max-width: 1280px;
+  width: 100%;
+  font-weight: var(--light);
+}
+
+.nftTable__title {
+  font-weight: var(--black);
+  margin: 0;
+  padding: 0;
+}
+
+.nftTable__table {
+  margin: 0 auto;
+  text-align: right;
+  width: 100%;
+  /* border-spacing: 0 12px; */
+}
+
+thead tr th:nth-child(-n + 2),
+tbody tr td:nth-child(-n + 2) {
+  text-align: left;
+}
+
+[data-label="Name"] {
+  font-weight: var(--semiBold);
+}
+
+.nftCollectionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--blueGray900);
+  text-decoration: none;
+}
+
+.nftCollectionLink:hover {
+  text-decoration: underline;
+}
+
+thead tr th,
+tbody tr td {
+  padding: 12px;
+}
+
+thead tr th:first-child {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+tbody tr td:first-child {
+  font-size: var(--fontSize7);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+thead tr th:last-child,
+tbody tr td:last-child {
+  padding-right: 0;
+}
+
+tbody tr {
+  box-shadow: 0 -1px 0 var(--gray180);
+}
+
+.nftCoverContainer {
+  display: grid;
+  place-items: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.nftCoverContainer__item {
+  width: 100%;
+}
+
+/* rounded table corners */
+
+/* td:first-child,
+th:first-child {
+	border-radius: 16px 0 0 16px;
+}
+
+td:last-child,
+th:last-child {
+	border-radius: 0 16px 16px 0;
+} */
+
+/* table responsive */
+
+@media screen and (max-width: 1280px) {
+  .nftTable__table thead tr th,
+  .nftTable__table tbody tr td {
+    padding: 16px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .nftTable__table thead {
+    display: none;
+  }
+
+  /* .nftTable__table {
+		font-size: var(--fontSize5);
+	} */
+
+  .nftTable__table,
+  .nftTable__table tbody,
+  .nftTable__table tbody tr {
+    display: block;
+    width: 100%;
+  }
+
+  .nftTable__table tbody tr td {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .nftTable__table tbody tr td a {
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .nftTable__table thead tr:nth-child(-n + 2),
+  .nftTable__table tbody tr td:nth-child(-n + 2) {
+    text-align: inherit;
+  }
+
+  .nftTable__table tbody tr {
+    margin-bottom: 24px;
+  }
+
+  .nftTable__table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 24px;
+    font-weight: var(--semiBold);
+    text-align: left;
+  }
+
+  /* rounded table corners mobile */
+
+  /* td:first-child {
+		border-radius: 16px 16px 0 0;
+	}
+
+	td:last-child {
+		border-radius: 0 0 16px 16px;
+	} */
+}

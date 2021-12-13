@@ -23,6 +23,9 @@ import { btnVariants } from "../MotionVariants";
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../../k/k";
 
+// LOADER
+import Loader from "../Loader";
+
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
 
@@ -98,7 +101,7 @@ const UpcomingNfts = () => {
 
       {loading ? (
         <div className="center">
-          <p className="bodyText">Loading... ⌛</p>
+          <Loader />
         </div>
       ) : error ? (
         <div className="center">
