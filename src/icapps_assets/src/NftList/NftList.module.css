@@ -13,15 +13,18 @@
 
 .nftTable__title {
   font-weight: var(--black);
-  margin: 0;
-  padding: 0;
+  text-align: center;
 }
 
 .nftTable__table {
-  margin: 0 auto;
+  margin: 24px auto;
   text-align: right;
   width: 100%;
   /* border-spacing: 0 12px; */
+}
+
+thead tr th {
+  font-weight: var(--bold);
 }
 
 thead tr th:nth-child(-n + 2),
@@ -30,7 +33,7 @@ tbody tr td:nth-child(-n + 2) {
 }
 
 [data-label="Name"] {
-  font-weight: var(--semiBold);
+  font-weight: var(--medium);
 }
 
 .nftCollectionLink {
@@ -47,7 +50,7 @@ tbody tr td:nth-child(-n + 2) {
 
 thead tr th,
 tbody tr td {
-  padding: 12px;
+  padding: 16px 12px;
 }
 
 thead tr th:first-child {
@@ -147,7 +150,7 @@ th:last-child {
     left: 0;
     width: 50%;
     padding-left: 24px;
-    font-weight: var(--semiBold);
+    font-weight: var(--medium);
     text-align: left;
   }
 

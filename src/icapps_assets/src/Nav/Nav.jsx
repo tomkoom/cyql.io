@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Nav.css";
+import css from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import k from "../../../../k/k";
-import { useWindowSize } from "./UseWindowSize";
+import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../DeviceSizes";
 
 // FRAMER MOTION
@@ -12,11 +12,26 @@ import { btnVariants } from "../MotionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 
 const iconTimes = <FontAwesomeIcon icon={faTimes} color="#fff" />;
 const iconBars = <FontAwesomeIcon icon={faBars} color="#fff" />;
+
+const socialLinks = [
+  {
+    name: "Twitter",
+    link: "https://twitter.com/DfinityApps",
+    icon: faTwitter,
+    color: "#00acee",
+  },
+  {
+    name: "Discord",
+    link: "https://discord.gg/qQ8MNv6Hju",
+    icon: faDiscord,
+    color: "#5865f2",
+  },
+];
 
 const Nav = () => {
   const [icpPrice, setIcpPrice] = useState("");
@@ -74,11 +89,11 @@ const Nav = () => {
   }, [deviceWidth]);
 
   return (
-    <nav className="nav">
-      <div className="nav__logo-container">
+    <nav className={css.nav}>
+      <div className={css.nav__logoContainer}>
         <NavLink exact to="/" replace>
           <div
-            className="nav__logo-container__logo"
+            className={css.nav__logoContainer__logo}
             onClick={() => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
@@ -87,37 +102,41 @@ const Nav = () => {
             <h1>icApps</h1>
           </div>
         </NavLink>
-        <motion.div
-          className="nav__logo-container__social-icons"
-          variants={btnVariants}
-          whileHover="whileHover"
-        >
-          <a
-            href="https://twitter.com/DfinityApps"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faTwitter} color="#1D9BF0" />
-          </a>
-        </motion.div>
-        <div className="icp-price-badge">
-          <div className="icp-price-badge__logo"></div>
+
+        <ul className={css.nav__logoContainer__socialLinks}>
+          {socialLinks.map((sl, i) => (
+            <li
+              className={css.nav__logoContainer__socialLinks__item}
+              variants={btnVariants}
+              whileHover="whileHover"
+              data-smLink={sl.name}
+              key={i}
+            >
+              <a href={sl.link} target="_blank" rel="noopener noreferrer">
+                <FontAwesomeIcon icon={sl.icon} />
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className={css.icpPriceBadge}>
+          <div className={css.icpPriceBadge__logo}></div>
           {`$${icpPrice}`}
         </div>
       </div>
 
       {/* MENU BTN */}
       <motion.div
-        className="nav__menu-btn"
+        className={css.nav__menuBtn}
         onClick={() => setMenuIsOpen(!menuIsOpen)}
         whileTap={{ scale: 0.9 }}
       >
         {menuIsOpen ? iconTimes : iconBars}
       </motion.div>
 
-      <ul className={menuIsOpen ? "nav__list__active" : "nav__list"}>
+      <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
         <li
-          className="nav__list__item"
+          className={css.nav__list__item}
           onClick={() => {
             menuIsOpen ? setMenuIsOpen(false) : null;
           }}
@@ -126,15 +145,15 @@ const Nav = () => {
             exact
             to="/upcoming"
             replace
-            className="nav__list__item__content black"
-            activeClassName="nav__list__item__active"
+            className={css.nav__list__item__content}
+            activeClassName={css.nav__list__item__active}
           >
             Upcoming NFT Sales
           </NavLink>
         </li>
 
         <li
-          className="nav__list__item"
+          className={css.nav__list__item}
           onClick={() => {
             menuIsOpen ? setMenuIsOpen(false) : null;
           }}
@@ -143,15 +162,15 @@ const Nav = () => {
             exact
             to="/nft"
             replace
-            className="nav__list__item__content"
-            activeClassName="nav__list__item__active"
+            className={css.nav__list__item__content}
+            activeClassName={css.nav__list__item__active}
           >
             NFT Collections
           </NavLink>
         </li>
 
         <li
-          className="nav__list__item"
+          className={css.nav__list__item}
           onClick={() => {
             menuIsOpen ? setMenuIsOpen(false) : null;
           }}
@@ -160,15 +179,15 @@ const Nav = () => {
             exact
             to="/developers"
             replace
-            className="nav__list__item__content"
-            activeClassName="nav__list__item__active"
+            className={css.nav__list__item__content}
+            activeClassName={css.nav__list__item__active}
           >
             Developers
           </NavLink>
         </li>
 
         <li
-          className="nav__list__item"
+          className={css.nav__list__item}
           onClick={() => {
             menuIsOpen ? setMenuIsOpen(false) : null;
           }}
@@ -177,8 +196,8 @@ const Nav = () => {
             exact
             to="/submit"
             replace
-            className="nav__list__item__content"
-            activeClassName="nav__list__item__active"
+            className={css.nav__list__item__content}
+            activeClassName={css.nav__list__item__active}
           >
             Submit Your App
           </NavLink>
@@ -200,15 +219,15 @@ const Nav = () => {
           </a>
         </li> */}
 
-        <li className="nav__list__item donate-container">
+        <li className={`${css.nav__list__item} ${css.donateContainer}`}>
           <input
-            className="donate-amount-input"
+            className={css.donateAmountInput}
             type="number"
             min="0"
             onChange={updateDonateAmount}
             value={donateAmount}
           />
-          <button className="donate-btn" onClick={handleDonateBtnClick}>
+          <button className={css.donateBtn} onClick={handleDonateBtnClick}>
             Donate {donateAmount} ICP
           </button>
         </li>

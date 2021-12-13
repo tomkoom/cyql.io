@@ -14,7 +14,7 @@ export const btnVariants = {
         scale: 1.125,
         transition: {
             type: "linear",
-            duration: 0.1,
+            duration: 0.05,
         },
     },
 }

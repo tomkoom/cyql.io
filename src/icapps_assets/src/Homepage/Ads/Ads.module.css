@@ -33,11 +33,16 @@
 
 .ads__item__info__title {
   font-size: var(--fontSize6);
+  font-weight: var(--bold);
 }
 
 .ads__item__info__description {
   font-style: italic;
+  margin-top: 2px;
   font-weight: var(--light);
+  line-height: 150%;
+  font-size: var(--fontSize7);
+  color: var(--gray40);
 }
 
 #yourAd {

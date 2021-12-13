@@ -6,11 +6,10 @@ const SquareLoader = () => {
   return (
     <div>
       <Loader
-        type="bubble-spin"
+        type="spinner-default"
         bgColor={"#FFFFFF"}
-        // title={"bubble-spin"}
-        color={"#FFFFFF"}
-        size={48}
+        // title={"spinner-default"}
+        size={32}
       />
     </div>
   );

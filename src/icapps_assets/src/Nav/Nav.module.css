@@ -9,52 +9,75 @@
   padding: 24px 32px;
 }
 
-.nav__logo-container {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav__logo-container__logo {
+.nav__logoContainer {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.nav__logo-container__logo h1 {
-  color: white;
+.nav__logoContainer__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav__logoContainer__logo h1 {
   font-size: var(--fontSize5);
   font-weight: var(--black);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.25px;
 }
 
-.nav__logo-container__social-icons {
-  width: 40px;
-  height: 40px;
-  font-size: var(--fontSize5);
-  background-color: var(--gray180);
-  border-radius: 100%;
+.nav__logoContainer__socialLinks {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
 }
 
-.nav__logo-container__social-icons a {
+.nav__logoContainer__socialLinks__item {
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+}
+
+.nav__logoContainer__socialLinks__item a {
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
+  border-radius: 12px;
+  transition: all 100ms ease-in;
 }
 
-.icp-price-badge {
+[data-smLink="Twitter"] a {
+  color: #00acee;
+}
+
+[data-smLink="Twitter"] a:hover {
+  color: white;
+  background-color: #00acee;
+}
+
+[data-smLink="Discord"] a {
+  color: #5865f2;
+}
+
+[data-smLink="Discord"] a:hover {
+  color: white;
+  background-color: #5865f2;
+}
+
+.icpPriceBadge {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: var(--fontSize7);
-  color: white;
   background-color: var(--gray180);
-  border-radius: 4px;
-  padding: 6px 8px;
+  border-radius: 8px;
+  padding: 4px 8px;
 }
 
-.icp-price-badge__logo {
+.icpPriceBadge__logo {
   background-image: url("https://i.postimg.cc/SxsG0RHw/dfinity-logo.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -89,7 +112,7 @@
 
 /* DONATE BUTTON */
 
-.donate-btn {
+.donateBtn {
   border: none;
   font-style: normal;
   font-weight: var(--black);
@@ -108,7 +131,7 @@
   letter-spacing: -0.25px;
 }
 
-.donate-amount-input {
+.donateAmountInput {
   color: white;
   background-color: var(--gray140);
   max-width: 64px;
@@ -130,7 +153,7 @@
   list-style-type: none;
 }
 
-.nav__menu-btn {
+.nav__menuBtn {
   display: none;
   width: 40px;
   height: 40px;
@@ -165,7 +188,7 @@
     z-index: 1;
   }
 
-  .nav__menu-btn {
+  .nav__menuBtn {
     display: grid;
     place-items: center;
   }
@@ -184,7 +207,7 @@
 
   /* donate area */
 
-  .donate-container {
+  .donateContainer {
     display: none;
   }
 }
@@ -204,7 +227,7 @@
 }
 
 @media screen and (max-width: 374px) {
-  .icp-price-badge {
+  .icpPriceBadge {
     display: none;
   }
 }

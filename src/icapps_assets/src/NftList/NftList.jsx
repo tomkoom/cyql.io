@@ -46,7 +46,7 @@ const NftList = () => {
     }
   }, [gsData]);
 
-  // CALL PROCESS MARKET DATA
+  // PROCESS MARKET DATA FUNC
   function processMarketData(nftMarketData, nftItemInfo) {
     const mData = nftMarketData
       .split("\n")
@@ -92,6 +92,13 @@ const NftList = () => {
       .replace("_", ",")
       .replace("icp", "");
 
+    const floor = mData
+      .filter((str) => str.includes("averagepriceicpviamarketplace:"))
+      .toString()
+      .replace("averagepriceicpviamarketplace:", "")
+      .replace("_", ",")
+      .replace("icp", "");
+
     nftItemInfo.totalAssets = totalAssets;
     nftItemInfo.circulatingNfts = circulatingNfts;
     nftItemInfo.listings = listings;
@@ -115,8 +122,8 @@ const NftList = () => {
 
   return (
     <section className={css.nftTable}>
-      <h2>NFT Collections</h2>
-      <p className="bodyText">
+      <h2 className={css.nftTable__title}>NFT Collections</h2>
+      <p className="bodyText center">
         A list of NFT projects on the Internet Computer.
       </p>
 
@@ -128,12 +135,13 @@ const NftList = () => {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Sales in ICP</th>
-              <th>Total Sales</th>
+              <th>Market Cap</th>
+              <th>Sales</th>
               <th>Listings</th>
-              <th>Total Assets</th>
+              <th>Assets</th>
               <th>Avg. Price</th>
-              <th>Sale Price</th>
+              <th>Min. Sale Price</th>
+              <th>Max. Sale Price</th>
             </tr>
           </thead>
           <tbody>
@@ -157,16 +165,16 @@ const NftList = () => {
                     {nftItem.name}
                   </a>
                 </td>
-                <td data-label="Sales in ICP">
+                <td data-label="Market Cap">
                   {nftItem.salesInIcp ? `${nftItem.salesInIcp} ICP` : "-"}
                 </td>
-                <td data-label="Total Sales">
+                <td data-label="Sales">
                   {nftItem.sales ? nftItem.sales : "-"}
                 </td>
                 <td data-label="Listings">
                   {nftItem.listings ? nftItem.listings : "-"}
                 </td>
-                <td data-label="Total Assets">
+                <td data-label="Assets">
                   {nftItem.circulatingNfts
                     ? nftItem.circulatingNfts
                     : nftItem.totalAssets
@@ -176,8 +184,15 @@ const NftList = () => {
                 <td data-label="Avg. Price">
                   {nftItem.avgPrice ? `${nftItem.avgPrice} ICP` : "-"}
                 </td>
-                <td data-label="Sale Price">
-                  {nftItem.salePrice ? nftItem.salePrice : "-"}
+                <td data-label="Min Sale Price">
+                  {nftItem.minSalePrice ? `${nftItem.minSalePrice} ICP` : "-"}
+                </td>
+                <td data-label="Max. Sale Price">
+                  {nftItem.maxSalePrice && nftItem.maxSalePrice != "Airdrop"
+                    ? `${nftItem.maxSalePrice} ICP`
+                    : nftItem.maxSalePrice == "Airdrop"
+                    ? nftItem.maxSalePrice
+                    : "-"}
                 </td>
               </tr>
             ))}

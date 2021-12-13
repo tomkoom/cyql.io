@@ -84,7 +84,25 @@
 }
 
 .upcNft__card__main__heading__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.upcNft__card__main__heading__title h3 {
   font-size: var(--fontSize4);
+}
+
+.upcNft__card__main__heading__title span {
+  justify-self: start;
+  background-image: linear-gradient(
+    45deg,
+    rgba(98, 0, 234, 1) 0%,
+    rgba(48, 79, 254, 1) 100%
+  );
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: var(--fontSize7);
 }
 
 .upcNft__card__main__heading__date {

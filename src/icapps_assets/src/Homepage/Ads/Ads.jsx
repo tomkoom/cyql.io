@@ -38,7 +38,7 @@ const Ads = ({ data, loading, error }) => {
             />
             <div className={css.ads__item__info}>
               <h4 className={css.ads__item__info__title}>{ad.name}</h4>
-              <p className={`${css.ads__item__info__description} bodyText`}>
+              <p className={css.ads__item__info__description}>
                 {ad.description}
               </p>
             </div>
