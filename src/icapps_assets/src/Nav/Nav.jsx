@@ -33,8 +33,7 @@ const socialLinks = [
   },
 ];
 
-const Nav = () => {
-  const [icpPrice, setIcpPrice] = useState("");
+const Nav = ({ icpPrice }) => {
   const [donateAmount, setDonateAmount] = useState("0.2");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [deviceWidth, deviceHeight] = useWindowSize();
@@ -60,22 +59,6 @@ const Nav = () => {
       el.target.disabled = false;
     }, 5000);
   };
-
-  // ICP price
-  useEffect(() => {
-    fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd"
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          console.log("Coingecko ICP price request was not successfull.");
-        }
-      })
-      .then((data) => setIcpPrice(data["internet-computer"].usd))
-      .catch((error) => console.log("Error"));
-  }, []);
 
   //  reset menu
   function resetMenu() {
@@ -109,7 +92,7 @@ const Nav = () => {
               className={css.nav__logoContainer__socialLinks__item}
               variants={btnVariants}
               whileHover="whileHover"
-              data-smLink={sl.name}
+              data-smlink={sl.name}
               key={i}
             >
               <a href={sl.link} target="_blank" rel="noopener noreferrer">
@@ -147,6 +130,7 @@ const Nav = () => {
             replace
             className={css.nav__list__item__content}
             activeClassName={css.nav__list__item__active}
+            id={css.upcomingNfts}
           >
             Upcoming NFT Sales
           </NavLink>

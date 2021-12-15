@@ -117,7 +117,7 @@ const UpcomingNfts = () => {
               className={css.upcNft__card}
               key={nft["Name"]}
               style={
-                nft["Type"] != "Sponsored"
+                nft["Type"] != "Promoted"
                   ? null
                   : {
                       boxShadow: "0 0 0 2px rgba(98, 0, 234, 0.5)",
@@ -133,10 +133,10 @@ const UpcomingNfts = () => {
                     <span
                       className={css.upcNft__card__main__heading__featBadge}
                       style={
-                        nft["Type"] != "Sponsored" ? { display: "none" } : null
+                        nft["Type"] != "Promoted" ? { display: "none" } : null
                       }
                     >
-                      {nft["Type"] == "Sponsored" ? `${nft["Type"]}` : null}
+                      {nft["Type"] == "Promoted" ? `${nft["Type"]}` : null}
                     </span>
                   </div>
 

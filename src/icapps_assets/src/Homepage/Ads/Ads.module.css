@@ -41,7 +41,7 @@
   margin-top: 2px;
   font-weight: var(--light);
   line-height: 150%;
-  font-size: var(--fontSize7);
+  font-size: 0.9rem;
   color: var(--gray40);
 }
 

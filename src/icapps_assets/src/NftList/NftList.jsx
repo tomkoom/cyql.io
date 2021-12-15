@@ -13,7 +13,7 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 
 let nftDataArr = [];
 
-const NftList = () => {
+const NftList = ({ icpPrice }) => {
   const [gsData, setGsData] = useState();
   const [gsDataLength, setGsDataLength] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,6 +24,11 @@ const NftList = () => {
     apiKey: googleSheetsApiKey,
     sheetId: googleSheetId,
     sheetsNames: ["NftList"],
+  });
+
+  var formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
   });
 
   // SET GSDATA STATE AFTER GS DATA IS LOADED
@@ -47,18 +52,24 @@ const NftList = () => {
   }, [gsData]);
 
   // PROCESS MARKET DATA FUNC
-  function processMarketData(nftMarketData, nftItemInfo) {
+  function processMarketData(nftMarketData, nInfo) {
     const mData = nftMarketData
       .split("\n")
       .map((str) => str.replace(/ /g, "").toLowerCase());
 
-    const totalAssets = mData.filter((str) => str.includes("mintednfts:"))
+    let totalAssets = mData.filter((str) => str.includes("mintednfts:")).length
       ? mData
           .filter((str) => str.includes("mintednfts:"))
           .toString()
           .replace("mintednfts:", "")
           .replace("_", ",")
-      : "";
+      : nInfo.assets;
+
+    console.log(
+      mData.filter((str) => str.includes("mintednfts:")).length
+        ? "true"
+        : "false"
+    );
 
     const circulatingNfts = mData
       .filter((str) => str.includes("circulatingnfts:"))
@@ -85,6 +96,11 @@ const NftList = () => {
       .replace("_", ",")
       .replace("icp", "");
 
+    const volumeUsd = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(+(+salesInIcp.replace(",", "") * icpPrice).toFixed(2));
+
     const avgPrice = mData
       .filter((str) => str.includes("averagepriceicpviamarketplace:"))
       .toString()
@@ -99,14 +115,15 @@ const NftList = () => {
       .replace("_", ",")
       .replace("icp", "");
 
-    nftItemInfo.totalAssets = totalAssets;
-    nftItemInfo.circulatingNfts = circulatingNfts;
-    nftItemInfo.listings = listings;
-    nftItemInfo.sales = sales;
-    nftItemInfo.salesInIcp = salesInIcp;
-    nftItemInfo.avgPrice = avgPrice;
+    nInfo.totalAssets = totalAssets;
+    nInfo.circulatingNfts = circulatingNfts;
+    nInfo.listings = listings;
+    nInfo.sales = sales;
+    nInfo.salesInIcp = salesInIcp;
+    nInfo.volumeUsd = volumeUsd;
+    nInfo.avgPrice = avgPrice;
 
-    nftDataArr.push(nftItemInfo);
+    nftDataArr.push(nInfo);
 
     if (gsDataLength == nftDataArr.length) {
       nftDataArr.sort(
@@ -135,7 +152,7 @@ const NftList = () => {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>Market Cap</th>
+              <th>Volume</th>
               <th>Sales</th>
               <th>Listings</th>
               <th>Assets</th>
@@ -145,53 +162,52 @@ const NftList = () => {
             </tr>
           </thead>
           <tbody>
-            {nftData.map((nftItem, index) => (
-              <tr key={nftItem.name}>
-                <td data-label="#">{index + 1}</td>
+            {nftData.map((n, i) => (
+              <tr key={n.name}>
+                <td data-label="#">{i + 1}</td>
                 <td data-label="Name">
                   <a
                     className={css.nftCollectionLink}
-                    href={nftItem.market}
+                    href={n.market}
                     target="_blank"
                     rel="norefferer noopener"
                   >
-                    <div className={css.nftCoverContainer}>
-                      <img
-                        className={css.nftCoverContainer__item}
-                        src={nftItem.img}
-                        alt={nftItem.name}
-                      />
-                    </div>{" "}
-                    {nftItem.name}
+                    <img
+                      className={css.nftCollectionLink__cover}
+                      src={n.img}
+                      alt={n.name}
+                    />
+                    {n.name}
                   </a>
                 </td>
-                <td data-label="Market Cap">
-                  {nftItem.salesInIcp ? `${nftItem.salesInIcp} ICP` : "-"}
+                <td data-label="Volume">
+                  <div className={css.volume}>
+                    {n.salesInIcp ? `${n.salesInIcp} ICP` : "-"}
+                    <span id={css.volumeUsd}>
+                      {n.volumeUsd ? n.volumeUsd : null}
+                    </span>
+                  </div>
                 </td>
-                <td data-label="Sales">
-                  {nftItem.sales ? nftItem.sales : "-"}
-                </td>
-                <td data-label="Listings">
-                  {nftItem.listings ? nftItem.listings : "-"}
-                </td>
+                <td data-label="Sales">{n.sales ? n.sales : "-"}</td>
+                <td data-label="Listings">{n.listings ? n.listings : "-"}</td>
                 <td data-label="Assets">
-                  {nftItem.circulatingNfts
-                    ? nftItem.circulatingNfts
-                    : nftItem.totalAssets
-                    ? nftItem.totalAssets
+                  {n.circulatingNfts
+                    ? n.circulatingNfts
+                    : n.totalAssets
+                    ? n.totalAssets
                     : "-"}
                 </td>
                 <td data-label="Avg. Price">
-                  {nftItem.avgPrice ? `${nftItem.avgPrice} ICP` : "-"}
+                  {n.avgPrice ? `${n.avgPrice} ICP` : "-"}
                 </td>
                 <td data-label="Min Sale Price">
-                  {nftItem.minSalePrice ? `${nftItem.minSalePrice} ICP` : "-"}
+                  {n.minSalePrice ? `${n.minSalePrice} ICP` : "-"}
                 </td>
                 <td data-label="Max. Sale Price">
-                  {nftItem.maxSalePrice && nftItem.maxSalePrice != "Airdrop"
-                    ? `${nftItem.maxSalePrice} ICP`
-                    : nftItem.maxSalePrice == "Airdrop"
-                    ? nftItem.maxSalePrice
+                  {n.maxSalePrice && n.maxSalePrice != "Airdrop"
+                    ? `${n.maxSalePrice} ICP`
+                    : n.maxSalePrice == "Airdrop"
+                    ? n.maxSalePrice
                     : "-"}
                 </td>
               </tr>

@@ -22,6 +22,21 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 const App = () => {
   const [category, setCategory] = useState("All");
   const [filteredApps, setFilteredApps] = useState([]);
+  const [icpPrice, setIcpPrice] = useState();
+
+  // ICP price request
+  useEffect(() => {
+    fetch(k.COINGECKO)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          console.log("Coingecko ICP price request was not successfull.");
+        }
+      })
+      .then((data) => setIcpPrice(data["internet-computer"].usd))
+      .catch((error) => console.log("Error"));
+  }, []);
 
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
@@ -41,7 +56,7 @@ const App = () => {
 
   return (
     <div>
-      <Nav />
+      <Nav icpPrice={icpPrice} />
       <div className={css.app}>
         <Switch>
           <Route exact path="/">
@@ -69,7 +84,7 @@ const App = () => {
           </Route>
 
           <Route exact path="/nft">
-            <NftList />
+            <NftList icpPrice={icpPrice} />
           </Route>
 
           <Route exact path="/submit">
