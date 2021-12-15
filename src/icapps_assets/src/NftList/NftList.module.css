@@ -16,6 +16,19 @@
   text-align: center;
 }
 
+.nftTable_desription {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 540px;
+  font-weight: var(--light);
+  color: var(--gray40);
+}
+
+#nftTable__msgLink {
+  text-decoration: underline;
+  color: var(--gray40);
+}
+
 /* name column */
 
 [data-label="Name"] {
