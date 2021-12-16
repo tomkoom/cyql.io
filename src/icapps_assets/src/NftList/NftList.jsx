@@ -14,6 +14,14 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 let nftDataArr = [];
 let totalVolumeUsd = [];
 let totalVolumeIcp = [];
+let totalMarketCapUsd = 0;
+let totalMarketCapIcp = 0;
+
+const formatter = new Intl.NumberFormat("en-US");
+const formatterUsd = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
 
 const NftList = ({ icpPrice }) => {
   const [gsData, setGsData] = useState();
@@ -66,9 +74,7 @@ const NftList = ({ icpPrice }) => {
       : parseInt(nInfo.assets.replace(",", ""));
 
     // str
-    const totalAssetsFormatted = new Intl.NumberFormat("en-US").format(
-      totalAssets
-    );
+    const totalAssetsFormatted = formatter.format(totalAssets);
 
     const circulatingNfts = mData
       .filter((str) => str.includes("circulatingnfts:"))
@@ -118,16 +124,27 @@ const NftList = ({ icpPrice }) => {
       .replace("_", ",")
       .replace("icp", "");
 
-    nInfo.totalAssetsFormatted = totalAssetsFormatted;
-    nInfo.totalAssets = totalAssets;
-    nInfo.circulatingNfts = circulatingNfts;
-    nInfo.listings = listings;
+    const marketCap = +(totalAssets * avgPrice).toFixed(2);
+    const marketCapFormatted = formatter.format(marketCap);
+
+    const marketCapUsd = marketCap * icpPrice;
+    const marketCapUsdFormatted = formatterUsd.format(marketCapUsd);
+
     nInfo.sales = sales;
+    nInfo.listings = listings;
+    nInfo.circulatingNfts = circulatingNfts;
+    nInfo.avgPrice = avgPrice;
+    // ---
+    nInfo.marketCap = marketCap;
+    nInfo.marketCapFormatted = marketCapFormatted;
+    nInfo.marketCapUsd = marketCapUsd;
+    nInfo.marketCapUsdFormatted = marketCapUsdFormatted;
+    nInfo.totalAssets = totalAssets;
+    nInfo.totalAssetsFormatted = totalAssetsFormatted;
     nInfo.salesInIcp = salesInIcp;
     nInfo.salesInIcpFormatted = salesInIcpFormatted;
     nInfo.volumeUsd = volumeUsd;
     nInfo.volumeUsdFormatted = volumeUsdFormatted;
-    nInfo.avgPrice = avgPrice;
 
     nftDataArr.push(nInfo);
 
@@ -141,20 +158,33 @@ const NftList = ({ icpPrice }) => {
   // END PROCESS MARKET DATA FUNC
 
   if (isLoaded) {
-    // total volume in usd
-    totalVolumeUsd = nftData.reduce((acc, val) => {
-      return acc + val.volumeUsd;
-    }, 0);
-    totalVolumeUsd = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(totalVolumeUsd);
+    // total sales volume in usd
+    totalVolumeUsd = formatterUsd.format(
+      nftData.reduce((acc, val) => {
+        return acc + val.volumeUsd;
+      }, 0)
+    );
 
-    // total volume in icp
-    totalVolumeIcp = nftData.reduce((acc, val) => {
-      return acc + val.salesInIcp;
-    }, 0);
-    totalVolumeIcp = new Intl.NumberFormat("en-US").format(totalVolumeIcp);
+    // total sales volume in icp
+    totalVolumeIcp = formatter.format(
+      nftData.reduce((acc, val) => {
+        return acc + val.salesInIcp;
+      }, 0)
+    );
+
+    // total market cap in usd
+    totalMarketCapUsd = formatterUsd.format(
+      nftData.reduce((acc, val) => {
+        return acc + val.marketCapUsd;
+      }, 0)
+    );
+
+    // total market cap in icp
+    totalMarketCapIcp = formatter.format(
+      nftData.reduce((acc, val) => {
+        return acc + val.marketCap;
+      }, 0)
+    );
   }
 
   return (
@@ -177,13 +207,21 @@ const NftList = ({ icpPrice }) => {
           </p>
         </div>
 
-        <div className={css.nftTable__hero__dashboard}>
-          <div className={css.nftTable__hero__dashboard__totalVolume}>
-            <p>Total Sales Volume</p>
-            <h4>{totalVolumeUsd}</h4>
-            <p>{totalVolumeIcp.length ? `${totalVolumeIcp} ICP` : null}</p>
+        {isLoaded ? (
+          <div className={css.nftTable__hero__dashboard}>
+            <div className={css.nftTable__hero__dashboard__item}>
+              <p>Market Cap</p>
+              <h4>{totalMarketCapUsd}</h4>
+              <p>{`${totalMarketCapIcp} ICP`}</p>
+            </div>
+
+            <div className={css.nftTable__hero__dashboard__item}>
+              <p>All Time Sales Volume</p>
+              <h4>{totalVolumeUsd}</h4>
+              <p>{`${totalVolumeIcp} ICP`}</p>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
 
       {!isLoaded ? (
@@ -224,11 +262,9 @@ const NftList = ({ icpPrice }) => {
                   </a>
                 </td>
                 <td data-label="Volume">
-                  <div className={css.volume}>
-                    {n.salesInIcpFormatted
-                      ? `${n.salesInIcpFormatted} ICP`
-                      : null}
-                    <span id={css.volumeUsd}>
+                  <div className={css.cell}>
+                    {`${n.salesInIcpFormatted} ICP`}
+                    <span className={css.cellSpan}>
                       {n.volumeUsdFormatted ? n.volumeUsdFormatted : null}
                     </span>
                   </div>
@@ -259,16 +295,14 @@ const NftList = ({ icpPrice }) => {
                 <td data-label="Avg. Price">
                   {n.avgPrice ? `${n.avgPrice} ICP` : null}
                 </td>
-                {/* <td data-label="Est. Market Cap">
-                  {n.avgPrice && n.totalAssets
-                    ? new Intl.NumberFormat("en-US").format(
-                        +(
-                          n.avgPrice * parseInt(n.totalAssets.replace(/,/g, ""))
-                        ).toFixed(2)
-                      )
-                    : null}{" "}
-                  ICP
-                </td> */}
+                <td data-label="Est. Market Cap">
+                  <div className={css.cell}>
+                    {`${n.marketCapFormatted} ICP`}
+                    <span className={css.cellSpan}>
+                      {n.marketCapUsdFormatted}
+                    </span>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>

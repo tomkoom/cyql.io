@@ -13,6 +13,7 @@
 
 .nftTable__hero {
   display: flex;
+  align-items: center;
   gap: 24px;
 }
 
@@ -31,7 +32,12 @@
   color: var(--gray40);
 }
 
-.nftTable__hero__dashboard__totalVolume {
+.nftTable__hero__dashboard {
+  display: flex;
+  gap: 16px;
+}
+
+.nftTable__hero__dashboard__item {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -40,11 +46,11 @@
   background-color: var(--gray200);
 }
 
-.nftTable__hero__dashboard__totalVolume h4 {
+.nftTable__hero__dashboard__item h4 {
   font-weight: var(--bold);
 }
 
-.nftTable__hero__dashboard__totalVolume p {
+.nftTable__hero__dashboard__item p {
   color: var(--gray40);
 }
 
@@ -80,12 +86,12 @@
 
 /* volume column */
 
-.volume {
+.cell {
   display: flex;
   flex-direction: column;
 }
 
-#volumeUsd {
+.cellSpan {
   font-size: var(--fontSize7);
   color: var(--gray120);
   margin-top: 6px;
