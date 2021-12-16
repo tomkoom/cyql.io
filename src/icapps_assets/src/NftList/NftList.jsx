@@ -227,86 +227,90 @@ const NftList = ({ icpPrice }) => {
       {!isLoaded ? (
         <Loader />
       ) : (
-        <table className={css.nftTable__table}>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Volume</th>
-              <th>Sales</th>
-              <th>Listings</th>
-              <th>Assets</th>
-              <th>Min. Sale Price</th>
-              <th>Max. Sale Price</th>
-              <th>Avg. Price</th>
-              <th>Est. Market Cap</th>
-            </tr>
-          </thead>
-          <tbody>
-            {nftData.map((n, i) => (
-              <tr key={n.name}>
-                <td data-label="#">{i + 1}</td>
-                <td data-label="Name">
-                  <a
-                    className={css.nftCollectionLink}
-                    href={n.market}
-                    target="_blank"
-                    rel="norefferer noopener"
-                  >
-                    <img
-                      className={css.nftCollectionLink__cover}
-                      src={n.img}
-                      alt={n.name}
-                    />
-                    {n.name}
-                  </a>
-                </td>
-                <td data-label="Volume">
-                  <div className={css.cell}>
-                    {`${n.salesInIcpFormatted} ICP`}
-                    <span className={css.cellSpan}>
-                      {n.volumeUsdFormatted ? n.volumeUsdFormatted : null}
-                    </span>
-                  </div>
-                </td>
-                <td data-label="Sales">{n.sales ? n.sales : null}</td>
-                <td data-label="Listings">{n.listings ? n.listings : null}</td>
-                <td data-label="Assets">
-                  {n.circulatingNfts
-                    ? n.circulatingNfts
-                    : n.totalAssetsFormatted
-                    ? n.totalAssetsFormatted
-                    : null}
-                </td>
-                <td data-label="Min Sale Price">
-                  {n.minSalePrice
-                    ? `${n.minSalePrice} ICP`
-                    : n.maxSalePrice == "Airdrop"
-                    ? "Airdrop"
-                    : null}
-                </td>
-                <td data-label="Max. Sale Price">
-                  {n.maxSalePrice && n.maxSalePrice != "Airdrop"
-                    ? `${n.maxSalePrice} ICP`
-                    : n.maxSalePrice == "Airdrop"
-                    ? n.maxSalePrice
-                    : null}
-                </td>
-                <td data-label="Avg. Price">
-                  {n.avgPrice ? `${n.avgPrice} ICP` : null}
-                </td>
-                <td data-label="Est. Market Cap">
-                  <div className={css.cell}>
-                    {`${n.marketCapFormatted} ICP`}
-                    <span className={css.cellSpan}>
-                      {n.marketCapUsdFormatted}
-                    </span>
-                  </div>
-                </td>
+        <div style={{ overflowX: "auto" }}>
+          <table className={css.nftTable__table}>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Volume</th>
+                <th>Sales</th>
+                <th>Listings</th>
+                <th>Assets</th>
+                <th>Min. Sale Price</th>
+                <th>Max. Sale Price</th>
+                <th>Avg. Price</th>
+                <th>Est. Market Cap</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {nftData.map((n, i) => (
+                <tr key={n.name}>
+                  <td data-label="#">{i + 1}</td>
+                  <td data-label="Name">
+                    <a
+                      className={css.nftCollectionLink}
+                      href={n.market}
+                      target="_blank"
+                      rel="norefferer noopener"
+                    >
+                      <img
+                        className={css.nftCollectionLink__cover}
+                        src={n.img}
+                        alt={n.name}
+                      />
+                      {n.name}
+                    </a>
+                  </td>
+                  <td data-label="Volume">
+                    <div className={css.cell}>
+                      {`${n.salesInIcpFormatted} ICP`}
+                      <span className={css.cellSpan}>
+                        {n.volumeUsdFormatted ? n.volumeUsdFormatted : null}
+                      </span>
+                    </div>
+                  </td>
+                  <td data-label="Sales">{n.sales ? n.sales : null}</td>
+                  <td data-label="Listings">
+                    {n.listings ? n.listings : null}
+                  </td>
+                  <td data-label="Assets">
+                    {n.circulatingNfts
+                      ? n.circulatingNfts
+                      : n.totalAssetsFormatted
+                      ? n.totalAssetsFormatted
+                      : null}
+                  </td>
+                  <td data-label="Min Sale Price">
+                    {n.minSalePrice
+                      ? `${n.minSalePrice} ICP`
+                      : n.maxSalePrice == "Airdrop"
+                      ? "Airdrop"
+                      : null}
+                  </td>
+                  <td data-label="Max. Sale Price">
+                    {n.maxSalePrice && n.maxSalePrice != "Airdrop"
+                      ? `${n.maxSalePrice} ICP`
+                      : n.maxSalePrice == "Airdrop"
+                      ? n.maxSalePrice
+                      : null}
+                  </td>
+                  <td data-label="Avg. Price">
+                    {n.avgPrice ? `${n.avgPrice} ICP` : null}
+                  </td>
+                  <td data-label="Est. Market Cap">
+                    <div className={css.cell}>
+                      {`${n.marketCapFormatted} ICP`}
+                      <span className={css.cellSpan}>
+                        {n.marketCapUsdFormatted}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </section>
   );
