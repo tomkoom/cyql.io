@@ -12,6 +12,8 @@ const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
 
 let nftDataArr = [];
+let totalVolumeUsd = [];
+let totalVolumeIcp = [];
 
 const NftList = ({ icpPrice }) => {
   const [gsData, setGsData] = useState();
@@ -52,13 +54,21 @@ const NftList = ({ icpPrice }) => {
       .split("\n")
       .map((str) => str.replace(/ /g, "").toLowerCase());
 
-    let totalAssets = mData.filter((str) => str.includes("mintednfts:")).length
-      ? mData
-          .filter((str) => str.includes("mintednfts:"))
-          .toString()
-          .replace("mintednfts:", "")
-          .replace("_", ",")
-      : nInfo.assets;
+    // num
+    const totalAssets = mData.filter((str) => str.includes("mintednfts:"))
+      .length
+      ? parseInt(
+          mData
+            .filter((str) => str.includes("mintednfts:"))[0]
+            .match(/\d/g)
+            .join("")
+        )
+      : parseInt(nInfo.assets.replace(",", ""));
+
+    // str
+    const totalAssetsFormatted = new Intl.NumberFormat("en-US").format(
+      totalAssets
+    );
 
     const circulatingNfts = mData
       .filter((str) => str.includes("circulatingnfts:"))
@@ -78,7 +88,7 @@ const NftList = ({ icpPrice }) => {
       .replace("soldviamarketplace:", "")
       .replace("_", ",");
 
-    // number
+    // num
     const salesInIcp = +mData
       .filter((str) => str.includes("soldviamarketplaceinicp:"))
       .toString()
@@ -91,7 +101,7 @@ const NftList = ({ icpPrice }) => {
       salesInIcp
     );
 
-    // number
+    // num
     const volumeUsd = +(icpPrice * salesInIcp).toFixed(2);
 
     // str
@@ -100,7 +110,7 @@ const NftList = ({ icpPrice }) => {
       currency: "USD",
     }).format(volumeUsd);
 
-    // number
+    // num
     const avgPrice = +mData
       .filter((str) => str.includes("averagepriceicpviamarketplace:"))
       .toString()
@@ -108,6 +118,7 @@ const NftList = ({ icpPrice }) => {
       .replace("_", ",")
       .replace("icp", "");
 
+    nInfo.totalAssetsFormatted = totalAssetsFormatted;
     nInfo.totalAssets = totalAssets;
     nInfo.circulatingNfts = circulatingNfts;
     nInfo.listings = listings;
@@ -123,27 +134,57 @@ const NftList = ({ icpPrice }) => {
     if (gsDataLength == nftDataArr.length) {
       nftDataArr.sort((a, b) => b.salesInIcp - a.salesInIcp);
       setNftData(nftDataArr);
-      setIsLoaded(true);
       nftDataArr = [];
+      setIsLoaded(true);
     }
+  }
+  // END PROCESS MARKET DATA FUNC
+
+  if (isLoaded) {
+    // total volume in usd
+    totalVolumeUsd = nftData.reduce((acc, val) => {
+      return acc + val.volumeUsd;
+    }, 0);
+    totalVolumeUsd = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(totalVolumeUsd);
+
+    // total volume in icp
+    totalVolumeIcp = nftData.reduce((acc, val) => {
+      return acc + val.salesInIcp;
+    }, 0);
+    totalVolumeIcp = new Intl.NumberFormat("en-US").format(totalVolumeIcp);
   }
 
   return (
     <section className={css.nftTable}>
-      <h2 className={css.nftTable__title}>NFT Collections</h2>
-      <p className={`${css.nftTable_desription} bodyText`}>
-        Below are listed the stats for the IC NFT collections. Projects are
-        sorted in descending order by volume. If you see inaccuracies, or you
-        have any missing information&nbsp;
-        <a
-          id={css.nftTable__msgLink}
-          href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          you can write to us
-        </a>
-      </p>
+      <div className={css.nftTable__hero}>
+        <div className={css.nftTable__hero__heading}>
+          <h2>NFT Collections</h2>
+          <p className="bodyText">
+            Below are listed the stats for the IC NFT collections. Projects are
+            sorted in descending order by volume. If you see inaccuracies, or
+            you have any missing information&nbsp;
+            <a
+              id={css.nftTable__msgLink}
+              href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              you can write to us
+            </a>
+          </p>
+        </div>
+
+        <div className={css.nftTable__hero__dashboard}>
+          <div className={css.nftTable__hero__dashboard__totalVolume}>
+            <p>Total Sales Volume</p>
+            <h4>{totalVolumeUsd}</h4>
+            <p>{totalVolumeIcp.length ? `${totalVolumeIcp} ICP` : null}</p>
+          </div>
+        </div>
+      </div>
 
       {!isLoaded ? (
         <Loader />
@@ -160,6 +201,7 @@ const NftList = ({ icpPrice }) => {
               <th>Min. Sale Price</th>
               <th>Max. Sale Price</th>
               <th>Avg. Price</th>
+              <th>Est. Market Cap</th>
             </tr>
           </thead>
           <tbody>
@@ -185,20 +227,20 @@ const NftList = ({ icpPrice }) => {
                   <div className={css.volume}>
                     {n.salesInIcpFormatted
                       ? `${n.salesInIcpFormatted} ICP`
-                      : "-"}
+                      : null}
                     <span id={css.volumeUsd}>
                       {n.volumeUsdFormatted ? n.volumeUsdFormatted : null}
                     </span>
                   </div>
                 </td>
-                <td data-label="Sales">{n.sales ? n.sales : "-"}</td>
-                <td data-label="Listings">{n.listings ? n.listings : "-"}</td>
+                <td data-label="Sales">{n.sales ? n.sales : null}</td>
+                <td data-label="Listings">{n.listings ? n.listings : null}</td>
                 <td data-label="Assets">
                   {n.circulatingNfts
                     ? n.circulatingNfts
-                    : n.totalAssets
-                    ? n.totalAssets
-                    : "-"}
+                    : n.totalAssetsFormatted
+                    ? n.totalAssetsFormatted
+                    : null}
                 </td>
                 <td data-label="Min Sale Price">
                   {n.minSalePrice
@@ -215,8 +257,18 @@ const NftList = ({ icpPrice }) => {
                     : null}
                 </td>
                 <td data-label="Avg. Price">
-                  {n.avgPrice ? `${n.avgPrice} ICP` : "-"}
+                  {n.avgPrice ? `${n.avgPrice} ICP` : null}
                 </td>
+                {/* <td data-label="Est. Market Cap">
+                  {n.avgPrice && n.totalAssets
+                    ? new Intl.NumberFormat("en-US").format(
+                        +(
+                          n.avgPrice * parseInt(n.totalAssets.replace(/,/g, ""))
+                        ).toFixed(2)
+                      )
+                    : null}{" "}
+                  ICP
+                </td> */}
               </tr>
             ))}
           </tbody>

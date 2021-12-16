@@ -6,21 +6,45 @@
   gap: 16px;
   margin: 32px auto;
   padding: 0 16px;
-  max-width: 1280px;
+  max-width: 1440px;
   width: 100%;
   font-weight: var(--light);
 }
 
-.nftTable__title {
-  font-weight: var(--black);
-  text-align: center;
+.nftTable__hero {
+  display: flex;
+  gap: 24px;
 }
 
-.nftTable_desription {
+.nftTable__hero__heading {
+  max-width: 50%;
+}
+
+.nftTable__hero__heading h2 {
+  margin-bottom: 8px;
+}
+
+.nftTable__hero__heading p {
   margin: 0 auto;
-  text-align: center;
   max-width: 540px;
   font-weight: var(--light);
+  color: var(--gray40);
+}
+
+.nftTable__hero__dashboard__totalVolume {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background-color: var(--gray200);
+}
+
+.nftTable__hero__dashboard__totalVolume h4 {
+  font-weight: var(--bold);
+}
+
+.nftTable__hero__dashboard__totalVolume p {
   color: var(--gray40);
 }
 
