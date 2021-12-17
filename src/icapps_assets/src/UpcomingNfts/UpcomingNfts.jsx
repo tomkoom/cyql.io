@@ -109,9 +109,7 @@ const UpcomingNfts = () => {
         </div>
       ) : (
         data[0].data
-          .sort((a, b) =>
-            a["Type"] > b["Type"] ? -1 : a["Type"] < b["Type"] ? 1 : 0
-          )
+          .sort((a) => (a["Type"] == "Promoted" ? -1 : 0))
           .map((nft) => (
             <div
               className={css.upcNft__card}

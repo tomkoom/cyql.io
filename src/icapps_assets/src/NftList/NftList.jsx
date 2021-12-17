@@ -130,10 +130,19 @@ const NftList = ({ icpPrice }) => {
     const marketCapUsd = marketCap * icpPrice;
     const marketCapUsdFormatted = formatterUsd.format(marketCapUsd);
 
+    const profitToAvg =
+      nInfo.maxSalePrice && nInfo.maxSalePrice != "Airdrop"
+        ? +(
+            ((avgPrice - nInfo.maxSalePrice) / nInfo.maxSalePrice) *
+            100
+          ).toFixed(2)
+        : null;
+
     nInfo.sales = sales;
     nInfo.listings = listings;
     nInfo.circulatingNfts = circulatingNfts;
     nInfo.avgPrice = avgPrice;
+    nInfo.profitToAvg = profitToAvg;
     // ---
     nInfo.marketCap = marketCap;
     nInfo.marketCapFormatted = marketCapFormatted;
@@ -187,22 +196,26 @@ const NftList = ({ icpPrice }) => {
     );
   }
 
+  const colorFunc = () => {
+    return Math.sign(n.profitToAvg) == 1 ? { color: "blue" } : { color: "red" };
+  };
+
   return (
     <section className={css.nftTable}>
       <div className={css.nftTable__hero}>
         <div className={css.nftTable__hero__heading}>
           <h2>NFT Collections</h2>
           <p className="bodyText">
-            Below are listed the stats for the IC NFT collections. Projects are
+            Below are listed stats for the IC NFT collections. Projects are
             sorted in descending order by volume. If you see inaccuracies, or
-            you have any missing information&nbsp;
+            you have any missing information you can&nbsp;
             <a
               id={css.nftTable__msgLink}
               href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
               target="_blank"
               rel="noreferrer noopener"
             >
-              you can write to us
+              DM us
             </a>
           </p>
         </div>
@@ -212,13 +225,13 @@ const NftList = ({ icpPrice }) => {
             <div className={css.nftTable__hero__dashboard__item}>
               <p>Market Cap</p>
               <h4>{totalMarketCapUsd}</h4>
-              <p>{`${totalMarketCapIcp} ICP`}</p>
+              <p>${totalMarketCapIcp}&nbsp;ICP</p>
             </div>
 
             <div className={css.nftTable__hero__dashboard__item}>
               <p>All Time Sales Volume</p>
               <h4>{totalVolumeUsd}</h4>
-              <p>{`${totalVolumeIcp} ICP`}</p>
+              <p>{totalVolumeIcp}&nbsp;ICP</p>
             </div>
           </div>
         ) : null}
@@ -236,17 +249,18 @@ const NftList = ({ icpPrice }) => {
                 <th>Volume</th>
                 <th>Sales</th>
                 <th>Listings</th>
-                <th>Assets</th>
-                <th>Min. Sale Price</th>
-                <th>Max. Sale Price</th>
-                <th>Avg. Price</th>
-                <th>Est. Market Cap</th>
+                <th>Minted&nbsp;NFTs</th>
+                <th>Min.&nbsp;Sale&nbsp;Price</th>
+                <th>Max.&nbsp;Sale&nbsp;Price</th>
+                <th>Avg.&nbsp;Price</th>
+                <th>Est.&nbsp;Market&nbsp;Cap</th>
               </tr>
             </thead>
             <tbody>
               {nftData.map((n, i) => (
                 <tr key={n.name}>
                   <td data-label="#">{i + 1}</td>
+
                   <td data-label="Name">
                     <a
                       className={css.nftCollectionLink}
@@ -254,33 +268,34 @@ const NftList = ({ icpPrice }) => {
                       target="_blank"
                       rel="norefferer noopener"
                     >
-                      <img
-                        className={css.nftCollectionLink__cover}
-                        src={n.img}
-                        alt={n.name}
-                      />
+                      <img src={n.img} alt={n.name} />
                       {n.name}
                     </a>
                   </td>
+
                   <td data-label="Volume">
                     <div className={css.cell}>
-                      {`${n.salesInIcpFormatted} ICP`}
+                      {n.salesInIcpFormatted}&nbsp;ICP
                       <span className={css.cellSpan}>
-                        {n.volumeUsdFormatted ? n.volumeUsdFormatted : null}
+                        {n.volumeUsdFormatted}
                       </span>
                     </div>
                   </td>
-                  <td data-label="Sales">{n.sales ? n.sales : null}</td>
-                  <td data-label="Listings">
-                    {n.listings ? n.listings : null}
-                  </td>
-                  <td data-label="Assets">
+
+                  <td data-label="Sales">{n.sales}</td>
+
+                  <td data-label="Listings">{n.listings}</td>
+
+                  {/* <td data-label="Assets">
                     {n.circulatingNfts
                       ? n.circulatingNfts
                       : n.totalAssetsFormatted
                       ? n.totalAssetsFormatted
                       : null}
-                  </td>
+                  </td> */}
+
+                  <td data-label="Assets">{n.totalAssetsFormatted}</td>
+
                   <td data-label="Min Sale Price">
                     {n.minSalePrice
                       ? `${n.minSalePrice} ICP`
@@ -288,6 +303,7 @@ const NftList = ({ icpPrice }) => {
                       ? "Airdrop"
                       : null}
                   </td>
+
                   <td data-label="Max. Sale Price">
                     {n.maxSalePrice && n.maxSalePrice != "Airdrop"
                       ? `${n.maxSalePrice} ICP`
@@ -295,12 +311,27 @@ const NftList = ({ icpPrice }) => {
                       ? n.maxSalePrice
                       : null}
                   </td>
+
                   <td data-label="Avg. Price">
-                    {n.avgPrice ? `${n.avgPrice} ICP` : null}
+                    <div className={css.cell}>
+                      {n.avgPrice}&nbsp;ICP
+                      <span
+                        className={
+                          Math.sign(n.profitToAvg) >= 0
+                            ? `${css.cellSpan} ${css.green}`
+                            : `${css.cellSpan} ${css.red}`
+                        }
+                      >
+                        {n.profitToAvg
+                          ? `${n.profitToAvg}% (to max sale price)`
+                          : null}
+                      </span>
+                    </div>
                   </td>
+
                   <td data-label="Est. Market Cap">
                     <div className={css.cell}>
-                      {`${n.marketCapFormatted} ICP`}
+                      {n.marketCapFormatted}&nbsp;ICP
                       <span className={css.cellSpan}>
                         {n.marketCapUsdFormatted}
                       </span>
@@ -312,6 +343,7 @@ const NftList = ({ icpPrice }) => {
           </table>
         </div>
       )}
+      <p id={css.dataPartner}>Data partner: Entrepot</p>
     </section>
   );
 };

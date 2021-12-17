@@ -12,7 +12,7 @@
 .nav__logoContainer {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .nav__logoContainer__logo {
@@ -34,9 +34,9 @@
 }
 
 .nav__logoContainer__socialLinks__item {
-  width: 32px;
-  height: 32px;
-  font-size: 1.1rem;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1125rem;
   border-radius: 12px;
 }
 

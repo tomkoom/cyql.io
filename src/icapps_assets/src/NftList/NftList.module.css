@@ -12,9 +12,8 @@
 
 .nftTable__hero {
   display: flex;
-  align-items: center;
-  gap: 24px;
   flex-wrap: wrap;
+  gap: 24px;
 }
 
 .nftTable__hero__heading h2 {
@@ -22,8 +21,7 @@
 }
 
 .nftTable__hero__heading p {
-  margin: 0 auto;
-  max-width: 540px;
+  max-width: 500px;
   font-weight: var(--light);
   color: var(--gray40);
 }
@@ -31,6 +29,7 @@
 .nftTable__hero__dashboard {
   display: flex;
   gap: 16px;
+  flex: 1;
 }
 
 .nftTable__hero__dashboard__item {
@@ -40,6 +39,7 @@
   padding: 16px 24px;
   border-radius: 12px;
   background-color: var(--gray200);
+  flex: 1;
 }
 
 .nftTable__hero__dashboard__item h4 {
@@ -73,7 +73,7 @@
   text-decoration: underline;
 }
 
-.nftCollectionLink__cover {
+.nftCollectionLink img {
   height: 40px;
   width: 40px;
   object-fit: cover;
@@ -102,7 +102,7 @@
 }
 
 .nftTable__table * {
-  font-family: "PT Mono", monospace;
+  font-family: var(--monospase);
 }
 
 thead tr th {
@@ -139,48 +139,33 @@ tbody tr td:last-child {
   padding-right: 0;
 }
 
-/* table responsive */
+.green {
+  color: #8cbd18;
+}
 
-/* @media screen and (max-width: 767px) {
-  .nftTable__table thead {
-    display: none;
-  }
+.red {
+  color: #ca5010;
+}
 
-  .nftTable__table,
-  .nftTable__table tbody,
-  .nftTable__table tbody tr {
-    display: block;
-    width: 100%;
-  }
+#dataPartner {
+  color: var(--gray100);
+}
 
-  .nftTable__table tbody tr td {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-  }
+/* responsive */
 
-  .nftTable__table tbody tr td a {
-    justify-content: flex-end;
+@media screen and (max-width: 1023px) {
+  .nftTable__hero__dashboard__item {
+    padding: 16px;
     gap: 8px;
   }
 
-  .nftTable__table thead tr:nth-child(-n + 2),
-  .nftTable__table tbody tr td:nth-child(-n + 2) {
-    text-align: inherit;
+  .nftTable__hero__dashboard__item h4 {
+    font-size: var(--fontSize5);
   }
+}
 
-  .nftTable__table tbody tr {
-    margin-bottom: 24px;
+@media screen and (max-width: 479px) {
+  .nftTable__hero__dashboard {
+    flex-wrap: wrap;
   }
-
-  .nftTable__table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 24px;
-    font-weight: var(--medium);
-    text-align: left;
-  }
-} */
+}
