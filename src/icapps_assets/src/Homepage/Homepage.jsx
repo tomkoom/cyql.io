@@ -3,7 +3,7 @@ import css from "./Homepage.module.css";
 
 // COMPONENTS
 import Heading from "./Heading/Heading";
-import Search from "./Search/Search";
+import SearchBar from "../SearchBar/SearchBar";
 import AppList from "./AppList/AppList";
 import Tags from "./Tags/Tags";
 import Ads from "./Ads/Ads";
@@ -15,13 +15,18 @@ const Homepage = ({
   data,
   loading,
   error,
+  setSearch,
+  search,
 }) => {
-  const [search, setSearch] = useState("");
   return (
     <main className={`${css.homepage} container1600`}>
       <div className={css.homepage__hero}>
         <Heading />
-        <Search setSearch={setSearch} data={data} loading={loading} />
+        <SearchBar
+          setSearch={setSearch}
+          search={search}
+          inputName="projects-search"
+        />
       </div>
 
       {/* CONTENT */}

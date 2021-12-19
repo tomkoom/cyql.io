@@ -5,7 +5,7 @@
   flex-direction: column;
   gap: 16px;
   margin: 32px auto;
-  max-width: 1440px;
+  max-width: 1600px;
   width: 100%;
   font-weight: var(--light);
 }
@@ -145,10 +145,6 @@ tbody tr td:last-child {
 
 .red {
   color: #ca5010;
-}
-
-#dataPartner {
-  color: var(--gray100);
 }
 
 /* responsive */

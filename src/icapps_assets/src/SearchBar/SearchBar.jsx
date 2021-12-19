@@ -1,21 +1,26 @@
 import React, { useState } from "react";
-import css from "./Search.module.css";
+import css from "./SearchBar.module.css";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const Search = ({ setSearch, data, loading }) => {
+const SearchBar = ({ setSearch, search, inputName }) => {
   const [isActive, setIsActive] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    if (props.onChange) props.onChange(search);
+  };
 
   return (
     <div className={css.search}>
       <input
         className={css.search__input}
         type="text"
-        placeholder={loading ? "" : `Search ${data[0].data.length} projects`}
-        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search projects"
+        onChange={handleSearch}
         onFocus={() => {
           setIsActive(true); // true == black
         }}
@@ -24,6 +29,8 @@ const Search = ({ setSearch, data, loading }) => {
         }}
         onMouseEnter={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
+        value={search}
+        name={inputName}
       />
 
       <FontAwesomeIcon
@@ -41,4 +48,4 @@ const Search = ({ setSearch, data, loading }) => {
   );
 };
 
-export default Search;
+export default SearchBar;

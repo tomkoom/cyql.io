@@ -8,6 +8,9 @@ import k from "../../../../k/k";
 // LOADER
 import Loader from "../Loader";
 
+// COMPONENTS
+import SearchBar from "../SearchBar/SearchBar";
+
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
 
@@ -23,7 +26,7 @@ const formatterUsd = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
-const NftList = ({ icpPrice }) => {
+const NftList = ({ setSearch, search, icpPrice }) => {
   const [gsData, setGsData] = useState();
   const [gsDataLength, setGsDataLength] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -196,10 +199,6 @@ const NftList = ({ icpPrice }) => {
     );
   }
 
-  const colorFunc = () => {
-    return Math.sign(n.profitToAvg) == 1 ? { color: "blue" } : { color: "red" };
-  };
-
   return (
     <section className={css.nftTable}>
       <div className={css.nftTable__hero}>
@@ -220,7 +219,7 @@ const NftList = ({ icpPrice }) => {
           </p>
         </div>
 
-        {isLoaded ? (
+        {!isLoaded ? null : (
           <div className={css.nftTable__hero__dashboard}>
             <div className={css.nftTable__hero__dashboard__item}>
               <p>Market Cap</p>
@@ -234,116 +233,124 @@ const NftList = ({ icpPrice }) => {
               <p>{totalVolumeIcp}&nbsp;ICP</p>
             </div>
           </div>
-        ) : null}
+        )}
       </div>
 
       {!isLoaded ? (
         <Loader />
       ) : (
-        <div style={{ overflowX: "auto" }}>
-          <table className={css.nftTable__table}>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Volume</th>
-                <th>Sales</th>
-                <th>Listings</th>
-                <th>Minted&nbsp;NFTs</th>
-                <th>Min.&nbsp;Sale&nbsp;Price</th>
-                <th>Max.&nbsp;Sale&nbsp;Price</th>
-                <th>Avg.&nbsp;Price</th>
-                <th>Est.&nbsp;Market&nbsp;Cap</th>
-              </tr>
-            </thead>
-            <tbody>
-              {nftData.map((n, i) => (
-                <tr key={n.name}>
-                  <td data-label="#">{i + 1}</td>
-
-                  <td data-label="Name">
-                    <a
-                      className={css.nftCollectionLink}
-                      href={n.market}
-                      target="_blank"
-                      rel="norefferer noopener"
-                    >
-                      <img src={n.img} alt={n.name} />
-                      {n.name}
-                    </a>
-                  </td>
-
-                  <td data-label="Volume">
-                    <div className={css.cell}>
-                      {n.salesInIcpFormatted}&nbsp;ICP
-                      <span className={css.cellSpan}>
-                        {n.volumeUsdFormatted}
-                      </span>
-                    </div>
-                  </td>
-
-                  <td data-label="Sales">{n.sales}</td>
-
-                  <td data-label="Listings">{n.listings}</td>
-
-                  {/* <td data-label="Assets">
-                    {n.circulatingNfts
-                      ? n.circulatingNfts
-                      : n.totalAssetsFormatted
-                      ? n.totalAssetsFormatted
-                      : null}
-                  </td> */}
-
-                  <td data-label="Assets">{n.totalAssetsFormatted}</td>
-
-                  <td data-label="Min Sale Price">
-                    {n.minSalePrice
-                      ? `${n.minSalePrice} ICP`
-                      : n.maxSalePrice == "Airdrop"
-                      ? "Airdrop"
-                      : null}
-                  </td>
-
-                  <td data-label="Max. Sale Price">
-                    {n.maxSalePrice && n.maxSalePrice != "Airdrop"
-                      ? `${n.maxSalePrice} ICP`
-                      : n.maxSalePrice == "Airdrop"
-                      ? n.maxSalePrice
-                      : null}
-                  </td>
-
-                  <td data-label="Avg. Price">
-                    <div className={css.cell}>
-                      {n.avgPrice}&nbsp;ICP
-                      <span
-                        className={
-                          Math.sign(n.profitToAvg) >= 0
-                            ? `${css.cellSpan} ${css.green}`
-                            : `${css.cellSpan} ${css.red}`
-                        }
-                      >
-                        {n.profitToAvg
-                          ? `${n.profitToAvg}% (to max sale price)`
-                          : null}
-                      </span>
-                    </div>
-                  </td>
-
-                  <td data-label="Est. Market Cap">
-                    <div className={css.cell}>
-                      {n.marketCapFormatted}&nbsp;ICP
-                      <span className={css.cellSpan}>
-                        {n.marketCapUsdFormatted}
-                      </span>
-                    </div>
-                  </td>
+        <div>
+          <SearchBar
+            setSearch={setSearch}
+            search={search}
+            inputName="nft-list-search"
+          />
+          <div style={{ overflowX: "auto" }}>
+            <table className={css.nftTable__table}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Volume</th>
+                  <th>Sales</th>
+                  <th>Listings</th>
+                  <th>Minted&nbsp;NFTs</th>
+                  <th>Min.&nbsp;Sale&nbsp;Price</th>
+                  <th>Max.&nbsp;Sale&nbsp;Price</th>
+                  <th>Avg.&nbsp;Price</th>
+                  <th>Est.&nbsp;Market&nbsp;Cap</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {nftData
+                  .filter((n) => {
+                    if (search == "") {
+                      return n;
+                    } else if (
+                      n.name.toLowerCase().includes(search.toLowerCase())
+                    ) {
+                      return n;
+                    }
+                  })
+                  .map((n, i) => (
+                    <tr key={n.name}>
+                      <td data-label="#">{i + 1}</td>
+
+                      <td data-label="Name">
+                        <a
+                          className={css.nftCollectionLink}
+                          href={n.market}
+                          target="_blank"
+                          rel="norefferer noopener"
+                        >
+                          <img src={n.img} alt={n.name} />
+                          {n.name}
+                        </a>
+                      </td>
+
+                      <td data-label="Volume">
+                        <div className={css.cell}>
+                          {n.salesInIcpFormatted}&nbsp;ICP
+                          <span className={css.cellSpan}>
+                            {n.volumeUsdFormatted}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td data-label="Sales">{n.sales}</td>
+
+                      <td data-label="Listings">{n.listings}</td>
+
+                      <td data-label="Assets">{n.totalAssetsFormatted}</td>
+
+                      <td data-label="Min Sale Price">
+                        {n.minSalePrice
+                          ? `${n.minSalePrice} ICP`
+                          : n.maxSalePrice == "Airdrop"
+                          ? "Airdrop"
+                          : null}
+                      </td>
+
+                      <td data-label="Max. Sale Price">
+                        {n.maxSalePrice && n.maxSalePrice != "Airdrop"
+                          ? `${n.maxSalePrice} ICP`
+                          : n.maxSalePrice == "Airdrop"
+                          ? n.maxSalePrice
+                          : null}
+                      </td>
+
+                      <td data-label="Avg. Price">
+                        <div className={css.cell}>
+                          {n.avgPrice}&nbsp;ICP
+                          <span
+                            className={
+                              Math.sign(n.profitToAvg) >= 0
+                                ? `${css.cellSpan} ${css.green}`
+                                : `${css.cellSpan} ${css.red}`
+                            }
+                          >
+                            {n.profitToAvg
+                              ? `${n.profitToAvg}% (to max sale price)`
+                              : null}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td data-label="Est. Market Cap">
+                        <div className={css.cell}>
+                          {n.marketCapFormatted}&nbsp;ICP
+                          <span className={css.cellSpan}>
+                            {n.marketCapUsdFormatted}
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
-      <p id={css.dataPartner}>Data partner: Entrepot</p>
     </section>
   );
 };

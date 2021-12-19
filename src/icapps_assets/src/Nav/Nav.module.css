@@ -199,16 +199,6 @@
 
   /* end responsive menu */
 
-  /* .nav__list__item__content {
-		color: var(--gray220);
-	}
-
-	.nav__list__item__content:hover:not(.donate-container) {
-		-webkit-box-shadow: 0px 2px 0px 0px var(--gray220);
-		-moz-box-shadow: 0px 2px 0px 0px var(--gray220);
-		box-shadow: 0px 2px 0px 0px var(--gray220);
-	} */
-
   /* donate area */
 
   .donateContainer {
@@ -218,13 +208,10 @@
 
 @media screen and (max-width: 1023px) {
   .nav {
-    padding: 24px;
+    padding: 16px;
   }
 
-  .nav__list {
-    right: 24px;
-  }
-
+  .nav__list,
   .nav__list__active {
     right: 24px;
   }

@@ -23,6 +23,8 @@ const App = () => {
   const [category, setCategory] = useState("All");
   const [filteredApps, setFilteredApps] = useState([]);
   const [icpPrice, setIcpPrice] = useState();
+  const [searchProjects, setSearchProjects] = useState("");
+  const [searchNfts, setSearchNfts] = useState("");
 
   // ICP price request
   useEffect(() => {
@@ -68,6 +70,8 @@ const App = () => {
               data={data}
               loading={loading}
               error={error}
+              setSearch={setSearchProjects}
+              search={searchProjects}
             />
           </Route>
 
@@ -84,7 +88,11 @@ const App = () => {
           </Route>
 
           <Route exact path="/nft">
-            <NftList icpPrice={icpPrice} />
+            <NftList
+              icpPrice={icpPrice}
+              setSearch={setSearchNfts}
+              search={searchNfts}
+            />
           </Route>
 
           <Route exact path="/submit">
