@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./AppList.module.css";
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,11 @@ import { cardVariants } from "../../MotionVariants";
 import Loader from "./../../Loader";
 
 const AppList = ({ loading, error, filteredApps, search }) => {
+  const [itemsVisible, setItemsVisible] = useState(36);
+  const showMoreItems = () => {
+    setItemsVisible((prevValue) => prevValue + 36);
+  };
+
   return (
     <section className={css.appList}>
       {loading ? (
@@ -30,6 +35,7 @@ const AppList = ({ loading, error, filteredApps, search }) => {
                 return val;
               }
             })
+            .slice(0, itemsVisible)
             .map((d) => (
               <motion.div
                 key={d.id}
@@ -98,6 +104,13 @@ const AppList = ({ loading, error, filteredApps, search }) => {
                 </Link>
               </motion.div>
             ))}
+        </div>
+      )}
+      {loading ? null : (
+        <div className={css.appList__loadMoreBtn}>
+          <button onClick={showMoreItems}>
+            Load more projects &#40;+36&#41;
+          </button>
         </div>
       )}
     </section>

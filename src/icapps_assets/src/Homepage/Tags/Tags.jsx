@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Tags.module.css";
-import TagsItem from "./TagsItem";
+import TagsItem from "./TagsItem/TagsItem";
 
 const categories = [
   { name: "All", icon: "" },

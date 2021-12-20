@@ -147,6 +147,31 @@ tbody tr td:last-child {
   color: #ca5010;
 }
 
+/* LOAD MORE BTN*/
+
+.nftTable__loadMoreBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.nftTable__loadMoreBtn button {
+  background-color: var(--gray180);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: var(--fontSize6);
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.nftTable__loadMoreBtn button:hover {
+  background-color: var(--gray140);
+}
+
 /* responsive */
 
 @media screen and (max-width: 1023px) {

@@ -46,6 +46,11 @@ const App = () => {
     sheetsNames: ["Apps", "Ads", "NftList"],
   });
 
+  // const [apps, ads, nftList] = data;
+  // console.log(apps ? apps : null);
+  // console.log(ads ? ads : null);
+  // console.log(nftList ? nftList : null);
+
   useEffect(() => {
     if (data[0]) {
       category === "All"

@@ -2,13 +2,12 @@
 
 .tagsItem {
   display: flex;
-  flex-wrap: nowrap;
   align-items: center;
   text-align: left;
-  gap: 4px;
+  gap: 8px;
   white-space: nowrap;
   height: 40px;
-  padding: 0 8px;
+  padding: 0 12px;
   font-size: var(--fontSize6);
   font-weight: var(--medium);
   background-color: var(--gray220);
@@ -19,12 +18,12 @@
   transition: all 0.25s ease-out;
 }
 
-.tagsItem:hover:not(.tagsItem.active) {
-  background-color: var(--gray180);
-}
-
 .active {
   background-color: var(--gray160);
+}
+
+.tagsItem:hover:not(.tagsItem.active) {
+  background-color: var(--gray180);
 }
 
 .tagsItem__icon {
@@ -33,11 +32,11 @@
   display: grid;
   place-items: center;
   font-size: var(--fontSize5);
-  border-radius: 8px;
 }
 
 .tagsItem__appsNum {
   color: var(--gray100);
+  font-weight: var(--light);
 }
 
 @media screen and (max-width: 1023px) {
