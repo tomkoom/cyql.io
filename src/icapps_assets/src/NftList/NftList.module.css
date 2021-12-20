@@ -102,7 +102,7 @@
 }
 
 .nftTable__table * {
-  font-family: var(--monospase);
+  font-family: var(--monospace);
 }
 
 thead tr th {

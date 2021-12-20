@@ -6,7 +6,7 @@ import useGoogleSheets from "use-google-sheets";
 import k from "../../../../k/k";
 
 // LOADER
-import Loader from "../Loader";
+import Loader from "../CatLoader";
 
 // COMPONENTS
 import SearchBar from "../SearchBar/SearchBar";

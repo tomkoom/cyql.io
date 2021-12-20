@@ -7,7 +7,13 @@ import { motion } from "framer-motion";
 import { cardVariants } from "../../MotionVariants";
 
 // LOADER
-import Loader from "./../../Loader";
+import Loader from "./../../CatLoader";
+
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
 const AppList = ({ loading, error, filteredApps, search }) => {
   const [itemsVisible, setItemsVisible] = useState(36);
@@ -93,6 +99,13 @@ const AppList = ({ loading, error, filteredApps, search }) => {
                           ? "‍🌾"
                           : null}
                       </h2>
+
+                      {d.github || d.canister ? (
+                        <ul>
+                          {d.github && <li>{iconGithub} Open Source</li>}
+                          {d.canister && <li>🛢️ IC deployed</li>}
+                        </ul>
+                      ) : null}
 
                       <p className="bodyTextLight">
                         {d.description && d.description.length > 80

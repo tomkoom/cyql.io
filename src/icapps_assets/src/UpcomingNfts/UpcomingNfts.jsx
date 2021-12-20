@@ -24,7 +24,7 @@ import useGoogleSheets from "use-google-sheets";
 import k from "../../../../k/k";
 
 // LOADER
-import Loader from "../Loader";
+import Loader from "../CatLoader";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;

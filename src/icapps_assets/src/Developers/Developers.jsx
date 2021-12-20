@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { cardVariants } from "../MotionVariants";
 
 // LOADER
-import Loader from "../Loader";
+import Loader from "../CatLoader";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;

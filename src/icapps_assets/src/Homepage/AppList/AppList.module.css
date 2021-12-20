@@ -34,7 +34,7 @@
 
 .li__item__linkBlock__appInfo {
   display: flex;
-  padding: 12px;
+  padding: 12px 12px 16px 12px;
   gap: 12px;
 }
 
@@ -48,7 +48,7 @@
 .li__item__linkBlock__appInfo__description {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   font-size: var(--fontSize6);
   overflow-wrap: break-word;
 }
@@ -57,6 +57,26 @@
   font-size: var(--fontSize6);
   font-weight: var(--black);
   word-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description ul {
+  list-style-type: none;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: var(--fontSize7);
+}
+
+.li__item__linkBlock__appInfo__description ul li {
+  font-family: var(--monospace);
+  padding: 0 6px;
+  border-radius: 4px;
+  color: var(--gray40);
+  box-shadow: 0 0 1px var(--gray80);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .li__item__linkBlock__appInfo__description p {

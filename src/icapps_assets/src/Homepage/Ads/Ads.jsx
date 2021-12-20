@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { cardVariants } from "../../MotionVariants";
 
 // LOADER
-import Loader from "../../Loader";
+import Loader from "../../CatLoader";
 
 const Ads = ({ data, loading, error }) => {
   return (
