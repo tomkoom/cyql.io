@@ -1,0 +1,56 @@
+/* HOMEPAGE ADS */
+
+.ads {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 24px;
+  align-self: flex-start;
+  max-width: 200px;
+  width: 100%;
+}
+
+.ads__item {
+  display: block;
+  border-radius: 12px;
+  background-color: var(--gray200);
+}
+
+.ads__item__cover {
+  width: 100%;
+  /* padding-bottom: 66.66%; */
+  padding-bottom: 75%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px 12px 0 0;
+}
+
+.ads__item__info {
+  padding: 16px;
+}
+
+.ads__item__info__title {
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+}
+
+.ads__item__info__description {
+  font-style: italic;
+  margin-top: 2px;
+  font-weight: var(--light);
+  line-height: 150%;
+  font-size: 0.9rem;
+  color: var(--gray40);
+}
+
+#yourAd {
+  opacity: 10%;
+}
+
+@media screen and (max-width: 1023px) {
+  .appList__ads {
+    display: none;
+  }
+}

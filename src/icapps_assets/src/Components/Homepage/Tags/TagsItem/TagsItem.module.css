@@ -1,0 +1,51 @@
+/* HOMEPAGE TAGS ITEM */
+
+.tagsItem {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 8px;
+  white-space: nowrap;
+  height: 40px;
+  padding: 0 12px;
+  font-family: var(--monospace);
+  font-size: var(--fontSize6);
+  font-weight: var(--medium);
+  background-color: var(--gray220);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.active {
+  background-color: var(--gray180);
+}
+
+.tagsItem:hover:not(.tagsItem.active) {
+  background-color: var(--gray180);
+}
+
+.tagsItem__icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  font-size: var(--fontSize5);
+}
+
+.tagsItem__appsNum {
+  color: var(--gray100);
+  font-weight: var(--light);
+}
+
+@media screen and (max-width: 1023px) {
+  .tagsItem {
+    background-color: var(--gray200);
+  }
+
+  .active {
+    background-color: var(--gray160);
+  }
+}

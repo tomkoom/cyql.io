@@ -1,0 +1,19 @@
+/* HOMEPAGE TAGS */
+
+.tags {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 6px;
+}
+
+@media screen and (max-width: 1023px) {
+  .tags {
+    position: inherit;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

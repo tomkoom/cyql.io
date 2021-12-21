@@ -7,14 +7,14 @@ import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
 
 // COMPONENTS
-import Nav from "./Nav/Nav";
-import Homepage from "./Homepage/Homepage";
-import AppPage from "./AppPage/AppPage";
-import UpcomingNfts from "./UpcomingNfts/UpcomingNfts";
-import Developers from "./Developers/Developers";
-import NftList from "./NftList/NftList";
-import Highlights from "./Highlights/Highlights";
-import SubmitApp from "./SubmitApp/SubmitApp";
+import Nav from "./Components/Nav/Nav";
+import Homepage from "./Components/Homepage/Homepage";
+import AppPage from "./Components/AppPage/AppPage";
+import UpcomingNfts from "./Components/UpcomingNfts/UpcomingNfts";
+import Developers from "./Components/Developers/Developers";
+import NftList from "./Components/NftList/NftList";
+import Highlights from "./Components/Highlights/Highlights";
+import SubmitApp from "./Components/SubmitApp/SubmitApp";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
