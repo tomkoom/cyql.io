@@ -6,6 +6,10 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
 
+// REDUX
+import { useSelector, useDispatch } from "react-redux";
+import { fetchIcpPrice } from "./Redux/icpPriceSlice";
+
 // COMPONENTS
 import Nav from "./Components/Nav/Nav";
 import Homepage from "./Components/Homepage/Homepage";
@@ -22,22 +26,16 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 const App = () => {
   const [category, setCategory] = useState("All");
   const [filteredApps, setFilteredApps] = useState([]);
-  const [icpPrice, setIcpPrice] = useState();
   const [searchProjects, setSearchProjects] = useState("");
   const [searchNfts, setSearchNfts] = useState("");
 
-  // ICP price request
+  // redux
+  const icpPrice = useSelector((state) => state.icpPrice.value);
+  const dispatch = useDispatch();
+
+  // ICP price request redux
   useEffect(() => {
-    fetch(k.COINGECKO)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          console.log("Coingecko ICP price request was not successfull.");
-        }
-      })
-      .then((data) => setIcpPrice(data["internet-computer"].usd))
-      .catch((error) => console.log("Error"));
+    dispatch(fetchIcpPrice());
   }, []);
 
   const { data, loading, error } = useGoogleSheets({
