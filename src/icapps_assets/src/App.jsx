@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import css from "./App.module.css";
 import { Switch, Route, withRouter } from "react-router-dom";
 
-// COMPONENTS
+// Components
 import {
   Nav,
   Homepage,
@@ -13,12 +13,17 @@ import {
   SubmitApp,
 } from "./Components";
 
-// redux
+// Redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./Redux/icpPriceSlice";
-import { setProjects, setAds, setNftList } from "./Redux/siteDataSlice";
+import {
+  setProjects,
+  setAds,
+  setNftList,
+  setFilteredProjects,
+} from "./Redux/siteDataSlice";
 
-// GOOGLE API
+// Google API
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
 
@@ -27,7 +32,6 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
   const [category, setCategory] = useState("All");
-  const [filteredProjects, setFilteredProjects] = useState([]);
 
   // redux
   const projects = useSelector((state) => state.siteData.projects);
@@ -56,10 +60,10 @@ const App = () => {
   // change categories when category buttons are clicked
   useEffect(() => {
     if (projects.length) {
-      category === "All"
-        ? setFilteredProjects(projects)
-        : setFilteredProjects(
-            projects.filter((apps) => apps.category === category)
+      category == "All"
+        ? dispatch(setFilteredProjects(projects))
+        : dispatch(
+            setFilteredProjects(projects.filter((p) => p.category === category))
           );
     }
   }, [projects, category]);
@@ -74,7 +78,6 @@ const App = () => {
             <Homepage
               category={category}
               setCategory={setCategory}
-              filteredProjects={filteredProjects}
               data={data}
               loading={loading}
               error={error}

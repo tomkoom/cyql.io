@@ -3,7 +3,7 @@ import css from "./AppList.module.css";
 import { Link } from "react-router-dom";
 import Loader from "./../../../CatLoader";
 
-// FRAMER MOTION
+// Framer Motion
 import { motion } from "framer-motion";
 import { cardVariants } from "../../../MotionVariants";
 
@@ -11,15 +11,20 @@ import { cardVariants } from "../../../MotionVariants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-// add filtered projects state
+// Redux
+import { useSelector } from "react-redux";
 
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
-const AppList = ({ loading, error, filteredProjects, searchValue }) => {
+const AppList = ({ loading, error, searchValue }) => {
   const [itemsVisible, setItemsVisible] = useState(36);
   const showMoreItems = () => {
     setItemsVisible((prevValue) => prevValue + 36);
   };
+
+  const filteredProjects = useSelector(
+    (state) => state.siteData.filteredProjects
+  );
 
   return (
     <section className={css.appList}>
