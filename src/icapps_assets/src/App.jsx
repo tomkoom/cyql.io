@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 import css from "./App.module.css";
 import { Switch, Route, withRouter } from "react-router-dom";
 
-// GOOGLE API
-import useGoogleSheets from "use-google-sheets";
-import k from "../../../k/k";
+// COMPONENTS
+import {
+  Nav,
+  Homepage,
+  AppPage,
+  UpcomingNfts,
+  NftList,
+  Developers,
+  SubmitApp,
+} from "./Components";
 
 // redux
 import { useDispatch } from "react-redux";
 // get icp price
 import { fetchIcpPrice } from "./Redux/icpPriceSlice";
 
-// COMPONENTS
-import Nav from "./Components/Nav/Nav";
-import Homepage from "./Components/Homepage/Homepage";
-import AppPage from "./Components/AppPage/AppPage";
-import UpcomingNfts from "./Components/UpcomingNfts/UpcomingNfts";
-import Developers from "./Components/Developers/Developers";
-import NftList from "./Components/NftList/NftList";
-import Highlights from "./Components/Highlights/Highlights";
-import SubmitApp from "./Components/SubmitApp/SubmitApp";
+// GOOGLE API
+import useGoogleSheets from "use-google-sheets";
+import k from "../../../k/k";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
