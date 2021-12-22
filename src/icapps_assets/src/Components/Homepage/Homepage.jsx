@@ -1,22 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./Homepage.module.css";
+import { Heading, SearchBar, AppList, Tags, Ads } from "../";
 
-// COMPONENTS
-import Heading from "./Heading/Heading";
-import SearchBar from "../SearchBar/SearchBar";
-import AppList from "./AppList/AppList";
-import Tags from "./Tags/Tags";
-import Ads from "./Ads/Ads";
-import TagsFilter from "../TagsFilter/TagsFilter";
-
-// redux
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchProjects } from "../../Redux/searchProjectsSlice";
 
 const Homepage = ({
   category,
   setCategory,
-  filteredApps,
+  filteredProjects,
   data,
   loading,
   error,
@@ -56,7 +49,7 @@ const Homepage = ({
         <AppList
           loading={loading}
           error={error}
-          filteredApps={filteredApps}
+          filteredProjects={filteredProjects}
           searchValue={searchProjectsValue}
         />
 

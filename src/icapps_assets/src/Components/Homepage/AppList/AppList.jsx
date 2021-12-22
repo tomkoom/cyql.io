@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import css from "./AppList.module.css";
 import { Link } from "react-router-dom";
+import Loader from "./../../../CatLoader";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
 import { cardVariants } from "../../../MotionVariants";
 
-// LOADER
-import Loader from "./../../../CatLoader";
-
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+// add filtered projects state
+
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
-const AppList = ({ loading, error, filteredApps, searchValue }) => {
+const AppList = ({ loading, error, filteredProjects, searchValue }) => {
   const [itemsVisible, setItemsVisible] = useState(36);
   const showMoreItems = () => {
     setItemsVisible((prevValue) => prevValue + 36);
@@ -31,7 +31,7 @@ const AppList = ({ loading, error, filteredApps, searchValue }) => {
         <p className="center">Fetch error!</p>
       ) : (
         <div className={css.li}>
-          {filteredApps
+          {filteredProjects
             .filter((val) => {
               if (searchValue == "") {
                 return val;

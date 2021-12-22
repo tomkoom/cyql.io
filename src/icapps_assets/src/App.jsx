@@ -14,9 +14,9 @@ import {
 } from "./Components";
 
 // redux
-import { useDispatch } from "react-redux";
-// get icp price
+import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./Redux/icpPriceSlice";
+import { setProjects, setAds, setNftList } from "./Redux/siteDataSlice";
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
@@ -27,8 +27,10 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
   const [category, setCategory] = useState("All");
-  const [filteredApps, setFilteredApps] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
+  // redux
+  const projects = useSelector((state) => state.siteData.projects);
   // get icp price
   const dispatch = useDispatch();
   useEffect(() => {
@@ -41,20 +43,26 @@ const App = () => {
     sheetsNames: ["Apps", "Ads", "NftList"],
   });
 
-  // const [apps, ads, nftList] = data;
-  // console.log(apps ? apps : null);
-  // console.log(ads ? ads : null);
-  // console.log(nftList ? nftList : null);
-
+  // set site data when loaded
   useEffect(() => {
-    if (data[0]) {
+    if (!loading) {
+      const [dataProjects, dataAds, dataNftList] = data;
+      dispatch(setProjects(dataProjects.data));
+      dispatch(setAds(dataAds.data));
+      dispatch(setNftList(dataNftList.data));
+    }
+  }, [loading]);
+
+  // change categories when category buttons are clicked
+  useEffect(() => {
+    if (projects.length) {
       category === "All"
-        ? setFilteredApps(data[0].data)
-        : setFilteredApps(
-            data[0].data.filter((apps) => apps.category === category)
+        ? setFilteredProjects(projects)
+        : setFilteredProjects(
+            projects.filter((apps) => apps.category === category)
           );
     }
-  }, [loading, category]);
+  }, [projects, category]);
 
   return (
     <div>
@@ -66,7 +74,7 @@ const App = () => {
             <Homepage
               category={category}
               setCategory={setCategory}
-              filteredApps={filteredApps}
+              filteredProjects={filteredProjects}
               data={data}
               loading={loading}
               error={error}
