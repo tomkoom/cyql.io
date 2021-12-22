@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from "react";
 import css from "./NftList.module.css";
 
-// GOOGLE API
+// google api
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../../../k/k";
 
-// LOADER
+// loader
 import Loader from "../../CatLoader";
 
-// COMPONENTS
+// components
 import SearchBar from "../SearchBar/SearchBar";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchNfts } from "../../Redux/searchNftsSlice";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
 
 let nftDataArr = [];
-let totalVolumeUsd = [];
-let totalVolumeIcp = [];
+let totalVolumeUsd = 0;
+let totalVolumeIcp = 0;
 let totalMarketCapUsd = 0;
 let totalMarketCapIcp = 0;
 
@@ -26,12 +30,20 @@ const formatterUsd = new Intl.NumberFormat("en-US", {
   currency: "USD",
 });
 
-const NftList = ({ setSearch, search, icpPrice }) => {
+const NftList = () => {
   const [gsData, setGsData] = useState();
   const [gsDataLength, setGsDataLength] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
   const [nftData, setNftData] = useState();
   const [itemsVisible, setItemsVisible] = useState(12);
+
+  // redux
+  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
+  const searchNftsValue = useSelector((state) => state.searchNfts.value);
+  const dispatch = useDispatch();
+  const handleSearchNfts = (e) => {
+    dispatch(setSearchNfts(e.target.value));
+  };
 
   const showMoreItems = () => {
     setItemsVisible((prevValue) => prevValue + 12);
@@ -245,8 +257,8 @@ const NftList = ({ setSearch, search, icpPrice }) => {
 
           <div>
             <SearchBar
-              setSearch={setSearch}
-              search={search}
+              searchValue={searchNftsValue}
+              handleSearch={handleSearchNfts}
               inputName="nft-list-search"
             />
             <div style={{ overflowX: "auto" }}>
@@ -268,10 +280,12 @@ const NftList = ({ setSearch, search, icpPrice }) => {
                 <tbody>
                   {nftData
                     .filter((n) => {
-                      if (search == "") {
+                      if (searchNftsValue == "") {
                         return n;
                       } else if (
-                        n.name.toLowerCase().includes(search.toLowerCase())
+                        n.name
+                          .toLowerCase()
+                          .includes(searchNftsValue.toLowerCase())
                       ) {
                         return n;
                       }

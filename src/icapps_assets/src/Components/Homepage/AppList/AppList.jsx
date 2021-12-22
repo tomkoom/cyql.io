@@ -15,7 +15,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
-const AppList = ({ loading, error, filteredApps, search }) => {
+const AppList = ({ loading, error, filteredApps, searchValue }) => {
   const [itemsVisible, setItemsVisible] = useState(36);
   const showMoreItems = () => {
     setItemsVisible((prevValue) => prevValue + 36);
@@ -33,10 +33,10 @@ const AppList = ({ loading, error, filteredApps, search }) => {
         <div className={css.li}>
           {filteredApps
             .filter((val) => {
-              if (search == "") {
+              if (searchValue == "") {
                 return val;
               } else if (
-                val.name.toLowerCase().includes(search.toLowerCase())
+                val.name.toLowerCase().includes(searchValue.toLowerCase())
               ) {
                 return val;
               }

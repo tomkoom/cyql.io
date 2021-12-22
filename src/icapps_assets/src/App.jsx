@@ -6,8 +6,9 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
 
-// REDUX
-import { useSelector, useDispatch } from "react-redux";
+// redux
+import { useDispatch } from "react-redux";
+// get icp price
 import { fetchIcpPrice } from "./Redux/icpPriceSlice";
 
 // COMPONENTS
@@ -26,14 +27,9 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 const App = () => {
   const [category, setCategory] = useState("All");
   const [filteredApps, setFilteredApps] = useState([]);
-  const [searchProjects, setSearchProjects] = useState("");
-  const [searchNfts, setSearchNfts] = useState("");
 
-  // redux
-  const icpPrice = useSelector((state) => state.icpPrice.value);
+  // get icp price
   const dispatch = useDispatch();
-
-  // ICP price request redux
   useEffect(() => {
     dispatch(fetchIcpPrice());
   }, []);
@@ -61,7 +57,7 @@ const App = () => {
 
   return (
     <div>
-      <Nav icpPrice={icpPrice} />
+      <Nav />
       <div className={css.app}>
         <Switch>
           <Route exact path="/">
@@ -73,8 +69,6 @@ const App = () => {
               data={data}
               loading={loading}
               error={error}
-              setSearch={setSearchProjects}
-              search={searchProjects}
             />
           </Route>
 
@@ -91,11 +85,7 @@ const App = () => {
           </Route>
 
           <Route exact path="/nft">
-            <NftList
-              icpPrice={icpPrice}
-              setSearch={setSearchNfts}
-              search={searchNfts}
-            />
+            <NftList />
           </Route>
 
           <Route exact path="/submit">

@@ -9,6 +9,10 @@ import Tags from "./Tags/Tags";
 import Ads from "./Ads/Ads";
 import TagsFilter from "../TagsFilter/TagsFilter";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchProjects } from "../../Redux/searchProjectsSlice";
+
 const Homepage = ({
   category,
   setCategory,
@@ -16,16 +20,23 @@ const Homepage = ({
   data,
   loading,
   error,
-  setSearch,
-  search,
 }) => {
+  // redux
+  const searchProjectsValue = useSelector(
+    (state) => state.searchProjects.value
+  );
+  const dispatch = useDispatch();
+  const handleSearchProjects = (e) => {
+    dispatch(setSearchProjects(e.target.value));
+  };
+
   return (
     <main className={`${css.homepage} container1600`}>
       <div className={css.homepage__hero}>
         <Heading />
         <SearchBar
-          setSearch={setSearch}
-          search={search}
+          searchValue={searchProjectsValue}
+          handleSearch={handleSearchProjects}
           inputName="projects-search"
         />
         {/* <TagsFilter /> */}
@@ -46,8 +57,7 @@ const Homepage = ({
           loading={loading}
           error={error}
           filteredApps={filteredApps}
-          search={search}
-          setSearch={setSearch}
+          searchValue={searchProjectsValue}
         />
 
         {/* ADS */}

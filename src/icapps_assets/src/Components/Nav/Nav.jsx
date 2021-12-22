@@ -5,6 +5,7 @@ import Logo from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../../DeviceSizes";
+import Modal from "./Modal/Modal";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
@@ -14,6 +15,9 @@ import { btnVariants } from "../../MotionVariants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+
+// redux
+import { useSelector } from "react-redux";
 
 const iconTimes = <FontAwesomeIcon icon={faTimes} color="#fff" />;
 const iconBars = <FontAwesomeIcon icon={faBars} color="#fff" />;
@@ -33,10 +37,14 @@ const socialLinks = [
   },
 ];
 
-const Nav = ({ icpPrice }) => {
+const Nav = () => {
   const [donateAmount, setDonateAmount] = useState("0.2");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [deviceWidth, deviceHeight] = useWindowSize();
+  const [modalIsActive, setModalIsActive] = useState(false);
+
+  // redux
+  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -187,22 +195,6 @@ const Nav = ({ icpPrice }) => {
           </NavLink>
         </li>
 
-        {/* <li
-          className="nav__list__item"
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <a
-            href="https://forms.gle/tsfFSEZki6mqWidy6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav__list__item__content"
-          >
-            Submit Your App
-          </a>
-        </li> */}
-
         <li className={`${css.nav__list__item} ${css.donateContainer}`}>
           <input
             className={css.donateAmountInput}
@@ -215,7 +207,19 @@ const Nav = ({ icpPrice }) => {
             Donate {donateAmount} ICP
           </button>
         </li>
+
+        {/* <li className={`${css.nav__list__item} ${css.donateContainer}`}>
+          <button
+            className={css.donateBtn}
+            onClick={() => setModalIsActive(true)}
+          >
+            Donate
+          </button>
+        </li> */}
       </ul>
+      {/* <Modal modalIsActive={modalIsActive} setModalIsActive={setModalIsActive}>
+        <h3>Enter donation amount</h3>
+      </Modal> */}
     </nav>
   );
 };

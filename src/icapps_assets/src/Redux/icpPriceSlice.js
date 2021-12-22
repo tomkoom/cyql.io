@@ -1,31 +1,44 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import k from "../../../../k/k";
 
 export const fetchIcpPrice = createAsyncThunk(
   "icpPrice/fetchIcpPrice",
-  async function () {
-    const response = await fetch(k.COINGECKO);
-    const data = response.json();
-    return data;
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch(k.COINGECKO);
+      // if error
+      if (!res.ok) {
+        throw new Error("Err");
+      }
+      const data = await res.json();
+      return data;
+
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
 const icpPriceSlise = createSlice({
   name: "icpPrice",
-  initialState: { value: "123" },
+  initialState: {
+    icpPrice: "",
+    icpPriceStatus: null,
+    icpPriceError: null
+  },
   // reducers: {},
   extraReducers: {
-    [fetchIcpPrice.pending]: (state, action) => {
-      state.status = 'loading';
-      state.error = null;
+    [fetchIcpPrice.pending]: (state) => {
+      state.icpPriceStatus = 'loading';
+      state.icpPriceError = null;
     },
     [fetchIcpPrice.fulfilled]: (state, action) => {
-      state.status = "resolved";
-      const icpPrice = action.payload["internet-computer"].usd;
-      state.value = icpPrice; // ?
+      state.icpPriceStatus = "resolved";
+      state.icpPrice = action.payload["internet-computer"].usd;
     },
     [fetchIcpPrice.rejected]: (state, action) => {
-
+      state.icpPriceStatus = "rejected";
+      state.icpPriceError = action.payload;
     },
   }
 });

@@ -5,14 +5,9 @@ import css from "./SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = ({ setSearch, search, inputName }) => {
+const SearchBar = ({ searchValue, handleSearch, inputName }) => {
   const [isActive, setIsActive] = useState(false);
   const [mouseOver, setMouseOver] = useState(false);
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    if (props.onChange) props.onChange(search);
-  };
 
   return (
     <div className={css.search}>
@@ -29,7 +24,7 @@ const SearchBar = ({ setSearch, search, inputName }) => {
         }}
         onMouseEnter={() => setMouseOver(true)}
         onMouseLeave={() => setMouseOver(false)}
-        value={search}
+        value={searchValue}
         name={inputName}
       />
 
