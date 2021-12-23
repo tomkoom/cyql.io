@@ -1,6 +1,8 @@
 import React from "react";
 import css from "./Tags.module.css";
 import TagsItem from "./TagsItem/TagsItem";
+// Redux
+import { useSelector } from "react-redux";
 
 const categories = [
   { name: "All", icon: "" },
@@ -17,6 +19,7 @@ const categories = [
   { name: "Storage", icon: "📦" },
   { name: "Explorers", icon: "🌎" },
   { name: "Dfinity Apps", icon: "♾️" },
+  { name: "Education", icon: "🎓" },
   { name: "Communities", icon: "📣" },
 ];
 
@@ -29,13 +32,13 @@ const Tags = ({ category, setCategory, data, loading }) => {
           setCategory={setCategory}
           categoryActive={category === cat.name ? true : false}
           icon={cat.icon}
-          appsNum={
-            loading
-              ? null
-              : cat.name === "All"
-              ? data[0].data.length
-              : data[0].data.filter((item) => item.category == cat.name).length
-          }
+          // appsNum={
+          //   loading
+          //     ? null
+          //     : cat.name === "All"
+          //     ? data[0].data.length
+          //     : data[0].data.filter((item) => item.category == cat.name).length
+          // }
           key={i}
         />
       ))}

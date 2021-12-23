@@ -6,17 +6,21 @@ const siteDataSlice = createSlice({
 		projects: [],
 		ads: [],
 		nftList: [],
+		devResources: [],
 		filteredProjects: [],
 	},
 	reducers: {
 		setProjects(state, action) {
-			state.projects = action.payload;
+			state.projects = action.payload.data;
 		},
 		setAds(state, action) {
-			state.ads = action.payload;
+			state.ads = action.payload.data;
 		},
 		setNftList(state, action) {
-			state.nftList = action.payload;
+			state.nftList = action.payload.data;
+		},
+		setDevResources(state, action) {
+			state.devResources = action.payload.data;
 		},
 		setFilteredProjects(state, action) {
 			state.filteredProjects = action.payload;
@@ -24,5 +28,5 @@ const siteDataSlice = createSlice({
 	},
 });
 
-export const { setProjects, setAds, setNftList, setFilteredProjects } = siteDataSlice.actions;
+export const { setProjects, setAds, setNftList, setDevResources, setFilteredProjects } = siteDataSlice.actions;
 export default siteDataSlice.reducer;

@@ -6,8 +6,8 @@ const style = {
     justifyContent: "center",
   },
   catloader__img: {
-    width: "54px",
-    heigth: "54px",
+    width: "48px",
+    heigth: "48px",
     objectFit: "contain",
   },
 };

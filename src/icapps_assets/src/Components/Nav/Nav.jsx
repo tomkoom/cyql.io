@@ -169,12 +169,12 @@ const Nav = () => {
         >
           <NavLink
             exact
-            to="/developers"
+            to="/devres"
             replace
             className={css.nav__list__item__content}
             activeClassName={css.nav__list__item__active}
           >
-            Developers
+            DevResources
           </NavLink>
         </li>
 

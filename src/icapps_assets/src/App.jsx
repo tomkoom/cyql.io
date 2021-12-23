@@ -9,7 +9,7 @@ import {
   AppPage,
   UpcomingNfts,
   NftList,
-  Developers,
+  DevResources,
   SubmitApp,
 } from "./Components";
 
@@ -20,6 +20,7 @@ import {
   setProjects,
   setAds,
   setNftList,
+  setDevResources,
   setFilteredProjects,
 } from "./Redux/siteDataSlice";
 
@@ -44,16 +45,17 @@ const App = () => {
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
     sheetId: googleSheetId,
-    sheetsNames: ["Apps", "Ads", "NftList"],
+    sheetsNames: ["Apps", "Ads", "NftList", "DevResources"],
   });
 
   // set site data when loaded
   useEffect(() => {
     if (!loading) {
-      const [dataProjects, dataAds, dataNftList] = data;
-      dispatch(setProjects(dataProjects.data));
-      dispatch(setAds(dataAds.data));
-      dispatch(setNftList(dataNftList.data));
+      const [dataProjects, dataAds, dataNftList, dataDevResources] = data;
+      dispatch(setProjects(dataProjects));
+      dispatch(setAds(dataAds));
+      dispatch(setNftList(dataNftList));
+      dispatch(setDevResources(dataDevResources));
     }
   }, [loading]);
 
@@ -92,8 +94,8 @@ const App = () => {
             <UpcomingNfts />
           </Route>
 
-          <Route exact path="/developers">
-            <Developers />
+          <Route exact path="/devres">
+            <DevResources />
           </Route>
 
           <Route exact path="/nft">
