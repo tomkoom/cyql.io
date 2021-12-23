@@ -38,10 +38,11 @@ const socialLinks = [
 ];
 
 const Nav = () => {
-  const [donateAmount, setDonateAmount] = useState("0.2");
+  const [donateAmount, setDonateAmount] = useState("0");
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [deviceWidth, deviceHeight] = useWindowSize();
   const [modalIsActive, setModalIsActive] = useState(false);
+  const [transactionStatus, setTransactionStatus] = useState();
 
   // redux
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
@@ -60,7 +61,12 @@ const Nav = () => {
         to: k.DONATION_WALLET,
         amount: donateAmount * 100000000,
       };
-      await window.ic?.plug?.requestTransfer(requestTransferArg);
+
+      const transfer = await window.ic?.plug?.requestTransfer(
+        requestTransferArg
+      );
+
+      setTransactionStatus(transfer ? 1 : null);
     }
 
     setTimeout(function () {
@@ -196,30 +202,22 @@ const Nav = () => {
         </li>
 
         <li className={`${css.nav__list__item} ${css.donateContainer}`}>
-          <input
-            className={css.donateAmountInput}
-            type="number"
-            min="0"
-            onChange={updateDonateAmount}
-            value={donateAmount}
-          />
-          <button className={css.donateBtn} onClick={handleDonateBtnClick}>
-            Donate {donateAmount} ICP
-          </button>
-        </li>
-
-        {/* <li className={`${css.nav__list__item} ${css.donateContainer}`}>
           <button
             className={css.donateBtn}
             onClick={() => setModalIsActive(true)}
           >
-            Donate
+            Buy me a coffee
           </button>
-        </li> */}
+        </li>
       </ul>
-      {/* <Modal modalIsActive={modalIsActive} setModalIsActive={setModalIsActive}>
-        <h3>Enter donation amount</h3>
-      </Modal> */}
+      <Modal
+        modalIsActive={modalIsActive}
+        setModalIsActive={setModalIsActive}
+        updateDonateAmount={updateDonateAmount}
+        donateAmount={donateAmount}
+        handleDonateBtnClick={handleDonateBtnClick}
+        transactionStatus={transactionStatus}
+      />
     </nav>
   );
 };

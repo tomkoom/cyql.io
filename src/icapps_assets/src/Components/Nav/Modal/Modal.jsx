@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
 import css from "./Modal.module.css";
 
-const Modal = ({ modalIsActive, setModalIsActive, children }) => {
+const Modal = ({
+  modalIsActive,
+  setModalIsActive,
+  updateDonateAmount,
+  donateAmount,
+  handleDonateBtnClick,
+  transactionStatus,
+  children,
+}) => {
   // prevent from scrolling when modal is open
   useEffect(() => {
     if (modalIsActive) {
@@ -22,7 +30,39 @@ const Modal = ({ modalIsActive, setModalIsActive, children }) => {
         }
         onClick={(e) => e.stopPropagation()}
       >
-        {children}
+        {transactionStatus ? (
+          <div
+            style={{
+              textAlign: "center",
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+            }}
+          >
+            <h5>Transaction completed</h5>
+            <p>Thank you for your donation!</p>
+          </div>
+        ) : (
+          <div className={css.modal__card__content}>
+            <h3>Enter donation amount</h3>
+            <div className={css.modal__card__content__donationAmountInput}>
+              <input
+                className={css.donationAmountInput}
+                type="number"
+                min="0"
+                onChange={updateDonateAmount}
+                value={donateAmount}
+              />
+              <p>ICP</p>
+            </div>
+
+            <button className={css.donateBtn} onClick={handleDonateBtnClick}>
+              Donate
+            </button>
+          </div>
+        )}
+
+        {/* {children} */}
       </div>
     </div>
   );
