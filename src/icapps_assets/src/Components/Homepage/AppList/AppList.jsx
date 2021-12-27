@@ -22,8 +22,11 @@ const AppList = ({ loading, error, searchValue }) => {
     setItemsVisible((prevValue) => prevValue + 36);
   };
 
-  const filteredProjects = useSelector(
-    (state) => state.projectsFiltering.filteredProjects
+  const filteredByCategory = useSelector(
+    (state) => state.projectsFiltering.filteredByCategory
+  );
+  const filteredByTag = useSelector(
+    (state) => state.projectsFiltering.filteredByTag
   );
 
   // tags
@@ -40,6 +43,11 @@ const AppList = ({ loading, error, searchValue }) => {
     (state) => state.projectsFiltering.toniqlabs.value
   );
 
+  const filteredProjects =
+    tagOpenSource || tagDeployedToIc || tagPsychedelic || tagToniqlabs
+      ? filteredByTag
+      : filteredByCategory;
+
   return (
     <section className={css.appList}>
       {loading ? (
@@ -51,7 +59,6 @@ const AppList = ({ loading, error, searchValue }) => {
       ) : (
         <div className={css.li}>
           {filteredProjects
-            // filter by search query
             .filter((p) => {
               if (searchValue === "") {
                 return p;
