@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Homepage.module.css";
-import { Heading, SearchBar, AppList, Tags, Ads } from "../";
+import { Heading, SearchBar, TagsFilter, AppList, Tags, Ads } from "../";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -32,7 +32,7 @@ const Homepage = ({
           handleSearch={handleSearchProjects}
           inputName="projects-search"
         />
-        {/* <TagsFilter /> */}
+        <TagsFilter />
       </div>
 
       {/* CONTENT */}

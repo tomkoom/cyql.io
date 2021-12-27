@@ -23,7 +23,9 @@ const categories = [
   { name: "Communities", icon: "📣" },
 ];
 
-const Tags = ({ category, setCategory, data, loading }) => {
+const Tags = ({ category, setCategory }) => {
+  const projects = useSelector((state) => state.siteData.projects);
+
   return (
     <aside className={css.tags}>
       {categories.map((cat, i) => (
@@ -32,13 +34,11 @@ const Tags = ({ category, setCategory, data, loading }) => {
           setCategory={setCategory}
           categoryActive={category === cat.name ? true : false}
           icon={cat.icon}
-          // appsNum={
-          //   loading
-          //     ? null
-          //     : cat.name === "All"
-          //     ? data[0].data.length
-          //     : data[0].data.filter((item) => item.category == cat.name).length
-          // }
+          projectsNum={
+            cat.name === "All"
+              ? projects.length
+              : projects.filter((p) => p.category == cat.name).length
+          }
           key={i}
         />
       ))}

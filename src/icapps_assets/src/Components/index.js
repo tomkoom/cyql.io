@@ -14,3 +14,4 @@ export { default as AppList } from "./Homepage/AppList/AppList";
 export { default as Tags } from "./Homepage/Tags/Tags";
 export { default as Ads } from "./Homepage/Ads/Ads";
 export { default as SearchBar } from "./SearchBar/SearchBar";
+export { default as TagsFilter } from "./TagsFilter/TagsFilter";

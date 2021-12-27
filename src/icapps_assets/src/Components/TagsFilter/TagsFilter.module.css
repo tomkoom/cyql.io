@@ -5,9 +5,3 @@
   display: flex;
   gap: 8px;
 }
-
-.tagsFilter__item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}

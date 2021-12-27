@@ -3,6 +3,7 @@ import icpPriceSlice from "./icpPriceSlice";
 import searchProjectsSlice from "./searchProjectsSlice";
 import searchNftsSlice from "./searchNftsSlice";
 import siteDataSlice from "./siteDataSlice";
+import filterProjectsSlice from "./filterProjectsSlice";
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
 		siteData: siteDataSlice,
 		searchProjects: searchProjectsSlice,
 		searchNfts: searchNftsSlice,
+		filterProjects: filterProjectsSlice,
 	}
 })
 

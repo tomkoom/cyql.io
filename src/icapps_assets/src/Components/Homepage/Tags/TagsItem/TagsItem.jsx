@@ -1,7 +1,13 @@
 import React from "react";
 import css from "./TagsItem.module.css";
 
-const TagsItem = ({ category, setCategory, categoryActive, icon, appsNum }) => {
+const TagsItem = ({
+  category,
+  setCategory,
+  categoryActive,
+  icon,
+  projectsNum,
+}) => {
   return (
     <button
       className={
@@ -14,7 +20,7 @@ const TagsItem = ({ category, setCategory, categoryActive, icon, appsNum }) => {
       </span>
       <p className="bodyText">
         {category}&nbsp;
-        <span className={css.tagsItem__appsNum}>{appsNum}</span>
+        <span className={css.tagsItem__projectsNum}>{projectsNum}</span>
       </p>
     </button>
   );

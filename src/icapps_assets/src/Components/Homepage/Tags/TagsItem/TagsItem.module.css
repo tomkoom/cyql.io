@@ -11,8 +11,8 @@
   font-family: var(--monospace);
   font-size: var(--fontSize6);
   font-weight: var(--medium);
-  background-color: var(--gray220);
   color: white;
+  background-color: var(--gray220);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -35,7 +35,7 @@
   font-size: var(--fontSize5);
 }
 
-.tagsItem__appsNum {
+.tagsItem__projectsNum {
   color: var(--gray100);
   font-weight: var(--light);
 }

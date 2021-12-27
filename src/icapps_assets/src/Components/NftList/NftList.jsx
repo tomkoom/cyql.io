@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import css from "./NftList.module.css";
 
-// google api
+// Google API
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../../../k/k";
 
-// loader
+// Loader
 import Loader from "../../CatLoader";
 
-// components
+// Components
 import SearchBar from "../SearchBar/SearchBar";
 
-// redux
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchNfts } from "../../Redux/searchNftsSlice";
 
@@ -37,7 +37,7 @@ const NftList = () => {
   const [nftData, setNftData] = useState();
   const [itemsVisible, setItemsVisible] = useState(12);
 
-  // redux
+  // Redux
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
   const searchNftsValue = useSelector((state) => state.searchNfts.value);
   const dispatch = useDispatch();
@@ -244,7 +244,7 @@ const NftList = () => {
               <div className={css.nftTable__hero__dashboard__item}>
                 <p>Market Cap</p>
                 <h4>{totalMarketCapUsd}</h4>
-                <p>${totalMarketCapIcp}&nbsp;ICP</p>
+                <p>{totalMarketCapIcp}&nbsp;ICP</p>
               </div>
 
               <div className={css.nftTable__hero__dashboard__item}>

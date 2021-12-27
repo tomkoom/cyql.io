@@ -206,7 +206,7 @@ const Nav = () => {
             className={css.donateBtn}
             onClick={() => setModalIsActive(true)}
           >
-            Buy me a coffee
+            Donate
           </button>
         </li>
       </ul>

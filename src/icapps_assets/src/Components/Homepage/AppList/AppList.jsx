@@ -26,6 +26,21 @@ const AppList = ({ loading, error, searchValue }) => {
     (state) => state.siteData.filteredProjects
   );
 
+  // tags
+  const tagOpenSource = useSelector(
+    (state) => state.filterProjects.openSource.value
+  );
+  const tagDeployedToIc = useSelector(
+    (state) => state.filterProjects.deployedToIc.value
+  );
+  const tagPsychedelic = useSelector(
+    (state) => state.filterProjects.psychedelic.value
+  );
+  const tagToniqlabs = useSelector(
+    (state) => state.filterProjects.toniqlabs.value
+  );
+  let filterRes = [];
+
   return (
     <section className={css.appList}>
       {loading ? (
@@ -37,15 +52,31 @@ const AppList = ({ loading, error, searchValue }) => {
       ) : (
         <div className={css.li}>
           {filteredProjects
-            .filter((val) => {
-              if (searchValue == "") {
-                return val;
+            // filter by search query
+            .filter((p) => {
+              if (searchValue === "") {
+                return p;
               } else if (
-                val.name.toLowerCase().includes(searchValue.toLowerCase())
+                p.name.toLowerCase().includes(searchValue.toLowerCase())
               ) {
-                return val;
+                return p;
               }
             })
+            // filter by tag
+            .filter((p) => {
+              if (tagOpenSource) {
+                return p.github;
+              } else if (tagDeployedToIc) {
+                return p.canister;
+              } else if (tagPsychedelic) {
+                return p.tags === "Psychedelic";
+              } else if (tagToniqlabs) {
+                return p.tags === "toniqlabs";
+              } else {
+                return p;
+              }
+            })
+            // load more
             .slice(0, itemsVisible)
             .map((d) => (
               <motion.div
