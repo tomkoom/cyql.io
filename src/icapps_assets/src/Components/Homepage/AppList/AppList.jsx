@@ -23,23 +23,22 @@ const AppList = ({ loading, error, searchValue }) => {
   };
 
   const filteredProjects = useSelector(
-    (state) => state.siteData.filteredProjects
+    (state) => state.projectsFiltering.filteredProjects
   );
 
   // tags
   const tagOpenSource = useSelector(
-    (state) => state.filterProjects.openSource.value
+    (state) => state.projectsFiltering.openSource.value
   );
   const tagDeployedToIc = useSelector(
-    (state) => state.filterProjects.deployedToIc.value
+    (state) => state.projectsFiltering.deployedToIc.value
   );
   const tagPsychedelic = useSelector(
-    (state) => state.filterProjects.psychedelic.value
+    (state) => state.projectsFiltering.psychedelic.value
   );
   const tagToniqlabs = useSelector(
-    (state) => state.filterProjects.toniqlabs.value
+    (state) => state.projectsFiltering.toniqlabs.value
   );
-  let filterRes = [];
 
   return (
     <section className={css.appList}>

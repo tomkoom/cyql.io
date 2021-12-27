@@ -1,23 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const filterProjectsSlice = createSlice({
-	name: "filterProjects",
+const projectsFilteringSlice = createSlice({
+	name: "projectsFiltering",
 	initialState: {
+		filteredProjects: [],
 		openSource: { value: false },
 		deployedToIc: { value: false },
 		psychedelic: { value: false },
 		toniqlabs: { value: false },
 	},
 	reducers: {
-		setFilter(state, action) {
+		setFilterByCategory(state, action) {
+			state.filteredProjects = action.payload;
+		},
+		setFilterByTag(state, action) {
 			switch (action.payload.value) {
 				case "openSource":
+					console.log("Open Source")
 					state.openSource.value = !state.openSource.value;
 					state.deployedToIc.value = false;
 					state.psychedelic.value = false;
 					state.toniqlabs.value = false;
 					break;
 				case "deployedToIc":
+					console.log("Deployed To IC")
 					state.deployedToIc.value = !state.deployedToIc.value;
 					state.openSource.value = false;
 					state.psychedelic.value = false;
@@ -40,5 +46,5 @@ const filterProjectsSlice = createSlice({
 	},
 });
 
-export const { setFilter } = filterProjectsSlice.actions;
-export default filterProjectsSlice.reducer;
+export const { setFilterByCategory, setFilterByTag } = projectsFilteringSlice.actions;
+export default projectsFilteringSlice.reducer;

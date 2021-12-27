@@ -21,8 +21,8 @@ import {
   setAds,
   setNftList,
   setDevResources,
-  setFilteredProjects,
 } from "./Redux/siteDataSlice";
+import { setFilterByCategory } from "./Redux/projectsFilteringSlice";
 
 // Google API
 import useGoogleSheets from "use-google-sheets";
@@ -63,9 +63,9 @@ const App = () => {
   useEffect(() => {
     if (projects.length) {
       category == "All"
-        ? dispatch(setFilteredProjects(projects))
+        ? dispatch(setFilterByCategory(projects))
         : dispatch(
-            setFilteredProjects(projects.filter((p) => p.category === category))
+            setFilterByCategory(projects.filter((p) => p.category === category))
           );
     }
   }, [projects, category]);

@@ -4,27 +4,34 @@ import TagsFilterItem from "./TagsFilterItem/TagsFilterItem";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setFilter } from "../../Redux/filterProjectsSlice";
+import { setFilterByTag } from "../../Redux/projectsFilteringSlice";
 
 const TagsFilter = () => {
   const dispatch = useDispatch();
 
   // State
-  const openSource = useSelector((state) => state.filterProjects.openSource);
-  const deployedToIc = useSelector(
-    (state) => state.filterProjects.deployedToIc
+  const openSource = useSelector(
+    (state) => state.projectsFiltering.openSource.value
   );
-  const psychedelic = useSelector((state) => state.filterProjects.psychedelic);
+  const deployedToIc = useSelector(
+    (state) => state.projectsFiltering.deployedToIc.value
+  );
+  const psychedelic = useSelector(
+    (state) => state.projectsFiltering.psychedelic.value
+  );
+  const toniqlabs = useSelector(
+    (state) => state.projectsFiltering.toniqlabs.value
+  );
 
   const filterProjects = (checkbox) => {
-    dispatch(setFilter({ value: checkbox }));
+    dispatch(setFilterByTag({ value: checkbox }));
   };
 
   const filterChecboxes = [
-    { id: "openSource", value: "Open Source" },
-    { id: "deployedToIc", value: "Deployed to IC" },
-    { id: "psychedelic", value: "Psychedelic" },
-    { id: "toniqlabs", value: "toniqlabs" },
+    { id: "openSource", name: "Open Source", state: openSource },
+    { id: "deployedToIc", name: "Deployed to IC", state: deployedToIc },
+    { id: "psychedelic", name: "Psychedelic", state: psychedelic },
+    { id: "toniqlabs", name: "toniqlabs", state: toniqlabs },
   ];
 
   return (
@@ -32,8 +39,9 @@ const TagsFilter = () => {
       {filterChecboxes.map((checkbox, i) => (
         <TagsFilterItem
           id={checkbox.id}
-          value={checkbox.value}
+          name={checkbox.name}
           handleChange={() => filterProjects(checkbox.id)}
+          checkedState={checkbox.state}
           key={i}
         />
       ))}
