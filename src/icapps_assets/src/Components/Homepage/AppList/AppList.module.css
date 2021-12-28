@@ -15,8 +15,6 @@
   flex-direction: column;
   background-color: var(--gray220);
   border-radius: 16px;
-  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.16) 0px 2px 4px -1px; */
 }
 
 .li__item:hover {
@@ -110,4 +108,11 @@
 
 .appList__loadMoreBtn button:hover {
   background-color: var(--gray140);
+}
+
+@media screen and (max-width: 767px) {
+  .li {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-gap: 16px;
+  }
 }

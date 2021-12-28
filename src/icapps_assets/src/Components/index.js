@@ -11,7 +11,7 @@ export { default as Highlights } from "./Highlights/Highlights";
 // homepage.jsx
 export { default as Heading } from "./Homepage/Heading/Heading";
 export { default as AppList } from "./Homepage/AppList/AppList";
-export { default as Tags } from "./Homepage/Tags/Tags";
+export { default as CategoryBtns } from "./Homepage/CategoryBtns/CategoryBtns";
 export { default as Ads } from "./Homepage/Ads/Ads";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as TagsFilter } from "./TagsFilter/TagsFilter";

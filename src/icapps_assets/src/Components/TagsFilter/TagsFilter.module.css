@@ -1,9 +1,23 @@
 /* TAGS FILTER */
 
-.tagsFilter {
-  list-style-type: none;
+.tagsFilter h6 {
+  font-family: var(--monospace);
+  font-weight: var(--medium);
+  margin-bottom: 6px;
+}
+
+.tagsFilter__content {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 12px;
+  gap: 12px;
+}
+
+@media screen and (max-width: 767px) {
+  .tagsFilter__content {
+    /* Horizontal scrolling */
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 60px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }

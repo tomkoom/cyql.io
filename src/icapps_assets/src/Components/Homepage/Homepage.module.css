@@ -1,12 +1,10 @@
 /* HOMEPAGE */
 
-
-
 .homepage__hero {
   margin: 0 0 32px 240px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .homepage__content {
@@ -18,7 +16,7 @@
 
 @media screen and (max-width: 1023px) {
   .homepage__hero {
-    margin: 0 0 32px 0;
+    margin: 0 0 16px 0;
   }
   .homepage__content {
     flex-direction: column;

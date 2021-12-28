@@ -1,6 +1,6 @@
 import React from "react";
-import css from "./Tags.module.css";
-import TagsItem from "./TagsItem/TagsItem";
+import css from "./CategoryBtns.module.css";
+import CategoryBtnsItem from "./CategoryBtnsItem/CategoryBtnsItem";
 // Redux
 import { useSelector } from "react-redux";
 
@@ -23,27 +23,30 @@ const categories = [
   { name: "Communities", icon: "📣" },
 ];
 
-const Tags = ({ category, setCategory }) => {
+const CategoryBtns = ({ category, setCategory }) => {
   const projects = useSelector((state) => state.siteData.projects);
 
   return (
     <aside className={css.tags}>
-      {categories.map((cat, i) => (
-        <TagsItem
-          category={cat.name}
-          setCategory={setCategory}
-          categoryActive={category === cat.name ? true : false}
-          icon={cat.icon}
-          projectsNum={
-            cat.name === "All"
-              ? projects.length
-              : projects.filter((p) => p.category == cat.name).length
-          }
-          key={i}
-        />
-      ))}
+      <h6>Categories</h6>
+      <div className={css.tags__content}>
+        {categories.map((cat, i) => (
+          <CategoryBtnsItem
+            category={cat.name}
+            setCategory={setCategory}
+            categoryActive={category === cat.name ? true : false}
+            icon={cat.icon}
+            projectsNum={
+              cat.name === "All"
+                ? projects.length
+                : projects.filter((p) => p.category == cat.name).length
+            }
+            key={i}
+          />
+        ))}
+      </div>
     </aside>
   );
 };
 
-export default Tags;
+export default CategoryBtns;

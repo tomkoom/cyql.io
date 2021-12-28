@@ -1,6 +1,13 @@
 import React from "react";
 import css from "./Homepage.module.css";
-import { Heading, SearchBar, TagsFilter, AppList, Tags, Ads } from "../";
+import {
+  Heading,
+  SearchBar,
+  TagsFilter,
+  AppList,
+  CategoryBtns,
+  Ads,
+} from "../";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -25,27 +32,32 @@ const Homepage = ({
 
   return (
     <main className={`${css.homepage} container1600`}>
+      {/* HERO */}
       <div className={css.homepage__hero}>
         <Heading />
+
+        {/* Search */}
         <SearchBar
           searchValue={searchProjectsValue}
           handleSearch={handleSearchProjects}
           inputName="projects-search"
         />
+
+        {/* Tags */}
         <TagsFilter />
       </div>
 
       {/* CONTENT */}
       <main className={css.homepage__content}>
-        {/* TAGS */}
-        <Tags
+        {/* Category btns */}
+        <CategoryBtns
           category={category}
           setCategory={setCategory}
           data={data}
           loading={loading}
         />
 
-        {/* APP LIST */}
+        {/* App List */}
         <AppList
           loading={loading}
           error={error}

@@ -36,15 +36,18 @@ const TagsFilter = () => {
 
   return (
     <div className={css.tagsFilter}>
-      {filterChecboxes.map((checkbox, i) => (
-        <TagsFilterItem
-          id={checkbox.id}
-          name={checkbox.name}
-          handleChange={() => filterProjects(checkbox.id)}
-          checkedState={checkbox.state}
-          key={i}
-        />
-      ))}
+      <h6>Tags</h6>
+      <div className={css.tagsFilter__content}>
+        {filterChecboxes.map((checkbox, i) => (
+          <TagsFilterItem
+            id={checkbox.id}
+            name={checkbox.name}
+            handleChange={() => filterProjects(checkbox.id)}
+            checkedState={checkbox.state}
+            key={i}
+          />
+        ))}
+      </div>
     </div>
   );
 };

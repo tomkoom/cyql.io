@@ -1,0 +1,28 @@
+/* HOMEPAGE TAGS */
+
+.tags h6 {
+  font-family: var(--monospace);
+  font-weight: var(--medium);
+  margin-bottom: 6px;
+}
+
+.tags__content {
+  position: sticky;
+  top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+@media screen and (max-width: 1023px) {
+  .tags__content {
+    position: inherit;
+    gap: 10px;
+
+    /* Horizontal scrolling */
+    flex-wrap: wrap;
+    height: 100px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

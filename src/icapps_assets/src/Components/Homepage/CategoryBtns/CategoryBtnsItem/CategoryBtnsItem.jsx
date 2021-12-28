@@ -1,7 +1,7 @@
 import React from "react";
-import css from "./TagsItem.module.css";
+import css from "./CategoryBtnsItem.module.css";
 
-const TagsItem = ({
+const CategoryBtnsItem = ({
   category,
   setCategory,
   categoryActive,
@@ -26,4 +26,4 @@ const TagsItem = ({
   );
 };
 
-export default TagsItem;
+export default CategoryBtnsItem;
