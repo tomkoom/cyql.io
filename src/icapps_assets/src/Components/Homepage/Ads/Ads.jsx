@@ -3,7 +3,7 @@ import css from "./Ads.module.css";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { cardVariants } from "../../../MotionVariants";
+import { cardVariants } from "../../../motionVariants";
 
 // LOADER
 import Loader from "../../../CatLoader";

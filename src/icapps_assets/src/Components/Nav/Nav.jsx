@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import Logo from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "./useWindowSize";
-import { deviceSizes } from "../../DeviceSizes";
+import { deviceSizes } from "../../deviceSizes";
 import Modal from "./Modal/Modal";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { btnVariants } from "../../MotionVariants";
+import { btnVariants } from "../../motionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

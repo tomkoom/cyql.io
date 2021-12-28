@@ -6,12 +6,12 @@ import { useSelector } from "react-redux";
 
 const categories = [
   { name: "All", icon: "" },
-  { name: "Social Networks", icon: "🎯" },
   { name: "Games", icon: "⚔️" },
   { name: "NFTs", icon: "🗿" },
   { name: "dApps", icon: "🔗" },
   { name: "DeFi", icon: "‍🌾" },
   { name: "DAOs", icon: "🏠" },
+  { name: "Social Networks", icon: "🎯" },
   { name: "Infrastructure", icon: "🚀" },
   { name: "Wallets", icon: "👛" },
   { name: "Tools", icon: "🛠️" },

@@ -5,5 +5,3 @@ export const deviceSizes = {
     desktop: 1200,
     // desktop: 1280,
 }
-
-// https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/

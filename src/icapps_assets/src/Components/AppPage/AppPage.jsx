@@ -2,7 +2,7 @@ import React from "react";
 import css from "./AppPage.module.css";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { btnVariants } from "../../MotionVariants";
+import { btnVariants } from "../../motionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

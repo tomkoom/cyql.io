@@ -3,7 +3,7 @@ import css from "./DevResources.module.css";
 import Loader from "../../CatLoader";
 // Framer Motion
 import { motion } from "framer-motion";
-import { cardVariants } from "../../MotionVariants";
+import { cardVariants } from "../../motionVariants";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "../../../../../node_modules/@fortawesome/free-solid-svg-icons/index";

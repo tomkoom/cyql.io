@@ -17,7 +17,7 @@ import {
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { btnVariants } from "../../MotionVariants";
+import { btnVariants } from "../../motionVariants";
 
 // GOOGLE API
 import useGoogleSheets from "use-google-sheets";
