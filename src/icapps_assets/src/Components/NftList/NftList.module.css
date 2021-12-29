@@ -20,6 +20,12 @@
   margin-bottom: 8px;
 }
 
+.nftTable__hero__heading h2 span {
+  font-weight: var(--medium);
+  font-size: var(--fontSize4);
+  color: var(--gray80);
+}
+
 .nftTable__hero__heading p {
   max-width: 500px;
   font-weight: var(--light);

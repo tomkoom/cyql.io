@@ -170,7 +170,12 @@ const AppPage = ({ data, loading }) => {
               {/* SOCIAL MEDIA LINKS */}
               <div
                 style={
-                  d.website || d.discord || d.github || d.telegram || d.medium
+                  d.website ||
+                  d.twitter ||
+                  d.discord ||
+                  d.github ||
+                  d.telegram ||
+                  d.medium
                     ? null
                     : { display: "none" }
                 }

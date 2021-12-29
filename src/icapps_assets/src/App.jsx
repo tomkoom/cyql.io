@@ -20,6 +20,7 @@ import {
   setProjects,
   setAds,
   setNftList,
+  setUpcomingNfts,
   setDevResources,
 } from "./Redux/siteDataSlice";
 import { setFilterByCategory } from "./Redux/projectsFilteringSlice";
@@ -39,22 +40,28 @@ const App = () => {
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
     sheetId: googleSheetId,
-    sheetsNames: ["Apps", "Ads", "NftList", "DevResources"],
+    sheetsNames: ["Apps", "Ads", "NftList", "Upcoming-NFTs", "DevResources"],
   });
 
   // Get data from state
   const projects = useSelector((state) => state.siteData.projects);
   const nftList = useSelector((state) => state.siteData.nftList);
-  const nftData = useSelector((state) => state.handleNftData.nftData);
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
   // Set projects state when GS data is loaded
   useEffect(() => {
     if (!loading) {
-      const [dataProjects, dataAds, dataNftList, dataDevResources] = data;
+      const [
+        dataProjects,
+        dataAds,
+        dataNftList,
+        dataUpcomingNfts,
+        dataDevResources,
+      ] = data;
       dispatch(setProjects(dataProjects));
       dispatch(setAds(dataAds));
       dispatch(setNftList(dataNftList));
+      dispatch(setUpcomingNfts(dataUpcomingNfts));
       dispatch(setDevResources(dataDevResources));
     }
   }, [loading]);
@@ -77,7 +84,7 @@ const App = () => {
 
   // Set NFT market data when GS data is loaded
   useEffect(() => {
-    if (nftList.length) {
+    if (nftList.length && icpPrice) {
       const nftListLength = nftList.length;
       for (let i = 0; i < nftList.length; i++) {
         const nftListItemCanister = nftList[i].canister;

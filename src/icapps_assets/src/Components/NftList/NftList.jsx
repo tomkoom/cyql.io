@@ -54,7 +54,9 @@ const NftList = () => {
         <div>
           <div className={css.nftTable__hero}>
             <div className={css.nftTable__hero__heading}>
-              <h2>NFT Collections</h2>
+              <h2>
+                NFT Collections <span>&#40;{nftData.length}&#41;</span>
+              </h2>
               <p className="bodyText">
                 Below are listed stats for the IC NFT collections. Projects are
                 sorted in descending order by volume. If you see inaccuracies,
