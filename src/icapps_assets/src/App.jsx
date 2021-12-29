@@ -23,6 +23,7 @@ import {
   setDevResources,
 } from "./Redux/siteDataSlice";
 import { setFilterByCategory } from "./Redux/projectsFilteringSlice";
+import { fetchNftData } from "./Redux/handleNftDataSlice";
 
 // Google API
 import useGoogleSheets from "use-google-sheets";
@@ -33,14 +34,7 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
   const [category, setCategory] = useState("All");
-
-  // redux
-  const projects = useSelector((state) => state.siteData.projects);
-  // get icp price
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchIcpPrice());
-  }, []);
 
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
@@ -48,7 +42,13 @@ const App = () => {
     sheetsNames: ["Apps", "Ads", "NftList", "DevResources"],
   });
 
-  // set site data when loaded
+  // Get data from state
+  const projects = useSelector((state) => state.siteData.projects);
+  const nftList = useSelector((state) => state.siteData.nftList);
+  const nftData = useSelector((state) => state.handleNftData.nftData);
+  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
+
+  // Set projects state when GS data is loaded
   useEffect(() => {
     if (!loading) {
       const [dataProjects, dataAds, dataNftList, dataDevResources] = data;
@@ -59,7 +59,12 @@ const App = () => {
     }
   }, [loading]);
 
-  // change categories when category buttons are clicked
+  // Set ICP price state
+  useEffect(() => {
+    dispatch(fetchIcpPrice());
+  }, []);
+
+  // Set filtered categories when category buttons are clicked
   useEffect(() => {
     if (projects.length) {
       category == "All"
@@ -69,6 +74,27 @@ const App = () => {
           );
     }
   }, [projects, category]);
+
+  // Set NFT market data when GS data is loaded
+  useEffect(() => {
+    if (nftList.length) {
+      const nftListLength = nftList.length;
+      for (let i = 0; i < nftList.length; i++) {
+        const nftListItemCanister = nftList[i].canister;
+        const nftListItem = nftList[i];
+        dispatch(
+          fetchNftData({
+            nftListItemCanister,
+            nftListItem,
+            nftListLength,
+            icpPrice,
+          })
+        );
+      }
+    }
+  }, [nftList]);
+
+  console.log(nftData ? nftData : null);
 
   return (
     <div>

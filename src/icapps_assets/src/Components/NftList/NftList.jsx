@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
 import css from "./NftList.module.css";
-
-// Google API
-import useGoogleSheets from "use-google-sheets";
-import k from "../../../../../k/k";
-
-// Loader
 import Loader from "../../CatLoader";
 
 // Components
@@ -15,10 +9,6 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchNfts } from "../../Redux/searchNftsSlice";
 
-const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
-const googleSheetId = k.GOOGLE_SHEET_ID;
-
-let nftDataArr = [];
 let totalVolumeUsd = 0;
 let totalVolumeIcp = 0;
 let totalMarketCapUsd = 0;
@@ -31,162 +21,23 @@ const formatterUsd = new Intl.NumberFormat("en-US", {
 });
 
 const NftList = () => {
-  const [gsData, setGsData] = useState();
-  const [gsDataLength, setGsDataLength] = useState();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [nftData, setNftData] = useState();
   const [itemsVisible, setItemsVisible] = useState(12);
-
-  // Redux
-  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
-  const searchNftsValue = useSelector((state) => state.searchNfts.value);
-  const dispatch = useDispatch();
+  const showMoreItems = () => {
+    setItemsVisible((prevValue) => prevValue + 12);
+  };
+  // Handle search query
   const handleSearchNfts = (e) => {
     dispatch(setSearchNfts(e.target.value));
   };
 
-  const showMoreItems = () => {
-    setItemsVisible((prevValue) => prevValue + 12);
-  };
+  const dispatch = useDispatch();
 
-  // INITIAL GS DATA FETCH
-  const { data, loading, error } = useGoogleSheets({
-    apiKey: googleSheetsApiKey,
-    sheetId: googleSheetId,
-    sheetsNames: ["NftList"],
-  });
+  // Get data from state
+  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
+  const searchNftsValue = useSelector((state) => state.searchNfts.value);
+  const nftData = useSelector((state) => state.handleNftData.nftData);
 
-  // SET STATE AFTER DATA IS LOADED FROM GS
-  useEffect(() => {
-    if (!loading) {
-      setGsData(data[0].data);
-      setGsDataLength(data[0].data.length);
-    }
-  }, [loading]);
-
-  useEffect(() => {
-    if (gsData) {
-      for (let i = 0; i < gsDataLength; i++) {
-        fetch(gsData[i].canister)
-          .then((res) => res.text())
-          .then((nftMarketData) => {
-            processMarketData(nftMarketData, gsData[i]);
-          });
-      }
-    }
-  }, [gsData]);
-
-  // PROCESS MARKET DATA FUNC
-  function processMarketData(nftMarketData, nInfo) {
-    const mData = nftMarketData
-      .split("\n")
-      .map((str) => str.replace(/ /g, "").toLowerCase());
-
-    // num
-    const totalAssets = mData.filter((str) => str.includes("mintednfts:"))
-      .length
-      ? parseInt(
-          mData
-            .filter((str) => str.includes("mintednfts:"))[0]
-            .match(/\d/g)
-            .join("")
-        )
-      : parseInt(nInfo.assets.replace(",", ""));
-
-    // str
-    const totalAssetsFormatted = formatter.format(totalAssets);
-
-    const circulatingNfts = mData
-      .filter((str) => str.includes("circulatingnfts:"))
-      .toString()
-      .replace("circulatingnfts:", "")
-      .replace("_", ",");
-
-    const listings = mData
-      .filter((str) => str.includes("marketplacelistings:"))
-      .toString()
-      .replace("marketplacelistings:", "")
-      .replace("_", ",");
-
-    const sales = mData
-      .filter((str) => str.includes("soldviamarketplace:"))
-      .toString()
-      .replace("soldviamarketplace:", "")
-      .replace("_", ",");
-
-    // num
-    const salesInIcp = +mData
-      .filter((str) => str.includes("soldviamarketplaceinicp:"))
-      .toString()
-      .replace("soldviamarketplaceinicp:", "")
-      .replace("_", "")
-      .replace("icp", "");
-
-    // str
-    const salesInIcpFormatted = new Intl.NumberFormat("en-US").format(
-      salesInIcp
-    );
-
-    // num
-    const volumeUsd = +(icpPrice * salesInIcp).toFixed(2);
-
-    // str
-    const volumeUsdFormatted = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(volumeUsd);
-
-    // num
-    const avgPrice = +mData
-      .filter((str) => str.includes("averagepriceicpviamarketplace:"))
-      .toString()
-      .replace("averagepriceicpviamarketplace:", "")
-      .replace("_", ",")
-      .replace("icp", "");
-
-    const marketCap = +(totalAssets * avgPrice).toFixed(2);
-    const marketCapFormatted = formatter.format(marketCap);
-
-    const marketCapUsd = marketCap * icpPrice;
-    const marketCapUsdFormatted = formatterUsd.format(marketCapUsd);
-
-    const profitToAvg =
-      nInfo.maxSalePrice && nInfo.maxSalePrice != "Airdrop"
-        ? +(
-            ((avgPrice - nInfo.maxSalePrice) / nInfo.maxSalePrice) *
-            100
-          ).toFixed(2)
-        : null;
-
-    nInfo.sales = sales;
-    nInfo.listings = listings;
-    nInfo.circulatingNfts = circulatingNfts;
-    nInfo.avgPrice = avgPrice;
-    nInfo.profitToAvg = profitToAvg;
-    // ---
-    nInfo.marketCap = marketCap;
-    nInfo.marketCapFormatted = marketCapFormatted;
-    nInfo.marketCapUsd = marketCapUsd;
-    nInfo.marketCapUsdFormatted = marketCapUsdFormatted;
-    nInfo.totalAssets = totalAssets;
-    nInfo.totalAssetsFormatted = totalAssetsFormatted;
-    nInfo.salesInIcp = salesInIcp;
-    nInfo.salesInIcpFormatted = salesInIcpFormatted;
-    nInfo.volumeUsd = volumeUsd;
-    nInfo.volumeUsdFormatted = volumeUsdFormatted;
-
-    nftDataArr.push(nInfo);
-
-    if (gsDataLength == nftDataArr.length) {
-      nftDataArr.sort((a, b) => b.salesInIcp - a.salesInIcp);
-      setNftData(nftDataArr);
-      nftDataArr = [];
-      setIsLoaded(true);
-    }
-  }
-  // END PROCESS MARKET DATA FUNC
-
-  if (isLoaded) {
+  if (nftData && nftData.length) {
     // total sales volume in usd
     totalVolumeUsd = formatterUsd.format(
       nftData.reduce((acc, val) => {
@@ -218,9 +69,7 @@ const NftList = () => {
 
   return (
     <section className={css.nftTable}>
-      {!isLoaded ? (
-        <Loader />
-      ) : (
+      {nftData && nftData.length ? (
         <div>
           <div className={css.nftTable__hero}>
             <div className={css.nftTable__hero__heading}>
@@ -375,6 +224,8 @@ const NftList = () => {
             </button>
           </div>
         </div>
+      ) : (
+        <Loader />
       )}
     </section>
   );

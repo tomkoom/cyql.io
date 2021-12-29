@@ -3,8 +3,9 @@ import icpPriceSlice from "./icpPriceSlice";
 import searchProjectsSlice from "./searchProjectsSlice";
 import searchNftsSlice from "./searchNftsSlice";
 import siteDataSlice from "./siteDataSlice";
-import filterProjectsSlice from "./filterProjectsSlice";
 import projectsFilteringSlice from "./projectsFilteringSlice";
+import nftDataSlice from "./nftDataSlice";
+import handleNftDataSlice from "./handleNftDataSlice";
 
 
 export const store = configureStore({
@@ -13,8 +14,9 @@ export const store = configureStore({
 		siteData: siteDataSlice,
 		searchProjects: searchProjectsSlice,
 		searchNfts: searchNftsSlice,
-		// filterProjects: filterProjectsSlice,
 		projectsFiltering: projectsFilteringSlice,
+		// nftData: nftDataSlice,
+		handleNftData: handleNftDataSlice,
 	}
 })
 

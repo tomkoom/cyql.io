@@ -21,7 +21,7 @@
 
     /* Horizontal scrolling */
     flex-wrap: wrap;
-    height: 100px;
+    height: 108px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
