@@ -94,8 +94,6 @@ const App = () => {
     }
   }, [nftList]);
 
-  console.log(nftData ? nftData : null);
-
   return (
     <div>
       <Nav />

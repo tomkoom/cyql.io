@@ -68,14 +68,14 @@ export function handleNftData(nftItemMarketDataText, nftListItem, nftListLength,
 		.replace("icp", "");
 
 	// Market cap in ICP (num)
-	const marketCap = +(totalAssets * avgPrice).toFixed(2);
+	const marketCapInIcp = +(totalAssets * avgPrice).toFixed(2);
 	// Market cap in ICP (str)
-	const marketCapFormatted = formatter.format(marketCap);
+	const marketCapInIcpFormatted = formatter.format(marketCapInIcp);
 
 	// Market cap in USD (num)
-	const marketCapUsd = marketCap * icpPrice;
+	const marketCapInUsd = marketCapInIcp * icpPrice;
 	// Market cap in USD (str)
-	const marketCapUsdFormatted = formatterUsd.format(marketCapUsd);
+	const marketCapInUsdFormatted = formatterUsd.format(marketCapInUsd);
 
 	const profitToAvg =
 		nftListItem.maxSalePrice && nftListItem.maxSalePrice != "Airdrop"
@@ -85,7 +85,6 @@ export function handleNftData(nftItemMarketDataText, nftListItem, nftListLength,
 			).toFixed(2)
 			: null;
 
-
 	nftItem.totalAssets = totalAssets;
 	nftItem.totalAssetsFormatted = totalAssetsFormatted;
 	nftItem.circulatingNfts = circulatingNfts;
@@ -94,12 +93,12 @@ export function handleNftData(nftItemMarketDataText, nftListItem, nftListLength,
 	nftItem.salesInIcp = salesInIcp;
 	nftItem.salesInIcpFormatted = salesInIcpFormatted;
 	nftItem.volumeInUsd = volumeInUsd;
-	nftItem.volumeInUsd = volumeInUsdFormatted;
+	nftItem.volumeInUsdFormatted = volumeInUsdFormatted;
 	nftItem.avgPrice = avgPrice;
-	nftItem.marketCap = marketCap;
-	nftItem.marketCapFormatted = marketCapFormatted;
-	nftItem.marketCapUsd = marketCapUsd;
-	nftItem.marketCapUsdFormatted = marketCapUsdFormatted;
+	nftItem.marketCapInIcp = marketCapInIcp;
+	nftItem.marketCapInIcpFormatted = marketCapInIcpFormatted;
+	nftItem.marketCapInUsd = marketCapInUsd;
+	nftItem.marketCapInUsdFormatted = marketCapInUsdFormatted;
 	nftItem.profitToAvg = profitToAvg;
 
 	nftItem = { ...nftItem, ...nftListItem }

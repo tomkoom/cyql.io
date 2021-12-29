@@ -25,47 +25,28 @@ const NftList = () => {
   const showMoreItems = () => {
     setItemsVisible((prevValue) => prevValue + 12);
   };
+  const dispatch = useDispatch();
   // Handle search query
   const handleSearchNfts = (e) => {
     dispatch(setSearchNfts(e.target.value));
   };
 
-  const dispatch = useDispatch();
-
   // Get data from state
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
   const searchNftsValue = useSelector((state) => state.searchNfts.value);
   const nftData = useSelector((state) => state.handleNftData.nftData);
-
-  if (nftData && nftData.length) {
-    // total sales volume in usd
-    totalVolumeUsd = formatterUsd.format(
-      nftData.reduce((acc, val) => {
-        return acc + val.volumeUsd;
-      }, 0)
-    );
-
-    // total sales volume in icp
-    totalVolumeIcp = formatter.format(
-      nftData.reduce((acc, val) => {
-        return acc + val.salesInIcp;
-      }, 0)
-    );
-
-    // total market cap in usd
-    totalMarketCapUsd = formatterUsd.format(
-      nftData.reduce((acc, val) => {
-        return acc + val.marketCapUsd;
-      }, 0)
-    );
-
-    // total market cap in icp
-    totalMarketCapIcp = formatter.format(
-      nftData.reduce((acc, val) => {
-        return acc + val.marketCap;
-      }, 0)
-    );
-  }
+  const totalVolumeInUsd = useSelector(
+    (state) => state.handleNftData.totalVolumeInUsd
+  );
+  const totalVolumeInIcp = useSelector(
+    (state) => state.handleNftData.totalVolumeInIcp
+  );
+  const totalMarketCapInUsd = useSelector(
+    (state) => state.handleNftData.totalMarketCapInUsd
+  );
+  const totalMarketCapInIcp = useSelector(
+    (state) => state.handleNftData.totalMarketCapInIcp
+  );
 
   return (
     <section className={css.nftTable}>
@@ -92,14 +73,14 @@ const NftList = () => {
             <div className={css.nftTable__hero__dashboard}>
               <div className={css.nftTable__hero__dashboard__item}>
                 <p>Market Cap</p>
-                <h4>{totalMarketCapUsd}</h4>
-                <p>{totalMarketCapIcp}&nbsp;ICP</p>
+                <h4>{totalMarketCapInUsd}</h4>
+                <p>{totalMarketCapInIcp}&nbsp;ICP</p>
               </div>
 
               <div className={css.nftTable__hero__dashboard__item}>
                 <p>All Time Sales Volume</p>
-                <h4>{totalVolumeUsd}</h4>
-                <p>{totalVolumeIcp}&nbsp;ICP</p>
+                <h4>{totalVolumeInUsd}</h4>
+                <p>{totalVolumeInIcp}&nbsp;ICP</p>
               </div>
             </div>
           </div>

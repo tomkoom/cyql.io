@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { handleNftData } from "./handleNftDataFunc";
 
+const formatter = new Intl.NumberFormat("en-US");
+const formatterUsd = new Intl.NumberFormat("en-US", {
+	style: "currency",
+	currency: "USD",
+});
+
 export const fetchNftData = createAsyncThunk("handleNftData/fetchNftData",
 	// add no canister scenario
 	async ({
@@ -14,14 +20,14 @@ export const fetchNftData = createAsyncThunk("handleNftData/fetchNftData",
 			.then((res) => res.text())
 			.then((nftItemMarketDataText) => { return nftItemMarketDataText });
 
-		const nftItemsData = handleNftData(
+		const nftData = handleNftData(
 			nftItemMarketDataText,
 			nftListItem,
 			nftListLength,
 			icpPrice
 		);
 
-		return nftItemsData;
+		return nftData;
 	}
 );
 
@@ -29,6 +35,10 @@ const handleNftDataSlice = createSlice({
 	name: "handleNftData",
 	initialState: {
 		nftData: [],
+		totalVolumeInUsd: "",
+		totalVolumeInIcp: "",
+		totalMarketCapInUsd: "",
+		totalMarketCapInIcp: "",
 		status: null,
 		error: null
 	},
@@ -39,8 +49,35 @@ const handleNftDataSlice = createSlice({
 			// state.error = null;
 		},
 		[fetchNftData.fulfilled]: (state, action) => {
-			// state.status = "resolved";
+			state.status = "resolved";
 			state.nftData = action.payload;
+
+			// set market cap and total volume
+			if (action.payload) {
+				state.totalVolumeInUsd = formatterUsd.format(
+					action.payload.reduce((acc, val) => {
+						return acc + val.volumeInUsd;
+					}, 0)
+				);
+
+				state.totalVolumeInIcp = formatter.format(
+					action.payload.reduce((acc, val) => {
+						return acc + val.salesInIcp;
+					}, 0)
+				);
+
+				state.totalMarketCapInUsd = formatterUsd.format(
+					action.payload.reduce((acc, val) => {
+						return acc + val.marketCapInUsd;
+					}, 0)
+				);
+
+				state.totalMarketCapInIcp = formatter.format(
+					action.payload.reduce((acc, val) => {
+						return acc + val.marketCapInIcp;
+					}, 0)
+				);
+			}
 		},
 		[fetchNftData.rejected]: (state, action) => {
 			// state.status = "rejected";
