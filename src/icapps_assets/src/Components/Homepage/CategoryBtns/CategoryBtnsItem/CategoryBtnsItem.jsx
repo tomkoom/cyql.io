@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./CategoryBtnsItem.module.css";
+import { motion } from "framer-motion";
 
 const CategoryBtnsItem = ({
   category,
@@ -9,11 +10,12 @@ const CategoryBtnsItem = ({
   projectsNum,
 }) => {
   return (
-    <button
+    <motion.button
       className={
         categoryActive ? `${css.tagsItem} ${css.active}` : css.tagsItem
       }
       onClick={() => setCategory(category)}
+      whileTap={{ scale: 0.9 }}
     >
       <span className="bodyText" style={icon ? null : { display: "none" }}>
         {icon && `${icon}`}
@@ -22,7 +24,7 @@ const CategoryBtnsItem = ({
         {category}&nbsp;
         <span className={css.tagsItem__projectsNum}>{projectsNum}</span>
       </p>
-    </button>
+    </motion.button>
   );
 };
 

@@ -14,15 +14,15 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.25s ease-out;
 }
 
 .active {
-  background-color: var(--gray160);
+  color: white;
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .tagsItem:hover:not(.tagsItem.active) {
-  background-color: var(--gray180);
+  background-color: var(--gray140);
 }
 
 .tagsItem__icon {
@@ -36,14 +36,4 @@
 .tagsItem__projectsNum {
   color: var(--gray100);
   font-weight: var(--light);
-}
-
-@media screen and (max-width: 1023px) {
-  .tagsItem {
-    background-color: var(--gray200);
-  }
-
-  .active {
-    background-color: var(--gray140);
-  }
 }

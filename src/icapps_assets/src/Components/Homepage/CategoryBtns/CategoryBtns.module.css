@@ -3,13 +3,15 @@
 .tags h6 {
   font-family: var(--monospace);
   font-weight: var(--medium);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .tags__content {
   position: sticky;
   top: 24px;
   display: flex;
+  padding: 1px;
+  /* justify-content: center; */
   flex-direction: column;
   gap: 6px;
 }

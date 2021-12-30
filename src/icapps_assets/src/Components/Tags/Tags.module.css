@@ -3,21 +3,22 @@
 .tagsFilter h6 {
   font-family: var(--monospace);
   font-weight: var(--medium);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .tagsFilter__content {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .tagsFilter__content {
-    /* Horizontal scrolling */
     flex-direction: column;
+    align-items: flex-start;
     flex-wrap: wrap;
-    height: 60px;
+    height: 92px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-}
+} */

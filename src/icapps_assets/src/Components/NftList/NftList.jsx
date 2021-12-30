@@ -9,22 +9,12 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchNfts } from "../../Redux/searchNftsSlice";
 
-let totalVolumeUsd = 0;
-let totalVolumeIcp = 0;
-let totalMarketCapUsd = 0;
-let totalMarketCapIcp = 0;
-
-const formatter = new Intl.NumberFormat("en-US");
-const formatterUsd = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
-
 const NftList = () => {
   const [itemsVisible, setItemsVisible] = useState(12);
   const showMoreItems = () => {
     setItemsVisible((prevValue) => prevValue + 12);
   };
+
   const dispatch = useDispatch();
   // Handle search query
   const handleSearchNfts = (e) => {
@@ -32,7 +22,6 @@ const NftList = () => {
   };
 
   // Get data from state
-  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
   const searchNftsValue = useSelector((state) => state.searchNfts.value);
   const nftData = useSelector((state) => state.handleNftData.nftData);
   const totalVolumeInUsd = useSelector(
@@ -189,9 +178,9 @@ const NftList = () => {
 
                         <td data-label="Est. Market Cap">
                           <div className={css.cell}>
-                            {n.marketCapFormatted}&nbsp;ICP
+                            {n.marketCapInIcpFormatted}&nbsp;ICP
                             <span className={css.cellSpan}>
-                              {n.marketCapUsdFormatted}
+                              {n.marketCapInUsdFormatted}
                             </span>
                           </div>
                         </td>

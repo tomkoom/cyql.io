@@ -14,6 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+  margin-bottom: 24px;
 }
 
 .nftTable__hero__heading h2 {
@@ -30,7 +31,6 @@
   max-width: 500px;
   font-weight: var(--light);
   color: var(--gray40);
-  margin-bottom: 16px;
 }
 
 .nftTable__hero__dashboard {

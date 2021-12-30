@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./CategoryBtns.module.css";
 import CategoryBtnsItem from "./CategoryBtnsItem/CategoryBtnsItem";
+
 // Redux
 import { useSelector } from "react-redux";
 

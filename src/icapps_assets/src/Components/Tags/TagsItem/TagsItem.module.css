@@ -1,0 +1,45 @@
+/* TAGS FILTER ITEM */
+
+.tagsItem {
+  position: relative;
+  height: 34px;
+}
+
+.tagsItem input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tagsItem__content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 6px;
+  color: var(--gray40);
+  background-color: var(--gray220);
+  /* font-size: var(--fontSize7); */
+  /* box-shadow: 0 0 0 1px var(--gray160); */
+  /* transition: all 100ms ease-in; */
+}
+
+.tagsItem input:checked ~ .tagsItem__content {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.25);
+  /* box-shadow: 0px 2px 0 -1px rgba(255, 255, 255, 1); */
+}
+
+/* img */
+.tagImg {
+  height: 18px;
+  width: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

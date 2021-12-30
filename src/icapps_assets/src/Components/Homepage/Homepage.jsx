@@ -3,7 +3,7 @@ import css from "./Homepage.module.css";
 import {
   Heading,
   SearchBar,
-  TagsFilter,
+  Tags,
   AppList,
   CategoryBtns,
   Ads,
@@ -44,7 +44,7 @@ const Homepage = ({
         />
 
         {/* Tags */}
-        <TagsFilter />
+        <Tags />
       </div>
 
       {/* CONTENT */}
