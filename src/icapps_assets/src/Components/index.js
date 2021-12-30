@@ -6,7 +6,6 @@ export { default as UpcomingNfts } from "./UpcomingNfts/UpcomingNfts";
 export { default as NftList } from "./NftList/NftList";
 export { default as DevResources } from "./DevResources/DevResources";
 export { default as SubmitApp } from "./SubmitApp/SubmitApp";
-export { default as Highlights } from "./Highlights/Highlights";
 
 // homepage.jsx
 export { default as Heading } from "./Homepage/Heading/Heading";
@@ -15,3 +14,4 @@ export { default as CategoryBtns } from "./Homepage/CategoryBtns/CategoryBtns";
 export { default as Ads } from "./Homepage/Ads/Ads";
 export { default as SearchBar } from "./SearchBar/SearchBar";
 export { default as Tags } from "./Tags/Tags";
+export { default as Highlights } from "./Homepage/Highlights/Highlights";

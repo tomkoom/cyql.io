@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { handleNftData } from "./handleNftDataFunc";
+import { handleNftData } from "./nftItemsFunc";
 
 const formatter = new Intl.NumberFormat("en-US");
 const formatterUsd = new Intl.NumberFormat("en-US", {
@@ -31,10 +31,10 @@ export const fetchNftData = createAsyncThunk("handleNftData/fetchNftData",
 	}
 );
 
-const handleNftDataSlice = createSlice({
-	name: "handleNftData",
+const nftItemsSlice = createSlice({
+	name: "nftItems",
 	initialState: {
-		nftData: [],
+		nftItems: [],
 		totalVolumeInUsd: "",
 		totalVolumeInIcp: "",
 		totalMarketCapInUsd: "",
@@ -50,7 +50,7 @@ const handleNftDataSlice = createSlice({
 		},
 		[fetchNftData.fulfilled]: (state, action) => {
 			state.status = "resolved";
-			state.nftData = action.payload;
+			state.nftItems = action.payload;
 
 			// set market cap and total volume
 			if (action.payload) {
@@ -86,5 +86,5 @@ const handleNftDataSlice = createSlice({
 	}
 });
 
-export const { } = handleNftDataSlice.actions;
-export default handleNftDataSlice.reducer;
+export const { } = nftItemsSlice.actions;
+export default nftItemsSlice.reducer;

@@ -24,7 +24,7 @@ import {
   setDevResources,
 } from "./Redux/siteDataSlice";
 import { setFilterByCategory } from "./Redux/projectsFilteringSlice";
-import { fetchNftData } from "./Redux/handleNftDataSlice";
+import { fetchNftData } from "./Redux/nftItemsSlice";
 
 // Google API
 import useGoogleSheets from "use-google-sheets";
@@ -107,7 +107,6 @@ const App = () => {
       <div className={css.app}>
         <Switch>
           <Route exact path="/">
-            {/* <Highlights /> */}
             <Homepage
               category={category}
               setCategory={setCategory}

@@ -7,6 +7,7 @@ import {
   AppList,
   CategoryBtns,
   Ads,
+  Highlights,
 } from "../";
 
 // Redux
@@ -34,6 +35,7 @@ const Homepage = ({
     <main className={`${css.homepage} container1600`}>
       {/* HERO */}
       <div className={css.homepage__hero}>
+        <Highlights />
         <Heading />
 
         {/* Search */}

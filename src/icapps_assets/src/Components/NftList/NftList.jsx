@@ -23,28 +23,28 @@ const NftList = () => {
 
   // Get data from state
   const searchNftsValue = useSelector((state) => state.searchNfts.value);
-  const nftData = useSelector((state) => state.handleNftData.nftData);
+  const nftItems = useSelector((state) => state.nftItems.nftItems);
   const totalVolumeInUsd = useSelector(
-    (state) => state.handleNftData.totalVolumeInUsd
+    (state) => state.nftItems.totalVolumeInUsd
   );
   const totalVolumeInIcp = useSelector(
-    (state) => state.handleNftData.totalVolumeInIcp
+    (state) => state.nftItems.totalVolumeInIcp
   );
   const totalMarketCapInUsd = useSelector(
-    (state) => state.handleNftData.totalMarketCapInUsd
+    (state) => state.nftItems.totalMarketCapInUsd
   );
   const totalMarketCapInIcp = useSelector(
-    (state) => state.handleNftData.totalMarketCapInIcp
+    (state) => state.nftItems.totalMarketCapInIcp
   );
 
   return (
     <section className={css.nftTable}>
-      {nftData && nftData.length ? (
+      {nftItems && nftItems.length ? (
         <div>
           <div className={css.nftTable__hero}>
             <div className={css.nftTable__hero__heading}>
               <h2>
-                NFT Collections <span>&#40;{nftData.length}&#41;</span>
+                NFT Collections <span>&#40;{nftItems.length}&#41;</span>
               </h2>
               <p className="bodyText">
                 Below are listed stats for the IC NFT collections. Projects are
@@ -99,7 +99,7 @@ const NftList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {nftData
+                  {nftItems
                     .filter((n) => {
                       if (searchNftsValue == "") {
                         return n;
