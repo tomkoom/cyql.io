@@ -2,7 +2,7 @@ import React from "react";
 import css from "./AppPage.module.css";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { btnVariants } from "../../motionVariants";
+import { btnVariants, socLinkBtns } from "../../motionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
-  faTelegram,
+  faTelegramPlane,
   faDiscord,
   faMedium,
   faGithub,
@@ -25,7 +25,7 @@ const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
-const iconTelegram = <FontAwesomeIcon icon={faTelegram} />;
+const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 let icLinks = [];
@@ -38,11 +38,7 @@ const AppPage = ({ data, loading }) => {
     <section className={`${css.appPage} container768`}>
       {/* GO BACK BTN */}
       <Link className={css.backBtn} to="/">
-        <motion.div
-          className={css.backBtn__container}
-          variants={btnVariants}
-          whileHover="whileHover"
-        >
+        <motion.div className={css.backBtn__container}>
           {iconArrowLeft}
         </motion.div>
       </Link>
@@ -64,8 +60,9 @@ const AppPage = ({ data, loading }) => {
                       }
                     : { display: "none" }
                 }
-              ></div>
+              />
               <div className={css.appItem__appInfo}>
+                {/* logo */}
                 <img
                   className={css.appItem__appInfo__logo}
                   src={d.logo}
@@ -74,25 +71,75 @@ const AppPage = ({ data, loading }) => {
                     display: d.logo ? "null" : "none",
                   }}
                 />
+                {/* title and tags */}
                 <div className={css.appItem__appInfo__appCaption}>
                   <h2 className={css.appItem__appInfo__appCaption__title}>
                     {d.name}
                   </h2>
 
-                  <span className={css.appItem__appInfo__appCaption__tag}>
-                    {d.category}
-                  </span>
+                  <div className={css.appItem__appInfo__appCaption__tags}>
+                    <span
+                      className={css.appItem__appInfo__appCaption__tags__item}
+                    >
+                      {d.category}
+                    </span>
+                    <span
+                      style={d.tags ? null : { display: "none" }}
+                      className={css.appItem__appInfo__appCaption__tags__item}
+                    >
+                      {d.tags}
+                    </span>
+                  </div>
                 </div>
+
+                {/* date */}
+                <div className={css.appItem__appInfo__date}>{d.date}</div>
               </div>
 
               <p className="bodyTextLight">{d.description}</p>
               <br />
 
-              <motion.div
+              {/* NFT IMAGES */}
+              <div
+                className={css.nftImgs}
+                style={d.nftImg1 ? null : { display: "none" }}
+              >
+                <div
+                  className={css.nftImgs__item}
+                  style={
+                    d.nftImg1
+                      ? { backgroundImage: `url(${d.nftImg1})` }
+                      : { display: "none" }
+                  }
+                />
+                <div
+                  className={css.nftImgs__item}
+                  style={
+                    d.nftImg2
+                      ? { backgroundImage: `url(${d.nftImg2})` }
+                      : { display: "none" }
+                  }
+                />
+                <div
+                  className={css.nftImgs__item}
+                  style={
+                    d.nftImg3
+                      ? { backgroundImage: `url(${d.nftImg3})` }
+                      : { display: "none" }
+                  }
+                />
+                <div
+                  className={css.nftImgs__item}
+                  style={
+                    d.nftImg4
+                      ? { backgroundImage: `url(${d.nftImg4})` }
+                      : { display: "none" }
+                  }
+                />
+              </div>
+
+              <div
                 className={css.appItem__tradeBtn}
-                data-value="btn"
-                variants={btnVariants}
-                whileHover="whileHover"
                 style={d.marketUrl ? null : { display: "none" }}
               >
                 <a
@@ -100,143 +147,147 @@ const AppPage = ({ data, loading }) => {
                   target="_blank"
                   rel="norefferrer noopener"
                 >
-                  Trade {iconArrowRight}
+                  Trade on Entrepot {iconArrowRight}
                 </a>
-              </motion.div>
-
-              {/* IC ECOSYSTEM LINKS */}
-              <div
-                style={
-                  d.canister || d.dscvr || d.distrikt || d.openChat
-                    ? null
-                    : { display: "none" }
-                }
-              >
-                <p className="bodyText">IC Ecosystem</p>
-                <ul className={css.appItem__socialIconsList}>
-                  {
-                    ((icLinks = [
-                      {
-                        name: "Canister",
-                        link: d.canister,
-                        icon: "🛢️",
-                        img: "",
-                      },
-                      {
-                        name: "Dscvr",
-                        link: d.dscvr,
-                        icon: "",
-                        img: "https://i.postimg.cc/ZqN5BX1m/dscvr.jpg",
-                      },
-                      {
-                        name: "Distrikt",
-                        link: d.distrikt,
-                        icon: "",
-                        img: "https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg",
-                      },
-                      {
-                        name: "Open Chat",
-                        link: d.openChat,
-                        icon: "",
-                        img: "",
-                      },
-                    ]),
-                    icLinks.map(({ name, link, icon, img }) => (
-                      <motion.li
-                        key={name}
-                        data-social={name}
-                        variants={btnVariants}
-                        whileHover="whileHover"
-                        className={css.appItem__socialIconsList__item}
-                        style={link ? null : { display: "none" }}
-                      >
-                        <a
-                          href={link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {icon ? (
-                            icon
-                          ) : img ? (
-                            <img src={img} alt={`${name} logo`} />
-                          ) : null}
-                        </a>
-                      </motion.li>
-                    )))
-                  }
-                </ul>
               </div>
 
-              {/* SOCIAL MEDIA LINKS */}
-              <div
-                style={
-                  d.website ||
-                  d.twitter ||
-                  d.discord ||
-                  d.github ||
-                  d.telegram ||
-                  d.medium
-                    ? null
-                    : { display: "none" }
-                }
-              >
-                <p className="bodyText">Social Media</p>
-
-                <ul className={css.appItem__socialIconsList}>
-                  {
-                    ((socialLinks = [
-                      {
-                        name: "Website",
-                        link: d.website,
-                        icon: iconGlobe,
-                      },
-                      {
-                        name: "Twitter",
-                        link: d.twitter,
-                        icon: iconTwitter,
-                      },
-                      {
-                        name: "Discord",
-                        link: d.discord,
-                        icon: iconDiscord,
-                      },
-                      {
-                        name: "GitHub",
-                        link: d.github,
-                        icon: iconGithub,
-                      },
-                      {
-                        name: "Telegram",
-                        link: d.telegram,
-                        icon: iconTelegram,
-                      },
-                      {
-                        name: "Medium",
-                        link: d.medium,
-                        icon: iconMedium,
-                      },
-                    ]),
-                    socialLinks.map(({ name, link, icon }) => (
-                      <motion.li
-                        key={name}
-                        data-social={name}
-                        variants={btnVariants}
-                        whileHover="whileHover"
-                        className={css.appItem__socialIconsList__item}
-                        style={link ? null : { display: "none" }}
-                      >
-                        <a
-                          href={link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {icon}
-                        </a>
-                      </motion.li>
-                    )))
+              <div className={css.linksContainer}>
+                {/* IC ECOSYSTEM LINKS */}
+                <div
+                  style={
+                    d.canister || d.dscvr || d.distrikt || d.openChat
+                      ? null
+                      : { display: "none" }
                   }
-                </ul>
+                >
+                  <p className="bodyText">IC Ecosystem</p>
+                  <ul className={css.appItem__socialIconsList}>
+                    {
+                      ((icLinks = [
+                        {
+                          name: "Canister",
+                          link: d.canister,
+                          icon: "🛢️",
+                          img: "",
+                        },
+                        {
+                          name: "Dscvr",
+                          link: d.dscvr,
+                          icon: "",
+                          img: "https://i.postimg.cc/ZqN5BX1m/dscvr.jpg",
+                        },
+                        {
+                          name: "Distrikt",
+                          link: d.distrikt,
+                          icon: "",
+                          img: "https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg",
+                        },
+                        {
+                          name: "Open Chat",
+                          link: d.openChat,
+                          icon: "",
+                          img: "",
+                        },
+                      ]),
+                      icLinks.map(({ name, link, icon, img }) => (
+                        <motion.li
+                          key={name}
+                          data-social={name}
+                          variants={socLinkBtns}
+                          whileHover="whileHover"
+                          className={css.appItem__socialIconsList__item}
+                          style={link ? null : { display: "none" }}
+                        >
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {icon ? (
+                              icon
+                            ) : img ? (
+                              <img src={img} alt={`${name} logo`} />
+                            ) : null}
+                            <span>{name}</span>
+                          </a>
+                        </motion.li>
+                      )))
+                    }
+                  </ul>
+                </div>
+
+                {/* SOCIAL MEDIA LINKS */}
+                <div
+                  style={
+                    d.website ||
+                    d.twitter ||
+                    d.discord ||
+                    d.github ||
+                    d.telegram ||
+                    d.medium
+                      ? null
+                      : { display: "none" }
+                  }
+                >
+                  <p className="bodyText">Social Media</p>
+
+                  <ul className={css.appItem__socialIconsList}>
+                    {
+                      ((socialLinks = [
+                        {
+                          name: "Website",
+                          link: d.website,
+                          icon: iconGlobe,
+                        },
+                        {
+                          name: "Twitter",
+                          link: d.twitter,
+                          icon: iconTwitter,
+                        },
+                        {
+                          name: "Discord",
+                          link: d.discord,
+                          icon: iconDiscord,
+                        },
+                        {
+                          name: "Telegram",
+                          link: d.telegram,
+                          icon: iconTelegram,
+                        },
+                        {
+                          name: "GitHub",
+                          link: d.github,
+                          icon: iconGithub,
+                        },
+                        {
+                          name: "Medium",
+                          link: d.medium,
+                          icon: iconMedium,
+                        },
+                      ]),
+                      socialLinks.map(({ name, link, icon }) => (
+                        <motion.li
+                          key={name}
+                          data-social={name}
+                          variants={socLinkBtns}
+                          whileHover="whileHover"
+                          className={css.appItem__socialIconsList__item}
+                          style={link ? null : { display: "none" }}
+                        >
+                          <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {icon} <span>{name}</span>
+                          </a>
+                        </motion.li>
+                      )))
+                    }
+                  </ul>
+                </div>
               </div>
+
               <a
                 href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
                 className={css.twitterDmButton}
