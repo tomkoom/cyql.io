@@ -2,7 +2,10 @@ import React from "react";
 import css from "./AppPage.module.css";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { btnVariants, socLinkBtns } from "../../motionVariants";
+import { socLinkBtns } from "../../motionVariants";
+
+// Redux
+import { useSelector } from "react-redux";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,9 +33,12 @@ const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 let icLinks = [];
 let socialLinks = [];
+let nftItem = {};
 
 const AppPage = ({ data, loading }) => {
   const { id } = useParams();
+
+  const nftItems = useSelector((state) => state.nftItems.nftItems);
 
   return (
     <section className={`${css.appPage} container768`}>
@@ -130,17 +136,80 @@ const AppPage = ({ data, loading }) => {
                 </div>
               </div>
 
-              <div
-                className={css.appItem__tradeBtn}
-                style={d.marketUrl ? null : { display: "none" }}
-              >
-                <a
-                  href={d.marketUrl}
-                  target="_blank"
-                  rel="norefferrer noopener"
+              {/* NFT MARKET DATA */}
+              <div style={d.category === "NFTs" ? null : { display: "none" }}>
+                {
+                  ((nftItem = nftItems
+                    ? nftItems.find((nftItem) => nftItem.name === d.name)
+                    : null),
+                  (
+                    <div className={css.appItem__nftMarketData}>
+                      {/* Volume */}
+                      <div className={css.appItem__nftMarketData__item}>
+                        <p className={css.appItem__nftMarketData__item__title}>
+                          Volume 📈
+                        </p>
+                        <p className={css.appItem__nftMarketData__item__data}>
+                          {nftItem
+                            ? `${nftItem.salesInIcpFormatted} ICP`
+                            : null}
+                        </p>
+                      </div>
+                      {/* Sales */}
+                      <div className={css.appItem__nftMarketData__item}>
+                        <p className={css.appItem__nftMarketData__item__title}>
+                          Sales 🤝
+                        </p>
+                        <p className={css.appItem__nftMarketData__item__data}>
+                          {nftItem ? nftItem.sales : null}
+                        </p>
+                      </div>
+
+                      {/* Minted NFTs */}
+                      <div className={css.appItem__nftMarketData__item}>
+                        <p className={css.appItem__nftMarketData__item__title}>
+                          Minted NFTs 🗿
+                        </p>
+                        <p lassName={css.appItem__nftMarketData__item__data}>
+                          {nftItem ? nftItem.totalAssetsFormatted : null}
+                        </p>
+                      </div>
+
+                      {/* Listings */}
+                      <div className={css.appItem__nftMarketData__item}>
+                        <p className={css.appItem__nftMarketData__item__title}>
+                          Market Listings 📦
+                        </p>
+                        <p className={css.appItem__nftMarketData__item__data}>
+                          {nftItem ? nftItem.listings : null}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+
+              <div className={css.appItem__btns}>
+                {/* Compare stats */}
+                <div
+                  className={css.appItem__btns__item}
+                  style={d.category === "NFTs" ? null : { display: "none" }}
                 >
-                  Trade on Entrepot&nbsp;&nbsp;{iconArrowRight}
-                </a>
+                  <Link to="/nft">Compare Stats</Link>
+                </div>
+                {/* Trade */}
+                <div
+                  className={css.appItem__btns__item__secondary}
+                  style={d.marketUrl ? null : { display: "none" }}
+                >
+                  <a
+                    href={d.marketUrl}
+                    target="_blank"
+                    rel="norefferrer noopener"
+                  >
+                    Trade on Entrepot&nbsp;&nbsp;{iconArrowRight}
+                  </a>
+                </div>
               </div>
 
               <div className={css.linksContainer}>

@@ -72,7 +72,7 @@
 .nftImgs {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   gap: 8px;
 }
 
@@ -87,19 +87,65 @@
   border-radius: 8px;
 }
 
-/* TRADE BUTTON */
-.appItem__tradeBtn a {
+/* NFT MARKET DATA */
+
+.appItem__nftMarketData {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.appItem__nftMarketData__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background-color: var(--gray200);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.appItem__nftMarketData__item * {
+  font-family: var(--monospace);
+}
+
+.appItem__nftMarketData__item__title {
+  font-weight: bold;
+}
+
+.appItem__nftMarketData__item__data {
+  font-size: var(--fontSize5);
+}
+
+/* BUTTONS */
+
+.appItem__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.appItem__btns__item a,
+.appItem__btns__item__secondary a {
   display: inline-flex;
   align-items: center;
   height: 40px;
   padding: 0 12px;
-  margin-bottom: 24px;
   border-radius: 8px;
-  background-color: var(--gray180);
   transition: 75ms ease-in;
 }
 
-.appItem__tradeBtn a:hover {
+.appItem__btns__item a {
+  background-color: var(--gray180);
+}
+
+.appItem__btns__item__secondary a {
+  box-shadow: 0 0 0 1px var(--gray160);
+}
+
+.appItem__btns__item a:hover,
+.appItem__btns__item__secondary a:hover {
   background-color: white;
   color: black;
 }
