@@ -145,7 +145,11 @@ const AppList = ({ loading, error, searchValue }) => {
                       {d.github || d.canister || d.tags ? (
                         <ul>
                           {d.github && <li>{iconGithub} Open Source</li>}
-                          {d.canister && <li>🛢️ Deployed to IC</li>}
+                          {d.canister && (
+                            <li>
+                              <span>🛢️</span> Deployed to IC
+                            </li>
+                          )}
                           {d.tags == "Psychedelic" && (
                             <li>
                               {" "}

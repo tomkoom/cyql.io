@@ -14,6 +14,7 @@
   color: var(--gray500);
   background-color: var(--gray200);
   border-radius: 50%;
+  transition: 75ms ease-out;
 }
 
 .backBtn__container:hover {
@@ -23,10 +24,6 @@
 /* APP DATA */
 .appItem {
   padding: 24px 0;
-}
-
-.appItem p {
-  color: var(--gray40);
 }
 
 .appItem__appCover {
@@ -65,58 +62,63 @@
   display: inline-block;
   padding: 4px 8px;
   margin-top: 4px;
-  color: var(--gray40);
   background-color: var(--gray200);
+  font-size: 0.9rem;
   font-weight: var(--light);
   border-radius: 6px;
 }
 
 /* NFT PREVIEWS */
-
 .nftImgs {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;
   flex-wrap: wrap;
   margin-bottom: 24px;
-  border-radius: 12px;
-  overflow: hidden;
+  gap: 8px;
 }
 
 .nftImgs__item {
-  align-items: flex-start;
-  align-self: center;
-  width: 128px;
-  height: 128px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  flex: calc(25% - 8px);
+  max-width: 25%;
+}
+
+.nftImgs__item img {
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* TRADE BUTTON */
+.appItem__tradeBtn a {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 12px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+  background-color: var(--gray180);
+  transition: 75ms ease-in;
+}
+
+.appItem__tradeBtn a:hover {
+  background-color: white;
+  color: black;
 }
 
 /* SOCIAL MEDIA LINKS */
-
-/* .linksContainer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-} */
-
 .appItem__socialIconsList {
   list-style-type: none;
   padding: 0;
   margin: 12px 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   font-size: var(--fontSize5);
 }
 
 .appItem__socialIconsList__item {
-  /* width: 48px;
-  height: 48px; */
-  /* border-radius: 50%; */
   background-color: var(--gray200);
   color: var(--gray100);
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .appItem__socialIconsList__item a {
@@ -124,28 +126,13 @@
   align-items: center;
   gap: 8px;
   height: 40px;
-  padding: 0 8px;
+  padding: 0 10px;
 
   /* color: var(--gray40); */
 }
 
 .appItem__socialIconsList__item a span {
   font-size: 15px;
-
-}
-
-.appItem__tradeBtn a {
-  display: inline-block;
-  padding: 8px 10px;
-  margin-bottom: 24px;
-  border-radius: 8px;
-  background-color: var(--gray180);
-  transition: all 100ms ease-in;
-}
-
-.appItem__tradeBtn a:hover {
-  background-color: white;
-  color: black;
 }
 
 .appItem__appInfo__logo {

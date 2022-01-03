@@ -197,7 +197,7 @@ const Nav = () => {
             className={css.nav__list__item__content}
             activeClassName={css.nav__list__item__active}
           >
-            Submit Your App
+            Submit Your Project
           </NavLink>
         </li>
 

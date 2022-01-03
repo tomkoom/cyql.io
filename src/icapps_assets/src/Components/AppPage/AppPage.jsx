@@ -20,7 +20,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const iconArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
-const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
+const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} size="xs" />;
 const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
@@ -106,36 +106,28 @@ const AppPage = ({ data, loading }) => {
               >
                 <div
                   className={css.nftImgs__item}
-                  style={
-                    d.nftImg1
-                      ? { backgroundImage: `url(${d.nftImg1})` }
-                      : { display: "none" }
-                  }
-                />
+                  style={d.nftImg1 ? null : { display: "none" }}
+                >
+                  <img src={d.nftImg1} alt={`${d.name} nft1`} />
+                </div>
                 <div
                   className={css.nftImgs__item}
-                  style={
-                    d.nftImg2
-                      ? { backgroundImage: `url(${d.nftImg2})` }
-                      : { display: "none" }
-                  }
-                />
+                  style={d.nftImg2 ? null : { display: "none" }}
+                >
+                  <img src={d.nftImg2} alt={`${d.name} nft2`} />
+                </div>
                 <div
                   className={css.nftImgs__item}
-                  style={
-                    d.nftImg3
-                      ? { backgroundImage: `url(${d.nftImg3})` }
-                      : { display: "none" }
-                  }
-                />
+                  style={d.nftImg3 ? null : { display: "none" }}
+                >
+                  <img src={d.nftImg3} alt={`${d.name} nft3`} />
+                </div>
                 <div
                   className={css.nftImgs__item}
-                  style={
-                    d.nftImg4
-                      ? { backgroundImage: `url(${d.nftImg4})` }
-                      : { display: "none" }
-                  }
-                />
+                  style={d.nftImg4 ? null : { display: "none" }}
+                >
+                  <img src={d.nftImg4} alt={`${d.name} nft4`} />
+                </div>
               </div>
 
               <div
@@ -147,7 +139,7 @@ const AppPage = ({ data, loading }) => {
                   target="_blank"
                   rel="norefferrer noopener"
                 >
-                  Trade on Entrepot {iconArrowRight}
+                  Trade on Entrepot&nbsp;&nbsp;{iconArrowRight}
                 </a>
               </div>
 
@@ -160,7 +152,7 @@ const AppPage = ({ data, loading }) => {
                       : { display: "none" }
                   }
                 >
-                  <p className="bodyText">IC Ecosystem</p>
+                  <p className="bodyTextLight">IC Ecosystem</p>
                   <ul className={css.appItem__socialIconsList}>
                     {
                       ((icLinks = [
@@ -229,7 +221,7 @@ const AppPage = ({ data, loading }) => {
                       : { display: "none" }
                   }
                 >
-                  <p className="bodyText">Social Media</p>
+                  <p className="bodyTextLight">Social Media</p>
 
                   <ul className={css.appItem__socialIconsList}>
                     {
