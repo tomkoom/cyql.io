@@ -137,7 +137,15 @@ const AppPage = ({ data, loading }) => {
               </div>
 
               {/* NFT MARKET DATA */}
-              <div style={d.category === "NFTs" ? null : { display: "none" }}>
+              <div
+                style={
+                  nftItems
+                    ? nftItems.find((nftItem) => nftItem.name === d.name)
+                      ? null
+                      : { display: "none" }
+                    : null
+                }
+              >
                 {
                   ((nftItem = nftItems
                     ? nftItems.find((nftItem) => nftItem.name === d.name)
@@ -170,7 +178,7 @@ const AppPage = ({ data, loading }) => {
                         <p className={css.appItem__nftMarketData__item__title}>
                           Minted NFTs 🗿
                         </p>
-                        <p lassName={css.appItem__nftMarketData__item__data}>
+                        <p className={css.appItem__nftMarketData__item__data}>
                           {nftItem ? nftItem.totalAssetsFormatted : null}
                         </p>
                       </div>

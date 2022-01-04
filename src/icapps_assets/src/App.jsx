@@ -6,6 +6,7 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import {
   Nav,
   Homepage,
+  Apps,
   AppPage,
   UpcomingNfts,
   NftList,
@@ -108,6 +109,16 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             <Homepage
+              category={category}
+              setCategory={setCategory}
+              data={data}
+              loading={loading}
+              error={error}
+            />
+          </Route>
+
+          <Route exact path="/apps">
+            <Apps
               category={category}
               setCategory={setCategory}
               data={data}

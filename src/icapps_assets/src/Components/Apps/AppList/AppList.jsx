@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./AppList.module.css";
 import { Link } from "react-router-dom";
-import Loader from "./../../../CatLoader";
+import Loader from "../../../CatLoader";
 
 // Framer Motion
 import { motion } from "framer-motion";
