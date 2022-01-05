@@ -140,6 +140,40 @@ const Nav = () => {
         >
           <NavLink
             exact
+            to="/"
+            replace
+            className={css.nav__list__item__content}
+            activeClassName={css.nav__list__item__active}
+          >
+            Home
+          </NavLink>
+        </li>
+
+        <li
+          className={css.nav__list__item}
+          onClick={() => {
+            menuIsOpen ? setMenuIsOpen(false) : null;
+          }}
+        >
+          <NavLink
+            exact
+            to="/apps"
+            replace
+            className={css.nav__list__item__content}
+            activeClassName={css.nav__list__item__active}
+          >
+            All Apps
+          </NavLink>
+        </li>
+
+        <li
+          className={css.nav__list__item}
+          onClick={() => {
+            menuIsOpen ? setMenuIsOpen(false) : null;
+          }}
+        >
+          <NavLink
+            exact
             to="/upcoming"
             replace
             className={css.nav__list__item__content}
@@ -167,7 +201,7 @@ const Nav = () => {
           </NavLink>
         </li>
 
-        <li
+        {/* <li
           className={css.nav__list__item}
           onClick={() => {
             menuIsOpen ? setMenuIsOpen(false) : null;
@@ -182,7 +216,7 @@ const Nav = () => {
           >
             DevResources
           </NavLink>
-        </li>
+        </li> */}
 
         <li
           className={css.nav__list__item}

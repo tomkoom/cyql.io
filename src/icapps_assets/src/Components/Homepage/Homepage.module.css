@@ -1,0 +1,175 @@
+/* HOMEPAGE */
+
+/* Hero */
+
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.home {
+  margin-bottom: 48px;
+}
+
+.home__hero {
+  max-width: 640px;
+}
+
+.home__hero__title {
+  font-size: var(--fontSize1);
+  line-height: 110%;
+}
+
+/* Recently added */
+
+.home__section__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.home__section__title h3 {
+  font-size: var(--fontSize4);
+}
+
+.appList {
+  width: 100%;
+}
+
+.home__apps__list {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-top: 12px;
+}
+
+.home__apps__list__item {
+  width: 320px;
+  background-color: var(--gray220);
+  border-radius: 16px;
+}
+
+.home__apps__list__item:hover {
+  background-color: var(--gray180);
+}
+
+.li__item:hover {
+  background-color: var(--gray200);
+}
+
+.li__item__linkBlock__coverImg {
+  width: 100%;
+  padding-bottom: 33.33%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 16px 16px 0 0;
+}
+
+.li__item__linkBlock__appInfo {
+  display: flex;
+  padding: 12px 12px 16px 12px;
+  gap: 12px;
+}
+
+.li__item__linkBlock__appInfo__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.li__item__linkBlock__appInfo__description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: var(--fontSize6);
+  overflow-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description__title {
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
+  word-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: var(--fontSize7);
+}
+
+.li__item__linkBlock__appInfo__description ul li {
+  padding: 0 6px;
+  border-radius: 4px;
+  color: var(--gray40);
+  box-shadow: 0 0 1px var(--gray80);
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.li__item__linkBlock__appInfo__description ul li img {
+  max-width: 16px;
+}
+
+.li__item__linkBlock__appInfo__description p {
+  color: var(--gray80);
+}
+
+/* Upcoming NFT sales */
+
+.home__upcNfts__li {
+  list-style-type: none;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-top: 12px;
+}
+
+.home__upcNfts__li__i {
+  padding: 16px;
+  background-color: var(--gray220);
+  border-radius: 16px;
+}
+
+.linkBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.home__upcNfts__li__i__main h4 {
+  margin-bottom: 4px;
+  font-size: var(--fontSize6);
+}
+
+.home__upcNfts__li__i__main p {
+  color: var(--gray80);
+}
+
+.home__upcNfts__li__i__img {
+  display: flex;
+  /* border-radius: 8px; */
+  overflow: hidden;
+}
+
+.home__upcNfts__li__i__img__i {
+  width: 96px;
+  height: 96px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

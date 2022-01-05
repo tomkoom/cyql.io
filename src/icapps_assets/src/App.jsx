@@ -10,7 +10,7 @@ import {
   AppPage,
   UpcomingNfts,
   NftList,
-  DevResources,
+  // DevResources,
   SubmitApp,
 } from "./Components";
 
@@ -135,9 +135,9 @@ const App = () => {
             <UpcomingNfts />
           </Route>
 
-          <Route exact path="/devres">
+          {/* <Route exact path="/devres">
             <DevResources />
-          </Route>
+          </Route> */}
 
           <Route exact path="/nft">
             <NftList />
