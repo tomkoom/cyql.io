@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Footer.module.css";
 import LogoComponent from "../../Assets/LogoComponent/LogoComponent";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,6 +25,14 @@ const iconComments = (
   <FontAwesomeIcon icon={faComments} className={css.footIcon} />
 );
 const iconHeart = <FontAwesomeIcon icon={faHeart} className={css.footIcon} />;
+
+const navItems = [
+  { name: "Home", link: "/" },
+  { name: "All Apps", link: "apps" },
+  { name: "Upcoming NFT Sales", link: "upcoming" },
+  { name: "NFT Stats", link: "nft" },
+  { name: "Submit Your Project", link: "submit" },
+];
 
 const Footer = () => {
   return (
@@ -89,26 +97,47 @@ const Footer = () => {
               <LogoComponent />
               <p className="subtitle">IC-powered projects community portal</p>
             </div>
+            <div className={css.footer__content__middle__i__socLinks}>
+              <a
+                className={css.footer__content__middle__i__socLinks__item}
+                href="https://twitter.com/DfinityApps"
+                id="twitter"
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                {iconTwitter} Twitter
+              </a>
+              <a
+                className={css.footer__content__middle__i__socLinks__item}
+                href="https://discord.gg/AnjyrfvvXX"
+                id="discord"
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                {iconDiscord} Discord
+              </a>
+            </div>
           </div>
 
-          {/* Links */}
+          {/* Nav */}
           <div className={css.footer__content__middle__i}>
-            <a
-              href="https://twitter.com/DfinityApps"
-              id="twitter"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              {iconTwitter} Twitter
-            </a>
-            <a
-              href="https://discord.gg/AnjyrfvvXX"
-              id="discord"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              {iconDiscord} Discord
-            </a>
+            <ul className={css.footer__content__middle__i__navList}>
+              {navItems.map((navItem, i) => (
+                <li key={i}>
+                  <NavLink
+                    exact
+                    to={navItem.link}
+                    replace
+                    className={
+                      css.footer__content__middle__i__navList__item__link
+                    }
+                    activeClassName={css.active}
+                  >
+                    {navItem.name}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
