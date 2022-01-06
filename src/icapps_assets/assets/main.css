@@ -145,8 +145,9 @@ h6 {
 
 .bodyText,
 .bodyTextLight,
-.bodyText2 {
-  line-height: 150%;
+.bodyText2,
+.subtitle {
+  line-height: 140%;
   word-wrap: break-word;
 }
 

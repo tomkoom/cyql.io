@@ -30,6 +30,7 @@ import { fetchNftData } from "./Redux/nftItemsSlice";
 // Google API
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
+import Footer from "./Components/Footer/Footer";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
@@ -150,6 +151,7 @@ const App = () => {
           {/* <Route component={page404} /> */}
         </Switch>
       </div>
+      <Footer />
     </div>
   );
 };

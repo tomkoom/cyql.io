@@ -9,7 +9,7 @@
 }
 
 .home {
-  margin-bottom: 48px;
+  margin: 24px auto;
 }
 
 .home__hero {
@@ -172,4 +172,37 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Community */
+
+.home__communityLinks__content {
+  display: flex;
+  gap: 1rem;
+}
+
+.home__communityLinks__content__item {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  width: 20rem;
+  padding: 1rem;
+  background-color: var(--gray200);
+  border-radius: 24px;
+}
+
+.socIcon {
+  font-size: 3rem;
+}
+
+.home__communityLinks__content__item a {
+  display: grid;
+  place-items: center;
+  height: 2.5rem;
+  border: none;
+  background-color: var(--gray140);
+  border-radius: 0.5rem;
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
+  color: white;
 }

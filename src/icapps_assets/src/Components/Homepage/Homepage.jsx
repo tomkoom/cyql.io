@@ -20,8 +20,6 @@ const Homepage = () => {
   const apps = useSelector((state) => state.siteData.projects);
   const upcomingNfts = useSelector((state) => state.siteData.upcomingNfts);
 
-  console.log(upcomingNfts);
-
   return (
     <main className={`${css.home} container1440`}>
       <section className={css.home__hero}>
@@ -158,8 +156,9 @@ const Homepage = () => {
                   className={css.home__upcNfts__li__i}
                   variants={cardVariants}
                   whileHover="whileHover"
+                  key={i}
                 >
-                  <Link to="/" key={i} className={css.linkBlock}>
+                  <Link to={`/a/${upcNft.id}`} className={css.linkBlock}>
                     {/* Main */}
                     <div className={css.home__upcNfts__li__i__main}>
                       <h4>{upcNft["Name"]}</h4>
@@ -218,8 +217,9 @@ const Homepage = () => {
                   className={css.home__upcNfts__li__i}
                   variants={cardVariants}
                   whileHover="whileHover"
+                  key={i}
                 >
-                  <Link to="/" key={i} className={css.linkBlock}>
+                  <Link to={`/a/${upcNft.id}`} className={css.linkBlock}>
                     {/* Main */}
                     <div className={css.home__upcNfts__li__i__main}>
                       <h4>{upcNft["Name"]}</h4>
@@ -256,6 +256,23 @@ const Homepage = () => {
           )}
         </ul>
       </section>
+
+      {/* <section className={css.home__communityLinks}>
+        <div className={css.home__section__title}>
+          <h3>Join icApps community</h3>
+        </div>
+
+        <div className={css.home__communityLinks__content}>
+          <div className={css.home__communityLinks__content__item}>
+            {iconDiscord}
+            <a href="">Join Discord</a>
+          </div>
+          <div className={css.home__communityLinks__content__item}>
+            {iconTwitter}
+            <a href="">Follow on Twitter</a>
+          </div>
+        </div>
+      </section> */}
     </main>
   );
 };

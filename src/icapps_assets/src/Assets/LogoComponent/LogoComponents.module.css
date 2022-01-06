@@ -1,0 +1,20 @@
+/* Logo Component */
+
+.logoComponent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoComponent img {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.logoComponent h2 {
+  font-size: var(--fontSize5);
+  font-weight: var(--black);
+  letter-spacing: -0.25px;
+}
