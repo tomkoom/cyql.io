@@ -9,15 +9,10 @@
 }
 
 .home {
-  margin: 24px auto;
-}
-
-.home__hero {
-  max-width: 640px;
+  margin: 1.5rem auto;
 }
 
 .home__hero__title {
-  font-size: var(--fontSize1);
   line-height: 110%;
 }
 
@@ -27,11 +22,11 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .home__section__title h3 {
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize5);
 }
 
 .appList {
@@ -39,23 +34,20 @@
 }
 
 .home__apps__list {
+  list-style-type: none;
   display: grid;
   grid-template-rows: auto auto;
   grid-auto-flow: column;
-  gap: 16px;
-  overflow-x: scroll;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  overflow-x: auto;
   overflow-y: hidden;
-  padding-top: 12px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home__apps__list__item {
-  width: 320px;
-  background-color: var(--gray220);
-  border-radius: 16px;
-}
-
-.home__apps__list__item:hover {
-  background-color: var(--gray180);
+  width: 17.5rem;
+  border-radius: 1rem;
 }
 
 .li__item:hover {
@@ -68,13 +60,13 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 16px 16px 0 0;
+  border-radius: 1rem;
 }
 
 .li__item__linkBlock__appInfo {
   display: flex;
-  padding: 12px 12px 16px 12px;
-  gap: 12px;
+  padding: 0.75rem 0 1rem 0;
+  gap: 0.75rem;
 }
 
 .li__item__linkBlock__appInfo__logo {
@@ -87,9 +79,22 @@
 .li__item__linkBlock__appInfo__description {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   font-size: var(--fontSize6);
   overflow-wrap: break-word;
+}
+
+.appDescription {
+  font-size: 0.9rem;
+  line-height: 150%;
+  font-weight: var(--light);
+}
+
+.viewAllAppsCard {
+  display: grid;
+  place-items: center;
+  padding-bottom: 3rem;
+  cursor: pointer;
 }
 
 .li__item__linkBlock__appInfo__description__title {
@@ -102,20 +107,15 @@
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0.5rem;
   align-items: center;
   font-size: var(--fontSize7);
 }
 
 .li__item__linkBlock__appInfo__description ul li {
-  padding: 0 6px;
-  border-radius: 4px;
   color: var(--gray40);
-  box-shadow: 0 0 1px var(--gray80);
-  height: 24px;
   display: flex;
   align-items: center;
-  gap: 6px;
 }
 
 .li__item__linkBlock__appInfo__description ul li img {
@@ -133,9 +133,10 @@
   display: grid;
   grid-auto-flow: column;
   gap: 16px;
-  overflow-x: scroll;
-  overflow-y: hidden;
   padding-top: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .home__upcNfts__li__i {

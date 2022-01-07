@@ -32,10 +32,10 @@ const Homepage = ({
   };
 
   return (
-    <main className={`${css.homepage} container1600`}>
+    <main className={`${css.homepage} container1440`}>
       {/* HERO */}
       <div className={css.homepage__hero}>
-        <Highlights />
+        {/* <Highlights /> */}
         <Heading />
 
         {/* Search */}
@@ -68,7 +68,7 @@ const Homepage = ({
         />
 
         {/* ADS */}
-        <Ads data={data} loading={loading} error={error} />
+        {/* <Ads data={data} loading={loading} error={error} /> */}
       </main>
     </main>
   );

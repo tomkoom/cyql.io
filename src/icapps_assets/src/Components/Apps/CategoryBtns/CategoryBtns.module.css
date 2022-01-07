@@ -1,28 +1,24 @@
-/* HOMEPAGE TAGS */
+/* Category Buttons */
 
-.tags h6 {
+.categoryBtns__caption {
   font-weight: var(--medium);
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
-.tags__content {
-  position: sticky;
-  top: 24px;
+.categoryBtns__content {
   display: flex;
-  padding: 1px;
-  flex-direction: column;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-@media screen and (max-width: 1023px) {
+/* @media screen and (max-width: 1023px) {
   .tags__content {
     position: inherit;
     gap: 10px;
 
-    /* Horizontal scrolling */
     flex-wrap: wrap;
     height: 108px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-}
+} */

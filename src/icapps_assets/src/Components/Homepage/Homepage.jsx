@@ -12,8 +12,10 @@ import { useSelector } from "react-redux";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
 const Homepage = () => {
@@ -23,26 +25,24 @@ const Homepage = () => {
   return (
     <main className={`${css.home} container1440`}>
       <section className={css.home__hero}>
-        <h2 className={css.home__hero__title}>
-          IC-powered projects community portal
-        </h2>
+        <h2 className={css.home__hero__title}>IC apps community portal</h2>
       </section>
 
       {/* Apps Section */}
       <section className={css.home__apps}>
         {/* Title */}
         <div className={css.home__section__title}>
-          <h3>Recently added</h3>
+          <h3>Recently added apps</h3>
           <Link to="/apps">View all &gt;</Link>
         </div>
 
         {/* List */}
-        <li className={css.home__apps__list}>
+        <ul className={css.home__apps__list}>
           {!apps.length ? (
             <Loader />
           ) : (
-            apps.slice(0, 48).map((app) => (
-              <motion.ul
+            apps.slice(0, 47).map((app) => (
+              <motion.li
                 key={app.id}
                 className={css.home__apps__list__item}
                 variants={cardVariants}
@@ -101,19 +101,20 @@ const Homepage = () => {
 
                       {app.github || app.canister || app.tags ? (
                         <ul>
-                          {app.github && <li>{iconGithub} Open Source</li>}
                           {app.canister && (
-                            <li>
-                              <span>🛢️</span> Deployed to IC
-                            </li>
+                            <li>{iconDatabase}&nbsp;&nbsp;Deployed to IC</li>
                           )}
+                          {app.github && (
+                            <li>{iconGithub}&nbsp;&nbsp;Open Source</li>
+                          )}
+
                           {app.tags == "Psychedelic" && (
                             <li>
-                              {" "}
                               <img
                                 src="https://psychedelic.ooo/images/11-2.svg"
                                 alt="Psychedelic"
-                              />{" "}
+                              />
+                              &nbsp;&nbsp;
                               {app.tags}
                             </li>
                           )}
@@ -121,18 +122,28 @@ const Homepage = () => {
                         </ul>
                       ) : null}
 
-                      <p className="bodyTextLight">
-                        {app.description && app.description.length > 80
-                          ? `${app.description.substring(0, 80)}…`
+                      <p className={css.appDescription}>
+                        {app.description && app.description.length > 70
+                          ? `${app.description.substring(0, 70)}…`
                           : app.description}
                       </p>
                     </div>
                   </div>
                 </Link>
-              </motion.ul>
+              </motion.li>
             ))
           )}
-        </li>
+          {apps.length > 0 && (
+            <motion.Link
+              to="/apps"
+              className={css.viewAllAppsCard}
+              variants={cardVariants}
+              whileHover="whileHover"
+            >
+              View all {apps.length} apps &gt;
+            </motion.Link>
+          )}
+        </ul>
       </section>
 
       {/* UPCOMING NFT SALES */}

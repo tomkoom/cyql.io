@@ -28,9 +28,9 @@ const CategoryBtns = ({ category, setCategory }) => {
   const projects = useSelector((state) => state.siteData.projects);
 
   return (
-    <aside className={css.tags}>
-      <h6>Categories</h6>
-      <div className={css.tags__content}>
+    <aside className={css.categoryBtns}>
+      <h6 className={css.categoryBtns__caption}>Categories</h6>
+      <div className={css.categoryBtns__content}>
         {categories.map((cat, i) => (
           <CategoryBtnsItem
             category={cat.name}

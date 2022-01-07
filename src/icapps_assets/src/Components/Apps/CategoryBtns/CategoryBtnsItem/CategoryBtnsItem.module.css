@@ -4,25 +4,24 @@
   display: flex;
   white-space: nowrap;
   align-items: center;
-  gap: 8px;
-  height: 40px;
-  padding: 0 12px;
+  gap: 0.25rem;
+  height: 36px;
   font-size: var(--fontSize6);
   font-weight: var(--medium);
-  color: white;
-  background-color: var(--gray220);
+  color: var(--gray80);
+  background-color: black;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
 }
 
 .active {
   color: white;
-  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 0 0 white;
 }
 
 .tagsItem:hover:not(.tagsItem.active) {
-  background-color: var(--gray140);
+  color: white;
+  box-shadow: 0 2px 0 0 white;
 }
 
 .tagsItem__icon {

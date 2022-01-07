@@ -1,7 +1,7 @@
 /* HOMEPAGE */
 
 .homepage__hero {
-  margin: 0 0 32px 240px;
+  margin: 32px 0;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -9,7 +9,7 @@
 
 .homepage__content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 48px;
   margin: 0 auto;
 }
