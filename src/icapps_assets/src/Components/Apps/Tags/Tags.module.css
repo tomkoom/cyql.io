@@ -1,0 +1,7 @@
+/* Tags */
+
+.tags__content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}

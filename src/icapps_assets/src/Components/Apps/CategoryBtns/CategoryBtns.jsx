@@ -29,7 +29,7 @@ const CategoryBtns = ({ category, setCategory }) => {
 
   return (
     <aside className={css.categoryBtns}>
-      <h6 className={css.categoryBtns__caption}>Categories</h6>
+      {/* <h6 className={css.categoryBtns__caption}>Categories</h6> */}
       <div className={css.categoryBtns__content}>
         {categories.map((cat, i) => (
           <CategoryBtnsItem

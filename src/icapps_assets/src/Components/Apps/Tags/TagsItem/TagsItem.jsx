@@ -1,6 +1,5 @@
 import React from "react";
 import css from "./TagsItem.module.css";
-import { motion } from "framer-motion";
 
 const TagsItem = ({
   id,
@@ -12,11 +11,7 @@ const TagsItem = ({
   emoji,
 }) => {
   return (
-    <motion.label
-      className={css.tagsItem}
-      htmlFor={id}
-      whileTap={{ scale: 0.9 }}
-    >
+    <label className={css.tagsItem} htmlFor={id}>
       <input
         id={id}
         value={name}
@@ -41,7 +36,7 @@ const TagsItem = ({
 
         {name}
       </div>
-    </motion.label>
+    </label>
   );
 };
 

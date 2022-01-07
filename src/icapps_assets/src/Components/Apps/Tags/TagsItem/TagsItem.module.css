@@ -1,8 +1,7 @@
-/* TAGS FILTER ITEM */
+/* Tags Item */
 
 .tagsItem {
   position: relative;
-  height: 34px;
 }
 
 .tagsItem input {
@@ -20,19 +19,15 @@
   align-items: center;
   gap: 6px;
   height: 36px;
-  padding: 0 10px;
-  border-radius: 6px;
-  color: var(--gray40);
-  background-color: var(--gray220);
-  /* font-size: var(--fontSize7); */
-  /* box-shadow: 0 0 0 1px var(--gray160); */
-  /* transition: all 100ms ease-in; */
+  padding: 0 0.5rem;
+  color: var(--gray80);
+  box-shadow: 0 0 0 1px var(--gray160);
+  border-radius: 0.25rem;
 }
 
 .tagsItem input:checked ~ .tagsItem__content {
   color: white;
-  background-color: rgba(255, 255, 255, 0.25);
-  /* box-shadow: 0px 2px 0 -1px rgba(255, 255, 255, 1); */
+  box-shadow: 0 0 0 1px white;
 }
 
 /* img */

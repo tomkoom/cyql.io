@@ -7,13 +7,15 @@ import Loader from "../../../CatLoader";
 import { motion } from "framer-motion";
 import { cardVariants } from "../../../motionVariants";
 
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
 // Redux
 import { useSelector } from "react-redux";
 
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
 const AppList = ({ loading, error, searchValue }) => {
@@ -144,12 +146,8 @@ const AppList = ({ loading, error, searchValue }) => {
 
                       {d.github || d.canister || d.tags ? (
                         <ul>
+                          {d.canister && <li>{iconDatabase} Deployed to IC</li>}
                           {d.github && <li>{iconGithub} Open Source</li>}
-                          {d.canister && (
-                            <li>
-                              <span>🛢️</span> Deployed to IC
-                            </li>
-                          )}
                           {d.tags == "Psychedelic" && (
                             <li>
                               {" "}
@@ -164,9 +162,9 @@ const AppList = ({ loading, error, searchValue }) => {
                         </ul>
                       ) : null}
 
-                      <p className="bodyTextLight">
-                        {d.description && d.description.length > 80
-                          ? `${d.description.substring(0, 80)}…`
+                      <p className={css.appDescription}>
+                        {d.description && d.description.length > 70
+                          ? `${d.description.substring(0, 70)}…`
                           : d.description}
                       </p>
                     </div>

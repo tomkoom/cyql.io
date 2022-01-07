@@ -7,7 +7,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setFilterByTag } from "../../Redux/projectsFilteringSlice";
+import { setFilterByTag } from "../../../Redux/projectsFilteringSlice";
 
 const iconGithub = <FontAwesomeIcon icon={faGithub} color="#fff" />;
 
@@ -68,9 +68,8 @@ const Tags = () => {
   ];
 
   return (
-    <div className={css.tagsFilter}>
-      <h6>Tags</h6>
-      <div className={css.tagsFilter__content}>
+    <div className={css.tags}>
+      <div className={css.tags__content}>
         {tags.map((tag, i) => (
           <TagsItem
             id={tag.id}
