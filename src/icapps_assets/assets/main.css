@@ -108,6 +108,10 @@ a {
   color: white;
 }
 
+ul {
+  list-style-type: none;
+}
+
 /* TYPOGRAPHY */
 
 h1,

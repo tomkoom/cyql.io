@@ -13,10 +13,10 @@ import {
 import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const iconDiscord = (
-  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} color="#5865f2" />
+  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} /> // color="#5865f2"
 );
 const iconTwitter = (
-  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} color="#00acee" />
+  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} /> // color="#00acee"
 );
 const iconPlus = (
   <FontAwesomeIcon icon={faPlusSquare} className={css.footIcon} />
@@ -32,6 +32,11 @@ const navItems = [
   { name: "Upcoming NFT Sales", link: "upcoming" },
   { name: "NFT Stats", link: "nft" },
   { name: "Submit Your Project", link: "submit" },
+];
+
+const socLinks = [
+  { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iconTwitter },
+  { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iconDiscord },
 ];
 
 const Footer = () => {
@@ -83,7 +88,11 @@ const Footer = () => {
                 </h5>
                 <p className="bodyTextLight">
                   icApps is a community-run project. By making a donation you
-                  are supporting its development.
+                  support its development.
+                  <br />
+                  <span>
+                    edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
+                  </span>
                 </p>
               </div>
             </a>
@@ -97,44 +106,41 @@ const Footer = () => {
               <LogoComponent />
               <p className="subtitle">IC-powered projects community portal</p>
             </div>
-            <div className={css.footer__content__middle__i__socLinks}>
-              <a
-                className={css.footer__content__middle__i__socLinks__item}
-                href="https://twitter.com/DfinityApps"
-                id="twitter"
-                rel="noreferrer noopener"
-                target="_blank"
-              >
-                {iconTwitter} Twitter
-              </a>
-              <a
-                className={css.footer__content__middle__i__socLinks__item}
-                href="https://discord.gg/AnjyrfvvXX"
-                id="discord"
-                rel="noreferrer noopener"
-                target="_blank"
-              >
-                {iconDiscord} Discord
-              </a>
-            </div>
           </div>
 
-          {/* Nav */}
           <div className={css.footer__content__middle__i}>
-            <ul className={css.footer__content__middle__i__navList}>
+            <ul className={css.footer__content__bottom}>
+              {/* Nav Items*/}
               {navItems.map((navItem, i) => (
                 <li key={i}>
                   <NavLink
                     exact
                     to={navItem.link}
                     replace
-                    className={
-                      css.footer__content__middle__i__navList__item__link
-                    }
+                    className={css.footer__content__bottom__i}
                     activeClassName={css.active}
                   >
                     {navItem.name}
                   </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Soc Links */}
+          <div className={css.footer__content__middle__i}>
+            <ul className={css.footer__content__middle__i__socLinks}>
+              {socLinks.map((socLink) => (
+                <li className={css.footer__content__middle__i__socLinks__i}>
+                  <a
+                    className={css.footer__content__middle__i__socLinks__item}
+                    href={socLink.link}
+                    id={socLink.id}
+                    rel="noreferrer noopener"
+                    target="_blank"
+                  >
+                    {socLink.icon}
+                  </a>
                 </li>
               ))}
             </ul>

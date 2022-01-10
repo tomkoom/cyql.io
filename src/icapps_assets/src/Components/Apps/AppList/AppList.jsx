@@ -150,11 +150,11 @@ const AppList = ({ loading, error, searchValue }) => {
                           {d.github && <li>{iconGithub} Open Source</li>}
                           {d.tags == "Psychedelic" && (
                             <li>
-                              {" "}
                               <img
                                 src="https://psychedelic.ooo/images/11-2.svg"
                                 alt="Psychedelic"
-                              />{" "}
+                              />
+                              &nbsp;
                               {d.tags}
                             </li>
                           )}

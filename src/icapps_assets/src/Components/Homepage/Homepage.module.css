@@ -93,8 +93,9 @@
 .viewAllAppsCard {
   display: grid;
   place-items: center;
-  padding-bottom: 3rem;
   cursor: pointer;
+  background-color: var(--gray220);
+  border-radius: 1rem;
 }
 
 .li__item__linkBlock__appInfo__description__title {
