@@ -32,8 +32,9 @@ const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 let icLinks = [];
-let socialLinks = [];
 let nftItem = {};
+
+let socialLinks = [];
 
 const AppPage = ({ data, loading }) => {
   const { id } = useParams();
@@ -303,36 +304,16 @@ const AppPage = ({ data, loading }) => {
                   <ul className={css.appItem__socialIconsList}>
                     {
                       ((socialLinks = [
-                        {
-                          name: "Website",
-                          link: d.website,
-                          icon: iconGlobe,
-                        },
-                        {
-                          name: "Twitter",
-                          link: d.twitter,
-                          icon: iconTwitter,
-                        },
-                        {
-                          name: "Discord",
-                          link: d.discord,
-                          icon: iconDiscord,
-                        },
+                        { name: "Website", link: d.website, icon: iconGlobe },
+                        { name: "Twitter", link: d.twitter, icon: iconTwitter },
+                        { name: "Discord", link: d.discord, icon: iconDiscord },
                         {
                           name: "Telegram",
                           link: d.telegram,
                           icon: iconTelegram,
                         },
-                        {
-                          name: "GitHub",
-                          link: d.github,
-                          icon: iconGithub,
-                        },
-                        {
-                          name: "Medium",
-                          link: d.medium,
-                          icon: iconMedium,
-                        },
+                        { name: "GitHub", link: d.github, icon: iconGithub },
+                        { name: "Medium", link: d.medium, icon: iconMedium },
                       ]),
                       socialLinks.map(({ name, link, icon }) => (
                         <motion.li

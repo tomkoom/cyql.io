@@ -27,55 +27,6 @@
   line-height: 110%;
 }
 
-/* Upcoming NFT sales */
-
-.home__upcNfts__li {
-  list-style-type: none;
-  display: grid;
-  grid-auto-flow: column;
-  gap: 16px;
-  padding-top: 12px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-.home__upcNfts__li__i {
-  padding: 16px;
-  background-color: var(--gray220);
-  border-radius: 16px;
-}
-
-.linkBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.home__upcNfts__li__i__main h4 {
-  margin-bottom: 4px;
-  font-size: var(--fontSize6);
-}
-
-.home__upcNfts__li__i__main p {
-  color: var(--gray80);
-}
-
-.home__upcNfts__li__i__img {
-  display: flex;
-  /* border-radius: 8px; */
-  overflow: hidden;
-}
-
-.home__upcNfts__li__i__img__i {
-  width: 96px;
-  height: 96px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 /* Community */
 
 .home__communityLinks__content {

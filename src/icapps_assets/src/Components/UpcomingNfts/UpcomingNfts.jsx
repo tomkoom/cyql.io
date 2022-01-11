@@ -225,7 +225,7 @@ const UpcomingNfts = () => {
               </div>
             </div>
 
-            {/* NFT IMAGES */}
+            {/* Loop NFT preview images */}
             <div className={css.upcNft__card__img}>
               {(() => {
                 let nftImgs = [];
@@ -235,7 +235,7 @@ const UpcomingNfts = () => {
                       key={i}
                       className={css.upcNft__card__img__item}
                       src={nft[`Img${i}`]}
-                      alt={`${nft.Name} img ${i}`}
+                      alt={`${nft.Name} preview${i}`}
                     />
                   );
                 }
