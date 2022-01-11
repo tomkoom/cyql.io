@@ -104,12 +104,14 @@ const Footer = () => {
           <div className={css.footer__content__middle__i}>
             <div className={css.footer__content__middle__i__logo}>
               <LogoComponent />
-              <p className="subtitle">IC-powered projects community portal</p>
+              <p className="subtitle">
+                IC-powered projects <br /> community portal
+              </p>
             </div>
           </div>
 
           <div className={css.footer__content__middle__i}>
-            <ul className={css.footer__content__bottom}>
+            <ul className={css.footer__content__middle__i__navList}>
               {/* Nav Items*/}
               {navItems.map((navItem, i) => (
                 <li key={i}>
@@ -117,7 +119,7 @@ const Footer = () => {
                     exact
                     to={navItem.link}
                     replace
-                    className={css.footer__content__bottom__i}
+                    className={css.footer__content__middle__i__navList__i}
                     activeClassName={css.active}
                   >
                     {navItem.name}
@@ -130,16 +132,19 @@ const Footer = () => {
           {/* Soc Links */}
           <div className={css.footer__content__middle__i}>
             <ul className={css.footer__content__middle__i__socLinks}>
-              {socLinks.map((socLink) => (
-                <li className={css.footer__content__middle__i__socLinks__i}>
+              {socLinks.map(({ id, link, icon }) => (
+                <li
+                  className={css.footer__content__middle__i__socLinks__i}
+                  key={id}
+                >
                   <a
                     className={css.footer__content__middle__i__socLinks__item}
-                    href={socLink.link}
-                    id={socLink.id}
+                    href={link}
+                    id={id}
                     rel="noreferrer noopener"
                     target="_blank"
                   >
-                    {socLink.icon}
+                    {icon}
                   </a>
                 </li>
               ))}
