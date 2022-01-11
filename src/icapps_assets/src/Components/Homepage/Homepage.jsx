@@ -10,9 +10,11 @@ import TopNftCollections from "./TopNftCollections/TopNftCollections";
 
 // Redux
 import { useSelector } from "react-redux";
+import JoinCommunity from "./JoinCommunity/JoinCommunity";
 
 const Homepage = () => {
   const upcomingNfts = useSelector((state) => state.siteData.upcomingNfts);
+  const nftItems = useSelector((state) => state.nftItems.nftItems);
 
   return (
     <main className={`${css.home} container1440`}>
@@ -66,7 +68,15 @@ const Homepage = () => {
           <h3>Top NFT collections</h3>
           <Link to="/nft">View all &gt;</Link>
         </div>
-        <TopNftCollections Loader={<Loader />} />
+        <TopNftCollections nftItems={nftItems} Loader={<Loader />} />
+      </section>
+
+      {/* Join community */}
+      <section className={css.home__nftCollections}>
+        <div className={css.home__section__title}>
+          <h3>Join icApps community</h3>
+        </div>
+        <JoinCommunity />
       </section>
     </main>
   );

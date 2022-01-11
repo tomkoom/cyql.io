@@ -1,12 +1,7 @@
 import React from "react";
 import css from "./TopNftCollections.module.css";
-import Loader from "../../../Loader";
 
-// Redux
-import { useSelector } from "react-redux";
-
-const TopNftCollections = ({ Loader }) => {
-  const nftItems = useSelector((state) => state.nftItems.nftItems);
+const TopNftCollections = ({ nftItems, Loader }) => {
   return (
     <div>
       {nftItems && nftItems.length > 0 ? (
@@ -19,17 +14,15 @@ const TopNftCollections = ({ Loader }) => {
                 <th>Volume</th>
                 <th>Est.&nbsp;Market&nbsp;Cap</th>
                 <th>Avg.&nbsp;Price</th>
-
                 <th>Sales</th>
                 <th>Listings</th>
                 <th>Minted&nbsp;NFTs</th>
               </tr>
             </thead>
             <tbody>
-              {nftItems.slice(0, 5).map((n, i) => (
+              {nftItems.slice(0, 10).map((n, i) => (
                 <tr key={n.name}>
                   <td>{i + 1}</td>
-
                   <td>
                     <a
                       className={css.topNftTable__link}

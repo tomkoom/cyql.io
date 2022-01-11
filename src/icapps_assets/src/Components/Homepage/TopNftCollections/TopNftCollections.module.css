@@ -1,8 +1,16 @@
 /* Top NFT collections */
 
+.topNftTable {
+  text-align: right;
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+}
+
 .topNftTable thead tr th,
 .topNftTable tbody tr td {
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 -1px 0 var(--gray200);
 }
 
 .topNftTable thead tr th:nth-child(2),
@@ -18,13 +26,6 @@
   background-color: black;
   white-space: nowrap;
   border-top-width: 0px;
-}
-
-.topNftTable {
-  text-align: right;
-  width: 100%;
-  font-size: 0.9rem;
-  border-collapse: collapse;
 }
 
 .topNftTable__link {
