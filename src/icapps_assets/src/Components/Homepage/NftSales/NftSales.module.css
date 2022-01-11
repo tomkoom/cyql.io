@@ -1,8 +1,8 @@
 /* Upcoming NFT sales */
 
 .nftSales {
-  list-style-type: none;
   display: grid;
+  grid-template-rows: auto auto;
   grid-auto-flow: column;
   gap: 1rem;
   padding-top: 0.75rem;

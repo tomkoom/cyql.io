@@ -42,7 +42,7 @@ const RecentlyAdded = () => {
       {!apps.length ? (
         <Loader />
       ) : (
-        apps.slice(0, 47).map((app) => (
+        apps.slice(0, 23).map((app) => (
           <motion.li
             key={app.id}
             className={css.appLi__i}

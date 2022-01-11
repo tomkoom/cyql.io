@@ -2,7 +2,7 @@
 
 .footer {
   width: 100%;
-  padding: 2rem 0 3rem 0;
+  padding: 2rem 2rem 4rem 2rem;
   background-color: var(--gray220);
 }
 
@@ -123,6 +123,6 @@
 
 @media screen and (max-width: 1023px) {
   .footer {
-    padding: 1rem;
+      padding: 1rem 1rem 4rem 1rem;
   }
 }

@@ -112,37 +112,37 @@
   font-family: var(--monospace);
 }
 
-thead tr th {
+.nftTable thead tr th {
   font-weight: var(--bold);
 }
 
-thead tr th:nth-child(-n + 2),
-tbody tr td:nth-child(-n + 2) {
+.nftTable thead tr th:nth-child(-n + 2),
+.nftTable tbody tr td:nth-child(-n + 2) {
   text-align: left;
 }
 
-thead tr th,
-tbody tr td {
+.nftTable thead tr th,
+.nftTable tbody tr td {
   padding: 16px 12px;
 }
 
-tbody tr {
+.nftTable tbody tr {
   box-shadow: 0 -1px 0 var(--gray180);
   color: var(--gray60);
 }
 
-tbody tr td:first-child,
-thead tr th:first-child {
+.nftTable tbody tr td:first-child,
+.nftTable thead tr th:first-child {
   padding-left: 0;
   padding-right: 0;
 }
 
-tbody tr td:first-child {
+.nftTable tbody tr td:first-child {
   font-size: var(--fontSize7);
 }
 
-thead tr th:last-child,
-tbody tr td:last-child {
+.nftTable thead tr th:last-child,
+.nftTable tbody tr td:last-child {
   padding-right: 0;
 }
 

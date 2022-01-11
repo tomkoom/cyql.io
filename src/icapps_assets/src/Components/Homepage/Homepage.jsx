@@ -6,6 +6,7 @@ import Loader from "../../Loader";
 // Components
 import RecentlyAdded from "./RecentlyAdded/RecentlyAdded";
 import NftSales from "./NftSales/NftSales";
+import TopNftCollections from "./TopNftCollections/TopNftCollections";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -16,7 +17,7 @@ const Homepage = () => {
   return (
     <main className={`${css.home} container1440`}>
       <section className={css.home__hero}>
-        <h2 className={css.home__hero__title}>IC apps community portal</h2>
+        <h2 className={css.home__hero__title}>IC projects community portal</h2>
       </section>
 
       {/* Recently added */}
@@ -57,6 +58,15 @@ const Homepage = () => {
           )}
           Loader={<Loader />}
         />
+      </section>
+
+      {/* Top NFT collections */}
+      <section className={css.home__nftCollections}>
+        <div className={css.home__section__title}>
+          <h3>Top NFT collections</h3>
+          <Link to="/nft">View all &gt;</Link>
+        </div>
+        <TopNftCollections Loader={<Loader />} />
       </section>
     </main>
   );

@@ -69,11 +69,11 @@
 .icpPriceBadge {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.25rem;
   font-size: var(--fontSize7);
-  background-color: var(--gray180);
-  border-radius: 8px;
-  padding: 4px 8px;
+  background-color: var(--gray200);
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .icpPriceBadge__logo {
@@ -81,8 +81,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  height: 1rem;
 }
 
 .nav__list__item {
@@ -203,7 +203,7 @@
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 374px) {
   .icpPriceBadge {
     display: none;
   }

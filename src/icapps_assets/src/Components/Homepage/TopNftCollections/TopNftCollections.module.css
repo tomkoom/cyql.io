@@ -1,0 +1,125 @@
+/* Top NFT collections */
+
+.topNftTable thead tr th,
+.topNftTable tbody tr td {
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.topNftTable thead tr th:nth-child(2),
+.topNftTable tbody tr td:nth-child(2) {
+  position: sticky;
+  left: 0;
+  background-color: black;
+}
+
+.topNftTable td,
+.topNftTable th {
+  margin: 0;
+  background-color: black;
+  white-space: nowrap;
+  border-top-width: 0px;
+}
+
+.topNftTable {
+  text-align: right;
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+}
+
+.topNftTable__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topNftTable__link:hover {
+  text-decoration: underline;
+}
+
+.topNftTable__link img {
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+/* cell */
+.cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.cellSpan {
+  font-size: var(--fontSize7);
+  color: var(--gray120);
+  margin-top: 0.25rem;
+}
+
+/* table */
+.topNftTable thead tr th {
+  font-weight: var(--bold);
+}
+
+.topNftTable thead tr th:nth-child(-n + 2),
+.topNftTable tbody tr td:nth-child(-n + 2) {
+  text-align: left;
+}
+
+.topNftTable thead tr th,
+.topNftTable tbody tr td {
+  padding: 1rem 0.75rem;
+}
+
+.topNftTable tbody tr {
+  color: var(--gray40);
+  font-weight: var(--light);
+}
+
+.topNftTable thead tr th:first-child,
+.topNftTable tbody tr td:first-child {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.topNftTable tbody tr td:first-child {
+  font-size: var(--fontSize7);
+}
+
+.topNftTable thead tr th:last-child,
+.topNftTable tbody tr td:last-child {
+  padding-right: 0;
+}
+
+.green {
+  color: #8cbd18;
+}
+
+.red {
+  color: #ca5010;
+}
+
+/* LOAD MORE BTN*/
+
+.nftTable__loadMoreBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.nftTable__loadMoreBtn button {
+  background-color: var(--gray180);
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: var(--fontSize6);
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.nftTable__loadMoreBtn button:hover {
+  background-color: var(--gray140);
+}
