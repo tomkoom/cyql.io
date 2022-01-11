@@ -38,39 +38,31 @@ const RecentlyAdded = () => {
   const apps = useSelector((state) => state.siteData.projects);
 
   return (
-    <ul className={css.home__apps__list}>
+    <ul className={css.appLi}>
       {!apps.length ? (
         <Loader />
       ) : (
         apps.slice(0, 47).map((app) => (
           <motion.li
             key={app.id}
-            className={css.home__apps__list__item}
+            className={css.appLi__i}
             variants={cardVariants}
             whileHover="whileHover"
           >
-            <Link className={css.li__item__linkBlock} to={`/a/${app.id}`}>
+            <Link className={css.appLi__i__linkBlock} to={`/a/${app.id}`}>
               <div
-                className={css.li__item__linkBlock__coverImg}
-                style={
-                  app.cover
-                    ? { backgroundImage: `url(${app.cover})` }
-                    : { display: "none" }
-                }
+                className={css.appLi__i__linkBlock__cover}
+                style={app.cover && { backgroundImage: `url(${app.cover})` }}
               />
-              <div className={css.li__item__linkBlock__appInfo}>
+              <div className={css.appLi__i__linkBlock__appInfo}>
                 <img
-                  className={css.li__item__linkBlock__appInfo__logo}
+                  className={css.appLi__i__linkBlock__appInfo__logo}
                   src={app.logo}
                   alt={app.name}
                   style={app.logo ? null : { display: "none" }}
                 />
-                <div className={css.li__item__linkBlock__appInfo__description}>
-                  <h2
-                    className={
-                      css.li__item__linkBlock__appInfo__description__title
-                    }
-                  >
+                <div className={css.appLi__i__linkBlock__appInfo__desc}>
+                  <h2 className={css.appLi__i__linkBlock__appInfo__desc__title}>
                     {app.name}
                     &nbsp;
                     {findCategory(app.category)}

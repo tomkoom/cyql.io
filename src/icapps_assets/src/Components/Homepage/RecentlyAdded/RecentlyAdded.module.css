@@ -1,22 +1,6 @@
 /* Recently added */
 
-.home__section__title {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 0.25rem;
-}
-
-.home__section__title h3 {
-  font-size: var(--fontSize5);
-}
-
-.appList {
-  width: 100%;
-}
-
-.home__apps__list {
-  list-style-type: none;
+.appLi {
   display: grid;
   grid-template-rows: auto auto;
   grid-auto-flow: column;
@@ -27,16 +11,12 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.home__apps__list__item {
+.appLi__i {
   width: 17.5rem;
   border-radius: 1rem;
 }
 
-.li__item:hover {
-  background-color: var(--gray200);
-}
-
-.li__item__linkBlock__coverImg {
+.appLi__i__linkBlock__cover {
   width: 100%;
   padding-bottom: 33.33%;
   background-size: cover;
@@ -45,32 +25,58 @@
   border-radius: 1rem;
 }
 
-.li__item__linkBlock__appInfo {
+.appLi__i__linkBlock__appInfo {
   display: flex;
-  padding: 0.75rem 0 1rem 0;
+  padding: 0.75rem 0;
   gap: 0.75rem;
 }
 
-.li__item__linkBlock__appInfo__logo {
+.appLi__i__linkBlock__appInfo__logo {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.li__item__linkBlock__appInfo__description {
+.appLi__i__linkBlock__appInfo__desc {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  font-size: var(--fontSize6);
-  overflow-wrap: break-word;
+  /* overflow-wrap: break-word; */
 }
 
 .appDescription {
   font-size: 0.9rem;
   line-height: 150%;
   font-weight: var(--light);
+  color: var(--gray80);
 }
+
+.appLi__i__linkBlock__appInfo__desc__title {
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
+  word-wrap: break-word;
+}
+
+.appLi__i__linkBlock__appInfo__desc ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--fontSize7);
+}
+
+.appLi__i__linkBlock__appInfo__desc ul li {
+  color: var(--gray40);
+  display: flex;
+  align-items: center;
+}
+
+.appLi__i__linkBlock__appInfo__desc ul li img {
+  max-width: 1rem;
+}
+
+/* - */
 
 .viewAllAppsCard {
   display: grid;
@@ -78,33 +84,4 @@
   cursor: pointer;
   background-color: var(--gray220);
   border-radius: 1rem;
-}
-
-.li__item__linkBlock__appInfo__description__title {
-  font-size: var(--fontSize6);
-  font-weight: var(--black);
-  word-wrap: break-word;
-}
-
-.li__item__linkBlock__appInfo__description ul {
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: var(--fontSize7);
-}
-
-.li__item__linkBlock__appInfo__description ul li {
-  color: var(--gray40);
-  display: flex;
-  align-items: center;
-}
-
-.li__item__linkBlock__appInfo__description ul li img {
-  max-width: 16px;
-}
-
-.li__item__linkBlock__appInfo__description p {
-  color: var(--gray80);
 }

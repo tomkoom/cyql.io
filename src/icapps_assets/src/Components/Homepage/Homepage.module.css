@@ -1,4 +1,15 @@
-/* HOMEPAGE */
+/* Homepage */
+
+.home__section__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+.home__section__title h3 {
+  font-size: var(--fontSize5);
+}
 
 /* Hero */
 
