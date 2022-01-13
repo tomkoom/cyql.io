@@ -139,8 +139,6 @@ const AppList = ({ loading, error, searchValue }) => {
                           ? "🌎"
                           : d.category == "NFTs"
                           ? "🗿"
-                          : d.category == "DeFi"
-                          ? "‍🌾"
                           : null}
                       </h2>
 

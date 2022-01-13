@@ -16,10 +16,10 @@ const categories = [
   { name: "Infrastructure", icon: "🚀" },
   { name: "Wallets", icon: "👛" },
   { name: "Tools", icon: "🛠️" },
-  { name: "Domains", icon: "🤖" },
-  { name: "Storage", icon: "📦" },
   { name: "Explorers", icon: "🌎" },
   { name: "Dfinity Apps", icon: "♾️" },
+  { name: "Domains", icon: "🤖" },
+  { name: "Storage", icon: "📦" },
   { name: "Education", icon: "🎓" },
   { name: "Communities", icon: "📣" },
 ];

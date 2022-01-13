@@ -57,6 +57,9 @@
   /* --font: "Inter", sans-serif; */
   /* --monospace: "PT Mono", monospace; */
   --monospace: "Inconsolata", monospace;
+
+  /* Box-shadow */
+  --boxShadow180Inset: inset 0 0 0 1px var(--gray180);
 }
 
 /* MAIN */

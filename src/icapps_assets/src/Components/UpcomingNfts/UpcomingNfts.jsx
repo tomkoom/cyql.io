@@ -226,7 +226,10 @@ const UpcomingNfts = () => {
             </div>
 
             {/* Loop NFT preview images */}
-            <div className={css.upcNft__card__img}>
+            <div
+              className={css.upcNft__card__img}
+              style={nft["Img1"] ? null : { display: "none" }}
+            >
               {(() => {
                 let nftImgs = [];
                 for (let i = 1; i <= 4; i++) {

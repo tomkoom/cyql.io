@@ -30,7 +30,11 @@ const findCategory = (category) => {
     Tools: "🛠️",
     Explorers: "🌎",
     NFTs: "🗿",
-    DeFi: "‍🌾",
+    Communities: "📣",
+    Domains: "🤖",
+    Education: "🎓",
+    Storage: "📦",
+    "Dfinity Apps": "♾️",
   }[category];
 };
 
@@ -68,28 +72,25 @@ const RecentlyAdded = () => {
                     {findCategory(app.category)}
                   </h2>
 
-                  {app.github || app.canister || app.tags ? (
-                    <ul>
-                      {app.canister && (
-                        <li>{iconDatabase}&nbsp;&nbsp;Deployed to IC</li>
-                      )}
-                      {app.github && (
-                        <li>{iconGithub}&nbsp;&nbsp;Open Source</li>
-                      )}
+                  <ul>
+                    <li>{app.category}</li>
+                    {app.canister && (
+                      <li>{iconDatabase}&nbsp;&nbsp;Deployed to IC</li>
+                    )}
+                    {app.github && <li>{iconGithub}&nbsp;&nbsp;Open Source</li>}
 
-                      {app.tags == "Psychedelic" && (
-                        <li>
-                          <img
-                            src="https://psychedelic.ooo/images/11-2.svg"
-                            alt="Psychedelic"
-                          />
-                          &nbsp;&nbsp;
-                          {app.tags}
-                        </li>
-                      )}
-                      {app.tags == "toniqlabs" && <li>{app.tags}</li>}
-                    </ul>
-                  ) : null}
+                    {app.tags == "Psychedelic" && (
+                      <li>
+                        <img
+                          src="https://psychedelic.ooo/images/11-2.svg"
+                          alt="Psychedelic"
+                        />
+                        &nbsp;&nbsp;
+                        {app.tags}
+                      </li>
+                    )}
+                    {app.tags == "toniqlabs" && <li>{app.tags}</li>}
+                  </ul>
 
                   <p className={css.appDescription}>
                     {app.description && app.description.length > 70

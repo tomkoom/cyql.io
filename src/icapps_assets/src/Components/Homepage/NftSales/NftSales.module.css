@@ -15,7 +15,7 @@
 .nftSales__i {
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: inset 0 0 0 1px var(--gray200);
+  box-shadow: var(--boxShadow180Inset);
 }
 
 .nftSales__i__linkBlock {
