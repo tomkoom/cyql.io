@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import css from "./App.module.css";
 import { Switch, Route, withRouter } from "react-router-dom";
+import "./Theme/theme.css";
+import "./App.css";
 
 // Components
 import {
@@ -38,6 +40,7 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 const App = () => {
   const [category, setCategory] = useState("All");
   const dispatch = useDispatch();
+  const [theme, setTheme] = useState("light");
 
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
@@ -104,7 +107,7 @@ const App = () => {
   }, [nftList]);
 
   return (
-    <div>
+    <div className={`App ${theme}`}>
       <Nav />
       <div className={css.app}>
         <Switch>

@@ -7,20 +7,21 @@ import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../../deviceSizes";
 import Modal from "./Modal/Modal";
 
-// FRAMER MOTION
+// Framet Motion
 import { motion } from "framer-motion";
 import { btnVariants } from "../../motionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faBars, faFireAlt } from "@fortawesome/free-solid-svg-icons";
 
-// redux
+// State
 import { useSelector } from "react-redux";
 
 const iconTimes = <FontAwesomeIcon icon={faTimes} color="#fff" />;
 const iconBars = <FontAwesomeIcon icon={faBars} color="#fff" />;
+const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
 
 const socialLinks = [
   {
@@ -43,8 +44,6 @@ const Nav = () => {
   const [deviceWidth, deviceHeight] = useWindowSize();
   const [modalIsActive, setModalIsActive] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState();
-
-  // redux
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
   // donate btn
@@ -180,7 +179,8 @@ const Nav = () => {
             activeClassName={css.nav__list__item__active}
             id={css.upcomingNfts}
           >
-            Upcoming NFT Sales
+            <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT
+            Sales
           </NavLink>
         </li>
 
