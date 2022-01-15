@@ -14,15 +14,23 @@ import { btnVariants } from "../../motionVariants";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { faTimes, faBars, faFireAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTimes,
+  faBars,
+  faFireAlt,
+  faSun,
+  faMoon,
+} from "@fortawesome/free-solid-svg-icons";
 
 // State
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../../Redux/themeSlice";
 
-const iconTimes = <FontAwesomeIcon icon={faTimes} color="#fff" />;
-const iconBars = <FontAwesomeIcon icon={faBars} color="#fff" />;
+const iconTimes = <FontAwesomeIcon icon={faTimes} />;
+const iconBars = <FontAwesomeIcon icon={faBars} />;
 const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
+const iconSun = <FontAwesomeIcon icon={faSun} />;
+const iconMoon = <FontAwesomeIcon icon={faMoon} />;
 
 const socialLinks = [
   {
@@ -99,167 +107,157 @@ const Nav = () => {
 
   return (
     <nav className={css.nav}>
-      <div className={css.nav__logoContainer}>
-        <NavLink exact to="/" replace>
-          <div
-            className={css.nav__logoContainer__logo}
+      <div className={css.nav__top}>
+        <div className={css.nav__logoContainer}>
+          <NavLink exact to="/" replace>
+            <div
+              className={css.nav__logoContainer__logo}
+              onClick={() => {
+                menuIsOpen ? setMenuIsOpen(false) : null;
+              }}
+            >
+              <img src={Logo} width="34" height="34" alt="icApps.xyz Logo" />
+              <h1>icApps</h1>
+            </div>
+          </NavLink>
+
+          <ul className={css.nav__logoContainer__socialLinks}>
+            {socialLinks.map((sl, i) => (
+              <li
+                className={css.nav__logoContainer__socialLinks__item}
+                variants={btnVariants}
+                whileHover="whileHover"
+                data-smlink={sl.name}
+                key={i}
+              >
+                <a href={sl.link} target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={sl.icon} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* MENU BTN */}
+        <div
+          className={css.nav__menuBtn}
+          onClick={() => setMenuIsOpen(!menuIsOpen)}
+        >
+          {menuIsOpen ? iconTimes : iconBars}
+        </div>
+
+        <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
+          <li
+            className={css.nav__list__item}
             onClick={() => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
-            <img src={Logo} width="34" height="34" alt="icApps.xyz Logo" />
-            <h1>icApps</h1>
-          </div>
-        </NavLink>
-
-        <ul className={css.nav__logoContainer__socialLinks}>
-          {socialLinks.map((sl, i) => (
-            <li
-              className={css.nav__logoContainer__socialLinks__item}
-              variants={btnVariants}
-              whileHover="whileHover"
-              data-smlink={sl.name}
-              key={i}
+            <NavLink
+              exact
+              to="/"
+              replace
+              className={css.nav__list__item__content}
+              activeClassName={css.nav__list__item__active}
             >
-              <a href={sl.link} target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={sl.icon} />
-              </a>
-            </li>
-          ))}
-        </ul>
+              Home
+            </NavLink>
+          </li>
 
+          <li
+            className={css.nav__list__item}
+            onClick={() => {
+              menuIsOpen ? setMenuIsOpen(false) : null;
+            }}
+          >
+            <NavLink
+              exact
+              to="/apps"
+              replace
+              className={css.nav__list__item__content}
+              activeClassName={css.nav__list__item__active}
+            >
+              Apps
+            </NavLink>
+          </li>
+
+          <li
+            className={css.nav__list__item}
+            onClick={() => {
+              menuIsOpen ? setMenuIsOpen(false) : null;
+            }}
+          >
+            <NavLink
+              exact
+              to="/upcoming"
+              replace
+              className={css.nav__list__item__content}
+              activeClassName={css.nav__list__item__active}
+              id={css.upcomingNfts}
+            >
+              <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT Sales
+            </NavLink>
+          </li>
+
+          <li
+            className={css.nav__list__item}
+            onClick={() => {
+              menuIsOpen ? setMenuIsOpen(false) : null;
+            }}
+          >
+            <NavLink
+              exact
+              to="/nft"
+              replace
+              className={css.nav__list__item__content}
+              activeClassName={css.nav__list__item__active}
+            >
+              NFT Stats
+            </NavLink>
+          </li>
+
+          <li
+            className={css.nav__list__item}
+            onClick={() => {
+              menuIsOpen ? setMenuIsOpen(false) : null;
+            }}
+          >
+            <NavLink
+              exact
+              to="/submit"
+              replace
+              className={css.nav__list__item__content}
+              activeClassName={css.nav__list__item__active}
+            >
+              Submit Your Project
+            </NavLink>
+          </li>
+
+          <li className={`${css.nav__list__item} ${css.donateContainer}`}>
+            <button
+              className={css.donateBtn}
+              onClick={() => setModalIsActive(true)}
+            >
+              Donate
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <div className={css.nav__bottom}>
+        <button
+          className={css.themeSwitch}
+          onClick={() => dispatch(setTheme(changeTheme(theme)))}
+        >
+          {theme === "light" ? iconSun : theme === "dark" ? iconMoon : null}
+        </button>
         <div className={css.icpPriceBadge}>
           <div className={css.icpPriceBadge__logo}></div>
           {`$${icpPrice}`}
         </div>
+        {/* lang */}
       </div>
 
-      {/* MENU BTN */}
-      <motion.div
-        className={css.nav__menuBtn}
-        onClick={() => setMenuIsOpen(!menuIsOpen)}
-        whileTap={{ scale: 0.9 }}
-      >
-        {menuIsOpen ? iconTimes : iconBars}
-      </motion.div>
-
-      <button onClick={() => dispatch(setTheme(changeTheme(theme)))}>
-        Change theme {theme}
-      </button>
-
-      <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
-        <li
-          className={css.nav__list__item}
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <NavLink
-            exact
-            to="/"
-            replace
-            className={css.nav__list__item__content}
-            activeClassName={css.nav__list__item__active}
-          >
-            Home
-          </NavLink>
-        </li>
-
-        <li
-          className={css.nav__list__item}
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <NavLink
-            exact
-            to="/apps"
-            replace
-            className={css.nav__list__item__content}
-            activeClassName={css.nav__list__item__active}
-          >
-            All Apps
-          </NavLink>
-        </li>
-
-        <li
-          className={css.nav__list__item}
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <NavLink
-            exact
-            to="/upcoming"
-            replace
-            className={css.nav__list__item__content}
-            activeClassName={css.nav__list__item__active}
-            id={css.upcomingNfts}
-          >
-            <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT Sales
-          </NavLink>
-        </li>
-
-        <li
-          className={css.nav__list__item}
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <NavLink
-            exact
-            to="/nft"
-            replace
-            className={css.nav__list__item__content}
-            activeClassName={css.nav__list__item__active}
-          >
-            NFT Stats
-          </NavLink>
-        </li>
-
-        {/* <li
-          className={css.nav__list__item}
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <NavLink
-            exact
-            to="/devres"
-            replace
-            className={css.nav__list__item__content}
-            activeClassName={css.nav__list__item__active}
-          >
-            DevResources
-          </NavLink>
-        </li> */}
-
-        <li
-          className={css.nav__list__item}
-          onClick={() => {
-            menuIsOpen ? setMenuIsOpen(false) : null;
-          }}
-        >
-          <NavLink
-            exact
-            to="/submit"
-            replace
-            className={css.nav__list__item__content}
-            activeClassName={css.nav__list__item__active}
-          >
-            Submit Your Project
-          </NavLink>
-        </li>
-
-        <li className={`${css.nav__list__item} ${css.donateContainer}`}>
-          <button
-            className={css.donateBtn}
-            onClick={() => setModalIsActive(true)}
-          >
-            Donate
-          </button>
-        </li>
-      </ul>
       <Modal
         modalIsActive={modalIsActive}
         setModalIsActive={setModalIsActive}

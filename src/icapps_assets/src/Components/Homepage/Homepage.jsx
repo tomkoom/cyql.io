@@ -20,7 +20,7 @@ const Homepage = () => {
     <main className={`${css.home} container1440`}>
       <section className={css.home__hero}>
         <h2 className={css.home__hero__title}>IC projects community portal</h2>
-        <p className="bodyTextLight">
+        <p className="bodyText">
           Discover new apps, keep an eye out for upcoming NFT sales, compare NFT
           collections stats and more.
         </p>
@@ -29,8 +29,10 @@ const Homepage = () => {
       {/* Recently added */}
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
-          <h3>Recently added apps</h3>
-          <Link to="/apps">View all &gt;</Link>
+          <h3>Recently added projects</h3>
+          <Link className="viewAll" to="/apps">
+            View all &gt;
+          </Link>
         </div>
 
         <RecentlyAdded />
@@ -40,7 +42,9 @@ const Homepage = () => {
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Upcoming NFT sales</h3>
-          <Link to="/upcoming">View all &gt;</Link>
+          <Link className="viewAll" to="/upcoming">
+            View all &gt;
+          </Link>
         </div>
 
         <NftSales
@@ -55,7 +59,9 @@ const Homepage = () => {
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Ongoing NFT sales</h3>
-          <Link to="/upcoming">View all &gt;</Link>
+          <Link className="viewAll" to="/upcoming">
+            View all &gt;
+          </Link>
         </div>
 
         <NftSales
@@ -70,7 +76,9 @@ const Homepage = () => {
       <section className={css.home__nftCollections}>
         <div className={css.home__section__title}>
           <h3>Top NFT collections</h3>
-          <Link to="/nft">View all &gt;</Link>
+          <Link className="viewAll" to="/nft">
+            View all &gt;
+          </Link>
         </div>
         <TopNftCollections nftItems={nftItems} Loader={<Loader />} />
       </section>

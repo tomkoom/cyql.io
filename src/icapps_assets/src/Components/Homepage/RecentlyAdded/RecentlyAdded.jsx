@@ -93,8 +93,8 @@ const RecentlyAdded = () => {
                   </ul>
 
                   <p className={css.appDescription}>
-                    {app.description && app.description.length > 70
-                      ? `${app.description.substring(0, 70)}…`
+                    {app.description && app.description.length > 60
+                      ? `${app.description.substring(0, 60)}…`
                       : app.description}
                   </p>
                 </div>

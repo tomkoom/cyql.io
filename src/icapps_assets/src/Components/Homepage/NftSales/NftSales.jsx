@@ -27,8 +27,8 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
                 <div className={css.nftSales__i__linkBlock__main}>
                   <h4>{upcNft["Name"]}</h4>
                   <p>
-                    {upcNft["Description"] && upcNft["Description"].length > 100
-                      ? `${upcNft["Description"].substring(0, 100)}…`
+                    {upcNft["Description"] && upcNft["Description"].length > 70
+                      ? `${upcNft["Description"].substring(0, 70)}…`
                       : upcNft["Description"]}
                   </p>
                 </div>

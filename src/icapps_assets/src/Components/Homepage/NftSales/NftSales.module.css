@@ -1,7 +1,6 @@
 /* Upcoming NFT sales */
 
 .nftSales {
-  list-style-type: none;
   display: grid;
   grid-template-rows: auto auto;
   grid-auto-flow: column;
@@ -13,9 +12,10 @@
 }
 
 .nftSales__i {
-  padding: 1rem;
+  /* padding: 1rem;
+  box-shadow: var(--boxShadow); */
   border-radius: 1rem;
-  box-shadow: var(--boxShadow180Inset);
+  padding-bottom: 0.75rem;
 }
 
 .nftSales__i__linkBlock {
@@ -32,7 +32,7 @@
 
 .nftSales__i__linkBlock__main p,
 .nftSales__i__linkBlock__tags li {
-  color: var(--gray80);
+  color: var(--secondaryColor);
   font-size: 0.9rem;
   line-height: 150%;
   font-weight: var(--light);
@@ -49,7 +49,7 @@
 }
 
 .nftSales__i__linkBlock__tags li {
-  background-color: var(--gray200);
+  background-color: var(--underlay);
   padding: 0 0.33rem;
   border-radius: 0.25rem;
 }
@@ -57,13 +57,13 @@
 .nftSales__i__linkBlock__img {
   display: flex;
   overflow: hidden;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-top: 0.75rem;
 }
 
 .nftSales__i__linkBlock__img__i {
-  width: 96px;
-  height: 96px;
+  width: 4rem;
+  height: 4rem;
   object-fit: cover;
   border-radius: 0.5rem;
 }

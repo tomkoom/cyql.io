@@ -1,16 +1,13 @@
 /* Homepage */
 
-/* Hero */
-
 .home {
   display: flex;
   flex-direction: column;
-  gap: 64px;
+  gap: 2rem;
+  margin: 1rem auto;
 }
 
-.home {
-  margin: 1.5rem auto;
-}
+/* Hero */
 
 .home__hero__title {
   line-height: 110%;
@@ -18,7 +15,7 @@
 }
 
 .home__hero p {
-  margin-top: 1rem;
+  margin-top: 0.25rem;
   max-width: 24rem;
   color: var(--secondaryColor);
 }

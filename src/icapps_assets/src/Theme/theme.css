@@ -1,23 +1,37 @@
 /* THEMING */
 
 .light {
-  --primaryColor: var(--gray220);
-  --secondaryColor: var(--gray140);
-  --tertiaryColor: white;
-  --background: var(--gray20);
+  --primaryColor: var(--coolGray100);
+  --secondaryColor: var(--coolGray70);
+  --tertiaryColor: var(--coolGray40);
+  --highlightColor: #304ffe;
+  --navLinksColor: var(--coolGray60);
+  --background: white;
   --link-color: var(--gray220);
-  --underlay: var(--gray40); /* icp price badge */
-  --border: inset 0 0 0 1px var(--gray40);
+  --underlay: var(--coolGray10);
+  --underlay2: var(--coolGray20);
+  --underlay3: var(--coolGray30);
+  --boxShadow: inset 0 0 0 1px var(--coolGray20);
+  --underline: 0 1px 0 0 var(--coolGray20);
+  --overline: 0 -1px 0 0 var(--coolGray10);
+  --underlineInset: inset 0 -1px 0 var(--coolGray10);
 }
 
 .dark {
-  --primaryColor: white;
-  --secondaryColor: var(--gray80);
-  --tertiaryColor: black;
-  --background: black;
+  --primaryColor: var(--coolGray10);
+  --secondaryColor: var(--coolGray40);
+  --tertiaryColor: var(--coolGray70);
+  --highlightColor: white;
+  --navLinksColor: var(--coolGray40);
+  --background: var(--coolGray100);
   --link-color: white;
-  --underlay: var(--gray220); /* icp price badge */
-  --border: inset 0 0 0 1px var(--gray180);
+  --underlay: var(--coolGray90);
+  --underlay2: var(--coolGray80);
+  --underlay3: var(--coolGray70);
+  --boxShadow: inset 0 0 0 1px var(--coolGray90);
+  --underline: 0 1px 0 0 var(--coolGray90);
+  --overline: 0 -1px 0 0 var(--coolGray90);
+  --underlineInset: inset 0 -1px 0 var(--gray200);
 }
 
 /* colors:

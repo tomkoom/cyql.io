@@ -10,14 +10,15 @@ import {
   faComments,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
-const iconDiscord = (
-  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} /> // color="#5865f2"
-);
 const iconTwitter = (
-  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} /> // color="#00acee"
+  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} color="#00acee" />
 );
+const iconDiscord = (
+  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} color="#5865f2" />
+);
+
 const iconPlus = (
   <FontAwesomeIcon icon={faPlusSquare} className={css.footIcon} />
 );
@@ -88,7 +89,7 @@ const Footer = () => {
                 </h5>
                 <p className="bodyTextLight">
                   icApps is a community-run project. By making a donation you
-                  support its development.
+                  support its development 🛠️
                   <br />
                   <span>
                     edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
