@@ -49,7 +49,7 @@ const Homepage = () => {
 
         <NftSales
           upcomingNftsFiltered={upcomingNfts.filter(
-            (upcNft) => upcNft["Date"] !== "Sale is open"
+            (nft) => nft.date !== "Sale is open"
           )}
           Loader={<Loader />}
         />
@@ -66,7 +66,7 @@ const Homepage = () => {
 
         <NftSales
           upcomingNftsFiltered={upcomingNfts.filter(
-            (upcNft) => upcNft["Date"] === "Sale is open"
+            (nft) => nft.date === "Sale is open"
           )}
           Loader={<Loader />}
         />

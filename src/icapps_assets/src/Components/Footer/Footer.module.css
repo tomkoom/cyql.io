@@ -64,7 +64,7 @@
   font-family: var(--monospace);
   box-shadow: var(--boxShadow);
   color: var(--highlightColor);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 /* Middle */

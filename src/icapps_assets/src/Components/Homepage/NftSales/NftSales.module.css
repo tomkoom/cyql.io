@@ -1,14 +1,102 @@
 /* Upcoming NFT sales */
 
 .nftSales {
+  text-align: right;
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+}
+
+.nftSales thead tr th:nth-child(-n + 3),
+.nftSales tbody tr td:nth-child(-n + 3) {
+  text-align: left;
+}
+
+.nft__link {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nft__link:hover {
+  text-decoration: underline;
+}
+
+/* .nft__mainColl {
+  padding: 0;
+} */
+
+.nft__mainColl a span {
+  height: 100%;
+  max-width: 24rem;
+  display: block;
+  overflow: auto;
+}
+
+.nft__mainColl__title {
+  font-size: var(--fontSize6);
+}
+
+.nft__mainColl p {
+  color: var(--secondaryColor);
+  margin-top: 0.25rem;
+}
+
+.nftSales thead tr,
+.nftSales tbody tr {
+  box-shadow: var(--underlineInset);
+}
+
+.nftSales thead tr th,
+.nftSales tbody tr td {
+  padding: 1rem;
+}
+
+/* Links */
+
+/* .nft__links {
+  padding: 0;
+} */
+
+.nft__links ul {
+  height: 100%;
+  display: block;
+  overflow: auto;
+}
+
+.nft__links ul li a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--highlightColor);
+  font-size: var(--fontSize7);
+  margin: 0.125rem 0;
+}
+
+.nft__links ul li a:hover {
+  text-decoration: underline;
+}
+
+.nft__links ul li a span {
+  width: 1rem;
+  height: 1rem;
   display: grid;
-  grid-template-rows: auto auto;
-  grid-auto-flow: column;
-  gap: 1rem;
-  padding-top: 0.75rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+  place-items: center;
+}
+
+/* NFT preview */
+.nft__preview div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.nft__preview div img {
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
 }
 
 .nftSales__i {
@@ -16,18 +104,6 @@
   box-shadow: var(--boxShadow); */
   border-radius: 1rem;
   padding-bottom: 0.75rem;
-}
-
-.nftSales__i__linkBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
-.nftSales__i__linkBlock__main h4 {
-  margin-bottom: 4px;
-  font-size: var(--fontSize6);
 }
 
 .nftSales__i__linkBlock__main p,
