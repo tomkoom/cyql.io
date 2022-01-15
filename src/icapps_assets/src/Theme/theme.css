@@ -1,9 +1,29 @@
+/* THEMING */
+
 .light {
-  --color: var(--gray40);
-  --background: var(--gray40);
+  --primaryColor: var(--gray220);
+  --secondaryColor: var(--gray140);
+  --tertiaryColor: white;
+  --background: var(--gray20);
+  --link-color: var(--gray220);
+  --underlay: var(--gray40); /* icp price badge */
+  --border: inset 0 0 0 1px var(--gray40);
 }
 
 .dark {
-  --color: #fff;
-  --background: #000;
+  --primaryColor: white;
+  --secondaryColor: var(--gray80);
+  --tertiaryColor: black;
+  --background: black;
+  --link-color: white;
+  --underlay: var(--gray220); /* icp price badge */
+  --border: inset 0 0 0 1px var(--gray180);
 }
+
+/* colors:
+
+white - 220
+160 - 80
+...
+
+*/

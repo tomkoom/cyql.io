@@ -17,7 +17,8 @@ import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { faTimes, faBars, faFireAlt } from "@fortawesome/free-solid-svg-icons";
 
 // State
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setTheme } from "../../Redux/themeSlice";
 
 const iconTimes = <FontAwesomeIcon icon={faTimes} color="#fff" />;
 const iconBars = <FontAwesomeIcon icon={faBars} color="#fff" />;
@@ -45,6 +46,10 @@ const Nav = () => {
   const [modalIsActive, setModalIsActive] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState();
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
+
+  // state
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme.theme.value);
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -83,6 +88,14 @@ const Nav = () => {
   useEffect(() => {
     resetMenu();
   }, [deviceWidth]);
+
+  // dark/light theme switch
+  const changeTheme = (theme) => {
+    return {
+      light: { value: "dark" },
+      dark: { value: "light" },
+    }[theme];
+  };
 
   return (
     <nav className={css.nav}>
@@ -129,6 +142,10 @@ const Nav = () => {
       >
         {menuIsOpen ? iconTimes : iconBars}
       </motion.div>
+
+      <button onClick={() => dispatch(setTheme(changeTheme(theme)))}>
+        Change theme {theme}
+      </button>
 
       <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
         <li
@@ -179,8 +196,7 @@ const Nav = () => {
             activeClassName={css.nav__list__item__active}
             id={css.upcomingNfts}
           >
-            <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT
-            Sales
+            <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT Sales
           </NavLink>
         </li>
 

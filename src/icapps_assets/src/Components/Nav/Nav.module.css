@@ -22,9 +22,10 @@
 }
 
 .nav__logoContainer__logo h1 {
+  color: var(--primaryColor);
   font-size: var(--fontSize5);
   font-weight: var(--black);
-  letter-spacing: -0.25px;
+  letter-spacing: -1px;
 }
 
 .nav__logoContainer__socialLinks {
@@ -70,10 +71,12 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: var(--fontSize7);
-  background-color: var(--gray200);
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
+  font-size: var(--fontSize7);
+  /* background-color: var(--underlay); */
+  box-shadow: var(--border);
+  color: var(--primaryColor);
 }
 
 .icpPriceBadge__logo {
@@ -97,7 +100,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  color: var(--gray80);
+  color: var(--secondaryColor);
 }
 
 #fireIcon {
@@ -105,13 +108,13 @@
 }
 
 .nav__list__item__active {
-  box-shadow: 0px 2px 0px 0px white;
-  color: white;
+  box-shadow: 0px 2px 0px 0px var(--primaryColor);
+  color: var(--primaryColor);
 }
 
 .nav__list__item__content:hover:not(.donate-container) {
-  box-shadow: 0px 2px 0px 0px white;
-  color: white;
+  box-shadow: 0px 2px 0px 0px var(--primaryColor);
+  color: var(--primaryColor);
 }
 
 /* responsive menu */
@@ -148,7 +151,7 @@
     #52ff53 101.95%
   );
   border-radius: 8px;
-  color: var(--gray220);
+  color: var(--tertiaryColor);
   padding: 6px 7px;
   cursor: pointer;
   letter-spacing: -0.25px;

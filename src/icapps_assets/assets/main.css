@@ -1,19 +1,5 @@
-/* INTER */
-/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&display=swap"); */
-
-/* MULISH */
-/* @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap"); */
-
 /* KARLA */
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400&display=swap");
-
-/* WORK SANS */
-/* @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,600;0,800;1,300;1,400&display=swap"); */
-
-/* MONO */
-
-/* PT MONO */
-/* @import url("https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"); */
 
 /* INCOSOLATA */
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;800;900&display=swap");
@@ -51,11 +37,7 @@
   --extraLight: 200;
 
   /* FONT FAMILY */
-  /* --font: "Work Sans", sans-serif; */
   --font: "Karla", sans-serif;
-  /* --font: "Mulish", sans-serif; */
-  /* --font: "Inter", sans-serif; */
-  /* --monospace: "PT Mono", monospace; */
   --monospace: "Inconsolata", monospace;
 
   /* Box-shadow */
@@ -97,17 +79,6 @@ html {
 
 .container1600 {
   max-width: 1600px;
-}
-
-/* GLOBAL STYLES */
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-ul {
-  list-style-type: none;
 }
 
 /* TYPOGRAPHY */

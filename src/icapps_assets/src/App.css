@@ -1,4 +1,22 @@
+/* App */
+
+/* Theming */
+
 .App {
-  color: var(--color);
+  color: var(--primaryColor);
   background-color: var(--background);
+}
+
+a {
+  color: var(--primaryColor);
+}
+
+/* Global styles */
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }

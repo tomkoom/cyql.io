@@ -14,7 +14,7 @@
 .appLi__i {
   width: 17.5rem;
   border-radius: 1.5rem;
-  box-shadow: var(--boxShadow180Inset);
+  box-shadow: var(--border);
   padding: 0.5rem;
 }
 

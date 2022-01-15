@@ -1,16 +1,5 @@
 /* Homepage */
 
-.home__section__title {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-}
-
-.home__section__title h3 {
-  font-size: var(--fontSize5);
-}
-
 /* Hero */
 
 .home {
@@ -25,6 +14,27 @@
 
 .home__hero__title {
   line-height: 110%;
+  color: var(--primaryColor);
+}
+
+.home__hero p {
+  margin-top: 1rem;
+  max-width: 24rem;
+  color: var(--secondaryColor);
+}
+
+/* Sections */
+
+.home__section__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: var(--primaryColor);
+}
+
+.home__section__title h3 {
+  font-size: var(--fontSize5);
 }
 
 /* Community */

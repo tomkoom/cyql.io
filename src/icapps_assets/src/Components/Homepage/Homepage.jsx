@@ -20,14 +20,7 @@ const Homepage = () => {
     <main className={`${css.home} container1440`}>
       <section className={css.home__hero}>
         <h2 className={css.home__hero__title}>IC projects community portal</h2>
-        <p
-          className="bodyTextLight"
-          style={{
-            marginTop: "1rem",
-            maxWidth: "24rem",
-            color: "rgba(255, 255, 255, 0.8)",
-          }}
-        >
+        <p className="bodyTextLight">
           Discover new apps, keep an eye out for upcoming NFT sales, compare NFT
           collections stats and more.
         </p>

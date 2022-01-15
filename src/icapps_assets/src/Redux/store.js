@@ -5,6 +5,7 @@ import searchNftsSlice from "./searchNftsSlice";
 import siteDataSlice from "./siteDataSlice";
 import projectsFilteringSlice from "./projectsFilteringSlice";
 import nftItemsSlice from "./nftItemsSlice";
+import themeSlice from "./themeSlice";
 
 
 export const store = configureStore({
@@ -15,6 +16,7 @@ export const store = configureStore({
 		searchNfts: searchNftsSlice,
 		projectsFiltering: projectsFilteringSlice,
 		nftItems: nftItemsSlice,
+		theme: themeSlice,
 	}
 })
 

@@ -12,7 +12,6 @@ import {
   AppPage,
   UpcomingNfts,
   NftList,
-  // DevResources,
   SubmitApp,
 } from "./Components";
 
@@ -39,8 +38,10 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
   const [category, setCategory] = useState("All");
+
+  // state
   const dispatch = useDispatch();
-  const [theme, setTheme] = useState("light");
+  const theme = useSelector((state) => state.theme.theme.value);
 
   const { data, loading, error } = useGoogleSheets({
     apiKey: googleSheetsApiKey,
@@ -138,10 +139,6 @@ const App = () => {
           <Route exact path="/upcoming">
             <UpcomingNfts />
           </Route>
-
-          {/* <Route exact path="/devres">
-            <DevResources />
-          </Route> */}
 
           <Route exact path="/nft">
             <NftList />
