@@ -3,13 +3,15 @@ import css from "./Tags.module.css";
 import TagsItem from "./TagsItem/TagsItem";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDatabase } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setFilterByTag } from "../../../Redux/projectsFilteringSlice";
 
-const iconGithub = <FontAwesomeIcon icon={faGithub} color="#fff" />;
+const iconGithub = <FontAwesomeIcon icon={faGithub} className={css.icon} />;
+const iconDatabase = <FontAwesomeIcon icon={faDatabase} className={css.icon} />;
 
 const Tags = () => {
   const dispatch = useDispatch();
@@ -39,15 +41,13 @@ const Tags = () => {
       state: openSource,
       img: "",
       icon: iconGithub,
-      emoji: "",
     },
     {
       id: "deployedToIc",
       name: "Deployed to IC",
       state: deployedToIc,
       img: "",
-      icon: "",
-      emoji: "🛢️",
+      icon: iconDatabase,
     },
     {
       id: "psychedelic",
@@ -55,7 +55,6 @@ const Tags = () => {
       state: psychedelic,
       img: "https://psychedelic.ooo/images/11-2.svg",
       icon: "",
-      emoji: "",
     },
     {
       id: "toniqlabs",
@@ -63,7 +62,6 @@ const Tags = () => {
       state: toniqlabs,
       img: "https://i.postimg.cc/PfZBxHVY/entrepot-branmark.png",
       icon: "",
-      emoji: "",
     },
   ];
 

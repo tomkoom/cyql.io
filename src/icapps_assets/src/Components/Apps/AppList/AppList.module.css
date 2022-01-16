@@ -1,13 +1,9 @@
-/* HOMEPAGE APP LIST */
-.appList {
-  width: 100%;
-}
+/* App List */
 
 .li {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 24px;
-  /* max-height: 0; */
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-gap: 1rem;
 }
 
 .li__item {
@@ -31,8 +27,8 @@
 }
 
 .li__item__linkBlock__appInfo__logo {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -40,7 +36,7 @@
 .li__item__linkBlock__appInfo__description {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.25rem;
   font-size: var(--fontSize6);
   overflow-wrap: break-word;
 }
@@ -52,33 +48,32 @@
 }
 
 .li__item__linkBlock__appInfo__description ul {
-  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0.5rem;
   align-items: center;
   font-size: var(--fontSize7);
 }
 
 .li__item__linkBlock__appInfo__description ul li {
-  padding: 0 6px;
-  border-radius: 4px;
-  color: var(--gray40);
-  box-shadow: 0 0 1px var(--gray80);
-  height: 24px;
+  padding: 0 0.33rem;
+  border-radius: 0.25rem;
+  color: var(--secondaryColor);
+  box-shadow: var(--boxShadow);
+  height: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.33rem;
 }
 
 .li__item__linkBlock__appInfo__description ul li img {
-  max-width: 16px;
+  max-width: 1rem;
 }
 
 .appDescription {
-  color: var(--gray80);
+  color: var(--secondaryColor);
   font-size: 0.9rem;
-  line-height: 150%;
+  line-height: 133%;
 }
 
 /* LOAD MORE BTN */
@@ -86,28 +81,22 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 24px 0;
+  margin: 1.5rem 0;
 }
 
 .appList__loadMoreBtn button {
-  background-color: var(--gray180);
-  color: white;
+  background-color: transparent;
+  box-shadow: var(--boxShadow);
+  color: var(--primaryColor);
   border: none;
   width: 100%;
-  padding: 14px;
-  border-radius: 12px;
+  padding: 1rem;
+  border-radius: 0.5rem;
   font-size: var(--fontSize6);
   cursor: pointer;
   transition: all 100ms ease-in;
 }
 
 .appList__loadMoreBtn button:hover {
-  background-color: var(--gray140);
-}
-
-@media screen and (max-width: 767px) {
-  .li {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    grid-gap: 16px;
-  }
+  background-color: var(--underlay);
 }

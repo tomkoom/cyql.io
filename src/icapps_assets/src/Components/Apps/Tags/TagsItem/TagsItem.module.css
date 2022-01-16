@@ -17,23 +17,23 @@
 .tagsItem__content {
   display: flex;
   align-items: center;
-  gap: 6px;
-  height: 36px;
+  gap: 0.5rem;
+  height: 2rem;
   padding: 0 0.5rem;
-  color: var(--gray80);
-  box-shadow: 0 0 0 1px var(--gray160);
+  color: var(--secondary);
+  box-shadow: var(--boxShadow);
   border-radius: 0.25rem;
 }
 
 .tagsItem input:checked ~ .tagsItem__content {
-  color: white;
-  box-shadow: 0 0 0 1px white;
+  color: var(--primaryColor);
+  box-shadow: var(--boxShadowActive);
 }
 
 /* img */
 .tagImg {
-  height: 18px;
-  width: 18px;
+  height: 1rem;
+  width: 1rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

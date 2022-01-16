@@ -45,7 +45,7 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
               </tr>
             </thead>
             <tbody>
-              {upcomingNftsFiltered.slice(0, 6).map((nft) => (
+              {upcomingNftsFiltered.slice(0, 10).map((nft) => (
                 <tr key={nft.id} key={nft.id}>
                   <td className={css.nft__mainColl}>
                     <Link
@@ -64,6 +64,7 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
                     </Link>
                   </td>
 
+                  {/* Social Links */}
                   <td className={css.nft__links}>
                     <ul>
                       <li style={nft.website ? null : { display: "none" }}>
@@ -114,7 +115,52 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
                     </ul>
                   </td>
 
-                  <td></td>
+                  {/* IC Links */}
+                  <td className={css.nft__links}>
+                    <ul>
+                      <li style={nft.canister ? null : { display: "none" }}>
+                        <a
+                          href={nft.canister}
+                          rel="noreferrer noopener"
+                          target="_blank"
+                        >
+                          {/* <span>{iconLink}</span>&nbsp; */}
+                          Canister
+                        </a>
+                      </li>
+                      <li style={nft.dscvr ? null : { display: "none" }}>
+                        <a
+                          href={nft.dscvr}
+                          rel="noreferrer noopener"
+                          target="_blank"
+                        >
+                          {/* <span>{iconTwitter}</span>&nbsp; */}
+                          Dscvr
+                        </a>
+                      </li>
+                      <li style={nft.distrikt ? null : { display: "none" }}>
+                        <a
+                          href={nft.distrikt}
+                          rel="noreferrer noopener"
+                          target="_blank"
+                        >
+                          {/* <span>{iconDiscord}</span>&nbsp; */}
+                          Distrikt
+                        </a>
+                      </li>
+                      <li style={nft.openChat ? null : { display: "none" }}>
+                        <a
+                          href={nft.openChat}
+                          rel="noreferrer noopener"
+                          target="_blank"
+                        >
+                          {/* <span>{iconTelegram}</span>&nbsp; */}
+                          openChat
+                        </a>
+                      </li>
+                    </ul>
+                  </td>
+
                   <td>{nft.date}</td>
                   <td>{nft.price}</td>
                   <td>{nft.totalNfts}</td>

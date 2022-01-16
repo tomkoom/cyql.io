@@ -5,3 +5,7 @@
   flex-wrap: wrap;
   gap: 0.75rem;
 }
+
+.icon {
+  font-size: var(--fontSize7);
+}

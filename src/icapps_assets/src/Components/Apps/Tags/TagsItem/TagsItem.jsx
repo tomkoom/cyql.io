@@ -1,15 +1,7 @@
 import React from "react";
 import css from "./TagsItem.module.css";
 
-const TagsItem = ({
-  id,
-  name,
-  handleChange,
-  checkedState,
-  img,
-  icon,
-  emoji,
-}) => {
+const TagsItem = ({ id, name, handleChange, checkedState, img, icon }) => {
   return (
     <label className={css.tagsItem} htmlFor={id}>
       <input
@@ -23,17 +15,14 @@ const TagsItem = ({
       <div className={css.tagsItem__content}>
         {img ? (
           <div
+            className={css.tagImg}
             style={{
               backgroundImage: `url(${img})`,
             }}
-            className={css.tagImg}
           />
-        ) : icon ? (
-          icon
         ) : (
-          <span>{emoji}</span>
+          icon
         )}
-
         {name}
       </div>
     </label>

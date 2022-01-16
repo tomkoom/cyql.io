@@ -21,60 +21,6 @@
   --coolGray10: #f2f4f8;
   --cWhite: #ffffff;
 
-  /* Tailwind */
-
-  --gray900: #111827;
-  --gray800: #1f2937;
-  --gray700: #374151;
-  --gray600: #4b5563;
-  --gray500: #6b7280;
-  --gray400: #9ca3af;
-  --gray300: #d1d5db;
-  --gray200: #e5e7eb;
-  --gray100: #f3f4f6;
-  --gray50: #f9fafb;
-
-  /* Cool Gray 2 */
-  /* --cBlack: #000000;
-  --coolGray100: #121619;
-  --coolGray90: #21272a;
-  --coolGray80: #343a3f;
-  --coolGray70: #4d5358;
-  --coolGray60: #697077;
-  --coolGray50: #878d96;
-  --coolGray40: #a2a9b0;
-  --coolGray30: #c1c7cd;
-  --coolGray20: #dde1e6;
-  --coolGray10: #f2f4f8;
-  --cWhite: #ffffff; */
-
-  /* Blue Gray Material */
-  --cBlack: #000000;
-  --blueGray100: #263238;
-  --blueGray90: #37474f;
-  --blueGray80: #455a64;
-  --blueGray70: #546e7a;
-  --blueGray60: #546e7a;
-  --blueGray50: #78909c;
-  --blueGray40: #90a4ae;
-  --blueGray30: #b0bec5;
-  --blueGray20: #cfd8dc;
-  --blueGray10: #eceff1;
-  --cWhite: #ffffff;
-
-  /* COLORS */
-  --gray220: #11100f;
-  --gray200: #1b1a19;
-  --gray180: #252423;
-  --gray160: #323130;
-  --gray140: #484644;
-  --gray120: #797775;
-  --gray100: #979593;
-  --gray80: #b3b0ad;
-  --gray60: #c8c6c4;
-  --gray40: #e1dfdd;
-  --gray20: #f3f2f1;
-
   /* FONT SIZE */
   --fontSize1: 3.052rem;
   --fontSize2: 2.441rem;
@@ -94,7 +40,6 @@
 
   /* FONT FAMILY */
   --font: "Karla", sans-serif;
-  /* --monospace: "Inconsolata", monospace; */
   --monospace: "Space Mono", monospace;
 
   /* Box-shadow */

@@ -5,34 +5,33 @@
   white-space: nowrap;
   align-items: center;
   gap: 0.25rem;
-  height: 36px;
+  height: 2rem;
   font-size: var(--fontSize6);
-  font-weight: var(--medium);
-  color: var(--gray80);
-  background-color: black;
+  color: var(--seconadryColor);
+  background-color: var(--background);
   border: none;
   cursor: pointer;
 }
 
 .active {
-  color: white;
-  box-shadow: 0 2px 0 0 white;
+  color: var(--primaryColor);
+  box-shadow: 0px 2px 0px 0px var(--primaryColor);
 }
 
 .tagsItem:hover:not(.tagsItem.active) {
-  color: white;
-  box-shadow: 0 2px 0 0 white;
+  color: var(--primaryColor);
+  box-shadow: 0px 2px 0px 0px var(--primaryColor);
 }
 
 .tagsItem__icon {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   display: grid;
   place-items: center;
   font-size: var(--fontSize5);
 }
 
 .tagsItem__projectsNum {
-  color: var(--gray100);
+  color: var(--tertiaryColor);
   font-weight: var(--light);
 }
