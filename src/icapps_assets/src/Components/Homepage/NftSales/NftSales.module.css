@@ -5,12 +5,21 @@
   width: 100%;
   font-size: 0.9rem;
   border-collapse: collapse;
-  margin-top: 0.75rem;
 }
 
 .nftSales thead tr th:nth-child(-n + 3),
 .nftSales tbody tr td:nth-child(-n + 3) {
   text-align: left;
+}
+
+.nftSales thead tr th:first-child,
+.nftSales tbody tr td:first-child {
+  padding-left: 0;
+}
+
+.nftSales thead tr th:last-child,
+.nftSales tbody tr td:last-child {
+  padding-right: 0;
 }
 
 .nft__link {

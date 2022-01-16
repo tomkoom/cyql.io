@@ -9,14 +9,19 @@ import ScrollToTop from "./ScrollToTop";
 
 // State
 import { Provider } from "react-redux";
-import { store } from "./Redux/store";
+import store, { persistor } from "./Redux/store";
+
+// redux-persist
+import { PersistGate } from "redux-persist/integration/react";
 
 const Index = () => {
   return (
     <HashRouter>
       <ScrollToTop />
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </HashRouter>
   );

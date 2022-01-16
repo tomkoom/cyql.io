@@ -91,6 +91,7 @@
 
 .footer__content__middle__i__logo p {
   color: var(--secondaryColor);
+  font-size: var(--fontSize7);
 }
 
 /* navlist */

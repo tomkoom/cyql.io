@@ -8,12 +8,13 @@
 
 .links__i {
   flex: 1;
-  background-color: var(--underlay);
+  /* background-color: var(--underlay); */
+  box-shadow: var(--boxShadow);
   border-radius: 0.5rem;
 }
 
 .links__i:hover {
-  background-color: var(--underlay2);
+  background-color: var(--underlay);
 }
 
 .links__i a {
@@ -22,6 +23,7 @@
   align-items: flex-start;
   gap: 0.5rem;
   padding: 1rem;
+  font-weight: var(--bold);
 }
 
 .socIcon {

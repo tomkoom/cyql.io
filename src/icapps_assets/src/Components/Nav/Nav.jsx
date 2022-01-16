@@ -234,12 +234,12 @@ const Nav = () => {
           </li>
 
           <li className={`${css.nav__list__item} ${css.donateContainer}`}>
-            <button
+            <div
               className={css.donateBtn}
               onClick={() => setModalIsActive(true)}
             >
-              Donate
-            </button>
+              <p>Donate</p>
+            </div>
           </li>
         </ul>
       </div>

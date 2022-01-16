@@ -88,8 +88,8 @@ const Footer = () => {
                   Donate
                 </h5>
                 <p className="bodyTextLight">
-                  icApps is a community-run project. By making a donation you
-                  support its development 🛠️
+                  icApps is developed by the IC enthusiasts. You can support
+                  futher development by making a donation 🐦
                   <br />
                   <span>
                     edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
@@ -105,8 +105,8 @@ const Footer = () => {
           <div className={css.footer__content__middle__i}>
             <div className={css.footer__content__middle__i__logo}>
               <LogoComponent />
-              <p className="subtitle">
-                IC-powered projects <br /> community portal
+              <p>
+                IC projects <br /> community portal
               </p>
             </div>
           </div>

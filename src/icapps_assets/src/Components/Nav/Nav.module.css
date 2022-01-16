@@ -146,7 +146,7 @@
 }
 
 /* donate btn */
-.donateBtn {
+/* .donateBtn {
   border: none;
   font-style: normal;
   font-weight: var(--black);
@@ -163,6 +163,32 @@
   padding: 0.33rem 0.5rem;
   cursor: pointer;
   letter-spacing: -0.25px;
+} */
+
+.donateBtn {
+  font-weight: var(--bold);
+  font-size: 1rem;
+  padding: 0.33rem 0.66rem;
+  cursor: pointer;
+  letter-spacing: -0.25px;
+  box-shadow: var(--boxShadow);
+  border-radius: 0.5rem;
+}
+
+.donateBtn:hover {
+  background: var(--underlay);
+}
+
+.donateBtn p {
+  background: linear-gradient(
+    94.95deg,
+    #ffe701 -1.41%,
+    #fa51d3 34.12%,
+    #10d9ed 70.19%,
+    #52ff53 101.95%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .themeSwitch {
