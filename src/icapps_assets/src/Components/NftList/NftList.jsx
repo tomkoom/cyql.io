@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import css from "./NftList.module.css";
 import Loader from "../../CatLoader";
 
@@ -38,11 +38,11 @@ const NftList = () => {
   );
 
   return (
-    <section className={css.nftTable}>
+    <section className={css.nft}>
       {nftItems && nftItems.length ? (
         <div>
-          <div className={css.nftTable__hero}>
-            <div className={css.nftTable__hero__heading}>
+          <div className={css.nft__hero}>
+            <div className={css.nft__hero__heading}>
               <h2>
                 NFT Collections <span>&#40;{nftItems.length}&#41;</span>
               </h2>
@@ -51,7 +51,7 @@ const NftList = () => {
                 sorted in descending order by volume. If you see inaccuracies,
                 or you have any missing information you can&nbsp;
                 <a
-                  id={css.nftTable__msgLink}
+                  id={css.nft__msgLink}
                   href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
                   target="_blank"
                   rel="noreferrer noopener"
@@ -61,15 +61,15 @@ const NftList = () => {
               </p>
             </div>
 
-            <div className={css.nftTable__hero__dashboard}>
-              <div className={css.nftTable__hero__dashboard__item}>
-                <p>Market Cap</p>
+            <div className={css.nft__hero__dashboard}>
+              <div className={css.nft__hero__dashboard__item}>
+                <h3>Market Cap</h3>
                 <h4>{totalMarketCapInUsd}</h4>
                 <p>{totalMarketCapInIcp}&nbsp;ICP</p>
               </div>
 
-              <div className={css.nftTable__hero__dashboard__item}>
-                <p>All Time Sales Volume</p>
+              <div className={css.nft__hero__dashboard__item}>
+                <h3>All-Time Sales Volume</h3>
                 <h4>{totalVolumeInUsd}</h4>
                 <p>{totalVolumeInIcp}&nbsp;ICP</p>
               </div>
@@ -83,7 +83,7 @@ const NftList = () => {
               inputName="nft-list-search"
             />
             <div style={{ overflowX: "auto" }}>
-              <table className={css.nftTable__table}>
+              <table className={css.nft__table}>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -190,7 +190,7 @@ const NftList = () => {
               </table>
             </div>
           </div>
-          <div className={css.nftTable__loadMoreBtn}>
+          <div className={css.nft__loadMoreBtn}>
             <button onClick={showMoreItems}>
               Load more projects &#40;+12&#41;
             </button>

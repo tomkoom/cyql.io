@@ -12,8 +12,8 @@
 
 .divider {
   height: 1px;
-  width: calc(100% + 100%);
-  margin: 0 -50%;
+  width: calc(100% + 4rem);
+  margin: 0 -2rem;
   box-shadow: var(--underline);
 }
 
@@ -35,25 +35,6 @@
 
 .nav__top ul li a:hover {
   color: var(--highlightColorHover);
-}
-
-.nav__top ul li {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.nav__top__feat {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.nav__top__feat img {
-  height: 1rem;
-  width: 1rem;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 /* mid */
@@ -204,25 +185,6 @@
 }
 
 /* donate btn */
-/* .donateBtn {
-  border: none;
-  font-style: normal;
-  font-weight: var(--black);
-  font-size: 0.9rem;
-  background: linear-gradient(
-    94.95deg,
-    #ffe701 -1.41%,
-    #fa51d3 34.12%,
-    #10d9ed 70.19%,
-    #52ff53 101.95%
-  );
-  border-radius: 8px;
-  color: var(--background);
-  padding: 0.33rem 0.5rem;
-  cursor: pointer;
-  letter-spacing: -0.25px;
-} */
-
 .donateBtn {
   font-weight: var(--bold);
   font-size: 1rem;
@@ -283,13 +245,27 @@
     list-style-type: none;
     gap: 8px;
     position: absolute;
-    top: 72px;
+    top: 80px;
     right: 32px;
     padding: 24px 64px 24px 24px;
-    border-radius: 16px;
-    background-color: var(--gray180);
+    border-radius: 0.5rem;
+    background-color: var(--primaryColor);
+
     opacity: 1;
     z-index: 1;
+  }
+
+  .nav__list__item {
+    color: var(--background);
+  }
+
+  .nav__list__item__content {
+    color: var(--background);
+  }
+
+  .nav__list__item__active {
+    box-shadow: 0px 2px 0px 0px var(--background);
+    color: var(--background);
   }
 
   .nav__menuBtn {
@@ -307,14 +283,13 @@
     padding: 0.5rem 1rem;
   }
 
+  .divider {
+    width: calc(100% + 2rem);
+    margin: 0 -1rem;
+  }
+
   .nav__list,
   .nav__list__active {
     right: 24px;
-  }
-}
-
-@media screen and (max-width: 374px) {
-  .icpPriceBadge {
-    display: none;
   }
 }

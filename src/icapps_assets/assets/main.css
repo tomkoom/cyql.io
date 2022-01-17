@@ -21,6 +21,9 @@
   --coolGray10: #f2f4f8;
   --cWhite: #ffffff;
 
+  --colorGreen: #24a148;
+  --colorRed: #fa4d56;
+
   /* FONT SIZE */
   --fontSize1: 3.052rem;
   --fontSize2: 2.441rem;
@@ -42,9 +45,6 @@
   --font: "Karla", sans-serif;
   --monospace: "Space Mono", monospace;
 
-  /* Box-shadow */
-  --boxShadow180Inset: inset 0 0 0 1px var(--gray180);
-
   /* Border Radius */
   --br025: 0.25rem;
   --br05: 0.5rem;
@@ -62,6 +62,10 @@
 
 html {
   font-size: 17px; /* Root font size */
+}
+
+body {
+  background-color: var(--background);
 }
 
 /* CONTAINERS */

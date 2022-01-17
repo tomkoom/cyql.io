@@ -55,7 +55,9 @@ const Nav = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme.value);
   const projectsNum = useSelector((state) => state.siteData.projectsNum.value);
-  const nftsNum = useSelector((state) => state.siteData.nftsNum.value);
+  const upcomingNftsNum = useSelector(
+    (state) => state.siteData.upcomingNftsNum.value
+  );
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -111,25 +113,21 @@ const Nav = () => {
             Projects: <Link to="/apps">{projectsNum}</Link>
           </li>
           <li>
-            NFT projects: <Link to="/apps">{nftsNum}</Link>
+            Upcoming NFTs: <Link to="/upcoming">{upcomingNftsNum}</Link>
           </li>
           <li>
             Featured:{" "}
             <a
-              className={css.nav__top__feat}
               href="https://entrepot.app/marketplace/poked"
               rel="noreferrer noopener"
               target="_blank"
             >
-              <img
-                src="https://bzsui-sqaaa-aaaah-qce2a-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=a2dyp-makor-uwiaa-aaaaa-b4arg-qaqca-aaew7-a"
-                alt="PokedBots preview"
-              />
               PokedBots
             </a>
           </li>
         </ul>
       </div>
+
       {/* divider */}
       <div className={css.divider} />
       <div className={css.nav__mid}>

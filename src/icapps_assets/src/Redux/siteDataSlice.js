@@ -9,6 +9,7 @@ const siteDataSlice = createSlice({
 		ads: [],
 		nftList: [],
 		upcomingNfts: [],
+		upcomingNftsNum: { value: null },
 		devResources: [],
 	},
 	reducers: {
@@ -24,7 +25,8 @@ const siteDataSlice = createSlice({
 			state.nftList = action.payload.data;
 		},
 		setUpcomingNfts(state, action) {
-			state.upcomingNfts = action.payload.data.sort((a) => (a["Type"] === "Promoted" ? -1 : 0));
+			state.upcomingNfts = action.payload.data;
+			state.upcomingNftsNum.value = action.payload.data.length;
 		},
 		setDevResources(state, action) {
 			state.devResources = action.payload.data;

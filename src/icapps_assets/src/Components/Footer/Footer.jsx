@@ -88,11 +88,15 @@ const Footer = () => {
                 Donate
               </h5>
               <p className="bodyTextLight">
-                icApps is developed by the IC enthusiasts. You can support
-                futher development by making a donation 🐦
+                icApps is developed and maintained by the IC enthusiasts. You
+                can support futher development by making a donation 🐦
                 <br />
                 <span>
-                  <a href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1">
+                  <a
+                    href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
+                    rel="noreferrer noopener"
+                    target="_blank"
+                  >
                     edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
                   </a>
                 </span>
