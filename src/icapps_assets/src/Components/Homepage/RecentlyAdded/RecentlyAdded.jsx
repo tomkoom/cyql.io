@@ -18,25 +18,25 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
-const findCategory = (category) => {
-  return {
-    "Social Networks": "🎯",
-    Games: "⚔️",
-    dApps: "🔗",
-    DeFi: "‍🌾",
-    DAOs: "🏠",
-    Infrastructure: "🚀",
-    Wallets: "👛",
-    Tools: "🛠️",
-    Explorers: "🌎",
-    NFTs: "🗿",
-    Communities: "📣",
-    Domains: "🤖",
-    Education: "🎓",
-    Storage: "📦",
-    "Dfinity Apps": "♾️",
-  }[category];
-};
+// const findCategory = (category) => {
+//   return {
+//     "Social Networks": "🎯",
+//     Games: "⚔️",
+//     dApps: "🔗",
+//     DeFi: "‍🌾",
+//     DAOs: "🏠",
+//     Infrastructure: "🚀",
+//     Wallets: "👛",
+//     Tools: "🛠️",
+//     Explorers: "🌎",
+//     NFTs: "🗿",
+//     Communities: "📣",
+//     Domains: "🤖",
+//     Education: "🎓",
+//     Storage: "📦",
+//     "Dfinity Apps": "♾️",
+//   }[category];
+// };
 
 const RecentlyAdded = () => {
   const apps = useSelector((state) => state.siteData.projects);
@@ -68,8 +68,8 @@ const RecentlyAdded = () => {
                 <div className={css.appLi__i__linkBlock__appInfo__desc}>
                   <h2 className={css.appLi__i__linkBlock__appInfo__desc__title}>
                     {app.name}
-                    &nbsp;
-                    {findCategory(app.category)}
+                    {/* &nbsp;
+                    {findCategory(app.category)} */}
                   </h2>
 
                   <ul>

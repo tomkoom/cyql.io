@@ -6,8 +6,8 @@ import {
   Tags,
   AppList,
   CategoryBtns,
-  Ads,
-  Highlights,
+  // Ads,
+  // Highlights,
 } from "../";
 
 // Redux

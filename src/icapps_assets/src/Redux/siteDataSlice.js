@@ -4,6 +4,8 @@ const siteDataSlice = createSlice({
 	name: "siteData",
 	initialState: {
 		projects: [],
+		projectsNum: { value: null },
+		nftsNum: { value: null },
 		ads: [],
 		nftList: [],
 		upcomingNfts: [],
@@ -12,6 +14,8 @@ const siteDataSlice = createSlice({
 	reducers: {
 		setProjects(state, action) {
 			state.projects = action.payload.data;
+			state.projectsNum.value = action.payload.data.length;
+			state.nftsNum.value = action.payload.data.filter(project => project.category === "NFTs").length;
 		},
 		setAds(state, action) {
 			state.ads = action.payload.data;

@@ -44,6 +44,11 @@
 
   /* Box-shadow */
   --boxShadow180Inset: inset 0 0 0 1px var(--gray180);
+
+  /* Border Radius */
+  --br025: 0.25rem;
+  --br05: 0.5rem;
+  --br1: 1rem;
 }
 
 /* MAIN */

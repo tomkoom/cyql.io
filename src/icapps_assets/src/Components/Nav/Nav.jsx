@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from "react";
 import css from "./Nav.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../../deviceSizes";
 import Modal from "./Modal/Modal";
-
-// Framet Motion
-import { motion } from "framer-motion";
-import { btnVariants } from "../../motionVariants";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,7 +18,7 @@ import {
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 
-// State
+// Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../../Redux/themeSlice";
 
@@ -55,9 +51,11 @@ const Nav = () => {
   const [transactionStatus, setTransactionStatus] = useState();
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
-  // state
+  // State
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme.value);
+  const projectsNum = useSelector((state) => state.siteData.projectsNum.value);
+  const nftsNum = useSelector((state) => state.siteData.nftsNum.value);
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -108,6 +106,33 @@ const Nav = () => {
   return (
     <nav className={css.nav}>
       <div className={css.nav__top}>
+        <ul>
+          <li>
+            Projects: <Link to="/apps">{projectsNum}</Link>
+          </li>
+          <li>
+            NFT projects: <Link to="/apps">{nftsNum}</Link>
+          </li>
+          <li>
+            Featured:{" "}
+            <a
+              className={css.nav__top__feat}
+              href="https://entrepot.app/marketplace/poked"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              <img
+                src="https://bzsui-sqaaa-aaaah-qce2a-cai.raw.ic0.app/?cc=0&type=thumbnail&tokenid=a2dyp-makor-uwiaa-aaaaa-b4arg-qaqca-aaew7-a"
+                alt="PokedBots preview"
+              />
+              PokedBots
+            </a>
+          </li>
+        </ul>
+      </div>
+      {/* divider */}
+      <div className={css.divider} />
+      <div className={css.nav__mid}>
         <div className={css.nav__logoContainer}>
           <NavLink exact to="/" replace>
             <div
@@ -116,7 +141,7 @@ const Nav = () => {
                 menuIsOpen ? setMenuIsOpen(false) : null;
               }}
             >
-              <img src={Logo} width="34" height="34" alt="icApps.xyz Logo" />
+              <img src={Logo} alt="icApps.xyz logo" />
               <h1>icApps</h1>
             </div>
           </NavLink>
@@ -125,8 +150,6 @@ const Nav = () => {
             {socialLinks.map((sl, i) => (
               <li
                 className={css.nav__logoContainer__socialLinks__item}
-                variants={btnVariants}
-                whileHover="whileHover"
                 data-smlink={sl.name}
                 key={i}
               >
@@ -243,7 +266,8 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-
+      {/* divider */}
+      <div className={css.divider} />
       <div className={css.nav__bottom}>
         <button
           className={css.themeSwitch}

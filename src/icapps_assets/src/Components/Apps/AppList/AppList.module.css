@@ -17,7 +17,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 1rem;
+  border-radius: var(--br05);
 }
 
 .li__item__linkBlock__appInfo {
@@ -86,17 +86,16 @@
 
 .appList__loadMoreBtn button {
   background-color: transparent;
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay);
   color: var(--primaryColor);
   border: none;
   width: 100%;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: var(--br05);
   font-size: var(--fontSize6);
   cursor: pointer;
-  transition: all 100ms ease-in;
 }
 
 .appList__loadMoreBtn button:hover {
-  background-color: var(--underlay);
+  background-color: var(--underlay2);
 }

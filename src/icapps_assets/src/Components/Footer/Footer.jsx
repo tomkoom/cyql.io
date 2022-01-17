@@ -80,23 +80,24 @@ const Footer = () => {
               </div>
             </a>
           </li>
-          <li className={css.footer__content__top__i}>
-            <a className={css.footer__content__top__i__linkBlock}>
-              <div>{iconHeart}</div>
-              <div>
-                <h5 className={css.footer__content__top__i__linkBlock__title}>
-                  Donate
-                </h5>
-                <p className="bodyTextLight">
-                  icApps is developed by the IC enthusiasts. You can support
-                  futher development by making a donation 🐦
-                  <br />
-                  <span>
+
+          <li className={css.footer__content__top__i__donation}>
+            <div>{iconHeart}</div>
+            <div>
+              <h5 className={css.footer__content__top__i__linkBlock__title}>
+                Donate
+              </h5>
+              <p className="bodyTextLight">
+                icApps is developed by the IC enthusiasts. You can support
+                futher development by making a donation 🐦
+                <br />
+                <span>
+                  <a href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1">
                     edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
-                  </span>
-                </p>
-              </div>
-            </a>
+                  </a>
+                </span>
+              </p>
+            </div>
           </li>
         </ul>
 

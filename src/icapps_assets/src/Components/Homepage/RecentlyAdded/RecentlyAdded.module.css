@@ -12,8 +12,8 @@
 }
 
 .appLi__i {
-  width: 17.5rem;
-  border-radius: 1.5rem;
+  width: 16rem;
+  border-radius: var(--br05);
 }
 
 .appLi__i__linkBlock__cover {
@@ -22,7 +22,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 1rem;
+  border-radius: var(--br05);
 }
 
 .appLi__i__linkBlock__appInfo {
@@ -85,6 +85,6 @@
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: var(--boxShadow);
+  background: var(--underlay);
   border-radius: 1rem;
 }

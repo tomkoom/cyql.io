@@ -108,10 +108,6 @@
   width: 100%;
 }
 
-.nftTable__table * {
-  font-family: var(--monospace);
-}
-
 .nftTable thead tr th {
   font-weight: var(--bold);
 }

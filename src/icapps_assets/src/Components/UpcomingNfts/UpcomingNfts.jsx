@@ -2,10 +2,6 @@ import React, { useEffect } from "react";
 import css from "./UpcomingNfts.module.css";
 import Loader from "../../CatLoader";
 
-// Framer Motion
-import { motion } from "framer-motion";
-import { btnVariants } from "../../motionVariants";
-
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -24,9 +20,11 @@ import {
 import { useSelector } from "react-redux";
 
 const iconArrowRight = (
-  <FontAwesomeIcon icon={faArrowRight} color="rgba(255,255,255,0.3)" />
+  <FontAwesomeIcon icon={faArrowRight} id={css.iconArrowRight} />
 );
-const iconCalendar = <FontAwesomeIcon icon={faCalendarAlt} color="#484644" />;
+const iconCalendar = (
+  <FontAwesomeIcon icon={faCalendarAlt} id={css.iconCalendar} />
+);
 const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
@@ -37,14 +35,12 @@ let socialLinks = [];
 let icLinks = [];
 
 const UpcomingNfts = () => {
-  // Get upcoming NFTs data from state
   const upcomingNfts = useSelector((state) => state.siteData.upcomingNfts);
 
   return (
-    <section className={`${css.upcNft} container768`}>
-      {/* HERO */}
-
-      <div className={`${css.upcNft__hero} center`}>
+    <section className={css.nft}>
+      {/* Hero */}
+      <div className={css.nft__hero}>
         <h2>Upcoming NFT Sales &#38; Airdrops</h2>
         <p className="bodyText">
           {/* Information on this page should not be considered as financial advice. */}
@@ -52,22 +48,20 @@ const UpcomingNfts = () => {
           100% accurate. Please do your own research.
         </p>
 
-        {/* MEDIA PARTNERS BADGE */}
-        <div className={css.mediaPartnerBadge}>
-          <p className="subtitle gray80">Media Partners</p>
+        {/* Media partners */}
+        <div className={css.mediaPartners}>
+          <p>Media Partners</p>
 
-          <div className={css.mediaPartnerBadge__logoContainer}>
+          <div className={css.mediaPartners__logo}>
             <img
-              className={css.mediaPartnerLogo}
               src="https://i.postimg.cc/50PprTYH/golka-userimg-rec.png"
               alt="Golka UserImg"
             />
             Golka
           </div>
 
-          <div className={`${css.mediaPartnerBadge__logoContainer} bold`}>
+          <div className={css.mediaPartners__logo}>
             <img
-              className={css.mediaPartnerLogo}
               src="https://i.postimg.cc/bYVLq76L/entrepot-logo-168.png"
               alt="Entrepot Logo"
             />
@@ -75,7 +69,7 @@ const UpcomingNfts = () => {
           </div>
         </div>
 
-        {/* PROJECT SUBMIT BTN */}
+        {/* Submit btn */}
         <a
           className={css.submitBtn}
           href="https://forms.gle/rSxVndkZCkSpnfph7"
@@ -86,100 +80,71 @@ const UpcomingNfts = () => {
         </a>
       </div>
 
-      {/* CONTENT */}
-      {upcomingNfts && upcomingNfts.length ? (
+      {/* Content */}
+      {upcomingNfts && upcomingNfts.length > 0 ? (
         upcomingNfts.map((nft) => (
-          <div
-            className={css.upcNft__card}
-            key={nft["Name"]}
-            style={
-              nft["Type"] != "Promoted"
-                ? null
-                : {
-                    boxShadow: "0 0 0 2px rgba(98, 0, 234, 0.5)",
-                  }
-            }
-          >
-            <div className={css.upcNft__card__main}>
-              {/* HEADING */}
-
-              <div className={css.upcNft__card__main__heading}>
-                <div className={css.upcNft__card__main__heading__title}>
-                  <h3>{nft["Name"]}</h3>
-                  <span
-                    className={css.upcNft__card__main__heading__featBadge}
-                    style={
-                      nft["Type"] != "Promoted" ? { display: "none" } : null
-                    }
-                  >
-                    {nft["Type"] == "Promoted" ? `${nft["Type"]}` : null}
-                  </span>
+          <div className={css.nft__card} key={nft.name}>
+            <div className={css.nft__card__main}>
+              {/* heading */}
+              <div className={css.nft__card__main__heading}>
+                <div className={css.nft__card__main__heading__title}>
+                  <h3>{nft.name}</h3>
                 </div>
 
-                {nft["Date"] === "Sale is open" ? (
-                  <motion.div
+                {nft.date === "Sale is open" ? (
+                  <div
+                    className={css.nft__card__main__heading__date}
                     data-value="btn"
-                    variants={btnVariants}
-                    whileHover="whileHover"
-                    className={css.upcNft__card__main__heading__date}
                   >
                     <a
-                      href={nft["Marketplace Link"]}
+                      href={nft.market}
                       target="_blank"
                       rel="norefferrer noopener"
-                      className={css.btn}
                     >
                       Sale is open {iconArrowRight}
                     </a>
-                  </motion.div>
+                  </div>
                 ) : (
-                  <div className={css.upcNft__card__main__heading__date}>
+                  <div className={css.nft__card__main__heading__date}>
                     {iconCalendar}
-                    <p className="bodyText">
-                      {`${nft["Date"]} ${nft["Time"]} ${nft["Time Zone"]}`}
-                    </p>
+                    <p>{`${nft.date} ${nft.time} ${nft.timeZone}`}</p>
                   </div>
                 )}
               </div>
 
-              {/* DESCRIPTION */}
-              <p className="bodyTextLight gray40">
-                {nft["Description"] && nft["Description"].length > 280
-                  ? `${nft["Description"].substring(0, 280)}...`
-                  : nft["Description"]}
+              {/* description */}
+              <p className="bodyTextLight">
+                {nft.description && nft.description.length > 280
+                  ? `${nft.description.substring(0, 280)}...`
+                  : nft.description}
               </p>
 
-              <p className="bodyTextLight gray80">
-                {nft["Total NFTs"] && `Total assets 🗿 ${nft["Total NFTs"]}`}
-                {nft["Total NFTs"] && nft["Price"] !== "TBA" && nft["Price"]
+              <p className="bodyTextLight">
+                {nft.totalNfts && `Total assets 🗿 ${nft.totalNfts}`}
+                {nft.totalNfts && nft.price !== "TBA" && nft.price
                   ? " · "
                   : null}
-                {nft["Price"] !== "TBA" && nft["Price"]
-                  ? `Unit price ${nft["Price"]}`
+                {nft.price !== "TBA" && nft.price
+                  ? `Unit price ${nft.price}`
                   : null}
               </p>
 
-              {/* SOCIAL MEDIA LINKS */}
-
-              <div id={css.linkList}>
-                <ul className={css.upcNft__card__main__socialLinksList}>
+              {/* Social links */}
+              <div className={css.linksList}>
+                <ul className={css.nft__card__main__socLinks}>
                   {
                     ((socialLinks = [
-                      { link: nft["Website"], icon: iconGlobe },
-                      { link: nft["Twitter"], icon: iconTwitter },
-                      { link: nft["Discord"], icon: iconDiscord },
-                      { link: nft["Telegram"], icon: iconTelegram },
-                      { link: nft["Medium"], icon: iconMedium },
+                      { link: nft.website, icon: iconGlobe },
+                      { link: nft.twitter, icon: iconTwitter },
+                      { link: nft.discord, icon: iconDiscord },
+                      { link: nft.telegram, icon: iconTelegram },
+                      { link: nft.medium, icon: iconMedium },
                     ]),
                     socialLinks.map(({ link, icon }, i) => (
-                      <motion.li
-                        key={i}
-                        variants={btnVariants}
-                        whileHover="whileHover"
-                        className={
-                          css.upcNft__card__main__socialLinksList__item
-                        }
+                      <li
+                        className={css.nft__card__main__socLinks__i}
                         style={link ? null : { display: "none" }}
+                        key={i}
                       >
                         <a
                           href={link}
@@ -188,28 +153,24 @@ const UpcomingNfts = () => {
                         >
                           {icon}
                         </a>
-                      </motion.li>
+                      </li>
                     )))
                   }
                 </ul>
 
-                {/* IC LINKS */}
-                <ul className={css.upcNft__card__main__socialLinksList}>
+                {/* IC links */}
+                <ul className={css.nft__card__main__socLinks}>
                   {
                     ((icLinks = [
-                      { link: nft["Dscvr"], name: "Dscvr" },
-                      { link: nft["Distrikt"], name: "Distrikt" },
-                      { link: nft["Open Chat"], name: "Open Chat" },
+                      { link: nft.dscvr, name: "Dscvr" },
+                      { link: nft.distrikt, name: "Distrikt" },
+                      { link: nft.openChat, name: "Open Chat" },
                     ]),
                     icLinks.map(({ link, name }, i) => (
-                      <motion.li
-                        key={i}
-                        variants={btnVariants}
-                        whileHover="whileHover"
-                        className={
-                          css.upcNft__card__main__socialLinksList__item
-                        }
+                      <li
+                        className={css.nft__card__main__icSocLinks__i}
                         style={link ? null : { display: "none" }}
+                        key={i}
                       >
                         <a
                           href={link}
@@ -218,7 +179,7 @@ const UpcomingNfts = () => {
                         >
                           {name}
                         </a>
-                      </motion.li>
+                      </li>
                     )))
                   }
                 </ul>
@@ -227,30 +188,28 @@ const UpcomingNfts = () => {
 
             {/* Loop NFT preview images */}
             <div
-              className={css.upcNft__card__img}
-              style={nft["Img1"] ? null : { display: "none" }}
+              className={css.nft__card__preview}
+              style={nft.img1 ? null : { display: "none" }}
             >
               {(() => {
-                let nftImgs = [];
+                let nftPreviews = [];
                 for (let i = 1; i <= 4; i++) {
-                  nftImgs.push(
+                  nftPreviews.push(
                     <img
+                      className={css.nft__card__preview__i}
+                      src={nft[`img${i}`]}
+                      alt={`${nft.name} preview${i}`}
                       key={i}
-                      className={css.upcNft__card__img__item}
-                      src={nft[`Img${i}`]}
-                      alt={`${nft.Name} preview${i}`}
                     />
                   );
                 }
-                return nftImgs;
+                return nftPreviews;
               })()}
             </div>
           </div>
         ))
       ) : (
-        <div className="center">
-          <Loader />
-        </div>
+        <Loader />
       )}
     </section>
   );

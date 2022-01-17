@@ -1,8 +1,9 @@
-/* APP */
+/* app */
 
 .app {
-  padding: 0 2rem 2rem 2rem;
+  padding: 1rem 2rem;
   margin: 0 auto;
+  max-width: calc(1440px + 4rem);
 }
 
 @media screen and (max-width: 1023px) {

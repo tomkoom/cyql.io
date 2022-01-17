@@ -42,7 +42,7 @@ const AppPage = ({ data, loading }) => {
   const nftItems = useSelector((state) => state.nftItems.nftItems);
 
   return (
-    <section className={`${css.appPage} container768`}>
+    <section className={`${css.appPage} container1440`}>
       {/* GO BACK BTN */}
       <Link className={css.backBtn} to="/">
         <motion.div className={css.backBtn__container}>

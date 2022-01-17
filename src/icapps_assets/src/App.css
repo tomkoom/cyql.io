@@ -24,10 +24,3 @@ ul {
 ::placeholder {
   color: var(--tertiaryColor);
 }
-
-/* Global classes */
-
-.viewAll {
-  color: var(--highlightColor);
-  font-weight: var(--bold);
-}

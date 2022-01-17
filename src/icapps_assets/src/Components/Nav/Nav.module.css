@@ -2,35 +2,94 @@
 
 .nav {
   padding: 0.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: visible;
+  /* max-width: 1440px;
+  margin: 0 auto; */
 }
 
-.nav__top {
+.divider {
+  height: 1px;
+  width: calc(100% + 100%);
+  margin: 0 -50%;
+  box-shadow: var(--underline);
+}
+
+/* top */
+
+.nav__top ul {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav__top ul li {
+  font-size: var(--fontSize7);
+  color: var(--tertiaryColor);
+}
+
+.nav__top ul li a {
+  color: var(--highlightColor2);
+}
+
+.nav__top ul li a:hover {
+  color: var(--highlightColorHover);
+}
+
+.nav__top ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav__top__feat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav__top__feat img {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* mid */
+
+.nav__mid {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  box-shadow: var(--underlineInset);
-  padding-bottom: 0.5rem;
+  /* box-shadow: var(--underlineInset); */
 }
+
+/* bottom */
 
 .nav__bottom {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-top: 0.5rem;
 }
 
 .nav__logoContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.5rem;
 }
 
 .nav__logoContainer__logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
+}
+
+.nav__logoContainer__logo img {
+  height: 2rem;
+  width: 2rem;
 }
 
 .nav__logoContainer__logo h1 {
@@ -47,9 +106,8 @@
 }
 
 .nav__logoContainer__socialLinks__item {
-  width: 40px;
-  height: 40px;
-  font-size: 1.1125rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .nav__logoContainer__socialLinks__item a {
@@ -136,9 +194,9 @@
 
 .nav__menuBtn {
   display: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: var(--fontSize6);
   cursor: pointer;
   color: var(--primaryColor);
   box-shadow: var(--boxShadow);
@@ -205,6 +263,10 @@
   cursor: pointer;
 }
 
+.themeSwitch:hover {
+  box-shadow: var(--boxShadowActive);
+}
+
 @media screen and (max-width: 1200px) {
   .nav {
     position: relative;
@@ -242,7 +304,7 @@
 
 @media screen and (max-width: 1023px) {
   .nav {
-    padding: 16px;
+    padding: 0.5rem 1rem;
   }
 
   .nav__list,
