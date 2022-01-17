@@ -2,11 +2,8 @@ import React, { useState } from "react";
 import css from "./SubmitApp.module.css";
 import k from "../../../../../k/k";
 
-// RECAPTCHA
+// ReCAPTCHA
 import ReCAPTCHA from "react-google-recaptcha";
-
-// FRAMER MOTION
-import { motion } from "framer-motion";
 
 // Submit button component
 export const SubmitBtn = ({ submissionLoader, isVerified }) => {
@@ -259,11 +256,7 @@ const SubmitApp = () => {
             {/* NAME */}
 
             {inputs.map((input, i) => (
-              <motion.div
-                className={css.sApp__form__group}
-                whileTap={{ scale: 0.99 }}
-                key={i}
-              >
+              <div className={css.sApp__form__group} key={i}>
                 <label
                   className={css.sApp__form__group__label}
                   htmlFor={input.name}
@@ -281,7 +274,7 @@ const SubmitApp = () => {
                   onChange={handleInput}
                   required={input.required}
                 />
-              </motion.div>
+              </div>
             ))}
             {/* Test recaptcha site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI */}
             <div className={css.recaptcha}>
