@@ -109,7 +109,10 @@ const App = () => {
 
   return (
     <div className={`App ${theme}`}>
-      <Nav />
+      <Route path={`/(|apps|upcoming|nft|submit)`}>
+        <Nav />
+      </Route>
+
       <div className={css.app}>
         <Switch>
           <Route exact path="/">
@@ -151,7 +154,10 @@ const App = () => {
           {/* <Route component={page404} /> */}
         </Switch>
       </div>
-      <Footer />
+
+      <Route path={`/(|apps|upcoming|nft|submit)`}>
+        <Footer />
+      </Route>
     </div>
   );
 };

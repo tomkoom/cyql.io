@@ -66,13 +66,13 @@
 }
 
 .appLi__i__linkBlock__appInfo__desc ul li {
-  color: var(--secondaryColor);
-  font-weight: var(--medium);
   padding: 0.125rem 0.25rem;
-  box-shadow: var(--boxShadow2);
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
+  font-weight: var(--medium);
+  color: var(--primaryColor);
+  box-shadow: var(--boxShadow2);
 }
 
 .appLi__i__linkBlock__appInfo__desc ul li img {

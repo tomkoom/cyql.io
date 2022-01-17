@@ -42,7 +42,7 @@ const AppPage = ({ data, loading }) => {
   const nftItems = useSelector((state) => state.nftItems.nftItems);
 
   return (
-    <section className={`${css.appPage} container1440`}>
+    <section className={`${css.appPage} container768`}>
       {/* GO BACK BTN */}
       <Link className={css.backBtn} to="/">
         <motion.div className={css.backBtn__container}>
@@ -156,7 +156,7 @@ const AppPage = ({ data, loading }) => {
                       {/* Volume */}
                       <div className={css.appItem__nftMarketData__item}>
                         <p className={css.appItem__nftMarketData__item__title}>
-                          Volume 📈
+                          Volume
                         </p>
                         <p className={css.appItem__nftMarketData__item__data}>
                           {nftItem
@@ -167,7 +167,7 @@ const AppPage = ({ data, loading }) => {
                       {/* Sales */}
                       <div className={css.appItem__nftMarketData__item}>
                         <p className={css.appItem__nftMarketData__item__title}>
-                          Sales 🤝
+                          Sales
                         </p>
                         <p className={css.appItem__nftMarketData__item__data}>
                           {nftItem ? nftItem.sales : null}
@@ -177,7 +177,7 @@ const AppPage = ({ data, loading }) => {
                       {/* Minted NFTs */}
                       <div className={css.appItem__nftMarketData__item}>
                         <p className={css.appItem__nftMarketData__item__title}>
-                          Minted NFTs 🗿
+                          Minted NFTs
                         </p>
                         <p className={css.appItem__nftMarketData__item__data}>
                           {nftItem ? nftItem.totalAssetsFormatted : null}
@@ -187,7 +187,7 @@ const AppPage = ({ data, loading }) => {
                       {/* Listings */}
                       <div className={css.appItem__nftMarketData__item}>
                         <p className={css.appItem__nftMarketData__item__title}>
-                          Market Listings 📦
+                          Market Listings
                         </p>
                         <p className={css.appItem__nftMarketData__item__data}>
                           {nftItem ? nftItem.listings : null}
@@ -230,7 +230,7 @@ const AppPage = ({ data, loading }) => {
                       : { display: "none" }
                   }
                 >
-                  <p className="bodyTextLight">IC Ecosystem</p>
+                  <p className="bodyText">IC Ecosystem</p>
                   <ul className={css.appItem__socialIconsList}>
                     {
                       ((icLinks = [
@@ -299,7 +299,7 @@ const AppPage = ({ data, loading }) => {
                       : { display: "none" }
                   }
                 >
-                  <p className="bodyTextLight">Social Media</p>
+                  <p className="bodyText">Social Media</p>
 
                   <ul className={css.appItem__socialIconsList}>
                     {

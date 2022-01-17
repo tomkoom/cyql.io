@@ -1,20 +1,15 @@
 /* App */
 
-/* Theming */
-
 .App {
   color: var(--primaryColor);
   background-color: var(--background);
-}
-
-a {
-  color: var(--primaryColor);
 }
 
 /* Global styles */
 
 a {
   text-decoration: none;
+  color: var(--primaryColor);
 }
 
 ul {

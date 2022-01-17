@@ -21,6 +21,15 @@
   background-color: var(--background);
 }
 
+.topNftTable thead tr th:nth-child(-n + 2),
+.topNftTable tbody tr td:nth-child(-n + 2) {
+  text-align: left;
+}
+
+.topNftTable tbody tr td:nth-child(2) {
+  font-weight: var(--medium);
+}
+
 .topNftTable td,
 .topNftTable th {
   margin: 0;
@@ -53,7 +62,7 @@
 
 .cellSpan {
   font-size: var(--fontSize7);
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
   margin-top: 0.25rem;
 }
 
@@ -62,20 +71,10 @@
   font-weight: var(--bold);
 }
 
-.topNftTable thead tr th:nth-child(-n + 2),
-.topNftTable tbody tr td:nth-child(-n + 2) {
-  text-align: left;
-  font-weight: var(--bold);
-}
-
 .topNftTable thead tr th,
 .topNftTable tbody tr td {
   padding: 1rem 0.75rem;
 }
-
-/* .topNftTable tbody tr {
-  font-weight: var(--light);
-} */
 
 .topNftTable thead tr th:first-child,
 .topNftTable tbody tr td:first-child {

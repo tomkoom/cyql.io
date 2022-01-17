@@ -191,7 +191,7 @@
   padding: 0.33rem 0.66rem;
   cursor: pointer;
   letter-spacing: -0.25px;
-  box-shadow: var(--boxShadow);
+  box-shadow: var(--boxShadow2);
   border-radius: 0.5rem;
 }
 
@@ -226,10 +226,10 @@
 }
 
 .themeSwitch:hover {
-  box-shadow: var(--boxShadowActive);
+  background-color: var(--underlay);
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1023px) {
   .nav {
     position: relative;
   }

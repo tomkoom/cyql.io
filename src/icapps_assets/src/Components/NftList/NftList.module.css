@@ -93,7 +93,7 @@
 
 .cellSpan {
   font-size: var(--fontSize7);
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
   margin-top: 0.25rem;
 }
 

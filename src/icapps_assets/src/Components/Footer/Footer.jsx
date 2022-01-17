@@ -13,10 +13,10 @@ import {
 import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 
 const iconTwitter = (
-  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} color="#00acee" />
+  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} />
 );
 const iconDiscord = (
-  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} color="#5865f2" />
+  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} />
 );
 
 const iconPlus = (
@@ -144,7 +144,6 @@ const Footer = () => {
                   key={id}
                 >
                   <a
-                    className={css.footer__content__middle__i__socLinks__item}
                     href={link}
                     id={id}
                     rel="noreferrer noopener"
