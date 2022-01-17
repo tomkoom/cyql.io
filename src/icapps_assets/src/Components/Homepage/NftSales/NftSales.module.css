@@ -5,6 +5,12 @@
   width: 100%;
   font-size: 0.9rem;
   border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.nft__mainColl p {
+  color: var(--secondaryColor);
+  white-space: normal;
 }
 
 .nftSales thead tr th:nth-child(-n + 3),
@@ -46,11 +52,6 @@
 
 .nft__mainColl__title {
   font-size: var(--fontSize6);
-}
-
-.nft__mainColl p {
-  color: var(--secondaryColor);
-  margin-top: 0.25rem;
 }
 
 .nftSales thead tr,
