@@ -29,11 +29,13 @@
   color: var(--tertiaryColor);
 }
 
-.nav__top ul li a {
+.nav__top ul li a,
+.nav__top ul li button {
   color: var(--highlightColor2);
 }
 
-.nav__top ul li a:hover {
+.nav__top ul li a:hover,
+.nav__top ul li button:hover {
   color: var(--highlightColorHover);
 }
 
@@ -140,16 +142,19 @@
 }
 
 .nav__list__item {
-  height: 2rem;
+  height: 2.5rem;
   display: grid;
   place-items: center;
 }
 
-.nav__list__item__content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.nav__list__item button {
+  font-size: var(--fontSize6);
+  color: var(--color);
   height: 100%;
+}
+
+.nav__list__item:hover:not(.donateContainer) {
+  box-shadow: 0px 2px 0px 0px var(--primaryColor);
 }
 
 #fireIcon {
@@ -157,11 +162,6 @@
 }
 
 .nav__list__item__active {
-  box-shadow: 0px 2px 0px 0px var(--primaryColor);
-  color: var(--primaryColor);
-}
-
-.nav__list__item__content:hover:not(.donate-container) {
   box-shadow: 0px 2px 0px 0px var(--primaryColor);
   color: var(--primaryColor);
 }

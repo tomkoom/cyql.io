@@ -19,3 +19,29 @@ ul {
 ::placeholder {
   color: var(--tertiaryColor);
 }
+
+/* Global classes */
+
+.navlink,
+.linkBlock {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.navlink {
+  display: inline-block;
+}
+
+.linkBlock {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}

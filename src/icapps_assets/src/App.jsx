@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import css from "./App.module.css";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route /* withRouter */ } from "react-router-dom";
 import "./Theme/theme.css";
 import "./App.css";
 
@@ -109,7 +109,7 @@ const App = () => {
 
   return (
     <div className={`App ${theme}`}>
-      <Route path={`/(|apps|upcoming|nft|submit)`}>
+      <Route exact path={`/(|apps|upcoming|nft|submit)`}>
         <Nav />
       </Route>
 
@@ -135,7 +135,7 @@ const App = () => {
             />
           </Route>
 
-          <Route exact path="/a/:id">
+          <Route exact path="/apps/:id">
             <AppPage data={data} loading={loading} />
           </Route>
 
@@ -155,11 +155,12 @@ const App = () => {
         </Switch>
       </div>
 
-      <Route path={`/(|apps|upcoming|nft|submit)`}>
+      <Route exact path={`/(|apps|upcoming|nft|submit)`}>
         <Footer />
       </Route>
     </div>
   );
 };
 
-export default withRouter(App);
+// export default withRouter(App);
+export default App;

@@ -55,9 +55,9 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
                     >
                       <span>
                         <h4 className={css.nft__mainColl__title}>{nft.name}</h4>
-                        <p className="bodyTextLight">
-                          {nft.description && nft.description.length > 140
-                            ? `${nft.description.substring(0, 140)}…`
+                        <p className="bodyText">
+                          {nft.description && nft.description.length > 100
+                            ? `${nft.description.substring(0, 100)}…`
                             : nft.description}
                         </p>
                       </span>

@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./AppPage.module.css";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { goBack, toNft } from "../../Routes/routes";
 import { motion } from "framer-motion";
 import { socLinkBtns } from "../../motionVariants";
 
@@ -33,24 +34,20 @@ const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 let icLinks = [];
 let nftItem = {};
-
 let socialLinks = [];
 
 const AppPage = ({ data, loading }) => {
   const { id } = useParams();
-
   const nftItems = useSelector((state) => state.nftItems.nftItems);
 
   return (
     <section className={`${css.appPage} container768`}>
-      {/* GO BACK BTN */}
-      <Link className={css.backBtn} to="/">
-        <motion.div className={css.backBtn__container}>
-          {iconArrowLeft}
-        </motion.div>
-      </Link>
+      {/* go back btn */}
+      <button className="navlink" onClick={() => goBack()}>
+        <div className={css.backBtn__container}>{iconArrowLeft}</div>
+      </button>
 
-      {/* CONTENT */}
+      {/* content */}
       {loading ? (
         <p className="center">Loading...</p>
       ) : (
@@ -103,7 +100,7 @@ const AppPage = ({ data, loading }) => {
                 <div className={css.appItem__appInfo__date}>{d.date}</div>
               </div>
 
-              <p className="bodyTextLight">{d.description}</p>
+              <p className="bodyText">{d.description}</p>
               <br />
 
               {/* NFT IMAGES */}
@@ -204,7 +201,7 @@ const AppPage = ({ data, loading }) => {
                   className={css.appItem__btns__item}
                   style={d.category === "NFTs" ? null : { display: "none" }}
                 >
-                  <Link to="/nft">Compare Stats</Link>
+                  <button onClick={() => toNft()}>Compare Stats</button>
                 </div>
                 {/* Trade */}
                 <div
@@ -222,7 +219,7 @@ const AppPage = ({ data, loading }) => {
               </div>
 
               <div className={css.linksContainer}>
-                {/* IC ECOSYSTEM LINKS */}
+                {/* ic links */}
                 <div
                   style={
                     d.canister || d.dscvr || d.distrikt || d.openChat

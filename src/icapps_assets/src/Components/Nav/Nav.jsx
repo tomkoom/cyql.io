@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import css from "./Nav.module.css";
-import { NavLink, Link } from "react-router-dom";
 import Logo from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../../deviceSizes";
 import Modal from "./Modal/Modal";
+
+// Routes
+import {
+  toHome,
+  toApps,
+  toUpcoming,
+  toNft,
+  toSubmit,
+} from "../../Routes/routes";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -110,10 +118,16 @@ const Nav = () => {
       <div className={css.nav__top}>
         <ul>
           <li>
-            Projects: <Link to="/apps">{projectsNum}</Link>
+            Projects:{" "}
+            <button className="navlink" onClick={() => toApps()}>
+              {projectsNum}
+            </button>
           </li>
           <li>
-            Upcoming NFTs: <Link to="/upcoming">{upcomingNftsNum}</Link>
+            Upcoming NFTs:{" "}
+            <button className="navlink" onClick={() => toUpcoming()}>
+              {upcomingNftsNum}
+            </button>
           </li>
           <li>
             Featured:{" "}
@@ -132,7 +146,7 @@ const Nav = () => {
       <div className={css.divider} />
       <div className={css.nav__mid}>
         <div className={css.nav__logoContainer}>
-          <NavLink exact to="/" replace>
+          <button className="navlink" onClick={() => toHome()}>
             <div
               className={css.nav__logoContainer__logo}
               onClick={() => {
@@ -142,7 +156,7 @@ const Nav = () => {
               <img src={Logo} alt="icApps.xyz logo" />
               <h1>icApps</h1>
             </div>
-          </NavLink>
+          </button>
 
           <ul className={css.nav__logoContainer__socialLinks}>
             {socialLinks.map((sl, i) => (
@@ -174,15 +188,9 @@ const Nav = () => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
-            <NavLink
-              exact
-              to="/"
-              replace
-              className={css.nav__list__item__content}
-              activeClassName={css.nav__list__item__active}
-            >
+            <button className="navlink" onClick={() => toHome()}>
               Home
-            </NavLink>
+            </button>
           </li>
 
           <li
@@ -191,15 +199,9 @@ const Nav = () => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
-            <NavLink
-              exact
-              to="/apps"
-              replace
-              className={css.nav__list__item__content}
-              activeClassName={css.nav__list__item__active}
-            >
+            <button className="navlink" onClick={() => toApps()}>
               Apps
-            </NavLink>
+            </button>
           </li>
 
           <li
@@ -208,16 +210,13 @@ const Nav = () => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
-            <NavLink
-              exact
-              to="/upcoming"
-              replace
-              className={css.nav__list__item__content}
-              activeClassName={css.nav__list__item__active}
+            <button
+              className="navlink"
+              onClick={() => toUpcoming()}
               id={css.upcomingNfts}
             >
               <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT Sales
-            </NavLink>
+            </button>
           </li>
 
           <li
@@ -226,15 +225,9 @@ const Nav = () => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
-            <NavLink
-              exact
-              to="/nft"
-              replace
-              className={css.nav__list__item__content}
-              activeClassName={css.nav__list__item__active}
-            >
+            <button className="navlink" onClick={() => toNft()}>
               NFT Stats
-            </NavLink>
+            </button>
           </li>
 
           <li
@@ -243,15 +236,9 @@ const Nav = () => {
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
-            <NavLink
-              exact
-              to="/submit"
-              replace
-              className={css.nav__list__item__content}
-              activeClassName={css.nav__list__item__active}
-            >
+            <button className="navlink" onClick={() => toSubmit()}>
               Submit Your Project
-            </NavLink>
+            </button>
           </li>
 
           <li className={`${css.nav__list__item} ${css.donateContainer}`}>

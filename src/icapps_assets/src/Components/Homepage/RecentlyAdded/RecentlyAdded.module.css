@@ -48,12 +48,12 @@
 .appDescription {
   font-size: 0.9rem;
   line-height: 150%;
-  font-weight: var(--light);
   color: var(--secondaryColor);
 }
 
 .appLi__i__linkBlock__appInfo__desc__title {
   font-size: var(--fontSize6);
+  color: var(--primaryColor);
   word-wrap: break-word;
 }
 

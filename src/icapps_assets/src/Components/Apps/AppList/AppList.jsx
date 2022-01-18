@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import css from "./AppList.module.css";
-import { Link } from "react-router-dom";
+import { toApp } from "../../../Routes/routes";
 import Loader from "../../../CatLoader";
 
 // Framer Motion
@@ -89,11 +89,11 @@ const AppList = ({ loading, error, searchValue }) => {
             .map((d) => (
               <motion.div
                 key={d.id}
-                className={css.li__item}
+                className={css.li__i}
                 variants={cardVariants}
                 whileHover="whileHover"
               >
-                <Link className={css.li__item__linkBlock} to={`/a/${d.id}`}>
+                <button className="linkBlock" onClick={() => toApp(d.id)}>
                   <div
                     className={css.li__item__linkBlock__coverImg}
                     style={
@@ -112,11 +112,7 @@ const AppList = ({ loading, error, searchValue }) => {
                     <div
                       className={css.li__item__linkBlock__appInfo__description}
                     >
-                      <h2
-                        className={
-                          css.li__item__linkBlock__appInfo__description__title
-                        }
-                      >
+                      <h3>
                         {d.name}
                         &nbsp;
                         {d.category == "Social Networks"
@@ -140,7 +136,7 @@ const AppList = ({ loading, error, searchValue }) => {
                           : d.category == "NFTs"
                           ? "🗿"
                           : null}
-                      </h2>
+                      </h3>
 
                       {d.github || d.canister || d.tags ? (
                         <ul>
@@ -167,7 +163,7 @@ const AppList = ({ loading, error, searchValue }) => {
                       </p>
                     </div>
                   </div>
-                </Link>
+                </button>
               </motion.div>
             ))}
         </div>

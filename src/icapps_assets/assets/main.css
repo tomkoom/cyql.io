@@ -1,9 +1,6 @@
 /* KARLA */
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400&display=swap");
 
-/* SPACE MONO */
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
-
 :root {
   /* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
 
@@ -43,7 +40,6 @@
 
   /* FONT FAMILY */
   --font: "Karla", sans-serif;
-  --monospace: "Space Mono", monospace;
 
   /* Border Radius */
   --br025: 0.25rem;
@@ -134,7 +130,7 @@ h6 {
 .bodyTextLight,
 .bodyText2,
 .subtitle {
-  line-height: 140%;
+  line-height: 150%;
   word-wrap: break-word;
 }
 
@@ -186,8 +182,4 @@ h6 {
   padding: 4px;
   border-radius: 4px;
   color: white;
-}
-
-.monospace {
-  font-family: monospace;
 }

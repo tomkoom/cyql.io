@@ -6,9 +6,16 @@
   grid-gap: 1rem;
 }
 
-.li__item {
+.li__i {
   display: flex;
   flex-direction: column;
+}
+
+.li__i h3 {
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
+  color: var(--primaryColor);
+  word-wrap: break-word;
 }
 
 .li__item__linkBlock__coverImg {
@@ -39,12 +46,6 @@
   gap: 0.25rem;
   font-size: var(--fontSize6);
   overflow-wrap: break-word;
-}
-
-.li__item__linkBlock__appInfo__description__title {
-  font-size: var(--fontSize6);
-  font-weight: var(--black);
-  word-wrap: break-word;
 }
 
 .li__item__linkBlock__appInfo__description ul {

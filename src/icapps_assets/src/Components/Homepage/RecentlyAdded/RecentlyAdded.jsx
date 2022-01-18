@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./RecentlyAdded.module.css";
-import { Link } from "react-router-dom";
+import { toApp } from "../../../Routes/routes";
 import Loader from "../../../Loader";
 
 // Framer Motion
@@ -53,7 +53,7 @@ const RecentlyAdded = () => {
             variants={cardVariants}
             whileHover="whileHover"
           >
-            <Link className={css.appLi__i__linkBlock} to={`/a/${app.id}`}>
+            <button onClick={() => toApp(app.id)} className="linkBlock">
               <div
                 className={css.appLi__i__linkBlock__cover}
                 style={app.cover && { backgroundImage: `url(${app.cover})` }}
@@ -66,11 +66,11 @@ const RecentlyAdded = () => {
                   style={app.logo ? null : { display: "none" }}
                 />
                 <div className={css.appLi__i__linkBlock__appInfo__desc}>
-                  <h2 className={css.appLi__i__linkBlock__appInfo__desc__title}>
+                  <h3 className={css.appLi__i__linkBlock__appInfo__desc__title}>
                     {app.name}
                     {/* &nbsp;
                     {findCategory(app.category)} */}
-                  </h2>
+                  </h3>
 
                   <ul>
                     <li>{app.category}</li>
@@ -99,7 +99,7 @@ const RecentlyAdded = () => {
                   </p>
                 </div>
               </div>
-            </Link>
+            </button>
           </motion.li>
         ))
       )}

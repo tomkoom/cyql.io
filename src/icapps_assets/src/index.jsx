@@ -4,8 +4,10 @@ import App from "./App";
 // import { icapps } from "../../declarations/icapps";
 
 // react-router
-import { HashRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 import ScrollToTop from "./ScrollToTop";
+// history
+import { history } from "./Routes/history";
 
 // State
 import { Provider } from "react-redux";
@@ -16,14 +18,14 @@ import { PersistGate } from "redux-persist/integration/react";
 
 const Index = () => {
   return (
-    <HashRouter>
+    <Router basename="/" history={history}>
       <ScrollToTop />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
         </PersistGate>
       </Provider>
-    </HashRouter>
+    </Router>
   );
 };
 
