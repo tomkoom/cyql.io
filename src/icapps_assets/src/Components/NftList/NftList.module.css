@@ -61,6 +61,7 @@
 
 .nft__hero__dashboard__item h4 {
   font-weight: var(--bold);
+  white-space: nowrap;
 }
 
 .nft__hero__dashboard__item p {

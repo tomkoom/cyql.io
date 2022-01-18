@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import css from "./Nav.module.css";
-import Logo from "../../../assets/logo.svg";
+import logoImg from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../../deviceSizes";
@@ -35,18 +35,20 @@ const iconBars = <FontAwesomeIcon icon={faBars} />;
 const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
 const iconSun = <FontAwesomeIcon icon={faSun} />;
 const iconMoon = <FontAwesomeIcon icon={faMoon} />;
+const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
+const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 
 const socialLinks = [
   {
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
-    icon: faTwitter,
+    icon: iconTwitter,
     color: "#00acee",
   },
   {
     name: "Discord",
     link: "https://discord.gg/qQ8MNv6Hju",
-    icon: faDiscord,
+    icon: iconDiscord,
     color: "#5865f2",
   },
 ];
@@ -113,8 +115,17 @@ const Nav = () => {
     }[theme];
   };
 
+  const navlinks = [
+    { name: "Home", link: toHome },
+    { name: "Apps", link: toApps },
+    { name: "Upcoming NFT Sales", link: toUpcoming },
+    { name: "NFT Stats", link: toNft },
+    { name: "Submit Your Project", link: toSubmit },
+  ];
+
   return (
     <nav className={css.nav}>
+      {/* top */}
       <div className={css.nav__top}>
         <ul>
           <li>
@@ -142,38 +153,39 @@ const Nav = () => {
         </ul>
       </div>
 
-      {/* divider */}
+      {/* mid */}
       <div className={css.divider} />
       <div className={css.nav__mid}>
-        <div className={css.nav__logoContainer}>
-          <button className="navlink" onClick={() => toHome()}>
-            <div
-              className={css.nav__logoContainer__logo}
-              onClick={() => {
-                menuIsOpen ? setMenuIsOpen(false) : null;
-              }}
-            >
-              <img src={Logo} alt="icApps.xyz logo" />
-              <h1>icApps</h1>
-            </div>
+        <div className={css.nav__mid__main}>
+          {/* logo */}
+          <button
+            className={`${css.logo} navlink`}
+            onClick={() => {
+              toHome();
+              menuIsOpen ? setMenuIsOpen(false) : null;
+            }}
+          >
+            <img src={logoImg} alt="icApps.xyz logo" />
+            <h1>icApps</h1>
           </button>
 
-          <ul className={css.nav__logoContainer__socialLinks}>
-            {socialLinks.map((sl, i) => (
+          {/* soclinks */}
+          <ul className={css.nav__mid__main__socLinks}>
+            {socialLinks.map(({ name, link, icon }, i) => (
               <li
-                className={css.nav__logoContainer__socialLinks__item}
-                data-smlink={sl.name}
+                className={css.nav__mid__main__socLinks__item}
+                data-smlink={name}
                 key={i}
               >
-                <a href={sl.link} target="_blank" rel="noopener noreferrer">
-                  <FontAwesomeIcon icon={sl.icon} />
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                  {icon}
                 </a>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* MENU BTN */}
+        {/* menu btn */}
         <div
           className={css.nav__menuBtn}
           onClick={() => setMenuIsOpen(!menuIsOpen)}
@@ -181,30 +193,23 @@ const Nav = () => {
           {menuIsOpen ? iconTimes : iconBars}
         </div>
 
+        {/* navlinks */}
         <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
-          <li
-            className={css.nav__list__item}
-            onClick={() => {
-              menuIsOpen ? setMenuIsOpen(false) : null;
-            }}
-          >
-            <button className="navlink" onClick={() => toHome()}>
-              Home
-            </button>
-          </li>
+          {navlinks.map(({ name, link }, i) => (
+            <li className={css.nav__list__item} key={i}>
+              <button
+                className="navlink"
+                onClick={() => {
+                  link();
+                  menuIsOpen ? setMenuIsOpen(false) : null;
+                }}
+              >
+                {name}
+              </button>
+            </li>
+          ))}
 
-          <li
-            className={css.nav__list__item}
-            onClick={() => {
-              menuIsOpen ? setMenuIsOpen(false) : null;
-            }}
-          >
-            <button className="navlink" onClick={() => toApps()}>
-              Apps
-            </button>
-          </li>
-
-          <li
+          {/* <li
             className={css.nav__list__item}
             onClick={() => {
               menuIsOpen ? setMenuIsOpen(false) : null;
@@ -217,29 +222,7 @@ const Nav = () => {
             >
               <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT Sales
             </button>
-          </li>
-
-          <li
-            className={css.nav__list__item}
-            onClick={() => {
-              menuIsOpen ? setMenuIsOpen(false) : null;
-            }}
-          >
-            <button className="navlink" onClick={() => toNft()}>
-              NFT Stats
-            </button>
-          </li>
-
-          <li
-            className={css.nav__list__item}
-            onClick={() => {
-              menuIsOpen ? setMenuIsOpen(false) : null;
-            }}
-          >
-            <button className="navlink" onClick={() => toSubmit()}>
-              Submit Your Project
-            </button>
-          </li>
+          </li> */}
 
           <li className={`${css.nav__list__item} ${css.donateContainer}`}>
             <div
@@ -251,7 +234,8 @@ const Nav = () => {
           </li>
         </ul>
       </div>
-      {/* divider */}
+
+      {/* bottom */}
       <div className={css.divider} />
       <div className={css.nav__bottom}>
         <button
