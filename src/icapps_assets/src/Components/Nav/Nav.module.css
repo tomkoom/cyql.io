@@ -120,6 +120,7 @@
 
 .nav__list__item button {
   height: 2.5rem;
+  font-weight: var(--bold);
 }
 
 .nav__list__item button:hover:not(.donateContainer) {
@@ -128,13 +129,11 @@
 
 .nav__menuBtn {
   display: none;
-  width: 2rem;
-  height: 2rem;
-  font-size: var(--fontSize6);
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: var(--fontSize5);
   cursor: pointer;
   color: var(--primaryColor);
-  box-shadow: var(--boxShadow);
-  border-radius: 0.5rem;
 }
 
 /* #fireIcon {
@@ -239,6 +238,10 @@
     z-index: 1;
   }
 
+  .nav__list__active button {
+    color: var(--background);
+  }
+
   .nav__list__item {
     color: var(--background);
   }
@@ -269,5 +272,10 @@
   .nav__list,
   .nav__list__active {
     right: 1rem;
+  }
+
+  .nav__list,
+  .nav__list__active {
+    display: none;
   }
 }

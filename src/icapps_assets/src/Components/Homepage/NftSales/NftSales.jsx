@@ -21,11 +21,11 @@ const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 const iconLink = <FontAwesomeIcon icon={faLink} />;
 
-const NftSales = ({ upcomingNftsFiltered, Loader }) => {
+const NftSales = ({ upcomingNftsFiltered, loader }) => {
   return (
     <div>
       {upcomingNftsFiltered.length < 1 ? (
-        Loader
+        loader
       ) : (
         <div style={{ overflowX: "auto" }}>
           <table className={css.nftSales}>

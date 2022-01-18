@@ -4,24 +4,18 @@ import logoImg from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "./useWindowSize";
 import { deviceSizes } from "../../deviceSizes";
-import Modal from "./Modal/Modal";
+import { navLinks } from "../../NavLinks/navLinks";
 
-// Routes
-import {
-  toHome,
-  toApps,
-  toUpcoming,
-  toNft,
-  toSubmit,
-} from "../../Routes/routes";
+// Components
+import Modal from "./Modal/Modal";
+import NavMenuMobile from "./NavMenuMobile";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import {
-  faTimes,
   faBars,
-  faFireAlt,
+  // faFireAlt,
   faSun,
   faMoon,
 } from "@fortawesome/free-solid-svg-icons";
@@ -30,9 +24,8 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../../Redux/themeSlice";
 
-const iconTimes = <FontAwesomeIcon icon={faTimes} />;
 const iconBars = <FontAwesomeIcon icon={faBars} />;
-const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
+// const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
 const iconSun = <FontAwesomeIcon icon={faSun} />;
 const iconMoon = <FontAwesomeIcon icon={faMoon} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -59,7 +52,6 @@ const Nav = () => {
   const [deviceWidth, deviceHeight] = useWindowSize();
   const [modalIsActive, setModalIsActive] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState();
-  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
   // State
   const dispatch = useDispatch();
@@ -68,6 +60,7 @@ const Nav = () => {
   const upcomingNftsNum = useSelector(
     (state) => state.siteData.upcomingNftsNum.value
   );
+  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -115,14 +108,6 @@ const Nav = () => {
     }[theme];
   };
 
-  const navlinks = [
-    { name: "Home", link: toHome },
-    { name: "Apps", link: toApps },
-    { name: "Upcoming NFT Sales", link: toUpcoming },
-    { name: "NFT Stats", link: toNft },
-    { name: "Submit Your Project", link: toSubmit },
-  ];
-
   return (
     <nav className={css.nav}>
       {/* top */}
@@ -161,7 +146,8 @@ const Nav = () => {
           <button
             className={`${css.logo} navlink`}
             onClick={() => {
-              toHome();
+              // go home
+              navLinks[0].link();
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
@@ -190,12 +176,19 @@ const Nav = () => {
           className={css.nav__menuBtn}
           onClick={() => setMenuIsOpen(!menuIsOpen)}
         >
-          {menuIsOpen ? iconTimes : iconBars}
+          {iconBars}
         </div>
+
+        {deviceWidth < 1024 && menuIsOpen ? (
+          <NavMenuMobile
+            menuIsOpen={menuIsOpen}
+            setMenuIsOpen={setMenuIsOpen}
+          />
+        ) : null}
 
         {/* navlinks */}
         <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
-          {navlinks.map(({ name, link }, i) => (
+          {navLinks.map(({ name, link }, i) => (
             <li className={css.nav__list__item} key={i}>
               <button
                 className="navlink"

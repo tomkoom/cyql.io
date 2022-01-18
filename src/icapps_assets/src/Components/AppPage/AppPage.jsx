@@ -22,6 +22,7 @@ import {
   faMedium,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import { history } from "../../Routes/history";
 
 const iconArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} size="xs" />;
@@ -197,12 +198,12 @@ const AppPage = ({ data, loading }) => {
 
               <div className={css.appItem__btns}>
                 {/* Compare stats */}
-                <div
+                {/* <div
                   className={css.appItem__btns__item}
                   style={d.category === "NFTs" ? null : { display: "none" }}
                 >
                   <button onClick={() => toNft()}>Compare Stats</button>
-                </div>
+                </div> */}
                 {/* Trade */}
                 <div
                   className={css.appItem__btns__item__secondary}

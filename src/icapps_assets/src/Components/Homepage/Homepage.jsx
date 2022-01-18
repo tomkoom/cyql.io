@@ -54,7 +54,7 @@ const Homepage = () => {
           upcomingNftsFiltered={upcomingNfts.filter(
             (nft) => nft.date !== "Sale is open"
           )}
-          Loader={<Loader />}
+          loader={<Loader />}
         />
       </section>
 
@@ -74,7 +74,7 @@ const Homepage = () => {
           upcomingNftsFiltered={upcomingNfts.filter(
             (nft) => nft.date === "Sale is open"
           )}
-          Loader={<Loader />}
+          loader={<Loader />}
         />
       </section>
 
@@ -86,7 +86,7 @@ const Homepage = () => {
             View all &gt;
           </button>
         </div>
-        <TopNftCollections nftItems={nftItems} Loader={<Loader />} />
+        <TopNftCollections nftItems={nftItems} loader={<Loader />} />
       </section>
 
       {/* Join community */}

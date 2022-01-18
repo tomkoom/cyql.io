@@ -1,0 +1,73 @@
+/* Nav menu mobile */
+
+.navMenuMobile {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background-color: var(--primaryColor);
+  border-radius: 1rem;
+  z-index: 1;
+}
+
+.navMenuMobile div ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.navMenuMobile div ul li {
+  color: var(--background);
+}
+
+.navMenuMobile div ul li .navLink__title {
+  font-size: var(--fontSize5);
+  font-weight: var(--black);
+}
+
+.navLink__subtitle {
+  color: var(--tertiaryColor);
+  font-size: var(--fontSize7);
+  line-height: 150%;
+}
+
+/* .navMenuMobile ul li:hover {
+  box-shadow: 0px 2px 0px 0px var(--highlightColor);
+} */
+
+.navMenuMobile button {
+  color: var(--background);
+  font-size: var(--fontSize4);
+}
+
+/* soclinks */
+
+.socIcons {
+  display: flex;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.socIcons__item {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--background);
+  border-radius: 50%;
+}
+
+.socIcons__item {
+  font-size: var(--fontSize6);
+}
+
+/* #twitter {
+  color: var(--colorTwitter);
+}
+
+#discord {
+  color: var(--colorDiscord);
+} */

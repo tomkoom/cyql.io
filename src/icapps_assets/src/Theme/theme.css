@@ -18,6 +18,8 @@
   --underline: 0 1px 0 0 var(--coolGray20);
   --overline: 0 -1px 0 0 var(--coolGray20);
   --underlineInset: inset 0 -1px 0 var(--coolGray10);
+  --boxShadowLighter: 0 0 0 1px var(--coolGray70);
+  --underlayLighter: var(--coolGray80);
 }
 
 .dark {
@@ -38,4 +40,6 @@
   --underline: 0 1px 0 0 var(--coolGray90);
   --overline: 0 -1px 0 0 var(--coolGray90);
   --underlineInset: inset 0 -1px 0 var(--coolGray90);
+  --boxShadowLighter: 0 0 0 1px var(--coolGray30);
+  --underlayLighter: var(--coolGray20);
 }

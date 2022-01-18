@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./TopNftCollections.module.css";
 
-const TopNftCollections = ({ nftItems, Loader }) => {
+const TopNftCollections = ({ nftItems, loader }) => {
   return (
     <div>
       {nftItems && nftItems.length > 0 ? (
@@ -72,7 +72,7 @@ const TopNftCollections = ({ nftItems, Loader }) => {
           </table>
         </div>
       ) : (
-        Loader
+        loader
       )}
     </div>
   );

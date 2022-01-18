@@ -18,7 +18,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 const Index = () => {
   return (
-    <Router basename="/" history={history}>
+    <Router /* basename="/" */ history={history}>
       <ScrollToTop />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
