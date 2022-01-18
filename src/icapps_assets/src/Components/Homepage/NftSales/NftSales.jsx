@@ -1,10 +1,6 @@
 import React from "react";
 import css from "./NftSales.module.css";
-import { Link } from "react-router-dom";
-
-// Framer Motion
-import { motion } from "framer-motion";
-import { cardVariants } from "../../../motionVariants";
+import { toUpcoming } from "../../../Routes/routes";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -48,10 +44,10 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
               {upcomingNftsFiltered.slice(0, 10).map((nft) => (
                 <tr key={nft.id} key={nft.id}>
                   <td className={css.nft__mainColl}>
-                    <Link
+                    <button
+                      onClick={() => toUpcoming()}
                       // to={`a/${nft.id}`}
-                      to="upcoming"
-                      className={css.nft__link}
+                      className={`${css.nft__link} navlink`}
                     >
                       <span>
                         <h4 className={css.nft__mainColl__title}>{nft.name}</h4>
@@ -61,7 +57,7 @@ const NftSales = ({ upcomingNftsFiltered, Loader }) => {
                             : nft.description}
                         </p>
                       </span>
-                    </Link>
+                    </button>
                   </td>
 
                   {/* Social Links */}

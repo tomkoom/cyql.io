@@ -12,6 +12,12 @@ a {
   color: var(--primaryColor);
 }
 
+button {
+  color: var(--primaryColor);
+  font-size: var(--fontSize6);
+  text-align: left;
+}
+
 ul {
   list-style-type: none;
 }

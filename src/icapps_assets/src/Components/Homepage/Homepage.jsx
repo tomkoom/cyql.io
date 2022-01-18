@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Homepage.module.css";
-import { Link } from "react-router-dom";
+import { toApps, toUpcoming, toNft } from "../../Routes/routes";
 import Loader from "../../Loader";
 
 // Components
@@ -30,9 +30,9 @@ const Homepage = () => {
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
           <h3>Recently added projects</h3>
-          <Link className={css.viewAll} to="/apps">
+          <button className={`${css.viewAll} navlink`} onClick={() => toApps()}>
             View all &gt;
-          </Link>
+          </button>
         </div>
 
         <RecentlyAdded />
@@ -42,9 +42,12 @@ const Homepage = () => {
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Upcoming NFT sales</h3>
-          <Link className={css.viewAll} to="/upcoming">
+          <button
+            className={`${css.viewAll} navlink`}
+            onClick={() => toUpcoming()}
+          >
             View all &gt;
-          </Link>
+          </button>
         </div>
 
         <NftSales
@@ -59,9 +62,12 @@ const Homepage = () => {
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Ongoing NFT sales</h3>
-          <Link className={css.viewAll} to="/upcoming">
+          <button
+            className={`${css.viewAll} navlink`}
+            onClick={() => toUpcoming()}
+          >
             View all &gt;
-          </Link>
+          </button>
         </div>
 
         <NftSales
@@ -76,9 +82,9 @@ const Homepage = () => {
       <section className={css.home__nftCollections}>
         <div className={css.home__section__title}>
           <h3>Top NFT collections</h3>
-          <Link className={css.viewAll} to="/nft">
+          <button className={`${css.viewAll} navlink`} onClick={() => toNft()}>
             View all &gt;
-          </Link>
+          </button>
         </div>
         <TopNftCollections nftItems={nftItems} Loader={<Loader />} />
       </section>

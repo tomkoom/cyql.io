@@ -33,6 +33,8 @@
   display: flex;
 }
 
+.footer__content__top__i button:hover > div p,
+.footer__content__top__i button:hover > div .footIcon,
 .footer__content__top__i a:hover > div p,
 .footer__content__top__i a:hover > div .footIcon {
   color: var(--primaryColor);

@@ -1,7 +1,13 @@
 import React from "react";
 import css from "./Footer.module.css";
 import LogoComponent from "../../Assets/LogoComponent/LogoComponent";
-import { Link, NavLink } from "react-router-dom";
+import {
+  toHome,
+  toApps,
+  toUpcoming,
+  toNft,
+  toSubmit,
+} from "../../Routes/routes";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +24,6 @@ const iconTwitter = (
 const iconDiscord = (
   <FontAwesomeIcon icon={faDiscord} className={css.socIcon} />
 );
-
 const iconPlus = (
   <FontAwesomeIcon icon={faPlusSquare} className={css.footIcon} />
 );
@@ -27,12 +32,12 @@ const iconComments = (
 );
 const iconHeart = <FontAwesomeIcon icon={faHeart} className={css.footIcon} />;
 
-const navItems = [
-  { name: "Home", link: "/" },
-  { name: "All Apps", link: "apps" },
-  { name: "Upcoming NFT Sales", link: "upcoming" },
-  { name: "NFT Stats", link: "nft" },
-  { name: "Submit Your Project", link: "submit" },
+const navlinks = [
+  { name: "Home", link: toHome },
+  { name: "All Apps", link: toApps },
+  { name: "Upcoming NFT Sales", link: toUpcoming },
+  { name: "NFT Stats", link: toNft },
+  { name: "Submit Your Project", link: toSubmit },
 ];
 
 const socLinks = [
@@ -46,20 +51,20 @@ const Footer = () => {
       <div className={css.footer__content}>
         <ul className={css.footer__content__top}>
           <li className={css.footer__content__top__i}>
-            <Link
-              to="/submit"
-              className={css.footer__content__top__i__linkBlock}
+            <button
+              className={`${css.footer__content__top__i__linkBlock} navlink`}
+              onClick={() => toSubmit()}
             >
               <div>{iconPlus}</div>
               <div>
                 <h5 className={css.footer__content__top__i__linkBlock__title}>
                   Submit your project
                 </h5>
-                <p className="bodyTextLight">
+                <p className="bodyText">
                   Submit your project and get traction from the IC community.
                 </p>
               </div>
-            </Link>
+            </button>
           </li>
           <li className={css.footer__content__top__i}>
             <a
@@ -73,7 +78,7 @@ const Footer = () => {
                 <h5 className={css.footer__content__top__i__linkBlock__title}>
                   Reach out
                 </h5>
-                <p className="bodyTextLight">
+                <p className="bodyText">
                   Didn't find what you were looking for or want to collaborate?
                   Reach out for us, we are happy to support and cooperate.
                 </p>
@@ -87,7 +92,7 @@ const Footer = () => {
               <h5 className={css.footer__content__top__i__linkBlock__title}>
                 Donate
               </h5>
-              <p className="bodyTextLight">
+              <p className="bodyText">
                 icApps is developed and maintained by the IC enthusiasts. You
                 can support futher development by making a donation 🐦
                 <br />
@@ -118,18 +123,15 @@ const Footer = () => {
 
           <div className={css.footer__content__middle__i}>
             <ul className={css.footer__content__middle__i__navList}>
-              {/* Nav Items*/}
-              {navItems.map((navItem, i) => (
+              {/* navlinks*/}
+              {navlinks.map(({ name, link }, i) => (
                 <li key={i}>
-                  <NavLink
-                    exact
-                    to={navItem.link}
-                    replace
-                    className={css.footer__content__middle__i__navList__i}
-                    activeClassName={css.active}
+                  <button
+                    className={`${css.footer__content__middle__i__navList__i} navlink`}
+                    onClick={() => link()}
                   >
-                    {navItem.name}
-                  </NavLink>
+                    {name}
+                  </button>
                 </li>
               ))}
             </ul>

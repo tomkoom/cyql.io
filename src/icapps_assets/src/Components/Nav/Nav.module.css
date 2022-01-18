@@ -32,6 +32,7 @@
 .nav__top ul li a,
 .nav__top ul li button {
   color: var(--highlightColor2);
+  font-size: var(--fontSize7);
 }
 
 .nav__top ul li a:hover,
@@ -119,8 +120,6 @@
 
 .nav__list__item button {
   height: 2.5rem;
-  font-size: var(--fontSize6);
-  color: var(--color);
 }
 
 .nav__list__item button:hover:not(.donateContainer) {
@@ -149,7 +148,7 @@
   padding: 0.33rem 0.66rem;
   cursor: pointer;
   letter-spacing: -0.25px;
-  box-shadow: var(--boxShadow2);
+  box-shadow: var(--boxShadow);
   border-radius: 0.5rem;
 }
 
@@ -230,11 +229,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
     position: absolute;
     top: 5rem;
     right: 2rem;
-    padding: 1.5rem 4rem 1.5rem 1.5rem;
+    padding: 1.5rem;
     border-radius: 0.5rem;
     background-color: var(--primaryColor);
     opacity: 1;

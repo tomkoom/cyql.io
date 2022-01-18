@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./UpcomingNfts.module.css";
 import Loader from "../../CatLoader";
 
