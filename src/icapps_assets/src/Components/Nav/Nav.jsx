@@ -172,10 +172,7 @@ const Nav = () => {
         </div>
 
         {/* menu btn */}
-        <div
-          className={css.nav__menuBtn}
-          onClick={() => setMenuIsOpen(!menuIsOpen)}
-        >
+        <div className={css.nav__menuBtn} onClick={() => setMenuIsOpen(true)}>
           {iconBars}
         </div>
 
@@ -187,7 +184,7 @@ const Nav = () => {
         ) : null}
 
         {/* navlinks */}
-        <ul className={menuIsOpen ? css.nav__list__active : css.nav__list}>
+        <ul className={css.nav__list}>
           {navLinks.map(({ name, link }, i) => (
             <li className={css.nav__list__item} key={i}>
               <button

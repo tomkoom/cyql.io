@@ -1,29 +1,40 @@
 /* Nav menu mobile */
 
 .navMenuMobile {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1rem;
+  transition: 250ms;
+}
+
+.navMenuMobile__content {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
   padding: 1.5rem;
   background-color: var(--primaryColor);
-  border-radius: 1rem;
-  z-index: 1;
+  border-radius: 1.5rem;
 }
 
-.navMenuMobile div ul {
+.navMenuMobile__content__navlist ul {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.navMenuMobile div ul li {
+.navMenuMobile__content__navlist ul li {
   color: var(--background);
 }
 
-.navMenuMobile div ul li .navLink__title {
+.navMenuMobile__content__navlist ul li .navLink__title {
   font-size: var(--fontSize5);
   font-weight: var(--black);
 }
@@ -33,10 +44,6 @@
   font-size: var(--fontSize7);
   line-height: 150%;
 }
-
-/* .navMenuMobile ul li:hover {
-  box-shadow: 0px 2px 0px 0px var(--highlightColor);
-} */
 
 .navMenuMobile button {
   color: var(--background);
@@ -63,11 +70,3 @@
 .socIcons__item {
   font-size: var(--fontSize6);
 }
-
-/* #twitter {
-  color: var(--colorTwitter);
-}
-
-#discord {
-  color: var(--colorDiscord);
-} */

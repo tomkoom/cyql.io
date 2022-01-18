@@ -4,7 +4,7 @@
   text-align: right;
   width: 100%;
   font-size: 0.9rem;
-  /* border-collapse: collapse; */
+  border-collapse: collapse;
   white-space: nowrap;
   margin-top: 0.75rem;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./NavMenuMobile.module.css";
 import { navLinks } from "../../NavLinks/navLinks";
 
@@ -12,48 +12,58 @@ const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 
 const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
+  // useEffect(() => {
+  //   if (menuIsOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [menuIsOpen]);
+
   return (
     <div className={css.navMenuMobile}>
-      <div>
-        <ul>
-          {navLinks.map(({ name, description, link }, i) => (
-            <li
-              onClick={() => {
-                link();
-                setMenuIsOpen(false);
-              }}
-              key={i}
+      <div className={css.navMenuMobile__content}>
+        <div className={css.navMenuMobile__content__navlist}>
+          <ul>
+            {navLinks.map(({ name, description, link }, i) => (
+              <li
+                onClick={() => {
+                  link();
+                  setMenuIsOpen(!menuIsOpen);
+                }}
+                key={i}
+              >
+                <p className={css.navLink__title}>{name}</p>
+                <p className={css.navLink__subtitle}>{description}</p>
+              </li>
+            ))}
+          </ul>
+          <div className={css.socIcons}>
+            <a
+              className={css.socIcons__item}
+              id={css.twitter}
+              href="https://twitter.com/DfinityApps"
+              rel="noreferrer noopener"
+              target="_blank"
             >
-              <p className={css.navLink__title}>{name}</p>
-              <p className={css.navLink__subtitle}>{description}</p>
-            </li>
-          ))}
-        </ul>
-        <div className={css.socIcons}>
-          <a
-            className={css.socIcons__item}
-            id={css.twitter}
-            href="https://twitter.com/DfinityApps"
-            rel="noreferrer noopener"
-            target="_blank"
-          >
-            {iconTwitter}
-          </a>
-          <a
-            className={css.socIcons__item}
-            id={css.discord}
-            href="https://discord.gg/AnjyrfvvXX"
-            rel="noreferrer noopener"
-            target="_blank"
-          >
-            {iconDiscord}
-          </a>
+              {iconTwitter}
+            </a>
+            <a
+              className={css.socIcons__item}
+              id={css.discord}
+              href="https://discord.gg/AnjyrfvvXX"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              {iconDiscord}
+            </a>
+          </div>
         </div>
-      </div>
 
-      <button className="navlink" onClick={() => setMenuIsOpen(!menuIsOpen)}>
-        {iconTimes}
-      </button>
+        <button className="navlink" onClick={() => setMenuIsOpen(!menuIsOpen)}>
+          {iconTimes}
+        </button>
+      </div>
     </div>
   );
 };

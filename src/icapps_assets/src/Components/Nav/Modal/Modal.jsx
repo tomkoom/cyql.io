@@ -8,7 +8,7 @@ const Modal = ({
   donateAmount,
   handleDonateBtnClick,
   transactionStatus,
-  children,
+  // children,
 }) => {
   // prevent from scrolling when modal is open
   useEffect(() => {
@@ -44,7 +44,12 @@ const Modal = ({
           </div>
         ) : (
           <div className={css.modal__card__content}>
-            <h3>Enter donation amount</h3>
+            <p className="bodyText">
+              icApps is developed and maintained by the IC enthusiasts. By
+              making a donation you supply us with coffee so we can keep on
+              going. Appreciate your support!
+            </p>
+            <h4>Enter donation amount</h4>
             <div className={css.modal__card__content__donationAmountInput}>
               <input
                 className={css.donationAmountInput}
