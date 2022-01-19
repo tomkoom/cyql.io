@@ -1,80 +1,14 @@
 /* App List */
 
-.li {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  grid-gap: 1rem;
-}
-
-.li__i {
+.viewbtns {
   display: flex;
-  flex-direction: column;
-}
-
-.li__i h3 {
-  font-size: var(--fontSize6);
-  font-weight: var(--black);
-  color: var(--primaryColor);
-  word-wrap: break-word;
-}
-
-.li__item__linkBlock__coverImg {
-  width: 100%;
-  padding-bottom: 33.33%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: var(--br05);
-}
-
-.li__item__linkBlock__appInfo {
-  display: flex;
-  padding: 0.75rem 0 1rem 0;
-  gap: 0.75rem;
-}
-
-.li__item__linkBlock__appInfo__logo {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.li__item__linkBlock__appInfo__description {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: var(--fontSize6);
-  overflow-wrap: break-word;
-}
-
-.li__item__linkBlock__appInfo__description ul {
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
-  align-items: center;
-  font-size: var(--fontSize7);
 }
 
-.li__item__linkBlock__appInfo__description ul li {
-  padding: 0 0.33rem;
-  border-radius: 0.25rem;
-  color: var(--secondaryColor);
-  box-shadow: var(--boxShadow);
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.33rem;
-}
-
-.li__item__linkBlock__appInfo__description ul li img {
-  max-width: 1rem;
-}
-
-.appDescription {
-  color: var(--secondaryColor);
-  font-size: 0.9rem;
-  line-height: 133%;
+.viewbtns button {
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--br025);
+  background-color: var(--underlay);
 }
 
 /* LOAD MORE BTN */
@@ -86,6 +20,7 @@
 }
 
 .appList__loadMoreBtn button {
+  text-align: center;
   background-color: transparent;
   background-color: var(--underlay);
   color: var(--primaryColor);

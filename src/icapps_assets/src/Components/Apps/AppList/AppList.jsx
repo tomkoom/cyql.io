@@ -1,23 +1,14 @@
 import React, { useState } from "react";
 import css from "./AppList.module.css";
-import { toApp } from "../../../Routes/routes";
-import { history } from "../../../Routes/history";
 import Loader from "../../../CatLoader";
 
-// Framer Motion
-import { motion } from "framer-motion";
-import { cardVariants } from "../../../motionVariants";
+// redux
+import { useDispatch } from "react-redux";
+import { setView } from "../../../Redux/viewSlice";
 
-// Redux
-import { useSelector } from "react-redux";
-
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
-const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
-const iconGithub = <FontAwesomeIcon icon={faGithub} />;
+// components
+import AppListRows from "./Views/AppListRows";
+import AppListGrid from "./Views/AppListGrid";
 
 const AppList = ({ loading, error, searchValue }) => {
   const [itemsVisible, setItemsVisible] = useState(36);
@@ -25,34 +16,25 @@ const AppList = ({ loading, error, searchValue }) => {
     setItemsVisible((prevValue) => prevValue + 36);
   };
 
-  const filteredByCategory = useSelector(
-    (state) => state.projectsFiltering.filteredByCategory
-  );
-  const filteredByTag = useSelector(
-    (state) => state.projectsFiltering.filteredByTag
-  );
-
-  // tags
-  const tagOpenSource = useSelector(
-    (state) => state.projectsFiltering.openSource.value
-  );
-  const tagDeployedToIc = useSelector(
-    (state) => state.projectsFiltering.deployedToIc.value
-  );
-  const tagPsychedelic = useSelector(
-    (state) => state.projectsFiltering.psychedelic.value
-  );
-  const tagToniqlabs = useSelector(
-    (state) => state.projectsFiltering.toniqlabs.value
-  );
-
-  const filteredProjects =
-    tagOpenSource || tagDeployedToIc || tagPsychedelic || tagToniqlabs
-      ? filteredByTag
-      : filteredByCategory;
+  const dispatch = useDispatch();
 
   return (
     <section className={css.appList}>
+      <div className={css.viewbtns}>
+        <button
+          className="navlink"
+          onClick={() => dispatch(setView({ value: "rows" }))}
+        >
+          Rows
+        </button>
+        <button
+          className="navlink"
+          onClick={() => dispatch(setView({ value: "grid" }))}
+        >
+          Grid
+        </button>
+      </div>
+
       {loading ? (
         <div className="center">
           <Loader />
@@ -60,113 +42,9 @@ const AppList = ({ loading, error, searchValue }) => {
       ) : error ? (
         <p className="center">Fetch error!</p>
       ) : (
-        <div className={css.li}>
-          {filteredProjects
-            .filter((p) => {
-              if (searchValue === "") {
-                return p;
-              } else if (
-                p.name.toLowerCase().includes(searchValue.toLowerCase())
-              ) {
-                return p;
-              }
-            })
-            // filter by tag
-            .filter((p) => {
-              if (tagOpenSource) {
-                return p.github;
-              } else if (tagDeployedToIc) {
-                return p.canister;
-              } else if (tagPsychedelic) {
-                return p.tags === "Psychedelic";
-              } else if (tagToniqlabs) {
-                return p.tags === "toniqlabs";
-              } else {
-                return p;
-              }
-            })
-            // load more
-            .slice(0, itemsVisible)
-            .map((d) => (
-              <motion.div
-                key={d.id}
-                className={css.li__i}
-                variants={cardVariants}
-                whileHover="whileHover"
-              >
-                <button className="linkBlock" onClick={() => toApp(d.id)}>
-                  <div
-                    className={css.li__item__linkBlock__coverImg}
-                    style={
-                      d.cover
-                        ? { backgroundImage: `url(${d.cover})` }
-                        : { display: "none" }
-                    }
-                  />
-                  <div className={css.li__item__linkBlock__appInfo}>
-                    <img
-                      className={css.li__item__linkBlock__appInfo__logo}
-                      src={d.logo}
-                      alt={d.name}
-                      style={d.logo ? null : { display: "none" }}
-                    />
-                    <div
-                      className={css.li__item__linkBlock__appInfo__description}
-                    >
-                      <h3>
-                        {d.name}
-                        &nbsp;
-                        {d.category == "Social Networks"
-                          ? "🎯"
-                          : d.category == "Games"
-                          ? "⚔️"
-                          : d.category == "dApps"
-                          ? "🔗"
-                          : d.category == "DeFi"
-                          ? "‍🌾"
-                          : d.category == "DAOs"
-                          ? "🏠"
-                          : d.category == "Infrastructure"
-                          ? "🚀"
-                          : d.category == "Wallets"
-                          ? "👛"
-                          : d.category == "Tools"
-                          ? "🛠️"
-                          : d.category == "Explorers"
-                          ? "🌎"
-                          : d.category == "NFTs"
-                          ? "🗿"
-                          : null}
-                      </h3>
-
-                      {d.github || d.canister || d.tags ? (
-                        <ul>
-                          {d.canister && <li>{iconDatabase} Deployed to IC</li>}
-                          {d.github && <li>{iconGithub} Open Source</li>}
-                          {d.tags == "Psychedelic" && (
-                            <li>
-                              <img
-                                src="https://psychedelic.ooo/images/11-2.svg"
-                                alt="Psychedelic"
-                              />
-                              &nbsp;
-                              {d.tags}
-                            </li>
-                          )}
-                          {d.tags == "toniqlabs" && <li>{d.tags}</li>}
-                        </ul>
-                      ) : null}
-
-                      <p className={css.appDescription}>
-                        {d.description && d.description.length > 70
-                          ? `${d.description.substring(0, 70)}…`
-                          : d.description}
-                      </p>
-                    </div>
-                  </div>
-                </button>
-              </motion.div>
-            ))}
+        <div>
+          <AppListRows searchValue={searchValue} itemsVisible={itemsVisible} />
+          <AppListGrid searchValue={searchValue} itemsVisible={itemsVisible} />
         </div>
       )}
       {loading ? null : (

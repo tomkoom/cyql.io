@@ -15,26 +15,35 @@ const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
   // useEffect(() => {
   //   if (menuIsOpen) {
   //     document.body.style.overflow = "hidden";
+  //     console.log(menuIsOpen);
   //   } else {
-  //     document.body.style.overflow = "unset";
+  //     document.body.style.overflow = "auto";
+  //     console.log(menuIsOpen);
   //   }
   // }, [menuIsOpen]);
 
   return (
-    <div className={css.navMenuMobile}>
-      <div className={css.navMenuMobile__content}>
+    <div
+      className={css.navMenuMobile}
+      onClick={() => {
+        setMenuIsOpen(false);
+      }}
+    >
+      <div
+        className={css.navMenuMobile__content}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={css.navMenuMobile__content__navlist}>
           <ul>
-            {navLinks.map(({ name, description, link }, i) => (
+            {navLinks.map(({ name, link }, i) => (
               <li
                 onClick={() => {
                   link();
-                  setMenuIsOpen(!menuIsOpen);
+                  setMenuIsOpen(false);
                 }}
                 key={i}
               >
                 <p className={css.navLink__title}>{name}</p>
-                <p className={css.navLink__subtitle}>{description}</p>
               </li>
             ))}
           </ul>
@@ -60,7 +69,7 @@ const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
           </div>
         </div>
 
-        <button className="navlink" onClick={() => setMenuIsOpen(!menuIsOpen)}>
+        <button className={css.menuBtn} onClick={() => setMenuIsOpen(false)}>
           {iconTimes}
         </button>
       </div>

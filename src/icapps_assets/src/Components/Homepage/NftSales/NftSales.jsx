@@ -13,7 +13,6 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
-const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
@@ -51,7 +50,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                     >
                       <span>
                         <h4 className={css.nft__mainColl__title}>{nft.name}</h4>
-                        <p className="bodyText">
+                        <p className={css.nft__mainColl__description}>
                           {nft.description && nft.description.length > 100
                             ? `${nft.description.substring(0, 100)}…`
                             : nft.description}

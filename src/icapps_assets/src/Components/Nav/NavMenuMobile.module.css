@@ -11,37 +11,42 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   transition: 250ms;
 }
 
 .navMenuMobile__content {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 1.5rem;
   background-color: var(--primaryColor);
   border-radius: 1.5rem;
 }
 
+.navMenuMobile__content__navlist {
+  margin: 0.5rem 0;
+}
+
 .navMenuMobile__content__navlist ul {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .navMenuMobile__content__navlist ul li {
   color: var(--background);
+  line-height: 150%;
 }
 
 .navMenuMobile__content__navlist ul li .navLink__title {
   font-size: var(--fontSize5);
-  font-weight: var(--black);
+  font-weight: var(--bold);
 }
 
 .navLink__subtitle {
   color: var(--tertiaryColor);
-  font-size: var(--fontSize7);
+  font-size: 0.9rem;
   line-height: 150%;
 }
 
@@ -69,4 +74,13 @@
 
 .socIcons__item {
   font-size: var(--fontSize6);
+}
+
+.menuBtn {
+  border: none;
+  background-color: transparent;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
 }

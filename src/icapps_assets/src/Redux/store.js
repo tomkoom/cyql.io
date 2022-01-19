@@ -8,6 +8,7 @@ import siteDataSlice from "./siteDataSlice";
 import projectsFilteringSlice from "./projectsFilteringSlice";
 import nftItemsSlice from "./nftItemsSlice";
 import themeSlice from "./themeSlice";
+import viewSlice from "./viewSlice";
 
 // redux-persist
 import {
@@ -28,12 +29,13 @@ const rootReducer = combineReducers({
 	projectsFiltering: projectsFilteringSlice,
 	nftItems: nftItemsSlice,
 	theme: themeSlice,
+	view: viewSlice,
 });
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ["theme", "searchProjects", "searchNfts", "projectsFiltering"]
+	whitelist: ["theme", "searchProjects", "searchNfts", "projectsFiltering", "view"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

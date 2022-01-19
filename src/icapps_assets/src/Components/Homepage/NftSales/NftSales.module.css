@@ -54,6 +54,12 @@
   font-size: var(--fontSize6);
 }
 
+.nft__mainColl__description {
+  font-size: 0.9rem;
+  line-height: 150%;
+  margin-top: 0.125rem;
+}
+
 .nftSales thead tr,
 .nftSales tbody tr {
   box-shadow: var(--underlineInset);

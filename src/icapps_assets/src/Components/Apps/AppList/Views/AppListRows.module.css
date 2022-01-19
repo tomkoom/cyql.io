@@ -1,0 +1,103 @@
+/* app list rows view */
+
+.t {
+  text-align: right;
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  white-space: nowrap;
+  margin-top: 1rem;
+}
+
+.t tbody tr {
+  box-shadow: var(--overline);
+}
+
+.t thead tr th:first-child,
+.t tbody tr td:first-child {
+  padding-left: 0.75rem;
+  text-align: left;
+}
+
+.t thead tr th:last-child,
+.t tbody tr td:last-child {
+  padding-right: 0.5rem;
+}
+
+.t thead tr th,
+.t tbody tr td {
+  padding: 1rem;
+}
+
+.t tbody tr {
+  cursor: pointer;
+}
+
+.t tbody tr:hover {
+  background-color: var(--underlay);
+}
+
+/* main coll */
+
+.maincoll > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.applogo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.maincoll div span {
+  white-space: normal;
+  height: 100%;
+  max-width: 16rem;
+  display: block;
+  overflow: auto;
+}
+
+.maincoll div span h4 {
+  font-size: var(--fontSize6);
+}
+
+.maincoll div span p {
+  color: var(--secondaryColor);
+  line-height: 150%;
+  margin-top: 0.125rem;
+}
+
+/* social links */
+.links ul {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* category */
+.category p {
+  display: inline;
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--br025);
+  background-color: var(--underlay);
+}
+
+/* nft preview */
+.nftpreview ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.nftpreview ul li div {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.25rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
