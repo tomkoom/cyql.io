@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import css from "./App.module.css";
 import { Switch, Route /* withRouter */ } from "react-router-dom";
 import "./Theme/theme.css";
 import "./App.css";
@@ -113,7 +112,7 @@ const App = () => {
         <Nav />
       </Route>
 
-      <div className={css.app}>
+      <div className="app__content">
         <Switch>
           <Route exact path="/">
             <Homepage

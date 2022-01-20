@@ -4,12 +4,12 @@ import css from "./AppListRows.module.css";
 // Routes
 import { toApp } from "../../../../Routes/routes";
 
-// State
+// Redux
 import { useSelector } from "react-redux";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink, faDatabase } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
   faDiscord,
@@ -26,6 +26,7 @@ const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 const AppListRows = ({ searchValue, itemsVisible }) => {
+  // state
   const view = useSelector((state) => state.view.view.value);
 
   const tagOpenSource = useSelector(
@@ -119,8 +120,6 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                     </td>
                     <td className={css.category}>
                       <p>{app.category}</p>
-                      {/* <br />
-                    {app.tags && <p>{app.tags}</p>} */}
                     </td>
 
                     {/* links */}

@@ -1,9 +1,7 @@
-/* KARLA */
+/* Karla */
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400&display=swap");
 
 :root {
-  /* FLUENT UI https://developer.microsoft.com/en-us/fluentui#/styles/web/colors/neutrals */
-
   /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
   --cBlack: #000000;
   --coolGray100: #121619;
@@ -21,7 +19,10 @@
   --colorGreen: #24a148;
   --colorRed: #fa4d56;
 
-  /* FONT SIZE */
+  --colorTwitter: #00acee;
+  --colorDiscord: #5865f2;
+
+  /* font-size */
   --fontSize1: 3.052rem;
   --fontSize2: 2.441rem;
   --fontSize3: 1.953rem;
@@ -30,27 +31,21 @@
   --fontSize6: 1rem;
   --fontSize7: 0.8rem;
 
-  /* FONT WEIGHT */
-  /* fw */
+  /* font-weight fw */
   --black: 800;
   --bold: 700;
   --medium: 400;
   --light: 300;
   --extraLight: 200;
 
-  /* FONT FAMILY */
+  /* font-famyli */
   --font: "Karla", sans-serif;
 
-  /* Border Radius */
+  /* border-radius */
   --br025: 0.25rem;
   --br05: 0.5rem;
   --br1: 1rem;
-
-  --colorTwitter: #00acee;
-  --colorDiscord: #5865f2;
 }
-
-/* MAIN */
 
 * {
   box-sizing: border-box;
@@ -63,15 +58,8 @@ html {
   font-size: 17px; /* Root font size */
 }
 
-body {
-  background-color: var(--background);
-}
-
-/* CONTAINERS */
 .container768,
-.container1280,
-.container1440,
-.container1600 {
+.container1440 {
   margin: 0 auto;
 }
 
@@ -79,107 +67,6 @@ body {
   max-width: 768px;
 }
 
-.container1280 {
-  max-width: 1280px;
-}
-
 .container1440 {
   max-width: 1440px;
-}
-
-.container1600 {
-  max-width: 1600px;
-}
-
-/* TYPOGRAPHY */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: var(--black);
-}
-
-h1 {
-  font-size: var(--fontSize1);
-}
-
-h2 {
-  font-size: var(--fontSize2);
-}
-
-h3 {
-  font-size: var(--fontSize3);
-}
-
-h4 {
-  font-size: var(--fontSize4);
-}
-
-h5 {
-  font-size: var(--fontSize5);
-}
-
-h6 {
-  font-size: var(--fontSize6);
-}
-
-.bodyText,
-.bodyTextLight,
-.bodyText2,
-.subtitle {
-  line-height: 150%;
-  word-wrap: break-word;
-}
-
-.bodyText {
-  font-weight: var(--medium);
-}
-
-.bodyTextLight {
-  font-weight: var(--light);
-}
-
-.bodyText2 {
-  font-size: var(--fontSize4);
-}
-
-.subtitle {
-  font-size: var(--fontSize7);
-}
-
-.gray40 {
-  color: var(--gray40);
-}
-
-.gray60 {
-  color: var(--gray60);
-}
-
-.gray80 {
-  color: var(--gray80);
-}
-
-/* UNSORTED */
-
-.center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 0 auto;
-}
-
-.gradient-text-highlight {
-  background: rgb(98, 0, 234);
-  background-image: linear-gradient(
-    45deg,
-    rgba(98, 0, 234, 1) 0%,
-    rgba(48, 79, 254, 1) 100%
-  );
-  padding: 4px;
-  border-radius: 4px;
-  color: white;
 }

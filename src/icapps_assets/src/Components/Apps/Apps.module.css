@@ -1,25 +1,7 @@
-/* Homepage */
+/* Apps */
 
-.homepage__hero {
+.apps {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.homepage__content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 1023px) {
-  .homepage__hero {
-    margin: 0 0 1rem 0;
-  }
-  .homepage__content {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
 }

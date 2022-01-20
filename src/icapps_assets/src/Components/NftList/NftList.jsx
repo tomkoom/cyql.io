@@ -17,7 +17,7 @@ const NftList = () => {
 
   const dispatch = useDispatch();
   // Handle search query
-  const handleSearchNfts = (e) => {
+  const searchNfts = (e) => {
     dispatch(setSearchNfts(e.target.value));
   };
 
@@ -79,7 +79,7 @@ const NftList = () => {
           <div>
             <SearchBar
               searchValue={searchNftsValue}
-              handleSearch={handleSearchNfts}
+              search={searchNfts}
               inputName="nft-list-search"
             />
             <div style={{ overflowX: "auto" }}>

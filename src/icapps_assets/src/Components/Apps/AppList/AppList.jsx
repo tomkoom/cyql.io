@@ -6,6 +6,17 @@ import Loader from "../../../CatLoader";
 import { useDispatch } from "react-redux";
 import { setView } from "../../../Redux/viewSlice";
 
+// fontawesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTh } from "@fortawesome/free-solid-svg-icons";
+
+const iconBars = (
+  <FontAwesomeIcon icon={faBars} color="rgba(255, 255, 255, 0.33)" />
+);
+const iconTh = (
+  <FontAwesomeIcon icon={faTh} color="rgba(255, 255, 255, 0.33)" />
+);
+
 // components
 import AppListRows from "./Views/AppListRows";
 import AppListGrid from "./Views/AppListGrid";
@@ -25,13 +36,13 @@ const AppList = ({ loading, error, searchValue }) => {
           className="navlink"
           onClick={() => dispatch(setView({ value: "rows" }))}
         >
-          Rows
+          {iconBars}&nbsp;&nbsp;Rows
         </button>
         <button
           className="navlink"
           onClick={() => dispatch(setView({ value: "grid" }))}
         >
-          Grid
+          {iconTh}&nbsp;&nbsp;Grid
         </button>
       </div>
 

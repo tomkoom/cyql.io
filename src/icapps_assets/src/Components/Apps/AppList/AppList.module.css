@@ -6,12 +6,16 @@
 }
 
 .viewbtns button {
-  padding: 0.25rem 0.5rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
   border-radius: var(--br025);
   background-color: var(--underlay);
 }
 
-/* LOAD MORE BTN */
+/* load more */
+
 .appList__loadMoreBtn {
   width: 100%;
   display: flex;

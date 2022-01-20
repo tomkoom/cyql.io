@@ -1,11 +1,23 @@
-/* App */
+/* app */
 
 .App {
   color: var(--primaryColor);
   background-color: var(--background);
 }
 
-/* Global styles */
+.app__content {
+  padding: 1rem 2rem;
+  margin: 0 auto;
+  max-width: calc(1440px + 4rem);
+}
+
+@media screen and (max-width: 1023px) {
+  .app__content {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+/* global styles */
 
 a {
   text-decoration: none;
@@ -22,11 +34,15 @@ ul {
   list-style-type: none;
 }
 
+body {
+  background-color: var(--primaryColor);
+}
+
 ::placeholder {
   color: var(--tertiaryColor);
 }
 
-/* Global classes */
+/* global classes */
 
 .navlink,
 .linkBlock {
@@ -50,4 +66,59 @@ ul {
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  box-shadow: var(--underline);
+}
+
+/* typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--black);
+}
+
+h1 {
+  font-size: var(--fontSize1);
+}
+
+h2 {
+  font-size: var(--fontSize2);
+}
+
+h3 {
+  font-size: var(--fontSize3);
+}
+
+h4 {
+  font-size: var(--fontSize4);
+}
+
+h5 {
+  font-size: var(--fontSize5);
+}
+
+h6 {
+  font-size: var(--fontSize6);
+}
+
+.bodyText,
+.subtitle {
+  line-height: 150%;
+  word-wrap: break-word;
+}
+
+.bodyText {
+  font-weight: var(--medium);
+}
+
+.subtitle {
+  font-size: var(--fontSize7);
 }

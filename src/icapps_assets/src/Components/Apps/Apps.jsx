@@ -1,20 +1,12 @@
 import React from "react";
 import css from "./Apps.module.css";
-import {
-  Heading,
-  SearchBar,
-  Tags,
-  AppList,
-  CategoryBtns,
-  // Ads,
-  // Highlights,
-} from "../";
+import { Heading, SearchBar, Tags, AppList, CategoryBtns } from "../";
 
-// Redux
+// redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchProjects } from "../../Redux/searchProjectsSlice";
 
-const Homepage = ({
+const Apps = ({
   category,
   setCategory,
   filteredProjects,
@@ -22,56 +14,42 @@ const Homepage = ({
   loading,
   error,
 }) => {
-  // redux
+  // state
   const searchProjectsValue = useSelector(
     (state) => state.searchProjects.value
   );
   const dispatch = useDispatch();
-  const handleSearchProjects = (e) => {
+  const searchProjects = (e) => {
     dispatch(setSearchProjects(e.target.value));
   };
 
   return (
-    <main className={`${css.homepage} container1440`}>
-      {/* HERO */}
-      <div className={css.homepage__hero}>
-        {/* <Highlights /> */}
-        <Heading />
+    <main className={css.apps}>
+      <Heading />
 
-        {/* Search */}
-        <SearchBar
-          searchValue={searchProjectsValue}
-          handleSearch={handleSearchProjects}
-          inputName="projects-search"
-        />
+      <SearchBar
+        searchValue={searchProjectsValue}
+        search={searchProjects}
+        inputName="projects-search"
+      />
 
-        {/* Tags */}
-        <Tags />
-      </div>
+      <Tags />
 
-      {/* CONTENT */}
-      <main className={css.homepage__content}>
-        {/* Category btns */}
-        <CategoryBtns
-          category={category}
-          setCategory={setCategory}
-          data={data}
-          loading={loading}
-        />
+      <CategoryBtns
+        category={category}
+        setCategory={setCategory}
+        data={data}
+        loading={loading}
+      />
 
-        {/* App List */}
-        <AppList
-          loading={loading}
-          error={error}
-          filteredProjects={filteredProjects}
-          searchValue={searchProjectsValue}
-        />
-
-        {/* ADS */}
-        {/* <Ads data={data} loading={loading} error={error} /> */}
-      </main>
+      <AppList
+        filteredProjects={filteredProjects}
+        searchValue={searchProjectsValue}
+        loading={loading}
+        error={error}
+      />
     </main>
   );
 };
 
-export default Homepage;
+export default Apps;
