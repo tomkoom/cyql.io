@@ -8,7 +8,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setFilterByTag } from "../../../Redux/projectsFilteringSlice";
+import { setFilterByTag } from "../../../State/projectsFilteringSlice";
 
 const iconGithub = <FontAwesomeIcon icon={faGithub} className={css.icon} />;
 const iconDatabase = <FontAwesomeIcon icon={faDatabase} className={css.icon} />;

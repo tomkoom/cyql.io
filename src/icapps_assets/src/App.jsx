@@ -16,16 +16,16 @@ import {
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIcpPrice } from "./Redux/icpPriceSlice";
+import { fetchIcpPrice } from "./State/icpPriceSlice";
 import {
   setProjects,
   setAds,
   setNftList,
   setUpcomingNfts,
   setDevResources,
-} from "./Redux/siteDataSlice";
-import { setFilterByCategory } from "./Redux/projectsFilteringSlice";
-import { fetchNftData } from "./Redux/nftItemsSlice";
+} from "./State/siteDataSlice";
+import { setFilterByCategory } from "./State/projectsFilteringSlice";
+import { fetchNftData } from "./State/nftItemsSlice";
 
 // Google API
 import useGoogleSheets from "use-google-sheets";

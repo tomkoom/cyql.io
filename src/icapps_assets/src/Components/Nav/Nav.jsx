@@ -22,7 +22,7 @@ import {
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setTheme } from "../../Redux/themeSlice";
+import { setTheme } from "../../State/themeSlice";
 
 const iconBars = <FontAwesomeIcon icon={faBars} />;
 // const iconFire = <FontAwesomeIcon icon={faFireAlt} />;

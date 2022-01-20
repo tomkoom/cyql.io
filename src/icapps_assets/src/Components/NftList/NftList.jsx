@@ -7,7 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchNfts } from "../../Redux/searchNftsSlice";
+import { setSearchNfts } from "../../State/searchNftsSlice";
 
 const NftList = () => {
   const [itemsVisible, setItemsVisible] = useState(12);

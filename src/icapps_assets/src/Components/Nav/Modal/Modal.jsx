@@ -45,9 +45,8 @@ const Modal = ({
         ) : (
           <div className={css.modal__card__content}>
             <p className="bodyText">
-              icApps is developed and maintained by the IC enthusiasts. By
-              making a donation you supply us with coffee so we can keep on
-              going. Appreciate your support!
+              icApps is developed and maintained by the IC enthusiasts. Supply
+              us with coffee so we can keep on going! Appreciate your support!
             </p>
             <h4>Enter donation amount</h4>
             <div className={css.modal__card__content__donationAmountInput}>

@@ -4,7 +4,7 @@ import { Heading, SearchBar, Tags, AppList, CategoryBtns } from "../";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchProjects } from "../../Redux/searchProjectsSlice";
+import { setSearchProjects } from "../../State/searchProjectsSlice";
 
 const Apps = ({
   category,

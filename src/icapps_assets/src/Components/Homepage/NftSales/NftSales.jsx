@@ -4,7 +4,7 @@ import { toUpcoming } from "../../../Routes/routes";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
   faTelegramPlane,
@@ -20,14 +20,16 @@ const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 const iconLink = <FontAwesomeIcon icon={faLink} />;
 
-const NftSales = ({ upcomingNftsFiltered, loader }) => {
+let socialLinks = [];
+
+const t = ({ upcomingNftsFiltered, loader }) => {
   return (
     <div>
       {upcomingNftsFiltered.length < 1 ? (
         loader
       ) : (
         <div style={{ overflowX: "auto" }}>
-          <table className={css.nftSales}>
+          <table className={css.t}>
             <thead>
               <tr>
                 <th>Name</th>
@@ -41,118 +43,59 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
             </thead>
             <tbody>
               {upcomingNftsFiltered.slice(0, 10).map((nft) => (
-                <tr key={nft.id} key={nft.id}>
-                  <td className={css.nft__mainColl}>
-                    <button
-                      onClick={() => toUpcoming()}
-                      // to={`a/${nft.id}`}
-                      className={`${css.nft__link} navlink`}
-                    >
-                      <span>
-                        <h4 className={css.nft__mainColl__title}>{nft.name}</h4>
-                        <p className={css.nft__mainColl__description}>
-                          {nft.description && nft.description.length > 100
-                            ? `${nft.description.substring(0, 100)}…`
-                            : nft.description}
-                        </p>
-                      </span>
-                    </button>
+                <tr
+                  onClick={() => toUpcoming()}
+                  key={nft.id}
+                  // to={`a/${nft.id}`}
+                >
+                  <td className={css.t__mainColl}>
+                    <span>
+                      <h4 className={css.t__mainColl__title}>{nft.name}</h4>
+                      <p className={css.t__mainColl__description}>
+                        {nft.description && nft.description.length > 70
+                          ? `${nft.description.substring(0, 70)}…`
+                          : nft.description}
+                      </p>
+                    </span>
                   </td>
 
-                  {/* Social Links */}
-                  <td className={css.nft__links}>
+                  {/* social links */}
+                  <td className={css.t__links}>
                     <ul>
-                      <li style={nft.website ? null : { display: "none" }}>
-                        <a
-                          href={nft.website}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          <span>{iconLink}</span>&nbsp;Website
-                        </a>
-                      </li>
-                      <li style={nft.twitter ? null : { display: "none" }}>
-                        <a
-                          href={nft.twitter}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          <span>{iconTwitter}</span>&nbsp;Twitter
-                        </a>
-                      </li>
-                      <li style={nft.discord ? null : { display: "none" }}>
-                        <a
-                          href={nft.discord}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          <span>{iconDiscord}</span>&nbsp;Discord
-                        </a>
-                      </li>
-                      <li style={nft.telegram ? null : { display: "none" }}>
-                        <a
-                          href={nft.telegram}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          <span>{iconTelegram}</span>&nbsp;Telegram
-                        </a>
-                      </li>
-                      <li style={nft.medium ? null : { display: "none" }}>
-                        <a
-                          href={nft.medium}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          <span>{iconMedium}</span>&nbsp;Medium
-                        </a>
-                      </li>
+                      {
+                        ((socialLinks = [
+                          { link: nft.website, icon: iconLink },
+                          { link: nft.twitter, icon: iconTwitter },
+                          { link: nft.discord, icon: iconDiscord },
+                          { link: nft.telegram, icon: iconTelegram },
+                          { link: nft.github, icon: iconGithub },
+                          { link: nft.medium, icon: iconMedium },
+                        ]),
+                        socialLinks.map(({ link, icon }, i) => (
+                          <li style={link ? null : { display: "none" }} key={i}>
+                            {icon}
+                          </li>
+                        )))
+                      }
                     </ul>
                   </td>
 
-                  {/* IC Links */}
-                  <td className={css.nft__links}>
+                  {/* ic links */}
+                  <td className={css.t__iclinks}>
                     <ul>
-                      <li style={nft.canister ? null : { display: "none" }}>
-                        <a
-                          href={nft.canister}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          {/* <span>{iconLink}</span>&nbsp; */}
-                          Canister
-                        </a>
-                      </li>
-                      <li style={nft.dscvr ? null : { display: "none" }}>
-                        <a
-                          href={nft.dscvr}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          {/* <span>{iconTwitter}</span>&nbsp; */}
-                          Dscvr
-                        </a>
-                      </li>
-                      <li style={nft.distrikt ? null : { display: "none" }}>
-                        <a
-                          href={nft.distrikt}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          {/* <span>{iconDiscord}</span>&nbsp; */}
-                          Distrikt
-                        </a>
-                      </li>
-                      <li style={nft.openChat ? null : { display: "none" }}>
-                        <a
-                          href={nft.openChat}
-                          rel="noreferrer noopener"
-                          target="_blank"
-                        >
-                          {/* <span>{iconTelegram}</span>&nbsp; */}
-                          openChat
-                        </a>
-                      </li>
+                      {
+                        ((socialLinks = [
+                          { link: nft.canister, name: "Canister" },
+                          { link: nft.dscvr, name: "Dscvr" },
+                          { link: nft.distrikt, name: "Distrikt" },
+                          { link: nft.openChat, name: "OpenChat" },
+                        ]),
+                        socialLinks.map(({ link, name }, i) => (
+                          <li style={link ? null : { display: "none" }} key={i}>
+                            {name}
+                          </li>
+                        )))
+                      }
                     </ul>
                   </td>
 
@@ -189,4 +132,4 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
   );
 };
 
-export default NftSales;
+export default t;

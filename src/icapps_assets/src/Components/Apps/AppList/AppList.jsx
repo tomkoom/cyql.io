@@ -3,8 +3,8 @@ import css from "./AppList.module.css";
 import Loader from "../../../CatLoader";
 
 // redux
-import { useDispatch } from "react-redux";
-import { setView } from "../../../Redux/viewSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setView } from "../../../State/viewSlice";
 
 // fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ const iconBars = (
   <FontAwesomeIcon icon={faBars} color="rgba(255, 255, 255, 0.33)" />
 );
 const iconTh = (
-  <FontAwesomeIcon icon={faTh} color="rgba(255, 255, 255, 0.33)" />
+  <FontAwesomeIcon icon={faTh} color= "rgba(255, 255, 255, 0.33)" />
 );
 
 // components
@@ -28,18 +28,19 @@ const AppList = ({ loading, error, searchValue }) => {
   };
 
   const dispatch = useDispatch();
+  const view = useSelector((state) => state.view.view.value);
 
   return (
     <section className={css.appList}>
       <div className={css.viewbtns}>
         <button
-          className="navlink"
+          className={view === "rows" ? `navlink ${css.active}` : "navlink"}
           onClick={() => dispatch(setView({ value: "rows" }))}
         >
           {iconBars}&nbsp;&nbsp;Rows
         </button>
         <button
-          className="navlink"
+          className={view === "grid" ? `navlink ${css.active}` : "navlink"}
           onClick={() => dispatch(setView({ value: "grid" }))}
         >
           {iconTh}&nbsp;&nbsp;Grid
