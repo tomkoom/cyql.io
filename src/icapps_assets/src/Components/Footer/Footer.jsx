@@ -94,7 +94,7 @@ const Footer = () => {
               </h5>
               <p className="bodyText">
                 icApps is developed and maintained by the IC enthusiasts. You
-                can support futher development by making a donation 🐦
+                can support the project by making a donation.
                 <br />
                 <span>
                   <a

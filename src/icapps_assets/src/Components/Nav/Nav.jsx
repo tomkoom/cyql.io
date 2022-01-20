@@ -61,6 +61,9 @@ const Nav = () => {
     (state) => state.siteData.upcomingNftsNum.value
   );
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
+  const icp24hPriceChange = +useSelector(
+    (state) => state.icpPrice.icp24hPriceChange.value
+  );
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -235,8 +238,20 @@ const Nav = () => {
           {theme === "light" ? iconSun : theme === "dark" ? iconMoon : null}
         </button>
         <div className={css.icpPriceBadge}>
-          <div className={css.icpPriceBadge__logo}></div>
-          {`$${icpPrice}`}
+          {/* <div className={css.icpPriceBadge__logo} /> */}
+          <div>
+            <p>ICP&nbsp;{`$${icpPrice}`}</p>&nbsp;
+            <span
+              className={css.icpPriceChange}
+              style={
+                icp24hPriceChange >= 0
+                  ? { color: "#24a148" }
+                  : { color: "#fa4d56" }
+              }
+            >{`${icp24hPriceChange.toFixed(2)}%`}</span>
+            &nbsp;
+            <span className={css.icpPriceChangeTime}>24h</span>
+          </div>
         </div>
         {/* lang */}
       </div>

@@ -204,13 +204,27 @@
   color: var(--primaryColor);
 }
 
+.icpPriceBadge div:last-of-type {
+  display: flex;
+  align-items: baseline;
+}
+
 .icpPriceBadge__logo {
   background-image: url("https://i.postimg.cc/SxsG0RHw/dfinity-logo.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 1rem;
-  height: 1rem;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.icpPriceChange,
+.icpPriceChangeTime {
+  font-size: 11px;
+}
+
+.icpPriceChangeTime {
+  color: var(--tertiaryColor);
 }
 
 @media screen and (max-width: 1023px) {
