@@ -36,6 +36,9 @@ let icLinks = [];
 
 const UpcomingNfts = () => {
   const upcomingNfts = useSelector((state) => state.siteData.upcomingNfts);
+  const upcomingNfts2 = useSelector(
+    (state) => state.siteData.upcomingNfts2.value
+  );
 
   return (
     <section className={css.nft}>

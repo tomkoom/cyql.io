@@ -13,7 +13,9 @@ import JoinCommunity from "./JoinCommunity/JoinCommunity";
 import { useSelector } from "react-redux";
 
 const Homepage = () => {
-  const upcomingNfts = useSelector((state) => state.siteData.upcomingNfts);
+  const upcomingNfts = useSelector(
+    (state) => state.siteData.upcomingNfts2.value
+  );
   const nftItems = useSelector((state) => state.nftItems.nftItems);
 
   return (
@@ -52,7 +54,7 @@ const Homepage = () => {
 
         <NftSales
           upcomingNftsFiltered={upcomingNfts.filter(
-            (nft) => nft.date !== "Sale is open"
+            (nft) => nft.nftSaleStatus !== "Open"
           )}
           loader={<Loader />}
         />
@@ -72,7 +74,7 @@ const Homepage = () => {
 
         <NftSales
           upcomingNftsFiltered={upcomingNfts.filter(
-            (nft) => nft.date === "Sale is open"
+            (nft) => nft.nftSaleStatus === "Open"
           )}
           loader={<Loader />}
         />

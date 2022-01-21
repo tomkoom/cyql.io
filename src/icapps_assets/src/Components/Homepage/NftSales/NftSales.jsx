@@ -1,8 +1,8 @@
 import React from "react";
 import css from "./NftSales.module.css";
-import { toUpcoming } from "../../../Routes/routes";
+import { toUpcoming, toApp } from "../../../Routes/routes";
 
-// FontAwesome
+// fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -43,11 +43,7 @@ const t = ({ upcomingNftsFiltered, loader }) => {
             </thead>
             <tbody>
               {upcomingNftsFiltered.slice(0, 10).map((nft) => (
-                <tr
-                  onClick={() => toUpcoming()}
-                  key={nft.id}
-                  // to={`a/${nft.id}`}
-                >
+                <tr onClick={() => toApp(nft.id)} key={nft.id}>
                   <td className={css.t__mainColl}>
                     <span>
                       <h4 className={css.t__mainColl__title}>{nft.name}</h4>
@@ -99,9 +95,9 @@ const t = ({ upcomingNftsFiltered, loader }) => {
                     </ul>
                   </td>
 
-                  <td>{nft.date}</td>
-                  <td>{nft.price}</td>
-                  <td>{nft.totalNfts}</td>
+                  <td>{nft.nftSaleDate}</td>
+                  <td>{nft.nftUnitPrice}</td>
+                  <td>{nft.nftUnits}</td>
                   <td className={css.nft__preview}>
                     <div>
                       {(() => {
@@ -109,11 +105,11 @@ const t = ({ upcomingNftsFiltered, loader }) => {
                         for (let i = 1; i <= 4; i++) {
                           nftPreviews.push(
                             <img
-                              src={nft[`img${i}`]}
+                              src={nft[`nftImg${i}`]}
                               style={
-                                nft[`img${i}`] ? null : { display: "none" }
+                                nft[`nftImg${i}`] ? null : { display: "none" }
                               }
-                              alt={`${nft.name} preview${i}`}
+                              alt={`${nft.name} NFT preview ${i}`}
                               key={i}
                             />
                           );

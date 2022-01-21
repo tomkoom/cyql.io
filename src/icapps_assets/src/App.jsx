@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPriceSlice";
 import {
   setProjects,
+  setUpcomingNfts2,
   setAds,
   setNftList,
   setUpcomingNfts,
@@ -64,6 +65,7 @@ const App = () => {
         dataDevResources,
       ] = data;
       dispatch(setProjects(dataProjects));
+      dispatch(setUpcomingNfts2(dataProjects));
       dispatch(setAds(dataAds));
       dispatch(setNftList(dataNftList));
       dispatch(setUpcomingNfts(dataUpcomingNfts));

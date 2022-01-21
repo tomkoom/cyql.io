@@ -6,6 +6,7 @@ const siteDataSlice = createSlice({
 		projects: [],
 		projectsNum: { value: null },
 		nftsNum: { value: null },
+		upcomingNfts2: { value: [] },
 		ads: [],
 		nftList: [],
 		upcomingNfts: [],
@@ -17,6 +18,9 @@ const siteDataSlice = createSlice({
 			state.projects = action.payload.data;
 			state.projectsNum.value = action.payload.data.length;
 			state.nftsNum.value = action.payload.data.filter(project => project.category === "NFTs").length;
+		},
+		setUpcomingNfts2(state, action) {
+			state.upcomingNfts2.value = action.payload.data.filter(project => project.nftSaleStatus === "Open" || project.nftSaleStatus === "Over" || project.nftSaleStatus === "Upcoming");
 		},
 		setAds(state, action) {
 			state.ads = action.payload.data;
@@ -34,5 +38,5 @@ const siteDataSlice = createSlice({
 	},
 });
 
-export const { setProjects, setAds, setNftList, setUpcomingNfts, setDevResources, } = siteDataSlice.actions;
+export const { setProjects, setUpcomingNfts2, setAds, setNftList, setUpcomingNfts, setDevResources, } = siteDataSlice.actions;
 export default siteDataSlice.reducer;
