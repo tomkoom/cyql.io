@@ -21,12 +21,13 @@
   font-size: 0.9rem;
   line-height: 150%;
   margin-top: 0.125rem;
+  width: 16rem;
   color: var(--secondaryColor);
   white-space: normal;
 }
 
-.t thead tr th:first-child,
-.t tbody tr td:first-child {
+.t thead tr th:nth-child(-n + 4),
+.t tbody tr td:nth-child(-n + 4) {
   text-align: left;
 }
 
@@ -54,7 +55,6 @@
 
 .t__links ul {
   display: flex;
-  justify-content: flex-end;
   gap: 0.25rem;
 }
 

@@ -198,7 +198,7 @@ const UpcomingNfts = () => {
                     <img
                       className={css.nft__card__preview__i}
                       src={nft[`img${i}`]}
-                      alt={`${nft.name} preview${i}`}
+                      alt={`${nft.name} preview ${i}`}
                       key={i}
                     />
                   );

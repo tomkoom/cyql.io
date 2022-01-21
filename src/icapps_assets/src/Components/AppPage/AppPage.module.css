@@ -1,10 +1,10 @@
-/* APP PAGE */
+/* app page */
 
 .appPage {
   padding: 2rem 0;
 }
 
-/* Back btn */
+/* back btn */
 
 .backBtn__container {
   width: 3rem;
@@ -21,13 +21,13 @@
   background-color: var(--underlay2);
 }
 
-/* Content */
+/* content */
 
-.appItem {
+.app {
   padding: 1rem 0;
 }
 
-.appItem__appCover {
+.app__cover {
   width: 100%;
   padding-bottom: 33.33%;
   background-size: cover;
@@ -36,30 +36,37 @@
   border-radius: 1.5rem;
 }
 
-.appItem__appInfo {
+.app__info {
   display: flex;
   gap: 1rem;
   margin: 1rem 0;
 }
 
-.appItem__appInfo__date {
+.app__info__logo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.app__info__caption__title {
+  font-size: var(--fontSize4);
+  font-weight: var(--black);
+}
+
+.app__info__date {
   margin-left: auto;
   color: var(--secondaryColor);
   font-weight: var(--light);
 }
 
-.appItem__appInfo__appCaption__title {
-  font-size: var(--fontSize4);
-  font-weight: var(--black);
-}
-
-.appItem__appInfo__appCaption__tags {
+.app__info__caption__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.appItem__appInfo__appCaption__tags__item {
+.app__info__caption__tags__item {
   display: inline-block;
   padding: 0.25rem 0.5rem;
   margin-top: 0.25rem;
@@ -69,11 +76,12 @@
   border-radius: 0.25rem;
 }
 
-/* NFT previews */
+/* nft previews */
+
 .nftImgs {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   gap: 0.5rem;
 }
 
@@ -88,16 +96,16 @@
   border-radius: 0.5rem;
 }
 
-/* NFT market data */
+/* nft market data */
 
-.appItem__nftMarketData {
+.nftMarketData {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
-.appItem__nftMarketData__item {
+.nftMarketData__item {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -106,44 +114,31 @@
   border-radius: 0.75rem;
 }
 
-.appItem__nftMarketData__item__title {
+.nftMarketData__item h5 {
   font-weight: var(--bold);
+  font-size: var(--fontSize6);
 }
 
-/* BUTTONS */
+/* btns */
 
-.appItem__btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.appItem__btns__item a,
-.appItem__btns__item__secondary a {
+.app__btn {
   display: inline-flex;
   align-items: center;
   height: 2.5rem;
   padding: 0 0.75rem;
-  border-radius: 0.5rem;
-}
-
-.appItem__btns__item a {
-  background-color: var(--underlay2);
-}
-
-.appItem__btns__item__secondary a {
+  border-radius: var(--br05);
   box-shadow: var(--boxShadow);
+  margin-bottom: 1rem;
 }
 
-.appItem__btns__item a:hover,
-.appItem__btns__item__secondary a:hover {
+.app__btn:hover {
   background-color: var(--primaryColor);
   color: var(--background);
 }
 
-/* Social links*/
-.appItem__socialIconsList {
+/* social links*/
+
+.links {
   padding: 0;
   margin: 0.75rem 0;
   display: flex;
@@ -152,11 +147,11 @@
   font-size: var(--fontSize5);
 }
 
-.appItem__socialIconsList__item {
+.links__item {
   border-radius: 0.5rem;
 }
 
-.appItem__socialIconsList__item a {
+.links__item a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -165,15 +160,8 @@
   color: white;
 }
 
-.appItem__socialIconsList__item a span {
+.links__item a span {
   font-size: var(--fontSize7);
-}
-
-.appItem__appInfo__logo {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 [data-social="Medium"] {
@@ -219,7 +207,8 @@
   border-radius: 50%;
 }
 
-/* UPDATE INFO BTN */
+/* edit info btn */
+
 .twitterDmButton {
   display: inline-block;
   color: var(--secondaryColor);

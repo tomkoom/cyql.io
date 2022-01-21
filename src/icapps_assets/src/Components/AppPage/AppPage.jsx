@@ -1,9 +1,10 @@
 import React from "react";
 import css from "./AppPage.module.css";
 import { useParams } from "react-router-dom";
-import { goBack, toNft } from "../../Routes/routes";
+import { goBack } from "../../Routes/routes";
 import { motion } from "framer-motion";
 import { socLinkBtns } from "../../motionVariants";
+import Loader from "../../Loader";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -12,7 +13,7 @@ import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
-  faGlobe,
+  faLink,
   faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -22,24 +23,24 @@ import {
   faMedium,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { history } from "../../Routes/history";
 
 const iconArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} size="xs" />;
-const iconGlobe = <FontAwesomeIcon icon={faGlobe} />;
+const iconLink = <FontAwesomeIcon icon={faLink} />;
 const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
-let icLinks = [];
 let nftItem = {};
 let socialLinks = [];
+let icLinks = [];
 
-const AppPage = ({ data, loading }) => {
+const AppPage = () => {
   const { id } = useParams();
   const nftItems = useSelector((state) => state.nftItems.nftItems);
+  const projects = useSelector((state) => state.siteData.projects);
 
   return (
     <section className={`${css.appPage} container768`}>
@@ -49,291 +50,252 @@ const AppPage = ({ data, loading }) => {
       </button>
 
       {/* content */}
-      {loading ? (
-        <p className="center">Loading...</p>
+      {projects.length < 1 ? (
+        <Loader />
       ) : (
-        data[0].data
-          .filter((d) => d.id === id)
-          .map((d) => (
-            <div key={d.id} className={css.appItem}>
-              <div
-                className={css.appItem__appCover}
-                style={
-                  d.cover
-                    ? {
-                        backgroundImage: `url(${d.cover})`,
-                      }
-                    : { display: "none" }
-                }
-              />
-              <div className={css.appItem__appInfo}>
-                {/* logo */}
-                <img
-                  className={css.appItem__appInfo__logo}
-                  src={d.logo}
-                  alt={d.name}
-                  style={{
-                    display: d.logo ? "null" : "none",
-                  }}
+        projects
+          .filter((project) => project.id === id)
+          .map((project) => (
+            <div className={css.app} key={project.id}>
+              {project.cover && (
+                <div
+                  className={css.app__cover}
+                  style={{ backgroundImage: `url(${project.cover})` }}
                 />
-                {/* title and tags */}
-                <div className={css.appItem__appInfo__appCaption}>
-                  <h2 className={css.appItem__appInfo__appCaption__title}>
-                    {d.name}
-                  </h2>
+              )}
 
-                  <div className={css.appItem__appInfo__appCaption__tags}>
-                    <span
-                      className={css.appItem__appInfo__appCaption__tags__item}
-                    >
-                      {d.category}
+              <div className={css.app__info}>
+                {/* logo */}
+                {project.logo && (
+                  <img
+                    className={css.app__info__logo}
+                    src={project.logo}
+                    alt={`${project.name} logo`}
+                  />
+                )}
+
+                {/* title and tags */}
+                <div className={css.app__info__caption}>
+                  <h3 className={css.app__info__caption__title}>
+                    {project.name}
+                  </h3>
+
+                  <div className={css.app__info__caption__tags}>
+                    <span className={css.app__info__caption__tags__item}>
+                      {project.category}
                     </span>
-                    <span
-                      style={d.tags ? null : { display: "none" }}
-                      className={css.appItem__appInfo__appCaption__tags__item}
-                    >
-                      {d.tags}
-                    </span>
+                    {project.tags && (
+                      <span className={css.app__info__caption__tags__item}>
+                        {project.tags}
+                      </span>
+                    )}
                   </div>
                 </div>
-
                 {/* date */}
-                <div className={css.appItem__appInfo__date}>{d.date}</div>
+                <div className={css.app__info__date}>{project.dateAdded}</div>
               </div>
 
-              <p className="bodyText">{d.description}</p>
-              <br />
+              <p className="bodyText">{project.description}</p>
 
-              {/* NFT IMAGES */}
-              <div
-                className={css.nftImgs}
-                style={d.nftImg1 ? null : { display: "none" }}
-              >
-                <div
-                  className={css.nftImgs__item}
-                  style={d.nftImg1 ? null : { display: "none" }}
-                >
-                  <img src={d.nftImg1} alt={`${d.name} nft1`} />
+              {/* nft images */}
+              {project.nftImg1 && (
+                <div className={css.nftImgs}>
+                  {(() => {
+                    let nftPreviews = [];
+                    for (let i = 1; i <= 4; i++) {
+                      nftPreviews.push(
+                        <div className={css.nftImgs__item} key={i}>
+                          <img
+                            src={project[`nftImg${i}`]}
+                            alt={`${project.name} nft preview ${i}`}
+                          />
+                        </div>
+                      );
+                    }
+                    return nftPreviews;
+                  })()}
                 </div>
-                <div
-                  className={css.nftImgs__item}
-                  style={d.nftImg2 ? null : { display: "none" }}
-                >
-                  <img src={d.nftImg2} alt={`${d.name} nft2`} />
-                </div>
-                <div
-                  className={css.nftImgs__item}
-                  style={d.nftImg3 ? null : { display: "none" }}
-                >
-                  <img src={d.nftImg3} alt={`${d.name} nft3`} />
-                </div>
-                <div
-                  className={css.nftImgs__item}
-                  style={d.nftImg4 ? null : { display: "none" }}
-                >
-                  <img src={d.nftImg4} alt={`${d.name} nft4`} />
-                </div>
-              </div>
+              )}
 
-              {/* NFT MARKET DATA */}
-              <div
-                style={
-                  nftItems
-                    ? nftItems.find((nftItem) => nftItem.name === d.name)
-                      ? null
-                      : { display: "none" }
-                    : null
-                }
-              >
-                {
-                  ((nftItem = nftItems
-                    ? nftItems.find((nftItem) => nftItem.name === d.name)
-                    : null),
-                  (
-                    <div className={css.appItem__nftMarketData}>
-                      {/* Volume */}
-                      <div className={css.appItem__nftMarketData__item}>
-                        <p className={css.appItem__nftMarketData__item__title}>
-                          Volume
-                        </p>
-                        <p className={css.appItem__nftMarketData__item__data}>
-                          {nftItem
-                            ? `${nftItem.salesInIcpFormatted} ICP`
-                            : null}
-                        </p>
-                      </div>
-                      {/* Sales */}
-                      <div className={css.appItem__nftMarketData__item}>
-                        <p className={css.appItem__nftMarketData__item__title}>
-                          Sales
-                        </p>
-                        <p className={css.appItem__nftMarketData__item__data}>
-                          {nftItem ? nftItem.sales : null}
-                        </p>
-                      </div>
-
-                      {/* Minted NFTs */}
-                      <div className={css.appItem__nftMarketData__item}>
-                        <p className={css.appItem__nftMarketData__item__title}>
-                          Minted NFTs
-                        </p>
-                        <p className={css.appItem__nftMarketData__item__data}>
-                          {nftItem ? nftItem.totalAssetsFormatted : null}
-                        </p>
-                      </div>
-
-                      {/* Listings */}
-                      <div className={css.appItem__nftMarketData__item}>
-                        <p className={css.appItem__nftMarketData__item__title}>
-                          Market Listings
-                        </p>
-                        <p className={css.appItem__nftMarketData__item__data}>
-                          {nftItem ? nftItem.listings : null}
-                        </p>
-                      </div>
+              {/* nft market data */}
+              {
+                ((nftItem = nftItems
+                  ? nftItems.find((nftItem) => nftItem.name === project.name)
+                  : null),
+                nftItem && (
+                  <div className={css.nftMarketData}>
+                    {/* volume */}
+                    <div className={css.nftMarketData__item}>
+                      <h5>Volume</h5>
+                      <p>{`${nftItem.salesInIcpFormatted} ICP`}</p>
                     </div>
-                  ))
-                }
-              </div>
 
-              <div className={css.appItem__btns}>
-                {/* Compare stats */}
-                {/* <div
-                  className={css.appItem__btns__item}
-                  style={d.category === "NFTs" ? null : { display: "none" }}
-                >
-                  <button onClick={() => toNft()}>Compare Stats</button>
-                </div> */}
-                {/* Trade */}
-                <div
-                  className={css.appItem__btns__item__secondary}
-                  style={d.marketUrl ? null : { display: "none" }}
-                >
-                  <a
-                    href={d.marketUrl}
-                    target="_blank"
-                    rel="norefferrer noopener"
-                  >
-                    Trade on Entrepot&nbsp;&nbsp;{iconArrowRight}
-                  </a>
-                </div>
-              </div>
+                    {/* sales */}
+                    <div className={css.nftMarketData__item}>
+                      <h5>Sales</h5>
+                      <p>{nftItem.sales}</p>
+                    </div>
 
-              <div className={css.linksContainer}>
-                {/* ic links */}
-                <div
-                  style={
-                    d.canister || d.dscvr || d.distrikt || d.openChat
-                      ? null
-                      : { display: "none" }
-                  }
+                    {/* minted nfts */}
+                    <div className={css.nftMarketData__item}>
+                      <h5>Minted NFTs</h5>
+                      <p>{nftItem.totalAssetsFormatted}</p>
+                    </div>
+
+                    {/* listings */}
+                    <div className={css.nftMarketData__item}>
+                      <h5>Market Listings</h5>
+                      <p className={css.nftMarketData__item__data}>
+                        {nftItem.listings}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              }
+
+              {project.marketUrl && (
+                <a
+                  className={css.app__btn}
+                  href={project.marketUrl}
+                  target="_blank"
+                  rel="norefferrer noopener"
                 >
-                  <p className="bodyText">IC Ecosystem</p>
-                  <ul className={css.appItem__socialIconsList}>
-                    {
-                      ((icLinks = [
-                        {
-                          name: "Canister",
-                          link: d.canister,
-                          icon: "🛢️",
-                          img: "",
-                        },
-                        {
-                          name: "Dscvr",
-                          link: d.dscvr,
-                          icon: "",
-                          img: "https://i.postimg.cc/ZqN5BX1m/dscvr.jpg",
-                        },
-                        {
-                          name: "Distrikt",
-                          link: d.distrikt,
-                          icon: "",
-                          img: "https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg",
-                        },
-                        {
-                          name: "Open Chat",
-                          link: d.openChat,
-                          icon: "",
-                          img: "",
-                        },
-                      ]),
-                      icLinks.map(({ name, link, icon, img }) => (
-                        <motion.li
-                          key={name}
-                          data-social={name}
-                          variants={socLinkBtns}
-                          whileHover="whileHover"
-                          className={css.appItem__socialIconsList__item}
-                          style={link ? null : { display: "none" }}
-                        >
-                          <a
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                  Trade on Entrepot&nbsp;&nbsp;{iconArrowRight}
+                </a>
+              )}
+
+              {/* links */}
+              <div>
+                {project.canister ||
+                project.dscvr ||
+                project.distrikt ||
+                project.openChat ? (
+                  <div>
+                    <p className="bodyText">IC Ecosystem</p>
+                    <ul className={css.links}>
+                      {
+                        ((icLinks = [
+                          {
+                            name: "Canister",
+                            link: project.canister,
+                            icon: "🛢️",
+                            img: "",
+                          },
+                          {
+                            name: "Dscvr",
+                            link: project.dscvr,
+                            icon: "",
+                            img: "https://i.postimg.cc/ZqN5BX1m/dscvr.jpg",
+                          },
+                          {
+                            name: "Distrikt",
+                            link: project.distrikt,
+                            icon: "",
+                            img: "https://i.postimg.cc/YqcjBq5f/distrikt-app-logo.jpg",
+                          },
+                          {
+                            name: "Open Chat",
+                            link: project.openChat,
+                            icon: "",
+                            img: "",
+                          },
+                        ]),
+                        icLinks.map(({ name, link, icon, img }) => (
+                          <motion.li
+                            key={name}
+                            data-social={name}
+                            variants={socLinkBtns}
+                            whileHover="whileHover"
+                            className={css.links__item}
+                            style={link ? null : { display: "none" }}
                           >
-                            {icon ? (
-                              icon
-                            ) : img ? (
-                              <img src={img} alt={`${name} logo`} />
-                            ) : null}
-                            <span>{name}</span>
-                          </a>
-                        </motion.li>
-                      )))
-                    }
-                  </ul>
-                </div>
+                            <a
+                              href={link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {icon ? (
+                                icon
+                              ) : img ? (
+                                <img src={img} alt={`${name} logo`} />
+                              ) : null}
+                              <span>{name}</span>
+                            </a>
+                          </motion.li>
+                        )))
+                      }
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                {/* SOCIAL MEDIA LINKS */}
-                <div
-                  style={
-                    d.website ||
-                    d.twitter ||
-                    d.discord ||
-                    d.github ||
-                    d.telegram ||
-                    d.medium
-                      ? null
-                      : { display: "none" }
-                  }
-                >
-                  <p className="bodyText">Social Media</p>
-
-                  <ul className={css.appItem__socialIconsList}>
-                    {
-                      ((socialLinks = [
-                        { name: "Website", link: d.website, icon: iconGlobe },
-                        { name: "Twitter", link: d.twitter, icon: iconTwitter },
-                        { name: "Discord", link: d.discord, icon: iconDiscord },
-                        {
-                          name: "Telegram",
-                          link: d.telegram,
-                          icon: iconTelegram,
-                        },
-                        { name: "GitHub", link: d.github, icon: iconGithub },
-                        { name: "Medium", link: d.medium, icon: iconMedium },
-                      ]),
-                      socialLinks.map(({ name, link, icon }) => (
-                        <motion.li
-                          key={name}
-                          data-social={name}
-                          variants={socLinkBtns}
-                          whileHover="whileHover"
-                          className={css.appItem__socialIconsList__item}
-                          style={link ? null : { display: "none" }}
-                        >
-                          <a
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                {project.website ||
+                project.twitter ||
+                project.discord ||
+                project.github ||
+                project.telegram ||
+                project.medium ? (
+                  <div>
+                    <p className="bodyText">Social Media</p>
+                    <ul className={css.links}>
+                      {
+                        ((socialLinks = [
+                          {
+                            name: "Website",
+                            link: project.website,
+                            icon: iconLink,
+                          },
+                          {
+                            name: "Twitter",
+                            link: project.twitter,
+                            icon: iconTwitter,
+                          },
+                          {
+                            name: "Discord",
+                            link: project.discord,
+                            icon: iconDiscord,
+                          },
+                          {
+                            name: "Telegram",
+                            link: project.telegram,
+                            icon: iconTelegram,
+                          },
+                          {
+                            name: "GitHub",
+                            link: project.github,
+                            icon: iconGithub,
+                          },
+                          {
+                            name: "Medium",
+                            link: project.medium,
+                            icon: iconMedium,
+                          },
+                        ]),
+                        socialLinks.map(({ name, link, icon }) => (
+                          <motion.li
+                            key={name}
+                            data-social={name}
+                            variants={socLinkBtns}
+                            whileHover="whileHover"
+                            className={css.links__item}
+                            style={link ? null : { display: "none" }}
                           >
-                            {icon} <span>{name}</span>
-                          </a>
-                        </motion.li>
-                      )))
-                    }
-                  </ul>
-                </div>
+                            <a
+                              href={link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {icon} <span>{name}</span>
+                            </a>
+                          </motion.li>
+                        )))
+                      }
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
 
               <a
@@ -344,7 +306,6 @@ const AppPage = ({ data, loading }) => {
               >
                 Edit the project info
               </a>
-              {/* END APP ITEM */}
             </div>
           ))
       )}
