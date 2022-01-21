@@ -8,12 +8,9 @@
   margin-bottom: 1rem;
 }
 
-.nft__hero h2 {
-  margin-bottom: 0.25rem;
-}
-
 .nft__hero p {
   color: var(--secondaryColor);
+  max-width: 32rem;
 }
 
 /* Media partners badge */
@@ -21,7 +18,7 @@
 .mediaPartners {
   display: flex;
   align-items: center;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0 0.75rem 0;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   background-color: var(--underlay);

@@ -8,7 +8,6 @@ export { default as NftList } from "./NftList/NftList";
 export { default as SubmitApp } from "./SubmitApp/SubmitApp";
 
 // homepage.jsx
-export { default as Heading } from "./Apps/Heading/Heading";
 export { default as AppList } from "./Apps/AppList/AppList";
 export { default as CategoryBtns } from "./Apps/CategoryBtns/CategoryBtns";
 export { default as Ads } from "./Apps/Ads/Ads";

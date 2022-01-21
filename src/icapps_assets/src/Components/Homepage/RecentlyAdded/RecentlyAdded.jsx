@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./RecentlyAdded.module.css";
-import { toApp } from "../../../Routes/routes";
+import { toApp, toApps } from "../../../Routes/routes";
 import Loader from "../../../Loader";
 
 // Framer Motion
@@ -82,14 +82,14 @@ const RecentlyAdded = () => {
         ))
       )}
       {apps.length > 0 && (
-        <motion.Link
-          to="/apps"
-          className={css.viewAllAppsCard}
+        <motion.button
+          className={`${css.viewAllAppsCard} navlink`}
+          onClick={() => toApps()}
           variants={cardVariants}
           whileHover="whileHover"
         >
           View all {apps.length} projects &gt;
-        </motion.Link>
+        </motion.button>
       )}
     </ul>
   );

@@ -251,7 +251,7 @@ const SubmitApp = () => {
     <section className={`${css.sApp} container768`}>
       {!isSubmitted ? (
         <div>
-          <h2 className={css.sApp__title}>Submit Your Project</h2>
+          <h2 className="pageTitle">Submit Your Project</h2>
           <form className={css.sApp__form} onSubmit={handleSubmit}>
             {/* NAME */}
 

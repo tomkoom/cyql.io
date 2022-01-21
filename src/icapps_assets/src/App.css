@@ -75,6 +75,11 @@ body {
   box-shadow: var(--underline);
 }
 
+.pageTitle {
+  font-size: var(--fontSize2);
+  margin-bottom: 0.5rem;
+}
+
 /* typography */
 
 h1,
@@ -84,6 +89,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--black);
+  line-height: 100%;
 }
 
 h1 {

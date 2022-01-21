@@ -13,10 +13,6 @@
   margin-bottom: 1.5rem;
 }
 
-.nft__hero__heading h2 {
-  margin-bottom: 0.5rem;
-}
-
 .nft__hero__heading h2 span {
   font-weight: var(--medium);
   font-size: var(--fontSize4);

@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Apps.module.css";
-import { Heading, SearchBar, Tags, AppList, CategoryBtns } from "../";
+import { SearchBar, Tags, AppList, CategoryBtns } from "../";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -25,7 +25,7 @@ const Apps = ({
 
   return (
     <main className={css.apps}>
-      <Heading />
+      <h2 className="pageTitle">Discover new projects</h2>
 
       <SearchBar
         searchValue={searchProjectsValue}

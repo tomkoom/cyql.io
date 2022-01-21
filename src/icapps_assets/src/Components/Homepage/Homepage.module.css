@@ -8,11 +8,6 @@
 
 /* Hero */
 
-.home__hero__title {
-  line-height: 100%;
-  color: var(--primaryColor);
-}
-
 .home__hero p {
   margin-top: 0.25rem;
   max-width: 24rem;

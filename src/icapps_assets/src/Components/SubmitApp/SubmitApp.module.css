@@ -1,14 +1,10 @@
 /* Submit app */
 
-.sApp__title {
-  margin-bottom: 1.5rem;
-}
-
 .sApp__form {
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
-  margin-bottom: 3rem;
+  margin: 1.5rem 0;
 }
 
 .sApp__form__group {

@@ -44,7 +44,7 @@ const UpcomingNfts = () => {
     <section className={css.nft}>
       {/* Hero */}
       <div className={css.nft__hero}>
-        <h2>Upcoming NFT Sales &#38; Airdrops</h2>
+        <h2 className="pageTitle">Upcoming NFT Sales &#38; Airdrops</h2>
         <p className="bodyText">
           {/* Information on this page should not be considered as financial advice. */}
           Please note: We do not guarantee information provided on this page is

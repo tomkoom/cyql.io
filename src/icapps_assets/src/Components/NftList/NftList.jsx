@@ -43,7 +43,7 @@ const NftList = () => {
         <div>
           <div className={css.nft__hero}>
             <div className={css.nft__hero__heading}>
-              <h2>
+              <h2 className="pageTitle">
                 NFT Collections <span>&#40;{nftItems.length}&#41;</span>
               </h2>
               <p className="bodyText">

@@ -21,7 +21,7 @@ const Homepage = () => {
   return (
     <main className={css.home}>
       <section className={css.home__hero}>
-        <h2 className={css.home__hero__title}>IC projects community portal</h2>
+        <h2 className="pageTitle">IC projects community portal</h2>
         <p className="bodyText">
           Discover new apps, keep an eye out for upcoming NFT sales, compare NFT
           collections stats and more.
