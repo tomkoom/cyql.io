@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./AppList.module.css";
 import Loader from "../../../CatLoader";
+
+// components
+import AppListRows from "./Views/AppListRows";
+import AppListGrid from "./Views/AppListGrid";
+import LoadMorebtn from "../../../Assets/LoadMoreBtn/LoadMorebtn";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -14,18 +19,13 @@ const iconBars = (
   <FontAwesomeIcon icon={faBars} color="rgba(255, 255, 255, 0.33)" />
 );
 const iconTh = (
-  <FontAwesomeIcon icon={faTh} color= "rgba(255, 255, 255, 0.33)" />
+  <FontAwesomeIcon icon={faTh} color="rgba(255, 255, 255, 0.33)" />
 );
 
-// components
-import AppListRows from "./Views/AppListRows";
-import AppListGrid from "./Views/AppListGrid";
-
 const AppList = ({ loading, error, searchValue }) => {
-  const [itemsVisible, setItemsVisible] = useState(36);
-  const showMoreItems = () => {
-    setItemsVisible((prevValue) => prevValue + 36);
-  };
+  const itemsVisible = useSelector(
+    (state) => state.loadMore.itemsVisible.value
+  );
 
   const dispatch = useDispatch();
   const view = useSelector((state) => state.view.view.value);
@@ -59,13 +59,8 @@ const AppList = ({ loading, error, searchValue }) => {
           <AppListGrid searchValue={searchValue} itemsVisible={itemsVisible} />
         </div>
       )}
-      {loading ? null : (
-        <div className={css.appList__loadMoreBtn}>
-          <button onClick={showMoreItems}>
-            Load more projects &#40;+36&#41;
-          </button>
-        </div>
-      )}
+
+      <LoadMorebtn loading={loading} />
     </section>
   );
 };

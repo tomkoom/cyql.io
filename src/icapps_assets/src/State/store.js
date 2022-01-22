@@ -9,6 +9,7 @@ import projectsFilteringSlice from "./projectsFilteringSlice";
 import nftItemsSlice from "./nftItemsSlice";
 import themeSlice from "./themeSlice";
 import viewSlice from "./viewSlice";
+import loadMore from "./loadMore";
 
 // redux-persist
 import {
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
 	nftItems: nftItemsSlice,
 	theme: themeSlice,
 	view: viewSlice,
+	loadMore,
 });
 
 const persistConfig = {

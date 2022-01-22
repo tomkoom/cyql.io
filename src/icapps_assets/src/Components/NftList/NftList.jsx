@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./NftList.module.css";
 import Loader from "../../CatLoader";
 
@@ -8,15 +8,14 @@ import SearchBar from "../SearchBar/SearchBar";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchNfts } from "../../State/searchNftsSlice";
+import LoadMoreBtn from "../../Assets/LoadMoreBtn/LoadMorebtn";
 
 const NftList = () => {
-  const [itemsVisible, setItemsVisible] = useState(12);
-  const showMoreItems = () => {
-    setItemsVisible((prevValue) => prevValue + 12);
-  };
+  const itemsVisible = useSelector(
+    (state) => state.loadMore.itemsVisible.value
+  );
 
   const dispatch = useDispatch();
-  // Handle search query
   const searchNfts = (e) => {
     dispatch(setSearchNfts(e.target.value));
   };
@@ -190,11 +189,7 @@ const NftList = () => {
               </table>
             </div>
           </div>
-          <div className={css.nft__loadMoreBtn}>
-            <button onClick={showMoreItems}>
-              Load more projects &#40;+12&#41;
-            </button>
-          </div>
+          <LoadMoreBtn />
         </div>
       ) : (
         <Loader />

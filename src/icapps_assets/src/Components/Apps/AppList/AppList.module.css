@@ -1,4 +1,4 @@
-/* App List */
+/* app list */
 
 .viewbtns {
   display: flex;
@@ -20,30 +20,4 @@
 
 .active * {
   color: white;
-}
-
-/* load more */
-
-.appList__loadMoreBtn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 1.5rem 0;
-}
-
-.appList__loadMoreBtn button {
-  text-align: center;
-  background-color: transparent;
-  background-color: var(--underlay);
-  color: var(--primaryColor);
-  border: none;
-  width: 100%;
-  padding: 1rem;
-  border-radius: var(--br05);
-  font-size: var(--fontSize6);
-  cursor: pointer;
-}
-
-.appList__loadMoreBtn button:hover {
-  background-color: var(--underlay2);
 }

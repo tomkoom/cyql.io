@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Footer.module.css";
-import LogoComponent from "../../Assets/LogoComponent/LogoComponent";
+import Logo from "../../Assets/Logo/Logo";
 import {
   toHome,
   toApps,
@@ -114,7 +114,7 @@ const Footer = () => {
           {/* Logo */}
           <div className={css.footer__content__middle__i}>
             <div className={css.footer__content__middle__i__logo}>
-              <LogoComponent />
+              <Logo />
               <p>
                 IC projects <br /> community portal
               </p>
