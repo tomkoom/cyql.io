@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 
 const Homepage = () => {
   const upcomingNfts = useSelector(
-    (state) => state.siteData.upcomingNfts2.value
+    (state) => state.siteData.upcomingNfts.value
   );
   const nftItems = useSelector((state) => state.nftItems.nftItems);
 

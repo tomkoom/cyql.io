@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route /* withRouter */ } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import "./Theme/theme.css";
 import "./App.css";
 
@@ -16,17 +16,10 @@ import {
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIcpPrice } from "./State/icpPriceSlice";
-import {
-  setProjects,
-  setUpcomingNfts2,
-  setAds,
-  setNftList,
-  setUpcomingNfts,
-  setDevResources,
-} from "./State/siteDataSlice";
-import { setFilterByCategory } from "./State/projectsFilteringSlice";
-import { fetchNftData } from "./State/nftItemsSlice";
+import { fetchIcpPrice } from "./State/icpPrice";
+import { setProjects, setUpcomingNfts, setNftList } from "./State/siteData";
+import { setFilterByCategory } from "./State/projectsFiltering";
+import { fetchNftData } from "./State/nftItems";
 
 // Google API
 import useGoogleSheets from "use-google-sheets";
@@ -38,47 +31,43 @@ const googleSheetId = k.GOOGLE_SHEET_ID;
 
 const App = () => {
   const [category, setCategory] = useState("All");
+  const { data, loading, error } = useGoogleSheets({
+    apiKey: googleSheetsApiKey,
+    sheetId: googleSheetId,
+    sheetsNames: ["Apps", "NftList"],
+  });
 
   // state
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme.value);
-
-  const { data, loading, error } = useGoogleSheets({
-    apiKey: googleSheetsApiKey,
-    sheetId: googleSheetId,
-    sheetsNames: ["Apps", "Ads", "NftList", "Upcoming-NFTs", "DevResources"],
-  });
-
-  // Get data from state
-  const projects = useSelector((state) => state.siteData.projects);
-  const nftList = useSelector((state) => state.siteData.nftList);
+  const projects = useSelector((state) => state.siteData.projects.value);
+  const nftList = useSelector((state) => state.siteData.nftList.value);
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
 
-  // Set projects state when GS data is loaded
   useEffect(() => {
     if (!loading) {
-      const [
-        dataProjects,
-        dataAds,
-        dataNftList,
-        dataUpcomingNfts,
-        dataDevResources,
-      ] = data;
-      dispatch(setProjects(dataProjects));
-      dispatch(setUpcomingNfts2(dataProjects));
-      dispatch(setAds(dataAds));
-      dispatch(setNftList(dataNftList));
-      dispatch(setUpcomingNfts(dataUpcomingNfts));
-      dispatch(setDevResources(dataDevResources));
+      const [dataProjects, dataNftList] = data;
+      dispatch(setProjects({ value: dataProjects.data }));
+      dispatch(
+        setUpcomingNfts({
+          value: dataProjects.data.filter(
+            (project) =>
+              project.nftSaleStatus === "Open" ||
+              project.nftSaleStatus === "Over" ||
+              project.nftSaleStatus === "Upcoming"
+          ),
+        })
+      );
+      dispatch(setNftList({ value: dataNftList.data }));
     }
   }, [loading]);
 
-  // Set ICP price state
+  // set icp price
   useEffect(() => {
     dispatch(fetchIcpPrice());
   }, []);
 
-  // Set filtered categories when category buttons are clicked
+  // set filtered categories
   useEffect(() => {
     if (projects.length) {
       category == "All"
@@ -89,7 +78,7 @@ const App = () => {
     }
   }, [projects, category]);
 
-  // Set NFT market data when GS data is loaded
+  // set nft market data
   useEffect(() => {
     if (nftList.length && icpPrice) {
       const nftListLength = nftList.length;
@@ -163,5 +152,4 @@ const App = () => {
   );
 };
 
-// export default withRouter(App);
 export default App;

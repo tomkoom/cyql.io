@@ -33,10 +33,10 @@ const icpPriceSlise = createSlice({
       state.icpPriceStatus = 'loading';
       state.icpPriceError = null;
     },
-    [fetchIcpPrice.fulfilled]: (state, action) => {
+    [fetchIcpPrice.fulfilled]: (state, { payload }) => {
       state.icpPriceStatus = "resolved";
-      state.icpPrice = action.payload["internet-computer"].usd;
-      state.icp24hPriceChange.value = action.payload["internet-computer"].usd_24h_change;
+      state.icpPrice = payload["internet-computer"].usd;
+      state.icp24hPriceChange.value = payload["internet-computer"].usd_24h_change;
     },
     [fetchIcpPrice.rejected]: (state, action) => {
       state.icpPriceStatus = "rejected";

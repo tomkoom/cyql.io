@@ -25,28 +25,25 @@ const categories = [
 ];
 
 const CategoryBtns = ({ category, setCategory }) => {
-  const projects = useSelector((state) => state.siteData.projects);
+  const projects = useSelector((state) => state.siteData.projects.value);
 
   return (
-    <aside className={css.categoryBtns}>
-      {/* <h6 className={css.categoryBtns__caption}>Categories</h6> */}
-      <div className={css.categoryBtns__content}>
-        {categories.map((cat, i) => (
-          <CategoryBtnsItem
-            category={cat.name}
-            setCategory={setCategory}
-            categoryActive={category === cat.name ? true : false}
-            icon={cat.icon}
-            projectsNum={
-              cat.name === "All"
-                ? projects.length
-                : projects.filter((p) => p.category == cat.name).length
-            }
-            key={i}
-          />
-        ))}
-      </div>
-    </aside>
+    <div className={css.categoryBtns}>
+      {categories.map((cat, i) => (
+        <CategoryBtnsItem
+          category={cat.name}
+          setCategory={setCategory}
+          categoryActive={category === cat.name ? true : false}
+          icon={cat.icon}
+          projectsNum={
+            cat.name === "All"
+              ? projects.length
+              : projects.filter((p) => p.category == cat.name).length
+          }
+          key={i}
+        />
+      ))}
+    </div>
   );
 };
 

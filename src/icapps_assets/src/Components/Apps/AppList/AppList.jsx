@@ -9,7 +9,7 @@ import LoadMorebtn from "../../../Assets/LoadMoreBtn/LoadMorebtn";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { setView } from "../../../State/viewSlice";
+import { setView } from "../../../State/view";
 
 // fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

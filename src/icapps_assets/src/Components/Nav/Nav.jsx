@@ -22,7 +22,7 @@ import {
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setTheme } from "../../State/themeSlice";
+import { setTheme } from "../../State/theme";
 
 const iconBars = <FontAwesomeIcon icon={faBars} />;
 // const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
@@ -53,7 +53,7 @@ const Nav = () => {
   const [modalIsActive, setModalIsActive] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState();
 
-  // State
+  // state
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.theme.theme.value);
   const projectsNum = useSelector((state) => state.siteData.projectsNum.value);

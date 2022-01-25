@@ -1,14 +1,14 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 
-// Reducers
-import icpPriceSlice from "./icpPriceSlice";
-import searchProjectsSlice from "./searchProjectsSlice";
-import searchNftsSlice from "./searchNftsSlice";
-import siteDataSlice from "./siteDataSlice";
-import projectsFilteringSlice from "./projectsFilteringSlice";
-import nftItemsSlice from "./nftItemsSlice";
-import themeSlice from "./themeSlice";
-import viewSlice from "./viewSlice";
+// reducers
+import icpPrice from "./icpPrice";
+import siteData from "./siteData";
+import searchProjects from "./searchProjects";
+import searchNfts from "./searchNfts";
+import projectsFiltering from "./projectsFiltering";
+import nftItems from "./nftItems";
+import theme from "./theme";
+import view from "./view";
 import loadMore from "./loadMore";
 
 // redux-persist
@@ -23,14 +23,14 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 const rootReducer = combineReducers({
-	icpPrice: icpPriceSlice,
-	siteData: siteDataSlice,
-	searchProjects: searchProjectsSlice,
-	searchNfts: searchNftsSlice,
-	projectsFiltering: projectsFilteringSlice,
-	nftItems: nftItemsSlice,
-	theme: themeSlice,
-	view: viewSlice,
+	icpPrice,
+	siteData,
+	searchProjects,
+	searchNfts,
+	projectsFiltering,
+	nftItems,
+	theme,
+	view,
 	loadMore,
 });
 

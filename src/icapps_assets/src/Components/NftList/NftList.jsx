@@ -7,7 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchNfts } from "../../State/searchNftsSlice";
+import { setSearchNfts } from "../../State/searchNfts";
 import LoadMoreBtn from "../../Assets/LoadMoreBtn/LoadMorebtn";
 
 const NftList = () => {

@@ -1,24 +1,7 @@
-/* Category Buttons */
+/* category btns */
 
-.categoryBtns__caption {
-  font-weight: var(--medium);
-  margin-bottom: 0.5rem;
-}
-
-.categoryBtns__content {
+.categoryBtns {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 }
-
-/* @media screen and (max-width: 1023px) {
-  .tags__content {
-    position: inherit;
-    gap: 10px;
-
-    flex-wrap: wrap;
-    height: 108px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-} */

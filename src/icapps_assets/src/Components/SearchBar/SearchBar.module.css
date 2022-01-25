@@ -1,4 +1,4 @@
-/* SEARCH */
+/* search */
 
 .search {
   position: relative;
@@ -16,8 +16,6 @@
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
   color: var(--primaryColor);
-
-  /* clean default styles */
   border: none;
   outline: none;
 }

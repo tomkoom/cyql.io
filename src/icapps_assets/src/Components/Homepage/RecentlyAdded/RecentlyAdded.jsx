@@ -19,7 +19,7 @@ const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
 const iconGithub = <FontAwesomeIcon icon={faGithub} />;
 
 const RecentlyAdded = () => {
-  const apps = useSelector((state) => state.siteData.projects);
+  const apps = useSelector((state) => state.siteData.projects.value);
 
   return (
     <ul className={css.appLi}>

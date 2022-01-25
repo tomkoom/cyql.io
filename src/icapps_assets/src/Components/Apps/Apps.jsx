@@ -4,16 +4,9 @@ import { SearchBar, Tags, AppList, CategoryBtns } from "../";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchProjects } from "../../State/searchProjectsSlice";
+import { setSearchProjects } from "../../State/searchProjects";
 
-const Apps = ({
-  category,
-  setCategory,
-  filteredProjects,
-  data,
-  loading,
-  error,
-}) => {
+const Apps = ({ category, setCategory, data, loading, error }) => {
   // state
   const searchProjectsValue = useSelector(
     (state) => state.searchProjects.value
@@ -43,7 +36,6 @@ const Apps = ({
       />
 
       <AppList
-        filteredProjects={filteredProjects}
         searchValue={searchProjectsValue}
         loading={loading}
         error={error}
