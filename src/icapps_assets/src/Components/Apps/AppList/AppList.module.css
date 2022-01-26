@@ -14,10 +14,14 @@
   box-shadow: var(--boxShadow);
 }
 
+.viewbtns button span {
+  color: var(--tertiaryColor);
+}
+
 .active {
   background-color: var(--underlay);
 }
 
 .active * {
-  color: white;
+  color: var(--primaryColor);
 }

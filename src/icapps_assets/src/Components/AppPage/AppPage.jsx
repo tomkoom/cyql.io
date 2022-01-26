@@ -40,7 +40,7 @@ let icLinks = [];
 const AppPage = () => {
   const { id } = useParams();
   const nftItems = useSelector((state) => state.nftItems.nftItems);
-  const projects = useSelector((state) => state.siteData.projects);
+  const projects = useSelector((state) => state.siteData.projects.value);
 
   return (
     <section className={`${css.appPage} container768`}>

@@ -10,16 +10,16 @@ const siteData = createSlice({
 		nftList: { value: [] },
 	},
 	reducers: {
-		setProjects(state, { payload }) {
-			state.projects.value = payload.value;
-			state.projectsNum.value = payload.value.length;
+		setProjects({ projects, projectsNum }, { payload }) {
+			projects.value = payload.value;
+			projectsNum.value = payload.value.length;
 		},
-		setUpcomingNfts(state, { payload }) {
-			state.upcomingNfts.value = payload.value;
-			state.upcomingNftsNum.value = payload.value.length;
+		setUpcomingNfts({ upcomingNfts, upcomingNftsNum }, { payload }) {
+			upcomingNfts.value = payload.value;
+			upcomingNftsNum.value = payload.value.length;
 		},
-		setNftList(state, { payload }) {
-			state.nftList.value = payload.value;
+		setNftList({ nftList }, { payload }) {
+			nftList.value = payload.value;
 		},
 	},
 });

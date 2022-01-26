@@ -1,4 +1,4 @@
-/* Footer */
+/* footer */
 
 .footer {
   width: 100%;
@@ -15,6 +15,7 @@
 }
 
 /* Top */
+
 .footer__content__top {
   display: flex;
   gap: 1rem;
@@ -82,6 +83,7 @@
 /* Middle */
 
 /* logo */
+
 .footer__content__middle {
   display: flex;
   align-items: center;
@@ -107,6 +109,7 @@
 }
 
 /* navlist */
+
 .footer__content__middle__i__navList {
   display: flex;
   flex-wrap: wrap;
@@ -127,7 +130,8 @@
   box-shadow: 0px 2px 0px 0px var(--primaryColor);
 }
 
-/* soclinks */
+/* links */
+
 .footer__content__middle__i__socLinks {
   display: flex;
   color: var(--secondaryColor);
@@ -146,10 +150,11 @@
   background-color: var(--primaryColor);
 }
 
-/* Responsive */
+/* responsive */
+
 @media screen and (max-width: 1023px) {
   .footer {
-    padding: 1rem 1rem 4rem 1rem;
+    padding: 0.5rem 0.5rem 4rem 0.5rem;
   }
 
   .footer__content__top {

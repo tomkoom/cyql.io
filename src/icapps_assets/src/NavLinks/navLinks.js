@@ -7,11 +7,11 @@ import {
 } from "../Routes/routes";
 
 const navLinks = [
-  { name: "Home", link: toHome, description: "To homepage" },
-  { name: "Apps", link: toApps, description: "Discover new projects" },
-  { name: "Upcoming", link: toUpcoming, description: "Track future NFT sales" },
-  { name: "NFT Stats", link: toNft, description: "Compare NFT collections" },
-  { name: "Submit", link: toSubmit, description: "Add your project to the site" },
+  { name: "Home", link: toHome },
+  { name: "Apps", link: toApps },
+  { name: "Upcoming", link: toUpcoming },
+  { name: "NFT Stats", link: toNft },
+  { name: "Submit", link: toSubmit },
 ]
 
 export { navLinks };

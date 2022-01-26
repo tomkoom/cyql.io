@@ -2,6 +2,9 @@ import React from "react";
 import css from "./AppList.module.css";
 import Loader from "../../../CatLoader";
 
+// icons
+import { iBars, iTh } from "../../../Icons/Icons";
+
 // components
 import AppListRows from "./Views/AppListRows";
 import AppListGrid from "./Views/AppListGrid";
@@ -10,17 +13,6 @@ import LoadMorebtn from "../../../Assets/LoadMoreBtn/LoadMorebtn";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "../../../State/view";
-
-// fontawesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTh } from "@fortawesome/free-solid-svg-icons";
-
-const iconBars = (
-  <FontAwesomeIcon icon={faBars} color="rgba(255, 255, 255, 0.33)" />
-);
-const iconTh = (
-  <FontAwesomeIcon icon={faTh} color="rgba(255, 255, 255, 0.33)" />
-);
 
 const AppList = ({ loading, error, searchValue }) => {
   const itemsVisible = useSelector(
@@ -37,13 +29,13 @@ const AppList = ({ loading, error, searchValue }) => {
           className={view === "rows" ? `navlink ${css.active}` : "navlink"}
           onClick={() => dispatch(setView({ value: "rows" }))}
         >
-          {iconBars}&nbsp;&nbsp;Rows
+          <span>{iBars}</span>&nbsp;&nbsp;Rows
         </button>
         <button
           className={view === "grid" ? `navlink ${css.active}` : "navlink"}
           onClick={() => dispatch(setView({ value: "grid" }))}
         >
-          {iconTh}&nbsp;&nbsp;Grid
+          <span>{iTh}</span>&nbsp;&nbsp;Grid
         </button>
       </div>
 

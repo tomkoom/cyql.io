@@ -38,9 +38,9 @@ const icpPriceSlise = createSlice({
       state.icpPrice = payload["internet-computer"].usd;
       state.icp24hPriceChange.value = payload["internet-computer"].usd_24h_change;
     },
-    [fetchIcpPrice.rejected]: (state, action) => {
+    [fetchIcpPrice.rejected]: (state, { payload }) => {
       state.icpPriceStatus = "rejected";
-      state.icpPriceError = action.payload;
+      state.icpPriceError = payload;
     },
   }
 });

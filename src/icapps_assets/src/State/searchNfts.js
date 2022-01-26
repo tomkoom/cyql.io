@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const searchNftsSlice = createSlice({
+const searchNfts = createSlice({
 	name: "searchNfts",
 	initialState: {
-		search: { value: "" },
+		value: "",
 	},
 	reducers: {
 		setSearchNfts(state, { payload }) {
@@ -12,5 +12,5 @@ const searchNftsSlice = createSlice({
 	},
 });
 
-export const { setSearchNfts } = searchNftsSlice.actions;
-export default searchNftsSlice.reducer;
+export const { setSearchNfts } = searchNfts.actions;
+export default searchNfts.reducer;

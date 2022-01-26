@@ -3,26 +3,18 @@ import css from "./UpcomingNfts.module.css";
 import Loader from "../../Loader";
 import { toApp } from "../../Routes/routes";
 
+// icons
+import {
+  iTwitter,
+  iDiscord,
+  iGithub,
+  iTelegram,
+  iMedium,
+  iLink,
+} from "../../Icons/Icons";
+
 // redux
 import { useSelector } from "react-redux";
-
-// fontawesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faTelegramPlane,
-  faDiscord,
-  faMedium,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-
-const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
-const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
-const iconGithub = <FontAwesomeIcon icon={faGithub} />;
-const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
-const iconMedium = <FontAwesomeIcon icon={faMedium} />;
-const iconLink = <FontAwesomeIcon icon={faLink} />;
 
 let socialLinks = [];
 let icLinks = [];
@@ -31,16 +23,6 @@ const UpcomingNfts = () => {
   const upcomingNfts = useSelector(
     (state) => state.siteData.upcomingNfts.value
   );
-
-  const sortByDate = (a, b) => {
-    if (a.nftSaleDate < b.nftSaleDate) {
-      return -1;
-    }
-    if (a.nftSaleDate > b.nftSaleDate) {
-      return 1;
-    }
-    return 0;
-  };
 
   return (
     <section className={css.nft}>
@@ -144,32 +126,32 @@ const UpcomingNfts = () => {
                           {
                             name: "Website",
                             link: nft.website,
-                            icon: iconLink,
+                            icon: iLink,
                           },
                           {
                             name: "Twitter",
                             link: nft.twitter,
-                            icon: iconTwitter,
+                            icon: iTwitter,
                           },
                           {
                             name: "Discord",
                             link: nft.discord,
-                            icon: iconDiscord,
+                            icon: iDiscord,
                           },
                           {
                             name: "Telegram",
                             link: nft.telegram,
-                            icon: iconTelegram,
+                            icon: iTelegram,
                           },
                           {
                             name: "GitHub",
                             link: nft.github,
-                            icon: iconGithub,
+                            icon: iGithub,
                           },
                           {
                             name: "Medium",
                             link: nft.medium,
-                            icon: iconMedium,
+                            icon: iMedium,
                           },
                         ]),
                         socialLinks.map(
