@@ -5,7 +5,7 @@ import Loader from "../../../Loader";
 
 // Framer Motion
 import { motion } from "framer-motion";
-import { cardVariants } from "../../../motionVariants";
+import { cardVariants } from "../../../MotionVariants";
 
 // Redux
 import { useSelector } from "react-redux";

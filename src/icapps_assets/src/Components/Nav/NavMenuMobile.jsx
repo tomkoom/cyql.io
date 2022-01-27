@@ -1,15 +1,9 @@
 import React, { useEffect } from "react";
 import css from "./NavMenuMobile.module.css";
-import { navLinks } from "../../NavLinks/navLinks";
+import { navLinks } from "../../NavLinks/NavLinks";
 
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-
-const iconTimes = <FontAwesomeIcon icon={faTimes} />;
-const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
-const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
+// icons
+import { iTwitter, iDiscord, iTimes } from "../../Icons/Icons";
 
 const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
   // useEffect(() => {
@@ -55,7 +49,7 @@ const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
               rel="noreferrer noopener"
               target="_blank"
             >
-              {iconTwitter}
+              {iTwitter}
             </a>
             <a
               className={css.socIcons__item}
@@ -64,13 +58,13 @@ const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
               rel="noreferrer noopener"
               target="_blank"
             >
-              {iconDiscord}
+              {iDiscord}
             </a>
           </div>
         </div>
 
         <button className={css.menuBtn} onClick={() => setMenuIsOpen(false)}>
-          {iconTimes}
+          {iTimes}
         </button>
       </div>
     </div>

@@ -24,6 +24,39 @@ const UpcomingNfts = () => {
     (state) => state.siteData.upcomingNfts.value
   );
 
+  const sortByDate = (a, b) => {
+    if (a.nftSaleStatus === "Open") {
+      return -1;
+    } else if (
+      a.nftSaleDate &&
+      a.nftSaleStatus !== "Open" &&
+      b.nftSaleDate &&
+      b.nftSaleStatus !== "Open"
+    ) {
+      let partsA = a.nftSaleDate.split("/").reverse().join("-");
+      let partsB = b.nftSaleDate.split("/").reverse().join("-");
+      let dateA = new Date(partsA);
+      let dateB = new Date(partsB);
+      console.log(dateA);
+      console.log(dateB);
+      return dateA - dateB;
+    } else if (
+      a.nftSaleDate &&
+      a.nftSaleStatus !== "Open" &&
+      !b.nftSaleDate &&
+      b.nftSaleStatus !== "Open"
+    ) {
+      return -1;
+    } else if (
+      !a.nftSaleDate &&
+      a.nftSaleStatus !== "Open" &&
+      b.nftSaleDate &&
+      b.nftSaleStatus !== "Open"
+    ) {
+      return 1;
+    }
+  };
+
   return (
     <section className={css.nft}>
       {/* Hero */}
@@ -83,120 +116,127 @@ const UpcomingNfts = () => {
               </tr>
             </thead>
             <tbody>
-              {upcomingNfts.map((nft) => (
-                <tr key={nft.id}>
-                  <td className={css.t__mainColl}>
-                    <span onClick={() => toApp(nft.id)}>
-                      <h4 className={css.t__mainColl__title}>{nft.name}</h4>
-                      <p className={css.t__mainColl__description}>
-                        {nft.description && nft.description.length > 70
-                          ? `${nft.description.substring(0, 70)}…`
-                          : nft.description}
-                      </p>
-                    </span>
-                  </td>
+              {upcomingNfts
+                .filter(
+                  (nft) =>
+                    nft.nftSaleStatus === "Open" ||
+                    nft.nftSaleStatus === "Upcoming"
+                )
+                .sort((a, b) => sortByDate(a, b))
+                .map((nft) => (
+                  <tr key={nft.id}>
+                    <td className={css.t__mainColl}>
+                      <span onClick={() => toApp(nft.id)}>
+                        <h4 className={css.t__mainColl__title}>{nft.name}</h4>
+                        <p className={css.t__mainColl__description}>
+                          {nft.description && nft.description.length > 70
+                            ? `${nft.description.substring(0, 70)}…`
+                            : nft.description}
+                        </p>
+                      </span>
+                    </td>
 
-                  {/* ic links */}
-                  <td className={css.t__iclinks}>
-                    <ul>
-                      {
-                        ((icLinks = [
-                          { link: nft.canister, name: "Canister" },
-                          { link: nft.dscvr, name: "Dscvr" },
-                          { link: nft.distrikt, name: "Distrikt" },
-                          { link: nft.openChat, name: "OpenChat" },
-                        ]),
-                        icLinks.map(
-                          ({ link, name }, i) =>
-                            link && (
-                              <li key={i}>
-                                <a href={link}>{name}</a>
-                              </li>
-                            )
-                        ))
-                      }
-                    </ul>
-                  </td>
-
-                  {/* links */}
-                  <td className={css.t__links}>
-                    <ul>
-                      {
-                        ((socialLinks = [
-                          {
-                            name: "Website",
-                            link: nft.website,
-                            icon: iLink,
-                          },
-                          {
-                            name: "Twitter",
-                            link: nft.twitter,
-                            icon: iTwitter,
-                          },
-                          {
-                            name: "Discord",
-                            link: nft.discord,
-                            icon: iDiscord,
-                          },
-                          {
-                            name: "Telegram",
-                            link: nft.telegram,
-                            icon: iTelegram,
-                          },
-                          {
-                            name: "GitHub",
-                            link: nft.github,
-                            icon: iGithub,
-                          },
-                          {
-                            name: "Medium",
-                            link: nft.medium,
-                            icon: iMedium,
-                          },
-                        ]),
-                        socialLinks.map(
-                          ({ name, link, icon }, i) =>
-                            link && (
-                              <li key={i}>
-                                <a href={link}>
-                                  <span>{icon}</span>&nbsp;{name}
-                                </a>
-                              </li>
-                            )
-                        ))
-                      }
-                    </ul>
-                  </td>
-
-                  <td>
-                    {nft.nftSaleStatus === "Open"
-                      ? "Sale is open"
-                      : nft.nftSaleDate}
-                  </td>
-                  <td>{nft.nftUnits}</td>
-                  <td>{nft.nftUnitPrice}</td>
-                  <td className={css.nft__preview}>
-                    <div>
-                      {(() => {
-                        let nftPreviews = [];
-                        for (let i = 1; i <= 4; i++) {
-                          nftPreviews.push(
-                            <img
-                              src={nft[`nftImg${i}`]}
-                              style={
-                                nft[`nftImg${i}`] ? null : { display: "none" }
-                              }
-                              alt={`${nft.name} NFT preview ${i}`}
-                              key={i}
-                            />
-                          );
+                    {/* ic links */}
+                    <td className={css.t__iclinks}>
+                      <ul>
+                        {
+                          ((icLinks = [
+                            { link: nft.canister, name: "Canister" },
+                            { link: nft.dscvr, name: "Dscvr" },
+                            { link: nft.distrikt, name: "Distrikt" },
+                            { link: nft.openChat, name: "OpenChat" },
+                          ]),
+                          icLinks.map(
+                            ({ link, name }, i) =>
+                              link && (
+                                <li key={i}>
+                                  <a href={link}>{name}</a>
+                                </li>
+                              )
+                          ))
                         }
-                        return nftPreviews;
-                      })()}
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                      </ul>
+                    </td>
+
+                    {/* links */}
+                    <td className={css.t__links}>
+                      <ul>
+                        {
+                          ((socialLinks = [
+                            {
+                              name: "Website",
+                              link: nft.website,
+                              icon: iLink,
+                            },
+                            {
+                              name: "Twitter",
+                              link: nft.twitter,
+                              icon: iTwitter,
+                            },
+                            {
+                              name: "Discord",
+                              link: nft.discord,
+                              icon: iDiscord,
+                            },
+                            {
+                              name: "Telegram",
+                              link: nft.telegram,
+                              icon: iTelegram,
+                            },
+                            {
+                              name: "GitHub",
+                              link: nft.github,
+                              icon: iGithub,
+                            },
+                            {
+                              name: "Medium",
+                              link: nft.medium,
+                              icon: iMedium,
+                            },
+                          ]),
+                          socialLinks.map(
+                            ({ name, link, icon }, i) =>
+                              link && (
+                                <li key={i}>
+                                  <a href={link}>
+                                    <span>{icon}</span>&nbsp;{name}
+                                  </a>
+                                </li>
+                              )
+                          ))
+                        }
+                      </ul>
+                    </td>
+
+                    <td>
+                      {nft.nftSaleStatus === "Open"
+                        ? "Sale is open"
+                        : nft.nftSaleDate}
+                    </td>
+                    <td>{nft.nftUnits}</td>
+                    <td>{nft.nftUnitPrice}</td>
+                    <td className={css.nft__preview}>
+                      <div>
+                        {(() => {
+                          let nftPreviews = [];
+                          for (let i = 1; i <= 4; i++) {
+                            nftPreviews.push(
+                              <img
+                                src={nft[`nftImg${i}`]}
+                                style={
+                                  nft[`nftImg${i}`] ? null : { display: "none" }
+                                }
+                                alt={`${nft.name} NFT preview ${i}`}
+                                key={i}
+                              />
+                            );
+                          }
+                          return nftPreviews;
+                        })()}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

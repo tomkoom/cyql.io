@@ -1,29 +1,21 @@
 import React from "react";
 import css from "./AppListRows.module.css";
 
-// Routes
+// icons
+import {
+  iLink,
+  iTwitter,
+  iDiscord,
+  iTelegram,
+  iGithub,
+  iMedium,
+} from "../../../../Icons/Icons";
+
+// routes
 import { toApp } from "../../../../Routes/routes";
 
-// Redux
+// redux
 import { useSelector } from "react-redux";
-
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faDiscord,
-  faTelegram,
-  faGithub,
-  faMedium,
-} from "@fortawesome/free-brands-svg-icons";
-
-const iconLink = <FontAwesomeIcon icon={faLink} />;
-const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
-const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
-const iconTelegram = <FontAwesomeIcon icon={faTelegram} />;
-const iconGithub = <FontAwesomeIcon icon={faGithub} />;
-const iconMedium = <FontAwesomeIcon icon={faMedium} />;
 
 const AppListRows = ({ searchValue, itemsVisible }) => {
   // state
@@ -125,12 +117,12 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                     {/* links */}
                     <td className={css.links}>
                       <ul>
-                        {app.website && <li>{iconLink}</li>}
-                        {app.twitter && <li>{iconTwitter}</li>}
-                        {app.discord && <li>{iconDiscord}</li>}
-                        {app.telegram && <li>{iconTelegram}</li>}
-                        {app.github && <li>{iconGithub}</li>}
-                        {app.medium && <li>{iconMedium}</li>}
+                        {app.website && <li>{iLink}</li>}
+                        {app.twitter && <li>{iTwitter}</li>}
+                        {app.discord && <li>{iDiscord}</li>}
+                        {app.telegram && <li>{iTelegram}</li>}
+                        {app.github && <li>{iGithub}</li>}
+                        {app.medium && <li>{iMedium}</li>}
                       </ul>
                     </td>
 

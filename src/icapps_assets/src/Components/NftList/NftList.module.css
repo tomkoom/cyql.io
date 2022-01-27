@@ -1,4 +1,4 @@
-/* NFT TABLE */
+/* nft table */
 
 .nft {
   display: flex;
@@ -76,10 +76,13 @@
   text-decoration: underline;
 }
 
-.nftCollectionLink img {
+.nftCollectionLink div {
   height: 2.5rem;
   width: 2.5rem;
-  object-fit: cover;
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 0.75rem;
 }
 

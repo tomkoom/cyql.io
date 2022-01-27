@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import css from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
-import { useWindowSize } from "./useWindowSize";
-import { deviceSizes } from "../../deviceSizes";
-import { navLinks } from "../../NavLinks/navLinks";
+import { useWindowSize } from "./UseWindowSize";
+import { deviceSizes } from "../../DeviceSizes";
+import { navLinks } from "../../NavLinks/NavLinks";
 
 // Components
 import Modal from "./Modal/Modal";
@@ -201,21 +201,6 @@ const Nav = () => {
               </button>
             </li>
           ))}
-
-          {/* <li
-            className={css.nav__list__item}
-            onClick={() => {
-              menuIsOpen ? setMenuIsOpen(false) : null;
-            }}
-          >
-            <button
-              className="navlink"
-              onClick={() => toUpcoming()}
-              id={css.upcomingNfts}
-            >
-              <span id={css.fireIcon}>{iconFire}</span>&nbsp;Upcoming NFT Sales
-            </button>
-          </li> */}
 
           <li className={`${css.nav__list__item} ${css.donateContainer}`}>
             <div

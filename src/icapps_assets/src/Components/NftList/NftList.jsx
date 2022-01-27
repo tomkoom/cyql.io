@@ -122,7 +122,7 @@ const NftList = () => {
                             target="_blank"
                             rel="norefferer noopener"
                           >
-                            <img src={n.img} alt={n.name} />
+                            <div style={{ backgroundImage: `url(${n.img})` }} />
                             {n.name}
                           </a>
                         </td>
