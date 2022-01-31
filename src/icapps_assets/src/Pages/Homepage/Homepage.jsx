@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Homepage.module.css";
 import { toApps, toUpcoming, toNft } from "../../Routes/routes";
-import Loader from "../../Loader";
+import Loader from "../../Components/Loader/Loader";
 
 // Components
 import RecentlyAdded from "./RecentlyAdded/RecentlyAdded";

@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./AppList.module.css";
-import Loader from "../../../CatLoader";
+import Loader from "../../../Components/Loader/CatLoader";
 
 // icons
 import { iBars, iTh } from "../../../Icons/Icons";
@@ -8,7 +8,7 @@ import { iBars, iTh } from "../../../Icons/Icons";
 // components
 import AppListRows from "./Views/AppListRows";
 import AppListGrid from "./Views/AppListGrid";
-import LoadMorebtn from "../../../Assets/LoadMoreBtn/LoadMorebtn";
+import LoadMorebtn from "../../../Components/LoadMoreBtn/LoadMorebtn";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";

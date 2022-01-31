@@ -4,7 +4,7 @@ import { toApp } from "../../../../Routes/routes";
 
 // Framer Motion
 import { motion } from "framer-motion";
-import { cardVariants } from "../../../../MotionVariants";
+import { cardVariants } from "../../../../Utils/MotionVariants";
 
 // Redux
 import { useSelector } from "react-redux";

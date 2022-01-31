@@ -3,10 +3,10 @@ import css from "./Ads.module.css";
 
 // FRAMER MOTION
 import { motion } from "framer-motion";
-import { cardVariants } from "../../../MotionVariants";
+import { cardVariants } from "../../../Utils/MotionVariants";
 
 // LOADER
-import Loader from "../../../CatLoader";
+import Loader from "../../../Components/Loader/CatLoader";
 
 const Ads = ({ data, loading, error }) => {
   return (

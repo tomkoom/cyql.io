@@ -1,3 +1,5 @@
+import { iFire } from "../Icons/Icons";
+
 import {
   toHome,
   toApps,
@@ -7,11 +9,11 @@ import {
 } from "../Routes/routes";
 
 const navLinks = [
-  { name: "Home", link: toHome },
-  { name: "Apps", link: toApps },
-  { name: "Upcoming", link: toUpcoming },
-  { name: "NFT Stats", link: toNft },
-  { name: "Submit", link: toSubmit },
+  { name: "Home", link: toHome, icon: "" },
+  { name: "Apps", link: toApps, icon: "" },
+  { name: "Upcoming", link: toUpcoming, icon: iFire },
+  { name: "NFT Stats", link: toNft, icon: "" },
+  { name: "Submit", link: toSubmit, icon: "" },
 ]
 
 export { navLinks };

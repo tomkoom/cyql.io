@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./UpcomingNfts.module.css";
-import Loader from "../../Loader";
+import Loader from "../../Components/Loader/Loader";
 import { toApp } from "../../Routes/routes";
 
 // icons

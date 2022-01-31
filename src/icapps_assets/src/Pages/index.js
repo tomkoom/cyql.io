@@ -1,5 +1,5 @@
 // app.jsx
-export { default as Nav } from "./Nav/Nav";
+export { default as Nav } from "../Components/Nav/Nav";
 export { default as Homepage } from "./Homepage/Homepage";
 export { default as Apps } from "./Apps/Apps";
 export { default as AppPage } from "./AppPage/AppPage";

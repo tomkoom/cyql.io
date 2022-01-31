@@ -1,11 +1,11 @@
 import React from "react";
 import css from "./RecentlyAdded.module.css";
 import { toApp, toApps } from "../../../Routes/routes";
-import Loader from "../../../Loader";
+import Loader from "../../../Components/Loader/Loader";
 
 // Framer Motion
 import { motion } from "framer-motion";
-import { cardVariants } from "../../../MotionVariants";
+import { cardVariants } from "../../../Utils/MotionVariants";
 
 // Redux
 import { useSelector } from "react-redux";

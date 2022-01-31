@@ -22,6 +22,8 @@
   --colorTwitter: #00acee;
   --colorDiscord: #5865f2;
 
+  --colorOrange: #ff3d00;
+
   /* font-size */
   --fontSize1: 3.052rem;
   --fontSize2: 2.441rem;
@@ -42,6 +44,7 @@
   --font: "Karla", sans-serif;
 
   /* border-radius */
+  --br0125: 0.125rem;
   --br025: 0.25rem;
   --br05: 0.5rem;
   --br1: 1rem;

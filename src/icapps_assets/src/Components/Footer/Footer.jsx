@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Footer.module.css";
-import Logo from "../../Assets/Logo/Logo";
+import Logo from "../Logo/Logo";
 import {
   toHome,
   toApps,

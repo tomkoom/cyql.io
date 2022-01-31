@@ -2,46 +2,32 @@ import React, { useState, useEffect } from "react";
 import css from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
-import { useWindowSize } from "./UseWindowSize";
-import { deviceSizes } from "../../DeviceSizes";
+import { useWindowSize } from "../../Utils/UseWindowSize";
+import { deviceSizes } from "../../Utils/DeviceSizes";
 import { navLinks } from "../../NavLinks/NavLinks";
 
-// Components
+// icons
+import { iBars, iSun, iMoon, iTwitter, iDiscord } from "../../Icons/Icons";
+
+// components
 import Modal from "./Modal/Modal";
 import NavMenuMobile from "./NavMenuMobile";
 
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
-import {
-  faBars,
-  // faFireAlt,
-  faSun,
-  faMoon,
-} from "@fortawesome/free-solid-svg-icons";
-
-// Redux
+// redux
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../../State/theme";
-
-const iconBars = <FontAwesomeIcon icon={faBars} />;
-// const iconFire = <FontAwesomeIcon icon={faFireAlt} />;
-const iconSun = <FontAwesomeIcon icon={faSun} />;
-const iconMoon = <FontAwesomeIcon icon={faMoon} />;
-const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
-const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
 
 const socialLinks = [
   {
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
-    icon: iconTwitter,
+    icon: iTwitter,
     color: "#00acee",
   },
   {
     name: "Discord",
     link: "https://discord.gg/qQ8MNv6Hju",
-    icon: iconDiscord,
+    icon: iDiscord,
     color: "#5865f2",
   },
 ];
@@ -131,6 +117,14 @@ const Nav = () => {
           <li>
             Featured:{" "}
             <a
+              href="https://entrepot.app/marketplace/frog2d"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              Frog Nation 2.0
+            </a>
+            ,{" "}
+            <a
               href="https://entrepot.app/marketplace/poked"
               rel="noreferrer noopener"
               target="_blank"
@@ -176,7 +170,7 @@ const Nav = () => {
 
         {/* menu btn */}
         <div className={css.nav__menuBtn} onClick={() => setMenuIsOpen(true)}>
-          {iconBars}
+          {iBars}
         </div>
 
         {deviceWidth < 1024 && menuIsOpen ? (
@@ -188,7 +182,7 @@ const Nav = () => {
 
         {/* navlinks */}
         <ul className={css.nav__list}>
-          {navLinks.map(({ name, link }, i) => (
+          {navLinks.map(({ name, link, icon }, i) => (
             <li className={css.nav__list__item} key={i}>
               <button
                 className="navlink"
@@ -197,7 +191,7 @@ const Nav = () => {
                   menuIsOpen ? setMenuIsOpen(false) : null;
                 }}
               >
-                {name}
+                {icon ? <span>{icon}</span> : null} {name}
               </button>
             </li>
           ))}
@@ -220,7 +214,7 @@ const Nav = () => {
           className={css.themeSwitch}
           onClick={() => dispatch(setTheme(changeTheme(theme)))}
         >
-          {theme === "light" ? iconSun : theme === "dark" ? iconMoon : null}
+          {theme === "light" ? iSun : theme === "dark" ? iMoon : null}
         </button>
         <div className={css.icpPriceBadge}>
           {/* <div className={css.icpPriceBadge__logo} /> */}
@@ -229,9 +223,11 @@ const Nav = () => {
             <span
               className={css.icpPriceChange}
               style={
-                icp24hPriceChange >= 0
+                icp24hPriceChange > 0
                   ? { color: "#24a148" }
-                  : { color: "#fa4d56" }
+                  : icp24hPriceChange < 0
+                  ? { color: "#fa4d56" }
+                  : { color: "#697077" }
               }
             >{`${icp24hPriceChange.toFixed(2)}%`}</span>
             &nbsp;

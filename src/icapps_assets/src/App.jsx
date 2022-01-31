@@ -12,7 +12,7 @@ import {
   UpcomingNfts,
   NftList,
   SubmitApp,
-} from "./Components";
+} from "./Pages";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";

@@ -3,8 +3,8 @@ import css from "./AppPage.module.css";
 import { useParams } from "react-router-dom";
 import { goBack } from "../../Routes/routes";
 import { motion } from "framer-motion";
-import { socLinkBtns } from "../../MotionVariants";
-import Loader from "../../Loader";
+import { socLinkBtns } from "../../Utils/MotionVariants";
+import Loader from "../../Components/Loader/Loader";
 
 // Redux
 import { useSelector } from "react-redux";

@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./NftList.module.css";
-import Loader from "../../CatLoader";
+import Loader from "../../Components/Loader/CatLoader";
 
 // Components
 import SearchBar from "../SearchBar/SearchBar";
@@ -8,7 +8,7 @@ import SearchBar from "../SearchBar/SearchBar";
 // Redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchNfts } from "../../State/searchNfts";
-import LoadMoreBtn from "../../Assets/LoadMoreBtn/LoadMorebtn";
+import LoadMoreBtn from "../../Components/LoadMoreBtn/LoadMorebtn";
 
 const NftList = () => {
   const itemsVisible = useSelector(
