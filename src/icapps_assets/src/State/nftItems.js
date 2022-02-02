@@ -86,5 +86,7 @@ const nftItemsSlice = createSlice({
 	}
 });
 
+export const selectNftItems = state => state.nftItems.nftItems;
+
 export const { } = nftItemsSlice.actions;
 export default nftItemsSlice.reducer;

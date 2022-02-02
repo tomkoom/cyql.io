@@ -121,17 +121,21 @@
 
 /* btns */
 
-.app__btn {
+.trade__btn {
   display: inline-flex;
   align-items: center;
   height: 2.5rem;
   padding: 0 0.75rem;
   border-radius: var(--br05);
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay);
   margin-bottom: 1rem;
 }
 
-.app__btn:hover {
+.trade__btn span {
+  font-size: var(--fontSize7);
+}
+
+.trade__btn:hover {
   background-color: var(--primaryColor);
   color: var(--background);
 }
@@ -151,10 +155,14 @@
   border-radius: 0.5rem;
 }
 
+.links__item:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+}
+
 .links__item a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
   height: 2.25rem;
   padding: 0 0.5rem;
   color: white;

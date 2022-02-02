@@ -2,36 +2,24 @@ import React from "react";
 import css from "./AppPage.module.css";
 import { useParams } from "react-router-dom";
 import { goBack } from "../../Routes/routes";
-import { motion } from "framer-motion";
-import { socLinkBtns } from "../../Utils/MotionVariants";
 import Loader from "../../Components/Loader/Loader";
 
-// Redux
+// icons
+import {
+  iLink,
+  iTwitter,
+  iTelegram,
+  iDiscord,
+  iMedium,
+  iGithub,
+  iArrowLeft,
+  iArrowRight,
+} from "../../Icons/Icons";
+
+// redux
 import { useSelector } from "react-redux";
-
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faLink,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faTelegramPlane,
-  faDiscord,
-  faMedium,
-  faGithub,
-} from "@fortawesome/free-brands-svg-icons";
-
-const iconArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
-const iconArrowRight = <FontAwesomeIcon icon={faArrowRight} size="xs" />;
-const iconLink = <FontAwesomeIcon icon={faLink} />;
-const iconTwitter = <FontAwesomeIcon icon={faTwitter} />;
-const iconDiscord = <FontAwesomeIcon icon={faDiscord} />;
-const iconGithub = <FontAwesomeIcon icon={faGithub} />;
-const iconTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
-const iconMedium = <FontAwesomeIcon icon={faMedium} />;
+import { selectProjects } from "../../State/siteData";
+import { selectNftItems } from "../../State/nftItems";
 
 let nftItem = {};
 let socialLinks = [];
@@ -39,14 +27,14 @@ let icLinks = [];
 
 const AppPage = () => {
   const { id } = useParams();
-  const nftItems = useSelector((state) => state.nftItems.nftItems);
-  const projects = useSelector((state) => state.siteData.projects.value);
+  const nftItems = useSelector(selectNftItems);
+  const projects = useSelector(selectProjects);
 
   return (
     <section className={`${css.appPage} container768`}>
       {/* go back btn */}
       <button className="navlink" onClick={() => goBack()}>
-        <div className={css.backBtn__container}>{iconArrowLeft}</div>
+        <div className={css.backBtn__container}>{iArrowLeft}</div>
       </button>
 
       {/* content */}
@@ -104,12 +92,16 @@ const AppPage = () => {
                     let nftPreviews = [];
                     for (let i = 1; i <= 4; i++) {
                       nftPreviews.push(
-                        <div className={css.nftImgs__item} key={i}>
-                          <img
-                            src={project[`nftImg${i}`]}
-                            alt={`${project.name} nft preview ${i}`}
-                          />
-                        </div>
+                        project[`nftImg${i}`] ? (
+                          <div className={css.nftImgs__item} key={i}>
+                            <img
+                              src={project[`nftImg${i}`]}
+                              alt={`${project.name} nft preview ${i}`}
+                            />
+                          </div>
+                        ) : (
+                          ""
+                        )
                       );
                     }
                     return nftPreviews;
@@ -153,18 +145,18 @@ const AppPage = () => {
                 ))
               }
 
-              {project.marketUrl && (
+              {project.nftMarketUrl && (
                 <a
-                  className={css.app__btn}
-                  href={project.marketUrl}
+                  className={css.trade__btn}
+                  href={project.nftMarketUrl}
                   target="_blank"
                   rel="norefferrer noopener"
                 >
-                  Trade on Entrepot&nbsp;&nbsp;{iconArrowRight}
+                  Trade on Entrepot&nbsp;<span>{iArrowRight}</span>
                 </a>
               )}
 
-              {/* links */}
+              {/* ic links */}
               <div>
                 {project.canister ||
                 project.dscvr ||
@@ -201,11 +193,9 @@ const AppPage = () => {
                           },
                         ]),
                         icLinks.map(({ name, link, icon, img }) => (
-                          <motion.li
+                          <li
                             key={name}
                             data-social={name}
-                            variants={socLinkBtns}
-                            whileHover="whileHover"
                             className={css.links__item}
                             style={link ? null : { display: "none" }}
                           >
@@ -221,7 +211,7 @@ const AppPage = () => {
                               ) : null}
                               <span>{name}</span>
                             </a>
-                          </motion.li>
+                          </li>
                         )))
                       }
                     </ul>
@@ -244,40 +234,38 @@ const AppPage = () => {
                           {
                             name: "Website",
                             link: project.website,
-                            icon: iconLink,
+                            icon: iLink,
                           },
                           {
                             name: "Twitter",
                             link: project.twitter,
-                            icon: iconTwitter,
+                            icon: iTwitter,
                           },
                           {
                             name: "Discord",
                             link: project.discord,
-                            icon: iconDiscord,
+                            icon: iDiscord,
                           },
                           {
                             name: "Telegram",
                             link: project.telegram,
-                            icon: iconTelegram,
+                            icon: iTelegram,
                           },
                           {
                             name: "GitHub",
                             link: project.github,
-                            icon: iconGithub,
+                            icon: iGithub,
                           },
                           {
                             name: "Medium",
                             link: project.medium,
-                            icon: iconMedium,
+                            icon: iMedium,
                           },
                         ]),
                         socialLinks.map(({ name, link, icon }) => (
-                          <motion.li
+                          <li
                             key={name}
                             data-social={name}
-                            variants={socLinkBtns}
-                            whileHover="whileHover"
                             className={css.links__item}
                             style={link ? null : { display: "none" }}
                           >
@@ -288,7 +276,7 @@ const AppPage = () => {
                             >
                               {icon} <span>{name}</span>
                             </a>
-                          </motion.li>
+                          </li>
                         )))
                       }
                     </ul>
