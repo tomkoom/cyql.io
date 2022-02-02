@@ -37,8 +37,6 @@ const UpcomingNfts = () => {
       let partsB = b.nftSaleDate.split("/").reverse().join("-");
       let dateA = new Date(partsA);
       let dateB = new Date(partsB);
-      console.log(dateA);
-      console.log(dateB);
       return dateA - dateB;
     } else if (
       a.nftSaleDate &&

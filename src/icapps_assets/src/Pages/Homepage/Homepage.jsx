@@ -3,20 +3,20 @@ import css from "./Homepage.module.css";
 import { toApps, toUpcoming, toNft } from "../../Routes/routes";
 import Loader from "../../Components/Loader/Loader";
 
-// Components
+// components
 import RecentlyAdded from "./RecentlyAdded/RecentlyAdded";
 import NftSales from "./NftSales/NftSales";
 import TopNftCollections from "./TopNftCollections/TopNftCollections";
 import JoinCommunity from "./JoinCommunity/JoinCommunity";
 
-// Redux
+// redux
 import { useSelector } from "react-redux";
+import { selectNftItems } from "../../State/nftItems";
+import { selectUpcomingNfts } from "../../State/siteData";
 
 const Homepage = () => {
-  const upcomingNfts = useSelector(
-    (state) => state.siteData.upcomingNfts.value
-  );
-  const nftItems = useSelector((state) => state.nftItems.nftItems);
+  const upcomingNfts = useSelector(selectUpcomingNfts);
+  const nftItems = useSelector(selectNftItems);
 
   return (
     <main className={css.home}>
@@ -54,7 +54,8 @@ const Homepage = () => {
 
         <NftSales
           upcomingNftsFiltered={upcomingNfts.filter(
-            (nft) => nft.nftSaleStatus !== "Open"
+            (nft) =>
+              nft.nftSaleStatus !== "Open" && nft.nftSaleStatus !== "Over"
           )}
           loader={<Loader />}
         />

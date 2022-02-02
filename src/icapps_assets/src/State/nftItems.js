@@ -31,17 +31,19 @@ export const fetchNftData = createAsyncThunk("handleNftData/fetchNftData",
 	}
 );
 
+const initialState = {
+	nftItems: [],
+	totalVolumeInUsd: "",
+	totalVolumeInIcp: "",
+	totalMarketCapInUsd: "",
+	totalMarketCapInIcp: "",
+	status: null,
+	error: null
+};
+
 const nftItemsSlice = createSlice({
 	name: "nftItems",
-	initialState: {
-		nftItems: [],
-		totalVolumeInUsd: "",
-		totalVolumeInIcp: "",
-		totalMarketCapInUsd: "",
-		totalMarketCapInIcp: "",
-		status: null,
-		error: null
-	},
+	initialState,
 	// reducers: {},
 	extraReducers: {
 		[fetchNftData.pending]: (state) => {

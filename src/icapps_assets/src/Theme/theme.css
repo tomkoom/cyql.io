@@ -13,6 +13,7 @@
   --underlay2: var(--coolGray20);
   --underlay3: var(--coolGray30);
   --boxShadow: 0 0 0 1px var(--coolGray20);
+  --boxShadowInset: inset 0 0 0 1px var(--coolGray20);
   --boxShadowActive: 0 0 0 1px var(--coolGray100);
   --boxShadow2: 0 0 0 1px var(--coolGray30);
   --underline: 0 1px 0 0 var(--coolGray20);
@@ -35,6 +36,7 @@
   --underlay2: var(--coolGray80);
   --underlay3: var(--coolGray70);
   --boxShadow: 0 0 0 1px var(--coolGray90);
+  --boxShadowInset: inset 0 0 0 1px var(--coolGray90);
   --boxShadowActive: 0 0 0 1px var(--coolGray10);
   --boxShadow2: 0 0 0 1px var(--coolGray80);
   --underline: 0 1px 0 0 var(--coolGray90);

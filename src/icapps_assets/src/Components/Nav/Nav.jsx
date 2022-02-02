@@ -100,6 +100,7 @@ const Nav = () => {
   return (
     <nav className={css.nav}>
       {/* top */}
+
       <div className={css.nav__top}>
         <ul>
           <li>
@@ -116,14 +117,14 @@ const Nav = () => {
           </li>
           <li>
             Featured:{" "}
-            <a
+            {/* <a
               href="https://entrepot.app/marketplace/frog2d"
               rel="noreferrer noopener"
               target="_blank"
             >
               Frog Nation 2.0
             </a>
-            ,{" "}
+            ,{" "} */}
             <a
               href="https://entrepot.app/marketplace/poked"
               rel="noreferrer noopener"

@@ -136,8 +136,7 @@
 }
 
 .trade__btn:hover {
-  background-color: var(--primaryColor);
-  color: var(--background);
+  background-color: var(--underlay3);
 }
 
 /* social links*/
@@ -227,4 +226,10 @@
 .twitterDmButton:hover {
   color: var(--primaryColor);
   box-shadow: 0 2px 0 var(--primaryColor);
+}
+
+/* - */
+
+.nftSaleStatus {
+  background-color: var(--underlay2);
 }

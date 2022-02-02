@@ -27,12 +27,7 @@ const RecentlyAdded = () => {
         <Loader />
       ) : (
         apps.slice(0, 23).map((app) => (
-          <motion.li
-            key={app.id}
-            className={css.appLi__i}
-            variants={cardVariants}
-            whileHover="whileHover"
-          >
+          <li key={app.id} className={css.appLi__i}>
             <button onClick={() => toApp(app.id)} className="linkBlock">
               <div
                 className={css.appLi__i__linkBlock__cover}
@@ -78,7 +73,7 @@ const RecentlyAdded = () => {
                 </div>
               </div>
             </button>
-          </motion.li>
+          </li>
         ))
       )}
       {apps.length > 0 && (

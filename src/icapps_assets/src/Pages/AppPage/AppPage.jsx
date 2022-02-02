@@ -72,6 +72,17 @@ const AppPage = () => {
                     <span className={css.app__info__caption__tags__item}>
                       {project.category}
                     </span>
+                    {project.category === "NFTs" && project.nftSaleStatus ? (
+                      <span
+                        className={`${css.app__info__caption__tags__item} ${css.nftSaleStatus}`}
+                      >
+                        {project.nftSaleStatus === "Over"
+                          ? "Launched"
+                          : project.nftSaleStatus === "Open"
+                          ? "Sale is open"
+                          : project.nftSaleStatus}
+                      </span>
+                    ) : null}
                     {project.tags && (
                       <span className={css.app__info__caption__tags__item}>
                         {project.tags}
