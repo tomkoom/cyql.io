@@ -233,3 +233,13 @@
 .nftSaleStatus {
   background-color: var(--underlay2);
 }
+
+.appPage__disclaimer {
+  background-color: var(--underlay);
+  color: var(--secondaryColor);
+  padding: 1rem;
+  border-radius: var(--br05);
+  font-size: var(--fontSize7);
+  line-height: 150%;
+  margin-top: 1rem;
+}

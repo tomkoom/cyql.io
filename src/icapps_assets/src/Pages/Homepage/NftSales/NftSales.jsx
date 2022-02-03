@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./NftSales.module.css";
-import { toApp } from "../../../Routes/routes";
+import { toApp, toUpcoming } from "../../../Routes/routes";
 
 // icons
 import {
@@ -11,6 +11,7 @@ import {
   iTelegram,
   iMedium,
 } from "../../../Icons/Icons";
+import LoadMoreBtn from "../../../Components/LoadMoreBtn/LoadMorebtn";
 
 let socialLinks = [];
 
@@ -141,6 +142,9 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                 ))}
             </tbody>
           </table>
+          <button className={css.upcomingBtn} onClick={() => toUpcoming()}>
+            See all upcoming NFT sales
+          </button>
         </div>
       )}
     </div>

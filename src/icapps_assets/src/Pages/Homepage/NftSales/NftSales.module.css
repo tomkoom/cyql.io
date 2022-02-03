@@ -31,7 +31,7 @@
   text-align: left;
 }
 
-.t thead tr th:first-child,
+/* .t thead tr th:first-child,
 .t tbody tr td:first-child {
   padding-left: 0.5rem;
 }
@@ -39,11 +39,15 @@
 .t thead tr th:last-child,
 .t tbody tr td:last-child {
   padding-right: 0.5rem;
-}
+} */
 
 .t thead tr,
 .t tbody tr {
   box-shadow: var(--underlineInset);
+}
+
+.t tbody tr:last-child {
+  box-shadow: none;
 }
 
 .t thead tr th,
@@ -83,4 +87,23 @@
   width: 4.5rem;
   object-fit: cover;
   border-radius: 0.5rem;
+}
+
+/* - */
+
+.upcomingBtn {
+  background-color: var(--underlay);
+  color: var(--primaryColor);
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 0.9rem;
+  text-align: center;
+  border-radius: var(--br025);
+  cursor: pointer;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+.upcomingBtn:hover {
+  background-color: var(--underlay2);
 }

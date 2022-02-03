@@ -18,6 +18,7 @@ const categories = [
   { name: "Tools", icon: "🛠️" },
   { name: "Explorers", icon: "🌎" },
   { name: "Dfinity Apps", icon: "♾️" },
+  { name: "Metaverse", icon: "" },
   { name: "Domains", icon: "🤖" },
   { name: "Storage", icon: "📦" },
   { name: "Education", icon: "🎓" },

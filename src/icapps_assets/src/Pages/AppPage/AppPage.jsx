@@ -32,12 +32,18 @@ const AppPage = () => {
 
   return (
     <section className={`${css.appPage} container768`}>
-      {/* go back btn */}
       <button className="navlink" onClick={() => goBack()}>
         <div className={css.backBtn__container}>{iArrowLeft}</div>
       </button>
 
-      {/* content */}
+      <p className={css.appPage__disclaimer}>
+        This website is maintained by the Dfinity enthusiasts and community.
+        Anyone can submit information to the site. Not all information can be
+        properly verified and therefore may not be accurate. Do your own
+        research and use your best judgement when dealing with the projects
+        listed in this directory.
+      </p>
+
       {projects.length < 1 ? (
         <Loader />
       ) : (
@@ -174,7 +180,6 @@ const AppPage = () => {
                 project.distrikt ||
                 project.openChat ? (
                   <div>
-                    <p className="bodyText">IC Ecosystem</p>
                     <ul className={css.links}>
                       {
                         ((icLinks = [
@@ -238,7 +243,6 @@ const AppPage = () => {
                 project.telegram ||
                 project.medium ? (
                   <div>
-                    <p className="bodyText">Social Media</p>
                     <ul className={css.links}>
                       {
                         ((socialLinks = [

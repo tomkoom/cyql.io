@@ -3,23 +3,15 @@ import css from "./RecentlyAdded.module.css";
 import { toApp, toApps } from "../../../Routes/routes";
 import Loader from "../../../Components/Loader/Loader";
 
-// Framer Motion
-import { motion } from "framer-motion";
-import { cardVariants } from "../../../Utils/MotionVariants";
+// icons
+import { iGithub, iDatabase } from "../../../Icons/Icons";
 
-// Redux
+// redux
 import { useSelector } from "react-redux";
-
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
-const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
-const iconGithub = <FontAwesomeIcon icon={faGithub} />;
+import { selectProjects } from "../../../State/siteData";
 
 const RecentlyAdded = () => {
-  const apps = useSelector((state) => state.siteData.projects.value);
+  const apps = useSelector(selectProjects);
 
   return (
     <ul className={css.appLi}>
@@ -48,9 +40,9 @@ const RecentlyAdded = () => {
                   <ul>
                     <li>{app.category}</li>
                     {app.canister && (
-                      <li>{iconDatabase}&nbsp;&nbsp;Deployed to IC</li>
+                      <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>
                     )}
-                    {app.github && <li>{iconGithub}&nbsp;&nbsp;Open Source</li>}
+                    {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
 
                     {app.tags == "Psychedelic" && (
                       <li>
@@ -66,8 +58,8 @@ const RecentlyAdded = () => {
                   </ul>
 
                   <p className={css.appDescription}>
-                    {app.description && app.description.length > 60
-                      ? `${app.description.substring(0, 60)}…`
+                    {app.description && app.description.length > 50
+                      ? `${app.description.substring(0, 50)}…`
                       : app.description}
                   </p>
                 </div>
@@ -77,14 +69,12 @@ const RecentlyAdded = () => {
         ))
       )}
       {apps.length > 0 && (
-        <motion.button
+        <button
           className={`${css.viewAllAppsCard} navlink`}
           onClick={() => toApps()}
-          variants={cardVariants}
-          whileHover="whileHover"
         >
           View all {apps.length} projects &gt;
-        </motion.button>
+        </button>
       )}
     </ul>
   );

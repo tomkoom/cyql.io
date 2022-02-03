@@ -11,6 +11,7 @@ import {
   faMoon,
   faArrowLeft,
   faArrowRight,
+  faDatabase,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -30,6 +31,7 @@ const iSun = <FontAwesomeIcon icon={faSun} />;
 const iMoon = <FontAwesomeIcon icon={faMoon} />;
 const iArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
+const iDatabase = <FontAwesomeIcon icon={faDatabase} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -48,6 +50,7 @@ export {
   iMoon,
   iArrowLeft,
   iArrowRight,
+  iDatabase,
   iTwitter,
   iDiscord,
   iGithub,

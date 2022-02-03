@@ -117,14 +117,6 @@ const Nav = () => {
           </li>
           <li>
             Featured:{" "}
-            {/* <a
-              href="https://entrepot.app/marketplace/frog2d"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              Frog Nation 2.0
-            </a>
-            ,{" "} */}
             <a
               href="https://entrepot.app/marketplace/poked"
               rel="noreferrer noopener"
