@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./AppPage.module.css";
 import { useParams } from "react-router-dom";
 import { goBack } from "../../Routes/routes";
@@ -25,6 +25,27 @@ let nftItem = {};
 let socialLinks = [];
 let icLinks = [];
 
+const ExpandableText = ({ children }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className={css.expandable}>
+      <div
+        className={css.expandable__content}
+        style={{ maxHeight: expanded ? "none" : "20px" }}
+      >
+        {children}
+      </div>
+      <button
+        className={`${css.readMoreBtn} navlink`}
+        onClick={() => setExpanded(!expanded)}
+      >
+        {expanded ? "Read less" : "Read more"}
+      </button>
+    </div>
+  );
+};
+
 const AppPage = () => {
   const { id } = useParams();
   const nftItems = useSelector(selectNftItems);
@@ -36,13 +57,14 @@ const AppPage = () => {
         <div className={css.backBtn__container}>{iArrowLeft}</div>
       </button>
 
-      <p className={css.appPage__disclaimer}>
-        This website is maintained by the Dfinity enthusiasts and community.
-        Anyone can submit information to the site. Not all information can be
-        properly verified and therefore may not be accurate. Do your own
-        research and use your best judgement when dealing with the projects
-        listed in this directory.
-      </p>
+      <ExpandableText>
+        <p>
+          This website is maintained by the IC community. Anyone can submit
+          their project. Not all information may be properly verified and
+          therefore may not be accurate. DYOR and use your best judgement when
+          dealing with the projects listed on this website.
+        </p>
+      </ExpandableText>
 
       {projects.length < 1 ? (
         <Loader />
@@ -86,7 +108,7 @@ const AppPage = () => {
                           ? "Launched"
                           : project.nftSaleStatus === "Open"
                           ? "Sale is open"
-                          : project.nftSaleStatus}
+                          : "Upcoming NFT sale"}
                       </span>
                     ) : null}
                     {project.tags && (

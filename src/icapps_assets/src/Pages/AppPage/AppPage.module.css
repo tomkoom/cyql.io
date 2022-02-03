@@ -50,29 +50,28 @@
 }
 
 .app__info__caption__title {
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize5);
   font-weight: var(--black);
 }
 
 .app__info__date {
   margin-left: auto;
   color: var(--secondaryColor);
-  font-weight: var(--light);
+  white-space: nowrap;
 }
 
 .app__info__caption__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .app__info__caption__tags__item {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  margin-top: 0.25rem;
   font-size: 0.9rem;
-  font-weight: var(--light);
-  background-color: var(--underlay);
+  box-shadow: var(--boxShadow2);
   border-radius: 0.25rem;
 }
 
@@ -234,12 +233,28 @@
   background-color: var(--underlay2);
 }
 
-.appPage__disclaimer {
+/* expandable text */
+
+.expandable {
   background-color: var(--underlay);
-  color: var(--secondaryColor);
-  padding: 1rem;
+  padding: 0.75rem;
+  margin-top: 1rem;
   border-radius: var(--br05);
+}
+
+.expandable__content {
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+}
+
+.expandable__content p {
   font-size: var(--fontSize7);
   line-height: 150%;
-  margin-top: 1rem;
+  color: var(--secondaryColor);
+}
+
+.readMoreBtn {
+  font-size: var(--fontSize7);
+  font-weight: var(--black);
+  color: var(--secondaryColor);
 }
