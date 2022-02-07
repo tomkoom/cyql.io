@@ -207,9 +207,16 @@ const UpcomingNfts = () => {
                     </td>
 
                     <td>
-                      {nft.nftSaleStatus === "Open"
-                        ? "Sale is open"
-                        : nft.nftSaleDate}
+                      {nft.nftSaleStatus === "Open" ? (
+                        <a
+                          className={css.nftSaleLink}
+                          href={nft.nftSaleUrl ? nft.nftSaleUrl : "#"}
+                        >
+                          Sale is open
+                        </a>
+                      ) : (
+                        nft.nftSaleDate
+                      )}
                     </td>
                     <td>{nft.nftUnits}</td>
                     <td>{nft.nftUnitPrice}</td>

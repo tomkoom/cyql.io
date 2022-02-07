@@ -174,3 +174,7 @@
 #iconCalendar {
   color: var(--tertiaryColor);
 }
+
+.nftSaleLink:hover {
+  text-decoration: underline;
+}

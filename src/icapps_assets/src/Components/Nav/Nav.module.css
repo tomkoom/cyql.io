@@ -5,13 +5,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  overflow: visible;
 }
 
 .divider {
   height: 1px;
-  width: calc(100% + 4rem);
-  margin: 0 -2rem;
   box-shadow: var(--underline);
 }
 

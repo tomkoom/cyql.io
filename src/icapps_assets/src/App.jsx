@@ -3,9 +3,10 @@ import { Switch, Route } from "react-router-dom";
 import "./Theme/theme.css";
 import "./App.css";
 
-// Components
+// components
 import {
   Nav,
+  Footer,
   Homepage,
   Apps,
   AppPage,
@@ -14,17 +15,24 @@ import {
   SubmitApp,
 } from "./Pages";
 
-// Redux
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { setProjects, setUpcomingNfts, setNftList } from "./State/siteData";
+import { selectIcpPrice } from "./State/icpPrice";
+import {
+  setProjects,
+  setUpcomingNfts,
+  setNftList,
+  selectProjects,
+  selectNftList,
+} from "./State/siteData";
 import { setFilterByCategory } from "./State/projectsFiltering";
 import { fetchNftData } from "./State/nftItems";
+import { selectTheme } from "./State/theme";
 
-// Google API
+// google api
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
-import Footer from "./Components/Footer/Footer";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
@@ -39,10 +47,10 @@ const App = () => {
 
   // state
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme.theme.value);
-  const projects = useSelector((state) => state.siteData.projects.value);
-  const nftList = useSelector((state) => state.siteData.nftList.value);
-  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
+  const theme = useSelector(selectTheme);
+  const projects = useSelector(selectProjects);
+  const nftList = useSelector(selectNftList);
+  const icpPrice = useSelector(selectIcpPrice);
 
   useEffect(() => {
     if (!loading) {

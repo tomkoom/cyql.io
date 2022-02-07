@@ -62,7 +62,7 @@ const AppPage = () => {
           This website is maintained by the IC community. Anyone can submit
           their project. Not all information may be properly verified and
           therefore may not be accurate. DYOR and use your best judgement when
-          dealing with the projects listed on this website.
+          dealing with the projects listed on this site.
         </p>
       </ExpandableText>
 

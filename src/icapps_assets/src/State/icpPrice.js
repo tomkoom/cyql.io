@@ -45,5 +45,7 @@ const icpPriceSlise = createSlice({
   }
 });
 
+export const selectIcpPrice = state => state.siteData.icpPrice;
+
 export const { } = icpPriceSlise.actions;
 export default icpPriceSlise.reducer;
