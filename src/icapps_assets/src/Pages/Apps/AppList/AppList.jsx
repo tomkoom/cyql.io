@@ -13,14 +13,13 @@ import LoadMorebtn from "../../../Components/LoadMoreBtn/LoadMorebtn";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "../../../State/view";
+import { selectView } from "../../../State/view";
+import { selectItemsVisible } from "../../../State/loadMore";
 
 const AppList = ({ loading, error, searchValue }) => {
-  const itemsVisible = useSelector(
-    (state) => state.loadMore.itemsVisible.value
-  );
-
+  const itemsVisible = useSelector(selectItemsVisible);
+  const view = useSelector(selectView);
   const dispatch = useDispatch();
-  const view = useSelector((state) => state.view.view.value);
 
   return (
     <section className={css.appList}>

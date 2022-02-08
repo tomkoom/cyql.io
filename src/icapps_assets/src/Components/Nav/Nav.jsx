@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import css from "./Nav.module.css";
 import logoImg from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
-import { useWindowSize } from "../../Utils/UseWindowSize";
+import { useWindowSize } from "../../Hooks/UseWindowSize";
 import { deviceSizes } from "../../Utils/DeviceSizes";
 import { navLinks } from "../../NavLinks/NavLinks";
 

@@ -2,16 +2,12 @@ import React from "react";
 import css from "./Tags.module.css";
 import TagsItem from "./TagsItem/TagsItem";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+// icons
+import { iDatabase, iGithub } from "../../../Icons/Icons";
 
-// Redux
+// redux
 import { useSelector, useDispatch } from "react-redux";
 import { setFilterByTag } from "../../../State/projectsFiltering";
-
-const iconGithub = <FontAwesomeIcon icon={faGithub} className={css.icon} />;
-const iconDatabase = <FontAwesomeIcon icon={faDatabase} className={css.icon} />;
 
 const Tags = () => {
   const dispatch = useDispatch();
@@ -40,14 +36,14 @@ const Tags = () => {
       name: "Open Source",
       state: openSource,
       img: "",
-      icon: iconGithub,
+      icon: iGithub,
     },
     {
       id: "deployedToIc",
       name: "Deployed to IC",
       state: deployedToIc,
       img: "",
-      icon: iconDatabase,
+      icon: iDatabase,
     },
     {
       id: "psychedelic",

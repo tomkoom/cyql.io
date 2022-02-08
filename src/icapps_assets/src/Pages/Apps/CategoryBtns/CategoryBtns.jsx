@@ -2,7 +2,7 @@ import React from "react";
 import css from "./CategoryBtns.module.css";
 import CategoryBtnsItem from "./CategoryBtnsItem/CategoryBtnsItem";
 
-// Redux
+// redux
 import { useSelector } from "react-redux";
 
 const categories = [

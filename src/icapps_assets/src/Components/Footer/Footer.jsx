@@ -9,28 +9,14 @@ import {
   toSubmit,
 } from "../../Routes/routes";
 
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// icons
 import {
-  faPlusSquare,
-  faComments,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faDiscord } from "@fortawesome/free-brands-svg-icons";
-
-const iconTwitter = (
-  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} />
-);
-const iconDiscord = (
-  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} />
-);
-const iconPlus = (
-  <FontAwesomeIcon icon={faPlusSquare} className={css.footIcon} />
-);
-const iconComments = (
-  <FontAwesomeIcon icon={faComments} className={css.footIcon} />
-);
-const iconHeart = <FontAwesomeIcon icon={faHeart} className={css.footIcon} />;
+  iPlusSquare,
+  iComments,
+  iHeart,
+  iTwitter,
+  iDiscord,
+} from "../../Icons/Icons";
 
 const navlinks = [
   { name: "Home", link: toHome },
@@ -41,8 +27,8 @@ const navlinks = [
 ];
 
 const socLinks = [
-  { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iconTwitter },
-  { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iconDiscord },
+  { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
+  { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
 ];
 
 const Footer = () => {
@@ -55,7 +41,7 @@ const Footer = () => {
               className={`${css.footer__content__top__i__linkBlock} navlink`}
               onClick={() => toSubmit()}
             >
-              <div>{iconPlus}</div>
+              <div>{iPlusSquare}</div>
               <div>
                 <h5 className={css.footer__content__top__i__linkBlock__title}>
                   Submit your project
@@ -73,7 +59,7 @@ const Footer = () => {
               rel="noreferrer noopener"
               target="_blank"
             >
-              <div>{iconComments}</div>
+              <div>{iComments}</div>
               <div>
                 <h5 className={css.footer__content__top__i__linkBlock__title}>
                   Reach out
@@ -87,7 +73,7 @@ const Footer = () => {
           </li>
 
           <li className={css.footer__content__top__i__donation}>
-            <div>{iconHeart}</div>
+            <div>{iHeart}</div>
             <div>
               <h5 className={css.footer__content__top__i__linkBlock__title}>
                 Donate

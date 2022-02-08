@@ -2,20 +2,11 @@ import React from "react";
 import css from "./AppListGrid.module.css";
 import { toApp } from "../../../../Routes/routes";
 
-// Framer Motion
-import { motion } from "framer-motion";
-import { cardVariants } from "../../../../Utils/MotionVariants";
-
-// Redux
+// redux
 import { useSelector } from "react-redux";
 
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDatabase } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
-const iconDatabase = <FontAwesomeIcon icon={faDatabase} />;
-const iconGithub = <FontAwesomeIcon icon={faGithub} />;
+//icons
+import { iDatabase, iGithub } from "../../../../Icons/Icons";
 
 const AppListGrid = ({ searchValue, itemsVisible }) => {
   const view = useSelector((state) => state.view.view.value);
@@ -77,12 +68,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
             // load more
             .slice(0, itemsVisible)
             .map((d) => (
-              <motion.div
-                key={d.id}
-                className={css.li__i}
-                variants={cardVariants}
-                whileHover="whileHover"
-              >
+              <div key={d.id} className={css.li__i}>
                 <button className="linkBlock" onClick={() => toApp(d.id)}>
                   <div
                     className={css.li__item__linkBlock__coverImg}
@@ -130,8 +116,8 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
 
                       {d.github || d.canister || d.tags ? (
                         <ul>
-                          {d.canister && <li>{iconDatabase} Deployed to IC</li>}
-                          {d.github && <li>{iconGithub} Open Source</li>}
+                          {d.canister && <li>{iDatabase} Deployed to IC</li>}
+                          {d.github && <li>{iGithub} Open Source</li>}
                           {d.tags == "Psychedelic" && (
                             <li>
                               <img
@@ -154,7 +140,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
                     </div>
                   </div>
                 </button>
-              </motion.div>
+              </div>
             ))}
         </div>
       )}

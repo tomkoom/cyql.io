@@ -16,10 +16,11 @@ import { toApp } from "../../../../Routes/routes";
 
 // redux
 import { useSelector } from "react-redux";
+import { selectView } from "../../../../State/view";
 
 const AppListRows = ({ searchValue, itemsVisible }) => {
   // state
-  const view = useSelector((state) => state.view.view.value);
+  const view = useSelector(selectView);
 
   const tagOpenSource = useSelector(
     (state) => state.projectsFiltering.openSource.value

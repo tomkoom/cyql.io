@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSearchProjects } from "../../State/searchProjects";
 
 const Apps = ({ category, setCategory, data, loading, error }) => {
-  // state
   const searchProjectsValue = useSelector(
     (state) => state.searchProjects.value
   );

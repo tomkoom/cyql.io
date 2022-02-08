@@ -11,7 +11,6 @@ import {
   iTelegram,
   iMedium,
 } from "../../../Icons/Icons";
-import LoadMoreBtn from "../../../Components/LoadMoreBtn/LoadMorebtn";
 
 let socialLinks = [];
 

@@ -1,4 +1,3 @@
-// fontawesome
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +11,9 @@ import {
   faArrowLeft,
   faArrowRight,
   faDatabase,
+  faPlusSquare,
+  faComments,
+  faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -32,6 +34,9 @@ const iMoon = <FontAwesomeIcon icon={faMoon} />;
 const iArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
 const iDatabase = <FontAwesomeIcon icon={faDatabase} />;
+const iPlusSquare = <FontAwesomeIcon icon={faPlusSquare} />;
+const iComments = <FontAwesomeIcon icon={faComments} />;
+const iHeart = <FontAwesomeIcon icon={faHeart} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -51,6 +56,10 @@ export {
   iArrowLeft,
   iArrowRight,
   iDatabase,
+  iPlusSquare,
+  iComments,
+  iHeart,
+  // brands
   iTwitter,
   iDiscord,
   iGithub,

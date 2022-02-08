@@ -1,4 +1,4 @@
-/* MODAL */
+/* modal */
 
 .modal {
   width: 100vw;
@@ -37,7 +37,7 @@
   transform: scale(1);
 }
 
-/* CONTENT */
+/* content */
 
 .modal__card__content {
   display: flex;
@@ -51,7 +51,7 @@
   letter-spacing: -0.5px;
 }
 
-/* DONATE BUTTON */
+/* donate */
 
 .donateBtn {
   border: none;

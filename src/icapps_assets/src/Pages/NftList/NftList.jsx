@@ -2,27 +2,26 @@ import React from "react";
 import css from "./NftList.module.css";
 import Loader from "../../Components/Loader/CatLoader";
 
-// Components
+// components
 import SearchBar from "../SearchBar/SearchBar";
-
-// Redux
-import { useSelector, useDispatch } from "react-redux";
-import { setSearchNfts } from "../../State/searchNfts";
 import LoadMoreBtn from "../../Components/LoadMoreBtn/LoadMorebtn";
 
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchNfts } from "../../State/searchNfts";
+import { selectItemsVisible } from "../../State/loadMore";
+import { selectNftItems } from "../../State/nftItems";
+
 const NftList = () => {
-  const itemsVisible = useSelector(
-    (state) => state.loadMore.itemsVisible.value
-  );
+  const itemsVisible = useSelector(selectItemsVisible);
+  const nftItems = useSelector(selectNftItems);
 
   const dispatch = useDispatch();
   const searchNfts = (e) => {
     dispatch(setSearchNfts(e.target.value));
   };
 
-  // Get data from state
   const searchNftsValue = useSelector((state) => state.searchNfts.value);
-  const nftItems = useSelector((state) => state.nftItems.nftItems);
   const totalVolumeInUsd = useSelector(
     (state) => state.nftItems.totalVolumeInUsd
   );
