@@ -1,16 +1,24 @@
 import React from "react";
 import css from "./JoinCommunity.module.css";
 
-// icons
-import { iDiscord, iTwitter } from "../../../Icons/Icons";
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDiscord, faTwitter } from "@fortawesome/free-brands-svg-icons";
+
+const iconTwitter = (
+  <FontAwesomeIcon icon={faTwitter} className={css.socIcon} color="#00acee" />
+);
+const iconDiscord = (
+  <FontAwesomeIcon icon={faDiscord} className={css.socIcon} color="#5865f2" />
+);
 
 const socLinks = [
   {
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
-    icon: iTwitter,
+    icon: iconTwitter,
   },
-  { name: "Discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
+  { name: "Discord", link: "https://discord.gg/AnjyrfvvXX", icon: iconDiscord },
 ];
 
 const JoinCommunity = () => {

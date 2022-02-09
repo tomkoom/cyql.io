@@ -14,6 +14,7 @@ import {
   iGithub,
   iArrowLeft,
   iArrowRight,
+  iExternalLink,
 } from "../../Icons/Icons";
 
 // redux
@@ -259,6 +260,7 @@ const AppPage = () => {
                 )}
 
                 {project.website ||
+                project.app ||
                 project.twitter ||
                 project.discord ||
                 project.github ||
@@ -272,6 +274,11 @@ const AppPage = () => {
                             name: "Website",
                             link: project.website,
                             icon: iLink,
+                          },
+                          {
+                            name: "App",
+                            link: project.app,
+                            icon: iExternalLink,
                           },
                           {
                             name: "Twitter",

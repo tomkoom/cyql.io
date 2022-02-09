@@ -170,24 +170,13 @@
   font-size: var(--fontSize7);
 }
 
-[data-social="Medium"] {
-  background-color: var(--secondaryColor);
-}
-
 [data-social="Canister"],
 [data-social="Dscvr"],
 [data-social="Distrikt"],
 [data-social="Website"],
-[data-social="Medium"] {
+[data-social="Medium"],
+[data-social="App"] {
   background-color: var(--underlay);
-}
-
-[data-social="Dscvr"] a,
-[data-social="Distrikt"] a,
-[data-social="Website"] a,
-[data-social="Canister"] a,
-[data-social="Medium"] a {
-  color: var(--primaryColor);
 }
 
 [data-social="Twitter"] {
