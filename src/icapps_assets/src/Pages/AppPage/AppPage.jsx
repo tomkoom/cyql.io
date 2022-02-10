@@ -52,6 +52,10 @@ const AppPage = () => {
   const nftItems = useSelector(selectNftItems);
   const projects = useSelector(selectProjects);
 
+  const getTwitterUsername = (url) => {
+    const username = url.slice(url.indexOf(".com/") + 5);
+    return "@" + username;
+  };
   return (
     <section className={`${css.appPage} container768`}>
       <button className="navlink" onClick={() => goBack()}>
@@ -271,45 +275,52 @@ const AppPage = () => {
                       {
                         ((socialLinks = [
                           {
+                            id: "Website",
                             name: "Website",
                             link: project.website,
                             icon: iLink,
                           },
                           {
+                            id: "App",
                             name: "App",
                             link: project.app,
                             icon: iExternalLink,
                           },
                           {
-                            name: "Twitter",
+                            id: "Twitter",
+                            name: getTwitterUsername(project.twitter),
                             link: project.twitter,
                             icon: iTwitter,
                           },
                           {
+                            id: "Discord",
                             name: "Discord",
                             link: project.discord,
                             icon: iDiscord,
                           },
                           {
+                            id: "Telegram",
                             name: "Telegram",
                             link: project.telegram,
                             icon: iTelegram,
                           },
                           {
+                            id: "GitHub",
                             name: "GitHub",
                             link: project.github,
                             icon: iGithub,
                           },
                           {
+                            id: "Medium",
                             name: "Medium",
                             link: project.medium,
                             icon: iMedium,
                           },
                         ]),
-                        socialLinks.map(({ name, link, icon }) => (
+                        socialLinks.map(({ id, name, link, icon }) => (
                           <li
-                            key={name}
-                            data-social={name}
+                            key={id}
+                            data-social={id}
                             className={css.links__item}
                             style={link ? null : { display: "none" }}
                           >
