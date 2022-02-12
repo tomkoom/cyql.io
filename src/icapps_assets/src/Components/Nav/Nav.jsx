@@ -5,6 +5,8 @@ import k from "../../../../../k/k";
 import { useWindowSize } from "../../Hooks/UseWindowSize";
 import { deviceSizes } from "../../Utils/DeviceSizes";
 import { navLinks } from "../../NavLinks/NavLinks";
+import icBadgeDark from "../../Assets/ICBadge/ic-badge-powered-by_default-dark-text.svg";
+import icBadgeWhite from "../../Assets/ICBadge/ic-badge-powered-by_default-light-text.svg";
 
 // icons
 import { iBars, iSun, iMoon, iTwitter, iDiscord } from "../../Icons/Icons";
@@ -16,6 +18,7 @@ import NavMenuMobile from "./NavMenuMobile";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../../State/theme";
+import { selectTheme } from "../../State/theme";
 
 const socialLinks = [
   {
@@ -41,7 +44,7 @@ const Nav = () => {
 
   // state
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.theme.theme.value);
+  const theme = useSelector(selectTheme);
   const projectsNum = useSelector((state) => state.siteData.projectsNum.value);
   const upcomingNftsNum = useSelector(
     (state) => state.siteData.upcomingNftsNum.value
@@ -226,6 +229,18 @@ const Nav = () => {
             &nbsp;
             <span className={css.icpPriceChangeTime}>24h</span>
           </div>
+        </div>
+        <div className={css.icBadge}>
+          <img
+            src={
+              theme === "light"
+                ? icBadgeDark
+                : theme === "dark"
+                ? icBadgeWhite
+                : null
+            }
+            alt="IC-Badge"
+          />
         </div>
         {/* lang */}
       </div>

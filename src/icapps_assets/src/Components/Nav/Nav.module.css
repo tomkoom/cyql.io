@@ -225,6 +225,12 @@
   color: var(--tertiaryColor);
 }
 
+.icBadge {
+  display: flex;
+  height: 1rem;
+  margin-left: auto;
+}
+
 @media screen and (max-width: 1023px) {
   .nav {
     padding: 0.5rem;

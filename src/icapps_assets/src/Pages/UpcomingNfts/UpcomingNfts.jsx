@@ -55,6 +55,11 @@ const UpcomingNfts = () => {
     }
   };
 
+  const getTwitterUsername = (url) => {
+    const username = url.split(".com/")[1];
+    return "@" + username;
+  };
+
   return (
     <section className={css.nft}>
       {/* Hero */}
@@ -162,41 +167,51 @@ const UpcomingNfts = () => {
                         {
                           ((socialLinks = [
                             {
+                              id: "Website",
                               name: "Website",
                               link: nft.website,
                               icon: iLink,
                             },
                             {
-                              name: "Twitter",
+                              id: "Twitter",
+                              name: getTwitterUsername(nft.twitter),
                               link: nft.twitter,
                               icon: iTwitter,
                             },
                             {
+                              id: "Discord",
                               name: "Discord",
                               link: nft.discord,
                               icon: iDiscord,
                             },
                             {
+                              id: "Telegram",
                               name: "Telegram",
                               link: nft.telegram,
                               icon: iTelegram,
                             },
                             {
+                              id: "GitHub",
                               name: "GitHub",
                               link: nft.github,
                               icon: iGithub,
                             },
                             {
+                              id: "Medium",
                               name: "Medium",
                               link: nft.medium,
                               icon: iMedium,
                             },
                           ]),
                           socialLinks.map(
-                            ({ name, link, icon }, i) =>
+                            ({ id, name, link, icon }) =>
                               link && (
-                                <li key={i}>
-                                  <a href={link}>
+                                <li key={id}>
+                                  <a
+                                    href={link}
+                                    rel="norefferer noopener"
+                                    target="_blank"
+                                  >
                                     <span>{icon}</span>&nbsp;{name}
                                   </a>
                                 </li>

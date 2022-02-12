@@ -53,9 +53,10 @@ const AppPage = () => {
   const projects = useSelector(selectProjects);
 
   const getTwitterUsername = (url) => {
-    const username = url.slice(url.indexOf(".com/") + 5);
+    const username = url.split(".com/")[1];
     return "@" + username;
   };
+
   return (
     <section className={`${css.appPage} container768`}>
       <button className="navlink" onClick={() => goBack()}>
