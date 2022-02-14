@@ -4,12 +4,13 @@ import { toApp } from "../../../../Routes/routes";
 
 // redux
 import { useSelector } from "react-redux";
+import { selectView } from "../../../../State/view";
 
 //icons
 import { iDatabase, iGithub } from "../../../../Icons/Icons";
 
 const AppListGrid = ({ searchValue, itemsVisible }) => {
-  const view = useSelector((state) => state.view.view.value);
+  const view = useSelector(selectView);
 
   const tagOpenSource = useSelector(
     (state) => state.projectsFiltering.openSource.value
@@ -66,6 +67,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
               }
             })
             // load more
+            .sort((a) => (a.promoted ? -1 : 0))
             .slice(0, itemsVisible)
             .map((d) => (
               <div key={d.id} className={css.li__i}>
@@ -88,31 +90,36 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
                     <div
                       className={css.li__item__linkBlock__appInfo__description}
                     >
-                      <h3>
-                        {d.name}
-                        &nbsp;
-                        {d.category == "Social Networks"
-                          ? "🎯"
-                          : d.category == "Games"
-                          ? "⚔️"
-                          : d.category == "dApps"
-                          ? "🔗"
-                          : d.category == "DeFi"
-                          ? "‍🌾"
-                          : d.category == "DAOs"
-                          ? "🏠"
-                          : d.category == "Infrastructure"
-                          ? "🚀"
-                          : d.category == "Wallets"
-                          ? "👛"
-                          : d.category == "Tools"
-                          ? "🛠️"
-                          : d.category == "Explorers"
-                          ? "🌎"
-                          : d.category == "NFTs"
-                          ? "🗿"
-                          : null}
-                      </h3>
+                      <div>
+                        <h3>
+                          {d.name}
+                          &nbsp;
+                          {d.category == "Social Networks"
+                            ? "🎯"
+                            : d.category == "Games"
+                            ? "⚔️"
+                            : d.category == "dApps"
+                            ? "🔗"
+                            : d.category == "DeFi"
+                            ? "‍🌾"
+                            : d.category == "DAOs"
+                            ? "🏠"
+                            : d.category == "Infrastructure"
+                            ? "🚀"
+                            : d.category == "Wallets"
+                            ? "👛"
+                            : d.category == "Tools"
+                            ? "🛠️"
+                            : d.category == "Explorers"
+                            ? "🌎"
+                            : d.category == "NFTs"
+                            ? "🗿"
+                            : null}
+                        </h3>
+                        {d.promoted && (
+                          <span>{d.promoted ? "Promoted" : null}</span>
+                        )}
+                      </div>
 
                       {d.github || d.canister || d.tags ? (
                         <ul>

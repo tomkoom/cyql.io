@@ -9,8 +9,22 @@
   margin-top: 1rem;
 }
 
+.promoted {
+  -webkit-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+  -moz-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+  box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+}
+
+.t__tbody__tr {
+  box-shadow: var(--underline);
+}
+
 .t tbody tr {
-  box-shadow: var(--overline);
+  cursor: pointer;
+}
+
+.t tbody tr:hover {
+  background-color: var(--underlay);
 }
 
 .t thead tr th:first-child,
@@ -21,20 +35,12 @@
 
 .t thead tr th:last-child,
 .t tbody tr td:last-child {
-  padding-right: 0.5rem;
+  padding-right: 0.75rem;
 }
 
 .t thead tr th,
 .t tbody tr td {
   padding: 1rem;
-}
-
-.t tbody tr {
-  cursor: pointer;
-}
-
-.t tbody tr:hover {
-  background-color: var(--underlay);
 }
 
 /* main coll */
@@ -56,12 +62,28 @@
   white-space: normal;
   height: 100%;
   max-width: 16rem;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   overflow: auto;
 }
 
-.maincoll div span h4 {
+.maincoll div span div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.maincoll div span div h4 {
   font-size: var(--fontSize6);
+}
+
+.maincoll div span div span {
+  font-size: var(--fontSize7);
+  padding: 0.05rem 0.25rem;
+  color: var(--primaryColor);
+  background-color: var(--highlightColor);
+  border-radius: 0.25rem;
 }
 
 .maincoll div span p {

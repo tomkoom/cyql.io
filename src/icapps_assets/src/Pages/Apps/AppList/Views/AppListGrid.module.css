@@ -10,11 +10,25 @@
   flex-direction: column;
 }
 
-.li__i h3 {
+.li__item__linkBlock__appInfo__description div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.li__item__linkBlock__appInfo__description div h3 {
   font-size: var(--fontSize6);
   font-weight: var(--black);
   color: var(--primaryColor);
   word-wrap: break-word;
+}
+
+.li__item__linkBlock__appInfo__description div span {
+  font-size: var(--fontSize7);
+  padding: 0.05rem 0.25rem;
+  color: var(--primaryColor);
+  background-color: var(--highlightColor);
+  border-radius: 0.25rem;
 }
 
 .li__item__linkBlock__coverImg {

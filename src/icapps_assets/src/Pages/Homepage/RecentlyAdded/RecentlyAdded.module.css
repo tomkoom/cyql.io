@@ -76,7 +76,7 @@
 
 .appLi__i__linkBlock__appInfo__desc__title span {
   font-size: var(--fontSize7);
-  padding: 0.125rem 0.25rem;
+  padding: 0.05rem 0.25rem;
   color: var(--primaryColor);
   background-color: var(--highlightColor);
   border-radius: 0.25rem;

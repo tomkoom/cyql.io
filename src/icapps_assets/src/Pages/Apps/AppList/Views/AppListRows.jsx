@@ -88,10 +88,15 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                     return app;
                   }
                 })
+                .sort((a) => (a.promoted ? -1 : 0))
                 // load more
                 .slice(0, itemsVisible)
                 .map((app) => (
-                  <tr onClick={() => toApp(app.id)} key={app.id}>
+                  <tr
+                    className={app.promoted ? css.promoted : css.t__tbody__tr}
+                    onClick={() => toApp(app.id)}
+                    key={app.id}
+                  >
                     <td className={css.maincoll}>
                       <div>
                         {app.logo && (
@@ -102,7 +107,13 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                           />
                         )}
                         <span>
-                          <h4>{app.name}</h4>
+                          <div>
+                            <h4>{app.name}</h4>
+                            {app.promoted && (
+                              <span>{app.promoted ? "Promoted" : null}</span>
+                            )}
+                          </div>
+
                           <p>
                             {app.description && app.description.length > 70
                               ? `${app.description.substring(0, 70)}…`
