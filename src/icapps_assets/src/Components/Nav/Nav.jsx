@@ -119,6 +119,16 @@ const Nav = () => {
             </button>
           </li>
           <li>
+            Promoted:{" "}
+            <a
+              href="https://www.icdinos.io/"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              IC Dinos
+            </a>
+          </li>
+          <li>
             Featured:{" "}
             <a
               href="https://entrepot.app/marketplace/poked"

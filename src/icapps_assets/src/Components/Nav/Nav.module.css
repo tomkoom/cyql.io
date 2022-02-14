@@ -16,12 +16,23 @@
 
 .nav__top ul {
   display: flex;
+  flex-wrap: nowrap;
   gap: 0.5rem;
+  overflow-x: auto;
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* hide scrollbar */
+.nav__top ul::-webkit-scrollbar {
+  display: none;
 }
 
 .nav__top ul li {
   font-size: var(--fontSize7);
   color: var(--tertiaryColor);
+  white-space: nowrap;
 }
 
 .nav__top ul li a,
@@ -137,6 +148,7 @@
 }
 
 /* donate btn */
+
 .donateBtn {
   font-weight: var(--bold);
   font-size: 1rem;
@@ -227,8 +239,7 @@
 
 .icBadge {
   display: flex;
-  height: 1rem;
-  margin-left: auto;
+  height: 0.9rem;
 }
 
 @media screen and (max-width: 1023px) {
@@ -247,10 +258,5 @@
   .nav__menuBtn {
     display: grid;
     place-items: center;
-  }
-
-  .divider {
-    width: calc(100% + 2rem);
-    margin: 0 -1rem;
   }
 }

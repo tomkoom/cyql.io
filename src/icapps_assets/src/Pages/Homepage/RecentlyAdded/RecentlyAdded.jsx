@@ -18,55 +18,68 @@ const RecentlyAdded = () => {
       {!apps.length ? (
         <Loader />
       ) : (
-        apps.slice(0, 23).map((app) => (
-          <li key={app.id} className={css.appLi__i}>
-            <button onClick={() => toApp(app.id)} className="linkBlock">
-              <div
-                className={css.appLi__i__linkBlock__cover}
-                style={app.cover && { backgroundImage: `url(${app.cover})` }}
-              />
-              <div className={css.appLi__i__linkBlock__appInfo}>
-                <img
-                  className={css.appLi__i__linkBlock__appInfo__logo}
-                  src={app.logo}
-                  alt={app.name}
-                  style={app.logo ? null : { display: "none" }}
+        apps
+          .slice(0, 23)
+          .sort((a) => (a.promoted ? -1 : 0))
+          .map((app) => (
+            <li
+              key={app.id}
+              className={`${css.appLi__i} ${
+                app.promoted ? css.promoted : null
+              }`}
+            >
+              <button onClick={() => toApp(app.id)} className="linkBlock">
+                <div
+                  className={css.appLi__i__linkBlock__cover}
+                  style={app.cover && { backgroundImage: `url(${app.cover})` }}
                 />
-                <div className={css.appLi__i__linkBlock__appInfo__desc}>
-                  <h3 className={css.appLi__i__linkBlock__appInfo__desc__title}>
-                    {app.name}
-                  </h3>
+                <div className={css.appLi__i__linkBlock__appInfo}>
+                  <img
+                    className={css.appLi__i__linkBlock__appInfo__logo}
+                    src={app.logo}
+                    alt={app.name}
+                    style={app.logo ? null : { display: "none" }}
+                  />
+                  <div className={css.appLi__i__linkBlock__appInfo__desc}>
+                    <div
+                      className={css.appLi__i__linkBlock__appInfo__desc__title}
+                    >
+                      <h3>{app.name}</h3>
+                      {app.promoted && (
+                        <span>{app.promoted ? "Promoted" : null}</span>
+                      )}
+                    </div>
 
-                  <ul>
-                    <li>{app.category}</li>
-                    {app.canister && (
-                      <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>
-                    )}
-                    {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
+                    <ul>
+                      <li>{app.category}</li>
+                      {app.canister && (
+                        <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>
+                      )}
+                      {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
 
-                    {app.tags == "Psychedelic" && (
-                      <li>
-                        <img
-                          src="https://psychedelic.ooo/images/11-2.svg"
-                          alt="Psychedelic"
-                        />
-                        &nbsp;&nbsp;
-                        {app.tags}
-                      </li>
-                    )}
-                    {app.tags == "toniqlabs" && <li>{app.tags}</li>}
-                  </ul>
+                      {app.tags == "Psychedelic" && (
+                        <li>
+                          <img
+                            src="https://psychedelic.ooo/images/11-2.svg"
+                            alt="Psychedelic"
+                          />
+                          &nbsp;&nbsp;
+                          {app.tags}
+                        </li>
+                      )}
+                      {app.tags == "toniqlabs" && <li>{app.tags}</li>}
+                    </ul>
 
-                  <p className={css.appDescription}>
-                    {app.description && app.description.length > 50
-                      ? `${app.description.substring(0, 50)}…`
-                      : app.description}
-                  </p>
+                    <p className={css.appDescription}>
+                      {app.description && app.description.length > 50
+                        ? `${app.description.substring(0, 50)}…`
+                        : app.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </button>
-          </li>
-        ))
+              </button>
+            </li>
+          ))
       )}
       {apps.length > 0 && (
         <button
