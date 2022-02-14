@@ -126,11 +126,21 @@ const UpcomingNfts = () => {
                     nft.nftSaleStatus === "Upcoming"
                 )
                 .sort((a, b) => sortByDate(a, b))
+                .sort((a) => (a.promoted ? -1 : 0))
                 .map((nft) => (
-                  <tr key={nft.id}>
+                  <tr
+                    className={nft.promoted ? css.promoted : css.t__tbody__tr}
+                    key={nft.id}
+                  >
                     <td className={css.t__mainColl}>
                       <span onClick={() => toApp(nft.id)}>
-                        <h4 className={css.t__mainColl__title}>{nft.name}</h4>
+                        <div>
+                          <h4 className={css.t__mainColl__title}>{nft.name}</h4>
+                          {nft.promoted && (
+                            <span>{nft.promoted ? "Promoted" : null}</span>
+                          )}
+                        </div>
+
                         <p className={css.t__mainColl__description}>
                           {nft.description && nft.description.length > 70
                             ? `${nft.description.substring(0, 70)}…`

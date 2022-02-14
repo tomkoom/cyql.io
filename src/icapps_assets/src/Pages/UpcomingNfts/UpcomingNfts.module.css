@@ -1,6 +1,6 @@
 /* upcoming nft sales */
 
-/* TABLE */
+/* table */
 
 .t {
   text-align: right;
@@ -10,14 +10,14 @@
   white-space: nowrap;
 }
 
-.t thead tr th:first-child,
-.t tbody tr td:first-child {
-  padding-left: 0;
+.promoted {
+  -webkit-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+  -moz-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+  box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
 }
 
-.t thead tr th:last-child,
-.t tbody tr td:last-child {
-  padding-right: 0;
+.t__tbody__tr {
+  box-shadow: var(--underline);
 }
 
 .t__mainColl span {
@@ -33,8 +33,22 @@
   color: var(--primaryColor);
 }
 
+.t__mainColl span div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .t__mainColl__title {
   font-size: var(--fontSize6);
+}
+
+.t__mainColl span div span {
+  font-size: var(--fontSize7);
+  padding: 0.05rem 0.25rem;
+  color: var(--primaryColor);
+  background-color: var(--highlightColor);
+  border-radius: 0.25rem;
 }
 
 .t__mainColl__description {
@@ -49,11 +63,6 @@
 .t thead tr th:nth-child(-n + 3),
 .t tbody tr td:nth-child(-n + 3) {
   text-align: left;
-}
-
-.t thead tr,
-.t tbody tr {
-  box-shadow: var(--underlineInset);
 }
 
 .t thead tr th,
@@ -104,7 +113,7 @@
   object-fit: cover;
 }
 
-/* HERO */
+/* hero */
 
 .nft__hero {
   display: flex;
