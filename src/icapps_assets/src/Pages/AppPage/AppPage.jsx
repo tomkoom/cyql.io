@@ -47,7 +47,6 @@ const ExpandableText = ({ children }) => {
 
 const AppPage = () => {
   const { id } = useParams();
-  const nftItems = useSelector(selectNftItems);
   const projects = useSelector(selectProjects);
 
   const getTwitterUsername = (url) => {
@@ -63,10 +62,10 @@ const AppPage = () => {
 
       <ExpandableText>
         <p>
-          This website is maintained by the IC community. Anyone can submit
-          their project. Not all information may be properly verified and
-          therefore may not be accurate. DYOR and use your best judgement when
-          dealing with the projects listed on this site.
+          This website is maintained by the IC enthusiasts and community. Anyone
+          can submit their project. Not all information may be properly verified
+          and therefore may not be accurate. DYOR and use your best judgement
+          when dealing with the projects listed on this site.
         </p>
       </ExpandableText>
 
@@ -190,12 +189,18 @@ const AppPage = () => {
                   <h4>Collection stats</h4>
                   <ul>
                     <li>
-                      <p>Minted NFTs</p>
-                      <p>{project.nftUnits ? project.nftUnits : "N/A"}</p>
+                      <p>Status</p>
+                      <p>
+                        {project.nftSaleStatus ? project.nftSaleStatus : "N/A"}
+                      </p>
                     </li>
                     <li>
                       <p>Sale date</p>
                       <p>{project.nftSaleDate ? project.nftSaleDate : "N/A"}</p>
+                    </li>
+                    <li>
+                      <p>Total NFTs</p>
+                      <p>{project.nftUnits ? project.nftUnits : "N/A"}</p>
                     </li>
                     <li>
                       <p>Unit price</p>

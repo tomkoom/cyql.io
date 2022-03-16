@@ -13,10 +13,12 @@ import JoinCommunity from "./JoinCommunity/JoinCommunity";
 import { useSelector } from "react-redux";
 import { selectNftItems } from "../../State/nftItems";
 import { selectUpcomingNfts } from "../../State/siteData";
+import { selectProjects } from "../../State/siteData";
 
 const Homepage = () => {
   const upcomingNfts = useSelector(selectUpcomingNfts);
   const nftItems = useSelector(selectNftItems);
+  const projects = useSelector(selectProjects);
 
   return (
     <main className={css.home}>
@@ -28,7 +30,21 @@ const Homepage = () => {
         </p>
       </section>
 
-      {/* Recently added */}
+      {/* recently added nfts*/}
+      <section className={css.home__apps}>
+        <div className={css.home__section__title}>
+          <h3>Recently added NFTs</h3>
+          <button className={`${css.viewAll} navlink`} onClick={() => toApps()}>
+            View all &gt;
+          </button>
+        </div>
+
+        <RecentlyAdded
+          projects={projects.filter((project) => project.category === "NFTs")}
+        />
+      </section>
+
+      {/* recently added projects*/}
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
           <h3>Recently added projects</h3>
@@ -37,10 +53,12 @@ const Homepage = () => {
           </button>
         </div>
 
-        <RecentlyAdded />
+        <RecentlyAdded
+          projects={projects.filter((project) => project.category !== "NFTs")}
+        />
       </section>
 
-      {/* Upcoming NFT sales */}
+      {/* upcoming NFT sales */}
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Upcoming NFT sales</h3>
@@ -61,7 +79,7 @@ const Homepage = () => {
         />
       </section>
 
-      {/* Ongoing NFT sales */}
+      {/* ongoing nft sales */}
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Ongoing NFT sales</h3>
@@ -81,7 +99,7 @@ const Homepage = () => {
         />
       </section>
 
-      {/* Top NFT collections */}
+      {/* top nft collections */}
       <section className={css.home__nftCollections}>
         <div className={css.home__section__title}>
           <h3>Top NFT collections</h3>
@@ -92,7 +110,7 @@ const Homepage = () => {
         <TopNftCollections nftItems={nftItems} loader={<Loader />} />
       </section>
 
-      {/* Join community */}
+      {/* join community */}
       <section className={css.home__nftCollections}>
         <div className={css.home__section__title}>
           <h3>Join icApps community</h3>

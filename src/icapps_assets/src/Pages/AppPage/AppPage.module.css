@@ -225,10 +225,11 @@
 /* expandable text */
 
 .expandable {
-  background-color: var(--underlay);
+  /* background-color: var(--underlay); */
   padding: 0.75rem;
   margin-top: 1rem;
   border-radius: var(--br05);
+  box-shadow: var(--boxShadow2);
 }
 
 .expandable__content {

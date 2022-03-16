@@ -10,7 +10,7 @@ import {
 
 const navLinks = [
   { name: "Home", link: toHome, icon: "" },
-  { name: "Apps", link: toApps, icon: "" },
+  { name: "Projects", link: toApps, icon: "" },
   { name: "Upcoming", link: toUpcoming, icon: iFire },
   { name: "NFT Stats", link: toNft, icon: "" },
   { name: "Submit", link: toSubmit, icon: "" },
