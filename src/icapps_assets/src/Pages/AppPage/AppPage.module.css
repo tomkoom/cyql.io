@@ -247,3 +247,35 @@
   font-weight: var(--black);
   color: var(--secondaryColor);
 }
+
+/* rename app to project */
+
+.project__collectionStats {
+  margin: 1rem 0;
+}
+
+.project__collectionStats ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.5rem 0;
+}
+
+.project__collectionStats ul li {
+  box-shadow: var(--boxShadow2);
+  padding: 0.5rem;
+  border-radius: var(--br05);
+
+  flex: 1;
+}
+
+.project__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project__btns a span {
+  color: var(--secondaryColor);
+}

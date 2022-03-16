@@ -13,7 +13,6 @@ import {
   iMedium,
   iGithub,
   iArrowLeft,
-  iArrowRight,
   iExternalLink,
 } from "../../Icons/Icons";
 
@@ -22,7 +21,6 @@ import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/siteData";
 import { selectNftItems } from "../../State/nftItems";
 
-let nftItem = {};
 let socialLinks = [];
 let icLinks = [];
 
@@ -155,31 +153,27 @@ const AppPage = () => {
               )}
 
               {/* nft market data */}
-              {
+              {/* {
                 ((nftItem = nftItems
                   ? nftItems.find((nftItem) => nftItem.name === project.name)
                   : null),
                 nftItem && (
                   <div className={css.nftMarketData}>
-                    {/* volume */}
                     <div className={css.nftMarketData__item}>
                       <h5>Volume</h5>
                       <p>{`${nftItem.salesInIcpFormatted} ICP`}</p>
                     </div>
 
-                    {/* sales */}
                     <div className={css.nftMarketData__item}>
                       <h5>Sales</h5>
                       <p>{nftItem.sales}</p>
                     </div>
 
-                    {/* minted nfts */}
                     <div className={css.nftMarketData__item}>
                       <h5>Minted NFTs</h5>
                       <p>{nftItem.totalAssetsFormatted}</p>
                     </div>
 
-                    {/* listings */}
                     <div className={css.nftMarketData__item}>
                       <h5>Market Listings</h5>
                       <p className={css.nftMarketData__item__data}>
@@ -188,18 +182,54 @@ const AppPage = () => {
                     </div>
                   </div>
                 ))
-              }
+              } */}
 
-              {project.nftMarketUrl && (
-                <a
-                  className={css.trade__btn}
-                  href={project.nftMarketUrl}
-                  target="_blank"
-                  rel="norefferrer noopener"
-                >
-                  Trade on Entrepot&nbsp;<span>{iArrowRight}</span>
-                </a>
-              )}
+              {/* collection stats */}
+              {project.category === "NFTs" ? (
+                <div className={css.project__collectionStats}>
+                  <h4>Collection stats</h4>
+                  <ul>
+                    <li>
+                      <p>Minted NFTs</p>
+                      <p>{project.nftUnits ? project.nftUnits : "N/A"}</p>
+                    </li>
+                    <li>
+                      <p>Sale date</p>
+                      <p>{project.nftSaleDate ? project.nftSaleDate : "N/A"}</p>
+                    </li>
+                    <li>
+                      <p>Unit price</p>
+                      <p>
+                        {project.nftUnitPrice ? project.nftUnitPrice : "N/A"}
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              ) : null}
+
+              <div className={css.project__btns}>
+                {project.nftMarketUrl && (
+                  <a
+                    className={css.trade__btn}
+                    href={project.nftMarketUrl}
+                    target="_blank"
+                    rel="norefferrer noopener"
+                  >
+                    Trade on Entrepot&nbsp;<span>{iExternalLink}</span>
+                  </a>
+                )}
+
+                {project.nftRarityChecker && (
+                  <a
+                    className={css.trade__btn}
+                    href={project.nftRarityChecker}
+                    target="_blank"
+                    rel="norefferrer noopener"
+                  >
+                    NFT rarity checker&nbsp;<span>{iExternalLink}</span>
+                  </a>
+                )}
+              </div>
 
               {/* ic links */}
               <div>
