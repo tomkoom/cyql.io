@@ -37,7 +37,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ["theme", "searchProjects", "searchNfts", "projectsFiltering", "view"]
+	whitelist: ["theme", "view"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

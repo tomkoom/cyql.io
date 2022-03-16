@@ -1,6 +1,6 @@
 /* recently added */
 
-.appLi {
+/* .appLi {
   display: grid;
   grid-template-rows: auto auto;
   grid-auto-flow: column;
@@ -8,15 +8,25 @@
   padding-top: 0.75rem;
   padding-left: 1px;
   padding-right: 1px;
+  padding-bottom: 1px;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+} */
+
+.appLi {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .appLi__i {
-  width: 17.5rem;
+  /* width: 17.5rem; */
   border-radius: var(--br1);
   box-shadow: var(--boxShadow);
+  cursor: pointer;
 }
 
 .promoted {
@@ -39,22 +49,29 @@
 
 .appLi__i__linkBlock__appInfo {
   display: flex;
+  flex-direction: column;
   padding: 0.75rem;
   gap: 0.5rem;
 }
 
-.appLi__i__linkBlock__appInfo__logo {
+.appLi__i__linkBlock__appInfo__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* overflow-wrap: break-word; */
+}
+
+.projectlogo {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.appLi__i__linkBlock__appInfo__desc {
+.titletags {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  /* overflow-wrap: break-word; */
 }
 
 .appDescription {
@@ -63,26 +80,26 @@
   color: var(--secondaryColor);
 }
 
-.appLi__i__linkBlock__appInfo__desc__title {
+.appLi__i__linkBlock__appInfo__header__title {
   display: flex;
   justify-content: space-between;
 }
 
-.appLi__i__linkBlock__appInfo__desc__title h3 {
+.appLi__i__linkBlock__appInfo__header__title h3 {
   font-size: var(--fontSize6);
   color: var(--primaryColor);
   word-wrap: break-word;
 }
 
-.appLi__i__linkBlock__appInfo__desc__title span {
+.appLi__i__linkBlock__appInfo__header__title span {
   font-size: var(--fontSize7);
   padding: 0.05rem 0.25rem;
-  color: var(--primaryColor);
+  color: white;
   background-color: var(--highlightColor);
   border-radius: 0.25rem;
 }
 
-.appLi__i__linkBlock__appInfo__desc ul {
+.appLi__i__linkBlock__appInfo__header ul {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -90,7 +107,7 @@
   font-size: var(--fontSize7);
 }
 
-.appLi__i__linkBlock__appInfo__desc ul li {
+.appLi__i__linkBlock__appInfo__header ul li {
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
   display: flex;
@@ -100,16 +117,6 @@
   box-shadow: var(--boxShadow2);
 }
 
-.appLi__i__linkBlock__appInfo__desc ul li img {
+.appLi__i__linkBlock__appInfo__header ul li img {
   max-width: 1rem;
-}
-
-/* - */
-
-.viewAllAppsCard {
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  background: var(--underlay);
-  border-radius: 1rem;
 }

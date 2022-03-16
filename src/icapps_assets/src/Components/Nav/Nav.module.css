@@ -181,20 +181,22 @@
 .nav__bottom {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
 }
 
 .themeSwitch {
   width: 2rem;
   height: 2rem;
-  display: grid;
-  place-items: center;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
   font-size: var(--fontSize6);
   color: var(--primaryColor);
   box-shadow: var(--boxShadow);
-  border-radius: 50%;
   cursor: pointer;
 }
 

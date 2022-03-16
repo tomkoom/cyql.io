@@ -18,11 +18,11 @@
 
   --colorGreen: #24a148;
   --colorRed: #fa4d56;
+  --colorOrange: #ff3d00;
 
+  /* social colors */
   --colorTwitter: #00acee;
   --colorDiscord: #5865f2;
-
-  --colorOrange: #ff3d00;
 
   /* font-size */
   --fontSize1: 3.052rem;
@@ -72,4 +72,12 @@ html {
 
 .container1440 {
   max-width: 1440px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  html {
+    font-size: 16px; /* Root font size */
+  }
 }

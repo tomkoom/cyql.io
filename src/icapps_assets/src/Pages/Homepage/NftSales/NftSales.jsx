@@ -141,7 +141,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                 ))}
             </tbody>
           </table>
-          <button className={css.upcomingBtn} onClick={() => toUpcoming()}>
+          <button className="viewMoreBtn" onClick={() => toUpcoming()}>
             View all upcoming NFT sales
           </button>
         </div>

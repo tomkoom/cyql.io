@@ -118,16 +118,16 @@ const Nav = () => {
               {upcomingNftsNum}
             </button>
           </li>
-          <li>
+          {/* <li>
             Promoted:{" "}
             <a
-              href="https://www.icdinos.io/"
+              href="https://falling.tech/"
               rel="noreferrer noopener"
               target="_blank"
             >
-              IC Dinos
+              FallingStars 🌠
             </a>
-          </li>
+          </li> */}
           <li>
             Featured:{" "}
             <a
@@ -216,12 +216,12 @@ const Nav = () => {
       {/* bottom */}
       <div className={css.divider} />
       <div className={css.nav__bottom}>
-        <button
+        <div
           className={css.themeSwitch}
           onClick={() => dispatch(setTheme(changeTheme(theme)))}
         >
           {theme === "light" ? iSun : theme === "dark" ? iMoon : null}
-        </button>
+        </div>
         <div className={css.icpPriceBadge}>
           {/* <div className={css.icpPriceBadge__logo} /> */}
           <div>
@@ -240,7 +240,7 @@ const Nav = () => {
             <span className={css.icpPriceChangeTime}>24h</span>
           </div>
         </div>
-        <div className={css.icBadge}>
+        {/* <div className={css.icBadge}>
           <img
             src={
               theme === "light"
@@ -251,7 +251,7 @@ const Nav = () => {
             }
             alt="IC-Badge"
           />
-        </div>
+        </div> */}
         {/* lang */}
       </div>
 

@@ -12,12 +12,6 @@
   max-width: calc(1440px + 4rem);
 }
 
-@media screen and (max-width: 1023px) {
-  .app__content {
-    padding: 1rem 0.5rem;
-  }
-}
-
 /* global styles */
 
 a {
@@ -80,6 +74,23 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.viewMoreBtn {
+  background-color: var(--underlay);
+  color: var(--primaryColor);
+  padding: 0.75rem;
+  width: 100%;
+  font-size: 0.9rem;
+  text-align: center;
+  border-radius: var(--br025);
+  cursor: pointer;
+  border: none;
+  margin-top: 0.75rem;
+}
+
+.viewMoreBtn:hover {
+  background-color: var(--underlay2);
+}
+
 /* typography */
 
 h1,
@@ -128,4 +139,12 @@ h6 {
 
 .subtitle {
   font-size: var(--fontSize7);
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .app__content {
+    padding: 1rem 0.5rem;
+  }
 }
