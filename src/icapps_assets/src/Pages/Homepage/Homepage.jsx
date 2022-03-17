@@ -100,7 +100,7 @@ const Homepage = () => {
       </section>
 
       {/* top nft collections */}
-      <section className={css.home__nftCollections}>
+      {/* <section className={css.home__nftCollections}>
         <div className={css.home__section__title}>
           <h3>Top NFT collections</h3>
           <button className={`${css.viewAll} navlink`} onClick={() => toNft()}>
@@ -108,7 +108,7 @@ const Homepage = () => {
           </button>
         </div>
         <TopNftCollections nftItems={nftItems} loader={<Loader />} />
-      </section>
+      </section> */}
 
       {/* join community */}
       <section className={css.home__nftCollections}>

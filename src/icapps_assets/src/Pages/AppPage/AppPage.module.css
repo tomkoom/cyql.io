@@ -177,6 +177,16 @@
 [data-social="Medium"],
 [data-social="App"] {
   background-color: var(--underlay);
+  color: var(--primaryColor);
+}
+
+[data-social="Canister"] a,
+[data-social="Dscvr"] a,
+[data-social="Distrikt"] a,
+[data-social="Website"] a,
+[data-social="Medium"] a,
+[data-social="App"] a {
+  color: var(--primaryColor);
 }
 
 [data-social="Twitter"] {

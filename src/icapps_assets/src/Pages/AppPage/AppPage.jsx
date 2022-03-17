@@ -19,7 +19,6 @@ import {
 // redux
 import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/siteData";
-import { selectNftItems } from "../../State/nftItems";
 
 let socialLinks = [];
 let icLinks = [];
@@ -65,7 +64,8 @@ const AppPage = () => {
           This website is maintained by the IC enthusiasts and community. Anyone
           can submit their project. Not all information may be properly verified
           and therefore may not be accurate. DYOR and use your best judgement
-          when dealing with the projects listed on this site.
+          when dealing with the projects listed on this site and making
+          investment decisions.
         </p>
       </ExpandableText>
 
@@ -103,17 +103,7 @@ const AppPage = () => {
                     <span className={css.app__info__caption__tags__item}>
                       {project.category}
                     </span>
-                    {project.category === "NFTs" && project.nftSaleStatus ? (
-                      <span
-                        className={`${css.app__info__caption__tags__item} ${css.nftSaleStatus}`}
-                      >
-                        {project.nftSaleStatus === "Over"
-                          ? "Launched"
-                          : project.nftSaleStatus === "Open"
-                          ? "Sale is open"
-                          : "Upcoming NFT sale"}
-                      </span>
-                    ) : null}
+
                     {project.tags && (
                       <span className={css.app__info__caption__tags__item}>
                         {project.tags}
