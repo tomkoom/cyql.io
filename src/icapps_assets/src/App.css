@@ -141,6 +141,57 @@ h6 {
   font-size: var(--fontSize7);
 }
 
+/* cookie */
+
+.cookie {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background: #21272a;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 0 1rem;
+  color: var(--coolGray30);
+}
+
+.cookie * {
+  font-size: 0.9rem;
+}
+
+.cookie__content {
+  padding-right: 0.5rem;
+}
+
+.cookie__btn {
+  height: 1.5rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primaryColor);
+  font-weight: var(--bold);
+  text-decoration: none;
+  background-color: var(--highlightColor);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+.cookie__btn:hover {
+  background-color: var(--highlightColor2);
+}
+
+.cookie__link:hover {
+  text-decoration: underline;
+}
+
 /* responsive */
 
 @media screen and (max-width: 1023px) {

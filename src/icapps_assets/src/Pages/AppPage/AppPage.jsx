@@ -176,7 +176,7 @@ const AppPage = () => {
               {/* collection stats */}
               {project.category === "NFTs" ? (
                 <div className={css.project__collectionStats}>
-                  <h4>Collection stats</h4>
+                  <h4 className={css.collectionStats}>Collection stats</h4>
                   <ul>
                     <li>
                       <p>Status</p>

@@ -290,3 +290,7 @@
 .project__btns a span {
   color: var(--secondaryColor);
 }
+
+.collectionStats {
+  font-size: var(--fontSize5);
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./Theme/theme.css";
 import "./App.css";
+import CookieConsent from "react-cookie-consent";
 
 // components
 import {
@@ -156,6 +157,27 @@ const App = () => {
       <Route exact path={`/(|apps|upcoming|nft|submit)`}>
         <Footer />
       </Route>
+
+      {/* cookies */}
+      <CookieConsent
+        cookieName="cookie"
+        disableStyles={true}
+        buttonText="Ok"
+        containerClasses="cookie"
+        contentClasses="cookie__content"
+        buttonClasses="cookie__btn"
+        expires={90}
+      >
+        This website uses 🍪{" "}
+        <a
+          className="cookie__link"
+          href="https://bit.ly/icapps-cookies"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          Learn more
+        </a>
+      </CookieConsent>
     </div>
   );
 };
