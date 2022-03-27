@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./UpcomingNfts.module.css";
 import Loader from "../../Components/Loader/Loader";
-import { toApp } from "../../Routes/routes";
+import { toApp, toSubmit } from "../../Routes/routes";
 
 // icons
 import {
@@ -62,16 +62,16 @@ const UpcomingNfts = () => {
 
   return (
     <section className={css.nft}>
-      {/* Hero */}
+      {/* hero */}
       <div className={css.nft__hero}>
         <h2 className="pageTitle">Upcoming NFT Sales &#38; Airdrops</h2>
         <p className="bodyText">
-          {/* Information on this page should not be considered as financial advice. */}
           Please note: we do not guarantee information provided on this page is
-          100% accurate. Please do your own research.
+          100% accurate. Please do your own research. Information on this page
+          should not be considered as financial advice.
         </p>
 
-        {/* Media partners */}
+        {/* media partners */}
         <div className={css.mediaPartners}>
           <p>Media Partners</p>
 
@@ -92,15 +92,10 @@ const UpcomingNfts = () => {
           </div>
         </div>
 
-        {/* Submit btn */}
-        <a
-          className={css.submitBtn}
-          href="https://forms.gle/rSxVndkZCkSpnfph7"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
+        {/* submit btn */}
+        <button className={css.submitBtn} onClick={toSubmit}>
           Submit your project
-        </a>
+        </button>
       </div>
 
       {/* content */}

@@ -4,23 +4,6 @@
   padding: 2rem 0;
 }
 
-/* back btn */
-
-.backBtn__container {
-  width: 3rem;
-  height: 3rem;
-  display: grid;
-  place-items: center;
-  font-size: var(--fontSize6);
-  color: var(--primaryColor);
-  background-color: var(--underlay);
-  border-radius: 50%;
-}
-
-.backBtn__container:hover {
-  background-color: var(--underlay2);
-}
-
 /* content */
 
 .app {
@@ -235,11 +218,9 @@
 /* expandable text */
 
 .expandable {
-  /* background-color: var(--underlay); */
+  background-color: var(--underlay);
   padding: 0.75rem;
-  margin-top: 1rem;
   border-radius: var(--br05);
-  box-shadow: var(--boxShadow2);
 }
 
 .expandable__content {
@@ -274,10 +255,9 @@
 }
 
 .project__collectionStats ul li {
-  box-shadow: var(--boxShadow2);
-  padding: 0.5rem;
+  background-color: var(--underlay);
+  padding: 0.75rem;
   border-radius: var(--br05);
-
   flex: 1;
 }
 

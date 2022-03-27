@@ -135,7 +135,7 @@
   align-items: center;
   margin: 0.5rem 0 0.75rem 0;
   padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   background-color: var(--underlay);
   font-size: var(--fontSize7);
 }
@@ -157,7 +157,10 @@
   color: var(--primaryColor);
   box-shadow: var(--boxShadow);
   font-weight: var(--bold);
-  border-radius: 0.5rem;
+  border-radius: var(--br025);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 .submitBtn:hover {

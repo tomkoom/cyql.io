@@ -19,6 +19,7 @@ import {
 // redux
 import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/siteData";
+import BackBtn from "../../Components/BackBtn/BackBtn";
 
 let socialLinks = [];
 let icLinks = [];
@@ -55,9 +56,7 @@ const AppPage = () => {
 
   return (
     <section className={`${css.appPage} container768`}>
-      <button className="navlink" onClick={() => goBack()}>
-        <div className={css.backBtn__container}>{iArrowLeft}</div>
-      </button>
+      <BackBtn />
 
       <ExpandableText>
         <p>

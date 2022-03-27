@@ -33,6 +33,10 @@ body {
   background-color: var(--primaryColor);
 }
 
+input {
+  font-size: var(--fontSize6);
+}
+
 ::placeholder {
   color: var(--tertiaryColor);
 }
@@ -153,11 +157,11 @@ h6 {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  background: #21272a;
   border-radius: 0.5rem;
   height: 3rem;
   padding: 0 1rem;
-  color: var(--coolGray30);
+  color: var(--primaryColor);
+  background: var(--underlay2);
 }
 
 .cookie * {
@@ -174,7 +178,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primaryColor);
+  color: white;
   font-weight: var(--bold);
   text-decoration: none;
   background-color: var(--highlightColor);
@@ -186,6 +190,10 @@ h6 {
 
 .cookie__btn:hover {
   background-color: var(--highlightColor2);
+}
+
+.cookie__link {
+  color: var(--primaryColor);
 }
 
 .cookie__link:hover {

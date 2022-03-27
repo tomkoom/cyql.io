@@ -155,12 +155,12 @@
   padding: 0.33rem 0.66rem;
   cursor: pointer;
   letter-spacing: -0.25px;
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay);
   border-radius: 0.5rem;
 }
 
 .donateBtn:hover {
-  background: var(--underlay);
+  background: var(--underlay2);
 }
 
 .donateBtn p {
@@ -196,12 +196,12 @@
   border: none;
   font-size: var(--fontSize6);
   color: var(--primaryColor);
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay);
   cursor: pointer;
 }
 
 .themeSwitch:hover {
-  background-color: var(--underlay);
+  background-color: var(--underlay2);
 }
 
 .icpPriceBadge {

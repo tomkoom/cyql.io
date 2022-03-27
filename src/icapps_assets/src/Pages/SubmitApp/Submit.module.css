@@ -1,5 +1,9 @@
 /* Submit app */
 
+.sApp {
+  padding: 2rem 0;
+}
+
 .sApp__form {
   display: flex;
   gap: 1.5rem;
@@ -76,9 +80,78 @@
   border-radius: 0.75rem;
 }
 
-.partyParrot {
-  background-image: url("https://emoji.discord.st/emojis/5613ff27-fb41-4716-8821-97e17e31c7bd.gif");
-  background-size: contain;
-  width: 3rem;
+/* form */
+
+/* name */
+
+.form {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form__field__label {
+  font-weight: var(--bold);
+}
+
+.form__field__label__icon {
+  color: var(--secondaryColor);
+}
+
+.form__field__hint {
+  font-size: var(--fontSize6);
+  margin-top: 0.25rem;
+  color: var(--tertiaryColor);
+}
+
+.from__field__input {
   height: 3rem;
+  padding: 0 1rem;
+  background-color: var(--underlay);
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+  caret-color: var(--primaryColor);
+  color: var(--primaryColor);
+}
+
+.from__field__input,
+.form__field ul {
+  margin-top: 1rem;
+}
+
+/* categories */
+
+.form__field ul {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category {
+  display: none;
+}
+
+.category__div {
+  padding: 0.75rem;
+  border-radius: var(--br025);
+  background-color: var(--underlay);
+  font-weight: var(--bold);
+}
+
+.category__div:hover {
+  cursor: pointer;
+}
+
+.category:checked + .category__div {
+  background-color: var(--highlightColor);
 }

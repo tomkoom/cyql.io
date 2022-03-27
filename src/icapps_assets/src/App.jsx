@@ -13,7 +13,7 @@ import {
   AppPage,
   UpcomingNfts,
   NftList,
-  SubmitApp,
+  Submit,
 } from "./Pages";
 
 // redux
@@ -108,7 +108,7 @@ const App = () => {
 
   return (
     <div className={`App ${theme}`}>
-      <Route exact path={`/(|apps|upcoming|nft|submit)`}>
+      <Route exact path={`/(|apps|upcoming|nft)`}>
         <Nav />
       </Route>
 
@@ -147,14 +147,14 @@ const App = () => {
           </Route>
 
           <Route exact path="/submit">
-            <SubmitApp />
+            <Submit />
           </Route>
 
           {/* <Route component={page404} /> */}
         </Switch>
       </div>
 
-      <Route exact path={`/(|apps|upcoming|nft|submit)`}>
+      <Route exact path={`/(|apps|upcoming|nft)`}>
         <Footer />
       </Route>
 

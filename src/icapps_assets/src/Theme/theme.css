@@ -25,8 +25,8 @@
 
 .dark {
   --primaryColor: var(--coolGray10);
-  --secondaryColor: var(--coolGray40);
-  --tertiaryColor: var(--coolGray60);
+  --secondaryColor: var(--coolGray30);
+  --tertiaryColor: var(--coolGray50);
   --highlightColor: #304ffe;
   --highlightColorHover: #8c9eff;
   --highlightColor2: #536dfe;

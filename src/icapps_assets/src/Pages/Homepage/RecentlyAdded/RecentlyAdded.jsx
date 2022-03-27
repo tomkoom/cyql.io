@@ -21,7 +21,7 @@ const RecentlyAdded = ({ projects }) => {
           <Loader />
         ) : (
           apps
-            .slice(0, 9)
+            .slice(0, 10)
             .sort((a) => (a.promoted ? -1 : 0))
             .map((app) => (
               <li
@@ -42,12 +42,13 @@ const RecentlyAdded = ({ projects }) => {
                   {/* info */}
                   <div className={css.appLi__i__linkBlock__appInfo}>
                     <div className={css.appLi__i__linkBlock__appInfo__header}>
-                      <img
-                        className={css.projectlogo}
-                        src={app.logo}
-                        alt={app.name}
-                        style={app.logo ? null : { display: "none" }}
-                      />
+                      {app.logo && (
+                        <img
+                          className={css.projectlogo}
+                          src={app.logo}
+                          alt={app.name}
+                        />
+                      )}
 
                       {/* name, category & tags */}
                       <div className={css.titletags}>

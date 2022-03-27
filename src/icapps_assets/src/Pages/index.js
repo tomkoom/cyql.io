@@ -6,7 +6,7 @@ export { default as Apps } from "./Apps/Apps";
 export { default as AppPage } from "./AppPage/AppPage";
 export { default as UpcomingNfts } from "./UpcomingNfts/UpcomingNfts";
 export { default as NftList } from "./NftList/NftList";
-export { default as SubmitApp } from "./SubmitApp/SubmitApp";
+export { default as Submit } from "./SubmitApp/Submit";
 
 // homepage.jsx
 export { default as AppList } from "./Apps/AppList/AppList";
