@@ -156,7 +156,7 @@
   cursor: pointer;
   letter-spacing: -0.25px;
   background-color: var(--underlay);
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .donateBtn:hover {
@@ -212,7 +212,7 @@
   border-radius: 0.25rem;
   padding: 0 0.5rem;
   font-size: var(--fontSize7);
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay);
   color: var(--primaryColor);
 }
 

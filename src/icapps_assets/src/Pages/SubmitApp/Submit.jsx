@@ -426,7 +426,7 @@ const Submit = () => {
             {category === "nft-collection" && (
               <div>
                 <br />
-                <h3>NFT collection information</h3>
+                <h3>NFT collection info</h3>
                 <br />
                 {nftInputs.map((nftInput, i) => (
                   <div className={css.form__field} key={i}>
