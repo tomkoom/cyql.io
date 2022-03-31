@@ -42,15 +42,14 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  /* overflow-wrap: break-word; */
 }
 
 .projectlogo {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
   object-fit: cover;
-  font-size: 0.66rem;
+  font-size: 0.75rem;
 }
 
 .titletags {
@@ -90,6 +89,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: var(--fontSize7);
+  margin-top: 0.125rem;
 }
 
 .titletags ul li {
