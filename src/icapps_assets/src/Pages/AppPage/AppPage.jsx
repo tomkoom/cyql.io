@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./AppPage.module.css";
 import { useParams } from "react-router-dom";
-import { goBack } from "../../Routes/routes";
-import Loader from "../../Components/Loader/Loader";
 
 // icons
 import {
@@ -12,38 +10,20 @@ import {
   iDiscord,
   iMedium,
   iGithub,
-  iArrowLeft,
   iExternalLink,
 } from "../../Icons/Icons";
 
 // redux
 import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/siteData";
+
+// components
+import Loader from "../../Components/Loader/Loader";
 import BackBtn from "../../Components/BackBtn/BackBtn";
+import ExpandableText from "../../Components/ExpandableText/ExpandableText";
 
 let socialLinks = [];
 let icLinks = [];
-
-const ExpandableText = ({ children }) => {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <div className={css.expandable}>
-      <div
-        className={css.expandable__content}
-        style={{ maxHeight: expanded ? "none" : "20px" }}
-      >
-        {children}
-      </div>
-      <button
-        className={`${css.readMoreBtn} navlink`}
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? "Read less" : "Read more"}
-      </button>
-    </div>
-  );
-};
 
 const AppPage = () => {
   const { id } = useParams();
@@ -59,13 +39,11 @@ const AppPage = () => {
       <BackBtn />
 
       <ExpandableText>
-        <p>
-          This website is maintained by the IC enthusiasts and community. Anyone
-          can submit their project. Not all information may be properly verified
-          and therefore may not be accurate. DYOR and use your best judgement
-          when dealing with the projects listed on this site and making
-          investment decisions.
-        </p>
+        This website is maintained by the IC enthusiasts and community. Anyone
+        can submit their project. Not all information may be properly verified
+        and therefore may not be accurate. DYOR and use your best judgement when
+        dealing with the projects listed on this site and making investment
+        decisions.
       </ExpandableText>
 
       {projects.length < 1 ? (
@@ -110,6 +88,7 @@ const AppPage = () => {
                     )}
                   </div>
                 </div>
+
                 {/* date */}
                 <div className={css.app__info__date}>{project.dateAdded}</div>
               </div>
