@@ -140,60 +140,32 @@ const AppPage = () => {
                 </div>
               )}
 
-              {/* nft market data */}
-              {/* {
-                ((nftItem = nftItems
-                  ? nftItems.find((nftItem) => nftItem.name === project.name)
-                  : null),
-                nftItem && (
-                  <div className={css.nftMarketData}>
-                    <div className={css.nftMarketData__item}>
-                      <h5>Volume</h5>
-                      <p>{`${nftItem.salesInIcpFormatted} ICP`}</p>
-                    </div>
-
-                    <div className={css.nftMarketData__item}>
-                      <h5>Sales</h5>
-                      <p>{nftItem.sales}</p>
-                    </div>
-
-                    <div className={css.nftMarketData__item}>
-                      <h5>Minted NFTs</h5>
-                      <p>{nftItem.totalAssetsFormatted}</p>
-                    </div>
-
-                    <div className={css.nftMarketData__item}>
-                      <h5>Market Listings</h5>
-                      <p className={css.nftMarketData__item__data}>
-                        {nftItem.listings}
-                      </p>
-                    </div>
-                  </div>
-                ))
-              } */}
-
               {/* collection stats */}
               {project.category === "NFTs" ? (
                 <div className={css.project__collectionStats}>
-                  <h4 className={css.collectionStats}>Collection stats</h4>
+                  <h6>Collection stats</h6>
                   <ul>
                     <li>
-                      <p>Status</p>
-                      <p>
+                      <p className="bodyText">Status</p>
+                      <p className="bodyText">
                         {project.nftSaleStatus ? project.nftSaleStatus : "N/A"}
                       </p>
                     </li>
                     <li>
-                      <p>Sale date</p>
-                      <p>{project.nftSaleDate ? project.nftSaleDate : "N/A"}</p>
+                      <p className="bodyText">Sale date</p>
+                      <p className="bodyText">
+                        {project.nftSaleDate ? project.nftSaleDate : "N/A"}
+                      </p>
                     </li>
                     <li>
-                      <p>Total NFTs</p>
-                      <p>{project.nftUnits ? project.nftUnits : "N/A"}</p>
+                      <p className="bodyText">Total NFTs</p>
+                      <p className="bodyText">
+                        {project.nftUnits ? project.nftUnits : "N/A"}
+                      </p>
                     </li>
                     <li>
-                      <p>Unit price</p>
-                      <p>
+                      <p className="bodyText">Unit price</p>
+                      <p className="bodyText">
                         {project.nftUnitPrice ? project.nftUnitPrice : "N/A"}
                       </p>
                     </li>

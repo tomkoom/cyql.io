@@ -118,16 +118,6 @@ const Nav = () => {
               {upcomingNftsNum}
             </button>
           </li>
-          {/* <li>
-            Promoted:{" "}
-            <a
-              href="https://falling.tech/"
-              rel="noreferrer noopener"
-              target="_blank"
-            >
-              FallingStars 🌠
-            </a>
-          </li> */}
           <li>
             Featured:{" "}
             <a
