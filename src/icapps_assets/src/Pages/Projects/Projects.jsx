@@ -1,12 +1,12 @@
 import React from "react";
-import css from "./Apps.module.css";
+import css from "./Projects.module.css";
 import { SearchBar, Tags, AppList, CategoryBtns } from "../";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchProjects } from "../../State/searchProjects";
 
-const Apps = ({ category, setCategory, data, loading, error }) => {
+const Projects = ({ category, setCategory, data, loading, error }) => {
   const searchProjectsValue = useSelector(
     (state) => state.searchProjects.value
   );
@@ -43,4 +43,4 @@ const Apps = ({ category, setCategory, data, loading, error }) => {
   );
 };
 
-export default Apps;
+export default Projects;

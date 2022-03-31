@@ -1,6 +1,4 @@
-/* app */
-
-.App {
+.app {
   color: var(--primaryColor);
   background-color: var(--background);
   min-height: 100vh;
@@ -157,11 +155,11 @@ h6 {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  border-radius: 0.5rem;
+  border-radius: var(--br05);
   height: 3rem;
   padding: 0 1rem;
   color: var(--primaryColor);
-  background: var(--underlay2);
+  background: var(--underlay);
 }
 
 .cookie * {
@@ -170,6 +168,7 @@ h6 {
 
 .cookie__content {
   padding-right: 0.5rem;
+  color: var(--secondaryColor);
 }
 
 .cookie__btn {

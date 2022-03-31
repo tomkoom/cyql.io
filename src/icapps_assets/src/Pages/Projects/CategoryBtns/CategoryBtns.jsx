@@ -4,6 +4,7 @@ import CategoryBtnsItem from "./CategoryBtnsItem/CategoryBtnsItem";
 
 // redux
 import { useSelector } from "react-redux";
+import { selectProjects } from "../../../State/siteData";
 
 const categories = [
   { name: "All", icon: "" },
@@ -19,14 +20,13 @@ const categories = [
   { name: "Explorers", icon: "🌎" },
   { name: "Dfinity Apps", icon: "♾️" },
   { name: "Metaverse", icon: "" },
-  { name: "Domains", icon: "🤖" },
-  { name: "Storage", icon: "📦" },
+  // { name: "Storage", icon: "📦" },
   { name: "Education", icon: "🎓" },
   { name: "Communities", icon: "📣" },
 ];
 
 const CategoryBtns = ({ category, setCategory }) => {
-  const projects = useSelector((state) => state.siteData.projects.value);
+  const projects = useSelector(selectProjects);
 
   return (
     <div className={css.categoryBtns}>

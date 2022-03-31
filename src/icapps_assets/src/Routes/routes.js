@@ -13,11 +13,11 @@ const toHome = () => {
 };
 
 const toApps = () => {
-  history.push("/apps");
+  history.push("/projects");
 };
 
 const toApp = (id) => {
-  history.push(`/apps/${id}`);
+  history.push(`/projects/${id}`);
 };
 
 const toUpcoming = () => {

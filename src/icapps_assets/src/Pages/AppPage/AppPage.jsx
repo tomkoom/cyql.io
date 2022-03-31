@@ -35,7 +35,7 @@ const AppPage = () => {
   };
 
   return (
-    <section className={`${css.appPage} container768`}>
+    <section className="container768">
       <BackBtn />
 
       <ExpandableText>
@@ -143,7 +143,7 @@ const AppPage = () => {
                       </p>
                     </li>
                     <li>
-                      <p className="bodyText">Unit price</p>
+                      <p className="bodyText">Sale price</p>
                       <p className="bodyText">
                         {project.nftUnitPrice ? project.nftUnitPrice : "N/A"}
                       </p>

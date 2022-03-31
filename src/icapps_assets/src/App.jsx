@@ -9,7 +9,7 @@ import {
   Nav,
   Footer,
   Homepage,
-  Apps,
+  Projects,
   AppPage,
   UpcomingNfts,
   NftList,
@@ -107,8 +107,8 @@ const App = () => {
   }, [nftList]);
 
   return (
-    <div className={`App ${theme}`}>
-      <Route exact path={`/(|apps|upcoming|nft)`}>
+    <div className={`app ${theme}`}>
+      <Route exact path={`/(|projects|upcoming|nft)`}>
         <Nav />
       </Route>
 
@@ -124,8 +124,8 @@ const App = () => {
             />
           </Route>
 
-          <Route exact path="/apps">
-            <Apps
+          <Route exact path="/projects">
+            <Projects
               category={category}
               setCategory={setCategory}
               data={data}
@@ -134,7 +134,7 @@ const App = () => {
             />
           </Route>
 
-          <Route exact path="/apps/:id">
+          <Route exact path="/projects/:id">
             <AppPage data={data} loading={loading} />
           </Route>
 
@@ -154,7 +154,7 @@ const App = () => {
         </Switch>
       </div>
 
-      <Route exact path={`/(|apps|upcoming|nft)`}>
+      <Route exact path={`/(|projects|upcoming|nft)`}>
         <Footer />
       </Route>
 

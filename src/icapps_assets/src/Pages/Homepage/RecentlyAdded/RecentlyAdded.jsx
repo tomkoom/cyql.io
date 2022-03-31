@@ -52,11 +52,7 @@ const RecentlyAdded = ({ projects }) => {
 
                       {/* name, category & tags */}
                       <div className={css.titletags}>
-                        <div
-                          className={
-                            css.appLi__i__linkBlock__appInfo__header__title
-                          }
-                        >
+                        <div>
                           <h3>{app.name}</h3>
                           {app.promoted && (
                             <span>{app.promoted ? "Promoted" : null}</span>
@@ -64,11 +60,7 @@ const RecentlyAdded = ({ projects }) => {
                         </div>
 
                         <ul>
-                          <li>
-                            {app.category == "Infrastructure"
-                              ? "Infra"
-                              : app.category}
-                          </li>
+                          <li>{app.category}</li>
                           {app.canister && (
                             <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>
                           )}

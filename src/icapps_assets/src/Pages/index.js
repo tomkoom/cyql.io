@@ -2,16 +2,16 @@
 export { default as Nav } from "../Components/Nav/Nav";
 export { default as Footer } from "../Components/Footer/Footer";
 export { default as Homepage } from "./Homepage/Homepage";
-export { default as Apps } from "./Apps/Apps";
+export { default as Projects } from "./Projects/Projects";
 export { default as AppPage } from "./AppPage/AppPage";
 export { default as UpcomingNfts } from "./UpcomingNfts/UpcomingNfts";
 export { default as NftList } from "./NftList/NftList";
 export { default as Submit } from "./SubmitApp/Submit";
 
 // homepage.jsx
-export { default as AppList } from "./Apps/AppList/AppList";
-export { default as CategoryBtns } from "./Apps/CategoryBtns/CategoryBtns";
-export { default as Ads } from "./Apps/Ads/Ads";
+export { default as AppList } from "./Projects/AppList/AppList";
+export { default as CategoryBtns } from "./Projects/CategoryBtns/CategoryBtns";
+export { default as Ads } from "./Projects/Ads/Ads";
 export { default as SearchBar } from "./SearchBar/SearchBar";
-export { default as Tags } from "./Apps/Tags/Tags";
-export { default as Highlights } from "./Apps/Highlights/Highlights";
+export { default as Tags } from "./Projects/Tags/Tags";
+export { default as Highlights } from "./Projects/Highlights/Highlights";
