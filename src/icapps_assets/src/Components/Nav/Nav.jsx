@@ -7,6 +7,7 @@ import { deviceSizes } from "../../Utils/DeviceSizes";
 import { navLinks } from "../../NavLinks/NavLinks";
 import icBadgeDark from "../../Assets/ICBadge/ic-badge-powered-by_default-dark-text.svg";
 import icBadgeWhite from "../../Assets/ICBadge/ic-badge-powered-by_default-light-text.svg";
+import { toApps, toUpcoming } from "../../Routes/routes";
 
 // icons
 import { iBars, iSun, iMoon, iTwitter, iDiscord } from "../../Icons/Icons";
