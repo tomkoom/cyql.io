@@ -120,6 +120,17 @@ const Nav = () => {
             </button>
           </li>
           <li>
+            Highlights:{" "}
+            <a
+              className="navlink"
+              href="https://dfinity.org/supernova/"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Supernova Hackathon
+            </a>
+          </li>
+          <li>
             Featured:{" "}
             <a
               href="https://entrepot.app/marketplace/poked"
