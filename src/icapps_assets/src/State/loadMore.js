@@ -12,7 +12,7 @@ const loadMore = createSlice({
   },
 });
 
-export const selectItemsVisible = state => state.loadMore.itemsVisible.value;
+export const selectItemsVisible = (state) => state.loadMore.itemsVisible.value;
 
 export const { setItemsVisible } = loadMore.actions;
 export default loadMore.reducer;

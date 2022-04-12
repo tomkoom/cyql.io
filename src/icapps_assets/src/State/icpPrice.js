@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import k from "../../../../k/k";
 
 export const fetchIcpPrice = createAsyncThunk(
@@ -12,25 +12,24 @@ export const fetchIcpPrice = createAsyncThunk(
       }
       const data = await res.json();
       return data;
-
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
 
-const icpPriceSlise = createSlice({
+const icpPriceSlice = createSlice({
   name: "icpPrice",
   initialState: {
     icpPrice: "",
     icp24hPriceChange: { value: "" },
     icpPriceStatus: null,
-    icpPriceError: null
+    icpPriceError: null,
   },
   // reducers: {},
   extraReducers: {
     [fetchIcpPrice.pending]: (state) => {
-      state.icpPriceStatus = 'loading';
+      state.icpPriceStatus = "loading";
       state.icpPriceError = null;
     },
     [fetchIcpPrice.fulfilled]: (state, { payload }) => {
@@ -42,10 +41,9 @@ const icpPriceSlise = createSlice({
       state.icpPriceStatus = "rejected";
       state.icpPriceError = payload;
     },
-  }
+  },
 });
 
-export const selectIcpPrice = state => state.siteData.icpPrice;
+export const selectIcpPrice = (state) => state.siteData.icpPrice;
 
-export const { } = icpPriceSlise.actions;
-export default icpPriceSlise.reducer;
+export default icpPriceSlice.reducer;

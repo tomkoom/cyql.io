@@ -33,9 +33,9 @@ const FooterMid = () => {
         </div>
       </div>
 
+      {/* nav list */}
       <div className={css.footerMid__i}>
         <ul className={css.footerMid__i__navList}>
-          {/* navlinks*/}
           {navlinks.map(({ name, link }, i) => (
             <li key={i}>
               <button
@@ -49,7 +49,7 @@ const FooterMid = () => {
         </ul>
       </div>
 
-      {/* Soc Links */}
+      {/* soc Links */}
       <div className={css.footerMid__i}>
         <ul className={css.footerMid__i__socLinks}>
           {socLinks.map(({ id, link, icon }) => (

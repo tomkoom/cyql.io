@@ -5,30 +5,14 @@ import "./App.css";
 import CookieConsent from "react-cookie-consent";
 
 // components
-import {
-  Nav,
-  Footer,
-  Homepage,
-  Projects,
-  AppPage,
-  UpcomingNfts,
-  NftList,
-  Submit,
-} from "./Pages";
+import { Nav, Footer, Homepage, Projects, AppPage, UpcomingNfts, Submit } from "./Pages";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { selectIcpPrice } from "./State/icpPrice";
-import {
-  setProjects,
-  setUpcomingNfts,
-  setNftList,
-  selectProjects,
-  selectNftList,
-} from "./State/siteData";
+import { setProjects, setUpcomingNfts, setNftList, selectProjects } from "./State/siteData";
 import { setFilterByCategory } from "./State/projectsFiltering";
-import { fetchNftData } from "./State/nftItems";
 import { selectTheme } from "./State/theme";
 
 // google api
@@ -50,7 +34,6 @@ const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const projects = useSelector(selectProjects);
-  const nftList = useSelector(selectNftList);
   const icpPrice = useSelector(selectIcpPrice);
 
   useEffect(() => {
@@ -81,30 +64,9 @@ const App = () => {
     if (projects.length) {
       category == "All"
         ? dispatch(setFilterByCategory(projects))
-        : dispatch(
-            setFilterByCategory(projects.filter((p) => p.category === category))
-          );
+        : dispatch(setFilterByCategory(projects.filter((p) => p.category === category)));
     }
   }, [projects, category]);
-
-  // set nft market data
-  useEffect(() => {
-    if (nftList.length && icpPrice) {
-      const nftListLength = nftList.length;
-      for (let i = 0; i < nftList.length; i++) {
-        const nftListItemCanister = nftList[i].canister;
-        const nftListItem = nftList[i];
-        dispatch(
-          fetchNftData({
-            nftListItemCanister,
-            nftListItem,
-            nftListLength,
-            icpPrice,
-          })
-        );
-      }
-    }
-  }, [nftList]);
 
   return (
     <div className={`app ${theme}`}>
@@ -140,10 +102,6 @@ const App = () => {
 
           <Route exact path="/upcoming">
             <UpcomingNfts />
-          </Route>
-
-          <Route exact path="/nft">
-            <NftList />
           </Route>
 
           <Route exact path="/submit">

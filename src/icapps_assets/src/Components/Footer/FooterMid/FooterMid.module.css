@@ -35,7 +35,7 @@
 }
 
 .footerMid__i__navList__i {
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
 }
 
 .footerMid__i__navList__i:hover {
@@ -66,4 +66,17 @@
 .footerMid__i__socLinks__i a:hover {
   color: var(--background);
   background-color: var(--primaryColor);
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .footerMid__i {
+    text-align: center;
+    margin: auto;
+  }
+
+  .footerMid__i__navList {
+    justify-content: center;
+  }
 }

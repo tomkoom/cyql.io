@@ -1,0 +1,7 @@
+.notFound {
+  margin: 0 auto;
+}
+
+.notFound p span:hover {
+  text-decoration: underline;
+}

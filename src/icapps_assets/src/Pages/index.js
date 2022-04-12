@@ -5,8 +5,8 @@ export { default as Homepage } from "./Homepage/Homepage";
 export { default as Projects } from "./Projects/Projects";
 export { default as AppPage } from "./AppPage/AppPage";
 export { default as UpcomingNfts } from "./UpcomingNfts/UpcomingNfts";
-export { default as NftList } from "./NftList/NftList";
 export { default as Submit } from "./SubmitApp/Submit";
+export { default as NotFound } from "./NotFound/NotFound";
 
 // homepage.jsx
 export { default as AppList } from "./Projects/AppList/AppList";

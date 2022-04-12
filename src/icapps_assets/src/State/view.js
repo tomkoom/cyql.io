@@ -12,7 +12,7 @@ const view = createSlice({
   },
 });
 
-export const selectView = state => state.view.view.value;
+export const selectView = (state) => state.view.view.value;
 
 export const { setView } = view.actions;
 export default view.reducer;

@@ -12,7 +12,7 @@ const theme = createSlice({
   },
 });
 
-export const selectTheme = state => state.theme.theme.value;
+export const selectTheme = (state) => state.theme.theme.value;
 
 export const { setTheme } = theme.actions;
 export default theme.reducer;
