@@ -5,12 +5,11 @@ import "./App.css";
 import CookieConsent from "react-cookie-consent";
 
 // components
-import { Nav, Footer, Homepage, Projects, AppPage, UpcomingNfts, Submit, NotFound } from "./Pages";
+import { Nav, Footer, Homepage, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { selectIcpPrice } from "./State/icpPrice";
 import { setProjects, setUpcomingNfts, setNftList, selectProjects } from "./State/siteData";
 import { setFilterByCategory } from "./State/projectsFiltering";
 import { selectTheme } from "./State/theme";
@@ -34,7 +33,6 @@ const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const projects = useSelector(selectProjects);
-  const icpPrice = useSelector(selectIcpPrice);
 
   useEffect(() => {
     if (!loading) {
@@ -97,7 +95,7 @@ const App = () => {
           </Route>
 
           <Route exact path="/projects/:id">
-            <AppPage data={data} loading={loading} />
+            <ProjectPage data={data} loading={loading} />
           </Route>
 
           <Route exact path="/upcoming">

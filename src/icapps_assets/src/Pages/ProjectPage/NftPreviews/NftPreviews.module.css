@@ -1,0 +1,14 @@
+/* nft previews */
+
+.nftImgs {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  gap: 0.5rem;
+}
+
+.nftImgs__item {
+  max-width: calc(25% - 0.5rem);
+  vertical-align: middle;
+  border-radius: 0.5rem;
+}

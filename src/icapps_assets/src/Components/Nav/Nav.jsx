@@ -5,8 +5,6 @@ import k from "../../../../../k/k";
 import { useWindowSize } from "../../Hooks/UseWindowSize";
 import { deviceSizes } from "../../Utils/DeviceSizes";
 import { navLinks } from "../../NavLinks/NavLinks";
-import icBadgeDark from "../../Assets/ICBadge/ic-badge-powered-by_default-dark-text.svg";
-import icBadgeWhite from "../../Assets/ICBadge/ic-badge-powered-by_default-light-text.svg";
 import { toApps, toUpcoming } from "../../Routes/routes";
 
 // icons
@@ -47,13 +45,9 @@ const Nav = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const projectsNum = useSelector((state) => state.siteData.projectsNum.value);
-  const upcomingNftsNum = useSelector(
-    (state) => state.siteData.upcomingNftsNum.value
-  );
+  const upcomingNftsNum = useSelector((state) => state.siteData.upcomingNftsNum.value);
   const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
-  const icp24hPriceChange = +useSelector(
-    (state) => state.icpPrice.icp24hPriceChange.value
-  );
+  const icp24hPriceChange = +useSelector((state) => state.icpPrice.icp24hPriceChange.value);
 
   // donate btn
   const updateDonateAmount = (e) => {
@@ -70,9 +64,7 @@ const Nav = () => {
         amount: donateAmount * 100000000,
       };
 
-      const transfer = await window.ic?.plug?.requestTransfer(
-        requestTransferArg
-      );
+      const transfer = await window.ic?.plug?.requestTransfer(requestTransferArg);
 
       setTransactionStatus(transfer ? 1 : null);
     }
@@ -163,11 +155,7 @@ const Nav = () => {
           {/* soclinks */}
           <ul className={css.nav__mid__main__socLinks}>
             {socialLinks.map(({ name, link, icon }, i) => (
-              <li
-                className={css.nav__mid__main__socLinks__item}
-                data-smlink={name}
-                key={i}
-              >
+              <li className={css.nav__mid__main__socLinks__item} data-smlink={name} key={i}>
                 <a href={link} target="_blank" rel="noopener noreferrer">
                   {icon}
                 </a>
@@ -182,10 +170,7 @@ const Nav = () => {
         </div>
 
         {deviceWidth < 1024 && menuIsOpen ? (
-          <NavMenuMobile
-            menuIsOpen={menuIsOpen}
-            setMenuIsOpen={setMenuIsOpen}
-          />
+          <NavMenuMobile menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
         ) : null}
 
         {/* navlinks */}
@@ -205,10 +190,7 @@ const Nav = () => {
           ))}
 
           <li className={`${css.nav__list__item} ${css.donateContainer}`}>
-            <div
-              className={css.donateBtn}
-              onClick={() => setModalIsActive(true)}
-            >
+            <div className={css.donateBtn} onClick={() => setModalIsActive(true)}>
               <p>Donate</p>
             </div>
           </li>
@@ -218,10 +200,7 @@ const Nav = () => {
       {/* bottom */}
       <div className={css.divider} />
       <div className={css.nav__bottom}>
-        <div
-          className={css.themeSwitch}
-          onClick={() => dispatch(setTheme(changeTheme(theme)))}
-        >
+        <div className={css.themeSwitch} onClick={() => dispatch(setTheme(changeTheme(theme)))}>
           {theme === "light" ? iSun : theme === "dark" ? iMoon : null}
         </div>
         <div className={css.icpPriceBadge}>

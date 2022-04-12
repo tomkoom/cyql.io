@@ -15,33 +15,35 @@ const projectsFilteringSlice = createSlice({
       state.filteredByCategory = action.payload;
       state.filteredByTag = action.payload;
     },
-    setFilterByTag(state, { payload }) {
-      if (payload.value === "openSource") {
-        state.openSource.value = !state.openSource.value;
-        state.deployedToIc.value = false;
-        state.psychedelic.value = false;
-        state.toniqlabs.value = false;
-      }
+    setFilterByTag(state, action) {
+      switch (action.payload.value) {
+        case "openSource":
+          state.openSource.value = !state.openSource.value;
+          state.deployedToIc.value = false;
+          state.psychedelic.value = false;
+          state.toniqlabs.value = false;
+          break;
 
-      if (payload.value === "deployedToIc") {
-        state.deployedToIc.value = !state.deployedToIc.value;
-        state.openSource.value = false;
-        state.psychedelic.value = false;
-        state.toniqlabs.value = false;
-      }
+        case "deployedToIc":
+          state.deployedToIc.value = !state.deployedToIc.value;
+          state.openSource.value = false;
+          state.psychedelic.value = false;
+          state.toniqlabs.value = false;
+          break;
 
-      if (payload.value === "psychedelic") {
-        state.psychedelic.value = !state.psychedelic.value;
-        state.openSource.value = false;
-        state.deployedToIc.value = false;
-        state.toniqlabs.value = false;
-      }
+        case "psychedelic":
+          state.psychedelic.value = !state.psychedelic.value;
+          state.openSource.value = false;
+          state.deployedToIc.value = false;
+          state.toniqlabs.value = false;
+          break;
 
-      if (payload.value === "toniqlabs") {
-        state.toniqlabs.value = !state.toniqlabs.value;
-        state.openSource.value = false;
-        state.deployedToIc.value = false;
-        state.psychedelic.value = false;
+        case "toniqlabs":
+          state.toniqlabs.value = !state.toniqlabs.value;
+          state.openSource.value = false;
+          state.deployedToIc.value = false;
+          state.psychedelic.value = false;
+          break;
       }
     },
   },

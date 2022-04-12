@@ -1,0 +1,73 @@
+/* social links */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.links__item {
+  border-radius: 0.5rem;
+}
+
+.links__item:hover {
+  box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.2);
+}
+
+.links__item a {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  color: white;
+  font-size: var(--fontSize5);
+}
+
+.links__item a span {
+  font-size: 0.85rem;
+  font-weight: var(--bold);
+}
+
+[data-social="Canister"],
+[data-social="Dscvr"],
+[data-social="Distrikt"],
+[data-social="Open Chat"],
+[data-social="Website"],
+[data-social="Medium"],
+[data-social="App"] {
+  background-color: var(--underlay);
+  color: var(--primaryColor);
+}
+
+[data-social="Canister"] a,
+[data-social="Dscvr"] a,
+[data-social="Distrikt"] a,
+[data-social="Website"] a,
+[data-social="Medium"] a,
+[data-social="App"] a {
+  color: var(--primaryColor);
+}
+
+[data-social="Twitter"] {
+  background-color: #00acee;
+}
+
+[data-social="Discord"] {
+  background-color: #5865f2;
+}
+
+[data-social="GitHub"] {
+  background-color: #1b1f23;
+}
+
+[data-social="Telegram"] {
+  background-color: #0088cc;
+}
+
+[data-social="Dscvr"] a img,
+[data-social="Distrikt"] a img {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+}

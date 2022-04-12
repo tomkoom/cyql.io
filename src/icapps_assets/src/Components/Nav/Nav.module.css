@@ -156,7 +156,7 @@
   cursor: pointer;
   letter-spacing: -0.25px;
   background-color: var(--underlay);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 .donateBtn:hover {
@@ -246,7 +246,7 @@
 
 @media screen and (max-width: 1023px) {
   .nav {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
   }
 
   .nav__list {

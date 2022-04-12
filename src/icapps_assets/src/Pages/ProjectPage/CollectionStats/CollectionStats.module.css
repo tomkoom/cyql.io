@@ -1,0 +1,17 @@
+.collectionStats {
+  margin: 1rem 0;
+}
+
+.collectionStats ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.5rem;
+}
+
+.collectionStats ul li {
+  background-color: var(--underlay);
+  padding: 0.75rem;
+  border-radius: var(--br05);
+  flex: 1;
+  white-space: nowrap;
+}

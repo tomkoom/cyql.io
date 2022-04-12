@@ -203,6 +203,6 @@ h6 {
 
 @media screen and (max-width: 1023px) {
   .app__content {
-    padding: 1rem 0.5rem;
+    padding: 1rem;
   }
 }
