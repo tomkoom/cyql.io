@@ -1,0 +1,27 @@
+/* footer bot */
+
+.footerBot {
+  margin: auto;
+  font-size: var(--fontSize7);
+  gap: 0.5rem;
+}
+
+.footerBot,
+.footerBot a {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.footerBot p {
+  color: var(--tertiaryColor);
+}
+
+.icLogo {
+  max-width: 1.25rem;
+}
+
+.footerBot a:hover {
+  text-decoration: underline;
+}
