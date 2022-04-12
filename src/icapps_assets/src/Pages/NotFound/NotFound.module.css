@@ -1,5 +1,14 @@
 .notFound {
-  margin: 0 auto;
+  text-align: center;
+}
+
+.notFound p {
+  color: var(--secondaryColor);
+}
+
+.notFound p span {
+  cursor: pointer;
+  color: var(--primaryColor);
 }
 
 .notFound p span:hover {

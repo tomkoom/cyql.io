@@ -5,7 +5,7 @@ import "./App.css";
 import CookieConsent from "react-cookie-consent";
 
 // components
-import { Nav, Footer, Homepage, Projects, AppPage, UpcomingNfts, Submit } from "./Pages";
+import { Nav, Footer, Homepage, Projects, AppPage, UpcomingNfts, Submit, NotFound } from "./Pages";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -108,7 +108,10 @@ const App = () => {
             <Submit />
           </Route>
 
-          {/* <Route component={page404} /> */}
+          {/* not found */}
+          <Route path="*">
+            <NotFound />
+          </Route>
         </Switch>
       </div>
 

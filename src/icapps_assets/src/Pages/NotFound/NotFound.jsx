@@ -5,8 +5,8 @@ import { toHome } from "../../Routes/routes";
 const NotFound = () => {
   return (
     <div className={css.notFound}>
-      <p>
-        Requested page was not found <span onClick={toHome}>go home</span>
+      <p className="bodyText">
+        Requested page was not found. <span onClick={toHome}>Go to homepage 🏠</span>
       </p>
     </div>
   );
