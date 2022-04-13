@@ -1,6 +1,4 @@
 // app.jsx
-export { default as Nav } from "../Components/Nav/Nav";
-export { default as Footer } from "../Components/Footer/Footer";
 export { default as Homepage } from "./Homepage/Homepage";
 export { default as Projects } from "./Projects/Projects";
 export { default as ProjectPage } from "./ProjectPage/ProjectPage";

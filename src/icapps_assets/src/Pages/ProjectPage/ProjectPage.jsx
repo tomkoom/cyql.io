@@ -10,12 +10,8 @@ import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/siteData";
 
 // components
-import Loader from "../../Components/Loader/Loader";
-import BackBtn from "../../Components/BackBtn/BackBtn";
-import ExpandableText from "../../Components/ExpandableText/ExpandableText";
-import CollectionStats from "./CollectionStats/CollectionStats";
-import SocialLinks from "./SocialLinks/SocialLinks";
-import NftPreviews from "./NftPreviews/NftPreviews";
+import { BackBtn, ExpandableText, Loader } from "../../Components/index";
+import { CollectionStats, NftPreviews, SocialLinks } from "./index";
 
 const ProjectPage = () => {
   const { id } = useParams();

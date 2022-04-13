@@ -8,7 +8,8 @@ import { iBars, iTh } from "../../../Icons/Icons";
 // components
 import AppListRows from "./Views/AppListRows";
 import AppListGrid from "./Views/AppListGrid";
-import LoadMorebtn from "../../../Components/LoadMoreBtn/LoadMorebtn";
+import { LoadMoreBtn } from "../../../Components/index";
+
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -51,7 +52,7 @@ const AppList = ({ loading, error, searchValue }) => {
         </div>
       )}
 
-      <LoadMorebtn loading={loading} />
+      <LoadMoreBtn loading={loading} />
     </section>
   );
 };

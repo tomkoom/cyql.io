@@ -25,11 +25,8 @@ const FooterMid = () => {
     <div className={css.footerMid}>
       {/* logo */}
       <div className={css.footerMid__i}>
-        <div className={css.footerMid__i__logo}>
+        <div className={css.footerMid__i__logo} onClick={toHome}>
           <Logo />
-          <p>
-            IC projects <br /> community portal
-          </p>
         </div>
       </div>
 
@@ -38,10 +35,7 @@ const FooterMid = () => {
         <ul className={css.footerMid__i__navList}>
           {navlinks.map(({ name, link }, i) => (
             <li key={i}>
-              <button
-                className={`${css.footerMid__i__navList__i} navlink`}
-                onClick={() => link()}
-              >
+              <button className={`${css.footerMid__i__navList__i} navlink`} onClick={() => link()}>
                 {name}
               </button>
             </li>

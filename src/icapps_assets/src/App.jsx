@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
-import "./Theme/theme.css";
 import "./App.css";
+import "./Theme/theme.css";
+import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // components
-import { Nav, Footer, Homepage, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
+import { Nav, Footer } from "./Components";
+import { Homepage, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";

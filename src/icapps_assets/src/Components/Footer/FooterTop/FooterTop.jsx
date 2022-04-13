@@ -5,23 +5,19 @@ import css from "./FooterTop.module.css";
 import { iPlusSquare, iComments, iHeart } from "../../../Icons/Icons";
 import FooterTop from "./FooterTop/FooterTop";
 
+// routes
+import { toSubmit } from "../../../Routes/routes";
+
 const FooterTop = () => {
   return (
     <ul className={css.footerTop}>
       {/* submit */}
       <li className={css.footerTop__i}>
-        <button
-          className={`${css.footerTop__i__linkBlock} navlink`}
-          onClick={() => toSubmit()}
-        >
+        <button className={`${css.footerTop__i__linkBlock} navlink`} onClick={toSubmit}>
           <div>{iPlusSquare}</div>
           <div>
-            <h5 className={css.footerTop__i__linkBlock__title}>
-              Submit your project
-            </h5>
-            <p className="bodyText">
-              Submit your project and get traction from the IC community.
-            </p>
+            <h5 className={css.footerTop__i__linkBlock__title}>Submit your project</h5>
+            <p className="bodyText">Submit your project and get traction from the IC community.</p>
           </div>
         </button>
       </li>
@@ -38,8 +34,8 @@ const FooterTop = () => {
           <div>
             <h5 className={css.footerTop__i__linkBlock__title}>Reach out</h5>
             <p className="bodyText">
-              Didn't find what you were looking for or want to collaborate?
-              Reach out for us, we are happy to support and cooperate.
+              Didn't find what you were looking for or want to collaborate? Reach out for us, we are
+              happy to support and cooperate.
             </p>
           </div>
         </a>
@@ -51,8 +47,8 @@ const FooterTop = () => {
         <div>
           <h5 className={css.footerTop__i__linkBlock__title}>Donate</h5>
           <p className="bodyText">
-            icApps is developed and maintained by the IC enthusiasts. You can
-            support the project by making a donation.
+            icApps is developed and maintained by the IC enthusiasts. You can support the project by
+            making a donation.
             <br />
             <span>
               <a

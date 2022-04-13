@@ -19,6 +19,7 @@
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .footerMid__i__logo p {

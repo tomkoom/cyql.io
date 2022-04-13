@@ -32,7 +32,7 @@
 [data-social="Canister"],
 [data-social="Dscvr"],
 [data-social="Distrikt"],
-[data-social="Open Chat"],
+[data-social="OpenChat"],
 [data-social="Website"],
 [data-social="Medium"],
 [data-social="App"] {
@@ -43,6 +43,7 @@
 [data-social="Canister"] a,
 [data-social="Dscvr"] a,
 [data-social="Distrikt"] a,
+[data-social="OpenChat"] a,
 [data-social="Website"] a,
 [data-social="Medium"] a,
 [data-social="App"] a {
