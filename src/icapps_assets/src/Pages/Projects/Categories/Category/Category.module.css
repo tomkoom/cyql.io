@@ -1,0 +1,35 @@
+/* category */
+
+.category {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  font-size: var(--fontSize6);
+  color: var(--seconadryColor);
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: var(--bold);
+}
+
+.active {
+  color: var(--background);
+  background-color: var(--primaryColor);
+}
+
+.category:hover:not(.category.active) {
+  color: var(--primaryColor);
+  background-color: var(--underlay2);
+}
+
+.category__icon {
+  font-size: var(--fontSize5);
+}
+
+.category__projectsNum {
+  color: var(--tertiaryColor);
+}

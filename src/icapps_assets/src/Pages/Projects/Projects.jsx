@@ -1,15 +1,14 @@
 import React from "react";
 import css from "./Projects.module.css";
-import { SearchBar, Tags, AppList, CategoryBtns } from "../";
+import { SearchBar } from "../";
+import { Categories, ProjectList, Tags } from "./";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchProjects } from "../../State/searchProjects";
 
 const Projects = ({ category, setCategory, data, loading, error }) => {
-  const searchProjectsValue = useSelector(
-    (state) => state.searchProjects.value
-  );
+  const searchProjectsValue = useSelector((state) => state.searchProjects.value);
   const dispatch = useDispatch();
   const searchProjects = (e) => {
     dispatch(setSearchProjects(e.target.value));
@@ -27,18 +26,9 @@ const Projects = ({ category, setCategory, data, loading, error }) => {
 
       <Tags />
 
-      <CategoryBtns
-        category={category}
-        setCategory={setCategory}
-        data={data}
-        loading={loading}
-      />
+      <Categories category={category} setCategory={setCategory} data={data} loading={loading} />
 
-      <AppList
-        searchValue={searchProjectsValue}
-        loading={loading}
-        error={error}
-      />
+      <ProjectList searchValue={searchProjectsValue} loading={loading} error={error} />
     </main>
   );
 };

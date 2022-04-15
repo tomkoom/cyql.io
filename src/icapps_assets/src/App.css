@@ -1,3 +1,29 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font);
+}
+
+html {
+  font-size: 17px; /* Root font size */
+}
+
+.container768,
+.container1440 {
+  margin: 0 auto;
+}
+
+.container768 {
+  max-width: 768px;
+}
+
+.container1440 {
+  max-width: 1440px;
+}
+
+/* responsive */
+
 .app {
   color: var(--primaryColor);
   background-color: var(--background);
@@ -202,6 +228,10 @@ h6 {
 /* responsive */
 
 @media screen and (max-width: 1023px) {
+  html {
+    font-size: 16px; /* Root font size */
+  }
+
   .app__content {
     padding: 1rem;
   }

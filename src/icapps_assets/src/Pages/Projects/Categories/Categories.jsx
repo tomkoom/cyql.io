@@ -1,6 +1,6 @@
 import React from "react";
-import css from "./CategoryBtns.module.css";
-import CategoryBtnsItem from "./CategoryBtnsItem/CategoryBtnsItem";
+import css from "./Categories.module.css";
+import Category from "./Category/Category";
 
 // redux
 import { useSelector } from "react-redux";
@@ -25,14 +25,14 @@ const categories = [
   { name: "Communities", icon: "📣" },
 ];
 
-const CategoryBtns = ({ category, setCategory }) => {
+const Categories = ({ category, setCategory }) => {
   const projects = useSelector(selectProjects);
 
   return (
     <div className={css.categoryBtns}>
-      {categories.map((cat, i) => (
-        <CategoryBtnsItem
-          category={cat.name}
+      {categories.map((cat) => (
+        <Category
+          categoryName={cat.name}
           setCategory={setCategory}
           categoryActive={category === cat.name ? true : false}
           icon={cat.icon}
@@ -41,11 +41,11 @@ const CategoryBtns = ({ category, setCategory }) => {
               ? projects.length
               : projects.filter((p) => p.category == cat.name).length
           }
-          key={i}
+          key={cat.name}
         />
       ))}
     </div>
   );
 };
 
-export default CategoryBtns;
+export default Categories;

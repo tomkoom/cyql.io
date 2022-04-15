@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import "./Theme/theme.css";
+import "./Styles/root.css";
+import "./Styles/theme.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
