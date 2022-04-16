@@ -1,0 +1,18 @@
+/* view more btn */
+
+.viewMoreBtn {
+  width: 100%;
+  background-color: var(--underlay);
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: var(--bold);
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  margin-top: 0.75rem;
+}
+
+.viewMoreBtn:hover {
+  background-color: var(--underlay2);
+}

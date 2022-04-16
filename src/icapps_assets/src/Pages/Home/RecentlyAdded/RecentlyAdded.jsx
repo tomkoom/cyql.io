@@ -1,8 +1,11 @@
 import React from "react";
 import css from "./RecentlyAdded.module.css";
+
+// routes
 import { toApp, toApps } from "../../../Routes/routes";
-import Loader from "../../../Components/Loader/Loader";
-import { useWindowSize } from "../../../Hooks/UseWindowSize";
+
+// components
+import { Loader, ViewMoreBtn } from "../../../Components/index";
 
 // icons
 import { iGithub, iDatabase } from "../../../Icons/Icons";
@@ -12,8 +15,6 @@ import { useSelector } from "react-redux";
 import { selectProjectsNum } from "../../../State/siteData";
 
 const RecentlyAdded = ({ projects }) => {
-  const [deviceWidth, deviceHeight] = useWindowSize();
-
   const apps = projects;
   const projectsNum = useSelector(selectProjectsNum);
 
@@ -43,22 +44,26 @@ const RecentlyAdded = ({ projects }) => {
                         <h3>{app.name}</h3>
                       </div>
 
-                      <ul>
-                        {app.category && app.category !== "NFTs" && <li>{app.category}</li>}
+                      {app.category && app.category !== "NFTs" && (
+                        <ul>
+                          {app.category && <li>{app.category}</li>}
+                          {app.canister && <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>}
+                          {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
 
-                        {app.canister && <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>}
+                          {app.tags == "Psychedelic" && (
+                            <li>
+                              <img
+                                src="https://psychedelic.ooo/images/11-2.svg"
+                                alt="Psychedelic"
+                              />
+                              &nbsp;&nbsp;
+                              {app.tags}
+                            </li>
+                          )}
+                          {app.tags == "toniqlabs" && <li>{app.tags}</li>}
+                        </ul>
+                      )}
 
-                        {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
-
-                        {app.tags == "Psychedelic" && (
-                          <li>
-                            <img src="https://psychedelic.ooo/images/11-2.svg" alt="Psychedelic" />
-                            &nbsp;&nbsp;
-                            {app.tags}
-                          </li>
-                        )}
-                        {app.tags == "toniqlabs" && <li>{app.tags}</li>}
-                      </ul>
                       <p className={css.projectDescription}>
                         {app.description && app.description.length > 50
                           ? `${app.description.substring(0, 50)}…`
@@ -72,9 +77,7 @@ const RecentlyAdded = ({ projects }) => {
         )}
       </ul>
       {apps.length > 0 && (
-        <button className="viewMoreBtn" onClick={() => toApps()}>
-          View all {projectsNum} projects &gt;
-        </button>
+        <ViewMoreBtn nav={toApps}>View all {projectsNum} projects &gt;</ViewMoreBtn>
       )}
     </div>
   );

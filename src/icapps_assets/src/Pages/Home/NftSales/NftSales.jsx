@@ -1,20 +1,18 @@
 import React from "react";
 import css from "./NftSales.module.css";
+
+// routes
 import { toApp, toUpcoming } from "../../../Routes/routes";
 
+// components
+import { Loader, ViewMoreBtn } from "../../../Components/index";
+
 // icons
-import {
-  iLink,
-  iTwitter,
-  iDiscord,
-  iGithub,
-  iTelegram,
-  iMedium,
-} from "../../../Icons/Icons";
+import { iLink, iTwitter, iDiscord, iGithub, iTelegram, iMedium } from "../../../Icons/Icons";
 
 let socialLinks = [];
 
-const NftSales = ({ upcomingNftsFiltered, loader }) => {
+const NftSales = ({ nftSalesFiltered }) => {
   const sortByDate = (a, b) => {
     if (a.nftSaleDate && b.nftSaleDate) {
       let partsA = a.nftSaleDate.split("/").reverse().join("-");
@@ -31,8 +29,8 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
 
   return (
     <div>
-      {upcomingNftsFiltered.length < 1 ? (
-        loader
+      {nftSalesFiltered.length < 1 ? (
+        <Loader />
       ) : (
         <div style={{ overflowX: "auto" }}>
           <table className={css.t}>
@@ -48,7 +46,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
               </tr>
             </thead>
             <tbody>
-              {upcomingNftsFiltered
+              {nftSalesFiltered
                 .slice(0, 9)
                 .sort((a, b) => sortByDate(a, b))
                 .map((nft) => (
@@ -77,10 +75,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                             { link: nft.medium, icon: iMedium },
                           ]),
                           socialLinks.map(({ link, icon }, i) => (
-                            <li
-                              style={link ? null : { display: "none" }}
-                              key={i}
-                            >
+                            <li style={link ? null : { display: "none" }} key={i}>
                               {icon}
                             </li>
                           )))
@@ -99,10 +94,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                             { link: nft.openChat, name: "OpenChat" },
                           ]),
                           socialLinks.map(({ link, name }, i) => (
-                            <li
-                              style={link ? null : { display: "none" }}
-                              key={i}
-                            >
+                            <li style={link ? null : { display: "none" }} key={i}>
                               {name}
                             </li>
                           )))
@@ -110,11 +102,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                       </ul>
                     </td>
 
-                    <td>
-                      {nft.nftSaleStatus === "Open"
-                        ? "Sale is open"
-                        : nft.nftSaleDate}
-                    </td>
+                    <td>{nft.nftSaleStatus === "Open" ? "Sale is open" : nft.nftSaleDate}</td>
                     <td>{nft.nftUnitPrice}</td>
                     <td>{nft.nftUnits}</td>
                     <td className={css.nft__preview}>
@@ -125,9 +113,7 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                             nftPreviews.push(
                               <img
                                 src={nft[`nftImg${i}`]}
-                                style={
-                                  nft[`nftImg${i}`] ? null : { display: "none" }
-                                }
+                                style={nft[`nftImg${i}`] ? null : { display: "none" }}
                                 alt={`${nft.name} NFT preview ${i}`}
                                 key={i}
                               />
@@ -141,9 +127,9 @@ const NftSales = ({ upcomingNftsFiltered, loader }) => {
                 ))}
             </tbody>
           </table>
-          <button className="viewMoreBtn" onClick={() => toUpcoming()}>
-            View all upcoming NFT sales
-          </button>
+          {nftSalesFiltered.length > 0 && (
+            <ViewMoreBtn nav={toUpcoming}>View all upcoming NFT sales</ViewMoreBtn>
+          )}
         </div>
       )}
     </div>
