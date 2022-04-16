@@ -1,9 +1,11 @@
+/* root */
+
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400&display=swap");
 
 :root {
   /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
 
-  --cBlack: #000000;
+  --colorBlack: #000000;
   --coolGray100: #121619;
   --coolGray90: #21272a;
   --coolGray80: #343a3f;
@@ -14,7 +16,7 @@
   --coolGray30: #c1c7cd;
   --coolGray20: #dde1e6;
   --coolGray10: #f2f4f8;
-  --cWhite: #ffffff;
+  --colorWhite: #ffffff;
 
   --colorGreen: #24a148;
   --colorRed: #fa4d56;

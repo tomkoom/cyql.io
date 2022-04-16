@@ -2,52 +2,45 @@
 
 .appLi {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
 
 .appLi__i {
-  border-radius: var(--br1);
-  box-shadow: var(--boxShadow);
   cursor: pointer;
+  border-radius: 1rem;
 }
 
 .promoted {
   box-shadow: 0 0 0 1px var(--highlightColor);
 }
 
-.appLi__i:hover {
-  background-color: var(--underlay);
+.white__overlay {
+  background-color: white;
 }
 
 .appLi__i__linkBlock__cover {
   width: 100%;
-  padding-bottom: 33.33%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-top-left-radius: var(--br1);
-  border-top-right-radius: var(--br1);
+  border-radius: 1rem;
 }
 
 .appLi__i__linkBlock__appInfo {
   display: flex;
   flex-direction: column;
-  padding: 0.75rem;
+  padding: 0.5rem 0;
   gap: 0.5rem;
 }
 
 .appLi__i__linkBlock__appInfo__header {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .projectlogo {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
   object-fit: cover;
   font-size: 0.75rem;
 }
@@ -58,15 +51,10 @@
   gap: 0.25rem;
 }
 
-.appDescription {
-  font-size: 0.9rem;
+.projectDescription {
+  font-size: 16px;
   line-height: 150%;
   color: var(--secondaryColor);
-}
-
-.titletags {
-  display: flex;
-  justify-content: space-between;
 }
 
 .titletags h3 {
@@ -75,21 +63,12 @@
   word-wrap: break-word;
 }
 
-.titletags span {
-  font-size: var(--fontSize7);
-  padding: 0.05rem 0.25rem;
-  color: white;
-  background-color: var(--highlightColor);
-  border-radius: 0.25rem;
-}
-
 .titletags ul {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: var(--fontSize7);
-  margin-top: 0.125rem;
 }
 
 .titletags ul li {
@@ -97,11 +76,28 @@
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
-  font-weight: var(--medium);
+  font-weight: var(--bold);
   color: var(--primaryColor);
   background-color: var(--underlay2);
 }
 
 .appLi__i__linkBlock__appInfo__header ul li img {
   max-width: 1rem;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023) {
+  .appDescription {
+    font-size: var(--fontSize6);
+  }
+
+  .projectlogo {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .appLi__i__linkBlock__cover {
+    display: none;
+  }
 }

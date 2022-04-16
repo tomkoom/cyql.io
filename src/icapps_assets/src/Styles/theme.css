@@ -1,4 +1,4 @@
-/* theming */
+/* theme */
 
 .light {
   --primaryColor: var(--coolGray100);
@@ -24,7 +24,7 @@
 }
 
 .dark {
-  --primaryColor: var(--coolGray10);
+  --primaryColor: white;
   --secondaryColor: var(--coolGray30);
   --tertiaryColor: var(--coolGray50);
   --highlightColor: #304ffe;

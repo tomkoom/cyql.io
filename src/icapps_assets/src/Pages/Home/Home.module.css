@@ -18,10 +18,8 @@
 
 .home__section__title {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  color: var(--primaryColor);
 }
 
 .home__section__title h3 {
@@ -29,10 +27,13 @@
 }
 
 .viewAll {
-  color: var(--highlightColor);
+  background-color: var(--underlay);
+  font-size: 0.9rem;
   font-weight: var(--bold);
+  padding: 0.33rem 0.5rem;
+  border-radius: 0.5rem;
 }
 
 .viewAll:hover {
-  color: var(--highlightColorHover);
+  background-color: var(--underlay2);
 }

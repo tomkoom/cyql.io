@@ -209,9 +209,10 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   padding: 0 0.5rem;
   font-size: var(--fontSize7);
+  font-weight: var(--bold);
   background-color: var(--underlay);
   color: var(--primaryColor);
 }

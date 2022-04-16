@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import "./Styles/root.css";
 import "./Styles/theme.css";
+import "./Styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // components
 import { Nav, Footer } from "./Components";
-import { Homepage, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
+import { Home, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -77,7 +78,7 @@ const App = () => {
       <div className="app__content">
         <Switch>
           <Route exact path="/">
-            <Homepage
+            <Home
               category={category}
               setCategory={setCategory}
               data={data}
