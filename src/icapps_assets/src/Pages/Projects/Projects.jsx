@@ -1,7 +1,8 @@
 import React from "react";
 import css from "./Projects.module.css";
-import { SearchBar } from "../";
-import { Categories, ProjectList, Tags } from "./";
+
+// components
+import { Categories, ProjectList, SearchBar, Tags } from "./index";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -24,9 +25,9 @@ const Projects = ({ category, setCategory, data, loading, error }) => {
         inputName="projects-search"
       />
 
-      <Tags />
-
       <Categories category={category} setCategory={setCategory} data={data} loading={loading} />
+
+      <Tags />
 
       <ProjectList searchValue={searchProjectsValue} loading={loading} error={error} />
     </main>

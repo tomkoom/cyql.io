@@ -18,7 +18,7 @@
 
 .home__section__title {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 
@@ -27,13 +27,7 @@
 }
 
 .viewAll {
-  background-color: var(--underlay);
   font-size: 0.9rem;
   font-weight: var(--bold);
-  padding: 0.33rem 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.viewAll:hover {
-  background-color: var(--underlay2);
+  padding: 0.5rem 0;
 }

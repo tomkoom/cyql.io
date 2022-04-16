@@ -9,9 +9,9 @@
   align-items: center;
   max-width: 24rem;
   width: 100%;
-  height: 2.5rem;
+  height: 2.75rem;
   padding: 0 2.5rem;
-  border-radius: var(--br025);
+  border-radius: 0.5rem;
   font-size: var(--fontSize6);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
@@ -27,12 +27,12 @@
 .search__input:focus {
   color: var(--primaryColor);
   background-color: transparent;
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay2);
 }
 
 .searchIcon {
   position: absolute;
-  top: 0.75rem;
+  top: 0.9rem;
   left: 0.9rem;
   transition: all 0.25s ease-out;
   color: var(--tertiaryColor);

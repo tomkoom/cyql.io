@@ -1,12 +1,12 @@
 import React from "react";
 import css from "./Home.module.css";
+
+// routes
 import { toApps, toUpcoming } from "../../Routes/routes";
-import Loader from "../../Components/Loader/Loader";
 
 // components
-import RecentlyAdded from "./RecentlyAdded/RecentlyAdded";
-import NftSales from "./NftSales/NftSales";
-import JoinCommunity from "./JoinCommunity/JoinCommunity";
+import { JoinCommunity, NftSales, RecentlyAdded } from "./index";
+import { Loader } from "../../Components/index";
 
 // redux
 import { useSelector } from "react-redux";
@@ -45,17 +45,17 @@ const Homepage = () => {
         <RecentlyAdded projects={projects.filter((project) => project.category === "NFTs")} />
       </section>
 
-      {/* recently added projects*/}
+      {/* recently added apps*/}
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
-          <h3>Recently added projects</h3>
+          <h3>Recently added apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
 
         <RecentlyAdded projects={projects.filter((project) => project.category !== "NFTs")} />
       </section>
 
-      {/* upcoming NFT sales */}
+      {/* upcoming nft sales */}
       <section className={css.home__upcomingNfts}>
         <div className={css.home__section__title}>
           <h3>Upcoming NFT sales</h3>

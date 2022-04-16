@@ -9,5 +9,5 @@ export { default as NotFound } from "./NotFound/NotFound";
 // homepage.jsx
 export { default as AppList } from "./Projects/ProjectList/ProjectList";
 export { default as CategoryBtns } from "./Projects/Categories/Categories";
-export { default as SearchBar } from "./SearchBar/SearchBar";
+export { default as SearchBar } from "./Projects/SearchBar/SearchBar";
 export { default as Tags } from "./Projects/Tags/Tags";
