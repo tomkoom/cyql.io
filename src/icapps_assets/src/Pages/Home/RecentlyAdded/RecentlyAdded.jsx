@@ -47,7 +47,7 @@ const RecentlyAdded = ({ projects }) => {
                       {app.category && app.category !== "NFTs" && (
                         <ul>
                           {app.category && <li>{app.category}</li>}
-                          {app.canister && <li>{iDatabase}&nbsp;&nbsp;Deployed to IC</li>}
+                          {app.canister && <li>{iDatabase}&nbsp;&nbsp;Hosted on IC</li>}
                           {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
 
                           {app.tags == "Psychedelic" && (

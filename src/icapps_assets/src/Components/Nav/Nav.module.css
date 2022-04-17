@@ -152,7 +152,7 @@
 .donateBtn {
   font-weight: var(--bold);
   font-size: 1rem;
-  padding: 0.33rem 0.66rem;
+  padding: 0.5rem 0.66rem;
   cursor: pointer;
   letter-spacing: -0.25px;
   background-color: var(--underlay);

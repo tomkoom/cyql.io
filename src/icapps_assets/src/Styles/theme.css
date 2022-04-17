@@ -16,7 +16,7 @@
   --boxShadowInset: inset 0 0 0 1px var(--coolGray20);
   --boxShadowActive: 0 0 0 1px var(--coolGray100);
   --boxShadow2: 0 0 0 1px var(--coolGray30);
-  --underline: 0 1px 0 0 var(--coolGray20);
+  --underline: 0 1px 0 0 var(--coolGray10);
   --overline: 0 -1px 0 0 var(--coolGray20);
   --underlineInset: inset 0 -1px 0 var(--coolGray10);
   --boxShadowLighter: 0 0 0 1px var(--coolGray70);
