@@ -5,10 +5,10 @@ import icpPrice from "./icpPrice";
 import siteData from "./siteData";
 import searchProjects from "./searchProjects";
 import projectsFiltering from "./projectsFiltering";
-import searchNfts from "./searchNfts";
 import theme from "./theme";
 import view from "./view";
 import loadMore from "./loadMore";
+import projects from "./projects";
 
 // redux-persist
 import {
@@ -28,10 +28,10 @@ const rootReducer = combineReducers({
   siteData,
   searchProjects,
   projectsFiltering,
-  searchNfts,
   theme,
   view,
   loadMore,
+  projects,
 });
 
 const persistConfig = {

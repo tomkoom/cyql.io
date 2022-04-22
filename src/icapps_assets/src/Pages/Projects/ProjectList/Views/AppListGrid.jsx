@@ -5,33 +5,25 @@ import { toApp } from "../../../../Routes/routes";
 // redux
 import { useSelector } from "react-redux";
 import { selectView } from "../../../../State/view";
+import { selectSearchProjects } from "../../../../State/searchProjects";
+import { selectItemsVisible } from "../../../../State/loadMore";
 
 //icons
 import { iDatabase, iGithub } from "../../../../Icons/Icons";
 
-const AppListGrid = ({ searchValue, itemsVisible }) => {
+const AppListGrid = () => {
   const view = useSelector(selectView);
+  const searchValue = useSelector(selectSearchProjects);
+  const itemsVisible = useSelector(selectItemsVisible);
 
-  const tagOpenSource = useSelector(
-    (state) => state.projectsFiltering.openSource.value
-  );
-  const tagDeployedToIc = useSelector(
-    (state) => state.projectsFiltering.deployedToIc.value
-  );
-  const tagPsychedelic = useSelector(
-    (state) => state.projectsFiltering.psychedelic.value
-  );
-  const tagToniqlabs = useSelector(
-    (state) => state.projectsFiltering.toniqlabs.value
-  );
+  const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
+  const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
+  const tagPsychedelic = useSelector((state) => state.projectsFiltering.psychedelic.value);
+  const tagToniqlabs = useSelector((state) => state.projectsFiltering.toniqlabs.value);
 
-  const filteredByCategory = useSelector(
-    (state) => state.projectsFiltering.filteredByCategory
-  );
+  const filteredByCategory = useSelector((state) => state.projectsFiltering.filteredByCategory);
 
-  const filteredByTag = useSelector(
-    (state) => state.projectsFiltering.filteredByTag
-  );
+  const filteredByTag = useSelector((state) => state.projectsFiltering.filteredByTag);
 
   const filteredProjects =
     tagOpenSource || tagDeployedToIc || tagPsychedelic || tagToniqlabs
@@ -46,9 +38,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
             .filter((p) => {
               if (searchValue === "") {
                 return p;
-              } else if (
-                p.name.toLowerCase().includes(searchValue.toLowerCase())
-              ) {
+              } else if (p.name.toLowerCase().includes(searchValue.toLowerCase())) {
                 return p;
               }
             })
@@ -74,11 +64,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
                 <button className="linkBlock" onClick={() => toApp(d.id)}>
                   <div
                     className={css.li__item__linkBlock__coverImg}
-                    style={
-                      d.cover
-                        ? { backgroundImage: `url(${d.cover})` }
-                        : { display: "none" }
-                    }
+                    style={d.cover ? { backgroundImage: `url(${d.cover})` } : { display: "none" }}
                   />
                   <div className={css.li__item__linkBlock__appInfo}>
                     <img
@@ -87,9 +73,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
                       alt={d.name}
                       style={d.logo ? null : { display: "none" }}
                     />
-                    <div
-                      className={css.li__item__linkBlock__appInfo__description}
-                    >
+                    <div className={css.li__item__linkBlock__appInfo__description}>
                       <div>
                         <h3>
                           {d.name}
@@ -116,9 +100,7 @@ const AppListGrid = ({ searchValue, itemsVisible }) => {
                             ? "🗿"
                             : null}
                         </h3>
-                        {d.promoted && (
-                          <span>{d.promoted ? "Promoted" : null}</span>
-                        )}
+                        {d.promoted && <span>{d.promoted ? "Promoted" : null}</span>}
                       </div>
 
                       {d.github || d.canister || d.tags ? (

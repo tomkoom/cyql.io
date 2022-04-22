@@ -6,6 +6,10 @@ import "./Styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
+// firestore
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase-config";
+
 // components
 import { Nav, Footer } from "./Components";
 import { Home, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
@@ -13,24 +17,13 @@ import { Home, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./P
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { setProjects, setUpcomingNfts, selectProjects } from "./State/siteData";
+import { setProjects, selectProjects } from "./State/projects";
+
 import { setFilterByCategory } from "./State/projectsFiltering";
 import { selectTheme } from "./State/theme";
 
-// google api
-import useGoogleSheets from "use-google-sheets";
-import k from "../../../k/k";
-
-const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
-const googleSheetId = k.GOOGLE_SHEET_ID;
-
 const App = () => {
   const [category, setCategory] = useState("All");
-  const { data, loading, error } = useGoogleSheets({
-    apiKey: googleSheetsApiKey,
-    sheetId: googleSheetId,
-    sheetsNames: ["Apps"],
-  });
 
   // state
   const dispatch = useDispatch();
@@ -38,35 +31,18 @@ const App = () => {
   const projects = useSelector(selectProjects);
 
   useEffect(() => {
-    if (!loading) {
-      const [projects] = data;
-      dispatch(setProjects({ value: projects.data }));
-      dispatch(
-        setUpcomingNfts({
-          value: projects.data.filter(
-            (project) =>
-              project.nftSaleStatus === "Open" ||
-              project.nftSaleStatus === "Over" ||
-              project.nftSaleStatus === "Upcoming"
-          ),
-        })
-      );
-    }
-  }, [loading]);
+    const projectsColRef = collection(db, "projects");
+    getDocs(projectsColRef).then((snapshot) =>
+      snapshot.docs.forEach((doc) => {
+        dispatch(setProjects({ ...doc.data(), idx: doc.id }));
+      })
+    );
+  }, []);
 
   // set icp price
   useEffect(() => {
     dispatch(fetchIcpPrice());
   }, []);
-
-  // set filtered categories
-  useEffect(() => {
-    if (projects.length) {
-      category == "All"
-        ? dispatch(setFilterByCategory(projects))
-        : dispatch(setFilterByCategory(projects.filter((p) => p.category === category)));
-    }
-  }, [projects, category]);
 
   return (
     <div className={`app ${theme}`}>
@@ -74,14 +50,16 @@ const App = () => {
         <Nav />
       </Route>
 
+      <button onClick={() => console.log(projects)}>Check</button>
+
       <div className="app__content">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home category={category} setCategory={setCategory} />
           </Route>
 
           <Route exact path="/projects">
-            <Projects category={category} setCategory={setCategory} loading={loading} />
+            <Projects category={category} setCategory={setCategory} />
           </Route>
 
           <Route exact path="/projects/:id">

@@ -2,14 +2,7 @@ import React from "react";
 import css from "./AppListRows.module.css";
 
 // icons
-import {
-  iLink,
-  iTwitter,
-  iDiscord,
-  iTelegram,
-  iGithub,
-  iMedium,
-} from "../../../../Icons/Icons";
+import { iLink, iTwitter, iDiscord, iTelegram, iGithub, iMedium } from "../../../../Icons/Icons";
 
 // routes
 import { toApp } from "../../../../Routes/routes";
@@ -17,31 +10,22 @@ import { toApp } from "../../../../Routes/routes";
 // redux
 import { useSelector } from "react-redux";
 import { selectView } from "../../../../State/view";
+import { selectSearchProjects } from "../../../../State/searchProjects";
+import { selectItemsVisible } from "../../../../State/loadMore";
 
-const AppListRows = ({ searchValue, itemsVisible }) => {
-  // state
+const AppListRows = () => {
   const view = useSelector(selectView);
+  const searchValue = useSelector(selectSearchProjects);
+  const itemsVisible = useSelector(selectItemsVisible);
 
-  const tagOpenSource = useSelector(
-    (state) => state.projectsFiltering.openSource.value
-  );
-  const tagDeployedToIc = useSelector(
-    (state) => state.projectsFiltering.deployedToIc.value
-  );
-  const tagPsychedelic = useSelector(
-    (state) => state.projectsFiltering.psychedelic.value
-  );
-  const tagToniqlabs = useSelector(
-    (state) => state.projectsFiltering.toniqlabs.value
-  );
+  const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
+  const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
+  const tagPsychedelic = useSelector((state) => state.projectsFiltering.psychedelic.value);
+  const tagToniqlabs = useSelector((state) => state.projectsFiltering.toniqlabs.value);
 
-  const filteredByCategory = useSelector(
-    (state) => state.projectsFiltering.filteredByCategory
-  );
+  const filteredByCategory = useSelector((state) => state.projectsFiltering.filteredByCategory);
 
-  const filteredByTag = useSelector(
-    (state) => state.projectsFiltering.filteredByTag
-  );
+  const filteredByTag = useSelector((state) => state.projectsFiltering.filteredByTag);
 
   const filteredProjects =
     tagOpenSource || tagDeployedToIc || tagPsychedelic || tagToniqlabs
@@ -68,9 +52,7 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                 .filter((app) => {
                   if (searchValue === "") {
                     return app;
-                  } else if (
-                    app.name.toLowerCase().includes(searchValue.toLowerCase())
-                  ) {
+                  } else if (app.name.toLowerCase().includes(searchValue.toLowerCase())) {
                     return app;
                   }
                 })
@@ -100,18 +82,12 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                     <td className={css.maincoll}>
                       <div>
                         {app.logo && (
-                          <img
-                            src={app.logo}
-                            alt={`${app.name} logo`}
-                            className={css.applogo}
-                          />
+                          <img src={app.logo} alt={`${app.name} logo`} className={css.applogo} />
                         )}
                         <span>
                           <div>
                             <h4>{app.name}</h4>
-                            {app.promoted && (
-                              <span>{app.promoted ? "Promoted" : null}</span>
-                            )}
+                            {app.promoted && <span>{app.promoted ? "Promoted" : null}</span>}
                           </div>
 
                           <p>
@@ -140,9 +116,7 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
 
                     {/* canister */}
                     <td>
-                      {app.canister
-                        ? `${app.canister.split("//").pop().substring(0, 16)}…`
-                        : ""}
+                      {app.canister ? `${app.canister.split("//").pop().substring(0, 16)}…` : ""}
                     </td>
 
                     {/* nft preview */}
@@ -150,30 +124,22 @@ const AppListRows = ({ searchValue, itemsVisible }) => {
                       <ul>
                         {app.nftImg1 && (
                           <li>
-                            <div
-                              style={{ backgroundImage: `url(${app.nftImg1})` }}
-                            />
+                            <div style={{ backgroundImage: `url(${app.nftImg1})` }} />
                           </li>
                         )}
                         {app.nftImg2 && (
                           <li>
-                            <div
-                              style={{ backgroundImage: `url(${app.nftImg2})` }}
-                            />
+                            <div style={{ backgroundImage: `url(${app.nftImg2})` }} />
                           </li>
                         )}
                         {app.nftImg3 && (
                           <li>
-                            <div
-                              style={{ backgroundImage: `url(${app.nftImg3})` }}
-                            />
+                            <div style={{ backgroundImage: `url(${app.nftImg3})` }} />
                           </li>
                         )}
                         {app.nftImg4 && (
                           <li>
-                            <div
-                              style={{ backgroundImage: `url(${app.nftImg4})` }}
-                            />
+                            <div style={{ backgroundImage: `url(${app.nftImg4})` }} />
                           </li>
                         )}
                       </ul>

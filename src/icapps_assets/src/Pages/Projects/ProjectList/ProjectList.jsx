@@ -14,12 +14,10 @@ import { LoadMoreBtn } from "../../../Components/";
 import { useDispatch, useSelector } from "react-redux";
 import { setView } from "../../../State/view";
 import { selectView } from "../../../State/view";
-import { selectItemsVisible } from "../../../State/loadMore";
 
-const AppList = ({ loading, error, searchValue }) => {
-  const itemsVisible = useSelector(selectItemsVisible);
-  const view = useSelector(selectView);
+const AppList = ({ loading }) => {
   const dispatch = useDispatch();
+  const view = useSelector(selectView);
 
   return (
     <section className={css.appList}>
@@ -42,12 +40,10 @@ const AppList = ({ loading, error, searchValue }) => {
         <div className="center">
           <Loader />
         </div>
-      ) : error ? (
-        <p className="center">Fetch error!</p>
       ) : (
         <div>
-          <AppListRows searchValue={searchValue} itemsVisible={itemsVisible} />
-          <AppListGrid searchValue={searchValue} itemsVisible={itemsVisible} />
+          <AppListRows />
+          <AppListGrid />
         </div>
       )}
 

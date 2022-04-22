@@ -20,7 +20,7 @@ const ViewAllBtn = ({ nav }) => {
   );
 };
 
-const Homepage = () => {
+const Home = () => {
   const nftSales = useSelector(selectUpcomingNfts);
   const projects = useSelector(selectProjects);
 
@@ -89,4 +89,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Home;

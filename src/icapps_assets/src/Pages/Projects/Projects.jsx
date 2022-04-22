@@ -8,8 +8,8 @@ import { Categories, ProjectList, SearchBar, Tags } from "./index";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchProjects } from "../../State/searchProjects";
 
-const Projects = ({ category, setCategory, data, loading, error }) => {
-  const searchProjectsValue = useSelector((state) => state.searchProjects.value);
+const Projects = ({ category, setCategory, loading }) => {
+  const searchProjectsValue = useSelector((state) => state.searchProjects.search);
   const dispatch = useDispatch();
   const searchProjects = (e) => {
     dispatch(setSearchProjects(e.target.value));
@@ -25,11 +25,11 @@ const Projects = ({ category, setCategory, data, loading, error }) => {
         inputName="projects-search"
       />
 
-      <Categories category={category} setCategory={setCategory} data={data} loading={loading} />
+      <Categories category={category} setCategory={setCategory} />
 
       <Tags />
 
-      <ProjectList searchValue={searchProjectsValue} loading={loading} error={error} />
+      <ProjectList loading={loading} />
     </main>
   );
 };

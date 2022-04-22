@@ -121,9 +121,18 @@ const Nav = () => {
             >
               Supernova Hackathon
             </a>
+            , &nbsp;
+            <a
+              className="navlink"
+              href="https://dfinity.org/grants"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Developer Grants
+            </a>
           </li>
           <li>
-            Featured:{" "}
+            Featured NFTs:{" "}
             <a
               href="https://entrepot.app/marketplace/poked"
               rel="noreferrer noopener"
