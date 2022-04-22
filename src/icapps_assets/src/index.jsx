@@ -1,30 +1,35 @@
 import * as React from "react";
 import { render } from "react-dom";
 import App from "./App";
-// import { icapps } from "../../declarations/icapps";
 
 // react-router
 import { Router } from "react-router-dom";
 import ScrollToTop from "./Utils/ScrollToTop";
+
 // history
 import { history } from "./Routes/history";
 
-// State
+// state
 import { Provider } from "react-redux";
 import store, { persistor } from "./State/store";
 
 // redux-persist
 import { PersistGate } from "redux-persist/integration/react";
 
+// auth context
+import AuthProvider from "./Context/AuthContext";
+
 const Index = () => {
   return (
     <Router /* basename="/" */ history={history}>
       <ScrollToTop />
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <App />
-        </PersistGate>
-      </Provider>
+      <AuthProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
+        </Provider>
+      </AuthProvider>
     </Router>
   );
 };

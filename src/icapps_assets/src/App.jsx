@@ -96,7 +96,6 @@ const App = () => {
             <Submit />
           </Route>
 
-          {/* not found */}
           <Route path="*">
             <NotFound />
           </Route>
@@ -107,7 +106,6 @@ const App = () => {
         <Footer />
       </Route>
 
-      {/* cookies */}
       <CookieConsent
         cookieName="cookie"
         disableStyles={true}

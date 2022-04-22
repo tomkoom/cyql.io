@@ -4,7 +4,7 @@ import logoImg from "../../../assets/logo.svg";
 import k from "../../../../../k/k";
 import { useWindowSize } from "../../Hooks/UseWindowSize";
 import { deviceSizes } from "../../Utils/DeviceSizes";
-import { navLinks } from "../../NavLinks/NavLinks";
+import { navLinks } from "../../Routes/navLinks";
 import { toApps, toUpcoming } from "../../Routes/routes";
 
 // icons
@@ -18,6 +18,9 @@ import NavMenuMobile from "./NavMenuMobile";
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme } from "../../State/theme";
 import { selectTheme } from "../../State/theme";
+
+// auth
+import { useAuth } from "../../Context/AuthContext";
 
 const socialLinks = [
   {
@@ -40,6 +43,9 @@ const Nav = () => {
   const [deviceWidth, deviceHeight] = useWindowSize();
   const [modalIsActive, setModalIsActive] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState();
+
+  // auth
+  const { signInWithTwitter, logOut, user } = useAuth();
 
   // state
   const dispatch = useDispatch();
@@ -65,7 +71,6 @@ const Nav = () => {
       };
 
       const transfer = await window.ic?.plug?.requestTransfer(requestTransferArg);
-
       setTransactionStatus(transfer ? 1 : null);
     }
 
@@ -203,6 +208,22 @@ const Nav = () => {
               <p>Donate</p>
             </div>
           </li>
+
+          {/* {user === undefined && (
+            <li className={css.nav__list__item}>
+              <button className="navlink" onClick={signInWithTwitter}>
+                Sign in
+              </button>
+            </li>
+          )}
+
+          {user !== undefined && (
+            <li className={css.nav__list__item}>
+              <button className="navlink" onClick={logOut}>
+                Sign out
+              </button>
+            </li>
+          )} */}
         </ul>
       </div>
 

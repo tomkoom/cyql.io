@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import css from "./NavMenuMobile.module.css";
-import { navLinks } from "../../NavLinks/NavLinks";
+import { navLinks } from "../../Routes/navLinks";
 
 // icons
 import { iTwitter, iDiscord, iTimes } from "../../Icons/Icons";
@@ -23,10 +23,7 @@ const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
         setMenuIsOpen(false);
       }}
     >
-      <div
-        className={css.navMenuMobile__content}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={css.navMenuMobile__content} onClick={(e) => e.stopPropagation()}>
         <div className={css.navMenuMobile__content__navlist}>
           <ul>
             {navLinks.map(({ name, link }, i) => (
