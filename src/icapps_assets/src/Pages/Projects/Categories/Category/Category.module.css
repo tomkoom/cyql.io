@@ -6,11 +6,11 @@
   align-items: center;
   gap: 0.5rem;
   height: 2.5rem;
-  padding: 0 0.5rem;
+  padding: 0 0.66rem;
   font-size: var(--fontSize6);
   color: var(--seconadryColor);
   background-color: var(--underlay);
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   border: none;
   cursor: pointer;
   font-weight: var(--bold);

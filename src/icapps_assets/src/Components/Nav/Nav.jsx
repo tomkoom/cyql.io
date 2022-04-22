@@ -5,7 +5,7 @@ import k from "../../../../../k/k";
 import { useWindowSize } from "../../Hooks/UseWindowSize";
 import { deviceSizes } from "../../Utils/DeviceSizes";
 import { navLinks } from "../../Routes/navLinks";
-import { toApps, toUpcoming } from "../../Routes/routes";
+import { toApps, toHome, toUpcoming } from "../../Routes/routes";
 
 // icons
 import { iBars, iSun, iMoon, iTwitter, iDiscord } from "../../Icons/Icons";
@@ -67,7 +67,7 @@ const Nav = () => {
     if (hasAllowed) {
       const requestTransferArg = {
         to: k.DONATION_WALLET,
-        amount: donateAmount * 100000000,
+        amount: donateAmount * 100_000_000,
       };
 
       const transfer = await window.ic?.plug?.requestTransfer(requestTransferArg);
@@ -157,8 +157,7 @@ const Nav = () => {
           <button
             className={`${css.logo} navlink`}
             onClick={() => {
-              // go home
-              navLinks[0].link();
+              toHome();
               menuIsOpen ? setMenuIsOpen(false) : null;
             }}
           >
@@ -209,7 +208,7 @@ const Nav = () => {
             </div>
           </li>
 
-          {/* {user === undefined && (
+          {user === undefined && (
             <li className={css.nav__list__item}>
               <button className="navlink" onClick={signInWithTwitter}>
                 Sign in
@@ -223,7 +222,7 @@ const Nav = () => {
                 Sign out
               </button>
             </li>
-          )} */}
+          )}
         </ul>
       </div>
 
@@ -234,7 +233,6 @@ const Nav = () => {
           {theme === "light" ? iSun : theme === "dark" ? iMoon : null}
         </div>
         <div className={css.icpPriceBadge}>
-          {/* <div className={css.icpPriceBadge__logo} /> */}
           <div>
             <p>ICP&nbsp;{`$${icpPrice}`}</p>&nbsp;
             <span

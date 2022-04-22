@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { auth } from "../../../../firebase/firebase-config";
-import { TwitterAuthProvider, signInWithPopup, getAuth, signOut } from "firebase/auth";
+import { TwitterAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
         const user = res.user;
         setUser(user);
         // console.log(user);
-        // console.log(user.displayName);
+        // console.log(user.uid);
         // const credential = TwitterAuthProvider.credentialFromResult(res);
         // setUserCredential(credential);
         // const token = credential.accessToken;

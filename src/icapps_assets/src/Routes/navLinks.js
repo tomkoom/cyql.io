@@ -3,7 +3,7 @@ import { toApps, toSubmit, toUpcoming } from "./routes";
 
 const navLinks = [
   { name: "Projects", link: toApps, icon: "" },
-  { name: "Upcoming", link: toUpcoming, icon: iFire },
+  { name: "Upcoming NFT Sales", link: toUpcoming, icon: iFire },
   { name: "Submit", link: toSubmit, icon: "" },
 ];
 

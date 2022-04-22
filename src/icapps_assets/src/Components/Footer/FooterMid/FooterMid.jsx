@@ -6,18 +6,12 @@ import Logo from "../../Logo/Logo";
 import { iTwitter, iDiscord } from "../../../Icons/Icons";
 
 // routes
-import { toHome, toApps, toUpcoming, toSubmit } from "../../../Routes/routes";
+import { toHome } from "../../../Routes/routes";
+import { navLinks } from "../../../Routes/navLinks";
 
 const socLinks = [
   { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
   { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
-];
-
-const navlinks = [
-  { name: "Home", link: toHome },
-  { name: "All Projects", link: toApps },
-  { name: "Upcoming NFT Sales", link: toUpcoming },
-  { name: "Submit Your Project", link: toSubmit },
 ];
 
 const FooterMid = () => {
@@ -33,7 +27,7 @@ const FooterMid = () => {
       {/* nav list */}
       <div className={css.footerMid__i}>
         <ul className={css.footerMid__i__navList}>
-          {navlinks.map(({ name, link }, i) => (
+          {navLinks.map(({ name, link }, i) => (
             <li key={i}>
               <button className={`${css.footerMid__i__navList__i} navlink`} onClick={() => link()}>
                 {name}
