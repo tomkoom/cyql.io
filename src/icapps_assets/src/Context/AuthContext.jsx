@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { auth } from "../../../../firebase/firebase-config";
-import { TwitterAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { TwitterAuthProvider, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -9,24 +9,33 @@ const useAuth = () => {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
+  const [userUID, setUserUID] = useState(undefined);
 
   const signInWithTwitter = async () => {
     const provider = new TwitterAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((res) => {
-        const user = res.user;
-        setUser(user);
-        // console.log(user);
-        // console.log(user.uid);
-        // const credential = TwitterAuthProvider.credentialFromResult(res);
-        // const token = credential.accessToken;
-        // const secret = credential.secret;
-      })
-      .catch((err) => {
-        // handle errors
-        console.log(err.message);
-        // https://firebase.google.com/docs/auth/web/twitter-login
-      });
+
+    try {
+      const userCredential = await signInWithRedirect(auth, provider);
+      setUser(userCredential.user);
+    } catch (err) {
+      console.log(err);
+    }
+
+    // signInWithRedirect(auth, provider)
+    //   .then((res) => {
+    //     const user = res.user;
+    //     setUser(user);
+    //     // console.log(user);
+    //     // console.log(user.uid);
+    //     // const credential = TwitterAuthProvider.credentialFromResult(res);
+    //     // const token = credential.accessToken;
+    //     // const secret = credential.secret;
+    //   })
+    //   .catch((err) => {
+    //     // handle errors
+    //     console.log(err.message);
+    //     // https://firebase.google.com/docs/auth/web/twitter-login
+    //   });
   };
 
   const logOut = () => {
@@ -38,10 +47,14 @@ export function AuthProvider({ children }) {
         console.log(err.message);
       });
     setUser(undefined);
+    setUserUID(undefined);
   };
 
   const value = {
     user,
+    setUser,
+    userUID,
+    setUserUID,
     signInWithTwitter,
     logOut,
   };

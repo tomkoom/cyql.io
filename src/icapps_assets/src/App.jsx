@@ -24,6 +24,8 @@ import Admin from "./Pages/Admin/Admin";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
+import { auth } from "../../../firebase/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
@@ -36,12 +38,24 @@ const App = () => {
     sheetsNames: ["Apps"],
   });
 
-  const { user } = useAuth();
+  const { setUser, setUserUID, userUID } = useAuth();
 
   // state
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
   const projects = useSelector(selectProjects);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        setUser(user);
+        setUserUID(user.uid);
+      } else {
+        // User is signed out
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (!loading) {
@@ -102,7 +116,7 @@ const App = () => {
             <Submit />
           </Route>
 
-          {user !== undefined && user.uid === k.TWITTER_ADMIN_1 && (
+          {userUID && userUID === k.TWITTER_ADMIN_1 && (
             <Route exact path="/admin">
               <Admin />
             </Route>
