@@ -1,0 +1,33 @@
+/* nav top */
+
+.nav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* hide scrollbar */
+.nav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.nav ul li {
+  font-size: var(--fontSize7);
+  color: var(--tertiaryColor);
+  white-space: nowrap;
+}
+
+.nav ul li a,
+.nav ul li button {
+  color: var(--highlightColor2);
+  font-size: var(--fontSize7);
+}
+
+.nav ul li a:hover,
+.nav ul li button:hover {
+  color: var(--highlightColorHover);
+}

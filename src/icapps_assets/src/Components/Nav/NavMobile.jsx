@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import css from "./NavMenuMobile.module.css";
+import css from "./NavMobile.module.css";
 import { navLinks } from "../../Routes/navLinks";
 
 // icons
 import { iTwitter, iDiscord, iTimes } from "../../Icons/Icons";
 
-const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
+const NavMobile = ({ menuIsOpen, setMenuIsOpen }) => {
   // useEffect(() => {
   //   if (menuIsOpen) {
   //     document.body.style.overflow = "hidden";
@@ -68,4 +68,4 @@ const NavMenuMobile = ({ menuIsOpen, setMenuIsOpen }) => {
   );
 };
 
-export default NavMenuMobile;
+export default NavMobile;

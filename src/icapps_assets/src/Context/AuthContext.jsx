@@ -9,7 +9,6 @@ const useAuth = () => {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
-  // const [userCredential, setUserCredential] = useState(undefined);
 
   const signInWithTwitter = async () => {
     const provider = new TwitterAuthProvider();
@@ -20,7 +19,6 @@ export function AuthProvider({ children }) {
         // console.log(user);
         // console.log(user.uid);
         // const credential = TwitterAuthProvider.credentialFromResult(res);
-        // setUserCredential(credential);
         // const token = credential.accessToken;
         // const secret = credential.secret;
       })
