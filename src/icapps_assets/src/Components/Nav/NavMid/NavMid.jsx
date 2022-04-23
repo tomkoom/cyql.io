@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import css from "./NavMid.module.css";
 import logoImg from "../../../../assets/logo.svg";
 import NavMobile from "../NavMobile";
+import k from "../../../../../../k/k";
 
 // utils
 import { useWindowSize } from "../../../Utils/UseWindowSize";
@@ -11,7 +12,7 @@ import { deviceSizes } from "../../../Utils/DeviceSizes";
 import { iTwitter, iDiscord, iBars } from "../../../Icons/Icons";
 
 // routes, navlinks
-import { toHome } from "../../../Routes/routes";
+import { toHome, toAdmin } from "../../../Routes/routes";
 import { navLinks } from "../../../Routes/navLinks";
 
 // auth
@@ -108,20 +109,34 @@ const NavMid = () => {
         </li>
 
         {/* {user === undefined && (
-            <li className={css.nav__list__item}>
-              <button className="navlink" onClick={signInWithTwitter}>
-                Sign in
-              </button>
-            </li>
-          )}
+          <li className={css.nav__list__item}>
+            <button className="navlink" onClick={signInWithTwitter}>
+              Sign in
+            </button>
+          </li>
+        )}
 
-          {user !== undefined && (
-            <li className={css.nav__list__item}>
-              <button className="navlink" onClick={logOut}>
-                Sign out
-              </button>
-            </li>
-          )} */}
+        {user !== undefined && (
+          <li className={css.nav__list__item}>
+            <button className="navlink" onClick={logOut}>
+              Sign out
+            </button>
+          </li>
+        )}
+
+        {user !== undefined && user.uid === k.TWITTER_ADMIN_1 && (
+          <li className={css.nav__list__item}>
+            <button
+              className="navlink"
+              onClick={() => {
+                toAdmin();
+                menuIsOpen ? setMenuIsOpen(false) : null;
+              }}
+            >
+              Admin
+            </button>
+          </li>
+        )} */}
       </ul>
     </div>
   );

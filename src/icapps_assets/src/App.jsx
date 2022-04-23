@@ -20,6 +20,10 @@ import { selectTheme } from "./State/theme";
 // google api
 import useGoogleSheets from "use-google-sheets";
 import k from "../../../k/k";
+import Admin from "./Pages/Admin/Admin";
+
+// auth
+import { useAuth } from "./Context/AuthContext";
 
 const googleSheetsApiKey = k.GOOGLE_SHEETS_API;
 const googleSheetId = k.GOOGLE_SHEET_ID;
@@ -31,6 +35,8 @@ const App = () => {
     sheetId: googleSheetId,
     sheetsNames: ["Apps"],
   });
+
+  const { user } = useAuth();
 
   // state
   const dispatch = useDispatch();
@@ -95,6 +101,12 @@ const App = () => {
           <Route exact path="/submit">
             <Submit />
           </Route>
+
+          {user !== undefined && user.uid === k.TWITTER_ADMIN_1 && (
+            <Route exact path="/admin">
+              <Admin />
+            </Route>
+          )}
 
           <Route path="*">
             <NotFound />

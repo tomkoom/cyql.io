@@ -48,6 +48,7 @@ const iTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iMedium = <FontAwesomeIcon icon={faMedium} />;
 
 export {
+  // solid
   iLink,
   iBars,
   iTh,

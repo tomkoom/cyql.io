@@ -7,13 +7,13 @@ import { iSun, iMoon } from "../../../Icons/Icons";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { setTheme, selectTheme } from "../../../State/theme";
+import { selectIcpPrice, selectIcp24hPriceChange } from "../../../State/icpPrice";
 
 const NavBot = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
-
-  const icpPrice = useSelector((state) => state.icpPrice.icpPrice);
-  const icp24hPriceChange = +useSelector((state) => state.icpPrice.icp24hPriceChange.value);
+  const icpPrice = useSelector(selectIcpPrice);
+  const icp24hPriceChange = useSelector(selectIcp24hPriceChange);
 
   const changeTheme = (theme) => {
     return {
@@ -39,7 +39,7 @@ const NavBot = () => {
                 ? { color: "#fa4d56" }
                 : { color: "#697077" }
             }
-          >{`${icp24hPriceChange.toFixed(2)}%`}</span>
+          >{`${Number(icp24hPriceChange).toFixed(2)}%`}</span>
           &nbsp;
           <span className={css.icpPriceChangeTime}>24h</span>
         </div>

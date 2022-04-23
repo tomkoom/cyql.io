@@ -1,13 +1,9 @@
-// app.jsx
+// pages
+export { default as Admin } from "./Admin/Admin";
 export { default as Home } from "./Home/Home";
-export { default as Projects } from "./Projects/Projects";
-export { default as ProjectPage } from "./ProjectPage/ProjectPage";
-export { default as UpcomingNfts } from "./UpcomingNfts/UpcomingNfts";
-export { default as Submit } from "./SubmitApp/Submit";
 export { default as NotFound } from "./NotFound/NotFound";
+export { default as ProjectPage } from "./ProjectPage/ProjectPage";
+export { default as Projects } from "./Projects/Projects";
+export { default as Submit } from "./Submit/Submit";
+export { default as UpcomingNfts } from "./UpcomingNfts/UpcomingNfts";
 
-// homepage.jsx
-export { default as AppList } from "./Projects/ProjectList/ProjectList";
-export { default as CategoryBtns } from "./Projects/Categories/Categories";
-export { default as SearchBar } from "./Projects/SearchBar/SearchBar";
-export { default as Tags } from "./Projects/Tags/Tags";

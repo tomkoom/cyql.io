@@ -22,7 +22,7 @@ const icpPriceSlice = createSlice({
   name: "icpPrice",
   initialState: {
     icpPrice: "",
-    icp24hPriceChange: { value: "" },
+    icp24hPriceChange: "",
     icpPriceStatus: null,
     icpPriceError: null,
   },
@@ -35,7 +35,7 @@ const icpPriceSlice = createSlice({
     [fetchIcpPrice.fulfilled]: (state, { payload }) => {
       state.icpPriceStatus = "resolved";
       state.icpPrice = payload["internet-computer"].usd;
-      state.icp24hPriceChange.value = payload["internet-computer"].usd_24h_change;
+      state.icp24hPriceChange = payload["internet-computer"].usd_24h_change;
     },
     [fetchIcpPrice.rejected]: (state, { payload }) => {
       state.icpPriceStatus = "rejected";
@@ -44,6 +44,7 @@ const icpPriceSlice = createSlice({
   },
 });
 
-export const selectIcpPrice = (state) => state.siteData.icpPrice;
+export const selectIcpPrice = (state) => state.icpPrice.icpPrice;
+export const selectIcp24hPriceChange = (state) => state.icpPrice.icp24hPriceChange;
 
 export default icpPriceSlice.reducer;

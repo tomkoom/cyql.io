@@ -32,4 +32,8 @@ const toSubmit = () => {
   history.push("/submit");
 };
 
-export { toHome, toApps, toApp, toUpcoming, toNft, toSubmit, goBack };
+const toAdmin = () => {
+  history.push("/admin");
+};
+
+export { toHome, toApps, toApp, toUpcoming, toNft, toSubmit, toAdmin, goBack };
