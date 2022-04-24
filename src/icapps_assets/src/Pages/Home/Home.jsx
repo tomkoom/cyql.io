@@ -10,7 +10,8 @@ import { JoinCommunity, NftSales, RecentlyAdded } from "./index";
 // redux
 import { useSelector } from "react-redux";
 import { selectUpcomingNfts } from "../../State/siteData";
-import { selectProjects } from "../../State/siteData";
+// import { selectProjects } from "../../State/siteData";
+import { selectProjects } from "../../State/projects";
 
 const ViewAllBtn = ({ nav }) => {
   return (
@@ -41,7 +42,11 @@ const Home = () => {
           <ViewAllBtn nav={toApps} />
         </div>
 
-        <RecentlyAdded projects={projects.filter((project) => project.category === "NFTs")} />
+        <RecentlyAdded
+          projects={
+            projects.length > 0 && projects.filter((project) => project.category === "NFTs")
+          }
+        />
       </section>
 
       {/* recently added apps*/}
@@ -51,7 +56,11 @@ const Home = () => {
           <ViewAllBtn nav={toApps} />
         </div>
 
-        <RecentlyAdded projects={projects.filter((project) => project.category !== "NFTs")} />
+        <RecentlyAdded
+          projects={
+            projects.length > 0 && projects.filter((project) => project.category !== "NFTs")
+          }
+        />
       </section>
 
       {/* upcoming nft sales */}

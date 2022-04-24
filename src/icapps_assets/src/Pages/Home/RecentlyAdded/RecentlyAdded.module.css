@@ -1,54 +1,37 @@
 /* recently added */
 
-.appLi {
+.projectsList {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 1rem;
   margin-top: 1rem;
 }
 
-.appLi__i {
+.projectsList__i {
   cursor: pointer;
   border-radius: 1rem;
 }
 
-.promoted {
-  box-shadow: 0 0 0 1px var(--highlightColor);
-}
-
-.white__overlay {
-  background-color: white;
-}
-
-.appLi__i__linkBlock__cover {
-  width: 100%;
-  border-radius: 1rem;
-}
-
-.appLi__i__linkBlock__appInfo {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 0;
-  gap: 0.5rem;
-}
-
-.appLi__i__linkBlock__appInfo__header {
+.projectsList__i__wrapper {
   display: flex;
   gap: 1rem;
 }
 
-.projectlogo {
+.logo {
   width: 4rem;
   height: 4rem;
   border-radius: 1rem;
   object-fit: cover;
-  font-size: 0.75rem;
 }
 
 .titletags {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+.promoted {
+  box-shadow: 0 0 0 1px var(--highlightColor);
 }
 
 .projectDescription {
@@ -82,23 +65,10 @@
   background-color: var(--underlay2);
 }
 
-.appLi__i__linkBlock__appInfo__header ul li img {
-  max-width: 1rem;
-}
-
 /* responsive */
 
 @media screen and (max-width: 1023) {
   .appDescription {
     font-size: var(--fontSize6);
-  }
-
-  .projectlogo {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  .appLi__i__linkBlock__cover {
-    display: none;
   }
 }

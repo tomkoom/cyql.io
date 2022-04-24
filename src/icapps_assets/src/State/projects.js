@@ -7,7 +7,7 @@ const projects = createSlice({
   },
   reducers: {
     setProjects(state, { payload }) {
-      state.projects = [...state.projects, payload];
+      state.projects = [...payload];
     },
     setProjectsNum(state, { payload }) {
       state.projectsNum = payload;

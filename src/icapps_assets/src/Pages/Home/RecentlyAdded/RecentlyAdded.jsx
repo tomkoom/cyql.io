@@ -12,71 +12,57 @@ import { iGithub, iDatabase } from "../../../Icons/Icons";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjectsNum } from "../../../State/siteData";
+import { selectProjects } from "../../../State/projects";
 
 const RecentlyAdded = ({ projects }) => {
-  const apps = projects;
-  const projectsNum = useSelector(selectProjectsNum);
+  const projectsNum = useSelector(selectProjects).length;
 
   return (
     <div>
-      <ul className={css.appLi}>
-        {!apps.length ? (
+      <div className={css.projectsList}>
+        {!projects.length ? (
           <Loader />
         ) : (
-          apps
+          projects
             .slice(0, 10)
-            .sort((a) => (a.promoted ? -1 : 0))
-            .map((app) => (
-              <li
-                className={`${css.appLi__i} ${app.promoted ? css.promoted : null}`}
-                onClick={() => toApp(app.id)}
-                key={app.id}
+            .sort((project) => (project.promoted ? -1 : 0))
+            .sort((project) => (project.dateAdded ? -1 : 0))
+            .map((project) => (
+              <div
+                className={`${css.projectsList__i} ${project.promoted ? css.promoted : null}`}
+                onClick={() => toApp(project.id)}
+                key={project.id}
               >
-                {/* info */}
-                <div className={css.appLi__i__linkBlock__appInfo}>
-                  <div className={css.appLi__i__linkBlock__appInfo__header}>
-                    {app.logo && <img className={css.projectlogo} src={app.logo} alt={app.name} />}
+                <div className={css.projectsList__i__wrapper}>
+                  {/* logo */}
+                  {project.logo && (
+                    <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
+                  )}
 
-                    {/* name, category & tags */}
-                    <div className={css.titletags}>
-                      <div>
-                        <h3>{app.name}</h3>
-                      </div>
+                  {/* name, category & tags */}
+                  <div className={css.titletags}>
+                    <h3>{project.name}</h3>
 
-                      {app.category && app.category !== "NFTs" && (
-                        <ul>
-                          {app.category && <li>{app.category}</li>}
-                          {app.canister && <li>{iDatabase}&nbsp;&nbsp;Hosted on IC</li>}
-                          {app.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
+                    {project.category && project.category !== "NFTs" && (
+                      <ul>
+                        {project.category && <li>{project.category}</li>}
+                        {project.canister && <li>{iDatabase}&nbsp;&nbsp;Hosted on IC</li>}
+                        {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
+                      </ul>
+                    )}
 
-                          {app.tags == "Psychedelic" && (
-                            <li>
-                              <img
-                                src="https://psychedelic.ooo/images/11-2.svg"
-                                alt="Psychedelic"
-                              />
-                              &nbsp;&nbsp;
-                              {app.tags}
-                            </li>
-                          )}
-                          {app.tags == "toniqlabs" && <li>{app.tags}</li>}
-                        </ul>
-                      )}
-
-                      <p className={css.projectDescription}>
-                        {app.description && app.description.length > 50
-                          ? `${app.description.substring(0, 50)}…`
-                          : app.description}
-                      </p>
-                    </div>
+                    <p className={css.projectDescription}>
+                      {project.description && project.description.length > 50
+                        ? `${project.description.substring(0, 50)}…`
+                        : project.description}
+                    </p>
                   </div>
                 </div>
-              </li>
+              </div>
             ))
         )}
-      </ul>
-      {apps.length > 0 && (
+      </div>
+      {projects.length > 0 && (
         <ViewMoreBtn nav={toApps}>View all {projectsNum} projects &gt;</ViewMoreBtn>
       )}
     </div>
