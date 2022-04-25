@@ -24,11 +24,23 @@ const projects = createSlice({
   },
 });
 
-export const selectProjects = (state) => state.projects.projects.arr;
-export const selectProjectsLength = (state) => state.projects.projects.arrLength;
-export const selectNFTs = (state) => state.projects.nfts.arr;
-export const selectNFTsLength = (state) => state.projects.nfts.arrLength;
+const selectProjects = (state) => state.projects.projects.arr;
+const selectProjectsLength = (state) => state.projects.projects.arrLength;
+const selectNFTs = (state) => state.projects.nfts.arr;
+const selectNFTsLength = (state) => state.projects.nfts.arrLength;
+const selectUpcomingNFTs = (state) =>
+  state.projects.nfts.arr.filter((nft) => nft.nftSaleStatus === "Upcoming");
+const selectOngoingNFTs = (state) =>
+  state.projects.nfts.arr.filter((nft) => nft.nftSaleStatus === "Open");
 
+export {
+  selectProjects,
+  selectProjectsLength,
+  selectNFTs,
+  selectNFTsLength,
+  selectUpcomingNFTs,
+  selectOngoingNFTs,
+};
 
 export const { setProjects, setNFTs } = projects.actions;
 export default projects.reducer;

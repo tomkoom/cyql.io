@@ -1,0 +1,21 @@
+/* profile */
+
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profileInfo img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}

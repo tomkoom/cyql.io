@@ -15,6 +15,7 @@ import {
   faComments,
   faHeart,
   faExternalLinkAlt,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -39,6 +40,7 @@ const iPlusSquare = <FontAwesomeIcon icon={faPlusSquare} />;
 const iComments = <FontAwesomeIcon icon={faComments} />;
 const iHeart = <FontAwesomeIcon icon={faHeart} />;
 const iExternalLink = <FontAwesomeIcon icon={faExternalLinkAlt} />;
+const iSearch = <FontAwesomeIcon icon={faSearch} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -63,6 +65,7 @@ export {
   iComments,
   iHeart,
   iExternalLink,
+  iSearch,
   // brands
   iTwitter,
   iDiscord,

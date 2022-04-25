@@ -1,22 +1,19 @@
 import React from "react";
 import css from "./SearchBar.module.css";
 
-// FontAwesome
+// fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const SearchBar = ({ searchValue, search, inputName }) => {
+const SearchBar = () => {
   return (
     <div className={css.search}>
       <input
         className={css.search__input}
         type="text"
         placeholder="Search projects"
-        onChange={search}
-        value={searchValue}
-        name={inputName}
+        onChange={(e) => dispatch(setSearch(e.target.value))}
       />
-
       <FontAwesomeIcon className={css.searchIcon} icon={faSearch} />
     </div>
   );

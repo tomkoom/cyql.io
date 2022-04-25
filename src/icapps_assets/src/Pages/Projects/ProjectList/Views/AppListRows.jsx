@@ -10,14 +10,14 @@ import { toApp } from "../../../../Routes/routes";
 // redux
 import { useSelector } from "react-redux";
 import { selectView } from "../../../../State/view";
-import { selectSearchProjects } from "../../../../State/searchProjects";
+import { selectSearch } from "../../../../State/search";
 import { selectItemsVisible } from "../../../../State/loadMore";
 import { selectProjects } from "../../../../State/projects";
 import { selectCategory } from "../../../../State/category";
 
 const AppListRows = () => {
   const view = useSelector(selectView);
-  const searchValue = useSelector(selectSearchProjects);
+  const search = useSelector(selectSearch);
   const itemsVisible = useSelector(selectItemsVisible);
   const projects = useSelector(selectProjects);
   const category = useSelector(selectCategory);
@@ -43,14 +43,17 @@ const AppListRows = () => {
             <tbody>
               {projects
                 .filter((project) => (category === "All" ? project : project.category === category))
-                .filter((app) => {
-                  if (searchValue === "") {
-                    return app;
-                  } else if (app.name.toLowerCase().includes(searchValue.toLowerCase())) {
-                    return app;
+                .filter((project) => {
+                  if (search === "") {
+                    return project;
+                  } else if (
+                    project.name &&
+                    project.name.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return project;
                   }
                 })
-                .sort((a) => (a.promoted ? -1 : 0))
+                // .sort((a) => (a.promoted ? -1 : 0))
                 .slice(0, itemsVisible)
                 .map((app) => (
                   <tr

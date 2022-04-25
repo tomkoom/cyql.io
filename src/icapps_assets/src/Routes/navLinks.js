@@ -1,5 +1,5 @@
 import { iFire } from "../Icons/Icons";
-import { toApps, toSubmit, toUpcoming, toAdmin } from "./routes";
+import { toApps, toSubmit, toUpcoming } from "./routes";
 
 const navLinks = [
   { name: "Projects", link: toApps, icon: "" },

@@ -7,16 +7,11 @@ import { iDatabase, iGithub } from "../../../Icons/Icons";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
-import { setFilterByTag } from "../../../State/projectsFiltering";
 
 const Tags = () => {
   const dispatch = useDispatch();
   const openSource = useSelector((state) => state.projectsFiltering.openSource.value);
   const deployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
-
-  const filterProjects = (checkbox) => {
-    dispatch(setFilterByTag({ value: checkbox }));
-  };
 
   const tags = [
     {

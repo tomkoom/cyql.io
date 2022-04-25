@@ -2,8 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 // reducers
 import icpPrice from "./icpPrice";
-import searchProjects from "./searchProjects";
-import projectsFiltering from "./projectsFiltering";
+import search from "./search";
 import theme from "./theme";
 import view from "./view";
 import loadMore from "./loadMore";
@@ -25,8 +24,7 @@ import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   icpPrice,
-  searchProjects,
-  projectsFiltering,
+  search,
   theme,
   view,
   loadMore,

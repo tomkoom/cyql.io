@@ -102,6 +102,21 @@ input {
   margin-bottom: 0.5rem;
 }
 
+.secondaryBtn {
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  padding: 0.66rem 0.75rem;
+  border-radius: 0.66rem;
+  border: none;
+  cursor: pointer;
+}
+
+.secondaryBtn:hover {
+  background-color: var(--underlay2);
+}
+
 /* cookie */
 
 .cookie {

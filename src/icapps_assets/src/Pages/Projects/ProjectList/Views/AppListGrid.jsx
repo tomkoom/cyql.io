@@ -8,14 +8,14 @@ import { iDatabase, iGithub } from "../../../../Icons/Icons";
 // redux
 import { useSelector } from "react-redux";
 import { selectView } from "../../../../State/view";
-import { selectSearchProjects } from "../../../../State/searchProjects";
+import { selectSearch } from "../../../../State/search";
 import { selectItemsVisible } from "../../../../State/loadMore";
 import { selectProjects } from "../../../../State/projects";
 import { selectCategory } from "../../../../State/category";
 
 const AppListGrid = () => {
   const view = useSelector(selectView);
-  const searchValue = useSelector(selectSearchProjects);
+  const searchValue = useSelector(selectSearch);
   const itemsVisible = useSelector(selectItemsVisible);
   const projects = useSelector(selectProjects);
   const category = useSelector(selectCategory);

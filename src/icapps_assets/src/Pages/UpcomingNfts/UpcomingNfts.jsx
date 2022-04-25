@@ -4,25 +4,17 @@ import Loader from "../../Components/Loader/Loader";
 import { toApp, toSubmit } from "../../Routes/routes";
 
 // icons
-import {
-  iTwitter,
-  iDiscord,
-  iGithub,
-  iTelegram,
-  iMedium,
-  iLink,
-} from "../../Icons/Icons";
+import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iLink } from "../../Icons/Icons";
 
 // redux
 import { useSelector } from "react-redux";
+import { selectUpcomingNFTs } from "../../State/projects";
 
 let socialLinks = [];
 let icLinks = [];
 
 const UpcomingNfts = () => {
-  const upcomingNfts = useSelector(
-    (state) => state.siteData.upcomingNfts.value
-  );
+  const upcomingNfts = useSelector(selectUpcomingNFTs);
 
   const sortByDate = (a, b) => {
     if (a.nftSaleStatus === "Open") {
@@ -66,9 +58,9 @@ const UpcomingNfts = () => {
       <div className={css.nft__hero}>
         <h2 className="pageTitle">Upcoming NFT Sales &#38; Airdrops</h2>
         <p className="bodyText">
-          Please note: we do not guarantee information provided on this page is
-          100% accurate. Please do your own research. Information on this page
-          should not be considered as financial advice.
+          Please note: we do not guarantee information provided on this page is 100% accurate.
+          Kindly do your own research. Information on this page should not be considered as
+          financial advice.
         </p>
 
         {/* media partners */}
@@ -76,18 +68,12 @@ const UpcomingNfts = () => {
           <p>Media Partners</p>
 
           <div className={css.mediaPartners__logo}>
-            <img
-              src="https://i.postimg.cc/50PprTYH/golka-userimg-rec.png"
-              alt="Golka UserImg"
-            />
+            <img src="https://i.postimg.cc/50PprTYH/golka-userimg-rec.png" alt="Golka UserImg" />
             Golka
           </div>
 
           <div className={css.mediaPartners__logo}>
-            <img
-              src="https://i.postimg.cc/bYVLq76L/entrepot-logo-168.png"
-              alt="Entrepot Logo"
-            />
+            <img src="https://i.postimg.cc/bYVLq76L/entrepot-logo-168.png" alt="Entrepot Logo" />
             Entrepot
           </div>
         </div>
@@ -99,7 +85,7 @@ const UpcomingNfts = () => {
       </div>
 
       {/* content */}
-      {upcomingNfts && upcomingNfts.length > 0 ? (
+      {upcomingNfts.length > 0 ? (
         <div style={{ overflowX: "auto" }}>
           <table className={css.t}>
             <thead>
@@ -115,25 +101,16 @@ const UpcomingNfts = () => {
             </thead>
             <tbody>
               {upcomingNfts
-                .filter(
-                  (nft) =>
-                    nft.nftSaleStatus === "Open" ||
-                    nft.nftSaleStatus === "Upcoming"
-                )
+                .filter((nft) => nft.nftSaleStatus === "Open" || nft.nftSaleStatus === "Upcoming")
                 .sort((a, b) => sortByDate(a, b))
                 .sort((a) => (a.promoted ? -1 : 0))
                 .map((nft) => (
-                  <tr
-                    className={nft.promoted ? css.promoted : css.t__tbody__tr}
-                    key={nft.id}
-                  >
+                  <tr className={nft.promoted ? css.promoted : css.t__tbody__tr} key={nft.id}>
                     <td className={css.t__mainColl}>
                       <span onClick={() => toApp(nft.id)}>
                         <div>
                           <h4 className={css.t__mainColl__title}>{nft.name}</h4>
-                          {nft.promoted && (
-                            <span>{nft.promoted ? "Promoted" : null}</span>
-                          )}
+                          {nft.promoted && <span>{nft.promoted ? "Promoted" : null}</span>}
                         </div>
 
                         <p className={css.t__mainColl__description}>
@@ -212,11 +189,7 @@ const UpcomingNfts = () => {
                             ({ id, name, link, icon }) =>
                               link && (
                                 <li key={id}>
-                                  <a
-                                    href={link}
-                                    rel="norefferer noopener"
-                                    target="_blank"
-                                  >
+                                  <a href={link} rel="norefferer noopener" target="_blank">
                                     <span>{icon}</span>&nbsp;{name}
                                   </a>
                                 </li>
@@ -228,10 +201,7 @@ const UpcomingNfts = () => {
 
                     <td>
                       {nft.nftSaleStatus === "Open" ? (
-                        <a
-                          className={css.nftSaleLink}
-                          href={nft.nftSaleUrl ? nft.nftSaleUrl : "#"}
-                        >
+                        <a className={css.nftSaleLink} href={nft.nftSaleUrl ? nft.nftSaleUrl : "#"}>
                           Sale is open
                         </a>
                       ) : (
@@ -248,9 +218,7 @@ const UpcomingNfts = () => {
                             nftPreviews.push(
                               <img
                                 src={nft[`nftImg${i}`]}
-                                style={
-                                  nft[`nftImg${i}`] ? null : { display: "none" }
-                                }
+                                style={nft[`nftImg${i}`] ? null : { display: "none" }}
                                 alt={`${nft.name} NFT preview ${i}`}
                                 key={i}
                               />

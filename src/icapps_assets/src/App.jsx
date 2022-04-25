@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import "./Styles/root.css";
 import "./Styles/theme.css";
 import "./Styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
+import k from "../../../k/k";
 
 // firestore
 import { getDocs } from "firebase/firestore";
@@ -12,18 +13,34 @@ import { projectsColRef } from "../../../firebase/firestore-collections";
 
 // components
 import { Nav, Footer } from "./Components";
-import { Home, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./Pages";
+import {
+  Home,
+  Projects,
+  ProjectPage,
+  UpcomingNfts,
+  Submit,
+  Profile,
+  Admin,
+  NotFound,
+} from "./Pages";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
-
 import { selectTheme } from "./State/theme";
+
+// auth
+import { useAuth } from "./Context/AuthContext";
+import { auth } from "../../../firebase/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import Profile from "./Pages/Profile/Profile";
 
 const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+
+  const { setUser, setUserUID, userUID } = useAuth();
 
   const sortByDateAdded = (a, b) => {
     const dateStrA = a.dateAdded.replace(",", "");
@@ -35,6 +52,18 @@ const App = () => {
     return dateB - dateA;
   };
 
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        setUser(user);
+        setUserUID(user.uid);
+      } else {
+        // User is signed out
+      }
+    });
+  }, []);
+
   // get projects
   useEffect(async () => {
     const projectsDocs = await getDocs(projectsColRef).then((snapshot) => {
@@ -43,10 +72,19 @@ const App = () => {
 
     if (projectsDocs) {
       let projectsArr = [];
+      let projectsArrNoDate = [];
+      let projectsArrDateSorted = [];
+
       projectsDocs.forEach((doc) => {
         projectsArr.push({ ...doc.data(), idx: doc.id });
       });
-      projectsArr = projectsArr.filter((p) => p.dateAdded).sort((a, b) => sortByDateAdded(a, b));
+
+      projectsArrNoDate = projectsArr.filter((p) => !p.dateAdded);
+      projectsArrDateSorted = projectsArr
+        .filter((p) => p.dateAdded)
+        .sort((a, b) => sortByDateAdded(a, b));
+
+      projectsArr = [...projectsArrDateSorted, ...projectsArrNoDate];
       dispatch(setProjects(projectsArr));
 
       const nftsArr = projectsArr.filter((project) => project.category === "NFTs");
@@ -63,7 +101,7 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
-      <Route exact path={`/(|projects|upcoming|nft)`}>
+      <Route exact path={`/(|projects|upcoming|profile|admin)`}>
         <Nav />
       </Route>
 
@@ -89,14 +127,25 @@ const App = () => {
             <Submit />
           </Route>
 
-          {/* not found */}
+          {userUID && (
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+          )}
+
+          {userUID && userUID === k.TWITTER_ADMIN_1 && (
+            <Route exact path="/admin">
+              <Admin />
+            </Route>
+          )}
+
           <Route path="*">
             <NotFound />
           </Route>
         </Switch>
       </div>
 
-      <Route exact path={`/(|projects|upcoming|nft)`}>
+      <Route exact path={`/(|projects|upcoming|profile|admin)`}>
         <Footer />
       </Route>
 

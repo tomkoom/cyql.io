@@ -12,7 +12,7 @@ import { deviceSizes } from "../../../Utils/DeviceSizes";
 import { iTwitter, iDiscord, iBars } from "../../../Icons/Icons";
 
 // routes, navlinks
-import { toHome, toAdmin } from "../../../Routes/routes";
+import { toHome, toAdmin, toProfile } from "../../../Routes/routes";
 import { navLinks } from "../../../Routes/navLinks";
 
 // auth
@@ -102,13 +102,13 @@ const NavMid = () => {
           </li>
         ))}
 
-        <li className={`${css.nav__list__item} ${css.donateContainer}`}>
+        {/* <li className={`${css.nav__list__item} ${css.donateContainer}`}>
           <div className={css.donateBtn} onClick={() => setModalIsActive(true)}>
             <p>Donate</p>
           </div>
-        </li>
+        </li> */}
 
-        {/* {!userUID && (
+        {!userUID && (
           <li className={css.nav__list__item}>
             <button className="navlink" onClick={signInWithTwitter}>
               Sign in
@@ -118,8 +118,8 @@ const NavMid = () => {
 
         {userUID && (
           <li className={css.nav__list__item}>
-            <button className="navlink" onClick={logOut}>
-              Sign out
+            <button className="navlink" onClick={toProfile}>
+              Profile
             </button>
           </li>
         )}
@@ -136,7 +136,7 @@ const NavMid = () => {
               Admin
             </button>
           </li>
-        )} */}
+        )}
       </ul>
     </div>
   );

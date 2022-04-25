@@ -10,6 +10,7 @@ const NavTop = () => {
   const projectsLength = useSelector(selectProjectsLength);
   const nfts = useSelector(selectNFTs);
   const upcomingNFTsLength = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming").length;
+  const ongoingNFTsLength = nfts.filter((nft) => nft.nftSaleStatus === "Open").length;
 
   return (
     <div className={css.nav}>
@@ -21,11 +22,12 @@ const NavTop = () => {
           </button>
         </li>
         <li>
-          Upcoming NFTs:{" "}
+          Upcoming NFT sales:{" "}
           <button className="navlink" onClick={() => toUpcoming()}>
             {upcomingNFTsLength}
           </button>
         </li>
+        <li>Ongoing NFT sales: {ongoingNFTsLength}</li>
         <li>
           Highlights:{" "}
           <a href="https://dfinity.org/supernova/" target="_blank" rel="noreferrer noopener">
