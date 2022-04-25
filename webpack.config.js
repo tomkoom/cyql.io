@@ -116,7 +116,10 @@ module.exports = {
         },
       },
     },
-    hot: true,
+    // hot: true,
+    // liveReload: false,
+    hot: false,
+    liveReload: false,
     // contentBase: path.resolve(__dirname, "./src/icapps_assets"),
     // watchContentBase: true
   },

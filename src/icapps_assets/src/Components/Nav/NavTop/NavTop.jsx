@@ -4,11 +4,12 @@ import { toApps, toUpcoming } from "../../../Routes/routes";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjects, selectUpcomingNfts } from "../../../State/siteData";
+import { selectProjectsLength, selectNFTs } from "../../../State/projects";
 
 const NavTop = () => {
-  const projects = useSelector(selectProjects);
-  const upcomingNfts = useSelector(selectUpcomingNfts);
+  const projectsLength = useSelector(selectProjectsLength);
+  const nfts = useSelector(selectNFTs);
+  const upcomingNFTsLength = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming").length;
 
   return (
     <div className={css.nav}>
@@ -16,13 +17,13 @@ const NavTop = () => {
         <li>
           Projects:{" "}
           <button className="navlink" onClick={() => toApps()}>
-            {projects && projects.length}
+            {projectsLength}
           </button>
         </li>
         <li>
           Upcoming NFTs:{" "}
           <button className="navlink" onClick={() => toUpcoming()}>
-            {upcomingNfts && upcomingNfts.length}
+            {upcomingNFTsLength}
           </button>
         </li>
         <li>

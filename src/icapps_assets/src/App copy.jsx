@@ -7,8 +7,8 @@ import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // firestore
-import { getDocs } from "firebase/firestore";
-import { projectsColRef } from "../../../firebase/firestore-collections";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase/firebase-config";
 
 // components
 import { Nav, Footer } from "./Components";
@@ -17,28 +17,31 @@ import { Home, Projects, ProjectPage, UpcomingNfts, Submit, NotFound } from "./P
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { setProjects, setNFTs } from "./State/projects";
+import { setProjects, selectProjects } from "./State/projects";
 
+import { setFilterByCategory } from "./State/projectsFiltering";
 import { selectTheme } from "./State/theme";
 
 const App = () => {
+  const [category, setCategory] = useState("All");
+
+  // state
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+  const projects = useSelector(selectProjects);
 
-  // get projects
   useEffect(async () => {
+    const projectsArr = [];
+    const projectsColRef = collection(db, "projects");
     const projectsDocs = await getDocs(projectsColRef).then((snapshot) => {
       return snapshot.docs;
     });
 
     if (projectsDocs) {
-      const projectsArr = [];
       projectsDocs.forEach((doc) => {
         projectsArr.push({ ...doc.data(), idx: doc.id });
       });
       dispatch(setProjects(projectsArr));
-      const nftsArr = projectsArr.filter((project) => project.category === "NFTs");
-      dispatch(setNFTs(nftsArr));
     } else {
       console.log("Can't get projects.");
     }
@@ -58,11 +61,11 @@ const App = () => {
       <div className="app__content">
         <Switch>
           <Route exact path="/">
-            <Home />
+            <Home category={category} setCategory={setCategory} />
           </Route>
 
           <Route exact path="/projects">
-            <Projects />
+            <Projects category={category} setCategory={setCategory} />
           </Route>
 
           <Route exact path="/projects/:id">

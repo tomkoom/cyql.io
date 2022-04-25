@@ -2,39 +2,30 @@ import React from "react";
 import css from "./AppListGrid.module.css";
 import { toApp } from "../../../../Routes/routes";
 
+//icons
+import { iDatabase, iGithub } from "../../../../Icons/Icons";
+
 // redux
 import { useSelector } from "react-redux";
 import { selectView } from "../../../../State/view";
 import { selectSearchProjects } from "../../../../State/searchProjects";
 import { selectItemsVisible } from "../../../../State/loadMore";
-
-//icons
-import { iDatabase, iGithub } from "../../../../Icons/Icons";
+import { selectProjects } from "../../../../State/projects";
+import { selectCategory } from "../../../../State/category";
 
 const AppListGrid = () => {
   const view = useSelector(selectView);
   const searchValue = useSelector(selectSearchProjects);
   const itemsVisible = useSelector(selectItemsVisible);
-
-  const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
-  const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
-  const tagPsychedelic = useSelector((state) => state.projectsFiltering.psychedelic.value);
-  const tagToniqlabs = useSelector((state) => state.projectsFiltering.toniqlabs.value);
-
-  const filteredByCategory = useSelector((state) => state.projectsFiltering.filteredByCategory);
-
-  const filteredByTag = useSelector((state) => state.projectsFiltering.filteredByTag);
-
-  const filteredProjects =
-    tagOpenSource || tagDeployedToIc || tagPsychedelic || tagToniqlabs
-      ? filteredByTag
-      : filteredByCategory;
+  const projects = useSelector(selectProjects);
+  const category = useSelector(selectCategory);
 
   return (
     <div>
       {view === "grid" && (
         <div className={css.li}>
-          {filteredProjects
+          {projects
+            .filter((project) => (category === "All" ? project : project.category === category))
             .filter((p) => {
               if (searchValue === "") {
                 return p;
@@ -42,21 +33,6 @@ const AppListGrid = () => {
                 return p;
               }
             })
-            // filter by tag
-            .filter((p) => {
-              if (tagOpenSource) {
-                return p.github;
-              } else if (tagDeployedToIc) {
-                return p.canister;
-              } else if (tagPsychedelic) {
-                return p.tags === "Psychedelic";
-              } else if (tagToniqlabs) {
-                return p.tags === "toniqlabs";
-              } else {
-                return p;
-              }
-            })
-            // load more
             .sort((a) => (a.promoted ? -1 : 0))
             .slice(0, itemsVisible)
             .map((d) => (

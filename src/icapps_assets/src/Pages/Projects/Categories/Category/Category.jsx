@@ -1,18 +1,28 @@
 import React from "react";
 import css from "./Category.module.css";
 
-const CategoryBtnsItem = ({ categoryName, setCategory, categoryActive, icon, projectsNum }) => {
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory, selectCategory } from "../../../../State/category";
+import { selectProjects } from "../../../../State/projects";
+
+const CategoryBtnsItem = ({ categoryName, icon }) => {
+  const dispatch = useDispatch();
+  const category = useSelector(selectCategory);
+  const projects = useSelector(selectProjects);
+
   return (
     <button
-      className={categoryActive ? `${css.category} ${css.active}` : css.category}
-      onClick={() => setCategory(categoryName)}
+      className={category === categoryName ? `${css.category} ${css.active}` : css.category}
+      onClick={() => dispatch(setCategory(categoryName))}
     >
-      {/* icon */}
       {icon && <span className={css.category__icon}>{icon}</span>}
-      {/* category name */}
       {categoryName}
-      {/* projects num */}
-      <span className={css.category__projectsNum}>{projectsNum}</span>
+      <span className={css.category__projectsNum}>
+        {categoryName === "All"
+          ? projects.length
+          : projects.filter((p) => p.category === categoryName).length}
+      </span>
     </button>
   );
 };

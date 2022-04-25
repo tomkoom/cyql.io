@@ -12,25 +12,18 @@ import { useSelector } from "react-redux";
 import { selectView } from "../../../../State/view";
 import { selectSearchProjects } from "../../../../State/searchProjects";
 import { selectItemsVisible } from "../../../../State/loadMore";
+import { selectProjects } from "../../../../State/projects";
+import { selectCategory } from "../../../../State/category";
 
 const AppListRows = () => {
   const view = useSelector(selectView);
   const searchValue = useSelector(selectSearchProjects);
   const itemsVisible = useSelector(selectItemsVisible);
+  const projects = useSelector(selectProjects);
+  const category = useSelector(selectCategory);
 
-  const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
-  const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
-  const tagPsychedelic = useSelector((state) => state.projectsFiltering.psychedelic.value);
-  const tagToniqlabs = useSelector((state) => state.projectsFiltering.toniqlabs.value);
-
-  const filteredByCategory = useSelector((state) => state.projectsFiltering.filteredByCategory);
-
-  const filteredByTag = useSelector((state) => state.projectsFiltering.filteredByTag);
-
-  const filteredProjects =
-    tagOpenSource || tagDeployedToIc || tagPsychedelic || tagToniqlabs
-      ? filteredByTag
-      : filteredByCategory;
+  // const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
+  // const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
 
   return (
     <section>
@@ -48,7 +41,8 @@ const AppListRows = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredProjects
+              {projects
+                .filter((project) => (category === "All" ? project : project.category === category))
                 .filter((app) => {
                   if (searchValue === "") {
                     return app;
@@ -56,22 +50,7 @@ const AppListRows = () => {
                     return app;
                   }
                 })
-                // filter by tag
-                .filter((app) => {
-                  if (tagOpenSource) {
-                    return app.github;
-                  } else if (tagDeployedToIc) {
-                    return app.canister;
-                  } else if (tagPsychedelic) {
-                    return app.tags === "Psychedelic";
-                  } else if (tagToniqlabs) {
-                    return app.tags === "toniqlabs";
-                  } else {
-                    return app;
-                  }
-                })
                 .sort((a) => (a.promoted ? -1 : 0))
-                // load more
                 .slice(0, itemsVisible)
                 .map((app) => (
                   <tr

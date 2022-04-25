@@ -9,9 +9,7 @@ import { JoinCommunity, NftSales, RecentlyAdded } from "./index";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectUpcomingNfts } from "../../State/siteData";
-// import { selectProjects } from "../../State/siteData";
-import { selectProjects } from "../../State/projects";
+import { selectProjects, selectNFTs } from "../../State/projects";
 
 const ViewAllBtn = ({ nav }) => {
   return (
@@ -22,8 +20,8 @@ const ViewAllBtn = ({ nav }) => {
 };
 
 const Home = () => {
-  const nftSales = useSelector(selectUpcomingNfts);
   const projects = useSelector(selectProjects);
+  const nfts = useSelector(selectNFTs);
 
   return (
     <main className={css.home}>
@@ -71,8 +69,8 @@ const Home = () => {
         </div>
 
         <NftSales
-          nftSalesFiltered={nftSales.filter(
-            (nft) => nft.nftSaleStatus !== "Open" && nft.nftSaleStatus !== "Over"
+          nftSalesFiltered={nfts.filter(
+            (nft) => nft.nftSaleStatus !== "Open" && nft.nftSaleStatus !== "On the market"
           )}
         />
       </section>
@@ -84,7 +82,7 @@ const Home = () => {
           <ViewAllBtn nav={toUpcoming} />
         </div>
 
-        <NftSales nftSalesFiltered={nftSales.filter((nft) => nft.nftSaleStatus === "Open")} />
+        <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Open")} />
       </section>
 
       {/* join community */}

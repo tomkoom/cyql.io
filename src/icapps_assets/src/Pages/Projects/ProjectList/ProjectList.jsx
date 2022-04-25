@@ -12,12 +12,13 @@ import { LoadMoreBtn } from "../../../Components/";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { setView } from "../../../State/view";
-import { selectView } from "../../../State/view";
+import { setView, selectView } from "../../../State/view";
+import { selectProjects } from "../../../State/projects";
 
-const AppList = ({ loading }) => {
+const AppList = () => {
   const dispatch = useDispatch();
   const view = useSelector(selectView);
+  const projects = useSelector(selectProjects);
 
   return (
     <section className={css.appList}>
@@ -36,8 +37,8 @@ const AppList = ({ loading }) => {
         </button>
       </div>
 
-      {loading ? (
-        <div className="center">
+      {!projects.length ? (
+        <div>
           <Loader />
         </div>
       ) : (
@@ -47,7 +48,7 @@ const AppList = ({ loading }) => {
         </div>
       )}
 
-      <LoadMoreBtn loading={loading} />
+      <LoadMoreBtn />
     </section>
   );
 };

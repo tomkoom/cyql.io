@@ -2,10 +2,6 @@ import React from "react";
 import css from "./Categories.module.css";
 import Category from "./Category/Category";
 
-// redux
-import { useSelector } from "react-redux";
-import { selectProjects } from "../../../State/siteData";
-
 const categories = [
   { name: "All", icon: "" },
   { name: "Games", icon: "⚔️" },
@@ -20,29 +16,15 @@ const categories = [
   { name: "Explorers", icon: "🌎" },
   { name: "Dfinity Apps", icon: "♾️" },
   { name: "Metaverse", icon: "" },
-  // { name: "Storage", icon: "📦" },
   { name: "Education", icon: "🎓" },
   { name: "Communities", icon: "📣" },
 ];
 
-const Categories = ({ category, setCategory }) => {
-  const projects = useSelector(selectProjects);
-
+const Categories = () => {
   return (
     <div className={css.categoryBtns}>
       {categories.map((cat) => (
-        <Category
-          categoryName={cat.name}
-          setCategory={setCategory}
-          categoryActive={category === cat.name ? true : false}
-          icon={cat.icon}
-          projectsNum={
-            cat.name === "All"
-              ? projects.length
-              : projects.filter((p) => p.category == cat.name).length
-          }
-          key={cat.name}
-        />
+        <Category categoryName={cat.name} icon={cat.icon} key={cat.name} />
       ))}
     </div>
   );

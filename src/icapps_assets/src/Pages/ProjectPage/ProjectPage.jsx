@@ -7,7 +7,7 @@ import { iExternalLink } from "../../Icons/Icons";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjects } from "../../State/siteData";
+import { selectProjects } from "../../State/projects";
 
 // components
 import { BackBtn, ExpandableText, Loader } from "../../Components/index";

@@ -11,20 +11,8 @@ import { setFilterByTag } from "../../../State/projectsFiltering";
 
 const Tags = () => {
   const dispatch = useDispatch();
-
-  // State
-  const openSource = useSelector(
-    (state) => state.projectsFiltering.openSource.value
-  );
-  const deployedToIc = useSelector(
-    (state) => state.projectsFiltering.deployedToIc.value
-  );
-  const psychedelic = useSelector(
-    (state) => state.projectsFiltering.psychedelic.value
-  );
-  const toniqlabs = useSelector(
-    (state) => state.projectsFiltering.toniqlabs.value
-  );
+  const openSource = useSelector((state) => state.projectsFiltering.openSource.value);
+  const deployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
 
   const filterProjects = (checkbox) => {
     dispatch(setFilterByTag({ value: checkbox }));
@@ -44,20 +32,6 @@ const Tags = () => {
       state: deployedToIc,
       img: "",
       icon: iDatabase,
-    },
-    {
-      id: "psychedelic",
-      name: "Psychedelic",
-      state: psychedelic,
-      img: "https://psychedelic.ooo/images/11-2.svg",
-      icon: "",
-    },
-    {
-      id: "toniqlabs",
-      name: "toniqlabs",
-      state: toniqlabs,
-      img: "https://i.postimg.cc/PfZBxHVY/entrepot-branmark.png",
-      icon: "",
     },
   ];
 

@@ -2,13 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 // reducers
 import icpPrice from "./icpPrice";
-import siteData from "./siteData";
 import searchProjects from "./searchProjects";
 import projectsFiltering from "./projectsFiltering";
 import theme from "./theme";
 import view from "./view";
 import loadMore from "./loadMore";
 import projects from "./projects";
+import category from "./category";
 
 // redux-persist
 import {
@@ -25,13 +25,13 @@ import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   icpPrice,
-  siteData,
   searchProjects,
   projectsFiltering,
   theme,
   view,
   loadMore,
   projects,
+  category,
 });
 
 const persistConfig = {

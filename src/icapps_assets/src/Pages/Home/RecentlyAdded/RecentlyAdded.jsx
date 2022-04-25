@@ -12,10 +12,10 @@ import { iGithub, iDatabase } from "../../../Icons/Icons";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjects } from "../../../State/projects";
+import { selectProjectsLength } from "../../../State/projects";
 
 const RecentlyAdded = ({ projects }) => {
-  const projectsNum = useSelector(selectProjects).length;
+  const projectsLength = useSelector(selectProjectsLength);
 
   return (
     <div>
@@ -26,7 +26,7 @@ const RecentlyAdded = ({ projects }) => {
           projects
             .slice(0, 10)
             .sort((project) => (project.promoted ? -1 : 0))
-            .sort((project) => (project.dateAdded ? -1 : 0))
+            // .sort((project) => (project.dateAdded ? -1 : 0))
             .map((project) => (
               <div
                 className={`${css.projectsList__i} ${project.promoted ? css.promoted : null}`}
@@ -63,7 +63,7 @@ const RecentlyAdded = ({ projects }) => {
         )}
       </div>
       {projects.length > 0 && (
-        <ViewMoreBtn nav={toApps}>View all {projectsNum} projects &gt;</ViewMoreBtn>
+        <ViewMoreBtn nav={toApps}>View all {projectsLength} projects &gt;</ViewMoreBtn>
       )}
     </div>
   );
