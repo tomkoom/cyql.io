@@ -1,6 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
 import { auth } from "../../../../firebase/firebase-config";
-import { TwitterAuthProvider, signInWithPopup, signInWithRedirect, signOut } from "firebase/auth";
+import { TwitterAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { history } from "../Routes/history";
+import { toHome } from "../Routes/routes";
+import { usersColRef } from "../../../../firebase/firestore-collections";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -9,33 +13,31 @@ const useAuth = () => {
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
-  const [userUID, setUserUID] = useState(undefined);
+
+  const addUserToDB = async (user) => {
+    const u = await getDoc(doc(usersColRef, user.uid));
+    const userExists = u.data() ? true : false;
+
+    if (!userExists) {
+      await setDoc(doc(usersColRef, user.uid), {
+        displayName: user.displayName,
+        screenName: user.reloadUserInfo.screenName,
+        twitterCreatedAt: user.reloadUserInfo.createdAt,
+        firstSignIn: new Date(),
+      });
+    }
+  };
 
   const signInWithTwitter = async () => {
     const provider = new TwitterAuthProvider();
-
     try {
-      const userCredential = await signInWithRedirect(auth, provider);
-      setUser(userCredential.user);
+      const userCred = await signInWithPopup(auth, provider);
+      const user = userCred.user;
+      setUser(user);
+      addUserToDB(user);
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
     }
-
-    // signInWithRedirect(auth, provider)
-    //   .then((res) => {
-    //     const user = res.user;
-    //     setUser(user);
-    //     // console.log(user);
-    //     // console.log(user.uid);
-    //     // const credential = TwitterAuthProvider.credentialFromResult(res);
-    //     // const token = credential.accessToken;
-    //     // const secret = credential.secret;
-    //   })
-    //   .catch((err) => {
-    //     // handle errors
-    //     console.log(err.message);
-    //     // https://firebase.google.com/docs/auth/web/twitter-login
-    //   });
   };
 
   const logOut = () => {
@@ -47,14 +49,15 @@ export function AuthProvider({ children }) {
         console.log(err.message);
       });
     setUser(undefined);
-    setUserUID(undefined);
+
+    if (history.location.pathname === "/profile") {
+      toHome();
+    }
   };
 
   const value = {
     user,
     setUser,
-    userUID,
-    setUserUID,
     signInWithTwitter,
     logOut,
   };

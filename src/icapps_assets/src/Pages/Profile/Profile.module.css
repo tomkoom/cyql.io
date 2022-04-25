@@ -1,5 +1,19 @@
 /* profile */
 
+.profileTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: var(--bold);
+}
+
+.profileTitle span {
+  padding: 0.25rem 0.5rem;
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+  color: var(--secondaryColor);
+}
+
 .profileContent {
   display: flex;
   flex-direction: column;

@@ -40,7 +40,7 @@ const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
 
-  const { setUser, setUserUID, userUID } = useAuth();
+  const { setUser, setUserUID, user } = useAuth();
 
   const sortByDateAdded = (a, b) => {
     const dateStrA = a.dateAdded.replace(",", "");
@@ -57,7 +57,6 @@ const App = () => {
       if (user) {
         // https://firebase.google.com/docs/reference/js/firebase.User
         setUser(user);
-        setUserUID(user.uid);
       } else {
         // User is signed out
       }
@@ -127,13 +126,13 @@ const App = () => {
             <Submit />
           </Route>
 
-          {userUID && (
+          {user && (
             <Route exact path="/profile">
               <Profile />
             </Route>
           )}
 
-          {userUID && userUID === k.TWITTER_ADMIN_1 && (
+          {user && user.uid === k.TWITTER_ADMIN_1 && (
             <Route exact path="/admin">
               <Admin />
             </Route>

@@ -37,8 +37,7 @@ const NavMid = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [deviceWidth, deviceHeight] = useWindowSize();
 
-  // auth
-  const { signInWithTwitter, logOut, userUID } = useAuth();
+  const { signInWithTwitter, user } = useAuth();
 
   function resetMenu() {
     if (deviceWidth > deviceSizes.desktop) {
@@ -108,7 +107,7 @@ const NavMid = () => {
           </div>
         </li> */}
 
-        {!userUID && (
+        {!user && (
           <li className={css.nav__list__item}>
             <button className="navlink" onClick={signInWithTwitter}>
               Sign in
@@ -116,7 +115,7 @@ const NavMid = () => {
           </li>
         )}
 
-        {userUID && (
+        {user && (
           <li className={css.nav__list__item}>
             <button className="navlink" onClick={toProfile}>
               Profile
@@ -124,7 +123,7 @@ const NavMid = () => {
           </li>
         )}
 
-        {userUID && userUID == k.TWITTER_ADMIN_1 && (
+        {user && user.uid == k.TWITTER_ADMIN_1 && (
           <li className={css.nav__list__item}>
             <button
               className="navlink"

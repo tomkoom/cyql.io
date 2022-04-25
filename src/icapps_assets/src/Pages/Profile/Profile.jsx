@@ -8,10 +8,14 @@ const Profile = () => {
   const { user, logOut } = useAuth();
   return (
     <div className={css.profile}>
-      <h2 className="pageTitle">Profile</h2>
+      <div className={css.profileTitle}>
+        <h2 className="pageTitle">Profile</h2>
+        <span>Beta</span>
+      </div>
+
       <div className={css.profileContent}>
         <div className={css.profileInfo}>
-          <img src={user.photoURL} alt={`${user.displayName} user-img`} />
+          <img src={user.photoURL} alt={`${user.displayName} userimg`} />
           <h6>{user.displayName}</h6>
         </div>
         <button className="secondaryBtn" onClick={logOut}>
