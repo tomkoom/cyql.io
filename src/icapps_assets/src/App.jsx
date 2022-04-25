@@ -25,6 +25,16 @@ const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
 
+  const sortByDateAdded = (a, b) => {
+    const dateStrA = a.dateAdded.replace(",", "");
+    const dateStrB = b.dateAdded.replace(",", "");
+    const partsA = dateStrA.split(" ").reverse().join("-");
+    const partsB = dateStrB.split(" ").reverse().join("-");
+    let dateA = new Date(partsA);
+    let dateB = new Date(partsB);
+    return dateB - dateA;
+  };
+
   // get projects
   useEffect(async () => {
     const projectsDocs = await getDocs(projectsColRef).then((snapshot) => {
@@ -32,11 +42,13 @@ const App = () => {
     });
 
     if (projectsDocs) {
-      const projectsArr = [];
+      let projectsArr = [];
       projectsDocs.forEach((doc) => {
         projectsArr.push({ ...doc.data(), idx: doc.id });
       });
+      projectsArr = projectsArr.filter((p) => p.dateAdded).sort((a, b) => sortByDateAdded(a, b));
       dispatch(setProjects(projectsArr));
+
       const nftsArr = projectsArr.filter((project) => project.category === "NFTs");
       dispatch(setNFTs(nftsArr));
     } else {
