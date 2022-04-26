@@ -23,6 +23,7 @@ import {
   Admin,
   NotFound,
 } from "./Pages";
+import { AddProject } from "./Pages/Admin/index";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -135,6 +136,12 @@ const App = () => {
           {user && user.uid === k.TWITTER_ADMIN_1 && (
             <Route exact path="/admin">
               <Admin />
+            </Route>
+          )}
+
+          {user && user.uid === k.TWITTER_ADMIN_1 && (
+            <Route exact path="/admin/addproject">
+              <AddProject />
             </Route>
           )}
 

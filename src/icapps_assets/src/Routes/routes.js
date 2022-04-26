@@ -40,4 +40,8 @@ const toAdmin = () => {
   history.push("/admin");
 };
 
-export { toHome, toApps, toApp, toUpcoming, toNft, toSubmit, toProfile, toAdmin, goBack };
+const toAddProject = () => {
+  history.push("/admin/addproject");
+};
+
+export { toHome, toApps, toApp, toUpcoming, toNft, toSubmit, toProfile, toAdmin, toAddProject, goBack };

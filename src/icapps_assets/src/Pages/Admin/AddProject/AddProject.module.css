@@ -1,0 +1,69 @@
+/* add project */
+
+.addProject {
+  max-width: 42rem;
+  margin: 0 auto 2rem auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 2rem;
+  background-color: var(--underlay);
+  margin-top: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: var(--fontSize5);
+}
+
+.formField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  white-space: nowrap;
+  gap: 1rem;
+}
+
+.formField label {
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+}
+
+.input {
+  max-width: 30rem;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: var(--fontSize6);
+  line-height: 150%;
+  background-color: var(--underlay2);
+  caret-color: var(--primaryColor);
+  color: var(--primaryColor);
+  border: none;
+  outline: none;
+}
+
+.input:focus {
+  /* background-color: var(--underlay3); */
+  box-shadow: 0 0 0 1px var(--primaryColor);
+}
+
+.controls {
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.submitBtn {
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  padding: 0.75rem 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.submitBtn:hover {
+  background-color: var(--underlay2);
+}

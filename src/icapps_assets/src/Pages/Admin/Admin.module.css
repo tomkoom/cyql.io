@@ -11,12 +11,9 @@
   width: 100%;
   border-collapse: collapse;
   white-space: nowrap;
-  font-size: 0.9rem;
-}
-
-.admin table * {
-  /* font-family: "Roboto Mono", monospace;
-  font-weight: 300; */
+  font-size: var(--fontSize7);
+  font-weight: var(--medium);
+  margin-top: 1rem;
 }
 
 .admin table tbody tr {
@@ -30,7 +27,7 @@
 
 .admin table thead tr th,
 .admin table tbody tr td {
-  padding: 1rem;
+  padding: 0.75rem 0.25rem;
 }
 
 .admin table thead tr th:first-child,

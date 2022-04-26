@@ -1,70 +1,76 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import css from "./AddProjectModal.module.css";
 
-const Modal = ({
-  modalIsActive,
-  setModalIsActive,
-  updateDonateAmount,
-  donateAmount,
-  handleDonateBtnClick,
-  transactionStatus,
-  // children,
-}) => {
-  // prevent from scrolling when modal is open
+const Modal = ({ openModal, setOpenModal }) => {
+  const [projectInfo, setProjectInfo] = useState({
+    name: "",
+    slug: "",
+    category: "",
+    website: "",
+    canister: "",
+    added: new Date(),
+  });
+
+  // prevent from scrolling
   useEffect(() => {
-    if (modalIsActive) {
+    if (openModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [modalIsActive]);
+  }, [openModal]);
+
+  const handleSubmit = () => {
+    console.log("Submit");
+  };
+
+  // selects: category, nftSaleStatus
+
+  const inputs = [
+    { label: "Name", type: "text", id: "name", placeholder: "Project name" },
+    { label: "Website", type: "text", id: "website", placeholder: "Website" },
+    { label: "Canister", type: "text", id: "canister", placeholder: "Canister" },
+    { label: "Logo", type: "text", id: "logo", placeholder: "Logo" },
+    { label: "Cover", type: "text", id: "cover", placeholder: "Cover" },
+    { label: "Twitter", type: "text", id: "twitter", placeholder: "Twitter" },
+    { label: "Discord", type: "text", id: "discord", placeholder: "Discord" },
+    { label: "Telegram", type: "text", id: "telegram", placeholder: "Telegram" },
+    { label: "GitHub", type: "text", id: "github", placeholder: "GitHub" },
+    { label: "Medium", type: "text", id: "medium", placeholder: "Medium" },
+    { label: "Dscvr", type: "text", id: "dscvr", placeholder: "Dscvr" },
+    { label: "Distrikt", type: "text", id: "distrikt", placeholder: "Distrikt" },
+    { label: "OpenChat", type: "text", id: "openChat", placeholder: "OpenChat" },
+    { label: "Description", type: "text", id: "description", placeholder: "Description" },
+  ];
 
   return (
     <div
-      className={modalIsActive ? `${css.modal} ${css.active}` : css.modal}
-      onClick={() => setModalIsActive(false)}
+      className={openModal ? `${css.modal} ${css.active}` : css.modal}
+      onClick={() => setOpenModal(false)}
     >
       <div
-        className={modalIsActive ? `${css.modal__card} ${css.active}` : css.modal__card}
+        className={openModal ? `${css.content} ${css.active}` : css.content}
         onClick={(e) => e.stopPropagation()}
       >
-        {transactionStatus ? (
-          <div
-            style={{
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            }}
-          >
-            <h5>Transaction completed</h5>
-            <p>Thank you for your donation!</p>
-          </div>
-        ) : (
-          <div className={css.modal__card__content}>
-            <p className="bodyText">
-              icApps is developed and maintained by the IC enthusiasts. Supply us with coffee so we
-              can keep on going! Appreciate your support!
-            </p>
-            <h4>Enter donation amount</h4>
-            <div className={css.modal__card__content__donationAmountInput}>
+        <form className={css.form} onSubmit={handleSubmit}>
+          {inputs.map((input) => (
+            <div className={css.formField} key={input.id}>
+              <label htmlFor={input.id}>{input.label}</label>
               <input
-                className={css.donationAmountInput}
-                type="number"
-                min="0"
-                onChange={updateDonateAmount}
-                value={donateAmount}
+                className={css.input}
+                type={input.type}
+                placeholder={input.placeholder}
+                autoComplete="off"
+                id={input.id}
+                onChange={(e) => setProjectInfo({ name: e.target.value })}
               />
-              <p>ICP</p>
             </div>
+          ))}
 
-            <button className={css.donateBtn} onClick={handleDonateBtnClick}>
-              Donate
-            </button>
+          <div className={css.controls}>
+            <button className={css.submitBtn}>Submit</button>
           </div>
-        )}
-
-        {/* {children} */}
+        </form>
       </div>
     </div>
   );
