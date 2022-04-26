@@ -1,0 +1,49 @@
+/* admin */
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin table {
+  text-align: right;
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.admin table * {
+  /* font-family: "Roboto Mono", monospace;
+  font-weight: 300; */
+}
+
+.admin table tbody tr {
+  box-shadow: var(--underline);
+  cursor: pointer;
+}
+
+.admin table tbody tr:hover {
+  background-color: var(--underlay);
+}
+
+.admin table thead tr th,
+.admin table tbody tr td {
+  padding: 1rem;
+}
+
+.admin table thead tr th:first-child,
+.admin table tbody tr td:first-child {
+  padding-left: 0;
+}
+
+.admin table thead tr th:last-child,
+.admin table tbody tr td:last-child {
+  padding-right: 0;
+}
+
+.admin table thead tr th:nth-child(-n + 3),
+.admin table tbody tr td:nth-child(-n + 3) {
+  text-align: left;
+}

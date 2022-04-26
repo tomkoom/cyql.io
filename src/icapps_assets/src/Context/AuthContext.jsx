@@ -15,11 +15,15 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
 
   const addUserToDB = async (user) => {
-    const u = await getDoc(doc(usersColRef, user.uid));
+    const userDocRef = doc(usersColRef, user.uid);
+    const u = await getDoc(userDocRef);
     const userExists = u.data() ? true : false;
 
+    // const u = await getDoc(doc(usersColRef, user.uid));
+    // const userExists = u.data() ? true : false;
+
     if (!userExists) {
-      await setDoc(doc(usersColRef, user.uid), {
+      await setDoc(userDocRef, {
         displayName: user.displayName,
         screenName: user.reloadUserInfo.screenName,
         twitterCreatedAt: user.reloadUserInfo.createdAt,
