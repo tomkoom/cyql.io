@@ -123,7 +123,7 @@ const NavMid = () => {
           </li>
         )}
 
-        {user && user.uid == k.TWITTER_ADMIN_1 && (
+        {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
           <li className={css.nav__list__item}>
             <button
               className="navlink"
@@ -135,7 +135,7 @@ const NavMid = () => {
               Admin
             </button>
           </li>
-        )}
+        ) : null}
       </ul>
     </div>
   );

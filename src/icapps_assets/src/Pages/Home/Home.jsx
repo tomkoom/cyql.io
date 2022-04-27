@@ -68,11 +68,7 @@ const Home = () => {
           <ViewAllBtn nav={toUpcoming} />
         </div>
 
-        <NftSales
-          nftSalesFiltered={nfts.filter(
-            (nft) => nft.nftSaleStatus !== "Open" && nft.nftSaleStatus !== "On the market"
-          )}
-        />
+        <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Upcoming")} />
       </section>
 
       {/* ongoing nft sales */}

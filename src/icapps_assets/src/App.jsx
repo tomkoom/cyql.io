@@ -22,7 +22,7 @@ import {
   Profile,
   Admin,
   NotFound,
-} from "./Pages";
+} from "./Pages/index";
 import { AddProject } from "./Pages/Admin/index";
 
 // redux
@@ -59,17 +59,6 @@ const App = () => {
     } else return 0;
   };
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        setUser(user);
-      } else {
-        // User is signed out
-      }
-    });
-  }, []);
-
   const sort = (a, b) => {
     const timestampA = a;
     const timestampB = b;
@@ -81,6 +70,17 @@ const App = () => {
       return 1;
     } else return 0;
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        setUser(user);
+      } else {
+        // User is signed out
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(projectsColRef, (snapshot) => {
@@ -114,7 +114,7 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
-      <Route exact path={`/(|projects|upcoming|profile|admin)`}>
+      <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}>
         <Nav />
       </Route>
 
@@ -146,17 +146,17 @@ const App = () => {
             </Route>
           )}
 
-          {user && user.uid === k.TWITTER_ADMIN_1 && (
+          {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
             <Route exact path="/admin">
               <Admin />
             </Route>
-          )}
+          ) : null}
 
-          {user && user.uid === k.TWITTER_ADMIN_1 && (
+          {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
             <Route exact path="/admin/addproject">
               <AddProject />
             </Route>
-          )}
+          ) : null}
 
           <Route path="*">
             <NotFound />
@@ -164,7 +164,7 @@ const App = () => {
         </Switch>
       </div>
 
-      <Route exact path={`/(|projects|upcoming|profile|admin)`}>
+      <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}>
         <Footer />
       </Route>
 

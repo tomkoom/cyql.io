@@ -7,14 +7,7 @@ import { toHome } from "../../Routes/routes";
 import ReCAPTCHA from "react-google-recaptcha";
 
 // icons
-import {
-  iTwitter,
-  iDiscord,
-  iGithub,
-  iTelegram,
-  iMedium,
-  iDatabase,
-} from "../../Icons/Icons";
+import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iDatabase } from "../../Icons/Icons";
 
 // components
 import BackBtn from "../../Components/BackBtn/BackBtn";
@@ -354,15 +347,7 @@ const Submit = () => {
     <section className={`${css.sApp} container768`}>
       {!isSubmitted ? (
         <div>
-          <BackBtn />
           <h2 className="pageTitle">Submit Your Project</h2>
-          {/* <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus
-            placerat odio id ultricies. Nunc in augue a leo mattis pretium eget
-            vitae turpis. Integer rhoncus nulla nec augue imperdiet, placerat
-            aliquam nibh rutrum. Nunc ac mi nec arcu rutrum auctor sed nec
-            ligula. Donec dictum dui non quam cursus, a cursus sapien ornare.{" "}
-          </p> */}
 
           <form className={css.form} onSubmit={handleSubmit}>
             {/* categories */}
@@ -405,9 +390,7 @@ const Submit = () => {
                     </span>
                   )}
                 </label>
-                {input.hint && (
-                  <p className={css.form__field__hint}>{input.hint}</p>
-                )}
+                {input.hint && <p className={css.form__field__hint}>{input.hint}</p>}
                 <input
                   className={css.from__field__input}
                   type={input.type}
@@ -430,10 +413,7 @@ const Submit = () => {
                 <br />
                 {nftInputs.map((nftInput, i) => (
                   <div className={css.form__field} key={i}>
-                    <label
-                      className={css.form__field__label}
-                      htmlFor={nftInput.name}
-                    >
+                    <label className={css.form__field__label} htmlFor={nftInput.name}>
                       {nftInput.label}
                       {nftInput.icon && (
                         <span className={css.form__field__label__icon}>
@@ -442,9 +422,7 @@ const Submit = () => {
                         </span>
                       )}
                     </label>
-                    {nftInput.hint && (
-                      <p className={css.form__field__hint}>{nftInput.hint}</p>
-                    )}
+                    {nftInput.hint && <p className={css.form__field__hint}>{nftInput.hint}</p>}
                     <input
                       className={css.from__field__input}
                       type={nftInput.type}
@@ -469,10 +447,7 @@ const Submit = () => {
               />
             </div>
 
-            <SubmitBtn
-              submissionLoader={submissionLoader}
-              isVerified={isVerified}
-            />
+            <SubmitBtn submissionLoader={submissionLoader} isVerified={isVerified} />
           </form>
         </div>
       ) : (
@@ -480,10 +455,7 @@ const Submit = () => {
           <div className={css.submissionSuccess__content}>
             <p className="bodyTextLight">
               Your project has been successfully submitted! Go{" "}
-              <span
-                onClick={toHome}
-                style={{ textDecoration: "underline", cursor: "pointer" }}
-              >
+              <span onClick={toHome} style={{ textDecoration: "underline", cursor: "pointer" }}>
                 home
               </span>
             </p>
