@@ -8,7 +8,6 @@ import CookieConsent from "react-cookie-consent";
 import k from "../../../k/k";
 
 // firestore
-import { getDocs } from "firebase/firestore";
 import { projectsColRef } from "../../../firebase/firestore-collections";
 import { onSnapshot } from "firebase/firestore";
 
@@ -42,16 +41,22 @@ const App = () => {
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
 
-  const { setUser, setUserUID, user } = useAuth();
+  const { setUser, user } = useAuth();
 
   const sortByDateAdded = (a, b) => {
-    const dateStrA = a.dateAdded.replace(",", "");
-    const dateStrB = b.dateAdded.replace(",", "");
-    const partsA = dateStrA.split(" ").reverse().join("-");
-    const partsB = dateStrB.split(" ").reverse().join("-");
-    let dateA = new Date(partsA);
-    let dateB = new Date(partsB);
-    return dateB - dateA;
+    const dateStrA = a ? a.replace(",", "") : undefined;
+    const dateStrB = b ? b.replace(",", "") : undefined;
+    if (dateStrA && dateStrB) {
+      const partsA = dateStrA.split(" ").reverse().join("-");
+      const partsB = dateStrB.split(" ").reverse().join("-");
+      let dateA = new Date(partsA);
+      let dateB = new Date(partsB);
+      return dateB - dateA;
+    } else if (dateStrA && !dateStrB) {
+      return -1;
+    } else if (!dateStrA && dateStrB) {
+      return 1;
+    } else return 0;
   };
 
   useEffect(() => {
@@ -83,6 +88,7 @@ const App = () => {
         setProjects(
           snapshot.docs
             .map((doc) => ({ ...doc.data(), idx: doc.id }))
+            .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
             .sort((a, b) => sort(a.added, b.added))
         )
       );
@@ -100,42 +106,6 @@ const App = () => {
       unsubscribe();
     };
   }, []);
-
-  // get projects
-  // useEffect(async () => {
-  //   const projectsDocs = await getDocs(projectsColRef).then((snapshot) => {
-  //     return snapshot.docs;
-  //   });
-
-  //   if (projectsDocs) {
-  //     let projectsArr = [];
-  //     let projectsArrNoDate = [];
-  //     let projectsArrDateSorted = [];
-  //     let projectsArrNewDateSorted = [];
-
-  //     projectsDocs.forEach((doc) => {
-  //       projectsArr.push({ ...doc.data(), idx: doc.id });
-  //     });
-
-  //     projectsArrNoDate = projectsArr.filter((p) => !p.dateAdded);
-
-  //     projectsArrDateSorted = projectsArr
-  //       .filter((p) => p.dateAdded)
-  //       .sort((a, b) => sortByDateAdded(a, b));
-
-  //     projectsArrNewDateSorted = projectsArr
-  //       .filter((p) => p.added)
-  //       .sort((a, b) => b.added - a.added);
-
-  //     projectsArr = [...projectsArrNewDateSorted, ...projectsArrDateSorted, ...projectsArrNoDate];
-  //     dispatch(setProjects(projectsArr));
-
-  //     const nftsArr = projectsArr.filter((project) => project.category === "NFTs");
-  //     dispatch(setNFTs(nftsArr));
-  //   } else {
-  //     console.log("Can't get projects.");
-  //   }
-  // }, []);
 
   // set icp price
   useEffect(() => {

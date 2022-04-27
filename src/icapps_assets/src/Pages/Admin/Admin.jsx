@@ -31,7 +31,7 @@ const Admin = () => {
     <div className={css.admin}>
       <div className={css.title}>
         <h2 className="pageTitle">Admin</h2>
-        <button className="secondaryBtn" onClick={toAddProject}>
+        <button className="primaryBtn" onClick={toAddProject}>
           Add project
         </button>
       </div>
