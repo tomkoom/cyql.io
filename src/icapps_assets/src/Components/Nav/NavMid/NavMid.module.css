@@ -127,3 +127,20 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .nav__list {
+    display: none;
+  }
+
+  .donateContainer {
+    display: none;
+  }
+
+  .nav__menuBtn {
+    display: grid;
+    place-items: center;
+  }
+}

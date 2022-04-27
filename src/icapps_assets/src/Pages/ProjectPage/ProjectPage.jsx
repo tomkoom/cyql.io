@@ -66,7 +66,7 @@ const ProjectPage = () => {
                 </div>
 
                 {/* date */}
-                <div className={css.app__info__date}>{project.dateAdded}</div>
+                <div className={css.app__info__date}>{project.added}</div>
               </div>
 
               <p className={css.projectDescription}>{project.description}</p>

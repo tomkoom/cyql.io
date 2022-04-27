@@ -66,22 +66,3 @@
   display: flex;
   height: 0.9rem;
 }
-
-@media screen and (max-width: 1023px) {
-  .nav {
-    padding: 0.5rem 1rem;
-  }
-
-  .nav__list {
-    display: none;
-  }
-
-  .donateContainer {
-    display: none;
-  }
-
-  .nav__menuBtn {
-    display: grid;
-    place-items: center;
-  }
-}

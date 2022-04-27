@@ -46,9 +46,19 @@ const AddProject = () => {
   ];
 
   const inputsSocial = [
-    { label: "Twitter", type: "text", id: "twitter", placeholder: "Twitter" },
-    { label: "Discord", type: "text", id: "discord", placeholder: "Discord" },
-    { label: "Telegram", type: "text", id: "telegram", placeholder: "Telegram" },
+    {
+      label: "Twitter",
+      type: "text",
+      id: "twitter",
+      placeholder: "https://twitter.com/project",
+    },
+    {
+      label: "Discord",
+      type: "text",
+      id: "discord",
+      placeholder: "https://discord.gg/project",
+    },
+    { label: "Telegram", type: "text", id: "telegram", placeholder: "https://t.me/project" },
     { label: "GitHub", type: "text", id: "github", placeholder: "GitHub" },
     { label: "Medium", type: "text", id: "medium", placeholder: "Medium" },
     { label: "Dscvr", type: "text", id: "dscvr", placeholder: "Dscvr" },
