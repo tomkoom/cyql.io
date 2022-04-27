@@ -1,7 +1,7 @@
 /* add project */
 
 .addProject {
-  max-width: 42rem;
+  max-width: 36rem;
   margin: 0 auto 2rem auto;
 }
 
@@ -9,44 +9,43 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.25rem 2rem;
-  background-color: var(--underlay);
-  margin-top: 1.5rem;
+  padding: 1.25rem 0;
+  margin-top: 0.5rem;
 }
 
 .sectionTitle {
   font-size: var(--fontSize5);
+  margin-bottom: 0.5rem;
 }
 
 .formField {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
-  gap: 1rem;
+  flex-direction: column;
 }
 
 .formField label {
   font-weight: var(--bold);
   color: var(--primaryColor);
+  margin-bottom: 0.25rem;
 }
 
 .input {
-  max-width: 30rem;
   width: 100%;
   padding: 0.5rem;
   font-size: var(--fontSize6);
   line-height: 150%;
-  background-color: var(--underlay2);
+  background-color: var(--underlay);
   caret-color: var(--primaryColor);
   color: var(--primaryColor);
   border: none;
   outline: none;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .input:focus {
-  /* background-color: var(--underlay3); */
-  box-shadow: 0 0 0 1px var(--primaryColor);
+  background-color: var(--underlay2);
+  /* box-shadow: 0 0 0 1px var(--primaryColor); */
 }
 
 .controls {
@@ -59,9 +58,10 @@
   font-weight: var(--bold);
   color: var(--primaryColor);
   background-color: var(--underlay);
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   border: none;
   cursor: pointer;
+  border-radius: 0.66rem;
 }
 
 .submitBtn:hover {

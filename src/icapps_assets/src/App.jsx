@@ -10,6 +10,7 @@ import k from "../../../k/k";
 // firestore
 import { getDocs } from "firebase/firestore";
 import { projectsColRef } from "../../../firebase/firestore-collections";
+import { onSnapshot } from "firebase/firestore";
 
 // components
 import { Nav, Footer } from "./Components";
@@ -64,35 +65,77 @@ const App = () => {
     });
   }, []);
 
-  // get projects
-  useEffect(async () => {
-    const projectsDocs = await getDocs(projectsColRef).then((snapshot) => {
-      return snapshot.docs;
+  const sort = (a, b) => {
+    const timestampA = a;
+    const timestampB = b;
+    if (timestampA && timestampB) {
+      return timestampB - timestampA;
+    } else if (timestampA && !timestampB) {
+      return -1;
+    } else if (!timestampA && timestampB) {
+      return 1;
+    } else return 0;
+  };
+
+  useEffect(() => {
+    const unsubscribe = onSnapshot(projectsColRef, (snapshot) => {
+      dispatch(
+        setProjects(
+          snapshot.docs
+            .map((doc) => ({ ...doc.data(), idx: doc.id }))
+            .sort((a, b) => sort(a.added, b.added))
+        )
+      );
+
+      dispatch(
+        setNFTs(
+          snapshot.docs
+            .map((doc) => ({ ...doc.data(), idx: doc.id }))
+            .filter((project) => project.category === "NFTs")
+        )
+      );
     });
 
-    if (projectsDocs) {
-      let projectsArr = [];
-      let projectsArrNoDate = [];
-      let projectsArrDateSorted = [];
-
-      projectsDocs.forEach((doc) => {
-        projectsArr.push({ ...doc.data(), idx: doc.id });
-      });
-
-      projectsArrNoDate = projectsArr.filter((p) => !p.dateAdded);
-      projectsArrDateSorted = projectsArr
-        .filter((p) => p.dateAdded)
-        .sort((a, b) => sortByDateAdded(a, b));
-
-      projectsArr = [...projectsArrDateSorted, ...projectsArrNoDate];
-      dispatch(setProjects(projectsArr));
-
-      const nftsArr = projectsArr.filter((project) => project.category === "NFTs");
-      dispatch(setNFTs(nftsArr));
-    } else {
-      console.log("Can't get projects.");
-    }
+    return () => {
+      unsubscribe();
+    };
   }, []);
+
+  // get projects
+  // useEffect(async () => {
+  //   const projectsDocs = await getDocs(projectsColRef).then((snapshot) => {
+  //     return snapshot.docs;
+  //   });
+
+  //   if (projectsDocs) {
+  //     let projectsArr = [];
+  //     let projectsArrNoDate = [];
+  //     let projectsArrDateSorted = [];
+  //     let projectsArrNewDateSorted = [];
+
+  //     projectsDocs.forEach((doc) => {
+  //       projectsArr.push({ ...doc.data(), idx: doc.id });
+  //     });
+
+  //     projectsArrNoDate = projectsArr.filter((p) => !p.dateAdded);
+
+  //     projectsArrDateSorted = projectsArr
+  //       .filter((p) => p.dateAdded)
+  //       .sort((a, b) => sortByDateAdded(a, b));
+
+  //     projectsArrNewDateSorted = projectsArr
+  //       .filter((p) => p.added)
+  //       .sort((a, b) => b.added - a.added);
+
+  //     projectsArr = [...projectsArrNewDateSorted, ...projectsArrDateSorted, ...projectsArrNoDate];
+  //     dispatch(setProjects(projectsArr));
+
+  //     const nftsArr = projectsArr.filter((project) => project.category === "NFTs");
+  //     dispatch(setNFTs(nftsArr));
+  //   } else {
+  //     console.log("Can't get projects.");
+  //   }
+  // }, []);
 
   // set icp price
   useEffect(() => {

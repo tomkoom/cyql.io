@@ -1,25 +1,48 @@
 import React, { useState } from "react";
 import { BackBtn } from "../../../Components/index";
 import css from "./AddProject.module.css";
+import { addDoc } from "firebase/firestore";
+import { projectsColRef } from "../../../../../../firebase/firestore-collections";
 
 const AddProject = () => {
   const timestamp = Date.now();
-
   const [projectInfo, setProjectInfo] = useState({
-    name: "",
-    slug: "",
-    category: "",
-    website: "",
-    canister: "",
-    added: new Date(),
+    added: timestamp,
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "name") {
+      const slug = value.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+
+      setProjectInfo((prevState) => ({
+        ...prevState,
+        id: slug, // slug
+      }));
+    }
+    setProjectInfo((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const docRef = await addDoc(projectsColRef, { ...projectInfo });
+    console.log("Document written with ID: ", docRef.id);
+  };
+
   const inputs = [
-    { label: "Name", type: "text", id: "name", placeholder: "Project name" },
-    { label: "Website", type: "text", id: "website", placeholder: "Website" },
-    { label: "Canister", type: "text", id: "canister", placeholder: "Canister" },
-    { label: "Logo URL", type: "text", id: "logo", placeholder: "Logo" },
-    { label: "Cover URL", type: "text", id: "cover", placeholder: "Cover" },
+    { label: "Website", type: "text", id: "website", placeholder: "https://website.com/" },
+    {
+      label: "Canister Id",
+      type: "text",
+      id: "canisterId",
+      placeholder: "n7ib3-4qaaa-aaaai-qagnq-cai",
+    },
+    { label: "Logo", type: "text", id: "logo", placeholder: "Logo URL" },
+    { label: "Cover", type: "text", id: "cover", placeholder: "Cover URL" },
   ];
 
   const inputsSocial = [
@@ -35,10 +58,6 @@ const AddProject = () => {
 
   const inputsNFT = [];
 
-  const handleSubmit = () => {
-    console.log("Submit");
-  };
-
   return (
     <div className={css.addProject}>
       <BackBtn />
@@ -47,16 +66,52 @@ const AddProject = () => {
         {/* main info */}
         <div className={css.section}>
           <h3 className={css.sectionTitle}>main info</h3>
-          {inputs.map(({ id, label, type, placeholder }) => (
-            <div className={css.formField} key={id}>
-              <label htmlFor={id}>{label}</label>
+
+          <div className={css.formField}>
+            <label htmlFor="name">Name</label>
+            <input
+              className={css.input}
+              type="text"
+              placeholder="Project name"
+              autoComplete="off"
+              id="name"
+              name="name"
+              onChange={handleChange}
+            />
+            <p className="bodyText">Slug: {projectInfo.id}</p>
+          </div>
+
+          <div className={css.formField}>
+            <label htmlFor="category">Category</label>
+            <select className={css.input} name="category" id="category" onChange={handleChange}>
+              <option value="">Choose category</option>
+              <option value="Communities">Communities</option>
+              <option value="DAOs">DAOs</option>
+              <option value="dApps">dApps</option>
+              <option value="DeFi">DeFi</option>
+              <option value="Education">Education</option>
+              <option value="Explorers">Explorers</option>
+              <option value="Games">Games</option>
+              <option value="Infrastructure">Infrastructure</option>
+              <option value="Metaverse">Metaverse</option>
+              <option value="NFTs">NFTs</option>
+              <option value="Social Networks">Social Networks</option>
+              <option value="Tools">Tools</option>
+              <option value="Wallets">Wallets</option>
+            </select>
+          </div>
+
+          {inputs.map((input) => (
+            <div className={css.formField} key={input.id}>
+              <label htmlFor={input.id}>{input.label}</label>
               <input
                 className={css.input}
-                type={type}
-                placeholder={placeholder}
+                type={input.type}
+                placeholder={input.placeholder}
                 autoComplete="off"
-                id={id}
-                onChange={(e) => setProjectInfo({ id: e.target.value })}
+                id={input.id}
+                name={input.id}
+                onChange={handleChange}
               />
             </div>
           ))}
@@ -68,8 +123,9 @@ const AddProject = () => {
               placeholder="Project description"
               autoComplete="off"
               id="description"
+              name="description"
               rows="4"
-              onChange={(e) => setProjectInfo({ description: e.target.value })}
+              onChange={handleChange}
             ></textarea>
           </div>
         </div>
@@ -77,23 +133,26 @@ const AddProject = () => {
         {/* social newtworks */}
         <div className={css.section}>
           <h3 className={css.sectionTitle}>social networks</h3>
-          {inputsSocial.map(({ id, label, type, placeholder }) => (
-            <div className={css.formField} key={id}>
-              <label htmlFor={id}>{label}</label>
+          {inputsSocial.map((input) => (
+            <div className={css.formField} key={input.id}>
+              <label htmlFor={input.id}>{input.label}</label>
               <input
                 className={css.input}
-                type={type}
-                placeholder={placeholder}
+                type={input.type}
+                placeholder={input.placeholder}
                 autoComplete="off"
-                id={id}
-                onChange={(e) => setProjectInfo({ id: e.target.value })}
+                id={input.id}
+                name={input.id}
+                onChange={handleChange}
               />
             </div>
           ))}
         </div>
 
         <div className={css.controls}>
-          <button className={css.submitBtn}>Submit</button>
+          <button className={css.submitBtn} type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import css from "./Admin.module.css";
 
 // components
@@ -12,10 +12,6 @@ import { toAddProject } from "../../Routes/routes";
 const Admin = () => {
   const [openModal, setOpenModal] = useState(false);
   const projects = useSelector(selectProjects);
-
-  const addProject = () => {
-    console.log("add project");
-  };
 
   const handleString = (string) => {
     let str = string;
@@ -44,7 +40,7 @@ const Admin = () => {
         <thead>
           <tr>
             <th>idx</th>
-            <th>slug</th>
+            <th>id</th>
             <th>name</th>
             <th>category</th>
             <th>website</th>
@@ -69,7 +65,8 @@ const Admin = () => {
               <td>{project.cover && handleString(project.cover)}</td>
               <td>{project.twitter && handleString(project.twitter)}</td>
               <td>{project.discord && handleString(project.discord)}</td>
-              <td>{project.added}</td>
+              <td>{project.added && Date(project.added * 1000)}</td>
+              {/* <td>{project.added ? project.added : ""}</td> */}
             </tr>
           ))}
         </tbody>
