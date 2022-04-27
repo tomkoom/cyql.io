@@ -11,8 +11,14 @@ const useAuth = () => {
   return useContext(AuthContext);
 };
 
+// state
+import { useDispatch } from "react-redux";
+import { setSignInModal } from "../State/signInModal";
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
+
+  const dispatch = useDispatch();
 
   const addUserToDB = async (user) => {
     const userDocRef = doc(usersColRef, user.uid);
@@ -39,6 +45,7 @@ export function AuthProvider({ children }) {
       const user = userCred.user;
       setUser(user);
       addUserToDB(user);
+      dispatch(setSignInModal(false));
     } catch (err) {
       console.log(err.message);
     }

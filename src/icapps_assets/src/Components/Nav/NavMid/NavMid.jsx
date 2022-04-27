@@ -17,6 +17,11 @@ import { navLinks } from "../../../Routes/navLinks";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
+import { SignInModal } from "../../index";
+
+// state
+import { useSelector, useDispatch } from "react-redux";
+import { selectSignInModal, setSignInModal } from "../../../State/signInModal";
 
 const socialLinks = [
   {
@@ -38,6 +43,9 @@ const NavMid = () => {
   const [deviceWidth, deviceHeight] = useWindowSize();
 
   const { signInWithTwitter, user } = useAuth();
+
+  const dispatch = useDispatch();
+  const signInModal = useSelector(selectSignInModal);
 
   function resetMenu() {
     if (deviceWidth > deviceSizes.desktop) {
@@ -109,11 +117,19 @@ const NavMid = () => {
 
         {!user && (
           <li className={css.nav__list__item}>
-            <button className="navlink" onClick={signInWithTwitter}>
+            <button className="navlink" onClick={() => dispatch(setSignInModal(true))}>
               Sign in
             </button>
           </li>
         )}
+
+        {/* {!user && (
+          <li className={css.nav__list__item}>
+            <button className="navlink" onClick={signInWithTwitter}>
+              Sign in
+            </button>
+          </li>
+        )} */}
 
         {user && (
           <li className={css.nav__list__item}>
@@ -137,6 +153,7 @@ const NavMid = () => {
           </li>
         ) : null}
       </ul>
+      {signInModal && <SignInModal />}
     </div>
   );
 };

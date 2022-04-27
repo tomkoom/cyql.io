@@ -1,0 +1,63 @@
+/* modal */
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--background);
+  color: var(--primaryColor);
+  margin: 1rem;
+  max-width: 24rem;
+}
+
+.timesWrapper {
+  width: 100%;
+  text-align: right;
+}
+
+.timesWrapper span {
+  font-size: var(--fontSize5);
+  cursor: pointer;
+}
+
+.twitterBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--colorTwitter);
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  padding: 0.66rem 0.75rem;
+  border-radius: 0.66rem;
+  border: none;
+  cursor: pointer;
+}
+
+.twitterBtn span {
+  font-size: var(--fontSize5);
+}

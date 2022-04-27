@@ -23,13 +23,13 @@ const Index = () => {
   return (
     <Router /* basename="/" */ history={history}>
       <ScrollToTop />
-      <AuthProvider>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AuthProvider>
             <App />
-          </PersistGate>
-        </Provider>
-      </AuthProvider>
+          </AuthProvider>
+        </PersistGate>
+      </Provider>
     </Router>
   );
 };
