@@ -5,7 +5,13 @@ import css from "./SearchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
+// state
+import { useDispatch } from "react-redux";
+import { setSearch } from "../../../State/search";
+
 const SearchBar = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className={css.search}>
       <input
