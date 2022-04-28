@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import css from "./Admin.module.css";
 
-// components
-import { AddProjectModal } from "./index";
+// icons
+import { iEdit, iTrash } from "../../Icons/Icons";
 
-// redux
-import { useSelector } from "react-redux";
+// state
+import { useSelector, useDispatch } from "react-redux";
 import { selectProjects } from "../../State/projects";
 import { toAddProject } from "../../Routes/routes";
+import { setProjectModal, setProjectInfo, selectProjectModal } from "../../State/projectModal";
 
 const Admin = () => {
-  const [openModal, setOpenModal] = useState(false);
+  const scrollbarWidth = window.innerWidth - document.body.clientWidth + "px";
+
+  const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
+  const projectModal = useSelector(selectProjectModal);
 
   const formatStr8 = (str) => {
     return str.length > 8 ? `${str.substring(0, 8)}…` : str;
@@ -71,10 +75,14 @@ const Admin = () => {
         </button>
       </div>
 
-      <div style={{ overflow: "auto" }}>
-        <table>
+      <div
+        className={css.tableContainer}
+        style={{ overflow: "auto", transform: "rotateX(180deg)" }}
+      >
+        <table className={css.table} style={{ transform: "rotateX(180deg)" }}>
           <thead>
             <tr>
+              <th>Actions</th>
               <th>Idx</th>
               <th>Id</th>
               <th>Name</th>
@@ -91,6 +99,19 @@ const Admin = () => {
           <tbody>
             {projects.map((project) => (
               <tr key={project.idx}>
+                <td>
+                  <div className={css.controls}>
+                    <span
+                      onClick={() => {
+                        dispatch(setProjectInfo(project));
+                        dispatch(setProjectModal(true));
+                      }}
+                    >
+                      {iEdit}
+                    </span>
+                    <span>{iTrash}</span>
+                  </div>
+                </td>
                 <td>{project.idx && formatStr8(project.idx)}</td>
                 <td>{project.id && formatStr16(project.id)}</td>
                 <td>{project.name && formatStr16(project.name)}</td>
@@ -107,8 +128,6 @@ const Admin = () => {
           </tbody>
         </table>
       </div>
-
-      {openModal && <AddProjectModal openModal={openModal} setOpenModal={setOpenModal} />}
     </div>
   );
 };

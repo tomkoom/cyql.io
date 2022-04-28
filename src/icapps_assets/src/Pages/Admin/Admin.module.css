@@ -1,12 +1,26 @@
 /* admin */
 
+/* .admin {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0 2rem;
+} */
+
 .title {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.admin table {
+.tableContainer {
+  margin-top: 1rem;
+}
+
+.table {
   text-align: left;
   width: 100%;
   border-collapse: collapse;
@@ -16,33 +30,50 @@
   margin-top: 1rem;
 }
 
-.admin table tbody tr {
+.table tbody tr {
   box-shadow: var(--underline);
-  cursor: pointer;
-  color: var(--secondaryColor);
 }
 
-.admin table tbody tr:hover {
-  background-color: var(--underlay);
-  color: var(--primaryColor);
+.table thead tr th,
+.table tbody tr td {
+  padding: 0.75rem;
 }
 
-.admin table thead tr th,
-.admin table tbody tr td {
-  padding: 0.75rem 0.25rem;
-}
-
-.admin table thead tr th:first-child,
-.admin table tbody tr td:first-child {
+.table thead tr th:first-child,
+.table tbody tr td:first-child {
   padding-left: 0;
 }
 
-.admin table thead tr th:last-child,
-.admin table tbody tr td:last-child {
+.table thead tr th:last-child,
+.table tbody tr td:last-child {
   padding-right: 0;
 }
 
-/* .admin table thead tr th:nth-child(-n + 3),
-.admin table tbody tr td:nth-child(-n + 3) {
-  text-align: left;
-} */
+/* icons */
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls span {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--underlay);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controls span:hover {
+  background-color: var(--underlay2);
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .admin {
+    padding: 0 1rem;
+  }
+}

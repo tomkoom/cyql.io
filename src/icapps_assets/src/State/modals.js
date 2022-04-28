@@ -11,7 +11,6 @@ const modals = createSlice({
       state.signInModal = payload;
     },
     setMobileMenuModal(state, { payload }) {
-      console.log(payload);
       state.mobileMenuModal = payload;
     },
   },

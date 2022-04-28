@@ -16,7 +16,7 @@ import { projectsColRef } from "../../../firebase/firestore-collections";
 import { onSnapshot } from "firebase/firestore";
 
 // components
-import { Nav, Footer } from "./Components";
+import { Nav, Footer, ModalProject } from "./Components";
 import {
   Home,
   Projects,
@@ -29,18 +29,19 @@ import {
 } from "./Pages/index";
 import { AddProject } from "./Pages/Admin/index";
 
+// auth
+import { useAuth } from "./Context/AuthContext";
+import { auth } from "../../../firebase/firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import Profile from "./Pages/Profile/Profile";
+
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
-
-// auth
-import { useAuth } from "./Context/AuthContext";
-import { auth } from "../../../firebase/firebase-config";
-import { onAuthStateChanged } from "firebase/auth";
-import Profile from "./Pages/Profile/Profile";
+import { selectProjectModal } from "./State/projectModal";
 
 const App = () => {
   const [deviceWidth] = useWindowSize();
@@ -49,6 +50,7 @@ const App = () => {
   const theme = useSelector(selectTheme);
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
+  const projectModal = useSelector(selectProjectModal);
 
   const { setUser, user } = useAuth();
 
@@ -213,6 +215,9 @@ const App = () => {
           Learn more
         </a>
       </CookieConsent>
+
+      {/* modals */}
+      {projectModal && <ModalProject />}
     </div>
   );
 };
