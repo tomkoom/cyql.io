@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./SignInModal.module.css";
 
 // auth
@@ -7,20 +7,11 @@ import { iTimes, iTwitter } from "../../Icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSignInModal, setSignInModal } from "../../State/signInModal";
+import { selectSignInModal, setSignInModal } from "../../State/modals";
 
 const SignInModal = () => {
   const dispatch = useDispatch();
   const signInModal = useSelector(selectSignInModal);
-
-  // prevent from scrolling
-  useEffect(() => {
-    if (signInModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [signInModal]);
 
   const { signInWithTwitter } = useAuth();
 

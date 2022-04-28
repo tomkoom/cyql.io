@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useState } from "react";
+
+// firebase
 import { auth } from "../../../../firebase/firebase-config";
 import { TwitterAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { history } from "../Routes/history";
-import { toHome } from "../Routes/routes";
 import { usersColRef } from "../../../../firebase/firestore-collections";
 import { doc, setDoc, getDoc } from "firebase/firestore";
+
+// routes
+import { history } from "../Routes/history";
+import { toHome } from "../Routes/routes";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -13,7 +17,7 @@ const useAuth = () => {
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../State/signInModal";
+import { setSignInModal } from "../State/modals";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
@@ -29,11 +33,12 @@ export function AuthProvider({ children }) {
     // const userExists = u.data() ? true : false;
 
     if (!userExists) {
+      const timestamp = Date.now();
       await setDoc(userDocRef, {
         displayName: user.displayName,
         screenName: user.reloadUserInfo.screenName,
         twitterCreatedAt: user.reloadUserInfo.createdAt,
-        firstSignIn: new Date(),
+        firstSignIn: timestamp,
       });
     }
   };

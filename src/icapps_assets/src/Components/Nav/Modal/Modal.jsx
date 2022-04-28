@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import css from "./Modal.module.css";
 
-const Modal = ({
+const MenuModal = ({
   modalIsActive,
   setModalIsActive,
   updateDonateAmount,
@@ -25,9 +25,7 @@ const Modal = ({
       onClick={() => setModalIsActive(false)}
     >
       <div
-        className={
-          modalIsActive ? `${css.modal__card} ${css.active}` : css.modal__card
-        }
+        className={modalIsActive ? `${css.modal__card} ${css.active}` : css.modal__card}
         onClick={(e) => e.stopPropagation()}
       >
         {transactionStatus ? (
@@ -45,8 +43,8 @@ const Modal = ({
         ) : (
           <div className={css.modal__card__content}>
             <p className="bodyText">
-              icApps is developed and maintained by the IC enthusiasts. Supply
-              us with coffee so we can keep on going! Appreciate your support!
+              icApps is developed and maintained by the IC enthusiasts. Supply us with coffee so we
+              can keep on going! Appreciate your support!
             </p>
             <h4>Enter donation amount</h4>
             <div className={css.modal__card__content__donationAmountInput}>
@@ -72,4 +70,4 @@ const Modal = ({
   );
 };
 
-export default Modal;
+export default MenuModal;

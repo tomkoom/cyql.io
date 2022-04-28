@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import css from "./NavMid.module.css";
 import logoImg from "../../../../assets/logo.svg";
-import NavMobile from "../NavMobile";
+import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
 import k from "../../../../../../k/k";
 
 // utils
 import { useWindowSize } from "../../../Utils/UseWindowSize";
-import { deviceSizes } from "../../../Utils/DeviceSizes";
 
 // icons
 import { iTwitter, iDiscord, iBars } from "../../../Icons/Icons";
@@ -21,7 +20,12 @@ import { SignInModal } from "../../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSignInModal, setSignInModal } from "../../../State/signInModal";
+import {
+  selectMobileMenuModal,
+  setMobileMenuModal,
+  selectSignInModal,
+  setSignInModal,
+} from "../../../State/modals";
 
 const socialLinks = [
   {
@@ -39,23 +43,13 @@ const socialLinks = [
 ];
 
 const NavMid = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [deviceWidth, deviceHeight] = useWindowSize();
+  const [deviceWidth] = useWindowSize();
 
-  const { signInWithTwitter, user } = useAuth();
+  const { user } = useAuth();
 
   const dispatch = useDispatch();
   const signInModal = useSelector(selectSignInModal);
-
-  function resetMenu() {
-    if (deviceWidth > deviceSizes.desktop) {
-      setMenuIsOpen(false);
-    }
-  }
-
-  useEffect(() => {
-    resetMenu();
-  }, [deviceWidth]);
+  const mobileMenuModal = useSelector(selectMobileMenuModal);
 
   return (
     <div className={css.nav}>
@@ -65,7 +59,7 @@ const NavMid = () => {
           className={`${css.logo} navlink`}
           onClick={() => {
             toHome();
-            menuIsOpen ? setMenuIsOpen(false) : null;
+            mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
           }}
         >
           <img src={logoImg} alt="icApps.xyz logo" />
@@ -85,13 +79,11 @@ const NavMid = () => {
       </div>
 
       {/* menu btn */}
-      <div className={css.nav__menuBtn} onClick={() => setMenuIsOpen(true)}>
+      <div className={css.nav__menuBtn} onClick={() => dispatch(setMobileMenuModal(true))}>
         {iBars}
       </div>
 
-      {deviceWidth < 1024 && menuIsOpen ? (
-        <NavMobile menuIsOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
-      ) : null}
+      {deviceWidth < 1024 && mobileMenuModal ? <NavMobileMenu /> : null}
 
       {/* navlinks */}
       <ul className={css.nav__list}>
@@ -101,7 +93,7 @@ const NavMid = () => {
               className="navlink"
               onClick={() => {
                 link();
-                menuIsOpen ? setMenuIsOpen(false) : null;
+                mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
               }}
             >
               {icon ? <span>{icon}</span> : null} {name}
@@ -123,17 +115,15 @@ const NavMid = () => {
           </li>
         )}
 
-        {/* {!user && (
-          <li className={css.nav__list__item}>
-            <button className="navlink" onClick={signInWithTwitter}>
-              Sign in
-            </button>
-          </li>
-        )} */}
-
         {user && (
           <li className={css.nav__list__item}>
-            <button className="navlink" onClick={toProfile}>
+            <button
+              className="navlink"
+              onClick={() => {
+                toProfile();
+                mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
+              }}
+            >
               Profile
             </button>
           </li>
@@ -145,7 +135,7 @@ const NavMid = () => {
               className="navlink"
               onClick={() => {
                 toAdmin();
-                menuIsOpen ? setMenuIsOpen(false) : null;
+                mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
               }}
             >
               Admin

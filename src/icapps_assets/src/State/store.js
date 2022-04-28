@@ -8,7 +8,7 @@ import view from "./view";
 import loadMore from "./loadMore";
 import projects from "./projects";
 import category from "./category";
-import signInModal from "./signInModal";
+import modals from "./modals";
 
 // redux-persist
 import {
@@ -31,7 +31,7 @@ const rootReducer = combineReducers({
   loadMore,
   projects,
   category,
-  signInModal,
+  modals,
 });
 
 const persistConfig = {

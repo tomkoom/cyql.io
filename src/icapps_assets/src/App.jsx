@@ -7,6 +7,10 @@ import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 import k from "../../../k/k";
 
+// utils
+import { deviceSizes } from "./Utils/DeviceSizes";
+import { useWindowSize } from "./Utils/UseWindowSize";
+
 // firestore
 import { projectsColRef } from "../../../firebase/firestore-collections";
 import { onSnapshot } from "firebase/firestore";
@@ -25,11 +29,12 @@ import {
 } from "./Pages/index";
 import { AddProject } from "./Pages/Admin/index";
 
-// redux
+// state
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
+import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
@@ -38,8 +43,12 @@ import { onAuthStateChanged } from "firebase/auth";
 import Profile from "./Pages/Profile/Profile";
 
 const App = () => {
+  const [deviceWidth] = useWindowSize();
+
   const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
+  const signInModal = useSelector(selectSignInModal);
+  const mobileMenuModal = useSelector(selectMobileMenuModal);
 
   const { setUser, user } = useAuth();
 
@@ -111,6 +120,22 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchIcpPrice());
   }, []);
+
+  // prevent from scrolling when modal is active
+  useEffect(() => {
+    if (signInModal || mobileMenuModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [signInModal, mobileMenuModal]);
+
+  // reset mobile menu when deivice size > 1024
+  useEffect(() => {
+    if (mobileMenuModal && deviceWidth > deviceSizes.laptop) {
+      dispatch(setMobileMenuModal(false));
+    }
+  }, [deviceWidth]);
 
   return (
     <div className={`app ${theme}`}>
