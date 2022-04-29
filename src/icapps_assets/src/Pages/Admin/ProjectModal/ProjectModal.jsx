@@ -1,11 +1,11 @@
 import React from "react";
-import css from "./ModalProject.module.css";
+import css from "./ProjectModal.module.css";
 
 // icons
-import { iTimes } from "../../Icons/Icons";
+import { iTimes } from "../../../Icons/Icons";
 
 // firestore
-import { projectsColRef } from "../../../../../firebase/firestore-collections";
+import { projectsColRef } from "../../../../../../firebase/firestore-collections";
 import { doc, setDoc } from "firebase/firestore";
 
 // state
@@ -15,20 +15,26 @@ import {
   setProjectModal,
   selectProject,
   setEditProject,
-} from "../../State/projectModal";
+  setClearProject,
+} from "../../../State/projectModal";
 
 const ModalProjectEdit = () => {
   const dispatch = useDispatch();
   const projectModal = useSelector(selectProjectModal);
   const project = useSelector(selectProject);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
       await setDoc(doc(projectsColRef, project.idx), { ...project });
+      dispatch(setClearProject());
+      dispatch(setProjectModal(false));
     } catch (err) {
       console.log(err.message);
     }
+  };
+
+  const closeModal = () => {
+    dispatch(setClearProject());
     dispatch(setProjectModal(false));
   };
 
@@ -55,10 +61,10 @@ const ModalProjectEdit = () => {
       <div className={projectModal ? `${css.content} ${css.active}` : css.content}>
         <div className={css.modalTitle}>
           <h4>Edit Project</h4>
-          <span onClick={() => dispatch(setProjectModal(false))}>{iTimes}</span>
+          <span onClick={closeModal}>{iTimes}</span>
         </div>
 
-        <form className={css.form} onSubmit={handleSubmit}>
+        <div className={css.form}>
           <div className={css.formContent}>
             <div className={css.section}>
               <h5>Main</h5>
@@ -71,13 +77,16 @@ const ModalProjectEdit = () => {
                   type="text"
                   id="name"
                   name="name"
+                  autoComplete="off"
                 />
               </div>
 
               <div className={css.formField}>
                 <label htmlFor="id">Id</label>
                 <input
-                  value={project.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()}
+                  value={
+                    project.name ? project.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() : ""
+                  }
                   type="text"
                   id="id"
                   name="id"
@@ -91,8 +100,9 @@ const ModalProjectEdit = () => {
                   onChange={(e) => dispatch(setEditProject({ [e.target.name]: e.target.value }))}
                   id="category"
                   name="category"
+                  value={project.category}
                 >
-                  <option value="">Choose category</option>
+                  {!project.category && <option value="">Choose category</option>}
                   <option value="Communities">Communities</option>
                   <option value="DAOs">DAOs</option>
                   <option value="dApps">dApps</option>
@@ -129,13 +139,14 @@ const ModalProjectEdit = () => {
                     type="text"
                     id={input.id}
                     name={input.id}
+                    autoComplete="off"
                   />
                 </div>
               ))}
             </div>
 
             <div className={css.section}>
-              <h5>Social networks</h5>
+              <h5>Social Networks</h5>
               {inputsSocial.map((input) => (
                 <div className={css.formField} key={input.id}>
                   <label htmlFor={input.id}>{input.label}</label>
@@ -145,6 +156,7 @@ const ModalProjectEdit = () => {
                     type="text"
                     id={input.id}
                     name={input.id}
+                    autoComplete="off"
                   />
                 </div>
               ))}
@@ -152,11 +164,19 @@ const ModalProjectEdit = () => {
           </div>
 
           <div className={css.controls}>
-            <button className="primaryBtn" type="submit">
+            <button id={css.alertBtn} className="alertBtn" onClick={closeModal}>
+              Delete
+            </button>
+
+            <button className="secondaryBtn" onClick={closeModal}>
+              Cancel
+            </button>
+
+            <button className="primaryBtn" onClick={handleSubmit}>
               Save
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

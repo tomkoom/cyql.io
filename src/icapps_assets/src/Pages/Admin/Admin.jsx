@@ -1,13 +1,9 @@
 import React from "react";
 import css from "./Admin.module.css";
 
-// icons
-import { iEdit, iTrash } from "../../Icons/Icons";
-
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectProjects } from "../../State/projects";
-import { toAddProject } from "../../Routes/routes";
 import { setProjectModal, setProject } from "../../State/projectModal";
 
 const Admin = () => {
@@ -61,7 +57,7 @@ const Admin = () => {
     <div className={css.admin}>
       <div className={css.title}>
         <h2 className="pageTitle">Admin</h2>
-        <button className="primaryBtn" onClick={toAddProject}>
+        <button className="primaryBtn" onClick={() => dispatch(setProjectModal(true))}>
           Add project
         </button>
       </div>
@@ -73,7 +69,6 @@ const Admin = () => {
         <table className={css.table} style={{ transform: "rotateX(180deg)" }}>
           <thead>
             <tr>
-              <th>Actions</th>
               <th>#</th>
               <th>Idx</th>
               <th>Id</th>
@@ -90,20 +85,13 @@ const Admin = () => {
           </thead>
           <tbody>
             {projects.map((project, i) => (
-              <tr key={project.idx}>
-                <td>
-                  <div className={css.controls}>
-                    <span
-                      onClick={() => {
-                        dispatch(setProject(project));
-                        dispatch(setProjectModal(true));
-                      }}
-                    >
-                      {iEdit}
-                    </span>
-                    <span>{iTrash}</span>
-                  </div>
-                </td>
+              <tr
+                key={project.idx}
+                onClick={() => {
+                  dispatch(setProject(project));
+                  dispatch(setProjectModal(true));
+                }}
+              >
                 <td>{i + 1}</td>
                 <td>{project.idx && formatStr8(project.idx)}</td>
                 <td>{project.id && formatStr16(project.id)}</td>

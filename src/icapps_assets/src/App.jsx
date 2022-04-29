@@ -16,7 +16,7 @@ import { projectsColRef } from "../../../firebase/firestore-collections";
 import { onSnapshot } from "firebase/firestore";
 
 // components
-import { Nav, Footer, ModalProject } from "./Components";
+import { Nav, Footer } from "./Components";
 import {
   Home,
   Projects,
@@ -27,7 +27,7 @@ import {
   Admin,
   NotFound,
 } from "./Pages/index";
-import { AddProject } from "./Pages/Admin/index";
+import { ProjectModal } from "./Pages/Admin/index";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
@@ -179,12 +179,6 @@ const App = () => {
             </Route>
           ) : null}
 
-          {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
-            <Route exact path="/admin/addproject">
-              <AddProject />
-            </Route>
-          ) : null}
-
           <Route path="*">
             <NotFound />
           </Route>
@@ -217,7 +211,7 @@ const App = () => {
       </CookieConsent>
 
       {/* modals */}
-      {projectModal && <ModalProject />}
+      {projectModal && <ProjectModal />}
     </div>
   );
 };

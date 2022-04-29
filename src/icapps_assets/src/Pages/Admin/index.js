@@ -1,3 +1,3 @@
 // admin
-export { default as AddProjectModal } from "./AddProjectModal/AddProjectModal";
-export { default as AddProject } from "./AddProject/AddProject";
+export { default as ProjectModal } from "./ProjectModal/ProjectModal";
+

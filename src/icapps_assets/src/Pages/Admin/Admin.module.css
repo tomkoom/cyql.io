@@ -22,6 +22,11 @@
 
 .table tbody tr {
   box-shadow: var(--underline);
+  cursor: pointer;
+}
+
+.table tbody tr:hover {
+  background-color: var(--underlay);
 }
 
 .table thead tr th,

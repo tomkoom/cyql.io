@@ -22,8 +22,6 @@ html {
   max-width: 1440px;
 }
 
-/* responsive */
-
 .app {
   color: var(--primaryColor);
   background-color: var(--background);
@@ -63,6 +61,42 @@ body {
 
 /* global classes */
 
+/* btns */
+
+.primaryBtn,
+.secondaryBtn,
+.alertBtn {
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  padding: 0.66rem 0.75rem;
+  border-radius: 0.66rem;
+  border: none;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background-color: var(--highlightColor);
+}
+
+.primaryBtn:hover {
+  background-color: var(--highlightColor2);
+}
+
+.secondaryBtn {
+  background-color: var(--underlay);
+}
+
+.secondaryBtn:hover {
+  background-color: var(--underlay2);
+}
+
+.alertBtn {
+  background-color: var(--colorRed);
+}
+
+/* other */
+
 .navlink,
 .linkBlock {
   background-color: transparent;
@@ -96,36 +130,6 @@ body {
 .pageTitle {
   font-size: var(--fontSize2);
   margin-bottom: 0.5rem;
-}
-
-.primaryBtn {
-  font-size: var(--fontSize6);
-  font-weight: var(--bold);
-  color: var(--primaryColor);
-  background-color: var(--highlightColor);
-  padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
-  border: none;
-  cursor: pointer;
-}
-
-.primaryBtn:hover {
-  background-color: var(--highlightColor);
-}
-
-.secondaryBtn {
-  font-size: var(--fontSize6);
-  font-weight: var(--bold);
-  color: var(--primaryColor);
-  background-color: var(--underlay);
-  padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
-  border: none;
-  cursor: pointer;
-}
-
-.secondaryBtn:hover {
-  background-color: var(--underlay2);
 }
 
 /* cookie */
