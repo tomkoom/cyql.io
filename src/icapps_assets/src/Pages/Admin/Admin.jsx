@@ -26,21 +26,7 @@ const Admin = () => {
     let formattedURL = url.replace(/(^\w+:|^)\/\//, "");
     formattedURL = formattedURL.replace(/\/$/, ""); // remove trailing slash
 
-    return formattedURL.length > 12 ? `${formattedURL.substring(0, 16)}…` : formattedURL;
-  };
-
-  const handleString = (string) => {
-    let str = string;
-    str = str.includes("https://")
-      ? str.split("https://")[1]
-      : str.includes("http://")
-      ? str.split("http://")[1]
-      : str.includes("www.")
-      ? str.split("www.")[1]
-      : str;
-    str = str.includes("www.") ? str.split("www.")[1] : str;
-    str = str.length > 8 ? `${str.substring(0, 8)}…` : str;
-    return str;
+    return formattedURL.length > 16 ? `${formattedURL.substring(0, 16)}…` : formattedURL;
   };
 
   const getTwitterUsername = (url) => {
@@ -53,14 +39,22 @@ const Admin = () => {
       return url.split("discord.gg/")[1];
     }
     if (url.includes("discord.com/")) {
-      return url.split("discord.com/")[1];
+      return url.split("discord.com/")[1].length > 16
+        ? `${url.split("discord.com/")[1].substring(0, 16)}…`
+        : url.split("discord.com/")[1];
     }
     return url;
   };
 
   const formatDate = (timestamp) => {
-    const date = new Date(timestamp * 1000);
+    const ts = timestamp;
+    const date = new Date(ts);
     return date.toLocaleString("en-GB");
+  };
+
+  const handleString = (string) => {
+    const str = string.replace(/(^\w+:|^)\/\//, "");
+    return str.length > 8 ? `${str.substring(0, 8)}…` : str;
   };
 
   return (
