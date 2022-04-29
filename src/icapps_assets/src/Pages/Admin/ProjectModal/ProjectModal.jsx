@@ -6,7 +6,7 @@ import { iTimes } from "../../../Icons/Icons";
 
 // firestore
 import { projectsColRef } from "../../../../../../firebase/firestore-collections";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, addDoc, setDoc } from "firebase/firestore";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -14,26 +14,39 @@ import {
   selectProjectModal,
   setProjectModal,
   selectProject,
-  setEditProject,
+  setProject,
   setClearProject,
+  selectMode,
+  setMode,
 } from "../../../State/projectModal";
 
 const ModalProjectEdit = () => {
   const dispatch = useDispatch();
   const projectModal = useSelector(selectProjectModal);
   const project = useSelector(selectProject);
+  const mode = useSelector(selectMode);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    dispatch(setProject({ [name]: value }));
+  };
 
   const handleSubmit = async () => {
+    const timestamp = Date.now();
     try {
-      await setDoc(doc(projectsColRef, project.idx), { ...project });
-      dispatch(setClearProject());
-      dispatch(setProjectModal(false));
+      if (mode === "add") {
+        await addDoc(projectsColRef, { ...project, added: timestamp });
+      } else if (mode === "edit") {
+        await setDoc(doc(projectsColRef, project.idx), { ...project, edited: timestamp });
+      }
     } catch (err) {
       console.log(err.message);
     }
+    closeModal();
   };
 
   const closeModal = () => {
+    dispatch(setMode(""));
     dispatch(setClearProject());
     dispatch(setProjectModal(false));
   };
@@ -73,7 +86,7 @@ const ModalProjectEdit = () => {
                 <label htmlFor="name">Name</label>
                 <input
                   value={project.name}
-                  onChange={(e) => dispatch(setEditProject({ [e.target.name]: e.target.value }))}
+                  onChange={handleChange}
                   type="text"
                   id="name"
                   name="name"
@@ -82,25 +95,24 @@ const ModalProjectEdit = () => {
               </div>
 
               <div className={css.formField}>
-                <label htmlFor="id">Id</label>
+                <label htmlFor="id">Slug</label>
                 <input
-                  value={
-                    project.name ? project.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() : ""
-                  }
+                  value={project.id}
+                  onChange={handleChange}
                   type="text"
                   id="id"
                   name="id"
-                  disabled
+                  autoComplete="off"
                 />
               </div>
 
               <div className={css.formField}>
                 <label htmlFor="category">Category</label>
                 <select
-                  onChange={(e) => dispatch(setEditProject({ [e.target.name]: e.target.value }))}
+                  value={project.category}
+                  onChange={handleChange}
                   id="category"
                   name="category"
-                  value={project.category}
                 >
                   {!project.category && <option value="">Choose category</option>}
                   <option value="Communities">Communities</option>
@@ -123,7 +135,7 @@ const ModalProjectEdit = () => {
                 <label htmlFor="description">Description</label>
                 <textarea
                   value={project.description}
-                  onChange={(e) => dispatch(setEditProject({ [e.target.name]: e.target.value }))}
+                  onChange={handleChange}
                   id="description"
                   name="description"
                   rows="6"
@@ -135,7 +147,7 @@ const ModalProjectEdit = () => {
                   <label htmlFor={input.id}>{input.label}</label>
                   <input
                     value={project[input.id]}
-                    onChange={(e) => dispatch(setEditProject({ [e.target.name]: e.target.value }))}
+                    onChange={handleChange}
                     type="text"
                     id={input.id}
                     name={input.id}
@@ -152,7 +164,7 @@ const ModalProjectEdit = () => {
                   <label htmlFor={input.id}>{input.label}</label>
                   <input
                     value={project[input.id]}
-                    onChange={(e) => dispatch(setEditProject({ [e.target.name]: e.target.value }))}
+                    onChange={handleChange}
                     type="text"
                     id={input.id}
                     name={input.id}
@@ -167,11 +179,9 @@ const ModalProjectEdit = () => {
             <button id={css.alertBtn} className="alertBtn" onClick={closeModal}>
               Delete
             </button>
-
             <button className="secondaryBtn" onClick={closeModal}>
               Cancel
             </button>
-
             <button className="primaryBtn" onClick={handleSubmit}>
               Save
             </button>

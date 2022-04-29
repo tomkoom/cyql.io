@@ -17,6 +17,12 @@ const ProjectPage = () => {
   const { id } = useParams();
   const projects = useSelector(selectProjects);
 
+  const formatDate = (timestamp) => {
+    const ts = timestamp;
+    const date = new Date(ts);
+    return date.toDateString();
+  };
+
   return (
     <div className={`${css.projectPage} container768`}>
       <BackBtn />
@@ -34,42 +40,30 @@ const ProjectPage = () => {
         projects
           .filter((project) => project.id === id)
           .map((project) => (
-            <div className={css.app} key={project.id}>
+            <div className={css.content} key={project.id}>
               {project.cover && (
-                <div
-                  className={css.app__cover}
-                  style={{ backgroundImage: `url(${project.cover})` }}
-                />
+                <div className={css.cover} style={{ backgroundImage: `url(${project.cover})` }} />
               )}
-
-              <div className={css.app__info}>
+              <div className={css.contentMain}>
                 {/* logo */}
                 {project.logo && (
-                  <img
-                    className={css.app__info__logo}
-                    src={project.logo}
-                    alt={`${project.name} logo`}
-                  />
+                  <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
                 )}
 
                 {/* title and tags */}
-                <div className={css.app__info__caption}>
-                  <h3 className={css.app__info__caption__title}>{project.name}</h3>
-
-                  <div className={css.app__info__caption__tags}>
-                    <span className={css.app__info__caption__tags__item}>{project.category}</span>
-
-                    {project.tags && (
-                      <span className={css.app__info__caption__tags__item}>{project.tags}</span>
-                    )}
+                <div className={css.caption}>
+                  <h3 className={css.captionTitle}>{project.name}</h3>
+                  <div className={css.tags}>
+                    {project.category && <span className={css.tags__i}>{project.category}</span>}
+                    {project.tags && <span className={css.tags__i}>{project.tags}</span>}
                   </div>
                 </div>
 
                 {/* date */}
-                <div className={css.app__info__date}>{project.added}</div>
+                {project.added && <div className={css.date}>{formatDate(project.added)}</div>}
               </div>
 
-              <p className={css.projectDescription}>{project.description}</p>
+              <p className={css.description}>{project.description}</p>
 
               {/* nft previews */}
               <NftPreviews
