@@ -8,14 +8,11 @@ import { iEdit, iTrash } from "../../Icons/Icons";
 import { useSelector, useDispatch } from "react-redux";
 import { selectProjects } from "../../State/projects";
 import { toAddProject } from "../../Routes/routes";
-import { setProjectModal, setProjectInfo, selectProjectModal } from "../../State/projectModal";
+import { setProjectModal, setProject } from "../../State/projectModal";
 
 const Admin = () => {
-  const scrollbarWidth = window.innerWidth - document.body.clientWidth + "px";
-
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
-  const projectModal = useSelector(selectProjectModal);
 
   const formatStr8 = (str) => {
     return str.length > 8 ? `${str.substring(0, 8)}…` : str;
@@ -103,7 +100,7 @@ const Admin = () => {
                   <div className={css.controls}>
                     <span
                       onClick={() => {
-                        dispatch(setProjectInfo(project));
+                        dispatch(setProject(project));
                         dispatch(setProjectModal(true));
                       }}
                     >

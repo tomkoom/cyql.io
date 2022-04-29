@@ -30,9 +30,15 @@
 }
 
 .form {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .formField {
@@ -42,16 +48,29 @@
   gap: 1rem;
 }
 
-.formField input {
+.formField input,
+.formField textarea {
   width: 24rem;
 }
 
 .controls {
   text-align: right;
+  margin-top: 1rem;
 }
 
 .modalTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modalTitle h4 {
   margin-bottom: 0.5rem;
+}
+
+.modalTitle span {
+  font-size: var(--fontSize5);
+  cursor: pointer;
 }
 
 .timesWrapper {

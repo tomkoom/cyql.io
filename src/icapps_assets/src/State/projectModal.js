@@ -1,31 +1,51 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const timestamp = Date.now();
+
 const projectModal = createSlice({
   name: "projectModal",
   initialState: {
     projectModal: false,
-    projectInfo: {},
+    project: {
+      // main
+      name: "",
+      id: "", // slug
+      category: "",
+      website: "",
+      canister: "",
+      logo: "",
+      cover: "",
+      description: "",
+      // social networks
+      twitter: "",
+      discord: "",
+      telegram: "",
+      github: "",
+      medium: "",
+      dscvr: "",
+      distrikt: "",
+      openChat: "",
+      // meta
+      edited: timestamp,
+    },
   },
   reducers: {
     setProjectModal(state, { payload }) {
       state.projectModal = payload;
     },
-    setProjectInfo(state, { payload }) {
-      state.projectInfo = payload;
+    setProject(state, { payload }) {
+      state.project = { ...state.project, ...payload };
     },
-    setEditProjectInfo(state, { payload }) {
-      state.projectInfo = {
-        ...state.projectInfo,
-        ...payload
-      };
+    setEditProject(state, { payload }) {
+      state.project = { ...state.project, ...payload };
     },
   },
 });
 
 const selectProjectModal = (state) => state.projectModal.projectModal;
-const selectProjectInfo = (state) => state.projectModal.projectInfo;
+const selectProject = (state) => state.projectModal.project;
 
-export { selectProjectModal, selectProjectInfo };
+export { selectProjectModal, selectProject };
 
-export const { setProjectModal, setProjectInfo, setEditProjectInfo } = projectModal.actions;
+export const { setProjectModal, setProject, setEditProject } = projectModal.actions;
 export default projectModal.reducer;
