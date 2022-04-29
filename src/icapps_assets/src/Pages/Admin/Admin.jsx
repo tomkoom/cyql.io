@@ -80,6 +80,7 @@ const Admin = () => {
           <thead>
             <tr>
               <th>Actions</th>
+              <th>#</th>
               <th>Idx</th>
               <th>Id</th>
               <th>Name</th>
@@ -94,7 +95,7 @@ const Admin = () => {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project) => (
+            {projects.map((project, i) => (
               <tr key={project.idx}>
                 <td>
                   <div className={css.controls}>
@@ -109,6 +110,7 @@ const Admin = () => {
                     <span>{iTrash}</span>
                   </div>
                 </td>
+                <td>{i + 1}</td>
                 <td>{project.idx && formatStr8(project.idx)}</td>
                 <td>{project.id && formatStr16(project.id)}</td>
                 <td>{project.name && formatStr16(project.name)}</td>

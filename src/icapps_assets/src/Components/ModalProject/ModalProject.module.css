@@ -29,9 +29,9 @@
   margin: 1rem;
 }
 
-.form {
-  margin: 0;
-  padding: 0;
+.formContent {
+  display: flex;
+  gap: 1.5rem;
 }
 
 .section {
@@ -49,8 +49,9 @@
 }
 
 .formField input,
+.formField select,
 .formField textarea {
-  width: 24rem;
+  width: 16rem;
 }
 
 .controls {

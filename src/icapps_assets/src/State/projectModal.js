@@ -25,6 +25,10 @@ const projectModal = createSlice({
       dscvr: "",
       distrikt: "",
       openChat: "",
+      // additional info
+      app: "",
+      docs: "",
+      grantee: false,
       // meta
       edited: timestamp,
     },
