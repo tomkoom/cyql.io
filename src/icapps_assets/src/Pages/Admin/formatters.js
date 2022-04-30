@@ -1,5 +1,5 @@
-const formatStr8 = (str) => str.length > 8 ? `${str.substring(0, 8)}…` : str;
-const formatStr16 = (str) => str.length > 16 ? `${str.substring(0, 16)}…` : str;
+const formatStr8 = (str) => (str.length > 8 ? `${str.substring(0, 8)}…` : str);
+const formatStr16 = (str) => (str.length > 16 ? `${str.substring(0, 16)}…` : str);
 
 const formatWebsite = (url) => {
   let formattedURL = url.replace(/(^\w+:|^)\/\//, "");
@@ -36,4 +36,12 @@ const formatString = (string) => {
   return str.length > 8 ? `${str.substring(0, 8)}…` : str;
 };
 
-export { formatStr8, formatStr16, formatWebsite, getTwitterUsername, formatDiscord, formatDate, formatString };
+export {
+  formatStr8,
+  formatStr16,
+  formatWebsite,
+  getTwitterUsername,
+  formatDiscord,
+  formatDate,
+  formatString,
+};

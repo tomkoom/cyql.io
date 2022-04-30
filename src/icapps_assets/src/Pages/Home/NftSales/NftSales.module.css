@@ -31,15 +31,15 @@
   text-align: left;
 }
 
-/* .t thead tr th:first-child,
+.t thead tr th:first-child,
 .t tbody tr td:first-child {
-  padding-left: 0.5rem;
+  padding-left: 0;
 }
 
 .t thead tr th:last-child,
 .t tbody tr td:last-child {
-  padding-right: 0.5rem;
-} */
+  padding-right: 0;
+}
 
 .t thead tr,
 .t tbody tr {
@@ -90,5 +90,3 @@
 }
 
 /* - */
-
-

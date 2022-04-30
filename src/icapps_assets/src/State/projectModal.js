@@ -23,6 +23,18 @@ const projectInitialState = {
   app: "",
   docs: "",
   grantee: false,
+  // nft info
+  nftSaleStatus: "",
+  nftSaleDate: "",
+  nftUnits: "",
+  nftUnitPrice: "",
+  nftMarketUrl: "",
+  nftSaleUrl: "",
+  nftRarityChecker: "",
+  nftImg1: "",
+  nftImg2: "",
+  nftImg3: "",
+  nftImg4: "",
   // meta
   added: "",
   edited: "",

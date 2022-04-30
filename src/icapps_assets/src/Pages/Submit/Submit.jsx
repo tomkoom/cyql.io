@@ -9,18 +9,11 @@ import ReCAPTCHA from "react-google-recaptcha";
 // icons
 import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iDatabase } from "../../Icons/Icons";
 
-// components
-import BackBtn from "../../Components/BackBtn/BackBtn";
-
 // submit button component
 export const SubmitBtn = ({ submissionLoader, isVerified }) => {
   return (
     <button
-      className={
-        !isVerified
-          ? `${css.sApp__form__group__submitBtn} ${css.disabled}`
-          : css.sApp__form__group__submitBtn
-      }
+      className={!isVerified ? `${css.submitBtn} ${css.disabled}` : css.submitBtn}
       disabled={!isVerified}
       type="submit"
     >
@@ -344,15 +337,15 @@ const Submit = () => {
   ];
 
   return (
-    <section className={`${css.sApp} container768`}>
+    <section className={`${css.submit} container768`}>
       {!isSubmitted ? (
         <div>
           <h2 className="pageTitle">Submit Your Project</h2>
 
           <form className={css.form} onSubmit={handleSubmit}>
             {/* categories */}
-            <div className={css.form__field}>
-              <p className={css.form__field__label}>Project category</p>
+            <div className={css.field}>
+              <p className={css.label}>Project category</p>
               <ul>
                 {categories.map((cat, i) => (
                   <li key={i}>
@@ -367,10 +360,7 @@ const Submit = () => {
                         className={css.category}
                       />
                       <div className={css.category__div}>
-                        <p>
-                          {cat.icon}&nbsp;&nbsp;{cat.label}
-                        </p>{" "}
-                        <p></p>
+                        {cat.icon}&nbsp;&nbsp;{cat.label}
                       </div>
                     </label>
                   </li>
@@ -380,19 +370,19 @@ const Submit = () => {
 
             {/* inputs */}
             {inputs.map((input, i) => (
-              <div className={css.form__field} key={i}>
-                <label className={css.form__field__label} htmlFor={input.name}>
+              <div className={css.field} key={i}>
+                <label className={css.label} htmlFor={input.name}>
                   {input.label}
                   {input.icon && (
-                    <span className={css.form__field__label__icon}>
+                    <span className={css.icon}>
                       &nbsp;&nbsp;
                       {input.icon && input.icon}
                     </span>
                   )}
                 </label>
-                {input.hint && <p className={css.form__field__hint}>{input.hint}</p>}
+                {input.hint && <p className={css.hint}>{input.hint}</p>}
                 <input
-                  className={css.from__field__input}
+                  className={css.input}
                   type={input.type}
                   id={input.name}
                   name={input.name}
@@ -412,19 +402,19 @@ const Submit = () => {
                 <h3>NFT collection info</h3>
                 <br />
                 {nftInputs.map((nftInput, i) => (
-                  <div className={css.form__field} key={i}>
-                    <label className={css.form__field__label} htmlFor={nftInput.name}>
+                  <div className={css.field} key={i}>
+                    <label className={css.label} htmlFor={nftInput.name}>
                       {nftInput.label}
                       {nftInput.icon && (
-                        <span className={css.form__field__label__icon}>
+                        <span className={css.icon}>
                           &nbsp;&nbsp;
                           {nftInput.icon && nftInput.icon}
                         </span>
                       )}
                     </label>
-                    {nftInput.hint && <p className={css.form__field__hint}>{nftInput.hint}</p>}
+                    {nftInput.hint && <p className={css.hint}>{nftInput.hint}</p>}
                     <input
-                      className={css.from__field__input}
+                      className={css.input}
                       type={nftInput.type}
                       id={nftInput.name}
                       name={nftInput.name}
@@ -440,11 +430,7 @@ const Submit = () => {
             )}
 
             <div className={css.recaptcha}>
-              <ReCAPTCHA
-                sitekey={k.RECAPTCHA_SITE_KEY}
-                // sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                onChange={onRecaptcha}
-              />
+              <ReCAPTCHA sitekey={k.RECAPTCHA_SITE_KEY} onChange={onRecaptcha} />
             </div>
 
             <SubmitBtn submissionLoader={submissionLoader} isVerified={isVerified} />

@@ -1,44 +1,75 @@
 /* submit */
 
-.sApp__form {
+/* categories */
+
+.field ul {
   display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
-  margin: 1.5rem 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-.sApp__form__group {
-  display: flex;
-  flex-direction: column;
+.category {
+  display: none;
 }
 
-.sApp__form__group__label {
-  margin-bottom: 0.5rem;
-  font-weight: var(--light);
-}
-
-.sApp__form__group__input {
-  height: 3rem;
-  padding: 0 1rem;
-  font-size: var(--fontSize6);
+.category__div {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   background-color: var(--underlay);
-  border-radius: 0.25rem;
+  font-weight: var(--bold);
+}
+
+.category__div:hover {
+  cursor: pointer;
+}
+
+.category:checked + .category__div {
+  background-color: var(--highlightColor);
+}
+
+.form {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.formFieldLabel {
+  font-weight: var(--bold);
+}
+
+.icon {
+  color: var(--secondaryColor);
+}
+
+.hint {
+  font-size: var(--fontSize6);
+  margin-top: 0.25rem;
+  color: var(--tertiaryColor);
+}
+
+.input {
+  font-size: 0.9rem;
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  caret-color: var(--primaryColor);
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
   border: none;
   outline: none;
-  caret-color: var(--primaryColor);
-  color: var(--primaryColor);
 }
 
-.sApp__form__group__input:hover,
-.sApp__form__group__input:focus {
-  background-color: var(--underlay2);
-}
-
-.sApp__form__group__input:focus {
-  box-shadow: var(--boxShadow2);
-}
-
-.sApp__form__group__submitBtn {
+.submitBtn {
   margin-top: 1.5rem;
   display: flex;
   align-self: center;
@@ -60,7 +91,7 @@
   margin: 0 auto;
 }
 
-/* Success */
+/* success */
 
 .submissionSuccess {
   display: grid;
@@ -74,80 +105,4 @@
   background-color: var(--underlay);
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
-}
-
-/* form */
-
-/* name */
-
-.form {
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.form__field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.form__field__label {
-  font-weight: var(--bold);
-}
-
-.form__field__label__icon {
-  color: var(--secondaryColor);
-}
-
-.form__field__hint {
-  font-size: var(--fontSize6);
-  margin-top: 0.25rem;
-  color: var(--tertiaryColor);
-}
-
-.from__field__input {
-  height: 2.5rem;
-  padding: 0 0.75rem;
-  background-color: var(--underlay);
-  border-radius: 0.5rem;
-  border: none;
-  outline: none;
-  caret-color: var(--primaryColor);
-  color: var(--primaryColor);
-  margin-top: 0.5rem;
-}
-
-.form__field ul {
-  margin-top: 1rem;
-}
-
-/* categories */
-
-.form__field ul {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.category {
-  display: none;
-}
-
-.category__div {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--underlay);
-  font-weight: var(--bold);
-}
-
-.category__div:hover {
-  cursor: pointer;
-}
-
-.category:checked + .category__div {
-  background-color: var(--highlightColor);
 }

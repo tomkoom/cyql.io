@@ -15,3 +15,8 @@
   flex: 1;
   white-space: nowrap;
 }
+
+.collStatsInfo {
+  white-space: normal;
+  word-wrap: break-word;
+}

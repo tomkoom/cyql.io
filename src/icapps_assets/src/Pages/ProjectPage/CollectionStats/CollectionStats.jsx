@@ -19,7 +19,9 @@ const CollectionStats = ({ nftSaleStatus, nftSaleDate, nftUnits, nftUnitPrice })
         </li>
         <li>
           <p className="bodyText">Sale price</p>
-          <p className="bodyText">{nftUnitPrice ? nftUnitPrice : "N/A"}</p>
+          <p className="bodyText" id={css.collStatsInfo}>
+            {nftUnitPrice ? nftUnitPrice : "N/A"}
+          </p>
         </li>
       </ul>
     </div>

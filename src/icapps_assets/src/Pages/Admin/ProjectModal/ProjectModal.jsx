@@ -69,6 +69,18 @@ const ModalProjectEdit = () => {
     { id: "openChat", label: "OpenChat" },
   ];
 
+  const inputsNFT = [
+    { id: "nftUnits", label: "Units" },
+    { id: "nftUnitPrice", label: "Unit price" },
+    { id: "nftMarketUrl", label: "Market URL" },
+    { id: "nftSaleUrl", label: "Sale URL" },
+    { id: "nftRarityChecker", label: "Rarity checker URL" },
+    { id: "nftImg1", label: "Preview img1" },
+    { id: "nftImg2", label: "Preview img2" },
+    { id: "nftImg3", label: "Preview img3" },
+    { id: "nftImg4", label: "Preview img4" },
+  ];
+
   return (
     <div className={projectModal ? `${css.modal} ${css.active}` : css.modal}>
       <div className={projectModal ? `${css.content} ${css.active}` : css.content}>
@@ -173,12 +185,57 @@ const ModalProjectEdit = () => {
                 </div>
               ))}
             </div>
+
+            {project.category === "NFTs" && (
+              <div className={css.section}>
+                <h5>NFT collection info</h5>
+                <div className={css.formField}>
+                  <label htmlFor="nftSaleStatus">NFT sale status</label>
+                  <select
+                    value={project.nftSaleStatus}
+                    onChange={handleChange}
+                    id="nftSaleStatus"
+                    name="nftSaleStatus"
+                  >
+                    {!project.nftSaleStatus && <option value="">Choose NFT sale status</option>}
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Open">Open</option>
+                    <option value="On the market">On the market</option>
+                  </select>
+                </div>
+
+                <div className={css.formField}>
+                  <label htmlFor="nftSaleDate">NFT sale date</label>
+                  <input
+                    value={project.nftSaleDate}
+                    onChange={handleChange}
+                    type="date"
+                    id="nftSaleDate"
+                    name="nftSaleDate"
+                  />
+                </div>
+
+                {inputsNFT.map((input) => (
+                  <div className={css.formField} key={input.id}>
+                    <label htmlFor={input.id}>{input.label}</label>
+                    <input
+                      value={project[input.id]}
+                      onChange={handleChange}
+                      type="text"
+                      id={input.id}
+                      name={input.id}
+                      autoComplete="off"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className={css.controls}>
-            <button id={css.alertBtn} className="alertBtn" onClick={closeModal}>
+            {/* <button id={css.alertBtn} className="alertBtn" onClick={closeModal}>
               Delete
-            </button>
+            </button> */}
             <button className="secondaryBtn" onClick={closeModal}>
               Cancel
             </button>
