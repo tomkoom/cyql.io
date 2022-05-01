@@ -22,6 +22,12 @@ const AppListRows = () => {
   const projects = useSelector(selectProjects);
   const category = useSelector(selectCategory);
 
+  const formatDate = (timestamp) => {
+    const ts = timestamp;
+    const date = new Date(ts);
+    return date.toDateString();
+  };
+
   // const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
   // const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
 
@@ -36,8 +42,8 @@ const AppListRows = () => {
                 <th>Category</th>
                 <th>Links</th>
                 <th>Canister</th>
-                <th>NFT preview</th>
                 <th>Added</th>
+                <th>NFT preview</th>
               </tr>
             </thead>
             <tbody>
@@ -101,6 +107,9 @@ const AppListRows = () => {
                       {app.canister ? `${app.canister.split("//").pop().substring(0, 16)}…` : ""}
                     </td>
 
+                    {/* added */}
+                    <td>{app.added ? formatDate(app.added) : ""}</td>
+
                     {/* nft preview */}
                     <td className={css.nftpreview}>
                       <ul>
@@ -126,8 +135,6 @@ const AppListRows = () => {
                         )}
                       </ul>
                     </td>
-                    {/* date added */}
-                    <td>{app.dateAdded}</td>
                   </tr>
                 ))}
             </tbody>

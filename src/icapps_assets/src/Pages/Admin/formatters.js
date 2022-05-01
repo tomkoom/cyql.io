@@ -4,8 +4,7 @@ const formatStr16 = (str) => (str.length > 16 ? `${str.substring(0, 16)}…` : s
 const formatWebsite = (url) => {
   let formattedURL = url.replace(/(^\w+:|^)\/\//, "");
   formattedURL = formattedURL.replace(/\/$/, ""); // remove trailing slash
-
-  return formattedURL.length > 16 ? `${formattedURL.substring(0, 16)}…` : formattedURL;
+  return formattedURL.length > 12 ? `${formattedURL.substring(0, 12)}…` : formattedURL;
 };
 
 const getTwitterUsername = (url) => {
@@ -18,11 +17,13 @@ const formatDiscord = (url) => {
     return url.split("discord.gg/")[1];
   }
   if (url.includes("discord.com/")) {
-    return url.split("discord.com/")[1].length > 16
-      ? `${url.split("discord.com/")[1].substring(0, 16)}…`
+    return url.split("discord.com/")[1].length > 12
+      ? `${url.split("discord.com/")[1].substring(0, 12)}…`
       : url.split("discord.com/")[1];
   }
-  return url;
+  return url.length > 12
+    ? `${url.substring(0, 12)}…`
+    : url;
 };
 
 const formatDate = (timestamp) => {
