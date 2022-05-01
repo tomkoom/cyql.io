@@ -22,7 +22,6 @@ const projectInitialState = {
   // additional info
   app: "",
   docs: "",
-  grantee: false,
   // nft info
   nftSaleStatus: "",
   nftSaleDate: "",

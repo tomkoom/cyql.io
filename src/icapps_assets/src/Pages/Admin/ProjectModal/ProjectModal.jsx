@@ -69,6 +69,11 @@ const ModalProjectEdit = () => {
     { id: "openChat", label: "OpenChat" },
   ];
 
+  const inputsSecondary = [
+    { id: "app", label: "App URL" },
+    { id: "docs", label: "Documentation URL" },
+  ];
+
   const inputsNFT = [
     { id: "nftUnits", label: "Units" },
     { id: "nftUnitPrice", label: "Unit price" },
@@ -169,21 +174,40 @@ const ModalProjectEdit = () => {
               ))}
             </div>
 
-            <div className={css.section}>
-              <h5>Social Networks</h5>
-              {inputsSocial.map((input) => (
-                <div className={css.formField} key={input.id}>
-                  <label htmlFor={input.id}>{input.label}</label>
-                  <input
-                    value={project[input.id]}
-                    onChange={handleChange}
-                    type="text"
-                    id={input.id}
-                    name={input.id}
-                    autoComplete="off"
-                  />
-                </div>
-              ))}
+            <div>
+              <div className={css.section}>
+                <h5>Social Networks</h5>
+                {inputsSocial.map((input) => (
+                  <div className={css.formField} key={input.id}>
+                    <label htmlFor={input.id}>{input.label}</label>
+                    <input
+                      value={project[input.id]}
+                      onChange={handleChange}
+                      type="text"
+                      id={input.id}
+                      name={input.id}
+                      autoComplete="off"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className={css.section}>
+                <h5>Additional info</h5>
+                {inputsSecondary.map((input) => (
+                  <div className={css.formField} key={input.id}>
+                    <label htmlFor={input.id}>{input.label}</label>
+                    <input
+                      value={project[input.id]}
+                      onChange={handleChange}
+                      type="text"
+                      id={input.id}
+                      name={input.id}
+                      autoComplete="off"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
 
             {project.category === "NFTs" && (
