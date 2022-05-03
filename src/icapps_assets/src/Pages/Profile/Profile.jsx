@@ -14,13 +14,13 @@ const Profile = () => {
 
   return (
     <div className={css.profile}>
-      <div className={css.profileTitle}>
+      <div className={css.title}>
         <h2 className="pageTitle">Profile</h2>
         <span>Beta</span>
       </div>
 
-      <div className={css.profileContent}>
-        <div className={css.profileInfo}>
+      <div className={css.content}>
+        <div className={css.info}>
           <img src={user.photoURL} alt={`${user.displayName} userimg`} />
           <h6>{user.displayName}</h6>
         </div>
@@ -29,16 +29,16 @@ const Profile = () => {
         </button>
       </div>
 
-      <button onClick={() => console.log(upvotes)}>123</button>
-
-      <div className={css.upvotes}>
-        <h3>Upvotes</h3>
-        {upvotes && (
-          <div className={css.upvotesContent}>
+      <div className={css.upvotedProjects}>
+        <h3>{upvotedProjects.length > 0 ? `${upvotedProjects.length} ` : ""}Upvotes</h3>
+        {upvotedProjects.length > 0 && (
+          <ul className={css.upvotedProjectsLi}>
             {upvotedProjects.map((upvotedProject) => (
-              <div key={upvotedProject.idx}>{upvotedProject.name}</div>
+              <li className={css.upvotedProjectsLi__i} key={upvotedProject.idx}>
+                {upvotedProject.name}
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </div>
     </div>

@@ -1,20 +1,20 @@
 /* profile */
 
-.profileTitle {
+.title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-weight: var(--bold);
 }
 
-.profileTitle span {
+.title span {
   padding: 0.25rem 0.5rem;
   background-color: var(--underlay);
   border-radius: 0.5rem;
   color: var(--secondaryColor);
 }
 
-.profileContent {
+.content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -22,14 +22,29 @@
   margin-top: 1rem;
 }
 
-.profileInfo {
+.info {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.profileInfo img {
+.info img {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+}
+
+.upvotedProjects {
+  margin-top: 2rem;
+}
+
+.upvotedProjects h3 {
+  font-size: var(--fontSize4);
+}
+
+.upvotedProjectsLi {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }

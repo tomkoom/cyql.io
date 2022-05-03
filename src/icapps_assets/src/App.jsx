@@ -10,10 +10,11 @@ import k from "../../../k/k";
 // utils
 import { deviceSizes } from "./Utils/DeviceSizes";
 import { useWindowSize } from "./Utils/UseWindowSize";
+import { sortByDateAdded, sortByDate } from "./Utils/sort";
 
 // firestore
 import { projectsColRef } from "../../../firebase/firestore-collections";
-import { onSnapshot, updateDoc, arrayUnion, doc, query, where } from "firebase/firestore";
+import { onSnapshot, query, where } from "firebase/firestore";
 
 // components
 import { Nav, Footer } from "./Components";
@@ -38,11 +39,10 @@ import Profile from "./Pages/Profile/Profile";
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { setProjects, setNFTs } from "./State/projects";
+import { setProjects, setNFTs, selectProjects } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 import { selectProjectModal } from "./State/projectModal";
-import { selectCategories } from "./State/categories";
 import { setUpvotedProjects } from "./State/upvotedProjects";
 
 const App = () => {
@@ -53,36 +53,9 @@ const App = () => {
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
+  const projects = useSelector(selectProjects);
 
   const { setUser, user } = useAuth();
-
-  const sortByDateAdded = (a, b) => {
-    const dateStrA = a ? a.replace(",", "") : undefined;
-    const dateStrB = b ? b.replace(",", "") : undefined;
-    if (dateStrA && dateStrB) {
-      const partsA = dateStrA.split(" ").reverse().join("-");
-      const partsB = dateStrB.split(" ").reverse().join("-");
-      let dateA = new Date(partsA);
-      let dateB = new Date(partsB);
-      return dateB - dateA;
-    } else if (dateStrA && !dateStrB) {
-      return -1;
-    } else if (!dateStrA && dateStrB) {
-      return 1;
-    } else return 0;
-  };
-
-  const sort = (a, b) => {
-    const timestampA = a;
-    const timestampB = b;
-    if (timestampA && timestampB) {
-      return timestampB - timestampA;
-    } else if (timestampA && !timestampB) {
-      return -1;
-    } else if (!timestampA && timestampB) {
-      return 1;
-    } else return 0;
-  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -95,7 +68,7 @@ const App = () => {
     });
   }, []);
 
-  // get projects
+  // get projects and nfts
   useEffect(() => {
     const unsubscribe = onSnapshot(projectsColRef, (snapshot) => {
       dispatch(
@@ -103,10 +76,9 @@ const App = () => {
           snapshot.docs
             .map((doc) => ({ ...doc.data(), idx: doc.id }))
             .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
-            .sort((a, b) => sort(a.added, b.added))
+            .sort((a, b) => sortByDate(a.added, b.added))
         )
       );
-
       dispatch(
         setNFTs(
           snapshot.docs
@@ -115,25 +87,33 @@ const App = () => {
         )
       );
     });
-
     return () => {
       unsubscribe();
     };
   }, []);
 
   // get upvotes
-  useEffect(() => {
-    if (user) {
-      const upvotesQuery = query(projectsColRef, where("upvotedBy", "array-contains", user.uid));
-      const unsubscribe = onSnapshot(upvotesQuery, (snapshot) => {
-        dispatch(setUpvotedProjects(snapshot.docs.map((doc) => ({ ...doc.data() }))));
-      });
+  // useEffect(() => {
+  //   if (user) {
+  //     const upvotesQuery = query(projectsColRef, where("upvotedBy", "array-contains", user.uid));
+  //     const unsubscribe = onSnapshot(upvotesQuery, (snapshot) => {
+  //       dispatch(setUpvotedProjects(snapshot.docs.map((doc) => ({ ...doc.data(), idx: doc.id }))));
+  //     });
+  //     return () => {
+  //       unsubscribe();
+  //     };
+  //   }
+  // }, [user]);
 
-      return () => {
-        unsubscribe();
-      };
+  // get upvoted projects
+  useEffect(() => {
+    if (projects.length > 0) {
+      const upvotedProjects = projects.filter(
+        (project) => project.upvotedBy && project.upvotedBy.find((uid) => uid === user.uid)
+      );
+      dispatch(setUpvotedProjects(upvotedProjects));
     }
-  }, [user]);
+  }, [projects]);
 
   // set icp price
   useEffect(() => {

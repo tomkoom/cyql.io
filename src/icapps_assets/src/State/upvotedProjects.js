@@ -7,7 +7,7 @@ const upvotedProjects = createSlice({
   },
   reducers: {
     setUpvotedProjects(state, { payload }) {
-      state.upvotedProjects = [...state.upvotedProjects, ...payload];
+      state.upvotedProjects = [...payload];
     },
   },
 });
