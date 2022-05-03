@@ -13,16 +13,12 @@ const getTwitterUsername = (url) => {
 };
 
 const formatDiscord = (url) => {
-  const formattedURL =
-    url.includes("discord.gg/")
-      ? url.split("discord.gg/")[1]
-      : url.includes("discord.com/")
-        ? url.split("discord.com/")[1]
-        : url;
-
-  return formattedURL.length > 12
-    ? `${formattedURL.substring(0, 12)}…`
-    : formattedURL;
+  const formattedURL = url.includes("discord.gg/")
+    ? url.split("discord.gg/")[1]
+    : url.includes("discord.com/")
+      ? url.split("discord.com/")[1]
+      : url;
+  return formattedURL.length > 12 ? `${formattedURL.substring(0, 12)}…` : formattedURL;
 };
 
 const formatDate = (timestamp) => {
@@ -31,11 +27,4 @@ const formatDate = (timestamp) => {
   return date.toLocaleString("en-GB");
 };
 
-export {
-  formatStr8,
-  formatStr12,
-  formatWebsite,
-  getTwitterUsername,
-  formatDiscord,
-  formatDate,
-};
+export { formatStr8, formatStr12, formatWebsite, getTwitterUsername, formatDiscord, formatDate };

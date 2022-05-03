@@ -18,6 +18,7 @@ import {
   faSearch,
   faEdit,
   faTrash,
+  faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -45,6 +46,7 @@ const iExternalLink = <FontAwesomeIcon icon={faExternalLinkAlt} />;
 const iSearch = <FontAwesomeIcon icon={faSearch} />;
 const iEdit = <FontAwesomeIcon icon={faEdit} />;
 const iTrash = <FontAwesomeIcon icon={faTrash} />;
+const iCaretUp = <FontAwesomeIcon icon={faCaretUp} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -72,6 +74,7 @@ export {
   iSearch,
   iEdit,
   iTrash,
+  iCaretUp,
   // brands
   iTwitter,
   iDiscord,

@@ -13,7 +13,7 @@ import { useWindowSize } from "./Utils/UseWindowSize";
 
 // firestore
 import { projectsColRef } from "../../../firebase/firestore-collections";
-import { onSnapshot } from "firebase/firestore";
+import { onSnapshot, updateDoc, arrayUnion, doc, query, where } from "firebase/firestore";
 
 // components
 import { Nav, Footer } from "./Components";
@@ -38,11 +38,12 @@ import Profile from "./Pages/Profile/Profile";
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import projects, { setProjects, setNFTs } from "./State/projects";
+import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 import { selectProjectModal } from "./State/projectModal";
-import { selectCategories, setCategoryLength } from "./State/categories";
+import { selectCategories } from "./State/categories";
+import { setUpvotedProjects } from "./State/upvotedProjects";
 
 const App = () => {
   const [deviceWidth] = useWindowSize();
@@ -52,7 +53,6 @@ const App = () => {
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
-  const categories = useSelector(selectCategories);
 
   const { setUser, user } = useAuth();
 
@@ -95,7 +95,7 @@ const App = () => {
     });
   }, []);
 
-  // realtime updates
+  // get projects
   useEffect(() => {
     const unsubscribe = onSnapshot(projectsColRef, (snapshot) => {
       dispatch(
@@ -121,21 +121,19 @@ const App = () => {
     };
   }, []);
 
-  // const setCategoryLen = () => {};
+  // get upvotes
+  useEffect(() => {
+    if (user) {
+      const upvotesQuery = query(projectsColRef, where("upvotedBy", "array-contains", user.uid));
+      const unsubscribe = onSnapshot(upvotesQuery, (snapshot) => {
+        dispatch(setUpvotedProjects(snapshot.docs.map((doc) => ({ ...doc.data() }))));
+      });
 
-  // useEffect(() => {
-  //   dispatch(
-  //     setCategoryLength(
-  //       categories.map((category) => {
-  //         category.name === "All"
-  //           ? { length: projects.length }
-  //           : {
-  //               length: projects.filter((project) => project.category === category.name).length,
-  //             };
-  //       })
-  //     )
-  //   );
-  // }, []);
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [user]);
 
   // set icp price
   useEffect(() => {

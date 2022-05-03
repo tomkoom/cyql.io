@@ -4,8 +4,14 @@ import css from "./Profile.module.css";
 // auth
 import { useAuth } from "../../Context/AuthContext";
 
+// state
+import { useSelector } from "react-redux";
+import { selectUpvotedProjects } from "../../State/upvotedProjects";
+
 const Profile = () => {
   const { user, logOut } = useAuth();
+  const upvotedProjects = useSelector(selectUpvotedProjects);
+
   return (
     <div className={css.profile}>
       <div className={css.profileTitle}>
@@ -21,6 +27,19 @@ const Profile = () => {
         <button className="secondaryBtn" onClick={logOut}>
           Sign out
         </button>
+      </div>
+
+      <button onClick={() => console.log(upvotes)}>123</button>
+
+      <div className={css.upvotes}>
+        <h3>Upvotes</h3>
+        {upvotes && (
+          <div className={css.upvotesContent}>
+            {upvotedProjects.map((upvotedProject) => (
+              <div key={upvotedProject.idx}>{upvotedProject.name}</div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

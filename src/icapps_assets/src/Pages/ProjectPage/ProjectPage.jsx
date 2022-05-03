@@ -3,7 +3,7 @@ import css from "./ProjectPage.module.css";
 import { useParams } from "react-router-dom";
 
 // icons
-import { iExternalLink } from "../../Icons/Icons";
+import { iExternalLink, iCaretUp } from "../../Icons/Icons";
 
 // redux
 import { useSelector } from "react-redux";
@@ -13,14 +13,36 @@ import { selectProjects } from "../../State/projects";
 import { BackBtn, ExpandableText, Loader } from "../../Components/index";
 import { CollectionStats, NftPreviews, SocialLinks } from "./index";
 
+// firestore
+import { projectsColRef } from "../../../../../firebase/firestore-collections";
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+
+// auth
+import { useAuth } from "../../Context/AuthContext";
+
 const ProjectPage = () => {
   const { id } = useParams();
   const projects = useSelector(selectProjects);
+  const { user } = useAuth();
 
   const formatDate = (timestamp) => {
     const ts = timestamp;
     const date = new Date(ts);
     return date.toDateString();
+  };
+
+  const upvote = async (projectIdx) => {
+    const docRef = doc(projectsColRef, projectIdx);
+    await updateDoc(docRef, {
+      upvotedBy: arrayUnion(user.uid),
+    });
+  };
+
+  const cancelUpvote = async (projectIdx) => {
+    const docRef = doc(projectsColRef, projectIdx);
+    await updateDoc(docRef, {
+      upvotedBy: arrayRemove(user.uid),
+    });
   };
 
   return (
@@ -59,8 +81,19 @@ const ProjectPage = () => {
                   </div>
                 </div>
 
-                {/* date */}
-                {project.added && <div className={css.date}>{formatDate(project.added)}</div>}
+                {/* date and upvote */}
+                <div className={css.right}>
+                  {project.upvotedBy && project.upvotedBy.includes(user.uid) ? (
+                    <button className={css.upvotedBtn} onClick={() => cancelUpvote(project.idx)}>
+                      {iCaretUp}&nbsp;&nbsp;Upvoted&nbsp;&nbsp;{project.upvotedBy.length}
+                    </button>
+                  ) : (
+                    <button className={css.upvoteBtn} onClick={() => upvote(project.idx)}>
+                      {iCaretUp}&nbsp;&nbsp;Upvote&nbsp;&nbsp;
+                      {project.upvotedBy ? project.upvotedBy.length : 0}
+                    </button>
+                  )}
+                </div>
               </div>
 
               <p className={css.description}>{project.description}</p>
@@ -130,14 +163,19 @@ const ProjectPage = () => {
                 />
               </div>
 
-              <a
-                href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
-                className={css.twitterDmButton}
-                data-screen-name="@DfinitApps"
-                rel="noreferrer noopener"
-              >
-                Edit the project info
-              </a>
+              <div className={css.bottom}>
+                {project.added && (
+                  <div className={css.date}>Published {formatDate(project.added)}</div>
+                )}
+                <a
+                  href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
+                  className={css.twitterDmButton}
+                  data-screen-name="@DfinitApps"
+                  rel="noreferrer noopener"
+                >
+                  Edit the project info
+                </a>
+              </div>
             </div>
           ))
       )}

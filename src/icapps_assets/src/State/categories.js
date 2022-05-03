@@ -22,11 +22,12 @@ const categories = createSlice({
   },
   reducers: {
     setCategoryLength(state, { payload }) {
-      state.categories === {
-        ...state.categories,
-        ...payload
-      }
-    }
+      state.categories ===
+        {
+          ...state.categories,
+          ...payload,
+        };
+    },
   },
 });
 

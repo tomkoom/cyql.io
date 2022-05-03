@@ -45,6 +45,7 @@ button {
   color: var(--primaryColor);
   font-size: var(--fontSize6);
   text-align: left;
+  background-color: transparent;
 }
 
 ul {

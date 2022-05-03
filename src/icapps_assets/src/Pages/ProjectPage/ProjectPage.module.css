@@ -26,15 +26,53 @@
   object-fit: cover;
 }
 
+.caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .captionTitle {
   font-size: var(--fontSize5);
   font-weight: var(--black);
 }
 
-.date {
+.right {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.date {
   color: var(--secondaryColor);
   white-space: nowrap;
+}
+
+.upvoteBtn,
+.upvotedBtn {
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  padding: 0.66rem 0.75rem;
+  border-radius: 0.66rem;
+  border: none;
+  cursor: pointer;
+}
+.upvoteBtn {
+  background-color: var(--highlightColor);
+}
+
+.upvoteBtn:hover {
+  background-color: var(--highlightColor2);
+}
+
+.upvotedBtn {
+  background-color: var(--underlay);
+}
+
+.upvotedBtn:hover {
+  background-color: var(--underlay2);
 }
 
 .description {
@@ -53,8 +91,9 @@
   display: inline-block;
   padding: 0.25rem 0.5rem;
   font-size: 0.9rem;
+  font-weight: var(--bold);
   background-color: var(--underlay);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 /* nft market data */
@@ -100,13 +139,16 @@
   background-color: var(--underlay3);
 }
 
-/* edit info btn */
+/* bottom */
+
+.bottom {
+  margin-top: 2rem;
+}
 
 .twitterDmButton {
   display: inline-block;
   color: var(--secondaryColor);
   padding: 0.5rem 0;
-  margin-top: 1.5rem;
 }
 
 .twitterDmButton:hover {
