@@ -2,29 +2,28 @@ import React from "react";
 import css from "./Categories.module.css";
 import Category from "./Category/Category";
 
-const categories = [
-  { name: "All", icon: "" },
-  { name: "Games", icon: "⚔️" },
-  { name: "NFTs", icon: "🗿" },
-  { name: "dApps", icon: "🔗" },
-  { name: "DeFi", icon: "‍🌾" },
-  { name: "DAOs", icon: "🏠" },
-  { name: "Social Networks", icon: "🎯" },
-  { name: "Infrastructure", icon: "🚀" },
-  { name: "Wallets", icon: "👛" },
-  { name: "Tools", icon: "🛠️" },
-  { name: "Explorers", icon: "🌎" },
-  { name: "Dfinity Apps", icon: "♾️" },
-  { name: "Metaverse", icon: "" },
-  { name: "Education", icon: "🎓" },
-  { name: "Communities", icon: "📣" },
-];
+// state
+import { useSelector } from "react-redux";
+import { selectCategories } from "../../../State/categories";
+import { selectProjects } from "../../../State/projects";
 
 const Categories = () => {
+  const categories = useSelector(selectCategories);
+  const projects = useSelector(selectProjects);
+
   return (
     <div className={css.categoryBtns}>
-      {categories.map((cat) => (
-        <Category categoryName={cat.name} icon={cat.icon} key={cat.name} />
+      {categories.map((category) => (
+        <Category
+          categoryName={category.name}
+          icon={category.icon}
+          key={category.name}
+          categoryLength={
+            category.name === "All"
+              ? projects.length
+              : projects.filter((project) => project.category === category.name).length
+          }
+        />
       ))}
     </div>
   );

@@ -4,12 +4,10 @@ import css from "./Category.module.css";
 // redux
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory, selectCategory } from "../../../../State/category";
-import { selectProjects } from "../../../../State/projects";
 
-const CategoryBtnsItem = ({ categoryName, icon }) => {
+const CategoryBtnsItem = ({ categoryName, icon, categoryLength }) => {
   const dispatch = useDispatch();
   const category = useSelector(selectCategory);
-  const projects = useSelector(selectProjects);
 
   return (
     <button
@@ -18,11 +16,7 @@ const CategoryBtnsItem = ({ categoryName, icon }) => {
     >
       {icon && <span className={css.category__icon}>{icon}</span>}
       {categoryName}
-      <span className={css.category__projectsNum}>
-        {categoryName === "All"
-          ? projects.length
-          : projects.filter((p) => p.category === categoryName).length}
-      </span>
+      <span className={css.category__projectsNum}>{categoryLength}</span>
     </button>
   );
 };

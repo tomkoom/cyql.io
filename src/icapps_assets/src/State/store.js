@@ -10,6 +10,7 @@ import projects from "./projects";
 import category from "./category";
 import modals from "./modals";
 import projectModal from "./projectModal";
+import categories from "./categories";
 
 // redux-persist
 import {
@@ -34,6 +35,7 @@ const rootReducer = combineReducers({
   category,
   modals,
   projectModal,
+  categories,
 });
 
 const persistConfig = {

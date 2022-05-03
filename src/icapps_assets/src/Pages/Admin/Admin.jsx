@@ -59,6 +59,7 @@ const Admin = () => {
               <th>Cover</th>
               <th>Twitter</th>
               <th>Discord</th>
+              <th>Edited</th>
               <th>Added</th>
             </tr>
           </thead>
@@ -76,6 +77,7 @@ const Admin = () => {
                 <td>{project.cover && formatString(project.cover)}</td>
                 <td>{project.twitter && getTwitterUsername(project.twitter)}</td>
                 <td>{project.discord && formatDiscord(project.discord)}</td>
+                <td>{project.added ? formatDate(project.edited) : ""}</td>
                 <td>{project.added ? formatDate(project.added) : ""}</td>
               </tr>
             ))}

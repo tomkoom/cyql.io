@@ -9,7 +9,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 // icons
 import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iDatabase } from "../../Icons/Icons";
 
-// submit button component
+// submit btn
 export const SubmitBtn = ({ submissionLoader, isVerified }) => {
   return (
     <button
@@ -21,6 +21,10 @@ export const SubmitBtn = ({ submissionLoader, isVerified }) => {
     </button>
   );
 };
+
+// state
+import { useSelector } from "react-redux";
+import { selectCategories } from "../../State/categories";
 
 const Submit = () => {
   const [submissionData, setSubmissionData] = useState({
@@ -50,7 +54,7 @@ const Submit = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [isSubmitted, setisSubmitted] = useState(false);
 
-  // const [category, setCategory] = useState("");
+  const categories = useSelector(selectCategories);
 
   // destructure submission data
   const {
@@ -133,22 +137,6 @@ const Submit = () => {
   function onRecaptcha() {
     setIsVerified(true);
   }
-
-  const categories = [
-    { id: "nft-collection", label: "NFT Collection", icon: "🖼️" },
-    { id: "game", label: "Game", icon: "🎮" },
-    { id: "dapp", label: "DApp", icon: "🔗" },
-    { id: "defi", label: "DeFi", icon: "‍🌾" },
-    { id: "dao", label: "DAO", icon: "🏠" },
-    { id: "social-network", label: "Social Network", icon: "🎯" },
-    { id: "infrastructure", label: "Infrastructure", icon: "🚀" },
-    { id: "wallet", label: "Wallet", icon: "🔒" }, // 🔐
-    { id: "tool", label: "Tool", icon: "🛠️" },
-    { id: "explorer", label: "Explorer", icon: "🌎" },
-    { id: "metaverse", label: "Metaverse", icon: "🥽" },
-    { id: "education", label: "Education", icon: "🎓" },
-    { id: "community", label: "Community", icon: "📣" },
-  ];
 
   const inputs = [
     {
@@ -347,24 +335,26 @@ const Submit = () => {
             <div className={css.field}>
               <p className={css.label}>Project category</p>
               <ul>
-                {categories.map((cat, i) => (
-                  <li key={i}>
-                    <label htmlFor={cat.id}>
-                      <input
-                        id={cat.id}
-                        value={cat.id}
-                        type="radio"
-                        name="category"
-                        checked={category === cat.id}
-                        onChange={handleInput}
-                        className={css.category}
-                      />
-                      <div className={css.category__div}>
-                        {cat.icon}&nbsp;&nbsp;{cat.label}
-                      </div>
-                    </label>
-                  </li>
-                ))}
+                {categories.map((cat) =>
+                  cat.id === "all" ? null : (
+                    <li key={cat.id}>
+                      <label htmlFor={cat.id}>
+                        <input
+                          id={cat.id}
+                          value={cat.id}
+                          type="radio"
+                          name="category"
+                          checked={category === cat.id}
+                          onChange={handleInput}
+                          className={css.category}
+                        />
+                        <div className={css.category__div}>
+                          {cat.icon}&nbsp;&nbsp;{cat.name}
+                        </div>
+                      </label>
+                    </li>
+                  )
+                )}
               </ul>
             </div>
 
@@ -396,7 +386,7 @@ const Submit = () => {
             ))}
 
             {/* nft input */}
-            {category === "nft-collection" && (
+            {submissionData.category === "nfts" && (
               <div>
                 <br />
                 <h3>NFT collection info</h3>

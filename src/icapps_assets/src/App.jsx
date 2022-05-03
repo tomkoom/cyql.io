@@ -38,10 +38,11 @@ import Profile from "./Pages/Profile/Profile";
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { setProjects, setNFTs } from "./State/projects";
+import projects, { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 import { selectProjectModal } from "./State/projectModal";
+import { selectCategories, setCategoryLength } from "./State/categories";
 
 const App = () => {
   const [deviceWidth] = useWindowSize();
@@ -51,6 +52,7 @@ const App = () => {
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
+  const categories = useSelector(selectCategories);
 
   const { setUser, user } = useAuth();
 
@@ -93,6 +95,7 @@ const App = () => {
     });
   }, []);
 
+  // realtime updates
   useEffect(() => {
     const unsubscribe = onSnapshot(projectsColRef, (snapshot) => {
       dispatch(
@@ -117,6 +120,22 @@ const App = () => {
       unsubscribe();
     };
   }, []);
+
+  // const setCategoryLen = () => {};
+
+  // useEffect(() => {
+  //   dispatch(
+  //     setCategoryLength(
+  //       categories.map((category) => {
+  //         category.name === "All"
+  //           ? { length: projects.length }
+  //           : {
+  //               length: projects.filter((project) => project.category === category.name).length,
+  //             };
+  //       })
+  //     )
+  //   );
+  // }, []);
 
   // set icp price
   useEffect(() => {
