@@ -9,6 +9,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 // icons
 import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iDatabase } from "../../Icons/Icons";
 
+// state
+import { useSelector } from "react-redux";
+import { selectCategories } from "../../State/categories";
+
 // submit btn
 export const SubmitBtn = ({ submissionLoader, isVerified }) => {
   return (
@@ -21,10 +25,6 @@ export const SubmitBtn = ({ submissionLoader, isVerified }) => {
     </button>
   );
 };
-
-// state
-import { useSelector } from "react-redux";
-import { selectCategories } from "../../State/categories";
 
 const Submit = () => {
   const [submissionData, setSubmissionData] = useState({

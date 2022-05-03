@@ -16,7 +16,7 @@ import { navLinks } from "../../../Routes/navLinks";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
-import { SignInModal } from "../../index";
+import { Logo, SignInModal } from "../../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -56,14 +56,13 @@ const NavMid = () => {
       <div className={css.nav__main}>
         {/* logo */}
         <button
-          className={`${css.logo} navlink`}
+          className="navlink"
           onClick={() => {
             toHome();
             mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
           }}
         >
-          <img src={logoImg} alt="icApps.xyz logo" />
-          <h1>icApps</h1>
+          <Logo />
         </button>
 
         {/* soclinks */}

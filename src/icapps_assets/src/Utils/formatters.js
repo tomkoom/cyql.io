@@ -1,5 +1,5 @@
 const formatStr8 = (str) => (str.length > 8 ? `${str.substring(0, 8)}…` : str);
-const formatStr16 = (str) => (str.length > 16 ? `${str.substring(0, 16)}…` : str);
+const formatStr12 = (str) => (str.length > 12 ? `${str.substring(0, 12)}…` : str);
 
 const formatWebsite = (url) => {
   let formattedURL = url.replace(/(^\w+:|^)\/\//, "");
@@ -13,17 +13,16 @@ const getTwitterUsername = (url) => {
 };
 
 const formatDiscord = (url) => {
-  if (url.includes("discord.gg/")) {
-    return url.split("discord.gg/")[1];
-  }
-  if (url.includes("discord.com/")) {
-    return url.split("discord.com/")[1].length > 12
-      ? `${url.split("discord.com/")[1].substring(0, 12)}…`
-      : url.split("discord.com/")[1];
-  }
-  return url.length > 12
-    ? `${url.substring(0, 12)}…`
-    : url;
+  const formattedURL =
+    url.includes("discord.gg/")
+      ? url.split("discord.gg/")[1]
+      : url.includes("discord.com/")
+        ? url.split("discord.com/")[1]
+        : url;
+
+  return formattedURL.length > 12
+    ? `${formattedURL.substring(0, 12)}…`
+    : formattedURL;
 };
 
 const formatDate = (timestamp) => {
@@ -32,17 +31,11 @@ const formatDate = (timestamp) => {
   return date.toLocaleString("en-GB");
 };
 
-const formatString = (string) => {
-  const str = string.replace(/(^\w+:|^)\/\//, "");
-  return str.length > 8 ? `${str.substring(0, 8)}…` : str;
-};
-
 export {
   formatStr8,
-  formatStr16,
+  formatStr12,
   formatWebsite,
   getTwitterUsername,
   formatDiscord,
   formatDate,
-  formatString,
 };

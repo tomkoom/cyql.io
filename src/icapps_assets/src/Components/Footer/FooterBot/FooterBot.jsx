@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./FooterBot.module.css";
-import ICLogo from "../../../Assets/ICLogo/ic-logo.svg";
+import ICLogo from "../../../../assets/ic-logo.svg";
 
 const FooterBot = () => {
   return (

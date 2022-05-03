@@ -4,13 +4,13 @@ import css from "./Admin.module.css";
 // formatters
 import {
   formatStr8,
-  formatStr16,
+  formatStr12,
   formatWebsite,
   getTwitterUsername,
   formatDiscord,
   formatDate,
   formatString,
-} from "./formatters";
+} from "../../Utils/formatters";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -68,13 +68,13 @@ const Admin = () => {
               <tr key={project.idx} onClick={() => editProject(project)}>
                 <td>{i + 1}</td>
                 <td>{project.idx && formatStr8(project.idx)}</td>
-                <td>{project.id && formatStr16(project.id)}</td>
-                <td>{project.name && formatStr16(project.name)}</td>
+                <td>{project.id && formatStr8(project.id)}</td>
+                <td>{project.name && formatStr12(project.name)}</td>
                 <td>{project.category}</td>
                 <td>{project.website && formatWebsite(project.website)}</td>
-                <td>{project.canister && formatString(project.canister)}</td>
-                <td>{project.logo && formatString(project.logo)}</td>
-                <td>{project.cover && formatString(project.cover)}</td>
+                <td>{project.canister && formatWebsite(project.canister)}</td>
+                <td>{project.logo && formatWebsite(project.logo)}</td>
+                <td>{project.cover && formatWebsite(project.cover)}</td>
                 <td>{project.twitter && getTwitterUsername(project.twitter)}</td>
                 <td>{project.discord && formatDiscord(project.discord)}</td>
                 <td>{project.added ? formatDate(project.edited) : ""}</td>
