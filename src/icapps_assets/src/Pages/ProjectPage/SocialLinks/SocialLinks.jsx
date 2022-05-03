@@ -117,7 +117,7 @@ const SocialLinks = ({
             >
               <a href={link} target="_blank" rel="noopener noreferrer">
                 {icon ? icon : img ? <img src={img} alt={`${name} logo`} /> : null}
-                <span>{name}</span>
+                &nbsp;<span>{name}</span>
               </a>
             </li>
           ))}
