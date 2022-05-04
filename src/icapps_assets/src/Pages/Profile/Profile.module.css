@@ -22,29 +22,66 @@
   margin-top: 1rem;
 }
 
-.info {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .info img {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
 }
 
-.upvotedProjects {
+.projects {
   margin-top: 2rem;
 }
 
-.upvotedProjects h3 {
+.projects h3 {
   font-size: var(--fontSize4);
 }
 
-.upvotedProjectsLi {
+.li {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.li__i {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--underlay);
+  padding: 0.75rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+/* project info */
+
+.logo {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.projectTitle {
+  font-size: var(--fontSize6);
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--underlay2);
+  font-size: 0.9rem;
+  font-weight: var(--bold);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.33rem;
+}
+
+.description {
+  line-height: 133%;
+  color: var(--secondaryColor);
+  max-width: 32rem;
 }

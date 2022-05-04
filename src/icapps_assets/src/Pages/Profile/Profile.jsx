@@ -7,6 +7,7 @@ import { useAuth } from "../../Context/AuthContext";
 // state
 import { useSelector } from "react-redux";
 import { selectUpvotedProjects } from "../../State/upvotedProjects";
+import { toApp } from "../../Routes/routes";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
@@ -29,13 +30,20 @@ const Profile = () => {
         </button>
       </div>
 
-      <div className={css.upvotedProjects}>
+      <div className={css.projects}>
         <h3>{upvotedProjects.length > 0 ? `${upvotedProjects.length} ` : ""}Upvotes</h3>
         {upvotedProjects.length > 0 && (
-          <ul className={css.upvotedProjectsLi}>
-            {upvotedProjects.map((upvotedProject) => (
-              <li className={css.upvotedProjectsLi__i} key={upvotedProject.idx}>
-                {upvotedProject.name}
+          <ul className={css.li}>
+            {upvotedProjects.map((project) => (
+              <li className={css.li__i} onClick={() => toApp(project.id)} key={project.idx}>
+                {project.logo && (
+                  <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
+                )}
+                <div className={css.info}>
+                  <h4 className={css.projectTitle}>{project.name}</h4>
+                  <span className={css.tag}>{project.category}</span>
+                  <p className={css.description}>{project.description}</p>
+                </div>
               </li>
             ))}
           </ul>
