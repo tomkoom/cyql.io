@@ -26,7 +26,6 @@ const RecentlyAdded = ({ projects }) => {
           projects
             .slice(0, 10)
             .sort((project) => (project.promoted ? -1 : 0))
-            // .sort((project) => (project.dateAdded ? -1 : 0))
             .map((project) => (
               <div
                 className={`${css.projectsList__i} ${project.promoted ? css.promoted : null}`}

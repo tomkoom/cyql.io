@@ -1,9 +1,6 @@
 import React from "react";
 import css from "./Profile.module.css";
 
-// icons
-import { iCaretUp } from "../../Icons/Icons";
-
 // auth
 import { useAuth } from "../../Context/AuthContext";
 
@@ -12,8 +9,8 @@ import { useSelector } from "react-redux";
 import { selectUpvotedProjects } from "../../State/upvotedProjects";
 import { toApp } from "../../Routes/routes";
 
-// shared functions
-import { upvote, cancelUpvote } from "../../Utils/sharedFunctions";
+// components
+import { UpvoteBtn } from "../../Components/index";
 
 const Profile = () => {
   const { user, logOut } = useAuth();
@@ -53,16 +50,7 @@ const Profile = () => {
                 </div>
 
                 <div className={css.right} onClick={(e) => e.stopPropagation()}>
-                  {project.upvotedBy && project.upvotedBy.includes(user.uid) ? (
-                    <button className={css.upvotedBtn} onClick={() => cancelUpvote(project.idx)}>
-                      {iCaretUp}&nbsp;&nbsp;Upvoted&nbsp;&nbsp;{project.upvotedBy.length}
-                    </button>
-                  ) : (
-                    <button className={css.upvoteBtn} onClick={() => upvote(project.idx)}>
-                      {iCaretUp}&nbsp;&nbsp;Upvote&nbsp;&nbsp;
-                      {project.upvotedBy ? project.upvotedBy.length : 0}
-                    </button>
-                  )}
+                  <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
                 </div>
               </li>
             ))}

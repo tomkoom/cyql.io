@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./BackBtn.module.css";
-import { goBack } from "../../Routes/routes";
-import { iArrowLeft } from "../../Icons/Icons";
+import { goBack } from "../../../Routes/routes";
+import { iArrowLeft } from "../../../Icons/Icons";
 
 const BackBtn = () => {
   return (

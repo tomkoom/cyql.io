@@ -4,17 +4,17 @@
 import { projectsColRef } from "../../../../firebase/firestore-collections";
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
-const upvote = async (projectIdx) => {
+const upvote = async (projectIdx, userUid) => {
   const docRef = doc(projectsColRef, projectIdx);
   await updateDoc(docRef, {
-    upvotedBy: arrayUnion(user.uid),
+    upvotedBy: arrayUnion(userUid),
   });
 };
 
-const cancelUpvote = async (projectIdx) => {
+const cancelUpvote = async (projectIdx, userUid) => {
   const docRef = doc(projectsColRef, projectIdx);
   await updateDoc(docRef, {
-    upvotedBy: arrayRemove(user.uid),
+    upvotedBy: arrayRemove(userUid),
   });
 };
 

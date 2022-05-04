@@ -14,7 +14,7 @@ import { sortByDateAdded, sortByDate } from "./Utils/sort";
 
 // firestore
 import { projectsColRef } from "../../../firebase/firestore-collections";
-import { onSnapshot, query, where } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 
 // components
 import { Nav, Footer } from "./Components";
@@ -91,19 +91,6 @@ const App = () => {
       unsubscribe();
     };
   }, []);
-
-  // get upvotes
-  // useEffect(() => {
-  //   if (user) {
-  //     const upvotesQuery = query(projectsColRef, where("upvotedBy", "array-contains", user.uid));
-  //     const unsubscribe = onSnapshot(upvotesQuery, (snapshot) => {
-  //       dispatch(setUpvotedProjects(snapshot.docs.map((doc) => ({ ...doc.data(), idx: doc.id }))));
-  //     });
-  //     return () => {
-  //       unsubscribe();
-  //     };
-  //   }
-  // }, [user]);
 
   // get upvoted projects
   useEffect(() => {
