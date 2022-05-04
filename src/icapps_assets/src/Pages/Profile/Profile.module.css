@@ -1,17 +1,30 @@
 /* profile */
 
-.title {
+.pageTitle {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-weight: var(--bold);
 }
 
-.title span {
+.pageTitle span {
   padding: 0.25rem 0.5rem;
   background-color: var(--underlay);
   border-radius: 0.5rem;
   color: var(--secondaryColor);
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.profileInfo img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
 }
 
 .content {
@@ -20,12 +33,6 @@
   align-items: flex-start;
   gap: 1rem;
   margin-top: 1rem;
-}
-
-.info img {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
 }
 
 .projects {
@@ -39,20 +46,17 @@
 .li {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
 }
 
 .li__i {
   display: flex;
+  align-items: center;
   gap: 1rem;
-  background-color: var(--underlay);
-  padding: 0.75rem;
   border-radius: 1rem;
   cursor: pointer;
 }
-
-/* project info */
 
 .logo {
   width: 4.5rem;
@@ -65,6 +69,12 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.25rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 .projectTitle {
@@ -84,4 +94,30 @@
   line-height: 133%;
   color: var(--secondaryColor);
   max-width: 32rem;
+}
+
+.upvoteBtn,
+.upvotedBtn {
+  font-size: var(--fontSize6);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  padding: 0.66rem 0.75rem;
+  border-radius: 0.66rem;
+  border: none;
+  cursor: pointer;
+}
+.upvoteBtn {
+  background-color: var(--highlightColor);
+}
+
+.upvoteBtn:hover {
+  background-color: var(--highlightColor2);
+}
+
+.upvotedBtn {
+  background-color: var(--underlay);
+}
+
+.upvotedBtn:hover {
+  background-color: var(--underlay2);
 }

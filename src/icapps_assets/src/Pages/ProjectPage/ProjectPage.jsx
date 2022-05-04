@@ -13,9 +13,8 @@ import { selectProjects } from "../../State/projects";
 import { BackBtn, ExpandableText, Loader } from "../../Components/index";
 import { CollectionStats, NftPreviews, SocialLinks } from "./index";
 
-// firestore
-import { projectsColRef } from "../../../../../firebase/firestore-collections";
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+// shared functions
+import { upvote, cancelUpvote } from "../../Utils/sharedFunctions";
 
 // auth
 import { useAuth } from "../../Context/AuthContext";
@@ -29,20 +28,6 @@ const ProjectPage = () => {
     const ts = timestamp;
     const date = new Date(ts);
     return date.toDateString();
-  };
-
-  const upvote = async (projectIdx) => {
-    const docRef = doc(projectsColRef, projectIdx);
-    await updateDoc(docRef, {
-      upvotedBy: arrayUnion(user.uid),
-    });
-  };
-
-  const cancelUpvote = async (projectIdx) => {
-    const docRef = doc(projectsColRef, projectIdx);
-    await updateDoc(docRef, {
-      upvotedBy: arrayRemove(user.uid),
-    });
   };
 
   return (
