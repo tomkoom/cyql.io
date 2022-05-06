@@ -38,7 +38,6 @@ const socialLinks = [
 
 const NavMid = () => {
   const [deviceWidth] = useWindowSize();
-
   const { user } = useAuth();
 
   const dispatch = useDispatch();
@@ -46,7 +45,7 @@ const NavMid = () => {
 
   return (
     <div className={css.nav}>
-      <div className={css.nav__main}>
+      <div className={css.content}>
         {/* logo */}
         <button
           className="navlink"
@@ -59,9 +58,9 @@ const NavMid = () => {
         </button>
 
         {/* soclinks */}
-        <ul className={css.nav__main__socLinks}>
+        <ul className={css.socLinks}>
           {socialLinks.map(({ name, link, icon }, i) => (
-            <li className={css.nav__main__socLinks__item} data-smlink={name} key={i}>
+            <li className={css.socLinks__i} data-smlink={name} key={i}>
               <a href={link} target="_blank" rel="noopener noreferrer">
                 {icon}
               </a>
@@ -71,16 +70,16 @@ const NavMid = () => {
       </div>
 
       {/* menu btn */}
-      <div className={css.nav__menuBtn} onClick={() => dispatch(setMobileMenuModal(true))}>
+      <div className={css.menuBtn} onClick={() => dispatch(setMobileMenuModal(true))}>
         {iBars}
       </div>
 
       {deviceWidth < 1024 && mobileMenuModal ? <NavMobileMenu /> : null}
 
       {/* navlinks */}
-      <ul className={css.nav__list}>
+      <ul className={css.navlinks}>
         {navLinks.map(({ name, link, icon }, i) => (
-          <li className={css.nav__list__item} key={i}>
+          <li className={css.navlinks__i} key={i}>
             <button
               className="navlink"
               onClick={() => {
@@ -88,32 +87,30 @@ const NavMid = () => {
                 mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
               }}
             >
-              {icon ? <span>{icon}</span> : null} {name}
+              {icon && <span>{icon}</span>} {name}
             </button>
           </li>
         ))}
 
-        {/* <li className={`${css.nav__list__item} ${css.donateContainer}`}>
-          <div className={css.donateBtn} onClick={() => setModalIsActive(true)}>
-            <p>Donate</p>
-          </div>
-        </li> */}
-
         {!user && (
-          <li className={css.nav__list__item}>
-            <button className="navlink" onClick={() => dispatch(setSignInModal(true))}>
+          <li className={css.navlinks__i}>
+            <button
+              id={css.signInBtn}
+              className="secondaryBtn"
+              onClick={() => dispatch(setSignInModal(true))}
+            >
               Sign in
             </button>
           </li>
         )}
 
         {user && (
-          <li className={css.nav__list__item}>
+          <li className={css.navlinks__i}>
             <button
               className="navlink"
               onClick={() => {
                 toProfile();
-                mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
+                mobileMenuModal && dispatch(setMobileMenuModal(false));
               }}
             >
               Profile
@@ -122,7 +119,7 @@ const NavMid = () => {
         )}
 
         {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
-          <li className={css.nav__list__item}>
+          <li className={css.navlinks__i}>
             <button
               className="navlink"
               onClick={() => {
