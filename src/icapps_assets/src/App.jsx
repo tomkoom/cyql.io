@@ -42,7 +42,7 @@ import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs, selectProjects } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
-import { selectProjectModal } from "./State/projectModal";
+import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
 import { setUpvotedProjects } from "./State/upvotedProjects";
 
 const App = () => {
@@ -122,6 +122,20 @@ const App = () => {
       dispatch(setMobileMenuModal(false));
     }
   }, [deviceWidth]);
+
+  const closeModal = (e) => {
+    if (e.key === "Escape") {
+      dispatch(setCloseProjectModal());
+    }
+  };
+
+  // close modal when esc is pressed
+  useEffect(() => {
+    window.addEventListener("keydown", closeModal);
+    return () => {
+      window.removeEventListener("keydown", closeModal);
+    };
+  }, []);
 
   return (
     <div className={`app ${theme}`}>

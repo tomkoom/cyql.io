@@ -12,12 +12,10 @@ import { doc, addDoc, setDoc } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectProjectModal,
-  setProjectModal,
   selectProject,
   setProject,
-  setClearProject,
   selectMode,
-  setMode,
+  setCloseProjectModal,
 } from "../../../State/projectModal";
 
 const ModalProjectEdit = () => {
@@ -46,9 +44,7 @@ const ModalProjectEdit = () => {
   };
 
   const closeModal = () => {
-    dispatch(setMode(""));
-    dispatch(setClearProject());
-    dispatch(setProjectModal(false));
+    dispatch(setCloseProjectModal());
   };
 
   const inputsMain = [

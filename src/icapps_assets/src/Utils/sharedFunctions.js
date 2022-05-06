@@ -4,6 +4,13 @@
 import { projectsColRef } from "../../../../firebase/firestore-collections";
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
+// state
+import {
+  setProjectModal,
+  setClearProject,
+  setMode,
+} from "../State/projectModal";
+
 const upvote = async (projectIdx, userUid) => {
   const docRef = doc(projectsColRef, projectIdx);
   await updateDoc(docRef, {
@@ -18,4 +25,13 @@ const cancelUpvote = async (projectIdx, userUid) => {
   });
 };
 
-export { upvote, cancelUpvote };
+// modal
+
+const closeModal = () => {
+  dispatch(setMode(""));
+  dispatch(setClearProject());
+  dispatch(setProjectModal(false));
+};
+
+
+export { upvote, cancelUpvote, closeModal };
