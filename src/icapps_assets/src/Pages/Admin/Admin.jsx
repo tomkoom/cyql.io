@@ -77,7 +77,7 @@ const Admin = () => {
                 <td>{project.cover && formatWebsite(project.cover)}</td>
                 <td>{project.twitter && getTwitterUsername(project.twitter)}</td>
                 <td>{project.discord && formatDiscord(project.discord)}</td>
-                <td>{project.added ? formatDate(project.edited) : ""}</td>
+                <td>{project.edited ? formatDate(project.edited) : ""}</td>
                 <td>{project.added ? formatDate(project.added) : ""}</td>
               </tr>
             ))}

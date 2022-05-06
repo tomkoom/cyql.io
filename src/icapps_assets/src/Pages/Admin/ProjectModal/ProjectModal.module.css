@@ -65,6 +65,12 @@
   margin-right: auto;
 }
 
+.deleteContainer {
+  margin-right: auto;
+  display: flex;
+  gap: 0.75rem;
+}
+
 .modalTitle {
   display: flex;
   align-items: center;

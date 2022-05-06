@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./ProjectModal.module.css";
 
 // icons
@@ -6,7 +6,7 @@ import { iTimes } from "../../../Icons/Icons";
 
 // firestore
 import { projectsColRef } from "../../../../../../firebase/firestore-collections";
-import { doc, addDoc, setDoc } from "firebase/firestore";
+import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -19,6 +19,8 @@ import {
 } from "../../../State/projectModal";
 
 const ModalProjectEdit = () => {
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+
   const dispatch = useDispatch();
   const projectModal = useSelector(selectProjectModal);
   const project = useSelector(selectProject);
@@ -29,7 +31,7 @@ const ModalProjectEdit = () => {
     dispatch(setProject({ [name]: value }));
   };
 
-  const handleSubmit = async () => {
+  const submitProject = async () => {
     const timestamp = Date.now();
     try {
       if (mode === "add") {
@@ -45,6 +47,15 @@ const ModalProjectEdit = () => {
 
   const closeModal = () => {
     dispatch(setCloseProjectModal());
+  };
+
+  const deleteProject = async () => {
+    try {
+      await deleteDoc(doc(projectsColRef, project.idx));
+    } catch (err) {
+      console.log(err.message);
+    }
+    closeModal();
   };
 
   const inputsMain = [
@@ -253,13 +264,25 @@ const ModalProjectEdit = () => {
           </div>
 
           <div className={css.controls}>
-            {/* <button id={css.alertBtn} className="alertBtn" onClick={closeModal}>
-              Delete
-            </button> */}
+            {!deleteConfirm ? (
+              <button id={css.alertBtn} className="alertBtn" onClick={() => setDeleteConfirm(true)}>
+                Delete
+              </button>
+            ) : (
+              <div className={css.deleteContainer}>
+                <button className="secondaryBtn" onClick={() => setDeleteConfirm(false)}>
+                  Cancel
+                </button>
+                <button id={css.alertBtn} className="alertBtn" onClick={deleteProject}>
+                  Confirm
+                </button>
+              </div>
+            )}
+
             <button className="secondaryBtn" onClick={closeModal}>
               Cancel
             </button>
-            <button className="primaryBtn" onClick={handleSubmit}>
+            <button className="primaryBtn" onClick={submitProject}>
               Save
             </button>
           </div>
