@@ -4,6 +4,7 @@
 export { default as BackBtn } from "./Btns/BackBtn/BackBtn";
 export { default as LoadMoreBtn } from "./Btns/LoadMoreBtn/LoadMoreBtn";
 export { default as UpvoteBtn } from "./Btns/UpvoteBtn/UpvoteBtn";
+export { default as UpvoteBtn2 } from "./Btns/UpvoteBtn2/UpvoteBtn2";
 export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
 
 export { default as ExpandableText } from "./ExpandableText/ExpandableText";

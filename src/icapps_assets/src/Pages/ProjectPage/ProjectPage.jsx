@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 // icons
 import { iExternalLink } from "../../Icons/Icons";
 
-// redux
+// state
 import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/projects";
 

@@ -29,6 +29,7 @@ import {
   NotFound,
 } from "./Pages/index";
 import { ProjectModal } from "./Pages/Admin/index";
+import { SignInModal } from "./Components/index";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
@@ -94,13 +95,15 @@ const App = () => {
 
   // get upvoted projects
   useEffect(() => {
-    if (projects.length > 0) {
-      const upvotedProjects = projects.filter(
-        (project) => project.upvotedBy && project.upvotedBy.find((uid) => uid === user.uid)
-      );
-      dispatch(setUpvotedProjects(upvotedProjects));
+    if (user) {
+      if (projects.length > 0) {
+        const upvotedProjects = projects.filter(
+          (project) => project.upvotedBy && project.upvotedBy.find((uid) => uid === user.uid)
+        );
+        dispatch(setUpvotedProjects(upvotedProjects));
+      }
     }
-  }, [projects]);
+  }, [projects, user]);
 
   // set icp price
   useEffect(() => {
@@ -209,6 +212,7 @@ const App = () => {
       </CookieConsent>
 
       {/* modals */}
+      {signInModal && <SignInModal />}
       {projectModal && <ProjectModal />}
     </div>
   );

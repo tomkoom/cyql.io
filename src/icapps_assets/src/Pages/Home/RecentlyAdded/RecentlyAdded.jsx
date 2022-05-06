@@ -5,7 +5,7 @@ import css from "./RecentlyAdded.module.css";
 import { toApp, toApps } from "../../../Routes/routes";
 
 // components
-import { Loader, ViewMoreBtn } from "../../../Components/index";
+import { Loader, UpvoteBtn2, ViewMoreBtn } from "../../../Components/index";
 
 // icons
 import { iGithub, iDatabase } from "../../../Icons/Icons";
@@ -55,6 +55,10 @@ const RecentlyAdded = ({ projects }) => {
                         ? `${project.description.substring(0, 50)}…`
                         : project.description}
                     </p>
+                  </div>
+
+                  <div className={css.right} onClick={(e) => e.stopPropagation()}>
+                    <UpvoteBtn2 idx={project.idx} upvotedBy={project.upvotedBy} />
                   </div>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import css from "./NavMid.module.css";
-import logoImg from "../../../../assets/logo.svg";
 import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
 import k from "../../../../../../k/k";
 
@@ -16,16 +15,11 @@ import { navLinks } from "../../../Routes/navLinks";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
-import { Logo, SignInModal } from "../../index";
+import { Logo } from "../../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectMobileMenuModal,
-  setMobileMenuModal,
-  selectSignInModal,
-  setSignInModal,
-} from "../../../State/modals";
+import { selectMobileMenuModal, setMobileMenuModal, setSignInModal } from "../../../State/modals";
 
 const socialLinks = [
   {
@@ -48,7 +42,6 @@ const NavMid = () => {
   const { user } = useAuth();
 
   const dispatch = useDispatch();
-  const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
 
   return (
@@ -142,7 +135,6 @@ const NavMid = () => {
           </li>
         ) : null}
       </ul>
-      {signInModal && <SignInModal />}
     </div>
   );
 };
