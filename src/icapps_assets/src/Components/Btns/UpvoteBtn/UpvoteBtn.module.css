@@ -15,9 +15,10 @@
   cursor: pointer;
 }
 .upvoteBtn {
-  background-color: var(--underlay);
+  color: white;
+  background-color: var(--highlightColor2);
 }
 
 .upvotedBtn {
-  background-color: var(--highlightColor2);
+  background-color: var(--underlay);
 }

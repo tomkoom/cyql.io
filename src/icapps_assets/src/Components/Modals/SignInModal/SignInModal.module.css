@@ -48,10 +48,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: white;
   background-color: var(--colorTwitter);
   font-size: var(--fontSize6);
   font-weight: var(--bold);
-  color: var(--primaryColor);
   padding: 0.66rem 0.75rem;
   border-radius: 0.66rem;
   border: none;

@@ -21,5 +21,6 @@
 }
 
 .upvotedBtn {
+  color: white;
   background-color: var(--highlightColor2);
 }

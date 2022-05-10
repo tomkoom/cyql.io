@@ -33,5 +33,4 @@ const closeModal = () => {
   dispatch(setProjectModal(false));
 };
 
-
 export { upvote, cancelUpvote, closeModal };

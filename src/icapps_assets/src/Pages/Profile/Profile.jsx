@@ -15,6 +15,7 @@ import { UpvoteBtn } from "../../Components/index";
 const Profile = () => {
   const { user, logOut } = useAuth();
   const upvotedProjects = useSelector(selectUpvotedProjects);
+  const upvotedProjectsCopy = [...upvotedProjects];
 
   return (
     <div className={css.profile}>
@@ -34,26 +35,28 @@ const Profile = () => {
       </div>
 
       <div className={css.projects}>
-        <h3>{upvotedProjects.length > 0 ? `${upvotedProjects.length} ` : ""}Upvotes</h3>
-        {upvotedProjects.length > 0 && (
-          <ul className={css.li}>
-            {upvotedProjects.map((project) => (
-              <li className={css.li__i} onClick={() => toApp(project.id)} key={project.idx}>
-                {project.logo && (
-                  <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
-                )}
+        <h3>{upvotedProjectsCopy.length > 0 && `${upvotedProjectsCopy.length} `}Upvotes</h3>
+        {upvotedProjectsCopy.length > 0 && (
+          <ul className={css.projectsLi}>
+            {upvotedProjectsCopy
+              .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
+              .map((project) => (
+                <li className={css.projectsLiI} onClick={() => toApp(project.id)} key={project.idx}>
+                  {project.logo && (
+                    <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
+                  )}
 
-                <div className={css.info}>
-                  <h4 className={css.projectTitle}>{project.name}</h4>
-                  <span className={css.tag}>{project.category}</span>
-                  <p className={css.description}>{project.description}</p>
-                </div>
+                  <div className={css.info}>
+                    <h4 className={css.projectTitle}>{project.name}</h4>
+                    <span className={css.tag}>{project.category}</span>
+                    <p className={css.description}>{project.description}</p>
+                  </div>
 
-                <div className={css.right} onClick={(e) => e.stopPropagation()}>
-                  <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
-                </div>
-              </li>
-            ))}
+                  <div className={css.right} onClick={(e) => e.stopPropagation()}>
+                    <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                  </div>
+                </li>
+              ))}
           </ul>
         )}
       </div>

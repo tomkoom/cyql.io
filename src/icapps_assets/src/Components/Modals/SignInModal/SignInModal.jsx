@@ -1,13 +1,15 @@
 import React from "react";
 import css from "./SignInModal.module.css";
 
+// icons
+import { iTimes, iTwitter } from "../../../Icons/Icons";
+
 // auth
-import { useAuth } from "../../Context/AuthContext";
-import { iTimes, iTwitter } from "../../Icons/Icons";
+import { useAuth } from "../../../Context/AuthContext";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSignInModal, setSignInModal } from "../../State/modals";
+import { selectSignInModal, setSignInModal } from "../../../State/modals";
 
 const SignInModal = () => {
   const dispatch = useDispatch();

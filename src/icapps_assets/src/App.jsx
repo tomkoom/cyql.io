@@ -17,7 +17,6 @@ import { projectsColRef } from "../../../firebase/firestore-collections";
 import { onSnapshot } from "firebase/firestore";
 
 // components
-import { Nav, Footer } from "./Components";
 import {
   Home,
   Projects,
@@ -28,8 +27,7 @@ import {
   Admin,
   NotFound,
 } from "./Pages/index";
-import { ProjectModal } from "./Pages/Admin/index";
-import { SignInModal } from "./Components/index";
+import { Nav, Footer, SignInModal, ProjectModal } from "./Components/index";
 
 // auth
 import { useAuth } from "./Context/AuthContext";

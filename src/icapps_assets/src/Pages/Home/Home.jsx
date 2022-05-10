@@ -5,7 +5,7 @@ import css from "./Home.module.css";
 import { toApps, toUpcoming } from "../../Routes/routes";
 
 // components
-import { JoinCommunity, NftSales, RecentlyAdded } from "./index";
+import { JoinCommunity, NftSales, HighlightedProjects } from "./index";
 
 // redux
 import { useSelector } from "react-redux";
@@ -33,14 +33,29 @@ const Home = () => {
         </p>
       </section>
 
+      {/* popular projects*/}
+      <section className={css.home__apps}>
+        <div className={css.home__section__title}>
+          <h3>Popular projects</h3>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedProjects
+          projects={
+            projects.length > 0 &&
+            projects
+              .filter((project) => project.upvotedBy)
+              .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
+          }
+        />
+      </section>
+
       {/* recently added nfts*/}
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
           <h3>Recently added NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-
-        <RecentlyAdded
+        <HighlightedProjects
           projects={
             projects.length > 0 && projects.filter((project) => project.category === "NFTs")
           }
@@ -53,8 +68,7 @@ const Home = () => {
           <h3>Recently added apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-
-        <RecentlyAdded
+        <HighlightedProjects
           projects={
             projects.length > 0 && projects.filter((project) => project.category !== "NFTs")
           }

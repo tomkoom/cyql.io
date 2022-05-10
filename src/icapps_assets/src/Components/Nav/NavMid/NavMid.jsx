@@ -1,7 +1,10 @@
 import React from "react";
 import css from "./NavMid.module.css";
-import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
 import k from "../../../../../../k/k";
+
+// components
+import { Logo } from "../../index";
+import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
 
 // utils
 import { useWindowSize } from "../../../Utils/UseWindowSize";
@@ -15,7 +18,6 @@ import { navLinks } from "../../../Routes/navLinks";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
-import { Logo } from "../../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

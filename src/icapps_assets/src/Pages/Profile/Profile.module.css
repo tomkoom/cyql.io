@@ -43,14 +43,14 @@
   font-size: var(--fontSize4);
 }
 
-.li {
+.projectsLi {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   margin-top: 1.25rem;
 }
 
-.li__i {
+.projectsLiI {
   display: flex;
   align-items: center;
   gap: 1rem;
