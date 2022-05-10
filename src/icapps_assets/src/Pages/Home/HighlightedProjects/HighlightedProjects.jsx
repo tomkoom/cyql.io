@@ -19,17 +19,13 @@ const HighlightedProjects = ({ projects }) => {
 
   return (
     <div>
-      <div className={css.projectsList}>
+      <div className={css.projectsLi}>
         {!projects.length ? (
           <Loader />
         ) : (
           projects.slice(0, 10).map((project) => (
-            <div
-              className={`${css.projectsList__i} ${project.promoted ? css.promoted : null}`}
-              onClick={() => toApp(project.id)}
-              key={project.id}
-            >
-              <div className={css.projectsList__i__wrapper}>
+            <div className={css.projectsLiI} onClick={() => toApp(project.id)} key={project.id}>
+              <div className={css.content}>
                 {/* logo */}
                 {project.logo && (
                   <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
@@ -47,7 +43,7 @@ const HighlightedProjects = ({ projects }) => {
                     </ul>
                   )}
 
-                  <p className={css.projectDescription}>
+                  <p className={css.description}>
                     {project.description && project.description.length > 50
                       ? `${project.description.substring(0, 50)}…`
                       : project.description}

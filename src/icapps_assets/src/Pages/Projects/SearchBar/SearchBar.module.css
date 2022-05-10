@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.search__input {
+.searchInput {
   display: flex;
   align-items: center;
   max-width: 24rem;
@@ -20,11 +20,11 @@
   outline: none;
 }
 
-.search__input:hover {
+.searchInput:hover {
   background-color: var(--underlay2);
 }
 
-.search__input:focus {
+.searchInput:focus {
   color: var(--primaryColor);
   background-color: transparent;
   background-color: var(--underlay2);

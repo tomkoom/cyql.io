@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const view = createSlice({
   name: "view",
   initialState: {
-    view: { value: "rows" },
+    view: { value: "grid" },
   },
   reducers: {
     setView({ view }, { payload }) {

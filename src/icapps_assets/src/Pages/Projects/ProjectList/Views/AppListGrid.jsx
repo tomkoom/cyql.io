@@ -2,17 +2,6 @@ import React from "react";
 import css from "./AppListGrid.module.css";
 import { toApp } from "../../../../Routes/routes";
 
-//icons
-import { iDatabase, iGithub } from "../../../../Icons/Icons";
-
-// redux
-import { useSelector } from "react-redux";
-import { selectView } from "../../../../State/view";
-import { selectSearch } from "../../../../State/search";
-import { selectItemsVisible } from "../../../../State/loadMore";
-import { selectProjects } from "../../../../State/projects";
-import { selectCategory } from "../../../../State/category";
-
 const AppListGrid = () => {
   const view = useSelector(selectView);
   const searchValue = useSelector(selectSearch);

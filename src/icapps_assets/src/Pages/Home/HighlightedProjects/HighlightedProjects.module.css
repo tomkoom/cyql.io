@@ -1,18 +1,18 @@
 /* recently added */
 
-.projectsList {
+.projectsLi {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
   gap: 1.5rem;
   margin-top: 1rem;
 }
 
-.projectsList__i {
+.projectsLiI {
   cursor: pointer;
   border-radius: 1rem;
 }
 
-.projectsList__i__wrapper {
+.content {
   display: flex;
   gap: 1rem;
 }
@@ -30,7 +30,7 @@
   gap: 0.25rem;
 }
 
-.projectDescription {
+.description {
   font-size: 16px;
   line-height: 150%;
   color: var(--secondaryColor);
@@ -63,12 +63,4 @@
 
 .right {
   margin-left: auto;
-}
-
-/* responsive */
-
-@media screen and (max-width: 1023) {
-  .appDescription {
-    font-size: var(--fontSize6);
-  }
 }

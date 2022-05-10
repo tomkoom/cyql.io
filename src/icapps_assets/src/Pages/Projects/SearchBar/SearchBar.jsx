@@ -16,7 +16,7 @@ const SearchBar = () => {
   return (
     <div className={css.search}>
       <input
-        className={css.search__input}
+        className={css.searchInput}
         type="text"
         placeholder="Search projects"
         onChange={(e) => dispatch(setSearch(e.target.value))}
