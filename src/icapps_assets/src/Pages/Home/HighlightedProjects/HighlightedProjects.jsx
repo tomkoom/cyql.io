@@ -35,17 +35,15 @@ const HighlightedProjects = ({ projects }) => {
                 <div className={css.titletags}>
                   <h3>{project.name}</h3>
 
-                  {project.category && project.category !== "NFTs" && (
-                    <ul>
-                      {project.category && <li>{project.category}</li>}
-                      {project.canister && <li>{iDatabase}&nbsp;&nbsp;Hosted on IC</li>}
-                      {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
-                    </ul>
-                  )}
+                  <ul>
+                    {project.category && <li>{project.category}</li>}
+                    {project.canister && <li>{iDatabase}&nbsp;&nbsp;Hosted on IC</li>}
+                    {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
+                  </ul>
 
                   <p className={css.description}>
-                    {project.description && project.description.length > 50
-                      ? `${project.description.substring(0, 50)}…`
+                    {project.description && project.description.length > 66
+                      ? `${project.description.substring(0, 66)}…`
                       : project.description}
                   </p>
                 </div>

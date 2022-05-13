@@ -6,18 +6,17 @@
   padding-top: 0.75rem;
 }
 
-.links__i {
+.linksI {
   flex: 1;
-  /* background-color: var(--underlay); */
-  box-shadow: var(--boxShadow);
-  border-radius: 0.5rem;
-}
-
-.links__i:hover {
   background-color: var(--underlay);
+  border-radius: 1rem;
 }
 
-.links__i a {
+.linksI:hover {
+  background-color: var(--underlay2);
+}
+
+.linksI a {
   display: flex;
   flex-direction: column;
   align-items: flex-start;

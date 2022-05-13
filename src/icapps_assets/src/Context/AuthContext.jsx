@@ -21,16 +21,12 @@ import { setSignInModal } from "../State/modals";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
-
   const dispatch = useDispatch();
 
   const addUserToDB = async (user) => {
     const userDocRef = doc(usersColRef, user.uid);
     const u = await getDoc(userDocRef);
     const userExists = u.data() ? true : false;
-
-    // const u = await getDoc(doc(usersColRef, user.uid));
-    // const userExists = u.data() ? true : false;
 
     if (!userExists) {
       const timestamp = Date.now();
@@ -59,16 +55,14 @@ export function AuthProvider({ children }) {
   const logOut = () => {
     signOut(auth)
       .then(() => {
-        // console.log("sign-out successful");
+        setUser(undefined);
+        if (history.location.pathname === "/profile") {
+          toHome();
+        }
       })
       .catch((err) => {
-        console.log(err.message);
+        console.log(err);
       });
-    setUser(undefined);
-
-    if (history.location.pathname === "/profile") {
-      toHome();
-    }
   };
 
   const value = {

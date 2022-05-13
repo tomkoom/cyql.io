@@ -25,7 +25,7 @@ const JoinCommunity = () => {
   return (
     <ul className={css.links}>
       {socLinks.map(({ name, link, icon }) => (
-        <li className={css.links__i} key={name}>
+        <li className={css.linksI} key={name}>
           <a href={link} rel="noreferrer noopener" target="_blank">
             {icon}
             {name} &gt;

@@ -35,8 +35,11 @@
   margin-top: 1rem;
 }
 
+/* projects */
+
 .projects {
   margin-top: 2rem;
+  margin-bottom: 4rem;
 }
 
 .projects h3 {
@@ -46,8 +49,8 @@
 .projectsLi {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 1.25rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .projectsLiI {
