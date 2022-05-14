@@ -1,0 +1,29 @@
+/* upvote btn */
+
+.upvoteBtn,
+.upvotedBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--bold);
+  color: var(--primaryColor);
+  border-radius: 0.33rem;
+  border: none;
+  cursor: pointer;
+}
+.upvoteBtn {
+  background-color: var(--underlay);
+}
+
+.upvotedBtn {
+  background-color: var(--underlay);
+  /* color: white;
+  background-color: var(--highlightColor2); */
+}
+
+.upvotedBtn span {
+  color: var(--highlightColor2);
+
+}

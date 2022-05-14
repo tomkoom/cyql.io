@@ -33,7 +33,6 @@ import { Nav, Footer, SignInModal, ProjectModal } from "./Components/index";
 import { useAuth } from "./Context/AuthContext";
 import { auth } from "../../../firebase/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
-import Profile from "./Pages/Profile/Profile";
 
 // state
 import { useDispatch, useSelector } from "react-redux";

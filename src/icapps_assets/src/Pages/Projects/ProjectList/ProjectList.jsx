@@ -10,6 +10,7 @@ import { toApp } from "../../../Routes/routes";
 
 // components
 import { LoadMoreBtn } from "../../../Components/";
+import UpvoteBtn from "./UpvoteBtn/UpvoteBtn";
 
 // state
 import { useSelector } from "react-redux";
@@ -63,6 +64,7 @@ const AppList = () => {
 
                       {project.github || project.canister ? (
                         <ul>
+                          {project.category && <li>{project.category}</li>}
                           {project.canister && <li>{iDatabase} Deployed to IC</li>}
                           {project.github && <li>{iGithub} Open Source</li>}
                         </ul>
@@ -73,6 +75,10 @@ const AppList = () => {
                           ? `${project.description.substring(0, 70)}…`
                           : project.description}
                       </p>
+
+                      <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
+                        <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                      </div>
                     </div>
                   </div>
                 </div>
