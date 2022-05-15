@@ -11,7 +11,7 @@
   width: 100%;
   height: 2.75rem;
   padding: 0 2.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   font-size: var(--fontSize6);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);

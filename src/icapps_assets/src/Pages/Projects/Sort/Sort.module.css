@@ -1,0 +1,56 @@
+/* sort */
+
+.sort {
+  position: relative;
+  width: auto;
+  width: 12.25rem;
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.25rem;
+  position: absolute;
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  padding: 0.66rem 0.75rem;
+  border-radius: 0.66rem;
+  width: 100%;
+}
+
+.sortBtn:hover {
+  background-color: var(--underlay2);
+}
+
+.sortBtnOpt {
+  font-weight: var(--bold);
+  margin-left: auto;
+}
+
+.angleDownIcon,
+.checkIcon {
+  color: var(--tertiaryColor);
+  margin-left: 0.33rem;
+}
+
+.sortSelect {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background-color: var(--underlay);
+  padding: 0.5rem;
+  border-radius: 0.66rem;
+  width: 100%;
+}
+
+.sortSelect li {
+  padding: 0.5rem 0.66rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.sortSelect li:hover {
+  background-color: var(--underlay2);
+}

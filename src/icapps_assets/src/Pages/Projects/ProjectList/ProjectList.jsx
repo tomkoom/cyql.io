@@ -18,12 +18,20 @@ import { selectProjects } from "../../../State/projects";
 import { selectCategory } from "../../../State/category";
 import { selectSearch } from "../../../State/search";
 import { selectItemsVisible } from "../../../State/loadMore";
+import { selectSort } from "../../../State/sort";
 
 const AppList = () => {
   const projects = useSelector(selectProjects);
   const category = useSelector(selectCategory);
   const search = useSelector(selectSearch);
   const itemsVisible = useSelector(selectItemsVisible);
+  const sort = useSelector(selectSort);
+
+  const sortByUpvotes = (a, b) => {
+    if (a.upvotedBy && b.upvotedBy) {
+      return b.upvotedBy.length - a.upvotedBy.length;
+    }
+  };
 
   return (
     <div>
@@ -43,6 +51,7 @@ const AppList = () => {
                 return project;
               }
             })
+            .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
             .slice(0, itemsVisible)
             .map((project) => (
               <li key={project.idx} className={css.liI}>

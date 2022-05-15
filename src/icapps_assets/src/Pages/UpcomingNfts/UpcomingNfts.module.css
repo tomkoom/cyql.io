@@ -144,7 +144,7 @@
   align-items: center;
   margin: 0.5rem 0 0.75rem 0;
   padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   background-color: var(--underlay);
   font-size: var(--fontSize7);
 }
@@ -164,17 +164,15 @@
 .submitBtn {
   padding: 0.5rem 0.75rem;
   color: var(--primaryColor);
-  box-shadow: var(--boxShadow);
+  background-color: var(--underlay);
   font-weight: var(--bold);
-  border-radius: var(--br025);
-  cursor: pointer;
-  background-color: transparent;
+  border-radius: 0.5rem;
   border: none;
+  cursor: pointer;
 }
 
 .submitBtn:hover {
-  color: var(--background);
-  background-color: var(--primaryColor);
+  background-color: var(--underlay2);
 }
 
 /*  */

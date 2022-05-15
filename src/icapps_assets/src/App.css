@@ -46,6 +46,8 @@ button {
   font-size: var(--fontSize6);
   text-align: left;
   background-color: transparent;
+  cursor: pointer;
+  border: none;
 }
 
 ul {
@@ -67,13 +69,9 @@ body {
 .primaryBtn,
 .secondaryBtn,
 .alertBtn {
-  font-size: var(--fontSize6);
   font-weight: var(--bold);
-  color: var(--primaryColor);
   padding: 0.66rem 0.75rem;
   border-radius: 0.66rem;
-  border: none;
-  cursor: pointer;
 }
 
 .primaryBtn {
@@ -86,6 +84,7 @@ body {
 }
 
 .secondaryBtn {
+  color: var(--primaryColor);
   background-color: var(--underlay);
 }
 

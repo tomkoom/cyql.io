@@ -20,6 +20,7 @@ import {
   faTrash,
   faCaretUp,
   faCheck,
+  faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -49,6 +50,7 @@ const iEdit = <FontAwesomeIcon icon={faEdit} />;
 const iTrash = <FontAwesomeIcon icon={faTrash} />;
 const iCaretUp = <FontAwesomeIcon icon={faCaretUp} />;
 const iCheck = <FontAwesomeIcon icon={faCheck} />;
+const iAngleDown = <FontAwesomeIcon icon={faAngleDown} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -78,6 +80,7 @@ export {
   iTrash,
   iCaretUp,
   iCheck,
+  iAngleDown,
   // brands
   iTwitter,
   iDiscord,
