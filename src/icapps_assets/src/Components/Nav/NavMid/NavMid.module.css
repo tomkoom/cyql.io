@@ -58,18 +58,13 @@
   gap: 1rem;
 }
 
-.navlinks__i button {
+.navlinksI button {
   height: 2.5rem;
   font-weight: var(--bold);
 }
 
-.navlinks__i button:hover:not(#signInBtn) {
+.navlinksI button:hover:not(#signInBtn *) {
   box-shadow: 0px 2px 0px 0px var(--primaryColor);
-}
-
-.navlinks__i button span {
-  border-radius: var(--br025);
-  color: var(--highlightColor2);
 }
 
 .menuBtn {
@@ -80,35 +75,6 @@
   cursor: pointer;
   color: var(--primaryColor);
 }
-
-/* donate btn */
-
-/* .donateBtn {
-  font-weight: var(--bold);
-  font-size: 1rem;
-  padding: 0.5rem 0.66rem;
-  cursor: pointer;
-  letter-spacing: -0.25px;
-  background-color: var(--underlay);
-  border-radius: 0.5rem;
-}
-
-.donateBtn:hover {
-  background: var(--underlay2);
-}
-
-.donateBtn p {
-  background: linear-gradient(
-    94.95deg,
-    #ffe701 -1.41%,
-    #fa51d3 34.12%,
-    #10d9ed 70.19%,
-    #52ff53 101.95%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
 
 /* responsive */
 

@@ -59,7 +59,7 @@
   gap: 0.5rem;
 }
 
-.socIcons__item {
+.socIconsI {
   display: grid;
   place-items: center;
   width: 2.5rem;
@@ -69,6 +69,6 @@
   border-radius: 50%;
 }
 
-.socIcons__item:hover {
+.socIconsI:hover {
   background-color: var(--underlay2);
 }

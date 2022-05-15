@@ -10,18 +10,19 @@ import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
 import { useWindowSize } from "../../../Utils/UseWindowSize";
 
 // icons
-import { iTwitter, iDiscord, iBars } from "../../../Icons/Icons";
+import { iTwitter, iDiscord, iBars, iFire } from "../../../Icons/Icons";
 
-// routes, navlinks
-import { toHome, toAdmin, toProfile } from "../../../Routes/routes";
-import { navLinks } from "../../../Routes/navLinks";
+// navlinks
+import { toHome, toAdmin, toProfile, toSubmit, toUpcoming, toApps } from "../../../Routes/routes";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectMobileMenuModal, setMobileMenuModal, setSignInModal } from "../../../State/modals";
+import { selectMobileMenuModal, setMobileMenuModal } from "../../../State/modals";
+import SignInBtn from "../SignInBtn/SignInBtn";
+import NavBtn from "../NavBtn/NavBtn";
 
 const socialLinks = [
   {
@@ -53,7 +54,7 @@ const NavMid = () => {
           className="navlink"
           onClick={() => {
             toHome();
-            mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
+            mobileMenuModal && dispatch(setMobileMenuModal(false));
           }}
         >
           <Logo />
@@ -76,63 +77,42 @@ const NavMid = () => {
         {iBars}
       </div>
 
-      {deviceWidth < 1024 && mobileMenuModal ? <NavMobileMenu /> : null}
+      {/* open mobile menu if width is less than 1024 */}
+      {deviceWidth < 1024 && mobileMenuModal && <NavMobileMenu />}
 
       {/* navlinks */}
       <ul className={css.navlinks}>
-        {navLinks.map(({ name, link, icon }, i) => (
-          <li className={css.navlinks__i} key={i}>
-            <button
-              className="navlink"
-              onClick={() => {
-                link();
-                mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
-              }}
-            >
-              {icon && <span>{icon}</span>} {name}
-            </button>
-          </li>
-        ))}
+        <li className={css.navlinksI}>
+          <NavBtn btnName="Projects" navTo={toApps} icon="" />
+        </li>
 
-        {!user && (
-          <li className={css.navlinks__i}>
-            <button
-              id={css.signInBtn}
-              className="secondaryBtn"
-              onClick={() => dispatch(setSignInModal(true))}
-            >
-              Sign in
-            </button>
-          </li>
-        )}
+        <li className={css.navlinksI}>
+          <NavBtn btnName="Upcoming NFT Sales" navTo={toUpcoming} icon={iFire} />
+        </li>
+
+        <li className={css.navlinksI}>
+          <NavBtn btnName="Submit" navTo={toSubmit} icon="" />
+        </li>
 
         {user && (
-          <li className={css.navlinks__i}>
-            <button
-              className="navlink"
-              onClick={() => {
-                toProfile();
-                mobileMenuModal && dispatch(setMobileMenuModal(false));
-              }}
-            >
-              Profile
-            </button>
+          <li className={css.navlinksI}>
+            <NavBtn btnName="Profile" navTo={toProfile} icon="" />
           </li>
         )}
 
-        {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
-          <li className={css.navlinks__i}>
-            <button
-              className="navlink"
-              onClick={() => {
-                toAdmin();
-                mobileMenuModal ? dispatch(setMobileMenuModal(false)) : null;
-              }}
-            >
-              Admin
-            </button>
+        {((user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2)) && (
+          <li className={css.navlinksI}>
+            <NavBtn btnName="Admin" navTo={toAdmin} icon="" />
           </li>
-        ) : null}
+        )}
+
+        {!user && (
+          <li className={css.navlinksI}>
+            <div id={css.signInBtn}>
+              <SignInBtn />
+            </div>
+          </li>
+        )}
       </ul>
     </div>
   );
