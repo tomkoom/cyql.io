@@ -68,12 +68,14 @@ const ProjectPage = () => {
               <p className={css.description}>{project.description}</p>
 
               {/* nft previews */}
-              <NftPreviews
-                nftImg1={project.nftImg1}
-                nftImg2={project.nftImg2}
-                nftImg3={project.nftImg3}
-                nftImg4={project.nftImg4}
-              />
+              {(project.nftImg1 || project.nftImg2 || project.nftImg3 || project.nftImg4) && (
+                <NftPreviews
+                  nftImg1={project.nftImg1}
+                  nftImg2={project.nftImg2}
+                  nftImg3={project.nftImg3}
+                  nftImg4={project.nftImg4}
+                />
+              )}
 
               {/* collection stats */}
               {project.category === "NFTs" && (

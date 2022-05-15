@@ -19,11 +19,8 @@
 
 .upvotedBtn {
   background-color: var(--underlay);
-  /* color: white;
-  background-color: var(--highlightColor2); */
 }
 
 .upvotedBtn span {
   color: var(--highlightColor2);
-
 }

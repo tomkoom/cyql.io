@@ -7,7 +7,7 @@
   gap: 0.5rem;
 }
 
-.nftImgs__item {
+.nftImgsI {
   max-width: calc(25% - 0.5rem);
   vertical-align: middle;
   border-radius: 0.5rem;
