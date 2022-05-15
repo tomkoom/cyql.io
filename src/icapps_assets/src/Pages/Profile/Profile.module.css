@@ -55,9 +55,8 @@
 
 .projectsLiI {
   display: flex;
-  align-items: center;
+  justify-content: flex-start;
   gap: 1rem;
-  border-radius: 1rem;
   cursor: pointer;
 }
 
@@ -67,17 +66,19 @@
   border-radius: 1rem;
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+}
+
 .info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.25rem;
-}
-
-.right {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
 }
 
 .projectTitle {
@@ -96,4 +97,11 @@
 .description {
   line-height: 133%;
   color: var(--secondaryColor);
+}
+
+@media screen and (max-width: 1023px) {
+  .right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

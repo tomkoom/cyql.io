@@ -186,7 +186,7 @@ body {
     font-size: 16px; /* Root font size */
   }
 
-  .appContent {
+  .app__content {
     padding: 1rem;
   }
 }

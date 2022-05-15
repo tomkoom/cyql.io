@@ -45,15 +45,16 @@ const Profile = () => {
                   {project.logo && (
                     <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
                   )}
+                  <div className={css.right}>
+                    <div className={css.info}>
+                      <h4 className={css.projectTitle}>{project.name}</h4>
+                      <span className={css.tag}>{project.category}</span>
+                      <p className={css.description}>{project.description}</p>
+                    </div>
 
-                  <div className={css.info}>
-                    <h4 className={css.projectTitle}>{project.name}</h4>
-                    <span className={css.tag}>{project.category}</span>
-                    <p className={css.description}>{project.description}</p>
-                  </div>
-
-                  <div className={css.right} onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                    </div>
                   </div>
                 </li>
               ))}
