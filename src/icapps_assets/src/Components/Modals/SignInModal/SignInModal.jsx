@@ -15,7 +15,7 @@ const SignInModal = () => {
   const dispatch = useDispatch();
   const signInModal = useSelector(selectSignInModal);
 
-  const { signInWithTwitter } = useAuth();
+  const { signInWithTwitter, signInWithInternetIdentity } = useAuth();
 
   return (
     <div
@@ -33,6 +33,7 @@ const SignInModal = () => {
         <button className={css.twitterBtn} onClick={signInWithTwitter}>
           <span>{iTwitter}</span> Continue with Twitter
         </button>
+        {/* <button onClick={() => signInWithInternetIdentity()}>Sign in with Internet Identity</button> */}
         <div className="divider" />
         <p className="bodyText">Other sign in options coming soon</p>
       </div>

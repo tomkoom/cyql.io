@@ -16,7 +16,6 @@ import { setSignInModal } from "../../../../State/modals";
 
 const UpvoteBtn = ({ idx, upvotedBy }) => {
   const { user } = useAuth();
-
   const dispatch = useDispatch();
 
   return (
@@ -35,8 +34,7 @@ const UpvoteBtn = ({ idx, upvotedBy }) => {
         </div>
       ) : (
         <button className={css.upvoteBtn} onClick={() => dispatch(setSignInModal(true))}>
-          {iCaretUp}
-          {upvotedBy ? upvotedBy.length : 0}
+          {iCaretUp} Upvote {upvotedBy ? upvotedBy.length : 0}
         </button>
       )}
     </div>

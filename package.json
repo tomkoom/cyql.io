@@ -17,9 +17,6 @@
     "lint": "eslint src/icapps_assets"
   },
   "devDependencies": {
-    "@dfinity/agent": "0.9.3",
-    "@dfinity/candid": "0.9.3",
-    "@dfinity/principal": "0.9.3",
     "@types/copy-webpack-plugin": "^8.0.1",
     "@types/terser-webpack-plugin": "^5.2.0",
     "assert": "2.0.0",
@@ -55,6 +52,7 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "@dfinity/auth-client": "^0.11.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
