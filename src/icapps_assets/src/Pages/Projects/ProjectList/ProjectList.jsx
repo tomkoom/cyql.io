@@ -30,7 +30,11 @@ const AppList = () => {
   const sortByUpvotes = (a, b) => {
     if (a.upvotedBy && b.upvotedBy) {
       return b.upvotedBy.length - a.upvotedBy.length;
-    }
+    } else if (!a.upvotedBy && b.upvotedBy) {
+      return 1;
+    } else if (a.upvotedBy && !b.upvotedBy) {
+      return -1;
+    } else return 0;
   };
 
   return (

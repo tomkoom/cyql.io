@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { iAngleDown, iCheck } from "../../../Icons/Icons";
 import css from "./Sort.module.css";
 
