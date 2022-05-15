@@ -13,8 +13,13 @@ import { useWindowSize } from "./Utils/UseWindowSize";
 import { sortByDateAdded, sortByDate } from "./Utils/sort";
 
 // firestore
-import { projectsColRef } from "../../../firebase/firestore-collections";
-import { onSnapshot } from "firebase/firestore";
+import { onSnapshot, doc, setDoc, getDoc } from "firebase/firestore";
+import { projectsColRef, usersColRef } from "../../../firebase/firestore-collections";
+
+// auth
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../firebase/firebase-config";
+import { useAuth } from "./Context/AuthContext";
 
 // components
 import {
@@ -28,11 +33,6 @@ import {
   NotFound,
 } from "./Pages/index";
 import { Nav, Footer, SignInModal, ProjectModal } from "./Components/index";
-
-// auth
-import { useAuth } from "./Context/AuthContext";
-import { auth } from "../../../firebase/firebase-config";
-import { onAuthStateChanged } from "firebase/auth";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -62,9 +62,33 @@ const App = () => {
         setUser(user);
       } else {
         // User is signed out
+        setUser(undefined);
       }
     });
   }, []);
+
+  const addUserToDB = async (user) => {
+    const userDocRef = doc(usersColRef, user.uid);
+    const u = await getDoc(userDocRef);
+    const userExists = u.data() ? true : false;
+
+    if (!userExists) {
+      const timestamp = Date.now();
+      await setDoc(userDocRef, {
+        displayName: user.displayName,
+        screenName: user.reloadUserInfo.screenName,
+        twitterCreatedAt: user.reloadUserInfo.createdAt,
+        firstSignIn: timestamp,
+      });
+    }
+  };
+
+  // check if user is in db, if no then add
+  useEffect(() => {
+    if (user) {
+      addUserToDB(user);
+    }
+  }, [user]);
 
   // get projects and nfts
   useEffect(() => {
@@ -92,13 +116,11 @@ const App = () => {
 
   // get upvoted projects
   useEffect(() => {
-    if (user) {
-      if (projects.length > 0) {
-        const upvotedProjects = projects.filter(
-          (project) => project.upvotedBy && project.upvotedBy.find((uid) => uid === user.uid)
-        );
-        dispatch(setUpvotedProjects(upvotedProjects));
-      }
+    if (user && projects.length > 0) {
+      const upvotedProjects = projects.filter(
+        (project) => project.upvotedBy && project.upvotedBy.find((uid) => uid === user.uid)
+      );
+      dispatch(setUpvotedProjects(upvotedProjects));
     }
   }, [projects, user]);
 
