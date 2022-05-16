@@ -25,20 +25,17 @@ const UpvoteBtn2 = ({ idx, upvotedBy }) => {
         <div>
           {upvotedBy && upvotedBy.includes(user.uid) ? (
             <button className={css.upvotedBtn} onClick={() => cancelUpvote(idx, user.uid)}>
-              {iCheck}
-              {upvotedBy.length}
+              <span>{iCheck}</span> {upvotedBy.length}
             </button>
           ) : (
             <button className={css.upvoteBtn} onClick={() => upvote(idx, user.uid)}>
-              {iCaretUp}
-              {upvotedBy ? upvotedBy.length : 0}
+              <span>{iCaretUp}</span> {upvotedBy ? upvotedBy.length : 0}
             </button>
           )}
         </div>
       ) : (
         <button className={css.upvoteBtn} onClick={() => dispatch(setSignInModal(true))}>
-          {iCaretUp}
-          {upvotedBy ? upvotedBy.length : 0}
+          <span>{iCaretUp}</span> {upvotedBy ? upvotedBy.length : 0}
         </button>
       )}
     </div>

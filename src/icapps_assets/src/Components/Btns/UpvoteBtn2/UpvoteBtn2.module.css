@@ -12,15 +12,12 @@
   font-size: var(--fontSize7);
   font-weight: var(--bold);
   color: var(--primaryColor);
+  background-color: var(--underlay);
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
 }
-.upvoteBtn {
-  background-color: var(--underlay);
-}
 
-.upvotedBtn {
-  color: white;
-  background-color: var(--highlightColor2);
+.upvotedBtn span {
+  color: var(--highlightColor2);
 }
