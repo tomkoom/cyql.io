@@ -12,14 +12,14 @@ const sort = createSlice({
     },
     setSortModal(state, { payload }) {
       state.sortModal = payload;
-    }
+    },
   },
 });
 
 const selectSort = (state) => state.sort.sort;
 const selectSortModal = (state) => state.sort.sortModal;
 
-export { selectSort, selectSortModal }
+export { selectSort, selectSortModal };
 
 export const { setSort, setSortModal } = sort.actions;
 export default sort.reducer;

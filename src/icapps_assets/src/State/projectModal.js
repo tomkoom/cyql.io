@@ -56,9 +56,6 @@ const projectModal = createSlice({
     setProject(state, { payload }) {
       state.project = { ...state.project, ...payload };
     },
-    setClearProject(state) {
-      state.project = projectInitialState;
-    },
     setCloseProjectModal(state) {
       state.mode = "";
       state.project = projectInitialState;
@@ -73,5 +70,5 @@ const selectProject = (state) => state.projectModal.project;
 
 export { selectProjectModal, selectProject, selectMode };
 
-export const { setMode, setProjectModal, setProject, setClearProject, setCloseProjectModal } = projectModal.actions;
+export const { setMode, setProjectModal, setProject, setCloseProjectModal } = projectModal.actions;
 export default projectModal.reducer;

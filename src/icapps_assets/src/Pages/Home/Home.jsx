@@ -33,10 +33,10 @@ const Home = () => {
         </p>
       </section>
 
-      {/* popular projects*/}
+      {/* popular nfts*/}
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
-          <h3>Popular projects</h3>
+          <h3>Popular NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects
@@ -44,6 +44,24 @@ const Home = () => {
             projects.length > 0 &&
             projects
               .filter((project) => project.upvotedBy)
+              .filter((project) => project.category === "NFTs")
+              .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
+          }
+        />
+      </section>
+
+      {/* popular apps*/}
+      <section className={css.home__apps}>
+        <div className={css.home__section__title}>
+          <h3>Popular apps</h3>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedProjects
+          projects={
+            projects.length > 0 &&
+            projects
+              .filter((project) => project.upvotedBy)
+              .filter((project) => project.category !== "NFTs")
               .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
           }
         />

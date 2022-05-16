@@ -19,7 +19,3 @@ export { default as Footer } from "./Footer/Footer";
 export { default as ExpandableText } from "./ExpandableText/ExpandableText";
 export { default as Loader } from "./Loader/Loader";
 export { default as Logo } from "./Logo/Logo";
-
-
-
-

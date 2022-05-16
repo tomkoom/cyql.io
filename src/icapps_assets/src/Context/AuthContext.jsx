@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 // firebase
 import { auth } from "../../../../firebase/firebase-config";
-import { TwitterAuthProvider, signOut, signInWithRedirect } from "firebase/auth";
+import { TwitterAuthProvider, signOut, signInWithPopup } from "firebase/auth";
 
 // ii
 import { AuthClient } from "@dfinity/auth-client";
@@ -51,7 +51,7 @@ export function AuthProvider({ children }) {
   const signInWithTwitter = async () => {
     const provider = new TwitterAuthProvider();
     try {
-      const userCred = await signInWithRedirect(auth, provider);
+      const userCred = await signInWithPopup(auth, provider);
       const user = userCred.user;
       setUser(user);
       dispatch(setSignInModal(false));
