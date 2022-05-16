@@ -75,13 +75,11 @@ const AppList = () => {
                     <div className={css.right}>
                       <h3>{project.name}</h3>
 
-                      {project.github || project.canister ? (
-                        <ul>
-                          {project.category && <li>{project.category}</li>}
-                          {project.canister && <li>{iDatabase} Deployed to IC</li>}
-                          {project.github && <li>{iGithub} Open Source</li>}
-                        </ul>
-                      ) : null}
+                      <ul>
+                        {project.category && <li>{project.category}</li>}
+                        {project.canister && <li>{iDatabase} Deployed to IC</li>}
+                        {project.github && <li>{iGithub} Open Source</li>}
+                      </ul>
 
                       <p className={css.description}>
                         {project.description && project.description.length > 70

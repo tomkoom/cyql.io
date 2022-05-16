@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--font);
+  font-family: var(--fontFamily);
 }
 
 html {
@@ -100,15 +100,12 @@ body {
 /* other */
 
 .navlink {
+  display: inline-block;
   background-color: transparent;
-  border: none;
-  cursor: pointer;
   padding: 0;
   margin: 0;
-}
-
-.navlink {
-  display: inline-block;
+  border: none;
+  cursor: pointer;
 }
 
 .divider {
