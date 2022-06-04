@@ -33,6 +33,32 @@ const Home = () => {
         </p>
       </section>
 
+      {/* recently added nfts*/}
+      <section className={css.home__apps}>
+        <div className={css.home__section__title}>
+          <h3>Recently added NFTs</h3>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedProjects
+          projects={
+            projects.length > 0 && projects.filter((project) => project.category === "NFTs")
+          }
+        />
+      </section>
+
+      {/* recently added apps*/}
+      <section className={css.home__apps}>
+        <div className={css.home__section__title}>
+          <h3>Recently added apps</h3>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedProjects
+          projects={
+            projects.length > 0 && projects.filter((project) => project.category !== "NFTs")
+          }
+        />
+      </section>
+
       {/* popular nfts*/}
       <section className={css.home__apps}>
         <div className={css.home__section__title}>
@@ -63,32 +89,6 @@ const Home = () => {
               .filter((project) => project.upvotedBy)
               .filter((project) => project.category !== "NFTs")
               .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
-          }
-        />
-      </section>
-
-      {/* recently added nfts*/}
-      <section className={css.home__apps}>
-        <div className={css.home__section__title}>
-          <h3>Recently added NFTs</h3>
-          <ViewAllBtn nav={toApps} />
-        </div>
-        <HighlightedProjects
-          projects={
-            projects.length > 0 && projects.filter((project) => project.category === "NFTs")
-          }
-        />
-      </section>
-
-      {/* recently added apps*/}
-      <section className={css.home__apps}>
-        <div className={css.home__section__title}>
-          <h3>Recently added apps</h3>
-          <ViewAllBtn nav={toApps} />
-        </div>
-        <HighlightedProjects
-          projects={
-            projects.length > 0 && projects.filter((project) => project.category !== "NFTs")
           }
         />
       </section>
