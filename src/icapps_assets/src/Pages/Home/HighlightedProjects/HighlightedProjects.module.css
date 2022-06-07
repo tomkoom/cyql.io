@@ -2,9 +2,8 @@
 
 .projectsLi {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.5rem;
-  margin-top: 1rem;
 }
 
 .projectsLiI {
@@ -58,7 +57,7 @@
   align-items: center;
   font-weight: var(--bold);
   color: var(--primaryColor);
-  background-color: var(--underlay2);
+  background-color: var(--underlay);
 }
 
 .right {
