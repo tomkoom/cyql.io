@@ -13,7 +13,7 @@
 
 .content {
   display: flex;
-  gap: 1rem;
+  gap: 0.66rem;
 }
 
 .logo {
@@ -30,8 +30,8 @@
 }
 
 .description {
-  font-size: 16px;
-  line-height: 150%;
+  font-size: 0.9rem;
+  line-height: 133%;
   color: var(--secondaryColor);
 }
 
@@ -60,6 +60,6 @@
   background-color: var(--underlay);
 }
 
-.right {
+.upvote {
   margin-left: auto;
 }

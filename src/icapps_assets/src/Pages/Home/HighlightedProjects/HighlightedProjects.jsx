@@ -23,7 +23,7 @@ const HighlightedProjects = ({ projects }) => {
         {!projects.length ? (
           <Loader />
         ) : (
-          projects.slice(0, 10).map((project) => (
+          projects.slice(0, 12).map((project) => (
             <div className={css.projectsLiI} onClick={() => toApp(project.id)} key={project.id}>
               <div className={css.content}>
                 {/* logo */}
@@ -42,13 +42,13 @@ const HighlightedProjects = ({ projects }) => {
                   </ul>
 
                   <p className={css.description}>
-                    {project.description && project.description.length > 66
-                      ? `${project.description.substring(0, 66)}…`
+                    {project.description && project.description.length > 50
+                      ? `${project.description.substring(0, 50)}…`
                       : project.description}
                   </p>
                 </div>
 
-                <div className={css.right} onClick={(e) => e.stopPropagation()}>
+                <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
                   <UpvoteBtn2 idx={project.idx} upvotedBy={project.upvotedBy} />
                 </div>
               </div>

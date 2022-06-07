@@ -34,7 +34,7 @@ const NftSales = ({ nftSalesFiltered }) => {
       ) : (
         <div className={css.nftSales}>
           {nftSalesFiltered
-            .slice(0, 9)
+            .slice(0, 8)
             .sort((a, b) => sortByDate(a, b))
             .map((nft) => (
               <div className={css.nft} onClick={() => toApp(nft.id)} key={nft.id}>
