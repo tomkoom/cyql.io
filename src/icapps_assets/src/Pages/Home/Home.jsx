@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./Home.module.css";
 
+// icons
+import { iArrowRight, iNarwhal } from "../../Icons/Icons";
+
 // routes
 import { toApps, toUpcoming } from "../../Routes/routes";
 
@@ -32,6 +35,26 @@ const Home = () => {
           and more.
         </p>
       </section>
+
+      <div className={css.home__highlights}>
+        <div className={css.highlightI}>
+          <a
+            className={css.highlightILinkBlock}
+            href="https://tomkoom.notion.site/icApps-Crowdfunding-FAQ-1be4107b7e454c05bb9793b63156cfc1"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            <div className={css.crowdsaleInfo}>
+              <span className={css.crowdfundingIcon}>🐋</span>
+              <div>
+                <h3>We are holding a Crowdsale on Wednesday, June 15</h3>
+              </div>
+            </div>
+            <span className={css.rightArrowIcon}>{iArrowRight}</span>
+          </a>
+        </div>
+        <div className={css.highlightI}></div>
+      </div>
 
       {/* recently added apps */}
       <section className={css.home__apps}>
