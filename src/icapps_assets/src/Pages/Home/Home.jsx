@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Home.module.css";
 
 // icons
-import { iArrowRight, iNarwhal } from "../../Icons/Icons";
+import { iArrowRight } from "../../Icons/Icons";
 
 // routes
 import { toApps, toUpcoming } from "../../Routes/routes";

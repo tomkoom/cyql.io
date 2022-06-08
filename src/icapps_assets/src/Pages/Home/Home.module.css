@@ -1,9 +1,7 @@
 /* homepage */
 
-.home {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+section {
+  margin: 2rem 0;
 }
 
 /* hero */
@@ -20,6 +18,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  margin: -1rem 0;
 }
 
 .highlightI {
@@ -28,17 +27,17 @@
 
 .highlightI h3 {
   font-size: var(--fontSize6);
+  line-height: 133%;
 }
 
 .highlightILinkBlock {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.33rem;
-  height: 3rem;
+  gap: 1rem;
   padding: 0.5rem;
   color: white;
-  border-radius: 1.5rem;
+  border-radius: 3rem;
   background: rgb(98, 0, 234);
   background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
 }
@@ -51,6 +50,7 @@
 
 .crowdfundingIcon,
 .rightArrowIcon {
+  flex-shrink: 0;
   width: 2rem;
   height: 2rem;
   display: grid;
