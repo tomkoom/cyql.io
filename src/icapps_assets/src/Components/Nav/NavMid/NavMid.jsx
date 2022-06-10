@@ -1,30 +1,24 @@
 import React from "react";
 import css from "./NavMid.module.css";
-import k from "../../../../../../k/k";
 
 // components
-import { Logo } from "../../index";
+import { Logo, NavLinks } from "../../index";
 import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
 
 // utils
 import { useWindowSize } from "../../../Utils/UseWindowSize";
 
 // icons
-import { iTwitter, iDiscord, iBars, iFire } from "../../../Icons/Icons";
+import { iTwitter, iDiscord, iBars } from "../../../Icons/Icons";
 
 // navlinks
-import { toHome, toAdmin, toProfile, toSubmit, toUpcoming, toApps } from "../../../Routes/routes";
-
-// auth
-import { useAuth } from "../../../Context/AuthContext";
+import { toHome } from "../../../Routes/routes";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectMobileMenuModal, setMobileMenuModal } from "../../../State/modals";
-import SignInBtn from "../SignInBtn/SignInBtn";
-import NavBtn from "../NavBtn/NavBtn";
 
-const socialLinks = [
+const socLinks = [
   {
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
@@ -41,7 +35,6 @@ const socialLinks = [
 
 const NavMid = () => {
   const [deviceWidth] = useWindowSize();
-  const { user } = useAuth();
 
   const dispatch = useDispatch();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
@@ -62,8 +55,8 @@ const NavMid = () => {
 
         {/* soclinks */}
         <ul className={css.socLinks}>
-          {socialLinks.map(({ name, link, icon }, i) => (
-            <li className={css.socLinks__i} data-smlink={name} key={i}>
+          {socLinks.map(({ name, link, icon }, i) => (
+            <li className={css.socLinksI} data-link={name} key={i}>
               <a href={link} target="_blank" rel="noopener noreferrer">
                 {icon}
               </a>
@@ -81,39 +74,7 @@ const NavMid = () => {
       {deviceWidth < 1024 && mobileMenuModal && <NavMobileMenu />}
 
       {/* navlinks */}
-      <ul className={css.navlinks}>
-        <li className={css.navlinksI}>
-          <NavBtn btnName="Projects" navTo={toApps} icon="" />
-        </li>
-
-        <li className={css.navlinksI}>
-          <NavBtn btnName="Upcoming NFT Sales" navTo={toUpcoming} icon={iFire} />
-        </li>
-
-        <li className={css.navlinksI}>
-          <NavBtn btnName="Submit" navTo={toSubmit} icon="" />
-        </li>
-
-        {user && (
-          <li className={css.navlinksI}>
-            <NavBtn btnName="Profile" navTo={toProfile} icon="" />
-          </li>
-        )}
-
-        {((user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2)) && (
-          <li className={css.navlinksI}>
-            <NavBtn btnName="Admin" navTo={toAdmin} icon="" />
-          </li>
-        )}
-
-        {!user && (
-          <li className={css.navlinksI}>
-            <div id={css.signInBtn}>
-              <SignInBtn />
-            </div>
-          </li>
-        )}
-      </ul>
+      <NavLinks type="nav" />
     </div>
   );
 };

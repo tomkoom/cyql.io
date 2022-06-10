@@ -13,6 +13,7 @@ export { default as SignInModal } from "./Modals/SignInModal/SignInModal";
 
 // nav & footer
 export { default as Nav } from "./Nav/Nav";
+export { default as NavLinks } from "./NavLinks/NavLinks";
 export { default as Footer } from "./Footer/Footer";
 
 // other

@@ -1,0 +1,29 @@
+/* navlinks */
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* if mobile then vertical direction */
+.navMobile {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.navMobile > div {
+  padding: 0.5rem;
+}
+
+.navMobile > button {
+  margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 1023px) {
+  .nav {
+    display: none;
+  }
+}

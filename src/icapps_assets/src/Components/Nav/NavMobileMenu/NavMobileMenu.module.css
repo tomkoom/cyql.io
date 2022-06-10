@@ -24,17 +24,17 @@
   border-radius: 1.5rem;
 }
 
-.navlist {
+.nav {
   margin: 0.5rem 0;
 }
 
-.navlist ul {
+.nav ul {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.navlist ul li {
+.nav ul li {
   color: var(--primaryColor);
   line-height: 150%;
   font-size: var(--fontSize6);
