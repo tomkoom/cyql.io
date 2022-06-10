@@ -18,30 +18,28 @@ const FooterMid = () => {
   return (
     <div className={css.footerMid}>
       {/* logo */}
-      <div className={css.footerMid__i}>
-        <div className={css.footerMid__i__logo} onClick={toHome}>
+      <div className={css.footerMidI}>
+        <div className={css.logo} onClick={toHome}>
           <Logo />
         </div>
       </div>
 
-      {/* nav list */}
-      <div className={css.footerMid__i}>
-        <ul className={css.footerMid__i__navList}>
+      {/* navlinks */}
+      <div className={css.footerMidI}>
+        <ul className={css.navlinks}>
           {navLinks.map(({ name, link }, i) => (
-            <li key={i}>
-              <button className={`${css.footerMid__i__navList__i} navlink`} onClick={() => link()}>
-                {name}
-              </button>
+            <li className={css.navlinksI} onClick={() => link()} key={i}>
+              {name}
             </li>
           ))}
         </ul>
       </div>
 
-      {/* soc Links */}
-      <div className={css.footerMid__i}>
-        <ul className={css.footerMid__i__socLinks}>
+      {/* soclinks */}
+      <div className={css.footerMidI}>
+        <ul className={css.soclinks}>
           {socLinks.map(({ id, link, icon }) => (
-            <li className={css.footerMid__i__socLinks__i} key={id}>
+            <li className={css.soclinksI} key={id}>
               <a href={link} id={id} rel="noreferrer noopener" target="_blank">
                 {icon}
               </a>
