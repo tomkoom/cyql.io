@@ -53,6 +53,10 @@
 /* responsive */
 
 @media screen and (max-width: 1023px) {
+  .footerMid {
+    flex-direction: column;
+  }
+
   .footerMidI {
     text-align: center;
     margin: auto;

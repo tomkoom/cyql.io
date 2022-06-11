@@ -1,11 +1,17 @@
 /* navlinks */
 
-.nav {
+/* main & footer */
+
+.nav,
+.footer {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+/* mobile */
 
 /* if mobile then vertical direction */
 .navMobile {
@@ -23,6 +29,7 @@
 }
 
 @media screen and (max-width: 1023px) {
+  /* hide main */
   .nav {
     display: none;
   }

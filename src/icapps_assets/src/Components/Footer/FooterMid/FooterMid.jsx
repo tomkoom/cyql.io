@@ -7,7 +7,9 @@ import { iTwitter, iDiscord } from "../../../Icons/Icons";
 
 // routes
 import { toHome } from "../../../Routes/routes";
-import { navLinks } from "../../../Routes/navLinks";
+
+// components
+import { NavLinks } from "../../index";
 
 const socLinks = [
   { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
@@ -25,15 +27,7 @@ const FooterMid = () => {
       </div>
 
       {/* navlinks */}
-      <div className={css.footerMidI}>
-        <ul className={css.navlinks}>
-          {navLinks.map(({ name, link }, i) => (
-            <li className={css.navlinksI} onClick={() => link()} key={i}>
-              {name}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <NavLinks type="footer" />
 
       {/* soclinks */}
       <div className={css.footerMidI}>

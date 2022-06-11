@@ -108,12 +108,6 @@ body {
   cursor: pointer;
 }
 
-.divider {
-  height: 1px;
-  width: 100%;
-  box-shadow: var(--underline);
-}
-
 .pageTitle {
   font-size: var(--fontSize2);
   margin-bottom: 0.5rem;

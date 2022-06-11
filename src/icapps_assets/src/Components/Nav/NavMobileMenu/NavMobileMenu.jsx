@@ -17,7 +17,7 @@ const NavMobile = () => {
   return (
     <div className={css.navMenuMobile} onClick={() => dispatch(setMobileMenuModal(false))}>
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
-        <div className={css.nav}>
+        <div className={css.linksContainer}>
           <NavLinks type="navMobile" />
 
           <div className={css.socIcons}>

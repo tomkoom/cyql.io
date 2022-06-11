@@ -3,10 +3,10 @@
 .footer {
   width: 100%;
   padding: 2rem 2rem 4rem 2rem;
-  box-shadow: var(--overline);
+  box-shadow: 0 -1px 0 0 var(--underlay);
 }
 
-.footer__content {
+.content {
   max-width: 1440px;
   margin: 0 auto;
   display: flex;

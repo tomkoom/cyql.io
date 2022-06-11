@@ -19,7 +19,17 @@ const NavLinks = ({ type }) => {
   const { user } = useAuth();
 
   return (
-    <div className={type === "nav" ? css.nav : type === "navMobile" ? css.navMobile : null}>
+    <div
+      className={
+        type === "nav"
+          ? css.nav
+          : type === "navMobile"
+          ? css.navMobile
+          : type === "footer"
+          ? css.footer
+          : css.nav
+      }
+    >
       {/* projects */}
       <NavLink label="Projects" navTo={toApps} icon="" />
 

@@ -7,7 +7,7 @@ import { FooterTop, FooterMid, FooterBot } from "./index";
 const Footer = () => {
   return (
     <footer className={css.footer}>
-      <div className={css.footer__content}>
+      <div className={css.content}>
         <FooterTop />
         <FooterMid />
         <FooterBot />
