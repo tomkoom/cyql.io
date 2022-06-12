@@ -15,17 +15,17 @@ import SignInBtn from "./SignInBtn/SignInBtn";
 // auth
 import { useAuth } from "../../Context/AuthContext";
 
-const NavLinks = ({ type }) => {
+const NavLinks = ({ location }) => {
   const { user } = useAuth();
 
   return (
     <div
       className={
-        type === "nav"
+        location === "nav"
           ? css.nav
-          : type === "navMobile"
+          : location === "navMobile"
           ? css.navMobile
-          : type === "footer"
+          : location === "footer"
           ? css.footer
           : css.nav
       }

@@ -53,7 +53,7 @@ const UpcomingNfts = () => {
   };
 
   return (
-    <section className={css.nft}>
+    <div className={css.nft}>
       {/* hero */}
       <div className={css.nft__hero}>
         <h2 className="pageTitle">Upcoming NFT Sales &#38; Airdrops</h2>
@@ -236,7 +236,7 @@ const UpcomingNfts = () => {
       ) : (
         <Loader />
       )}
-    </section>
+    </div>
   );
 };
 

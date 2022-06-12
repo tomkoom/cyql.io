@@ -74,7 +74,7 @@ const NavMid = () => {
       {deviceWidth < 1024 && mobileMenuModal && <NavMobileMenu />}
 
       {/* navlinks */}
-      <NavLinks type="nav" />
+      <NavLinks location="nav" />
     </div>
   );
 };

@@ -19,8 +19,9 @@
 .logo {
   width: 4rem;
   height: 4rem;
-  border-radius: 1rem;
+  flex-shrink: 0;
   object-fit: cover;
+  border-radius: 1rem;
 }
 
 .titletags {

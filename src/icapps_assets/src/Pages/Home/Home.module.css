@@ -6,6 +6,15 @@ section {
 
 /* hero */
 
+.home__hero {
+  margin: 1rem 0;
+}
+
+.home__hero h2 {
+  max-width: 36rem;
+  letter-spacing: -1px;
+}
+
 .home__hero p {
   margin-top: 0.25rem;
   max-width: 24rem;
@@ -18,7 +27,6 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin: -1rem 0;
 }
 
 .highlightI {

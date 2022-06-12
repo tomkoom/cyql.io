@@ -27,7 +27,7 @@ const FooterMid = () => {
       </div>
 
       {/* navlinks */}
-      <NavLinks type="footer" />
+      <NavLinks location="footer" />
 
       {/* soclinks */}
       <div className={css.footerMidI}>

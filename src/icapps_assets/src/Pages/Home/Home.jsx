@@ -10,7 +10,7 @@ import { toApps, toUpcoming } from "../../Routes/routes";
 // components
 import { JoinCommunity, NftSales, HighlightedProjects } from "./index";
 
-// redux
+// state
 import { useSelector } from "react-redux";
 import { selectProjects, selectNFTs } from "../../State/projects";
 
@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <main className={css.home}>
       <section className={css.home__hero}>
-        <h2 className="pageTitle">IC projects community portal</h2>
+        <h2 className="pageTitle">Internet Computer projects community portal 🌀</h2>
         <p className="bodyText">
           Discover new apps, keep an eye out for upcoming NFT sales, compare NFT collections stats
           and more.
