@@ -40,7 +40,7 @@ const Home = () => {
         <div className={css.highlightI}>
           <a
             className={css.highlightILinkBlock}
-            href="https://tomkoom.notion.site/icApps-Crowdfunding-FAQ-1be4107b7e454c05bb9793b63156cfc1"
+            href="https://kn5ky-6iaaa-aaaai-qbikq-cai.ic0.app/project.html?projectId=26"
             target="_blank"
             rel="noreferrer noopener"
           >
