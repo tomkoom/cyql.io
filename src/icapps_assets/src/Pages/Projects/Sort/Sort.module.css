@@ -2,8 +2,6 @@
 
 .sort {
   position: relative;
-  width: auto;
-  width: 12.25rem;
 }
 
 .sortBtn {
@@ -16,7 +14,6 @@
   background-color: var(--underlay);
   padding: 0.66rem 0.75rem;
   border-radius: 0.66rem;
-  width: 100%;
 }
 
 .sortBtn:hover {
@@ -25,7 +22,6 @@
 
 .sortBtnOpt {
   font-weight: var(--bold);
-  margin-left: auto;
 }
 
 .angleDownIcon,
@@ -42,7 +38,6 @@
   background-color: var(--underlay);
   padding: 0.5rem;
   border-radius: 0.66rem;
-  width: 100%;
 }
 
 .sortSelect li {

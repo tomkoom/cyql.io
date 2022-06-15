@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
-import { iAngleDown, iCheck } from "../../../Icons/Icons";
 import css from "./Sort.module.css";
+
+// icons
+import { iAngleDown, iCheck } from "../../../Icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
