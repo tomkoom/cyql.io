@@ -39,7 +39,7 @@ const Sort = () => {
     <div className={css.sort}>
       {!sortModal ? (
         <button className={css.sortBtn} onClick={() => dispatch(setSortModal(true))}>
-          <p>Order by: </p>
+          <p className={css.orderBy}>Order by: </p>
           <p className={css.sortBtnOpt}>
             {sort === "date" && "Date added"}
             {sort === "upvotes" && "Popularity"}

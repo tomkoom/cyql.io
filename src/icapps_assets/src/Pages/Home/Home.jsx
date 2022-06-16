@@ -47,7 +47,7 @@ const Home = () => {
             <div className={css.crowdsaleInfo}>
               <span className={css.crowdfundingIcon}>🐋</span>
               <div>
-                <h3>We are holding a Crowdsale on Wednesday, June 15</h3>
+                <h3>Support icApps on the Crowdfunding Campaign 💣</h3>
               </div>
             </div>
             <span className={css.rightArrowIcon}>{iArrowRight}</span>

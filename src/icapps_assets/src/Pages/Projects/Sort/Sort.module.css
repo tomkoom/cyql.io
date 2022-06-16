@@ -4,20 +4,28 @@
   position: relative;
 }
 
+.sortBtn,
+.sortSelect {
+  background-color: var(--underlay);
+  border-radius: 0.66rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .sortBtn {
   display: flex;
   align-items: center;
-  align-self: flex-start;
   gap: 0.25rem;
-  position: absolute;
-  color: var(--primaryColor);
-  background-color: var(--underlay);
   padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
 }
 
 .sortBtn:hover {
   background-color: var(--underlay2);
+}
+
+.orderBy {
+  color: var(--secondaryColor);
 }
 
 .sortBtnOpt {
@@ -26,18 +34,24 @@
 
 .angleDownIcon,
 .checkIcon {
-  color: var(--tertiaryColor);
   margin-left: 0.33rem;
 }
 
+.angleDownIcon {
+  color: var(--tertiaryColor);
+}
+
+.checkIcon {
+  color: var(--colorGreen);
+}
+
+/* sort select */
+
 .sortSelect {
-  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  background-color: var(--underlay);
   padding: 0.5rem;
-  border-radius: 0.66rem;
 }
 
 .sortSelect li {
