@@ -48,8 +48,8 @@
   line-height: 150%;
   word-break: break-all;
   margin-top: 0.5rem;
-  background-color: var(--underlay2);
-  border-radius: 0.75rem;
+  box-shadow: 0 0 0 1px var(--underlay2);
+  border-radius: 0.5rem;
 }
 
 .footerTopI__donation p span a:hover {
