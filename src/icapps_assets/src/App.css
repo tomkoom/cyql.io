@@ -9,6 +9,10 @@ html {
   font-size: 17px; /* Root font size */
 }
 
+body {
+  background-color: var(--primaryColor);
+}
+
 .container768,
 .container1440 {
   margin: 0 auto;
@@ -52,10 +56,6 @@ button {
 
 ul {
   list-style-type: none;
-}
-
-body {
-  background-color: var(--primaryColor);
 }
 
 ::placeholder {
