@@ -28,37 +28,34 @@ const Home = () => {
 
   return (
     <main className={css.home}>
-      <section className={css.home__hero}>
-        <h2 className="pageTitle">Internet Computer projects community portal 🌀</h2>
-        <p className="bodyText">
-          Discover new apps, keep an eye out for upcoming NFT sales, compare NFT collections stats
-          and more.
-        </p>
+      <section className={css.hero}>
+        <h2 className={`${css.homeTitle} pageTitle`}>
+          Internet Computer projects community portal 🌀
+        </h2>
+        <p className="text">Discover new apps, keep an eye out for upcoming NFT sales and more.</p>
       </section>
 
-      <div className={css.home__highlights}>
-        <div className={css.highlightI}>
+      <div className={css.highlights}>
+        <div className={css.highlightsI}>
           <a
-            className={css.highlightILinkBlock}
-            href="https://kn5ky-6iaaa-aaaai-qbikq-cai.ic0.app/project.html?projectId=26"
+            className={css.highlightsILinkBlock}
+            href="https://entrepot.app/marketplace/ic-apps"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <div className={css.crowdsaleInfo}>
-              <span className={css.crowdfundingIcon}>🐋</span>
-              <div>
-                <h3>We are running a Crowdfunding 💣</h3>
-              </div>
+            <div className={css.highlightsInfo}>
+              <span className={css.highlightsIcon}>🐋</span>
+              <h3>icApps NFTs are tradable on Entrepot</h3>
             </div>
             <span className={css.rightArrowIcon}>{iArrowRight}</span>
           </a>
         </div>
-        <div className={css.highlightI}></div>
+        <div className={css.highlightsI}></div>
       </div>
 
       {/* recently added apps */}
       <section className={css.home__apps}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Recently added apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -71,7 +68,7 @@ const Home = () => {
 
       {/* recently added nfts */}
       <section className={css.home__apps}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Recently added NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -84,7 +81,7 @@ const Home = () => {
 
       {/* popular apps */}
       <section className={css.home__apps}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Popular apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -101,7 +98,7 @@ const Home = () => {
 
       {/* popular nfts */}
       <section className={css.home__apps}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Popular NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -118,7 +115,7 @@ const Home = () => {
 
       {/* upcoming nft sales */}
       <section className={css.home__upcomingNfts}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Upcoming NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
@@ -128,7 +125,7 @@ const Home = () => {
 
       {/* ongoing nft sales */}
       <section className={css.home__upcomingNfts}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Ongoing NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
@@ -138,7 +135,7 @@ const Home = () => {
 
       {/* join community */}
       <section className={css.home__nftCollections}>
-        <div className={css.home__section__title}>
+        <div className={css.sectionTitle}>
           <h3>Join icApps community</h3>
         </div>
         <JoinCommunity />

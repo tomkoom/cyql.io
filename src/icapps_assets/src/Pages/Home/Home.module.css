@@ -6,39 +6,38 @@ section {
 
 /* hero */
 
-.home__hero {
+.homeTitle {
+  line-height: 110%;
+  max-width: 36rem;
+}
+
+.hero {
   margin: 1rem 0;
 }
 
-.home__hero h2 {
-  max-width: 36rem;
-  letter-spacing: -1px;
-}
-
-.home__hero p {
+.hero p {
   margin-top: 0.25rem;
-  max-width: 24rem;
   color: var(--secondaryColor);
 }
 
 /* highlights */
 
-.home__highlights {
+.highlights {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
 }
 
-.highlightI {
+.highlightsI {
   flex: 1;
 }
 
-.highlightI h3 {
+.highlightsI h3 {
   font-size: var(--fontSize6);
   line-height: 133%;
 }
 
-.highlightILinkBlock {
+.highlightsILinkBlock {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,13 +49,13 @@ section {
   background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
 }
 
-.crowdsaleInfo {
+.highlightsInfo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.crowdfundingIcon,
+.highlightsIcon,
 .rightArrowIcon {
   flex-shrink: 0;
   width: 2rem;
@@ -66,7 +65,7 @@ section {
   border-radius: 50%;
 }
 
-.crowdfundingIcon {
+.highlightsIcon {
   font-size: var(--fontSize5);
 }
 
@@ -74,33 +73,29 @@ section {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-.crowdsaleInfo p {
-  font-size: 0.9rem;
-}
-
 /* sections */
 
-.home__section__title {
+.sectionTitle {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
 
-.home__section__title h3 {
+.sectionTitle h3 {
   font-size: var(--fontSize4);
 }
 
 .viewAll {
   font-size: 0.9rem;
-  font-weight: var(--bold);
+  font-weight: var(--fwBold);
   padding: 0.5rem 0;
 }
 
 /* responsive */
 
 @media screen and (max-width: 1023px) {
-  .home__highlights {
+  .highlights {
     flex-direction: column;
   }
 }

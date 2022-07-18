@@ -1,6 +1,6 @@
 /* root */
 
-@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 :root {
   /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
@@ -39,20 +39,18 @@
 
   /* font-weight fw */
 
+  --fwBlack: 900;
+  --fwExtraBold: 800;
+  --fwBold: 700;
+  --fwSemiBold: 600;
+  --fwMedium: 500;
+  --fwRegular: 400;
+
   --black: 800;
   --bold: 700;
   --medium: 400;
-  --light: 300;
-  --extraLight: 200;
 
   /* font-family */
 
-  --fontFamily: "Karla", sans-serif;
-
-  /* border-radius */
-
-  --br0125: 0.125rem;
-  --br025: 0.25rem;
-  --br05: 0.5rem;
-  --br1: 1rem;
+  --fontFamily: "Inter", sans-serif;
 }
