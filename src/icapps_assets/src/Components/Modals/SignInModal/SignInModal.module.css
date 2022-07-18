@@ -23,24 +23,68 @@
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 2rem;
   background-color: var(--background);
   color: var(--primaryColor);
   margin: 1rem;
   max-width: 24rem;
 }
 
-.timesWrapper {
-  width: 100%;
-  text-align: right;
+.top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.timesWrapper span {
-  font-size: var(--fontSize5);
+.title {
+  font-size: var(--fontSize4);
+}
+
+.times {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  border-radius: 50%;
   cursor: pointer;
+  flex-shrink: 0; /* don't shrink */
+}
+
+.plugBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  font-size: var(--fontSize5);
+}
+
+.plugBtn:hover {
+  background-color: var(--underlay);
+}
+
+.plugBtn div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.plugBtn div img {
+  width: 2.5rem;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  display: grid;
+  place-items: center;
+  color: var(--secondaryColor);
 }
 
 .twitterBtn {
@@ -50,9 +94,8 @@
   color: white;
   background-color: var(--colorTwitter);
   font-size: var(--fontSize6);
-  font-weight: var(--bold);
   padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
 }

@@ -6,7 +6,7 @@
 }
 
 html {
-  font-size: 17px; /* Root font size */
+  font-size: 16px; /* root font size */
 }
 
 body {
@@ -48,6 +48,7 @@ a {
 button {
   color: var(--primaryColor);
   font-size: var(--fontSize6);
+  font-weight: var(--fwExtraBold);
   text-align: left;
   background-color: transparent;
   cursor: pointer;
@@ -173,7 +174,7 @@ ul {
 
 @media screen and (max-width: 1023px) {
   html {
-    font-size: 16px; /* Root font size */
+    font-size: 15px; /* Root font size */
   }
 
   .app__content {

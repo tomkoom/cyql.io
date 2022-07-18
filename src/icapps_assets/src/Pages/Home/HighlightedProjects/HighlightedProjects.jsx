@@ -37,7 +37,7 @@ const HighlightedProjects = ({ projects }) => {
 
                   <ul>
                     {project.category && <li>{project.category}</li>}
-                    {project.canister && <li>{iDatabase}&nbsp;&nbsp;Hosted on IC</li>}
+                    {project.canister && <li>{iDatabase}&nbsp;&nbsp;On-Chain</li>}
                     {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
                   </ul>
 

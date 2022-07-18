@@ -2,7 +2,7 @@ import React from "react";
 import css from "./SignInModal.module.css";
 
 // icons
-import { iTimes, iTwitter } from "../../../Icons/Icons";
+import { iAngleRight, iTimes, iTwitter } from "../../../Icons/Icons";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
@@ -26,15 +26,29 @@ const SignInModal = () => {
         className={signInModal ? `${css.content} ${css.active}` : css.content}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={css.timesWrapper}>
-          <span onClick={() => dispatch(setSignInModal(false))}>{iTimes}</span>
+        <div className={css.top}>
+          <h3 className={css.title}>Choose your wallet</h3>
+          <div className={css.times} onClick={() => dispatch(setSignInModal(false))}>
+            {iTimes}
+          </div>
         </div>
-        <h3>Sign in to icApps</h3>
+
+        {/* <button className={css.plugBtn}>
+          <div>
+            <img
+              src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.png"
+              alt="plugwallet-logo"
+            />{" "}
+            Plug
+          </div>
+          <div className={css.icon}>{iAngleRight}</div>
+        </button> */}
+
         <button className={css.twitterBtn} onClick={signInWithTwitter}>
           <span>{iTwitter}</span> Continue with Twitter
         </button>
-        <div className="divider" />
-        <p className="bodyText">Other sign in options coming soon</p>
+
+        <p className="text">Other wallets support coming soon</p>
       </div>
     </div>
   );

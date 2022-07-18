@@ -32,7 +32,7 @@
 
 .description {
   font-size: 0.9rem;
-  line-height: 133%;
+  line-height: 150%;
   color: var(--secondaryColor);
 }
 
@@ -52,11 +52,11 @@
 }
 
 .titletags ul li {
-  padding: 0.125rem 0.25rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   display: flex;
   align-items: center;
-  font-weight: var(--bold);
+  font-weight: var(--fwBold);
   color: var(--primaryColor);
   background-color: var(--underlay);
 }
