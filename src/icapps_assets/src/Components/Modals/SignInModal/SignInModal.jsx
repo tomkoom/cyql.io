@@ -15,7 +15,7 @@ const SignInModal = () => {
   const dispatch = useDispatch();
   const signInModal = useSelector(selectSignInModal);
 
-  const { signInWithTwitter } = useAuth();
+  const { signInWithTwitter, signInWithPlug, signInWithStoic } = useAuth();
 
   return (
     <div
@@ -33,7 +33,7 @@ const SignInModal = () => {
           </div>
         </div>
 
-        {/* <button className={css.plugBtn}>
+        <button className={css.plugBtn} onClick={signInWithPlug}>
           <div>
             <img
               src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.png"
@@ -42,13 +42,15 @@ const SignInModal = () => {
             Plug
           </div>
           <div className={css.icon}>{iAngleRight}</div>
-        </button> */}
+        </button>
 
-        <button className={css.twitterBtn} onClick={signInWithTwitter}>
+        <button className={css.twitterBtn} onClick={signInWithStoic}>
           <span>{iTwitter}</span> Continue with Twitter
         </button>
 
-        <p className="text">Other wallets support coming soon</p>
+        <hr className={css.div} />
+
+        <p className={`${css.btmText} text`}>Other wallets support coming soon</p>
       </div>
     </div>
   );

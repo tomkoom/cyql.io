@@ -48,23 +48,3 @@
   color: white;
   background-color: #5865f2;
 }
-
-/* navlist */
-
-.menuBtn {
-  display: none;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: var(--fontSize5);
-  cursor: pointer;
-  color: var(--primaryColor);
-}
-
-/* responsive */
-
-@media screen and (max-width: 1023px) {
-  .menuBtn {
-    display: grid;
-    place-items: center;
-  }
-}

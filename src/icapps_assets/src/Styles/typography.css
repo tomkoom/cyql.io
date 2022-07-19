@@ -41,7 +41,7 @@ h6 {
 }
 
 .text {
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwRegular);
 }
 
 .subtitle {

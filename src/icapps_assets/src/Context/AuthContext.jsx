@@ -1,79 +1,67 @@
 import React, { createContext, useContext, useState } from "react";
 
-// firebase
-import { auth } from "../../../../firebase/firebase-config";
-import { TwitterAuthProvider, signOut, signInWithPopup } from "firebase/auth";
-
-// ii
-import { AuthClient } from "@dfinity/auth-client";
-import { Actor, HttpAgent } from "@dfinity/agent";
-
-// backend canister
+// idl
 import { idlFactory, canisterId } from "../../../declarations/icapps/index";
 
 // routes
 import { history } from "../Routes/history";
 import { toHome } from "../Routes/routes";
 
+// state
+import { useDispatch } from "react-redux";
+import { setSignInModal } from "../State/modals";
+
 const AuthContext = createContext();
 const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// state
-import { useDispatch } from "react-redux";
-import { setSignInModal } from "../State/modals";
+// host
+// if else
+// const host = "https://mainnet.dfinity.network";
+const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(undefined);
-  const [userId, setUserId] = useState(undefined);
+  const [plugActor, setPlugActor] = useState(undefined);
+  const [principalId, setPrincipalId] = useState(undefined);
   const dispatch = useDispatch();
 
-  const signInWithInternetIdentity = async () => {
-    const authClient = await AuthClient.create();
-    await new Promise((resolve, reject) => {
-      authClient.login({
-        onSuccess: resolve,
-        onError: reject,
-      });
-    });
-    const identity = authClient.getIdentity();
-    const agent = new HttpAgent({ identity });
-    const actor = Actor.createActor(idlFactory, {
-      agent: agent,
-      canisterId: canisterId,
-    });
-    const principal = await actor.whoami();
-    setUserId(principal);
-    dispatch(setSignInModal(false));
-  };
-
-  const signInWithTwitter = async () => {
-    const provider = new TwitterAuthProvider();
+  const signInWithPlug = async () => {
     try {
-      const userCred = await signInWithPopup(auth, provider);
-      const user = userCred.user;
-      setUser(user);
+      await window.ic.plug.requestConnect({
+        whitelist: [canisterId],
+        host,
+      });
+      createActor();
       dispatch(setSignInModal(false));
     } catch (err) {
-      console.log(err.message);
+      console.log(err);
     }
   };
 
+  const createActor = async () => {
+    const actor = await window.ic.plug.createActor({
+      canisterId: canisterId,
+      interfaceFactory: idlFactory,
+    });
+    setPlugActor(actor);
+    const principalId = await window.ic.plug.agent.getPrincipal();
+    setPrincipalId(principalId);
+  };
+
   const logOut = () => {
-    signOut(auth)
-      .then(() => history.location.pathname === "/profile" && toHome())
-      .catch((err) => {
-        console.log(err);
-      });
+    setPlugActor(undefined);
+    setPrincipalId(undefined);
+    if (history.location.pathname === "/profile") {
+      toHome();
+    }
   };
 
   const value = {
-    user,
-    userId,
-    setUser,
-    signInWithTwitter,
-    signInWithInternetIdentity,
+    // plug
+    plugActor,
+    principalId,
+    signInWithPlug,
     logOut,
   };
 

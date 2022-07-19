@@ -1,0 +1,15 @@
+/* desktop navlink */
+
+.navlink {
+  font-weight: var(--fwMedium);
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+.navlink:hover {
+  box-shadow: 0px 2px 0px 0px var(--primaryColor);
+}
+
+.icon {
+  color: var(--highlightColor2);
+}

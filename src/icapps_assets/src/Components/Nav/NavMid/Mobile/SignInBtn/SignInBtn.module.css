@@ -1,0 +1,5 @@
+.signInBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.44rem;
+}

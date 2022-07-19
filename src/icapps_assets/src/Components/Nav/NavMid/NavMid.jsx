@@ -2,14 +2,14 @@ import React from "react";
 import css from "./NavMid.module.css";
 
 // components
-import { Logo, NavLinks } from "../../index";
-import NavMobileMenu from "../NavMobileMenu/NavMobileMenu";
+import { Logo } from "../../index";
+import { Desktop, Mobile } from "./index";
 
 // utils
 import { useWindowSize } from "../../../Utils/UseWindowSize";
 
 // icons
-import { iTwitter, iDiscord, iBars } from "../../../Icons/Icons";
+import { iTwitter, iDiscord } from "../../../Icons/Icons";
 
 // navlinks
 import { toHome } from "../../../Routes/routes";
@@ -65,16 +65,7 @@ const NavMid = () => {
         </ul>
       </div>
 
-      {/* menu btn */}
-      <div className={css.menuBtn} onClick={() => dispatch(setMobileMenuModal(true))}>
-        {iBars}
-      </div>
-
-      {/* open mobile menu if width is less than 1024 */}
-      {deviceWidth < 1024 && mobileMenuModal && <NavMobileMenu />}
-
-      {/* navlinks */}
-      <NavLinks location="nav" />
+      {deviceWidth > 1023 ? <Desktop /> : <Mobile />}
     </div>
   );
 };
