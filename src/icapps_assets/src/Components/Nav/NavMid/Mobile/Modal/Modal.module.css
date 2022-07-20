@@ -3,7 +3,6 @@
 .modal {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   left: 0;
@@ -17,27 +16,17 @@
 .content {
   display: flex;
   align-items: flex-start;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 3rem;
+  padding: 1rem;
   background-color: var(--background);
-  border-radius: 1.5rem;
+  border: 1px solid var(--underlay);
+  border-radius: 1rem;
 }
 
 .main {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.closeBtn {
-  display: grid;
-  place-items: center;
-  font-size: var(--fontSize5);
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 }
 
 /* soclinks */

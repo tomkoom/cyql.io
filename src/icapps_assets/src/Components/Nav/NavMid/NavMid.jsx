@@ -31,6 +31,7 @@ const socLinks = [
     icon: iDiscord,
     color: "#5865f2",
   },
+  // add medium & entrepot
 ];
 
 const NavMid = () => {

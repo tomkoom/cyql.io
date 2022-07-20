@@ -2,14 +2,14 @@ import React from "react";
 import css from "./SignInBtn.module.css";
 
 // icons
-import { iSignIn } from "../../../Icons/Icons";
+import { iSignIn } from "../../../../../Icons/Icons";
 
 // auth
-import { useAuth } from "../../../Context/AuthContext";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../../../State/modals";
+import { setSignInModal } from "../../../../../State/modals";
 
 const SignInBtn = () => {
   const dispatch = useDispatch();

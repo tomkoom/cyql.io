@@ -1,0 +1,31 @@
+/* cross icon */
+
+.cross {
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.crossIcon {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.crossIcon:before,
+.crossIcon:after {
+  position: absolute;
+  left: 10px;
+  content: "";
+  height: 1.5rem;
+  width: 2px;
+  border-radius: 1px;
+  background-color: var(--primaryColor);
+}
+
+.crossIcon:before {
+  transform: rotate(45deg);
+}
+
+.crossIcon:after {
+  transform: rotate(-45deg);
+}

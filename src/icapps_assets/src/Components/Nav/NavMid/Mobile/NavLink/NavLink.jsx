@@ -18,7 +18,7 @@ const NavLink = ({ label, to, icon }) => {
 
   return (
     <div className={css.navlink} onClick={navigate}>
-      {icon && <span className={css.icon}>{icon}</span>} {label}
+      {icon && <span className={css.icon}>{icon}</span>} <p className={css.label}>{label}</p>
     </div>
   );
 };

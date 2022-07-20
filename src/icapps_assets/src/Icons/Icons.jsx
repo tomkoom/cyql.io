@@ -11,6 +11,7 @@ import {
   faArrowLeft,
   faArrowRight,
   faDatabase,
+  faPlus,
   faPlusSquare,
   faComments,
   faHeart,
@@ -25,6 +26,7 @@ import {
   faAngleDown,
   faAngleLeft,
   faSignInAlt,
+  faInfinity,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -45,6 +47,7 @@ const iMoon = <FontAwesomeIcon icon={faMoon} />;
 const iArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
 const iDatabase = <FontAwesomeIcon icon={faDatabase} />;
+const iPlus = <FontAwesomeIcon icon={faPlus} />;
 const iPlusSquare = <FontAwesomeIcon icon={faPlusSquare} />;
 const iComments = <FontAwesomeIcon icon={faComments} />;
 const iHeart = <FontAwesomeIcon icon={faHeart} />;
@@ -59,6 +62,7 @@ const iAngleRight = <FontAwesomeIcon icon={faAngleRight} />;
 const iAngleDown = <FontAwesomeIcon icon={faAngleDown} />;
 const iAngleLeft = <FontAwesomeIcon icon={faAngleLeft} />;
 const iSignIn = <FontAwesomeIcon icon={faSignInAlt} />;
+const iInfinity = <FontAwesomeIcon icon={faInfinity} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -79,6 +83,7 @@ export {
   iArrowLeft,
   iArrowRight,
   iDatabase,
+  iPlus,
   iPlusSquare,
   iComments,
   iHeart,
@@ -93,6 +98,7 @@ export {
   iAngleDown,
   iAngleLeft,
   iSignIn,
+  iInfinity,
   // brands
   iTwitter,
   iDiscord,

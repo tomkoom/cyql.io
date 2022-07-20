@@ -1,9 +1,15 @@
 /* mobile navlink */
 
 .navlink {
-  font-weight: var(--fwMedium);
-  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
   cursor: pointer;
+}
+
+.label {
+  font-weight: var(--fwMedium);
 }
 
 .navlink:hover {
@@ -11,5 +17,9 @@
 }
 
 .icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
   color: var(--highlightColor2);
 }
