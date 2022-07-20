@@ -70,9 +70,9 @@ ul {
 .primaryBtn,
 .secondaryBtn,
 .alertBtn {
-  font-weight: var(--bold);
+  font-weight: var(--fwMedium);
   padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
+  border-radius: 0.5rem;
 }
 
 .primaryBtn {

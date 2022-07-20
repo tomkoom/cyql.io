@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./SignInModal.module.css";
 
+// components
+import CrossIcon from "../../../Icons/CrossIcon/CrossIcon";
+
 // icons
 import { iAngleRight, iTimes, iTwitter } from "../../../Icons/Icons";
 
@@ -28,9 +31,7 @@ const SignInModal = () => {
       >
         <div className={css.top}>
           <h3 className={css.title}>Choose your wallet</h3>
-          <div className={css.times} onClick={() => dispatch(setSignInModal(false))}>
-            {iTimes}
-          </div>
+          <CrossIcon onClick={() => dispatch(setSignInModal(false))} />
         </div>
 
         <button className={css.plugBtn} onClick={signInWithPlug}>

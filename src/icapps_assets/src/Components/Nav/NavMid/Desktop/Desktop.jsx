@@ -6,6 +6,7 @@ import { iFire } from "../../../../Icons/Icons";
 
 // components
 import NavLink from "./NavLink/NavLink";
+import SignInBtn from "./SignInBtn/SignInBtn";
 
 // routes
 import { toApps, toUpcoming, toSubmit } from "../../../../Routes/routes";
@@ -16,6 +17,8 @@ const Desktop = () => {
       <NavLink label="Projects" to={toApps} icon="" />
       <NavLink label="Upcoming NFT Sales" to={toUpcoming} icon={iFire} />
       <NavLink label="Submit" to={toSubmit} icon="" />
+
+      <SignInBtn />
 
       {/* profile (protected) */}
       {/* {user && <NavLink label="Profile" navTo={toProfile} icon="" />} */}

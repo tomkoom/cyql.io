@@ -21,7 +21,7 @@ const SignInBtn = () => {
       onClick={() => dispatch(setSignInModal(true))}
     >
       <span>{iSignIn}</span>
-      Connect wallet
+      Connect Wallet
     </button>
   );
 };
