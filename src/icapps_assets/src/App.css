@@ -48,7 +48,7 @@ a {
 button {
   color: var(--primaryColor);
   font-size: var(--fontSize6);
-  font-weight: var(--fwExtraBold);
+  font-weight: var(--fwMedium);
   text-align: left;
   background-color: transparent;
   cursor: pointer;

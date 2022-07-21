@@ -2,7 +2,7 @@ import React from "react";
 import css from "./SignInModal.module.css";
 
 // icons
-import { iAngleRight, iTwitter } from "../../../Icons/Icons";
+import { iAngleRight } from "../../../Icons/Icons";
 import CrossIcon from "../../../Icons/CrossIcon/CrossIcon";
 
 // auth
@@ -14,9 +14,9 @@ import { selectSignInModal, setSignInModal } from "../../../State/modals";
 
 const SignInModal = () => {
   const dispatch = useDispatch();
-  const signInModal = useSelector(selectSignInModal);
+  const { signInWithPlug } = useAuth();
 
-  const { signInWithTwitter, signInWithPlug } = useAuth();
+  const signInModal = useSelector(selectSignInModal);
 
   return (
     <div
@@ -44,12 +44,7 @@ const SignInModal = () => {
           <div className={css.icon}>{iAngleRight}</div>
         </button>
 
-        <button className={css.twitterBtn} onClick={signInWithTwitter}>
-          <span>{iTwitter}</span> Continue with Twitter
-        </button>
-
         <hr className={css.div} />
-
         <p className={css.btmText}>Other wallets support coming soon</p>
       </div>
     </div>

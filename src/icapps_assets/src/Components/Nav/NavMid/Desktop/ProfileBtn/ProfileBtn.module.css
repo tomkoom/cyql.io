@@ -5,11 +5,8 @@
   cursor: pointer;
 }
 
-.profileBtn div {
-  display: flex;
-  align-items: center;
-}
-
-.profileBtn p {
-  font-weight: var(--fwMedium);
+.idImg {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
 }
