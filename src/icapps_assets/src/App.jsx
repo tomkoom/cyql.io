@@ -41,54 +41,48 @@ import { setProjects, setNFTs, selectProjects } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-import { setUpvotedProjects } from "./State/upvotedProjects";
 
 const App = () => {
+  // hooks
+  const { principalId, signInMethod } = useAuth();
   const [deviceWidth] = useWindowSize();
-
   const dispatch = useDispatch();
+
+  // selectors
   const theme = useSelector(selectTheme);
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
   const projects = useSelector(selectProjects);
 
-  const { setUser, user } = useAuth();
+  // add user to db
+  const addUserToDB = async (principalId, signInMethod) => {
+    const timestamp = Date.now();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        setUser(user);
-      } else {
-        // User is signed out
-        setUser(undefined);
-      }
-    });
-  }, []);
-
-  const addUserToDB = async (user) => {
-    const userDocRef = doc(usersColRef, user.uid);
-    const u = await getDoc(userDocRef);
-    const userExists = u.data() ? true : false;
+    const userDocRef = doc(usersColRef, principalId);
+    const user = await getDoc(userDocRef);
+    const userExists = user.data() ? true : false;
 
     if (!userExists) {
-      const timestamp = Date.now();
       await setDoc(userDocRef, {
-        displayName: user.displayName,
-        screenName: user.reloadUserInfo.screenName,
-        twitterCreatedAt: user.reloadUserInfo.createdAt,
+        principalId,
+        signInMethod,
         firstSignIn: timestamp,
-      });
+        lastSignIn: timestamp,
+      }).catch((err) => console.log(err));
+      console.log("User created.");
+    } else {
+      await setDoc(userDocRef, {
+        lastSignIn: timestamp,
+      }).catch((err) => console.log(err));
     }
   };
 
-  // check if user is in db, if no then add
   useEffect(() => {
-    if (user) {
-      addUserToDB(user);
+    if (principalId && signInMethod) {
+      addUserToDB(principalId, signInMethod);
     }
-  }, [user]);
+  }, [principalId, signInMethod]);
 
   // get projects and nfts
   useEffect(() => {
@@ -113,16 +107,6 @@ const App = () => {
       unsubscribe();
     };
   }, []);
-
-  // get upvoted projects
-  useEffect(() => {
-    if (user && projects.length > 0) {
-      const upvotedProjects = projects.filter(
-        (project) => project.upvotedBy && project.upvotedBy.find((uid) => uid === user.uid)
-      );
-      dispatch(setUpvotedProjects(upvotedProjects));
-    }
-  }, [projects, user]);
 
   // set icp price
   useEffect(() => {
@@ -187,7 +171,7 @@ const App = () => {
             <Submit />
           </Route>
 
-          {user && (
+          {/* {user && (
             <Route exact path="/profile">
               <Profile />
             </Route>
@@ -197,7 +181,7 @@ const App = () => {
             <Route exact path="/admin">
               <Admin />
             </Route>
-          ) : null}
+          ) : null} */}
 
           <Route path="*">
             <NotFound />

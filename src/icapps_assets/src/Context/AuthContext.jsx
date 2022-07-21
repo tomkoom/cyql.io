@@ -17,13 +17,14 @@ const useAuth = () => {
 };
 
 // host
-// if else
+// if else env
 // const host = "https://mainnet.dfinity.network";
 const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
-  const [plugActor, setPlugActor] = useState(undefined);
-  const [principalId, setPrincipalId] = useState(undefined);
+  const [actor, setActor] = useState(undefined);
+  const [principalId, setPrincipalId] = useState("");
+  const [signInMethod, setSignInMethod] = useState("");
   const dispatch = useDispatch();
 
   const signInWithPlug = async () => {
@@ -32,26 +33,29 @@ export function AuthProvider({ children }) {
         whitelist: [canisterId],
         host,
       });
-      createActor();
+      createActorPlug();
       dispatch(setSignInModal(false));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const createActor = async () => {
-    const actor = await window.ic.plug.createActor({
+  const createActorPlug = async () => {
+    const plugActor = await window.ic.plug.createActor({
       canisterId: canisterId,
       interfaceFactory: idlFactory,
     });
-    setPlugActor(actor);
     const principalId = await window.ic.plug.agent.getPrincipal();
-    setPrincipalId(principalId);
+
+    setActor(plugActor);
+    setPrincipalId(principalId.toText());
+    setSignInMethod("Plug");
   };
 
   const logOut = () => {
     setPlugActor(undefined);
-    setPrincipalId(undefined);
+    setPrincipalId("");
+    setSignInMethod("");
     if (history.location.pathname === "/profile") {
       toHome();
     }
@@ -59,8 +63,9 @@ export function AuthProvider({ children }) {
 
   const value = {
     // plug
-    plugActor,
+    actor,
     principalId,
+    signInMethod,
     signInWithPlug,
     logOut,
   };

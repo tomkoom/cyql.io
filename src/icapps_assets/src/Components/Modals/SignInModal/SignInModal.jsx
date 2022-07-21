@@ -1,11 +1,9 @@
 import React from "react";
 import css from "./SignInModal.module.css";
 
-// components
-import CrossIcon from "../../../Icons/CrossIcon/CrossIcon";
-
 // icons
-import { iAngleRight, iTimes, iTwitter } from "../../../Icons/Icons";
+import { iAngleRight, iTwitter } from "../../../Icons/Icons";
+import CrossIcon from "../../../Icons/CrossIcon/CrossIcon";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
@@ -18,7 +16,7 @@ const SignInModal = () => {
   const dispatch = useDispatch();
   const signInModal = useSelector(selectSignInModal);
 
-  const { signInWithTwitter, signInWithPlug, signInWithStoic } = useAuth();
+  const { signInWithTwitter, signInWithPlug } = useAuth();
 
   return (
     <div
@@ -37,6 +35,7 @@ const SignInModal = () => {
         <button className={css.plugBtn} onClick={signInWithPlug}>
           <div>
             <img
+              className={css.logo}
               src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.png"
               alt="plugwallet-logo"
             />{" "}
@@ -45,13 +44,13 @@ const SignInModal = () => {
           <div className={css.icon}>{iAngleRight}</div>
         </button>
 
-        <button className={css.twitterBtn} onClick={signInWithStoic}>
+        <button className={css.twitterBtn} onClick={signInWithTwitter}>
           <span>{iTwitter}</span> Continue with Twitter
         </button>
 
         <hr className={css.div} />
 
-        <p className={`${css.btmText} text`}>Other wallets support coming soon</p>
+        <p className={css.btmText}>Other wallets support coming soon</p>
       </div>
     </div>
   );

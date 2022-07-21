@@ -75,8 +75,8 @@
   gap: 0.5rem;
 }
 
-.plugBtn div img {
-  width: 2.5rem;
+.logo {
+  width: 2rem;
 }
 
 .icon {
@@ -112,4 +112,5 @@ hr.div {
 
 .btmText {
   color: var(--secondaryColor);
+  margin: 0 auto;
 }

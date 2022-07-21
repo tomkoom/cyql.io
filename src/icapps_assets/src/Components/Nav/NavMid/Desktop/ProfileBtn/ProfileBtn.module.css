@@ -1,0 +1,15 @@
+.profileBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.profileBtn div {
+  display: flex;
+  align-items: center;
+}
+
+.profileBtn p {
+  font-weight: var(--fwMedium);
+}
