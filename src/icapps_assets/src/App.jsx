@@ -51,7 +51,7 @@ const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const App = () => {
   // hooks
-  const { principalId, principalIdStr, signInMethod } = useAuth();
+  const { principalId, principalIdStr, signInMethod, checkPlugConnection } = useAuth();
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
@@ -183,6 +183,11 @@ const App = () => {
       getNFTData();
     }
   }, [principalId]);
+
+  // check auth
+  useEffect(async () => {
+    checkPlugConnection();
+  }, []);
 
   return (
     <div className={`app ${theme}`}>

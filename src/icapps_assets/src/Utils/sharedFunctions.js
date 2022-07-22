@@ -18,6 +18,4 @@ const cancelUpvote = async (projectIdx, userUid) => {
   });
 };
 
-// modal
-
 export { upvote, cancelUpvote };

@@ -23,25 +23,25 @@ const socLinks = [
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
     icon: iTwitter,
-    img: "",
+    emoji: "",
   },
   {
     name: "Discord",
     link: "https://discord.gg/qQ8MNv6Hju",
     icon: iDiscord,
-    img: "",
+    emoji: "",
   },
   {
     name: "Medium",
     link: "https://medium.com/@icappsxyz",
     icon: iMediumM,
-    img: "",
+    emoji: "",
   },
   {
     name: "Entrepot",
     link: "https://entrepot.app/marketplace/ic-apps",
     icon: "",
-    img: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/entrepot/entrepot-logo.png",
+    emoji: "🛍️",
   },
 ];
 
@@ -50,6 +50,11 @@ const NavMid = () => {
   const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
 
+  const handleLogoClick = (action) => {
+    action();
+    mobileMenuModal && dispatch(setMobileMenuModal(false));
+  };
+
   return (
     <div className={css.nav}>
       <div className={css.content}>
@@ -57,8 +62,7 @@ const NavMid = () => {
         <button
           className="navlink"
           onClick={() => {
-            toHome();
-            mobileMenuModal && dispatch(setMobileMenuModal(false));
+            handleLogoClick(toHome());
           }}
         >
           <Logo />
@@ -66,10 +70,10 @@ const NavMid = () => {
 
         {/* soclinks */}
         <ul className={css.socLinks}>
-          {socLinks.map(({ name, link, icon, img }, i) => (
+          {socLinks.map(({ name, link, icon, emoji }, i) => (
             <li className={css.socLinksI} data-link={name} key={i}>
               <a href={link} target="_blank" rel="noopener noreferrer">
-                {icon ? icon : <img className={css.brandLogo} src={img} alt="entrepot-logo" />}
+                {icon ? icon : emoji}
               </a>
             </li>
           ))}

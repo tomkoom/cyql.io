@@ -89,7 +89,13 @@ section {
 .viewAll {
   font-size: 0.9rem;
   font-weight: var(--fwBold);
-  padding: 0.5rem 0;
+  padding: 0.5rem;
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.25rem;
+}
+
+.viewAll:hover {
+  opacity: 0.8;
 }
 
 /* responsive */

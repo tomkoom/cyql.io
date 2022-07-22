@@ -34,24 +34,35 @@ export function AuthProvider({ children }) {
         whitelist: [canisterId],
         host,
       });
-      createActorPlug();
+      createPlugActor();
+      getPlugUserData();
       dispatch(setSignInModal(false));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const createActorPlug = async () => {
+  const checkPlugConnection = async () => {
+    const isPlugConnected = await window.ic.plug.isConnected();
+    if (isPlugConnected) {
+      getPlugUserData();
+      createPlugActor();
+    }
+  };
+
+  const createPlugActor = async () => {
     const plugActor = await window.ic.plug.createActor({
       canisterId: canisterId,
       interfaceFactory: idlFactory,
     });
-    const principalId = await window.ic.plug.agent.getPrincipal();
-
     setActor(plugActor);
+    setSignInMethod("Plug");
+  };
+
+  const getPlugUserData = async () => {
+    const principalId = await window.ic?.plug?.getPrincipal();
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
-    setSignInMethod("Plug");
   };
 
   const signOut = () => {
@@ -71,6 +82,7 @@ export function AuthProvider({ children }) {
     principalIdStr,
     signInMethod,
     signInWithPlug,
+    checkPlugConnection,
     signOut,
   };
 

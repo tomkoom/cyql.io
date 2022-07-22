@@ -16,7 +16,7 @@ import { selectProjects, selectNFTs } from "../../State/projects";
 
 const ViewAllBtn = ({ nav }) => {
   return (
-    <button className={`${css.viewAll} navlink`} onClick={nav}>
+    <button className={css.viewAll} onClick={nav}>
       View all &#62;
     </button>
   );
