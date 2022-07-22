@@ -30,10 +30,6 @@ const NavTop = () => {
         <li>Ongoing NFT sales: {ongoingNFTsLength}</li>
         <li>
           Highlights:{" "}
-          <a href="https://dfinity.org/supernova/" target="_blank" rel="noreferrer noopener">
-            Supernova Hackathon
-          </a>
-          ,&nbsp;
           <a href="https://dfinity.org/grants" target="_blank" rel="noreferrer noopener">
             Developer Grants
           </a>

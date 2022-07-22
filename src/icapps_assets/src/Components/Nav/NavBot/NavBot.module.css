@@ -23,7 +23,7 @@
 }
 
 .themeSwitch:hover {
-  background-color: var(--underlay2);
+  opacity: 0.8;
 }
 
 .icpPriceBadge {
@@ -31,12 +31,16 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  border-radius: 0.5rem;
-  padding: 0 0.5rem;
-  font-size: var(--fontSize7);
-  font-weight: var(--bold);
-  background-color: var(--underlay);
+  font-size: 14px;
+  font-weight: var(--fwMedium);
   color: var(--primaryColor);
+  background-color: var(--underlay);
+  padding: 0 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.icpPriceBadge * {
+  font-family: var(--monospace);
 }
 
 .icpPriceBadge div:last-of-type {
@@ -44,25 +48,11 @@
   align-items: baseline;
 }
 
-.icpPriceBadge__logo {
-  background-image: url("https://i.postimg.cc/SxsG0RHw/dfinity-logo.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 0.75rem;
-  height: 0.75rem;
-}
-
 .icpPriceChange,
 .icpPriceChangeTime {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .icpPriceChangeTime {
   color: var(--tertiaryColor);
-}
-
-.icBadge {
-  display: flex;
-  height: 0.9rem;
 }

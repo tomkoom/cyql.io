@@ -23,8 +23,10 @@
 
 .nav ul li a,
 .nav ul li button {
+  font-size: 0.9rem;
+  font-family: var(--monospace);
+  font-weight: var(--fwMedium);
   color: var(--highlightColor2);
-  font-size: var(--fontSize7);
 }
 
 .nav ul li a:hover,

@@ -1,6 +1,10 @@
 /* root */
 
+/* Inter */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* Inconsolata */
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&display=swap");
 
 :root {
   /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
@@ -53,4 +57,5 @@
   /* font-family */
 
   --fontFamily: "Inter", sans-serif;
+  --monospace: "Inconsolata", monospace;
 }

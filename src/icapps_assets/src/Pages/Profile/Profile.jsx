@@ -25,7 +25,7 @@ const Profile = () => {
 
       <div className={css.profileInfo}>
         <p>
-          User owns NFT: <span className={css.badge}>{ownsNFT.toString()}</span>
+          User owns icApps NFTs: <span className={css.badge}>{ownsNFT.toString()}</span>
         </p>
         {/* <p>
           Owned NFTs: <span className={css.badge}>{ownedNFTIds.toString()}</span>
