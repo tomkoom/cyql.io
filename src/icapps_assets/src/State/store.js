@@ -13,6 +13,7 @@ import projectModal from "./projectModal";
 import categories from "./categories";
 import upvotedProjects from "./upvotedProjects";
 import sort from "./sort";
+import profile from "./profile";
 
 // redux-persist
 import {
@@ -40,6 +41,7 @@ const rootReducer = combineReducers({
   categories,
   upvotedProjects,
   sort,
+  profile,
 });
 
 const persistConfig = {

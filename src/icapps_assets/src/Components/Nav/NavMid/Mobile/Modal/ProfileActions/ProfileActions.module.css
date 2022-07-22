@@ -1,0 +1,34 @@
+/* profile actions */
+
+.profileActions {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profileActions button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.idImg {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+}
+
+.subtitle {
+  font-size: var(--fontSize7);
+  color: var(--highlightColor2);
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  color: var(--highlightColor2);
+}

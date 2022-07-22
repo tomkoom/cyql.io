@@ -5,7 +5,10 @@ import "./Styles/theme.css";
 import "./Styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
-import k from "../../../k/k";
+
+// backend
+import { Actor, HttpAgent } from "@dfinity/agent";
+import nft_IDL from "../../icapps/nft.did.js";
 
 // utils
 import { deviceSizes } from "./Utils/DeviceSizes";
@@ -17,8 +20,6 @@ import { onSnapshot, doc, setDoc, getDoc } from "firebase/firestore";
 import { projectsColRef, usersColRef } from "../../../firebase/firestore-collections";
 
 // auth
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../../firebase/firebase-config";
 import { useAuth } from "./Context/AuthContext";
 
 // components
@@ -41,10 +42,15 @@ import { setProjects, setNFTs, selectProjects } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
+import { setOwnsNFT } from "./State/profile";
+
+// nft canister data
+const host = "https://mainnet.dfinity.network";
+const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const App = () => {
   // hooks
-  const { principalId, signInMethod } = useAuth();
+  const { principalId, principalIdStr, signInMethod } = useAuth();
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
@@ -56,21 +62,20 @@ const App = () => {
   const projects = useSelector(selectProjects);
 
   // add user to db
-  const addUserToDB = async (principalId, signInMethod) => {
+  const addUserToDB = async (principalIdStr, signInMethod) => {
     const timestamp = Date.now();
 
-    const userDocRef = doc(usersColRef, principalId);
+    const userDocRef = doc(usersColRef, principalIdStr);
     const user = await getDoc(userDocRef);
     const userExists = user.data() ? true : false;
 
     if (!userExists) {
       await setDoc(userDocRef, {
-        principalId,
+        principalIdStr,
         signInMethod,
         firstSignIn: timestamp,
         lastSignIn: timestamp,
       }).catch((err) => console.log(err));
-      console.log("User created.");
     } else {
       await setDoc(userDocRef, {
         lastSignIn: timestamp,
@@ -79,10 +84,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (principalId && signInMethod) {
-      addUserToDB(principalId, signInMethod);
+    if (principalIdStr && signInMethod) {
+      addUserToDB(principalIdStr, signInMethod);
     }
-  }, [principalId, signInMethod]);
+  }, [principalIdStr, signInMethod]);
 
   // get projects and nfts
   useEffect(() => {
@@ -143,6 +148,28 @@ const App = () => {
     };
   }, []);
 
+  // –––
+
+  // set profile info
+  const getNFTData = async () => {
+    const nft = Actor.createActor(nft_IDL, {
+      agent: new HttpAgent({ host }),
+      canisterId: nftCanisterId,
+    });
+    await nft
+      .principalOwnsOne(principalId)
+      .then((res) => {
+        dispatch(setOwnsNFT(res));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (principalId) {
+      getNFTData();
+    }
+  }, [principalId]);
+
   return (
     <div className={`app ${theme}`}>
       <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}>
@@ -171,12 +198,13 @@ const App = () => {
             <Submit />
           </Route>
 
-          {/* {user && (
+          {principalId && (
             <Route exact path="/profile">
               <Profile />
             </Route>
           )}
 
+          {/* 
           {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
             <Route exact path="/admin">
               <Admin />

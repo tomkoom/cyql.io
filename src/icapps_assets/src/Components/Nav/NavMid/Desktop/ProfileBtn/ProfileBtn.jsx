@@ -11,7 +11,8 @@ import { iAngleDown } from "../../../../../Icons/Icons";
 import { useAuth } from "../../../../../Context/AuthContext";
 
 const ProfileBtn = () => {
-  const { principalId } = useAuth();
+  const { principalIdStr } = useAuth();
+  const pIdStr = principalIdStr;
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -37,10 +38,10 @@ const ProfileBtn = () => {
       <button onClick={() => setMenuIsOpen((prevState) => !prevState)}>
         <img
           className={css.idImg}
-          src={`https://avatars.dicebear.com/api/jdenticon/${principalId}.svg`}
+          src={`https://avatars.dicebear.com/api/jdenticon/${pIdStr}.svg`}
           alt="id-img"
         />
-        <p>{principalId.substring(0, 5) + "..." + principalId.substring(principalId.length - 3)}</p>
+        <p>{pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}</p>
         <span>{iAngleDown}</span>
       </button>
 

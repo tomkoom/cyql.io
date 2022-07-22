@@ -3,7 +3,7 @@ import css from "./NavLink.module.css";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "../../../../../State/modals";
+import { setMobileMenuModal, selectMobileMenuModal } from "../../../../../../State/modals";
 
 const NavLink = ({ label, to, icon }) => {
   const dispatch = useDispatch();

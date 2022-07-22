@@ -6,60 +6,26 @@ import { useAuth } from "../../Context/AuthContext";
 
 // state
 import { useSelector } from "react-redux";
-import { selectUpvotedProjects } from "../../State/upvotedProjects";
-import { toApp } from "../../Routes/routes";
-
-// components
-import { UpvoteBtn } from "../../Components/index";
+import { selectOwnsNFT } from "../../State/profile";
 
 const Profile = () => {
-  const { user, logOut } = useAuth();
-  const upvotedProjects = useSelector(selectUpvotedProjects);
-  const upvotedProjectsCopy = [...upvotedProjects];
+  const { principalIdStr } = useAuth();
+  const userOwnsNFT = useSelector(selectOwnsNFT);
 
   return (
     <div className={css.profile}>
-      <div className={css.pageTitle}>
-        <h2 className="pageTitle">Profile</h2>
-        <span>Beta</span>
+      <div className={css.id}>
+        <h2 className="pageTitle">
+          {principalIdStr.substring(0, 5) +
+            "..." +
+            principalIdStr.substring(principalIdStr.length - 3)}
+        </h2>
       </div>
 
-      <div className={css.profile}>
-        <div className={css.profileInfo}>
-          <img src={user.photoURL} alt={`${user.displayName} userimg`} />
-          <h6>{user.displayName}</h6>
-        </div>
-        <button className="secondaryBtn" onClick={logOut}>
-          Sign out
-        </button>
-      </div>
-
-      <div className={css.projects}>
-        <h3>{upvotedProjectsCopy.length > 0 && `${upvotedProjectsCopy.length} `}Upvotes</h3>
-        {upvotedProjectsCopy.length > 0 && (
-          <ul className={css.projectsLi}>
-            {upvotedProjectsCopy
-              .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
-              .map((project) => (
-                <li className={css.projectsLiI} onClick={() => toApp(project.id)} key={project.idx}>
-                  {project.logo && (
-                    <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
-                  )}
-                  <div className={css.right}>
-                    <div className={css.info}>
-                      <h4 className={css.projectTitle}>{project.name}</h4>
-                      <span className={css.tag}>{project.category}</span>
-                      <p className={css.description}>{project.description}</p>
-                    </div>
-
-                    <div onClick={(e) => e.stopPropagation()}>
-                      <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
-                    </div>
-                  </div>
-                </li>
-              ))}
-          </ul>
-        )}
+      <div className={css.info}>
+        <p>
+          User owns NFT: <span className={css.badge}>{userOwnsNFT.toString()}</span>
+        </p>
       </div>
     </div>
   );

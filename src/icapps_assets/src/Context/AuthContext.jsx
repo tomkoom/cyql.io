@@ -23,7 +23,8 @@ const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
   const [actor, setActor] = useState(undefined);
-  const [principalId, setPrincipalId] = useState("");
+  const [principalId, setPrincipalId] = useState(undefined);
+  const [principalIdStr, setPrincipalIdStr] = useState("");
   const [signInMethod, setSignInMethod] = useState("");
   const dispatch = useDispatch();
 
@@ -48,13 +49,15 @@ export function AuthProvider({ children }) {
     const principalId = await window.ic.plug.agent.getPrincipal();
 
     setActor(plugActor);
-    setPrincipalId(principalId.toText());
+    setPrincipalId(principalId);
+    setPrincipalIdStr(principalId.toText());
     setSignInMethod("Plug");
   };
 
   const signOut = () => {
     setActor(undefined);
-    setPrincipalId("");
+    setPrincipalId(undefined);
+    setPrincipalIdStr("");
     setSignInMethod("");
     if (history.location.pathname === "/profile") {
       toHome();
@@ -65,6 +68,7 @@ export function AuthProvider({ children }) {
     // plug
     actor,
     principalId,
+    principalIdStr,
     signInMethod,
     signInWithPlug,
     signOut,

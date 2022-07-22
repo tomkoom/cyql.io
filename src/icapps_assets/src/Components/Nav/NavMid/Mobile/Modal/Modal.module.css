@@ -13,28 +13,40 @@
   padding: 1rem;
 }
 
+.content,
+.crossIcon {
+  padding: 1rem;
+}
+
 .content {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 3rem;
-  padding: 1rem;
   background-color: var(--background);
   border: 1px solid var(--underlay);
   border-radius: 1rem;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.crossIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+hr.div {
+  margin-top: 1rem;
+  border: 0;
+  border-top: 1px solid var(--underlay2);
 }
 
 /* soclinks */
 
 .socials {
   display: flex;
-  margin-top: 1rem;
   gap: 0.5rem;
+  margin-top: 1rem;
+  margin-right: 6rem;
 }
 
 .socialsI {

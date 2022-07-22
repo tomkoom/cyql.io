@@ -12,34 +12,32 @@ import { useAuth } from "../../../../../../Context/AuthContext";
 import { toProfile } from "../../../../../../Routes/routes";
 
 const Menu = ({ setMenuIsOpen }) => {
-  const { principalId, signOut } = useAuth();
+  const { principalIdStr, signOut } = useAuth();
+
+  const handleMenuItemClick = (action) => {
+    action();
+    setMenuIsOpen(false);
+  };
 
   return (
     <div className={css.menu}>
       <div className={css.menuIProfile} onClick={toProfile}>
         <img
           className={css.idImg}
-          src={`https://avatars.dicebear.com/api/jdenticon/${principalId}.svg`}
+          src={`https://avatars.dicebear.com/api/jdenticon/${principalIdStr}.svg`}
           alt="id-img"
         />
         <div>
           <p>
-            {principalId.substring(0, 5) + "..." + principalId.substring(principalId.length - 3)}
+            {principalIdStr.substring(0, 5) + "..." + principalIdStr.substring(principalIdStr.length - 3)}
           </p>
           <p className={css.subtitle}>View Profile</p>
         </div>
       </div>
 
       <hr className={css.div} />
-
-      <div
-        className={css.menuI}
-        onClick={() => {
-          signOut();
-          setMenuIsOpen(false);
-        }}
-      >
-        <span className={css.icon}>{iSignOut}</span>
+      <div className={css.menuI} onClick={() => handleMenuItemClick(signOut)}>
+        <span>{iSignOut}</span>
         <p>Sign Out</p>
       </div>
 
