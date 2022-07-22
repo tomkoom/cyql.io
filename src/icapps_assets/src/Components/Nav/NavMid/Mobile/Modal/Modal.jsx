@@ -56,10 +56,7 @@ const Modal = () => {
               </div>
             </div>
 
-            <CrossIcon onClick={() => dispatch(setMobileMenuModal(false))}/>
-            {/* <div className={css.close} onClick={}>
-              <div className={css.closeIcon}></div>
-            </div> */}
+            <CrossIcon onClick={() => dispatch(setMobileMenuModal(false))} />
           </div>
         </div>
       ) : null}

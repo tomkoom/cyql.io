@@ -52,8 +52,8 @@ export function AuthProvider({ children }) {
     setSignInMethod("Plug");
   };
 
-  const logOut = () => {
-    setPlugActor(undefined);
+  const signOut = () => {
+    setActor(undefined);
     setPrincipalId("");
     setSignInMethod("");
     if (history.location.pathname === "/profile") {
@@ -67,7 +67,7 @@ export function AuthProvider({ children }) {
     principalId,
     signInMethod,
     signInWithPlug,
-    logOut,
+    signOut,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

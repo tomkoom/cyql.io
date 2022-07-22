@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import css from "./ProfileBtn.module.css";
+
+// components
+import Menu from "./Menu/Menu";
 
 // icons
 import { iAngleDown } from "../../../../../Icons/Icons";
@@ -9,16 +12,39 @@ import { useAuth } from "../../../../../Context/AuthContext";
 
 const ProfileBtn = () => {
   const { principalId } = useAuth();
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const closeMenu = (e) => {
+      if (menuRef.current) {
+        if (!menuRef.current.contains(e.target)) {
+          setMenuIsOpen(false);
+        }
+      } else {
+        return;
+      }
+    };
+
+    document.body.addEventListener("click", closeMenu);
+    return () => {
+      document.body.removeEventListener("click", closeMenu);
+    }; // remove eventlistener on component unmount
+  }, []);
 
   return (
-    <div className={css.profileBtn}>
-      <img
-        className={css.idImg}
-        src={`https://avatars.dicebear.com/api/jdenticon/${principalId}.svg`}
-        alt="id-img"
-      />
-      <p>{principalId.substring(0, 5) + "..." + principalId.substring(principalId.length - 3)}</p>
-      <span>{iAngleDown}</span>
+    <div className={css.profileBtn} ref={menuRef}>
+      <button onClick={() => setMenuIsOpen((prevState) => !prevState)}>
+        <img
+          className={css.idImg}
+          src={`https://avatars.dicebear.com/api/jdenticon/${principalId}.svg`}
+          alt="id-img"
+        />
+        <p>{principalId.substring(0, 5) + "..." + principalId.substring(principalId.length - 3)}</p>
+        <span>{iAngleDown}</span>
+      </button>
+
+      {menuIsOpen ? <Menu setMenuIsOpen={setMenuIsOpen} /> : null}
     </div>
   );
 };

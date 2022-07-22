@@ -1,0 +1,59 @@
+/* mobile menu */
+
+.menu,
+.crossIcon {
+  padding: 1rem;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--background);
+  border: 1px solid var(--underlay);
+  border-radius: 0.5rem;
+}
+
+.crossIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.menuIProfile,
+.menuI {
+  display: flex;
+  align-items: center;
+  margin-right: 6rem;
+  cursor: pointer;
+}
+
+.menuIProfile {
+  gap: 0.5rem;
+}
+
+.menuI {
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.idImg {
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+}
+
+.subtitle {
+  font-size: var(--fontSize7);
+  color: var(--highlightColor2);
+}
+
+hr.div {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid var(--underlay2);
+}
+
+.icon {
+  margin-right: 0.5rem;
+}

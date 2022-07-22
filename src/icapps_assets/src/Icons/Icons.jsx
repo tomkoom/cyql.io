@@ -26,6 +26,7 @@ import {
   faAngleDown,
   faAngleLeft,
   faSignInAlt,
+  faSignOutAlt,
   faInfinity,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -62,6 +63,7 @@ const iAngleRight = <FontAwesomeIcon icon={faAngleRight} />;
 const iAngleDown = <FontAwesomeIcon icon={faAngleDown} />;
 const iAngleLeft = <FontAwesomeIcon icon={faAngleLeft} />;
 const iSignIn = <FontAwesomeIcon icon={faSignInAlt} />;
+const iSignOut = <FontAwesomeIcon icon={faSignOutAlt} />;
 const iInfinity = <FontAwesomeIcon icon={faInfinity} />;
 
 // brands
@@ -98,6 +100,7 @@ export {
   iAngleDown,
   iAngleLeft,
   iSignIn,
+  iSignOut,
   iInfinity,
   // brands
   iTwitter,
