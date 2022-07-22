@@ -9,7 +9,7 @@ import { Desktop, Mobile } from "./index";
 import { useWindowSize } from "../../../Utils/UseWindowSize";
 
 // icons
-import { iTwitter, iDiscord } from "../../../Icons/Icons";
+import { iTwitter, iDiscord, iMediumM } from "../../../Icons/Icons";
 
 // navlinks
 import { toHome } from "../../../Routes/routes";
@@ -23,15 +23,26 @@ const socLinks = [
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
     icon: iTwitter,
-    color: "#00acee",
+    img: "",
   },
   {
     name: "Discord",
     link: "https://discord.gg/qQ8MNv6Hju",
     icon: iDiscord,
-    color: "#5865f2",
+    img: "",
   },
-  // add medium & entrepot
+  {
+    name: "Medium",
+    link: "https://medium.com/@icappsxyz",
+    icon: iMediumM,
+    img: "",
+  },
+  {
+    name: "Entrepot",
+    link: "https://entrepot.app/marketplace/ic-apps",
+    icon: "",
+    img: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/entrepot/entrepot-logo.png",
+  },
 ];
 
 const NavMid = () => {
@@ -56,10 +67,10 @@ const NavMid = () => {
 
         {/* soclinks */}
         <ul className={css.socLinks}>
-          {socLinks.map(({ name, link, icon }, i) => (
+          {socLinks.map(({ name, link, icon, img }, i) => (
             <li className={css.socLinksI} data-link={name} key={i}>
               <a href={link} target="_blank" rel="noopener noreferrer">
-                {icon}
+                {icon ? icon : <img className={css.brandLogo} src={img} alt="entrepot-logo" />}
               </a>
             </li>
           ))}

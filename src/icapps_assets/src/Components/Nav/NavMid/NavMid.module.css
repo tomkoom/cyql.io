@@ -33,19 +33,38 @@
 }
 
 [data-link="Twitter"] a {
-  color: #00acee;
+  color: var(--colorTwitter);
 }
 
 [data-link="Twitter"] a:hover {
-  color: white;
-  background-color: #00acee;
+  color: var(--primaryColor);
+  background-color: var(--colorTwitter);
 }
 
 [data-link="Discord"] a {
-  color: #5865f2;
+  color: var(--colorDiscord);
 }
 
 [data-link="Discord"] a:hover {
-  color: white;
-  background-color: #5865f2;
+  color: var(--primaryColor);
+  background-color: var(--colorDiscord);
+}
+
+[data-link="Medium"] a {
+  color: var(--primaryColor);
+}
+
+[data-link="Medium"] a:hover {
+  color: var(--background);
+  background-color: var(--primaryColor);
+}
+
+/* entrepot */
+
+.brandLogo {
+  width: 19px;
+}
+
+[data-link="Entrepot"] a:hover {
+  background-color: var(--primaryColor);
 }

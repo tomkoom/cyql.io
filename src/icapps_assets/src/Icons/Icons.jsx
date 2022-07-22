@@ -34,6 +34,7 @@ import {
   faTelegramPlane,
   faDiscord,
   faMedium,
+  faMediumM,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
@@ -68,10 +69,11 @@ const iInfinity = <FontAwesomeIcon icon={faInfinity} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
-const iDiscord = <FontAwesomeIcon icon={faDiscord} />;
-const iGithub = <FontAwesomeIcon icon={faGithub} />;
 const iTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
+const iDiscord = <FontAwesomeIcon icon={faDiscord} />;
 const iMedium = <FontAwesomeIcon icon={faMedium} />;
+const iMediumM = <FontAwesomeIcon icon={faMediumM} />;
+const iGithub = <FontAwesomeIcon icon={faGithub} />;
 
 export {
   // solid
@@ -108,4 +110,5 @@ export {
   iGithub,
   iTelegram,
   iMedium,
+  iMediumM,
 };
