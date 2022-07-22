@@ -35,9 +35,9 @@ const Modal = () => {
               <NavLink label="Upcoming" to={toUpcoming} icon={iFire} />
               <NavLink label="Submit" to={toSubmit} icon={iPlus} />
 
+              <hr className={css.div} />
               {!principalId ? <SignInBtn /> : <ProfileActions />}
 
-              <hr className={css.div} />
               <div className={css.socials}>
                 <a
                   className={css.socialsI}
