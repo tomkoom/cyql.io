@@ -45,24 +45,32 @@ export function AuthProvider({ children }) {
   const checkPlugConnection = async () => {
     const isPlugConnected = await window.ic.plug.isConnected();
     if (isPlugConnected) {
+      createPlugActor(); // may run after getPlugUserData()
       getPlugUserData();
-      createPlugActor();
     }
   };
 
   const createPlugActor = async () => {
-    const plugActor = await window.ic.plug.createActor({
-      canisterId: canisterId,
-      interfaceFactory: idlFactory,
-    });
-    setActor(plugActor);
-    setSignInMethod("Plug");
+    await window.ic.plug
+      .createActor({
+        canisterId: canisterId,
+        interfaceFactory: idlFactory,
+      })
+      .then((plugActor) => {
+        setActor(plugActor);
+      })
+      .catch((err) => console.log(err));
   };
 
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
+    setSignInMethod("Plug");
+    // const principalIdStr = window.ic.plug.sessionManager.sessionData.principalId;
+    // const accountId = window.ic.plug.sessionManager.sessionData.accountId;
+    // const agent = window.ic.plug.sessionManager.sessionData.agent;
+    // console.log(window.ic.plug.sessionManager.sessionData);
   };
 
   const signOut = () => {

@@ -113,11 +113,6 @@ const App = () => {
     };
   }, []);
 
-  // set icp price
-  useEffect(() => {
-    dispatch(fetchIcpPrice());
-  }, []);
-
   // prevent from scrolling when modal is active
   useEffect(() => {
     if (signInModal || mobileMenuModal) {
@@ -178,6 +173,12 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
+  // set icp price
+  useEffect(() => {
+    dispatch(fetchIcpPrice());
+  }, []);
+
+  // get nft data
   useEffect(() => {
     if (principalId) {
       getNFTData();
@@ -185,7 +186,7 @@ const App = () => {
   }, [principalId]);
 
   // check auth
-  useEffect(async () => {
+  useEffect(() => {
     checkPlugConnection();
   }, []);
 
