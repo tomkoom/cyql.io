@@ -18,8 +18,8 @@ const useAuth = () => {
 
 // host
 // if else env
-// const host = "https://mainnet.dfinity.network";
-const host = "http://localhost:8080/";
+const host = "https://mainnet.dfinity.network";
+// const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
   const [actor, setActor] = useState(undefined);

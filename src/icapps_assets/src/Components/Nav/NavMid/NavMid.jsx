@@ -46,9 +46,8 @@ const socLinks = [
 ];
 
 const NavMid = () => {
-  const [deviceWidth] = useWindowSize();
-
   const dispatch = useDispatch();
+  const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
 
   return (

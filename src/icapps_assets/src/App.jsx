@@ -5,13 +5,14 @@ import "./Styles/theme.css";
 import "./Styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
+import k from "../../../k/k";
 
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import nft_IDL from "../../icapps/nft.did.js";
+import { getAccountIdentifier } from "../../icapps/utils";
 
 // utils
-import { deviceSizes } from "./Utils/DeviceSizes";
 import { useWindowSize } from "./Utils/UseWindowSize";
 import { sortByDateAdded, sortByDate } from "./Utils/sort";
 
@@ -38,11 +39,11 @@ import { Nav, Footer, SignInModal, ProjectModal } from "./Components/index";
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
-import { setProjects, setNFTs, selectProjects } from "./State/projects";
+import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-import { setOwnsNFT } from "./State/profile";
+import { setOwnsNFT, setNFTIdsOwned } from "./State/profile";
 
 // nft canister data
 const host = "https://mainnet.dfinity.network";
@@ -59,7 +60,6 @@ const App = () => {
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
-  const projects = useSelector(selectProjects);
 
   // add user to db
   const addUserToDB = async (principalIdStr, signInMethod) => {
@@ -127,24 +127,24 @@ const App = () => {
     }
   }, [signInModal, mobileMenuModal]);
 
-  // reset mobile menu when deivice size > 1024
+  // reset mobile menu when deivice size > 1023
   useEffect(() => {
-    if (mobileMenuModal && deviceWidth > deviceSizes.laptop) {
+    if (mobileMenuModal && deviceWidth > 1023) {
       dispatch(setMobileMenuModal(false));
     }
   }, [deviceWidth]);
 
-  const closeModal = (e) => {
-    if (e.key === "Escape") {
-      dispatch(setCloseProjectModal());
-    }
-  };
-
   // close modal when esc is pressed
   useEffect(() => {
-    window.addEventListener("keydown", closeModal);
+    const closeModal = (e) => {
+      if (e.key === "Escape") {
+        dispatch(setCloseProjectModal());
+      }
+    };
+
+    document.body.addEventListener("keydown", closeModal);
     return () => {
-      window.removeEventListener("keydown", closeModal);
+      document.body.removeEventListener("keydown", closeModal);
     };
   }, []);
 
@@ -160,6 +160,20 @@ const App = () => {
       .principalOwnsOne(principalId)
       .then((res) => {
         dispatch(setOwnsNFT(res));
+      })
+      .catch((err) => console.log(err));
+
+    const accountId = getAccountIdentifier(principalId);
+    await nft
+      .getRegistry()
+      .then((res) => {
+        let nftIdsOwned = [];
+        res.forEach((item) => {
+          if (item[1] === accountId) {
+            nftIdsOwned.push(item[0]);
+          }
+        });
+        dispatch(setNFTIdsOwned(nftIdsOwned));
       })
       .catch((err) => console.log(err));
   };
@@ -204,12 +218,12 @@ const App = () => {
             </Route>
           )}
 
-          {/* 
-          {(user && user.uid === k.TWITTER_ADMIN_1) || (user && user.uid === k.TWITTER_ADMIN_2) ? (
+          {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
+          (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
             <Route exact path="/admin">
               <Admin />
             </Route>
-          ) : null} */}
+          ) : null}
 
           <Route path="*">
             <NotFound />

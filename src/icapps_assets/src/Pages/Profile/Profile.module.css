@@ -1,5 +1,11 @@
 /* profile */
 
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .badge {
   padding: 0.25rem 0.33rem;
   background-color: var(--underlay);

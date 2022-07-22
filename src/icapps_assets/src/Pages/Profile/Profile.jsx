@@ -6,11 +6,12 @@ import { useAuth } from "../../Context/AuthContext";
 
 // state
 import { useSelector } from "react-redux";
-import { selectOwnsNFT } from "../../State/profile";
+import { selectOwnsNFT, selectNFTIdsOwned } from "../../State/profile";
 
 const Profile = () => {
   const { principalIdStr } = useAuth();
-  const userOwnsNFT = useSelector(selectOwnsNFT);
+  const ownsNFT = useSelector(selectOwnsNFT);
+  const ownedNFTIds = useSelector(selectNFTIdsOwned);
 
   return (
     <div className={css.profile}>
@@ -22,10 +23,13 @@ const Profile = () => {
         </h2>
       </div>
 
-      <div className={css.info}>
+      <div className={css.profileInfo}>
         <p>
-          User owns NFT: <span className={css.badge}>{userOwnsNFT.toString()}</span>
+          User owns NFT: <span className={css.badge}>{ownsNFT.toString()}</span>
         </p>
+        {/* <p>
+          Owned NFTs: <span className={css.badge}>{ownedNFTIds.toString()}</span>
+        </p> */}
       </div>
     </div>
   );
