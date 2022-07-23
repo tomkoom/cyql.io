@@ -33,7 +33,7 @@ const FooterTop = () => {
           <span>{iComments}</span>
           <div>
             <h5 className={css.title}>Reach out</h5>
-            <p className="bodyText">
+            <p className="text">
               Didn't find what you were looking for or want to collaborate? Reach out for us, we are
               happy to support and cooperate.
             </p>
@@ -46,11 +46,12 @@ const FooterTop = () => {
         <span>{iHeart}</span>
         <div>
           <h5 className={css.title}>Donate</h5>
-          <p className="bodyText">
+          <p className="text">
             icApps is developed and maintained by the IC enthusiasts. You can support the project by
             making a donation.
             <span>
               <a
+                className={css.donationAddress}
                 href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
                 rel="noreferrer noopener"
                 target="_blank"

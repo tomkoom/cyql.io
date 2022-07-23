@@ -5,23 +5,27 @@
   gap: 1rem;
 }
 
-.footerTop p,
-.footerTopI__donation p span a {
-  color: var(--secondaryColor);
-  font-size: 0.9rem;
-}
-
 .footerTopI,
 .footerTopI__donation {
   flex: 1;
   gap: 0.75rem;
-  border-radius: 1rem;
-  background-color: var(--underlay);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 1px var(--underlay);
 }
 
 .footerTopI__donation {
   padding: 1rem;
   display: flex;
+}
+
+.footerTop p,
+.footerTopI__donation p {
+  font-size: 0.9rem;
+}
+
+.footerTop p,
+.footerTopI__donation p span a {
+  color: var(--secondaryColor);
 }
 
 .footerTopI div:hover > div p,
@@ -38,21 +42,22 @@
 
 .title {
   font-size: var(--fontSize6);
-  font-weight: var(--bold);
+  font-weight: var(--fwMedium);
   margin-bottom: 0.33rem;
 }
 
-.footerTopI__donation p span {
+.donationAddress {
   display: inline-block;
   padding: 0.5rem 0.66rem;
+  margin-top: 0.5rem;
+  font-family: var(--monospace);
   line-height: 150%;
   word-break: break-all;
-  margin-top: 0.5rem;
-  box-shadow: 0 0 0 1px var(--underlay2);
+  box-shadow: 0 0 0 1px var(--underlay);
   border-radius: 0.5rem;
 }
 
-.footerTopI__donation p span a:hover {
+.donationAddress:hover {
   color: var(--primaryColor);
 }
 

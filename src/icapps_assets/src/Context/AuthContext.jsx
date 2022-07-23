@@ -67,17 +67,16 @@ export function AuthProvider({ children }) {
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
     setSignInMethod("Plug");
-    // const principalIdStr = window.ic.plug.sessionManager.sessionData.principalId;
-    // const accountId = window.ic.plug.sessionManager.sessionData.accountId;
-    // const agent = window.ic.plug.sessionManager.sessionData.agent;
-    // console.log(window.ic.plug.sessionManager.sessionData);
   };
+
+  const disconnectPlug = () => window.ic?.plug?.disconnect();
 
   const signOut = () => {
     setActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setSignInMethod("");
+    disconnectPlug();
     if (history.location.pathname === "/profile") {
       toHome();
     }

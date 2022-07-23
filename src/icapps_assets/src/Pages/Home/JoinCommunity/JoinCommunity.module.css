@@ -8,12 +8,12 @@
 
 .linksI {
   flex: 1;
-  background-color: var(--underlay);
-  border-radius: 1rem;
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.5rem;
 }
 
 .linksI:hover {
-  background-color: var(--underlay2);
+  background-color: var(--underlay);
 }
 
 .linksI a {
@@ -22,7 +22,7 @@
   align-items: flex-start;
   gap: 0.5rem;
   padding: 1rem;
-  font-weight: var(--bold);
+  font-weight: var(--fwBold);
 }
 
 .socIcon {

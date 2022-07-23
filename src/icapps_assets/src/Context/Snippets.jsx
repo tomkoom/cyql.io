@@ -20,27 +20,3 @@ const signInWithInternetIdentity = async () => {
   setUserId(principal);
   dispatch(setSignInModal(false));
 };
-
-// plug
-
-const signInWithPlug = async () => {
-  try {
-    await window.ic.plug.requestConnect({
-      whitelist: [canisterId],
-      host,
-    });
-    createActor();
-    dispatch(setSignInModal(false));
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const createActor = async () => {
-  const actor = await window.ic.plug.createActor({
-    canisterId: canisterId,
-    interfaceFactory: idlFactory,
-  });
-  setPlugActor(actor);
-  console.log(actor);
-};

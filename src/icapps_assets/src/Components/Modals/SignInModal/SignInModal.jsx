@@ -36,7 +36,7 @@ const SignInModal = () => {
           <div>
             <img
               className={css.logo}
-              src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.png"
+              src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.svg"
               alt="plugwallet-logo"
             />{" "}
             Plug
