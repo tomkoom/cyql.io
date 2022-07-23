@@ -62,7 +62,7 @@ const NavMid = () => {
         <button
           className="navlink"
           onClick={() => {
-            handleLogoClick(toHome());
+            handleLogoClick(toHome);
           }}
         >
           <Logo />

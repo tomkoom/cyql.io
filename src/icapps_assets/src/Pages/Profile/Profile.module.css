@@ -1,13 +1,57 @@
 /* profile */
 
+.profile {
+  margin-bottom: 4rem;
+}
+
+.id {
+  display: flex;
+  gap: 1rem;
+}
+
+.idAddr {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.addresses {
+  display: flex;
+  gap: 1rem;
+}
+
+.addressesI {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: var(--secondaryColor);
+}
+
+.copy {
+  padding: 0.5rem 0.5rem;
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.copy:hover {
+  opacity: 0.8;
+}
+
 .profileInfo {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .badge {
   padding: 0.25rem 0.33rem;
   background-color: var(--underlay);
-  border-radius: 0.33rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }

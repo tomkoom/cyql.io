@@ -25,6 +25,7 @@ export function AuthProvider({ children }) {
   const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
+  const [accountIdStr, setAccountIdStr] = useState();
   const [signInMethod, setSignInMethod] = useState("");
   const dispatch = useDispatch();
 
@@ -64,8 +65,10 @@ export function AuthProvider({ children }) {
 
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
+    const accountIdStr = window.ic.plug.sessionManager.sessionData.accountId;
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
+    setAccountIdStr(accountIdStr);
     setSignInMethod("Plug");
   };
 
@@ -87,6 +90,7 @@ export function AuthProvider({ children }) {
     actor,
     principalId,
     principalIdStr,
+    accountIdStr,
     signInMethod,
     signInWithPlug,
     checkPlugConnection,

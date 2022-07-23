@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./ProfileActions.module.css";
 
+// components
+import { IdImg } from "../../../../../Profile/index";
+
 // icons
 import { iSignOut } from "../../../../../../Icons/Icons";
 
@@ -27,11 +30,7 @@ const ProfileActions = () => {
   return (
     <div className={css.profileActions}>
       <button onClick={() => handleProfileActionClick(toProfile)}>
-        <img
-          className={css.idImg}
-          src={`https://avatars.dicebear.com/api/jdenticon/${pIdStr}.svg`}
-          alt="id-img"
-        />
+        <IdImg size={32} />
         <div>
           <p>{pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}</p>
           <p className={css.subtitle}>View Profile</p>

@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./Menu.module.css";
 
+// components
+import { IdImg } from "../../../../../Profile/index";
+
 // icons
 import { iSignOut } from "../../../../../../Icons/Icons";
 import CrossIcon from "../../../../../../Icons/CrossIcon/CrossIcon";
@@ -21,15 +24,13 @@ const Menu = ({ setMenuIsOpen }) => {
 
   return (
     <div className={css.menu}>
-      <div className={css.menuIProfile} onClick={toProfile}>
-        <img
-          className={css.idImg}
-          src={`https://avatars.dicebear.com/api/jdenticon/${principalIdStr}.svg`}
-          alt="id-img"
-        />
+      <div className={css.menuIProfile} onClick={() => handleMenuItemClick(toProfile)}>
+        <IdImg size={32} />
         <div>
           <p>
-            {principalIdStr.substring(0, 5) + "..." + principalIdStr.substring(principalIdStr.length - 3)}
+            {principalIdStr.substring(0, 5) +
+              "..." +
+              principalIdStr.substring(principalIdStr.length - 3)}
           </p>
           <p className={css.subtitle}>View Profile</p>
         </div>

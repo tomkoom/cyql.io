@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import css from "./Profile.module.css";
 
 // auth
@@ -8,27 +8,70 @@ import { useAuth } from "../../Context/AuthContext";
 import { useSelector } from "react-redux";
 import { selectOwnsNFT, selectNFTIdsOwned } from "../../State/profile";
 
+// components
+import { IdImg } from "../../Components/Profile/index";
+
 const Profile = () => {
-  const { principalIdStr } = useAuth();
+  const { principalIdStr: pIdStr, accountIdStr: aIdStr } = useAuth();
   const ownsNFT = useSelector(selectOwnsNFT);
   const ownedNFTIds = useSelector(selectNFTIdsOwned);
+  const [principalCopied, setPrincipalCopied] = useState(false);
+  const [accountCopied, setAccountCopied] = useState(false);
+
+  const copyToClipBoard = (label) => {
+    if (label === "Principal Id") {
+      navigator.clipboard.writeText(pIdStr);
+      setPrincipalCopied(true);
+      setTimeout(() => {
+        setPrincipalCopied(false);
+      }, 3000);
+    }
+
+    if (label === "Account Id") {
+      navigator.clipboard.writeText(aIdStr);
+      setAccountCopied(true);
+      setTimeout(() => {
+        setAccountCopied(false);
+      }, 3000);
+    }
+  };
+
+  const addresses = [
+    { label: "Principal Id", value: pIdStr, copy: principalCopied },
+    { label: "Account Id", value: aIdStr, copy: accountCopied },
+  ];
 
   return (
     <div className={css.profile}>
       <div className={css.id}>
-        <h2 className="pageTitle">
-          {principalIdStr.substring(0, 5) +
-            "..." +
-            principalIdStr.substring(principalIdStr.length - 3)}
-        </h2>
+        <IdImg size={128} />
+        <div className={css.idAddr}>
+          <h2 className="pageTitle">
+            {pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}
+          </h2>
+          <ul className={css.addresses}>
+            {addresses.map(({ label, value, copy }) => (
+              <li className={css.addressesI} key={label}>
+                <p className={css.label}>{label}</p>
+                <p className={css.copy} onClick={() => copyToClipBoard(label)}>
+                  {copy
+                    ? "Copied!"
+                    : value && value.substring(0, 11) + "..." + value.substring(value.length - 3)}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <div className={css}></div>
+        </div>
       </div>
 
       <div className={css.profileInfo}>
         <p>
-          User owns icApps NFTs: <span className={css.badge}>{ownsNFT.toString()}</span>
+          NFT: <span className={css.badge}>{ownsNFT.toString()}</span>
         </p>
         {/* <p>
-          Owned NFTs: <span className={css.badge}>{ownedNFTIds.toString()}</span>
+          NFT Indexes:{" "}
+          <span className={css.badge}>{ownedNFTIds.toString().replaceAll(",", ", ")}</span>
         </p> */}
       </div>
     </div>

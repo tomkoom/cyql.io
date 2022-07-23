@@ -3,6 +3,7 @@ import css from "./ProfileBtn.module.css";
 
 // components
 import Menu from "./Menu/Menu";
+import { IdImg } from "../../../../Profile/index";
 
 // icons
 import { iAngleDown } from "../../../../../Icons/Icons";
@@ -36,16 +37,12 @@ const ProfileBtn = () => {
   return (
     <div className={css.profileBtn} ref={menuRef}>
       <button onClick={() => setMenuIsOpen((prevState) => !prevState)}>
-        <img
-          className={css.idImg}
-          src={`https://avatars.dicebear.com/api/jdenticon/${pIdStr}.svg`}
-          alt="id-img"
-        />
+        <IdImg size={32} />
         <p>{pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}</p>
         <span>{iAngleDown}</span>
       </button>
 
-      {menuIsOpen ? <Menu setMenuIsOpen={setMenuIsOpen} /> : null}
+      {menuIsOpen && <Menu setMenuIsOpen={setMenuIsOpen} />}
     </div>
   );
 };
