@@ -14,9 +14,22 @@ import { selectSignInModal, setSignInModal } from "../../../State/modals";
 
 const SignInModal = () => {
   const dispatch = useDispatch();
-  const { signInWithPlug } = useAuth();
+  const { signInWithPlug, signInWithStoic } = useAuth();
 
   const signInModal = useSelector(selectSignInModal);
+
+  const signInMetods = [
+    {
+      label: "Plug",
+      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.svg",
+      onClick: signInWithPlug,
+    },
+    {
+      label: "Stoic",
+      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/stoic/stoic-logo.jpeg",
+      onClick: signInWithStoic,
+    },
+  ];
 
   return (
     <div
@@ -32,17 +45,16 @@ const SignInModal = () => {
           <CrossIcon onClick={() => dispatch(setSignInModal(false))} />
         </div>
 
-        <button className={css.plugBtn} onClick={signInWithPlug}>
-          <div>
-            <img
-              className={css.logo}
-              src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.svg"
-              alt="plugwallet-logo"
-            />{" "}
-            Plug
-          </div>
-          <div className={css.icon}>{iAngleRight}</div>
-        </button>
+        <div className={css.signInMetods}>
+          {signInMetods.map(({ label, logo, onClick }) => (
+            <button className={css.btn} key={label} onClick={onClick}>
+              <div className={css.logo}>
+                <img src={logo} alt={`${label}-logo"`} /> {label}
+              </div>
+              <div className={css.icon}>{iAngleRight}</div>
+            </button>
+          ))}
+        </div>
 
         <hr className={css.div} />
         <p className={css.btmText}>Other wallets support coming soon</p>

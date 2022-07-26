@@ -37,7 +37,7 @@
 }
 
 [data-link="Twitter"] a:hover {
-  color: var(--primaryColor);
+  color: white;
   background-color: var(--colorTwitter);
 }
 
@@ -46,7 +46,7 @@
 }
 
 [data-link="Discord"] a:hover {
-  color: var(--primaryColor);
+  color: white;
   background-color: var(--colorDiscord);
 }
 
@@ -55,7 +55,7 @@
 }
 
 [data-link="Medium"] a:hover {
-  color: var(--background);
+  color: white;
   background-color: var(--primaryColor);
 }
 

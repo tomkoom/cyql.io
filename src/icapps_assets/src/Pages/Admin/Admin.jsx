@@ -10,7 +10,7 @@ import {
   formatDiscord,
   formatDate,
   formatString,
-} from "../../Utils/formatters";
+} from "../../Utils/Formatters";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

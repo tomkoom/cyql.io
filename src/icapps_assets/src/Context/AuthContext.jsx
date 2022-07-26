@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
 
+// stoic
+import { StoicIdentity } from "ic-stoic-identity";
+import { Principal } from "@dfinity/principal";
+
 // idl
 import { idlFactory, canisterId } from "../../../declarations/icapps/index";
 
@@ -10,6 +14,9 @@ import { toHome } from "../Routes/routes";
 // state
 import { useDispatch } from "react-redux";
 import { setSignInModal } from "../State/modals";
+
+// utils
+import { getAccountIdentifier } from "./Utils/Principal.utils";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -22,12 +29,14 @@ const host = "https://mainnet.dfinity.network";
 // const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
-  const [actor, setActor] = useState(undefined);
+  // const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
-  const [accountIdStr, setAccountIdStr] = useState();
+  const [accountIdStr, setAccountIdStr] = useState("");
   const [signInMethod, setSignInMethod] = useState("");
   const dispatch = useDispatch();
+
+  // –––PLUG–––
 
   const signInWithPlug = async () => {
     try {
@@ -37,31 +46,22 @@ export function AuthProvider({ children }) {
       });
       createPlugActor();
       getPlugUserData();
-      dispatch(setSignInModal(false));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const checkPlugConnection = async () => {
-    const isPlugConnected = await window.ic.plug.isConnected();
-    if (isPlugConnected) {
-      createPlugActor(); // may run after getPlugUserData()
-      getPlugUserData();
-    }
-  };
-
-  const createPlugActor = async () => {
-    await window.ic.plug
-      .createActor({
-        canisterId: canisterId,
-        interfaceFactory: idlFactory,
-      })
-      .then((plugActor) => {
-        setActor(plugActor);
-      })
-      .catch((err) => console.log(err));
-  };
+  // const createPlugActor = async () => {
+  //   await window.ic.plug
+  //     .createActor({
+  //       canisterId: canisterId,
+  //       interfaceFactory: idlFactory,
+  //     })
+  //     .then((plugActor) => {
+  //       setActor(plugActor);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
@@ -74,12 +74,63 @@ export function AuthProvider({ children }) {
 
   const disconnectPlug = () => window.ic?.plug?.disconnect();
 
+  //  –––STOIC–––
+
+  const signInWithStoic = async () => {
+    try {
+      const stoicId = await StoicIdentity.connect();
+      getStoicUserData(stoicId);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getStoicUserData = (stoicId) => {
+    const principalId = stoicId.getPrincipal();
+    const principalIdStr = stoicId.getPrincipal().toText();
+    const accountIdStr = getAccountIdentifier(principalId);
+    setPrincipalId(principalId);
+    setPrincipalIdStr(principalIdStr);
+    setAccountIdStr(accountIdStr);
+    setSignInMethod("Stoic");
+  };
+
+  const disconnectStoic = async () => await StoicIdentity.disconnect();
+
+  // –––
+
+  const checkConnection = async () => {
+    // plug
+    const isPlugConnected = await window.ic.plug.isConnected();
+    if (isPlugConnected) {
+      // createPlugActor(); // may run after getPlugUserData()
+      getPlugUserData();
+      return "";
+    }
+    // stoic
+    StoicIdentity.load().then(async (stoicId) => {
+      if (stoicId) {
+        getStoicUserData(stoicId);
+        return "";
+      }
+    });
+  };
+
   const signOut = () => {
-    setActor(undefined);
+    // setActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
-    setSignInMethod("");
-    disconnectPlug();
+    setAccountIdStr("");
+
+    if (signInMethod === "Plug") {
+      disconnectPlug();
+    }
+
+    if (signInMethod === "Stoic") {
+      disconnectStoic();
+    }
+
+    setSignInMethod(""); // clear sign in method
     if (history.location.pathname === "/profile") {
       toHome();
     }
@@ -87,13 +138,15 @@ export function AuthProvider({ children }) {
 
   const value = {
     // plug
-    actor,
+    // actor,
     principalId,
     principalIdStr,
     accountIdStr,
     signInMethod,
     signInWithPlug,
-    checkPlugConnection,
+    checkConnection,
+    // stoic
+    signInWithStoic,
     signOut,
   };
 

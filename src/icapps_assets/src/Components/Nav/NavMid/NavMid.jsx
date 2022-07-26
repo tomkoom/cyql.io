@@ -45,10 +45,14 @@ const socLinks = [
   },
 ];
 
+// auth
+import { useAuth } from "../../../Context/AuthContext";
+
 const NavMid = () => {
   const dispatch = useDispatch();
   const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
+  const { signInWithStoic } = useAuth();
 
   const handleLogoClick = (action) => {
     action();

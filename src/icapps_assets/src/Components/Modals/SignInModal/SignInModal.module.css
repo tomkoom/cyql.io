@@ -54,7 +54,7 @@
   flex-shrink: 0; /* don't shrink */
 }
 
-.plugBtn {
+.btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -66,18 +66,26 @@
   font-size: var(--fontSize5);
 }
 
-.plugBtn:hover {
+.btn:hover {
   background-color: var(--underlay);
 }
 
-.plugBtn div {
+.btn div {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
 .logo {
-  width: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.logo img {
+  width: 100%;
 }
 
 .icon {

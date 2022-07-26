@@ -5,7 +5,7 @@ import css from "./UpvoteBtn.module.css";
 import { useAuth } from "../../../../Context/AuthContext";
 
 // shared functions
-import { upvote, cancelUpvote } from "../../../../Utils/sharedFunctions";
+import { upvote, cancelUpvote } from "../../../../Utils/SharedFunctions";
 
 // icons
 import { iCaretUp, iCheck } from "../../../../Icons/Icons";

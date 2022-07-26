@@ -1,5 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import css from "./Profile.module.css";
+
+// icons
+import { iCheck } from "../../Icons/Icons";
+
+// components
+import { IdImg } from "../../Components/Profile/index";
 
 // auth
 import { useAuth } from "../../Context/AuthContext";
@@ -7,9 +13,6 @@ import { useAuth } from "../../Context/AuthContext";
 // state
 import { useSelector } from "react-redux";
 import { selectOwnsNFT, selectNFTIdsOwned } from "../../State/profile";
-
-// components
-import { IdImg } from "../../Components/Profile/index";
 
 const Profile = () => {
   const { principalIdStr: pIdStr, accountIdStr: aIdStr } = useAuth();
@@ -54,9 +57,13 @@ const Profile = () => {
               <li className={css.addressesI} key={label}>
                 <p className={css.label}>{label}</p>
                 <p className={css.copy} onClick={() => copyToClipBoard(label)}>
-                  {copy
-                    ? "Copied!"
-                    : value && value.substring(0, 11) + "..." + value.substring(value.length - 3)}
+                  {copy ? (
+                    <p>
+                      <span className={css.icon}>{iCheck}</span> Copied!
+                    </p>
+                  ) : (
+                    value && value.substring(0, 11) + "..." + value.substring(value.length - 3)
+                  )}
                 </p>
               </li>
             ))}

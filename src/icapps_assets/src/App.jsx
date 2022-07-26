@@ -14,7 +14,7 @@ import { getAccountIdentifier } from "../../icapps/utils";
 
 // utils
 import { useWindowSize } from "./Utils/UseWindowSize";
-import { sortByDateAdded, sortByDate } from "./Utils/sort";
+import { sortByDateAdded, sortByDate } from "./Utils/Sort";
 
 // firestore
 import { onSnapshot, doc, setDoc, getDoc } from "firebase/firestore";
@@ -41,7 +41,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
-import { selectMobileMenuModal, selectSignInModal, setMobileMenuModal } from "./State/modals";
+import {
+  selectMobileMenuModal,
+  selectSignInModal,
+  setMobileMenuModal,
+  setSignInModal,
+} from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
 import { setOwnsNFT, setNFTIdsOwned } from "./State/profile";
 
@@ -51,7 +56,7 @@ const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const App = () => {
   // hooks
-  const { principalId, principalIdStr, signInMethod, checkPlugConnection } = useAuth();
+  const { principalId, principalIdStr, signInMethod, checkConnection } = useAuth();
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
@@ -187,8 +192,18 @@ const App = () => {
 
   // check auth
   useEffect(() => {
-    checkPlugConnection();
+    checkConnection();
   }, []);
+
+  // close sign in modal after user has logged
+  useEffect(() => {
+    if (principalIdStr) {
+      const closeSignInModal = () => {
+        dispatch(setSignInModal(false));
+      };
+      closeSignInModal();
+    }
+  }, [principalIdStr]);
 
   return (
     <div className={`app ${theme}`}>
