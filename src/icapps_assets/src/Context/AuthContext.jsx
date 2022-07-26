@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
         whitelist: [canisterId],
         host,
       });
-      createPlugActor();
+      // createPlugActor();
       getPlugUserData();
     } catch (err) {
       console.log(err);
