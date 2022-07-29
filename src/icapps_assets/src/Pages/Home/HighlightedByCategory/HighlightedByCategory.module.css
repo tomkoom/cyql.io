@@ -1,0 +1,32 @@
+/* higlighted by category */
+
+.highlightedByCat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.5rem;
+}
+
+.project {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.name {
+  font-size: var(--fontSize6);
+  margin-bottom: 0.25rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 150%;
+  color: var(--secondaryColor);
+}

@@ -1,7 +1,7 @@
 /* homepage */
 
 section {
-  margin: 2rem 0;
+  margin: 4rem 0;
 }
 
 /* hero */
@@ -83,12 +83,13 @@ section {
 }
 
 .sectionTitle h3 {
-  font-size: var(--fontSize4);
+  font-size: var(--fontSize5);
 }
 
 .viewAll {
   font-size: 0.9rem;
-  font-weight: var(--fwBold);
+  font-weight: var(--fwMedium);
+  color: var(--highlightColor);
   padding: 0.5rem;
   box-shadow: 0 0 0 1px var(--underlay);
   border-radius: 0.25rem;

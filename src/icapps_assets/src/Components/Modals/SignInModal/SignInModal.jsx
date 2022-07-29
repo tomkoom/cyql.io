@@ -18,7 +18,7 @@ const SignInModal = () => {
 
   const signInModal = useSelector(selectSignInModal);
 
-  const signInMetods = [
+  const signInMethods = [
     {
       label: "Plug",
       logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.svg",
@@ -45,8 +45,8 @@ const SignInModal = () => {
           <CrossIcon onClick={() => dispatch(setSignInModal(false))} />
         </div>
 
-        <div className={css.signInMetods}>
-          {signInMetods.map(({ label, logo, onClick }) => (
+        <div>
+          {signInMethods.map(({ label, logo, onClick }) => (
             <button className={css.btn} key={label} onClick={onClick}>
               <div className={css.logo}>
                 <img src={logo} alt={`${label}-logo"`} /> {label}

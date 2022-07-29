@@ -8,7 +8,7 @@ import { iArrowRight } from "../../Icons/Icons";
 import { toApps, toUpcoming } from "../../Routes/routes";
 
 // components
-import { JoinCommunity, NftSales, HighlightedProjects } from "./index";
+import { JoinCommunity, NftSales, HighlightedProjects, HighlightedByCategory } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ import { selectProjects, selectNFTs } from "../../State/projects";
 const ViewAllBtn = ({ nav }) => {
   return (
     <button className={css.viewAll} onClick={nav}>
-      View all &#62;
+      View all
     </button>
   );
 };
@@ -133,10 +133,20 @@ const Home = () => {
         <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Open")} />
       </section>
 
+      {/* explorers */}
+
+      <section>
+        <div className={css.sectionTitle}>
+          <h3>Wallets</h3>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedByCategory filter="Wallets" />
+      </section>
+
       {/* join community */}
       <section className={css.home__nftCollections}>
         <div className={css.sectionTitle}>
-          <h3>Join icApps community</h3>
+          <h3>Join community</h3>
         </div>
         <JoinCommunity />
       </section>

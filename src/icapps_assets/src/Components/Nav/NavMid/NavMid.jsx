@@ -23,36 +23,32 @@ const socLinks = [
     name: "Twitter",
     link: "https://twitter.com/DfinityApps",
     icon: iTwitter,
-    emoji: "",
+    img: "",
   },
   {
     name: "Discord",
     link: "https://discord.gg/qQ8MNv6Hju",
     icon: iDiscord,
-    emoji: "",
+    img: "",
   },
   {
     name: "Medium",
     link: "https://medium.com/@icappsxyz",
     icon: iMediumM,
-    emoji: "",
+    img: "",
   },
   {
     name: "Entrepot",
     link: "https://entrepot.app/marketplace/ic-apps",
     icon: "",
-    emoji: "🛍️",
+    img: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/entrepot/entrepot-logo.png",
   },
 ];
-
-// auth
-import { useAuth } from "../../../Context/AuthContext";
 
 const NavMid = () => {
   const dispatch = useDispatch();
   const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
-  const { signInWithStoic } = useAuth();
 
   const handleLogoClick = (action) => {
     action();
@@ -74,10 +70,10 @@ const NavMid = () => {
 
         {/* soclinks */}
         <ul className={css.socLinks}>
-          {socLinks.map(({ name, link, icon, emoji }, i) => (
+          {socLinks.map(({ name, link, icon, img }, i) => (
             <li className={css.socLinksI} data-link={name} key={i}>
               <a href={link} target="_blank" rel="noopener noreferrer">
-                {icon ? icon : emoji}
+                {icon ? icon : <img className={css.brandLogo} src={img} alt={`${name}-img`} />}
               </a>
             </li>
           ))}

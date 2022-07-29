@@ -18,7 +18,7 @@ import { sortByDateAdded, sortByDate } from "./Utils/Sort";
 
 // firestore
 import { onSnapshot, doc, setDoc, getDoc } from "firebase/firestore";
-import { projectsColRef, usersColRef } from "../../../firebase/firestore-collections";
+import { projectsColRef, usersICColRef } from "../../../firebase/firestore-collections";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
@@ -56,7 +56,7 @@ const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const App = () => {
   // hooks
-  const { principalId, principalIdStr, signInMethod, checkConnection } = useAuth();
+  const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection } = useAuth();
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
@@ -67,32 +67,34 @@ const App = () => {
   const projectModal = useSelector(selectProjectModal);
 
   // add user to db
-  const addUserToDB = async (principalIdStr, signInMethod) => {
+  const addUserToDB = async (principalIdStr, accountIdStr, signInMethod) => {
     const timestamp = Date.now();
 
-    const userDocRef = doc(usersColRef, principalIdStr);
+    const userDocRef = doc(usersICColRef, principalIdStr);
     const user = await getDoc(userDocRef);
     const userExists = user.data() ? true : false;
 
     if (!userExists) {
       await setDoc(userDocRef, {
-        principalIdStr,
+        principalId: principalIdStr,
+        accountId: accountIdStr,
         signInMethod,
         firstSignIn: timestamp,
         lastSignIn: timestamp,
       }).catch((err) => console.log(err));
     } else {
-      await setDoc(userDocRef, {
-        lastSignIn: timestamp,
-      }).catch((err) => console.log(err));
+      const userData = user.data();
+      await setDoc(userDocRef, { ...userData, lastSignIn: timestamp }).catch((err) =>
+        console.log(err)
+      );
     }
   };
 
   useEffect(() => {
-    if (principalIdStr && signInMethod) {
-      addUserToDB(principalIdStr, signInMethod);
+    if (principalIdStr && signInMethod && accountIdStr) {
+      addUserToDB(principalIdStr, accountIdStr, signInMethod);
     }
-  }, [principalIdStr, signInMethod]);
+  }, [principalIdStr, signInMethod, accountIdStr]);
 
   // get projects and nfts
   useEffect(() => {
@@ -207,9 +209,8 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
-      <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}>
-        <Nav />
-      </Route>
+      {/* <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}></Route> */}
+      <Nav />
 
       <div className="app__content">
         <Switch>
@@ -252,9 +253,8 @@ const App = () => {
         </Switch>
       </div>
 
-      <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}>
-        <Footer />
-      </Route>
+      {/* <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}></Route> */}
+      <Footer />
 
       {/* cookies */}
       <CookieConsent

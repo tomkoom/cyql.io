@@ -60,9 +60,7 @@
   justify-content: space-between;
   gap: 0.5rem;
   width: 100%;
-  height: 3rem;
-  padding-left: 0.25rem;
-  padding-right: 0.5rem;
+  padding: 0.25rem;
   border-radius: 0.33rem;
   font-size: var(--fontSize5);
 }
@@ -99,7 +97,6 @@
 }
 
 hr.div {
-  margin-top: 1rem;
   border: 0;
   border-top: 1px solid var(--underlay2);
 }

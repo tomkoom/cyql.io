@@ -1,5 +1,4 @@
 import React from "react";
-import css from "./IdImg.module.css";
 
 // auth
 import { useAuth } from "../../Context/AuthContext";

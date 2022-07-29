@@ -38,7 +38,6 @@
 
 .titletags h3 {
   font-size: var(--fontSize6);
-  color: var(--primaryColor);
   word-wrap: break-word;
 }
 

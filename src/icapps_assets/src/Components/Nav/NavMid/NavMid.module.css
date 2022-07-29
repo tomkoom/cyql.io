@@ -55,14 +55,14 @@
 }
 
 [data-link="Medium"] a:hover {
-  color: white;
+  color: var(--background);
   background-color: var(--primaryColor);
 }
 
 /* entrepot */
 
 .brandLogo {
-  width: 19px;
+  width: 20px;
 }
 
 [data-link="Entrepot"] a:hover {
