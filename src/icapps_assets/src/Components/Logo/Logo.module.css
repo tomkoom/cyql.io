@@ -13,6 +13,6 @@
 
 .logoComponent h1 {
   font-size: var(--fontSize5);
-  font-weight: var(--fwExtraBold);
+  font-weight: var(--fwBold);
   letter-spacing: -0.5px;
 }

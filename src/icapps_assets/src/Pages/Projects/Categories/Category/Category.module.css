@@ -2,18 +2,18 @@
 
 .category {
   display: flex;
-  white-space: nowrap;
   align-items: center;
   gap: 0.5rem;
   height: 2.5rem;
-  padding: 0 0.66rem;
-  font-size: var(--fontSize6);
+  padding: 0 0.75rem;
+  font-size: 0.9rem;
+  font-weight: var(--fwBold);
+  white-space: nowrap;
   color: var(--seconadryColor);
   background-color: var(--underlay);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
-  font-weight: var(--bold);
 }
 
 .active {
@@ -26,10 +26,10 @@
   background-color: var(--underlay2);
 }
 
-.category__icon {
+.icon {
   font-size: var(--fontSize5);
 }
 
-.category__projectsNum {
+.projectsNum {
   color: var(--tertiaryColor);
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Tags.module.css";
-import TagsItem from "./TagsItem/TagsItem";
+import Tag from "./Tag/Tag";
 
 // icons
 import { iDatabase, iGithub } from "../../../Icons/Icons";
@@ -34,7 +34,7 @@ const Tags = () => {
     <div className={css.tags}>
       <div className={css.tags__content}>
         {tags.map((tag, i) => (
-          <TagsItem
+          <Tag
             id={tag.id}
             name={tag.name}
             handleChange={() => filterProjects(tag.id)}

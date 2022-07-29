@@ -1,9 +1,9 @@
 import React from "react";
-import css from "./TagsItem.module.css";
+import css from "./Tag.module.css";
 
-const TagsItem = ({ id, name, handleChange, checkedState, img, icon }) => {
+const Tag = ({ id, name, handleChange, checkedState, img, icon }) => {
   return (
-    <label className={css.tagsItem} htmlFor={id}>
+    <label className={css.tag} htmlFor={id}>
       <input
         id={id}
         value={name}
@@ -12,21 +12,21 @@ const TagsItem = ({ id, name, handleChange, checkedState, img, icon }) => {
         onChange={handleChange}
         checked={checkedState}
       />
-      <div className={css.tagsItem__content}>
+      <div className={css.content}>
         {img ? (
           <div
-            className={css.tagImg}
+            className={css.img}
             style={{
               backgroundImage: `url(${img})`,
             }}
           />
         ) : (
-          icon
+          <span>{icon}</span>
         )}
-        {name}
+        <p className={css.label}>{name}</p>
       </div>
     </label>
   );
 };
 
-export default TagsItem;
+export default Tag;
