@@ -1,0 +1,17 @@
+/* theme */
+
+.theme {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  font-size: var(--fontSize6);
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  cursor: pointer;
+  flex-shrink: 0;
+}

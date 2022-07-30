@@ -11,7 +11,6 @@ const Nav = () => {
       <div className={css.divider} />
       <NavMid />
       <div className={css.divider} />
-      <NavBot />
     </nav>
   );
 };

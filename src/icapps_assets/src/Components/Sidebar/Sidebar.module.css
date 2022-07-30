@@ -5,6 +5,17 @@
   top: 1rem;
   height: 0;
   max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* controls */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 /* links */
@@ -65,7 +76,6 @@
 /* divider */
 
 hr.div {
-  margin: 1rem 0;
   border: 0;
   border-top: 1px solid var(--underlay);
 }

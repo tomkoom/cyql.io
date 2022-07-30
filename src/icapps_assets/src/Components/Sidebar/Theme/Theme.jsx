@@ -1,9 +1,29 @@
-import React from 'react'
+import React from "react";
+import css from "./Theme.module.css";
+
+// icons
+import { iSun, iMoon } from "../../../Icons/Icons";
+
+// state
+import { useSelector, useDispatch } from "react-redux";
+import { setTheme, selectTheme } from "../../../State/theme";
 
 const Theme = () => {
-  return (
-    <div>Theme</div>
-  )
-}
+  const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
 
-export default Theme
+  const changeTheme = (theme) => {
+    return {
+      light: { value: "dark" },
+      dark: { value: "light" },
+    }[theme];
+  };
+
+  return (
+    <div className={css.theme} onClick={() => dispatch(setTheme(changeTheme(theme)))}>
+      {theme === "light" ? iSun : theme === "dark" ? iMoon : null}
+    </div>
+  );
+};
+
+export default Theme;

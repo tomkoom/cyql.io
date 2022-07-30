@@ -14,6 +14,7 @@ import { useAuth } from "../../Context/AuthContext";
 
 // components
 import NavLink from "./NavLink/NavLink";
+import Theme from "./Theme/Theme";
 import Price from "./Price/Price";
 
 const links = [
@@ -48,16 +49,21 @@ const Sidebar = () => {
 
   return (
     <div className={css.sidebar}>
-      <NavLink label="Projects" to={toApps} icon={iCube} />
-      <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
-      <NavLink label="Submit" to={toSubmit} icon={iPlus} />
+      <div className={css.nav}>
+        <NavLink label="Projects" to={toApps} icon={iCube} />
+        <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
+        <NavLink label="Submit" to={toSubmit} icon={iPlus} />
 
-      {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
-      (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
-        <NavLink label="Admin" to={toAdmin} icon={iDatabase} />
-      ) : null}
+        {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
+        (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
+          <NavLink label="Admin" to={toAdmin} icon={iDatabase} />
+        ) : null}
+      </div>
 
-      <Price />
+      <div className={css.controls}>
+        <Theme />
+        <Price />
+      </div>
 
       <hr className={css.div} />
 
