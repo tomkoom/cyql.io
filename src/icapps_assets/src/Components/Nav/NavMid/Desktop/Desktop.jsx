@@ -21,15 +21,15 @@ const Desktop = () => {
 
   return (
     <div className={css.desktop}>
-      <NavLink label="Projects" to={toApps} icon="" />
+      {/* <NavLink label="Projects" to={toApps} icon="" />
       <NavLink label="Upcoming NFT Sales" to={toUpcoming} icon={iFire} />
-      <NavLink label="Submit" to={toSubmit} icon="" />
+      <NavLink label="Submit" to={toSubmit} icon="" /> */}
 
       {/* admin (protected) */}
-      {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
+      {/* {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
       (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
         <NavLink label="Admin" to={toAdmin} icon="" />
-      ) : null}
+      ) : null} */}
 
       {!principalId ? <SignInBtn /> : <ProfileBtn />}
     </div>

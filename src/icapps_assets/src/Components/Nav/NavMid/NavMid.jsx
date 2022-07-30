@@ -69,7 +69,7 @@ const NavMid = () => {
         </button>
 
         {/* soclinks */}
-        <ul className={css.socLinks}>
+        {/* <ul className={css.socLinks}>
           {socLinks.map(({ name, link, icon, img }, i) => (
             <li className={css.socLinksI} data-link={name} key={i}>
               <a href={link} target="_blank" rel="noopener noreferrer">
@@ -77,7 +77,7 @@ const NavMid = () => {
               </a>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
 
       {deviceWidth > 1023 ? <Desktop /> : <Mobile />}

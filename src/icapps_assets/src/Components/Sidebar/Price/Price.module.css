@@ -1,0 +1,37 @@
+/* price */
+
+.price {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.content {
+  align-self: flex-start;
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  background-color: var(--underlay);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.content * {
+  font-family: var(--monospace);
+  font-weight: var(--fwMedium);
+}
+
+.content:last-of-type {
+  align-items: baseline;
+}
+
+.icon {
+  font-size: 0.66rem;
+}
+
+.priceChange {
+  font-size: var(--fontSize7);
+}
+
+.priceChangeTime {
+  color: var(--tertiaryColor);
+}

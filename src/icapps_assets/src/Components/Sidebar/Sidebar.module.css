@@ -1,0 +1,71 @@
+/* sidebar */
+
+.sidebar {
+  position: sticky;
+  top: 1rem;
+  height: 0;
+  max-width: 200px;
+}
+
+/* links */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.66rem;
+}
+
+.linksI {
+  height: 2rem;
+  flex: calc(50% - 0.66rem);
+}
+
+.linksI:hover {
+  opacity: 0.8;
+}
+
+.linksI a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.25rem;
+}
+
+/* colors */
+
+[data-link="Twitter"] .icon {
+  color: var(--colorTwitter);
+}
+
+[data-link="Discord"] .icon {
+  color: var(--colorDiscord);
+}
+
+[data-link="Medium"] .icon {
+  color: var(--primaryColor);
+}
+
+.icon {
+  font-size: 0.9rem;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.logo {
+  width: 18px;
+}
+
+/* divider */
+
+hr.div {
+  margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid var(--underlay);
+}

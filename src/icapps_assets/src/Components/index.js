@@ -11,8 +11,9 @@ export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
 export { default as ProjectModal } from "./Modals/ProjectModal/ProjectModal";
 export { default as SignInModal } from "./Modals/SignInModal/SignInModal";
 
-// nav & footer
+// nav, sidebar & footer
 export { default as Nav } from "./Nav/Nav";
+export { default as Sidebar } from "./Sidebar/Sidebar";
 export { default as NavLinks } from "./NavLinks/NavLinks";
 export { default as Footer } from "./Footer/Footer";
 

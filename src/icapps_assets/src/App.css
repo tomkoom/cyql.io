@@ -32,10 +32,13 @@ body {
   min-height: 100vh;
 }
 
-.app__content {
+.content {
   padding: 1rem 2rem;
-  margin: 0 auto;
-  max-width: calc(1440px + 4rem);
+  /* max-width: calc(1440px + 4rem); */
+}
+
+.main {
+  margin-left: 240px;
 }
 
 /* global styles */

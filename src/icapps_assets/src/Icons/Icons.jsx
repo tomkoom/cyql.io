@@ -8,8 +8,10 @@ import {
   faFireAlt,
   faSun,
   faMoon,
-  faArrowLeft,
+  faArrowUp,
   faArrowRight,
+  faArrowDown,
+  faArrowLeft,
   faDatabase,
   faPlus,
   faPlusSquare,
@@ -28,6 +30,9 @@ import {
   faSignInAlt,
   faSignOutAlt,
   faInfinity,
+  faCube,
+  faCubes,
+  faRocket,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -46,8 +51,10 @@ const iTimes = <FontAwesomeIcon icon={faTimes} />;
 const iFire = <FontAwesomeIcon icon={faFireAlt} />;
 const iSun = <FontAwesomeIcon icon={faSun} />;
 const iMoon = <FontAwesomeIcon icon={faMoon} />;
-const iArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
+const iArrowUp = <FontAwesomeIcon icon={faArrowUp} />;
 const iArrowRight = <FontAwesomeIcon icon={faArrowRight} />;
+const iArrowDown = <FontAwesomeIcon icon={faArrowDown} />;
+const iArrowLeft = <FontAwesomeIcon icon={faArrowLeft} />;
 const iDatabase = <FontAwesomeIcon icon={faDatabase} />;
 const iPlus = <FontAwesomeIcon icon={faPlus} />;
 const iPlusSquare = <FontAwesomeIcon icon={faPlusSquare} />;
@@ -66,6 +73,9 @@ const iAngleLeft = <FontAwesomeIcon icon={faAngleLeft} />;
 const iSignIn = <FontAwesomeIcon icon={faSignInAlt} />;
 const iSignOut = <FontAwesomeIcon icon={faSignOutAlt} />;
 const iInfinity = <FontAwesomeIcon icon={faInfinity} />;
+const iCube = <FontAwesomeIcon icon={faCube} />;
+const iCubes = <FontAwesomeIcon icon={faCubes} />;
+const iRocket = <FontAwesomeIcon icon={faRocket} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -84,8 +94,10 @@ export {
   iFire,
   iSun,
   iMoon,
-  iArrowLeft,
+  iArrowUp,
   iArrowRight,
+  iArrowDown,
+  iArrowLeft,
   iDatabase,
   iPlus,
   iPlusSquare,
@@ -104,6 +116,9 @@ export {
   iSignIn,
   iSignOut,
   iInfinity,
+  iCube,
+  iCubes,
+  iRocket,
   // brands
   iTwitter,
   iDiscord,

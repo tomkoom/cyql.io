@@ -34,7 +34,7 @@ import {
   Admin,
   NotFound,
 } from "./Pages/index";
-import { Nav, Footer, SignInModal, ProjectModal } from "./Components/index";
+import { Nav, Sidebar, Footer, SignInModal, ProjectModal } from "./Components/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -212,45 +212,49 @@ const App = () => {
       {/* <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}></Route> */}
       <Nav />
 
-      <div className="app__content">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+      <div className="content">
+        <Sidebar />
 
-          <Route exact path="/projects">
-            <Projects />
-          </Route>
-
-          <Route exact path="/projects/:id">
-            <ProjectPage />
-          </Route>
-
-          <Route exact path="/upcoming">
-            <UpcomingNfts />
-          </Route>
-
-          <Route exact path="/submit">
-            <Submit />
-          </Route>
-
-          {principalId && (
-            <Route exact path="/profile">
-              <Profile />
+        <div className="main">
+          <Switch>
+            <Route exact path="/">
+              <Home />
             </Route>
-          )}
 
-          {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
-          (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
-            <Route exact path="/admin">
-              <Admin />
+            <Route exact path="/projects">
+              <Projects />
             </Route>
-          ) : null}
 
-          <Route path="*">
-            <NotFound />
-          </Route>
-        </Switch>
+            <Route exact path="/projects/:id">
+              <ProjectPage />
+            </Route>
+
+            <Route exact path="/upcoming">
+              <UpcomingNfts />
+            </Route>
+
+            <Route exact path="/submit">
+              <Submit />
+            </Route>
+
+            {principalId && (
+              <Route exact path="/profile">
+                <Profile />
+              </Route>
+            )}
+
+            {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
+            (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
+              <Route exact path="/admin">
+                <Admin />
+              </Route>
+            ) : null}
+
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+        </div>
       </div>
 
       {/* <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}></Route> */}
