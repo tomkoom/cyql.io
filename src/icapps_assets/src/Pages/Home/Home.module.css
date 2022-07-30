@@ -89,7 +89,7 @@ section {
 .viewAll {
   font-size: 0.9rem;
   font-weight: var(--fwMedium);
-  color: var(--highlightColor);
+  color: var(--highlightColor2);
   padding: 0.5rem;
   box-shadow: 0 0 0 1px var(--underlay);
   border-radius: 0.25rem;

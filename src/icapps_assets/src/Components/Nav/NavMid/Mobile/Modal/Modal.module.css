@@ -9,8 +9,12 @@
   z-index: 1;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 1rem;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .content,

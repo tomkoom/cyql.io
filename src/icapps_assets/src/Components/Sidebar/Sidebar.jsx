@@ -14,8 +14,7 @@ import { useAuth } from "../../Context/AuthContext";
 
 // components
 import NavLink from "./NavLink/NavLink";
-import Theme from "./Theme/Theme";
-import Price from "./Price/Price";
+import { Theme, Price } from "../index";
 
 const links = [
   {

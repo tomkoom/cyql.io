@@ -3,7 +3,6 @@
 .nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
   height: 48px;
@@ -14,55 +13,3 @@
   align-items: center;
   gap: 0.5rem;
 }
-
-/* .socLinks {
-  display: flex;
-}
-
-.socLinksI {
-  width: 2.25rem;
-  height: 2.25rem;
-}
-
-.socLinksI a {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-}
-
-[data-link="Twitter"] a {
-  color: var(--colorTwitter);
-}
-
-[data-link="Twitter"] a:hover {
-  color: white;
-  background-color: var(--colorTwitter);
-}
-
-[data-link="Discord"] a {
-  color: var(--colorDiscord);
-}
-
-[data-link="Discord"] a:hover {
-  color: white;
-  background-color: var(--colorDiscord);
-}
-
-[data-link="Medium"] a {
-  color: var(--primaryColor);
-}
-
-[data-link="Medium"] a:hover {
-  color: var(--background);
-  background-color: var(--primaryColor);
-}
-
-.brandLogo {
-  width: 20px;
-}
-
-[data-link="Entrepot"] a:hover {
-  background-color: var(--primaryColor);
-} */

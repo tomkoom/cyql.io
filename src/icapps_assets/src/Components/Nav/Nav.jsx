@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Nav.module.css";
 
 // components
-import { NavTop, NavMid, NavBot } from "./index";
+import { NavTop, NavMid } from "./index";
 
 const Nav = () => {
   return (

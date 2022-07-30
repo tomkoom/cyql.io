@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Price.module.css";
 
 // icons
-import { iArrowUp, iArrowDown } from "../../../Icons/Icons";
+import { iArrowUp, iArrowDown } from "../../Icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectIcpPrice, selectIcp24hPriceChange } from "../../../State/icpPrice";
+import { selectIcpPrice, selectIcp24hPriceChange } from "../../State/icpPrice";
 
 const PriceChange = ({ priceChange, icon, color }) => {
   return (
