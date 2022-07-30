@@ -3,12 +3,13 @@
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
   height: 48px;
 }
 
-.content {
+.left {
   display: flex;
   align-items: center;
   gap: 0.5rem;

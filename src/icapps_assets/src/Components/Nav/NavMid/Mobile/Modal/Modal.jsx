@@ -2,13 +2,15 @@ import React from "react";
 import css from "./Modal.module.css";
 
 // icons
-import { iTwitter, iDiscord, iInfinity, iFire, iPlus } from "../../../../../Icons/Icons";
+import { iCube, iRocket, iPlus } from "../../../../../Icons/Icons";
+import { iTwitter, iDiscord } from "../../../../../Icons/Icons";
 import CrossIcon from "../../../../../Icons/CrossIcon/CrossIcon";
 
 // components
 import NavLink from "./NavLink/NavLink";
 import SignInBtn from "./SignInBtn/SignInBtn";
 import ProfileActions from "./ProfileActions/ProfileActions";
+import { Theme, Price, Socials } from "../../../../index";
 
 // routes
 import { toApps, toUpcoming, toSubmit } from "../../../../../Routes/routes";
@@ -30,34 +32,23 @@ const Modal = () => {
       {mobileMenuModal && (
         <div className={css.modal} onClick={() => dispatch(setMobileMenuModal(false))}>
           <div className={css.content} onClick={(e) => e.stopPropagation()}>
-            <div className={css.navlinks}>
-              <NavLink label="Projects" to={toApps} icon={iInfinity} />
-              <NavLink label="Upcoming" to={toUpcoming} icon={iFire} />
-              <NavLink label="Submit" to={toSubmit} icon={iPlus} />
+            <div className={css.nav}>
+              <div>
+                <NavLink label="Projects" to={toApps} icon={iCube} />
+                <NavLink label="Upcoming" to={toUpcoming} icon={iRocket} />
+                <NavLink label="Submit" to={toSubmit} icon={iPlus} />
+              </div>
 
               <hr className={css.div} />
               {!principalId ? <SignInBtn /> : <ProfileActions />}
 
-              <div className={css.socials}>
-                <a
-                  className={css.socialsI}
-                  id={css.twitter}
-                  href="https://twitter.com/DfinityApps"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  {iTwitter}
-                </a>
-                <a
-                  className={css.socialsI}
-                  id={css.discord}
-                  href="https://discord.gg/AnjyrfvvXX"
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  {iDiscord}
-                </a>
+              <hr className={css.div} />
+              <div className={css.controls}>
+                <Theme />
+                <Price />
               </div>
+
+              <Socials />
             </div>
 
             <div className={css.crossIcon}>

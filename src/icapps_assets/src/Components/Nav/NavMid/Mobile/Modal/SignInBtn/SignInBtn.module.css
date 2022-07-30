@@ -2,5 +2,5 @@
   display: flex;
   align-items: center;
   gap: 0.44rem;
-  margin-top: 1rem;
+  align-self: flex-start;
 }

@@ -8,9 +8,6 @@ import { Desktop, Mobile } from "./index";
 // utils
 import { useWindowSize } from "../../../Utils/UseWindowSize";
 
-// icons
-import { iTwitter, iDiscord, iMediumM } from "../../../Icons/Icons";
-
 // navlinks
 import { toHome } from "../../../Routes/routes";
 
@@ -30,9 +27,9 @@ const NavMid = () => {
 
   return (
     <div className={css.nav}>
-      <div className={css.content}>
+      <div className={css.left}>
         {/* menu */}
-        {deviceWidth > 1023 ? <Desktop /> : <Mobile />}
+        {deviceWidth < 1024 && <Mobile />}
 
         {/* logo */}
         <button
@@ -44,6 +41,9 @@ const NavMid = () => {
           <Logo />
         </button>
       </div>
+
+      {/* profile */}
+      <div className={css.right}>{deviceWidth > 1023 && <Desktop />}</div>
     </div>
   );
 };

@@ -1,0 +1,40 @@
+/* socials */
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.66rem;
+}
+
+.socialsI {
+  height: 2rem;
+  flex: calc(50% - 0.66rem);
+}
+
+.socialsI:hover {
+  opacity: 0.8;
+}
+
+.socialsI a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.25rem;
+}
+
+.icon {
+  font-size: 0.9rem;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.logo {
+  width: 18px;
+}

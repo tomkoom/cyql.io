@@ -171,7 +171,11 @@ ul {
     font-size: 15px; /* Root font size */
   }
 
-  .app__content {
+  .content {
     padding: 1rem;
+  }
+
+  .main {
+    margin-left: unset;
   }
 }
