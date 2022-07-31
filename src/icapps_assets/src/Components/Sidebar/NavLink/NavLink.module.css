@@ -9,9 +9,14 @@
   padding: 0 0.44rem;
   border-radius: 0.33rem;
   cursor: pointer;
+  margin-bottom: 0.25rem;
 }
 
 .navlink:hover {
+  background-color: var(--underlay);
+}
+
+.active {
   background-color: var(--underlay);
 }
 

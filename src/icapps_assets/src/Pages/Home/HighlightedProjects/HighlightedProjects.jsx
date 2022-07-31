@@ -19,20 +19,20 @@ const HighlightedProjects = ({ projects }) => {
 
   return (
     <div>
-      <div className={css.projectsLi}>
+      <div className={css.projects}>
         {!projects.length ? (
           <Loader />
         ) : (
-          projects.slice(0, 12).map((project) => (
-            <div className={css.projectsLiI} onClick={() => toApp(project.id)} key={project.id}>
+          projects.slice(0, 15).map((project) => (
+            <div className={css.projectsI} onClick={() => toApp(project.id)} key={project.id}>
               <div className={css.content}>
                 {/* logo */}
                 {project.logo && (
-                  <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
+                  <img className={css.logo} src={project.logo} alt={`${project.name}-logo`} />
                 )}
 
                 {/* name, category & tags */}
-                <div className={css.titletags}>
+                <div className={css.main}>
                   <h3>{project.name}</h3>
 
                   <ul>
@@ -42,8 +42,8 @@ const HighlightedProjects = ({ projects }) => {
                   </ul>
 
                   <p className={css.description}>
-                    {project.description && project.description.length > 50
-                      ? `${project.description.substring(0, 50)}…`
+                    {project.description && project.description.length > 70
+                      ? `${project.description.substring(0, 70)}…`
                       : project.description}
                   </p>
                 </div>
@@ -56,9 +56,12 @@ const HighlightedProjects = ({ projects }) => {
           ))
         )}
       </div>
-      {projects.length > 0 && (
-        <ViewMoreBtn nav={toApps}>View all {projectsLength} projects &gt;</ViewMoreBtn>
-      )}
+      
+      <div className={css.viewMoreBtn}>
+        {projects.length > 0 && (
+          <ViewMoreBtn nav={toApps}>View all {projectsLength} projects &gt;</ViewMoreBtn>
+        )}
+      </div>
     </div>
   );
 };

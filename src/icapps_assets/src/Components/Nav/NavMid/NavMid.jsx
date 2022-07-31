@@ -20,7 +20,7 @@ const NavMid = () => {
   const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
 
-  const handleLogoClick = (action) => {
+  const handleClick = (action) => {
     action();
     mobileMenuModal && dispatch(setMobileMenuModal(false));
   };
@@ -32,14 +32,14 @@ const NavMid = () => {
         {deviceWidth < 1024 && <Mobile />}
 
         {/* logo */}
-        <button
-          className="navlink"
+        <div
+          className={css.logo}
           onClick={() => {
-            handleLogoClick(toHome);
+            handleClick(toHome);
           }}
         >
           <Logo />
-        </button>
+        </div>
       </div>
 
       {/* profile */}

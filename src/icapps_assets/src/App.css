@@ -34,6 +34,7 @@ body {
 
 .content {
   padding: 1rem 2rem;
+  max-width: calc(1920px + 4rem);
   /* max-width: calc(1440px + 4rem); */
 }
 

@@ -32,7 +32,7 @@ const Home = () => {
         <h2 className={`${css.homeTitle} pageTitle`}>
           Internet Computer projects community portal 🌀
         </h2>
-        <p className="text">Discover new apps, keep an eye out for upcoming NFT sales and more.</p>
+        <p className="text">Discover new dApps, keep an eye out for upcoming NFT sales and more.</p>
       </section>
 
       <div className={css.highlights}>
@@ -56,7 +56,7 @@ const Home = () => {
       {/* recently added apps */}
       <section className={css.home__apps}>
         <div className={css.sectionTitle}>
-          <h3>Recently added apps</h3>
+          <h3>Recently added projects</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects

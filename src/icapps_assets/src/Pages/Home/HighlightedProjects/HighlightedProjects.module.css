@@ -1,12 +1,12 @@
-/* recently added */
+/* higlighted projects */
 
-.projectsLi {
+.projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
 }
 
-.projectsLiI {
+.projectsI {
   cursor: pointer;
   border-radius: 1rem;
 }
@@ -17,17 +17,37 @@
 }
 
 .logo {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 1rem;
 }
 
-.titletags {
+.main {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+.main h3 {
+  font-size: var(--fontSize6);
+  word-wrap: break-word;
+}
+
+.main ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--fontSize7);
+  margin-top: 0.1rem;
+}
+
+.main ul li {
+  display: flex;
+  align-items: center;
+  font-weight: var(--fwBold);
 }
 
 .description {
@@ -36,30 +56,17 @@
   color: var(--secondaryColor);
 }
 
-.titletags h3 {
-  font-size: var(--fontSize6);
-  word-wrap: break-word;
-}
-
-.titletags ul {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: var(--fontSize7);
-  margin-top: 0.25rem;
-}
-
-.titletags ul li {
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  font-weight: var(--fwBold);
-  color: var(--primaryColor);
-  background-color: var(--underlay);
-}
-
 .upvote {
   margin-left: auto;
+}
+
+.viewMoreBtn {
+  margin-top: 1rem;
+}
+
+@media screen and (max-width: 1023px) {
+  .logo {
+    width: 4rem;
+    height: 4rem;
+  }
 }

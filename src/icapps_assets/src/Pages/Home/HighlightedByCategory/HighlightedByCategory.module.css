@@ -2,7 +2,7 @@
 
 .highlightedByCat {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
 }
 
@@ -13,8 +13,8 @@
 }
 
 .logo {
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 1rem;
@@ -29,4 +29,11 @@
   font-size: 0.9rem;
   line-height: 150%;
   color: var(--secondaryColor);
+}
+
+@media screen and (max-width: 1023px) {
+  .logo {
+    width: 4rem;
+    height: 4rem;
+  }
 }
