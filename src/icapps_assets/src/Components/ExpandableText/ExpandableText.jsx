@@ -6,18 +6,12 @@ const ExpandableText = ({ children }) => {
 
   return (
     <div className={css.expandable}>
-      <div
-        className={css.expandable__content}
-        style={{ maxHeight: expanded ? "none" : "1.25rem" }}
-      >
+      <div className={css.content} style={{ maxHeight: expanded ? "none" : "1.25rem" }}>
         <p>{children}</p>
       </div>
-      <button
-        className={`${css.readMoreBtn} navlink`}
-        onClick={() => setExpanded(!expanded)}
-      >
+      <span className={css.readMoreBtn} onClick={() => setExpanded(!expanded)}>
         {expanded ? "Read less" : "Read more"}
-      </button>
+      </span>
     </div>
   );
 };

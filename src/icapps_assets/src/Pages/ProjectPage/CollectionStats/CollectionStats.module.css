@@ -9,10 +9,10 @@
 }
 
 .collectionStats ul li {
+  flex: 1;
   background-color: var(--underlay);
   padding: 0.75rem;
-  border-radius: var(--br05);
-  flex: 1;
+  border-radius: 0.33rem;
   white-space: nowrap;
 }
 

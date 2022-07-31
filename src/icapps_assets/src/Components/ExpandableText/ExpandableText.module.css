@@ -1,24 +1,23 @@
 /* expandable text */
 
 .expandable {
+  font-size: var(--fontSize7);
+  color: var(--secondaryColor);
   background-color: var(--underlay);
   padding: 0.75rem;
-  border-radius: var(--br05);
+  border-radius: 0.5rem;
 }
 
-.expandable__content {
+.content {
   overflow: hidden;
   transition: max-height 0.2s ease;
 }
 
-.expandable__content p {
-  font-size: var(--fontSize7);
+.content p {
   line-height: 150%;
-  color: var(--secondaryColor);
 }
 
 .readMoreBtn {
-  font-size: var(--fontSize7);
-  font-weight: var(--black);
-  color: var(--secondaryColor);
+  font-weight: var(--fwBold);
+  cursor: pointer;
 }

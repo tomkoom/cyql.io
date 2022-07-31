@@ -34,7 +34,7 @@
 
 .captionTitle {
   font-size: var(--fontSize5);
-  font-weight: var(--black);
+  font-weight: var(--fwBold);
 }
 
 .right {
@@ -65,9 +65,9 @@
   display: inline-block;
   padding: 0.25rem 0.5rem;
   font-size: 0.9rem;
-  font-weight: var(--bold);
+  font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 /* nft market data */
@@ -89,28 +89,29 @@
 }
 
 .nftMarketData__item h5 {
-  font-weight: var(--bold);
+  font-weight: var(--fwBold);
   font-size: var(--fontSize6);
 }
 
 /* btns */
 
-.trade__btn {
-  display: inline-flex;
+.tradeBtn {
+  display: flex;
   align-items: center;
+  gap: 0.5rem;
   height: 2.5rem;
-  padding: 0 0.75rem;
-  border-radius: var(--br05);
   background-color: var(--underlay);
+  padding: 0 0.75rem;
   margin-bottom: 1rem;
+  border-radius: 0.33rem;
 }
 
-.trade__btn span {
+.tradeBtn span {
   font-size: var(--fontSize7);
 }
 
-.trade__btn:hover {
-  background-color: var(--underlay3);
+.tradeBtn:hover {
+  opacity: 0.8;
 }
 
 /* bottom */
@@ -135,8 +136,6 @@
 .nftSaleStatus {
   background-color: var(--underlay2);
 }
-
-/* rename app to project */
 
 .project__btns {
   display: flex;

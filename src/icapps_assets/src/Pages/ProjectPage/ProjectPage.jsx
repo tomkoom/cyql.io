@@ -93,12 +93,12 @@ const ProjectPage = () => {
               <div className={css.project__btns}>
                 {project.nftMarketUrl && (
                   <a
-                    className={css.trade__btn}
+                    className={css.tradeBtn}
                     href={project.nftMarketUrl}
                     target="_blank"
                     rel="norefferrer noopener"
                   >
-                    Trade on Entrepot&nbsp;<span>{iExternalLink}</span>
+                    Trade<span>{iExternalLink}</span>
                   </a>
                 )}
 
