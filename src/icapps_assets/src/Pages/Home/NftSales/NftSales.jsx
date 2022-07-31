@@ -1,16 +1,14 @@
 import React from "react";
 import css from "./NftSales.module.css";
 
+// icons
+import { iLink, iTwitter, iDiscord, iGithub, iTelegram, iMedium } from "../../../Icons/Icons";
+
 // routes
 import { toApp, toUpcoming } from "../../../Routes/routes";
 
 // components
 import { Loader, ViewMoreBtn } from "../../../Components/index";
-
-// icons
-import { iLink, iTwitter, iDiscord, iGithub, iTelegram, iMedium } from "../../../Icons/Icons";
-
-let socialLinks = [];
 
 const NftSales = ({ nftSalesFiltered }) => {
   const sortByDate = (a, b) => {
@@ -44,7 +42,7 @@ const NftSales = ({ nftSalesFiltered }) => {
                     ? `${nft.description.substring(0, 77)}…`
                     : nft.description}
                 </p>
-                <div className={css.socLinks}>
+                <div className={css.socials}>
                   <ul>
                     {nft.website && <li>{iLink}</li>}
                     {nft.twitter && <li>{iTwitter}</li>}

@@ -4,10 +4,14 @@
   position: relative;
 }
 
+.sort * {
+  font-size: 0.9rem;
+}
+
 .sortBtn,
 .sortSelect {
   background-color: var(--underlay);
-  border-radius: 0.66rem;
+  border-radius: 0.33rem;
   position: absolute;
   top: 0;
   left: 0;

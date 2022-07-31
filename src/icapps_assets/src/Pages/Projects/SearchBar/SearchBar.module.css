@@ -3,10 +3,10 @@
 .search {
   max-width: 24rem;
   width: 100%;
-  height: 40px;
-
+  height: 3rem;
   padding: 0 1rem;
-  font-size: var(--fontSize6);
+  font-size: 0.9rem;
+  font-weight: var(--fwMedium);
   color: var(--primaryColor);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
@@ -23,4 +23,10 @@
   color: var(--primaryColor);
   background-color: transparent;
   background-color: var(--underlay2);
+}
+
+@media screen and (max-width: 1023px) {
+  .search {
+    height: 2.5rem;
+  }
 }

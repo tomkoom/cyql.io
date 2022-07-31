@@ -5,9 +5,9 @@
   background-color: var(--underlay);
   padding: 0.75rem;
   font-size: 0.9rem;
-  font-weight: var(--bold);
+  font-weight: var(--fwBold);
   text-align: center;
-  border-radius: 0.5rem;
+  border-radius: 0.33rem;
   cursor: pointer;
   border: none;
   margin-top: 0.75rem;

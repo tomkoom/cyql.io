@@ -13,12 +13,12 @@
 
 .content {
   display: flex;
-  gap: 0.66rem;
+  gap: 1rem;
 }
 
 .logo {
-  width: 5rem;
-  height: 5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   flex-shrink: 0;
   object-fit: cover;
   border-radius: 1rem;

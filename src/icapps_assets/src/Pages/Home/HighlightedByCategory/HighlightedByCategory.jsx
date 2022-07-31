@@ -32,8 +32,8 @@ const HighlightedByCategory = ({ filter }) => {
             <div>
               <h4 className={css.name}>{p.name}</h4>
               <p className={css.description}>
-                {p.description && p.description.length > 70
-                  ? `${p.description.substring(0, 70)}…`
+                {p.description && p.description.length > 60
+                  ? `${p.description.substring(0, 60)}…`
                   : p.description}
               </p>
             </div>

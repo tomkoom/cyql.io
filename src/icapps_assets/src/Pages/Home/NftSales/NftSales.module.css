@@ -2,7 +2,7 @@
 
 .nftSales {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
 }
 
@@ -23,20 +23,18 @@
   color: var(--secondaryColor);
 }
 
-.socLinks ul {
+.socials ul {
   display: flex;
   gap: 0.125rem;
 }
 
-.socLinks ul li {
-  color: var(--secondaryColor);
-  font-size: 0.9rem;
-  background-color: var(--underlay);
+.socials ul li {
   display: grid;
   place-items: center;
+  font-size: 0.9rem;
+  color: var(--secondaryColor);
   width: 1.5rem;
   height: 1.5rem;
-  border-radius: 50%;
 }
 
 .nftPreviews {
@@ -46,7 +44,6 @@
 
 .nftPreviews ul {
   display: flex;
-  gap: 0.33rem;
 }
 
 .nftPreviews ul li {
@@ -55,7 +52,6 @@
 
 .nftPreviews ul li img {
   width: 100%;
-  border-radius: 0.75rem;
 }
 
 /* --- */
@@ -149,4 +145,16 @@
   border-radius: 0.5rem;
 }
 
-/* - */
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .nftSales {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .nftSales {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}

@@ -42,8 +42,8 @@ const HighlightedProjects = ({ projects }) => {
                   </ul>
 
                   <p className={css.description}>
-                    {project.description && project.description.length > 70
-                      ? `${project.description.substring(0, 70)}…`
+                    {project.description && project.description.length > 60
+                      ? `${project.description.substring(0, 60)}…`
                       : project.description}
                   </p>
                 </div>

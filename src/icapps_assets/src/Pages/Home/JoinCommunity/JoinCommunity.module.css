@@ -8,12 +8,12 @@
 
 .linksI {
   flex: 1;
-  box-shadow: 0 0 0 1px var(--underlay);
+  background-color: var(--underlay);
   border-radius: 0.5rem;
 }
 
 .linksI:hover {
-  background-color: var(--underlay);
+  background-color: var(--underlay2);
 }
 
 .linksI a {
