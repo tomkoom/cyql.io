@@ -24,7 +24,7 @@ const HighlightedByCategory = ({ filter }) => {
     <ul className={css.highlightedByCat}>
       {projects
         .filter((p) => p.category === filter)
-        .slice(0, 15)
+        .slice(0, 16)
         .sort((a, b) => sort(a, b))
         .map((p) => (
           <li className={css.project} key={p.idx} onClick={() => toApp(p.id)}>

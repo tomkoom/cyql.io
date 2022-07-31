@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import css from "./ProjectModal.module.css";
 
 // icons
-import { iTimes } from "../../../Icons/Icons";
+import { iTimes } from "../../Icons/Icons";
 
 // firestore
-import { projectsColRef } from "../../../../../../firebase/firestore-collections";
+import { projectsColRef } from "../../../../../firebase/firestore-collections";
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
 
 // state
@@ -16,12 +16,11 @@ import {
   setProject,
   selectMode,
   setCloseProjectModal,
-} from "../../../State/projectModal";
+} from "../../State/projectModal";
 
 const ModalProjectEdit = () => {
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
-
   const dispatch = useDispatch();
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
   const projectModal = useSelector(selectProjectModal);
   const project = useSelector(selectProject);
   const mode = useSelector(selectMode);

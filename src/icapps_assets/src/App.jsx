@@ -34,7 +34,8 @@ import {
   Admin,
   NotFound,
 } from "./Pages/index";
-import { Nav, Sidebar, Footer, SignInModal, ProjectModal } from "./Components/index";
+import { Nav, Sidebar, Footer } from "./Components/index";
+import { ProjectModal, SignInModal } from "./Modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";

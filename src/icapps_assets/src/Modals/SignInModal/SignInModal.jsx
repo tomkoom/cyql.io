@@ -2,20 +2,19 @@ import React from "react";
 import css from "./SignInModal.module.css";
 
 // icons
-import { iAngleRight } from "../../../Icons/Icons";
-import CrossIcon from "../../../Icons/CrossIcon/CrossIcon";
+import { iAngleRight } from "../../Icons/Icons";
+import CrossIcon from "../../Icons/CrossIcon/CrossIcon";
 
 // auth
-import { useAuth } from "../../../Context/AuthContext";
+import { useAuth } from "../../Context/AuthContext";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSignInModal, setSignInModal } from "../../../State/modals";
+import { selectSignInModal, setSignInModal } from "../../State/modals";
 
 const SignInModal = () => {
   const dispatch = useDispatch();
   const { signInWithPlug, signInWithStoic } = useAuth();
-
   const signInModal = useSelector(selectSignInModal);
 
   const signInMethods = [

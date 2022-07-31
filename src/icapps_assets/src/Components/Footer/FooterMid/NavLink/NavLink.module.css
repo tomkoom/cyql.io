@@ -1,0 +1,32 @@
+/* desktop navlink */
+
+.navlink {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 40px;
+  font-weight: var(--fwMedium);
+  padding: 0 0.75rem;
+  border-radius: 0.33rem;
+  cursor: pointer;
+}
+
+.navlink:hover {
+  background-color: var(--underlay);
+}
+
+.active {
+  background-color: var(--underlay);
+}
+
+.label {
+  white-space: nowrap;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  color: var(--highlightColor2);
+}

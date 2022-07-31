@@ -7,10 +7,6 @@ export { default as UpvoteBtn } from "./Btns/UpvoteBtn/UpvoteBtn";
 export { default as UpvoteBtn2 } from "./Btns/UpvoteBtn2/UpvoteBtn2";
 export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
 
-// modals
-export { default as ProjectModal } from "./Modals/ProjectModal/ProjectModal";
-export { default as SignInModal } from "./Modals/SignInModal/SignInModal";
-
 // nav, sidebar & footer
 export { default as Nav } from "./Nav/Nav";
 export { default as Sidebar } from "./Sidebar/Sidebar";
