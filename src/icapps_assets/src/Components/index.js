@@ -8,9 +8,9 @@ export { default as UpvoteBtn2 } from "./Btns/UpvoteBtn2/UpvoteBtn2";
 export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
 
 // nav, sidebar & footer
-export { default as Nav } from "./Nav/Nav";
+export { default as Summary } from "./Nav/Summary/Summary";
+export { default as Nav } from "./Nav/Nav/Nav";
 export { default as Sidebar } from "./Sidebar/Sidebar";
-export { default as NavLinks } from "./NavLinks/NavLinks";
 export { default as Footer } from "./Footer/Footer";
 
 // other

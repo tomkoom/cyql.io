@@ -1,12 +1,12 @@
 /* higlighted by category */
 
-.highlightedByCat {
+.projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
 }
 
-.project {
+.projectsI {
   display: flex;
   gap: 1rem;
   cursor: pointer;
@@ -35,5 +35,15 @@
   .logo {
     width: 4rem;
     height: 4rem;
+  }
+
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }

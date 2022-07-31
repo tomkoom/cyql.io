@@ -33,7 +33,7 @@ const HighlightedProjects = ({ projects }) => {
 
                 {/* name, category & tags */}
                 <div className={css.main}>
-                  <h3>{project.name}</h3>
+                  <h3 className={css.title}>{project.name}</h3>
 
                   <ul>
                     {project.category && <li>{project.category}</li>}
@@ -56,7 +56,7 @@ const HighlightedProjects = ({ projects }) => {
           ))
         )}
       </div>
-      
+
       <div className={css.viewMoreBtn}>
         {projects.length > 0 && (
           <ViewMoreBtn nav={toApps}>View all {projectsLength} projects &gt;</ViewMoreBtn>

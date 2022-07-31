@@ -34,7 +34,7 @@ import {
   Admin,
   NotFound,
 } from "./Pages/index";
-import { Nav, Sidebar, Footer } from "./Components/index";
+import { Summary, Nav, Sidebar, Footer } from "./Components/index";
 import { ProjectModal, SignInModal } from "./Modals/index";
 
 // state
@@ -210,7 +210,8 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
-      {/* <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}></Route> */}
+      <Summary />
+      <div className="div" />
       <Nav />
 
       <div className="content">

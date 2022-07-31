@@ -33,7 +33,7 @@ body {
 }
 
 .content {
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   max-width: calc(1920px + 4rem);
   /* max-width: calc(1440px + 4rem); */
 }
@@ -109,6 +109,11 @@ ul {
   margin-bottom: 0.5rem;
 }
 
+.div {
+  height: 1px;
+  box-shadow: 0 1px 0 0 var(--underlay);
+}
+
 /* cookie */
 
 .cookie {
@@ -126,6 +131,7 @@ ul {
   padding: 0 1rem;
   color: var(--primaryColor);
   background: var(--underlay);
+  border-radius: 0.33rem;
 }
 
 .cookie * {

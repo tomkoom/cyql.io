@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./NavMid.module.css";
+import css from "./Nav.module.css";
 
 // components
 import { Logo } from "../../index";
@@ -15,7 +15,7 @@ import { toHome } from "../../../Routes/routes";
 import { useSelector, useDispatch } from "react-redux";
 import { selectMobileMenuModal, setMobileMenuModal } from "../../../State/modals";
 
-const NavMid = () => {
+const Nav = () => {
   const dispatch = useDispatch();
   const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
@@ -26,26 +26,28 @@ const NavMid = () => {
   };
 
   return (
-    <div className={css.nav}>
-      <div className={css.left}>
-        {/* menu */}
-        {deviceWidth < 1024 && <Mobile />}
+    <header className={css.header}>
+      <nav className={css.nav}>
+        <div className={css.left}>
+          {/* mobile menu */}
+          {deviceWidth < 1024 && <Mobile />}
 
-        {/* logo */}
-        <div
-          className={css.logo}
-          onClick={() => {
-            handleClick(toHome);
-          }}
-        >
-          <Logo />
+          {/* logo */}
+          <div
+            className={css.logo}
+            onClick={() => {
+              handleClick(toHome);
+            }}
+          >
+            <Logo />
+          </div>
         </div>
-      </div>
 
-      {/* profile */}
-      <div className={css.right}>{deviceWidth > 1023 && <Desktop />}</div>
-    </div>
+        {/* profile */}
+        <div className={css.right}>{deviceWidth > 1023 && <Desktop />}</div>
+      </nav>
+    </header>
   );
 };
 
-export default NavMid;
+export default Nav;

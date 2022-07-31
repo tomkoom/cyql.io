@@ -1,0 +1,42 @@
+/* summary */
+
+.summary {
+  padding: 0.5rem 2rem;
+  font-size: var(--fontSize7);
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  white-space: nowrap;
+}
+
+.highlight {
+  font-family: var(--monospace);
+  font-size: var(--fontSize6);
+  font-weight: var(--fwMedium);
+  color: var(--highlightColor2);
+}
+
+.summary ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* hide scrollbar */
+.summary ul::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .summary {
+    padding: 0.5rem 1rem;
+  }
+
+  .summary ul {
+    justify-content: unset;
+  }
+}

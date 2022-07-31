@@ -20,7 +20,6 @@ const Mobile = () => {
       <div className={css.menuBtn} onClick={() => dispatch(setMobileMenuModal(true))}>
         {iBars}
       </div>
-
       {mobileMenuModal && <Modal />}
     </div>
   );

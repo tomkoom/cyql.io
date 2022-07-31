@@ -21,13 +21,13 @@ const HighlightedByCategory = ({ filter }) => {
   };
 
   return (
-    <ul className={css.highlightedByCat}>
+    <ul className={css.projects}>
       {projects
         .filter((p) => p.category === filter)
         .slice(0, 16)
         .sort((a, b) => sort(a, b))
         .map((p) => (
-          <li className={css.project} key={p.idx} onClick={() => toApp(p.id)}>
+          <li className={css.projectsI} key={p.idx} onClick={() => toApp(p.id)}>
             <img className={css.logo} src={p.logo} alt={`${p.name}-logo`} />
             <div>
               <h4 className={css.name}>{p.name}</h4>

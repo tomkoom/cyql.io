@@ -1,34 +1,32 @@
 import React from "react";
-import css from "./NavTop.module.css";
+import css from "./Summary.module.css";
 import { toApps, toUpcoming } from "../../../Routes/routes";
 
 // redux
 import { useSelector } from "react-redux";
 import { selectProjectsLength, selectNFTs } from "../../../State/projects";
 
-const NavTop = () => {
-  const projectsLength = useSelector(selectProjectsLength);
+const Summary = () => {
+  const projectsNum = useSelector(selectProjectsLength);
   const nfts = useSelector(selectNFTs);
-  const upcomingNFTsLength = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming").length;
-  const ongoingNFTsLength = nfts.filter((nft) => nft.nftSaleStatus === "Open").length;
+  const upcomingNFTsNum = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming").length;
+  const ongoingNFTsNum = nfts.filter((nft) => nft.nftSaleStatus === "Open").length;
 
   return (
-    <div className={css.nav}>
+    <div className={css.summary}>
       <ul>
         <li>
-          Projects:{" "}
-          <button className="navlink" onClick={() => toApps()}>
-            {projectsLength}
-          </button>
+          Projects:&nbsp;<span className={css.highlight}>{projectsNum}</span>
         </li>
         <li>
-          Upcoming NFT sales:{" "}
-          <button className="navlink" onClick={() => toUpcoming()}>
-            {upcomingNFTsLength}
-          </button>
+          Upcoming NFT sales:&nbsp;
+          <span className={css.highlight}>{upcomingNFTsNum}</span>
         </li>
-        <li>Ongoing NFT sales: {ongoingNFTsLength}</li>
         <li>
+          Ongoing NFT sales:&nbsp;<span className={css.highlight}>{ongoingNFTsNum}</span>
+        </li>
+
+        {/* <li>
           Highlights:{" "}
           <a href="https://dfinity.org/grants" target="_blank" rel="noreferrer noopener">
             Developer Grants
@@ -43,10 +41,10 @@ const NavTop = () => {
           >
             PokedBots
           </a>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
 };
 
-export default NavTop;
+export default Summary;

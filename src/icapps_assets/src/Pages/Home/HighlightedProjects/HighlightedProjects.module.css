@@ -30,9 +30,10 @@
   gap: 0.25rem;
 }
 
-.main h3 {
+.title {
   font-size: var(--fontSize6);
   word-wrap: break-word;
+  margin-top: 0.1rem;
 }
 
 .main ul {
@@ -41,7 +42,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: var(--fontSize7);
-  margin-top: 0.1rem;
+  margin-top: 0.25rem;
 }
 
 .main ul li {
@@ -68,5 +69,15 @@
   .logo {
     width: 4rem;
     height: 4rem;
+  }
+
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }

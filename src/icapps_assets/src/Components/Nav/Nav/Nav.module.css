@@ -1,0 +1,33 @@
+/* nav */
+
+.header {
+  position: sticky;
+  top: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--background);
+  height: 72px;
+  padding: 0.5rem 2rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  .nav {
+    padding: 0.5rem 1rem;
+  }
+}
