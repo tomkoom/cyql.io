@@ -27,7 +27,7 @@ import { useAuth } from "./Context/AuthContext";
 import {
   Home,
   Projects,
-  ProjectPage,
+  Project,
   UpcomingNfts,
   Submit,
   Profile,
@@ -228,7 +228,7 @@ const App = () => {
             </Route>
 
             <Route exact path="/projects/:id">
-              <ProjectPage />
+              <Project />
             </Route>
 
             <Route exact path="/upcoming">

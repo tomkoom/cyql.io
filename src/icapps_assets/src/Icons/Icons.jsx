@@ -33,6 +33,7 @@ import {
   faCube,
   faCubes,
   faRocket,
+  faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -76,6 +77,7 @@ const iInfinity = <FontAwesomeIcon icon={faInfinity} />;
 const iCube = <FontAwesomeIcon icon={faCube} />;
 const iCubes = <FontAwesomeIcon icon={faCubes} />;
 const iRocket = <FontAwesomeIcon icon={faRocket} />;
+const iBook = <FontAwesomeIcon icon={faBook} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -119,6 +121,7 @@ export {
   iCube,
   iCubes,
   iRocket,
+  iBook,
   // brands
   iTwitter,
   iDiscord,

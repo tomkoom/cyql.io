@@ -9,14 +9,20 @@
   font-size: var(--fontSize6);
   font-weight: var(--bold);
   color: var(--primaryColor);
-  padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
+  padding: 0.66rem;
+  border-radius: 0.44rem;
   border: none;
   cursor: pointer;
 }
+
+.upvoteBtn:hover,
+.upvotedBtn:hover {
+  opacity: 0.8;
+}
+
 .upvoteBtn {
   color: white;
-  background-color: var(--highlightColor2);
+  background-color: var(--highlightColor);
 }
 
 .upvotedBtn {

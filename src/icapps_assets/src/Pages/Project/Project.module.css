@@ -1,7 +1,22 @@
 /* project page */
 
+.project {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 .content {
+  display: flex;
+  gap: 2rem;
   padding: 1rem 0;
+}
+
+.main {
+  flex: 1;
+}
+
+.links {
+  width: 16rem;
 }
 
 .cover {
@@ -13,7 +28,7 @@
   border-radius: 1rem;
 }
 
-.contentMain {
+.info {
   display: flex;
   gap: 1rem;
   margin: 1rem 0;
@@ -32,12 +47,12 @@
   justify-content: center;
 }
 
-.captionTitle {
+.title {
   font-size: var(--fontSize5);
   font-weight: var(--fwBold);
 }
 
-.right {
+.upvoteBtn {
   margin-left: auto;
   display: flex;
   align-items: center;
@@ -61,7 +76,7 @@
   margin-top: 0.5rem;
 }
 
-.tags__i {
+.tagsI {
   display: inline-block;
   padding: 0.25rem 0.5rem;
   font-size: 0.9rem;
