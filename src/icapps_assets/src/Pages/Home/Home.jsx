@@ -139,7 +139,6 @@ const Home = () => {
       <section>
         <div className={css.sectionTitle}>
           <div className={css.titleContainer}>
-            {/* <span className={css.icon}>{iWallet}</span> */}
             <h3 className={css.title}>Wallets</h3>
           </div>
           <ViewAllBtn nav={toApps} />
@@ -153,12 +152,24 @@ const Home = () => {
       <section>
         <div className={css.sectionTitle}>
           <div className={css.titleContainer}>
-            {/* <span className={css.icon}>{iGlobe}</span>  */}
             <h3 className={css.title}>Explorers</h3>
           </div>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedByCategory filter="Explorers" />
+      </section>
+
+      <div className="div" />
+
+      {/* social networks */}
+      <section>
+        <div className={css.sectionTitle}>
+          <div className={css.titleContainer}>
+            <h3 className={css.title}>Social Networks</h3>
+          </div>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedByCategory filter="Social Networks" />
       </section>
 
       {/* join community */}

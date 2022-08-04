@@ -27,12 +27,13 @@ const HighlightedByCategory = ({ filter }) => {
     <ul className={css.projects}>
       {projects
         .filter((p) => p.category === filter)
-        .slice(0, 16)
         // sort by upvoted
-        .filter((project) => project.upvotedBy)
+        .filter((p) => p.upvotedBy && p.upvotedBy.length > 0)
         .sort((a, b) => sortByUpvoted(a, b))
         // sort by verified
         .sort((a, b) => sortByVerified(a, b))
+        // slice
+        .slice(0, 16)
         .map((p) => (
           <li className={css.projectsI} key={p.idx} onClick={() => toApp(p.id)}>
             <div className={css.main}>
