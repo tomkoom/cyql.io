@@ -16,7 +16,7 @@
 }
 
 .links {
-  width: 16rem;
+  width: 20rem;
 }
 
 .cover {
@@ -160,4 +160,12 @@
 
 .project__btns a span {
   color: var(--secondaryColor);
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .content {
+    flex-direction: column;
+  }
 }

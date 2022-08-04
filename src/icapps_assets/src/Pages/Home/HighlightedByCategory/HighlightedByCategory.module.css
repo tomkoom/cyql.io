@@ -12,6 +12,16 @@
   cursor: pointer;
 }
 
+.projectsI:hover {
+  opacity: 0.8;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+}
+
 .logo {
   width: 4.5rem;
   height: 4.5rem;
@@ -20,9 +30,19 @@
   border-radius: 1rem;
 }
 
-.name {
+.titleContainer {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.title {
   font-size: var(--fontSize6);
   margin-bottom: 0.25rem;
+}
+
+.icon {
+  color: var(--highlightColor2);
 }
 
 .description {

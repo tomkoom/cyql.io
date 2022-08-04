@@ -246,7 +246,9 @@ const App = () => {
             )}
 
             {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
-            (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ? (
+            (principalIdStr && principalIdStr === k.STOIC_ADMIN_1) ||
+            (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ||
+            (principalIdStr && principalIdStr === k.STOIC_ADMIN_2) ? (
               <Route exact path="/admin">
                 <Admin />
               </Route>

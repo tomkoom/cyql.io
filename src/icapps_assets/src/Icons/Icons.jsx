@@ -34,6 +34,9 @@ import {
   faCubes,
   faRocket,
   faBook,
+  faWallet,
+  faGlobe,
+  faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -78,6 +81,9 @@ const iCube = <FontAwesomeIcon icon={faCube} />;
 const iCubes = <FontAwesomeIcon icon={faCubes} />;
 const iRocket = <FontAwesomeIcon icon={faRocket} />;
 const iBook = <FontAwesomeIcon icon={faBook} />;
+const iWallet = <FontAwesomeIcon icon={faWallet} />;
+const iGlobe = <FontAwesomeIcon icon={faGlobe} />;
+const iCheckCircle = <FontAwesomeIcon icon={faCheckCircle} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -122,6 +128,9 @@ export {
   iCubes,
   iRocket,
   iBook,
+  iWallet,
+  iGlobe,
+  iCheckCircle,
   // brands
   iTwitter,
   iDiscord,

@@ -79,11 +79,29 @@ section {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.sectionTitle h3 {
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
   font-size: var(--fontSize5);
+  color: var(--highlightColor2);
+  /* background-color: var(--underlay); */
+  /* box-shadow: 0 0 0 1px var(--underlay); */
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 1.33rem;
 }
 
 .viewAll {
@@ -104,5 +122,9 @@ section {
 @media screen and (max-width: 1023px) {
   .highlights {
     flex-direction: column;
+  }
+
+  .title {
+    font-size: var(--fontSize5);
   }
 }

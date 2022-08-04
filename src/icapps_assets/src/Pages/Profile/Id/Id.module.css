@@ -1,0 +1,59 @@
+/* id */
+
+.id {
+  display: flex;
+  gap: 1rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hodlBadge {
+  padding: 0.25rem;
+  border-radius: 0.33rem;
+  color: white;
+  font-size: var(--fontSize7);
+  background-color: var(--highlightColor);
+  font-weight: var(--fwBold);
+}
+
+.idAddr {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.addresses {
+  display: flex;
+  gap: 1rem;
+}
+
+.addressesI {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-weight: var(--fwMedium);
+  color: var(--secondaryColor);
+}
+
+.copy {
+  padding: 0.5rem 0.5rem;
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.33rem;
+  cursor: pointer;
+}
+
+.copy:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  color: var(--colorGreen);
+}
