@@ -1,7 +1,10 @@
 /* summary */
 
 .summary {
-  padding: 0.5rem 2rem;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: var(--fontSize7);
   color: var(--secondaryColor);
   background-color: var(--underlay);

@@ -118,7 +118,7 @@ ul {
 
 .cookie {
   position: fixed;
-  left: 0;
+  right: 0;
   bottom: 0;
   margin-left: 1rem;
   margin-bottom: 1rem;

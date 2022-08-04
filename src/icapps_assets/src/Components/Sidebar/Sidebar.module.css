@@ -2,7 +2,7 @@
 
 .sidebar {
   position: sticky;
-  top: 72px;
+  top: 64px;
   height: 0;
   max-width: 200px;
   display: flex;
