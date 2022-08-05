@@ -7,12 +7,12 @@
   gap: 0.25rem;
   padding: 0.33rem 0.5rem;
   font-size: var(--fontSize7);
-  font-weight: var(--bold);
+  font-weight: var(--fwMedium);
   color: var(--primaryColor);
-  border-radius: 0.33rem;
   border: none;
   cursor: pointer;
 }
+
 .upvoteBtn {
   background-color: var(--underlay);
 }

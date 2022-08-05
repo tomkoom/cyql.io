@@ -43,7 +43,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
       <ul>
         {categories.map((c) => (
           <li
-            id={category === c.name && css.active}
+            id={category === c.name ? css.active : undefined}
             key={c.id}
             onClick={() => clickCategory(c.name)}
           >

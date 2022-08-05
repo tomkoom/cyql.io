@@ -10,4 +10,5 @@
   position: absolute;
   top: 40px;
   left: 1px;
+  z-index: 999;
 }

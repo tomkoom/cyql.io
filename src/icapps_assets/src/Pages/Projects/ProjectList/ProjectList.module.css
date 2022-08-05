@@ -67,11 +67,10 @@
   align-items: center;
   gap: 0.33rem;
   height: 1.5rem;
-  padding: 0 0.33rem;
-  border-radius: 0.33rem;
-  color: var(--primaryColor);
-  font-weight: var(--bold);
-  background-color: var(--underlay2);
+  padding: 0 0.25rem;
+  color: var(--secondaryColor);
+  font-weight: var(--fwMedium);
+  background-color: var(--underlay);
 }
 
 .description {
