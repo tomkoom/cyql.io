@@ -22,3 +22,8 @@
   color: white;
   background-color: var(--highlightColor);
 }
+
+#active {
+  color: white;
+  background-color: var(--highlightColor);
+}

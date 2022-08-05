@@ -4,12 +4,13 @@ import css from "./CategoryList.module.css";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategories } from "../../../../State/categories";
-import { setCategory } from "../../../../State/category";
+import { setCategory, selectCategory } from "../../../../State/category";
 
 const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef }) => {
   const dispatch = useDispatch();
   const categoryListRef = useRef(null);
   const categories = useSelector(selectCategories);
+  const category = useSelector(selectCategory);
 
   const handleOutsideClick = (e) => {
     if (
@@ -40,9 +41,13 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   return (
     <div className={css.categoryList} ref={categoryListRef}>
       <ul>
-        {categories.map((category) => (
-          <li key={category.id} onClick={() => clickCategory(category.name)}>
-            {category.icon} {category.name}
+        {categories.map((c) => (
+          <li
+            id={category === c.name && css.active}
+            key={c.id}
+            onClick={() => clickCategory(c.name)}
+          >
+            {c.icon} {c.name}
           </li>
         ))}
       </ul>

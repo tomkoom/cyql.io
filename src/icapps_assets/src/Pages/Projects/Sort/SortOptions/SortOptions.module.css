@@ -10,6 +10,9 @@
 
 .sort ul li {
   flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   white-space: nowrap;
   padding: 1rem;
   background-color: var(--underlay);
