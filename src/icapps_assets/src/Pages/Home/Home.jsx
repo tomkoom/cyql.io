@@ -2,13 +2,19 @@ import React from "react";
 import css from "./Home.module.css";
 
 // icons
-import { iArrowRight, iWallet, iGlobe } from "../../Icons/Icons";
+import { iArrowRight } from "../../Icons/Icons";
 
 // routes
 import { toApps, toUpcoming } from "../../Routes/routes";
 
 // components
-import { JoinCommunity, NftSales, HighlightedProjects, HighlightedByCategory } from "./index";
+import {
+  HighlightedByCategory,
+  HighlightedProjects,
+  JoinCommunity,
+  NftSales,
+  Partners,
+} from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -119,7 +125,6 @@ const Home = () => {
           <h3 className={css.title}>Upcoming NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
-
         <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Upcoming")} />
       </section>
 
@@ -129,10 +134,8 @@ const Home = () => {
           <h3 className={css.title}>Ongoing NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
-
         <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Open")} />
       </section>
-
       <div className="div" />
 
       {/* wallets */}
@@ -145,7 +148,6 @@ const Home = () => {
         </div>
         <HighlightedByCategory filter="Wallets" />
       </section>
-
       <div className="div" />
 
       {/* explorers */}
@@ -158,7 +160,6 @@ const Home = () => {
         </div>
         <HighlightedByCategory filter="Explorers" />
       </section>
-
       <div className="div" />
 
       {/* social networks */}
@@ -170,6 +171,29 @@ const Home = () => {
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedByCategory filter="Social Networks" />
+      </section>
+      <div className="div" />
+
+      {/* defi */}
+      <section>
+        <div className={css.sectionTitle}>
+          <div className={css.titleContainer}>
+            <h3 className={css.title}>DeFi</h3>
+          </div>
+          <ViewAllBtn nav={toApps} />
+        </div>
+        <HighlightedByCategory filter="DeFi" />
+      </section>
+      <div className="div" />
+
+      {/* partners */}
+      <section>
+        <div className={css.sectionTitle}>
+          <div className={css.titleContainer}>
+            <h3 className={css.title}>Partners</h3>
+          </div>
+        </div>
+        <Partners />
       </section>
 
       {/* join community */}

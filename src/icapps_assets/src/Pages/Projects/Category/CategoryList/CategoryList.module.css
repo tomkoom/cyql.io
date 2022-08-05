@@ -1,0 +1,20 @@
+/* category list */
+
+.categoryList ul {
+  width: 24rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-weight: var(--fwMedium);
+  background-color: var(--background);
+  box-shadow: 0 0 0 1px var(--underlay);
+}
+
+.categoryList ul li {
+  white-space: nowrap;
+  padding: 0.5rem;
+  background-color: var(--underlay);
+  cursor: pointer;
+}

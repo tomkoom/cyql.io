@@ -7,9 +7,9 @@ import theme from "./theme";
 import view from "./view";
 import loadMore from "./loadMore";
 import projects from "./projects";
-import category from "./category";
 import modals from "./modals";
 import projectModal from "./projectModal";
+import category from "./category";
 import categories from "./categories";
 import upvotedProjects from "./upvotedProjects";
 import sort from "./sort";
@@ -35,9 +35,9 @@ const rootReducer = combineReducers({
   view,
   loadMore,
   projects,
-  category,
   modals,
   projectModal,
+  category,
   categories,
   upvotedProjects,
   sort,

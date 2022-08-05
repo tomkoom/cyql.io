@@ -10,7 +10,6 @@
   color: var(--primaryColor);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
-  border-radius: 0.33rem;
   border: none;
   outline: none;
 }

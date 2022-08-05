@@ -1,0 +1,13 @@
+/* category */
+
+.category {
+  display: flex;
+  align-self: flex-start;
+  position: relative;
+}
+
+.categoryList {
+  position: absolute;
+  top: 40px;
+  left: 1px;
+}

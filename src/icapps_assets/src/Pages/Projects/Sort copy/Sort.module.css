@@ -1,0 +1,68 @@
+/* sort */
+
+.sort {
+  position: relative;
+}
+
+.sort * {
+  font-size: 0.9rem;
+}
+
+.sortBtn,
+.sortSelect {
+  background-color: var(--underlay);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.66rem 0.75rem;
+}
+
+.sortBtn:hover {
+  background-color: var(--underlay2);
+}
+
+.orderBy {
+  color: var(--secondaryColor);
+}
+
+.sortBtnOpt {
+  font-weight: var(--bold);
+}
+
+.angleDownIcon,
+.checkIcon {
+  margin-left: 0.33rem;
+}
+
+.angleDownIcon {
+  color: var(--tertiaryColor);
+}
+
+.checkIcon {
+  color: var(--colorGreen);
+}
+
+/* sort select */
+
+.sortSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+
+.sortSelect li {
+  padding: 0.5rem 0.66rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.sortSelect li:hover {
+  background-color: var(--underlay2);
+}

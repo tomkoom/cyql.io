@@ -20,19 +20,22 @@ const HighlightedByCategory = ({ filter }) => {
   };
 
   const sortByUpvoted = (a, b) => {
-    return b.upvotedBy.length - a.upvotedBy.length;
+    if (a.upvotedBy && b.upvotedBy) {
+      return b.upvotedBy.length - a.upvotedBy.length;
+    } else if (!a.upvotedBy && b.upvotedBy) {
+      return 1;
+    } else if (a.upvotedBy && !b.upvotedBy) {
+      return -1;
+    }
+    return 0;
   };
 
   return (
     <ul className={css.projects}>
       {projects
         .filter((p) => p.category === filter)
-        // sort by upvoted
-        .filter((p) => p.upvotedBy && p.upvotedBy.length > 0)
         .sort((a, b) => sortByUpvoted(a, b))
-        // sort by verified
         .sort((a, b) => sortByVerified(a, b))
-        // slice
         .slice(0, 16)
         .map((p) => (
           <li className={css.projectsI} key={p.idx} onClick={() => toApp(p.id)}>

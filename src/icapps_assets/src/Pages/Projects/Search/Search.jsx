@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./SearchBar.module.css";
+import css from "./Search.module.css";
 
 // state
 import { useDispatch, useSelector } from "react-redux";

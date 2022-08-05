@@ -31,6 +31,7 @@ const categories = createSlice({
   },
 });
 
+// selectors
 export const selectCategories = (state) => state.categories.categories;
 
 export const { setCategoryLength } = categories.actions;
