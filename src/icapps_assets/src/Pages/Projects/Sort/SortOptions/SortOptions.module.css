@@ -1,1 +1,25 @@
 /* sort options */
+
+.sort ul {
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  font-weight: var(--fwMedium);
+  box-shadow: 0 0 0 1px var(--underlay);
+}
+
+.sort ul li {
+  flex: 1;
+  white-space: nowrap;
+  padding: 1rem;
+  background-color: var(--underlay);
+  cursor: pointer;
+}
+
+.sort ul li:hover {
+  background-color: var(--underlay2);
+}
+
+.icon {
+  color: var(--colorGreen);
+}

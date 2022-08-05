@@ -1,12 +1,11 @@
 /* category list */
 
 .categoryList ul {
-  width: 24rem;
+  width: 28rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 1rem;
-  font-size: 0.9rem;
   font-weight: var(--fwMedium);
   background-color: var(--background);
   box-shadow: 0 0 0 1px var(--underlay);
@@ -17,4 +16,9 @@
   padding: 0.5rem;
   background-color: var(--underlay);
   cursor: pointer;
+}
+
+.categoryList ul li:hover {
+  color: white;
+  background-color: var(--highlightColor);
 }

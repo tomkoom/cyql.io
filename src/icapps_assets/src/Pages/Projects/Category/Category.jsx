@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import css from "./Category.module.css";
 
 // components
@@ -6,13 +6,23 @@ import Btn from "./Btn/Btn";
 import CategoryList from "./CategoryList/CategoryList";
 
 const Category = () => {
-  const [openCategories, setOpenCategories] = useState(false);
+  const [openCategoryList, setOpenCategoryList] = useState(false);
+  const categoryBtnRef = useRef(null);
+
   return (
     <div className={css.category}>
-      <div onClick={() => setOpenCategories((prev) => !prev)}>
+      <div onClick={() => setOpenCategoryList((prev) => !prev)} ref={categoryBtnRef}>
         <Btn />
       </div>
-      <div className={css.categoryList}>{openCategories && <CategoryList />}</div>
+      <div className={css.categoryList}>
+        {openCategoryList && (
+          <CategoryList
+            openCategoryList={openCategoryList}
+            setOpenCategoryList={setOpenCategoryList}
+            categoryBtnRef={categoryBtnRef}
+          />
+        )}
+      </div>
     </div>
   );
 };

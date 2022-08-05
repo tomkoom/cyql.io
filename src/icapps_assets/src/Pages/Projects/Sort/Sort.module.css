@@ -3,3 +3,9 @@
 .sort {
   position: relative;
 }
+
+.sortOptions {
+  position: absolute;
+  top: 40px;
+  left: 1px;
+}

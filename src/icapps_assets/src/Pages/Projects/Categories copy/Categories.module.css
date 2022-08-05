@@ -1,7 +1,0 @@
-/* category btns */
-
-.categoryBtns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.66rem;
-}
