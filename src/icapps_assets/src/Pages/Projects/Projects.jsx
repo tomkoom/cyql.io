@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Projects.module.css";
 
 // components
-import { Category, ProjectList, Search, Tags, Sort } from "./index";
+import { Category, Filter, ProjectList, Search, Sort } from "./index";
 
 const Projects = () => {
   return (
@@ -12,6 +12,7 @@ const Projects = () => {
       <div className={css.controls}>
         <Category />
         <Sort />
+        <Filter />
       </div>
       <ProjectList />
       {/* <Tags /> */}

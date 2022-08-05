@@ -19,6 +19,7 @@ import { selectCategory } from "../../../State/category";
 import { selectSearch } from "../../../State/search";
 import { selectItemsVisible } from "../../../State/loadMore";
 import { selectSort } from "../../../State/sort";
+import { selectFilterByOpenSource } from "../../../State/filter";
 
 const AppList = () => {
   const projects = useSelector(selectProjects);
@@ -26,6 +27,7 @@ const AppList = () => {
   const search = useSelector(selectSearch);
   const itemsVisible = useSelector(selectItemsVisible);
   const sort = useSelector(selectSort);
+  const filterOpenSource = useSelector(selectFilterByOpenSource);
 
   const sortByUpvotes = (a, b) => {
     if (a.upvotedBy && b.upvotedBy) {
@@ -44,7 +46,9 @@ const AppList = () => {
       ) : (
         <ul className={css.li}>
           {projects
+            // category
             .filter((project) => (category === "All" ? project : project.category === category))
+            // search query
             .filter((project) => {
               if (search === "") {
                 return project;
@@ -53,6 +57,16 @@ const AppList = () => {
                 project.name.toLowerCase().includes(search.toLowerCase())
               ) {
                 return project;
+              }
+            })
+            // open source
+            .filter((project) => {
+              if (filterOpenSource === "all") {
+                return project;
+              } else if (filterOpenSource === "true") {
+                return project.github !== "";
+              } else if (filterOpenSource === "false") {
+                return project.github === "";
               }
             })
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))

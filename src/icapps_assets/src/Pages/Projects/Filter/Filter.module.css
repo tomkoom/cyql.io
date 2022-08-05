@@ -1,10 +1,10 @@
 /* sort */
 
-.sort {
+.filter {
   position: relative;
 }
 
-.sortOptions {
+.filterOptions {
   position: absolute;
   top: 40px;
   left: 0;

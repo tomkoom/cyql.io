@@ -14,6 +14,7 @@ import categories from "./categories";
 import upvotedProjects from "./upvotedProjects";
 import sort from "./sort";
 import profile from "./profile";
+import filter from "./filter";
 
 // redux-persist
 import {
@@ -42,6 +43,7 @@ const rootReducer = combineReducers({
   upvotedProjects,
   sort,
   profile,
+  filter,
 });
 
 const persistConfig = {

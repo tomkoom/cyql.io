@@ -27,3 +27,15 @@
   color: white;
   background-color: var(--highlightColor);
 }
+
+@media screen and (max-width: 479px) {
+  .categoryList ul {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 349px) {
+  .categoryList ul {
+    width: 280px;
+  }
+}
