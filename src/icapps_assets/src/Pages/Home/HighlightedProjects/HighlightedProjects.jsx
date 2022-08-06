@@ -59,7 +59,7 @@ const HighlightedProjects = ({ projects }) => {
 
       <div className={css.viewMoreBtn}>
         {projects.length > 0 && (
-          <ViewMoreBtn nav={toApps}>View all {projectsLength} projects &gt;</ViewMoreBtn>
+          <ViewMoreBtn nav={toApps}>View all {projectsLength} projects</ViewMoreBtn>
         )}
       </div>
     </div>

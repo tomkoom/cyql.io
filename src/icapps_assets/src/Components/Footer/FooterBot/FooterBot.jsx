@@ -5,11 +5,16 @@ import ICLogo from "../../../../assets/ic-logo.svg";
 const FooterBot = () => {
   return (
     <div className={css.footerBot}>
-      <p>Powered by</p>
-      <a href="https://dfinity.org/" target="_blank" rel="noreferrer noopener">
-        <img className={css.icLogo} src={ICLogo} alt="Internet Computer logo" />
-        Internet Computer
-      </a>
+      <div className={css.icBadge}>
+        <p className={css.icBadgeText}>Powered by</p>
+        <a href="https://dfinity.org/" target="_blank" rel="noreferrer noopener">
+          <img className={css.icLogo} src={ICLogo} alt="Internet Computer logo" />
+          Internet Computer
+        </a>
+      </div>
+      <div>
+        <p>©2022 icApps</p>
+      </div>
     </div>
   );
 };

@@ -110,15 +110,26 @@
 
 /* btns */
 
+.project__btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.project__btns a span {
+  color: var(--secondaryColor);
+}
+
 .tradeBtn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   height: 2.5rem;
+  font-weight: var(--fwMedium);
   background-color: var(--underlay);
   padding: 0 0.75rem;
   margin-bottom: 1rem;
-  border-radius: 0.33rem;
+  border-radius: 0.25rem;
 }
 
 .tradeBtn span {
@@ -150,16 +161,6 @@
 
 .nftSaleStatus {
   background-color: var(--underlay2);
-}
-
-.project__btns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.project__btns a span {
-  color: var(--secondaryColor);
 }
 
 /* responsive */

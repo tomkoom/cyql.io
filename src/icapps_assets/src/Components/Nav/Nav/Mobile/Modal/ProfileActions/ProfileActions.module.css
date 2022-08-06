@@ -15,10 +15,9 @@
   cursor: pointer;
 }
 
-.idImg {
-  border-radius: 50%;
-  height: 36px;
-  width: 36px;
+.text,
+.icon {
+  font-size: var(--fontSize5);
 }
 
 .subtitle {

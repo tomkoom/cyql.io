@@ -1,18 +1,25 @@
 /* view more btn */
 
-.viewMoreBtn {
+.btn {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.5rem;
   width: 100%;
-  background-color: var(--underlay);
-  padding: 0.75rem;
   font-size: 0.9rem;
   font-weight: var(--fwBold);
   text-align: center;
-  border-radius: 0.33rem;
-  cursor: pointer;
-  border: none;
+  background-color: var(--underlay);
+  padding: 0.75rem;
   margin-top: 0.75rem;
+  border: none;
+  cursor: pointer;
 }
 
-.viewMoreBtn:hover {
+.btn:hover {
   background-color: var(--underlay2);
+}
+
+.icon {
+  color: var(--tertiaryColor);
 }

@@ -1,20 +1,21 @@
 /* footer bot */
 
 .footerBot {
-  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
   font-size: var(--fontSize7);
-  gap: 0.5rem;
 }
 
-.footerBot,
+.icBadge,
 .footerBot a {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.footerBot p {
+.icBadgeText {
   color: var(--tertiaryColor);
 }
 

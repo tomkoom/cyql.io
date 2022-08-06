@@ -5,6 +5,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0;
+  font-size: var(--fontSize5);
   cursor: pointer;
 }
 

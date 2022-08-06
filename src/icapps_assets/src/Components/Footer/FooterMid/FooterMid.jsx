@@ -3,7 +3,7 @@ import css from "./FooterMid.module.css";
 import Logo from "../../Logo/Logo";
 
 // icons
-import { iTwitter, iDiscord } from "../../../Icons/Icons";
+import { iTwitter, iDiscord, iMediumM } from "../../../Icons/Icons";
 
 // routes
 import { toHome, toApps, toUpcoming, toSubmit } from "../../../Routes/routes";
@@ -14,6 +14,7 @@ import NavLink from "./NavLink/NavLink";
 const socials = [
   { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
   { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
+  { id: "medium", link: "https://medium.com/@icappsxyz", icon: iMediumM },
 ];
 
 const FooterMid = () => {

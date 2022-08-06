@@ -22,7 +22,7 @@ const ProfileActions = () => {
   const { principalIdStr, signOut } = useAuth();
   const pIdStr = principalIdStr;
 
-  const handleProfileActionClick = (action) => {
+  const clickProfile = (action) => {
     action();
     dispatch(setMobileMenuModal(false));
   };
@@ -30,14 +30,17 @@ const ProfileActions = () => {
   return (
     <div className={css.profileActions}>
       <button onClick={() => handleProfileActionClick(toProfile)}>
-        <IdImg size={32} />
+        <IdImg size={40} />
         <div>
-          <p>{pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}</p>
+          <p className={css.text}>
+            {pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}
+          </p>
           <p className={css.subtitle}>View Profile</p>
         </div>
       </button>
-      <button onClick={() => handleProfileActionClick(signOut)}>
-        <span className={css.icon}>{iSignOut}</span> Sign out
+      <button onClick={() => clickProfile(signOut)}>
+        <span className={css.icon}>{iSignOut}</span>
+        <p className={css.text}>Sign out</p>
       </button>
     </div>
   );
