@@ -19,7 +19,7 @@ import { selectCategory } from "../../../State/category";
 import { selectSearch } from "../../../State/search";
 import { selectItemsVisible } from "../../../State/loadMore";
 import { selectSort } from "../../../State/sort";
-import { selectFilterByOpenSource } from "../../../State/filter";
+import { selectFilterByOpenSource, selectFilterByOnChain } from "../../../State/filter";
 
 const AppList = () => {
   const projects = useSelector(selectProjects);
@@ -28,6 +28,7 @@ const AppList = () => {
   const itemsVisible = useSelector(selectItemsVisible);
   const sort = useSelector(selectSort);
   const filterOpenSource = useSelector(selectFilterByOpenSource);
+  const filterOnChain = useSelector(selectFilterByOnChain);
 
   const sortByUpvotes = (a, b) => {
     if (a.upvotedBy && b.upvotedBy) {
@@ -69,6 +70,16 @@ const AppList = () => {
                 return project.github === "";
               }
             })
+            // on-chain
+            .filter((project) => {
+              if (filterOnChain === "all") {
+                return project;
+              } else if (filterOnChain === "true") {
+                return project.canister !== "";
+              } else if (filterOnChain === "false") {
+                return project.canister === "";
+              }
+            })
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
             .slice(0, itemsVisible)
             .map((project) => (
@@ -91,7 +102,7 @@ const AppList = () => {
 
                       <ul>
                         {project.category && <li>{project.category}</li>}
-                        {project.canister && <li>{iDatabase} Deployed to IC</li>}
+                        {project.canister && <li>{iDatabase} On-Chain</li>}
                         {project.github && <li>{iGithub} Open Source</li>}
                       </ul>
 

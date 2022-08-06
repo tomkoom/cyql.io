@@ -6,20 +6,20 @@ const CollectionStats = ({ nftSaleStatus, nftSaleDate, nftUnits, nftUnitPrice })
     <div className={css.collectionStats}>
       <ul>
         <li>
-          <p className="text">Status</p>
-          <p className="text">{nftSaleStatus ? nftSaleStatus : "N/A"}</p>
+          <p className={css.label}>Status</p>
+          <p className={css.text}>{nftSaleStatus ? nftSaleStatus : "N/A"}</p>
         </li>
         <li>
-          <p className="text">Sale date</p>
-          <p className="text">{nftSaleDate ? nftSaleDate : "N/A"}</p>
+          <p className={css.label}>Sale date</p>
+          <p className={css.text}>{nftSaleDate ? nftSaleDate : "N/A"}</p>
         </li>
         <li>
-          <p className="text">Total NFTs</p>
-          <p className="text">{nftUnits ? nftUnits : "N/A"}</p>
+          <p className={css.label}>Total NFTs</p>
+          <p className={css.text}>{nftUnits ? nftUnits : "N/A"}</p>
         </li>
         <li>
-          <p className="text">Sale price</p>
-          <p className="text" id={css.collStatsInfo}>
+          <p className={css.label}>Sale price</p>
+          <p className={css.text} id={css.collStatsInfo}>
             {nftUnitPrice ? nftUnitPrice : "N/A"}
           </p>
         </li>

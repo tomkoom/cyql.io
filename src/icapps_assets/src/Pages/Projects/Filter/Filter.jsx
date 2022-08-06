@@ -5,7 +5,7 @@ import css from "./Filter.module.css";
 import Btn from "./Btn/Btn";
 import FilterOptions from "./FilterOptions/FilterOptions";
 
-const Filter = () => {
+const Filter = ({ label, filter, setFilter }) => {
   const [openFilterOptions, setOpenFilterOptions] = useState();
   const filterBtnRef = useRef(null);
 
@@ -16,7 +16,7 @@ const Filter = () => {
   return (
     <div className={css.filter}>
       <div onClick={clickBtn} ref={filterBtnRef}>
-        <Btn />
+        <Btn label={label} filter={filter} />
       </div>
       <div className={css.filterOptions}>
         {openFilterOptions && (
@@ -24,6 +24,8 @@ const Filter = () => {
             openFilterOptions={openFilterOptions}
             setOpenFilterOptions={setOpenFilterOptions}
             filterBtnRef={filterBtnRef}
+            filter={filter}
+            setFilter={setFilter}
           />
         )}
       </div>

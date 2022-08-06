@@ -14,6 +14,7 @@
 
 .linksLiI {
   border-radius: 0.33rem;
+  cursor: pointer;
 }
 
 .linksLiI:hover {

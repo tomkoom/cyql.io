@@ -5,13 +5,17 @@ import css from "./FilterOptions.module.css";
 import { iCheck } from "../../../../Icons/Icons";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
-import { selectFilterByOpenSource, setFilterByOpenSource } from "../../../../State/filter";
+import { useDispatch } from "react-redux";
 
-const FilterOptions = ({ openFilterOptions, setOpenFilterOptions, filterBtnRef }) => {
+const FilterOptions = ({
+  openFilterOptions,
+  setOpenFilterOptions,
+  filterBtnRef,
+  filter,
+  setFilter,
+}) => {
   const dispatch = useDispatch();
   const filterOptionsRef = useRef(null);
-  const filter = useSelector(selectFilterByOpenSource);
 
   const handleOutsideClick = (e) => {
     if (
@@ -34,8 +38,8 @@ const FilterOptions = ({ openFilterOptions, setOpenFilterOptions, filterBtnRef }
     };
   }, [openFilterOptions]);
 
-  const clickFilter = (filter) => {
-    dispatch(setFilterByOpenSource(filter));
+  const clickFilter = (f) => {
+    dispatch(setFilter(f));
     setOpenFilterOptions(false);
   };
 

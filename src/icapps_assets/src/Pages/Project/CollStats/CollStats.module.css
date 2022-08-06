@@ -12,11 +12,22 @@
   flex: 1;
   background-color: var(--underlay);
   padding: 0.75rem;
-  border-radius: 0.33rem;
+  border-radius: 0.25rem;
   white-space: nowrap;
 }
 
 .collStatsInfo {
   white-space: normal;
   word-wrap: break-word;
+}
+
+.label {
+  font-size: 0.9;
+  font-weight: var(--fwMedium);
+  color: var(--secondaryColor);
+}
+
+.text {
+  line-height: 150%;
+  font-weight: var(--fwMedium);
 }
