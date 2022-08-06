@@ -1,5 +1,20 @@
 /* upcoming nft sales */
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.text {
+  line-height: 150%;
+  color: var(--secondaryColor);
+  max-width: 32rem;
+}
+
+/* table */
+
 .t {
   text-align: right;
   width: 100%;
@@ -109,86 +124,19 @@
 
 /* nft preview */
 
-.nft__preview div {
+.nftPreview div {
   display: flex;
   justify-content: flex-end;
-  gap: 0.33rem;
 }
 
-.nft__preview div img {
+.nftPreview div img {
   height: 4.5rem;
   width: 4.5rem;
   object-fit: cover;
-  border-radius: 1rem;
 }
 
-/* hero */
+/* ––– */
 
-.nft__hero {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-}
-
-.nft__hero p {
-  color: var(--secondaryColor);
-  max-width: 32rem;
-}
-
-/* media partners badge */
-
-.mediaPartners {
-  display: flex;
-  align-items: center;
-  margin: 0.5rem 0 0.75rem 0;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  background-color: var(--underlay);
-  font-size: var(--fontSize7);
-}
-
-.mediaPartners__logo {
-  display: flex;
-  align-items: center;
-  font-weight: var(--bold);
-  gap: 0.2rem;
-  margin-left: 0.33rem;
-}
-
-.mediaPartners__logo img {
-  height: 1.5rem;
-}
-
-.submitBtn {
-  padding: 0.5rem 0.75rem;
-  color: var(--primaryColor);
-  background-color: var(--underlay);
-  font-weight: var(--bold);
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-.submitBtn:hover {
-  background-color: var(--underlay2);
-}
-
-/*  */
-
-[data-value="btn"]:hover {
-  background-image: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
-}
-
-#iconArrowRight {
-  font-size: var(--fontSize7);
-  opacity: 50%;
-}
-
-#iconCalendar {
-  color: var(--tertiaryColor);
-}
-
-.nftSaleLink:hover {
+.saleLink:hover {
   text-decoration: underline;
 }
