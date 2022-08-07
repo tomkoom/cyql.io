@@ -34,8 +34,8 @@ body {
 
 .content {
   padding: 0 2rem;
-  max-width: calc(1920px + 4rem);
-  /* max-width: calc(1440px + 4rem); */
+  max-width: calc(2048px + 4rem);
+  margin: 0 auto;
 }
 
 .main {

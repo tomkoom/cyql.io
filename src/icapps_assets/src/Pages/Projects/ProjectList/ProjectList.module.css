@@ -137,3 +137,47 @@
 .upvote .btn {
   float: right;
 }
+
+/* responsive */
+
+@media screen and (max-width: 639px) {
+  /* flex */
+
+  .socialsIC,
+  .socials {
+    display: none;
+  }
+
+  .main {
+    flex: calc(60% - 1rem);
+  }
+
+  .tags {
+    flex: calc(30% - 1rem);
+  }
+
+  .upvote {
+    flex: calc(10% - 1rem);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  /* flex */
+
+  .liI {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .main {
+    flex: 100%;
+  }
+
+  .tags {
+    flex: calc(80% - 0.5rem);
+  }
+
+  .upvote {
+    flex: calc(20% - 0.5rem);
+  }
+}
