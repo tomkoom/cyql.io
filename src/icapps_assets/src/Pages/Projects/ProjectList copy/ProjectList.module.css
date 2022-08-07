@@ -1,0 +1,80 @@
+/* project list */
+
+.li {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+
+.liI {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.cover {
+  width: 100%;
+  padding-bottom: 33.33%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0.5rem;
+}
+
+.info {
+  display: flex;
+  padding: 0.75rem 0 1rem 0;
+  gap: 0.75rem;
+}
+
+.logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: var(--fontSize6);
+  overflow-wrap: break-word;
+  width: 100%;
+}
+
+.right h3 {
+  font-size: var(--fontSize6);
+  font-weight: var(--black);
+  color: var(--primaryColor);
+  word-wrap: break-word;
+}
+
+.right ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: var(--fontSize7);
+}
+
+.right ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.33rem;
+  height: 1.5rem;
+  padding: 0 0.25rem;
+  color: var(--secondaryColor);
+  font-weight: var(--fwMedium);
+  background-color: var(--underlay);
+}
+
+.description {
+  color: var(--secondaryColor);
+  font-size: 0.9rem;
+  line-height: 150%;
+}

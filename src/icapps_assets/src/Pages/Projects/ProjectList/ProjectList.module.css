@@ -1,60 +1,77 @@
 /* project list */
 
 .li {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  grid-gap: 1rem;
+  display: flex;
+  flex-direction: column;
   margin-top: 1rem;
 }
 
 .liI {
   display: flex;
-  flex-direction: column;
-}
-
-.card {
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.66rem 0;
   cursor: pointer;
+  -webkit-box-shadow: 0px 1px 0px 0px var(--underlay);
+  box-shadow: 0px 1px 0px 0px var(--underlay);
 }
 
-.cover {
-  width: 100%;
-  padding-bottom: 33.33%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 0.5rem;
+.liI:hover {
+  background-color: var(--underlay);
 }
 
-.info {
+/* flex */
+
+.main {
+  flex: 40%;
+}
+
+.tags {
+  flex: 20%;
+}
+
+.socialsIC,
+.socials {
+  flex: 15%;
+}
+
+.upvote {
+  flex: 10%;
+}
+
+/* main */
+
+.main {
   display: flex;
-  padding: 0.75rem 0 1rem 0;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 1rem;
 }
 
-.logo {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
+.logo img {
+  width: 4.25rem;
+  height: 4.25rem;
+  flex-shrink: 0;
   object-fit: cover;
+  border-radius: 0.66rem;
 }
 
-.right {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.title {
   font-size: var(--fontSize6);
-  overflow-wrap: break-word;
-  width: 100%;
-}
-
-.right h3 {
-  font-size: var(--fontSize6);
-  font-weight: var(--black);
-  color: var(--primaryColor);
+  font-weight: var(--fwBold);
   word-wrap: break-word;
+  margin-bottom: 0.25rem;
 }
 
-.right ul {
+.description {
+  color: var(--secondaryColor);
+  font-size: 0.9rem;
+  line-height: 150%;
+}
+
+/* tags */
+
+.tags ul {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -62,7 +79,7 @@
   font-size: var(--fontSize7);
 }
 
-.right ul li {
+.tags ul li {
   display: flex;
   align-items: center;
   gap: 0.33rem;
@@ -73,8 +90,50 @@
   background-color: var(--underlay);
 }
 
-.description {
+/* socials, socialsIC */
+
+.socials ul,
+.socialsIC ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.socials ul {
+  gap: 0.25rem;
+}
+
+.socials ul li {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+  font-size: var(--fontSize6);
   color: var(--secondaryColor);
-  font-size: 0.9rem;
-  line-height: 150%;
+  border-radius: 50%;
+}
+
+.socialsIC ul {
+  gap: 0.5rem;
+}
+
+.socialsIC ul li {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  padding: 0 0.25rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+}
+
+/* upvote */
+
+.upvote {
+  display: inline-block;
+}
+
+.upvote .btn {
+  float: right;
 }

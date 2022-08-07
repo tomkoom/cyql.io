@@ -3,8 +3,7 @@ import css from "./ProjectList.module.css";
 import Loader from "../../../Components/Loader/Loader";
 
 //icons
-import { iDatabase, iRocket } from "../../../Icons/Icons";
-import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "../../../Icons/Icons";
+import { iDatabase, iGithub } from "../../../Icons/Icons";
 
 // routes
 import { toApp } from "../../../Routes/routes";
@@ -84,56 +83,39 @@ const AppList = () => {
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
             .slice(0, itemsVisible)
             .map((project) => (
-              <li className={css.liI} key={project.idx} onClick={() => toApp(project.id)}>
-                <div className={css.main}>
-                  {project.logo && (
-                    <div className={css.logo}>
-                      <img src={project.logo} alt={`${project.name} logo`} />
-                    </div>
+              <li key={project.idx} className={css.liI}>
+                <div className={css.card} onClick={() => toApp(project.id)}>
+                  {project.cover && (
+                    <div
+                      className={css.cover}
+                      style={{ backgroundImage: `url(${project.cover})` }}
+                    />
                   )}
 
-                  <div className={css.caption}>
-                    <h3 className={css.title}>{project.name}</h3>
-                    <p className={css.description}>
-                      {project.description && project.description.length > 70
-                        ? `${project.description.substring(0, 70)}…`
-                        : project.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className={css.tags}>
-                  <ul>
-                    {project.category && <li>{project.category}</li>}
-                    {project.category === "NFTs" && project.nftSaleStatus === "Upcoming" && (
-                      <li>{iRocket} Upcoming</li>
+                  <div className={css.info}>
+                    {project.logo && (
+                      <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
                     )}
-                    {project.canister && <li>{iDatabase} On-Chain</li>}
-                    {project.github && <li>{iGithub} Open Source</li>}
-                  </ul>
-                </div>
 
-                <div className={css.socials}>
-                  <ul>
-                    {project.twitter && <li>{iTwitter}</li>}
-                    {project.discord && <li>{iDiscord}</li>}
-                    {project.telegram && <li>{iTelegram}</li>}
-                    {project.github && <li>{iGithub}</li>}
-                    {project.medium && <li>{iMediumM}</li>}
-                  </ul>
-                </div>
+                    <div className={css.right}>
+                      <h3>{project.name}</h3>
 
-                <div className={css.socialsIC}>
-                  <ul>
-                    {project.dscvr && <li>Dscvr</li>}
-                    {project.distrikt && <li>Distrikt</li>}
-                    {project.openChat && <li>OpenChat</li>}
-                  </ul>
-                </div>
+                      <ul>
+                        {project.category && <li>{project.category}</li>}
+                        {project.canister && <li>{iDatabase} On-Chain</li>}
+                        {project.github && <li>{iGithub} Open Source</li>}
+                      </ul>
 
-                <div className={css.upvote}>
-                  <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                      <p className={css.description}>
+                        {project.description && project.description.length > 70
+                          ? `${project.description.substring(0, 70)}…`
+                          : project.description}
+                      </p>
+
+                      <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
+                        <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </li>

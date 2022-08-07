@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: var(--underlay2);
+}
+
 .text {
   font-size: 0.9rem;
   font-weight: var(--fwMedium);

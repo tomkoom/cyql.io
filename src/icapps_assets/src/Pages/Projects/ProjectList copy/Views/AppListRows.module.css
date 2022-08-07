@@ -1,0 +1,128 @@
+/* app list rows view */
+
+.t {
+  text-align: right;
+  width: 100%;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+  white-space: nowrap;
+  margin-top: 1rem;
+}
+
+.promoted {
+  -webkit-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+  -moz-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+  box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+}
+
+.t__tbody__tr {
+  box-shadow: var(--underline);
+}
+
+.t tbody tr {
+  cursor: pointer;
+}
+
+.t tbody tr:hover {
+  background-color: var(--underlay);
+}
+
+.t thead tr th:first-child,
+.t tbody tr td:first-child {
+  padding-left: 0.75rem;
+  text-align: left;
+}
+
+.t thead tr th:last-child,
+.t tbody tr td:last-child {
+  padding-right: 0.75rem;
+}
+
+.t thead tr th,
+.t tbody tr td {
+  padding: 1rem;
+}
+
+/* main coll */
+
+.maincoll > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.applogo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.maincoll div span {
+  white-space: normal;
+  height: 100%;
+  max-width: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.maincoll div span div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.maincoll div span div h4 {
+  font-size: var(--fontSize6);
+}
+
+.maincoll div span div span {
+  font-size: var(--fontSize7);
+  padding: 0.05rem 0.25rem;
+  color: var(--primaryColor);
+  background-color: var(--highlightColor);
+  border-radius: 0.25rem;
+}
+
+.maincoll div span p {
+  color: var(--secondaryColor);
+  line-height: 150%;
+  margin-top: 0.125rem;
+}
+
+/* social links */
+
+.links ul {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* category */
+
+.category p {
+  display: inline;
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--br025);
+  background-color: var(--underlay);
+}
+
+/* nft preview */
+
+.nftpreview ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+.nftpreview ul li div {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.25rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
