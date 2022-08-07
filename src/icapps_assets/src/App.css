@@ -143,13 +143,13 @@ ul {
 }
 
 .cookie__btn {
-  height: 1.5rem;
+  height: 2rem;
   width: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-weight: var(--bold);
+  font-weight: var(--fwMedium);
   text-decoration: none;
   background-color: var(--highlightColor);
   padding: 0.125rem 0.25rem;

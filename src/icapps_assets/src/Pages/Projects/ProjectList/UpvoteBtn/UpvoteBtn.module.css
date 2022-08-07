@@ -9,7 +9,7 @@
   align-items: center;
   padding-top: 0.25rem;
   font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
   color: var(--secondaryColor);
   background-color: var(--underlay);
   border: none;

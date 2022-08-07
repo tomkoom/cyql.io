@@ -109,7 +109,7 @@ const AppList = () => {
                       <li>{iRocket} Upcoming</li>
                     )}
                     {project.canister && <li>{iDatabase} On-Chain</li>}
-                    {project.github && <li>{iGithub} Open Source</li>}
+                    {/* {project.github && <li>{iGithub} Open Source</li>} */}
                   </ul>
                 </div>
 

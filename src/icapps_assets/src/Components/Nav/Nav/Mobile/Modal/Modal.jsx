@@ -3,7 +3,6 @@ import css from "./Modal.module.css";
 
 // icons
 import { iCube, iRocket, iPlus } from "../../../../../Icons/Icons";
-import { iTwitter, iDiscord } from "../../../../../Icons/Icons";
 import CrossIcon from "../../../../../Icons/CrossIcon/CrossIcon";
 
 // components
@@ -33,7 +32,7 @@ const Modal = () => {
         <div className={css.modal} onClick={() => dispatch(setMobileMenuModal(false))}>
           <div className={css.content} onClick={(e) => e.stopPropagation()}>
             <div className={css.nav}>
-              <div>
+              <div className={css.navList}>
                 <NavLink label="Projects" to={toApps} icon={iCube} />
                 <NavLink label="Upcoming" to={toUpcoming} icon={iRocket} />
                 <NavLink label="Submit" to={toSubmit} icon={iPlus} />

@@ -38,6 +38,12 @@
   gap: 1rem;
 }
 
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .crossIcon {
   position: absolute;
   top: 0;

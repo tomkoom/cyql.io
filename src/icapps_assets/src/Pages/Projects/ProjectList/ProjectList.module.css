@@ -77,6 +77,8 @@
   gap: 0.5rem;
   align-items: center;
   font-size: var(--fontSize7);
+  font-weight: var(--fwBold);
+  color: var(--secondaryColor);
 }
 
 .tags ul li {
@@ -85,8 +87,6 @@
   gap: 0.33rem;
   height: 1.5rem;
   padding: 0 0.25rem;
-  color: var(--secondaryColor);
-  font-weight: var(--fwMedium);
   background-color: var(--underlay);
 }
 
@@ -97,6 +97,9 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  font-size: var(--fontSize6);
+  font-weight: var(--fwBold);
+  color: var(--secondaryColor);
 }
 
 .socials ul {
@@ -108,8 +111,6 @@
   height: 1.5rem;
   display: grid;
   place-items: center;
-  font-size: var(--fontSize6);
-  color: var(--secondaryColor);
   border-radius: 50%;
 }
 
@@ -123,7 +124,6 @@
   height: 1.5rem;
   padding: 0 0.25rem;
   font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay);
 }
