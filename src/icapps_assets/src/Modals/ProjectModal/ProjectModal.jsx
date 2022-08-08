@@ -5,8 +5,8 @@ import css from "./ProjectModal.module.css";
 import { iTimes } from "../../Icons/Icons";
 
 // firestore
-import { projectsColRef } from "../../../../../firebase/firestore-collections";
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
+import { projectsColRef } from "../../Firestore/firestore-collections";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

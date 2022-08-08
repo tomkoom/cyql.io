@@ -21,8 +21,8 @@ import { useWindowSize } from "./Utils/UseWindowSize";
 import { sortByDateAdded, sortByDate } from "./Utils/Sort";
 
 // firestore
-import { onSnapshot, doc, setDoc, getDoc } from "firebase/firestore";
-import { projectsColRef, usersICColRef } from "../../../firebase/firestore-collections";
+import { onSnapshot, doc, setDoc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { projectsColRef, usersICColRef } from "./Firestore/firestore-collections";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
@@ -53,7 +53,7 @@ import {
   setSignInModal,
 } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-import { setOwnsNFT, setNFTIdsOwned, setVerified } from "./State/profile";
+import { setVerified, setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
 
 // nft canister data
 const host = "https://mainnet.dfinity.network";
@@ -193,6 +193,24 @@ const App = () => {
   //   }
   // }, [balance]);
 
+  // get upvoted projects
+  useEffect(() => {
+    if (principalIdStr) {
+      const upvotedProjectsQuery = query(
+        projectsColRef,
+        where("upvotedBy", "array-contains", principalIdStr)
+      );
+      const unsubscribe = onSnapshot(upvotedProjectsQuery, (snapshot) => {
+        const upvotedProjects = snapshot.docs.map((doc) => ({ ...doc.data(), idx: doc.id }));
+        console.log(upvotedProjects);
+        dispatch(setUpvotedProjects(upvotedProjects));
+      });
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [principalIdStr]);
+
   const getNFTData = async () => {
     const nft = Actor.createActor(nft_IDL, {
       agent: new HttpAgent({ host }),
@@ -280,8 +298,6 @@ const App = () => {
           </Switch>
         </div>
       </div>
-
-      {/* <Route exact path={`/(|projects|upcoming|profile|submit|admin|admin/addproject)`}></Route> */}
       <Footer />
 
       {/* cookies */}

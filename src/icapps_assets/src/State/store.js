@@ -11,7 +11,6 @@ import modals from "./modals";
 import projectModal from "./projectModal";
 import category from "./category";
 import categories from "./categories";
-import upvotedProjects from "./upvotedProjects";
 import sort from "./sort";
 import profile from "./profile";
 import filter from "./filter";
@@ -40,7 +39,6 @@ const rootReducer = combineReducers({
   projectModal,
   category,
   categories,
-  upvotedProjects,
   sort,
   profile,
   filter,

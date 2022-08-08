@@ -23,7 +23,8 @@
   padding: 0 0.5rem;
   font-size: var(--fontSize7);
   font-weight: var(--fwMedium);
-  box-shadow: 0 0 0 1px var(--underlay);
+  box-shadow: 0 0 0 1px var(--underlay2);
+  border-radius: 0.25rem;
 }
 
 .icon {

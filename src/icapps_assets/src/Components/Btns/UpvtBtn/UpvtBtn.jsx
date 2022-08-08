@@ -16,8 +16,8 @@ import { setSignInModal } from "../../../State/modals";
 import { selectVerified } from "../../../State/profile";
 
 // firestore
-import { projectsColRef } from "../../../../../../firebase/firestore-collections";
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { projectsColRef } from "../../../Firestore/firestore-collections";
 
 const UpvoteBtn = ({ upvotedBy, isActive, onClick }) => {
   return (

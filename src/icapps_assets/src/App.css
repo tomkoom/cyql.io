@@ -130,6 +130,7 @@ ul {
   padding: 0 1rem;
   color: var(--primaryColor);
   background: var(--underlay);
+  border-radius: 0.25rem;
 }
 
 .cookie * {
@@ -152,6 +153,7 @@ ul {
   text-decoration: none;
   background-color: var(--highlightColor);
   padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
   border: none;
   cursor: pointer;
 }

@@ -3,7 +3,7 @@ import css from "./Profile.module.css";
 
 // state
 import { useSelector } from "react-redux";
-import { selectOwnsNFT, selectNFTIdsOwned } from "../../State/profile";
+import { selectUpvotedProjects, selectOwnsNFT, selectNFTIdsOwned } from "../../State/profile";
 
 // components
 import Id from "./Id/Id";
@@ -11,6 +11,7 @@ import Id from "./Id/Id";
 const Profile = () => {
   const ownsNFT = useSelector(selectOwnsNFT);
   const ownedNFTIds = useSelector(selectNFTIdsOwned);
+  const upvotedProjects = useSelector(selectUpvotedProjects);
 
   return (
     <div className={css.profile}>
@@ -21,7 +22,13 @@ const Profile = () => {
           NFT: <span className={css.badge}>{ownsNFT.toString()}</span>
         </p>
         <h4>Upvotes</h4>
-        <p>Soon</p>
+        {upvotedProjects.length > 0 && (
+          <ul className={css.upvotedProjects}>
+            {upvotedProjects.map((p) => (
+              <li key={p.idx}>{p.name}, </li>
+            ))}
+          </ul>
+        )}
         <h4>My NFTs</h4>
         <p>Soon</p>
         {/* <p>
