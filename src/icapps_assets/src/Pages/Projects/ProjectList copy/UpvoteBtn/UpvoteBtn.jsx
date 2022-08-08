@@ -5,7 +5,7 @@ import css from "./UpvoteBtn.module.css";
 import { useAuth } from "../../../../Context/AuthContext";
 
 // shared functions
-import { upvote, cancelUpvote } from "../../../../Utils/SharedFunctions";
+import { upvote, unUpvote } from "../../../../Funcs/upvote";
 
 // icons
 import { iCaretUp, iCheck } from "../../../../Icons/Icons";
@@ -23,7 +23,7 @@ const UpvoteBtn = ({ idx, upvotedBy }) => {
       {user ? (
         <div>
           {upvotedBy && upvotedBy.includes(user.uid) ? (
-            <button className={css.upvotedBtn} onClick={() => cancelUpvote(idx, user.uid)}>
+            <button className={css.upvotedBtn} onClick={() => unUpvote(idx, user.uid)}>
               <span>{iCheck}</span> Upvoted {upvotedBy.length}
             </button>
           ) : (

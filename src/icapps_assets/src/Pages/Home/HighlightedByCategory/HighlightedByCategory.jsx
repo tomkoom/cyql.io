@@ -10,7 +10,7 @@ import { selectProjects } from "../../../State/projects";
 import { toApp } from "../../../Routes/routes";
 
 // components
-import { UpvoteBtn2 } from "../../../Components/index";
+import { UpvtBtn } from "../../../Components/index";
 
 const HighlightedByCategory = ({ filter }) => {
   const projects = useSelector(selectProjects);
@@ -54,8 +54,8 @@ const HighlightedByCategory = ({ filter }) => {
                 </p>
               </div>
             </div>
-            <div className={css.upvoteBtn}>
-              <UpvoteBtn2 idx={p.idx} upvotedBy={p.upvotedBy} />
+            <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
+              <UpvtBtn idx={p.idx} upvotedBy={p.upvotedBy} />
             </div>
           </li>
         ))}

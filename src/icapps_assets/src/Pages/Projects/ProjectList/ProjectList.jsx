@@ -11,7 +11,7 @@ import { toApp } from "../../../Routes/routes";
 
 // components
 import { LoadMoreBtn } from "../../../Components/";
-import UpvoteBtn from "./UpvoteBtn/UpvoteBtn";
+import { UpvtBtn } from "../../../Components/index";
 
 // state
 import { useSelector } from "react-redux";
@@ -38,7 +38,8 @@ const AppList = () => {
       return 1;
     } else if (a.upvotedBy && !b.upvotedBy) {
       return -1;
-    } else return 0;
+    }
+    return 0;
   };
 
   return (
@@ -133,7 +134,7 @@ const AppList = () => {
 
                 <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                    <UpvtBtn idx={project.idx} upvotedBy={project.upvotedBy} />
                   </div>
                 </div>
               </li>

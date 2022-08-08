@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/projects";
 
 // components
-import { BackBtn, ExpandableText, Loader, UpvoteBtn } from "../../Components/index";
+import { BackBtn, ExpandableText, Loader, UpvtBtn } from "../../Components/index";
 import { CollStats, NftPreviews, Links } from "./index";
 
 const Project = () => {
@@ -62,7 +62,7 @@ const Project = () => {
                   </div>
 
                   <div className={css.upvoteBtn}>
-                    <UpvoteBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                    <UpvtBtn idx={project.idx} upvotedBy={project.upvotedBy} />
                   </div>
                 </div>
 

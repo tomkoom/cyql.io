@@ -1,16 +1,16 @@
 import React from "react";
 import css from "./HighlightedProjects.module.css";
 
+// icons
+import { iGithub, iDatabase } from "../../../Icons/Icons";
+
 // routes
 import { toApp, toApps } from "../../../Routes/routes";
 
 // components
-import { Loader, UpvoteBtn2, ViewMoreBtn } from "../../../Components/index";
+import { Loader, UpvtBtn, ViewMoreBtn } from "../../../Components/index";
 
-// icons
-import { iGithub, iDatabase } from "../../../Icons/Icons";
-
-// redux
+// state
 import { useSelector } from "react-redux";
 import { selectProjectsLength } from "../../../State/projects";
 
@@ -49,7 +49,7 @@ const HighlightedProjects = ({ projects }) => {
                 </div>
 
                 <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
-                  <UpvoteBtn2 idx={project.idx} upvotedBy={project.upvotedBy} />
+                  <UpvtBtn idx={project.idx} upvotedBy={project.upvotedBy} />
                 </div>
               </div>
             </div>

@@ -1,21 +1,21 @@
-// shared functions
+// upvotes
 
 // firestore
 import { projectsColRef } from "../../../../firebase/firestore-collections";
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
-const upvote = async (projectIdx, userUid) => {
+const upvote = async (projectIdx, principalIdStr) => {
   const docRef = doc(projectsColRef, projectIdx);
   await updateDoc(docRef, {
-    upvotedBy: arrayUnion(userUid),
+    upvotedBy: arrayUnion(principalIdStr),
   });
 };
 
-const cancelUpvote = async (projectIdx, userUid) => {
+const unUpvote = async (projectIdx, principalIdStr) => {
   const docRef = doc(projectsColRef, projectIdx);
   await updateDoc(docRef, {
-    upvotedBy: arrayRemove(userUid),
+    upvotedBy: arrayRemove(principalIdStr),
   });
 };
 
-export { upvote, cancelUpvote };
+export { upvote, unUpvote };

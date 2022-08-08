@@ -126,7 +126,6 @@ ul {
   align-items: center;
   justify-content: flex-start;
   flex-wrap: wrap;
-  border-radius: var(--br05);
   height: 3rem;
   padding: 0 1rem;
   color: var(--primaryColor);
@@ -149,7 +148,7 @@ ul {
   align-items: center;
   justify-content: center;
   color: white;
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
   text-decoration: none;
   background-color: var(--highlightColor);
   padding: 0.125rem 0.25rem;
