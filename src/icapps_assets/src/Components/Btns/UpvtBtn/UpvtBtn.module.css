@@ -2,32 +2,39 @@
 
 /* upvote / upvoted btns */
 
-.upvtBtn,
-.upvtdBtn {
-  width: 2rem;
-  height: 3rem;
+.upvtBtn {
+  width: 40px;
+  height: 56px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
   font-size: var(--fontSize7);
   color: var(--secondaryColor);
-  background-color: var(--underlay);
-  font-weight: var(--fwBold);
+  box-shadow: 0 0 0 1px var(--underlay2);
+  font-weight: var(--fwMedium);
+  border-radius: 0.25rem;
   border: none;
   cursor: pointer;
 }
 
-.upvtBtn:hover,
-.upvtdBtn:hover {
-  background-color: var(--underlay2);
+.upvtBtn:hover:not(.activeBtn) {
+  box-shadow: 0 0 0 1px var(--highlightColor3);
 }
 
-.iconActive {
-  color: var(--highlightColor2);
-}
-
-.iconDefault {
+.icon {
+  font-size: var(--fontSize5);
   color: var(--secondaryColor);
+}
+
+.num {
+  padding-bottom: 0.25rem;
+}
+
+.activeBtn {
+  box-shadow: 0 0 0 1px var(--highlightColor);
+}
+
+.activeIcon {
+  color: var(--highlightColor);
 }

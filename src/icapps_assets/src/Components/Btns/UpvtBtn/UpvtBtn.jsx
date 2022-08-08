@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../Context/AuthContext";
 
 // icons
-import { iCaretUp, iCheck } from "../../../Icons/Icons";
+import { iCaretUp } from "../../../Icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -19,20 +19,11 @@ import { selectVerified } from "../../../State/profile";
 import { projectsColRef } from "../../../../../../firebase/firestore-collections";
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 
-const UpvoteBtn = ({ onClick, upvotedBy }) => {
+const UpvoteBtn = ({ upvotedBy, isActive, onClick }) => {
   return (
-    <button className={css.upvtBtn} onClick={onClick}>
-      <span className={css.iconDefault}>{iCaretUp}</span>
-      <p>{upvotedBy ? upvotedBy.length : 0}</p>
-    </button>
-  );
-};
-
-const UpvotedBtn = ({ onClick, upvotedBy }) => {
-  return (
-    <button className={css.upvtdBtn} onClick={onClick}>
-      <span className={css.iconActive}>{iCheck}</span>
-      <p>{upvotedBy.length}</p>
+    <button className={`${css.upvtBtn} ${isActive ? css.activeBtn : ""}`} onClick={onClick}>
+      <span className={`${css.icon} ${isActive ? css.activeIcon : ""}`}>{iCaretUp}</span>
+      <p className={css.num}>{isActive ? upvotedBy.length : upvotedBy ? upvotedBy.length : "0"}</p>
     </button>
   );
 };
@@ -88,12 +79,16 @@ const UpvtBtn = ({ idx, upvotedBy }) => {
     <div>
       {pIdStr ? (
         upvotedBy && upvotedBy.includes(pIdStr) ? (
-          <UpvotedBtn upvotedBy={upvotedBy} onClick={() => unUpvote(idx, pIdStr)} />
+          <UpvoteBtn upvotedBy={upvotedBy} isActive={true} onClick={() => unUpvote(idx, pIdStr)} /> // upvoted
         ) : (
-          <UpvoteBtn upvotedBy={upvotedBy} onClick={() => upvote(idx, pIdStr)} />
+          <UpvoteBtn upvotedBy={upvotedBy} isActive={false} onClick={() => upvote(idx, pIdStr)} />
         )
       ) : (
-        <UpvoteBtn upvotedBy={upvotedBy} onClick={() => dispatch(setSignInModal(true))} />
+        <UpvoteBtn
+          upvotedBy={upvotedBy}
+          isActive={false}
+          onClick={() => dispatch(setSignInModal(true))}
+        />
       )}
     </div>
   );

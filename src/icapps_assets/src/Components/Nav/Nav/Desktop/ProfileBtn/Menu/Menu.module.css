@@ -10,8 +10,7 @@
   top: 0;
   right: 0;
   background-color: var(--background);
-  border: 1px solid var(--underlay);
-  border-radius: 0.5rem;
+  border: 1px solid var(--underlay2);
 }
 
 .crossIcon {
