@@ -1,6 +1,6 @@
 // https://github.com/Psychedelic/nft-marketplace-fe/blob/develop/src/integrations/plug/plug.utils.ts
 
-import { formatICNSName } from "../../utils/icns";
+// import { formatICNSName } from "../../utils/icns";
 
 export const requestConnectToPlug = (args) => window.ic?.plug?.requestConnect(args);
 
@@ -41,7 +41,7 @@ export const getPlugButtonText = (params) => {
 
   if (!principalId) return loadingText;
 
-  if (icnsName) return formatICNSName(icnsName);
+  // if (icnsName) return formatICNSName(icnsName);
 
   return formatAddress(principalId);
 };

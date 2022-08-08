@@ -20,6 +20,10 @@ const Profile = () => {
         <p>
           NFT: <span className={css.badge}>{ownsNFT.toString()}</span>
         </p>
+        <h4>Upvotes</h4>
+        <p>Soon</p>
+        <h4>My NFTs</h4>
+        <p>Soon</p>
         {/* <p>
           NFT Indexes:{" "}
           <span className={css.badge}>{ownedNFTIds.toString().replaceAll(",", ", ")}</span>

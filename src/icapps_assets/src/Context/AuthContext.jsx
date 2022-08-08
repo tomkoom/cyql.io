@@ -6,6 +6,7 @@ import { Principal } from "@dfinity/principal";
 
 // idl
 import { idlFactory, canisterId } from "../../../declarations/icapps/index";
+import ledger_idl from "../Utils/ledger_idl";
 
 // routes
 import { history } from "../Routes/history";
@@ -14,9 +15,11 @@ import { toHome } from "../Routes/routes";
 // state
 import { useDispatch } from "react-redux";
 import { setSignInModal } from "../State/modals";
+import { setVerified } from "../State/profile";
 
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
+import { getPlugWalletBalance } from "./Utils/Plug.utils";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -34,6 +37,7 @@ export function AuthProvider({ children }) {
   const [principalIdStr, setPrincipalIdStr] = useState("");
   const [accountIdStr, setAccountIdStr] = useState("");
   const [signInMethod, setSignInMethod] = useState("");
+  const [balance, setBalance] = useState(0);
   const dispatch = useDispatch();
 
   // –––PLUG–––
@@ -66,10 +70,13 @@ export function AuthProvider({ children }) {
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
     const accountIdStr = window.ic.plug.sessionManager.sessionData.accountId;
+    // const balance = await getPlugWalletBalance();
+    // const balanceIcp = balance[0].amount;
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
     setAccountIdStr(accountIdStr);
     setSignInMethod("Plug");
+    // setBalance(balanceIcp);
   };
 
   const disconnectPlug = () => window.ic?.plug?.disconnect();
@@ -89,10 +96,13 @@ export function AuthProvider({ children }) {
     const principalId = stoicId.getPrincipal();
     const principalIdStr = stoicId.getPrincipal().toText();
     const accountIdStr = getAccountIdentifier(principalId);
+    // create ledger actor
+    // const balance = ledger.account_balance(accountIdStr);
     setPrincipalId(principalId);
     setPrincipalIdStr(principalIdStr);
     setAccountIdStr(accountIdStr);
     setSignInMethod("Stoic");
+    // setBalance(balance);
   };
 
   const disconnectStoic = async () => await StoicIdentity.disconnect();
@@ -121,6 +131,8 @@ export function AuthProvider({ children }) {
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setAccountIdStr("");
+    setBalance(0);
+    dispatch(setVerified(false));
 
     if (signInMethod === "Plug") {
       disconnectPlug();
@@ -143,6 +155,7 @@ export function AuthProvider({ children }) {
     principalIdStr,
     accountIdStr,
     signInMethod,
+    balance,
     signInWithPlug,
     checkConnection,
     // stoic

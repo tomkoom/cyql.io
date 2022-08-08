@@ -7,6 +7,10 @@ import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 import k from "../../../k/k";
 
+// toast
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import nft_IDL from "../../icapps/nft.did.js";
@@ -49,7 +53,7 @@ import {
   setSignInModal,
 } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-import { setOwnsNFT, setNFTIdsOwned } from "./State/profile";
+import { setOwnsNFT, setNFTIdsOwned, setVerified } from "./State/profile";
 
 // nft canister data
 const host = "https://mainnet.dfinity.network";
@@ -57,7 +61,8 @@ const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const App = () => {
   // hooks
-  const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection } = useAuth();
+  const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection, balance } =
+    useAuth();
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
@@ -151,14 +156,49 @@ const App = () => {
     };
   }, []);
 
+  // set icp price
+  useEffect(() => {
+    dispatch(fetchIcpPrice());
+  }, []);
+
+  // check auth
+  useEffect(() => {
+    checkConnection();
+  }, []);
+
+  // close sign in modal after user has logged
+  useEffect(() => {
+    if (principalIdStr) {
+      const closeSignInModal = () => {
+        dispatch(setSignInModal(false));
+      };
+      closeSignInModal();
+    }
+  }, [principalIdStr]);
+
+  // –––
+  // SET PROFILE INFO
   // –––
 
-  // set profile info
+  // set verified if balance > 10 ICP
+  // useEffect(() => {
+  //   if (balance) {
+  //     const setVerified = async () => {
+  //       if (balance >= 10) {
+  //         console.log(balance);
+  //         dispatch(setVerified(true));
+  //       }
+  //     };
+  //     setVerified();
+  //   }
+  // }, [balance]);
+
   const getNFTData = async () => {
     const nft = Actor.createActor(nft_IDL, {
       agent: new HttpAgent({ host }),
       canisterId: nftCanisterId,
     });
+
     await nft
       .principalOwnsOne(principalId)
       .then((res) => {
@@ -181,32 +221,12 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
-  // set icp price
-  useEffect(() => {
-    dispatch(fetchIcpPrice());
-  }, []);
-
   // get nft data
   useEffect(() => {
     if (principalId) {
       getNFTData();
     }
   }, [principalId]);
-
-  // check auth
-  useEffect(() => {
-    checkConnection();
-  }, []);
-
-  // close sign in modal after user has logged
-  useEffect(() => {
-    if (principalIdStr) {
-      const closeSignInModal = () => {
-        dispatch(setSignInModal(false));
-      };
-      closeSignInModal();
-    }
-  }, [principalIdStr]);
 
   return (
     <div className={`app ${theme}`}>
@@ -288,6 +308,9 @@ const App = () => {
       {/* modals */}
       {signInModal && <SignInModal />}
       {projectModal && <ProjectModal />}
+
+      {/* toast */}
+      <ToastContainer />
     </div>
   );
 };
