@@ -50,6 +50,7 @@
   display: inline-block;
   padding: 0.5rem 0.66rem;
   margin-top: 0.5rem;
+  font-size: var(--fontSize6);
   font-family: var(--monospace);
   line-height: 150%;
   word-break: break-all;

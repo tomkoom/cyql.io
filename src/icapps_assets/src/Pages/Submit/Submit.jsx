@@ -332,7 +332,7 @@ const Submit = () => {
 
           <form className={css.form} onSubmit={handleSubmit}>
             {/* categories */}
-            <div className={css.field}>
+            <div className={css.categories}>
               <p className={css.label}>Project category</p>
               <ul>
                 {categories.map((cat) =>
@@ -341,14 +341,14 @@ const Submit = () => {
                       <label htmlFor={cat.id}>
                         <input
                           id={cat.id}
+                          className={css.categoryHidden}
                           value={cat.id}
                           type="radio"
                           name="category"
                           checked={category === cat.id}
                           onChange={handleInput}
-                          className={css.category}
                         />
-                        <div className={css.category__div}>
+                        <div className={css.category}>
                           {cat.icon}&nbsp;&nbsp;{cat.name}
                         </div>
                       </label>

@@ -2,7 +2,11 @@
 
 /* categories */
 
-.field ul {
+.categories {
+  margin-bottom: 1rem;
+}
+
+.categories ul {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -10,27 +14,34 @@
   margin-top: 0.5rem;
 }
 
-.category {
+.label {
+  font-weight: var(--fwMedium);
+  color: var(--secondaryColor);
+  margin: 1rem 0;
+}
+
+.categoryHidden {
   display: none;
 }
 
-.category__div {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+.category {
+  font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  font-weight: var(--bold);
-}
-
-.category__div:hover {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
-.category:checked + .category__div {
+.category:hover {
+  background-color: var(--underlay2);
+}
+
+.categoryHidden:checked + .category {
+  color: white;
   background-color: var(--highlightColor);
 }
 
 .form {
-  margin-top: 1rem;
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
@@ -40,11 +51,11 @@
 .field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .formFieldLabel {
-  font-weight: var(--bold);
+  font-weight: var(--fwMedium);
 }
 
 .icon {
@@ -62,9 +73,8 @@
   color: var(--primaryColor);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
-  padding: 0.75rem;
-  margin-top: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
   border: none;
   outline: none;
 }
@@ -74,7 +84,7 @@
   display: flex;
   align-self: center;
   font-size: var(--fontSize5);
-  font-weight: var(--bold);
+  font-weight: var(--fwBold);
   border: none;
   color: var(--background);
   background-color: var(--primaryColor);
@@ -104,5 +114,5 @@
   gap: 0.75rem;
   background-color: var(--underlay);
   padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
 }

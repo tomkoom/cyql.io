@@ -13,7 +13,7 @@
 
 .hodlBadge {
   padding: 0.25rem;
-  border-radius: 0.33rem;
+  border-radius: 0.25rem;
   color: white;
   font-size: var(--fontSize7);
   background-color: var(--highlightColor);
@@ -46,7 +46,7 @@
 .copy {
   padding: 0.5rem 0.5rem;
   box-shadow: 0 0 0 1px var(--underlay2);
-  border-radius: 0.33rem;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
