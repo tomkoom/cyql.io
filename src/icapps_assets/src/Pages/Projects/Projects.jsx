@@ -22,8 +22,8 @@ const Projects = () => {
       <h2 className="pageTitle">Discover new projects</h2>
       <Search />
       <div className={css.controls}>
-        <Category />
         <Sort />
+        <Category />
         <Filter
           label={"Open source:"}
           filter={filterByOpenSource}
