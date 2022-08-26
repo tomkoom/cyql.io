@@ -14,7 +14,7 @@ import { selectSignInModal, setSignInModal } from "../../State/modals";
 
 const SignInModal = () => {
   const dispatch = useDispatch();
-  const { signInWithPlug, signInWithStoic } = useAuth();
+  const { signInWithPlug, signInWithStoic, signInWithInfinityWallet } = useAuth();
   const signInModal = useSelector(selectSignInModal);
 
   const signInMethods = [
@@ -27,6 +27,11 @@ const SignInModal = () => {
       label: "Stoic",
       logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/stoic/stoic-logo.jpeg",
       onClick: signInWithStoic,
+    },
+    {
+      label: "InfinityWallet",
+      logo: "",
+      onClick: signInWithInfinityWallet,
     },
   ];
 

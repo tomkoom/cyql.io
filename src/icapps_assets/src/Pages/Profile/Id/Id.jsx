@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import { selectOwnsNFT } from "../../../State/profile";
 
 const Id = () => {
-  const { principalIdStr: pIdStr, accountIdStr: aIdStr } = useAuth();
+  const { principalIdStr: pIdStr, accountId: aId } = useAuth();
   const [principalCopied, setPrincipalCopied] = useState(false);
   const [accountCopied, setAccountCopied] = useState(false);
   const ownsNFT = useSelector(selectOwnsNFT);
@@ -30,7 +30,7 @@ const Id = () => {
     }
 
     if (label === "Account Id") {
-      navigator.clipboard.writeText(aIdStr);
+      navigator.clipboard.writeText(aId);
       setAccountCopied(true);
       setTimeout(() => {
         setAccountCopied(false);
@@ -40,7 +40,7 @@ const Id = () => {
 
   const addresses = [
     { label: "Principal Id", value: pIdStr, copy: principalCopied },
-    { label: "Account Id", value: aIdStr, copy: accountCopied },
+    { label: "Account Id", value: aId, copy: accountCopied },
   ];
 
   return (

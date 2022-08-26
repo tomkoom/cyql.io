@@ -61,8 +61,7 @@ const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const App = () => {
   // hooks
-  const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection, balance } =
-    useAuth();
+  const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection } = useAuth();
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
@@ -180,19 +179,6 @@ const App = () => {
   // SET PROFILE INFO
   // –––
 
-  // set verified if balance > 10 ICP
-  // useEffect(() => {
-  //   if (balance) {
-  //     const setVerified = async () => {
-  //       if (balance >= 10) {
-  //         console.log(balance);
-  //         dispatch(setVerified(true));
-  //       }
-  //     };
-  //     setVerified();
-  //   }
-  // }, [balance]);
-
   // get upvoted projects
   useEffect(() => {
     if (principalIdStr) {
@@ -202,7 +188,6 @@ const App = () => {
       );
       const unsubscribe = onSnapshot(upvotedProjectsQuery, (snapshot) => {
         const upvotedProjects = snapshot.docs.map((doc) => ({ ...doc.data(), idx: doc.id }));
-        console.log(upvotedProjects);
         dispatch(setUpvotedProjects(upvotedProjects));
       });
       return () => {

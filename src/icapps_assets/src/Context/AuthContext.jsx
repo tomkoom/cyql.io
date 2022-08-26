@@ -14,12 +14,11 @@ import { toHome } from "../Routes/routes";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../State/modals";
+// import { setSignInModal } from "../State/modals";
 import { setVerified } from "../State/profile";
 
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
-import { getPlugWalletBalance } from "./Utils/Plug.utils";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -35,12 +34,11 @@ export function AuthProvider({ children }) {
   // const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
-  const [accountIdStr, setAccountIdStr] = useState("");
+  const [accountId, setAccountId] = useState(""); // always string
   const [signInMethod, setSignInMethod] = useState("");
-  const [balance, setBalance] = useState(0);
   const dispatch = useDispatch();
 
-  // –––PLUG–––
+  // ––– PLUG –––
 
   const signInWithPlug = async () => {
     try {
@@ -69,19 +67,16 @@ export function AuthProvider({ children }) {
 
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
-    const accountIdStr = window.ic.plug.sessionManager.sessionData.accountId;
-    // const balance = await getPlugWalletBalance();
-    // const balanceIcp = balance[0].amount;
+    const accountId = window.ic.plug.sessionManager.sessionData.accountId;
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
-    setAccountIdStr(accountIdStr);
+    setAccountId(accountId);
     setSignInMethod("Plug");
-    // setBalance(balanceIcp);
   };
 
   const disconnectPlug = () => window.ic?.plug?.disconnect();
 
-  //  –––STOIC–––
+  //  ––– STOIC –––
 
   const signInWithStoic = async () => {
     try {
@@ -95,17 +90,45 @@ export function AuthProvider({ children }) {
   const getStoicUserData = (stoicId) => {
     const principalId = stoicId.getPrincipal();
     const principalIdStr = stoicId.getPrincipal().toText();
-    const accountIdStr = getAccountIdentifier(principalId);
-    // create ledger actor
-    // const balance = ledger.account_balance(accountIdStr);
+    const accountId = getAccountIdentifier(principalId);
     setPrincipalId(principalId);
     setPrincipalIdStr(principalIdStr);
-    setAccountIdStr(accountIdStr);
+    setAccountId(accountId);
     setSignInMethod("Stoic");
-    // setBalance(balance);
   };
 
   const disconnectStoic = async () => await StoicIdentity.disconnect();
+
+  //  ––– INFINITY WALLET –––
+
+  const signInWithInfinityWallet = async () => {
+    const whitelist = [canisterId];
+
+    try {
+      await window.ic.infinityWallet.requestConnect({
+        whitelist,
+        host,
+      });
+      // createInfinityWalletActor();
+      getInfinityWalletUserData();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // const createInfinityWalletActor = () => {};
+
+  const getInfinityWalletUserData = async () => {
+    const principalId = await window.ic.infinityWallet.getPrincipal();
+    const accountId = await window.ic.infinityWallet.getAccountID();
+    console.log(accountId);
+    setPrincipalId(principalId);
+    setPrincipalIdStr(principalId.toText());
+    setAccountId(accountId);
+    setSignInMethod("InfinityWallet");
+  };
+
+  const disconnectInfinityWallet = () => window.ic?.infinityWallet?.disconnect();
 
   // –––
 
@@ -124,14 +147,19 @@ export function AuthProvider({ children }) {
         return "";
       }
     });
+    // infinitywallet
+    const isInfinityWalletConnected = await window.ic.infinityWallet.isConnected();
+    if (isInfinityWalletConnected) {
+      getInfinityWalletUserData(setPrincipalId, setPrincipalIdStr, setAccountId, setSignInMethod);
+      return "";
+    }
   };
 
   const signOut = () => {
     // setActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
-    setAccountIdStr("");
-    setBalance(0);
+    setAccountId("");
     dispatch(setVerified(false));
 
     if (signInMethod === "Plug") {
@@ -142,6 +170,10 @@ export function AuthProvider({ children }) {
       disconnectStoic();
     }
 
+    if (signInMethod === "InfinityWallet") {
+      disconnectInfinityWallet();
+    }
+
     setSignInMethod(""); // clear sign in method
     if (history.location.pathname === "/profile") {
       toHome();
@@ -149,17 +181,18 @@ export function AuthProvider({ children }) {
   };
 
   const value = {
-    // plug
-    // actor,
     principalId,
     principalIdStr,
-    accountIdStr,
+    accountId,
     signInMethod,
-    balance,
+    // plug
     signInWithPlug,
-    checkConnection,
     // stoic
     signInWithStoic,
+    // infinitywallet
+    signInWithInfinityWallet,
+    // –––
+    checkConnection,
     signOut,
   };
 
