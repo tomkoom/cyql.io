@@ -34,29 +34,6 @@ const Links = ({
     return "@" + username;
   };
 
-  const icLinks = [
-    {
-      label: "Canister",
-      link: canister,
-      logo: "",
-    },
-    {
-      label: "Dscvr",
-      link: dscvr,
-      logo: "",
-    },
-    {
-      label: "Distrikt",
-      link: distrikt,
-      logo: "",
-    },
-    {
-      label: "OpenChat",
-      link: openChat,
-      logo: "",
-    },
-  ];
-
   const links = [
     {
       id: "Website",
@@ -76,6 +53,9 @@ const Links = ({
       link: docs,
       icon: iBook,
     },
+  ];
+
+  const linksSoc = [
     {
       id: "Twitter",
       label: getTwitterUsername(twitter),
@@ -108,18 +88,42 @@ const Links = ({
     },
   ];
 
+  const linksIC = [
+    {
+      label: "Canister",
+      link: canister,
+      logo: "",
+    },
+    {
+      label: "Dscvr",
+      link: dscvr,
+      logo: "",
+    },
+    {
+      label: "Distrikt",
+      link: distrikt,
+      logo: "",
+    },
+    {
+      label: "OpenChat",
+      link: openChat,
+      logo: "",
+    },
+  ];
+
   return (
     <div className={css.links}>
-      {/* ic */}
+      {/* links */}
       <div>
-        {canister || dscvr || distrikt || openChat ? (
+        {website || app || docs ? (
           <ul className={css.linksLi}>
-            {icLinks.map(
-              ({ label, link }) =>
+            {links.map(
+              ({ id, label, link, icon }) =>
                 link && (
-                  <li className={css.linksLiI} data-social={label} key={label}>
+                  <li data-social={id} className={css.linksLiI} key={id}>
                     <a href={link} target="_blank" rel="noopener noreferrer">
-                      {label && <p className={css.label}>{label}</p>}
+                      <span className={css.icon}>{icon}</span>
+                      <p className={css.label}>{label}</p>
                     </a>
                   </li>
                 )
@@ -130,17 +134,37 @@ const Links = ({
         )}
       </div>
 
-      {/* links */}
+      {/* links soc */}
       <div>
-        {website || app || twitter || discord || github || telegram || medium ? (
+        {twitter || discord || github || telegram || medium ? (
           <ul className={css.linksLi}>
-            {links.map(
+            {linksSoc.map(
               ({ id, label, link, icon }) =>
                 link && (
                   <li data-social={id} className={css.linksLiI} key={id}>
                     <a href={link} target="_blank" rel="noopener noreferrer">
                       <span className={css.icon}>{icon}</span>
                       <p className={css.label}>{label}</p>
+                    </a>
+                  </li>
+                )
+            )}
+          </ul>
+        ) : (
+          ""
+        )}
+      </div>
+
+      {/* links ic */}
+      <div>
+        {canister || dscvr || distrikt || openChat ? (
+          <ul className={css.linksLi}>
+            {linksIC.map(
+              ({ label, link }) =>
+                link && (
+                  <li className={css.linksLiI} data-social={label} key={label}>
+                    <a href={link} target="_blank" rel="noopener noreferrer">
+                      {label && <p className={css.label}>{label}</p>}
                     </a>
                   </li>
                 )
