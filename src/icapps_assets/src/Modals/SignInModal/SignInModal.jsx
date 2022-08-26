@@ -25,12 +25,12 @@ const SignInModal = () => {
     },
     {
       label: "Stoic",
-      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/stoic/stoic-logo.jpeg",
+      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/stoic/stoic-logo.jpg",
       onClick: signInWithStoic,
     },
     {
       label: "InfinityWallet",
-      logo: "",
+      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/infinitywallet/infinitywallet-logo.png",
       onClick: signInWithInfinityWallet,
     },
   ];
@@ -53,7 +53,8 @@ const SignInModal = () => {
           {signInMethods.map(({ label, logo, onClick }) => (
             <button className={css.btn} key={label} onClick={onClick}>
               <div className={css.logo}>
-                <img src={logo} alt={`${label}-logo"`} /> {label}
+                <img src={logo} alt={`${label}-logo"`} />
+                <p className={css.label}>{label}</p>
               </div>
               <div className={css.icon}>{iAngleRight}</div>
             </button>
