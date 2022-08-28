@@ -23,16 +23,16 @@ const SubmitNew = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmissionLoader(true);
-    await addDoc(submittedProjectsColRef, {
-      ...projectSubmissionData,
-      submissionDate: Date.now(),
-    });
-    // const submittedProjectDocRef = await addDoc(submittedProjectsColRef, {
-    //   ...projectSubmissionData,
-    //   submissionDate: Date.now(),
-    // });
-    // console.log("Document written with ID: ", submittedProjectDocRef.id);
-    setIsSubmitted(true);
+    try {
+      await addDoc(submittedProjectsColRef, {
+        ...projectSubmissionData,
+        submissionDate: Date.now(),
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      console.log(err);
+      // toast
+    }
     setSubmissionLoader(false);
   };
 
@@ -48,7 +48,7 @@ const SubmitNew = () => {
             </div>
 
             {/* submit */}
-            <div>
+            <div className={css.submitBtn}>
               <ReCaptchaComponent setIsVerified={setIsVerified} />
               <SubmitBtn submissionLoader={submissionLoader} isVerified={isVerified} />
             </div>
