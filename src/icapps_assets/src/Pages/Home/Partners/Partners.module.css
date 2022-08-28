@@ -1,0 +1,11 @@
+/* partners */
+
+.partners {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.img {
+  height: 10rem;
+}

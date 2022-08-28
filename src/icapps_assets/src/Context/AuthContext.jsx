@@ -121,7 +121,6 @@ export function AuthProvider({ children }) {
   const getInfinityWalletUserData = async () => {
     const principalId = await window.ic.infinityWallet.getPrincipal();
     const accountId = await window.ic.infinityWallet.getAccountID();
-    console.log(accountId);
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
     setAccountId(accountId);

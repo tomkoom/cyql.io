@@ -4,7 +4,6 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import icpPrice from "./icpPrice";
 import search from "./search";
 import theme from "./theme";
-import view from "./view";
 import loadMore from "./loadMore";
 import projects from "./projects";
 import modals from "./modals";
@@ -14,6 +13,7 @@ import categories from "./categories";
 import sort from "./sort";
 import profile from "./profile";
 import filter from "./filter";
+import projectSubmission from "./projectSubmission";
 
 // redux-persist
 import {
@@ -32,7 +32,6 @@ const rootReducer = combineReducers({
   icpPrice,
   search,
   theme,
-  view,
   loadMore,
   projects,
   modals,
@@ -42,6 +41,7 @@ const rootReducer = combineReducers({
   sort,
   profile,
   filter,
+  projectSubmission,
 });
 
 const persistConfig = {

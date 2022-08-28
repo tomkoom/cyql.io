@@ -1,118 +1,17 @@
 /* submit */
 
-/* categories */
-
-.categories {
-  margin-bottom: 1rem;
-}
-
-.categories ul {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.label {
-  font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
-  margin: 1rem 0;
-}
-
-.categoryHidden {
-  display: none;
-}
-
-.category {
-  font-weight: var(--fwMedium);
-  background-color: var(--underlay);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-.category:hover {
-  background-color: var(--underlay2);
-}
-
-.categoryHidden:checked + .category {
-  color: white;
-  background-color: var(--highlightColor);
+.submit {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .form {
   margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 0.25rem;
-}
-
-.formFieldLabel {
-  font-weight: var(--fwMedium);
-}
-
-.icon {
-  color: var(--secondaryColor);
-}
-
-.hint {
-  font-size: var(--fontSize6);
-  margin-top: 0.25rem;
-  color: var(--tertiaryColor);
-}
-
-.input {
-  font-size: 0.9rem;
-  color: var(--primaryColor);
-  background-color: var(--underlay);
-  caret-color: var(--primaryColor);
-  padding: 1rem;
-  border-radius: 0.25rem;
-  border: none;
-  outline: none;
-}
-
-.submitBtn {
-  margin-top: 1.5rem;
-  display: flex;
-  align-self: center;
-  font-size: var(--fontSize5);
-  font-weight: var(--fwBold);
-  border: none;
-  color: var(--background);
-  background-color: var(--primaryColor);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.disabled {
-  opacity: 0.5;
-}
-
-.recaptcha {
-  margin: 0 auto;
-}
-
-/* success */
-
-.submissionSuccess {
-  display: grid;
-  place-items: center;
-}
-
-.submissionSuccess__content {
-  display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background-color: var(--underlay);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+}
+
+.inputs {
+  margin-bottom: 2rem;
 }

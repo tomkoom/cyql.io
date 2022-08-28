@@ -187,14 +187,14 @@ const Home = () => {
       <div className="div" />
 
       {/* partners */}
-      {/* <section>
+      <section>
         <div className={css.sectionTitle}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>Partners</h3>
           </div>
         </div>
         <Partners />
-      </section> */}
+      </section>
 
       {/* join community */}
       <section className={css.home__nftCollections}>

@@ -92,6 +92,8 @@ const ModalProjectEdit = () => {
     { id: "nftImg4", label: "Preview img4" },
   ];
 
+  // add has token
+
   return (
     <div className={projectModal ? `${css.modal} ${css.active}` : css.modal}>
       <div className={projectModal ? `${css.content} ${css.active}` : css.content}>

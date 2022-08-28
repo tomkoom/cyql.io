@@ -17,11 +17,11 @@ import nft_IDL from "../../icapps/nft.did.js";
 import { getAccountIdentifier } from "../../icapps/utils";
 
 // utils
-import { useWindowSize } from "./Utils/UseWindowSize";
+import { useWindowSize } from "./Hooks/UseWindowSize";
 import { sortByDateAdded, sortByDate } from "./Utils/Sort";
 
 // firestore
-import { onSnapshot, doc, setDoc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { onSnapshot, doc, setDoc, getDoc, query, where } from "firebase/firestore";
 import { projectsColRef, usersICColRef } from "./Firestore/firestore-collections";
 
 // auth
@@ -53,7 +53,7 @@ import {
   setSignInModal,
 } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-import { setVerified, setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
+import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
 
 // nft canister data
 const host = "https://mainnet.dfinity.network";
@@ -175,9 +175,9 @@ const App = () => {
     }
   }, [principalIdStr]);
 
-  // –––
-  // SET PROFILE INFO
-  // –––
+  // ––––––––––––––––––––––––
+  // ––– SET PROFILE INFO –––
+  // ––––––––––––––––––––––––
 
   // get upvoted projects
   useEffect(() => {

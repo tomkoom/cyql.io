@@ -14,15 +14,18 @@ import {
 } from "../../../Icons/Icons";
 
 const Links = ({
-  // ic
-  canister,
-  dscvr,
-  distrikt,
-  openChat,
   // links
   website,
   app,
   docs,
+
+  // links ic
+  canister,
+  dscvr,
+  distrikt,
+  openChat,
+
+  // links soc
   twitter,
   discord,
   github,

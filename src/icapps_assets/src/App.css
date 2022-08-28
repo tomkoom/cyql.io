@@ -13,19 +13,6 @@ body {
   background-color: var(--primaryColor);
 }
 
-.container768,
-.container1440 {
-  margin: 0 auto;
-}
-
-.container768 {
-  max-width: 768px;
-}
-
-.container1440 {
-  max-width: 1440px;
-}
-
 .app {
   color: var(--primaryColor);
   background-color: var(--background);

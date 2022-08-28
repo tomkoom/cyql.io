@@ -42,6 +42,7 @@ const FooterTop = () => {
       </li>
 
       {/* donate */}
+      {/* add ghost donation */}
       <li className={css.footerTopI__donation}>
         <span>{iHeart}</span>
         <div>

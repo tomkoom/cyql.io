@@ -43,11 +43,11 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
       <ul>
         {categories.map((c) => (
           <li
-            id={category === c.name ? css.active : undefined}
+            id={category === c.label ? css.active : undefined}
             key={c.id}
-            onClick={() => clickCategory(c.name)}
+            onClick={() => clickCategory(c.label)}
           >
-            {c.icon} {c.name}
+            {c.icon} {c.label}
           </li>
         ))}
       </ul>
