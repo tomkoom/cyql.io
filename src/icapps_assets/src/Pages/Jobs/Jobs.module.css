@@ -1,0 +1,11 @@
+/* jobs */
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  margin-bottom: 20rem;
+}

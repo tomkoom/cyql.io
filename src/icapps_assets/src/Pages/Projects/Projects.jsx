@@ -18,8 +18,8 @@ const Projects = () => {
   const filterByOnChain = useSelector(selectFilterByOnChain);
 
   return (
-    <main className={css.apps}>
-      <h2 className="pageTitle">Discover new projects</h2>
+    <div className={css.apps}>
+      <h2 className="pageTitle">Discover New Projects</h2>
       <Search />
       <div className={css.controls}>
         <Sort />
@@ -33,7 +33,7 @@ const Projects = () => {
       </div>
       <ProjectList />
       {/* <Tags /> */}
-    </main>
+    </div>
   );
 };
 

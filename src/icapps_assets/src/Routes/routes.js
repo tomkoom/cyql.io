@@ -32,16 +32,20 @@ const toSubmit = () => {
   history.push("/submit");
 };
 
+const toJobs = () => {
+  history.push("/jobs");
+};
+
+const toPostJob = () => {
+  history.push("/jobs/post");
+};
+
 const toProfile = () => {
   history.push("/profile");
 };
 
 const toAdmin = () => {
   history.push("/admin");
-};
-
-const toAddProject = () => {
-  history.push("/admin/addproject");
 };
 
 export {
@@ -51,8 +55,9 @@ export {
   toUpcoming,
   toNft,
   toSubmit,
+  toJobs,
+  toPostJob,
   toProfile,
   toAdmin,
-  toAddProject,
   goBack,
 };

@@ -17,7 +17,7 @@ import { selectVerified } from "../../../State/profile";
 
 // firestore
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { projectsColRef } from "../../../Firestore/firestore-collections";
+import { projectsCollRef } from "../../../Firestore/firestore-collections";
 
 const UpvoteBtn = ({ upvotedBy, isActive, onClick }) => {
   return (
@@ -40,14 +40,14 @@ const UpvtBtn = ({ idx, upvotedBy }) => {
     );
 
   const upvote = async (projectIdx, principalIdStr) => {
-    const docRef = doc(projectsColRef, projectIdx);
+    const docRef = doc(projectsCollRef, projectIdx);
     await updateDoc(docRef, {
       upvotedBy: arrayUnion(principalIdStr),
     });
   };
 
   const unUpvote = async (projectIdx, principalIdStr) => {
-    const docRef = doc(projectsColRef, projectIdx);
+    const docRef = doc(projectsCollRef, projectIdx);
     await updateDoc(docRef, {
       upvotedBy: arrayRemove(principalIdStr),
     });
@@ -55,7 +55,7 @@ const UpvtBtn = ({ idx, upvotedBy }) => {
 
   // const upvote = async (projectIdx, principalIdStr) => {
   //   if (isVerified) {
-  //     const docRef = doc(projectsColRef, projectIdx);
+  //     const docRef = doc(projectsCollRef, projectIdx);
   //     await updateDoc(docRef, {
   //       upvotedBy: arrayUnion(principalIdStr),
   //     });
@@ -66,7 +66,7 @@ const UpvtBtn = ({ idx, upvotedBy }) => {
 
   // const unUpvote = async (projectIdx, principalIdStr) => {
   //   if (isVerified) {
-  //     const docRef = doc(projectsColRef, projectIdx);
+  //     const docRef = doc(projectsCollRef, projectIdx);
   //     await updateDoc(docRef, {
   //       upvotedBy: arrayRemove(principalIdStr),
   //     });

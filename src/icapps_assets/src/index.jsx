@@ -11,7 +11,7 @@ import { history } from "./Routes/history";
 
 // state
 import { Provider } from "react-redux";
-import store, { persistor } from "./State/store";
+import store, { persistor } from "./State/_store";
 
 // redux-persist
 import { PersistGate } from "redux-persist/integration/react";

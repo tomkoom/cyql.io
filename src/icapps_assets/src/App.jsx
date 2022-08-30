@@ -17,26 +17,28 @@ import nft_IDL from "../../icapps/nft.did.js";
 import { getAccountIdentifier } from "../../icapps/utils";
 
 // utils
-import { useWindowSize } from "./Hooks/UseWindowSize";
+import { useWindowSize } from "./Hooks/useWindowSize";
 import { sortByDateAdded, sortByDate } from "./Utils/Sort";
 
 // firestore
 import { onSnapshot, doc, setDoc, getDoc, query, where } from "firebase/firestore";
-import { projectsColRef, usersICColRef } from "./Firestore/firestore-collections";
+import { projectsCollRef, usersICCollRef } from "./Firestore/firestore-collections";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
 
 // components
 import {
-  Home,
-  Projects,
-  Project,
-  UpcomingNfts,
-  Submit,
-  Profile,
   Admin,
+  Home,
+  Jobs,
+  PostJob,
   NotFound,
+  Profile,
+  Project,
+  Projects,
+  Submit,
+  UpcomingNfts,
 } from "./Pages/index";
 import { Summary, Nav, Sidebar, Footer } from "./Components/index";
 import { ProjectModal, SignInModal } from "./Modals/index";
@@ -46,6 +48,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
+import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
+
+// state – modals
 import {
   selectMobileMenuModal,
   selectSignInModal,
@@ -53,7 +58,6 @@ import {
   setSignInModal,
 } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
 
 // nft canister data
 const host = "https://mainnet.dfinity.network";
@@ -65,8 +69,10 @@ const App = () => {
   const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
 
-  // selectors
+  // theme
   const theme = useSelector(selectTheme);
+
+  // modals
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
@@ -75,7 +81,7 @@ const App = () => {
   const addUserToDB = async (principalIdStr, accountIdStr, signInMethod) => {
     const timestamp = Date.now();
 
-    const userDocRef = doc(usersICColRef, principalIdStr);
+    const userDocRef = doc(usersICCollRef, principalIdStr);
     const user = await getDoc(userDocRef);
     const userExists = user.data() ? true : false;
 
@@ -103,22 +109,17 @@ const App = () => {
 
   // get projects and nfts
   useEffect(() => {
-    const unsubscribe = onSnapshot(projectsColRef, (snapshot) => {
-      dispatch(
-        setProjects(
-          snapshot.docs
-            .map((doc) => ({ ...doc.data(), idx: doc.id }))
-            .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
-            .sort((a, b) => sortByDate(a.added, b.added))
-        )
-      );
-      dispatch(
-        setNFTs(
-          snapshot.docs
-            .map((doc) => ({ ...doc.data(), idx: doc.id }))
-            .filter((project) => project.category === "NFTs")
-        )
-      );
+    const unsubscribe = onSnapshot(projectsCollRef, (snapshot) => {
+      const projects = snapshot.docs
+        .map((doc) => ({ ...doc.data(), idx: doc.id }))
+        .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
+        .sort((a, b) => sortByDate(a.added, b.added));
+      const nfts = snapshot.docs
+        .map((doc) => ({ ...doc.data(), idx: doc.id }))
+        .filter((project) => project.category === "NFTs");
+
+      dispatch(setProjects(projects));
+      dispatch(setNFTs(nfts));
     });
     return () => {
       unsubscribe();
@@ -183,7 +184,7 @@ const App = () => {
   useEffect(() => {
     if (principalIdStr) {
       const upvotedProjectsQuery = query(
-        projectsColRef,
+        projectsCollRef,
         where("upvotedBy", "array-contains", principalIdStr)
       );
       const unsubscribe = onSnapshot(upvotedProjectsQuery, (snapshot) => {
@@ -260,6 +261,14 @@ const App = () => {
 
             <Route exact path="/submit">
               <Submit />
+            </Route>
+
+            <Route exact path="/jobs">
+              <Jobs />
+            </Route>
+
+            <Route exact path="/jobs/post">
+              <PostJob />
             </Route>
 
             {principalId && (

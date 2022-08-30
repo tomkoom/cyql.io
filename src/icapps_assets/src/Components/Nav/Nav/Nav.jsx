@@ -6,7 +6,7 @@ import { Logo } from "../../index";
 import { Desktop, Mobile } from "./index";
 
 // utils
-import { useWindowSize } from "../../../Hooks/UseWindowSize";
+import { useWindowSize } from "../../../Hooks/useWindowSize";
 
 // navlinks
 import { toHome } from "../../../Routes/routes";

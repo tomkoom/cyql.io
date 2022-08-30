@@ -6,7 +6,7 @@ import { iTimes } from "../../Icons/Icons";
 
 // firestore
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
-import { projectsColRef } from "../../Firestore/firestore-collections";
+import { projectsCollRef } from "../../Firestore/firestore-collections";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -34,9 +34,9 @@ const ModalProjectEdit = () => {
     const timestamp = Date.now();
     try {
       if (mode === "add") {
-        await addDoc(projectsColRef, { ...project, added: timestamp });
+        await addDoc(projectsCollRef, { ...project, added: timestamp });
       } else if (mode === "edit") {
-        await setDoc(doc(projectsColRef, project.idx), { ...project, edited: timestamp });
+        await setDoc(doc(projectsCollRef, project.idx), { ...project, edited: timestamp });
       }
     } catch (err) {
       console.log(err.message);
@@ -50,7 +50,7 @@ const ModalProjectEdit = () => {
 
   const deleteProject = async () => {
     try {
-      await deleteDoc(doc(projectsColRef, project.idx));
+      await deleteDoc(doc(projectsCollRef, project.idx));
     } catch (err) {
       console.log(err.message);
     }

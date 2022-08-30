@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { selectProjectSubmissionData } from "../../State/projectSubmission";
 
 // firestore
-import { submittedProjectsColRef } from "../../Firestore/firestore-collections";
+import { submittedProjectsCollRef } from "../../Firestore/firestore-collections";
 import { addDoc } from "firebase/firestore";
 
 const SubmitNew = () => {
@@ -24,7 +24,7 @@ const SubmitNew = () => {
     e.preventDefault();
     setSubmissionLoader(true);
     try {
-      await addDoc(submittedProjectsColRef, {
+      await addDoc(submittedProjectsCollRef, {
         ...projectSubmissionData,
         submissionDate: Date.now(),
       });

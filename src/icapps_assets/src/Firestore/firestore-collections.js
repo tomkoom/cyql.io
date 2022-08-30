@@ -1,9 +1,10 @@
 import { collection } from "firebase/firestore";
 import { db } from "../../../../firebase/firebase-config";
 
-const projectsColRef = collection(db, "projects");
-const usersColRef = collection(db, "users");
-const usersICColRef = collection(db, "usersIC");
-const submittedProjectsColRef = collection(db, "submitted_projects");
+const projectsCollRef = collection(db, "projects");
+const usersCollRef = collection(db, "users");
+const usersICCollRef = collection(db, "usersIC");
+const submittedProjectsCollRef = collection(db, "submitted_projects");
+const jobsCollRef = collection(db, "jobs");
 
-export { projectsColRef, usersColRef, usersICColRef, submittedProjectsColRef };
+export { projectsCollRef, usersCollRef, usersICCollRef, submittedProjectsCollRef, jobsCollRef };

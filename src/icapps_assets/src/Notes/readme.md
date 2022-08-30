@@ -1,0 +1,2 @@
+.jsx -> PascalCase
+.js -> camelCase

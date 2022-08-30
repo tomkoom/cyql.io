@@ -12,7 +12,8 @@ const template = createSlice({
   },
 });
 
-export const selectKey = (state) => state.template.key;
+const selectKey = (state) => state.template.key;
+export { selectKey };
 
 export const { setKey } = template.actions;
 export default template.reducer;
