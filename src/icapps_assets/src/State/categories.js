@@ -32,7 +32,8 @@ const categories = createSlice({
 });
 
 // selectors
-export const selectCategories = (state) => state.categories.categories;
+const selectCategories = (state) => state.categories.categories;
+export { selectCategories };
 
 export const { setCategoryLength } = categories.actions;
 export default categories.reducer;

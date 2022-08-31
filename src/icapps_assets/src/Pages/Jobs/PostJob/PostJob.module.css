@@ -1,5 +1,10 @@
 /* post a job */
 
+.postJob {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
 .title {
   display: flex;
   flex-direction: column;

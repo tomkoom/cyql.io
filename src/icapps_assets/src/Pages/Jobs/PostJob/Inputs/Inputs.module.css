@@ -1,1 +1,19 @@
 /* job submission inputs */
+
+.inputs {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  font-size: var(--fontSize4);
+  margin-bottom: 1rem;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

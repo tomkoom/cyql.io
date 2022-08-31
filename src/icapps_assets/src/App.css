@@ -56,7 +56,7 @@ ul {
 
 /* global classes */
 
-/* btns */
+/* global classes – btns */
 
 .primaryBtn,
 .secondaryBtn,
@@ -87,6 +87,25 @@ ul {
 .alertBtn {
   color: white;
   background-color: var(--colorRed);
+}
+
+/* global classes – inputs */
+
+.label {
+  font-weight: var(--fwMedium);
+  color: var(--secondaryColor);
+}
+
+.input {
+  font-size: 0.9rem;
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  caret-color: var(--primaryColor);
+  padding: 1rem;
+  margin: 0.25rem 0;
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
 }
 
 /* other */

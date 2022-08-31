@@ -10,7 +10,7 @@ import { jobsCollRef } from "../../Firestore/firestore-collections";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectJobs, setJobs } from "../../State/jobs";
+import { selectJobs, setJobs } from "../../State/jobs/jobs";
 
 const Jobs = () => {
   const dispatch = useDispatch();

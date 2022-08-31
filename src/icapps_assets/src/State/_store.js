@@ -14,8 +14,8 @@ import sort from "./sort";
 import profile from "./profile";
 import filter from "./filter";
 import projectSubmission from "./projectSubmission";
-import jobs from "./jobs";
-import postJob from "./postJob";
+import jobs from "./jobs/jobs";
+import postJob from "./jobs/postJob";
 
 // redux-persist
 import {

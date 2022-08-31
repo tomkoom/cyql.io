@@ -1,2 +1,4 @@
-.jsx -> PascalCase
-.js -> camelCase
+Project files naming convention:
+
+- .jsx -> PascalCase
+- .js -> camelCase

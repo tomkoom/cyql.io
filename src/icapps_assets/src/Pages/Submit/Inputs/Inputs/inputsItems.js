@@ -39,7 +39,7 @@ const links = [
     hint: "",
     icon: "",
     placeholder: "Website URL",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -48,7 +48,7 @@ const links = [
     hint: "",
     icon: "",
     placeholder: "App URL",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -57,7 +57,7 @@ const links = [
     hint: "",
     icon: "",
     placeholder: "Docs URL",
-    type: "url",
+    type: "text",
     required: null,
   },
 ];
@@ -69,7 +69,7 @@ const linksSoc = [
     hint: "",
     icon: iTwitter,
     placeholder: "https://twitter.com/yourproject",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -78,7 +78,7 @@ const linksSoc = [
     hint: "Make sure the invite link will not expire!",
     icon: iDiscord,
     placeholder: "Discord",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -87,7 +87,7 @@ const linksSoc = [
     hint: "",
     icon: iTelegram,
     placeholder: "https://t.me/yourproject",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -96,7 +96,7 @@ const linksSoc = [
     hint: "",
     icon: iGithub,
     placeholder: "https://github.com/yourproject",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -105,7 +105,7 @@ const linksSoc = [
     hint: "",
     icon: iMediumM,
     placeholder: "https://medium.com/yourproject",
-    type: "url",
+    type: "text",
     required: null,
   },
 ];
@@ -117,7 +117,7 @@ const linksIC = [
     hint: "",
     icon: iDatabase,
     placeholder: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -126,7 +126,7 @@ const linksIC = [
     hint: "",
     icon: "",
     placeholder: "https://dscvr.one/p/yourproject",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -135,7 +135,7 @@ const linksIC = [
     hint: "",
     icon: "",
     placeholder: "Distrikt",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -144,7 +144,7 @@ const linksIC = [
     hint: "",
     icon: "",
     placeholder: "OpenChat",
-    type: "url",
+    type: "text",
     required: null,
   },
 ];
@@ -156,7 +156,7 @@ const img = [
     hint: "Optimal resolution: 400 x 400px, 1:1",
     icon: "",
     placeholder: "Logo image URL",
-    type: "url",
+    type: "text",
     required: null,
   },
   {
@@ -165,7 +165,7 @@ const img = [
     hint: "Optimal resolution: 1500 x 500px, 3:1",
     icon: "",
     placeholder: "Cover image URL",
-    type: "url",
+    type: "text",
     required: null,
   },
 ];

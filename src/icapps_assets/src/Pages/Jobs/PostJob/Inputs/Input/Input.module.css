@@ -1,1 +1,11 @@
 /* job submission input */
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.note {
+  font-size: var(--fontSize7);
+  color: var(--secondaryColor);
+}

@@ -1,0 +1,30 @@
+/* job categories */
+
+.categories ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.categoryHidden {
+  display: none;
+}
+
+.category {
+  font-weight: var(--fwMedium);
+  background-color: var(--underlay);
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.category:hover {
+  background-color: var(--underlay2);
+}
+
+.categoryHidden:checked + .category {
+  color: white;
+  background-color: var(--highlightColor);
+}
