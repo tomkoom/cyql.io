@@ -15,7 +15,7 @@ import profile from "./profile";
 import filter from "./filter";
 import projectSubmission from "./projectSubmission";
 import jobs from "./jobs/jobs";
-import postJob from "./jobs/postJob";
+import job from "./jobs/job";
 
 // redux-persist
 import {
@@ -45,7 +45,7 @@ const rootReducer = combineReducers({
   filter,
   projectSubmission,
   jobs,
-  postJob,
+  job,
 });
 
 const persistConfig = {

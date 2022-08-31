@@ -6,17 +6,33 @@ import { BackBtn } from "../../../Components/index";
 import Inputs from "./Inputs/Inputs";
 import SubmitBtn from "./SubmitBtn/SubmitBtn";
 
-const PostJob = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+// auth
+import { useAuth } from "../../../Context/AuthContext";
 
-  const handleFormSubmit = () => {
-    setIsSubmitting(true);
-    try {
-      console.log("123");
-    } catch (error) {
-      console.log(err);
+// state
+import { useSelector, useDispatch } from "react-redux";
+import { setSignInModal } from "../../../State/modals";
+import { selectJob } from "../../../State/jobs/job";
+
+const PostJob = () => {
+  const dispatch = useDispatch();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { principalIdStr } = useAuth();
+  const job = useSelector(selectJob);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (principalIdStr !== "") {
+      setIsSubmitting(true);
+      console.log(job);
+      // try {
+      // } catch (error) {
+      //   console.log(err);
+      // }
+      setIsSubmitting(false);
+    } else {
+      dispatch(setSignInModal(true));
     }
-    setIsSubmitting(false);
   };
 
   return (
@@ -26,13 +42,11 @@ const PostJob = () => {
         <h2 className="pageTitle">Post a Job</h2>
       </div>
 
-      {/* inputs */}
-      <div>
-        <form action="" onSubmit={handleFormSubmit}>
-          <Inputs />
-          <SubmitBtn isSubmitting={isSubmitting} />
-        </form>
-      </div>
+      {/* form */}
+      <form className={css.form} onSubmit={handleFormSubmit}>
+        <Inputs />
+        <SubmitBtn isSubmitting={isSubmitting} />
+      </form>
     </div>
   );
 };

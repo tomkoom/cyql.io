@@ -2,25 +2,29 @@ import React from "react";
 import css from "./Inputs.module.css";
 
 // components
-import { Categories, Input, TextArea } from "./index.js";
+import { Categories, Input, Publisher, TextArea } from "./index.js";
 import Input from "./Input/Input";
 
 const Inputs = () => {
-  const jobCategories = [
-    { id: "frontend", label: "Frontend" },
-    { id: "backend", label: "Backend" },
-    { id: "full-stack", label: "Full Stack" },
-    { id: "smart-contracts", label: "Smart Contracts" },
-    { id: "defi", label: "DeFi" },
-    { id: "nfts", label: "NFTs" },
-    { id: "design", label: "Design" },
-    { id: "community", label: "Community" },
-    { id: "customer-support", label: "Customer Support" },
-    { id: "copywriting", label: "Copywriting" },
-    { id: "sales-marketing", label: "Sales & Marketing" },
-    { id: "management", label: "Management" },
-    { id: "other", label: "Other" },
-  ];
+  const jobCategories = {
+    label: "Category",
+    options: [
+      { id: "frontend", label: "Frontend" },
+      { id: "backend", label: "Backend" },
+      { id: "full-stack", label: "Full Stack" },
+      { id: "smart-contracts", label: "Smart Contracts" },
+      { id: "defi", label: "DeFi" },
+      { id: "nfts", label: "NFTs" },
+      { id: "design", label: "Design" },
+      { id: "community", label: "Community" },
+      { id: "customer-support", label: "Customer Support" },
+      { id: "copywriting", label: "Copywriting" },
+      { id: "sales-marketing", label: "Sales & Marketing" },
+      { id: "management", label: "Management" },
+      { id: "other", label: "Other" },
+    ],
+  };
+  const jobDescription = { id: "description" };
 
   return (
     <div className={css.inputs}>
@@ -30,13 +34,14 @@ const Inputs = () => {
           <Input
             id="title"
             type="text"
-            label="Job title *"
+            label="Job title*"
             placeholder="e.g. Motoko Smart Contract Developer, Community Manager"
             note=""
             required="required"
           />
-          <Categories label="Category" options={jobCategories} />
-          <TextArea />
+          {/* rename to tags */}
+          <Categories {...jobCategories} />
+          <TextArea {...jobDescription} />
           <Input
             id="compensation"
             type="text"
@@ -91,21 +96,20 @@ const Inputs = () => {
             note=""
             required={null}
           />
-
-          {/* other */}
-          <Input
-            id="notes"
-            type="text"
-            label="Any additional notes"
-            placeholder="Notes 📝"
-            note=""
-            required={null}
-          />
         </div>
       </div>
 
-      {/* company name */}
-      {/* publisher */}
+      <div className={css.section}>
+        <div className={css.title}>How to Apply</div>
+        <div className={css.fields}></div>
+      </div>
+
+      <div className={css.section}>
+        <div className={css.title}>Publisher</div>
+        <div className={css.fields}>
+          <Publisher />
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React from "react";
-import css from "./SubmitBtn.module.css";
 
-const SubmitBtn = () => {
+const SubmitBtn = ({ submissionLoader }) => {
   return (
-    <div className={css.submitBtn} type="submit">
-      {/* user authentication verification */}
-      {submissionLoader ? "Submitting..." : "Submit"}
+    <div>
+      <button className="submitBtn" type="submit">
+        {submissionLoader ? "Submitting..." : "Submit"}
+      </button>
     </div>
   );
 };

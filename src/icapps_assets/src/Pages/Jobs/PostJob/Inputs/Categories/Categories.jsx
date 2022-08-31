@@ -3,20 +3,14 @@ import css from "./Categories.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectProjectSubmissionData,
-  setProjectSubmissionData,
-} from "../../../../State/projectSubmission";
+import { setJob, selectJob } from "../../../../../State/jobs/job";
 
 const Categories = ({ label, options }) => {
   const dispatch = useDispatch();
-  // const projectSubmissionData = useSelector(selectProjectSubmissionData);
+  const job = useSelector(selectJob);
 
-  const handleInput = (e) => {
-    console.log({ [e.target.name]: e.target.value });
-    // dispatch(
-    //   setProjectSubmissionData({ ...projectSubmissionData, [e.target.name]: e.target.value })
-    // );
+  const handleChange = (e) => {
+    dispatch(setJob({ ...job, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -32,7 +26,7 @@ const Categories = ({ label, options }) => {
                 value={option.id}
                 type="radio"
                 name="category"
-                onChange={handleInput}
+                onChange={handleChange}
               />
               <div className={css.category}>{option.label}</div>
             </label>
