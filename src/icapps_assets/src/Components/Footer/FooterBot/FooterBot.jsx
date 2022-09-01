@@ -13,7 +13,7 @@ const FooterBot = () => {
         </a>
       </div>
       <div>
-        <p>©2022 icApps</p>
+        <p className={css.copy}>©2022 cyql</p>
       </div>
     </div>
   );

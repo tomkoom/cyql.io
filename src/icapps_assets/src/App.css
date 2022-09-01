@@ -108,11 +108,14 @@ ul {
 /* global classes – inputs */
 
 .label {
+  display: inline-block;
+  align-self: flex-start;
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
 }
 
 .input {
+  width: 100%;
   height: 48px;
   display: flex;
   align-items: center;
@@ -129,6 +132,11 @@ ul {
 
 .input:focus {
   background-color: var(--underlay2);
+}
+
+.hint {
+  font-size: var(--fontSize7);
+  color: var(--secondaryColor);
 }
 
 /* other */

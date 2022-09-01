@@ -16,9 +16,13 @@
 }
 
 .icBadgeText {
-  color: var(--tertiaryColor);
+  color: var(--secondaryColor);
 }
 
 .icLogo {
   max-width: 1.25rem;
+}
+
+.copy {
+  color: var(--secondaryColor);
 }

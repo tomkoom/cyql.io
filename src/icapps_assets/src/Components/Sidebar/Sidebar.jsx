@@ -3,7 +3,7 @@ import css from "./Sidebar.module.css";
 import k from "../../../../../k/k";
 
 // icons
-import { iCube, iRocket, iPlus, iList, iBolt } from "../../Icons/Icons";
+import { iCube, iRocket, iBolt, iEye, iPlus, iList } from "../../Icons/Icons";
 
 // routes
 import { toApps, toUpcoming, toSubmit, toJobs, toAdmin } from "../../Routes/routes";
@@ -23,8 +23,9 @@ const Sidebar = () => {
       <div className={css.nav}>
         <NavLink label="Projects" to={toApps} icon={iCube} />
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
-        <NavLink label="Submit" to={toSubmit} icon={iPlus} />
         <NavLink label="Jobs" to={toJobs} icon={iBolt} />
+        {/* <NavLink label="Predictions" to={} icon={iEye} /> */}
+        <NavLink label="Submit" to={toSubmit} icon={iPlus} />
 
         {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
         (principalIdStr && principalIdStr === k.STOIC_ADMIN_1) ||

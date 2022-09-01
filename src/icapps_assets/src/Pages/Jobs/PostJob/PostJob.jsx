@@ -24,11 +24,8 @@ const PostJob = () => {
     e.preventDefault();
     if (principalIdStr !== "") {
       setIsSubmitting(true);
-      console.log(job);
-      // try {
-      // } catch (error) {
-      //   console.log(err);
-      // }
+      const timestamp = Date.now();
+      console.log({ ...job, submitted: timestamp, publisher: principalIdStr });
       setIsSubmitting(false);
     } else {
       dispatch(setSignInModal(true));

@@ -2,8 +2,8 @@ import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
-import { selectJob, setJob } from "../../../../../State/jobs/job";
+import { useDispatch } from "react-redux";
+import { setJob } from "../../../../../State/jobs/job";
 
 const inputStyle = {
   width: "100%",
@@ -21,10 +21,9 @@ const inputStyle = {
 
 const TextArea = ({ id }) => {
   const dispatch = useDispatch();
-  const job = useSelector(selectJob);
 
   const handleChange = (e) => {
-    dispatch(setJob({ ...job, [e.target.name]: e.target.value }));
+    dispatch(setJob({ [e.target.name]: e.target.value }));
   };
 
   return (

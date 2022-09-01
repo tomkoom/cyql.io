@@ -2,8 +2,7 @@ import React from "react";
 import css from "./Inputs.module.css";
 
 // components
-import { Categories, Input, Publisher, TextArea } from "./index.js";
-import Input from "./Input/Input";
+import { Input, Categories, TextArea, HowToApply, Publisher } from "./index.js";
 
 const Inputs = () => {
   const jobCategories = {
@@ -37,9 +36,9 @@ const Inputs = () => {
             label="Job title*"
             placeholder="e.g. Motoko Smart Contract Developer, Community Manager"
             note=""
-            required="required"
+            required={null}
+            // required="required"
           />
-          {/* rename to tags */}
           <Categories {...jobCategories} />
           <TextArea {...jobDescription} />
           <Input
@@ -75,7 +74,7 @@ const Inputs = () => {
           <Input
             id="comany_logo_url"
             type="text"
-            label="Company logo URL"
+            label="Logo URL"
             placeholder="Logo URL"
             note=""
             required={null}
@@ -83,7 +82,7 @@ const Inputs = () => {
           <Input
             id="company_website"
             type="text"
-            label="Company website"
+            label="Website"
             placeholder="Website"
             note=""
             required={null}
@@ -91,7 +90,7 @@ const Inputs = () => {
           <Input
             id="company_twitter"
             type="text"
-            label="Company Twitter"
+            label="Twitter"
             placeholder="Twitter URL"
             note=""
             required={null}
@@ -101,7 +100,9 @@ const Inputs = () => {
 
       <div className={css.section}>
         <div className={css.title}>How to Apply</div>
-        <div className={css.fields}></div>
+        <div className={css.fields}>
+          <HowToApply />
+        </div>
       </div>
 
       <div className={css.section}>

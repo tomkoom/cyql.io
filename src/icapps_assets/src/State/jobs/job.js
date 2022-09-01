@@ -10,6 +10,20 @@ const jobInitialState = {
 
   // company
   company_name: "",
+  company_logo_url: "",
+  company_website: "",
+  company_twitter: "",
+
+  // application
+  application_url: "",
+  application_email: "",
+  application_twitter: "",
+  application_discord: "",
+
+  // meta
+  submitted: 0,
+  // edited: 0,
+  publisher: "",
 };
 
 const job = createSlice({
@@ -19,7 +33,7 @@ const job = createSlice({
   },
   reducers: {
     setJob(state, { payload }) {
-      state.job = payload;
+      state.job = { ...state.job, ...payload };
     },
   },
 });

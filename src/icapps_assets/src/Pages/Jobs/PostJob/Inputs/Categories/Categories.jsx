@@ -2,15 +2,14 @@ import React from "react";
 import css from "./Categories.module.css";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
-import { setJob, selectJob } from "../../../../../State/jobs/job";
+import { useDispatch } from "react-redux";
+import { setJob } from "../../../../../State/jobs/job";
 
 const Categories = ({ label, options }) => {
   const dispatch = useDispatch();
-  const job = useSelector(selectJob);
 
   const handleChange = (e) => {
-    dispatch(setJob({ ...job, [e.target.name]: e.target.value }));
+    dispatch(setJob({ [e.target.name]: e.target.value }));
   };
 
   return (

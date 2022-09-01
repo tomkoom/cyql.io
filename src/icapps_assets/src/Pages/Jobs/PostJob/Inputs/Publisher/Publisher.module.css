@@ -1,1 +1,19 @@
 /* publisher */
+
+.badge,
+.connectWalletBtn {
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  background-color: var(--underlay);
+  border-radius: 0.25rem;
+}
+
+.badge {
+  font-weight: var(--fwBold);
+}
+
+.connectWalletBtn:hover {
+  background-color: var(--underlay2);
+}
