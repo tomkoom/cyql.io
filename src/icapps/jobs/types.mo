@@ -26,5 +26,7 @@ module Types {
     submitted: Text;
     // edited: Text,
     publisher: Text;
+
+    // FE state: icapps_assets/src/State/jobs/job.js
   };
 };

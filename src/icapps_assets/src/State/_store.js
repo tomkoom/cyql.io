@@ -16,6 +16,7 @@ import filter from "./filter";
 import projectSubmission from "./projectSubmission";
 import jobs from "./jobs/jobs";
 import job from "./jobs/job";
+import nft from "./nft/nft";
 
 // redux-persist
 import {
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   projectSubmission,
   jobs,
   job,
+  nft,
 });
 
 const persistConfig = {

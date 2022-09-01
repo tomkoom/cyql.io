@@ -32,6 +32,7 @@ import {
   Admin,
   Home,
   Jobs,
+  Nft,
   PostJob,
   NotFound,
   Profile,
@@ -49,6 +50,7 @@ import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
+import { setRegistry } from "./State/nft/nft";
 
 // state – modals
 import {
@@ -197,12 +199,13 @@ const App = () => {
     }
   }, [principalIdStr]);
 
-  const getNFTData = async () => {
+  const getNftData = async () => {
     const nft = Actor.createActor(nft_IDL, {
       agent: new HttpAgent({ host }),
       canisterId: nftCanisterId,
     });
 
+    // profile
     await nft
       .principalOwnsOne(principalId)
       .then((res) => {
@@ -223,12 +226,15 @@ const App = () => {
         dispatch(setNFTIdsOwned(nftIdsOwned));
       })
       .catch((err) => console.log(err));
+
+    // nft
+    await nft.getRegistry().then((registry) => dispatch(setRegistry(registry)));
   };
 
   // get nft data
   useEffect(() => {
     if (principalId) {
-      getNFTData();
+      getNftData();
     }
   }, [principalId]);
 
@@ -269,6 +275,10 @@ const App = () => {
 
             <Route exact path="/jobs/post">
               <PostJob />
+            </Route>
+
+            <Route exact path="/nft">
+              <Nft />
             </Route>
 
             {principalId && (

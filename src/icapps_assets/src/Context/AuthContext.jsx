@@ -5,6 +5,7 @@ import { StoicIdentity } from "ic-stoic-identity";
 
 // backend
 import { idlFactory, canisterId } from "../../../declarations/icapps/index";
+import nft_idl from "../Pages/Nft/nft_idl/nft_idl";
 
 // routes
 import { history } from "../Routes/history";
@@ -28,7 +29,10 @@ const useAuth = () => {
 const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
+  // actors
   const [actor, setActor] = useState(undefined);
+  const [nftActor, setNftActor] = useState(undefined);
+  // –––
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
   const [accountId, setAccountId] = useState(""); // always string
@@ -51,6 +55,7 @@ export function AuthProvider({ children }) {
   };
 
   const createPlugActor = async () => {
+    // cyql
     await window.ic.plug
       .createActor({
         canisterId: canisterId,
@@ -60,6 +65,18 @@ export function AuthProvider({ children }) {
         setActor(plugActor);
       })
       .catch((err) => console.log(err));
+
+    // nft
+    // const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
+    // await window.ic.plug
+    //   .createActor({
+    //     canisterId: nftCanisterId,
+    //     interfaceFactory: nft_idl,
+    //   })
+    //   .then((nftActor) => {
+    //     setNftActor(nftActor);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const getPlugUserData = async () => {
@@ -153,6 +170,7 @@ export function AuthProvider({ children }) {
 
   const signOut = () => {
     setActor(undefined);
+    setNftActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setAccountId("");
@@ -178,6 +196,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     actor,
+    nftActor,
     principalId,
     principalIdStr,
     accountId,
