@@ -1,4 +1,22 @@
+type Job = 
+ record {
+   application_discord: text;
+   application_email: text;
+   application_twitter: text;
+   application_url: text;
+   category: text;
+   company_logo_url: text;
+   company_name: text;
+   company_twitter: text;
+   company_website: text;
+   compensation: text;
+   description: text;
+   equity: text;
+   publisher: text;
+   submitted: nat;
+   title: text;
+ };
 service : {
-  greet: (text) -> (text);
+  addJob: (Job) -> (Job);
   whoami: () -> (text) query;
 }

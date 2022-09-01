@@ -2,11 +2,9 @@ import React, { createContext, useContext, useState } from "react";
 
 // stoic
 import { StoicIdentity } from "ic-stoic-identity";
-import { Principal } from "@dfinity/principal";
 
-// idl
+// backend
 import { idlFactory, canisterId } from "../../../declarations/icapps/index";
-import ledger_idl from "../Utils/ledger_idl";
 
 // routes
 import { history } from "../Routes/history";
@@ -14,7 +12,6 @@ import { toHome } from "../Routes/routes";
 
 // state
 import { useDispatch } from "react-redux";
-// import { setSignInModal } from "../State/modals";
 import { setVerified } from "../State/profile";
 
 // utils
@@ -27,11 +24,11 @@ const useAuth = () => {
 
 // host
 // if else env
-const host = "https://mainnet.dfinity.network";
-// const host = "http://localhost:8080/";
+// const host = "https://mainnet.dfinity.network";
+const host = "http://localhost:8080/";
 
 export function AuthProvider({ children }) {
-  // const [actor, setActor] = useState(undefined);
+  const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
   const [accountId, setAccountId] = useState(""); // always string
@@ -46,24 +43,24 @@ export function AuthProvider({ children }) {
         whitelist: [canisterId],
         host,
       });
-      // createPlugActor();
+      createPlugActor();
       getPlugUserData();
     } catch (err) {
       console.log(err);
     }
   };
 
-  // const createPlugActor = async () => {
-  //   await window.ic.plug
-  //     .createActor({
-  //       canisterId: canisterId,
-  //       interfaceFactory: idlFactory,
-  //     })
-  //     .then((plugActor) => {
-  //       setActor(plugActor);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  const createPlugActor = async () => {
+    await window.ic.plug
+      .createActor({
+        canisterId: canisterId,
+        interfaceFactory: idlFactory,
+      })
+      .then((plugActor) => {
+        setActor(plugActor);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
@@ -135,7 +132,7 @@ export function AuthProvider({ children }) {
     // plug
     const isPlugConnected = await window.ic.plug.isConnected();
     if (isPlugConnected) {
-      // createPlugActor(); // may run after getPlugUserData()
+      createPlugActor();
       getPlugUserData();
       return "";
     }
@@ -155,7 +152,7 @@ export function AuthProvider({ children }) {
   };
 
   const signOut = () => {
-    // setActor(undefined);
+    setActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setAccountId("");
@@ -180,6 +177,7 @@ export function AuthProvider({ children }) {
   };
 
   const value = {
+    actor,
     principalId,
     principalIdStr,
     accountId,

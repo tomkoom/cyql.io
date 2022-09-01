@@ -21,9 +21,11 @@ const jobInitialState = {
   application_discord: "",
 
   // meta
-  submitted: 0,
-  // edited: 0,
+  submitted: "",
+  // edited: "",
   publisher: "",
+  
+  // icapps/jobs/types.mo
 };
 
 const job = createSlice({

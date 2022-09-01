@@ -17,16 +17,23 @@ import { selectJob } from "../../../State/jobs/job";
 const PostJob = () => {
   const dispatch = useDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { principalIdStr } = useAuth();
+  const { actor, principalIdStr } = useAuth();
   const job = useSelector(selectJob);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (principalIdStr !== "") {
-      setIsSubmitting(true);
-      const timestamp = Date.now();
-      console.log({ ...job, submitted: timestamp, publisher: principalIdStr });
-      setIsSubmitting(false);
+    if (actor !== undefined && principalIdStr !== "") {
+      try {
+        setIsSubmitting(true);
+        const timestamp = Date.now();
+        const timestampStr = timestamp.toString();
+        const jobObj = { ...job, submitted: timestampStr, publisher: principalIdStr };
+        console.log(jobObj);
+        await actor.addJob(jobObj).then((res) => console.log(res));
+        setIsSubmitting(false);
+      } catch (err) {
+        console.log(err);
+      }
     } else {
       dispatch(setSignInModal(true));
     }

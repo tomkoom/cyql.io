@@ -5,6 +5,5 @@ const projectsCollRef = collection(db, "projects");
 const usersCollRef = collection(db, "users");
 const usersICCollRef = collection(db, "usersIC");
 const submittedProjectsCollRef = collection(db, "submitted_projects");
-const jobsCollRef = collection(db, "jobs");
 
-export { projectsCollRef, usersCollRef, usersICCollRef, submittedProjectsCollRef, jobsCollRef };
+export { projectsCollRef, usersCollRef, usersICCollRef, submittedProjectsCollRef };
