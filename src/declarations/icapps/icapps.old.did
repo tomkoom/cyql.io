@@ -1,3 +1,4 @@
+type JobCounter = nat;
 type Job = 
  record {
    application_discord: text;
@@ -13,10 +14,14 @@ type Job =
    description: text;
    equity: text;
    publisher: text;
-   submitted: nat;
+   submitted: text;
    title: text;
  };
 service : {
   addJob: (Job) -> (Job);
+  getJobs: () -> (vec record {
+                        JobCounter;
+                        Job;
+                      }) query;
   whoami: () -> (text) query;
 }

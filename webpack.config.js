@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 
 let localCanisters, prodCanisters, canisters;
 
@@ -19,25 +19,18 @@ function initCanisterIds() {
   }
 
   const network =
-    process.env.DFX_NETWORK ||
-    (process.env.NODE_ENV === "production" ? "ic" : "local");
+    process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local");
 
   canisters = network === "local" ? localCanisters : prodCanisters;
 
   for (const canister in canisters) {
-    process.env[canister.toUpperCase() + "_CANISTER_ID"] =
-      canisters[canister][network];
+    process.env[canister.toUpperCase() + "_CANISTER_ID"] = canisters[canister][network];
   }
 }
 initCanisterIds();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-const asset_entry = path.join(
-  "src",
-  "icapps_assets",
-  "src",
-  "index.html"
-);
+const asset_entry = path.join("src", "icapps_assets", "src", "index.html");
 
 module.exports = {
   target: "web",
@@ -75,30 +68,39 @@ module.exports = {
   module: {
     rules: [
       { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-      //  Loading SVG
-      { test: /\.(svg)$/, use: [{ loader: 'file-loader' }] },
-      // Loading CSS modules
-      { test: /\.css$/, use: ["style-loader", { loader: "css-loader", options: { importLoaders: 1, modules: true } }], include: /\.module\.css$/ },
-      // Loading CSS
+      //  loading svg
+      { test: /\.(svg)$/, use: [{ loader: "file-loader" }] },
+      // loading css modules
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1, modules: true } },
+        ],
+        include: /\.module\.css$/,
+      },
+      // loading css
       { test: /\.css$/, use: ["style-loader", "css-loader"], exclude: /\.module\.css$/ },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, asset_entry),
-      cache: false
+      cache: false,
     }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: path.join(__dirname, "src", "icapps_assets", "assets"),
-          to: path.join(__dirname, "dist", "icapps_assets"),
-        },
-      ],
-    }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.join(__dirname, "src", "icapps_assets", "assets"),
+    //       to: path.join(__dirname, "dist", "icapps_assets"),
+    //     },
+    //   ],
+    // }),
+    // dfx 0.11.0
+    // https://internetcomputer.org/docs/current/developer-docs/updates/release-notes/#duplicate-asset-keys-are-now-reported-as-errors
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      ICAPPS_CANISTER_ID: canisters["icapps"]
+      NODE_ENV: "development",
+      ICAPPS_CANISTER_ID: canisters["icapps"],
     }),
     new webpack.ProvidePlugin({
       Buffer: [require.resolve("buffer/"), "Buffer"],

@@ -19,8 +19,12 @@ actor {
     };
 
     // query
-    public query func getJobs() : async [Types.Job] {
-        return Iter.toArray<Types.Job>(mapOfJobs.vals());
+    public query func getJobs() : async [(Types.JobCounter, Types.Job)] {
+        return Iter.toArray(mapOfJobs.entries());
+    };
+    
+    public query func getJobsNum() : async Nat {
+        return mapOfJobs.size();
     };
 
     // utils

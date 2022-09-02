@@ -5,7 +5,6 @@ import { StoicIdentity } from "ic-stoic-identity";
 
 // backend
 import { idlFactory, canisterId } from "../../../declarations/icapps/index";
-import nft_idl from "../Pages/Nft/nft_idl/nft_idl";
 
 // routes
 import { history } from "../Routes/history";
@@ -55,7 +54,7 @@ export function AuthProvider({ children }) {
   };
 
   const createPlugActor = async () => {
-    // cyql
+    // cyql actor
     await window.ic.plug
       .createActor({
         canisterId: canisterId,
@@ -65,18 +64,6 @@ export function AuthProvider({ children }) {
         setActor(plugActor);
       })
       .catch((err) => console.log(err));
-
-    // nft
-    // const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
-    // await window.ic.plug
-    //   .createActor({
-    //     canisterId: nftCanisterId,
-    //     interfaceFactory: nft_idl,
-    //   })
-    //   .then((nftActor) => {
-    //     setNftActor(nftActor);
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
   const getPlugUserData = async () => {

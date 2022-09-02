@@ -16,9 +16,13 @@ const Nft = () => {
 
   return (
     <div className={css.nft}>
-      <h2>CYQL NFT Stats</h2>
+      <h2>cyql NFT Stats</h2>
+      <div>Market</div>
       <ul>
         <li>Holders: {holders}</li>
+        <li>Listings</li>
+        <li>Floor</li>
+        <li>Supply</li>
       </ul>
     </div>
   );

@@ -37,6 +37,7 @@ const projectInitialState = {
 
   // token
   // hasToken: false,
+  // keywords: [] // payments, etc
 };
 
 const projectSubmission = createSlice({

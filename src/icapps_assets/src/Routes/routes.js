@@ -24,10 +24,6 @@ const toUpcoming = () => {
   history.push("/upcoming");
 };
 
-const toNft = () => {
-  history.push("/nft");
-};
-
 const toSubmit = () => {
   history.push("/submit");
 };
@@ -38,6 +34,10 @@ const toJobs = () => {
 
 const toPostJob = () => {
   history.push("/jobs/post");
+};
+
+const toNft = () => {
+  history.push("/nft");
 };
 
 const toProfile = () => {
@@ -53,11 +53,12 @@ export {
   toApps,
   toApp,
   toUpcoming,
-  toNft,
   toSubmit,
   toJobs,
   toPostJob,
+  toNft,
   toProfile,
   toAdmin,
+  // –––
   goBack,
 };

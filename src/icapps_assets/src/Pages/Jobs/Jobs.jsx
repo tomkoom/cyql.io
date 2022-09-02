@@ -17,7 +17,15 @@ const Jobs = () => {
 
   const getJobs = async () => {
     try {
-      await cyql.getJobs().then((jobs) => dispatch(setJobs(jobs)));
+      await cyql.getJobs().then((jobs) => {
+        const jobsArr = [];
+        jobs.forEach((el) => {
+          const key = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
+          const value = el[1];
+          jobsArr.push({ [key]: value });
+        });
+        dispatch(setJobs(jobsArr));
+      });
     } catch (err) {
       console.log(err);
     }

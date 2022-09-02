@@ -178,9 +178,7 @@ const App = () => {
     }
   }, [principalIdStr]);
 
-  // ––––––––––––––––––––––––
   // ––– SET PROFILE INFO –––
-  // ––––––––––––––––––––––––
 
   // get upvoted projects
   useEffect(() => {

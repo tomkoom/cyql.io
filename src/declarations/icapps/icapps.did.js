@@ -16,9 +16,10 @@ export const idlFactory = ({ IDL }) => {
     'application_url' : IDL.Text,
     'company_logo_url' : IDL.Text,
   });
+  const JobCounter = IDL.Nat;
   return IDL.Service({
     'addJob' : IDL.Func([Job], [Job], []),
-    'getJobs' : IDL.Func([], [IDL.Vec(Job)], ['query']),
+    'getJobs' : IDL.Func([], [IDL.Vec(IDL.Tuple(JobCounter, Job))], ['query']),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });
 };

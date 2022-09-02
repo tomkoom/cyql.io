@@ -1,0 +1,7 @@
+version:
+"dfx": "0.9.3"
+
+Errors:
+Failed asset sync with canister
+https://forum.dfinity.org/t/dfx-deploy-failed-another/14831
+https://internetcomputer.org/docs/current/developer-docs/updates/release-notes/#duplicate-asset-keys-are-now-reported-as-errors

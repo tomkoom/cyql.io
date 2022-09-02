@@ -6,7 +6,7 @@ import k from "../../../../../k/k";
 import { iCube, iRocket, iBolt, iEye, iPlus, iList } from "../../Icons/Icons";
 
 // routes
-import { toApps, toUpcoming, toSubmit, toJobs, toAdmin } from "../../Routes/routes";
+import { toApps, toUpcoming, toSubmit, toJobs, toAdmin, toNft } from "../../Routes/routes";
 
 // auth
 import { useAuth } from "../../Context/AuthContext";
@@ -24,8 +24,9 @@ const Sidebar = () => {
         <NavLink label="Projects" to={toApps} icon={iCube} />
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
         <NavLink label="Jobs" to={toJobs} icon={iBolt} />
-        {/* <NavLink label="Predictions" to={} icon={iEye} /> */}
+        <NavLink label="cyqlNFT" to={toNft} icon="" />
         <NavLink label="Submit" to={toSubmit} icon={iPlus} />
+        {/* <NavLink label="Predictions" to={} icon={iEye} /> */}
 
         {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
         (principalIdStr && principalIdStr === k.STOIC_ADMIN_1) ||
