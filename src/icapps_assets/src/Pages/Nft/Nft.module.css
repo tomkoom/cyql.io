@@ -1,1 +1,37 @@
 /* nft */
+
+.nft {
+  margin-bottom: 24rem;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+.link {
+  display: inline-block;
+  font-size: var(--fontSize5);
+  font-weight: var(--fwBold);
+  margin-bottom: 1rem;
+}
+
+.li {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1.5rem;
+}
+
+.li li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  background-color: var(--underlay);
+  border-radius: 0.33rem;
+}
+
+.data {
+  font-size: var(--fontSize4);
+  font-weight: var(--fwBold);
+  line-height: 150%;
+}

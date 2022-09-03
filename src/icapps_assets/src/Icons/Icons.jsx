@@ -45,6 +45,8 @@ import {
   faBolt,
   faList,
   faEye,
+  faChartArea,
+  faChartBar,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -100,6 +102,8 @@ const iBriefcase = <FontAwesomeIcon icon={faBriefcase} />;
 const iBolt = <FontAwesomeIcon icon={faBolt} />;
 const iList = <FontAwesomeIcon icon={faList} />;
 const iEye = <FontAwesomeIcon icon={faEye} />;
+const iChartArea = <FontAwesomeIcon icon={faChartArea} />;
+const iChartBar = <FontAwesomeIcon icon={faChartBar} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -155,6 +159,8 @@ export {
   iBolt,
   iList,
   iEye,
+  iChartArea,
+  iChartBar,
   // brands
   iTwitter,
   iDiscord,

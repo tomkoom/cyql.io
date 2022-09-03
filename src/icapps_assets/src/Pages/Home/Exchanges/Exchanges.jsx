@@ -5,13 +5,13 @@ import css from "./Exchanges.module.css";
 import { iAngleRight } from "../../../Icons/Icons";
 
 // utils
-import { substring105 } from "../../../Utils/substirng";
+import { substring70 } from "../../../Utils/substirng";
 
 const exchanges = [
   {
     id: "mexc",
     label: "MEXC",
-    link: "https://www.mexc.com/en-US/register?inviteCode=mexc-cyql",
+    link: "https://www.mexc.com/en-US/register?inviteCode=mexc-16tN8",
     logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/exchanges/mexc/mexc-logo.svg",
     description: "MEXC is a secure and reliable Crypto asset exchange.",
   },
@@ -62,7 +62,7 @@ const Exchanges = () => {
             )}
             <div>
               <h4 className={css.title}>{exchange.label}</h4>
-              <p className={css.description}>{substring105(exchange.description)}</p>
+              <p className={css.description}>{substring70(exchange.description)}</p>
             </div>
             <div>
               <span className={css.icon}>{iAngleRight}</span>
