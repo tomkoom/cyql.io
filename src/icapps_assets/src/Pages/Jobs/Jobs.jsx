@@ -1,28 +1,30 @@
 import React, { useEffect } from "react";
 import css from "./Jobs.module.css";
 
+// backend
+import { icapps as cyql } from "../../../../declarations/icapps/index";
+
 // routes
 import { toPostJob } from "../../Routes/routes";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
-import { selectJobs, setJobs } from "../../State/jobs/jobs";
+import { useDispatch } from "react-redux";
+import { setJobs } from "../../State/jobs/jobs";
 
-// backend
-import { icapps as cyql } from "../../../../declarations/icapps/index";
+// components
+import JobList from "./JobList/JobList";
 
 const Jobs = () => {
   const dispatch = useDispatch();
-  const jobs = useSelector(selectJobs);
 
   const getJobs = async () => {
     try {
       await cyql.getJobs().then((jobs) => {
         const jobsArr = [];
         jobs.forEach((el) => {
-          const key = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
-          const value = el[1];
-          jobsArr.push({ [key]: value });
+          const id = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
+          const job = el[1];
+          jobsArr.push({ ...job, id: id });
         });
         dispatch(setJobs(jobsArr));
       });
@@ -38,16 +40,12 @@ const Jobs = () => {
   return (
     <div className={css.jobs}>
       <div className={css.title}>
-        <h2 className="pageTitle">Jobs</h2>
+        <h2 className="pageTitle">IC Jobs</h2>
         <button className="primaryBtn" onClick={toPostJob}>
           Post a job
         </button>
       </div>
-      <div className={css.content}>
-        {jobs.map((job, i) => (
-          <div key={i}>{job.title}</div>
-        ))}
-      </div>
+      <JobList />
     </div>
   );
 };

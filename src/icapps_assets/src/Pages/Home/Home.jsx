@@ -9,6 +9,7 @@ import { toApps, toUpcoming } from "../../Routes/routes";
 
 // components
 import {
+  Exchanges,
   HighlightedByCategory,
   HighlightedProjects,
   JoinCommunity,
@@ -183,6 +184,18 @@ const Home = () => {
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedByCategory filter="DeFi" />
+      </section>
+      <div className="div" />
+
+      {/* exchanges */}
+      <section>
+        <div className={css.sectionTitle}>
+          <div className={css.titleContainer}>
+            <h3 className={css.title}>Exchanges</h3>
+          </div>
+          {/* <ViewAllBtn nav="" /> */}
+        </div>
+        <Exchanges />
       </section>
       <div className="div" />
 

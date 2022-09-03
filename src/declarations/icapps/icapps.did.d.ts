@@ -20,7 +20,8 @@ export interface Job {
 }
 export type JobCounter = bigint;
 export interface _SERVICE {
-  'addJob' : ActorMethod<[Job], Job>,
+  'addJob' : ActorMethod<[Job], [] | [Job]>,
   'getJobs' : ActorMethod<[], Array<[JobCounter, Job]>>,
+  'getJobsNum' : ActorMethod<[], bigint>,
   'whoami' : ActorMethod<[], string>,
 }

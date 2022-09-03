@@ -12,11 +12,21 @@ actor {
     let keyHash: (Nat) -> Hash.Hash = func(x) { Hash.hash(x) }; // hash Nat
     var mapOfJobs = HashMap.HashMap<Types.JobCounter, Types.Job>(1, Nat.equal, keyHash); 
 
-    public shared({ caller }) func addJob (job: Types.Job) : async Types.Job {
-        mapOfJobs.put(jobCounter, job);
-        jobCounter += 1;
-        return job;
+    public shared({ caller }) func addJob(job: Types.Job) : async ?Types.Job {
+        if (Principal.isAnonymous(caller)) {
+            return null;
+        } else {
+            mapOfJobs.put(jobCounter, job);
+            jobCounter += 1;
+            return ?job;
+        };
     };
+
+    // public shared({ caller }) func addJob(job: Types.Job) : async Types.Job {
+    //     mapOfJobs.put(jobCounter, job);
+    //     jobCounter += 1;
+    //     return job;
+    // };
 
     // query
     public query func getJobs() : async [(Types.JobCounter, Types.Job)] {

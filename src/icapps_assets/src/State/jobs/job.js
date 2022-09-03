@@ -21,10 +21,11 @@ const jobInitialState = {
   application_discord: "",
 
   // meta
+  // id: 0,
   submitted: "",
   // edited: "",
   publisher: "",
-  
+
   // icapps/jobs/types.mo
 };
 

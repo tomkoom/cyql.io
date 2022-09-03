@@ -4,7 +4,10 @@ import React, { createContext, useContext, useState } from "react";
 import { StoicIdentity } from "ic-stoic-identity";
 
 // backend
-import { idlFactory, canisterId } from "../../../declarations/icapps/index";
+import {
+  idlFactory as cyqlIdlFactory,
+  canisterId as cyqlCanisterId,
+} from "../../../declarations/icapps/index";
 
 // routes
 import { history } from "../Routes/history";
@@ -24,8 +27,9 @@ const useAuth = () => {
 
 // host
 // if else env
-// const host = "https://mainnet.dfinity.network";
-const host = "http://localhost:8080/";
+const host = "https://mainnet.dfinity.network";
+// const host = "http://localhost:8080/";
+// const cyqlCanisterIdLocal = "ryjl3-tyaaa-aaaaa-aaaba-cai";
 
 export function AuthProvider({ children }) {
   // actors
@@ -41,27 +45,28 @@ export function AuthProvider({ children }) {
   // ––– PLUG –––
 
   const signInWithPlug = async () => {
+    const whitelist = [cyqlCanisterId];
     try {
       await window.ic.plug.requestConnect({
-        whitelist: [canisterId],
+        whitelist,
         host,
       });
-      createPlugActor();
+      createActorWithPlug();
       getPlugUserData();
     } catch (err) {
       console.log(err);
     }
   };
 
-  const createPlugActor = async () => {
+  const createActorWithPlug = async () => {
     // cyql actor
     await window.ic.plug
       .createActor({
-        canisterId: canisterId,
-        interfaceFactory: idlFactory,
+        canisterId: cyqlCanisterId,
+        interfaceFactory: cyqlIdlFactory,
       })
-      .then((plugActor) => {
-        setActor(plugActor);
+      .then((actor) => {
+        setActor(actor);
       })
       .catch((err) => console.log(err));
   };
@@ -103,21 +108,31 @@ export function AuthProvider({ children }) {
   //  ––– INFINITY WALLET –––
 
   const signInWithInfinityWallet = async () => {
-    const whitelist = [canisterId];
-
+    const whitelist = [cyqlCanisterId];
     try {
       await window.ic.infinityWallet.requestConnect({
         whitelist,
         host,
       });
-      // createInfinityWalletActor();
+      createActorWithInfinityWallet();
       getInfinityWalletUserData();
     } catch (err) {
       console.log(err);
     }
   };
 
-  // const createInfinityWalletActor = () => {};
+  const createActorWithInfinityWallet = async () => {
+    // cyql actor
+    await window.ic.infinityWallet
+      .createActor({
+        canisterId: cyqlCanisterId,
+        interfaceFactory: cyqlIdlFactory,
+      })
+      .then((actor) => {
+        setActor(actor);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const getInfinityWalletUserData = async () => {
     const principalId = await window.ic.infinityWallet.getPrincipal();
@@ -136,7 +151,7 @@ export function AuthProvider({ children }) {
     // plug
     const isPlugConnected = await window.ic.plug.isConnected();
     if (isPlugConnected) {
-      createPlugActor();
+      createActorWithPlug();
       getPlugUserData();
       return "";
     }
@@ -150,7 +165,8 @@ export function AuthProvider({ children }) {
     // infinitywallet
     const isInfinityWalletConnected = await window.ic.infinityWallet.isConnected();
     if (isInfinityWalletConnected) {
-      getInfinityWalletUserData(setPrincipalId, setPrincipalIdStr, setAccountId, setSignInMethod);
+      createActorWithInfinityWallet();
+      getInfinityWalletUserData();
       return "";
     }
   };
@@ -188,11 +204,9 @@ export function AuthProvider({ children }) {
     principalIdStr,
     accountId,
     signInMethod,
-    // plug
+    // –––
     signInWithPlug,
-    // stoic
     signInWithStoic,
-    // infinitywallet
     signInWithInfinityWallet,
     // –––
     checkConnection,

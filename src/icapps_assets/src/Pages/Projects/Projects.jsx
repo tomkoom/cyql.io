@@ -32,7 +32,6 @@ const Projects = () => {
         <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
       </div>
       <ProjectList />
-      {/* <Tags /> */}
     </div>
   );
 };

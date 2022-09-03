@@ -18,8 +18,9 @@ export const idlFactory = ({ IDL }) => {
   });
   const JobCounter = IDL.Nat;
   return IDL.Service({
-    'addJob' : IDL.Func([Job], [Job], []),
+    'addJob' : IDL.Func([Job], [IDL.Opt(Job)], []),
     'getJobs' : IDL.Func([], [IDL.Vec(IDL.Tuple(JobCounter, Job))], ['query']),
+    'getJobsNum' : IDL.Func([], [IDL.Nat], ['query']),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });
 };
