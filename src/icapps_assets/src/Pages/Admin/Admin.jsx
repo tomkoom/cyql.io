@@ -9,8 +9,7 @@ import {
   getTwitterUsername,
   formatDiscord,
   formatDate,
-  formatString,
-} from "../../Utils/Formatters";
+} from "../../Utils/format";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

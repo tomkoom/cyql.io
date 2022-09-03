@@ -39,16 +39,15 @@
   margin-top: 0.1rem;
 }
 
-.main ul {
+.tags {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
   font-size: var(--fontSize7);
-  margin-top: 0.25rem;
 }
 
-.main ul li {
+.tags li {
   display: flex;
   align-items: center;
   font-weight: var(--fwBold);

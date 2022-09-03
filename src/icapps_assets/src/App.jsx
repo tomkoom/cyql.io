@@ -13,12 +13,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
-import nft_IDL from "../../icapps/nft.did.js";
+import nft_idl from "./idl/nft_idl";
 import { getAccountIdentifier } from "../../icapps/utils";
 
 // utils
 import { useWindowSize } from "./Hooks/useWindowSize";
-import { sortByDateAdded, sortByDate } from "./Utils/Sort";
+import { sortByDateAdded, sortByDate } from "./Utils/sort";
 
 // firestore
 import { onSnapshot, doc, setDoc, getDoc, query, where } from "firebase/firestore";
@@ -198,7 +198,7 @@ const App = () => {
   }, [principalIdStr]);
 
   const getNftData = async () => {
-    const nft = Actor.createActor(nft_IDL, {
+    const nft = Actor.createActor(nft_idl, {
       agent: new HttpAgent({ host }),
       canisterId: nftCanisterId,
     });

@@ -16,8 +16,8 @@ const formatDiscord = (url) => {
   const formattedURL = url.includes("discord.gg/")
     ? url.split("discord.gg/")[1]
     : url.includes("discord.com/")
-      ? url.split("discord.com/")[1]
-      : url;
+    ? url.split("discord.com/")[1]
+    : url;
   return formattedURL.length > 12 ? `${formattedURL.substring(0, 12)}…` : formattedURL;
 };
 

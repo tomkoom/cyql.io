@@ -32,6 +32,20 @@ const ViewAllBtn = ({ nav }) => {
 const Home = () => {
   const projects = useSelector(selectProjects);
   const nfts = useSelector(selectNFTs);
+  const upcomingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming");
+  const ongoingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Open");
+  const projects_projects = projects.filter((project) => project.category !== "NFTs"); // no nfts
+  const projects_nfts = projects.filter((project) => project.category === "NFTs"); // nfts
+  const popularProjects = projects
+    .filter((project) => project.upvotedBy)
+    .filter((project) => project.category !== "NFTs")
+    .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length);
+  const popularNfts =
+    projects.length > 0 &&
+    projects
+      .filter((project) => project.upvotedBy)
+      .filter((project) => project.category === "NFTs")
+      .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length);
 
   return (
     <main className={css.home}>
@@ -60,16 +74,15 @@ const Home = () => {
         <div className={css.highlightsI}></div>
       </div>
 
-      {/* recently added apps */}
+      {/* recently added projects */}
       <section className={css.home__apps}>
         <div className={css.sectionTitle}>
           <h3 className={css.title}>Recently added projects</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects
-          projects={
-            projects.length > 0 && projects.filter((project) => project.category !== "NFTs")
-          }
+          projects={projects.length > 0 && projects_projects}
+          hideCategory={false}
         />
       </section>
 
@@ -79,27 +92,18 @@ const Home = () => {
           <h3 className={css.title}>Recently added NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects
-          projects={
-            projects.length > 0 && projects.filter((project) => project.category === "NFTs")
-          }
-        />
+        <HighlightedProjects projects={projects.length > 0 && projects_nfts} hideCategory={true} />
       </section>
 
-      {/* popular apps */}
+      {/* popular projects */}
       <section className={css.home__apps}>
         <div className={css.sectionTitle}>
           <h3 className={css.title}>Popular apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects
-          projects={
-            projects.length > 0 &&
-            projects
-              .filter((project) => project.upvotedBy)
-              .filter((project) => project.category !== "NFTs")
-              .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
-          }
+          projects={projects.length > 0 && popularProjects}
+          hideCategory={false}
         />
       </section>
 
@@ -109,15 +113,7 @@ const Home = () => {
           <h3 className={css.title}>Popular NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects
-          projects={
-            projects.length > 0 &&
-            projects
-              .filter((project) => project.upvotedBy)
-              .filter((project) => project.category === "NFTs")
-              .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
-          }
-        />
+        <HighlightedProjects projects={projects.length > 0 && popularNfts} hideCategory={true} />
       </section>
 
       {/* upcoming nft sales */}
@@ -126,7 +122,7 @@ const Home = () => {
           <h3 className={css.title}>Upcoming NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
-        <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Upcoming")} />
+        <NftSales nftSalesFiltered={upcomingNfts} />
       </section>
 
       {/* ongoing nft sales */}
@@ -135,7 +131,7 @@ const Home = () => {
           <h3 className={css.title}>Ongoing NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
-        <NftSales nftSalesFiltered={nfts.filter((nft) => nft.nftSaleStatus === "Open")} />
+        <NftSales nftSalesFiltered={ongoingNfts} />
       </section>
       <div className="div" />
 

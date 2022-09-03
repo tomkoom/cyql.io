@@ -4,7 +4,7 @@ import App from "./App";
 
 // react-router
 import { Router } from "react-router-dom";
-// import ScrollToTop from "./Utils/ScrollToTop";
+// import ScrollToTop from "./Utils/jsx/ScrollToTop";
 
 // history
 import { history } from "./Routes/history";

@@ -14,7 +14,7 @@ import { Loader, UpvtBtn, ViewMoreBtn } from "../../../Components/index";
 import { useSelector } from "react-redux";
 import { selectProjectsLength } from "../../../State/projects";
 
-const HighlightedProjects = ({ projects }) => {
+const HighlightedProjects = ({ projects, hideCategory }) => {
   const projectsLength = useSelector(selectProjectsLength);
 
   return (
@@ -31,15 +31,18 @@ const HighlightedProjects = ({ projects }) => {
                   <img className={css.logo} src={project.logo} alt={`${project.name}-logo`} />
                 )}
 
-                {/* name, category & tags */}
+                {/* name & tags */}
                 <div className={css.main}>
                   <h3 className={css.title}>{project.name}</h3>
-
-                  <ul>
-                    {project.category && <li>{project.category}</li>}
-                    {project.canister && <li>{iDatabase}&nbsp;&nbsp;On-Chain</li>}
-                    {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
-                  </ul>
+                  {(project.canister || project.github) && hideCategory === false ? (
+                    <ul className={css.tags}>
+                      {hideCategory === true ? "" : <li>{String(project.category)}</li>}
+                      {project.canister && <li>{iDatabase}&nbsp;&nbsp;On-Chain</li>}
+                      {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
+                    </ul>
+                  ) : (
+                    ""
+                  )}
 
                   <p className={css.description}>
                     {project.description && project.description.length > 60
