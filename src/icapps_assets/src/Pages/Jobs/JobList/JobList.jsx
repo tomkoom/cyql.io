@@ -2,7 +2,7 @@ import React from "react";
 import css from "./JobList.module.css";
 
 // utils
-import { substring } from "../../../Utils/substirng";
+import { substring70 } from "../../../Utils/substirng";
 
 // state
 import { useSelector } from "react-redux";
@@ -41,7 +41,9 @@ const JobList = () => {
                 ""
               )}
             </div>
-            <div className={css.coll}>{job.description && <p>{substring(job.description)}</p>}</div>
+            <div className={css.coll}>
+              {job.description && <p>{substring70(job.description)}</p>}
+            </div>
             <div>{job.submitted.toString()}</div>
           </div>
         ))}

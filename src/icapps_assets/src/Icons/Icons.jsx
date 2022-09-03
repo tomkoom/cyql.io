@@ -22,6 +22,9 @@ import {
   faEdit,
   faTrash,
   faCaretUp,
+  faCaretRight,
+  faCaretDown,
+  faCaretLeft,
   faCheck,
   faAngleUp,
   faAngleRight,
@@ -74,6 +77,9 @@ const iSearch = <FontAwesomeIcon icon={faSearch} />;
 const iEdit = <FontAwesomeIcon icon={faEdit} />;
 const iTrash = <FontAwesomeIcon icon={faTrash} />;
 const iCaretUp = <FontAwesomeIcon icon={faCaretUp} />;
+const iCaretRight = <FontAwesomeIcon icon={faCaretRight} />;
+const iCaretDown = <FontAwesomeIcon icon={faCaretDown} />;
+const iCaretLeft = <FontAwesomeIcon icon={faCaretLeft} />;
 const iCheck = <FontAwesomeIcon icon={faCheck} />;
 const iAngleUp = <FontAwesomeIcon icon={faAngleUp} />;
 const iAngleRight = <FontAwesomeIcon icon={faAngleRight} />;
@@ -126,6 +132,9 @@ export {
   iEdit,
   iTrash,
   iCaretUp,
+  iCaretRight,
+  iCaretDown,
+  iCaretLeft,
   iCheck,
   iAngleUp,
   iAngleRight,
