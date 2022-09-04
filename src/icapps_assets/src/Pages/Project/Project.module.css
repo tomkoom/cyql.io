@@ -113,14 +113,14 @@
 .project__btns {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .project__btns a span {
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
 }
 
-.tradeBtn {
+.btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -132,11 +132,11 @@
   border-radius: 0.25rem;
 }
 
-.tradeBtn span {
+.btn span {
   font-size: var(--fontSize7);
 }
 
-.tradeBtn:hover {
+.btn:hover {
   opacity: 0.8;
 }
 

@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./Nft.module.css";
 
+// icons
+import { iExternalLink } from "../../Icons/Icons";
+
 // state
 import { useSelector } from "react-redux";
 import { selectRegistry, selectSupply, selectListingsNum, selectFloor } from "../../State/nft/nft";
@@ -15,6 +18,13 @@ const Nft = () => {
   const listingsNum = useSelector(selectListingsNum);
   const floor = useSelector(selectFloor);
 
+  const nft = [
+    { label: "Holders", data: holders },
+    { label: "Supply", data: supply.toString() },
+    { label: "Listings", data: listingsNum.toString() },
+    { label: "Floor", data: (floor / 100_000_000).toString() },
+  ];
+
   return (
     <div className={css.nft}>
       <h2 className="pageTitle">cyql NFT Stats</h2>
@@ -25,27 +35,19 @@ const Nft = () => {
           rel="noreferrer noopener"
           target="_blank"
         >
-          Market →
+          Buy <span className={css.icon}>{iExternalLink}</span>
         </a>
 
         <ul className={css.li}>
-          <li>
-            <p className="label">Holders</p>
-            <p className={css.data}>{holders}</p>
-          </li>
-          <li>
-            <p className="label">Supply</p>
-            <p className={css.data}>{supply.toString()}</p>
-          </li>
-          <li>
-            <p className="label">Listings</p>
-            <p className={css.data}>{listingsNum.toString()}</p>
-          </li>
-          <li>
-            <p className="label">Floor</p>
-            <p className={css.data}>{(floor / 100_000_000).toString()} ICP</p>
-          </li>
+          {nft.map((nft) => (
+            <li key={nft.label}>
+              <p className="label">Holders</p>
+              <p className={css.data}>{nft.data}</p>
+            </li>
+          ))}
         </ul>
+
+        {/* add holders list */}
       </div>
     </div>
   );

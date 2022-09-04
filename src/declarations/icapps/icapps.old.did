@@ -18,7 +18,7 @@ type Job =
    title: text;
  };
 service : {
-  addJob: (Job) -> (Job);
+  addJob: (Job) -> (opt Job);
   getJobs: () -> (vec record {
                         JobCounter;
                         Job;

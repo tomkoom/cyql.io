@@ -94,7 +94,7 @@ const Project = () => {
                 <div className={css.project__btns}>
                   {project.nftMarketUrl && (
                     <a
-                      className={css.tradeBtn}
+                      className={css.btn}
                       href={project.nftMarketUrl}
                       target="_blank"
                       rel="norefferrer noopener"
@@ -105,12 +105,12 @@ const Project = () => {
 
                   {project.nftRarityChecker && (
                     <a
-                      className={css.trade__btn}
+                      className={css.btn}
                       href={project.nftRarityChecker}
                       target="_blank"
                       rel="norefferrer noopener"
                     >
-                      NFT rarity checker&nbsp;<span>{iExternalLink}</span>
+                      Rarity Checker&nbsp;<span>{iExternalLink}</span>
                     </a>
                   )}
                 </div>
