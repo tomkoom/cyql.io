@@ -4,7 +4,7 @@ import nft_idl from "../../idl/nft_idl";
 
 // state
 import store from "../../State/_store";
-import { setRegistry, setSupply, setListingsNum } from "../../State/nft/nft";
+import { setRegistry, setSupply, setListingsNum, setFloor } from "../../State/nft/nft";
 
 // host, nft can id
 const host = "https://mainnet.dfinity.network";
@@ -18,7 +18,9 @@ const setNftData = async () => {
 
   await nft
     .getRegistry()
-    .then((res) => store.dispatch(setRegistry(res)))
+    .then((res) => {
+      store.dispatch(setRegistry(res));
+    })
     .catch((err) => console.log(err));
 
   await nft
@@ -30,7 +32,17 @@ const setNftData = async () => {
 
   await nft
     .listings()
-    .then((res) => store.dispatch(setListingsNum(res.length)))
+    .then((res) => {
+      store.dispatch(setListingsNum(res.length));
+      
+      // floor
+      const prices = [];
+      res.forEach((el) => {
+        prices.push(Number(el[1].price));
+      });
+      const floor = Math.min(...prices);
+      store.dispatch(setFloor(floor));
+    })
     .catch((err) => console.log(err));
 };
 

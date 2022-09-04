@@ -3,7 +3,7 @@ import css from "./Nft.module.css";
 
 // state
 import { useSelector } from "react-redux";
-import { selectRegistry, selectSupply, selectListingsNum } from "../../State/nft/nft";
+import { selectRegistry, selectSupply, selectListingsNum, selectFloor } from "../../State/nft/nft";
 
 // utils
 import { getHoldersNum } from "./utils/getHoldersNum.js";
@@ -13,6 +13,7 @@ const Nft = () => {
   const holders = getHoldersNum(registry);
   const supply = useSelector(selectSupply);
   const listingsNum = useSelector(selectListingsNum);
+  const floor = useSelector(selectFloor);
 
   return (
     <div className={css.nft}>
@@ -42,7 +43,7 @@ const Nft = () => {
           </li>
           <li>
             <p className="label">Floor</p>
-            <p className={css.data}>N/A</p>
+            <p className={css.data}>{(floor / 100_000_000).toString()} ICP</p>
           </li>
         </ul>
       </div>
