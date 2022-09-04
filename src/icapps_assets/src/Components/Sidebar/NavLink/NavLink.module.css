@@ -6,6 +6,7 @@
   gap: 0.25rem;
   height: 48px;
   font-weight: var(--fwMedium);
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 

@@ -64,6 +64,10 @@ import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
 const host = "https://mainnet.dfinity.network";
 const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
+// set data
+import { setNftData } from "./Pages/Nft/setNftData";
+import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
+
 const App = () => {
   // hooks
   const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection } = useAuth();
@@ -177,6 +181,13 @@ const App = () => {
     }
   }, [principalIdStr]);
 
+  // effects
+
+  // set nft page data
+  useEffect(() => {
+    setNftData();
+  }, []);
+
   // ––– SET PROFILE INFO –––
 
   // get upvoted projects
@@ -196,39 +207,10 @@ const App = () => {
     }
   }, [principalIdStr]);
 
-  const getNftData = async () => {
-    const nft = Actor.createActor(nft_idl, {
-      agent: new HttpAgent({ host }),
-      canisterId: nftCanisterId,
-    });
-
-    // profile
-    await nft
-      .principalOwnsOne(principalId)
-      .then((res) => {
-        dispatch(setOwnsNFT(res));
-      })
-      .catch((err) => console.log(err));
-
-    const accountId = getAccountIdentifier(principalId);
-    await nft
-      .getRegistry()
-      .then((res) => {
-        let nftIdsOwned = [];
-        res.forEach((item) => {
-          if (item[1] === accountId) {
-            nftIdsOwned.push(item[0]);
-          }
-        });
-        dispatch(setNFTIdsOwned(nftIdsOwned));
-      })
-      .catch((err) => console.log(err));
-  };
-
-  // get nft data
+  // get profile nft data
   useEffect(() => {
     if (principalId) {
-      getNftData();
+      setProfileNftData(principalId);
     }
   }, [principalId]);
 

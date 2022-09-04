@@ -3,7 +3,7 @@ import css from "./Sidebar.module.css";
 import k from "../../../../../k/k";
 
 // icons
-import { iCube, iRocket, iBolt, iEye, iPlus, iList, iChartBar } from "../../Icons/Icons";
+import { iCube, iRocket, iBolt, iEye, iPlus, iList, iChartArea } from "../../Icons/Icons";
 
 // routes
 import { toApps, toUpcoming, toSubmit, toJobs, toAdmin, toNft } from "../../Routes/routes";
@@ -24,7 +24,7 @@ const Sidebar = () => {
         <NavLink label="Projects" to={toApps} icon={iCube} />
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
         <NavLink label="Jobs" to={toJobs} icon={iBolt} />
-        <NavLink label="cyql NFT" to={toNft} icon={iChartBar} />
+        <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
         <NavLink label="Submit" to={toSubmit} icon={iPlus} />
         {/* <NavLink label="Predictions" to={} icon={iEye} /> */}
 

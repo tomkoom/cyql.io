@@ -1,62 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./Nft.module.css";
 
-// backend
-import { Actor, HttpAgent } from "@dfinity/agent";
-import nft_idl from "../../idl/nft_idl";
-
 // state
-import { useSelector, useDispatch } from "react-redux";
-import {
-  selectRegistry,
-  setRegistry,
-  selectSupply,
-  setSupply,
-  selectListingsNum,
-  setListingsNum,
-} from "../../State/nft/nft";
+import { useSelector } from "react-redux";
+import { selectRegistry, selectSupply, selectListingsNum } from "../../State/nft/nft";
 
 // utils
 import { getHoldersNum } from "./utils/getHoldersNum.js";
 
-// host, nft can id
-const host = "https://mainnet.dfinity.network";
-const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
-
 const Nft = () => {
-  const dispatch = useDispatch();
   const registry = useSelector(selectRegistry);
   const holders = getHoldersNum(registry);
   const supply = useSelector(selectSupply);
   const listingsNum = useSelector(selectListingsNum);
-
-  const getNftData = async () => {
-    const nft = Actor.createActor(nft_idl, {
-      agent: new HttpAgent({ host }),
-      canisterId: nftCanisterId,
-    });
-
-    await nft
-      .getRegistry()
-      .then((res) => dispatch(setRegistry(res)))
-      .catch((err) => console.log(err));
-
-    await nft
-      .supply("")
-      .then((res) => {
-        dispatch(setSupply(Number(res.ok)));
-      })
-      .catch((err) => console.log(err));
-
-    await nft
-      .listings()
-      .then((res) => dispatch(setListingsNum(res.length)))
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    getNftData();
-  }, []);
 
   return (
     <div className={css.nft}>
