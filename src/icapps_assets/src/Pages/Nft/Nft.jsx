@@ -42,7 +42,10 @@ const Nft = () => {
           {nft.map((nft) => (
             <li key={nft.label}>
               <p className="label">{nft.label}</p>
-              <p className={css.data}>{nft.data}</p>
+              <p className={css.data}>
+                {nft.data}&nbsp;
+                {nft.label === "Floor" && <span className={css.icp}>ICP</span>}
+              </p>
             </li>
           ))}
         </ul>
