@@ -23,7 +23,7 @@ const Sidebar = () => {
       <div className={css.nav}>
         <NavLink label="Projects" to={toApps} icon={iCube} />
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
-        <NavLink label="Jobs" to={toJobs} icon={iBolt} />
+        {/* <NavLink label="Jobs" to={toJobs} icon={iBolt} /> */}
         <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
         <NavLink label="Submit" to={toSubmit} icon={iPlus} />
         {/* <NavLink label="Predictions" to={} icon={iEye} /> */}

@@ -6,7 +6,7 @@
 
 .sortOptions {
   position: absolute;
-  top: 40px;
+  top: calc(40px + 0.25rem);
   left: 0;
   z-index: 999;
 }

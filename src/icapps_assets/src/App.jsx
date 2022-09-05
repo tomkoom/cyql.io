@@ -3,6 +3,8 @@ import "./App.css";
 import "./Styles/root.css";
 import "./Styles/theme.css";
 import "./Styles/typography.css";
+
+// etc
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 import k from "../../../k/k";
@@ -10,11 +12,6 @@ import k from "../../../k/k";
 // toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-// backend
-import { Actor, HttpAgent } from "@dfinity/agent";
-import nft_idl from "./idl/nft_idl";
-import { getAccountIdentifier } from "../../icapps/utils";
 
 // utils
 import { useWindowSize } from "./Hooks/useWindowSize";
@@ -31,8 +28,8 @@ import { useAuth } from "./Context/AuthContext";
 import {
   Admin,
   Home,
-  Jobs,
   Nft,
+  Jobs,
   PostJob,
   NotFound,
   Profile,
@@ -59,10 +56,6 @@ import {
   setSignInModal,
 } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
-
-// nft canister data
-const host = "https://mainnet.dfinity.network";
-const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 // set data
 import { setNftData } from "./Pages/Nft/setNftData";
@@ -245,13 +238,13 @@ const App = () => {
               <Submit />
             </Route>
 
-            <Route exact path="/jobs">
+            {/* <Route exact path="/jobs">
               <Jobs />
             </Route>
 
             <Route exact path="/jobs/post">
               <PostJob />
-            </Route>
+            </Route> */}
 
             <Route exact path="/nft">
               <Nft />

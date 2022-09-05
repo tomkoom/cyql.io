@@ -6,14 +6,16 @@ import nft_idl from "../../idl/nft_idl";
 import store from "../../State/_store";
 import { setRegistry, setSupply, setListingsNum, setFloor } from "../../State/nft/nft";
 
-// host, nft can id
-const host = "https://mainnet.dfinity.network";
-const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
+// canisters
+import { cyqlNftCanId } from "../../Context/canisterIds";
+
+// host
+import { host } from "../../Context/host";
 
 const setNftData = async () => {
   const nft = Actor.createActor(nft_idl, {
     agent: new HttpAgent({ host }),
-    canisterId: nftCanisterId,
+    canisterId: cyqlNftCanId,
   });
 
   await nft
@@ -34,7 +36,7 @@ const setNftData = async () => {
     .listings()
     .then((res) => {
       store.dispatch(setListingsNum(res.length));
-      
+
       // floor
       const prices = [];
       res.forEach((el) => {

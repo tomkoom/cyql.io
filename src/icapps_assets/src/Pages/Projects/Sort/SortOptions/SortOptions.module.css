@@ -6,6 +6,7 @@
   flex-direction: column;
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
+  border-radius: 0.33rem;
 }
 
 .sort ul li {

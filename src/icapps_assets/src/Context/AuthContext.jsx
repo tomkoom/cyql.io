@@ -20,16 +20,16 @@ import { setVerified } from "../State/profile";
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
 
+// canisters
+import { cyqlBeCanIdLocal } from "./canisterIds";
+
+// host
+import { host, hostLocal } from "./host";
+
 const AuthContext = createContext();
 const useAuth = () => {
   return useContext(AuthContext);
 };
-
-// host
-// if else env
-const host = "https://mainnet.dfinity.network";
-// const host = "http://localhost:8080/";
-// const cyqlCanisterIdLocal = "ryjl3-tyaaa-aaaaa-aaaba-cai";
 
 export function AuthProvider({ children }) {
   // actors
@@ -45,11 +45,10 @@ export function AuthProvider({ children }) {
   // ––– PLUG –––
 
   const signInWithPlug = async () => {
-    const whitelist = [cyqlCanisterId];
     try {
       await window.ic.plug.requestConnect({
-        whitelist,
-        host,
+        whitelist: [cyqlCanisterId],
+        host: host,
       });
       createActorWithPlug();
       getPlugUserData();

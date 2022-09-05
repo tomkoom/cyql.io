@@ -41,7 +41,7 @@ const Nft = () => {
         <ul className={css.li}>
           {nft.map((nft) => (
             <li key={nft.label}>
-              <p className="label">Holders</p>
+              <p className="label">{nft.label}</p>
               <p className={css.data}>{nft.data}</p>
             </li>
           ))}
