@@ -1,4 +1,25 @@
 type UpdateCallsAggregatedData = vec nat64;
+type Time = int;
+type Result = 
+ variant {
+   err: ProfileErr;
+   ok;
+ };
+type ProfileErr = 
+ variant {
+   AlreadyExists;
+   IsAnonymous;
+   NotFound;
+ };
+type Profile = 
+ record {
+   accountId: text;
+   firstSignIn: Time;
+   lastSignIn: Time;
+   principalId: text;
+   profileCount: nat;
+   signInMethod: text;
+ };
 type NumericEntity = 
  record {
    avg: nat64;
@@ -129,5 +150,6 @@ service : {
   getJobsNum: () -> (nat) query;
   getThat: () -> (text) query;
   getThis: () -> (text) query;
+  verify: (Profile) -> (Result);
   whoami: () -> (text) query;
 }

@@ -1,7 +1,21 @@
 module Types {
 
+  public type ProfileErr = {
+    #IsAnonymous;
+    #AlreadyExists;
+  };
+
+  public type Time = Int;
+  public type Profile = {
+    principalId: Text;
+    accountId: Text;
+    firstSignIn: Time;
+    lastSignIn: Time;
+    signInMethod: Text;
+    profileCount: Nat;
+  };
+
   public type JobCounter = Nat;
-  
   public type Job = {
     // position
     title: Text;

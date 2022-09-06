@@ -99,6 +99,21 @@ export const idlFactory = ({ IDL }) => {
   });
   const CanisterMetrics = IDL.Record({ 'data' : CanisterMetricsData });
   const JobCounter = IDL.Nat;
+  const Time = IDL.Int;
+  const Profile = IDL.Record({
+    'accountId' : IDL.Text,
+    'lastSignIn' : Time,
+    'firstSignIn' : Time,
+    'signInMethod' : IDL.Text,
+    'profileCount' : IDL.Nat,
+    'principalId' : IDL.Text,
+  });
+  const ProfileErr = IDL.Variant({
+    'IsAnonymous' : IDL.Null,
+    'NotFound' : IDL.Null,
+    'AlreadyExists' : IDL.Null,
+  });
+  const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : ProfileErr });
   return IDL.Service({
     'addJob' : IDL.Func([Job], [Job], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
@@ -119,6 +134,7 @@ export const idlFactory = ({ IDL }) => {
     'getJobsNum' : IDL.Func([], [IDL.Nat], ['query']),
     'getThat' : IDL.Func([], [IDL.Text], ['query']),
     'getThis' : IDL.Func([], [IDL.Text], ['query']),
+    'verify' : IDL.Func([Profile], [Result], []),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });
 };

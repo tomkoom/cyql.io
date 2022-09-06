@@ -6,116 +6,145 @@ import Nat "mo:base/Nat";
 import Prelude "mo:base/Prelude";
 import Prim "mo:prim";
 import Principal "mo:base/Principal";
+import Result "mo:base/Result";
 import Time "mo:base/Time";
 
 import Canistergeek "mo:canistergeek/canistergeek";
 
-import Types "jobs/types";
+import Types "types";
 
 actor {
-    stable var jobCounter : Types.JobCounter = 0;
-    let keyHash: (Nat) -> Hash.Hash = func(x) { Hash.hash(x) }; // hash Nat
-    var mapOfJobs = HashMap.HashMap<Types.JobCounter, Types.Job>(1, Nat.equal, keyHash); 
+  var profiles = HashMap.HashMap<Principal, Types.Profile>(1, Principal.equal, Principal.hash);
 
-    // public shared({ caller }) func addJob(job: Types.Job) : async ?Types.Job {
-    //     if (Principal.isAnonymous(caller)) {
-    //         return null;
-    //     } else {
-    //         mapOfJobs.put(jobCounter, job);
-    //         jobCounter += 1;
-    //         return ?job;
-    //     };
-    // };
+  stable var jobCounter : Types.JobCounter = 0;
+  let keyHash : (Nat) -> Hash.Hash = func(x) { Hash.hash(x) };
+  // hash Nat
+  var jobs = HashMap.HashMap<Types.JobCounter, Types.Job>(1, Nat.equal, keyHash);
 
-    public shared({ caller }) func addJob(job: Types.Job) : async Types.Job {
-        mapOfJobs.put(jobCounter, job);
-        jobCounter += 1;
-        return job;
+  public shared ({ caller }) func verify(profile : Types.Profile) : async Result.Result<(), Types.ProfileErr> {
+    let id = caller;
+    if (Principal.isAnonymous(id)) {
+      #err(#IsAnonymous);
+    } else {
+      if (_userExists(id)) {
+        #err(#AlreadyExists);
+      } else {
+        _createProfile(id, profile);
+        #ok;
+      };
     };
+  };
 
-    // query
-    public query func getJobs() : async [(Types.JobCounter, Types.Job)] {
-        return Iter.toArray(mapOfJobs.entries());
+  private func _userExists(id : Principal) : Bool {
+    switch (profiles.get(id)) {
+      case (?profile) true;
+      case (null) false;
     };
-    
-    public query func getJobsNum() : async Nat {
-        return mapOfJobs.size();
-    };
+  };
 
-    // status
-    public query func getCycleBalance() : async Nat {
-        ExperimentalCycles.balance()
-    };
+  private func _createProfile(id : Principal, profile : Types.Profile) : () {
+    profiles.put(id, profile);
+  };
 
-    // utils
-    public shared query({ caller }) func whoami() : async Text {
+  // public shared({ caller }) func addJob(job: Types.Job) : async ?Types.Job {
+  //     if (Principal.isAnonymous(caller)) {
+  //         return null;
+  //     } else {
+  //         jobs.put(jobCounter, job);
+  //         jobCounter += 1;
+  //         return ?job;
+  //     };
+  // };
+
+  public shared ({ caller }) func addJob(job : Types.Job) : async Types.Job {
+    jobs.put(jobCounter, job);
+    jobCounter += 1;
+    return job;
+  };
+
+  // query
+  public query func getJobs() : async [(Types.JobCounter, Types.Job)] {
+    return Iter.toArray(jobs.entries());
+  };
+
+  public query func getJobsNum() : async Nat {
+    return jobs.size();
+  };
+
+  // status
+  public query func getCycleBalance() : async Nat {
+    ExperimentalCycles.balance();
+  };
+
+  // utils
+  public shared query ({ caller }) func whoami() : async Text {
     return Principal.toText(caller);
   };
 
-    // CANISTERGEEK https://github.com/usergeek/canistergeek-ic-motoko
-    stable var _canistergeekMonitorUD: ? Canistergeek.UpgradeData = null;
-    private let canistergeekMonitor = Canistergeek.Monitor();
-    
-    stable var _canistergeekLoggerUD: ? Canistergeek.LoggerUpgradeData = null;
-    private let canistergeekLogger = Canistergeek.Logger();
-    
-    private let adminPrincipal: Text = "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae";
-    
-    system func preupgrade() {
-        _canistergeekMonitorUD := ? canistergeekMonitor.preupgrade();
-        _canistergeekLoggerUD := ? canistergeekLogger.preupgrade();
-    };
+  // CANISTERGEEK https://github.com/usergeek/canistergeek-ic-motoko
+  stable var _canistergeekMonitorUD : ?Canistergeek.UpgradeData = null;
+  private let canistergeekMonitor = Canistergeek.Monitor();
 
-    system func postupgrade() { 
-        canistergeekMonitor.postupgrade(_canistergeekMonitorUD);
-        _canistergeekMonitorUD := null;
-        
-        canistergeekLogger.postupgrade(_canistergeekLoggerUD);
-        _canistergeekLoggerUD := null;
-        canistergeekLogger.setMaxMessagesCount(3000);
-        
-        canistergeekLogger.logMessage("postupgrade");
-    };
-    
-    public query ({caller}) func getCanisterMetrics(parameters: Canistergeek.GetMetricsParameters): async ?Canistergeek.CanisterMetrics {
-        validateCaller(caller);
-        canistergeekMonitor.getMetrics(parameters);
-    };
+  stable var _canistergeekLoggerUD : ?Canistergeek.LoggerUpgradeData = null;
+  private let canistergeekLogger = Canistergeek.Logger();
 
-    public shared ({caller}) func collectCanisterMetrics(): async () {
-        validateCaller(caller);
-        canistergeekMonitor.collectMetrics();
+  private let adminPrincipal : Text = "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae";
+
+  system func preupgrade() {
+    _canistergeekMonitorUD := ?canistergeekMonitor.preupgrade();
+    _canistergeekLoggerUD := ?canistergeekLogger.preupgrade();
+  };
+
+  system func postupgrade() {
+    canistergeekMonitor.postupgrade(_canistergeekMonitorUD);
+    _canistergeekMonitorUD := null;
+
+    canistergeekLogger.postupgrade(_canistergeekLoggerUD);
+    _canistergeekLoggerUD := null;
+    canistergeekLogger.setMaxMessagesCount(3000);
+
+    canistergeekLogger.logMessage("postupgrade");
+  };
+
+  public query ({ caller }) func getCanisterMetrics(parameters : Canistergeek.GetMetricsParameters) : async ?Canistergeek.CanisterMetrics {
+    validateCaller(caller);
+    canistergeekMonitor.getMetrics(parameters);
+  };
+
+  public shared ({ caller }) func collectCanisterMetrics() : async () {
+    validateCaller(caller);
+    canistergeekMonitor.collectMetrics();
+  };
+
+  public query ({ caller }) func getCanisterLog(request : ?Canistergeek.CanisterLogRequest) : async ?Canistergeek.CanisterLogResponse {
+    validateCaller(caller);
+    return canistergeekLogger.getLog(request);
+  };
+
+  private func validateCaller(principal : Principal) : () {
+    //data is available only for specific principal
+    if (not (Principal.toText(principal) == adminPrincipal)) {
+      Prelude.unreachable();
     };
-    
-    public query ({caller}) func getCanisterLog(request: ?Canistergeek.CanisterLogRequest) : async ?Canistergeek.CanisterLogResponse {
-        validateCaller(caller);
-        return canistergeekLogger.getLog(request);
-    };
-    
-    private func validateCaller(principal: Principal) : () {
-        //data is available only for specific principal
-        if (not (Principal.toText(principal) == adminPrincipal)) {
-            Prelude.unreachable();
-        }
-    };
-    
-    public shared ({caller}) func doThis(): async () {
-        canistergeekMonitor.collectMetrics();
-        canistergeekLogger.logMessage("doThis");
-        // rest part of the your method...
-    };
-    
-    public shared ({caller}) func doThat(): async () {
-        canistergeekMonitor.collectMetrics();
-        canistergeekLogger.logMessage("doThat");
-        // rest part of the your method...
-    };
-    
-    public query ({caller}) func getThis(): async Text {
-        "this";
-    };
-    
-    public query ({caller}) func getThat(): async Text {
-        "that";
-    };
+  };
+
+  public shared ({ caller }) func doThis() : async () {
+    canistergeekMonitor.collectMetrics();
+    canistergeekLogger.logMessage("doThis");
+    // rest part of the your method...
+  };
+
+  public shared ({ caller }) func doThat() : async () {
+    canistergeekMonitor.collectMetrics();
+    canistergeekLogger.logMessage("doThat");
+    // rest part of the your method...
+  };
+
+  public query ({ caller }) func getThis() : async Text {
+    "this";
+  };
+
+  public query ({ caller }) func getThat() : async Text {
+    "that";
+  };
 };

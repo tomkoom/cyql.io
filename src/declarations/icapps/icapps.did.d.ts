@@ -87,6 +87,20 @@ export interface NumericEntity {
   'first' : bigint,
   'last' : bigint,
 }
+export interface Profile {
+  'accountId' : string,
+  'lastSignIn' : Time,
+  'firstSignIn' : Time,
+  'signInMethod' : string,
+  'profileCount' : bigint,
+  'principalId' : string,
+}
+export type ProfileErr = { 'IsAnonymous' : null } |
+  { 'NotFound' : null } |
+  { 'AlreadyExists' : null };
+export type Result = { 'ok' : null } |
+  { 'err' : ProfileErr };
+export type Time = bigint;
 export type UpdateCallsAggregatedData = Array<bigint>;
 export interface _SERVICE {
   'addJob' : ActorMethod<[Job], Job>,
@@ -106,5 +120,6 @@ export interface _SERVICE {
   'getJobsNum' : ActorMethod<[], bigint>,
   'getThat' : ActorMethod<[], string>,
   'getThis' : ActorMethod<[], string>,
+  'verify' : ActorMethod<[Profile], Result>,
   'whoami' : ActorMethod<[], string>,
 }

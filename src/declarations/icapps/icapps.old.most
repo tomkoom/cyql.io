@@ -1,27 +1,4 @@
 // Version: 1.0.0
-type DayCanisterCyclesData = [var Nat64];
-type DayCanisterHeapMemorySizeData = [var Nat64];
-type DayCanisterMemorySizeData = [var Nat64];
-type DayData =
-  {
-    canisterCyclesData : DayCanisterCyclesData;
-    canisterHeapMemorySizeData : DayCanisterHeapMemorySizeData;
-    canisterMemorySizeData : DayCanisterMemorySizeData;
-    updateCallsData : DayUpdateCallsCountData
-  };
-type DayDataId = Nat32;
-type DayUpdateCallsCountData = [var Nat64];
-type LogMessageArray = [LogMessagesData];
-type LogMessagesData = {message : Text; timeNanos : Nanos};
-type LoggerUpgradeData = UpgradeData__1;
-type Nanos = Nat64;
-type UpgradeData = {#v1 : {dayData : [UpgradeDataDayTuple]}};
-type UpgradeDataDayTuple = (DayDataId, DayData);
-type UpgradeData__1 =
-  {#v1 : {full : Bool; maxCount : Nat; next : Nat; queue : LogMessageArray}};
-type UpgradeData__2 = UpgradeData;
 actor {
-  stable var _canistergeekLoggerUD : ?LoggerUpgradeData;
-  stable var _canistergeekMonitorUD : ?UpgradeData__2;
   stable var jobCounter : Nat
 };
