@@ -17,34 +17,30 @@ actor {
   var profiles = HashMap.HashMap<Principal, Types.Profile>(1, Principal.equal, Principal.hash);
 
   stable var jobCounter : Types.JobCounter = 0;
-  let keyHash : (Nat) -> Hash.Hash = func(x) { Hash.hash(x) };
   // hash Nat
+  let keyHash : (Nat) -> Hash.Hash = func(x) { Hash.hash(x) };
   var jobs = HashMap.HashMap<Types.JobCounter, Types.Job>(1, Nat.equal, keyHash);
 
-  public shared ({ caller }) func verify(profile : Types.Profile) : async Result.Result<(), Types.ProfileErr> {
-    let id = caller;
-    if (Principal.isAnonymous(id)) {
-      #err(#IsAnonymous);
-    } else {
-      if (_userExists(id)) {
-        #err(#AlreadyExists);
-      } else {
-        _createProfile(id, profile);
-        #ok;
-      };
-    };
-  };
+  // PROFILE
 
-  private func _userExists(id : Principal) : Bool {
+  public query func userExists(id : Principal) : async Bool {
     switch (profiles.get(id)) {
       case (?profile) true;
       case (null) false;
     };
   };
 
-  private func _createProfile(id : Principal, profile : Types.Profile) : () {
-    profiles.put(id, profile);
+  public shared ({ caller }) func createProfile(profile : Types.Profile) : async Result.Result<(), Types.ProfileErr> {
+    let id = caller;
+    if (Principal.isAnonymous(id)) {
+      #err(#IsAnonymous);
+    } else {
+      profiles.put(id, profile);
+      #ok;
+    };
   };
+
+  // JOBS
 
   // public shared({ caller }) func addJob(job: Types.Job) : async ?Types.Job {
   //     if (Principal.isAnonymous(caller)) {
@@ -62,7 +58,6 @@ actor {
     return job;
   };
 
-  // query
   public query func getJobs() : async [(Types.JobCounter, Types.Job)] {
     return Iter.toArray(jobs.entries());
   };
@@ -76,12 +71,14 @@ actor {
     ExperimentalCycles.balance();
   };
 
-  // utils
+  // UTILS
+
   public shared query ({ caller }) func whoami() : async Text {
     return Principal.toText(caller);
   };
 
   // CANISTERGEEK https://github.com/usergeek/canistergeek-ic-motoko
+
   stable var _canistergeekMonitorUD : ?Canistergeek.UpgradeData = null;
   private let canistergeekMonitor = Canistergeek.Monitor();
 
