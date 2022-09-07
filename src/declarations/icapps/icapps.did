@@ -11,7 +11,7 @@ type Profile =
  record {
    accountId: text;
    firstSignIn: Time;
-   lastSignIn: Time;
+   lastVisit: Time;
    principalIdStr: text;
    signInMethod: text;
  };
@@ -145,6 +145,6 @@ service : {
                             ProfileId;
                             Profile;
                           }) query;
-  updateProfiles: (ProfileId, Profile) -> (Result);
+  updateProfiles: (Profile) -> (Result);
   whoami: () -> (text) query;
 }

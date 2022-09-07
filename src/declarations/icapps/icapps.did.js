@@ -102,7 +102,7 @@ export const idlFactory = ({ IDL }) => {
   const Time = IDL.Int;
   const Profile = IDL.Record({
     'accountId' : IDL.Text,
-    'lastSignIn' : Time,
+    'lastVisit' : Time,
     'firstSignIn' : Time,
     'principalIdStr' : IDL.Text,
     'signInMethod' : IDL.Text,
@@ -131,7 +131,7 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(IDL.Tuple(ProfileId, Profile))],
         ['query'],
       ),
-    'updateProfiles' : IDL.Func([ProfileId, Profile], [Result], []),
+    'updateProfiles' : IDL.Func([Profile], [Result], []),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });
 };

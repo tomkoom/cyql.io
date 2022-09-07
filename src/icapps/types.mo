@@ -15,7 +15,7 @@ module Types {
     principalIdStr : Text;
     accountId : Text;
     firstSignIn : Time;
-    lastSignIn : Time;
+    lastVisit : Time;
     signInMethod : Text;
   };
 

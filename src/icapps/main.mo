@@ -39,7 +39,8 @@ actor {
     return Iter.toArray(profiles.entries());
   };
 
-  public func updateProfiles(id : T.ProfileId, profile : T.Profile) : async Result.Result<(), T.ProfileErr> {
+  public shared ({ caller }) func updateProfiles(profile : T.Profile) : async Result.Result<(), T.ProfileErr> {
+    let id = caller;
     if (Principal.isAnonymous(id)) {
       #err(#IsAnonymous);
     } else {

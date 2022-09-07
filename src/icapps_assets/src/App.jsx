@@ -18,8 +18,8 @@ import { useWindowSize } from "./Hooks/useWindowSize";
 import { sortByDateAdded, sortByDate } from "./Utils/sort";
 
 // firestore
-import { onSnapshot, doc, setDoc, getDoc, query, where } from "firebase/firestore";
-import { projectsCollRef, usersICCollRef } from "./Firestore/firestore-collections";
+import { onSnapshot, query, where } from "firebase/firestore";
+import { projectsCollRef } from "./Firestore/firestore-collections";
 
 // auth
 import { useAuth } from "./Context/AuthContext";
@@ -150,7 +150,7 @@ const App = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      addUserToDb(actor, principalId, principalIdStr, accountId, signInMethod);
+      addUserToDb(actor, principalIdStr, accountId, signInMethod);
     }
   }, [isAuthenticated]);
 

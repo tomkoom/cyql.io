@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState } from "react";
 import { StoicIdentity } from "ic-stoic-identity";
 
 // backend
+import { Actor, HttpAgent } from "@dfinity/agent";
 import {
   idlFactory as cyqlIdlFactory,
   canisterId as cyqlCanisterId,
@@ -13,18 +14,11 @@ import {
 import { history } from "../Routes/history";
 import { toHome } from "../Routes/routes";
 
-// state
-import { useDispatch } from "react-redux";
-import { setVerified } from "../State/profile";
-
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
 
-// canisters
-import { cyqlBeCanIdLocal } from "./canisterIds";
-
 // host
-import { host, hostLocal } from "./host";
+import { host } from "./host";
 
 const AuthContext = createContext();
 const useAuth = () => {
@@ -32,16 +26,12 @@ const useAuth = () => {
 };
 
 export function AuthProvider({ children }) {
-  // actors
   const [actor, setActor] = useState(undefined);
-  const [nftActor, setNftActor] = useState(undefined);
-  // –––
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
   const [accountId, setAccountId] = useState(""); // always string
   const [signInMethod, setSignInMethod] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const dispatch = useDispatch();
 
   // ––– PLUG –––
 
@@ -60,7 +50,6 @@ export function AuthProvider({ children }) {
   };
 
   const createActorWithPlug = async () => {
-    // cyql actor
     await window.ic.plug
       .createActor({
         canisterId: cyqlCanisterId,
@@ -74,9 +63,10 @@ export function AuthProvider({ children }) {
 
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
-    const accountId = window.ic.plug.sessionManager.sessionData.accountId;
+    const principalIdStr = principalId.toText();
+    const accountId = window.ic.plug.accountId;
     setPrincipalId(principalId);
-    setPrincipalIdStr(principalId.toText());
+    setPrincipalIdStr(principalIdStr);
     setAccountId(accountId);
     setSignInMethod("plug");
   };
@@ -87,11 +77,23 @@ export function AuthProvider({ children }) {
 
   const signInWithStoic = async () => {
     try {
-      const stoicId = await StoicIdentity.connect();
-      getStoicUserData(stoicId);
+      const identity = await StoicIdentity.connect();
+      getStoicUserData(identity);
+      createActorWithStoic(identity);
+      setIsAuthenticated(true);
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const createActorWithStoic = (identity) => {
+    const actor = Actor.createActor(cyqlIdlFactory, {
+      agent: new HttpAgent({
+        identity,
+      }),
+      canisterId: cyqlCanisterId,
+    });
+    setActor(actor);
   };
 
   const getStoicUserData = (stoicId) => {
@@ -151,39 +153,47 @@ export function AuthProvider({ children }) {
 
   const checkConnection = async () => {
     // plug
-    await window.ic.plug.isConnected().then(async (isConnected) => {
-      if (isConnected) {
-        await createActorWithPlug();
-        await getPlugUserData();
-        setIsAuthenticated(true);
-      }
-    });
+    if (window.ic.plug) {
+      await window.ic.plug.isConnected().then(async (isConnected) => {
+        if (isConnected) {
+          await createActorWithPlug();
+          await getPlugUserData();
+          setIsAuthenticated(true);
+        }
+      });
+    } else {
+      console.log("Plug wallet is not installed.");
+    }
 
     // stoic
-    StoicIdentity.load().then(async (stoicId) => {
-      if (stoicId) {
-        getStoicUserData(stoicId);
+    StoicIdentity.load().then((identity) => {
+      if (identity) {
+        getStoicUserData(identity);
+        createActorWithStoic(identity);
+        setIsAuthenticated(true);
       }
     });
 
     // infinitywallet
-    await window.ic.infinityWallet.isConnected().then(async (isConnected) => {
-      if (isConnected) {
-        await createActorWithInfinityWallet();
-        await getInfinityWalletUserData();
-        setIsAuthenticated(true);
-      }
-    });
+    if (window.ic.infinityWallet) {
+      await window.ic.infinityWallet.isConnected().then(async (isConnected) => {
+        if (isConnected) {
+          await createActorWithInfinityWallet();
+          await getInfinityWalletUserData();
+          setIsAuthenticated(true);
+        }
+      });
+    } else {
+      console.log("InfinityWallet is not installed.");
+    }
   };
 
   const signOut = () => {
     setActor(undefined);
-    setNftActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setAccountId("");
     setIsAuthenticated(false);
-    // dispatch(setVerified(false));
 
     if (signInMethod === "plug") {
       disconnectPlug();
@@ -205,7 +215,6 @@ export function AuthProvider({ children }) {
 
   const value = {
     actor,
-    nftActor,
     principalId,
     principalIdStr,
     accountId,

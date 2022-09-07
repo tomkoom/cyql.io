@@ -89,7 +89,7 @@ export interface NumericEntity {
 }
 export interface Profile {
   'accountId' : string,
-  'lastSignIn' : Time,
+  'lastVisit' : Time,
   'firstSignIn' : Time,
   'principalIdStr' : string,
   'signInMethod' : string,
@@ -115,6 +115,6 @@ export interface _SERVICE {
   'getJobsNum' : ActorMethod<[], bigint>,
   'getProfile' : ActorMethod<[], [] | [Profile]>,
   'getProfiles' : ActorMethod<[], Array<[ProfileId, Profile]>>,
-  'updateProfiles' : ActorMethod<[ProfileId, Profile], Result>,
+  'updateProfiles' : ActorMethod<[Profile], Result>,
   'whoami' : ActorMethod<[], string>,
 }
