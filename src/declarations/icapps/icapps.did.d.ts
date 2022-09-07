@@ -91,11 +91,11 @@ export interface Profile {
   'accountId' : string,
   'lastSignIn' : Time,
   'firstSignIn' : Time,
+  'principalIdStr' : string,
   'signInMethod' : string,
-  'profileCount' : bigint,
-  'principalId' : string,
 }
 export type ProfileErr = { 'IsAnonymous' : null };
+export type ProfileId = Principal;
 export type Result = { 'ok' : null } |
   { 'err' : ProfileErr };
 export type Time = bigint;
@@ -103,9 +103,6 @@ export type UpdateCallsAggregatedData = Array<bigint>;
 export interface _SERVICE {
   'addJob' : ActorMethod<[Job], Job>,
   'collectCanisterMetrics' : ActorMethod<[], undefined>,
-  'createProfile' : ActorMethod<[Profile], Result>,
-  'doThat' : ActorMethod<[], undefined>,
-  'doThis' : ActorMethod<[], undefined>,
   'getCanisterLog' : ActorMethod<
     [[] | [CanisterLogRequest]],
     [] | [CanisterLogResponse],
@@ -117,8 +114,8 @@ export interface _SERVICE {
   'getCycleBalance' : ActorMethod<[], bigint>,
   'getJobs' : ActorMethod<[], Array<[JobCounter, Job]>>,
   'getJobsNum' : ActorMethod<[], bigint>,
-  'getThat' : ActorMethod<[], string>,
-  'getThis' : ActorMethod<[], string>,
-  'userExists' : ActorMethod<[Principal], boolean>,
+  'getProfile' : ActorMethod<[], [] | [Profile]>,
+  'getProfiles' : ActorMethod<[], Array<[ProfileId, Profile]>>,
+  'updateProfiles' : ActorMethod<[Profile], Result>,
   'whoami' : ActorMethod<[], string>,
 }

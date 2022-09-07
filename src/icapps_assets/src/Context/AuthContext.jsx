@@ -20,6 +20,9 @@ import { setVerified } from "../State/profile";
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
 
+// methods
+import { checkConnection } from "./Funcs/checkConnection";
+
 // canisters
 import { cyqlBeCanIdLocal } from "./canisterIds";
 
@@ -65,6 +68,7 @@ export function AuthProvider({ children }) {
         interfaceFactory: cyqlIdlFactory,
       })
       .then((actor) => {
+        console.log(actor);
         setActor(actor);
       })
       .catch((err) => console.log(err));
@@ -76,7 +80,7 @@ export function AuthProvider({ children }) {
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
     setAccountId(accountId);
-    setSignInMethod("Plug");
+    setSignInMethod("plug");
   };
 
   const disconnectPlug = () => window.ic?.plug?.disconnect();
@@ -99,7 +103,7 @@ export function AuthProvider({ children }) {
     setPrincipalId(principalId);
     setPrincipalIdStr(principalIdStr);
     setAccountId(accountId);
-    setSignInMethod("Stoic");
+    setSignInMethod("stoic");
   };
 
   const disconnectStoic = async () => await StoicIdentity.disconnect();
@@ -139,7 +143,7 @@ export function AuthProvider({ children }) {
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
     setAccountId(accountId);
-    setSignInMethod("InfinityWallet");
+    setSignInMethod("infinitywallet");
   };
 
   const disconnectInfinityWallet = () => window.ic?.infinityWallet?.disconnect();
@@ -148,26 +152,27 @@ export function AuthProvider({ children }) {
 
   const checkConnection = async () => {
     // plug
-    const isPlugConnected = await window.ic.plug.isConnected();
-    if (isPlugConnected) {
-      createActorWithPlug();
-      getPlugUserData();
-      return "";
-    }
+    await window.ic.plug.isConnected().then((isConnected) => {
+      if (isConnected) {
+        createActorWithPlug();
+        getPlugUserData();
+      }
+    });
+
     // stoic
     StoicIdentity.load().then(async (stoicId) => {
       if (stoicId) {
         getStoicUserData(stoicId);
-        return "";
       }
     });
+
     // infinitywallet
-    const isInfinityWalletConnected = await window.ic.infinityWallet.isConnected();
-    if (isInfinityWalletConnected) {
-      createActorWithInfinityWallet();
-      getInfinityWalletUserData();
-      return "";
-    }
+    await window.ic.infinityWallet.isConnected().then((isConnected) => {
+      if (isConnected) {
+        createActorWithInfinityWallet();
+        getInfinityWalletUserData();
+      }
+    });
   };
 
   const signOut = () => {
@@ -176,21 +181,21 @@ export function AuthProvider({ children }) {
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setAccountId("");
-    dispatch(setVerified(false));
+    // dispatch(setVerified(false));
 
-    if (signInMethod === "Plug") {
+    if (signInMethod === "plug") {
       disconnectPlug();
     }
 
-    if (signInMethod === "Stoic") {
+    if (signInMethod === "stoic") {
       disconnectStoic();
     }
 
-    if (signInMethod === "InfinityWallet") {
+    if (signInMethod === "infinitywallet") {
       disconnectInfinityWallet();
     }
 
-    setSignInMethod(""); // clear sign in method
+    setSignInMethod(""); // unset sign in method
     if (history.location.pathname === "/profile") {
       toHome();
     }
@@ -203,11 +208,11 @@ export function AuthProvider({ children }) {
     principalIdStr,
     accountId,
     signInMethod,
-    // –––
+    // sign in
     signInWithPlug,
     signInWithStoic,
     signInWithInfinityWallet,
-    // –––
+    // other
     checkConnection,
     signOut,
   };

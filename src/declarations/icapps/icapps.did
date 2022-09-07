@@ -5,14 +5,14 @@ type Result =
    err: ProfileErr;
    ok;
  };
+type ProfileId = principal;
 type ProfileErr = variant {IsAnonymous;};
 type Profile = 
  record {
    accountId: text;
    firstSignIn: Time;
    lastSignIn: Time;
-   principalId: text;
-   profileCount: nat;
+   principalIdStr: text;
    signInMethod: text;
  };
 type NumericEntity = 
@@ -133,9 +133,6 @@ type CanisterCyclesAggregatedData = vec nat64;
 service : {
   addJob: (Job) -> (Job);
   collectCanisterMetrics: () -> ();
-  createProfile: (Profile) -> (Result);
-  doThat: () -> ();
-  doThis: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
   getCycleBalance: () -> (nat) query;
@@ -144,8 +141,11 @@ service : {
                         Job;
                       }) query;
   getJobsNum: () -> (nat) query;
-  getThat: () -> (text) query;
-  getThis: () -> (text) query;
-  userExists: (principal) -> (bool) query;
+  getProfile: () -> (opt Profile) query;
+  getProfiles: () -> (vec record {
+                            ProfileId;
+                            Profile;
+                          }) query;
+  updateProfiles: (Profile) -> (Result);
   whoami: () -> (text) query;
 }

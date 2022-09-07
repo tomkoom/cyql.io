@@ -1,20 +1,24 @@
 module Types {
 
+  public type Time = Int;
+  public type JobCounter = Nat;
+
+  // errors
   public type ProfileErr = {
     #IsAnonymous;
   };
 
-  public type Time = Int;
+  public type ProfileId = Principal;
+  public type ProrileCounter = Nat;
+
   public type Profile = {
-    principalId : Text;
+    principalIdStr : Text;
     accountId : Text;
     firstSignIn : Time;
     lastSignIn : Time;
     signInMethod : Text;
-    profileCount : Nat;
   };
 
-  public type JobCounter = Nat;
   public type Job = {
     // position
     title : Text;
@@ -40,6 +44,6 @@ module Types {
     // edited: Text,
     publisher : Text;
 
-    // FE state: icapps_assets/src/State/jobs/job.js
+    // FE: icapps_assets/src/State/jobs/job.js
   };
 };

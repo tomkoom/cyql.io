@@ -16,17 +16,6 @@ export const idlFactory = ({ IDL }) => {
     'application_url' : IDL.Text,
     'company_logo_url' : IDL.Text,
   });
-  const Time = IDL.Int;
-  const Profile = IDL.Record({
-    'accountId' : IDL.Text,
-    'lastSignIn' : Time,
-    'firstSignIn' : Time,
-    'signInMethod' : IDL.Text,
-    'profileCount' : IDL.Nat,
-    'principalId' : IDL.Text,
-  });
-  const ProfileErr = IDL.Variant({ 'IsAnonymous' : IDL.Null });
-  const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : ProfileErr });
   const GetLogMessagesFilter = IDL.Record({
     'analyzeCount' : IDL.Nat32,
     'messageRegex' : IDL.Opt(IDL.Text),
@@ -110,12 +99,20 @@ export const idlFactory = ({ IDL }) => {
   });
   const CanisterMetrics = IDL.Record({ 'data' : CanisterMetricsData });
   const JobCounter = IDL.Nat;
+  const Time = IDL.Int;
+  const Profile = IDL.Record({
+    'accountId' : IDL.Text,
+    'lastSignIn' : Time,
+    'firstSignIn' : Time,
+    'principalIdStr' : IDL.Text,
+    'signInMethod' : IDL.Text,
+  });
+  const ProfileId = IDL.Principal;
+  const ProfileErr = IDL.Variant({ 'IsAnonymous' : IDL.Null });
+  const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : ProfileErr });
   return IDL.Service({
     'addJob' : IDL.Func([Job], [Job], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
-    'createProfile' : IDL.Func([Profile], [Result], []),
-    'doThat' : IDL.Func([], [], []),
-    'doThis' : IDL.Func([], [], []),
     'getCanisterLog' : IDL.Func(
         [IDL.Opt(CanisterLogRequest)],
         [IDL.Opt(CanisterLogResponse)],
@@ -129,9 +126,13 @@ export const idlFactory = ({ IDL }) => {
     'getCycleBalance' : IDL.Func([], [IDL.Nat], ['query']),
     'getJobs' : IDL.Func([], [IDL.Vec(IDL.Tuple(JobCounter, Job))], ['query']),
     'getJobsNum' : IDL.Func([], [IDL.Nat], ['query']),
-    'getThat' : IDL.Func([], [IDL.Text], ['query']),
-    'getThis' : IDL.Func([], [IDL.Text], ['query']),
-    'userExists' : IDL.Func([IDL.Principal], [IDL.Bool], ['query']),
+    'getProfile' : IDL.Func([], [IDL.Opt(Profile)], ['query']),
+    'getProfiles' : IDL.Func(
+        [],
+        [IDL.Vec(IDL.Tuple(ProfileId, Profile))],
+        ['query'],
+      ),
+    'updateProfiles' : IDL.Func([Profile], [Result], []),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });
 };

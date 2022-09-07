@@ -174,5 +174,6 @@
 @media screen and (max-width: 1023px) {
   .content {
     flex-direction: column;
+    gap: 1rem;
   }
 }

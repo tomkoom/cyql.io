@@ -11,26 +11,32 @@ import Time "mo:base/Time";
 
 import Canistergeek "mo:canistergeek/canistergeek";
 
-import Types "types";
+import T "types";
 
 actor {
-  var profiles = HashMap.HashMap<Principal, Types.Profile>(1, Principal.equal, Principal.hash);
+  var profiles = HashMap.HashMap<T.ProfileId, T.Profile>(1, Principal.equal, Principal.hash);
 
-  stable var jobCounter : Types.JobCounter = 0;
+  stable var jobCounter : T.JobCounter = 0;
   // hash Nat
   let keyHash : (Nat) -> Hash.Hash = func(x) { Hash.hash(x) };
-  var jobs = HashMap.HashMap<Types.JobCounter, Types.Job>(1, Nat.equal, keyHash);
+  var jobs = HashMap.HashMap<T.JobCounter, T.Job>(1, Nat.equal, keyHash);
 
   // PROFILE
 
-  public query func userExists(id : Principal) : async Bool {
+  public shared query ({ caller }) func getProfile() : async ?T.Profile {
+    let id = caller;
     switch (profiles.get(id)) {
-      case (?profile) true;
-      case (null) false;
+      case (?profile) ?profile;
+      case (null) null;
     };
   };
 
-  public shared ({ caller }) func createProfile(profile : Types.Profile) : async Result.Result<(), Types.ProfileErr> {
+  public query func getProfiles() : async [(T.ProfileId, T.Profile)] {
+    // check canister id
+    return Iter.toArray(profiles.entries());
+  };
+
+  public shared ({ caller }) func updateProfiles(profile : T.Profile) : async Result.Result<(), T.ProfileErr> {
     let id = caller;
     if (Principal.isAnonymous(id)) {
       #err(#IsAnonymous);
@@ -42,7 +48,7 @@ actor {
 
   // JOBS
 
-  // public shared({ caller }) func addJob(job: Types.Job) : async ?Types.Job {
+  // public shared({ caller }) func addJob(job: T.Job) : async ?T.Job {
   //     if (Principal.isAnonymous(caller)) {
   //         return null;
   //     } else {
@@ -52,13 +58,13 @@ actor {
   //     };
   // };
 
-  public shared ({ caller }) func addJob(job : Types.Job) : async Types.Job {
+  public shared ({ caller }) func addJob(job : T.Job) : async T.Job {
     jobs.put(jobCounter, job);
     jobCounter += 1;
     return job;
   };
 
-  public query func getJobs() : async [(Types.JobCounter, Types.Job)] {
+  public query func getJobs() : async [(T.JobCounter, T.Job)] {
     return Iter.toArray(jobs.entries());
   };
 
@@ -125,23 +131,23 @@ actor {
     };
   };
 
-  public shared ({ caller }) func doThis() : async () {
-    canistergeekMonitor.collectMetrics();
-    canistergeekLogger.logMessage("doThis");
-    // rest part of the your method...
-  };
+  // public shared ({ caller }) func doThis() : async () {
+  //   canistergeekMonitor.collectMetrics();
+  //   canistergeekLogger.logMessage("doThis");
+  //   // rest part of the your method...
+  // };
 
-  public shared ({ caller }) func doThat() : async () {
-    canistergeekMonitor.collectMetrics();
-    canistergeekLogger.logMessage("doThat");
-    // rest part of the your method...
-  };
+  // public shared ({ caller }) func doThat() : async () {
+  //   canistergeekMonitor.collectMetrics();
+  //   canistergeekLogger.logMessage("doThat");
+  //   // rest part of the your method...
+  // };
 
-  public query ({ caller }) func getThis() : async Text {
-    "this";
-  };
+  // public query ({ caller }) func getThis() : async Text {
+  //   "this";
+  // };
 
-  public query ({ caller }) func getThat() : async Text {
-    "that";
-  };
+  // public query ({ caller }) func getThat() : async Text {
+  //   "that";
+  // };
 };

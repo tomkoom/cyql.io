@@ -61,11 +61,15 @@ import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
 import { setNftData } from "./Pages/Nft/setNftData";
 import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
 
+// methods
+import { addUserToDb } from "./appMethods";
+
 const App = () => {
   // hooks
-  const { principalId, principalIdStr, accountIdStr, signInMethod, checkConnection } = useAuth();
-  const [deviceWidth] = useWindowSize();
   const dispatch = useDispatch();
+  const { actor, principalId, principalIdStr, accountId, signInMethod, checkConnection } =
+    useAuth();
+  const [deviceWidth] = useWindowSize();
 
   // theme
   const theme = useSelector(selectTheme);
@@ -75,35 +79,11 @@ const App = () => {
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
 
-  // add user to db
-  const addUserToDB = async (principalIdStr, accountIdStr, signInMethod) => {
-    const timestamp = Date.now();
-
-    const userDocRef = doc(usersICCollRef, principalIdStr);
-    const user = await getDoc(userDocRef);
-    const userExists = user.data() ? true : false;
-
-    if (!userExists) {
-      await setDoc(userDocRef, {
-        principalId: principalIdStr,
-        accountId: accountIdStr,
-        signInMethod,
-        firstSignIn: timestamp,
-        lastSignIn: timestamp,
-      }).catch((err) => console.log(err));
-    } else {
-      const userData = user.data();
-      await setDoc(userDocRef, { ...userData, lastSignIn: timestamp }).catch((err) =>
-        console.log(err)
-      );
-    }
-  };
-
   useEffect(() => {
-    if (principalIdStr && signInMethod && accountIdStr) {
-      addUserToDB(principalIdStr, accountIdStr, signInMethod);
+    if (actor && principalIdStr && accountId && signInMethod) {
+      addUserToDb(actor, principalIdStr, accountId, signInMethod);
     }
-  }, [principalIdStr, signInMethod, accountIdStr]);
+  }, [actor, principalIdStr, accountId, signInMethod]);
 
   // get projects and nfts
   useEffect(() => {
@@ -154,16 +134,6 @@ const App = () => {
     };
   }, []);
 
-  // set icp price
-  useEffect(() => {
-    dispatch(fetchIcpPrice());
-  }, []);
-
-  // check auth
-  useEffect(() => {
-    checkConnection();
-  }, []);
-
   // close sign in modal after user has logged
   useEffect(() => {
     if (principalIdStr) {
@@ -174,11 +144,21 @@ const App = () => {
     }
   }, [principalIdStr]);
 
-  // effects
+  // EFFECTS
 
   // set nft page data
   useEffect(() => {
     setNftData();
+  }, []);
+
+  // set icp price
+  useEffect(() => {
+    dispatch(fetchIcpPrice());
+  }, []);
+
+  // check auth
+  useEffect(() => {
+    checkConnection();
   }, []);
 
   // ––– SET PROFILE INFO –––

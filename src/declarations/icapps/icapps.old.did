@@ -1,4 +1,19 @@
 type UpdateCallsAggregatedData = vec nat64;
+type Time = int;
+type Result = 
+ variant {
+   err: ProfileErr;
+   ok;
+ };
+type ProfileErr = variant {IsAnonymous;};
+type Profile = 
+ record {
+   accountId: text;
+   firstSignIn: Time;
+   lastSignIn: Time;
+   principalIdStr: text;
+   signInMethod: text;
+ };
 type NumericEntity = 
  record {
    avg: nat64;
@@ -117,8 +132,6 @@ type CanisterCyclesAggregatedData = vec nat64;
 service : {
   addJob: (Job) -> (Job);
   collectCanisterMetrics: () -> ();
-  doThat: () -> ();
-  doThis: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
   getCycleBalance: () -> (nat) query;
@@ -127,7 +140,7 @@ service : {
                         Job;
                       }) query;
   getJobsNum: () -> (nat) query;
-  getThat: () -> (text) query;
-  getThis: () -> (text) query;
+  getProfile: () -> (opt Profile) query;
+  updateProfiles: (Profile) -> (Result);
   whoami: () -> (text) query;
 }
