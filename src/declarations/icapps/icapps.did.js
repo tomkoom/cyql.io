@@ -123,7 +123,6 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Opt(CanisterMetrics)],
         ['query'],
       ),
-    'getCycleBalance' : IDL.Func([], [IDL.Nat], ['query']),
     'getJobs' : IDL.Func([], [IDL.Vec(IDL.Tuple(JobCounter, Job))], ['query']),
     'getJobsNum' : IDL.Func([], [IDL.Nat], ['query']),
     'getProfile' : IDL.Func([], [IDL.Opt(Profile)], ['query']),
@@ -132,7 +131,7 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(IDL.Tuple(ProfileId, Profile))],
         ['query'],
       ),
-    'updateProfiles' : IDL.Func([Profile], [Result], []),
+    'updateProfiles' : IDL.Func([ProfileId, Profile], [Result], []),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });
 };

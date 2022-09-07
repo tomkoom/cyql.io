@@ -47,6 +47,7 @@ import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
+import { setCyqlActor } from "./State/auth/actors";
 
 // state – modals
 import {
@@ -67,8 +68,15 @@ import { addUserToDb } from "./appMethods";
 const App = () => {
   // hooks
   const dispatch = useDispatch();
-  const { actor, principalId, principalIdStr, accountId, signInMethod, checkConnection } =
-    useAuth();
+  const {
+    actor,
+    principalId,
+    principalIdStr,
+    accountId,
+    signInMethod,
+    checkConnection,
+    isAuthenticated,
+  } = useAuth();
   const [deviceWidth] = useWindowSize();
 
   // theme
@@ -78,12 +86,6 @@ const App = () => {
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
-
-  useEffect(() => {
-    if (actor && principalIdStr && accountId && signInMethod) {
-      addUserToDb(actor, principalIdStr, accountId, signInMethod);
-    }
-  }, [actor, principalIdStr, accountId, signInMethod]);
 
   // get projects and nfts
   useEffect(() => {
@@ -145,6 +147,12 @@ const App = () => {
   }, [principalIdStr]);
 
   // EFFECTS
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      addUserToDb(actor, principalId, principalIdStr, accountId, signInMethod);
+    }
+  }, [isAuthenticated]);
 
   // set nft page data
   useEffect(() => {

@@ -9,7 +9,7 @@ module Types {
   };
 
   public type ProfileId = Principal;
-  public type ProrileCounter = Nat;
+  public type ProfileCounter = Nat;
 
   public type Profile = {
     principalIdStr : Text;

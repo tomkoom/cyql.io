@@ -5,6 +5,7 @@ type Result =
    err: ProfileErr;
    ok;
  };
+type ProfileId = principal;
 type ProfileErr = variant {IsAnonymous;};
 type Profile = 
  record {
@@ -134,13 +135,16 @@ service : {
   collectCanisterMetrics: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
-  getCycleBalance: () -> (nat) query;
   getJobs: () -> (vec record {
                         JobCounter;
                         Job;
                       }) query;
   getJobsNum: () -> (nat) query;
   getProfile: () -> (opt Profile) query;
-  updateProfiles: (Profile) -> (Result);
+  getProfiles: () -> (vec record {
+                            ProfileId;
+                            Profile;
+                          }) query;
+  updateProfiles: (ProfileId, Profile) -> (Result);
   whoami: () -> (text) query;
 }

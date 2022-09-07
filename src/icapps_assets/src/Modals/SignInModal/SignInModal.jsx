@@ -23,11 +23,11 @@ const SignInModal = () => {
       logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/plug/plug-logo.svg",
       onClick: signInWithPlug,
     },
-    {
-      label: "Stoic",
-      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/stoic/stoic-logo.jpg",
-      onClick: signInWithStoic,
-    },
+    // {
+    //   label: "Stoic",
+    //   logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/stoic/stoic-logo.jpg",
+    //   onClick: signInWithStoic,
+    // },
     {
       label: "InfinityWallet",
       logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/infinitywallet/infinitywallet-logo.png",

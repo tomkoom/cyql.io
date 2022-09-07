@@ -14,6 +14,9 @@ import Canistergeek "mo:canistergeek/canistergeek";
 import T "types";
 
 actor {
+  private stable var profilesEntries : [(T.ProfileId, T.Profile)] = [];
+  private stable var jobsEntries : [(T.JobCounter, T.Job)] = [];
+
   var profiles = HashMap.HashMap<T.ProfileId, T.Profile>(1, Principal.equal, Principal.hash);
 
   stable var jobCounter : T.JobCounter = 0;
@@ -36,8 +39,7 @@ actor {
     return Iter.toArray(profiles.entries());
   };
 
-  public shared ({ caller }) func updateProfiles(profile : T.Profile) : async Result.Result<(), T.ProfileErr> {
-    let id = caller;
+  public func updateProfiles(id : T.ProfileId, profile : T.Profile) : async Result.Result<(), T.ProfileErr> {
     if (Principal.isAnonymous(id)) {
       #err(#IsAnonymous);
     } else {
@@ -72,15 +74,35 @@ actor {
     return jobs.size();
   };
 
-  // status
-  public query func getCycleBalance() : async Nat {
-    ExperimentalCycles.balance();
-  };
-
   // UTILS
 
   public shared query ({ caller }) func whoami() : async Text {
     return Principal.toText(caller);
+  };
+
+  // preserve state
+  system func preupgrade() {
+    profilesEntries := Iter.toArray(profiles.entries());
+    jobsEntries := Iter.toArray(jobs.entries());
+
+    // canistergeek
+    _canistergeekMonitorUD := ?canistergeekMonitor.preupgrade();
+    _canistergeekLoggerUD := ?canistergeekLogger.preupgrade();
+  };
+
+  system func postupgrade() {
+    profilesEntries := [];
+    jobsEntries := [];
+
+    // canistergeek
+    canistergeekMonitor.postupgrade(_canistergeekMonitorUD);
+    _canistergeekMonitorUD := null;
+
+    canistergeekLogger.postupgrade(_canistergeekLoggerUD);
+    _canistergeekLoggerUD := null;
+    canistergeekLogger.setMaxMessagesCount(3000);
+
+    canistergeekLogger.logMessage("postupgrade");
   };
 
   // CANISTERGEEK https://github.com/usergeek/canistergeek-ic-motoko
@@ -92,22 +114,6 @@ actor {
   private let canistergeekLogger = Canistergeek.Logger();
 
   private let adminPrincipal : Text = "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae";
-
-  system func preupgrade() {
-    _canistergeekMonitorUD := ?canistergeekMonitor.preupgrade();
-    _canistergeekLoggerUD := ?canistergeekLogger.preupgrade();
-  };
-
-  system func postupgrade() {
-    canistergeekMonitor.postupgrade(_canistergeekMonitorUD);
-    _canistergeekMonitorUD := null;
-
-    canistergeekLogger.postupgrade(_canistergeekLoggerUD);
-    _canistergeekLoggerUD := null;
-    canistergeekLogger.setMaxMessagesCount(3000);
-
-    canistergeekLogger.logMessage("postupgrade");
-  };
 
   public query ({ caller }) func getCanisterMetrics(parameters : Canistergeek.GetMetricsParameters) : async ?Canistergeek.CanisterMetrics {
     validateCaller(caller);

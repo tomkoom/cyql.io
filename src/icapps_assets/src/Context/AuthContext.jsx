@@ -20,9 +20,6 @@ import { setVerified } from "../State/profile";
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
 
-// methods
-import { checkConnection } from "./Funcs/checkConnection";
-
 // canisters
 import { cyqlBeCanIdLocal } from "./canisterIds";
 
@@ -43,6 +40,7 @@ export function AuthProvider({ children }) {
   const [principalIdStr, setPrincipalIdStr] = useState("");
   const [accountId, setAccountId] = useState(""); // always string
   const [signInMethod, setSignInMethod] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const dispatch = useDispatch();
 
   // ––– PLUG –––
@@ -53,8 +51,9 @@ export function AuthProvider({ children }) {
         whitelist: [cyqlCanisterId],
         host: host,
       });
-      createActorWithPlug();
-      getPlugUserData();
+      await createActorWithPlug();
+      await getPlugUserData();
+      setIsAuthenticated(true);
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +67,6 @@ export function AuthProvider({ children }) {
         interfaceFactory: cyqlIdlFactory,
       })
       .then((actor) => {
-        console.log(actor);
         setActor(actor);
       })
       .catch((err) => console.log(err));
@@ -117,8 +115,9 @@ export function AuthProvider({ children }) {
         whitelist,
         host,
       });
-      createActorWithInfinityWallet();
-      getInfinityWalletUserData();
+      await createActorWithInfinityWallet();
+      await getInfinityWalletUserData();
+      setIsAuthenticated(true);
     } catch (err) {
       console.log(err);
     }
@@ -152,10 +151,11 @@ export function AuthProvider({ children }) {
 
   const checkConnection = async () => {
     // plug
-    await window.ic.plug.isConnected().then((isConnected) => {
+    await window.ic.plug.isConnected().then(async (isConnected) => {
       if (isConnected) {
-        createActorWithPlug();
-        getPlugUserData();
+        await createActorWithPlug();
+        await getPlugUserData();
+        setIsAuthenticated(true);
       }
     });
 
@@ -167,10 +167,11 @@ export function AuthProvider({ children }) {
     });
 
     // infinitywallet
-    await window.ic.infinityWallet.isConnected().then((isConnected) => {
+    await window.ic.infinityWallet.isConnected().then(async (isConnected) => {
       if (isConnected) {
-        createActorWithInfinityWallet();
-        getInfinityWalletUserData();
+        await createActorWithInfinityWallet();
+        await getInfinityWalletUserData();
+        setIsAuthenticated(true);
       }
     });
   };
@@ -181,6 +182,7 @@ export function AuthProvider({ children }) {
     setPrincipalId(undefined);
     setPrincipalIdStr("");
     setAccountId("");
+    setIsAuthenticated(false);
     // dispatch(setVerified(false));
 
     if (signInMethod === "plug") {
@@ -208,6 +210,7 @@ export function AuthProvider({ children }) {
     principalIdStr,
     accountId,
     signInMethod,
+    isAuthenticated,
     // sign in
     signInWithPlug,
     signInWithStoic,

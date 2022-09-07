@@ -135,7 +135,6 @@ service : {
   collectCanisterMetrics: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
-  getCycleBalance: () -> (nat) query;
   getJobs: () -> (vec record {
                         JobCounter;
                         Job;
@@ -146,6 +145,6 @@ service : {
                             ProfileId;
                             Profile;
                           }) query;
-  updateProfiles: (Profile) -> (Result);
+  updateProfiles: (ProfileId, Profile) -> (Result);
   whoami: () -> (text) query;
 }

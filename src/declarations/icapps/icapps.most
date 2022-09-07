@@ -11,10 +11,39 @@ type DayData =
   };
 type DayDataId = Nat32;
 type DayUpdateCallsCountData = [var Nat64];
+type Job =
+  {
+    application_discord : Text;
+    application_email : Text;
+    application_twitter : Text;
+    application_url : Text;
+    category : Text;
+    company_logo_url : Text;
+    company_name : Text;
+    company_twitter : Text;
+    company_website : Text;
+    compensation : Text;
+    description : Text;
+    equity : Text;
+    publisher : Text;
+    submitted : Text;
+    title : Text
+  };
+type JobCounter = Nat;
 type LogMessageArray = [LogMessagesData];
 type LogMessagesData = {message : Text; timeNanos : Nanos};
 type LoggerUpgradeData = UpgradeData__1;
 type Nanos = Nat64;
+type Profile =
+  {
+    accountId : Text;
+    firstSignIn : Time__1;
+    lastSignIn : Time__1;
+    principalIdStr : Text;
+    signInMethod : Text
+  };
+type ProfileId = Principal;
+type Time__1 = Int;
 type UpgradeData = {#v1 : {dayData : [UpgradeDataDayTuple]}};
 type UpgradeDataDayTuple = (DayDataId, DayData);
 type UpgradeData__1 =
@@ -23,5 +52,7 @@ type UpgradeData__2 = UpgradeData;
 actor {
   stable var _canistergeekLoggerUD : ?LoggerUpgradeData;
   stable var _canistergeekMonitorUD : ?UpgradeData__2;
-  stable var jobCounter : Nat
+  stable var jobCounter : Nat;
+  stable var jobsEntries : [(JobCounter, Job)];
+  stable var profilesEntries : [(ProfileId, Profile)]
 };

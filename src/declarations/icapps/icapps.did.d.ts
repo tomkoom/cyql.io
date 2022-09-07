@@ -111,11 +111,10 @@ export interface _SERVICE {
     [GetMetricsParameters],
     [] | [CanisterMetrics],
   >,
-  'getCycleBalance' : ActorMethod<[], bigint>,
   'getJobs' : ActorMethod<[], Array<[JobCounter, Job]>>,
   'getJobsNum' : ActorMethod<[], bigint>,
   'getProfile' : ActorMethod<[], [] | [Profile]>,
   'getProfiles' : ActorMethod<[], Array<[ProfileId, Profile]>>,
-  'updateProfiles' : ActorMethod<[Profile], Result>,
+  'updateProfiles' : ActorMethod<[ProfileId, Profile], Result>,
   'whoami' : ActorMethod<[], string>,
 }
