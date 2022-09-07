@@ -13,6 +13,9 @@ import {
   iBook,
 } from "../../../Icons/Icons";
 
+// utils
+import { getTwitterUsername } from "../../../Utils/format";
+
 const Links = ({
   // links
   website,
@@ -32,11 +35,6 @@ const Links = ({
   telegram,
   medium,
 }) => {
-  const getTwitterUsername = (url) => {
-    const username = url.split(".com/")[1];
-    return "@" + username;
-  };
-
   const links = [
     {
       id: "Website",
@@ -61,7 +59,7 @@ const Links = ({
   const linksSoc = [
     {
       id: "Twitter",
-      label: getTwitterUsername(twitter),
+      label: `@${getTwitterUsername(twitter)}`,
       link: twitter,
       icon: iTwitter,
     },

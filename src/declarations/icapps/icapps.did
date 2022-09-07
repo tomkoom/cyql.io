@@ -5,12 +5,7 @@ type Result =
    err: ProfileErr;
    ok;
  };
-type ProfileErr = 
- variant {
-   AlreadyExists;
-   IsAnonymous;
-   NotFound;
- };
+type ProfileErr = variant {IsAnonymous;};
 type Profile = 
  record {
    accountId: text;
@@ -138,6 +133,7 @@ type CanisterCyclesAggregatedData = vec nat64;
 service : {
   addJob: (Job) -> (Job);
   collectCanisterMetrics: () -> ();
+  createProfile: (Profile) -> (Result);
   doThat: () -> ();
   doThis: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
@@ -150,6 +146,6 @@ service : {
   getJobsNum: () -> (nat) query;
   getThat: () -> (text) query;
   getThis: () -> (text) query;
-  verify: (Profile) -> (Result);
+  userExists: (principal) -> (bool) query;
   whoami: () -> (text) query;
 }

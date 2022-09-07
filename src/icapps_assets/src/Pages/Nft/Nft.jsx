@@ -27,7 +27,7 @@ const Nft = () => {
 
   return (
     <div className={css.nft}>
-      <h2 className="pageTitle">cyql NFT Stats</h2>
+      <h2 className="pageTitle">cyql NFT</h2>
       <div className={css.content}>
         <a
           className={css.link}

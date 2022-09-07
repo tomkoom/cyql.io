@@ -5,13 +5,13 @@ import { useParams } from "react-router-dom";
 // icons
 import { iExternalLink } from "../../Icons/Icons";
 
+// components
+import { BackBtn, ExpandableText, Loader, UpvtBtn } from "../../Components/index";
+import { CollStats, NftPreviews, TwitterTimeline, Links } from "./index";
+
 // state
 import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/projects";
-
-// components
-import { BackBtn, ExpandableText, Loader, UpvtBtn } from "../../Components/index";
-import { CollStats, NftPreviews, Links } from "./index";
 
 const Project = () => {
   const { id } = useParams();
@@ -122,7 +122,7 @@ const Project = () => {
                   <a
                     href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
                     className={css.twitterDmButton}
-                    data-screen-name="@DfinitApps"
+                    data-screen-name="@DfinityApps"
                     rel="noreferrer noopener"
                   >
                     Edit the project info
@@ -131,24 +131,33 @@ const Project = () => {
               </div>
 
               {/* social links */}
-              <div className={css.links}>
-                <h5>Links</h5>
-                <Links
-                  // ic
-                  canister={project.canister}
-                  dscvr={project.dscvr}
-                  distrikt={project.distrikt}
-                  openChat={project.openChat}
-                  // links
-                  website={project.website}
-                  app={project.app}
-                  docs={project.docs}
-                  twitter={project.twitter}
-                  discord={project.discord}
-                  github={project.github}
-                  telegram={project.telegram}
-                  medium={project.medium}
-                />
+              <div>
+                <div className={css.links}>
+                  <h5 className={css.subtitle}>Links</h5>
+                  <Links
+                    // ic links
+                    canister={project.canister}
+                    dscvr={project.dscvr}
+                    distrikt={project.distrikt}
+                    openChat={project.openChat}
+                    // soc links
+                    website={project.website}
+                    app={project.app}
+                    docs={project.docs}
+                    twitter={project.twitter}
+                    discord={project.discord}
+                    github={project.github}
+                    telegram={project.telegram}
+                    medium={project.medium}
+                  />
+                </div>
+
+                {project.twitter && (
+                  <div>
+                    <h5 className={css.subtitle}>{project.name} Twitter</h5>
+                    <TwitterTimeline twitter={project.twitter} />
+                  </div>
+                )}
               </div>
             </div>
           ))
