@@ -54,6 +54,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@reduxjs/toolkit": "^1.7.1",
+    "dotenv": "^16.0.2",
     "firebase": "^9.6.11",
     "firestore-export-import": "^1.1.0",
     "history": "^4.10.1",

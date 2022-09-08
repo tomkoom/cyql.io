@@ -14,11 +14,15 @@
 node_modules/
 dist/
 
-# Prettier config
+# prettier config
 .prettierrc
 
 # k
 k/
+
+# env
+.env
+.env.*
 
 # firebase
 firebase/

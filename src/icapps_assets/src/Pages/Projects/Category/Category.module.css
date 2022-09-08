@@ -8,7 +8,7 @@
 
 .categoryList {
   position: absolute;
-  top: calc(40px + 0.25rem);
+  top: calc(40px + 0.5rem);
   left: 1px;
   z-index: 999;
 }
