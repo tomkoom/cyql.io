@@ -22,3 +22,6 @@ k/
 
 # firebase
 firebase/
+
+# vessel
+.vessel/
