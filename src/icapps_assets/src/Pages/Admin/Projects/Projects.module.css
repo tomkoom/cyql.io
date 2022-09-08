@@ -10,12 +10,10 @@
   border-collapse: collapse;
   white-space: nowrap;
   font-size: 0.9rem;
-  font-weight: var(--medium);
-  margin-top: 1rem;
+  font-weight: var(--fwRegular);
 }
 
 .table tbody tr {
-  /* box-shadow: var(--underline); */
   cursor: pointer;
 }
 
@@ -40,27 +38,6 @@
 
 .table tr:nth-child(even) {
   background-color: var(--underlay);
-}
-
-/* icons */
-
-.controls {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.controls span {
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
-  background-color: var(--underlay);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.controls span:hover {
-  background-color: var(--underlay2);
 }
 
 /* responsive */

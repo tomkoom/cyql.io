@@ -1,1 +1,33 @@
 /* profiles */
+
+.profiles {
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-weight: var(--fwRegular);
+}
+
+.profiles thead {
+  font-weight: var(--fwMedium);
+}
+
+.profiles thead tr th,
+.profiles tbody tr td {
+  padding: 0.75rem 0.5rem;
+}
+
+.profiles thead tr th:first-child,
+.profiles tbody tr td:first-child {
+  padding-left: 0;
+}
+
+.profiles thead tr th:last-child,
+.profiles tbody tr td:last-child {
+  padding-right: 0;
+}
+
+.profiles tr:nth-child(even) {
+  background-color: var(--underlay);
+}

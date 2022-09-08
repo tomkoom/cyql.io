@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
     const principalIdStr = principalId.toText();
-    const accountId = window.ic.plug.accountId;
+    const accountId = window.ic.plug.sessionManager.sessionData.accountId;
     setPrincipalId(principalId);
     setPrincipalIdStr(principalIdStr);
     setAccountId(accountId);

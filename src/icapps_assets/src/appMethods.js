@@ -1,6 +1,3 @@
-// utils
-import { Principal } from "@dfinity/principal";
-
 // state
 import store from "./State/_store";
 import { setProfiles as setProfilesAction } from "./State/profiles/profiles";
