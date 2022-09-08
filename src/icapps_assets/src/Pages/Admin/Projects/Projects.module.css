@@ -1,0 +1,72 @@
+/* admin projects */
+
+.tableContainer {
+  margin-top: 1rem;
+}
+
+.table {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  font-weight: var(--medium);
+  margin-top: 1rem;
+}
+
+.table tbody tr {
+  /* box-shadow: var(--underline); */
+  cursor: pointer;
+}
+
+.table tbody tr:hover {
+  background-color: var(--underlay2);
+}
+
+.table thead tr th,
+.table tbody tr td {
+  padding: 0.75rem 0.5rem;
+}
+
+.table thead tr th:first-child,
+.table tbody tr td:first-child {
+  padding-left: 0;
+}
+
+.table thead tr th:last-child,
+.table tbody tr td:last-child {
+  padding-right: 0;
+}
+
+.table tr:nth-child(even) {
+  background-color: var(--underlay);
+}
+
+/* icons */
+
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls span {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--underlay);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controls span:hover {
+  background-color: var(--underlay2);
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .admin {
+    padding: 0 1rem;
+  }
+}

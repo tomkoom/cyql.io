@@ -91,7 +91,6 @@ export interface Profile {
   'accountId' : string,
   'lastVisit' : Time,
   'firstSignIn' : Time,
-  'principalIdStr' : string,
   'signInMethod' : string,
 }
 export type ProfileErr = { 'IsAnonymous' : null };

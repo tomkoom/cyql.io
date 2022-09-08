@@ -11,8 +11,7 @@ type Profile =
  record {
    accountId: text;
    firstSignIn: Time;
-   lastSignIn: Time;
-   principalIdStr: text;
+   lastVisit: Time;
    signInMethod: text;
  };
 type NumericEntity = 
@@ -145,6 +144,6 @@ service : {
                             ProfileId;
                             Profile;
                           }) query;
-  updateProfiles: (ProfileId, Profile) -> (Result);
+  updateProfiles: (Profile) -> (Result);
   whoami: () -> (text) query;
 }

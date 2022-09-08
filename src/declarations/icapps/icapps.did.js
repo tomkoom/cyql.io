@@ -104,7 +104,6 @@ export const idlFactory = ({ IDL }) => {
     'accountId' : IDL.Text,
     'lastVisit' : Time,
     'firstSignIn' : Time,
-    'principalIdStr' : IDL.Text,
     'signInMethod' : IDL.Text,
   });
   const ProfileId = IDL.Principal;

@@ -47,7 +47,6 @@ import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
 import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
-import { setCyqlActor } from "./State/auth/actors";
 
 // state – modals
 import {
@@ -63,7 +62,7 @@ import { setNftData } from "./Pages/Nft/setNftData";
 import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
 
 // methods
-import { addUserToDb } from "./appMethods";
+import { addUserToDb, setProfiles } from "./appMethods";
 
 const App = () => {
   // hooks
@@ -147,10 +146,15 @@ const App = () => {
   }, [principalIdStr]);
 
   // EFFECTS
+  useEffect(() => {
+    if (actor) {
+      setProfiles(actor);
+    }
+  }, [actor]);
 
   useEffect(() => {
     if (isAuthenticated) {
-      addUserToDb(actor, principalIdStr, accountId, signInMethod);
+      addUserToDb(actor, accountId, signInMethod);
     }
   }, [isAuthenticated]);
 

@@ -17,6 +17,7 @@ import projectSubmission from "./projectSubmission";
 import jobs from "./jobs/jobs";
 import job from "./jobs/job";
 import nft from "./nft/nft";
+import profiles from "./profiles/profiles";
 
 // redux-persist
 import {
@@ -48,6 +49,7 @@ const rootReducer = combineReducers({
   jobs,
   job,
   nft,
+  profiles,
 });
 
 const persistConfig = {

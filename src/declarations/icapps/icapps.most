@@ -39,7 +39,6 @@ type Profile =
     accountId : Text;
     firstSignIn : Time__1;
     lastVisit : Time__1;
-    principalIdStr : Text;
     signInMethod : Text
   };
 type ProfileId = Principal;

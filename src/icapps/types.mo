@@ -12,7 +12,6 @@ module Types {
   public type ProfileCounter = Nat;
 
   public type Profile = {
-    principalIdStr : Text;
     accountId : Text;
     firstSignIn : Time;
     lastVisit : Time;
