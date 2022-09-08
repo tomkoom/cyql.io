@@ -12,6 +12,7 @@ type Profile =
    accountId: text;
    firstSignIn: Time;
    lastVisit: Time;
+   principalIdStr: text;
    signInMethod: text;
  };
 type NumericEntity = 
