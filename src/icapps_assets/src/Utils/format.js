@@ -1,5 +1,6 @@
 const formatStr8 = (str) => (str.length > 8 ? `${str.substring(0, 8)}…` : str);
 const formatStr12 = (str) => (str.length > 12 ? `${str.substring(0, 12)}…` : str);
+const formatStr24 = (str) => (str.length > 24 ? `${str.substring(0, 24)}…` : str);
 
 const formatWebsite = (url) => {
   let formattedURL = url.replace(/(^\w+:|^)\/\//, "");
@@ -27,4 +28,19 @@ const formatDate = (timestamp) => {
   return date.toLocaleString("en-GB");
 };
 
-export { formatStr8, formatStr12, formatWebsite, getTwitterUsername, formatDiscord, formatDate };
+const formatDate2 = (timestamp) => {
+  const ts = timestamp;
+  const date = new Date(ts);
+  return date.toDateString();
+};
+
+export {
+  formatStr8,
+  formatStr12,
+  formatStr24,
+  formatWebsite,
+  getTwitterUsername,
+  formatDiscord,
+  formatDate,
+  formatDate2,
+};

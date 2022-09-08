@@ -10,6 +10,7 @@ const projectInitialState = {
   logo: "",
   cover: "",
   description: "",
+
   // social networks
   twitter: "",
   discord: "",
@@ -19,9 +20,11 @@ const projectInitialState = {
   dscvr: "",
   distrikt: "",
   openChat: "",
+
   // additional info
   app: "",
   docs: "",
+
   // nft info
   nftSaleStatus: "",
   nftSaleDate: "",
@@ -34,6 +37,7 @@ const projectInitialState = {
   nftImg2: "",
   nftImg3: "",
   nftImg4: "",
+
   // meta
   added: "",
   edited: "",

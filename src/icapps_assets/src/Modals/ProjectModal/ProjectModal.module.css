@@ -22,11 +22,14 @@
 }
 
 .content {
-  padding: 1rem;
-  border-radius: 1rem;
+  padding: 1rem 3rem;
   background-color: var(--background);
   color: var(--primaryColor);
   margin: 1rem;
+
+  /* overflow */
+  height: 100%;
+  overflow: auto;
 }
 
 .formContent {
@@ -39,19 +42,13 @@
   flex-direction: column;
   gap: 0.5rem;
   margin-top: 1rem;
+  width: 20rem;
 }
 
-.formField {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.formField input,
-.formField select,
-.formField textarea {
-  width: 16rem;
+.sectionTitle {
+  font-size: var(--fontSize6);
+  font-weight: var(--fwMedium);
+  margin-bottom: 0.5rem;
 }
 
 .controls {
@@ -78,38 +75,12 @@
 }
 
 .modalTitle h4 {
+  font-size: var(--fontSize5);
+  font-weight: var(--fwMedium);
   margin-bottom: 0.5rem;
 }
 
-.modalTitle span {
+.icon {
   font-size: var(--fontSize5);
   cursor: pointer;
-}
-
-.timesWrapper {
-  width: 100%;
-  text-align: right;
-}
-
-.timesWrapper span {
-  font-size: var(--fontSize5);
-  cursor: pointer;
-}
-
-.twitterBtn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--colorTwitter);
-  font-size: var(--fontSize6);
-  font-weight: var(--bold);
-  color: var(--primaryColor);
-  padding: 0.66rem 0.75rem;
-  border-radius: 0.66rem;
-  border: none;
-  cursor: pointer;
-}
-
-.twitterBtn span {
-  font-size: var(--fontSize5);
 }

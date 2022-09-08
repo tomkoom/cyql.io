@@ -1,10 +1,7 @@
 /* admin projects */
 
-.tableContainer {
-  margin-top: 1rem;
-}
-
 .table {
+  margin-top: 1rem;
   text-align: left;
   width: 100%;
   border-collapse: collapse;

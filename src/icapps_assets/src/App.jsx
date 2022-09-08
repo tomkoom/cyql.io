@@ -64,6 +64,8 @@ import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
 // methods
 import { addUserToDb, setProfiles } from "./appMethods";
 
+const DONATION_WALLET = process.env.DONATION_WALLET;
+
 const App = () => {
   // hooks
   const dispatch = useDispatch();

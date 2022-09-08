@@ -13,15 +13,12 @@ import { CollStats, NftPreviews, TwitterTimeline, Links } from "./index";
 import { useSelector } from "react-redux";
 import { selectProjects } from "../../State/projects";
 
+// utils
+import { formatDate2 } from "../../Utils/format";
+
 const Project = () => {
   const { id } = useParams();
   const projects = useSelector(selectProjects);
-
-  const formatDate = (timestamp) => {
-    const ts = timestamp;
-    const date = new Date(ts);
-    return date.toDateString();
-  };
 
   return (
     <div className={css.project}>
@@ -117,7 +114,7 @@ const Project = () => {
 
                 <div className={css.bottom}>
                   {project.added && (
-                    <div className={css.date}>Published {formatDate(project.added)}</div>
+                    <div className={css.date}>Published {formatDate2(project.added)}</div>
                   )}
                   <a
                     href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"

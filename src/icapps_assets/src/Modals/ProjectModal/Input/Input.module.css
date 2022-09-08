@@ -1,0 +1,25 @@
+/* input */
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
+  color: var(--tertiaryColor);
+}
+
+.input input {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  caret-color: var(--primaryColor);
+  border: none;
+  outline: none;
+}
