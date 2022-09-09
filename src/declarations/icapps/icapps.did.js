@@ -112,6 +112,8 @@ export const idlFactory = ({ IDL }) => {
   return IDL.Service({
     'addJob' : IDL.Func([Job], [Job], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
+    'doThat' : IDL.Func([], [], []),
+    'doThis' : IDL.Func([], [], []),
     'getCanisterLog' : IDL.Func(
         [IDL.Opt(CanisterLogRequest)],
         [IDL.Opt(CanisterLogResponse)],
@@ -130,6 +132,8 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(IDL.Tuple(ProfileId, Profile))],
         ['query'],
       ),
+    'getThat' : IDL.Func([], [IDL.Text], ['query']),
+    'getThis' : IDL.Func([], [IDL.Text], ['query']),
     'updateProfiles' : IDL.Func([Profile], [Result], []),
     'whoami' : IDL.Func([], [IDL.Text], ['query']),
   });

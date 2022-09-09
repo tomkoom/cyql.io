@@ -80,10 +80,7 @@ const Home = () => {
           <h3 className={css.title}>Recently added projects</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects
-          projects={projects.length > 0 && projects_projects}
-          hideCategory={false}
-        />
+        <HighlightedProjects projects={projects.length > 0 && projects_projects} />
       </section>
 
       {/* recently added nfts */}
@@ -92,7 +89,7 @@ const Home = () => {
           <h3 className={css.title}>Recently added NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects projects={projects.length > 0 && projects_nfts} hideCategory={true} />
+        <HighlightedProjects projects={projects.length > 0 && projects_nfts} />
       </section>
 
       {/* popular projects */}
@@ -101,10 +98,7 @@ const Home = () => {
           <h3 className={css.title}>Popular apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects
-          projects={projects.length > 0 && popularProjects}
-          hideCategory={false}
-        />
+        <HighlightedProjects projects={projects.length > 0 && popularProjects} />
       </section>
 
       {/* popular nfts */}
@@ -113,7 +107,7 @@ const Home = () => {
           <h3 className={css.title}>Popular NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects projects={projects.length > 0 && popularNfts} hideCategory={true} />
+        <HighlightedProjects projects={projects.length > 0 && popularNfts} />
       </section>
 
       {/* upcoming nft sales */}

@@ -4,8 +4,8 @@ import React from "react";
 import { useAuth } from "../../Context/AuthContext";
 
 const IdImg = ({ size }) => {
-  const { principalId } = useAuth();
-  const id = principalId.toHex();
+  const { accountId } = useAuth();
+  const id = accountId;
 
   const style = {
     borderRadius: "50%",

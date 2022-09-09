@@ -81,8 +81,19 @@ actor {
     return Principal.toText(caller);
   };
 
-  // preserve state
+  // CANISTERGEEK https://github.com/usergeek/canistergeek-ic-motoko
+
+  stable var _canistergeekMonitorUD : ?Canistergeek.UpgradeData = null;
+  private let canistergeekMonitor = Canistergeek.Monitor();
+
+  stable var _canistergeekLoggerUD : ?Canistergeek.LoggerUpgradeData = null;
+  private let canistergeekLogger = Canistergeek.Logger();
+
+  private let adminPrincipal : Text = "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae";
+
+  // STATE
   system func preupgrade() {
+    // profiles, jobs
     profilesEntries := Iter.toArray(profiles.entries());
     jobsEntries := Iter.toArray(jobs.entries());
 
@@ -92,6 +103,7 @@ actor {
   };
 
   system func postupgrade() {
+    // profiles, jobs
     profilesEntries := [];
     jobsEntries := [];
 
@@ -105,16 +117,6 @@ actor {
 
     canistergeekLogger.logMessage("postupgrade");
   };
-
-  // CANISTERGEEK https://github.com/usergeek/canistergeek-ic-motoko
-
-  stable var _canistergeekMonitorUD : ?Canistergeek.UpgradeData = null;
-  private let canistergeekMonitor = Canistergeek.Monitor();
-
-  stable var _canistergeekLoggerUD : ?Canistergeek.LoggerUpgradeData = null;
-  private let canistergeekLogger = Canistergeek.Logger();
-
-  private let adminPrincipal : Text = "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae";
 
   public query ({ caller }) func getCanisterMetrics(parameters : Canistergeek.GetMetricsParameters) : async ?Canistergeek.CanisterMetrics {
     validateCaller(caller);
@@ -138,23 +140,23 @@ actor {
     };
   };
 
-  // public shared ({ caller }) func doThis() : async () {
-  //   canistergeekMonitor.collectMetrics();
-  //   canistergeekLogger.logMessage("doThis");
-  //   // rest part of the your method...
-  // };
+  public shared ({ caller }) func doThis() : async () {
+    canistergeekMonitor.collectMetrics();
+    canistergeekLogger.logMessage("doThis");
+    // rest part of the your method...
+  };
 
-  // public shared ({ caller }) func doThat() : async () {
-  //   canistergeekMonitor.collectMetrics();
-  //   canistergeekLogger.logMessage("doThat");
-  //   // rest part of the your method...
-  // };
+  public shared ({ caller }) func doThat() : async () {
+    canistergeekMonitor.collectMetrics();
+    canistergeekLogger.logMessage("doThat");
+    // rest part of the your method...
+  };
 
-  // public query ({ caller }) func getThis() : async Text {
-  //   "this";
-  // };
+  public query ({ caller }) func getThis() : async Text {
+    "this";
+  };
 
-  // public query ({ caller }) func getThat() : async Text {
-  //   "that";
-  // };
+  public query ({ caller }) func getThat() : async Text {
+    "that";
+  };
 };

@@ -4,16 +4,20 @@ import css from "./Nft.module.css";
 // icons
 import { iExternalLink } from "../../Icons/Icons";
 
+// components
+import { Holders } from "./index";
+
 // state
 import { useSelector } from "react-redux";
-import { selectRegistry, selectSupply, selectListingsNum, selectFloor } from "../../State/nft/nft";
-
-// utils
-import { getHoldersNum } from "./utils/getHoldersNum.js";
+import {
+  selectHoldersNum,
+  selectSupply,
+  selectListingsNum,
+  selectFloor,
+} from "../../State/nft/nft";
 
 const Nft = () => {
-  const registry = useSelector(selectRegistry);
-  const holders = getHoldersNum(registry);
+  const holders = useSelector(selectHoldersNum);
   const supply = useSelector(selectSupply);
   const listingsNum = useSelector(selectListingsNum);
   const floor = useSelector(selectFloor);
@@ -50,7 +54,9 @@ const Nft = () => {
           ))}
         </ul>
 
-        {/* add holders list */}
+        <div>
+          <Holders />
+        </div>
       </div>
     </div>
   );

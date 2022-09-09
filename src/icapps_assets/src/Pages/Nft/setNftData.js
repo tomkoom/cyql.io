@@ -4,7 +4,13 @@ import nft_idl from "../../idl/nft_idl";
 
 // state
 import store from "../../State/_store";
-import { setRegistry, setSupply, setListingsNum, setFloor } from "../../State/nft/nft";
+import {
+  setHoldersNum,
+  setHoldersOwnedNftsNum,
+  setSupply,
+  setListingsNum,
+  setFloor,
+} from "../../State/nft/nft";
 
 // canisters
 import { cyqlNftCanId } from "../../Context/canisterIds";
@@ -18,10 +24,26 @@ const setNftData = async () => {
     canisterId: cyqlNftCanId,
   });
 
+  // holders
   await nft
     .getRegistry()
-    .then((res) => {
-      store.dispatch(setRegistry(res));
+    .then((registry) => {
+      const holders = [];
+      registry.forEach((el) => holders.push(el[1]));
+      const uniqHolders = [...new Set(holders)];
+      const uniqHoldersNum = uniqHolders.length;
+
+      const holdersOwnedNftsNum = {};
+      holders.forEach((h) => {
+        holdersOwnedNftsNum[h] = (holdersOwnedNftsNum[h] || 0) + 1;
+      });
+
+      const holdersOwnedNftsNumArr = [];
+      for (const [key, value] of Object.entries(holdersOwnedNftsNum)) {
+        holdersOwnedNftsNumArr.push({ accountId: key, nftsOwned: value });
+      }
+      store.dispatch(setHoldersNum(uniqHoldersNum));
+      store.dispatch(setHoldersOwnedNftsNum(holdersOwnedNftsNumArr));
     })
     .catch((err) => console.log(err));
 

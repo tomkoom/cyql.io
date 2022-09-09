@@ -102,6 +102,8 @@ export type UpdateCallsAggregatedData = Array<bigint>;
 export interface _SERVICE {
   'addJob' : ActorMethod<[Job], Job>,
   'collectCanisterMetrics' : ActorMethod<[], undefined>,
+  'doThat' : ActorMethod<[], undefined>,
+  'doThis' : ActorMethod<[], undefined>,
   'getCanisterLog' : ActorMethod<
     [[] | [CanisterLogRequest]],
     [] | [CanisterLogResponse],
@@ -114,6 +116,8 @@ export interface _SERVICE {
   'getJobsNum' : ActorMethod<[], bigint>,
   'getProfile' : ActorMethod<[], [] | [Profile]>,
   'getProfiles' : ActorMethod<[], Array<[ProfileId, Profile]>>,
+  'getThat' : ActorMethod<[], string>,
+  'getThis' : ActorMethod<[], string>,
   'updateProfiles' : ActorMethod<[Profile], Result>,
   'whoami' : ActorMethod<[], string>,
 }

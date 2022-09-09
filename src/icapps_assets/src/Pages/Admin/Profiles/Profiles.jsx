@@ -11,29 +11,36 @@ import { selectProfiles } from "../../../State/profiles/profiles";
 
 const Profiles = () => {
   const profiles = useSelector(selectProfiles);
+  const profilesCopy = [...profiles];
+
+  const sort = (a, b) => {
+    return b.firstSignIn - a.firstSignIn;
+  };
 
   return (
     <table className={css.profiles}>
       <thead>
         <tr>
           <th>id</th>
-          <th>accountId</th>
-          <th>signInMethod</th>
-          <th>firstSignIn</th>
-          <th>lastVisit</th>
+          <th>account id</th>
+          <th>sign in method</th>
+          <th>first sign in</th>
+          <th>last visit</th>
         </tr>
       </thead>
 
       <tbody>
-        {profiles.map((profile) => (
-          <tr key={profile.id}>
-            <td>{formatPrincipal(profile.id)}</td>
-            <td>{formatPrincipal(profile.accountId)}</td>
-            <td>{profile.signInMethod}</td>
-            <td>{formatDate(profile.firstSignIn)}</td>
-            <td>{formatDate(profile.lastVisit)}</td>
-          </tr>
-        ))}
+        {profilesCopy
+          .sort((a, b) => sort(a, b))
+          .map((profile) => (
+            <tr key={profile.id}>
+              <td>{formatPrincipal(profile.id)}</td>
+              <td>{formatPrincipal(profile.accountId)}</td>
+              <td>{profile.signInMethod}</td>
+              <td>{formatDate(profile.firstSignIn)}</td>
+              <td>{formatDate(profile.lastVisit)}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );

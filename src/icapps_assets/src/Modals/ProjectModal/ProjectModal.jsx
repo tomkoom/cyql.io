@@ -8,11 +8,11 @@ import CrossIcon from "../../Icons/CrossIcon/CrossIcon";
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { projectsCollRef } from "../../Firestore/firestore-collections";
 
-// components
-import { Input, Select, TextArea } from "./index";
-
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
+
+// components
+import { Input, Select, TextArea } from "./index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

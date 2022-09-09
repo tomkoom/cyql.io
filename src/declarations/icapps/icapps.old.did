@@ -12,7 +12,6 @@ type Profile =
    accountId: text;
    firstSignIn: Time;
    lastVisit: Time;
-   principalIdStr: text;
    signInMethod: text;
  };
 type NumericEntity = 
@@ -133,6 +132,8 @@ type CanisterCyclesAggregatedData = vec nat64;
 service : {
   addJob: (Job) -> (Job);
   collectCanisterMetrics: () -> ();
+  doThat: () -> ();
+  doThis: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
   getJobs: () -> (vec record {

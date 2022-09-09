@@ -1,0 +1,14 @@
+/* holders */
+
+.title {
+  margin-bottom: 1rem;
+  font-size: var(--fontSize5);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  box-shadow: 0 1px 0 0 var(--underlay);
+}
