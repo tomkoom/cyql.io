@@ -66,7 +66,7 @@ const Home = () => {
           >
             <div className={css.highlightsInfo}>
               <span className={css.highlightsIcon}>🐋</span>
-              <h3>icApps NFTs are tradable on Entrepot</h3>
+              <p className={css.highlightTitle}>cyql NFTs are available on Entrepot</p>
             </div>
             <span className={css.rightArrowIcon}>{iArrowRight}</span>
           </a>
@@ -190,14 +190,14 @@ const Home = () => {
       <div className="div" />
 
       {/* partners */}
-      <section>
+      {/* <section>
         <div className={css.sectionTitle}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>Partners</h3>
           </div>
         </div>
         <Partners />
-      </section>
+      </section> */}
 
       {/* join community */}
       <section className={css.home__nftCollections}>

@@ -1,5 +1,10 @@
 type UpdateCallsAggregatedData = vec nat64;
 type Time = int;
+type Result_1 = 
+ variant {
+   err: AddJobErr;
+   ok;
+ };
 type Result = 
  variant {
    err: ProfileErr;
@@ -129,8 +134,13 @@ type CanisterLogFeature =
  };
 type CanisterHeapMemoryAggregatedData = vec nat64;
 type CanisterCyclesAggregatedData = vec nat64;
+type AddJobErr = 
+ variant {
+   Err;
+   IsAnonymous;
+ };
 service : {
-  addJob: (Job) -> (Job);
+  addJob: (Job) -> (Result_1);
   collectCanisterMetrics: () -> ();
   doThat: () -> ();
   doThis: () -> ();
@@ -146,6 +156,8 @@ service : {
                             ProfileId;
                             Profile;
                           }) query;
+  getThat: () -> (text) query;
+  getThis: () -> (text) query;
   updateProfiles: (Profile) -> (Result);
   whoami: () -> (text) query;
 }

@@ -51,20 +51,17 @@ actor {
 
   // JOBS
 
-  // public shared({ caller }) func addJob(job: T.Job) : async ?T.Job {
-  //     if (Principal.isAnonymous(caller)) {
-  //         return null;
-  //     } else {
-  //         jobs.put(jobCounter, job);
-  //         jobCounter += 1;
-  //         return ?job;
-  //     };
-  // };
+  public shared ({ caller }) func addJob(job : T.Job) : async Result.Result<(), T.AddJobErr> {
+    if (Principal.isAnonymous(caller)) return #err(#IsAnonymous);
 
-  public shared ({ caller }) func addJob(job : T.Job) : async T.Job {
-    jobs.put(jobCounter, job);
-    jobCounter += 1;
-    return job;
+    let publisher = job.publisher;
+    if (Principal.toText(caller) == publisher) {
+      jobs.put(jobCounter, job);
+      jobCounter += 1;
+      #ok;
+    } else {
+      #err(#Err);
+    };
   };
 
   public query func getJobs() : async [(T.JobCounter, T.Job)] {
@@ -90,33 +87,6 @@ actor {
   private let canistergeekLogger = Canistergeek.Logger();
 
   private let adminPrincipal : Text = "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae";
-
-  // STATE
-  system func preupgrade() {
-    // profiles, jobs
-    profilesEntries := Iter.toArray(profiles.entries());
-    jobsEntries := Iter.toArray(jobs.entries());
-
-    // canistergeek
-    _canistergeekMonitorUD := ?canistergeekMonitor.preupgrade();
-    _canistergeekLoggerUD := ?canistergeekLogger.preupgrade();
-  };
-
-  system func postupgrade() {
-    // profiles, jobs
-    profilesEntries := [];
-    jobsEntries := [];
-
-    // canistergeek
-    canistergeekMonitor.postupgrade(_canistergeekMonitorUD);
-    _canistergeekMonitorUD := null;
-
-    canistergeekLogger.postupgrade(_canistergeekLoggerUD);
-    _canistergeekLoggerUD := null;
-    canistergeekLogger.setMaxMessagesCount(3000);
-
-    canistergeekLogger.logMessage("postupgrade");
-  };
 
   public query ({ caller }) func getCanisterMetrics(parameters : Canistergeek.GetMetricsParameters) : async ?Canistergeek.CanisterMetrics {
     validateCaller(caller);
@@ -158,5 +128,32 @@ actor {
 
   public query ({ caller }) func getThat() : async Text {
     "that";
+  };
+
+  // STATE
+  system func preupgrade() {
+    // profiles, jobs
+    profilesEntries := Iter.toArray(profiles.entries());
+    jobsEntries := Iter.toArray(jobs.entries());
+
+    // canistergeek
+    _canistergeekMonitorUD := ?canistergeekMonitor.preupgrade();
+    _canistergeekLoggerUD := ?canistergeekLogger.preupgrade();
+  };
+
+  system func postupgrade() {
+    // profiles, jobs
+    profilesEntries := [];
+    jobsEntries := [];
+
+    // canistergeek
+    canistergeekMonitor.postupgrade(_canistergeekMonitorUD);
+    _canistergeekMonitorUD := null;
+
+    canistergeekLogger.postupgrade(_canistergeekLoggerUD);
+    _canistergeekLoggerUD := null;
+    canistergeekLogger.setMaxMessagesCount(3000);
+
+    canistergeekLogger.logMessage("postupgrade");
   };
 };

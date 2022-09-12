@@ -7,7 +7,7 @@ import "./Styles/typography.css";
 // etc
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
-import k from "../../../k/k";
+import { c } from "../../../constants/constants";
 
 // toast
 import { ToastContainer } from "react-toastify";
@@ -62,7 +62,12 @@ import { setNftData } from "./Pages/Nft/setNftData";
 import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
 
 // methods
-import { addUserToDb, setProfiles } from "./appMethods";
+import { addUserToDb, setProfiles, setJobs } from "./appMethods";
+
+const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
+const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
+const STOIC_ADMIN_1 = c.STOIC_ADMIN_1;
+const STOIC_ADMIN_2 = c.STOIC_ADMIN_2;
 
 const App = () => {
   // hooks
@@ -146,11 +151,6 @@ const App = () => {
   }, [principalIdStr]);
 
   // EFFECTS
-  useEffect(() => {
-    if (actor) {
-      setProfiles(actor);
-    }
-  }, [actor]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -158,10 +158,22 @@ const App = () => {
     }
   }, [isAuthenticated]);
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      setProfiles(actor);
+    }
+  }, [isAuthenticated]);
+
   // set nft page data
   useEffect(() => {
     setNftData();
   }, []);
+
+  useEffect(() => {
+    if (actor !== undefined) {
+      setJobs(actor);
+    }
+  }, [actor]);
 
   // set icp price
   useEffect(() => {
@@ -173,7 +185,7 @@ const App = () => {
     checkConnection();
   }, []);
 
-  // ––– SET PROFILE INFO –––
+  // SET PROFILE INFO
 
   // get upvoted projects
   useEffect(() => {
@@ -230,13 +242,13 @@ const App = () => {
               <Submit />
             </Route>
 
-            {/* <Route exact path="/jobs">
+            <Route exact path="/jobs">
               <Jobs />
             </Route>
 
             <Route exact path="/jobs/post">
               <PostJob />
-            </Route> */}
+            </Route>
 
             <Route exact path="/nft">
               <Nft />
@@ -248,10 +260,10 @@ const App = () => {
               </Route>
             )}
 
-            {(principalIdStr && principalIdStr === k.PLUG_ADMIN_1) ||
-            (principalIdStr && principalIdStr === k.STOIC_ADMIN_1) ||
-            (principalIdStr && principalIdStr === k.PLUG_ADMIN_2) ||
-            (principalIdStr && principalIdStr === k.STOIC_ADMIN_2) ? (
+            {(principalIdStr && principalIdStr === PLUG_ADMIN_1) ||
+            (principalIdStr && principalIdStr === STOIC_ADMIN_1) ||
+            (principalIdStr && principalIdStr === PLUG_ADMIN_2) ||
+            (principalIdStr && principalIdStr === STOIC_ADMIN_2) ? (
               <Route exact path="/admin">
                 <Admin />
               </Route>

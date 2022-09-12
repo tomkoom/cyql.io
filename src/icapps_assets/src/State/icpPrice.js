@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import k from "../../../../k/k";
+import { c } from "../../../../constants/constants";
+
+const COINGECKO_API = c.COINGECKO_API;
 
 export const fetchIcpPrice = createAsyncThunk(
   "icpPrice/fetchIcpPrice",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await fetch(k.COINGECKO);
+      const res = await fetch(COINGECKO_API);
       // if error
       if (!res.ok) {
         throw new Error("Err");

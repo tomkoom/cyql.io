@@ -16,6 +16,8 @@ export const idlFactory = ({ IDL }) => {
     'application_url' : IDL.Text,
     'company_logo_url' : IDL.Text,
   });
+  const AddJobErr = IDL.Variant({ 'Err' : IDL.Null, 'IsAnonymous' : IDL.Null });
+  const Result_1 = IDL.Variant({ 'ok' : IDL.Null, 'err' : AddJobErr });
   const GetLogMessagesFilter = IDL.Record({
     'analyzeCount' : IDL.Nat32,
     'messageRegex' : IDL.Opt(IDL.Text),
@@ -110,7 +112,7 @@ export const idlFactory = ({ IDL }) => {
   const ProfileErr = IDL.Variant({ 'IsAnonymous' : IDL.Null });
   const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : ProfileErr });
   return IDL.Service({
-    'addJob' : IDL.Func([Job], [Job], []),
+    'addJob' : IDL.Func([Job], [Result_1], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
     'doThat' : IDL.Func([], [], []),
     'doThis' : IDL.Func([], [], []),

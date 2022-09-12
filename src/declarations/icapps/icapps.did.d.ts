@@ -1,6 +1,8 @@
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
 
+export type AddJobErr = { 'Err' : null } |
+  { 'IsAnonymous' : null };
 export type CanisterCyclesAggregatedData = Array<bigint>;
 export type CanisterHeapMemoryAggregatedData = Array<bigint>;
 export type CanisterLogFeature = { 'filterMessageByContains' : null } |
@@ -97,10 +99,12 @@ export type ProfileErr = { 'IsAnonymous' : null };
 export type ProfileId = Principal;
 export type Result = { 'ok' : null } |
   { 'err' : ProfileErr };
+export type Result_1 = { 'ok' : null } |
+  { 'err' : AddJobErr };
 export type Time = bigint;
 export type UpdateCallsAggregatedData = Array<bigint>;
 export interface _SERVICE {
-  'addJob' : ActorMethod<[Job], Job>,
+  'addJob' : ActorMethod<[Job], Result_1>,
   'collectCanisterMetrics' : ActorMethod<[], undefined>,
   'doThat' : ActorMethod<[], undefined>,
   'doThis' : ActorMethod<[], undefined>,

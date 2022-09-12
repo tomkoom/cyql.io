@@ -1,6 +1,7 @@
 // state
 import store from "./State/_store";
 import { setProfiles as setProfilesAction } from "./State/profiles/profiles";
+import { setJobs as setJobsAction } from "./State/jobs/jobs";
 
 const addUserToDb = async (actor, accountId, signInMethod) => {
   const timestamp = Date.now();
@@ -21,6 +22,7 @@ const addUserToDb = async (actor, accountId, signInMethod) => {
   }
 };
 
+// profiles
 const setProfiles = async (actor) => {
   await actor
     .getProfiles()
@@ -42,4 +44,20 @@ const setProfiles = async (actor) => {
     .catch((err) => console.log(err));
 };
 
-export { addUserToDb, setProfiles };
+// jobs
+const setJobs = async (actor) => {
+  await actor
+    .getJobs()
+    .then((jobs) => {
+      const jobsArr = [];
+      jobs.forEach((el) => {
+        const id = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
+        const job = el[1];
+        jobsArr.push({ id: id, ...job });
+      });
+      store.dispatch(setJobsAction(jobsArr));
+    })
+    .catch((err) => console.log(err));
+};
+
+export { addUserToDb, setProfiles, setJobs };

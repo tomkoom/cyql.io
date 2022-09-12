@@ -74,7 +74,7 @@ const Inputs = () => {
           <Input
             id="comany_logo_url"
             type="text"
-            label="Logo URL"
+            label="Company logo URL"
             placeholder="Logo URL"
             note=""
             required={null}
@@ -82,7 +82,7 @@ const Inputs = () => {
           <Input
             id="company_website"
             type="text"
-            label="Website"
+            label="Company website"
             placeholder="Website"
             note=""
             required={null}
@@ -90,7 +90,7 @@ const Inputs = () => {
           <Input
             id="company_twitter"
             type="text"
-            label="Twitter"
+            label="Company Twitter"
             placeholder="Twitter URL"
             note=""
             required={null}

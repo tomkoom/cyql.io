@@ -32,8 +32,9 @@ section {
   flex: 1;
 }
 
-.highlightsI h3 {
+.highlightTitle {
   font-size: var(--fontSize6);
+  font-weight: var(--fwMedium);
   line-height: 133%;
 }
 

@@ -1,10 +1,10 @@
 import React from "react";
 
-const SubmitBtn = ({ submissionLoader }) => {
+const SubmitBtn = ({ isSubmitting }) => {
   return (
     <div>
       <button className="submitBtn" type="submit">
-        {submissionLoader ? "Submitting..." : "Submit"}
+        {isSubmitting ? "Submitting..." : "Submit"}
       </button>
     </div>
   );

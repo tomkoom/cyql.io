@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import css from "./PostJob.module.css";
 
-// backend
-import { Actor, HttpAgent } from "@dfinity/agent";
-import {
-  canisterId as cyqlCanisterId,
-  idlFactory as cyqlIdlFactory,
-} from "../../../../../declarations/icapps/index";
-
 // components
 import { BackBtn } from "../../../Components/index";
 import Inputs from "./Inputs/Inputs";
 import SubmitBtn from "./SubmitBtn/SubmitBtn";
+import JobSubmitted from "./JobSubmitted/JobSubmitted";
 
 // auth
 import { useAuth } from "../../../Context/AuthContext";
@@ -21,32 +15,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSignInModal } from "../../../State/modals";
 import { selectJob } from "../../../State/jobs/job";
 
-// host
-// const host = "https://mainnet.dfinity.network";
-const hostLocal = "http://127.0.0.1:8080/";
-const cyqlCanisterIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
-
 const PostJob = () => {
   const dispatch = useDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { principalIdStr } = useAuth();
+  const [jobSubmitted, setJobSubmitted] = useState(false);
+  const { actor, principalIdStr } = useAuth();
   const job = useSelector(selectJob);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    if (principalIdStr !== "") {
+    if (actor !== undefined && principalIdStr !== "") {
       try {
         setIsSubmitting(true);
-        const cyql = Actor.createActor(cyqlIdlFactory, {
-          agent: new HttpAgent({ hostLocal }),
-          canisterId: cyqlCanisterIdLocal,
-        });
-
         const timestamp = Date.now();
         const timestampStr = timestamp.toString();
         const jobObj = { ...job, submitted: timestampStr, publisher: principalIdStr };
-        await cyql.addJob(jobObj).then((res) => console.log(res));
+        await actor
+          .addJob(jobObj)
+          .catch((err) => console.log(err));
         setIsSubmitting(false);
+        setJobSubmitted(true);
       } catch (err) {
         console.log(err);
       }
@@ -63,10 +51,14 @@ const PostJob = () => {
       </div>
 
       {/* form */}
-      <form className={css.form} onSubmit={handleFormSubmit}>
-        <Inputs />
-        <SubmitBtn isSubmitting={isSubmitting} />
-      </form>
+      {!jobSubmitted ? (
+        <form className={css.form} onSubmit={handleFormSubmit}>
+          <Inputs />
+          <SubmitBtn isSubmitting={isSubmitting} />
+        </form>
+      ) : (
+        <JobSubmitted />
+      )}
     </div>
   );
 };

@@ -8,6 +8,11 @@ module Types {
     #IsAnonymous;
   };
 
+  public type AddJobErr = {
+    #Err;
+    #IsAnonymous;
+  };
+
   public type ProfileId = Principal;
   public type ProfileCounter = Nat;
 

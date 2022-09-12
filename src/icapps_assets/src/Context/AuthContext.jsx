@@ -159,6 +159,7 @@ export function AuthProvider({ children }) {
           await createActorWithPlug();
           await getPlugUserData();
           setIsAuthenticated(true);
+          return "";
         }
       });
     } else {
@@ -171,6 +172,7 @@ export function AuthProvider({ children }) {
         getStoicUserData(identity);
         createActorWithStoic(identity);
         setIsAuthenticated(true);
+        return "";
       }
     });
 
@@ -181,6 +183,7 @@ export function AuthProvider({ children }) {
           await createActorWithInfinityWallet();
           await getInfinityWalletUserData();
           setIsAuthenticated(true);
+          return "";
         }
       });
     } else {

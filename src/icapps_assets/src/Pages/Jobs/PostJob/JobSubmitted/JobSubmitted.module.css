@@ -1,0 +1,6 @@
+/* job submitted */
+
+.jobSubmitted {
+  display: flex;
+  justify-content: center;
+}

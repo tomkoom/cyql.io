@@ -34,6 +34,8 @@ const projectInitialState = {
   nftUnits: "",
   nftUnitPrice: "",
   nftSaleDate: "",
+  // canister id
+  // nft previews
 
   // token
   // hasToken: false,

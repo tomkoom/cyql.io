@@ -11,7 +11,7 @@
   --underlay: var(--coolGray10);
   --underlay2: var(--coolGray20);
   --underlay3: var(--coolGray30);
-  --underlayLighter: var(--coolGray80);
+  /* --underlayLighter: var(--coolGray80); */
 }
 
 .dark {
@@ -25,5 +25,5 @@
   --underlay: var(--coolGray90);
   --underlay2: var(--coolGray80);
   --underlay3: var(--coolGray70);
-  --underlayLighter: var(--coolGray20);
+  /* --underlayLighter: var(--coolGray20); */
 }

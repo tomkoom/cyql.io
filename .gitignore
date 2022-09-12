@@ -17,8 +17,8 @@ dist/
 # prettier config
 .prettierrc
 
-# k
-k/
+# constants
+constants/
 
 # firebase
 firebase/
