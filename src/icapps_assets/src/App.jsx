@@ -174,8 +174,8 @@ const App = () => {
 
   useEffect(() => {
     if (actor !== undefined) {
-      // setJobs(actor);
-      setJobsTest();
+      setJobs(actor);
+      // setJobsTest();
     }
   }, [actor]);
 

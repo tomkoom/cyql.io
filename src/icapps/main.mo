@@ -70,11 +70,15 @@ actor {
   };
 
   public query func getJobs() : async [(T.JobCounter, T.Job)] {
-    return Iter.toArray(jobs.entries());
+    Iter.toArray(jobs.entries());
   };
 
   public query func getJobsNum() : async Nat {
-    return jobs.size();
+    jobs.size();
+  };
+
+  public shared ({ caller }) func deleteJob(id : T.JobCounter) : async () {
+    jobs.delete(id);
   };
 
   // UTILS

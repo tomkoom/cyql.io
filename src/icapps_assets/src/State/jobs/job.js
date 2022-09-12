@@ -37,7 +37,7 @@ const job = createSlice({
   },
   reducers: {
     setJob(state, { payload }) {
-      state.job = payload;
+      state.job = { ...state.job, ...payload };
     },
     setActiveJob(state, { payload }) {
       state.activeJob = payload;
