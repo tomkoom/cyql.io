@@ -52,10 +52,11 @@ type Job =
    contactEmail: text;
    contactTwitter: text;
    description: text;
-   edited: text;
+   edited: Time;
    equity: text;
    publisher: text;
-   submitted: text;
+   sourceUrl: text;
+   submitted: Time;
    title: text;
  };
 type HourlyMetricsData = 

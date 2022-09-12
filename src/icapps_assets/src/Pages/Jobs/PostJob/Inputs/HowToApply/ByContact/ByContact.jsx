@@ -15,42 +15,42 @@ const ByContact = () => {
   return (
     <div className={css.byContact}>
       <div className={css.field}>
-        <label className="label" htmlFor="application_email">
+        <label className="label" htmlFor="contactEmail">
           Email
         </label>
         <input
           className="input"
           type="email"
-          id="application_email"
-          name="application_email"
+          id="contactEmail"
+          name="contactEmail"
           placeholder="Email"
           onChange={handleChange}
         />
       </div>
 
       <div className={css.field}>
-        <label className="label" htmlFor="application_twitter">
+        <label className="label" htmlFor="contactTwitter">
           Twitter
         </label>
         <input
           className="input"
           type="text"
-          id="application_twitter"
-          name="application_twitter"
+          id="contactTwitter"
+          name="contactTwitter"
           placeholder="https://twitter.com/yourhandle"
           onChange={handleChange}
         />
       </div>
 
       <div className={css.field}>
-        <label className="label" htmlFor="application_discord">
+        <label className="label" htmlFor="contactDiscord">
           Discord
         </label>
         <input
           className="input"
           type="text"
-          id="application_discord"
-          name="application_discord"
+          id="contactDiscord"
+          name="contactDiscord"
           placeholder="yourhandle#1111"
           onChange={handleChange}
         />

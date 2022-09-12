@@ -1,0 +1,6 @@
+/* company details */
+
+.title {
+  font-size: var(--fontSize6);
+  margin-bottom: 0.5rem;
+}

@@ -28,6 +28,7 @@ module Types {
     title : Text;
     category : Text;
     description : Text;
+    sourceUrl : Text;
     compensation : Text;
     equity : Text;
 
@@ -44,8 +45,8 @@ module Types {
     contactDiscord : Text;
 
     // meta
-    submitted : Text;
-    edited : Text;
+    submitted : Time;
+    edited : Time;
     publisher : Text;
 
     // FE: icapps_assets/src/State/jobs/job.js

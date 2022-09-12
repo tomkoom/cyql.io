@@ -23,9 +23,15 @@ const formatDiscord = (url) => {
 };
 
 const formatDate = (timestamp) => {
+  const options = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
   const ts = timestamp;
   const date = new Date(ts);
-  return date.toLocaleString("en-GB");
+  return date.toLocaleString("en-GB", options);
 };
 
 const formatDate2 = (timestamp) => {

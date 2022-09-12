@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Profiles.module.css";
 
 // utils
-import { formatPrincipal } from "../../../Utils/formatPrincipal";
+import { formatId } from "../../../Utils/formatId";
 import { formatDate } from "../../../Utils/format";
 
 // state
@@ -34,8 +34,8 @@ const Profiles = () => {
           .sort((a, b) => sort(a, b))
           .map((profile) => (
             <tr key={profile.id}>
-              <td>{formatPrincipal(profile.id)}</td>
-              <td>{formatPrincipal(profile.accountId)}</td>
+              <td>{formatId(profile.id)}</td>
+              <td>{formatId(profile.accountId)}</td>
               <td>{profile.signInMethod}</td>
               <td>{formatDate(profile.firstSignIn)}</td>
               <td>{formatDate(profile.lastVisit)}</td>

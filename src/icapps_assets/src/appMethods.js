@@ -65,7 +65,9 @@ const setJobs = async (actor) => {
       jobs.forEach((el) => {
         const id = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
         const job = el[1];
-        jobsArr.push({ id: id, ...job });
+        job.submitted = Number(job.submitted);
+        job.edited = Number(job.edited);
+        jobsArr.push({ id, ...job });
       });
       store.dispatch(setJobsAction(jobsArr));
     })
@@ -84,7 +86,9 @@ const setJobsTest = async () => {
       jobs.forEach((el) => {
         const id = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
         const job = el[1];
-        jobsArr.push({ id: id, ...job });
+        job.submitted = Number(job.submitted);
+        job.edited = Number(job.edited);
+        jobsArr.push({ id, ...job });
       });
       store.dispatch(setJobsAction(jobsArr));
     })

@@ -40,10 +40,7 @@ const SignInModal = () => {
       className={signInModal ? `${css.modal} ${css.active}` : css.modal}
       onClick={() => dispatch(setSignInModal(false))}
     >
-      <div
-        className={signInModal ? `${css.content} ${css.active}` : css.content}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={css.content} onClick={(e) => e.stopPropagation()}>
         <div className={css.top}>
           <h3 className={css.title}>Choose your wallet</h3>
           <CrossIcon onClick={() => dispatch(setSignInModal(false))} />

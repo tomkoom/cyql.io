@@ -39,7 +39,7 @@ import {
   UpcomingNfts,
 } from "./Pages/index";
 import { Summary, Nav, Sidebar, Footer } from "./Components/index";
-import { ProjectModal, SignInModal } from "./Modals/index";
+import { JobModal, ProjectModal, SignInModal } from "./Modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -50,10 +50,12 @@ import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile"
 
 // state – modals
 import {
-  selectMobileMenuModal,
+  setJobModal,
+  selectJobModal,
+  setSignInModal,
   selectSignInModal,
   setMobileMenuModal,
-  setSignInModal,
+  selectMobileMenuModal,
 } from "./State/modals";
 import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
 
@@ -87,6 +89,7 @@ const App = () => {
   const theme = useSelector(selectTheme);
 
   // modals
+  const jobModal = useSelector(selectJobModal);
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const projectModal = useSelector(selectProjectModal);
@@ -112,12 +115,12 @@ const App = () => {
 
   // prevent from scrolling when modal is active
   useEffect(() => {
-    if (signInModal || mobileMenuModal) {
+    if (jobModal || signInModal || mobileMenuModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [signInModal, mobileMenuModal]);
+  }, [jobModal, signInModal, mobileMenuModal]);
 
   // reset mobile menu when deivice size > 1023
   useEffect(() => {
@@ -302,6 +305,7 @@ const App = () => {
       {/* modals */}
       {signInModal && <SignInModal />}
       {projectModal && <ProjectModal />}
+      {jobModal && <JobModal />}
 
       {/* toast */}
       <ToastContainer />

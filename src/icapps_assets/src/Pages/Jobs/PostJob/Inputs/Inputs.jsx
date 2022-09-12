@@ -28,7 +28,7 @@ const Inputs = () => {
   return (
     <div className={css.inputs}>
       <div className={css.section}>
-        <h3 className={css.title}>Position Information</h3>
+        <h3 className={css.title}>Position</h3>
         <div className={css.fields}>
           <Input
             id="title"
@@ -41,6 +41,14 @@ const Inputs = () => {
           />
           <Categories {...jobCategories} />
           <TextArea {...jobDescription} />
+          <Input
+            id="sourceUrl"
+            type="text"
+            label="Source URL"
+            placeholder="Original job post"
+            note=""
+            required={null}
+          />
           <Input
             id="compensation"
             type="text"
@@ -64,7 +72,7 @@ const Inputs = () => {
         <h3 className={css.title}>Company Details</h3>
         <div className={css.fields}>
           <Input
-            id="company_name"
+            id="companyName"
             type="text"
             label="Company name"
             placeholder="Your company name"
@@ -72,7 +80,7 @@ const Inputs = () => {
             required={null}
           />
           <Input
-            id="comany_logo_url"
+            id="comanyLogoUrl"
             type="text"
             label="Company logo URL"
             placeholder="Logo URL"
@@ -80,7 +88,7 @@ const Inputs = () => {
             required={null}
           />
           <Input
-            id="company_website"
+            id="companyWebsite"
             type="text"
             label="Company website"
             placeholder="Website"
@@ -88,7 +96,7 @@ const Inputs = () => {
             required={null}
           />
           <Input
-            id="company_twitter"
+            id="companyTwitter"
             type="text"
             label="Company Twitter"
             placeholder="Twitter URL"

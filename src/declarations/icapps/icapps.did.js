@@ -1,12 +1,14 @@
 export const idlFactory = ({ IDL }) => {
+  const Time = IDL.Int;
   const Job = IDL.Record({
     'contactDiscord' : IDL.Text,
     'compensation' : IDL.Text,
     'title' : IDL.Text,
-    'submitted' : IDL.Text,
-    'edited' : IDL.Text,
+    'submitted' : Time,
+    'edited' : Time,
     'publisher' : IDL.Text,
     'description' : IDL.Text,
+    'sourceUrl' : IDL.Text,
     'companyTwitter' : IDL.Text,
     'contactTwitter' : IDL.Text,
     'applicationUrl' : IDL.Text,
@@ -102,7 +104,6 @@ export const idlFactory = ({ IDL }) => {
   });
   const CanisterMetrics = IDL.Record({ 'data' : CanisterMetricsData });
   const JobCounter = IDL.Nat;
-  const Time = IDL.Int;
   const Profile = IDL.Record({
     'accountId' : IDL.Text,
     'lastVisit' : Time,

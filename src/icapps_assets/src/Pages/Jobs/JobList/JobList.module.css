@@ -1,6 +1,7 @@
 /* job list */
 
 .jobList {
+  margin-top: 1rem;
   margin-bottom: 8rem;
 }
 
@@ -17,8 +18,43 @@
   background-color: var(--underlay);
 }
 
-.coll {
+.main,
+.description,
+.links,
+.date {
   flex: 1;
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--secondaryColor);
+  line-height: 150%;
+}
+
+.links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.icon {
+  font-size: var(--fontSize6);
+  color: var(--secondaryColor);
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--secondaryColor);
 }
 
 .title {
@@ -26,8 +62,10 @@
   margin-bottom: 0.25rem;
 }
 
-.socials {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+.category {
+  font-size: 0.9rem;
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  padding: 0.1rem 0.25rem;
+  border-radius: 0.25rem;
 }

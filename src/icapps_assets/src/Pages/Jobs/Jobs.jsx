@@ -11,7 +11,7 @@ const Jobs = () => {
   return (
     <div className={css.jobs}>
       <div className={css.title}>
-        <h2 className="pageTitle">IC Jobs</h2>
+        <h2 className="pageTitle">Jobs</h2>
         <button className="primaryBtn" onClick={toPostJob}>
           Post a job
         </button>

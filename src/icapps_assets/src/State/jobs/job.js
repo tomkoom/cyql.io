@@ -5,6 +5,7 @@ const jobInitialState = {
   title: "",
   category: "",
   description: "",
+  sourceUrl: "",
   compensation: "",
   equity: "",
 
@@ -21,8 +22,8 @@ const jobInitialState = {
   contactDiscord: "",
 
   // meta
-  submitted: "",
-  edited: "",
+  submitted: 0,
+  edited: 0,
   publisher: "",
 
   // icapps/jobs/types.mo
@@ -32,16 +33,21 @@ const job = createSlice({
   name: "job",
   initialState: {
     job: jobInitialState,
+    activeJob: undefined,
   },
   reducers: {
     setJob(state, { payload }) {
-      state.job = { ...state.job, ...payload };
+      state.job = payload;
+    },
+    setActiveJob(state, { payload }) {
+      state.activeJob = payload;
     },
   },
 });
 
 const selectJob = (state) => state.job.job;
-export { selectJob };
+const selectActiveJob = (state) => state.job.activeJob;
+export { selectJob, selectActiveJob };
 
-export const { setJob } = job.actions;
+export const { setJob, setActiveJob } = job.actions;
 export default job.reducer;

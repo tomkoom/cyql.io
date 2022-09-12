@@ -24,10 +24,11 @@ type Job =
     contactEmail : Text;
     contactTwitter : Text;
     description : Text;
-    edited : Text;
+    edited : Time__1;
     equity : Text;
     publisher : Text;
-    submitted : Text;
+    sourceUrl : Text;
+    submitted : Time__1;
     title : Text
   };
 type JobCounter = Nat;

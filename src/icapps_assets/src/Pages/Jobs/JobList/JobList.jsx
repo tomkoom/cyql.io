@@ -4,20 +4,29 @@ import css from "./JobList.module.css";
 // utils
 import { substring70 } from "../../../Utils/substirng";
 
+// utils
+import { formatDate } from "../../../Utils/format";
+import { formatId } from "../../../Utils/formatId";
+import { iGlobe, iTwitter } from "../../../Icons/Icons";
+
 // state
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectJobs } from "../../../State/jobs/jobs";
+import { setActiveJob } from "../../../State/jobs/job";
+import { setJobModal } from "../../../State/modals";
 
 const JobList = () => {
+  const dispatch = useDispatch();
   const jobs = useSelector(selectJobs);
   const jobsCopy = [...jobs];
 
   const sort = (a, b) => {
-    return a.id - b.id;
+    return b.submitted - a.submitted;
   };
 
-  const handleClick = () => {
-    console.log("123");
+  const openModal = (job) => {
+    dispatch(setActiveJob(job));
+    dispatch(setJobModal(true));
   };
 
   return (
@@ -25,26 +34,42 @@ const JobList = () => {
       {jobsCopy
         .sort((a, b) => sort(a, b))
         .map((job, i) => (
-          <div className={css.row} key={i} onClick={handleClick}>
-            <div className={css.coll}>
+          <div className={css.row} key={i} onClick={() => openModal(job)}>
+            <div className={css.main}>
               <h3 className={css.title}>{job.title}</h3>
-              <p>{job.category}</p>
-              <p>{job.company_name}</p>
+              {job.category && <span className={css.category}>{job.category}</span>}
+              {job.companyName && <p>{job.companyName}</p>}
             </div>
-            <div className={css.coll}>
-              {job.company_website || job.company_twitter ? (
-                <ul className={css.socials}>
-                  {job.company_website && <li>{job.company_website}</li>}
-                  {job.company_twitter && <li>{job.company_twitter}</li>}
+            <div className={css.description}>
+              {job.description && <p>{substring70(job.description)}</p>}
+            </div>
+            <div className={css.links}>
+              {job.companyWebsite || job.companyTwitter ? (
+                <ul>
+                  {job.companyWebsite && (
+                    <li>
+                      <span className={css.icon}>{iGlobe}</span>
+                    </li>
+                  )}
+                  {job.companyTwitter && (
+                    <li>
+                      <span className={css.icon}>{iTwitter}</span>
+                    </li>
+                  )}
                 </ul>
               ) : (
                 ""
               )}
             </div>
-            <div className={css.coll}>
-              {job.description && <p>{substring70(job.description)}</p>}
+            <div className={css.date}>
+              <p>Posted {formatDate(job.submitted)}</p>
+              <p>
+                By{" "}
+                {job.publisher === "frr2p-iyhp3-ioffo-ysh2e-babmd-f6gyf-slb4h-whtia-5kg2n-5ix4u-dae"
+                  ? "cyql"
+                  : formatId(job.publisher)}
+              </p>
             </div>
-            <div>{job.submitted.toString()}</div>
           </div>
         ))}
     </div>

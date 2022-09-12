@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Publisher.module.css";
 
 // utils
-import { formatPrincipal } from "../../../../../Utils/formatPrincipal";
+import { formatId } from "../../../../../Utils/formatId";
 
 // auth
 import { useAuth } from "../../../../../Context/AuthContext";
@@ -22,7 +22,7 @@ const Publisher = () => {
   return (
     <div className={css.publisher}>
       {principalIdStr ? (
-        <span className={css.badge}>{formatPrincipal(principalIdStr)}</span>
+        <span className={css.badge}>{formatId(principalIdStr)}</span>
       ) : (
         <button className={css.connectWalletBtn} onClick={handleClick}>
           Connect your wallet

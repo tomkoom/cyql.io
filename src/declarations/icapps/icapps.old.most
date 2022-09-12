@@ -13,20 +13,22 @@ type DayDataId = Nat32;
 type DayUpdateCallsCountData = [var Nat64];
 type Job =
   {
-    application_discord : Text;
-    application_email : Text;
-    application_twitter : Text;
-    application_url : Text;
+    applicationUrl : Text;
     category : Text;
-    company_logo_url : Text;
-    company_name : Text;
-    company_twitter : Text;
-    company_website : Text;
+    companyLogoUrl : Text;
+    companyName : Text;
+    companyTwitter : Text;
+    companyWebsite : Text;
     compensation : Text;
+    contactDiscord : Text;
+    contactEmail : Text;
+    contactTwitter : Text;
     description : Text;
+    edited : Time__1;
     equity : Text;
     publisher : Text;
-    submitted : Text;
+    sourceUrl : Text;
+    submitted : Time__1;
     title : Text
   };
 type JobCounter = Nat;
