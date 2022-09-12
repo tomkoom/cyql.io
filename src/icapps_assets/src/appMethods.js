@@ -3,6 +3,18 @@ import store from "./State/_store";
 import { setProfiles as setProfilesAction } from "./State/profiles/profiles";
 import { setJobs as setJobsAction } from "./State/jobs/jobs";
 
+// backend
+import { Actor, HttpAgent } from "@dfinity/agent";
+import {
+  canisterId as cyqlCanisterId,
+  idlFactory as cyqlIdlFactory,
+} from "../../declarations/icapps/index";
+
+// host
+// const host = "https://mainnet.dfinity.network";
+const hostLocal = "http://127.0.0.1:8080/";
+const cyqlCanisterIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
+
 const addUserToDb = async (actor, accountId, signInMethod) => {
   const timestamp = Date.now();
   const profile = await actor.getProfile().catch((err) => console.log(err));
@@ -60,4 +72,23 @@ const setJobs = async (actor) => {
     .catch((err) => console.log(err));
 };
 
-export { addUserToDb, setProfiles, setJobs };
+const setJobsTest = async () => {
+  const testActor = Actor.createActor(cyqlIdlFactory, {
+    agent: new HttpAgent({ hostLocal }),
+    canisterId: cyqlCanisterIdLocal,
+  });
+  await testActor
+    .getJobs()
+    .then((jobs) => {
+      const jobsArr = [];
+      jobs.forEach((el) => {
+        const id = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
+        const job = el[1];
+        jobsArr.push({ id: id, ...job });
+      });
+      store.dispatch(setJobsAction(jobsArr));
+    })
+    .catch((err) => console.log(err));
+};
+
+export { addUserToDb, setProfiles, setJobs, setJobsTest };

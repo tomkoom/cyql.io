@@ -61,21 +61,22 @@ export interface HourlyMetricsData {
   'timeMillis' : bigint,
 }
 export interface Job {
+  'contactDiscord' : string,
   'compensation' : string,
-  'company_twitter' : string,
   'title' : string,
   'submitted' : string,
-  'application_twitter' : string,
+  'edited' : string,
   'publisher' : string,
-  'company_website' : string,
-  'company_name' : string,
   'description' : string,
+  'companyTwitter' : string,
+  'contactTwitter' : string,
+  'applicationUrl' : string,
+  'contactEmail' : string,
+  'companyName' : string,
   'category' : string,
-  'application_email' : string,
-  'application_discord' : string,
+  'companyWebsite' : string,
   'equity' : string,
-  'application_url' : string,
-  'company_logo_url' : string,
+  'companyLogoUrl' : string,
 }
 export type JobCounter = bigint;
 export interface LogMessagesData { 'timeNanos' : Nanos, 'message' : string }
@@ -105,6 +106,7 @@ export type Time = bigint;
 export type UpdateCallsAggregatedData = Array<bigint>;
 export interface _SERVICE {
   'addJob' : ActorMethod<[Job], Result_1>,
+  'addJobTest' : ActorMethod<[Job], undefined>,
   'collectCanisterMetrics' : ActorMethod<[], undefined>,
   'doThat' : ActorMethod<[], undefined>,
   'doThis' : ActorMethod<[], undefined>,

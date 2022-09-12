@@ -9,21 +9,20 @@ const jobInitialState = {
   equity: "",
 
   // company
-  company_name: "",
-  company_logo_url: "",
-  company_website: "",
-  company_twitter: "",
+  companyName: "",
+  companyLogoUrl: "",
+  companyWebsite: "",
+  companyTwitter: "",
 
   // application
-  application_url: "",
-  application_email: "",
-  application_twitter: "",
-  application_discord: "",
+  applicationUrl: "",
+  contactEmail: "",
+  contactTwitter: "",
+  contactDiscord: "",
 
   // meta
-  // id: 0,
   submitted: "",
-  // edited: "",
+  edited: "",
   publisher: "",
 
   // icapps/jobs/types.mo

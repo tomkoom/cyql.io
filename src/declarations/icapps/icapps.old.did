@@ -134,11 +134,7 @@ type CanisterLogFeature =
  };
 type CanisterHeapMemoryAggregatedData = vec nat64;
 type CanisterCyclesAggregatedData = vec nat64;
-type AddJobErr = 
- variant {
-   Err;
-   IsAnonymous;
- };
+type AddJobErr = variant {Err;};
 service : {
   addJob: (Job) -> (Result_1);
   collectCanisterMetrics: () -> ();

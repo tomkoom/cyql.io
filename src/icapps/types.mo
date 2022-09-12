@@ -32,20 +32,20 @@ module Types {
     equity : Text;
 
     // company
-    company_name : Text;
-    company_logo_url : Text;
-    company_website : Text;
-    company_twitter : Text;
+    companyName : Text;
+    companyLogoUrl : Text;
+    companyWebsite : Text;
+    companyTwitter : Text;
 
     // application
-    application_url : Text;
-    application_email : Text;
-    application_twitter : Text;
-    application_discord : Text;
+    applicationUrl : Text;
+    contactEmail : Text;
+    contactTwitter : Text;
+    contactDiscord : Text;
 
     // meta
     submitted : Text;
-    // edited: Text,
+    edited : Text;
     publisher : Text;
 
     // FE: icapps_assets/src/State/jobs/job.js

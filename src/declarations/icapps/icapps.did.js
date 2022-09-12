@@ -1,20 +1,21 @@
 export const idlFactory = ({ IDL }) => {
   const Job = IDL.Record({
+    'contactDiscord' : IDL.Text,
     'compensation' : IDL.Text,
-    'company_twitter' : IDL.Text,
     'title' : IDL.Text,
     'submitted' : IDL.Text,
-    'application_twitter' : IDL.Text,
+    'edited' : IDL.Text,
     'publisher' : IDL.Text,
-    'company_website' : IDL.Text,
-    'company_name' : IDL.Text,
     'description' : IDL.Text,
+    'companyTwitter' : IDL.Text,
+    'contactTwitter' : IDL.Text,
+    'applicationUrl' : IDL.Text,
+    'contactEmail' : IDL.Text,
+    'companyName' : IDL.Text,
     'category' : IDL.Text,
-    'application_email' : IDL.Text,
-    'application_discord' : IDL.Text,
+    'companyWebsite' : IDL.Text,
     'equity' : IDL.Text,
-    'application_url' : IDL.Text,
-    'company_logo_url' : IDL.Text,
+    'companyLogoUrl' : IDL.Text,
   });
   const AddJobErr = IDL.Variant({ 'Err' : IDL.Null, 'IsAnonymous' : IDL.Null });
   const Result_1 = IDL.Variant({ 'ok' : IDL.Null, 'err' : AddJobErr });
@@ -113,6 +114,7 @@ export const idlFactory = ({ IDL }) => {
   const Result = IDL.Variant({ 'ok' : IDL.Null, 'err' : ProfileErr });
   return IDL.Service({
     'addJob' : IDL.Func([Job], [Result_1], []),
+    'addJobTest' : IDL.Func([Job], [], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
     'doThat' : IDL.Func([], [], []),
     'doThis' : IDL.Func([], [], []),

@@ -41,17 +41,18 @@ type LogMessagesData =
 type JobCounter = nat;
 type Job = 
  record {
-   application_discord: text;
-   application_email: text;
-   application_twitter: text;
-   application_url: text;
+   applicationUrl: text;
    category: text;
-   company_logo_url: text;
-   company_name: text;
-   company_twitter: text;
-   company_website: text;
+   companyLogoUrl: text;
+   companyName: text;
+   companyTwitter: text;
+   companyWebsite: text;
    compensation: text;
+   contactDiscord: text;
+   contactEmail: text;
+   contactTwitter: text;
    description: text;
+   edited: text;
    equity: text;
    publisher: text;
    submitted: text;
@@ -141,6 +142,7 @@ type AddJobErr =
  };
 service : {
   addJob: (Job) -> (Result_1);
+  addJobTest: (Job) -> ();
   collectCanisterMetrics: () -> ();
   doThat: () -> ();
   doThis: () -> ();

@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
   const [signInMethod, setSignInMethod] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // ––– PLUG –––
+  // PLUG
 
   const signInWithPlug = async () => {
     try {
@@ -73,7 +73,7 @@ export function AuthProvider({ children }) {
 
   const disconnectPlug = () => window.ic?.plug?.disconnect();
 
-  //  ––– STOIC –––
+  //  STOIC
 
   const signInWithStoic = async () => {
     try {
@@ -108,7 +108,7 @@ export function AuthProvider({ children }) {
 
   const disconnectStoic = async () => await StoicIdentity.disconnect();
 
-  //  ––– INFINITY WALLET –––
+  //  INFINITY WALLET
 
   const signInWithInfinityWallet = async () => {
     const whitelist = [cyqlCanisterId];
@@ -198,22 +198,12 @@ export function AuthProvider({ children }) {
     setAccountId("");
     setIsAuthenticated(false);
 
-    if (signInMethod === "plug") {
-      disconnectPlug();
-    }
-
-    if (signInMethod === "stoic") {
-      disconnectStoic();
-    }
-
-    if (signInMethod === "infinitywallet") {
-      disconnectInfinityWallet();
-    }
-
+    signInMethod === "plug" && disconnectPlug();
+    signInMethod === "stoic" && disconnectStoic();
+    signInMethod === "infinitywallet" && disconnectInfinityWallet();
     setSignInMethod(""); // unset sign in method
-    if (history.location.pathname === "/profile") {
-      toHome();
-    }
+
+    history.location.pathname === "/profile" && toHome();
   };
 
   const value = {

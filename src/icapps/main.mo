@@ -64,6 +64,11 @@ actor {
     };
   };
 
+  public func addJobTest(job : T.Job) : async () {
+    jobs.put(jobCounter, job);
+    jobCounter += 1;
+  };
+
   public query func getJobs() : async [(T.JobCounter, T.Job)] {
     return Iter.toArray(jobs.entries());
   };

@@ -62,7 +62,7 @@ import { setNftData } from "./Pages/Nft/setNftData";
 import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
 
 // methods
-import { addUserToDb, setProfiles, setJobs } from "./appMethods";
+import { addUserToDb, setProfiles, setJobs, setJobsTest } from "./appMethods";
 
 const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
 const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
@@ -171,7 +171,8 @@ const App = () => {
 
   useEffect(() => {
     if (actor !== undefined) {
-      setJobs(actor);
+      // setJobs(actor);
+      setJobsTest();
     }
   }, [actor]);
 
