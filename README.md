@@ -1,8 +1,8 @@
 CYQL is a directory of projects built on the [Internet Computer](https://internetcomputer.org/).
 
-FE canister id: n7ib3-4qaaa-aaaai-qagnq-cai
-BE canister id: nrkmt-haaaa-aaaai-qagmq-cai
-Live: https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/
+- FE canister id: n7ib3-4qaaa-aaaai-qagnq-cai
+- BE canister id: nrkmt-haaaa-aaaai-qagmq-cai
+- Live: https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/
 
 # icapps
 
