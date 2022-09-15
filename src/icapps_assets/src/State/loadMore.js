@@ -4,20 +4,26 @@ const loadMore = createSlice({
   name: "loadMore",
   initialState: {
     itemsVisible: { value: 36 },
-    itemsVisible2: 48,
+    itemsVisibleNftHolders: 48,
+    itemsVisibleProjects: 64,
   },
   reducers: {
     setItemsVisible({ itemsVisible }) {
       itemsVisible.value += 36;
     },
-    setItemsVisible2(state, { payload }) {
-      state.itemsVisible2 += payload;
+    setItemsVisibleNftHolders(state, { payload }) {
+      state.itemsVisibleNftHolders += payload;
+    },
+    setItemsVisibleProjects(state, { payload }) {
+      state.itemsVisibleProjects += payload;
     },
   },
 });
 
-export const selectItemsVisible = (state) => state.loadMore.itemsVisible.value;
-export const selectItemsVisible2 = (state) => state.loadMore.itemsVisible2;
+const selectItemsVisible = (state) => state.loadMore.itemsVisible.value;
+const selectItemsVisibleNftHolders = (state) => state.loadMore.itemsVisibleNftHolders;
+const selectItemsVisibleProjects = (state) => state.loadMore.itemsVisibleProjects;
+export { selectItemsVisible, selectItemsVisibleNftHolders, selectItemsVisibleProjects };
 
-export const { setItemsVisible, setItemsVisible2 } = loadMore.actions;
+export const { setItemsVisible, setItemsVisibleNftHolders, setItemsVisibleProjects } = loadMore.actions;
 export default loadMore.reducer;

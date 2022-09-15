@@ -2,15 +2,14 @@
 
 .loadMoreBtn {
   text-align: center;
-  background-color: var(--underlay);
-  color: var(--primaryColor);
-  border: none;
   width: 100%;
-  padding: 1rem;
-  border-radius: var(--br05);
-  font-size: var(--fontSize6);
-  cursor: pointer;
+  font-size: var(--fs6);
+  background-color: var(--underlay);
   margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
 }
 
 .loadMoreBtn:hover {

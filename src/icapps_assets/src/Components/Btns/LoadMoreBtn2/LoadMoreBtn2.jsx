@@ -3,13 +3,15 @@ import css from "./LoadMoreBtn2.module.css";
 
 // redux
 import { useDispatch } from "react-redux";
-import { setItemsVisible2 } from "../../../State/loadMore";
 
-const LoadMoreBtn2 = ({ label, size }) => {
+const LoadMoreBtn2 = ({ label, size, setItemsVisible }) => {
   const dispatch = useDispatch();
+  const setItems = () => {
+    dispatch(setItemsVisible(size));
+  };
 
   return (
-    <button className={css.loadMoreBtn} onClick={() => dispatch(setItemsVisible2(size))}>
+    <button className={css.loadMoreBtn} onClick={setItems}>
       Load more {label} +{size}
     </button>
   );

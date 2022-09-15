@@ -3,17 +3,6 @@ import store from "./State/_store";
 import { setProfiles as setProfilesAction } from "./State/profiles/profiles";
 import { setJobs as setJobsAction } from "./State/jobs/jobs";
 
-// backend
-import { Actor, HttpAgent } from "@dfinity/agent";
-import {
-  canisterId as cyqlCanId,
-  idlFactory as cyqlIdlFactory,
-} from "../../declarations/icapps/index";
-
-// host
-import { hostLocal } from "./Context/host";
-const cyqlCanIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
-
 const addUserToDb = async (actor, accountId, signInMethod) => {
   const timestamp = Date.now();
   const profile = await actor.getProfile().catch((err) => console.log(err));
@@ -73,4 +62,4 @@ const setJobs = async (defaultActor) => {
     .catch((err) => console.log(err));
 };
 
-export { addUserToDb, setProfiles, setJobs, setJobsTest };
+export { addUserToDb, setProfiles, setJobs };

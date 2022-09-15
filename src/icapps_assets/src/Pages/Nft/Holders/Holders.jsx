@@ -1,16 +1,18 @@
 import React from "react";
 import css from "./Holders.module.css";
 
+// components
+import { LoadMoreBtn2 } from "../../../Components/index";
+
 // state
 import { useSelector } from "react-redux";
 import { selectHoldersOwnedNftsNum } from "../../../State/nft/nft";
-import { selectItemsVisible2 } from "../../../State/loadMore";
-import LoadMoreBtn2 from "../../../Components/Btns/LoadMoreBtn2/LoadMoreBtn2";
+import { selectItemsVisibleNftHolders, setItemsVisibleNftHolders } from "../../../State/loadMore";
 
 const Holders = () => {
   const holdersOwnedNftsNum = useSelector(selectHoldersOwnedNftsNum);
   const holdersOwnedNftsNumCopy = [...holdersOwnedNftsNum];
-  const itemsVisible = useSelector(selectItemsVisible2);
+  const itemsVisibleNftHolders = useSelector(selectItemsVisibleNftHolders);
 
   return holdersOwnedNftsNumCopy.length > 0 ? (
     <div>
@@ -18,7 +20,7 @@ const Holders = () => {
       <ul className={css.holderList}>
         {holdersOwnedNftsNumCopy
           .sort((a, b) => b.nftsOwned - a.nftsOwned)
-          .slice(0, itemsVisible)
+          .slice(0, itemsVisibleNftHolders)
           .map((h) => (
             <li key={h.accountId}>
               <div className={css.row}>
@@ -28,8 +30,8 @@ const Holders = () => {
             </li>
           ))}
       </ul>
-      {holdersOwnedNftsNumCopy.length > itemsVisible && (
-        <LoadMoreBtn2 label={"addresses"} size={48} />
+      {holdersOwnedNftsNumCopy.length > itemsVisibleNftHolders && (
+        <LoadMoreBtn2 label={"addresses"} size={48} setItemsVisible={setItemsVisibleNftHolders} />
       )}
     </div>
   ) : (

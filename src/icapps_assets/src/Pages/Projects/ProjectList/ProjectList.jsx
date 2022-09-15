@@ -10,23 +10,23 @@ import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "../../../Icons
 import { toApp } from "../../../Routes/routes";
 
 // components
-import { LoadMoreBtn } from "../../../Components/";
-import { UpvtBtn } from "../../../Components/index";
+import { LoadMoreBtn2, UpvtBtn } from "../../../Components/index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects } from "../../../State/projects";
+import { selectProjects, selectProjectsLength } from "../../../State/projects";
 import { selectCategory } from "../../../State/category";
 import { selectSearch } from "../../../State/search";
-import { selectItemsVisible } from "../../../State/loadMore";
+import { selectItemsVisibleProjects, setItemsVisibleProjects } from "../../../State/loadMore";
 import { selectSort } from "../../../State/sort";
 import { selectFilterByOpenSource, selectFilterByOnChain } from "../../../State/filter";
 
 const AppList = () => {
   const projects = useSelector(selectProjects);
+  const projectsNum = useSelector(selectProjectsLength);
   const category = useSelector(selectCategory);
   const search = useSelector(selectSearch);
-  const itemsVisible = useSelector(selectItemsVisible);
+  const itemsVisibleProjects = useSelector(selectItemsVisibleProjects);
   const sort = useSelector(selectSort);
   const filterOpenSource = useSelector(selectFilterByOpenSource);
   const filterOnChain = useSelector(selectFilterByOnChain);
@@ -83,7 +83,7 @@ const AppList = () => {
               }
             })
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
-            .slice(0, itemsVisible)
+            .slice(0, itemsVisibleProjects)
             .map((project) => (
               <li className={css.liI} key={project.idx} onClick={() => toApp(project.id)}>
                 <div className={css.main}>
@@ -141,8 +141,9 @@ const AppList = () => {
             ))}
         </ul>
       )}
-
-      <LoadMoreBtn />
+      {itemsVisibleProjects < projectsNum && (
+        <LoadMoreBtn2 label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
+      )}
     </div>
   );
 };

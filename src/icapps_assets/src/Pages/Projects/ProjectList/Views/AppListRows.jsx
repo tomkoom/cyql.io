@@ -28,9 +28,6 @@ const AppListRows = () => {
     return date.toDateString();
   };
 
-  // const tagOpenSource = useSelector((state) => state.projectsFiltering.openSource.value);
-  // const tagDeployedToIc = useSelector((state) => state.projectsFiltering.deployedToIc.value);
-
   return (
     <section>
       <div style={{ overflowX: "auto" }}>
