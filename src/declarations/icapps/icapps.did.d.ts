@@ -109,6 +109,7 @@ export interface _SERVICE {
   'addJob' : ActorMethod<[Job], Result_1>,
   'addJobTest' : ActorMethod<[Job], undefined>,
   'collectCanisterMetrics' : ActorMethod<[], undefined>,
+  'deleteJob' : ActorMethod<[JobCounter], undefined>,
   'doThat' : ActorMethod<[], undefined>,
   'doThis' : ActorMethod<[], undefined>,
   'getCanisterLog' : ActorMethod<

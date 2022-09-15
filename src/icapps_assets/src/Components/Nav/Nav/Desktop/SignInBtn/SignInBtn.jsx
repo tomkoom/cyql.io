@@ -13,9 +13,9 @@ import { setSignInModal } from "../../../../../State/modals";
 
 const SignInBtn = () => {
   const dispatch = useDispatch();
-  const { principalId } = useAuth;
+  const { signInLoading } = useAuth();
 
-  return (
+  return !signInLoading ? (
     <button
       className={`${css.signInBtn} secondaryBtn`}
       onClick={() => dispatch(setSignInModal(true))}
@@ -23,6 +23,8 @@ const SignInBtn = () => {
       <span>{iSignIn}</span>
       Connect Wallet
     </button>
+  ) : (
+    <p>Loading...</p>
   );
 };
 

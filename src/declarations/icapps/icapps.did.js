@@ -21,6 +21,7 @@ export const idlFactory = ({ IDL }) => {
   });
   const AddJobErr = IDL.Variant({ 'Err' : IDL.Null, 'IsAnonymous' : IDL.Null });
   const Result_1 = IDL.Variant({ 'ok' : IDL.Null, 'err' : AddJobErr });
+  const JobCounter = IDL.Nat;
   const GetLogMessagesFilter = IDL.Record({
     'analyzeCount' : IDL.Nat32,
     'messageRegex' : IDL.Opt(IDL.Text),
@@ -103,7 +104,6 @@ export const idlFactory = ({ IDL }) => {
     'daily' : IDL.Vec(DailyMetricsData),
   });
   const CanisterMetrics = IDL.Record({ 'data' : CanisterMetricsData });
-  const JobCounter = IDL.Nat;
   const Profile = IDL.Record({
     'accountId' : IDL.Text,
     'lastVisit' : Time,
@@ -117,6 +117,7 @@ export const idlFactory = ({ IDL }) => {
     'addJob' : IDL.Func([Job], [Result_1], []),
     'addJobTest' : IDL.Func([Job], [], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
+    'deleteJob' : IDL.Func([JobCounter], [], []),
     'doThat' : IDL.Func([], [], []),
     'doThis' : IDL.Func([], [], []),
     'getCanisterLog' : IDL.Func(

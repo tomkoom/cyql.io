@@ -145,6 +145,7 @@ service : {
   addJob: (Job) -> (Result_1);
   addJobTest: (Job) -> ();
   collectCanisterMetrics: () -> ();
+  deleteJob: (JobCounter) -> ();
   doThat: () -> ();
   doThis: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;

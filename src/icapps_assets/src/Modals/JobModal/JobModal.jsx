@@ -27,13 +27,11 @@ const JobModal = () => {
     <div className={jobModal ? `${css.modal} ${css.active}` : css.modal} onClick={closeModal}>
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
         <div className={css.top}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>{j.title}</h3>
-            <span className={css.category}>{j.category}</span>
-          </div>
+          <h3 className={css.title}>{j.title}</h3>
           <CrossIcon onClick={closeModal} />
         </div>
         <div className={css.position}>
+          {j.category && <span className={css.category}>{j.category}</span>}
           {j.sourceUrl && (
             <a
               className={css.originalPost}
