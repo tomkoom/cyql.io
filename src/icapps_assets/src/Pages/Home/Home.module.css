@@ -6,13 +6,35 @@ section {
 
 /* hero */
 
+.hero {
+  margin: 0 0 1rem 0;
+}
+
 .homeTitle {
-  line-height: 110%;
   max-width: 36rem;
 }
 
-.hero {
-  margin: 1rem 0;
+.projectsNum {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dots {
+  color: var(--tertiaryColor);
+}
+
+.icBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fontSize4);
+  padding: 0 1rem;
+  border-radius: 4rem;
+  background-color: var(--underlay);
+}
+
+.icLogo {
+  height: 2rem;
 }
 
 .hero p {

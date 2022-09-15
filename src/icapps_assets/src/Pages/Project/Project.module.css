@@ -70,17 +70,6 @@
   white-space: nowrap;
 }
 
-.description {
-  padding: 1rem;
-  background-color: var(--underlay);
-  border-radius: 0.5rem;
-}
-
-.description p {
-  line-height: 150%;
-  margin-top: 0.5rem;
-}
-
 .tags {
   display: flex;
   flex-wrap: wrap;

@@ -1,0 +1,17 @@
+/* description */
+
+.subtitle {
+  font-size: var(--fontSize6);
+  margin-bottom: 0.25rem;
+}
+
+.description {
+  padding: 1rem;
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.description p {
+  line-height: 150%;
+}

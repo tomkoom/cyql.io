@@ -5,14 +5,14 @@
 .collectionStats ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .collectionStats ul li {
   flex: 1;
   background-color: var(--underlay);
   padding: 0.75rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   white-space: nowrap;
 }
 

@@ -7,7 +7,7 @@ import { iExternalLink } from "../../Icons/Icons";
 
 // components
 import { BackBtn, ExpandableText, Loader, UpvtBtn } from "../../Components/index";
-import { CollStats, NftPreviews, TwitterTimeline, Links } from "./index";
+import { CollStats, Description, NftPreviews, TwitterTimeline, Links } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -63,10 +63,7 @@ const Project = () => {
                   </div>
                 </div>
 
-                <div className={css.description}>
-                  <h4 className={css.subtitle}>About {project.name}</h4>
-                  <p>{project.description}</p>
-                </div>
+                <Description name={project.name} description={project.description} />
 
                 {/* nft previews */}
                 {(project.nftImg1 || project.nftImg2 || project.nftImg3 || project.nftImg4) && (

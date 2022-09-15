@@ -143,6 +143,7 @@ ul {
 
 .pageTitle {
   font-size: var(--fontSize2);
+  line-height: 125%;
   margin-bottom: 0.5rem;
 }
 

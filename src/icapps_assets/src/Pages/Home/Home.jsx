@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./Home.module.css";
+import ICLogo from "../../../assets/ic-logo.svg";
 
 // icons
 import { iArrowRight } from "../../Icons/Icons";
@@ -19,7 +20,7 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects, selectNFTs } from "../../State/projects";
+import { selectProjects, selectProjectsLength, selectNFTs } from "../../State/projects";
 
 const ViewAllBtn = ({ nav }) => {
   return (
@@ -31,6 +32,7 @@ const ViewAllBtn = ({ nav }) => {
 
 const Home = () => {
   const projects = useSelector(selectProjects);
+  const projectsNum = useSelector(selectProjectsLength);
   const nfts = useSelector(selectNFTs);
   const upcomingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming");
   const ongoingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Open");
@@ -51,8 +53,23 @@ const Home = () => {
     <main className={css.home}>
       <section className={css.hero}>
         <h2 className={`${css.homeTitle} pageTitle`}>
-          Internet Computer projects community portal 🌀
+          The curated list of{" "}
+          {projectsNum !== 0 ? (
+            <span className={css.projectsNum} onClick={toApps}>
+              {projectsNum}
+            </span>
+          ) : (
+            <span className={css.dots}>...</span>
+          )}{" "}
+          <span className={css.icBadge}>
+            <img className={css.icLogo} src={ICLogo} alt="ic-logo" />
+            <span>Internet Computer</span>
+          </span>{" "}
+          projects
         </h2>
+        {/* <h2 className={`${css.homeTitle} pageTitle`}>
+          Internet Computer projects community portal 🌀
+        </h2> */}
         <p className="text">Discover new dApps, keep an eye out for upcoming NFT sales and more.</p>
       </section>
 
