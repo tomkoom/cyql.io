@@ -17,6 +17,7 @@
 
 .links {
   width: 20rem;
+  margin-bottom: 1rem;
 }
 
 .cover {
@@ -52,6 +53,11 @@
   font-weight: var(--fwBold);
 }
 
+.subtitle {
+  margin-bottom: 0.5rem;
+  font-size: var(--fontSize6);
+}
+
 .upvoteBtn {
   margin-left: auto;
   display: flex;
@@ -65,8 +71,14 @@
 }
 
 .description {
-  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+}
+
+.description p {
   line-height: 150%;
+  margin-top: 0.5rem;
 }
 
 .tags {
@@ -161,12 +173,6 @@
 
 .nftSaleStatus {
   background-color: var(--underlay2);
-}
-
-.subtitle {
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-  font-size: var(--fontSize6);
 }
 
 /* responsive */

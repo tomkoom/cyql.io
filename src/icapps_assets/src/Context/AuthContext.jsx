@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useState } from "react";
 
-// stoic
-import { StoicIdentity } from "ic-stoic-identity";
-
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import {
   idlFactory as cyqlIdlFactory,
   canisterId as cyqlCanId,
 } from "../../../declarations/icapps/index";
+
+// wallets
+import { StoicIdentity } from "ic-stoic-identity";
 
 // routes
 import { history } from "../Routes/history";
@@ -26,6 +26,7 @@ const useAuth = () => {
 };
 
 export function AuthProvider({ children }) {
+  const [defaultActor, setDefaultActor] = useState(undefined);
   const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
@@ -33,6 +34,14 @@ export function AuthProvider({ children }) {
   const [signInMethod, setSignInMethod] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const setDefActor = () => {
+    const defActor = Actor.createActor(cyqlIdlFactory, {
+      agent: new HttpAgent({ host }),
+      canisterId: cyqlCanId,
+    });
+    setDefaultActor(defActor);
+  };
 
   // PLUG
 
@@ -111,7 +120,7 @@ export function AuthProvider({ children }) {
 
   const disconnectStoic = async () => await StoicIdentity.disconnect();
 
-  //  INFINITY WALLET
+  //  INFINITYWALLET
 
   const signInWithInfinityWallet = async () => {
     const whitelist = [cyqlCanId];
@@ -216,6 +225,7 @@ export function AuthProvider({ children }) {
   };
 
   const value = {
+    defaultActor,
     actor,
     principalId,
     principalIdStr,
@@ -224,6 +234,7 @@ export function AuthProvider({ children }) {
     signInLoading,
     isAuthenticated,
     // sign in
+    setDefActor,
     signInWithPlug,
     signInWithStoic,
     signInWithInfinityWallet,

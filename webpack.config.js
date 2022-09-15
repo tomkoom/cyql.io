@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+// const CopyPlugin = require("copy-webpack-plugin");
 
 let localCanisters, prodCanisters, canisters;
 
@@ -87,6 +88,16 @@ module.exports = {
       template: path.join(__dirname, asset_entry),
       cache: false,
     }),
+    // new CopyPlugin({
+    //   patterns: [
+    //     {
+    //       from: path.join(__dirname, "src", "icapps_assets", "assets"),
+    //       to: path.join(__dirname, "dist", "icapps_assets"),
+    //     },
+    //   ],
+    // }),
+    // dfx 0.11.0
+    // https://internetcomputer.org/docs/current/developer-docs/updates/release-notes/#duplicate-asset-keys-are-now-reported-as-errors
     new webpack.EnvironmentPlugin({
       NODE_ENV: "development",
       ICAPPS_CANISTER_ID: canisters["icapps"],

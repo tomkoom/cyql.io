@@ -46,11 +46,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchIcpPrice } from "./State/icpPrice";
 import { setProjects, setNFTs } from "./State/projects";
 import { selectTheme } from "./State/theme";
-import { setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } from "./State/profile";
+import { setUpvotedProjects } from "./State/profile";
 
 // state – modals
 import {
-  setJobModal,
   selectJobModal,
   setSignInModal,
   selectSignInModal,
@@ -75,6 +74,8 @@ const App = () => {
   // hooks
   const dispatch = useDispatch();
   const {
+    defaultActor,
+    setDefActor,
     actor,
     principalId,
     principalIdStr,
@@ -145,13 +146,10 @@ const App = () => {
 
   // close sign in modal after user has logged
   useEffect(() => {
-    if (principalIdStr) {
-      const closeSignInModal = () => {
-        dispatch(setSignInModal(false));
-      };
-      closeSignInModal();
+    if (isAuthenticated) {
+      dispatch(setSignInModal(false));
     }
-  }, [principalIdStr]);
+  }, [isAuthenticated]);
 
   // EFFECTS
 
@@ -167,17 +165,16 @@ const App = () => {
     }
   }, [isAuthenticated]);
 
-  // set nft page data
   useEffect(() => {
-    setNftData();
-  }, []);
-
-  useEffect(() => {
-    if (actor !== undefined) {
-      setJobs(actor);
-      // setJobsTest();
+    if (defaultActor !== undefined) {
+      setJobs(defaultActor);
     }
-  }, [actor]);
+  }, [defaultActor]);
+
+  // set default actor
+  useEffect(() => {
+    setDefActor();
+  }, []);
 
   // set icp price
   useEffect(() => {
@@ -189,11 +186,16 @@ const App = () => {
     checkConnection();
   }, []);
 
+  // set nft page data
+  useEffect(() => {
+    setNftData();
+  }, []);
+
   // SET PROFILE INFO
 
   // get upvoted projects
   useEffect(() => {
-    if (principalIdStr) {
+    if (isAuthenticated) {
       const upvotedProjectsQuery = query(
         projectsCollRef,
         where("upvotedBy", "array-contains", principalIdStr)
@@ -206,14 +208,14 @@ const App = () => {
         unsubscribe();
       };
     }
-  }, [principalIdStr]);
+  }, [isAuthenticated]);
 
   // get profile nft data
   useEffect(() => {
-    if (principalId) {
+    if (isAuthenticated) {
       setProfileNftData(principalId);
     }
-  }, [principalId]);
+  }, [isAuthenticated]);
 
   return (
     <div className={`app ${theme}`}>
@@ -264,10 +266,10 @@ const App = () => {
               </Route>
             )}
 
-            {(principalIdStr && principalIdStr === PLUG_ADMIN_1) ||
-            (principalIdStr && principalIdStr === STOIC_ADMIN_1) ||
-            (principalIdStr && principalIdStr === PLUG_ADMIN_2) ||
-            (principalIdStr && principalIdStr === STOIC_ADMIN_2) ? (
+            {(isAuthenticated && principalIdStr === PLUG_ADMIN_1) ||
+            (isAuthenticated && principalIdStr === STOIC_ADMIN_1) ||
+            (isAuthenticated && principalIdStr === PLUG_ADMIN_2) ||
+            (isAuthenticated && principalIdStr === STOIC_ADMIN_2) ? (
               <Route exact path="/admin">
                 <Admin />
               </Route>

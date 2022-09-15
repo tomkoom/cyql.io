@@ -18,6 +18,10 @@ const SignInModal = () => {
   const { signInWithPlug, signInWithStoic, signInWithInfinityWallet } = useAuth();
   const theme = useSelector(selectTheme);
 
+  const closeSignInModal = () => {
+    dispatch(setSignInModal(false));
+  };
+
   const signInMethods = [
     {
       label: "Plug",
@@ -36,10 +40,6 @@ const SignInModal = () => {
     },
   ];
 
-  const closeSignInModal = () => {
-    dispatch(setSignInModal(false));
-  };
-
   return (
     <div
       className={css.modal}
@@ -57,11 +57,11 @@ const SignInModal = () => {
         </div>
 
         <div>
-          {signInMethods.map(({ label, logo, handleSignIn }) => (
-            <button className={css.btn} key={label} onClick={handleSignIn}>
+          {signInMethods.map((s) => (
+            <button className={css.btn} key={s.label} onClick={s.handleSignIn}>
               <div className={css.logo}>
-                <img src={logo} alt={`${label}-logo"`} />
-                <p className={css.label}>{label}</p>
+                <img src={s.logo} alt={`${s.label}-logo"`} />
+                <p className={css.label}>{s.label}</p>
               </div>
               <div className={css.icon}>{iAngleRight}</div>
             </button>

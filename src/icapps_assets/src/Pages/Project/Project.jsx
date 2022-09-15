@@ -63,7 +63,10 @@ const Project = () => {
                   </div>
                 </div>
 
-                <p className={css.description}>{project.description}</p>
+                <div className={css.description}>
+                  <h4 className={css.subtitle}>About {project.name}</h4>
+                  <p>{project.description}</p>
+                </div>
 
                 {/* nft previews */}
                 {(project.nftImg1 || project.nftImg2 || project.nftImg3 || project.nftImg4) && (
