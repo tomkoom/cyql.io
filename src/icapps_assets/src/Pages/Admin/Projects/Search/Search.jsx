@@ -7,12 +7,7 @@ const Search = ({ setSearch }) => {
   };
 
   return (
-    <input
-      className={css.search}
-      type="text"
-      placeholder="Search by project name"
-      onChange={setSearchQ}
-    />
+    <input className={css.search} type="text" placeholder="Search by name" onChange={setSearchQ} />
   );
 };
 

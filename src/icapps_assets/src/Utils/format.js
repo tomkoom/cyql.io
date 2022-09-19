@@ -1,5 +1,7 @@
 const formatStr8 = (str) => (str.length > 8 ? `${str.substring(0, 8)}…` : str);
 const formatStr12 = (str) => (str.length > 12 ? `${str.substring(0, 12)}…` : str);
+const formatStr16 = (str) => (str.length > 16 ? `${str.substring(0, 16)}…` : str);
+const formatStr20 = (str) => (str.length > 20 ? `${str.substring(0, 20)}…` : str);
 const formatStr24 = (str) => (str.length > 24 ? `${str.substring(0, 24)}…` : str);
 
 const formatId = (str) => str.substring(0, 5) + "..." + str.substring(str.length - 3);
@@ -48,6 +50,8 @@ const formatDate2 = (timestamp) => {
 export {
   formatStr8,
   formatStr12,
+  formatStr16,
+  formatStr20,
   formatStr24,
   formatId,
   formatNumber,

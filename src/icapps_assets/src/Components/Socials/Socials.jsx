@@ -34,17 +34,17 @@ const socials = [
 const Socials = () => {
   return (
     <ul className={css.socials}>
-      {socials.map(({ label, link, icon, logo }) => (
-        <li className={css.socialsI} data-link={label} key={label}>
-          <a href={link} target="_blank" rel="noopener noreferrer">
-            {icon ? (
-              <span className={css.icon}>{icon}</span>
+      {socials.map((s) => (
+        <li className={css.socialsI} key={s.label}>
+          <a href={s.link} target="_blank" rel="noopener noreferrer">
+            {s.icon ? (
+              <span className={css.icon}>{s.icon}</span>
             ) : (
               <span className={css.icon}>
-                <img className={css.logo} src={logo} alt={`${label}-logo`} />
+                <img className={css.logo} src={s.logo} alt={`${s.label}-logo`} />
               </span>
             )}
-            {label}
+            {s.label}
           </a>
         </li>
       ))}

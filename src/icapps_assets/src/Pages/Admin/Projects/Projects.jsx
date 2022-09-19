@@ -4,7 +4,7 @@ import css from "./Projects.module.css";
 // formatters
 import {
   formatStr12,
-  formatStr24,
+  formatStr16,
   formatWebsite,
   getTwitterUsername,
   formatDiscord,
@@ -33,42 +33,71 @@ const Projects = () => {
     <div className={css.projects}>
       <Search setSearch={setSearch} />
 
-      <table className={css.table}>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Logo</th>
-            <th>Cover</th>
-            <th>Twitter</th>
-            <th>Discord</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projects
-            .filter((project) => {
-              if (search === "") {
-                return project;
-              } else if (project.name.toLowerCase().includes(search.toLowerCase())) {
-                return project;
-              }
-            })
-            .map((project, i) => (
-              <tr key={project.idx} onClick={() => editProject(project)}>
-                <td>{projects.length - i}</td>
-                <td>{project.idx && formatStr12(project.idx)}</td>
-                <td>{project.name && formatStr24(project.name)}</td>
-                <td>{project.category}</td>
-                <td>{project.logo && formatWebsite(project.logo)}</td>
-                <td>{project.cover && formatWebsite(project.cover)}</td>
-                <td>{project.twitter && getTwitterUsername(project.twitter)}</td>
-                <td>{project.discord && formatDiscord(project.discord)}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <div className={css.table}>
+        <div className={css.rowHeader}>
+          <div className={css.coll25}>
+            <p>#</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Id</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Name</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Category</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Logo</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Cover</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Twitter</p>
+          </div>
+          <div className={css.coll139}>
+            <p>Discord</p>
+          </div>
+        </div>
+
+        {projects
+          .filter((project) => {
+            if (search === "") {
+              return project;
+            } else if (project.name.toLowerCase().includes(search.toLowerCase())) {
+              return project;
+            }
+          })
+          .map((project, i) => (
+            <div className={css.row} key={project.idx} onClick={() => editProject(project)}>
+              <div className={css.coll25}>
+                <p>{projects.length - i}</p>
+              </div>
+              <div className={css.coll139}>
+                <p>{project.idx && formatStr12(project.idx)}</p>
+              </div>
+              <div className={css.coll139}>
+                <p>{project.name && formatStr16(project.name)}</p>
+              </div>
+              <div className={css.coll139}>
+                <p>{project.category}</p>
+              </div>
+              <div className={css.coll139}>
+                <p>{project.logo && formatWebsite(project.logo)}</p>
+              </div>
+              <div className={css.coll139}>
+                <p>{project.cover && formatWebsite(project.cover)}</p>
+              </div>
+              <div className={css.coll139}>
+                {project.twitter && getTwitterUsername(project.twitter)}
+              </div>
+              <div className={css.coll139}>
+                <p>{project.discord && formatDiscord(project.discord)}</p>
+              </div>
+            </div>
+          ))}
+      </div>
       {/* </div> */}
     </div>
   );

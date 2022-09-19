@@ -20,7 +20,7 @@
 
 /* colors */
 
-[data-link="Twitter"] .icon {
+/* [data-link="Twitter"] .icon {
   color: var(--colorTwitter);
 }
 
@@ -30,7 +30,7 @@
 
 [data-link="Medium"] .icon {
   color: var(--primaryColor);
-}
+} */
 
 /* divider */
 

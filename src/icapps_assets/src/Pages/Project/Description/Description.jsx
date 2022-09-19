@@ -5,7 +5,7 @@ const Description = ({ name, description }) => {
   return (
     <div className={css.description}>
       <h4 className={css.subtitle}>About {name}</h4>
-      <p>{description}</p>
+      <p className={css.text}>{description}</p>
     </div>
   );
 };

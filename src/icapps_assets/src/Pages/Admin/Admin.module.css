@@ -5,3 +5,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 1023px) {
+  .admin {
+    padding: 0 1rem;
+  }
+}

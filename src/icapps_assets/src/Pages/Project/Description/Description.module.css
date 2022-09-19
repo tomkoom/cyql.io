@@ -12,6 +12,7 @@
   margin-bottom: 1rem;
 }
 
-.description p {
+.text {
+  font-size: 0.9rem;
   line-height: 150%;
 }

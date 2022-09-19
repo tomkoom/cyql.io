@@ -1,17 +1,17 @@
 /* logo component */
 
-.logoComponent {
+.logo {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-.logoComponent img {
-  width: 2.25rem;
-  height: 2.25rem;
+.logo img {
+  height: 2rem;
 }
 
-.logoComponent h1 {
+.logo h1 {
+  visibility: hidden;
   font-size: var(--fontSize5);
   font-weight: var(--fwBold);
   letter-spacing: -0.5px;
