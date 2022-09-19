@@ -1,14 +1,13 @@
 /* socials */
 
 .socials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.66rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 0.5rem;
 }
 
 .socialsI {
   height: 2rem;
-  flex: calc(50% - 0.66rem);
 }
 
 .socialsI:hover {

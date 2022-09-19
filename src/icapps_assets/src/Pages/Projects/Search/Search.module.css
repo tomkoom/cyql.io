@@ -6,7 +6,6 @@
   height: 3rem;
   padding: 0 1rem;
   font-size: 0.9rem;
-  font-weight: var(--fwMedium);
   color: var(--primaryColor);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
@@ -15,12 +14,7 @@
   outline: none;
 }
 
-.search:hover {
-  background-color: var(--underlay2);
-}
-
 .search:focus {
-  color: var(--primaryColor);
-  background-color: transparent;
-  background-color: var(--underlay2);
+  background-color: var(--background);
+  box-shadow: inset 0 0 0 2px var(--primaryColor), 0 0 0 2px var(--underlay2);
 }

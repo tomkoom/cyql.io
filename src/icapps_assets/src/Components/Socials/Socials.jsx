@@ -17,12 +17,12 @@ const socials = [
     icon: iDiscord,
     logo: "",
   },
-  {
-    label: "Medium",
-    link: "https://medium.com/@icappsxyz",
-    icon: iMediumM,
-    logo: "",
-  },
+  // {
+  //   label: "Medium",
+  //   link: "https://medium.com/@cyql",
+  //   icon: iMediumM,
+  //   logo: "",
+  // },
   {
     label: "Entrepot",
     link: "https://entrepot.app/marketplace/ic-apps",

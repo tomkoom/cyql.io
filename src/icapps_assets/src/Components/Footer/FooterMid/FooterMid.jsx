@@ -14,7 +14,7 @@ import NavLink from "./NavLink/NavLink";
 const socials = [
   { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
   { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
-  { id: "medium", link: "https://medium.com/@cyql", icon: iMediumM },
+  // { id: "medium", link: "https://medium.com/@cyql", icon: iMediumM },
 ];
 
 const FooterMid = () => {

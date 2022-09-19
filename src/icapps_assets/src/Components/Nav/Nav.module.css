@@ -23,10 +23,6 @@
   gap: 0.5rem;
 }
 
-.logo {
-  cursor: pointer;
-}
-
 @media screen and (max-width: 1023px) {
   .nav {
     padding: 0.5rem 1rem;

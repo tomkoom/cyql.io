@@ -34,7 +34,6 @@ const Nav = () => {
 
           {/* logo */}
           <div
-            className={css.logo}
             onClick={() => {
               handleClick(toHome);
             }}
