@@ -3,6 +3,11 @@
   /* ... */
 }
 
+/* 768 */
+@media screen and (max-width: 767px) {
+  /* ... */
+}
+
 /* 640 */
 @media screen and (max-width: 639px) {
   /* ... */
