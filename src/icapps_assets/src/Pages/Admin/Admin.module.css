@@ -9,9 +9,18 @@
 .tabs {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  font-weight: var(--fwMedium);
 }
 
-.tabs li {
+.tab {
   cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--underlay);
+  border-radius: 0.33rem;
+}
+
+.tab:hover,
+.active {
+  background-color: var(--underlay2);
 }

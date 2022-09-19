@@ -31,8 +31,18 @@ const Admin = () => {
       </div>
 
       <ul className={css.tabs}>
-        <li onClick={() => changeTab("projects")}>Projects</li>
-        <li onClick={() => changeTab("profiles")}>Profiles</li>
+        <li
+          className={tab === "projects" ? `${css.tab} ${css.active}` : css.tab}
+          onClick={() => changeTab("projects")}
+        >
+          Projects
+        </li>
+        <li
+          className={tab === "profiles" ? `${css.tab} ${css.active}` : css.tab}
+          onClick={() => changeTab("profiles")}
+        >
+          Profiles
+        </li>
       </ul>
 
       <div className={css.content}>

@@ -1,0 +1,26 @@
+/* search */
+
+.search {
+  margin-top: 0.5rem;
+  max-width: 24rem;
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  caret-color: var(--primaryColor);
+  border-radius: 0.33rem;
+  border: none;
+  outline: none;
+}
+
+.search:hover {
+  background-color: var(--underlay2);
+}
+
+.search:focus {
+  color: var(--primaryColor);
+  background-color: transparent;
+  background-color: var(--underlay2);
+}
