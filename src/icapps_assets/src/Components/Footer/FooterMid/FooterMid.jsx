@@ -6,7 +6,7 @@ import Logo from "../../Logo/Logo";
 import { iTwitter, iDiscord, iMediumM } from "../../../Icons/Icons";
 
 // routes
-import { toHome, toApps, toUpcoming, toSubmit } from "../../../Routes/routes";
+import { toHome, toApps, toUpcoming, toSubmit, toNft, toJobs } from "../../../Routes/routes";
 
 // components
 import NavLink from "./NavLink/NavLink";
@@ -14,7 +14,7 @@ import NavLink from "./NavLink/NavLink";
 const socials = [
   { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
   { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
-  { id: "medium", link: "https://medium.com/@icappsxyz", icon: iMediumM },
+  { id: "medium", link: "https://medium.com/@cyql", icon: iMediumM },
 ];
 
 const FooterMid = () => {
@@ -25,9 +25,11 @@ const FooterMid = () => {
       </div>
 
       <div className={css.nav}>
-        <NavLink label="Projects" to={toApps} icon="" />
-        <NavLink label="Upcoming NFTs" to={toUpcoming} icon="" />
-        <NavLink label="Submit" to={toSubmit} icon="" />
+        <NavLink label="Projects" to={toApps} />
+        <NavLink label="Upcoming NFTs" to={toUpcoming} />
+        <NavLink label="cyql NFT" to={toNft} />
+        <NavLink label="Jobs" to={toJobs} />
+        <NavLink label="Submit" to={toSubmit} />
       </div>
 
       <ul className={css.socials}>

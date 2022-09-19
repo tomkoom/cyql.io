@@ -2,17 +2,17 @@ import React from "react";
 import css from "./Menu.module.css";
 
 // components
-import { IdImg } from "../../../../../Profile/index";
+import { IdImg } from "../../../../Profile/index";
 
 // icons
-import { iSignOut } from "../../../../../../Icons/Icons";
-import CrossIcon from "../../../../../../Icons/CrossIcon/CrossIcon";
+import { iSignOut } from "../../../../../Icons/Icons";
+import CrossIcon from "../../../../../Icons/CrossIcon/CrossIcon";
 
 // auth
-import { useAuth } from "../../../../../../Context/AuthContext";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // routes
-import { toProfile } from "../../../../../../Routes/routes";
+import { toProfile } from "../../../../../Routes/routes";
 
 const Menu = ({ setMenuIsOpen }) => {
   const { principalIdStr, signOut } = useAuth();

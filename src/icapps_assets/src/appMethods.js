@@ -28,6 +28,7 @@ const setProfiles = async (actor) => {
     .getProfiles()
     .then((res) => {
       const profiles = [];
+      // bigint to num
       res.forEach((el) => {
         let profile = {};
         for (const [key, value] of Object.entries(el[1])) {

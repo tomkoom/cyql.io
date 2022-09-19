@@ -2,14 +2,14 @@ import React from "react";
 import css from "./Mobile.module.css";
 
 // icons
-import { iBars } from "../../../../Icons/Icons";
+import { iBars } from "../../../Icons/Icons";
 
 // components
 import Modal from "./Modal/Modal";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "../../../../State/modals";
+import { setMobileMenuModal, selectMobileMenuModal } from "../../../State/modals";
 
 const Mobile = () => {
   const dispatch = useDispatch();

@@ -2,20 +2,20 @@ import React from "react";
 import css from "./ProfileActions.module.css";
 
 // components
-import { IdImg } from "../../../../../Profile/index";
+import { IdImg } from "../../../../Profile/index";
 
 // icons
-import { iSignOut } from "../../../../../../Icons/Icons";
+import { iSignOut } from "../../../../../Icons/Icons";
 
 // auth
-import { useAuth } from "../../../../../../Context/AuthContext";
+import { useAuth } from "../../../../../Context/AuthContext";
 
 // routes
-import { toProfile } from "../../../../../../Routes/routes";
+import { toProfile } from "../../../../../Routes/routes";
 
 // state
 import { useDispatch } from "react-redux";
-import { setMobileMenuModal } from "../../../../../../State/modals";
+import { setMobileMenuModal } from "../../../../../State/modals";
 
 const ProfileActions = () => {
   const dispatch = useDispatch();

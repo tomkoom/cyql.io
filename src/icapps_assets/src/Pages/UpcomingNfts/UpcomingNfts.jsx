@@ -44,7 +44,7 @@ const UpcomingNfts = () => {
         <SubmitBtn />
       </div>
 
-      {/* content */}
+      {/* table */}
       {upcomingNfts.length > 0 ? (
         <div className={css.table}>
           <div className={css.rowHeader}>

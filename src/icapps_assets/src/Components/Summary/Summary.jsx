@@ -1,10 +1,9 @@
 import React from "react";
 import css from "./Summary.module.css";
-import { toApps, toUpcoming } from "../../../Routes/routes";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjectsLength, selectNFTs } from "../../../State/projects";
+import { selectProjectsLength, selectNFTs } from "../../State/projects";
 
 const Summary = () => {
   const projectsNum = useSelector(selectProjectsLength);
@@ -25,23 +24,6 @@ const Summary = () => {
         <li>
           Ongoing NFT sales:&nbsp;<span className={css.highlight}>{ongoingNFTsNum}</span>
         </li>
-
-        {/* <li>
-          Highlights:{" "}
-          <a href="https://dfinity.org/grants" target="_blank" rel="noreferrer noopener">
-            Developer Grants
-          </a>
-        </li>
-        <li>
-          Featured NFTs:{" "}
-          <a
-            href="https://entrepot.app/marketplace/poked"
-            rel="noreferrer noopener"
-            target="_blank"
-          >
-            PokedBots
-          </a>
-        </li> */}
       </ul>
     </div>
   );

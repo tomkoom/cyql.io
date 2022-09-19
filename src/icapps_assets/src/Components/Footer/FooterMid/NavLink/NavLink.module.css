@@ -7,6 +7,7 @@
   height: 40px;
   font-weight: var(--fwMedium);
   padding: 0 0.75rem;
+  border-radius: 0.33rem;
   cursor: pointer;
 }
 
@@ -14,18 +15,6 @@
   background-color: var(--underlay);
 }
 
-.active {
-  background-color: var(--underlay);
-}
-
 .label {
   white-space: nowrap;
-}
-
-.icon {
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
-  color: var(--highlightColor2);
 }

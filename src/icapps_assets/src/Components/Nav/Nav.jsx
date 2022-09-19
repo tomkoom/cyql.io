@@ -2,18 +2,18 @@ import React from "react";
 import css from "./Nav.module.css";
 
 // components
-import { Logo } from "../../index";
+import { Logo } from "../index";
 import { Desktop, Mobile } from "./index";
 
 // utils
-import { useWindowSize } from "../../../Hooks/useWindowSize";
+import { useWindowSize } from "../../Hooks/useWindowSize";
 
 // navlinks
-import { toHome } from "../../../Routes/routes";
+import { toHome } from "../../Routes/routes";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectMobileMenuModal, setMobileMenuModal } from "../../../State/modals";
+import { selectMobileMenuModal, setMobileMenuModal } from "../../State/modals";
 
 const Nav = () => {
   const dispatch = useDispatch();

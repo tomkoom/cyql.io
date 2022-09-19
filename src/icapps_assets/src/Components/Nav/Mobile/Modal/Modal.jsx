@@ -2,24 +2,24 @@ import React from "react";
 import css from "./Modal.module.css";
 
 // icons
-import { iCube, iRocket, iPlus } from "../../../../../Icons/Icons";
-import CrossIcon from "../../../../../Icons/CrossIcon/CrossIcon";
+import { iCube, iRocket, iPlus, iChartArea, iBolt } from "../../../../Icons/Icons";
+import CrossIcon from "../../../../Icons/CrossIcon/CrossIcon";
 
 // components
 import NavLink from "./NavLink/NavLink";
 import SignInBtn from "./SignInBtn/SignInBtn";
 import ProfileActions from "./ProfileActions/ProfileActions";
-import { Theme, Price, Socials } from "../../../../index";
+import { Theme, Price, Socials } from "../../../index";
 
 // routes
-import { toApps, toUpcoming, toSubmit } from "../../../../../Routes/routes";
+import { toApps, toUpcoming, toSubmit, toNft, toJobs } from "../../../../Routes/routes";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "../../../../../State/modals";
+import { setMobileMenuModal, selectMobileMenuModal } from "../../../../State/modals";
 
 // auth
-import { useAuth } from "../../../../../Context/AuthContext";
+import { useAuth } from "../../../../Context/AuthContext";
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -35,6 +35,8 @@ const Modal = () => {
               <div className={css.navList}>
                 <NavLink label="Projects" to={toApps} icon={iCube} />
                 <NavLink label="Upcoming" to={toUpcoming} icon={iRocket} />
+                <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
+                <NavLink label="Jobs" to={toJobs} icon={iBolt} />
                 <NavLink label="Submit" to={toSubmit} icon={iPlus} />
               </div>
 
