@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Publisher.module.css";
 
 // utils
-import { formatId } from "../../../../../Utils/formatId";
+import { formatId } from "../../../../../Utils/format";
 
 // auth
 import { useAuth } from "../../../../../Context/AuthContext";

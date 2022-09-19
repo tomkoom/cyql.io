@@ -1,5 +1,9 @@
 /* upcoming nft sales */
 
+.nft {
+  margin-bottom: 4rem;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
@@ -7,136 +11,84 @@
   margin-bottom: 1rem;
 }
 
-.text {
-  line-height: 150%;
-  color: var(--secondaryColor);
-  max-width: 32rem;
-}
-
 /* table */
 
-.t {
-  text-align: right;
-  width: 100%;
-  border-collapse: collapse;
-  white-space: nowrap;
+.rowHeader,
+.row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
 }
 
-.promoted {
-  -webkit-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
-  -moz-box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
-  box-shadow: 0px 0px 0px 1px var(--highlightColor) inset;
+.rowHeader {
+  font-size: 0.9rem;
+  font-weight: var(--fwMedium);
 }
 
-.t__tbody__tr {
-  box-shadow: var(--underline);
-}
-
-.t__mainColl span {
-  display: inline-block;
+.row {
   cursor: pointer;
+  box-shadow: 0 1px 0 0 var(--underlay);
 }
 
-.t__mainColl span:hover {
-  text-decoration: underline;
+.row:hover {
+  background-color: var(--underlay);
 }
 
-.t__mainColl span:hover * {
-  color: var(--primaryColor);
+.coll25 {
+  flex: 25%;
 }
 
-.t__mainColl span div {
+.coll10 {
+  flex: 10%;
+}
+
+.name {
+  font-size: var(--fontSize6);
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 150%;
+  margin-top: 0.125rem;
+  color: var(--tertiaryColor);
+}
+
+.links {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.t__mainColl__title {
-  font-size: var(--fontSize6);
-}
-
-.t__mainColl span div span {
-  font-size: var(--fontSize7);
-  padding: 0.05rem 0.25rem;
-  color: var(--primaryColor);
-  background-color: var(--highlightColor);
-  border-radius: 0.25rem;
-}
-
-.t__mainColl__description {
-  font-size: 0.9rem;
-  line-height: 150%;
-  margin-top: 0.125rem;
-  width: 16rem;
-  color: var(--secondaryColor);
-  white-space: normal;
-}
-
-.t thead tr th:first-child,
-.t tbody tr td:first-child {
-  padding-left: 0;
-}
-
-.t thead tr th:last-child,
-.t tbody tr td:last-child {
-  padding-right: 0;
-}
-
-.t thead tr th:nth-child(-n + 3),
-.t tbody tr td:nth-child(-n + 3) {
-  text-align: left;
-}
-
-.t thead tr th,
-.t tbody tr td {
-  padding: 1rem;
-}
-
-/* links */
-
-.t__links ul,
-.t__iclinks ul {
+.linksIc {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
-}
-
-.t__links ul li a,
-.t__iclinks ul li a {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.125rem 0;
-  color: var(--highlightColor);
+  gap: 0.1rem;
   font-size: var(--fontSize7);
 }
 
-.t__links ul li a:hover,
-.t__iclinks ul li a:hover {
-  color: var(--highlightColorHover);
+.na {
+  color: var(--tertiaryColor);
 }
 
-.t__links ul li a span {
-  height: 1rem;
-  width: 1rem;
-  display: grid;
-  place-items: center;
+/* other */
+
+.disclaimer {
+  font-size: 0.9rem;
+  line-height: 150%;
+  color: var(--secondaryColor);
+  max-width: 32rem;
 }
 
 /* nft preview */
 
-.nftPreview div {
+.nftPreviews {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 }
 
-.nftPreview div img {
+.nftPreviews img {
   height: 4.5rem;
   width: 4.5rem;
   object-fit: cover;
-}
-
-/* ––– */
-
-.saleLink:hover {
-  text-decoration: underline;
 }

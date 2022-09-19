@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Profiles.module.css";
 
 // utils
-import { formatId } from "../../../Utils/formatId";
+import { formatId } from "../../../Utils/format";
 import { formatDate } from "../../../Utils/format";
 
 // state

@@ -5,7 +5,7 @@ import css from "./Exchanges.module.css";
 import { iAngleRight } from "../../../Icons/Icons";
 
 // utils
-import { substring70 } from "../../../Utils/substirng";
+import { substring70 } from "../../../Utils/substring";
 
 const exchanges = [
   {

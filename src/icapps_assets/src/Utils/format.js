@@ -2,16 +2,21 @@ const formatStr8 = (str) => (str.length > 8 ? `${str.substring(0, 8)}…` : str)
 const formatStr12 = (str) => (str.length > 12 ? `${str.substring(0, 12)}…` : str);
 const formatStr24 = (str) => (str.length > 24 ? `${str.substring(0, 24)}…` : str);
 
+const formatId = (str) => str.substring(0, 5) + "..." + str.substring(str.length - 3);
+
+const formatNumber = (str) => {
+  const regex = /[.,\s]/g;
+  const res = str.replace(regex, "");
+  return res;
+};
+
 const formatWebsite = (url) => {
   let formattedURL = url.replace(/(^\w+:|^)\/\//, "");
   formattedURL = formattedURL.replace(/\/$/, ""); // remove trailing slash
   return formattedURL.length > 12 ? `${formattedURL.substring(0, 12)}…` : formattedURL;
 };
 
-const getTwitterUsername = (url) => {
-  const username = url.split(".com/")[1];
-  return username;
-};
+const getTwitterUsername = (url) => url.split(".com/")[1];
 
 const formatDiscord = (url) => {
   const formattedURL = url.includes("discord.gg/")
@@ -23,13 +28,13 @@ const formatDiscord = (url) => {
 };
 
 const formatDate = (timestamp) => {
+  const ts = timestamp;
   const options = {
     weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",
   };
-  const ts = timestamp;
   const date = new Date(ts);
   return date.toLocaleString("en-GB", options);
 };
@@ -44,6 +49,8 @@ export {
   formatStr8,
   formatStr12,
   formatStr24,
+  formatId,
+  formatNumber,
   formatWebsite,
   getTwitterUsername,
   formatDiscord,

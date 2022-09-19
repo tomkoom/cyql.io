@@ -1,13 +1,15 @@
 import React from "react";
 import css from "./JobList.module.css";
 
+// icons
+import { iLink, iTwitter } from "../../../Icons/Icons";
+
 // utils
-import { substring105 } from "../../../Utils/substirng";
+import { substring105 } from "../../../Utils/substring";
 
 // utils
 import { formatDate } from "../../../Utils/format";
-import { formatId } from "../../../Utils/formatId";
-import { iGlobe, iTwitter } from "../../../Icons/Icons";
+import { formatId } from "../../../Utils/format";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -48,7 +50,7 @@ const JobList = () => {
                 <ul>
                   {job.companyWebsite && (
                     <li>
-                      <span className={css.icon}>{iGlobe}</span>
+                      <span className={css.icon}>{iLink}</span>
                     </li>
                   )}
                   {job.companyTwitter && (
