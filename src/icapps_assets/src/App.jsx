@@ -116,12 +116,12 @@ const App = () => {
 
   // prevent from scrolling when modal is active
   useEffect(() => {
-    if (jobModal || signInModal || mobileMenuModal) {
+    if (jobModal || signInModal || mobileMenuModal || projectModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [jobModal, signInModal, mobileMenuModal]);
+  }, [jobModal, signInModal, mobileMenuModal, projectModal]);
 
   // reset mobile menu when deivice size > 1023
   useEffect(() => {

@@ -68,7 +68,7 @@ const ModalProjectEdit = () => {
   // add has token
 
   return (
-    <div className={projectModal ? `${css.modal} ${css.active}` : css.modal}>
+    <div className={css.modal}>
       <div className={css.content}>
         <div className={css.modalTitle}>
           <h4>Edit Project</h4>

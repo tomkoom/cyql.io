@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from "./Admin.module.css";
 
 // components
-import { Profiles, Projects } from "./index";
+import { Profiles, Projects, Tabs } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
@@ -17,10 +17,6 @@ const Admin = () => {
     dispatch(setProjectModal(true));
   };
 
-  const changeTab = (value) => {
-    setTab(value);
-  };
-
   return (
     <div className={css.admin}>
       <div className={css.title}>
@@ -29,25 +25,8 @@ const Admin = () => {
           Add project
         </button>
       </div>
-
-      <ul className={css.tabs}>
-        <li
-          className={tab === "projects" ? `${css.tab} ${css.active}` : css.tab}
-          onClick={() => changeTab("projects")}
-        >
-          Projects
-        </li>
-        <li
-          className={tab === "profiles" ? `${css.tab} ${css.active}` : css.tab}
-          onClick={() => changeTab("profiles")}
-        >
-          Profiles
-        </li>
-      </ul>
-
-      <div className={css.content}>
-        {tab === "projects" ? <Projects /> : tab === "profiles" ? <Profiles /> : ""}
-      </div>
+      <Tabs tab={tab} setTab={setTab} />
+      {tab === "projects" ? <Projects /> : tab === "profiles" ? <Profiles /> : ""}
     </div>
   );
 };
