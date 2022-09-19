@@ -12,3 +12,11 @@
   padding: 0.5rem 0;
   box-shadow: 0 1px 0 0 var(--underlay);
 }
+
+.row * {
+  font-family: var(--monospace);
+}
+
+.address {
+  color: var(--secondaryColor);
+}

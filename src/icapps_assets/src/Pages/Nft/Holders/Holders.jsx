@@ -24,7 +24,7 @@ const Holders = () => {
           .map((h) => (
             <li key={h.accountId}>
               <div className={css.row}>
-                <p>{h.accountId}</p>
+                <p className={css.address}>{h.accountId}</p>
                 <p>{h.nftsOwned}</p>
               </div>
             </li>

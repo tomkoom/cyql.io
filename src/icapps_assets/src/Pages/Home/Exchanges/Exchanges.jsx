@@ -9,18 +9,18 @@ import { substring70 } from "../../../Utils/substirng";
 
 const exchanges = [
   {
-    id: "mexc",
-    label: "MEXC",
-    link: "https://www.mexc.com/en-US/register?inviteCode=mexc-16tN8",
-    logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/exchanges/mexc/mexc-logo.svg",
-    description: "MEXC is a secure and reliable Crypto asset exchange.",
-  },
-  {
     id: "binance",
     label: "Binance",
     link: "https://www.binance.com/en/trade/ICP_BUSD?_from=markets&theme=dark&type=spot",
     logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/exchanges/binance/binance-logo.svg",
     description: "Buy, trade, and hold 350+ cryptocurrencies on Binance.",
+  },
+  {
+    id: "mexc",
+    label: "MEXC",
+    link: "https://www.mexc.com/en-US/register?inviteCode=mexc-16tN8",
+    logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/exchanges/mexc/mexc-logo.svg",
+    description: "MEXC is a secure and reliable Crypto asset exchange.",
   },
   {
     id: "coinbase",

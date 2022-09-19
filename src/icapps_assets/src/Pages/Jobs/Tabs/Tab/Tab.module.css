@@ -1,0 +1,12 @@
+/* tab */
+
+.tab {
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--underlay);
+}
+
+.tab:hover,
+.active {
+  background-color: var(--underlay2);
+}

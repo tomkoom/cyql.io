@@ -1,13 +1,15 @@
 /* homepage */
 
-section {
-  margin: 4rem 0;
+section,
+.highlights,
+.divider {
+  margin-bottom: 4rem;
 }
 
 /* hero */
 
 .hero {
-  margin: 0 0 1rem 0;
+  margin-bottom: 0.75rem;
 }
 
 .homeTitle {
@@ -56,7 +58,7 @@ section {
 
 .highlightTitle {
   font-size: var(--fontSize6);
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
   line-height: 133%;
 }
 
@@ -138,6 +140,11 @@ section {
 
 .viewAll:hover {
   opacity: 0.8;
+}
+
+.divider {
+  height: 1px;
+  box-shadow: 0 1px 0 0 var(--underlay);
 }
 
 /* responsive */

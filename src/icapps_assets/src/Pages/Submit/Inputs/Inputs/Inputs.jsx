@@ -5,7 +5,7 @@ import css from "./Inputs.module.css";
 import { main, links, linksSoc, linksIC, img, notes, nft } from "./inputsItems";
 
 // components
-import InputsItem from "./InputsItem/InputsItem";
+import Input from "./Input/Input";
 
 // state
 import { useSelector } from "react-redux";
@@ -16,14 +16,14 @@ const Inputs = () => {
 
   return (
     <div className={css.inputs}>
-      <InputsItem inputs={main} />
-      <InputsItem inputs={links} />
-      <InputsItem inputs={linksSoc} />
-      <InputsItem inputs={linksIC} />
-      <InputsItem inputs={img} />
-      <InputsItem inputs={notes} />
+      <Input inputs={main} />
+      <Input inputs={links} />
+      <Input inputs={linksSoc} />
+      <Input inputs={linksIC} />
+      <Input inputs={img} />
+      <Input inputs={notes} />
       {/* nft */}
-      {projectSubmissionData.category === "nfts" && <InputsItem inputs={nft} />}
+      {projectSubmissionData.category === "nfts" && <Input inputs={nft} />}
     </div>
   );
 };

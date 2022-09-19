@@ -18,6 +18,7 @@ import jobs from "./jobs/jobs";
 import job from "./jobs/job";
 import nft from "./nft/nft";
 import profiles from "./profiles/profiles";
+import activeTab from "./jobs/activeTab";
 
 // redux-persist
 import {
@@ -50,6 +51,7 @@ const rootReducer = combineReducers({
   job,
   nft,
   profiles,
+  activeTab,
 });
 
 const persistConfig = {

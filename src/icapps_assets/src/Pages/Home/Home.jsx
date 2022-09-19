@@ -15,7 +15,7 @@ import {
   HighlightedProjects,
   JoinCommunity,
   NftSales,
-  Partners,
+  // Partners,
 } from "./index";
 
 // state
@@ -67,9 +67,6 @@ const Home = () => {
           </span>{" "}
           projects
         </h2>
-        {/* <h2 className={`${css.homeTitle} pageTitle`}>
-          Internet Computer projects community portal 🌀
-        </h2> */}
         <p className="text">Discover new dApps, keep an eye out for upcoming NFT sales and more.</p>
       </section>
 
@@ -144,7 +141,7 @@ const Home = () => {
         </div>
         <NftSales nftSalesFiltered={ongoingNfts} />
       </section>
-      <div className="div" />
+      <div className={css.divider} />
 
       {/* wallets */}
       <section>
@@ -156,7 +153,7 @@ const Home = () => {
         </div>
         <HighlightedByCategory filter="Wallets" />
       </section>
-      <div className="div" />
+      <div className={css.divider} />
 
       {/* explorers */}
       <section>
@@ -168,7 +165,7 @@ const Home = () => {
         </div>
         <HighlightedByCategory filter="Explorers" />
       </section>
-      <div className="div" />
+      <div className={css.divider} />
 
       {/* social networks */}
       <section>
@@ -180,7 +177,7 @@ const Home = () => {
         </div>
         <HighlightedByCategory filter="Social Networks" />
       </section>
-      <div className="div" />
+      <div className={css.divider} />
 
       {/* defi */}
       <section>
@@ -192,7 +189,7 @@ const Home = () => {
         </div>
         <HighlightedByCategory filter="DeFi" />
       </section>
-      <div className="div" />
+      <div className={css.divider} />
 
       {/* exchanges */}
       <section>
@@ -204,7 +201,7 @@ const Home = () => {
         </div>
         <Exchanges />
       </section>
-      <div className="div" />
+      <div className={css.divider} />
 
       {/* partners */}
       {/* <section>

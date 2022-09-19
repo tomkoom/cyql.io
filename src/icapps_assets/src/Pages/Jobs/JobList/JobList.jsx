@@ -2,7 +2,7 @@ import React from "react";
 import css from "./JobList.module.css";
 
 // utils
-import { substring70 } from "../../../Utils/substirng";
+import { substring105 } from "../../../Utils/substirng";
 
 // utils
 import { formatDate } from "../../../Utils/format";
@@ -41,7 +41,7 @@ const JobList = () => {
               {job.companyName && <p>{job.companyName}</p>}
             </div>
             <div className={css.description}>
-              {job.description && <p>{substring70(job.description)}</p>}
+              {job.description && <p>{substring105(job.description)}</p>}
             </div>
             <div className={css.links}>
               {job.companyWebsite || job.companyTwitter ? (

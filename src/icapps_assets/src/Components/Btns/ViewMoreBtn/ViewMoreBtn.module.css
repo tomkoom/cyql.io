@@ -1,17 +1,18 @@
 /* view more btn */
 
 .btn {
+  height: 40px;
+  width: 100%;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
   font-size: 0.9rem;
   font-weight: var(--fwBold);
-  text-align: center;
   background-color: var(--underlay);
-  padding: 0.75rem;
-  margin-top: 0.75rem;
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-radius: 0.33rem;
   border: none;
   cursor: pointer;
 }

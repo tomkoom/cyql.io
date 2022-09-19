@@ -5,7 +5,7 @@ import css from "./Jobs.module.css";
 import { toPostJob } from "../../Routes/routes";
 
 // components
-import JobList from "./JobList/JobList";
+import { JobList, Tabs } from "./index";
 
 const Jobs = () => {
   return (
@@ -16,6 +16,7 @@ const Jobs = () => {
           Post a job
         </button>
       </div>
+      {/* <Tabs /> */}
       <JobList />
     </div>
   );

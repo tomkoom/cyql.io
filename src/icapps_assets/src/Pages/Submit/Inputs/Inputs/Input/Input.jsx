@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./InputsItem.module.css";
+import css from "./Input.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
