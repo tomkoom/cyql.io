@@ -16,6 +16,6 @@
 }
 
 .search:focus {
-  background-color: var(--background);
+  background-color: var(--underlay);
   box-shadow: inset 0 0 0 2px var(--primaryColor), 0 0 0 2px var(--underlay2);
 }

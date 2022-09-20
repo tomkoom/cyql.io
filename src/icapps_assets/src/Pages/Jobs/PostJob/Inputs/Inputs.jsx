@@ -80,7 +80,7 @@ const Inputs = () => {
             required={null}
           />
           <Input
-            id="comanyLogoUrl"
+            id="companyLogoUrl"
             type="text"
             label="Company logo URL"
             placeholder="Logo URL"

@@ -10,11 +10,15 @@
   flex: 1;
   gap: 0.75rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 0 1px var(--underlay);
+  /* box-shadow: 0 0 0 1px var(--underlay); */
 }
 
-.footerTopI__donation {
+/* .footerTopI__donation,
+.linkBlock {
   padding: 1rem;
+} */
+
+.footerTopI__donation {
   display: flex;
 }
 
@@ -36,7 +40,6 @@
 .linkBlock {
   display: flex;
   gap: 0.75rem;
-  padding: 1rem;
   cursor: pointer;
 }
 
@@ -44,6 +47,14 @@
   font-size: var(--fontSize6);
   font-weight: var(--fwMedium);
   margin-bottom: 0.33rem;
+}
+
+.donationLink {
+  text-decoration: underline;
+}
+
+.donationLink:hover {
+  opacity: 0.8;
 }
 
 .donationAddress {

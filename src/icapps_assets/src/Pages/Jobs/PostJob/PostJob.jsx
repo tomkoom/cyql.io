@@ -29,9 +29,7 @@ const PostJob = () => {
         setIsSubmitting(true);
         const timestamp = Date.now();
         const jobObj = { ...job, submitted: timestamp, publisher: principalIdStr };
-        await actor
-          .addJob(jobObj)
-          .catch((err) => console.log(err));
+        await actor.addJob(jobObj).catch((err) => console.log(err));
         setIsSubmitting(false);
         setJobSubmitted(true);
       } catch (err) {

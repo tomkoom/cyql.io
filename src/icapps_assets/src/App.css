@@ -17,12 +17,16 @@ body {
   color: var(--primaryColor);
   background-color: var(--background);
   min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  /* stick footer to bottom https://kiranworkspace.com/how-to-stick-footer-to-bottom-of-page/ */
 }
 
 .content {
   padding: 0 2rem;
   max-width: calc(2048px + 4rem);
   margin: 0 auto;
+  width: 100%;
 }
 
 .main {

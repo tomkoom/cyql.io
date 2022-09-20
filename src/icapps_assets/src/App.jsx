@@ -282,7 +282,12 @@ const App = () => {
           </Switch>
         </div>
       </div>
-      <Footer />
+
+      <div className="footer">
+        <Footer />
+      </div>
+
+      {/* end layout */}
 
       {/* cookies */}
       <CookieConsent

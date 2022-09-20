@@ -34,7 +34,9 @@ const JobList = () => {
         .map((job, i) => (
           <div className={css.row} key={i} onClick={() => openModal(job)}>
             <div className={css.main}>
-              <Logo logo={job.companyLogoUrl} title={job.title} />
+              {job.companyLogoUrl && (
+                <Logo logo={job.companyLogoUrl} companyName={job.companyName} />
+              )}
               <Title title={job.title} category={job.category} companyName={job.companyName} />
             </div>
 

@@ -48,9 +48,18 @@ const FooterTop = () => {
         <div>
           <h5 className={css.title}>Donate</h5>
           <p className="text">
-            icApps is developed and maintained by the IC enthusiasts. You can support the project by
-            making a donation.
-            <span>
+            cyql is developed and maintained by the IC enthusiasts. You can support the project by
+            making a{" "}
+            <a
+              className={css.donationLink}
+              href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              donation
+            </a>
+            .
+            {/* <span>
               <a
                 className={css.donationAddress}
                 href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
@@ -59,7 +68,7 @@ const FooterTop = () => {
               >
                 edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
               </a>
-            </span>
+            </span> */}
           </p>
         </div>
       </li>
