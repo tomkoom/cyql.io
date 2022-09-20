@@ -22,14 +22,19 @@ const Projects = () => {
       <h2 className="pageTitle">Discover New Projects</h2>
       <Search />
       <div className={css.controls}>
-        <Sort />
-        <Category />
-        <Filter
-          label={"Open source:"}
-          filter={filterByOpenSource}
-          setFilter={setFilterByOpenSource}
-        />
-        <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+        <div className={css.controlsI}>
+          <Category />
+          <Filter
+            label={"Open source:"}
+            filter={filterByOpenSource}
+            setFilter={setFilterByOpenSource}
+          />
+          <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+        </div>
+
+        <div className={css.controlsI}>
+          <Sort />
+        </div>
       </div>
       <ProjectList />
     </div>

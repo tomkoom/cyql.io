@@ -7,15 +7,16 @@
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
   border-radius: 0.33rem;
+  padding: 0.33rem 0;
 }
 
 .sort ul li {
-  flex: 1;
+  height: 40px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
-  padding: 1rem;
+  padding: 0 1rem;
   cursor: pointer;
 }
 

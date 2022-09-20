@@ -8,13 +8,10 @@
 }
 
 .logo img {
-  height: 2rem;
+  height: 1.88rem;
 }
 
 .logo h1 {
   visibility: hidden;
   width: 0;
-  /* font-size: var(--fontSize5);
-  font-weight: var(--fwBold);
-  letter-spacing: -0.5px; */
 }

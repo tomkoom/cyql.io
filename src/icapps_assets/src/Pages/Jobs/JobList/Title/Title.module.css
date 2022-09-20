@@ -1,0 +1,21 @@
+/* title */
+
+.titleContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.33rem;
+}
+
+.title {
+  font-size: var(--fontSize6);
+}
+
+.category {
+  font-size: 0.9rem;
+  color: var(--secondaryColor);
+  background-color: var(--underlay2);
+  padding: 0.1rem 0.25rem;
+  border-radius: 0.25rem;
+  text-transform: capitalize;
+}

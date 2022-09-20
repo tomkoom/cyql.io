@@ -23,7 +23,10 @@
 .category {
   font-size: 0.9rem;
   font-weight: var(--fwBold);
-  color: var(--primaryColor);
+  color: #fff;
+  background-color: var(--highlightColor);
+  padding: 0.25rem 0.33rem;
+  border-radius: 0.25rem;
 }
 
 .icon {

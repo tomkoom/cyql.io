@@ -3,6 +3,17 @@ import store from "./State/_store";
 import { setProfiles as setProfilesAction } from "./State/profiles/profiles";
 import { setJobs as setJobsAction } from "./State/jobs/jobs";
 
+// backend
+import { Actor, HttpAgent } from "@dfinity/agent";
+import {
+  canisterId as cyqlCanId,
+  idlFactory as cyqlIdlFactory,
+} from "../../declarations/icapps/index";
+
+// host
+import { hostLocal } from "./Context/host";
+const cyqlCanIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
+
 const addUserToDb = async (actor, accountId, signInMethod) => {
   const timestamp = Date.now();
   const profile = await actor.getProfile().catch((err) => console.log(err));
@@ -28,9 +39,9 @@ const setProfiles = async (actor) => {
     .getProfiles()
     .then((res) => {
       const profiles = [];
-      // bigint to num
       res.forEach((el) => {
         let profile = {};
+        // bigint to num
         for (const [key, value] of Object.entries(el[1])) {
           if (typeof value === "bigint") {
             profile = { ...profile, [key]: Number(value) };
@@ -63,4 +74,25 @@ const setJobs = async (defaultActor) => {
     .catch((err) => console.log(err));
 };
 
-export { addUserToDb, setProfiles, setJobs };
+const setJobsTest = async () => {
+  const testActor = Actor.createActor(cyqlIdlFactory, {
+    agent: new HttpAgent({ hostLocal }),
+    canisterId: cyqlCanIdLocal,
+  });
+  await testActor
+    .getJobs()
+    .then((jobs) => {
+      const jobsArr = [];
+      jobs.forEach((el) => {
+        const id = typeof el[0] === "bigint" ? Number(el[0]) : el[0]; // convert bigint to num
+        const job = el[1];
+        job.submitted = Number(job.submitted);
+        job.edited = Number(job.edited);
+        jobsArr.push({ id, ...job });
+      });
+      store.dispatch(setJobsAction(jobsArr));
+    })
+    .catch((err) => console.log(err));
+};
+
+export { addUserToDb, setProfiles, setJobs, setJobsTest };

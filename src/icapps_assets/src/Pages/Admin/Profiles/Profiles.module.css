@@ -10,7 +10,7 @@
   font-weight: var(--fwRegular);
 }
 
-.profiles thead {
+.profiles thead tr th {
   font-weight: var(--fwMedium);
 }
 

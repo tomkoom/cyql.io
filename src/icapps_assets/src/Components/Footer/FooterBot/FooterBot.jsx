@@ -7,7 +7,7 @@ const FooterBot = () => {
     <div className={css.footerBot}>
       <div className={css.icBadge}>
         <p className={css.icBadgeText}>Powered by</p>
-        <a href="https://dfinity.org/" target="_blank" rel="noreferrer noopener">
+        <a href="https://internetcomputer.org/" target="_blank" rel="noreferrer noopener">
           <img className={css.icLogo} src={ICLogo} alt="Internet Computer logo" />
           Internet Computer
         </a>
