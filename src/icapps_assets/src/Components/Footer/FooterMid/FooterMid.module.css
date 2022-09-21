@@ -36,6 +36,7 @@
   place-items: center;
   border-radius: 50%;
 }
+
 .socialsI a:hover {
   color: var(--background);
   background-color: var(--primaryColor);

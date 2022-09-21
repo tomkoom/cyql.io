@@ -12,6 +12,7 @@ import Time "mo:base/Time";
 import Canistergeek "mo:canistergeek/canistergeek";
 
 import T "types";
+import Err "errors";
 
 actor {
   private stable var profilesEntries : [(T.ProfileId, T.Profile)] = [];
@@ -39,7 +40,7 @@ actor {
     return Iter.toArray(profiles.entries());
   };
 
-  public shared ({ caller }) func updateProfiles(profile : T.Profile) : async Result.Result<(), T.ProfileErr> {
+  public shared ({ caller }) func updateProfiles(profile : T.Profile) : async Result.Result<(), Err.ProfileErr> {
     let id = caller;
     if (Principal.isAnonymous(id)) {
       #err(#IsAnonymous);
@@ -51,7 +52,7 @@ actor {
 
   // JOBS
 
-  public shared ({ caller }) func addJob(job : T.Job) : async Result.Result<(), T.AddJobErr> {
+  public shared ({ caller }) func addJob(job : T.Job) : async Result.Result<(), Err.JobErr> {
     if (Principal.isAnonymous(caller)) return #err(#IsAnonymous);
 
     let publisher = job.publisher;

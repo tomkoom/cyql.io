@@ -12,7 +12,8 @@
 }
 
 .category {
-  font-size: 0.9rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay2);
   padding: 0.1rem 0.25rem;

@@ -68,7 +68,7 @@ ul {
   font-weight: var(--fwMedium);
   color: #fff;
   background-color: var(--highlightColor);
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1rem;
   border-radius: 0.33rem;
   border: none;
   cursor: pointer;

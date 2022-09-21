@@ -3,16 +3,6 @@ module Types {
   public type Time = Int;
   public type JobCounter = Nat;
 
-  // errors
-  public type ProfileErr = {
-    #IsAnonymous;
-  };
-
-  public type AddJobErr = {
-    #Err;
-    #IsAnonymous;
-  };
-
   public type ProfileId = Principal;
   public type ProfileCounter = Nat;
 
