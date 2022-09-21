@@ -30,7 +30,7 @@ function initCanisterIds() {
 initCanisterIds();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
-const asset_entry = path.join("src", "icapps_assets", "src", "index.html");
+const asset_entry = path.join("src", "cyql_frontend", "src", "index.html");
 
 module.exports = {
   target: "web",
@@ -57,7 +57,7 @@ module.exports = {
   },
   output: {
     filename: "index.js",
-    path: path.join(__dirname, "dist", "icapps_assets"),
+    path: path.join(__dirname, "dist", "cyql_frontend"),
   },
 
   // Depending in the language or framework you are using for
@@ -91,8 +91,8 @@ module.exports = {
     // new CopyPlugin({
     //   patterns: [
     //     {
-    //       from: path.join(__dirname, "src", "icapps_assets", "assets"),
-    //       to: path.join(__dirname, "dist", "icapps_assets"),
+    //       from: path.join(__dirname, "src", "cyql_frontend", "assets"),
+    //       to: path.join(__dirname, "dist", "cyql_frontend"),
     //     },
     //   ],
     // }),
@@ -100,7 +100,7 @@ module.exports = {
     // https://internetcomputer.org/docs/current/developer-docs/updates/release-notes/#duplicate-asset-keys-are-now-reported-as-errors
     new webpack.EnvironmentPlugin({
       NODE_ENV: "development",
-      ICAPPS_CANISTER_ID: canisters["icapps"],
+      CYQL_BACKEND_CANISTER_ID: canisters["cyql_backend"],
     }),
     new webpack.ProvidePlugin({
       Buffer: [require.resolve("buffer/"), "Buffer"],
@@ -122,7 +122,7 @@ module.exports = {
     // liveReload: false,
     hot: false,
     liveReload: false,
-    // contentBase: path.resolve(__dirname, "./src/icapps_assets"),
+    // contentBase: path.resolve(__dirname, "./src/cyql_frontend"),
     // watchContentBase: true
   },
 };

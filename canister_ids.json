@@ -1,8 +1,8 @@
 {
-  "icapps": {
+  "cyql_backend": {
     "ic": "nrkmt-haaaa-aaaai-qagmq-cai"
   },
-  "icapps_assets": {
+  "cyql_frontend": {
     "ic": "n7ib3-4qaaa-aaaai-qagnq-cai"
   }
 }

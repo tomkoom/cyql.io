@@ -1,15 +1,15 @@
 {
   "canisters": {
-    "icapps": {
-      "main": "src/icapps/main.mo",
+    "cyql_backend": {
+      "main": "src/cyql_backend/main.mo",
       "type": "motoko"
     },
-    "icapps_assets": {
-      "dependencies": ["icapps"],
+    "cyql_frontend": {
+      "dependencies": ["cyql_backend"],
       "frontend": {
-        "entrypoint": "src/icapps_assets/src/index.html"
+        "entrypoint": "src/cyql_frontend/src/index.html"
       },
-      "source": ["src/icapps_assets/assets", "dist/icapps_assets/"],
+      "source": ["src/cyql_frontend/assets", "dist/cyql_frontend/"],
       "type": "assets"
     }
   },
