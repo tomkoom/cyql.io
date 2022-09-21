@@ -10,7 +10,7 @@ import store from "../../State/_store";
 import { setOwnsNFT } from "../../State/profile";
 
 // host, nft can id
-const host = "https://mainnet.dfinity.network";
+import { host } from "../../Context/host";
 const nftCanisterId = "dtlqp-nqaaa-aaaak-abwna-cai";
 
 const setProfileNftData = async (principalId) => {

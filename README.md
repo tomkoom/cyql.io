@@ -4,6 +4,17 @@ CYQL is a directory of projects built on the [Internet Computer](https://interne
 - BE canister id: nrkmt-haaaa-aaaai-qagmq-cai
 - Live: https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/
 
+To start:
+
+```
+npm install
+dfx start --clean
+dfx canister create cyql_frontend
+dfx canister create cyql_backend
+dfx build
+dfx deploy
+```
+
 # cyql
 
 Welcome to your new cyql project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
