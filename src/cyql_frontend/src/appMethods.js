@@ -8,7 +8,7 @@ import { Actor, HttpAgent } from "@dfinity/agent";
 import {
   canisterId as cyqlCanId,
   idlFactory as cyqlIdlFactory,
-} from "../../declarations/icapps/index";
+} from "../../declarations/cyql_backend/index";
 
 // host
 import { hostLocal } from "./Context/host";

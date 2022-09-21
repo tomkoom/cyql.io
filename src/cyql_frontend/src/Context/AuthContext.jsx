@@ -5,7 +5,7 @@ import { Actor, HttpAgent } from "@dfinity/agent";
 import {
   idlFactory as cyqlIdlFactory,
   canisterId as cyqlCanId,
-} from "../../../declarations/icapps/index";
+} from "../../../declarations/cyql_backend/index";
 
 // wallets
 import { StoicIdentity } from "ic-stoic-identity";
