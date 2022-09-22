@@ -1,0 +1,27 @@
+/* job header */
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title {
+  font-size: var(--fontSize4);
+}
+
+.category {
+  align-self: flex-start;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  padding: 0.25rem 0.33rem;
+  border-radius: 0.25rem;
+}

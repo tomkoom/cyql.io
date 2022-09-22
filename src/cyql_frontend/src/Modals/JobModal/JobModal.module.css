@@ -23,12 +23,6 @@
   max-width: 54rem;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
 .times {
   width: 3rem;
   height: 3rem;

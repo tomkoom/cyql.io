@@ -167,8 +167,8 @@ const App = () => {
 
   useEffect(() => {
     if (defaultActor !== undefined) {
-      setJobs(defaultActor);
-      // setJobsTest(defaultActor);
+      // setJobs(defaultActor);
+      setJobsTest(defaultActor);
     }
   }, [defaultActor]);
 
