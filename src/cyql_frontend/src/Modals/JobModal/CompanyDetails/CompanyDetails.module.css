@@ -1,6 +1,45 @@
 /* company details */
 
+.companyDetails {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .title {
-  font-size: var(--fontSize6);
+  font-size: var(--fontSize5);
   margin-bottom: 0.5rem;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.33rem;
+}
+
+.name {
+  font-size: var(--fontSize6);
+}
+
+.link {
+  font-size: 0.9rem;
+  color: var(--highlightColor2);
+}
+
+.link:hover {
+  opacity: 0.8;
 }

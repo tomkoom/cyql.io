@@ -1,0 +1,21 @@
+/* job title */
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.33rem;
+}
+
+.title {
+  font-size: var(--fontSize4);
+}
+
+.category {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  padding: 0.25rem 0.33rem;
+  border-radius: 0.25rem;
+}

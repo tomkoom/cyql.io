@@ -17,9 +17,9 @@ const jobInitialState = {
 
   // application
   applicationUrl: "",
-  contactEmail: "",
-  contactTwitter: "",
-  contactDiscord: "",
+  applicationEmail: "",
+  applicationTwitter: "",
+  applicationDiscord: "",
 
   // meta
   submitted: 0,

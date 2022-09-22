@@ -1,27 +1,27 @@
 export const idlFactory = ({ IDL }) => {
   const Time = IDL.Int;
   const Job = IDL.Record({
-    'contactDiscord' : IDL.Text,
     'compensation' : IDL.Text,
     'title' : IDL.Text,
     'submitted' : Time,
     'edited' : Time,
+    'applicationTwitter' : IDL.Text,
     'publisher' : IDL.Text,
     'description' : IDL.Text,
     'sourceUrl' : IDL.Text,
     'companyTwitter' : IDL.Text,
-    'contactTwitter' : IDL.Text,
     'applicationUrl' : IDL.Text,
-    'contactEmail' : IDL.Text,
     'companyName' : IDL.Text,
     'category' : IDL.Text,
     'companyWebsite' : IDL.Text,
     'equity' : IDL.Text,
     'companyLogoUrl' : IDL.Text,
+    'applicationDiscord' : IDL.Text,
+    'applicationEmail' : IDL.Text,
   });
   const JobErr = IDL.Variant({ 'Err' : IDL.Null, 'IsAnonymous' : IDL.Null });
   const Result_1 = IDL.Variant({ 'ok' : IDL.Null, 'err' : JobErr });
-  const JobCounter = IDL.Nat;
+  const JobId = IDL.Nat;
   const GetLogMessagesFilter = IDL.Record({
     'analyzeCount' : IDL.Nat32,
     'messageRegex' : IDL.Opt(IDL.Text),
@@ -117,7 +117,7 @@ export const idlFactory = ({ IDL }) => {
     'addJob' : IDL.Func([Job], [Result_1], []),
     'addJobTest' : IDL.Func([Job], [], []),
     'collectCanisterMetrics' : IDL.Func([], [], []),
-    'deleteJob' : IDL.Func([JobCounter], [], []),
+    'deleteJob' : IDL.Func([JobId], [], []),
     'doThat' : IDL.Func([], [], []),
     'doThis' : IDL.Func([], [], []),
     'getCanisterLog' : IDL.Func(
@@ -130,7 +130,7 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Opt(CanisterMetrics)],
         ['query'],
       ),
-    'getJobs' : IDL.Func([], [IDL.Vec(IDL.Tuple(JobCounter, Job))], ['query']),
+    'getJobs' : IDL.Func([], [IDL.Vec(IDL.Tuple(JobId, Job))], ['query']),
     'getJobsNum' : IDL.Func([], [IDL.Nat], ['query']),
     'getProfile' : IDL.Func([], [IDL.Opt(Profile)], ['query']),
     'getProfiles' : IDL.Func(

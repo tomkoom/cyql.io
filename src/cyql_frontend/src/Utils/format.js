@@ -6,6 +6,14 @@ const formatStr24 = (str) => (str.length > 24 ? `${str.substring(0, 24)}…` : s
 
 const formatId = (str) => str.substring(0, 5) + "..." + str.substring(str.length - 3);
 
+const formatProtocol = (url) => {
+  // no protocol
+  let res = url.replace(/(^\w+:|^)\/\//, "");
+  // no trailing slash
+  res = res.replace(/\/$/, "");
+  return res;
+};
+
 const formatNumber = (str) => {
   const regex = /[.,\s]/g;
   const res = str.replace(regex, "");
@@ -54,6 +62,7 @@ export {
   formatStr20,
   formatStr24,
   formatId,
+  formatProtocol,
   formatNumber,
   formatWebsite,
   getTwitterUsername,

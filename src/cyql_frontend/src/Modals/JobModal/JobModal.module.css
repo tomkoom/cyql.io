@@ -3,7 +3,6 @@
 .modal {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   left: 0;
@@ -11,13 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.modal.active {
-  opacity: 1;
-  pointer-events: all;
 }
 
 .content {
@@ -27,20 +19,14 @@
   padding: 2rem;
   border-radius: 1rem;
   background-color: var(--background);
-  color: var(--primaryColor);
   margin: 1rem;
-  max-width: 36rem;
+  max-width: 54rem;
 }
 
-.top {
+.header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 2rem;
-}
-
-.title {
-  font-size: var(--fontSize4);
 }
 
 .times {
@@ -55,27 +41,20 @@
   flex-shrink: 0; /* don't shrink */
 }
 
+.data {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
 .position {
+  width: 100%;
+}
+
+.company {
+  width: 24rem;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 0.5rem;
-}
-
-.category {
-  font-size: 0.9rem;
-  color: var(--secondaryColor);
-  background-color: var(--underlay);
-  padding: 0.1rem 0.25rem;
-  border-radius: 0.25rem;
-}
-
-.originalPost {
-  display: inline-block;
-}
-
-.description {
-  font-size: 0.9rem;
-  color: var(--secondaryColor);
-  line-height: 150%;
+  gap: 1rem;
 }

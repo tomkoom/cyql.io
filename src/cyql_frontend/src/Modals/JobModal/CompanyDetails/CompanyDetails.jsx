@@ -1,37 +1,34 @@
 import React from "react";
 import css from "./CompanyDetails.module.css";
 
-// state
-import { useSelector } from "react-redux";
-import { selectActiveJob } from "../../../State/jobs/job";
+// utils
+import { formatProtocol } from "../../../Utils/format";
 
-const CompanyDetails = () => {
-  const j = useSelector(selectActiveJob);
-
+const CompanyDetails = ({ companyName, companyWebsite, companyTwitter, companyLogoUrl }) => {
   return (
     <div className={css.companyDetails}>
       <h4 className={css.title}>Company Details</h4>
-      <ul>
-        {j.companyName && (
-          <li>
-            <p>{j.companyName}</p>
-          </li>
+      <div className={css.content}>
+        {companyLogoUrl && (
+          <div className={css.logo}>
+            <img src={companyLogoUrl} alt={`${companyName} logo`} />
+          </div>
         )}
-        {j.companyWebsite && (
-          <li>
-            <a href={j.companyWebsite} target="_blank" rel="noreferrer noopener">
-              Website
+
+        <div className={css.main}>
+          {companyName && <h5 className={css.name}>{companyName}</h5>}
+          {companyWebsite && (
+            <a className={css.link} href={companyWebsite} target="_blank" rel="noreferrer noopener">
+              {formatProtocol(companyWebsite)}
             </a>
-          </li>
-        )}
-        {j.companyTwitter && (
-          <li>
-            <a href={j.companyTwitter} target="_blank" rel="noreferrer noopener">
-              Twitter
+          )}
+          {companyTwitter && (
+            <a className={css.link} href={companyTwitter} target="_blank" rel="noreferrer noopener">
+              {formatProtocol(companyTwitter)}
             </a>
-          </li>
-        )}
-      </ul>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

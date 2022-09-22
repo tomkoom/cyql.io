@@ -12,7 +12,7 @@ import {
 
 // host
 import { hostLocal } from "./Context/host";
-const cyqlCanIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
+const cyqlBackendCanIdLocal = "ryjl3-tyaaa-aaaaa-aaaba-cai";
 
 const addUserToDb = async (actor, accountId, signInMethod) => {
   const timestamp = Date.now();
@@ -77,7 +77,7 @@ const setJobs = async (defaultActor) => {
 const setJobsTest = async () => {
   const testActor = Actor.createActor(cyqlIdlFactory, {
     agent: new HttpAgent({ hostLocal }),
-    canisterId: cyqlCanIdLocal,
+    canisterId: cyqlBackendCanIdLocal,
   });
   await testActor
     .getJobs()

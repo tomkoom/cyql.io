@@ -16,14 +16,14 @@ import Err "errors";
 
 actor {
   private stable var profilesEntries : [(T.ProfileId, T.Profile)] = [];
-  private stable var jobsEntries : [(T.JobCounter, T.Job)] = [];
+  private stable var jobsEntries : [(T.JobId, T.Job)] = [];
 
   var profiles = HashMap.HashMap<T.ProfileId, T.Profile>(1, Principal.equal, Principal.hash);
 
-  stable var jobCounter : T.JobCounter = 0;
+  stable var jobCounter : T.JobId = 0;
   // hash Nat
   let keyHash : (Nat) -> Hash.Hash = func(x) { Hash.hash(x) };
-  var jobs = HashMap.HashMap<T.JobCounter, T.Job>(1, Nat.equal, keyHash);
+  var jobs = HashMap.HashMap<T.JobId, T.Job>(1, Nat.equal, keyHash);
 
   // PROFILE
 
@@ -70,7 +70,7 @@ actor {
     jobCounter += 1;
   };
 
-  public query func getJobs() : async [(T.JobCounter, T.Job)] {
+  public query func getJobs() : async [(T.JobId, T.Job)] {
     Iter.toArray(jobs.entries());
   };
 
@@ -78,7 +78,7 @@ actor {
     jobs.size();
   };
 
-  public shared ({ caller }) func deleteJob(id : T.JobCounter) : async () {
+  public shared ({ caller }) func deleteJob(id : T.JobId) : async () {
     jobs.delete(id);
   };
 

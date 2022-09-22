@@ -2,21 +2,21 @@ import React from "react";
 import css from "./JobModal.module.css";
 
 // icons
-import { iExternalLink } from "../../Icons/Icons";
 import CrossIcon from "../../Icons/CrossIcon/CrossIcon";
 
 // components
-import { CompanyDetails, Contact, Website } from "./index";
+import { AboutPosition, CompanyDetails, Contact, OriginalPostBtn, Title, Website } from "./index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setJobModal, selectJobModal } from "../../State/modals";
+import { setJobModal } from "../../State/modals";
 import { selectActiveJob, setActiveJob } from "../../State/jobs/job";
+import { selectTheme } from "../../State/theme";
 
 const JobModal = () => {
   const dispatch = useDispatch();
-  const jobModal = useSelector(selectJobModal);
   const j = useSelector(selectActiveJob);
+  const theme = useSelector(selectTheme);
 
   const closeModal = () => {
     dispatch(setJobModal(false));
@@ -24,41 +24,42 @@ const JobModal = () => {
   };
 
   return (
-    <div className={jobModal ? `${css.modal} ${css.active}` : css.modal} onClick={closeModal}>
+    <div
+      className={css.modal}
+      style={
+        theme === "light"
+          ? { backgroundColor: "rgba(18, 22, 25, 0.33)" }
+          : { backgroundColor: "rgba(242, 244, 248, 0.33)" }
+      }
+      onClick={closeModal}
+    >
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
-        <div className={css.top}>
-          <h3 className={css.title}>{j.title}</h3>
+        <div className={css.header}>
+          <Title title={j.title} category={j.category} />
           <CrossIcon onClick={closeModal} />
         </div>
-        <div className={css.position}>
-          {j.category && <span className={css.category}>{j.category}</span>}
-          {j.sourceUrl && (
-            <a
-              className={css.originalPost}
-              href={j.sourceUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              Original post {iExternalLink}
-            </a>
-          )}
-          <p className={css.description}>{j.description}</p>
-          {j.compensation && (
-            <div>
-              <p>Compensation</p>
-              <p>{j.compensation}</p>
-            </div>
-          )}
-          {j.equity && (
-            <div>
-              <p>Equity</p>
-              <p>{j.equity}</p>
-            </div>
-          )}
+
+        <div className={css.data}>
+          <div className={css.position}>
+            <AboutPosition
+              description={j.description}
+              compensation={j.compensation}
+              equity={j.equity}
+            />
+          </div>
+
+          <div className={css.company}>
+            <CompanyDetails
+              companyName={j.companyName}
+              companyWebsite={j.companyWebsite}
+              companyTwitter={j.companyTwitter}
+              companyLogoUrl={j.companyLogoUrl}
+            />
+            {j.sourceUrl && <OriginalPostBtn sourceUrl={j.sourceUrl} />}
+            {/* {j.contactEmail || j.contactTwitter || j.contactDiscord ? <Contact /> : ""}
+            {j.applicationUrl ? <Website /> : ""} */}
+          </div>
         </div>
-        {j.companyName || j.companyWebsite || j.companyTwitter ? <CompanyDetails /> : ""}
-        {j.contactEmail || j.contactTwitter || j.contactDiscord ? <Contact /> : ""}
-        {j.applicationUrl ? <Website /> : ""}
       </div>
     </div>
   );

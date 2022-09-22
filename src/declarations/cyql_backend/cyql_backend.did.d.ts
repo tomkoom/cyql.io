@@ -59,27 +59,27 @@ export interface HourlyMetricsData {
   'timeMillis' : bigint,
 }
 export interface Job {
-  'contactDiscord' : string,
   'compensation' : string,
   'title' : string,
   'submitted' : Time,
   'edited' : Time,
+  'applicationTwitter' : string,
   'publisher' : string,
   'description' : string,
   'sourceUrl' : string,
   'companyTwitter' : string,
-  'contactTwitter' : string,
   'applicationUrl' : string,
-  'contactEmail' : string,
   'companyName' : string,
   'category' : string,
   'companyWebsite' : string,
   'equity' : string,
   'companyLogoUrl' : string,
+  'applicationDiscord' : string,
+  'applicationEmail' : string,
 }
-export type JobCounter = bigint;
 export type JobErr = { 'Err' : null } |
   { 'IsAnonymous' : null };
+export type JobId = bigint;
 export interface LogMessagesData { 'timeNanos' : Nanos, 'message' : string }
 export type MetricsGranularity = { 'hourly' : null } |
   { 'daily' : null };
@@ -109,7 +109,7 @@ export interface _SERVICE {
   'addJob' : ActorMethod<[Job], Result_1>,
   'addJobTest' : ActorMethod<[Job], undefined>,
   'collectCanisterMetrics' : ActorMethod<[], undefined>,
-  'deleteJob' : ActorMethod<[JobCounter], undefined>,
+  'deleteJob' : ActorMethod<[JobId], undefined>,
   'doThat' : ActorMethod<[], undefined>,
   'doThis' : ActorMethod<[], undefined>,
   'getCanisterLog' : ActorMethod<
@@ -120,7 +120,7 @@ export interface _SERVICE {
     [GetMetricsParameters],
     [] | [CanisterMetrics],
   >,
-  'getJobs' : ActorMethod<[], Array<[JobCounter, Job]>>,
+  'getJobs' : ActorMethod<[], Array<[JobId, Job]>>,
   'getJobsNum' : ActorMethod<[], bigint>,
   'getProfile' : ActorMethod<[], [] | [Profile]>,
   'getProfiles' : ActorMethod<[], Array<[ProfileId, Profile]>>,

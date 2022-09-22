@@ -1,7 +1,7 @@
 module Types {
 
   public type Time = Int;
-  public type JobCounter = Nat;
+  public type JobId = Nat;
 
   public type ProfileId = Principal;
   public type ProfileCounter = Nat;
@@ -30,9 +30,9 @@ module Types {
 
     // application
     applicationUrl : Text;
-    contactEmail : Text;
-    contactTwitter : Text;
-    contactDiscord : Text;
+    applicationEmail : Text;
+    applicationTwitter : Text;
+    applicationDiscord : Text;
 
     // meta
     submitted : Time;
