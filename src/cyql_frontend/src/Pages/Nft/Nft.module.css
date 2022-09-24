@@ -32,6 +32,12 @@
 
 /* btn */
 
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .link {
   display: inline-flex;
   align-items: center;
@@ -45,7 +51,19 @@
   background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
 }
 
-.link:hover {
+.linkSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: var(--fwBold);
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--underlay);
+  border-radius: 0.5rem;
+}
+
+.link:hover,
+.linkSecondary:hover {
   opacity: 0.8;
 }
 

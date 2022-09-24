@@ -20,6 +20,7 @@
   align-self: flex-start;
   font-size: 0.9rem;
   text-transform: capitalize;
+  font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay);
   padding: 0.25rem 0.33rem;

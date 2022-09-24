@@ -38,14 +38,17 @@ type LogMessagesData =
    message: text;
    timeNanos: Nanos;
  };
+type JobId = nat;
 type JobErr = 
  variant {
    Err;
    IsAnonymous;
  };
-type JobCounter = nat;
 type Job = 
  record {
+   applicationDiscord: text;
+   applicationEmail: text;
+   applicationTwitter: text;
    applicationUrl: text;
    category: text;
    companyLogoUrl: text;
@@ -53,9 +56,6 @@ type Job =
    companyTwitter: text;
    companyWebsite: text;
    compensation: text;
-   contactDiscord: text;
-   contactEmail: text;
-   contactTwitter: text;
    description: text;
    edited: Time;
    equity: text;
@@ -145,13 +145,13 @@ service : {
   addJob: (Job) -> (Result_1);
   addJobTest: (Job) -> ();
   collectCanisterMetrics: () -> ();
-  deleteJob: (JobCounter) -> ();
+  deleteJob: (JobId) -> ();
   doThat: () -> ();
   doThis: () -> ();
   getCanisterLog: (opt CanisterLogRequest) -> (opt CanisterLogResponse) query;
   getCanisterMetrics: (GetMetricsParameters) -> (opt CanisterMetrics) query;
   getJobs: () -> (vec record {
-                        JobCounter;
+                        JobId;
                         Job;
                       }) query;
   getJobsNum: () -> (nat) query;

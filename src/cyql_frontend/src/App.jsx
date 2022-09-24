@@ -167,8 +167,8 @@ const App = () => {
 
   useEffect(() => {
     if (defaultActor !== undefined) {
-      // setJobs(defaultActor);
-      setJobsTest(defaultActor);
+      setJobs(defaultActor);
+      // setJobsTest(defaultActor);
     }
   }, [defaultActor]);
 
@@ -188,9 +188,9 @@ const App = () => {
   }, []);
 
   // set nft page data
-  useEffect(() => {
-    setNftData();
-  }, []);
+  // useEffect(() => {
+  //   setNftData();
+  // }, []);
 
   // SET PROFILE INFO
 
