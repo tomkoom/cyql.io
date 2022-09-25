@@ -13,7 +13,7 @@ import { useAuth } from "../../Context/AuthContext";
 
 // components
 import NavLink from "./NavLink/NavLink";
-import { Theme, Price, Socials } from "../index";
+import { Socials } from "../index";
 
 const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
 const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
@@ -39,11 +39,6 @@ const Sidebar = () => {
         (principalIdStr && principalIdStr === STOIC_ADMIN_2) ? (
           <NavLink label="Admin" to={toAdmin} icon={iList} />
         ) : null}
-      </div>
-
-      <div className={css.controls}>
-        <Theme />
-        <Price />
       </div>
 
       <hr className={css.div} />

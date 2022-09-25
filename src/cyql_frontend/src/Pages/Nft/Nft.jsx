@@ -49,7 +49,7 @@ const Nft = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            Stats <span className={css.icon}>{iExternalLink}</span>
+            Stats <span className={css.iconSecondary}>{iExternalLink}</span>
           </a>
         </div>
 

@@ -11,30 +11,6 @@
   gap: 1rem;
 }
 
-
-
-/* controls */
-
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* colors */
-
-/* [data-link="Twitter"] .icon {
-  color: var(--colorTwitter);
-}
-
-[data-link="Discord"] .icon {
-  color: var(--colorDiscord);
-}
-
-[data-link="Medium"] .icon {
-  color: var(--primaryColor);
-} */
-
 /* divider */
 
 hr.div {

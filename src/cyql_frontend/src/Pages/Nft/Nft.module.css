@@ -73,16 +73,25 @@
   gap: 0.5rem;
 }
 
-.icon {
+.icon,
+.iconSecondary {
   font-size: var(--fontSize7);
-  color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
   width: 2rem;
   height: 2rem;
   display: grid;
   place-items: center;
   border-radius: 50%;
+}
+
+.icon {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.iconSecondary {
+  color: var(--primaryColor);
+  background-color: var(--underlay2);
 }
 
 .icp {
