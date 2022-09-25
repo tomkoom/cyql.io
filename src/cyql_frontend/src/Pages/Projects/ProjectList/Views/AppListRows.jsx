@@ -56,14 +56,9 @@ const AppListRows = () => {
                     return project;
                   }
                 })
-                // .sort((a) => (a.promoted ? -1 : 0))
                 .slice(0, itemsVisible)
                 .map((app) => (
-                  <tr
-                    className={app.promoted ? css.promoted : css.t__tbody__tr}
-                    onClick={() => toApp(app.id)}
-                    key={app.id}
-                  >
+                  <tr className={css.t__tbody__tr} onClick={() => toApp(app.id)} key={app.id}>
                     <td className={css.maincoll}>
                       <div>
                         {app.logo && (
