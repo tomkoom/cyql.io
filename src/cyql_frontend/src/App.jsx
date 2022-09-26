@@ -283,9 +283,9 @@ const App = () => {
         </div>
       </div>
 
-      {/* <div className="footer">
+      <div className="footer">
         <Footer />
-      </div> */}
+      </div>
 
       {/* end layout */}
 

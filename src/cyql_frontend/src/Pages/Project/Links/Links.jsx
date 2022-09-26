@@ -11,6 +11,7 @@ import {
   iGithub,
   iExternalLink,
   iBook,
+  iDatabase,
 } from "../../../Icons/Icons";
 
 // utils
@@ -93,28 +94,29 @@ const Links = ({
     {
       label: "Canister",
       link: canister,
-      logo: "",
+      icon: iDatabase,
     },
     {
       label: "Dscvr",
       link: dscvr,
-      logo: "",
+      icon: "",
     },
     {
       label: "Distrikt",
       link: distrikt,
-      logo: "",
+      icon: "",
     },
     {
       label: "OpenChat",
       link: openChat,
-      logo: "",
+      icon: "",
     },
   ];
 
   return (
     <div className={css.links}>
       {/* links */}
+      <h5 className={css.subtitle}>Links</h5>
       <div>
         {website || app || docs ? (
           <ul className={css.linksLi}>
@@ -137,6 +139,7 @@ const Links = ({
 
       {/* links soc */}
       <div>
+        <h5 className={css.subtitle}>Socials</h5>
         {twitter || discord || github || telegram || medium ? (
           <ul className={css.linksLi}>
             {linksSoc.map(
@@ -158,13 +161,15 @@ const Links = ({
 
       {/* links ic */}
       <div>
+        <h5 className={css.subtitle}>Socials IC</h5>
         {canister || dscvr || distrikt || openChat ? (
           <ul className={css.linksLi}>
             {linksIC.map(
-              ({ label, link }) =>
+              ({ label, link, icon }) =>
                 link && (
                   <li className={css.linksLiI} data-social={label} key={label}>
                     <a href={link} target="_blank" rel="noopener noreferrer">
+                      {icon !== "" && <span className={css.icon}>{icon}</span>}
                       {label && <p className={css.label}>{label}</p>}
                     </a>
                   </li>

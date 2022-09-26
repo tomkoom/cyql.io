@@ -9,8 +9,7 @@ To start:
 ```
 npm install
 dfx start --clean
-dfx canister create cyql_frontend
-dfx canister create cyql_backend
+dfx canister create --all
 dfx build
 dfx deploy
 ```

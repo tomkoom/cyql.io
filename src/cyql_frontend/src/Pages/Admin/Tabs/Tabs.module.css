@@ -14,7 +14,11 @@
   border-radius: 0.33rem;
 }
 
-.tab:hover,
-.active {
+.tab:hover:not(.active) {
   background-color: var(--underlay2);
+}
+
+.active {
+  color: var(--background);
+  background-color: var(--primaryColor);
 }

@@ -127,10 +127,9 @@ const Project = () => {
                 </div>
               </div>
 
-              {/* social links */}
+              {/* links */}
               <div>
                 <div className={css.links}>
-                  <h5 className={css.subtitle}>Links</h5>
                   <Links
                     // ic links
                     canister={project.canister}
