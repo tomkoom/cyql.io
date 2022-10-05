@@ -1,19 +1,8 @@
 import React from "react";
 import css from "./JobModal.module.css";
 
-// icons
-import CrossIcon from "../../Icons/CrossIcon/CrossIcon";
-
 // components
-import {
-  AboutPosition,
-  CompanyDetails,
-  Contact,
-  Header,
-  OriginalPostBtn,
-  Title,
-  Website,
-} from "./index";
+import { AboutPosition, CompanyDetails, Contact, Header, OriginalPostBtn } from "./index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -43,8 +32,6 @@ const JobModal = () => {
     >
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
         <Header title={j.title} category={j.category} closeModal={closeModal} />
-        {/* <Title title={j.title} category={j.category} />
-          <CrossIcon onClick={closeModal} /> */}
 
         <div className={css.data}>
           <div className={css.position}>

@@ -23,18 +23,6 @@
   max-width: 54rem;
 }
 
-.times {
-  width: 3rem;
-  height: 3rem;
-  display: grid;
-  place-items: center;
-  color: var(--secondaryColor);
-  background-color: var(--underlay);
-  border-radius: 50%;
-  cursor: pointer;
-  flex-shrink: 0; /* don't shrink */
-}
-
 .data {
   display: flex;
   gap: 1.5rem;
