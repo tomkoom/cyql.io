@@ -4,7 +4,7 @@
 //   typeof value === "bigint" ? value.toString() + "n" : value
 // );
 
-// const serializeMum = JSON.stringify(obj, (key, value) =>
+// const serializeNum = JSON.stringify(obj, (key, value) =>
 //   typeof value === "bigint" ? Number(value) : value
 // );
 

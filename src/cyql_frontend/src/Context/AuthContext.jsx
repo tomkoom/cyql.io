@@ -210,6 +210,7 @@ export function AuthProvider({ children }) {
   };
 
   const signOut = () => {
+    setDefaultActor(undefined);
     setActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
