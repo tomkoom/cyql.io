@@ -12,7 +12,7 @@ import { toHome, toApps, toUpcoming, toSubmit, toNft, toJobs } from "../../../Ro
 import NavLink from "./NavLink/NavLink";
 
 const socials = [
-  { id: "twitter", link: "https://twitter.com/DfinityApps", icon: iTwitter },
+  { id: "twitter", link: "https://twitter.com/cyql_icp", icon: iTwitter },
   { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
   // { id: "medium", link: "https://medium.com/@cyql", icon: iMediumM },
 ];

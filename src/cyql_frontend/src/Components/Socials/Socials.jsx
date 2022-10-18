@@ -7,7 +7,7 @@ import { iTwitter, iDiscord, iMediumM } from "../../Icons/Icons";
 const socials = [
   {
     label: "Twitter",
-    link: "https://twitter.com/DfinityApps",
+    link: "https://twitter.com/cyql_icp",
     icon: iTwitter,
     logo: "",
   },
