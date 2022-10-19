@@ -10,7 +10,7 @@ const Website = () => {
 
   return (
     <div>
-      <h4 className={css.title}>Apply</h4>
+      <h4 className={css.title}>Apply by Website</h4>
       <a className="primaryBtn" href={j.applicationUrl} target="_blank" rel="noreferrer noopener">
         Apply
       </a>

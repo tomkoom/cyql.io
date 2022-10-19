@@ -1,0 +1,8 @@
+/* meta */
+
+.meta {
+  font-size: 0.9rem;
+  line-height: 150%;
+  color: var(--secondaryColor);
+  margin-top: 1rem;
+}

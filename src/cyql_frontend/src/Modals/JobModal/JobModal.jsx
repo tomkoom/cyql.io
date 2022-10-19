@@ -8,6 +8,7 @@ import {
   CompanyDetails,
   Contact,
   Header,
+  Meta,
   OriginalPostBtn,
 } from "./index";
 
@@ -47,6 +48,7 @@ const JobModal = () => {
               compensation={j.compensation}
               equity={j.equity}
             />
+            <Meta />
           </div>
 
           <div className={css.company}>
