@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { c } from "../../../../constants/constants";
+import { c } from "../../../../../constants/constants";
 
 const COINGECKO_API = c.COINGECKO_API;
 

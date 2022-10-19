@@ -6,7 +6,7 @@ import { iArrowUp, iArrowDown } from "../../Icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectIcpPrice, selectIcp24hPriceChange } from "../../State/icpPrice";
+import { selectIcpPrice, selectIcp24hPriceChange } from "../../State/requests/icpPrice";
 
 const PriceChange = ({ priceChange, icon, color }) => {
   return (
