@@ -2,7 +2,14 @@ import React from "react";
 import css from "./JobModal.module.css";
 
 // components
-import { AboutPosition, CompanyDetails, Contact, Header, OriginalPostBtn } from "./index";
+import {
+  AboutPosition,
+  ApplicationUrl,
+  CompanyDetails,
+  Contact,
+  Header,
+  OriginalPostBtn,
+} from "./index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -50,8 +57,9 @@ const JobModal = () => {
               companyLogoUrl={j.companyLogoUrl}
             />
             {j.sourceUrl && <OriginalPostBtn sourceUrl={j.sourceUrl} />}
-            {/* {j.contactEmail || j.contactTwitter || j.contactDiscord ? <Contact /> : ""}
-            {j.applicationUrl ? <Website /> : ""} */}
+
+            {j.applicationEmail || j.applicationTwitter || j.applicationDiscord ? <Contact /> : ""}
+            {j.applicationUrl ? <ApplicationUrl /> : ""}
           </div>
         </div>
       </div>

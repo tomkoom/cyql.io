@@ -6,13 +6,13 @@ import { setJobs as setJobsAction } from "./State/jobs/jobs";
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import {
-  canisterId as cyqlCanId,
-  idlFactory as cyqlIdlFactory,
+  canisterId as cyql_canister_id,
+  idlFactory as cyql_idl_factory,
 } from "../../declarations/cyql_backend/index";
 
 // host
-import { hostLocal } from "./Context/host";
-const cyqlBackendCanIdLocal = "ryjl3-tyaaa-aaaaa-aaaba-cai";
+import { localhost } from "./Context/host";
+const cyqlBackendCanIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
 
 const addUserToDb = async (actor, accountId, signInMethod) => {
   const timestamp = Date.now();
@@ -75,8 +75,8 @@ const setJobs = async (defaultActor) => {
 };
 
 const setJobsTest = async () => {
-  const testActor = Actor.createActor(cyqlIdlFactory, {
-    agent: new HttpAgent({ hostLocal }),
+  const testActor = Actor.createActor(cyql_idl_factory, {
+    agent: new HttpAgent({ localhost }),
     canisterId: cyqlBackendCanIdLocal,
   });
   await testActor

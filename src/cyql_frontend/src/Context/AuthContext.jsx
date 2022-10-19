@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState } from "react";
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import {
-  idlFactory as cyqlIdlFactory,
-  canisterId as cyqlCanId,
+  idlFactory as cyql_idl_factory,
+  canisterId as cyql_canister_id,
 } from "../../../declarations/cyql_backend/index";
 
 // wallets
@@ -18,12 +18,15 @@ import { toHome } from "../Routes/routes";
 import { getAccountIdentifier } from "./Utils/Principal.utils";
 
 // host
-import { host } from "./host";
+import { host, localhost } from "./host";
 
 const AuthContext = createContext();
 const useAuth = () => {
   return useContext(AuthContext);
 };
+
+const env = process.env.NODE_ENV;
+const h = env !== "production" ? localhost : host;
 
 export function AuthProvider({ children }) {
   const [defaultActor, setDefaultActor] = useState(undefined);
@@ -35,12 +38,12 @@ export function AuthProvider({ children }) {
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const setDefActor = () => {
-    const defActor = Actor.createActor(cyqlIdlFactory, {
-      agent: new HttpAgent({ host }),
-      canisterId: cyqlCanId,
+  const initDefaultActor = () => {
+    const actor = Actor.createActor(cyql_idl_factory, {
+      agent: new HttpAgent({ h }),
+      canisterId: cyql_canister_id,
     });
-    setDefaultActor(defActor);
+    setDefaultActor(actor);
   };
 
   // PLUG
@@ -49,10 +52,10 @@ export function AuthProvider({ children }) {
     try {
       setSignInLoading(true);
       await window.ic.plug.requestConnect({
-        whitelist: [cyqlCanId],
-        host: host,
+        whitelist: [cyql_canister_id],
+        host: h,
       });
-      await createActorWithPlug();
+      await createPlugActor();
       await getPlugUserData();
       setSignInLoading(false);
       setIsAuthenticated(true);
@@ -62,11 +65,11 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const createActorWithPlug = async () => {
+  const createPlugActor = async () => {
     await window.ic.plug
       .createActor({
-        canisterId: cyqlCanId,
-        interfaceFactory: cyqlIdlFactory,
+        canisterId: cyql_canister_id,
+        interfaceFactory: cyql_idl_factory,
       })
       .then((actor) => {
         setActor(actor);
@@ -99,11 +102,11 @@ export function AuthProvider({ children }) {
   };
 
   const createActorWithStoic = (identity) => {
-    const actor = Actor.createActor(cyqlIdlFactory, {
+    const actor = Actor.createActor(cyql_idl_factory, {
       agent: new HttpAgent({
         identity,
       }),
-      canisterId: cyqlCanId,
+      canisterId: cyql_canister_id,
     });
     setActor(actor);
   };
@@ -123,12 +126,12 @@ export function AuthProvider({ children }) {
   //  INFINITYWALLET
 
   const signInWithInfinityWallet = async () => {
-    const whitelist = [cyqlCanId];
+    const whitelist = [cyql_canister_id];
     try {
       setSignInLoading(true);
       await window.ic.infinityWallet.requestConnect({
         whitelist,
-        host,
+        host: h,
       });
       await createActorWithInfinityWallet();
       await getInfinityWalletUserData();
@@ -143,8 +146,8 @@ export function AuthProvider({ children }) {
   const createActorWithInfinityWallet = async () => {
     await window.ic.infinityWallet
       .createActor({
-        canisterId: cyqlCanId,
-        interfaceFactory: cyqlIdlFactory,
+        canisterId: cyql_canister_id,
+        interfaceFactory: cyql_idl_factory,
       })
       .then((actor) => {
         setActor(actor);
@@ -171,7 +174,7 @@ export function AuthProvider({ children }) {
       await window.ic.plug.isConnected().then(async (isConnected) => {
         if (isConnected) {
           setSignInLoading(true);
-          await createActorWithPlug();
+          await createPlugActor();
           await getPlugUserData();
           setSignInLoading(false);
           setIsAuthenticated(true);
@@ -235,7 +238,7 @@ export function AuthProvider({ children }) {
     signInLoading,
     isAuthenticated,
     // sign in
-    setDefActor,
+    initDefaultActor,
     signInWithPlug,
     signInWithStoic,
     signInWithInfinityWallet,

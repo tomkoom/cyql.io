@@ -12,9 +12,9 @@ const Contact = () => {
     <div className={css.contact}>
       <h4 className={css.title}>Apply by Contact</h4>
       <ul>
-        {j.contactEmail && <li>{j.contactEmail}</li>}
-        {j.contactTwitter && <li>{j.contactTwitter}</li>}
-        {j.contactDiscord && <li>{j.contactDiscord}</li>}
+        {j.applicationEmail && <li>{j.applicationEmail}</li>}
+        {j.applicationTwitter && <li>{j.applicationTwitter}</li>}
+        {j.applicationDiscord && <li>{j.applicationDiscord}</li>}
       </ul>
     </div>
   );

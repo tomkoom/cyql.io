@@ -75,7 +75,7 @@ const App = () => {
   const dispatch = useDispatch();
   const {
     defaultActor,
-    setDefActor,
+    initDefaultActor,
     actor,
     principalId,
     principalIdStr,
@@ -174,7 +174,7 @@ const App = () => {
 
   // set default actor
   useEffect(() => {
-    setDefActor();
+    initDefaultActor();
   }, []);
 
   // set icp price
