@@ -30,8 +30,8 @@ const Sidebar = () => {
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
         <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
         <NavLink label="Jobs" to={toJobs} icon={iBolt} />
+        <NavLink label="Predictions" icon={iEye} />
         <NavLink label="Submit" to={toSubmit} icon={iPlus} />
-        {/* <NavLink label="Predictions" to={} icon={iEye} /> */}
 
         {(principalIdStr && principalIdStr === PLUG_ADMIN_1) ||
         (principalIdStr && principalIdStr === STOIC_ADMIN_1) ||

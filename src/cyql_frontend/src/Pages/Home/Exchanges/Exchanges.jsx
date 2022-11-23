@@ -11,7 +11,7 @@ const exchanges = [
   {
     id: "binance",
     label: "Binance",
-    link: "https://www.binance.com/en/trade/ICP_BUSD?_from=markets&theme=dark&type=spot",
+    link: "https://accounts.binance.com/ru/register?ref=94453471",
     logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/exchanges/binance/binance-logo.svg",
     description: "Buy, trade, and hold 350+ cryptocurrencies on Binance.",
   },

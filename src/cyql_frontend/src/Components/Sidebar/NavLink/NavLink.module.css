@@ -14,8 +14,8 @@
   background-color: var(--underlay);
 }
 
-.active {
-  background-color: var(--underlay);
+.inactive {
+  color: var(--tertiaryColor);
 }
 
 .label {
