@@ -16,6 +16,7 @@ import { toHome } from "../Routes/routes";
 
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";
+import { disconnectPlug } from "./Utils/Plug.utils";
 
 // host
 import { host, localhost } from "./host";
@@ -49,20 +50,23 @@ export function AuthProvider({ children }) {
   // PLUG
 
   const signInWithPlug = async () => {
-    try {
-      setSignInLoading(true);
-      await window.ic.plug.requestConnect({
+    setSignInLoading(true);
+    const publicKey = await window.ic.plug
+      .requestConnect({
         whitelist: [cyql_canister_id],
         host: h,
+      })
+      .catch((err) => {
+        console.log(err);
+        setSignInLoading(false);
+        return; // return undefined
       });
-      await createPlugActor();
-      await getPlugUserData();
-      setSignInLoading(false);
+    if (publicKey) {
+      await createPlugActor().catch((err) => console.log(err));
+      await getPlugUserData().catch((err) => console.log(err));
       setIsAuthenticated(true);
-    } catch (err) {
-      console.log(err);
-      setSignInLoading(false);
     }
+    setSignInLoading(false);
   };
 
   const createPlugActor = async () => {
@@ -86,8 +90,6 @@ export function AuthProvider({ children }) {
     setAccountId(accountId);
     setSignInMethod("plug");
   };
-
-  const disconnectPlug = () => window.ic?.plug?.disconnect();
 
   //  STOIC
 

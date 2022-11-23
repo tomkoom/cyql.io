@@ -155,6 +155,7 @@ const App = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
+      console.log(actor);
       addUserToDb(actor, accountId, signInMethod);
     }
   }, [isAuthenticated]);

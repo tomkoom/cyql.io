@@ -13,7 +13,7 @@ const SearchBar = () => {
     <input
       className={css.search}
       type="text"
-      placeholder="Search projects"
+      placeholder="Search by name"
       onChange={(e) => dispatch(setSearch(e.target.value))}
       value={search}
     />
