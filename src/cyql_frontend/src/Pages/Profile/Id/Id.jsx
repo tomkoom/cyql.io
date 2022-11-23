@@ -4,6 +4,9 @@ import css from "./Id.module.css";
 // icons
 import { iCheck } from "../../../Icons/Icons";
 
+// utils
+import { formatId } from "../../../Utils/format";
+
 // auth
 import { useAuth } from "../../../Context/AuthContext";
 
@@ -15,14 +18,14 @@ import { useSelector } from "react-redux";
 import { selectOwnsNFT } from "../../../State/profile";
 
 const Id = () => {
-  const { principalIdStr: pIdStr, accountId: aId } = useAuth();
+  const { principalIdStr, accountIdStr } = useAuth();
   const [principalCopied, setPrincipalCopied] = useState(false);
   const [accountCopied, setAccountCopied] = useState(false);
   const ownsNFT = useSelector(selectOwnsNFT);
 
   const copyToClipBoard = (label) => {
     if (label === "Principal Id") {
-      navigator.clipboard.writeText(pIdStr);
+      navigator.clipboard.writeText(principalIdStr);
       setPrincipalCopied(true);
       setTimeout(() => {
         setPrincipalCopied(false);
@@ -30,7 +33,7 @@ const Id = () => {
     }
 
     if (label === "Account Id") {
-      navigator.clipboard.writeText(aId);
+      navigator.clipboard.writeText(accountIdStr);
       setAccountCopied(true);
       setTimeout(() => {
         setAccountCopied(false);
@@ -39,38 +42,36 @@ const Id = () => {
   };
 
   const addresses = [
-    { label: "Principal Id", value: pIdStr, copy: principalCopied },
-    { label: "Account Id", value: aId, copy: accountCopied },
+    { label: "Principal Id", addr: principalIdStr, copied: principalCopied },
+    { label: "Account Id", addr: accountIdStr, copied: accountCopied },
   ];
 
   return (
     <div className={css.id}>
       <IdImg size={128} />
-      <div className={css.idAddr}>
+      <div className={css.main}>
         <div className={css.title}>
-          <h2 className="pageTitle">
-            {pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}
-          </h2>
+          <h2 className="pageTitle">{formatId(principalIdStr)}</h2>
           {ownsNFT && <span className={css.hodlBadge}>Hodl Gang</span>}
         </div>
 
         <ul className={css.addresses}>
-          {addresses.map(({ label, value, copy }) => (
+          {addresses.map(({ label, addr, copied }) => (
             <li className={css.addressesI} key={label}>
               <p className={css.label}>{label}</p>
-              <p className={css.copy} onClick={() => copyToClipBoard(label)}>
-                {copy ? (
-                  <span>
-                    <span className={css.icon}>{iCheck}</span> Copied!
-                  </span>
+              <div className={css.addr} onClick={() => copyToClipBoard(label)}>
+                {copied ? (
+                  <div>
+                    <span className={css.icon}>{iCheck}</span>
+                    <p>Copied!</p>
+                  </div>
                 ) : (
-                  value && value.substring(0, 11) + "..." + value.substring(value.length - 3)
+                  <p>{addr && formatId(addr)}</p>
                 )}
-              </p>
+              </div>
             </li>
           ))}
         </ul>
-        <div className={css}></div>
       </div>
     </div>
   );

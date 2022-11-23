@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
   const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
-  const [accountId, setAccountId] = useState(""); // always string
+  const [accountIdStr, setAccountIdStr] = useState(""); // always string
   const [signInMethod, setSignInMethod] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -62,10 +62,16 @@ export function AuthProvider({ children }) {
         return; // return undefined
       });
     if (publicKey) {
-      await createPlugActor().catch((err) => console.log(err));
-      await getPlugUserData().catch((err) => console.log(err));
-      setIsAuthenticated(true);
+      await createPlugActor().catch((err) => {
+        console.log(err);
+        return;
+      });
+      await getPlugUserData().catch((err) => {
+        console.log(err);
+        return;
+      });
     }
+    setIsAuthenticated(true);
     setSignInLoading(false);
   };
 
@@ -84,10 +90,10 @@ export function AuthProvider({ children }) {
   const getPlugUserData = async () => {
     const principalId = await window.ic?.plug?.getPrincipal();
     const principalIdStr = principalId.toText();
-    const accountId = window.ic.plug.sessionManager.sessionData.accountId;
+    const accountIdStr = window.ic.plug.sessionManager.sessionData.accountId;
     setPrincipalId(principalId);
     setPrincipalIdStr(principalIdStr);
-    setAccountId(accountId);
+    setAccountIdStr(accountIdStr);
     setSignInMethod("plug");
   };
 
@@ -116,10 +122,10 @@ export function AuthProvider({ children }) {
   const getStoicUserData = (stoicId) => {
     const principalId = stoicId.getPrincipal();
     const principalIdStr = stoicId.getPrincipal().toText();
-    const accountId = getAccountIdentifier(principalId);
+    const accountIdStr = getAccountIdentifier(principalId);
     setPrincipalId(principalId);
     setPrincipalIdStr(principalIdStr);
-    setAccountId(accountId);
+    setAccountIdStr(accountIdStr);
     setSignInMethod("stoic");
   };
 
@@ -159,10 +165,10 @@ export function AuthProvider({ children }) {
 
   const getInfinityWalletUserData = async () => {
     const principalId = await window.ic.infinityWallet.getPrincipal();
-    const accountId = await window.ic.infinityWallet.getAccountID();
+    const accountIdStr = await window.ic.infinityWallet.getAccountID();
     setPrincipalId(principalId);
     setPrincipalIdStr(principalId.toText());
-    setAccountId(accountId);
+    setAccountIdStr(accountIdStr);
     setSignInMethod("infinitywallet");
   };
 
@@ -219,7 +225,7 @@ export function AuthProvider({ children }) {
     setActor(undefined);
     setPrincipalId(undefined);
     setPrincipalIdStr("");
-    setAccountId("");
+    setAccountIdStr("");
     setIsAuthenticated(false);
 
     signInMethod === "plug" && disconnectPlug();
@@ -235,7 +241,7 @@ export function AuthProvider({ children }) {
     actor,
     principalId,
     principalIdStr,
-    accountId,
+    accountIdStr,
     signInMethod,
     signInLoading,
     isAuthenticated,

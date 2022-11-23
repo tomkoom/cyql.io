@@ -14,13 +14,13 @@ import {
 import { localhost } from "./Context/host";
 const cyqlBackendCanIdLocal = "rrkah-fqaaa-aaaaa-aaaaq-cai";
 
-const addUserToDb = async (actor, accountId, signInMethod) => {
+const addUserToDb = async (actor, accountIdStr, signInMethod) => {
   const timestamp = Date.now();
   const profile = await actor.getProfile().catch((err) => console.log(err));
 
   if (profile.length === 0) {
     const newProfile = {
-      accountId,
+      accountIdStr,
       firstSignIn: timestamp,
       lastVisit: timestamp,
       signInMethod,

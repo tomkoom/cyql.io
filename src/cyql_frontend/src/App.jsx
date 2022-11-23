@@ -79,7 +79,7 @@ const App = () => {
     actor,
     principalId,
     principalIdStr,
-    accountId,
+    accountIdStr,
     signInMethod,
     checkConnection,
     isAuthenticated,
@@ -155,8 +155,7 @@ const App = () => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      console.log(actor);
-      addUserToDb(actor, accountId, signInMethod);
+      addUserToDb(actor, accountIdStr, signInMethod);
     }
   }, [isAuthenticated]);
 

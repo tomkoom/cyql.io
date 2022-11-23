@@ -2,7 +2,14 @@
 
 .id {
   display: flex;
+  align-items: center;
   gap: 1rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
 }
 
 .title {
@@ -11,19 +18,17 @@
   gap: 0.5rem;
 }
 
+.title h2 {
+  margin-bottom: 0.125rem; /* override default */
+}
+
 .hodlBadge {
   padding: 0.25rem;
   border-radius: 0.25rem;
   color: white;
   font-size: var(--fontSize7);
-  background-color: var(--highlightColor);
   font-weight: var(--fwBold);
-}
-
-.idAddr {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  background-color: var(--highlightColor);
 }
 
 .addresses {
@@ -35,22 +40,27 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .label {
-  font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
+  font-size: 0.9rem;
+  color: var(--tertiaryColor);
+  font-weight: var(--fwBold);
 }
 
-.copy {
-  padding: 0.5rem 0.5rem;
-  background-color: var(--underlay);
-  border-radius: 0.25rem;
+.addr {
+  height: 2rem;
+  padding: 0 0.5rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  font-weight: var(--fwMedium);
+  box-shadow: 0 0 0 1px var(--underlay2);
+  border-radius: 0.33rem;
   cursor: pointer;
 }
 
-.copy:hover {
+.addr:hover {
   opacity: 0.8;
 }
 

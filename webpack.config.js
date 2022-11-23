@@ -31,6 +31,7 @@ initCanisterIds();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 const asset_entry = path.join("src", "cyql_frontend", "src", "index.html");
+const frontendDirectory = "cyql_frontend";
 
 module.exports = {
   target: "web",
@@ -53,6 +54,22 @@ module.exports = {
       events: require.resolve("events/"),
       stream: require.resolve("stream-browserify/"),
       util: require.resolve("util/"),
+    },
+    // alias
+    alias: {
+      // https://www.taniarascia.com/react-architecture-directory-structure/
+      // "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "src", frontendDirectory, "assets"),
+      "@components": path.resolve(__dirname, "src", frontendDirectory, "src/Components"),
+      "@context": path.resolve(__dirname, "src", frontendDirectory, "src/Context"),
+      "@icons": path.resolve(__dirname, "src", frontendDirectory, "src/Icons"),
+      "@pages": path.resolve(__dirname, "src", frontendDirectory, "src/Pages"),
+      "@state": path.resolve(__dirname, "src", frontendDirectory, "src/State"),
+      "@styles": path.resolve(__dirname, "src", frontendDirectory, "src/Styles"),
+      "@utils": path.resolve(__dirname, "src", frontendDirectory, "src/Utils"),
+      // "@assets": path.resolve(__dirname, "src/assets"),
+      // ...etc
     },
   },
   output: {
