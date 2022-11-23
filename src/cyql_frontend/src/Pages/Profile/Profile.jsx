@@ -3,7 +3,7 @@ import css from "./Profile.module.css";
 
 // state
 import { useSelector } from "react-redux";
-import { selectUpvotedProjects, selectOwnsNFT, selectNFTIdsOwned } from "../../State/profile";
+import { selectUpvotedProjects, selectOwnsNFT, selectNFTIdsOwned } from "@state/profile";
 
 // components
 import Id from "./Id/Id";
