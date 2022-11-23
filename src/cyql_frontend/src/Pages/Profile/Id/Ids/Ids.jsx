@@ -28,8 +28,16 @@ const Ids = () => {
   const [accountCopied, setAccountCopied] = useState(false);
   const { principalIdStr, accountIdStr } = useAuth();
 
+  const principalLabel = "principal id";
+  const accountLabel = "account id";
+
+  const ids = [
+    { label: principalLabel, id: principalIdStr, copied: principalCopied },
+    { label: accountLabel, id: accountIdStr, copied: accountCopied },
+  ];
+
   const copyToClipBoard = (label) => {
-    if (label === "principal id") {
+    if (label === principalLabel) {
       navigator.clipboard.writeText(principalIdStr);
       setPrincipalCopied(true);
       setTimeout(() => {
@@ -37,7 +45,7 @@ const Ids = () => {
       }, 3000);
     }
 
-    if (label === "account id") {
+    if (label === accountLabel) {
       navigator.clipboard.writeText(accountIdStr);
       setAccountCopied(true);
       setTimeout(() => {
@@ -46,17 +54,19 @@ const Ids = () => {
     }
   };
 
-  const ids = [
-    { label: "principal id", id: principalIdStr, copied: principalCopied },
-    { label: "account id", id: accountIdStr, copied: accountCopied },
-  ];
-
   return (
     <ul className={css.ids}>
       {ids.map(({ label, id, copied }) => (
         <li className={css.idsI} key={label}>
           <p className={css.label}>{label}</p>
-          <div className={css.idValue} onClick={() => copyToClipBoard(label)}>
+          <div
+            className={css.idValue}
+            onClick={() => {
+              if (!copied) {
+                copyToClipBoard(label);
+              }
+            }}
+          >
             {copied ? <Copied /> : <IdValue id={id} />}
           </div>
         </li>
