@@ -9,7 +9,7 @@ const ExpandableText = ({ children }) => {
       <div className={css.content} style={{ maxHeight: expanded ? "none" : "1.25rem" }}>
         <p>{children}</p>
       </div>
-      <span className={css.readMoreBtn} onClick={() => setExpanded(!expanded)}>
+      <span className={css.btn} onClick={() => setExpanded(!expanded)}>
         {expanded ? "Read less" : "Read more"}
       </span>
     </div>

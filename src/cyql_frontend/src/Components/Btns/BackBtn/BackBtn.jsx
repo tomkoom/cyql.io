@@ -1,11 +1,15 @@
 import React from "react";
 import css from "./BackBtn.module.css";
-import { goBack } from "../../../Routes/routes";
-import { iArrowLeft } from "../../../Icons/Icons";
+
+// routes
+import { goBack } from "@routes/routes";
+
+// icons
+import { iArrowLeft } from "@icons/Icons";
 
 const BackBtn = () => {
   return (
-    <button className={`${css.backBtn} navlink`} onClick={() => goBack()}>
+    <button className={css.backBtn} onClick={() => goBack()}>
       {iArrowLeft}
     </button>
   );

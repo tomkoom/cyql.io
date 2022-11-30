@@ -4,8 +4,8 @@
   font-size: var(--fontSize7);
   color: var(--secondaryColor);
   background-color: var(--underlay);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 .content {
@@ -17,7 +17,11 @@
   line-height: 150%;
 }
 
-.readMoreBtn {
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 1.5rem;
   font-weight: var(--fwBold);
   cursor: pointer;
 }

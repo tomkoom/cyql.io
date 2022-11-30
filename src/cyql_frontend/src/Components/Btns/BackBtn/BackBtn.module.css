@@ -6,7 +6,7 @@
   display: grid;
   place-items: center;
   font-size: var(--fontSize6);
-  color: var(--primaryColor);
+  color: var(--secondaryColor);
   background-color: var(--underlay);
   border-radius: 50%;
   margin-bottom: 1rem;

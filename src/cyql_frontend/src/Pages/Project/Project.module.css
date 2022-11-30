@@ -8,7 +8,6 @@
 .content {
   display: flex;
   gap: 2rem;
-  padding: 1rem 0;
 }
 
 .main {
@@ -18,11 +17,6 @@
 .links {
   width: 20rem;
   margin-bottom: 1rem;
-}
-
-.date {
-  color: var(--secondaryColor);
-  white-space: nowrap;
 }
 
 .subtitle {
@@ -55,13 +49,13 @@
 
 /* btns */
 
-.project__btns {
+.nftBtns {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.project__btns a span {
+.nftBtns a span {
   color: var(--tertiaryColor);
 }
 
@@ -84,25 +78,6 @@
 .btn:hover {
   opacity: 0.8;
 }
-
-/* bottom */
-
-.bottom {
-  margin-top: 2rem;
-}
-
-.twitterDmButton {
-  display: inline-block;
-  color: var(--secondaryColor);
-  padding: 0.5rem 0;
-}
-
-.twitterDmButton:hover {
-  color: var(--primaryColor);
-  box-shadow: 0 2px 0 var(--primaryColor);
-}
-
-/* - */
 
 .nftSaleStatus {
   background-color: var(--underlay2);

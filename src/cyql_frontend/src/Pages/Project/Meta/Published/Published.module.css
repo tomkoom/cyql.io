@@ -1,0 +1,6 @@
+/* published */
+
+.published {
+  white-space: nowrap;
+  color: var(--tertiaryColor);
+}

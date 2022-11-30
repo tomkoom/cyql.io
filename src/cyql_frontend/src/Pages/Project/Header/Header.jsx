@@ -11,7 +11,7 @@ const Header = ({ logo, name, category, tags, idx, upvotedBy }) => {
       {logo && <Logo logo={logo} name={name} />}
       <Title name={name} category={category} tags={tags} />
 
-      <div className={css.upvoteBtnContainer}>
+      <div className={css.upvtBtnContainer}>
         <UpvtBtn idx={idx} upvotedBy={upvotedBy} />
       </div>
     </div>

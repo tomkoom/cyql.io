@@ -1,20 +1,31 @@
 import React from "react";
 import css from "./Project.module.css";
+
+// router
 import { useParams } from "react-router-dom";
 
+// utils
+import { formatDate2 } from "@utils/format";
+
 // icons
-import { iExternalLink } from "../../Icons/Icons";
+import { iExternalLink } from "@icons/Icons";
 
 // components
-import { BackBtn, ExpandableText, Loader } from "../../Components/index";
-import { CollStats, Description, Header, Links, NftPreviews, TwitterTimeline } from "./index";
+import { BackBtn, Loader } from "@components/index";
+import {
+  CollStats,
+  Description,
+  Disclaimer,
+  Header,
+  Links,
+  Meta,
+  NftPreviews,
+  TwitterTimeline,
+} from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects } from "../../State/projects";
-
-// utils
-import { formatDate2 } from "../../Utils/format";
+import { selectProjects } from "@state/projects";
 
 const Project = () => {
   const { id } = useParams();
@@ -23,13 +34,6 @@ const Project = () => {
   return (
     <div className={css.project}>
       <BackBtn />
-
-      <ExpandableText>
-        This website is maintained by the IC enthusiasts and community. Anyone can submit their p.
-        Not all information may be properly verified and therefore may not be accurate. DYOR and use
-        your best judgement when dealing with the projects listed on this site and making investment
-        decisions.
-      </ExpandableText>
 
       {projects.length < 1 ? (
         <Loader />
@@ -70,7 +74,7 @@ const Project = () => {
                   </div>
                 )}
 
-                <div className={css.project__btns}>
+                <div className={css.nftBtns}>
                   {p.nftMarketUrl && (
                     <a
                       className={css.btn}
@@ -94,17 +98,8 @@ const Project = () => {
                   )}
                 </div>
 
-                <div className={css.bottom}>
-                  {p.added && <div className={css.date}>Published {formatDate2(p.added)}</div>}
-                  <a
-                    href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
-                    className={css.twitterDmButton}
-                    data-screen-name="@DfinityApps"
-                    rel="noreferrer noopener"
-                  >
-                    Edit the project info
-                  </a>
-                </div>
+                <Meta added={p.added} />
+                <Disclaimer />
               </div>
 
               {/* links */}
