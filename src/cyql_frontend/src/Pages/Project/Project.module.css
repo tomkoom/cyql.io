@@ -20,70 +20,14 @@
   margin-bottom: 1rem;
 }
 
-.cover {
-  width: 100%;
-  padding-bottom: 33.33%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 1rem;
-}
-
-.info {
-  display: flex;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.logo {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.caption {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.title {
-  font-size: var(--fontSize5);
-  font-weight: var(--fwBold);
-}
-
-.subtitle {
-  margin-bottom: 0.5rem;
-  font-size: var(--fontSize6);
-}
-
-.upvoteBtn {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
 .date {
   color: var(--secondaryColor);
   white-space: nowrap;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.tagsI {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
-  font-weight: var(--fwMedium);
-  background-color: var(--underlay);
-  border-radius: 0.25rem;
+.subtitle {
+  margin-bottom: 0.5rem;
+  font-size: var(--fontSize6);
 }
 
 /* nft market data */

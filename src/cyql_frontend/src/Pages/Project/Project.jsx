@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 import { iExternalLink } from "../../Icons/Icons";
 
 // components
-import { BackBtn, ExpandableText, Loader, UpvtBtn } from "../../Components/index";
-import { CollStats, Description, NftPreviews, TwitterTimeline, Links } from "./index";
+import { BackBtn, ExpandableText, Loader } from "../../Components/index";
+import { CollStats, Description, Header, Links, NftPreviews, TwitterTimeline } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -25,74 +25,56 @@ const Project = () => {
       <BackBtn />
 
       <ExpandableText>
-        This website is maintained by the IC enthusiasts and community. Anyone can submit their
-        project. Not all information may be properly verified and therefore may not be accurate.
-        DYOR and use your best judgement when dealing with the projects listed on this site and
-        making investment decisions.
+        This website is maintained by the IC enthusiasts and community. Anyone can submit their p.
+        Not all information may be properly verified and therefore may not be accurate. DYOR and use
+        your best judgement when dealing with the projects listed on this site and making investment
+        decisions.
       </ExpandableText>
 
       {projects.length < 1 ? (
         <Loader />
       ) : (
         projects
-          .filter((project) => project.id === id)
-          .map((project) => (
-            <div className={css.content} key={project.id}>
+          .filter((p) => p.id === id)
+          .map((p) => (
+            <div className={css.content} key={p.id}>
               <div className={css.main}>
-                {project.cover && (
-                  <div className={css.cover} style={{ backgroundImage: `url(${project.cover})` }} />
-                )}
+                <Header
+                  logo={p.logo}
+                  name={p.name}
+                  category={p.category}
+                  tags={p.tags}
+                  idx={p.idx}
+                  upvotedBy={p.upvotedBy}
+                />
 
-                <div className={css.info}>
-                  {/* logo */}
-                  {project.logo && (
-                    <img className={css.logo} src={project.logo} alt={`${project.name} logo`} />
-                  )}
-
-                  {/* caption */}
-                  <div className={css.caption}>
-                    <h3 className={css.title}>{project.name}</h3>
-                    <div className={css.tags}>
-                      {project.category && <span className={css.tagsI}>{project.category}</span>}
-                      {project.tags && <span className={css.tagsI}>{project.tags}</span>}
-                    </div>
-                  </div>
-
-                  <div className={css.upvoteBtn}>
-                    <UpvtBtn idx={project.idx} upvotedBy={project.upvotedBy} />
-                  </div>
-                </div>
-
-                <Description name={project.name} description={project.description} />
-
-                {/* nft previews */}
-                {(project.nftImg1 || project.nftImg2 || project.nftImg3 || project.nftImg4) && (
+                <Description name={p.name} description={p.description} />
+                {(p.nftImg1 || p.nftImg2 || p.nftImg3 || p.nftImg4) && (
                   <NftPreviews
-                    nftImg1={project.nftImg1}
-                    nftImg2={project.nftImg2}
-                    nftImg3={project.nftImg3}
-                    nftImg4={project.nftImg4}
+                    nftImg1={p.nftImg1}
+                    nftImg2={p.nftImg2}
+                    nftImg3={p.nftImg3}
+                    nftImg4={p.nftImg4}
                   />
                 )}
 
-                {/* collection stats */}
-                {project.category === "NFTs" && (
+                {p.category === "NFTs" && (
                   <div>
                     <h6>Collection Stats</h6>
                     <CollStats
-                      nftSaleStatus={project.nftSaleStatus}
-                      nftSaleDate={project.nftSaleDate}
-                      nftUnits={project.nftUnits}
-                      nftUnitPrice={project.nftUnitPrice}
+                      nftSaleStatus={p.nftSaleStatus}
+                      nftSaleDate={p.nftSaleDate}
+                      nftUnits={p.nftUnits}
+                      nftUnitPrice={p.nftUnitPrice}
                     />
                   </div>
                 )}
 
                 <div className={css.project__btns}>
-                  {project.nftMarketUrl && (
+                  {p.nftMarketUrl && (
                     <a
                       className={css.btn}
-                      href={project.nftMarketUrl}
+                      href={p.nftMarketUrl}
                       target="_blank"
                       rel="norefferrer noopener"
                     >
@@ -100,10 +82,10 @@ const Project = () => {
                     </a>
                   )}
 
-                  {project.nftRarityChecker && (
+                  {p.nftRarityChecker && (
                     <a
                       className={css.btn}
-                      href={project.nftRarityChecker}
+                      href={p.nftRarityChecker}
                       target="_blank"
                       rel="norefferrer noopener"
                     >
@@ -113,9 +95,7 @@ const Project = () => {
                 </div>
 
                 <div className={css.bottom}>
-                  {project.added && (
-                    <div className={css.date}>Published {formatDate2(project.added)}</div>
-                  )}
+                  {p.added && <div className={css.date}>Published {formatDate2(p.added)}</div>}
                   <a
                     href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
                     className={css.twitterDmButton}
@@ -132,26 +112,26 @@ const Project = () => {
                 <div className={css.links}>
                   <Links
                     // ic links
-                    canister={project.canister}
-                    dscvr={project.dscvr}
-                    distrikt={project.distrikt}
-                    openChat={project.openChat}
+                    canister={p.canister}
+                    dscvr={p.dscvr}
+                    distrikt={p.distrikt}
+                    openChat={p.openChat}
                     // soc links
-                    website={project.website}
-                    app={project.app}
-                    docs={project.docs}
-                    twitter={project.twitter}
-                    discord={project.discord}
-                    github={project.github}
-                    telegram={project.telegram}
-                    medium={project.medium}
+                    website={p.website}
+                    app={p.app}
+                    docs={p.docs}
+                    twitter={p.twitter}
+                    discord={p.discord}
+                    github={p.github}
+                    telegram={p.telegram}
+                    medium={p.medium}
                   />
                 </div>
 
-                {project.twitter && (
+                {p.twitter && (
                   <div>
-                    <h5 className={css.subtitle}>{project.name} Twitter</h5>
-                    <TwitterTimeline twitter={project.twitter} />
+                    <h5 className={css.subtitle}>{p.name} Twitter</h5>
+                    <TwitterTimeline twitter={p.twitter} />
                   </div>
                 )}
               </div>

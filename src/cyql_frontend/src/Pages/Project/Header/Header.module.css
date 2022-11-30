@@ -1,0 +1,15 @@
+/* header */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.upvoteBtnContainer {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

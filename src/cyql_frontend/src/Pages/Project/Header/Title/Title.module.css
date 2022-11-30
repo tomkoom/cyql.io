@@ -1,0 +1,29 @@
+/* title */
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title h3 {
+  font-size: var(--fontSize4);
+  font-weight: var(--fwExtraBold);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tagsI {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  font-weight: var(--fwBold);
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+}
