@@ -3,13 +3,13 @@ import css from "./Sidebar.module.css";
 import { c } from "../../../../../constants/constants";
 
 // icons
-import { iCube, iRocket, iBolt, iEye, iPlus, iList, iChartArea } from "../../Icons/Icons";
+import { iCube, iRocket, iBolt, iPlus, iList, iChartArea } from "../../Icons/Icons";
 
 // routes
 import { toApps, toUpcoming, toSubmit, toJobs, toAdmin, toNft } from "../../Routes/routes";
 
 // auth
-import { useAuth } from "../../Context/AuthContext";
+import { useAuth } from "@context/AuthContext";
 
 // components
 import NavLink from "./NavLink/NavLink";
@@ -28,10 +28,9 @@ const Sidebar = () => {
       <div className={css.nav}>
         <NavLink label="Projects" to={toApps} icon={iCube} />
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
-        <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
         <NavLink label="Jobs" to={toJobs} icon={iBolt} />
-        <NavLink label="Predictions" icon={iEye} />
         <NavLink label="Submit" to={toSubmit} icon={iPlus} />
+        <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
 
         {(principalIdStr && principalIdStr === PLUG_ADMIN_1) ||
         (principalIdStr && principalIdStr === STOIC_ADMIN_1) ||
@@ -39,6 +38,19 @@ const Sidebar = () => {
         (principalIdStr && principalIdStr === STOIC_ADMIN_2) ? (
           <NavLink label="Admin" to={toAdmin} icon={iList} />
         ) : null}
+
+        <a
+          className={css.link}
+          href="https://th2z2-caaaa-aaaai-qnn2a-cai.ic0.app/"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <img
+            className={css.icon}
+            src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/cyql/favicon2.svg"
+          />
+          <p>streak</p>
+        </a>
       </div>
 
       <hr className={css.div} />
