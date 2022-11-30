@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Socials.module.css";
 
 // icons
-import { iTwitter, iDiscord, iMediumM } from "../../Icons/Icons";
+import { iTwitter, iDiscord /* iMediumM */ } from "../../Icons/Icons";
 
 const socials = [
   {
@@ -38,10 +38,12 @@ const Socials = () => {
         <li className={css.socialsI} key={s.label}>
           <a href={s.link} target="_blank" rel="noopener noreferrer">
             {s.icon ? (
-              <span className={css.icon}>{s.icon}</span>
+              <span id={css[s.label.toLowerCase()]} className={css.icon}>
+                {s.icon}
+              </span>
             ) : (
               <span className={css.icon}>
-                <img className={css.logo} src={s.logo} alt={`${s.label}-logo`} />
+                <img className={css.logo} src={s.logo} alt={`${s.label} logo`} />
               </span>
             )}
             {s.label}
