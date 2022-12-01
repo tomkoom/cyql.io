@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: rgba(var(--highlightColorRgb), 0.2);
+}
+
 .icon {
   font-size: var(--fontSize5);
   color: var(--highlightColor);

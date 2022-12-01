@@ -18,9 +18,9 @@ const addUserToDb = async (actor, accountIdStr, signInMethod) => {
   const timestamp = Date.now();
   const profile = await actor.getProfile().catch((err) => console.log(err));
 
-  if (profile.length === 0) {
+  if (profile === undefined || profile.length === 0) {
     const newProfile = {
-      accountIdStr,
+      accountId: accountIdStr,
       firstSignIn: timestamp,
       lastVisit: timestamp,
       signInMethod,

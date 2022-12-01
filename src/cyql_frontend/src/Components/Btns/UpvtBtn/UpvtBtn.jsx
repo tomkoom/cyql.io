@@ -33,17 +33,19 @@ const UpvtBtn = ({ idx, upvotedBy }) => {
   };
 
   const check = (p) => {
-    return upvotedBy.length > 0 && upvotedBy.includes(p);
+    return upvotedBy && upvotedBy.length > 0 && upvotedBy.includes(p);
   };
+
+  const num = upvotedBy ? upvotedBy.length : "0";
 
   return isAuthenticated ? (
     check(p) ? (
-      <Active num={upvotedBy.length} click={() => unUpvote(idx, p)} />
+      <Active num={num} click={() => unUpvote(idx, p)} />
     ) : (
-      <NotActive num={upvotedBy.length} click={() => upvote(idx, p)} />
+      <NotActive num={num} click={() => upvote(idx, p)} />
     )
   ) : (
-    <NotActive num={upvotedBy.length} click={() => dispatch(setSignInModal(true))} />
+    <NotActive num={num} click={() => dispatch(setSignInModal(true))} />
   );
 };
 
