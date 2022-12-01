@@ -23,29 +23,6 @@
   font-size: var(--fontSize6);
 }
 
-/* nft market data */
-
-.nftMarketData {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.nftMarketData__item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  box-shadow: var(--boxShadow);
-  padding: 1rem;
-  border-radius: 0.75rem;
-}
-
-.nftMarketData__item h5 {
-  font-weight: var(--fwBold);
-  font-size: var(--fontSize6);
-}
-
 /* responsive */
 
 @media screen and (max-width: 1023px) {

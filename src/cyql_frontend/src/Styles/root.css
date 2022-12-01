@@ -9,7 +9,6 @@
 :root {
   /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
 
-  --colorBlack: #000000;
   --coolGray100: #121619;
   --coolGray90: #21272a;
   --coolGray80: #343a3f;
@@ -20,7 +19,9 @@
   --coolGray30: #c1c7cd;
   --coolGray20: #dde1e6;
   --coolGray10: #f2f4f8;
-  --colorWhite: #ffffff;
+
+  --black: #000000;
+  --white: #ffffff;
 
   /* system colors */
 

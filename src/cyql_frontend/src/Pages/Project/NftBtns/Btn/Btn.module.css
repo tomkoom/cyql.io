@@ -5,9 +5,9 @@
   align-items: center;
   gap: 0.5rem;
   height: 2.5rem;
+  padding: 0 0.5rem;
   font-weight: var(--fwBold);
   background-color: var(--underlay);
-  padding: 0 0.5rem;
   border-radius: 0.5rem;
 }
 

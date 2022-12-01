@@ -80,7 +80,7 @@ const Project = () => {
                   dscvr={p.dscvr}
                   distrikt={p.distrikt}
                   openChat={p.openChat}
-                  // soc
+                  // social
                   twitter={p.twitter}
                   discord={p.discord}
                   github={p.github}
@@ -96,15 +96,12 @@ const Project = () => {
                 <Disclaimer />
               </div>
 
-              {/* links */}
-              <div className={css.twitter}>
-                {p.twitter && (
-                  <div>
-                    <h5 className={css.subtitle}>{p.name} Twitter</h5>
-                    <TwitterTimeline twitter={p.twitter} />
-                  </div>
-                )}
-              </div>
+              {p.twitter && (
+                <div className={css.twitter}>
+                  <h5 className={css.subtitle}>{p.name} Twitter</h5>
+                  <TwitterTimeline twitter={p.twitter} />
+                </div>
+              )}
             </div>
           ))
       )}

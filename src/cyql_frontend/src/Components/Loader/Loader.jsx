@@ -1,22 +1,14 @@
 import React from "react";
-import Loader from "react-js-loader";
+import L from "react-js-loader";
 // https://www.npmjs.com/package/react-js-loader
 
 import { useSelector } from "react-redux";
+import { selectTheme } from "@state/theme";
 
-const TheLoader = () => {
-  const theme = useSelector((state) => state.theme.theme.value);
-  return (
-    <div>
-      <Loader
-        type="spinner-default"
-        bgColor={
-          theme === "dark" ? "#f2f4f8" : theme === "light" ? "#121619" : null
-        }
-        size={32}
-      />
-    </div>
-  );
+const Loader = () => {
+  const t = useSelector(selectTheme);
+  const color = t === "dark" ? "#dde1e6" : t === "light" ? "#21272a" : undefined;
+  return <L type="spinner-default" bgColor={color} size={32} />;
 };
 
-export default TheLoader;
+export default Loader;
