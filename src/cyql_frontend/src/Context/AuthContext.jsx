@@ -11,8 +11,8 @@ import {
 import { StoicIdentity } from "ic-stoic-identity";
 
 // routes
-import { history } from "../Routes/history";
-import { toHome } from "../Routes/routes";
+import { history } from "@routes/history";
+import { toHome } from "@routes/routes";
 
 // utils
 import { getAccountIdentifier } from "./Utils/Principal.utils";

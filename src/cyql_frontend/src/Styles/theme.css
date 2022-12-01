@@ -5,9 +5,11 @@
   --secondaryColor: var(--coolGray70);
   --tertiaryColor: var(--coolGray50);
   --highlightColor: #304ffe;
+  /* --highlightColorRgb: rgb(48, 79, 254); */
+  --highlightColorRgb: 48, 79, 254;
   --highlightColor2: #536dfe;
   --highlightColor3: #8c9eff;
-  --background: white;
+  --background: #fff;
   --underlay: var(--coolGray10);
   --underlay2: var(--coolGray20);
   --underlay3: var(--coolGray30);
@@ -18,6 +20,7 @@
   --secondaryColor: var(--coolGray30);
   --tertiaryColor: var(--coolGray50);
   --highlightColor: #304ffe;
+  --highlightColorRgb: 48, 79, 254;
   --highlightColor2: #536dfe;
   --highlightColor3: #8c9eff;
   --background: var(--coolGray100);

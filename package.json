@@ -66,7 +66,6 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-textarea-autosize": "^8.3.4",
-    "react-toastify": "^9.0.8",
     "react-twitter-widgets": "^1.11.0",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",

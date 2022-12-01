@@ -1,96 +1,49 @@
 import React from "react";
-import css from "./UpvtBtn.module.css";
-
-// toast
-import { toast } from "react-toastify";
-
-// auth
-import { useAuth } from "../../../Context/AuthContext";
-
-// icons
-import { iCaretUp } from "../../../Icons/Icons";
-
-// state
-import { useSelector, useDispatch } from "react-redux";
-import { setSignInModal } from "../../../State/modals";
-import { selectVerified } from "../../../State/profile";
 
 // firestore
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { projectsCollRef } from "../../../Firestore/firestore-collections";
+import { projectsCollRef } from "@firestore/firestore-collections";
 
-const UpvoteBtn = ({ upvotedBy, isActive, onClick }) => {
-  return (
-    <button className={`${css.upvtBtn} ${isActive ? css.activeBtn : ""}`} onClick={onClick}>
-      <span className={`${css.icon} ${isActive ? css.activeIcon : ""}`}>{iCaretUp}</span>
-      <p className={css.num}>{isActive ? upvotedBy.length : upvotedBy ? upvotedBy.length : "0"}</p>
-    </button>
-  );
-};
+// auth
+import { useAuth } from "@context/AuthContext";
+
+// state
+import { useDispatch } from "react-redux";
+import { setSignInModal } from "@state/modals";
+
+// components
+import { Active, NotActive } from "./index";
 
 const UpvtBtn = ({ idx, upvotedBy }) => {
   const dispatch = useDispatch();
-  const { principalIdStr: pIdStr } = useAuth();
-  const isVerified = useSelector(selectVerified);
+  const { isAuthenticated, principalIdStr: p } = useAuth();
 
-  // toast
-  const notify = () =>
-    toast(
-      "Upvoting is currently available only through Plug sign-in. Also to upvote your wallet balance should be >= 10 ICP. Stoic support coming shortly."
-    );
-
-  const upvote = async (projectIdx, principalIdStr) => {
-    const docRef = doc(projectsCollRef, projectIdx);
+  const upvote = async (idx, p) => {
+    const docRef = doc(projectsCollRef, idx);
     await updateDoc(docRef, {
-      upvotedBy: arrayUnion(principalIdStr),
+      upvotedBy: arrayUnion(p),
     });
   };
 
-  const unUpvote = async (projectIdx, principalIdStr) => {
-    const docRef = doc(projectsCollRef, projectIdx);
+  const unUpvote = async (idx, p) => {
+    const docRef = doc(projectsCollRef, idx);
     await updateDoc(docRef, {
-      upvotedBy: arrayRemove(principalIdStr),
+      upvotedBy: arrayRemove(p),
     });
   };
 
-  // const upvote = async (projectIdx, principalIdStr) => {
-  //   if (isVerified) {
-  //     const docRef = doc(projectsCollRef, projectIdx);
-  //     await updateDoc(docRef, {
-  //       upvotedBy: arrayUnion(principalIdStr),
-  //     });
-  //   } else {
-  //     notify();
-  //   }
-  // };
+  const check = (p) => {
+    return upvotedBy.length > 0 && upvotedBy.includes(p);
+  };
 
-  // const unUpvote = async (projectIdx, principalIdStr) => {
-  //   if (isVerified) {
-  //     const docRef = doc(projectsCollRef, projectIdx);
-  //     await updateDoc(docRef, {
-  //       upvotedBy: arrayRemove(principalIdStr),
-  //     });
-  //   } else {
-  //     notify();
-  //   }
-  // };
-
-  return (
-    <div>
-      {pIdStr ? (
-        upvotedBy && upvotedBy.includes(pIdStr) ? (
-          <UpvoteBtn upvotedBy={upvotedBy} isActive={true} onClick={() => unUpvote(idx, pIdStr)} /> // upvoted
-        ) : (
-          <UpvoteBtn upvotedBy={upvotedBy} isActive={false} onClick={() => upvote(idx, pIdStr)} />
-        )
-      ) : (
-        <UpvoteBtn
-          upvotedBy={upvotedBy}
-          isActive={false}
-          onClick={() => dispatch(setSignInModal(true))}
-        />
-      )}
-    </div>
+  return isAuthenticated ? (
+    check(p) ? (
+      <Active num={upvotedBy.length} click={() => unUpvote(idx, p)} />
+    ) : (
+      <NotActive num={upvotedBy.length} click={() => upvote(idx, p)} />
+    )
+  ) : (
+    <NotActive num={upvotedBy.length} click={() => dispatch(setSignInModal(true))} />
   );
 };
 

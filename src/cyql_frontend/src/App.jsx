@@ -1,28 +1,24 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import "./Styles/root.css";
-import "./Styles/theme.css";
-import "./Styles/typography.css";
+import "@styles/root.css";
+import "@styles/theme.css";
+import "@styles/typography.css";
 
 // etc
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 import { c } from "../../../constants/constants";
 
-// toast
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 // utils
-import { useWindowSize } from "./Hooks/useWindowSize";
-import { sortByDateAdded, sortByDate } from "./Utils/sort";
+import { useWindowSize } from "@hooks/useWindowSize";
+import { sortByDateAdded, sortByDate } from "@utils/sort";
 
 // firestore
 import { onSnapshot, query, where } from "firebase/firestore";
-import { projectsCollRef } from "./Firestore/firestore-collections";
+import { projectsCollRef } from "@firestore/firestore-collections";
 
 // auth
-import { useAuth } from "./Context/AuthContext";
+import { useAuth } from "@context/AuthContext";
 
 // components
 import {
@@ -37,16 +33,16 @@ import {
   Projects,
   Submit,
   UpcomingNfts,
-} from "./Pages/index";
-import { Summary, Nav, Sidebar, Footer } from "./Components/index";
-import { JobModal, ProjectModal, SignInModal } from "./Modals/index";
+} from "@pages/index";
+import { Summary, Nav, Sidebar, Footer } from "@components/index";
+import { JobModal, ProjectModal, SignInModal } from "@modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIcpPrice } from "./State/requests/icpPrice";
-import { setProjects, setNFTs } from "./State/projects";
-import { selectTheme } from "./State/theme";
-import { setUpvotedProjects } from "./State/profile";
+import { fetchIcpPrice } from "@state/requests/icpPrice";
+import { setProjects, setNFTs } from "@state/projects";
+import { selectTheme } from "@state/theme";
+import { setUpvotedProjects } from "@state/profile";
 
 // state – modals
 import {
@@ -55,12 +51,12 @@ import {
   selectSignInModal,
   setMobileMenuModal,
   selectMobileMenuModal,
-} from "./State/modals";
-import { selectProjectModal, setCloseProjectModal } from "./State/projectModal";
+} from "@state/modals";
+import { selectProjectModal, setCloseProjectModal } from "@state/projectModal";
 
 // set data
-import { setNftData } from "./Pages/Nft/setNftData";
-import { setProfileNftData } from "./Pages/Profile/setProfileNftData";
+import { setNftData } from "@pages/Nft/setNftData";
+import { setProfileNftData } from "@pages/Profile/setProfileNftData";
 
 // methods
 import { addUserToDb, setProfiles, setJobs, setJobsTest } from "./appMethods";
@@ -319,9 +315,6 @@ const App = () => {
       {signInModal && <SignInModal />}
       {projectModal && <ProjectModal />}
       {jobModal && <JobModal />}
-
-      {/* toast */}
-      <ToastContainer />
     </div>
   );
 };
