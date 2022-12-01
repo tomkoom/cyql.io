@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./Links.module.css";
 
+// utils
+import { getTwitterUsername } from "@utils/format";
+
 // icons
 import {
   iLink,
@@ -12,24 +15,21 @@ import {
   iExternalLink,
   iBook,
   iDatabase,
-} from "../../../Icons/Icons";
-
-// utils
-import { getTwitterUsername } from "../../../Utils/format";
+} from "@icons/Icons";
 
 const Links = ({
-  // links
+  // main
   website,
+  canister,
   app,
   docs,
 
-  // links ic
-  canister,
+  // ic
   dscvr,
   distrikt,
   openChat,
 
-  // links soc
+  // soc
   twitter,
   discord,
   github,
@@ -37,150 +37,113 @@ const Links = ({
   medium,
 }) => {
   const links = [
+    // main
     {
-      id: "Website",
+      id: "website",
       label: "Website",
-      link: website,
+      url: website,
       icon: iLink,
+      tag: "main",
     },
     {
-      id: "App",
-      label: "App",
-      link: app,
-      icon: iExternalLink,
-    },
-    {
-      id: "Docs",
-      label: "Docs",
-      link: docs,
-      icon: iBook,
-    },
-  ];
-
-  const linksSoc = [
-    {
-      id: "Twitter",
-      label: `@${getTwitterUsername(twitter)}`,
-      link: twitter,
-      icon: iTwitter,
-    },
-    {
-      id: "Discord",
-      label: "Discord",
-      link: discord,
-      icon: iDiscord,
-    },
-    {
-      id: "Telegram",
-      label: "Telegram",
-      link: telegram,
-      icon: iTelegram,
-    },
-    {
-      id: "GitHub",
-      label: "GitHub",
-      link: github,
-      icon: iGithub,
-    },
-    {
-      id: "Medium",
-      label: "Medium",
-      link: medium,
-      icon: iMediumM,
-    },
-  ];
-
-  const linksIC = [
-    {
+      id: "canister",
       label: "Canister",
-      link: canister,
+      url: canister,
       icon: iDatabase,
+      tag: "main",
     },
     {
+      id: "app",
+      label: "App",
+      url: app,
+      icon: iExternalLink,
+      tag: "main",
+    },
+    {
+      id: "docs",
+      label: "Docs",
+      url: docs,
+      icon: iBook,
+      tag: "main",
+    },
+
+    // socials
+    {
+      id: "twitter",
+      label: `@${getTwitterUsername(twitter)}`,
+      url: twitter,
+      icon: iTwitter,
+      tag: "social",
+    },
+    {
+      id: "discord",
+      label: "Discord",
+      url: discord,
+      icon: iDiscord,
+      tag: "social",
+    },
+    {
+      id: "telegram",
+      label: "Telegram",
+      url: telegram,
+      icon: iTelegram,
+      tag: "social",
+    },
+    {
+      id: "github",
+      label: "GitHub",
+      url: github,
+      icon: iGithub,
+      tag: "social",
+    },
+    {
+      id: "medium",
+      label: "Medium",
+      url: medium,
+      icon: iMediumM,
+      tag: "social",
+    },
+
+    // socials ic
+    {
+      id: "dscvr",
       label: "Dscvr",
       link: dscvr,
       icon: "",
+      tag: "socialIc",
     },
     {
+      id: "distrikt",
       label: "Distrikt",
       link: distrikt,
       icon: "",
+      tag: "socialIc",
     },
     {
+      id: "openchat",
       label: "OpenChat",
       link: openChat,
       icon: "",
+      tag: "socialIc",
     },
   ];
 
   return (
-    <div className={css.links}>
-      {/* links */}
-      <h5 className={css.subtitle}>Links</h5>
-      <div>
-        {website || app || docs ? (
-          <ul className={css.linksLi}>
-            {links.map(
-              ({ id, label, link, icon }) =>
-                link && (
-                  <li data-social={id} className={css.linksLiI} key={id}>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      <span className={css.icon}>{icon}</span>
-                      <p className={css.label}>{label}</p>
-                    </a>
-                  </li>
-                )
-            )}
-          </ul>
-        ) : (
-          ""
+    links.length > 0 && (
+      <ul className={css.links}>
+        {links.map(
+          (l) =>
+            l.url && (
+              <li className={css.linksI} data-social={l.id} key={l.label}>
+                <a href={l.url} target="_blank" rel="noopener noreferrer">
+                  {l.icon && <span>{l.icon}</span>}
+                  {l.label && <p className={css.label}>{l.label}</p>}
+                </a>
+              </li>
+            )
         )}
-      </div>
-
-      {/* links soc */}
-      <div>
-        <h5 className={css.subtitle}>Socials</h5>
-        {twitter || discord || github || telegram || medium ? (
-          <ul className={css.linksLi}>
-            {linksSoc.map(
-              ({ id, label, link, icon }) =>
-                link && (
-                  <li data-social={id} className={css.linksLiI} key={id}>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      <span className={css.icon}>{icon}</span>
-                      <p className={css.label}>{label}</p>
-                    </a>
-                  </li>
-                )
-            )}
-          </ul>
-        ) : (
-          ""
-        )}
-      </div>
-
-      {/* links ic */}
-      <div>
-        <h5 className={css.subtitle}>Socials IC</h5>
-        {canister || dscvr || distrikt || openChat ? (
-          <ul className={css.linksLi}>
-            {linksIC.map(
-              ({ label, link, icon }) =>
-                link && (
-                  <li className={css.linksLiI} data-social={label} key={label}>
-                    <a href={link} target="_blank" rel="noopener noreferrer">
-                      {icon !== "" && <span className={css.icon}>{icon}</span>}
-                      {label && <p className={css.label}>{label}</p>}
-                    </a>
-                  </li>
-                )
-            )}
-          </ul>
-        ) : (
-          ""
-        )}
-      </div>
-    </div>
+      </ul>
+    )
   );
 };
 

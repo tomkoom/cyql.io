@@ -7,8 +7,8 @@
 }
 
 .title h3 {
-  font-size: var(--fontSize4);
-  font-weight: var(--fwExtraBold);
+  font-size: var(--fontSize3);
+  font-weight: var(--fwBlack);
 }
 
 .tags {
@@ -20,10 +20,9 @@
 
 .tagsI {
   display: inline-block;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.9rem;
+  padding: 0.5rem;
+  font-size: var(--fontSize6);
   font-weight: var(--fwBold);
-  color: var(--secondaryColor);
   background-color: var(--underlay);
   border-radius: 0.5rem;
 }

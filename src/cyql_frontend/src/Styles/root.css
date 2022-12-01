@@ -1,7 +1,7 @@
 /* root */
 
 /* Inter */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 /* Inconsolata */
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&display=swap");
@@ -30,6 +30,8 @@
 
   --colorTwitter: #00acee;
   --colorDiscord: #5865f2;
+  --colorTelegram: #0088cc;
+  --colorGitHub: #1b1f23;
   --colorEntrepot: #53bfa8;
 
   /* font-size */
@@ -44,6 +46,7 @@
 
   /* font-weight fw */
 
+  --fwBlack: 900;
   --fwExtraBold: 800;
   --fwBold: 700;
   --fwSemiBold: 600;

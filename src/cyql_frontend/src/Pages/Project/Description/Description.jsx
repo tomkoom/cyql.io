@@ -4,7 +4,7 @@ import css from "./Description.module.css";
 const Description = ({ name, description }) => {
   return (
     <div className={css.description}>
-      <h4 className={css.subtitle}>About {name}</h4>
+      <h4 className={css.title}>About {name}</h4>
       <p className={css.text}>{description}</p>
     </div>
   );

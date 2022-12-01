@@ -1,80 +1,71 @@
 /* links */
 
 .links {
-  width: 100%;
-}
-
-.linksLi {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 0.5rem;
-  margin: 0.75rem 0;
+  margin: 2rem 0;
 }
 
-.linksLiI {
-  border-radius: 0.33rem;
+.linksI {
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 
-.linksLiI:hover {
+.linksI:hover {
   opacity: 0.8;
 }
 
-.linksLiI a {
+.linksI a {
   display: flex;
   align-items: center;
   gap: 0.25rem;
   white-space: nowrap;
-  height: 2rem;
+  height: 2.5rem;
   padding: 0 0.5rem;
-  font-size: var(--fontSize5);
   color: white;
+  font-size: var(--fontSize5);
 }
 
 .label {
-  font-size: 0.9rem;
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
 }
 
-.subtitle {
-  margin-bottom: 0.5rem;
-  font-size: var(--fontSize6);
-}
-
-[data-social="Canister"],
-[data-social="Dscvr"],
-[data-social="Distrikt"],
-[data-social="OpenChat"],
-[data-social="Website"],
-[data-social="Medium"],
-[data-social="App"],
-[data-social="Docs"] {
+[data-social="canister"],
+[data-social="dscvr"],
+[data-social="distrikt"],
+[data-social="openchat"],
+[data-social="website"],
+[data-social="medium"],
+[data-social="app"],
+[data-social="docs"] {
   background-color: var(--underlay);
 }
 
-[data-social="Canister"] a,
-[data-social="Dscvr"] a,
-[data-social="Distrikt"] a,
-[data-social="OpenChat"] a,
-[data-social="Website"] a,
-[data-social="Medium"] a,
-[data-social="App"] a,
-[data-social="Docs"] a {
+[data-social="canister"] a,
+[data-social="dscvr"] a,
+[data-social="distrikt"] a,
+[data-social="openchat"] a,
+[data-social="website"] a,
+[data-social="medium"] a,
+[data-social="app"] a,
+[data-social="docs"] a {
   color: var(--primaryColor);
 }
 
-[data-social="Twitter"] {
-  background-color: #00acee;
+[data-social="twitter"] {
+  background-color: var(--colorTwitter);
 }
 
-[data-social="Discord"] {
-  background-color: #5865f2;
+[data-social="discord"] {
+  background-color: var(--colorDiscord);
 }
 
-[data-social="GitHub"] {
-  background-color: #1b1f23;
+[data-social="telegram"] {
+  background-color: var(--colorTelegram);
 }
 
-[data-social="Telegram"] {
-  background-color: #0088cc;
+[data-social="github"] {
+  background-color: var(--colorGitHub);
 }

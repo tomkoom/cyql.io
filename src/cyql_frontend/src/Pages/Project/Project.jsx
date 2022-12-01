@@ -4,9 +4,6 @@ import css from "./Project.module.css";
 // router
 import { useParams } from "react-router-dom";
 
-// utils
-import { formatDate2 } from "@utils/format";
-
 // icons
 import { iExternalLink } from "@icons/Icons";
 
@@ -98,31 +95,34 @@ const Project = () => {
                   )}
                 </div>
 
+                <Links
+                  // main
+                  website={p.website}
+                  canister={p.canister}
+                  app={p.app}
+                  docs={p.docs}
+                  // ic
+                  dscvr={p.dscvr}
+                  distrikt={p.distrikt}
+                  openChat={p.openChat}
+                  // soc
+                  twitter={p.twitter}
+                  discord={p.discord}
+                  github={p.github}
+                  telegram={p.telegram}
+                  medium={p.medium}
+                  // nft
+                  // ...
+                  // crowdfunding, etc
+                  // ...
+                />
+
                 <Meta added={p.added} />
                 <Disclaimer />
               </div>
 
               {/* links */}
-              <div>
-                <div className={css.links}>
-                  <Links
-                    // ic links
-                    canister={p.canister}
-                    dscvr={p.dscvr}
-                    distrikt={p.distrikt}
-                    openChat={p.openChat}
-                    // soc links
-                    website={p.website}
-                    app={p.app}
-                    docs={p.docs}
-                    twitter={p.twitter}
-                    discord={p.discord}
-                    github={p.github}
-                    telegram={p.telegram}
-                    medium={p.medium}
-                  />
-                </div>
-
+              <div className={css.twitter}>
                 {p.twitter && (
                   <div>
                     <h5 className={css.subtitle}>{p.name} Twitter</h5>

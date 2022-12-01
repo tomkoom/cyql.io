@@ -1,18 +1,17 @@
 /* description */
 
-.subtitle {
-  font-size: var(--fontSize6);
-  margin-bottom: 0.25rem;
-}
-
 .description {
   background-color: var(--underlay);
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 1rem;
 }
 
+.title {
+  font-size: var(--fontSize5);
+  margin-bottom: 0.25rem;
+}
+
 .text {
-  font-size: 0.9rem;
+  font-size: var(--fontSize5);
   line-height: 150%;
 }

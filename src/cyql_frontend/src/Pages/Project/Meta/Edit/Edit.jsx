@@ -6,7 +6,6 @@ const Edit = () => {
     <a
       className={css.edit}
       href="https://twitter.com/messages/compose?recipient_id=1386304698358116354"
-      // data-screen-name="@cyql"
       rel="noreferrer noopener"
       target="_blank"
     >

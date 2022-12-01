@@ -1,7 +1,7 @@
 /* expandable text */
 
 .expandable {
-  font-size: var(--fontSize7);
+  font-size: 0.9rem;
   color: var(--secondaryColor);
   background-color: var(--underlay);
   padding: 1rem;
