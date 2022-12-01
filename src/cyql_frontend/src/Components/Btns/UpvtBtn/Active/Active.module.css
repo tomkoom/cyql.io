@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   font-size: var(--fontSize7);
-  color: var(--tertiaryColor);
+  color: var(--highlightColor);
   background-color: rgba(var(--highlightColorRgb), 0.1);
   font-weight: var(--fwBold);
   border-radius: 0.5rem;

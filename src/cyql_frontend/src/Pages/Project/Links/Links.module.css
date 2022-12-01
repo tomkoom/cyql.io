@@ -5,16 +5,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 0.5rem;
-  margin: 2rem 0;
-}
-
-.linksI {
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.linksI:hover {
-  opacity: 0.8;
+  margin: 1rem 0;
 }
 
 .linksI a {
@@ -25,6 +16,12 @@
   height: 2.5rem;
   padding: 0 0.5rem;
   color: white;
+  font-size: var(--fontSize6);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.icon {
   font-size: var(--fontSize5);
 }
 
@@ -32,40 +29,53 @@
   font-weight: var(--fwBold);
 }
 
-[data-social="canister"],
-[data-social="dscvr"],
-[data-social="distrikt"],
-[data-social="openchat"],
-[data-social="website"],
-[data-social="medium"],
-[data-social="app"],
-[data-social="docs"] {
-  background-color: var(--underlay);
-}
+/* not branded */
 
+[data-social="website"] a,
 [data-social="canister"] a,
+[data-social="app"] a,
+[data-social="docs"] a,
 [data-social="dscvr"] a,
 [data-social="distrikt"] a,
 [data-social="openchat"] a,
-[data-social="website"] a,
-[data-social="medium"] a,
-[data-social="app"] a,
-[data-social="docs"] a {
+[data-social="medium"] a {
+  background-color: var(--underlay);
   color: var(--primaryColor);
 }
 
-[data-social="twitter"] {
+[data-social="website"] a:hover,
+[data-social="canister"] a:hover,
+[data-social="app"] a:hover,
+[data-social="docs"] a:hover,
+[data-social="dscvr"] a:hover,
+[data-social="distrikt"] a:hover,
+[data-social="openchat"] a:hover,
+[data-social="medium"] a:hover {
+  color: var(--background);
+  background-color: var(--primaryColor);
+}
+
+/* branded */
+
+[data-social="twitter"] a {
   background-color: var(--colorTwitter);
 }
 
-[data-social="discord"] {
+[data-social="discord"] a {
   background-color: var(--colorDiscord);
 }
 
-[data-social="telegram"] {
+[data-social="telegram"] a {
   background-color: var(--colorTelegram);
 }
 
-[data-social="github"] {
+[data-social="github"] a {
   background-color: var(--colorGitHub);
+}
+
+[data-social="twitter"] a:hover,
+[data-social="discord"] a:hover,
+[data-social="telegram"] a:hover,
+[data-social="github"] a:hover {
+  opacity: 0.8;
 }

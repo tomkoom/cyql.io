@@ -22,6 +22,8 @@
   --coolGray10: #f2f4f8;
   --colorWhite: #ffffff;
 
+  /* system colors */
+
   --colorGreen: #64dd17;
   --colorRed: #fa4d56;
   --colorOrange: #ff3d00;
@@ -47,9 +49,9 @@
   /* font-weight fw */
 
   --fwBlack: 900;
-  --fwExtraBold: 800;
+  /* --fwExtraBold: 800; */
   --fwBold: 700;
-  --fwSemiBold: 600;
+  /* --fwSemiBold: 600; */
   --fwMedium: 500;
   --fwRegular: 400;
 

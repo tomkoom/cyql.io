@@ -3,12 +3,13 @@
 .nftImgs {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin: 1rem 0;
   gap: 0.5rem;
 }
 
 .nftImgsI {
-  max-width: calc(25% - 0.5rem);
+  max-width: calc(25% - 0.4rem);
   vertical-align: middle;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }

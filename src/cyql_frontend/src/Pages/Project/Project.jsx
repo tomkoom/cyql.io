@@ -60,15 +60,12 @@ const Project = () => {
                 )}
 
                 {p.category === "NFTs" && (
-                  <div>
-                    <h6>Collection Stats</h6>
-                    <CollStats
-                      nftSaleStatus={p.nftSaleStatus}
-                      nftSaleDate={p.nftSaleDate}
-                      nftUnits={p.nftUnits}
-                      nftUnitPrice={p.nftUnitPrice}
-                    />
-                  </div>
+                  <CollStats
+                    nftSaleStatus={p.nftSaleStatus}
+                    nftSaleDate={p.nftSaleDate}
+                    nftUnits={p.nftUnits}
+                    nftUnitPrice={p.nftUnitPrice}
+                  />
                 )}
 
                 <div className={css.nftBtns}>

@@ -1,18 +1,21 @@
-.collectionStats {
-  margin: 1rem 0;
+/* coll stats */
+
+.title {
+  font-size: var(--fs6);
 }
 
-.collectionStats ul {
+.collStats ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   gap: 1rem;
+  margin: 0.5rem 0;
 }
 
-.collectionStats ul li {
+.collStats ul li {
   flex: 1;
   background-color: var(--underlay);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
   white-space: nowrap;
 }
 
@@ -22,12 +25,13 @@
 }
 
 .label {
-  font-size: 0.9;
-  font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
+  font-size: var(--fs7);
+  font-weight: var(--fwBold);
+  color: var(--tertiaryColor);
+  margin-bottom: 0.125rem;
 }
 
 .text {
   line-height: 150%;
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
 }

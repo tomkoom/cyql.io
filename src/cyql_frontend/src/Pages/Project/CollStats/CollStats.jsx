@@ -1,26 +1,27 @@
 import React from "react";
 import css from "./CollStats.module.css";
 
-const CollectionStats = ({ nftSaleStatus, nftSaleDate, nftUnits, nftUnitPrice }) => {
+const CollStats = ({ nftSaleStatus, nftSaleDate, nftUnits, nftUnitPrice }) => {
   return (
-    <div className={css.collectionStats}>
+    <div className={css.collStats}>
+      <h5 className={css.title}>Collection Stats</h5>
       <ul>
         <li>
-          <p className={css.label}>Status</p>
-          <p className={css.text}>{nftSaleStatus ? nftSaleStatus : "N/A"}</p>
+          <p className={css.label}>status</p>
+          <p className={css.text}>{nftSaleStatus ? nftSaleStatus : "n/a"}</p>
         </li>
         <li>
-          <p className={css.label}>Sale date</p>
-          <p className={css.text}>{nftSaleDate ? nftSaleDate : "N/A"}</p>
+          <p className={css.label}>sale date</p>
+          <p className={css.text}>{nftSaleDate ? nftSaleDate : "n/a"}</p>
         </li>
         <li>
-          <p className={css.label}>Total NFTs</p>
-          <p className={css.text}>{nftUnits ? nftUnits : "N/A"}</p>
+          <p className={css.label}>total items</p>
+          <p className={css.text}>{nftUnits ? nftUnits : "n/a"}</p>
         </li>
         <li>
-          <p className={css.label}>Sale price</p>
+          <p className={css.label}>sale price</p>
           <p className={css.text} id={css.collStatsInfo}>
-            {nftUnitPrice ? nftUnitPrice : "N/A"}
+            {nftUnitPrice ? nftUnitPrice : "n/a"}
           </p>
         </li>
       </ul>
@@ -28,4 +29,4 @@ const CollectionStats = ({ nftSaleStatus, nftSaleDate, nftUnits, nftUnitPrice })
   );
 };
 
-export default CollectionStats;
+export default CollStats;
