@@ -1,0 +1,22 @@
+/* btn */
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 2.5rem;
+  font-weight: var(--fwBold);
+  background-color: var(--underlay);
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.btn:hover {
+  color: var(--background);
+  background-color: var(--primaryColor);
+}
+
+.icon {
+  font-size: var(--fontSize6);
+  color: var(--tertiaryColor);
+}

@@ -21,7 +21,7 @@ const CollStats = ({ nftSaleStatus, nftSaleDate, nftUnits, nftUnitPrice }) => {
         <li>
           <p className={css.label}>sale price</p>
           <p className={css.text} id={css.collStatsInfo}>
-            {nftUnitPrice ? nftUnitPrice : "n/a"}
+            {nftUnitPrice ? nftUnitPrice.toLowerCase() : "n/a"}
           </p>
         </li>
       </ul>

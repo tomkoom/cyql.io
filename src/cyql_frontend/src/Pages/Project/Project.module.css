@@ -46,42 +46,6 @@
   font-size: var(--fontSize6);
 }
 
-/* btns */
-
-.nftBtns {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.nftBtns a span {
-  color: var(--tertiaryColor);
-}
-
-.btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  height: 2.5rem;
-  font-weight: var(--fwMedium);
-  background-color: var(--underlay);
-  padding: 0 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 0.25rem;
-}
-
-.btn span {
-  font-size: var(--fontSize7);
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
-.nftSaleStatus {
-  background-color: var(--underlay2);
-}
-
 /* responsive */
 
 @media screen and (max-width: 1023px) {

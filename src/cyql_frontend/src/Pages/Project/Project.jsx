@@ -4,9 +4,6 @@ import css from "./Project.module.css";
 // router
 import { useParams } from "react-router-dom";
 
-// icons
-import { iExternalLink } from "@icons/Icons";
-
 // components
 import { BackBtn, Loader } from "@components/index";
 import {
@@ -16,6 +13,7 @@ import {
   Header,
   Links,
   Meta,
+  NftBtns,
   NftPreviews,
   TwitterTimeline,
 } from "./index";
@@ -68,29 +66,9 @@ const Project = () => {
                   />
                 )}
 
-                <div className={css.nftBtns}>
-                  {p.nftMarketUrl && (
-                    <a
-                      className={css.btn}
-                      href={p.nftMarketUrl}
-                      target="_blank"
-                      rel="norefferrer noopener"
-                    >
-                      Trade<span>{iExternalLink}</span>
-                    </a>
-                  )}
-
-                  {p.nftRarityChecker && (
-                    <a
-                      className={css.btn}
-                      href={p.nftRarityChecker}
-                      target="_blank"
-                      rel="norefferrer noopener"
-                    >
-                      Rarity Checker&nbsp;<span>{iExternalLink}</span>
-                    </a>
-                  )}
-                </div>
+                {(p.nftMarketUrl || p.nftRarityChecker) && (
+                  <NftBtns nftMarketUrl={p.nftMarketUrl} nftRarityChecker={p.nftRarityChecker} />
+                )}
 
                 <Links
                   // main
