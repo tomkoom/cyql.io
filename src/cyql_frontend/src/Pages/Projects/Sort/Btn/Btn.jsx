@@ -2,25 +2,24 @@ import React from "react";
 import css from "./Btn.module.css";
 
 // icons
-import { iAngleDown, iSort } from "../../../../Icons/Icons";
+import { iAngleDown, iSort } from "@icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectSort } from "../../../../State/sort";
+import { selectSort } from "@state/projects/sort";
 
 const Btn = () => {
   const sort = useSelector(selectSort);
 
   return (
-    <div className={css.btn}>
-      <p className={css.text}>
-        <span className={css.icon}>{iSort}</span> Order by:{" "}
-        <span className={css.category}>
-          {sort === "date" ? "Date added" : sort === "upvotes" ? "Popularity" : null}
-        </span>{" "}
-        <span className={css.icon}>{iAngleDown}</span>
-      </p>
-    </div>
+    <button className={css.btn}>
+      <span className={css.icon}>{iSort}</span>
+      <p>Order by:</p>
+      <p className={css.category}>
+        {sort === "date" ? "Date added" : sort === "upvotes" ? "Popularity" : null}
+      </p>{" "}
+      <span className={css.icon}>{iAngleDown}</span>
+    </button>
   );
 };
 

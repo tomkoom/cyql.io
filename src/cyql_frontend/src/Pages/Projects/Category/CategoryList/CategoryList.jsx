@@ -3,8 +3,8 @@ import css from "./CategoryList.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "../../../../State/categories";
-import { setCategory, selectCategory } from "../../../../State/category";
+import { selectCategories } from "@state/categories";
+import { setCategory, selectCategory } from "@state/projects/category";
 
 const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef }) => {
   const dispatch = useDispatch();
@@ -39,19 +39,18 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   };
 
   return (
-    <div className={css.categoryList} ref={categoryListRef}>
-      <ul>
-        {categories.map((c) => (
-          <li
-            id={category === c.label ? css.active : undefined}
-            key={c.id}
-            onClick={() => clickCategory(c.label)}
-          >
-            {c.icon} {c.label}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={css.li} ref={categoryListRef}>
+      {categories.map((c) => (
+        <li
+          className={css.liI}
+          id={category === c.label ? css.active : undefined}
+          key={c.id}
+          onClick={() => clickCategory(c.label)}
+        >
+          {c.icon} {c.label}
+        </li>
+      ))}
+    </ul>
   );
 };
 

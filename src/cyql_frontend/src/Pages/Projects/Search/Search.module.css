@@ -6,15 +6,17 @@
   height: 3rem;
   padding: 0 1rem;
   font-size: 0.9rem;
+  font-weight: var(--fwBold);
   color: var(--primaryColor);
-  background-color: var(--underlay);
+  background-color: var(--background);
+  box-shadow: 0 0 0 1px var(--underlay2);
   caret-color: var(--primaryColor);
-  border-radius: 0.33rem;
+  border-radius: 0.5rem;
   border: none;
   outline: none;
 }
 
+.search:hover,
 .search:focus {
-  background-color: var(--underlay);
-  box-shadow: inset 0 0 0 2px var(--primaryColor), 0 0 0 2px var(--underlay2);
+  box-shadow: 0 0 0 2px var(--highlightColor);
 }

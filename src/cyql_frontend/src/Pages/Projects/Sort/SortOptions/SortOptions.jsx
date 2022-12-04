@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from "react";
 import css from "./SortOptions.module.css";
 
 // icons
-import { iCheck } from "../../../../Icons/Icons";
+import { iCheck } from "@icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSort, setSort } from "../../../../State/sort";
+import { selectSort, setSort } from "@state/projects/sort";
 
 const SortOptions = ({ openSort, setOpenSort, sortBtnRef }) => {
   const dispatch = useDispatch();
@@ -40,16 +40,14 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnRef }) => {
   };
 
   return (
-    <div className={css.sort} ref={sortOptionsRef}>
-      <ul>
-        <li onClick={() => clickSort("date")}>
-          Date added{sort === "date" && <span className={css.icon}>{iCheck}</span>}
-        </li>
-        <li onClick={() => clickSort("upvotes")}>
-          Popularity{sort === "upvotes" && <span className={css.icon}>{iCheck}</span>}
-        </li>
-      </ul>
-    </div>
+    <ul className={css.sort} ref={sortOptionsRef}>
+      <li onClick={() => clickSort("date")}>
+        Date added{sort === "date" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+      <li onClick={() => clickSort("upvotes")}>
+        Popularity{sort === "upvotes" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+    </ul>
   );
 };
 

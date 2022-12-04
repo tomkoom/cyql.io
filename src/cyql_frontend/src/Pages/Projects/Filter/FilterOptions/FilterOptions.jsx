@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import css from "./FilterOptions.module.css";
 
 // icons
-import { iCheck } from "../../../../Icons/Icons";
+import { iCheck } from "@icons/Icons";
 
 // state
 import { useDispatch } from "react-redux";
@@ -44,19 +44,17 @@ const FilterOptions = ({
   };
 
   return (
-    <div className={css.filter} ref={filterOptionsRef}>
-      <ul>
-        <li onClick={() => clickFilter("all")}>
-          All{filter === "all" && <span className={css.icon}>{iCheck}</span>}
-        </li>
-        <li onClick={() => clickFilter("true")}>
-          True{filter === "true" && <span className={css.icon}>{iCheck}</span>}
-        </li>
-        <li onClick={() => clickFilter("false")}>
-          False{filter === "false" && <span className={css.icon}>{iCheck}</span>}
-        </li>
-      </ul>
-    </div>
+    <ul className={css.filter} ref={filterOptionsRef}>
+      <li onClick={() => clickFilter("all")}>
+        All{filter === "all" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+      <li onClick={() => clickFilter("true")}>
+        True{filter === "true" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+      <li onClick={() => clickFilter("false")}>
+        False{filter === "false" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+    </ul>
   );
 };
 

@@ -18,7 +18,6 @@ const sort = createSlice({
 
 const selectSort = (state) => state.sort.sort;
 const selectSortModal = (state) => state.sort.sortModal;
-
 export { selectSort, selectSortModal };
 
 export const { setSort, setSortModal } = sort.actions;

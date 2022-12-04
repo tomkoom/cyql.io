@@ -1,42 +1,43 @@
 /* category list */
 
-.categoryList ul {
+.li {
   width: 28rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding: 1rem;
+  font-size: 0.9rem;
   font-weight: var(--fwMedium);
-  background-color: var(--background);
-  box-shadow: 0 0 0 1px var(--underlay2);
-  border-radius: 0.33rem;
+  background-color: var(--underlay);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
-.categoryList ul li {
+.liI {
   white-space: nowrap;
   padding: 0.5rem;
-  background-color: var(--underlay);
-  border-radius: 0.33rem;
+  box-shadow: 0 0 0 1px var(--underlay2);
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 
-.categoryList ul li:hover {
+.liI:hover {
   background-color: var(--underlay2);
 }
 
 #active {
   color: white;
   background-color: var(--highlightColor);
+  box-shadow: unset;
 }
 
 @media screen and (max-width: 479px) {
-  .categoryList ul {
+  .li {
     width: 320px;
   }
 }
 
 @media screen and (max-width: 349px) {
-  .categoryList ul {
+  .li {
     width: 280px;
   }
 }

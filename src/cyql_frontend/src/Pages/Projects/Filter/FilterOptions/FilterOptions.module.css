@@ -1,17 +1,17 @@
 /* filter options */
 
-.filter ul {
+.filter {
   width: 12rem;
   display: flex;
   flex-direction: column;
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  border-radius: 0.33rem;
-  padding: 0.33rem 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
 }
 
-.filter ul li {
-  height: 40px;
+.filter li {
+  height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-.filter ul li:hover {
+.filter li:hover {
   background-color: var(--underlay2);
 }
 

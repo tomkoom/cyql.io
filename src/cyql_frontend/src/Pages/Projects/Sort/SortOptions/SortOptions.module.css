@@ -1,16 +1,16 @@
 /* sort options */
 
-.sort ul {
+.sort {
   width: 12rem;
   display: flex;
   flex-direction: column;
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  border-radius: 0.33rem;
-  padding: 0.33rem 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
 }
 
-.sort ul li {
+.sort li {
   height: 40px;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@
   cursor: pointer;
 }
 
-.sort ul li:hover {
+.sort li:hover {
   background-color: var(--underlay2);
 }
 
