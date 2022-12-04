@@ -5,7 +5,7 @@ import css from "./Price.module.css";
 import { iArrowUp, iArrowDown } from "@icons/Icons";
 
 // components
-import PriceChange from "./PriceChange/PriceChange";
+import Change from "./Change/Change";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -33,11 +33,11 @@ const Price = () => {
       <p className={css.icp}>ICP {"$" + p}</p>
 
       {change > 0 ? (
-        <PriceChange change={change} icon={iArrowUp} color="var(--colorGreen)" />
+        <Change change={change} icon={iArrowUp} color="var(--colorGreen)" />
       ) : change < 0 ? (
-        <PriceChange change={change} icon={iArrowDown} color="var(--colorRed)" />
+        <Change change={change} icon={iArrowDown} color="var(--colorRed)" />
       ) : (
-        <PriceChange change={change} icon="" color="var(--colorNeutral)" />
+        <Change change={change} icon="" color="var(--colorNeutral)" />
       )}
     </div>
   );

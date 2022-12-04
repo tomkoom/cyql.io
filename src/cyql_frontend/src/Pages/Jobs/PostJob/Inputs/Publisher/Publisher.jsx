@@ -9,7 +9,7 @@ import { useAuth } from "../../../../../Context/AuthContext";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../../../../../State/modals";
+import { setSignInModal } from "../../../../../State/modals/modals";
 
 const Publisher = () => {
   const dispatch = useDispatch();

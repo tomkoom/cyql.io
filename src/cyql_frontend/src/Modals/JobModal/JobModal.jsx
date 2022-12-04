@@ -14,7 +14,7 @@ import {
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setJobModal } from "../../State/modals";
+import { setJobModal } from "../../State/modals/modals";
 import { selectActiveJob, setActiveJob } from "../../State/jobs/job";
 import { selectTheme } from "../../State/theme";
 

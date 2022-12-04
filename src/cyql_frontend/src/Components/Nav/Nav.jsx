@@ -13,7 +13,7 @@ import { toHome } from "../../Routes/routes";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectMobileMenuModal, setMobileMenuModal } from "../../State/modals";
+import { selectMobileMenuModal, setMobileMenuModal } from "../../State/modals/modals";
 
 const Nav = () => {
   const dispatch = useDispatch();

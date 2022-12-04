@@ -9,7 +9,7 @@ import { useAuth } from "@context/AuthContext";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "@state/modals";
+import { setSignInModal } from "@state/modals/modals";
 
 // components
 import { Active, NotActive } from "./index";

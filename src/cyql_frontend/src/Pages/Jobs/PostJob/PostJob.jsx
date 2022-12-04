@@ -12,7 +12,7 @@ import { useAuth } from "../../../Context/AuthContext";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { setSignInModal } from "../../../State/modals";
+import { setSignInModal } from "../../../State/modals/modals";
 import { selectJob } from "../../../State/jobs/job";
 
 const PostJob = () => {

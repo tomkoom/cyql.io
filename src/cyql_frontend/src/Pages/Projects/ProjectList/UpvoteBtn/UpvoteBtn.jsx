@@ -12,7 +12,7 @@ import { iCaretUp, iCheck } from "../../../../Icons/Icons";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../../../../State/modals";
+import { setSignInModal } from "../../../../State/modals/modals";
 
 const UpvoteBtn = ({ idx, upvotedBy }) => {
   const { user } = useAuth();

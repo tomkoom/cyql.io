@@ -9,7 +9,7 @@ import Modal from "./Modal/Modal";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "../../../State/modals";
+import { setMobileMenuModal, selectMobileMenuModal } from "../../../State/modals/modals";
 
 const Mobile = () => {
   const dispatch = useDispatch();

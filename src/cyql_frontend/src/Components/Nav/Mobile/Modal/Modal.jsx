@@ -16,7 +16,7 @@ import { toApps, toUpcoming, toSubmit, toNft, toJobs, toHome } from "../../../..
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "../../../../State/modals";
+import { setMobileMenuModal, selectMobileMenuModal } from "../../../../State/modals/modals";
 
 // auth
 import { useAuth } from "../../../../Context/AuthContext";

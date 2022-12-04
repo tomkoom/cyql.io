@@ -50,8 +50,8 @@ import {
   selectSignInModal,
   setMobileMenuModal,
   selectMobileMenuModal,
-} from "@state/modals";
-import { selectProjectModal, setCloseProjectModal } from "@state/projectModal";
+} from "@state/modals/modals";
+import { selectProjectModal, setCloseProjectModal } from "@state/modals/projectModal";
 
 // set data
 import { setNftData } from "@pages/Nft/setNftData";

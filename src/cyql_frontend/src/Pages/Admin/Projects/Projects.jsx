@@ -16,7 +16,7 @@ import Search from "./Search/Search";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectProjects } from "../../../State/projects";
-import { setProjectModal, setProject, setMode } from "../../../State/projectModal";
+import { setProjectModal, setProject, setMode } from "../../../State/modals/projectModal";
 
 const Projects = () => {
   const dispatch = useDispatch();

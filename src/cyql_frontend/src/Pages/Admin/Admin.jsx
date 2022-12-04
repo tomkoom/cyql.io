@@ -6,7 +6,7 @@ import { Profiles, Projects, Tabs } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setProjectModal, setMode } from "../../State/projectModal";
+import { setProjectModal, setMode } from "../../State/modals/projectModal";
 
 const Admin = () => {
   const [tab, setTab] = useState("projects");

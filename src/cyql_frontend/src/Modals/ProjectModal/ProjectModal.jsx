@@ -22,7 +22,7 @@ import {
   setProject,
   selectMode,
   setCloseProjectModal,
-} from "../../State/projectModal";
+} from "../../State/modals/projectModal";
 import { selectCategories } from "../../State/categories";
 
 const ModalProjectEdit = () => {

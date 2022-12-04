@@ -10,7 +10,7 @@ import { useAuth } from "../../Context/AuthContext";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { setSignInModal } from "../../State/modals";
+import { setSignInModal } from "../../State/modals/modals";
 import { selectTheme } from "../../State/theme";
 
 const SignInModal = () => {

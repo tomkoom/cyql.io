@@ -18,7 +18,7 @@ import { IdImg } from "../../../../Profile/index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setMobileMenuModal } from "../../../../../State/modals";
+import { setMobileMenuModal } from "../../../../../State/modals/modals";
 
 const ProfileActions = () => {
   const dispatch = useDispatch();

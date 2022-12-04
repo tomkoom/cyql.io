@@ -11,7 +11,7 @@ import { Links, Logo, Meta, Title } from "./index";
 import { useSelector, useDispatch } from "react-redux";
 import { selectJobs } from "../../../State/jobs/jobs";
 import { setActiveJob } from "../../../State/jobs/job";
-import { setJobModal } from "../../../State/modals";
+import { setJobModal } from "../../../State/modals/modals";
 
 const JobList = () => {
   const dispatch = useDispatch();
