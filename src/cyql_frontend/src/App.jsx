@@ -39,7 +39,6 @@ import { JobModal, ProjectModal, SignInModal } from "@modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIcpPrice } from "@state/requests/icpPrice";
 import { setProjects, setNFTs } from "@state/projects";
 import { selectTheme } from "@state/theme";
 import { setUpvotedProjects } from "@state/profile";
@@ -171,16 +170,6 @@ const App = () => {
   // set default actor
   useEffect(() => {
     initDefaultActor();
-  }, []);
-
-  // set icp price
-  useEffect(() => {
-    dispatch(fetchIcpPrice());
-    const interval = setInterval(() => {
-      dispatch(fetchIcpPrice());
-    }, 60_000 * 5);
-
-    return () => clearInterval(interval);
   }, []);
 
   // check auth

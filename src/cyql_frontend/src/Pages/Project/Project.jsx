@@ -15,7 +15,7 @@ import {
   Meta,
   NftBtns,
   NftPreviews,
-  TwitterTimeline,
+  Twitter,
 } from "./index";
 
 // state
@@ -96,12 +96,7 @@ const Project = () => {
                 <Disclaimer />
               </div>
 
-              {p.twitter && (
-                <div className={css.twitter}>
-                  <h5 className={css.subtitle}>{p.name} Twitter</h5>
-                  <TwitterTimeline twitter={p.twitter} />
-                </div>
-              )}
+              {p.twitter && <Twitter name={p.name} twitter={p.twitter} />}
             </div>
           ))
       )}

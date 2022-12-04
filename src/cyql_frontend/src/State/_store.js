@@ -1,7 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
 // reducers
-import icpPrice from "./requests/icpPrice";
+// api
+import icpPrice from "./api/icpPrice";
+// ...
 import search from "./search";
 import theme from "./theme";
 import loadMore from "./loadMore";

@@ -2,17 +2,18 @@ import React from "react";
 import css from "./HighlightedProjects.module.css";
 
 // icons
-import { iGithub, iDatabase } from "../../../Icons/Icons";
+import { iGithub, iDatabase } from "@icons/Icons";
 
 // routes
-import { toApp, toApps } from "../../../Routes/routes";
+import { toApp, toApps } from "@routes/routes";
 
 // components
-import { Loader, UpvtBtn, ViewMoreBtn } from "../../../Components/index";
+import { Loader, UpvtBtn, ViewMoreBtn } from "@components/index";
+import { Logo } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsLength } from "../../../State/projects";
+import { selectProjectsLength } from "@state/projects";
 
 const HighlightedProjects = ({ projects }) => {
   const projectsLength = useSelector(selectProjectsLength);
@@ -23,33 +24,28 @@ const HighlightedProjects = ({ projects }) => {
         {!projects.length ? (
           <Loader />
         ) : (
-          projects.slice(0, 16).map((project) => (
-            <div className={css.projectsI} onClick={() => toApp(project.id)} key={project.id}>
-              <div className={css.content}>
-                {/* logo */}
-                {project.logo && (
-                  <img className={css.logo} src={project.logo} alt={`${project.name}-logo`} />
-                )}
+          projects.slice(0, 16).map((p) => (
+            <div className={css.projectsI} onClick={() => toApp(p.id)} key={p.id}>
+              {p.logo && <Logo name={p.name} logo={p.logo} />}
 
-                {/* name & tags */}
-                <div className={css.main}>
-                  <h3 className={css.title}>{project.name}</h3>
-                  <ul className={css.tags}>
-                    {project.category && <li>{String(project.category)}</li>}
-                    {project.canister && <li>{iDatabase}&nbsp;&nbsp;On-Chain</li>}
-                    {project.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
-                  </ul>
+              {/* name & tags */}
+              <div className={css.main}>
+                <h3 className={css.title}>{p.name}</h3>
+                <ul className={css.tags}>
+                  {p.category && <li>{String(p.category)}</li>}
+                  {p.canister && <li>{iDatabase}&nbsp;&nbsp;On-Chain</li>}
+                  {p.github && <li>{iGithub}&nbsp;&nbsp;Open Source</li>}
+                </ul>
 
-                  <p className={css.description}>
-                    {project.description && project.description.length > 60
-                      ? `${project.description.substring(0, 60)}…`
-                      : project.description}
-                  </p>
-                </div>
+                <p className={css.description}>
+                  {p.description && p.description.length > 60
+                    ? `${p.description.substring(0, 60)}…`
+                    : p.description}
+                </p>
+              </div>
 
-                <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
-                  <UpvtBtn idx={project.idx} upvotedBy={project.upvotedBy} />
-                </div>
+              <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
+                <UpvtBtn idx={p.idx} upvotedBy={p.upvotedBy} />
               </div>
             </div>
           ))

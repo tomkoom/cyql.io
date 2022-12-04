@@ -8,7 +8,7 @@ export const fetchIcpPrice = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await fetch(COINGECKO_API);
-      // if error
+      // if err
       if (!res.ok) {
         throw new Error("Err");
       }

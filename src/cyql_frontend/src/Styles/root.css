@@ -28,6 +28,10 @@
   --colorGreen: #64dd17;
   --colorRed: #fa4d56;
   --colorOrange: #ff3d00;
+  --colorNeutral: (var(--coolGray60));
+
+  /* --colorPriceUp: #24a148;
+  --colorPriceDown: #fa4d56; */
 
   /* social colors */
 

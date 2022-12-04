@@ -14,15 +14,6 @@
   flex: 1;
 }
 
-.twitter {
-  width: 20rem;
-}
-
-.subtitle {
-  margin-bottom: 0.5rem;
-  font-size: var(--fontSize6);
-}
-
 /* responsive */
 
 @media screen and (max-width: 1023px) {

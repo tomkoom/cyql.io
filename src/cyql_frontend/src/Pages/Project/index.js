@@ -8,4 +8,4 @@ export { default as Links } from "./Links/Links";
 export { default as Meta } from "./Meta/Meta";
 export { default as NftBtns } from "./NftBtns/NftBtns";
 export { default as NftPreviews } from "./NftPreviews/NftPreviews";
-export { default as TwitterTimeline } from "./TwitterTimeline/TwitterTimeline";
+export { default as Twitter } from "./Twitter/Twitter";

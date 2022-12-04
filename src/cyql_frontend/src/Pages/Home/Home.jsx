@@ -203,16 +203,6 @@ const Home = () => {
       </section>
       <div className={css.divider} />
 
-      {/* partners */}
-      {/* <section>
-        <div className={css.sectionTitle}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>Partners</h3>
-          </div>
-        </div>
-        <Partners />
-      </section> */}
-
       {/* join community */}
       <section className={css.home__nftCollections}>
         <div className={css.sectionTitle}>

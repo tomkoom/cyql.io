@@ -2,35 +2,11 @@
 
 .price {
   display: flex;
-}
-
-.content {
-  align-self: flex-start;
-  display: flex;
+  align-items: center;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
   background-color: var(--underlay);
   padding: 0.5rem;
-  border-radius: 0.25rem;
-}
-
-.content * {
-  font-family: var(--monospace);
-  font-weight: var(--fwMedium);
-}
-
-.content:last-of-type {
-  align-items: baseline;
-}
-
-.icon {
-  font-size: 0.66rem;
-}
-
-.priceChange {
-  font-size: var(--fontSize7);
-}
-
-.priceChangeTime {
-  color: var(--tertiaryColor);
+  border-radius: 0.5rem;
 }

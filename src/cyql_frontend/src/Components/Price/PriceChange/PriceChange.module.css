@@ -1,0 +1,9 @@
+/* price change */
+
+.change {
+  white-space: nowrap;
+}
+
+.interval {
+  color: var(--tertiaryColor);
+}

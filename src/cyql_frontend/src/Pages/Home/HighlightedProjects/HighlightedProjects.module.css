@@ -6,25 +6,11 @@
   gap: 1.5rem;
 }
 
-.projectsI,
-.logo {
-  border-radius: 1rem;
-}
-
 .projectsI {
-  cursor: pointer;
-}
-
-.content {
   display: flex;
+  align-items: center;
   gap: 1rem;
-}
-
-.logo {
-  width: 4.5rem;
-  height: 4.5rem;
-  flex-shrink: 0;
-  object-fit: cover;
+  cursor: pointer;
 }
 
 .main {

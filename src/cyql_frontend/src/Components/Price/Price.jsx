@@ -1,44 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./Price.module.css";
 
 // icons
-import { iArrowUp, iArrowDown } from "../../Icons/Icons";
+import { iArrowUp, iArrowDown } from "@icons/Icons";
+
+// components
+import PriceChange from "./PriceChange/PriceChange";
 
 // state
-import { useSelector } from "react-redux";
-import { selectIcpPrice, selectIcp24hPriceChange } from "../../State/requests/icpPrice";
-
-const PriceChange = ({ priceChange, icon, color }) => {
-  return (
-    <div className={css.priceChange}>
-      <span style={{ color }}>
-        {icon ? <span className={css.icon}>{icon}</span> : ""}
-        &nbsp;{`${Number(priceChange).toFixed(2)}%`}
-      </span>
-      &nbsp;
-      <span className={css.priceChangeTime}>24h</span>
-    </div>
-  );
-};
+import { useSelector, useDispatch } from "react-redux";
+import { selectIcpPrice, selectIcp24hPriceChange } from "@state/api/icpPrice";
+import { fetchIcpPrice } from "@state/api/icpPrice";
 
 const Price = () => {
-  const price = useSelector(selectIcpPrice);
-  const priceChange = useSelector(selectIcp24hPriceChange);
+  const dispatch = useDispatch();
+  const p = useSelector(selectIcpPrice);
+  const change = useSelector(selectIcp24hPriceChange);
+
+  const second = 1000;
+  const time = 60 * second;
+
+  useEffect(() => {
+    dispatch(fetchIcpPrice());
+    const interval = setInterval(() => {
+      dispatch(fetchIcpPrice());
+    }, time);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={css.price}>
-      <div className={css.content}>
-        <p>ICP&nbsp;{`$${price}`}</p>
-        <dir>
-          {priceChange > 0 ? (
-            <PriceChange priceChange={priceChange} icon={iArrowUp} color="#24a148" />
-          ) : priceChange < 0 ? (
-            <PriceChange priceChange={priceChange} icon={iArrowDown} color="#fa4d56" />
-          ) : (
-            <PriceChange priceChange={priceChange} icon="" color="#697077" />
-          )}
-        </dir>
-      </div>
+      <p className={css.icp}>ICP {"$" + p}</p>
+
+      {change > 0 ? (
+        <PriceChange change={change} icon={iArrowUp} color="var(--colorGreen)" />
+      ) : change < 0 ? (
+        <PriceChange change={change} icon={iArrowDown} color="var(--colorRed)" />
+      ) : (
+        <PriceChange change={change} icon="" color="var(--colorNeutral)" />
+      )}
     </div>
   );
 };
