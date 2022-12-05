@@ -1,6 +1,6 @@
 const main = [
   { id: "name", label: "Name", type: "text" },
-  { id: "id", label: "Slug", type: "text" },
+  { id: "slug", label: "Slug", type: "text" },
   { id: "website", label: "Website", type: "text" },
   { id: "canister", label: "Canister", type: "text" },
   { id: "logo", label: "Logo", type: "text" },

@@ -2,7 +2,7 @@ import React from "react";
 
 // firestore
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { projectsCollRef } from "@firestore/firestore-collections";
+import { projectsUpdColRef } from "@firestore/firestore-collections";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -14,19 +14,19 @@ import { setSignInModal } from "@state/modals/modals";
 // components
 import { Active, NotActive } from "./index";
 
-const UpvtBtn = ({ idx, upvotedBy }) => {
+const UpvtBtn = ({ id, upvotedBy }) => {
   const dispatch = useDispatch();
   const { isAuthenticated, principalIdStr: p } = useAuth();
 
-  const upvote = async (idx, p) => {
-    const docRef = doc(projectsCollRef, idx);
+  const upvote = async (id, p) => {
+    const docRef = doc(projectsUpdColRef, id);
     await updateDoc(docRef, {
       upvotedBy: arrayUnion(p),
     });
   };
 
-  const unUpvote = async (idx, p) => {
-    const docRef = doc(projectsCollRef, idx);
+  const unUpvote = async (id, p) => {
+    const docRef = doc(projectsUpdColRef, id);
     await updateDoc(docRef, {
       upvotedBy: arrayRemove(p),
     });
@@ -40,9 +40,9 @@ const UpvtBtn = ({ idx, upvotedBy }) => {
 
   return isAuthenticated ? (
     check(p) ? (
-      <Active num={num} click={() => unUpvote(idx, p)} />
+      <Active num={num} click={() => unUpvote(id, p)} />
     ) : (
-      <NotActive num={num} click={() => upvote(idx, p)} />
+      <NotActive num={num} click={() => upvote(id, p)} />
     )
   ) : (
     <NotActive num={num} click={() => dispatch(setSignInModal(true))} />

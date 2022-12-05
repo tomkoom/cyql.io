@@ -6,7 +6,7 @@ import CrossIcon from "@icons/CrossIcon/CrossIcon";
 
 // firestore
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
-import { projectsCollRef } from "@firestore/firestore-collections";
+import { projectsUpdColRef } from "@firestore/firestore-collections";
 
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
@@ -40,9 +40,9 @@ const ModalProjectEdit = () => {
     const timestamp = Date.now();
     try {
       if (mode === "add") {
-        await addDoc(projectsCollRef, { ...project, added: timestamp });
+        await addDoc(projectsUpdColRef, { ...project, added: timestamp });
       } else if (mode === "edit") {
-        await setDoc(doc(projectsCollRef, project.idx), { ...project, edited: timestamp });
+        await setDoc(doc(projectsUpdColRef, project.id), { ...project, edited: timestamp });
       }
     } catch (err) {
       console.log(err.message);
@@ -56,7 +56,7 @@ const ModalProjectEdit = () => {
 
   const deleteProject = async () => {
     try {
-      await deleteDoc(doc(projectsCollRef, project.idx));
+      await deleteDoc(doc(projectsUpdColRef, project.id));
     } catch (err) {
       console.log(err.message);
     }

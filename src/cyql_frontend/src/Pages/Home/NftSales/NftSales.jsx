@@ -2,13 +2,13 @@ import React from "react";
 import css from "./NftSales.module.css";
 
 // icons
-import { iLink, iTwitter, iDiscord, iGithub, iTelegram, iMedium } from "../../../Icons/Icons";
+import { iLink, iTwitter, iDiscord, iGithub, iTelegram, iMedium } from "@icons/Icons";
 
 // routes
-import { toApp, toUpcoming } from "../../../Routes/routes";
+import { toApp, toUpcoming } from "@routes/routes";
 
 // components
-import { Loader, ViewMoreBtn } from "../../../Components/index";
+import { Loader, ViewMoreBtn } from "@components/index";
 
 const NftSales = ({ nftSalesFiltered }) => {
   const sortByDate = (a, b) => {
@@ -35,7 +35,7 @@ const NftSales = ({ nftSalesFiltered }) => {
             .slice(0, 8)
             .sort((a, b) => sortByDate(a, b))
             .map((nft) => (
-              <div className={css.nft} onClick={() => toApp(nft.id)} key={nft.id}>
+              <div className={css.nft} onClick={() => toApp(nft.slug)} key={nft.id}>
                 <h3 className={css.name}>{nft.name}</h3>
                 <p className={css.description}>
                   {nft.description && nft.description.length > 77

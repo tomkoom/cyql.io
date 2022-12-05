@@ -1,29 +1,29 @@
 import React from "react";
 import css from "./ProjectList.module.css";
-import Loader from "../../../Components/Loader/Loader";
 
-//icons
-import { iDatabase, iRocket } from "../../../Icons/Icons";
-import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "../../../Icons/Icons";
+// icons
+import { iDatabase, iRocket } from "@icons/Icons";
+import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "@icons/Icons";
 
 // routes
-import { toApp } from "../../../Routes/routes";
+import { toApp } from "@routes/routes";
 
 // components
-import { LoadMoreBtn2, UpvtBtn } from "../../../Components/index";
+import { LoadMoreBtn2, UpvtBtn } from "@components/index";
+import Loader from "@components/Loader/Loader";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects, selectProjectsLength } from "../../../State/projects";
-import { selectCategory } from "../../../State/projects/category";
-import { selectSearch } from "../../../State/projects/search";
-import { selectItemsVisibleProjects, setItemsVisibleProjects } from "../../../State/loadMore";
-import { selectSort } from "../../../State/projects/sort";
-import { selectFilterByOpenSource, selectFilterByOnChain } from "../../../State/projects/filter";
+import { selectProjects } from "@state/projects";
+import { selectCategory } from "@state/projects/category";
+import { selectSearch } from "@state/projects/search";
+import { selectItemsVisibleProjects, setItemsVisibleProjects } from "@state/loadMore";
+import { selectSort } from "@state/projects/sort";
+import { selectFilterByOpenSource, selectFilterByOnChain } from "@state/projects/filter";
 
 const AppList = () => {
-  const projects = useSelector(selectProjects);
-  const projectsNum = useSelector(selectProjectsLength);
+  const p = useSelector(selectProjects);
+  const pNum = p.length;
   const category = useSelector(selectCategory);
   const search = useSelector(selectSearch);
   const itemsVisibleProjects = useSelector(selectItemsVisibleProjects);
@@ -44,11 +44,11 @@ const AppList = () => {
 
   return (
     <div>
-      {projects.length < 1 ? (
+      {p.length < 1 ? (
         <Loader />
       ) : (
         <ul className={css.li}>
-          {projects
+          {p
             // category
             .filter((project) => (category === "All" ? project : project.category === category))
             // search query
@@ -85,7 +85,7 @@ const AppList = () => {
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
             .slice(0, itemsVisibleProjects)
             .map((project) => (
-              <li className={css.liI} key={project.idx} onClick={() => toApp(project.id)}>
+              <li className={css.liI} key={project.id} onClick={() => toApp(project.slug)}>
                 <div className={css.main}>
                   {project.logo && (
                     <div className={css.logo}>
@@ -134,14 +134,14 @@ const AppList = () => {
 
                 <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvtBtn idx={project.idx} upvotedBy={project.upvotedBy} />
+                    <UpvtBtn id={project.id} upvotedBy={project.upvotedBy} />
                   </div>
                 </div>
               </li>
             ))}
         </ul>
       )}
-      {itemsVisibleProjects < projectsNum && (
+      {itemsVisibleProjects < pNum && (
         <LoadMoreBtn2 label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
       )}
     </div>

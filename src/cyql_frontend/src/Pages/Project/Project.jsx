@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
 import { selectProjects } from "@state/projects";
 
 const Project = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const projects = useSelector(selectProjects);
 
   return (
@@ -34,7 +34,7 @@ const Project = () => {
         <Loader />
       ) : (
         projects
-          .filter((p) => p.id === id)
+          .filter((p) => p.slug === slug)
           .map((p) => (
             <div className={css.content} key={p.id}>
               <div className={css.main}>
@@ -43,7 +43,7 @@ const Project = () => {
                   name={p.name}
                   category={p.category}
                   tags={p.tags}
-                  idx={p.idx}
+                  id={p.id}
                   upvotedBy={p.upvotedBy}
                 />
 

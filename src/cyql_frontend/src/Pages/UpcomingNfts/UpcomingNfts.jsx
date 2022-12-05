@@ -2,25 +2,25 @@ import React from "react";
 import css from "./UpcomingNfts.module.css";
 
 // icons
-import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iLink } from "../../Icons/Icons";
+import { iTwitter, iDiscord, iGithub, iTelegram, iMedium, iLink } from "@icons/Icons";
 
 // routes
-import { toApp } from "../../Routes/routes";
+import { toApp } from "@routes/routes";
 
 // utils
-import { formatNumber } from "../../Utils/format";
-import { sortByDateUpcomingNfts } from "../../Utils/sort";
-import { substring105 } from "../../Utils/substring";
+import { formatNumber } from "@utils/format";
+import { sortByDateUpcomingNfts } from "@utils/sort";
+import { substring105 } from "@utils/substring";
 
 // components
-import Loader from "../../Components/Loader/Loader";
+import Loader from "@components/Loader/Loader";
 import Partners from "./Partners/Partners";
 import SubmitBtn from "./SubmitBtn/SubmitBtn";
 import { Link } from "./Colls/index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectUpcomingNFTs } from "../../State/projects";
+import { selectUpcomingNFTs } from "@state/projects";
 
 const NA = () => <p className={css.na}>n/a</p>;
 
@@ -74,7 +74,7 @@ const UpcomingNfts = () => {
           {upcomingNftsFiltered
             .sort((a, b) => sortByDateUpcomingNfts(a, b))
             .map((nft) => (
-              <div className={css.row} key={nft.id} onClick={() => toApp(nft.id)}>
+              <div className={css.row} key={nft.id} onClick={() => toApp(nft.slug)}>
                 <div className={css.coll25}>
                   <h4 className={css.name}>{nft.name}</h4>
 

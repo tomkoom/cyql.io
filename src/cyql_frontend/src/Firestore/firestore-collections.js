@@ -1,7 +1,8 @@
 import { collection } from "firebase/firestore";
 import { db } from "../../../../firebase/firebase-config";
 
-const projectsCollRef = collection(db, "projects");
+// const projectsColRef = collection(db, "projects");
+const projectsUpdColRef = collection(db, "projects_upd");
 const submittedProjectsCollRef = collection(db, "submitted_projects");
 
-export { projectsCollRef, submittedProjectsCollRef };
+export { /* projectsColRef */ projectsUpdColRef, submittedProjectsCollRef };

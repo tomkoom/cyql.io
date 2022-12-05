@@ -25,7 +25,7 @@ const HighlightedProjects = ({ projects }) => {
           <Loader />
         ) : (
           projects.slice(0, 16).map((p) => (
-            <div className={css.projectsI} onClick={() => toApp(p.id)} key={p.id}>
+            <div className={css.projectsI} onClick={() => toApp(p.slug)} key={p.id}>
               {p.logo && <Logo name={p.name} logo={p.logo} />}
 
               {/* name & tags */}
@@ -45,7 +45,7 @@ const HighlightedProjects = ({ projects }) => {
               </div>
 
               <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
-                <UpvtBtn idx={p.idx} upvotedBy={p.upvotedBy} />
+                <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
               </div>
             </div>
           ))

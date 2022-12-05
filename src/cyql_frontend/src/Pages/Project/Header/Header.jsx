@@ -5,14 +5,14 @@ import css from "./Header.module.css";
 import { Logo, Title } from "./index";
 import { UpvtBtn } from "@components/index";
 
-const Header = ({ logo, name, category, tags, idx, upvotedBy }) => {
+const Header = ({ logo, name, category, tags, id, upvotedBy }) => {
   return (
     <div className={css.header}>
       {logo && <Logo logo={logo} name={name} />}
       <Title name={name} category={category} tags={tags} />
 
       <div className={css.btnContainer}>
-        <UpvtBtn idx={idx} upvotedBy={upvotedBy} />
+        <UpvtBtn id={id} upvotedBy={upvotedBy} />
       </div>
     </div>
   );

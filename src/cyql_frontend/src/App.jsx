@@ -15,7 +15,7 @@ import { sortByDateAdded, sortByDate } from "@utils/sort";
 
 // firestore
 import { onSnapshot, query, where } from "firebase/firestore";
-import { projectsCollRef } from "@firestore/firestore-collections";
+import { projectsUpdColRef } from "@firestore/firestore-collections";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -92,13 +92,13 @@ const App = () => {
 
   // get projects and nfts
   useEffect(() => {
-    const unsubscribe = onSnapshot(projectsCollRef, (snapshot) => {
+    const unsubscribe = onSnapshot(projectsUpdColRef, (snapshot) => {
       const projects = snapshot.docs
-        .map((doc) => ({ ...doc.data(), idx: doc.id }))
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
         .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
         .sort((a, b) => sortByDate(a.added, b.added));
       const nfts = snapshot.docs
-        .map((doc) => ({ ...doc.data(), idx: doc.id }))
+        .map((doc) => ({ ...doc.data(), id: doc.id }))
         .filter((project) => project.category === "NFTs");
 
       dispatch(setProjects(projects));
@@ -188,11 +188,11 @@ const App = () => {
   useEffect(() => {
     if (isAuthenticated) {
       const upvotedProjectsQuery = query(
-        projectsCollRef,
+        projectsUpdColRef,
         where("upvotedBy", "array-contains", principalIdStr)
       );
       const unsubscribe = onSnapshot(upvotedProjectsQuery, (snapshot) => {
-        const upvotedProjects = snapshot.docs.map((doc) => ({ ...doc.data(), idx: doc.id }));
+        const upvotedProjects = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
         dispatch(setUpvotedProjects(upvotedProjects));
       });
       return () => {
@@ -227,7 +227,7 @@ const App = () => {
               <Projects />
             </Route>
 
-            <Route exact path="/projects/:id">
+            <Route exact path="/projects/:slug">
               <Project />
             </Route>
 

@@ -2,15 +2,15 @@ import React from "react";
 import css from "./HighlightedByCategory.module.css";
 
 // icons
-import { iCheckCircle } from "../../../Icons/Icons";
+import { iCheckCircle } from "@icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects } from "../../../State/projects";
-import { toApp } from "../../../Routes/routes";
+import { selectProjects } from "@state/projects";
+import { toApp } from "@routes/routes";
 
 // components
-import { UpvtBtn } from "../../../Components/index";
+import { UpvtBtn } from "@components/index";
 
 const HighlightedByCategory = ({ filter }) => {
   const projects = useSelector(selectProjects);
@@ -38,7 +38,7 @@ const HighlightedByCategory = ({ filter }) => {
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
         .map((p) => (
-          <li className={css.projectsI} key={p.idx} onClick={() => toApp(p.id)}>
+          <li className={css.projectsI} key={p.id} onClick={() => toApp(p.slug)}>
             <div className={css.main}>
               <img className={css.logo} src={p.logo} alt={`${p.name}-logo`} />
               <div>
@@ -55,7 +55,7 @@ const HighlightedByCategory = ({ filter }) => {
               </div>
             </div>
             <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
-              <UpvtBtn idx={p.idx} upvotedBy={p.upvotedBy} />
+              <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
             </div>
           </li>
         ))}

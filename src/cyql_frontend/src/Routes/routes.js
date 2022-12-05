@@ -16,8 +16,8 @@ const toApps = () => {
   history.push("/projects");
 };
 
-const toApp = (id) => {
-  history.push(`/projects/${id}`);
+const toApp = (slug) => {
+  history.push(`/projects/${slug}`);
 };
 
 const toUpcoming = () => {
