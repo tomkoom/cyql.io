@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import css from "./ProjectModal.module.css";
-
-// icons
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
 
 // firestore
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
-import { projectsUpdColRef } from "@firestore/firestore-collections";
+import { pColRef } from "@firestore/firestore-collections";
 
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
 
 // components
-import { Input, Select, TextArea } from "./index";
+import { Header, Input, Select, TextArea } from "./index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -24,10 +21,10 @@ import {
 } from "@state/modals/projectModal";
 import { selectCategories } from "@state/modals/categories";
 
-const ModalProjectEdit = () => {
+const ProjectModal = () => {
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const project = useSelector(selectProject);
+  const p = useSelector(selectProject);
   const mode = useSelector(selectMode);
   const categories = useSelector(selectCategories);
 
@@ -36,16 +33,13 @@ const ModalProjectEdit = () => {
     dispatch(setProject({ [name]: value }));
   };
 
-  const submitProject = async () => {
-    const timestamp = Date.now();
-    try {
-      if (mode === "add") {
-        await addDoc(projectsUpdColRef, { ...project, added: timestamp });
-      } else if (mode === "edit") {
-        await setDoc(doc(projectsUpdColRef, project.id), { ...project, edited: timestamp });
-      }
-    } catch (err) {
-      console.log(err.message);
+  const submit = async () => {
+    const ts = Date.now();
+    if (mode === "add") {
+      await addDoc(pColRef, { ...p, added: ts }).catch((e) => console.log(e));
+    } else if (mode === "edit") {
+      const d = doc(pColRef, p.id);
+      await setDoc(d, { ...p, edited: ts }).catch((e) => console.log(e));
     }
     closeModal();
   };
@@ -55,35 +49,40 @@ const ModalProjectEdit = () => {
   };
 
   const deleteProject = async () => {
-    try {
-      await deleteDoc(doc(projectsUpdColRef, project.id));
-    } catch (err) {
-      console.log(err.message);
-    }
+    const d = doc(pColRef, p.id);
+    await deleteDoc(d).catch((e) => console.log(e));
     closeModal();
   };
+
+  // close modal on esc
+  useEffect(() => {
+    const close = (e) => {
+      if (e.key === "Escape") {
+        dispatch(setCloseProjectModal());
+      }
+    };
+    document.body.addEventListener("keydown", close);
+    return () => {
+      document.body.removeEventListener("keydown", close);
+    };
+  }, []);
 
   // add has token
 
   return (
     <div className={css.modal}>
       <div className={css.content}>
-        <div className={css.modalTitle}>
-          <h4>Edit Project</h4>
-          <span className={css.icon} onClick={closeModal}>
-            <CrossIcon />
-          </span>
-        </div>
+        <Header name={p.name} id={p.id} />
 
         <div className={css.form}>
           <div className={css.formContent}>
             <div className={css.section}>
               <h5 className={css.sectionTitle}>Main</h5>
-              {/* id */}
               <Select
                 id="category"
                 label="Category"
-                value={project.category}
+                value={p.category[0]}
+                // fix category
                 onChange={handleChange}
                 selectOptions={categories}
               />
@@ -93,7 +92,7 @@ const ModalProjectEdit = () => {
                   id={input.id}
                   label={input.label}
                   type={input.type}
-                  value={project[input.id]}
+                  value={p[input.id]}
                   onChange={handleChange}
                   key={input.id}
                 />
@@ -102,7 +101,7 @@ const ModalProjectEdit = () => {
               <TextArea
                 id="description"
                 label="Description"
-                value={project.description}
+                value={p.description}
                 onChange={handleChange}
               />
             </div>
@@ -115,7 +114,7 @@ const ModalProjectEdit = () => {
                     id={input.id}
                     label={input.label}
                     type={input.type}
-                    value={project[input.id]}
+                    value={p[input.id]}
                     onChange={handleChange}
                     key={input.id}
                   />
@@ -129,7 +128,7 @@ const ModalProjectEdit = () => {
                     id={input.id}
                     label={input.label}
                     type={input.type}
-                    value={project[input.id]}
+                    value={p[input.id]}
                     onChange={handleChange}
                     key={input.id}
                   />
@@ -137,13 +136,13 @@ const ModalProjectEdit = () => {
               </div>
             </div>
 
-            {project.category === "NFTs" || project.category === "nfts" ? (
+            {p.category.includes("NFTs") ? (
               <div className={css.section}>
-                <h5 className={css.sectionTitle}>NFT collection data</h5>
+                <h5 className={css.sectionTitle}>NFT data</h5>
                 <Select
                   id="nftSaleStatus"
                   label="NFT sale status"
-                  value={project.nftSaleStatus}
+                  value={p.nftSaleStatus}
                   onChange={handleChange}
                   selectOptions={nftSaleStatusOptions}
                 />
@@ -153,7 +152,7 @@ const ModalProjectEdit = () => {
                     id={input.id}
                     label={input.label}
                     type={input.type}
-                    value={project[input.id]}
+                    value={p[input.id]}
                     onChange={handleChange}
                     key={input.id}
                   />
@@ -183,7 +182,7 @@ const ModalProjectEdit = () => {
             <button className="secondaryBtn" onClick={closeModal}>
               Cancel
             </button>
-            <button className="primaryBtn" onClick={submitProject}>
+            <button className="primaryBtn" onClick={submit}>
               Save
             </button>
           </div>
@@ -193,4 +192,4 @@ const ModalProjectEdit = () => {
   );
 };
 
-export default ModalProjectEdit;
+export default ProjectModal;

@@ -15,7 +15,7 @@ import { sortByDateAdded, sortByDate } from "@utils/sort";
 
 // firestore
 import { onSnapshot, query, where } from "firebase/firestore";
-import { projectsUpdColRef } from "@firestore/firestore-collections";
+import { pColRef } from "@firestore/firestore-collections";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -73,11 +73,11 @@ const App = () => {
     initDefaultActor,
     actor,
     principalId,
-    principalIdStr,
-    accountIdStr,
+    principalIdStr: pStr,
+    accountIdStr: aStr,
     signInMethod,
     checkConnection,
-    isAuthenticated,
+    isAuthenticated: isAuth,
   } = useAuth();
   const [deviceWidth] = useWindowSize();
 
@@ -92,7 +92,7 @@ const App = () => {
 
   // get projects and nfts
   useEffect(() => {
-    const unsubscribe = onSnapshot(projectsUpdColRef, (snapshot) => {
+    const unsubscribe = onSnapshot(pColRef, (snapshot) => {
       const projects = snapshot.docs
         .map((doc) => ({ ...doc.data(), id: doc.id }))
         .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
@@ -125,40 +125,26 @@ const App = () => {
     }
   }, [deviceWidth]);
 
-  // close modal when esc is pressed
-  useEffect(() => {
-    const closeModal = (e) => {
-      if (e.key === "Escape") {
-        dispatch(setCloseProjectModal());
-      }
-    };
-
-    document.body.addEventListener("keydown", closeModal);
-    return () => {
-      document.body.removeEventListener("keydown", closeModal);
-    };
-  }, []);
-
   // close sign in modal after user has logged
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuth) {
       dispatch(setSignInModal(false));
     }
-  }, [isAuthenticated]);
+  }, [isAuth]);
 
   // EFFECTS
 
   useEffect(() => {
-    if (isAuthenticated) {
-      addUserToDb(actor, accountIdStr, signInMethod);
+    if (isAuth) {
+      addUserToDb(actor, aStr, signInMethod);
     }
-  }, [isAuthenticated]);
+  }, [isAuth]);
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuth) {
       setProfiles(actor);
     }
-  }, [isAuthenticated]);
+  }, [isAuth]);
 
   useEffect(() => {
     if (defaultActor !== undefined) {
@@ -186,27 +172,24 @@ const App = () => {
 
   // get upvoted projects
   useEffect(() => {
-    if (isAuthenticated) {
-      const upvotedProjectsQuery = query(
-        projectsUpdColRef,
-        where("upvotedBy", "array-contains", principalIdStr)
-      );
-      const unsubscribe = onSnapshot(upvotedProjectsQuery, (snapshot) => {
-        const upvotedProjects = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        dispatch(setUpvotedProjects(upvotedProjects));
+    if (isAuth) {
+      const upvProjectsQ = query(pColRef, where("upvotedBy", "array-contains", pStr));
+      const unsubscribe = onSnapshot(upvProjectsQ, (snapshot) => {
+        const upvProjects = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        dispatch(setUpvotedProjects(upvProjects));
       });
       return () => {
         unsubscribe();
       };
     }
-  }, [isAuthenticated]);
+  }, [isAuth]);
 
   // get profile nft data
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuth) {
       setProfileNftData(principalId);
     }
-  }, [isAuthenticated]);
+  }, [isAuth]);
 
   return (
     <div className={`app ${theme}`}>
@@ -257,10 +240,10 @@ const App = () => {
               </Route>
             )}
 
-            {(isAuthenticated && principalIdStr === PLUG_ADMIN_1) ||
-            (isAuthenticated && principalIdStr === STOIC_ADMIN_1) ||
-            (isAuthenticated && principalIdStr === PLUG_ADMIN_2) ||
-            (isAuthenticated && principalIdStr === STOIC_ADMIN_2) ? (
+            {(isAuth && pStr === PLUG_ADMIN_1) ||
+            (isAuth && pStr === STOIC_ADMIN_1) ||
+            (isAuth && pStr === PLUG_ADMIN_2) ||
+            (isAuth && pStr === STOIC_ADMIN_2) ? (
               <Route exact path="/admin">
                 <Admin />
               </Route>

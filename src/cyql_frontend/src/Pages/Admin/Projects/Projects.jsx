@@ -8,15 +8,15 @@ import {
   formatWebsite,
   getTwitterUsername,
   formatDiscord,
-} from "../../../Utils/format";
+} from "@utils/format";
 
 // components
 import Search from "./Search/Search";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjects } from "../../../State/projects";
-import { setProjectModal, setProject, setMode } from "../../../State/modals/projectModal";
+import { selectProjects } from "@state/projects";
+import { setProjectModal, setProject, setMode } from "@state/modals/projectModal";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -45,13 +45,13 @@ const Projects = () => {
             <p>Name</p>
           </div>
           <div className={css.coll139}>
+            <p>Slug</p>
+          </div>
+          <div className={css.coll139}>
             <p>Category</p>
           </div>
           <div className={css.coll139}>
             <p>Logo</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Cover</p>
           </div>
           <div className={css.coll139}>
             <p>Twitter</p>
@@ -62,43 +62,40 @@ const Projects = () => {
         </div>
 
         {projects
-          .filter((project) => {
+          .filter((p) => {
             if (search === "") {
-              return project;
-            } else if (project.name.toLowerCase().includes(search.toLowerCase())) {
-              return project;
+              return p;
+            } else if (p.name.toLowerCase().includes(search.toLowerCase())) {
+              return p;
             }
           })
-          .map((project, i) => (
-            <div className={css.row} key={project.idx} onClick={() => editProject(project)}>
+          .map((p, i) => (
+            <div className={css.row} key={p.id} onClick={() => editProject(p)}>
               <div className={css.coll25}>
                 <p>{projects.length - i}</p>
               </div>
               <div className={css.coll139}>
-                <p>{project.idx && formatStr12(project.idx)}</p>
+                <p>{p.id && formatStr12(p.id)}</p>
               </div>
               <div className={css.coll139}>
-                <p>{project.name && formatStr16(project.name)}</p>
+                <p>{p.name && formatStr16(p.name)}</p>
               </div>
               <div className={css.coll139}>
-                <p>{project.category}</p>
+                <p>{p.slug && formatStr12(p.slug)}</p>
               </div>
               <div className={css.coll139}>
-                <p>{project.logo && formatWebsite(project.logo)}</p>
+                <p>{p.category}</p>
               </div>
               <div className={css.coll139}>
-                <p>{project.cover && formatWebsite(project.cover)}</p>
+                <p>{p.logo && formatWebsite(p.logo)}</p>
               </div>
+              <div className={css.coll139}>{p.twitter && getTwitterUsername(p.twitter)}</div>
               <div className={css.coll139}>
-                {project.twitter && getTwitterUsername(project.twitter)}
-              </div>
-              <div className={css.coll139}>
-                <p>{project.discord && formatDiscord(project.discord)}</p>
+                <p>{p.discord && formatDiscord(p.discord)}</p>
               </div>
             </div>
           ))}
       </div>
-      {/* </div> */}
     </div>
   );
 };

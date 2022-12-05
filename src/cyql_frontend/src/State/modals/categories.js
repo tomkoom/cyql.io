@@ -19,6 +19,7 @@ const categories = createSlice({
       { id: "explorers", label: "Explorers", icon: "🌎" },
       { id: "metaverse", label: "Metaverse", icon: "👓" },
       { id: "education", label: "Education", icon: "🎓" },
+      { id: "token", label: "Token", icon: "🪙" },
     ],
   },
   reducers: {

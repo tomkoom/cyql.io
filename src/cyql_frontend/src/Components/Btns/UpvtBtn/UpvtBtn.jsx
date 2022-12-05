@@ -2,7 +2,7 @@ import React from "react";
 
 // firestore
 import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { projectsUpdColRef } from "@firestore/firestore-collections";
+import { pColRef } from "@firestore/firestore-collections";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -19,14 +19,14 @@ const UpvtBtn = ({ id, upvotedBy }) => {
   const { isAuthenticated, principalIdStr: p } = useAuth();
 
   const upvote = async (id, p) => {
-    const docRef = doc(projectsUpdColRef, id);
+    const docRef = doc(pColRef, id);
     await updateDoc(docRef, {
       upvotedBy: arrayUnion(p),
     });
   };
 
   const unUpvote = async (id, p) => {
-    const docRef = doc(projectsUpdColRef, id);
+    const docRef = doc(pColRef, id);
     await updateDoc(docRef, {
       upvotedBy: arrayRemove(p),
     });

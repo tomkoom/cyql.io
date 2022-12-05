@@ -29,7 +29,7 @@ const nft = [
   { id: "nftUnitPrice", label: "Unit price", type: "text" },
   { id: "nftMarketUrl", label: "Market URL", type: "text" },
   { id: "nftSaleUrl", label: "Sale URL", type: "text" },
-  { id: "nftRarityChecker", label: "Rarity checker URL" },
+  { id: "nftRarityChecker", label: "Rarity URL" },
   { id: "nftImg1", label: "Preview img1", type: "text" },
   { id: "nftImg2", label: "Preview img2", type: "text" },
   { id: "nftImg3", label: "Preview img3", type: "text" },

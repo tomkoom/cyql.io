@@ -1,0 +1,31 @@
+/* header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerI {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: var(--fontSize5);
+  font-weight: var(--fwMedium);
+  margin-bottom: 0.5rem;
+}
+
+.id {
+  font-size: 0.9rem;
+  background-color: var(--underlay);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.icon {
+  font-size: var(--fontSize5);
+  cursor: pointer;
+}

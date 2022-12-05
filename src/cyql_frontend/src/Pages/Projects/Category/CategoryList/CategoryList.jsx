@@ -42,13 +42,13 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   };
 
   const sort = (a, b) => {
-    const aLen = a.label === "All" ? pNum : p.filter((p) => p.category === a.label).length;
-    const bLen = b.label === "All" ? pNum : p.filter((p) => p.category === b.label).length;
+    const aLen = a.label === "All" ? pNum : p.filter((p) => p.category.includes(a.label)).length;
+    const bLen = b.label === "All" ? pNum : p.filter((p) => p.category.includes(b.label)).length;
     return bLen - aLen;
   };
 
   const num = (c) => {
-    return c.label === "All" ? pNum : p.filter((p) => p.category === c.label).length;
+    return c.label === "All" ? pNum : p.filter((p) => p.category.includes(c.label)).length;
   };
 
   return (
