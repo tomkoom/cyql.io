@@ -100,7 +100,7 @@ section,
 
 /* sections */
 
-.sectionTitle {
+.sectionHeader {
   display: flex;
   align-items: baseline;
   justify-content: space-between;

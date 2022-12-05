@@ -18,6 +18,10 @@ import { selectProjectsLength } from "@state/projects";
 const HighlightedProjects = ({ projects }) => {
   const projectsLength = useSelector(selectProjectsLength);
 
+  const openProject = () => {
+    toApp(p.slug);
+  };
+
   return (
     <div>
       <div className={css.projects}>
@@ -25,7 +29,7 @@ const HighlightedProjects = ({ projects }) => {
           <Loader />
         ) : (
           projects.slice(0, 16).map((p) => (
-            <div className={css.projectsI} onClick={() => toApp(p.slug)} key={p.id}>
+            <div className={css.p} onClick={openProject} key={p.id}>
               {p.logo && <Logo name={p.name} logo={p.logo} />}
 
               {/* name & tags */}

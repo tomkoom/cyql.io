@@ -11,6 +11,7 @@ import { toApp } from "@routes/routes";
 
 // components
 import { UpvtBtn } from "@components/index";
+import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
   const projects = useSelector(selectProjects);
@@ -30,17 +31,21 @@ const HighlightedByCategory = ({ filter }) => {
     return 0;
   };
 
+  const openProject = () => {
+    toApp(p.slug);
+  };
+
   return (
     <ul className={css.projects}>
       {projects
-        .filter((p) => p.category === filter)
+        .filter((p) => p.category[0] === filter)
         .sort((a, b) => sortByUpvoted(a, b))
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
         .map((p) => (
-          <li className={css.projectsI} key={p.id} onClick={() => toApp(p.slug)}>
+          <li className={css.p} key={p.id} onClick={openProject}>
             <div className={css.main}>
-              <img className={css.logo} src={p.logo} alt={`${p.name}-logo`} />
+              <Logo logo={p.logo} name={p.name} />
               <div>
                 <div className={css.titleContainer}>
                   {p.verified && <span className={css.icon}>{iCheckCircle}</span>}

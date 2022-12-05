@@ -3,13 +3,13 @@
 .links {
   display: flex;
   gap: 1rem;
-  padding-top: 0.75rem;
+  padding-top: 0.5rem;
 }
 
 .linksI {
   flex: 1;
   background-color: var(--underlay);
-  border-radius: 0.5rem;
+  border-radius: 1rem;
 }
 
 .linksI:hover {

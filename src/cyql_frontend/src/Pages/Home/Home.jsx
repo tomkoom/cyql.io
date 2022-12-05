@@ -3,10 +3,10 @@ import css from "./Home.module.css";
 import ICLogo from "../../../assets/ic-logo.svg";
 
 // icons
-import { iArrowRight } from "../../Icons/Icons";
+import { iArrowRight } from "@icons/Icons";
 
 // routes
-import { toApps, toUpcoming } from "../../Routes/routes";
+import { toApps, toUpcoming } from "@routes/routes";
 
 // components
 import {
@@ -15,12 +15,11 @@ import {
   HighlightedProjects,
   JoinCommunity,
   NftSales,
-  // Partners,
 } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects, selectProjectsLength, selectNFTs } from "../../State/projects";
+import { selectProjects, selectProjectsLength, selectNFTs } from "@state/projects";
 
 const ViewAllBtn = ({ nav }) => {
   return (
@@ -36,17 +35,17 @@ const Home = () => {
   const nfts = useSelector(selectNFTs);
   const upcomingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming");
   const ongoingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Open");
-  const projects_projects = projects.filter((project) => project.category !== "NFTs"); // no nfts
-  const projects_nfts = projects.filter((project) => project.category === "NFTs"); // nfts
+  const pProjects = projects.filter((p) => !p.category.includes("NFTs")); // no nfts
+  const pNfts = projects.filter((p) => p.category.includes("NFTs")); // nfts
   const popularProjects = projects
-    .filter((project) => project.upvotedBy)
-    .filter((project) => project.category !== "NFTs")
+    .filter((p) => p.upvotedBy)
+    .filter((p) => !p.category.includes("NFTs"))
     .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length);
   const popularNfts =
     projects.length > 0 &&
     projects
-      .filter((project) => project.upvotedBy)
-      .filter((project) => project.category === "NFTs")
+      .filter((p) => p.upvotedBy)
+      .filter((p) => p.category.includes("NFTs"))
       .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length);
 
   return (
@@ -89,26 +88,26 @@ const Home = () => {
       </div>
 
       {/* recently added projects */}
-      <section className={css.home__apps}>
-        <div className={css.sectionTitle}>
+      <section>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Recently added projects</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects projects={projects.length > 0 && projects_projects} />
+        <HighlightedProjects projects={projects.length > 0 && pProjects} />
       </section>
 
       {/* recently added nfts */}
-      <section className={css.home__apps}>
-        <div className={css.sectionTitle}>
+      <section>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Recently added NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
-        <HighlightedProjects projects={projects.length > 0 && projects_nfts} />
+        <HighlightedProjects projects={projects.length > 0 && pNfts} />
       </section>
 
       {/* popular projects */}
-      <section className={css.home__apps}>
-        <div className={css.sectionTitle}>
+      <section>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Popular apps</h3>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -116,8 +115,8 @@ const Home = () => {
       </section>
 
       {/* popular nfts */}
-      <section className={css.home__apps}>
-        <div className={css.sectionTitle}>
+      <section>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Popular NFTs</h3>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -126,7 +125,7 @@ const Home = () => {
 
       {/* upcoming nft sales */}
       <section className={css.home__upcomingNfts}>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Upcoming NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
@@ -135,7 +134,7 @@ const Home = () => {
 
       {/* ongoing nft sales */}
       <section className={css.home__upcomingNfts}>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Ongoing NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
@@ -145,7 +144,7 @@ const Home = () => {
 
       {/* wallets */}
       <section>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>Wallets</h3>
           </div>
@@ -157,7 +156,7 @@ const Home = () => {
 
       {/* explorers */}
       <section>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>Explorers</h3>
           </div>
@@ -169,7 +168,7 @@ const Home = () => {
 
       {/* social networks */}
       <section>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>Social Networks</h3>
           </div>
@@ -181,7 +180,7 @@ const Home = () => {
 
       {/* defi */}
       <section>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>DeFi</h3>
           </div>
@@ -193,7 +192,7 @@ const Home = () => {
 
       {/* exchanges */}
       <section>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
             <h3 className={css.title}>Exchanges</h3>
           </div>
@@ -205,7 +204,7 @@ const Home = () => {
 
       {/* join community */}
       <section className={css.home__nftCollections}>
-        <div className={css.sectionTitle}>
+        <div className={css.sectionHeader}>
           <h3 className={css.title}>Join community</h3>
         </div>
         <JoinCommunity />
