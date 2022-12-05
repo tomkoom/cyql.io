@@ -4,17 +4,17 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 // api
 import icpPrice from "./api/icpPrice";
 // ...
-import search from "./search";
+import search from "./projects/search";
 import theme from "./theme";
 import loadMore from "./loadMore";
 import projects from "./projects";
 import modals from "./modals/modals";
 import projectModal from "./modals/projectModal";
 import category from "./projects/category";
-import categories from "./categories";
+import categories from "./modals/categories";
 import sort from "./projects/sort";
 import profile from "./profile";
-import filter from "./filter";
+import filter from "./projects/filter";
 import projectSubmission from "./projectSubmission";
 import jobs from "./jobs/jobs";
 import job from "./jobs/job";

@@ -16,10 +16,10 @@ import { LoadMoreBtn2, UpvtBtn } from "../../../Components/index";
 import { useSelector } from "react-redux";
 import { selectProjects, selectProjectsLength } from "../../../State/projects";
 import { selectCategory } from "../../../State/projects/category";
-import { selectSearch } from "../../../State/search";
+import { selectSearch } from "../../../State/projects/search";
 import { selectItemsVisibleProjects, setItemsVisibleProjects } from "../../../State/loadMore";
 import { selectSort } from "../../../State/projects/sort";
-import { selectFilterByOpenSource, selectFilterByOnChain } from "../../../State/filter";
+import { selectFilterByOpenSource, selectFilterByOnChain } from "../../../State/projects/filter";
 
 const AppList = () => {
   const projects = useSelector(selectProjects);

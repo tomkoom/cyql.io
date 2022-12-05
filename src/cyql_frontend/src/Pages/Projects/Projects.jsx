@@ -11,7 +11,7 @@ import {
   selectFilterByOnChain,
   setFilterByOpenSource,
   selectFilterByOpenSource,
-} from "../../State/filter";
+} from "@state/projects/filter";
 
 const Projects = () => {
   const filterByOpenSource = useSelector(selectFilterByOpenSource);

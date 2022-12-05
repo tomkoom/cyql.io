@@ -13,6 +13,7 @@ const categories = createSlice({
       { id: "tools", label: "Tools", icon: "🛠️" },
       { id: "communities", label: "Communities", icon: "📣" },
       { id: "games", label: "Games", icon: "⚔️" },
+      { id: "gambling", label: "Gambling", icon: "🎲" },
       { id: "daos", label: "DAOs", icon: "🏠" },
       { id: "wallets", label: "Wallets", icon: "👛" },
       { id: "explorers", label: "Explorers", icon: "🌎" },

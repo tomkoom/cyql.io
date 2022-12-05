@@ -3,7 +3,7 @@ import css from "./Search.module.css";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { selectSearch, setSearch } from "@state/search";
+import { selectSearch, setSearch } from "@state/projects/search";
 
 const SearchBar = () => {
   const dispatch = useDispatch();

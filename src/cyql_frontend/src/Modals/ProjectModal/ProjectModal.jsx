@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import css from "./ProjectModal.module.css";
 
 // icons
-import CrossIcon from "../../Icons/CrossIcon/CrossIcon";
+import CrossIcon from "@icons/CrossIcon/CrossIcon";
 
 // firestore
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
-import { projectsCollRef } from "../../Firestore/firestore-collections";
+import { projectsCollRef } from "@firestore/firestore-collections";
 
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
@@ -17,18 +17,16 @@ import { Input, Select, TextArea } from "./index";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectProjectModal,
   selectProject,
   setProject,
   selectMode,
   setCloseProjectModal,
-} from "../../State/modals/projectModal";
-import { selectCategories } from "../../State/categories";
+} from "@state/modals/projectModal";
+import { selectCategories } from "@state/modals/categories";
 
 const ModalProjectEdit = () => {
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const projectModal = useSelector(selectProjectModal);
   const project = useSelector(selectProject);
   const mode = useSelector(selectMode);
   const categories = useSelector(selectCategories);
