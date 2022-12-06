@@ -2,7 +2,6 @@ import React from "react";
 import css from "./ProjectList.module.css";
 
 // icons
-import { iDatabase, iRocket } from "@icons/Icons";
 import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "@icons/Icons";
 
 // routes
@@ -11,6 +10,7 @@ import { toApp } from "@routes/routes";
 // components
 import { LoadMoreBtn2, UpvtBtn } from "@components/index";
 import Loader from "@components/Loader/Loader";
+import { Main, Tags } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -87,30 +87,17 @@ const ProjectList = () => {
             .map((p) => (
               <li className={css.liI} key={p.id} onClick={() => toApp(p.slug)}>
                 <div className={css.main}>
-                  {p.logo && (
-                    <div className={css.logo}>
-                      <img src={p.logo} alt={`${p.name} logo`} />
-                    </div>
-                  )}
-
-                  <div className={css.caption}>
-                    <h3 className={css.title}>{p.name}</h3>
-                    <p className={css.description}>
-                      {p.description && p.description.length > 70
-                        ? `${p.description.substring(0, 70)}…`
-                        : p.description}
-                    </p>
-                  </div>
+                  <Main logo={p.logo} name={p.name} description={p.description} />
                 </div>
 
-                <ul className={css.tags}>
-                  {p.category.length > 0 && <li className={css.tagsI}>{p.category.join(", ")}</li>}
-                  {p.category === "NFTs" && p.nftSaleStatus === "Upcoming" && (
-                    <li className={css.tagsI}>{iRocket} Upcoming</li>
-                  )}
-                  {p.canister && <li className={css.tagsI}>{iDatabase} On-Chain</li>}
-                  {p.github && <li className={css.tagsI}>{iGithub} Open Source</li>}
-                </ul>
+                <div className={css.tags}>
+                  <Tags
+                    category={p.category}
+                    nftSaleStatus={p.nftSaleStatus}
+                    canister={p.canister}
+                    github={p.github}
+                  />
+                </div>
 
                 <div className={css.socials}>
                   <ul>

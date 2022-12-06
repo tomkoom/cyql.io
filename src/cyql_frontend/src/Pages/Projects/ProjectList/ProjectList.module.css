@@ -40,56 +40,6 @@
   flex: 10%;
 }
 
-/* main */
-
-.main {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo img {
-  width: 4.25rem;
-  height: 4.25rem;
-  flex-shrink: 0;
-  object-fit: cover;
-  border-radius: 0.66rem;
-}
-
-.title {
-  font-size: var(--fontSize6);
-  font-weight: var(--fwBold);
-  word-wrap: break-word;
-  margin-bottom: 0.25rem;
-}
-
-.description {
-  color: var(--secondaryColor);
-  font-size: 0.9rem;
-  line-height: 150%;
-}
-
-/* tags */
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  align-items: center;
-  font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
-}
-
-.tagsI {
-  display: flex;
-  align-items: center;
-  gap: 0.33rem;
-  height: 1.5rem;
-  padding: 0 0.33rem;
-  background-color: var(--underlay);
-  border-radius: 0.25rem;
-}
-
 /* socials, socialsIC */
 
 .socials ul,
