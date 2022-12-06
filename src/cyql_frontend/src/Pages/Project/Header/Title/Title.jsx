@@ -8,7 +8,12 @@ const Title = ({ name, category, tags }) => {
 
       <div className={css.tags}>
         <div className={css.category}>
-          {category.length > 0 && category.map((c) => <span className={css.tagsI}>{c}</span>)}
+          {category.length > 0 &&
+            category.map((c) => (
+              <span className={css.tagsI} key={c}>
+                {c}
+              </span>
+            ))}
         </div>
         {tags && <span className={css.tagsI}>{tags}</span>}
       </div>

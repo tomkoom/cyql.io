@@ -18,7 +18,7 @@ const Header = ({ name, id }) => {
     <div className={css.header}>
       <div className={css.headerI}>
         <h4 className={css.title}>Edit {name}</h4>
-        <p className={css.id}>{id}</p>
+        {id && <p className={css.id}>{id}</p>}
       </div>
 
       <span className={css.icon} onClick={closeModal}>

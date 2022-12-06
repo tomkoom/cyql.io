@@ -4,7 +4,6 @@ const main = [
   { id: "website", label: "Website", type: "text" },
   { id: "canister", label: "Canister", type: "text" },
   { id: "logo", label: "Logo", type: "text" },
-  { id: "cover", label: "Cover", type: "text" },
 ];
 
 const socials = [

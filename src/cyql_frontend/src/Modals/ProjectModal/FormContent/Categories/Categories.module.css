@@ -7,12 +7,15 @@
 }
 
 .category {
+  font-size: 0.9rem;
+  font-weight: var(--fwBold);
   padding: 0.5rem;
   background-color: var(--underlay);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 
 .selected {
-  background-color: var(--underlay3);
+  background-color: var(--primaryColor);
+  color: var(--background);
 }

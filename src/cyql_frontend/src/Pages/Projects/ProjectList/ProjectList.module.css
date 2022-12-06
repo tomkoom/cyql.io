@@ -48,7 +48,6 @@
   align-items: center;
   flex-wrap: wrap;
   font-size: var(--fontSize6);
-  color: var(--secondaryColor);
 }
 
 .socials ul {
@@ -67,14 +66,14 @@
 }
 
 .socialsIC ul li {
+  height: 1.5rem;
   display: flex;
   align-items: center;
-  height: 1.5rem;
   padding: 0 0.33rem;
   font-size: var(--fontSize7);
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 /* upvote */
