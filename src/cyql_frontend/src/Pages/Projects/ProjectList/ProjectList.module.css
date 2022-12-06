@@ -31,49 +31,12 @@
   flex: 20%;
 }
 
-.socialsIC,
 .socials {
   flex: 15%;
 }
 
 .upvote {
   flex: 10%;
-}
-
-/* socials, socialsIC */
-
-.socials ul,
-.socialsIC ul {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: var(--fontSize6);
-}
-
-.socials ul {
-  gap: 0.25rem;
-}
-
-.socials ul li {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: grid;
-  place-items: center;
-}
-
-.socialsIC ul {
-  gap: 0.5rem;
-}
-
-.socialsIC ul li {
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  padding: 0 0.33rem;
-  font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
-  background-color: var(--underlay);
-  border-radius: 0.5rem;
 }
 
 /* upvote */

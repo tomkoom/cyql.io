@@ -1,16 +1,13 @@
 import React from "react";
 import css from "./ProjectList.module.css";
 
-// icons
-import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "@icons/Icons";
-
 // routes
 import { toApp } from "@routes/routes";
 
 // components
 import { LoadMoreBtn2, UpvtBtn } from "@components/index";
 import Loader from "@components/Loader/Loader";
-import { Main, Tags } from "./index";
+import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -50,7 +47,7 @@ const ProjectList = () => {
         <ul className={css.li}>
           {p
             // category
-            .filter((project) => (category === "All" ? project : project.category === category))
+            .filter((p) => (category === "All" ? p : p.category.includes(category)))
             // search query
             .filter((project) => {
               if (search === "") {
@@ -63,23 +60,23 @@ const ProjectList = () => {
               }
             })
             // open source
-            .filter((project) => {
+            .filter((p) => {
               if (filterOpenSource === "all") {
-                return project;
+                return p;
               } else if (filterOpenSource === "true") {
-                return project.github !== "";
+                return p.github !== "";
               } else if (filterOpenSource === "false") {
-                return project.github === "";
+                return p.github === "";
               }
             })
             // on-chain
-            .filter((project) => {
+            .filter((p) => {
               if (filterOnChain === "all") {
-                return project;
+                return p;
               } else if (filterOnChain === "true") {
-                return project.canister !== "";
+                return p.canister !== "";
               } else if (filterOnChain === "false") {
-                return project.canister === "";
+                return p.canister === "";
               }
             })
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
@@ -100,21 +97,17 @@ const ProjectList = () => {
                 </div>
 
                 <div className={css.socials}>
-                  <ul>
-                    {p.twitter && <li>{iTwitter}</li>}
-                    {p.discord && <li>{iDiscord}</li>}
-                    {p.telegram && <li>{iTelegram}</li>}
-                    {p.github && <li>{iGithub}</li>}
-                    {p.medium && <li>{iMediumM}</li>}
-                  </ul>
+                  <Socials
+                    twitter={p.twitter}
+                    discord={p.discord}
+                    telegram={p.telegram}
+                    github={p.github}
+                    medium={p.medium}
+                  />
                 </div>
 
-                <div className={css.socialsIC}>
-                  <ul>
-                    {p.dscvr && <li>Dscvr</li>}
-                    {p.distrikt && <li>Distrikt</li>}
-                    {p.openChat && <li>OpenChat</li>}
-                  </ul>
+                <div className={css.socials}>
+                  <SocialsIc dscvr={p.dscvr} distrikt={p.distrikt} openChat={p.openChat} />
                 </div>
 
                 <div className={css.upvote}>
