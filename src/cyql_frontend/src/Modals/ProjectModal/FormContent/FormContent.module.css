@@ -1,0 +1,20 @@
+/* form content */
+
+.formContent {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  width: 20rem;
+}
+
+.title {
+  font-size: var(--fontSize6);
+  font-weight: var(--fwMedium);
+  margin-bottom: 0.5rem;
+}

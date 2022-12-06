@@ -42,8 +42,9 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   };
 
   const sort = (a, b) => {
-    const aLen = a.label === "All" ? pNum : p.filter((p) => p.category.includes(a.label)).length;
-    const bLen = b.label === "All" ? pNum : p.filter((p) => p.category.includes(b.label)).length;
+    const filter = (p, label) => p.category.includes(label);
+    const aLen = a.label === "All" ? pNum : p.filter((p) => filter(p, a.label)).length;
+    const bLen = b.label === "All" ? pNum : p.filter((p) => filter(p, b.label)).length;
     return bLen - aLen;
   };
 

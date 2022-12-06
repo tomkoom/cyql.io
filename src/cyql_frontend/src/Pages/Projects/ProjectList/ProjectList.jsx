@@ -21,7 +21,7 @@ import { selectItemsVisibleProjects, setItemsVisibleProjects } from "@state/load
 import { selectSort } from "@state/projects/sort";
 import { selectFilterByOpenSource, selectFilterByOnChain } from "@state/projects/filter";
 
-const AppList = () => {
+const ProjectList = () => {
   const p = useSelector(selectProjects);
   const pNum = p.length;
   const category = useSelector(selectCategory);
@@ -84,57 +84,55 @@ const AppList = () => {
             })
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
             .slice(0, itemsVisibleProjects)
-            .map((project) => (
-              <li className={css.liI} key={project.id} onClick={() => toApp(project.slug)}>
+            .map((p) => (
+              <li className={css.liI} key={p.id} onClick={() => toApp(p.slug)}>
                 <div className={css.main}>
-                  {project.logo && (
+                  {p.logo && (
                     <div className={css.logo}>
-                      <img src={project.logo} alt={`${project.name} logo`} />
+                      <img src={p.logo} alt={`${p.name} logo`} />
                     </div>
                   )}
 
                   <div className={css.caption}>
-                    <h3 className={css.title}>{project.name}</h3>
+                    <h3 className={css.title}>{p.name}</h3>
                     <p className={css.description}>
-                      {project.description && project.description.length > 70
-                        ? `${project.description.substring(0, 70)}…`
-                        : project.description}
+                      {p.description && p.description.length > 70
+                        ? `${p.description.substring(0, 70)}…`
+                        : p.description}
                     </p>
                   </div>
                 </div>
 
-                <div className={css.tags}>
-                  <ul>
-                    {project.category && <li>{project.category}</li>}
-                    {project.category === "NFTs" && project.nftSaleStatus === "Upcoming" && (
-                      <li>{iRocket} Upcoming</li>
-                    )}
-                    {project.canister && <li>{iDatabase} On-Chain</li>}
-                    {/* {project.github && <li>{iGithub} Open Source</li>} */}
-                  </ul>
-                </div>
+                <ul className={css.tags}>
+                  {p.category.length > 0 && <li className={css.tagsI}>{p.category.join(", ")}</li>}
+                  {p.category === "NFTs" && p.nftSaleStatus === "Upcoming" && (
+                    <li className={css.tagsI}>{iRocket} Upcoming</li>
+                  )}
+                  {p.canister && <li className={css.tagsI}>{iDatabase} On-Chain</li>}
+                  {p.github && <li className={css.tagsI}>{iGithub} Open Source</li>}
+                </ul>
 
                 <div className={css.socials}>
                   <ul>
-                    {project.twitter && <li>{iTwitter}</li>}
-                    {project.discord && <li>{iDiscord}</li>}
-                    {project.telegram && <li>{iTelegram}</li>}
-                    {project.github && <li>{iGithub}</li>}
-                    {project.medium && <li>{iMediumM}</li>}
+                    {p.twitter && <li>{iTwitter}</li>}
+                    {p.discord && <li>{iDiscord}</li>}
+                    {p.telegram && <li>{iTelegram}</li>}
+                    {p.github && <li>{iGithub}</li>}
+                    {p.medium && <li>{iMediumM}</li>}
                   </ul>
                 </div>
 
                 <div className={css.socialsIC}>
                   <ul>
-                    {project.dscvr && <li>Dscvr</li>}
-                    {project.distrikt && <li>Distrikt</li>}
-                    {project.openChat && <li>OpenChat</li>}
+                    {p.dscvr && <li>Dscvr</li>}
+                    {p.distrikt && <li>Distrikt</li>}
+                    {p.openChat && <li>OpenChat</li>}
                   </ul>
                 </div>
 
                 <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvtBtn id={project.id} upvotedBy={project.upvotedBy} />
+                    <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
                   </div>
                 </div>
               </li>
@@ -148,4 +146,4 @@ const AppList = () => {
   );
 };
 
-export default AppList;
+export default ProjectList;

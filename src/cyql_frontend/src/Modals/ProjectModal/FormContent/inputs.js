@@ -20,7 +20,7 @@ const socials = [
 
 const additional = [
   { id: "app", label: "App URL", type: "text" },
-  { id: "docs", label: "Documentation URL", type: "text" },
+  { id: "docs", label: "Docs URL", type: "text" },
 ];
 
 const nft = [

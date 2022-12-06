@@ -1,6 +1,6 @@
 /* higlighted projects */
 
-.projects {
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
@@ -11,38 +11,6 @@
   align-items: center;
   gap: 1rem;
   cursor: pointer;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.title {
-  font-size: var(--fontSize6);
-  word-wrap: break-word;
-  margin-top: 0.1rem;
-}
-
-.tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: var(--fontSize7);
-}
-
-.tags li {
-  display: flex;
-  align-items: center;
-  font-weight: var(--fwBold);
-}
-
-.description {
-  font-size: 0.9rem;
-  line-height: 150%;
-  color: var(--secondaryColor);
 }
 
 .upvote {

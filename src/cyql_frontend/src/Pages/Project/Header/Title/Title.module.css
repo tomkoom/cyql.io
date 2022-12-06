@@ -18,6 +18,12 @@
   margin-top: 0.5rem;
 }
 
+.category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .tagsI {
   display: inline-block;
   padding: 0.5rem;

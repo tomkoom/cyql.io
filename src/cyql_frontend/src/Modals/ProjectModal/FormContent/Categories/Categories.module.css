@@ -1,0 +1,18 @@
+/* categories */
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category {
+  padding: 0.5rem;
+  background-color: var(--underlay);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: var(--underlay3);
+}

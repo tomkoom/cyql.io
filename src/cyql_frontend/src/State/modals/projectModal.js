@@ -3,20 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 const projectInitialState = {
   // main
   name: "",
-  id: "", // slug
-  category: "",
+  id: "",
+  slug: "",
+  category: [],
   website: "",
   canister: "",
   logo: "",
   cover: "",
   description: "",
 
-  // social networks
+  // socials
   twitter: "",
   discord: "",
   telegram: "",
   github: "",
   medium: "",
+
+  // socials ic
   dscvr: "",
   distrikt: "",
   openChat: "",
@@ -39,8 +42,19 @@ const projectInitialState = {
   nftImg4: "",
 
   // meta
-  added: "",
-  edited: "",
+  added: null,
+  // delete dateAdded
+  edited: null,
+
+  // token
+  hasToken: null,
+  tokenMarkets: [],
+
+  // ...
+  verified: null,
+  promoted: null,
+  grantee: null,
+  upvotedBy: [],
 };
 
 const projectModal = createSlice({
@@ -60,6 +74,9 @@ const projectModal = createSlice({
     setProject(state, { payload }) {
       state.project = { ...state.project, ...payload };
     },
+    setProjectCategory(state, { payload }) {
+      state.project.category = payload;
+    },
     setCloseProjectModal(state) {
       state.mode = "";
       state.project = projectInitialState;
@@ -71,8 +88,9 @@ const projectModal = createSlice({
 const selectMode = (state) => state.projectModal.mode;
 const selectProjectModal = (state) => state.projectModal.projectModal;
 const selectProject = (state) => state.projectModal.project;
+const selectProjectCategory = (state) => state.projectModal.project.category;
+export { selectMode, selectProjectModal, selectProject, selectProjectCategory };
 
-export { selectProjectModal, selectProject, selectMode };
-
-export const { setMode, setProjectModal, setProject, setCloseProjectModal } = projectModal.actions;
+export const { setMode, setProjectModal, setProject, setProjectCategory, setCloseProjectModal } =
+  projectModal.actions;
 export default projectModal.reducer;

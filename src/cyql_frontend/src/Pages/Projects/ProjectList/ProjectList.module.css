@@ -71,17 +71,16 @@
 
 /* tags */
 
-.tags ul {
+.tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
   font-size: var(--fontSize7);
   font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
 }
 
-.tags ul li {
+.tagsI {
   display: flex;
   align-items: center;
   gap: 0.33rem;

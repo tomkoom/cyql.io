@@ -19,29 +19,9 @@
   background-color: var(--background);
   color: var(--primaryColor);
   margin: 1rem;
-
   /* overflow */
   height: 100%;
   overflow: auto;
-}
-
-.formContent {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  width: 20rem;
-}
-
-.sectionTitle {
-  font-size: var(--fontSize6);
-  font-weight: var(--fwMedium);
-  margin-bottom: 0.5rem;
 }
 
 .controls {

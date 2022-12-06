@@ -5,33 +5,18 @@ import css from "./ProjectModal.module.css";
 import { doc, addDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { pColRef } from "@firestore/firestore-collections";
 
-// inputs
-import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
-
 // components
-import { Header, Input, Select, TextArea } from "./index";
+import { FormContent, Header } from "./index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectProject,
-  setProject,
-  selectMode,
-  setCloseProjectModal,
-} from "@state/modals/projectModal";
-import { selectCategories } from "@state/modals/categories";
+import { selectProject, selectMode, setCloseProjectModal } from "@state/modals/projectModal";
 
 const ProjectModal = () => {
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const p = useSelector(selectProject);
   const mode = useSelector(selectMode);
-  const categories = useSelector(selectCategories);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    dispatch(setProject({ [name]: value }));
-  };
 
   const submit = async () => {
     const ts = Date.now();
@@ -75,93 +60,7 @@ const ProjectModal = () => {
         <Header name={p.name} id={p.id} />
 
         <div className={css.form}>
-          <div className={css.formContent}>
-            <div className={css.section}>
-              <h5 className={css.sectionTitle}>Main</h5>
-              <Select
-                id="category"
-                label="Category"
-                value={p.category[0]}
-                // fix category
-                onChange={handleChange}
-                selectOptions={categories}
-              />
-
-              {main.map((input) => (
-                <Input
-                  id={input.id}
-                  label={input.label}
-                  type={input.type}
-                  value={p[input.id]}
-                  onChange={handleChange}
-                  key={input.id}
-                />
-              ))}
-
-              <TextArea
-                id="description"
-                label="Description"
-                value={p.description}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div>
-              <div className={css.section}>
-                <h5 className={css.sectionTitle}>Social networks</h5>
-                {socials.map((input) => (
-                  <Input
-                    id={input.id}
-                    label={input.label}
-                    type={input.type}
-                    value={p[input.id]}
-                    onChange={handleChange}
-                    key={input.id}
-                  />
-                ))}
-              </div>
-
-              <div className={css.section}>
-                <h5 className={css.sectionTitle}>Additional info</h5>
-                {additional.map((input) => (
-                  <Input
-                    id={input.id}
-                    label={input.label}
-                    type={input.type}
-                    value={p[input.id]}
-                    onChange={handleChange}
-                    key={input.id}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {p.category.includes("NFTs") ? (
-              <div className={css.section}>
-                <h5 className={css.sectionTitle}>NFT data</h5>
-                <Select
-                  id="nftSaleStatus"
-                  label="NFT sale status"
-                  value={p.nftSaleStatus}
-                  onChange={handleChange}
-                  selectOptions={nftSaleStatusOptions}
-                />
-
-                {nft.map((input) => (
-                  <Input
-                    id={input.id}
-                    label={input.label}
-                    type={input.type}
-                    value={p[input.id]}
-                    onChange={handleChange}
-                    key={input.id}
-                  />
-                ))}
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+          <FormContent />
 
           <div className={css.controls}>
             {!deleteConfirm ? (

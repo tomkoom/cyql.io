@@ -29,6 +29,10 @@ const Projects = () => {
     dispatch(setProjectModal(true));
   };
 
+  const categoryStr = (c) => {
+    return c.length > 1 ? c.map((c) => c + " ") : c;
+  };
+
   return (
     <div className={css.projects}>
       <Search setSearch={setSearch} />
@@ -84,7 +88,7 @@ const Projects = () => {
                 <p>{p.slug && formatStr12(p.slug)}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.category}</p>
+                <p>{p.category.join(", ")}</p>
               </div>
               <div className={css.coll139}>
                 <p>{p.logo && formatWebsite(p.logo)}</p>

@@ -1,6 +1,4 @@
 // project modal
 
+export { default as FormContent } from "./FormContent/FormContent";
 export { default as Header } from "./Header/Header";
-export { default as Input } from "./Input/Input";
-export { default as Select } from "./Select/Select";
-export { default as TextArea } from "./TextArea/TextArea";
