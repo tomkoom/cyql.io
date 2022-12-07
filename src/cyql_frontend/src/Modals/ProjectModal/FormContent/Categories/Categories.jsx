@@ -24,17 +24,19 @@ const Category = () => {
 
   return (
     <ul className={css.categories}>
-      {categories.map((c) => (
-        <li
-          className={pCat.includes(c.label) ? `${css.category} ${css.selected}` : css.category}
-          key={c.id}
-          onClick={() => {
-            add(c.label);
-          }}
-        >
-          <p>{c.label}</p>
-        </li>
-      ))}
+      {categories
+        .filter((c) => c.id !== "all")
+        .map((c) => (
+          <li
+            className={pCat.includes(c.label) ? `${css.category} ${css.selected}` : css.category}
+            key={c.id}
+            onClick={() => {
+              add(c.label);
+            }}
+          >
+            <p>{c.label}</p>
+          </li>
+        ))}
     </ul>
   );
 };

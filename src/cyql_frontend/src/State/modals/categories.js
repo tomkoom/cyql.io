@@ -19,8 +19,10 @@ const categories = createSlice({
       { id: "explorers", label: "Explorers", icon: "🌎" },
       { id: "metaverse", label: "Metaverse", icon: "👓" },
       { id: "education", label: "Education", icon: "🎓" },
-      { id: "token", label: "Token", icon: "🪙" },
-      { id: "dev-tools", label: "Dev Tools", icon: "🪙" },
+      { id: "tokens", label: "Tokens", icon: "🪙" },
+      { id: "dev-tools", label: "Dev Tools", icon: "👨‍💻" },
+      { id: "dexs", label: "DEXs", icon: "🐂" },
+      { id: "swapping", label: "Swapping", icon: "↔️" },
     ],
   },
   reducers: {

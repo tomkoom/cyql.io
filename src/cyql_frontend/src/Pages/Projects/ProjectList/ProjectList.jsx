@@ -39,6 +39,30 @@ const ProjectList = () => {
     return 0;
   };
 
+  const filterByCategory = (p) => {
+    return category === "All" ? p : p.category.includes(category);
+  };
+
+  const filterBySearch = (p) => {
+    return search === "" ? p : p.name.toLowerCase().includes(search.toLowerCase());
+  };
+
+  const filterByOpenSource = (p) => {
+    return filterOpenSource === "all"
+      ? p
+      : filterOpenSource === "true"
+      ? p.github !== ""
+      : p.github === "";
+  };
+
+  const filterByOnChain = (p) => {
+    return filterOnChain === "all"
+      ? p
+      : filterOnChain === "true"
+      ? p.canister !== ""
+      : p.canister === "";
+  };
+
   return (
     <div>
       {p.length < 1 ? (
@@ -46,39 +70,10 @@ const ProjectList = () => {
       ) : (
         <ul className={css.li}>
           {p
-            // category
-            .filter((p) => (category === "All" ? p : p.category.includes(category)))
-            // search query
-            .filter((project) => {
-              if (search === "") {
-                return project;
-              } else if (
-                project.name &&
-                project.name.toLowerCase().includes(search.toLowerCase())
-              ) {
-                return project;
-              }
-            })
-            // open source
-            .filter((p) => {
-              if (filterOpenSource === "all") {
-                return p;
-              } else if (filterOpenSource === "true") {
-                return p.github !== "";
-              } else if (filterOpenSource === "false") {
-                return p.github === "";
-              }
-            })
-            // on-chain
-            .filter((p) => {
-              if (filterOnChain === "all") {
-                return p;
-              } else if (filterOnChain === "true") {
-                return p.canister !== "";
-              } else if (filterOnChain === "false") {
-                return p.canister === "";
-              }
-            })
+            .filter((p) => filterByCategory(p))
+            .filter((p) => filterBySearch(p))
+            .filter((p) => filterByOpenSource(p))
+            .filter((p) => filterByOnChain(p))
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
             .slice(0, itemsVisibleProjects)
             .map((p) => (

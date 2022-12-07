@@ -48,13 +48,20 @@ const projectInitialState = {
 
   // token
   hasToken: null,
-  tokenMarkets: [],
+  // tokenName: "",
+  // tokenSymbol: "",
+  // tokenLogo: "",
+  // tokenCanisterId: "",
+  // tokenMarkets: [],
+  // tokenSupply: "",
+  // tokenMaxSupply: "",
 
   // ...
   verified: null,
   promoted: null,
   grantee: null,
   upvotedBy: [],
+  connectedProjects: [],
 };
 
 const projectModal = createSlice({
