@@ -12,9 +12,11 @@ const socials = [
   { id: "telegram", label: "Telegram", type: "text" },
   { id: "github", label: "GitHub", type: "text" },
   { id: "medium", label: "Medium", type: "text" },
+  // socials ic
   { id: "dscvr", label: "Dscvr", type: "text" },
   { id: "distrikt", label: "Distrikt", type: "text" },
   { id: "openChat", label: "OpenChat", type: "text" },
+  { id: "catalyze", label: "Catalyze", type: "text" },
 ];
 
 const additional = [

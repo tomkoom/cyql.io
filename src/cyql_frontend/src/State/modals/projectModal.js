@@ -23,10 +23,15 @@ const projectInitialState = {
   dscvr: "",
   distrikt: "",
   openChat: "",
+  catalyze: "",
 
   // additional info
   app: "",
+
+  // docs
   docs: "",
+  faq: "",
+  whitepaper: "",
 
   // nft info
   nftSaleStatus: "",
