@@ -2,7 +2,7 @@ import React from "react";
 import css from "./FormContent.module.css";
 
 // components
-import { Categories, Input, Select, TextArea } from "./index";
+import { Categories, Grantee, Input, Select, TextArea } from "./index";
 
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
@@ -36,6 +36,8 @@ const FormContent = () => {
             key={input.id}
           />
         ))}
+
+        <Grantee />
 
         <TextArea
           id="description"

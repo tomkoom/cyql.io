@@ -1,10 +1,13 @@
 import React from "react";
 import css from "./Title.module.css";
 
-const Title = ({ name, category, tags }) => {
+// components
+import { Name } from "./index";
+
+const Title = ({ name, category, tags, grantee }) => {
   return (
     <div className={css.title}>
-      <h3>{name}</h3>
+      <Name name={name} grantee={grantee} />
 
       <div className={css.tags}>
         <div className={css.category}>

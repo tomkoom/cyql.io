@@ -9,7 +9,7 @@ const projectInitialState = {
   website: "",
   canister: "",
   logo: "",
-  cover: "",
+  // cover: "",
   description: "",
 
   // socials
@@ -89,6 +89,9 @@ const projectModal = createSlice({
     setProjectCategory(state, { payload }) {
       state.project.category = payload;
     },
+    setProjectGrantee(state, { payload }) {
+      state.project.grantee = payload;
+    },
     setCloseProjectModal(state) {
       state.mode = "";
       state.project = projectInitialState;
@@ -101,8 +104,21 @@ const selectMode = (state) => state.projectModal.mode;
 const selectProjectModal = (state) => state.projectModal.projectModal;
 const selectProject = (state) => state.projectModal.project;
 const selectProjectCategory = (state) => state.projectModal.project.category;
-export { selectMode, selectProjectModal, selectProject, selectProjectCategory };
+const selectProjectGrantee = (state) => state.projectModal.project.grantee;
+export {
+  selectMode,
+  selectProjectModal,
+  selectProject,
+  selectProjectCategory,
+  selectProjectGrantee,
+};
 
-export const { setMode, setProjectModal, setProject, setProjectCategory, setCloseProjectModal } =
-  projectModal.actions;
+export const {
+  setMode,
+  setProjectModal,
+  setProject,
+  setProjectCategory,
+  setProjectGrantee,
+  setCloseProjectModal,
+} = projectModal.actions;
 export default projectModal.reducer;

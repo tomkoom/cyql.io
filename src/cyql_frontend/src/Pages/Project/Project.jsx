@@ -43,6 +43,7 @@ const Project = () => {
                   name={p.name}
                   category={p.category}
                   tags={p.tags}
+                  grantee={p.grantee}
                   id={p.id}
                   upvotedBy={p.upvotedBy}
                 />

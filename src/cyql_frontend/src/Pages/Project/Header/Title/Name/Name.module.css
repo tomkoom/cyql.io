@@ -1,0 +1,19 @@
+/* name */
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.grantee {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0 0.5rem;
+  font-weight: var(--fwBold);
+  color: white;
+  background-color: var(--colorGreen);
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,17 @@
+/* socials */
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  font-size: var(--fontSize6);
+  color: var(--secondaryColor);
+}
+
+.socials li {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: grid;
+  place-items: center;
+}
