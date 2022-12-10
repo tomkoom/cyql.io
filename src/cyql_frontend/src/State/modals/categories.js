@@ -24,6 +24,9 @@ const categories = createSlice({
       { id: "dev-tools", label: "Dev Tools", icon: "👨‍💻" },
       { id: "dexs", label: "DEXs", icon: "🐂" },
       { id: "swapping", label: "Swapping", icon: "↔️" },
+      { id: "marketplace", label: "Marketplace", icon: "🔄" },
+      { id: "blogging", label: "Blogging", icon: "🗒️" },
+      { id: "identity", label: "Identity", icon: "🔑" },
     ],
   },
   reducers: {
