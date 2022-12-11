@@ -1,0 +1,21 @@
+/* share btn */
+
+.btn {
+  width: 2.75rem;
+  height: 3.5rem;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 0 1px var(--underlay);
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--underlay);
+}
+
+.icon {
+  font-size: var(--fontSize5);
+  color: var(--secondaryColor);
+}

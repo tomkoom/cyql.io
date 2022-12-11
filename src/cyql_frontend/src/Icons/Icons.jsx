@@ -48,6 +48,8 @@ import {
   faChartArea,
   faChartBar,
   faMeteor,
+  faShare,
+  faShareSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -106,6 +108,8 @@ const iEye = <FontAwesomeIcon icon={faEye} />;
 const iChartArea = <FontAwesomeIcon icon={faChartArea} />;
 const iChartBar = <FontAwesomeIcon icon={faChartBar} />;
 const iMeteor = <FontAwesomeIcon icon={faMeteor} />;
+const iShare = <FontAwesomeIcon icon={faShare} />;
+const iShareSquare = <FontAwesomeIcon icon={faShareSquare} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -164,6 +168,8 @@ export {
   iChartArea,
   iChartBar,
   iMeteor,
+  iShare,
+  iShareSquare,
   // brands
   iTwitter,
   iDiscord,

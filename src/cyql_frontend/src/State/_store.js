@@ -1,26 +1,37 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-// reducers
 // api
 import icpPrice from "./api/icpPrice";
-// ...
+
+// jobs
+import activeTab from "./jobs/activeTab";
+import job from "./jobs/job";
+import jobs from "./jobs/jobs";
+
+// modals
+import categories from "./modals/categories";
+import modals from "./modals/modals";
+import projectModal from "./modals/projectModal";
+import shareModal from "./modals/shareModal";
+
+// nft
+import nft from "./nft/nft";
+
+// profiles
+import profiles from "./profiles/profiles";
+
+// projects
+import category from "./projects/category";
+import filter from "./projects/filter";
 import search from "./projects/search";
+import sort from "./projects/sort";
+
+// ...
 import theme from "./theme";
 import loadMore from "./loadMore";
 import projects from "./projects";
-import modals from "./modals/modals";
-import projectModal from "./modals/projectModal";
-import category from "./projects/category";
-import categories from "./modals/categories";
-import sort from "./projects/sort";
 import profile from "./profile";
-import filter from "./projects/filter";
 import projectSubmission from "./projectSubmission";
-import jobs from "./jobs/jobs";
-import job from "./jobs/job";
-import nft from "./nft/nft";
-import profiles from "./profiles/profiles";
-import activeTab from "./jobs/activeTab";
 
 // redux-persist
 import {
@@ -54,6 +65,7 @@ const rootReducer = combineReducers({
   nft,
   profiles,
   activeTab,
+  shareModal,
 });
 
 const persistConfig = {

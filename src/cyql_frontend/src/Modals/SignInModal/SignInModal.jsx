@@ -2,25 +2,21 @@ import React from "react";
 import css from "./SignInModal.module.css";
 
 // icons
-import { iAngleRight } from "../../Icons/Icons";
-import CrossIcon from "../../Icons/CrossIcon/CrossIcon";
+import { iAngleRight } from "@icons/Icons";
 
 // auth
-import { useAuth } from "../../Context/AuthContext";
+import { useAuth } from "@context/AuthContext";
+
+// components
+import { Header } from "./index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
-import { setSignInModal } from "../../State/modals/modals";
-import { selectTheme } from "../../State/theme";
+import { useSelector } from "react-redux";
+import { selectTheme } from "@state/theme";
 
 const SignInModal = () => {
-  const dispatch = useDispatch();
   const { signInWithPlug, signInWithStoic, signInWithInfinityWallet } = useAuth();
   const theme = useSelector(selectTheme);
-
-  const closeSignInModal = () => {
-    dispatch(setSignInModal(false));
-  };
 
   const signInMethods = [
     {
@@ -40,21 +36,15 @@ const SignInModal = () => {
     },
   ];
 
+  const style =
+    theme === "light"
+      ? { backgroundColor: "rgba(18, 22, 25, 0.33)" }
+      : { backgroundColor: "rgba(242, 244, 248, 0.33)" };
+
   return (
-    <div
-      className={css.modal}
-      style={
-        theme === "light"
-          ? { backgroundColor: "rgba(18, 22, 25, 0.33)" }
-          : { backgroundColor: "rgba(242, 244, 248, 0.33)" }
-      }
-      onClick={closeSignInModal}
-    >
+    <div className={css.modal} style={style} onClick={closeSignInModal}>
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
-        <div className={css.top}>
-          <h3 className={css.title}>Choose your wallet</h3>
-          <CrossIcon onClick={closeSignInModal} />
-        </div>
+        <Header />
 
         <div>
           {signInMethods.map((s) => (

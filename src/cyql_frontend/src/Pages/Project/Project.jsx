@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 
 // components
 import { BackBtn, Loader } from "@components/index";
+import { ShareModal } from "@modals/index";
 import {
   CollStats,
   Description,
@@ -21,10 +22,12 @@ import {
 // state
 import { useSelector } from "react-redux";
 import { selectProjects } from "@state/projects";
+import { selectShareModal } from "@state/modals/shareModal";
 
 const Project = () => {
   const { slug } = useParams();
   const projects = useSelector(selectProjects);
+  const shareModal = useSelector(selectShareModal);
 
   return (
     <div className={css.project}>
@@ -101,6 +104,7 @@ const Project = () => {
             </div>
           ))
       )}
+      {shareModal && <ShareModal />}
     </div>
   );
 };

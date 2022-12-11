@@ -1,0 +1,11 @@
+/* header */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-size: var(--fontSize5);
+}
