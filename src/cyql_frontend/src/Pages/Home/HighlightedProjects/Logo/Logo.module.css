@@ -7,3 +7,11 @@
   object-fit: cover;
   border-radius: 1rem;
 }
+
+.empty {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex-shrink: 0;
+  background-color: var(--underlay);
+  border-radius: 1rem;
+}
