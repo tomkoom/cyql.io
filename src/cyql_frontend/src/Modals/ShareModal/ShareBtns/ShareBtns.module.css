@@ -1,0 +1,42 @@
+/* share btns */
+
+.shareBtns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shareBtns li:hover {
+  opacity: 0.75;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: var(--fontSize4);
+  color: #fff;
+  border-radius: 50%;
+}
+
+#twitter {
+  background-color: var(--colorTwitter);
+}
+
+#telegram {
+  background-color: var(--colorTelegram);
+}
+
+#facebook {
+  background-color: var(--colorFacebook);
+}
+
+#reddit {
+  background-color: var(--colorReddit);
+}
+
+#linkedin {
+  background-color: var(--colorLinkedIn);
+}
