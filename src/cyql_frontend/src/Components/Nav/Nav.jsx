@@ -6,14 +6,14 @@ import { Logo } from "../index";
 import { Desktop, Mobile } from "./index";
 
 // utils
-import { useWindowSize } from "../../Hooks/useWindowSize";
+import { useWindowSize } from "@hooks/useWindowSize";
 
 // navlinks
-import { toHome } from "../../Routes/routes";
+import { toHome } from "@routes/routes";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectMobileMenuModal, setMobileMenuModal } from "../../State/modals/modals";
+import { selectMobileMenuModal, setMobileMenuModal } from "@state/modals/modals";
 
 const Nav = () => {
   const dispatch = useDispatch();

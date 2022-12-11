@@ -11,12 +11,18 @@ import { useAuth } from "@context/AuthContext";
 import { Header } from "./index";
 
 // state
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setSignInModal } from "@state/modals/modals";
 import { selectTheme } from "@state/theme";
 
 const SignInModal = () => {
+  const dispatch = useDispatch();
   const { signInWithPlug, signInWithStoic, signInWithInfinityWallet } = useAuth();
   const theme = useSelector(selectTheme);
+
+  const close = () => {
+    dispatch(setSignInModal(false));
+  };
 
   const signInMethods = [
     {
@@ -42,18 +48,18 @@ const SignInModal = () => {
       : { backgroundColor: "rgba(242, 244, 248, 0.33)" };
 
   return (
-    <div className={css.modal} style={style} onClick={closeSignInModal}>
+    <div className={css.modal} style={style} onClick={close}>
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
         <Header />
 
         <div>
           {signInMethods.map((s) => (
             <button className={css.btn} key={s.label} onClick={s.handleSignIn}>
-              <div className={css.logo}>
-                <img src={s.logo} alt={`${s.label}-logo"`} />
+              <div className={css.main}>
+                <img className={css.logo} src={s.logo} alt={`${s.label} logo"`} />
                 <p className={css.label}>{s.label}</p>
               </div>
-              <div className={css.icon}>{iAngleRight}</div>
+              <span className={css.icon}>{iAngleRight}</span>
             </button>
           ))}
         </div>

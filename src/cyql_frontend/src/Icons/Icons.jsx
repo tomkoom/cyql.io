@@ -58,6 +58,10 @@ import {
   faMedium,
   faMediumM,
   faGithub,
+  faFacebook,
+  faLinkedin,
+  faReddit,
+  faRedditAlien,
 } from "@fortawesome/free-brands-svg-icons";
 
 // solid
@@ -115,9 +119,13 @@ const iShareSquare = <FontAwesomeIcon icon={faShareSquare} />;
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
 const iTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iDiscord = <FontAwesomeIcon icon={faDiscord} />;
+const iGithub = <FontAwesomeIcon icon={faGithub} />;
 const iMedium = <FontAwesomeIcon icon={faMedium} />;
 const iMediumM = <FontAwesomeIcon icon={faMediumM} />;
-const iGithub = <FontAwesomeIcon icon={faGithub} />;
+const iFacebook = <FontAwesomeIcon icon={faFacebook} />;
+const iLinkedin = <FontAwesomeIcon icon={faLinkedin} />;
+const iReddit = <FontAwesomeIcon icon={faReddit} />;
+const iRedditAlien = <FontAwesomeIcon icon={faRedditAlien} />;
 
 export {
   // solid
@@ -172,9 +180,13 @@ export {
   iShareSquare,
   // brands
   iTwitter,
+  iTelegram,
   iDiscord,
   iGithub,
-  iTelegram,
   iMedium,
   iMediumM,
+  iFacebook,
+  iLinkedin,
+  iReddit,
+  iRedditAlien,
 };

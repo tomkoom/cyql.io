@@ -11,7 +11,7 @@
   color: var(--highlightColor);
   background-color: rgba(var(--highlightColorRgb), 0.1);
   font-weight: var(--fwBold);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
 }

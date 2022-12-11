@@ -40,13 +40,13 @@
   background-color: var(--underlay);
 }
 
-.logo {
+.main {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.logo img {
+.logo {
   width: 2rem;
   height: 2rem;
   object-fit: cover;

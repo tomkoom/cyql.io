@@ -101,10 +101,19 @@ const Project = () => {
               </div>
 
               {p.twitter && <Twitter name={p.name} twitter={p.twitter} />}
+
+              {/* modals */}
+              {shareModal && (
+                <ShareModal
+                  slug={p.slug}
+                  name={p.name}
+                  category={p.category}
+                  description={p.description}
+                />
+              )}
             </div>
           ))
       )}
-      {shareModal && <ShareModal />}
     </div>
   );
 };

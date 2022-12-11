@@ -10,7 +10,6 @@ import { setShareModal } from "@state/modals/shareModal";
 
 const ShareBtn = () => {
   const dispatch = useDispatch();
-
   const openModal = () => {
     dispatch(setShareModal(true));
   };
