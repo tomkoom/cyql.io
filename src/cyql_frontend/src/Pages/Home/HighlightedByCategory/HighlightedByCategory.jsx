@@ -31,19 +31,19 @@ const HighlightedByCategory = ({ filter }) => {
     return 0;
   };
 
-  const openProject = () => {
-    toApp(p.slug);
+  const openProject = (slug) => {
+    toApp(slug);
   };
 
   return (
     <ul className={css.projects}>
       {projects
-        .filter((p) => p.category[0] === filter)
+        .filter((p) => p.category.includes(filter))
         .sort((a, b) => sortByUpvoted(a, b))
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
         .map((p) => (
-          <li className={css.p} key={p.id} onClick={openProject}>
+          <li className={css.p} key={p.id} onClick={() => openProject(p.slug)}>
             <div className={css.main}>
               <Logo logo={p.logo} name={p.name} />
               <div>

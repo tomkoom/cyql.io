@@ -1,7 +1,6 @@
 /* not active */
 
 .btn {
-  width: 2.75rem;
   height: 3.5rem;
   display: flex;
   flex-direction: column;
@@ -21,11 +20,18 @@
 }
 
 .icon {
-  font-size: var(--fontSize4);
   color: var(--secondaryColor);
 }
 
+.size5 {
+  font-size: var(--fontSize5);
+}
+
+.size4 {
+  font-size: var(--fontSize4);
+}
+
 .num {
-  margin-top: -0.5rem;
+  margin-top: -0.25rem;
   padding-bottom: 0.25rem;
 }

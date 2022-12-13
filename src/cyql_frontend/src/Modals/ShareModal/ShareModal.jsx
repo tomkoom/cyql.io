@@ -2,7 +2,7 @@ import React from "react";
 import css from "./ShareModal.module.css";
 
 // components
-import { Header, ShareBtns } from "./index";
+import { Header, ShareBtns, ShareLink } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
@@ -19,6 +19,7 @@ const ShareModal = ({ slug, name, category, description }) => {
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
         <Header name={name} />
         <ShareBtns slug={slug} name={name} category={category} description={description} />
+        <ShareLink />
       </div>
     </div>
   );

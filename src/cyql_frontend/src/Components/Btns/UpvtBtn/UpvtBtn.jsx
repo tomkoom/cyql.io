@@ -14,7 +14,7 @@ import { setSignInModal } from "@state/modals/modals";
 // components
 import { Active, NotActive } from "./index";
 
-const UpvtBtn = ({ id, upvotedBy }) => {
+const UpvtBtn = ({ id, upvotedBy, location }) => {
   const dispatch = useDispatch();
   const { isAuthenticated, principalIdStr: p } = useAuth();
 
@@ -40,9 +40,9 @@ const UpvtBtn = ({ id, upvotedBy }) => {
 
   return isAuthenticated ? (
     check(p) ? (
-      <Active num={num} click={() => unUpvote(id, p)} />
+      <Active num={num} location={location} click={() => unUpvote(id, p)} />
     ) : (
-      <NotActive num={num} click={() => upvote(id, p)} />
+      <NotActive num={num} location={location} click={() => upvote(id, p)} />
     )
   ) : (
     <NotActive num={num} click={() => dispatch(setSignInModal(true))} />

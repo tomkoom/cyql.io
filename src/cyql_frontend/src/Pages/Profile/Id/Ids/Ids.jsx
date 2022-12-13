@@ -36,7 +36,7 @@ const Ids = () => {
     { label: accountLabel, id: accountIdStr, copied: accountCopied },
   ];
 
-  const copyToClipBoard = (label) => {
+  const copy = (label) => {
     if (label === principalLabel) {
       navigator.clipboard.writeText(principalIdStr);
       setPrincipalCopied(true);
@@ -62,9 +62,7 @@ const Ids = () => {
           <div
             className={css.idValue}
             onClick={() => {
-              if (!copied) {
-                copyToClipBoard(label);
-              }
+              !copied && copy(label);
             }}
           >
             {copied ? <Copied /> : <IdValue id={id} />}
