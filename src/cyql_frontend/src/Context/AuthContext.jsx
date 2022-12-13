@@ -48,7 +48,6 @@ export function AuthProvider({ children }) {
   };
 
   // PLUG
-
   const signInWithPlug = async () => {
     setSignInLoading(true);
     const publicKey = await window.ic.plug
@@ -56,22 +55,25 @@ export function AuthProvider({ children }) {
         whitelist: [cyql_canister_id],
         host: h,
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((e) => {
+        console.log(e);
         setSignInLoading(false);
         return; // return undefined
       });
+
     if (publicKey) {
-      await createPlugActor().catch((err) => {
-        console.log(err);
+      await createPlugActor().catch((e) => {
+        console.log(e);
+        setSignInLoading(false);
         return;
       });
-      await getPlugUserData().catch((err) => {
-        console.log(err);
+      await getPlugUserData().catch((e) => {
+        console.log(e);
+        setSignInLoading(false);
         return;
       });
+      setIsAuthenticated(true);
     }
-    setIsAuthenticated(true);
     setSignInLoading(false);
   };
 

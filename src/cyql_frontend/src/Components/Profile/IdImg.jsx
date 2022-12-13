@@ -1,11 +1,11 @@
 import React from "react";
 
 // auth
-import { useAuth } from "../../Context/AuthContext";
+import { useAuth } from "@context/AuthContext";
 
 const IdImg = ({ size }) => {
   const { principalId } = useAuth();
-  const id = principalId.toHex();
+  const id = principalId && principalId.toHex();
 
   const style = {
     borderRadius: "50%",
@@ -14,7 +14,7 @@ const IdImg = ({ size }) => {
   };
 
   return (
-    <img style={style} src={`https://avatars.dicebear.com/api/jdenticon/${id}.svg`} alt="id-img" />
+    <img style={style} src={`https://avatars.dicebear.com/api/jdenticon/${id}.svg`} alt="id img" />
   );
 };
 
