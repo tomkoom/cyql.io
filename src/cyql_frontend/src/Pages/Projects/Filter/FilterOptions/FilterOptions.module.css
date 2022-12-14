@@ -1,7 +1,7 @@
 /* filter options */
 
 .filter {
-  width: 12rem;
+  width: 8rem;
   display: flex;
   flex-direction: column;
   font-weight: var(--fwMedium);
@@ -16,7 +16,7 @@
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
-  padding: 0 1rem;
+  padding: 0 0.75rem;
   cursor: pointer;
 }
 

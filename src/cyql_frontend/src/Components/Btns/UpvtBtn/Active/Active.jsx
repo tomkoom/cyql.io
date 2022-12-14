@@ -7,12 +7,12 @@ import { iCaretUp } from "@icons/Icons";
 const Active = ({ num, click, location }) => {
   return (
     <button
-      style={location === "home" ? { width: "2.5rem" } : { width: "2.75rem" }}
+      style={location === "project" ? { width: "2.75rem" } : { width: "2.5rem" }}
       className={css.btn}
       onClick={click}
     >
       <span
-        className={location === "home" ? `${css.icon} ${css.size5}` : `${css.icon} ${css.size4}`}
+        className={location === "project" ? `${css.icon} ${css.size4}` : `${css.icon} ${css.size5}`}
       >
         {iCaretUp}
       </span>

@@ -24,6 +24,8 @@ const projectInitialState = {
   distrikt: "",
   openChat: "",
   catalyze: "",
+  // seers
+  // nuance
 
   // additional info
   app: "",

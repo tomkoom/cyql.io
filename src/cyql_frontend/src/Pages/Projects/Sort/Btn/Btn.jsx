@@ -16,7 +16,7 @@ const Btn = () => {
       <span className={css.icon}>{iSort}</span>
       <p>Order by:</p>
       <p className={css.category}>
-        {sort === "date" ? "Date added" : sort === "upvotes" ? "Popularity" : null}
+        {sort === "date" ? "Date" : sort === "upvotes" ? "Popularity" : null}
       </p>{" "}
       <span className={css.icon}>{iAngleDown}</span>
     </button>

@@ -2,20 +2,19 @@ import React, { useState, useRef } from "react";
 import css from "./Filter.module.css";
 
 // components
-import Btn from "./Btn/Btn";
-import FilterOptions from "./FilterOptions/FilterOptions";
+import { Btn, FilterOptions } from "./index";
 
 const Filter = ({ label, filter, setFilter }) => {
   const [openFilterOptions, setOpenFilterOptions] = useState();
   const filterBtnRef = useRef(null);
 
-  const clickBtn = () => {
+  const click = () => {
     setOpenFilterOptions((prev) => !prev);
   };
 
   return (
     <div className={css.filter}>
-      <div onClick={clickBtn} ref={filterBtnRef}>
+      <div onClick={click} ref={filterBtnRef}>
         <Btn label={label} filter={filter} />
       </div>
       <div className={css.filterOptions}>

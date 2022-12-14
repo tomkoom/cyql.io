@@ -42,7 +42,7 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnRef }) => {
   return (
     <ul className={css.sort} ref={sortOptionsRef}>
       <li onClick={() => clickSort("date")}>
-        Date added{sort === "date" && <span className={css.icon}>{iCheck}</span>}
+        Date{sort === "date" && <span className={css.icon}>{iCheck}</span>}
       </li>
       <li onClick={() => clickSort("upvotes")}>
         Popularity{sort === "upvotes" && <span className={css.icon}>{iCheck}</span>}

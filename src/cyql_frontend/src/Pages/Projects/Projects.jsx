@@ -21,7 +21,7 @@ const Projects = () => {
   const filterByGrantee = useSelector(selectFilterByGrantee);
 
   return (
-    <div className={css.apps}>
+    <div className={css.projects}>
       <h2 className="pageTitle">Discover New Projects</h2>
       <Search />
       <div className={css.controls}>

@@ -16,7 +16,7 @@ const Header = ({ logo, name, category, tags, grantee, id, upvotedBy }) => {
       <div className={css.controls}>
         <ShareBtn />
         <div className={css.btnContainer}>
-          <UpvtBtn id={id} upvotedBy={upvotedBy} />
+          <UpvtBtn id={id} upvotedBy={upvotedBy} location="project" />
         </div>
       </div>
     </div>

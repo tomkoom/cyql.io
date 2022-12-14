@@ -37,7 +37,7 @@ const HighlightedProjects = ({ projects }) => {
               />
 
               <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
-                <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} location="home" />
+                <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
               </div>
             </div>
           ))

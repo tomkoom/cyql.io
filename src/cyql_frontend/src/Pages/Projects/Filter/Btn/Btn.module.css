@@ -4,11 +4,11 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  height: 2.5rem;
-  padding: 0 0.75rem;
+  height: 2.25rem;
+  padding: 0 0.25rem;
   font-size: 0.9rem;
   font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
   background-color: var(--underlay);
   border-radius: 0.5rem;
   cursor: pointer;
@@ -19,7 +19,6 @@
 }
 
 .category {
-  font-size: 0.9rem;
   font-weight: var(--fwBold);
   color: var(--primaryColor);
 }
