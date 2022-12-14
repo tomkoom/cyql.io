@@ -38,21 +38,21 @@ const FilterOptions = ({
     };
   }, [openFilterOptions]);
 
-  const clickFilter = (f) => {
-    dispatch(setFilter(f));
+  const clickFilter = (v) => {
+    dispatch(setFilter(v));
     setOpenFilterOptions(false);
   };
 
   return (
     <ul className={css.filter} ref={filterOptionsRef}>
-      <li onClick={() => clickFilter("all")}>
-        All{filter === "all" && <span className={css.icon}>{iCheck}</span>}
+      <li onClick={() => clickFilter(null)}>
+        All{filter === null && <span className={css.icon}>{iCheck}</span>}
       </li>
-      <li onClick={() => clickFilter("true")}>
-        True{filter === "true" && <span className={css.icon}>{iCheck}</span>}
+      <li onClick={() => clickFilter(true)}>
+        True{filter === true && <span className={css.icon}>{iCheck}</span>}
       </li>
-      <li onClick={() => clickFilter("false")}>
-        False{filter === "false" && <span className={css.icon}>{iCheck}</span>}
+      <li onClick={() => clickFilter(false)}>
+        False{filter === false && <span className={css.icon}>{iCheck}</span>}
       </li>
     </ul>
   );

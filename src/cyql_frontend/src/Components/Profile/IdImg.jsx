@@ -5,7 +5,7 @@ import { useAuth } from "@context/AuthContext";
 
 const IdImg = ({ size }) => {
   const { principalId } = useAuth();
-  const id = principalId && principalId.toHex();
+  const id = principalId.toHex();
 
   const style = {
     borderRadius: "50%",

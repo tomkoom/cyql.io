@@ -16,17 +16,22 @@ import { selectCategory } from "@state/projects/category";
 import { selectSearch } from "@state/projects/search";
 import { selectItemsVisibleProjects, setItemsVisibleProjects } from "@state/loadMore";
 import { selectSort } from "@state/projects/sort";
-import { selectFilterByOpenSource, selectFilterByOnChain } from "@state/projects/filter";
+import {
+  selectFilterByOpenSource,
+  selectFilterByOnChain,
+  selectFilterByGrantee,
+} from "@state/projects/filter";
 
 const ProjectList = () => {
   const p = useSelector(selectProjects);
   const pNum = p.length;
-  const category = useSelector(selectCategory);
-  const search = useSelector(selectSearch);
-  const itemsVisibleProjects = useSelector(selectItemsVisibleProjects);
+  const itemsVisible = useSelector(selectItemsVisibleProjects);
   const sort = useSelector(selectSort);
-  const filterOpenSource = useSelector(selectFilterByOpenSource);
-  const filterOnChain = useSelector(selectFilterByOnChain);
+  const category = useSelector(selectCategory);
+  const sq = useSelector(selectSearch);
+  const openSource = useSelector(selectFilterByOpenSource);
+  const onChain = useSelector(selectFilterByOnChain);
+  const grantee = useSelector(selectFilterByGrantee);
 
   const sortByUpvotes = (a, b) => {
     if (a.upvotedBy && b.upvotedBy) {
@@ -39,29 +44,11 @@ const ProjectList = () => {
     return 0;
   };
 
-  const filterByCategory = (p) => {
-    return category === "All" ? p : p.category.includes(category);
-  };
-
-  const filterBySearch = (p) => {
-    return search === "" ? p : p.name.toLowerCase().includes(search.toLowerCase());
-  };
-
-  const filterByOpenSource = (p) => {
-    return filterOpenSource === "all"
-      ? p
-      : filterOpenSource === "true"
-      ? p.github !== ""
-      : p.github === "";
-  };
-
-  const filterByOnChain = (p) => {
-    return filterOnChain === "all"
-      ? p
-      : filterOnChain === "true"
-      ? p.canister !== ""
-      : p.canister === "";
-  };
+  const byCategory = (p) => (category === "All" ? p : p.category.includes(category));
+  const bySearch = (p) => (sq === "" ? p : p.name.toLowerCase().includes(sq.toLowerCase()));
+  const byOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
+  const byOnChain = (p) => (onChain === null ? p : onChain ? p.canister : !p.canister);
+  const byGrantee = (p) => (grantee === null ? p : grantee ? p.grantee : !p.canister);
 
   return (
     <div>
@@ -70,12 +57,13 @@ const ProjectList = () => {
       ) : (
         <ul className={css.li}>
           {p
-            .filter((p) => filterByCategory(p))
-            .filter((p) => filterBySearch(p))
-            .filter((p) => filterByOpenSource(p))
-            .filter((p) => filterByOnChain(p))
+            .filter((p) => byCategory(p))
+            .filter((p) => bySearch(p))
+            .filter((p) => byOpenSource(p))
+            .filter((p) => byOnChain(p))
+            .filter((p) => byGrantee(p))
             .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
-            .slice(0, itemsVisibleProjects)
+            .slice(0, itemsVisible)
             .map((p) => (
               <li className={css.liI} key={p.id} onClick={() => toApp(p.slug)}>
                 <div className={css.main}>
@@ -114,7 +102,7 @@ const ProjectList = () => {
             ))}
         </ul>
       )}
-      {itemsVisibleProjects < pNum && (
+      {itemsVisible < pNum && (
         <LoadMoreBtn2 label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
       )}
     </div>

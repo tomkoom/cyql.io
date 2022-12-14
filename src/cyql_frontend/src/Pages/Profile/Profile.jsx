@@ -10,7 +10,7 @@ import Id from "./Id/Id";
 
 const Profile = () => {
   const ownsNFT = useSelector(selectOwnsNFT);
-  const ownedNFTIds = useSelector(selectNFTIdsOwned);
+  // const ownedNFTIds = useSelector(selectNFTIdsOwned);
   const upvotedProjects = useSelector(selectUpvotedProjects);
 
   return (
@@ -25,7 +25,7 @@ const Profile = () => {
         {upvotedProjects.length > 0 && (
           <ul className={css.upvotedProjects}>
             {upvotedProjects.map((p) => (
-              <li key={p.idx}>{p.name}, </li>
+              <li key={p.id}>{p.name}, </li>
             ))}
           </ul>
         )}

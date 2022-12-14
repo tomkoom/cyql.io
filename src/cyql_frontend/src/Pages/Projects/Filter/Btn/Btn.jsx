@@ -8,15 +8,7 @@ const Btn = ({ label, filter }) => {
   return (
     <button className={css.btn}>
       <p>{label}</p>
-      <span className={css.category}>
-        {filter === "all"
-          ? "All"
-          : filter === "true"
-          ? "True"
-          : filter === "false"
-          ? "False"
-          : null}
-      </span>
+      <span className={css.category}>{filter === null ? "All" : filter ? "True" : "False"}</span>
       <span className={css.icon}>{iAngleDown}</span>
     </button>
   );

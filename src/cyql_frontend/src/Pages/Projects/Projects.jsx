@@ -11,11 +11,14 @@ import {
   selectFilterByOnChain,
   setFilterByOpenSource,
   selectFilterByOpenSource,
+  setFilterByGrantee,
+  selectFilterByGrantee,
 } from "@state/projects/filter";
 
 const Projects = () => {
   const filterByOpenSource = useSelector(selectFilterByOpenSource);
   const filterByOnChain = useSelector(selectFilterByOnChain);
+  const filterByGrantee = useSelector(selectFilterByGrantee);
 
   return (
     <div className={css.apps}>
@@ -30,6 +33,7 @@ const Projects = () => {
             setFilter={setFilterByOpenSource}
           />
           <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+          <Filter label={"Grantee:"} filter={filterByGrantee} setFilter={setFilterByGrantee} />
         </div>
 
         <div className={css.controlsI}>

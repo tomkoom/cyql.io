@@ -100,7 +100,6 @@ export function AuthProvider({ children }) {
   };
 
   //  STOIC
-
   const signInWithStoic = async () => {
     await StoicIdentity.connect()
       .then((identity) => {
@@ -134,7 +133,6 @@ export function AuthProvider({ children }) {
   const disconnectStoic = async () => await StoicIdentity.disconnect();
 
   //  INFINITYWALLET
-
   const signInWithInfinityWallet = async () => {
     const whitelist = [cyql_canister_id];
     try {
