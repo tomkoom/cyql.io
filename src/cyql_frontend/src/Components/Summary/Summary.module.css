@@ -1,14 +1,13 @@
 /* summary */
 
 .summary {
-  height: 32px;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: var(--fontSize7);
   color: var(--secondaryColor);
   background-color: var(--underlay);
-  white-space: nowrap;
 }
 
 .highlight {
