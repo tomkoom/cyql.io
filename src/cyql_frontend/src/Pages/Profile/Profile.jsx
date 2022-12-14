@@ -1,17 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./Profile.module.css";
 
+// backend
+import { Actor, HttpAgent } from "@dfinity/agent";
+import nft_idl from "@idl/nft_idl";
+
+// host, nft can id
+import { host } from "@context/host";
+
+// auth
+import { useAuth } from "@context/AuthContext";
+
 // state
-import { useSelector } from "react-redux";
-import { selectUpvotedProjects, selectOwnsNFT, selectNFTIdsOwned } from "@state/profile";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@state/profile/profile";
 
 // components
 import Id from "./Id/Id";
 
 const Profile = () => {
-  const ownsNFT = useSelector(selectOwnsNFT);
-  // const ownedNFTIds = useSelector(selectNFTIdsOwned);
+  const dispatch = useDispatch();
+  const { principalId } = useAuth();
+  const ownsNft = useSelector(selectOwnsNft);
   const upvotedProjects = useSelector(selectUpvotedProjects);
+
+  const getOwnsNft = async () => {
+    const nftCanId = "dtlqp-nqaaa-aaaak-abwna-cai";
+    const nft = Actor.createActor(nft_idl, {
+      agent: new HttpAgent({ host }),
+      canisterId: nftCanId,
+    });
+
+    await nft
+      .principalOwnsOne(principalId)
+      .then((res) => {
+        dispatch(setOwnsNft(res));
+      })
+      .catch((e) => console.log(e));
+  };
+
+  useEffect(() => {
+    getOwnsNft();
+  }, []);
 
   return (
     <div className={css.profile}>
@@ -19,7 +49,8 @@ const Profile = () => {
 
       <div className={css.profileInfo}>
         <p>
-          NFT: <span className={css.badge}>{ownsNFT.toString()}</span>
+          NFT:{" "}
+          <span className={css.badge}>{ownsNft === undefined ? "..." : ownsNft.toString()}</span>
         </p>
         <h4>Upvotes</h4>
         {upvotedProjects.length > 0 && (
@@ -29,12 +60,6 @@ const Profile = () => {
             ))}
           </ul>
         )}
-        {/* <h4>My NFTs</h4>
-        <p>Soon</p> */}
-        {/* <p>
-          NFT Indexes:{" "}
-          <span className={css.badge}>{ownedNFTIds.toString().replaceAll(",", ", ")}</span>
-        </p> */}
       </div>
     </div>
   );

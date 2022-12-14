@@ -18,7 +18,7 @@ const categories = createSlice({
       { id: "wallets", label: "Wallets", icon: "👛" },
       { id: "explorers", label: "Explorers", icon: "🌎" },
       { id: "metaverse", label: "Metaverse", icon: "👓" },
-      { id: "vr", label: "VR", icon: "👓" },
+      { id: "ar-vr", label: "AR/VR", icon: "👓" },
       { id: "education", label: "Education", icon: "🎓" },
       { id: "tokens", label: "Tokens", icon: "🪙" },
       { id: "stablecoins", label: "Stablecoins", icon: "🪙" },

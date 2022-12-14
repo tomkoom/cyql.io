@@ -9,16 +9,16 @@ import { useAuth } from "@context/AuthContext";
 
 // state
 import { useSelector } from "react-redux";
-import { selectOwnsNFT } from "@state/profile";
+import { selectOwnsNft } from "@state/profile/profile";
 
 const Title = () => {
-  const ownsNFT = useSelector(selectOwnsNFT);
+  const ownsNft = useSelector(selectOwnsNft);
   const { principalIdStr } = useAuth();
 
   return (
     <div className={css.title}>
       <h2 className="pageTitle">{formatId(principalIdStr)}</h2>
-      {ownsNFT && <span className={css.badge}>Hodl Gang</span>}
+      {ownsNft && <span className={css.badge}>Hodl Gang</span>}
     </div>
   );
 };

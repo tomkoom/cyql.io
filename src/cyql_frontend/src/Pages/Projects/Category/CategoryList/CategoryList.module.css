@@ -1,20 +1,24 @@
 /* category list */
 
 .li {
-  width: 28rem;
+  width: 32rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-size: 0.9rem;
+  font-size: var(--fontSize7);
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 1rem;
 }
 
 .liI {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
   white-space: nowrap;
-  padding: 0.5rem;
+  padding: 0 0.25rem;
   box-shadow: 0 0 0 1px var(--underlay2);
   border-radius: 0.5rem;
   cursor: pointer;

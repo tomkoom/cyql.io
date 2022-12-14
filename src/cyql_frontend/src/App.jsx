@@ -41,7 +41,7 @@ import { JobModal, ProjectModal, SignInModal } from "@modals/index";
 import { useDispatch, useSelector } from "react-redux";
 import { setProjects, setNFTs } from "@state/projects";
 import { selectTheme } from "@state/theme";
-import { setUpvotedProjects } from "@state/profile";
+import { setUpvotedProjects } from "@state/profile/profile";
 
 // state – modals
 import {
@@ -51,11 +51,7 @@ import {
   setMobileMenuModal,
   selectMobileMenuModal,
 } from "@state/modals/modals";
-import { selectProjectModal, setCloseProjectModal } from "@state/modals/projectModal";
-
-// set data
-import { setNftData } from "@pages/Nft/setNftData";
-import { setProfileNftData } from "@pages/Profile/setProfileNftData";
+import { selectProjectModal } from "@state/modals/projectModal";
 
 // methods
 import { addUserToDb, setProfiles, setJobs, setJobsTest } from "./appMethods";
@@ -132,8 +128,6 @@ const App = () => {
     }
   }, [isAuth]);
 
-  // EFFECTS
-
   useEffect(() => {
     if (isAuth) {
       addUserToDb(actor, aStr, signInMethod);
@@ -163,13 +157,7 @@ const App = () => {
     checkConnection();
   }, []);
 
-  // set nft page data
-  // useEffect(() => {
-  //   setNftData();
-  // }, []);
-
   // SET PROFILE INFO
-
   // get upvoted projects
   useEffect(() => {
     if (isAuth) {
@@ -181,13 +169,6 @@ const App = () => {
       return () => {
         unsubscribe();
       };
-    }
-  }, [isAuth]);
-
-  // get profile nft data
-  useEffect(() => {
-    if (isAuth) {
-      setProfileNftData(principalId);
     }
   }, [isAuth]);
 
@@ -259,8 +240,6 @@ const App = () => {
       <div className="footer">
         <Footer />
       </div>
-
-      {/* end layout */}
 
       {/* cookies */}
       <CookieConsent

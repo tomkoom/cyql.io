@@ -5,8 +5,7 @@ const profile = createSlice({
   initialState: {
     verified: false,
     upvotedProjects: [],
-    ownsNFT: false,
-    nftIdsOwned: [],
+    ownsNft: undefined,
   },
   reducers: {
     setVerified(state, { payload }) {
@@ -15,11 +14,8 @@ const profile = createSlice({
     setUpvotedProjects(state, { payload }) {
       state.upvotedProjects = payload;
     },
-    setOwnsNFT(state, { payload }) {
-      state.ownsNFT = payload;
-    },
-    setNFTIdsOwned(state, { payload }) {
-      state.nftIdsOwned = payload;
+    setOwnsNft(state, { payload }) {
+      state.ownsNft = payload;
     },
   },
 });
@@ -27,9 +23,8 @@ const profile = createSlice({
 // selectors
 const selectVerified = (state) => state.profile.verified;
 const selectUpvotedProjects = (state) => state.profile.upvotedProjects;
-const selectOwnsNFT = (state) => state.profile.ownsNFT;
-const selectNFTIdsOwned = (state) => state.profile.nftIdsOwned;
+const selectOwnsNft = (state) => state.profile.ownsNft;
+export { selectVerified, selectUpvotedProjects, selectOwnsNft };
 
-export { selectVerified, selectUpvotedProjects, selectOwnsNFT, selectNFTIdsOwned };
-export const { setVerified, setUpvotedProjects, setOwnsNFT, setNFTIdsOwned } = profile.actions;
+export const { setVerified, setUpvotedProjects, setOwnsNft } = profile.actions;
 export default profile.reducer;

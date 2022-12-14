@@ -30,7 +30,7 @@ import sort from "./projects/sort";
 import theme from "./theme";
 import loadMore from "./loadMore";
 import projects from "./projects";
-import profile from "./profile";
+import profile from "./profile/profile";
 import projectSubmission from "./projectSubmission";
 
 // redux-persist
