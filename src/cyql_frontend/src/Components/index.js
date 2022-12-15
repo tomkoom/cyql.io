@@ -14,9 +14,10 @@ export { default as Sidebar } from "./Sidebar/Sidebar";
 export { default as Footer } from "./Footer/Footer";
 
 // other
+export { default as EmptyLogo } from "./EmptyLogo/EmptyLogo";
 export { default as ExpandableText } from "./ExpandableText/ExpandableText";
 export { default as Loader } from "./Loader/Loader";
 export { default as Logo } from "./Logo/Logo";
 export { default as Price } from "./Price/Price";
-export { default as Theme } from "./Theme/Theme";
 export { default as Socials } from "./Socials/Socials";
+export { default as Theme } from "./Theme/Theme";

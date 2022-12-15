@@ -1,11 +1,22 @@
 import React from "react";
 import css from "./Logo.module.css";
 
+// components
+import { EmptyLogo } from "@components/index";
+
 const Logo = ({ name, logo }) => {
+  const sizeRem = "4.25";
+  const borderRadiusRem = "1";
+  const style = {
+    width: `${sizeRem}rem`,
+    height: `${sizeRem}rem`,
+    borderRadius: `${borderRadiusRem}rem`,
+  };
+
   return logo ? (
-    <img className={css.logo} src={logo} alt={`${name} logo`} />
+    <img style={style} className={css.logo} src={logo} alt={`${name} logo`} />
   ) : (
-    <div className={css.empty} />
+    <EmptyLogo sizeRem={sizeRem} borderRadiusRem={borderRadiusRem} name={name} />
   );
 };
 
