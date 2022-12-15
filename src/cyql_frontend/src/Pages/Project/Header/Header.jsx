@@ -10,7 +10,7 @@ const Header = ({ logo, name, category, tags, grantee, id, upvotedBy }) => {
     <div className={css.header}>
       <div className={css.main}>
         {logo && <Logo logo={logo} name={name} />}
-        <Title name={name} category={category} tags={tags} grantee={grantee} />
+        <Title name={name} grantee={grantee} category={category} tags={tags} />
       </div>
 
       <div className={css.controls}>

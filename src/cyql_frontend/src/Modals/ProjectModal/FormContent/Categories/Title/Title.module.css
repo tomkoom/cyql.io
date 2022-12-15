@@ -1,0 +1,15 @@
+/* title */
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.title h6 {
+  font-size: var(--fontSize5);
+  margin-bottom: 0.125rem;
+}
+
+.title p {
+  font-size: var(--fontSize7);
+  color: var(--tertiaryColor);
+}

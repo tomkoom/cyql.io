@@ -8,7 +8,7 @@
 }
 
 .description {
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
   font-size: 0.9rem;
   line-height: 150%;
 }

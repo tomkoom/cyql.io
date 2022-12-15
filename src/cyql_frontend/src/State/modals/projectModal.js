@@ -94,6 +94,9 @@ const projectModal = createSlice({
     setProjectGrantee(state, { payload }) {
       state.project.grantee = payload;
     },
+    setProjectDescription(state, { payload }) {
+      state.project.description = payload;
+    },
     setCloseProjectModal(state) {
       state.mode = "";
       state.project = projectInitialState;
@@ -107,12 +110,14 @@ const selectProjectModal = (state) => state.projectModal.projectModal;
 const selectProject = (state) => state.projectModal.project;
 const selectProjectCategory = (state) => state.projectModal.project.category;
 const selectProjectGrantee = (state) => state.projectModal.project.grantee;
+const selectProjectDescription = (state) => state.projectModal.project.description;
 export {
   selectMode,
   selectProjectModal,
   selectProject,
   selectProjectCategory,
   selectProjectGrantee,
+  selectProjectDescription,
 };
 
 export const {
@@ -121,6 +126,7 @@ export const {
   setProject,
   setProjectCategory,
   setProjectGrantee,
+  setProjectDescription,
   setCloseProjectModal,
 } = projectModal.actions;
 export default projectModal.reducer;

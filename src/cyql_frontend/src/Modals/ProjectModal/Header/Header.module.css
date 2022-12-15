@@ -4,25 +4,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .headerI {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .title {
-  font-size: var(--fontSize5);
-  font-weight: var(--fwMedium);
-  margin-bottom: 0.5rem;
+  font-size: var(--fontSize4);
 }
 
 .id {
   font-size: 0.9rem;
   background-color: var(--underlay);
-  padding: 0.33rem 0.25rem;
-  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .icon {

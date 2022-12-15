@@ -2,7 +2,7 @@ import React from "react";
 import css from "./FormContent.module.css";
 
 // components
-import { Categories, Grantee, Input, Select, TextArea } from "./index";
+import { Categories, Grantee, Input, Select, Description } from "./index";
 
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
@@ -23,9 +23,11 @@ const FormContent = () => {
   return (
     <div className={css.formContent}>
       <div className={css.section}>
-        <h5 className={css.title}>Main</h5>
         <Categories />
+      </div>
 
+      <div className={css.section}>
+        <h5 className={css.title}>Main</h5>
         {main.map((input) => (
           <Input
             id={input.id}
@@ -36,45 +38,36 @@ const FormContent = () => {
             key={input.id}
           />
         ))}
-
+        <Description />
         <Grantee />
-
-        <TextArea
-          id="description"
-          label="Description"
-          value={p.description}
-          onChange={handleChange}
-        />
       </div>
 
-      <div>
-        <div className={css.section}>
-          <h5 className={css.sectionTitle}>Social networks</h5>
-          {socials.map((input) => (
-            <Input
-              id={input.id}
-              label={input.label}
-              type={input.type}
-              value={p[input.id]}
-              onChange={handleChange}
-              key={input.id}
-            />
-          ))}
-        </div>
+      <div className={css.section}>
+        <h5 className={css.sectionTitle}>Social networks</h5>
+        {socials.map((input) => (
+          <Input
+            id={input.id}
+            label={input.label}
+            type={input.type}
+            value={p[input.id]}
+            onChange={handleChange}
+            key={input.id}
+          />
+        ))}
+      </div>
 
-        <div className={css.section}>
-          <h5 className={css.sectionTitle}>Additional info</h5>
-          {additional.map((input) => (
-            <Input
-              id={input.id}
-              label={input.label}
-              type={input.type}
-              value={p[input.id]}
-              onChange={handleChange}
-              key={input.id}
-            />
-          ))}
-        </div>
+      <div className={css.section}>
+        <h5 className={css.sectionTitle}>Additional info</h5>
+        {additional.map((input) => (
+          <Input
+            id={input.id}
+            label={input.label}
+            type={input.type}
+            value={p[input.id]}
+            onChange={handleChange}
+            key={input.id}
+          />
+        ))}
       </div>
 
       {p.category.includes("NFTs") ? (

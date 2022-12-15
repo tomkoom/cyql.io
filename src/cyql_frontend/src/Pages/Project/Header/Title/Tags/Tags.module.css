@@ -1,0 +1,17 @@
+/* tags */
+
+.tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tagsI {
+  display: inline-block;
+  padding: 0.5rem;
+  font-size: var(--fontSize6);
+  font-weight: var(--fwBold);
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+}
