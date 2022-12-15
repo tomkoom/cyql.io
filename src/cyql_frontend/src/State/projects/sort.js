@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const sort = createSlice({
   name: "sort",
   initialState: {
-    sort: "date",
+    sort: "newest-first", // default
     sortModal: false,
   },
   reducers: {

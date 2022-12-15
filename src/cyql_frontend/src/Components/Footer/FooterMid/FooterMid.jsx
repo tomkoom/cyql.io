@@ -1,6 +1,5 @@
 import React from "react";
 import css from "./FooterMid.module.css";
-import ICLogo from "../../../../assets/ic-logo.svg";
 
 // routes
 import { toHome, toApps, toUpcoming, toSubmit, toNft, toJobs } from "@routes/routes";

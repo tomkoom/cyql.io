@@ -16,8 +16,16 @@ const Btn = () => {
       <span className={css.icon}>{iSort}</span>
       <p>Order by:</p>
       <p className={css.category}>
-        {sort === "date" ? "Date" : sort === "upvotes" ? "Popularity" : null}
-      </p>{" "}
+        {sort === "newest-first"
+          ? "newest first"
+          : sort === "oldest-first"
+          ? "oldest first"
+          : sort === "most-upvoted"
+          ? "most upvoted"
+          : sort === "least-upvoted"
+          ? "least upvoted"
+          : null}
+      </p>
       <span className={css.icon}>{iAngleDown}</span>
     </button>
   );

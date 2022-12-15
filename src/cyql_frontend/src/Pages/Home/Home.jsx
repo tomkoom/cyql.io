@@ -15,19 +15,12 @@ import {
   HighlightedProjects,
   JoinCommunity,
   NftSales,
+  ViewAllBtn,
 } from "./index";
 
 // state
 import { useSelector } from "react-redux";
 import { selectProjects, selectProjectsLength, selectNFTs } from "@state/projects";
-
-const ViewAllBtn = ({ nav }) => {
-  return (
-    <button className={css.viewAll} onClick={nav}>
-      View all
-    </button>
-  );
-};
 
 const Home = () => {
   const projects = useSelector(selectProjects);

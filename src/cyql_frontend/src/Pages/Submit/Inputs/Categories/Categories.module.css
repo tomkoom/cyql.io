@@ -13,6 +13,7 @@
 }
 
 .label {
+  font-size: 0.9rem;
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   margin: 1rem 0;
@@ -23,10 +24,15 @@
 }
 
 .category {
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
   font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 

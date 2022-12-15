@@ -33,17 +33,13 @@ const ProjectList = () => {
   const onChain = useSelector(selectFilterByOnChain);
   const grantee = useSelector(selectFilterByGrantee);
 
-  const sortByUpvotes = (a, b) => {
-    if (a.upvotedBy && b.upvotedBy) {
-      return b.upvotedBy.length - a.upvotedBy.length;
-    } else if (!a.upvotedBy && b.upvotedBy) {
-      return 1;
-    } else if (a.upvotedBy && !b.upvotedBy) {
-      return -1;
-    }
-    return 0;
-  };
+  // sort
+  const sortNewest = (a, b) => (a && b ? b - a : !a && b ? 1 : a && !b ? -1 : 0);
+  const sortOldest = (a, b) => (a && b ? a - b : !a && b ? -1 : a && !b ? 1 : 0);
+  const sortMostUp = (a, b) => (a && b ? b.length - a.length : !a && b ? 1 : a && !b ? -1 : 0);
+  const sortLeastUp = (a, b) => (a && b ? a.length - b.length : !a && b ? -1 : a && !b ? 1 : 0);
 
+  // filter
   const byCategory = (p) => (category === "All" ? p : p.category.includes(category));
   const bySearch = (p) => (sq === "" ? p : p.name.toLowerCase().includes(sq.toLowerCase()));
   const byOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
@@ -62,7 +58,10 @@ const ProjectList = () => {
             .filter((p) => byOpenSource(p))
             .filter((p) => byOnChain(p))
             .filter((p) => byGrantee(p))
-            .sort((a, b) => (sort === "upvotes" ? sortByUpvotes(a, b) : null))
+            .sort((a, b) => sort === "newest-first" && sortNewest(a.added, b.added))
+            .sort((a, b) => sort === "oldest-first" && sortOldest(a.added, b.added))
+            .sort((a, b) => sort === "most-upvoted" && sortMostUp(a.upvotedBy, b.upvotedBy))
+            .sort((a, b) => sort === "least-upvoted" && sortLeastUp(a.upvotedBy, b.upvotedBy))
             .slice(0, itemsVisible)
             .map((p) => (
               <li className={css.liI} key={p.id} onClick={() => toApp(p.slug)}>

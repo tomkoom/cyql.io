@@ -41,11 +41,17 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnRef }) => {
 
   return (
     <ul className={css.sort} ref={sortOptionsRef}>
-      <li onClick={() => clickSort("date")}>
-        Date{sort === "date" && <span className={css.icon}>{iCheck}</span>}
+      <li onClick={() => clickSort("newest-first")}>
+        newest first {sort === "newest-first" && <span className={css.icon}>{iCheck}</span>}
       </li>
-      <li onClick={() => clickSort("upvotes")}>
-        Popularity{sort === "upvotes" && <span className={css.icon}>{iCheck}</span>}
+      <li onClick={() => clickSort("oldest-first")}>
+        oldest first {sort === "oldest-first" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+      <li onClick={() => clickSort("most-upvoted")}>
+        most upvoted {sort === "most-upvoted" && <span className={css.icon}>{iCheck}</span>}
+      </li>
+      <li onClick={() => clickSort("least-upvoted")}>
+        least upvoted {sort === "least-upvoted" && <span className={css.icon}>{iCheck}</span>}
       </li>
     </ul>
   );
