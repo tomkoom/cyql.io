@@ -26,20 +26,3 @@
 .form {
   margin-top: 1rem;
 }
-
-.controls {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-#alertBtn {
-  margin-right: auto;
-}
-
-.deleteContainer {
-  margin-right: auto;
-  display: flex;
-  gap: 0.75rem;
-}

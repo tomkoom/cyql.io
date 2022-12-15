@@ -5,11 +5,12 @@ import css from "./Header.module.css";
 import CrossIcon from "@icons/CrossIcon/CrossIcon";
 
 // state
-import { useDispatch } from "react-redux";
-import { setCloseProjectModal } from "@state/modals/projectModal";
+import { useSelector, useDispatch } from "react-redux";
+import { selectProject, setCloseProjectModal } from "@state/modals/projectModal";
 
-const Header = ({ name, id }) => {
+const Header = () => {
   const dispatch = useDispatch();
+  const project = useSelector(selectProject);
   const closeModal = () => {
     dispatch(setCloseProjectModal());
   };
@@ -17,8 +18,8 @@ const Header = ({ name, id }) => {
   return (
     <div className={css.header}>
       <div className={css.headerI}>
-        <h4 className={css.title}>Edit {name}</h4>
-        {id && <p className={css.id}>{id}</p>}
+        <h4 className={css.title}>Edit {project.name}</h4>
+        {project.id && <p className={css.id}>{project.id}</p>}
       </div>
 
       <span className={css.icon} onClick={closeModal}>
