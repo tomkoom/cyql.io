@@ -41,15 +41,7 @@ const Project = () => {
           .map((p) => (
             <div className={css.content} key={p.id}>
               <div className={css.main}>
-                <Header
-                  logo={p.logo}
-                  name={p.name}
-                  category={p.category}
-                  tags={p.tags}
-                  grantee={p.grantee}
-                  id={p.id}
-                  upvotedBy={p.upvotedBy}
-                />
+                <Header project={p} />
 
                 <Description name={p.name} description={p.description} />
                 {(p.nftImg1 || p.nftImg2 || p.nftImg3 || p.nftImg4) && (

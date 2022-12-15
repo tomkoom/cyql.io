@@ -29,10 +29,6 @@ const Projects = () => {
     dispatch(setProjectModal(true));
   };
 
-  const categoryStr = (c) => {
-    return c.length > 1 ? c.map((c) => c + " ") : c;
-  };
-
   return (
     <div className={css.projects}>
       <Search setSearch={setSearch} />

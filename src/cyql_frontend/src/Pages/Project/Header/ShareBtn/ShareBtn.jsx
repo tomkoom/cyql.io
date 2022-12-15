@@ -2,7 +2,7 @@ import React from "react";
 import css from "./ShareBtn.module.css";
 
 // icons
-import { /* iShare */ iShareSquare } from "@icons/Icons";
+import { iShareSquare } from "@icons/Icons";
 
 // state
 import { useDispatch } from "react-redux";
