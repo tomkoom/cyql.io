@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Footer.module.css";
 
 // components
-import { FooterTop, FooterMid, FooterBot } from "./index";
+import { FooterTop, FooterMid } from "./index";
 
 const Footer = () => {
   return (
@@ -10,7 +10,6 @@ const Footer = () => {
       <div className={css.content}>
         <FooterTop />
         <FooterMid />
-        <FooterBot />
       </div>
     </footer>
   );
