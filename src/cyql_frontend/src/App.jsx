@@ -52,6 +52,7 @@ import {
   selectMobileMenuModal,
 } from "@state/modals/modals";
 import { selectProjectModal } from "@state/modals/projectModal";
+import { selectShareModal } from "./State/modals/shareModal";
 
 // methods
 import { addUserToDb, setProfiles, setJobs, setJobsTest } from "./appMethods";
@@ -82,9 +83,10 @@ const App = () => {
 
   // modals
   const jobModal = useSelector(selectJobModal);
+  const projectModal = useSelector(selectProjectModal);
+  const shareModal = useSelector(selectShareModal);
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
-  const projectModal = useSelector(selectProjectModal);
 
   // get projects and nfts
   useEffect(() => {
@@ -106,13 +108,15 @@ const App = () => {
   }, []);
 
   // prevent from scrolling when modal is active
+  const modals = [jobModal, signInModal, mobileMenuModal, projectModal, shareModal];
   useEffect(() => {
-    if (jobModal || signInModal || mobileMenuModal || projectModal) {
+    const modalIsActive = jobModal || signInModal || mobileMenuModal || projectModal || shareModal;
+    if (modalIsActive) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
-  }, [jobModal, signInModal, mobileMenuModal, projectModal]);
+  }, modals);
 
   // reset mobile menu when deivice size > 1023
   useEffect(() => {

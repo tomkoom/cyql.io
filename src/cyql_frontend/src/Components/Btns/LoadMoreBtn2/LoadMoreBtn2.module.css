@@ -1,17 +1,16 @@
 /* load more btn */
 
-.loadMoreBtn {
-  text-align: center;
+.btn {
   width: 100%;
-  font-size: var(--fs6);
-  background-color: var(--underlay);
+  text-align: center;
   margin-top: 2rem;
   padding: 1rem;
-  border-radius: 0.25rem;
-  border: none;
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
   cursor: pointer;
+  border: none;
 }
 
-.loadMoreBtn:hover {
+.btn:hover {
   background-color: var(--underlay2);
 }

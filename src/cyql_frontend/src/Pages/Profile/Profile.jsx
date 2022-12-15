@@ -4,8 +4,6 @@ import css from "./Profile.module.css";
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import nft_idl from "@idl/nft_idl";
-
-// host, nft can id
 import { host } from "@context/host";
 
 // auth

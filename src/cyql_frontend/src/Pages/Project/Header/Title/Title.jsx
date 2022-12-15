@@ -10,14 +10,12 @@ const Title = ({ name, category, tags, grantee }) => {
       <Name name={name} grantee={grantee} />
 
       <div className={css.tags}>
-        <div className={css.category}>
-          {category.length > 0 &&
-            category.map((c) => (
-              <span className={css.tagsI} key={c}>
-                {c}
-              </span>
-            ))}
-        </div>
+        {category.length > 0 &&
+          category.map((c) => (
+            <span className={css.tagsI} key={c}>
+              {c}
+            </span>
+          ))}
         {tags && <span className={css.tagsI}>{tags}</span>}
       </div>
     </div>
