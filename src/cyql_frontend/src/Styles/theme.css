@@ -2,6 +2,7 @@
 
 .light {
   --primaryColor: var(--coolGray100);
+  --primaryColorRgb: var(--coolGray100Rgb);
   --secondaryColor: var(--coolGray70);
   --tertiaryColor: var(--coolGray50);
   --highlightColor: #304ffe;
@@ -16,6 +17,7 @@
 
 .dark {
   --primaryColor: var(--coolGray10);
+  --primaryColorRgb: var(--coolGray10Rgb);
   --secondaryColor: var(--coolGray30);
   --tertiaryColor: var(--coolGray50);
   --highlightColor: #304ffe;

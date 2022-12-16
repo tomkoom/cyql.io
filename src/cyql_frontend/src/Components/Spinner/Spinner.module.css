@@ -1,0 +1,17 @@
+/* spinner */
+
+.spinner {
+  border: 0.25rem solid rgba(var(--primaryColorRgb), 0.2);
+  border-top: 0.25rem solid var(--primaryColor);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

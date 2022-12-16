@@ -1,7 +1,17 @@
 /* sign in btn */
 
-.signInBtn {
+.btn {
+  height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.44rem;
+  padding: 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: var(--fwBold);
+  background-color: var(--underlay);
+  border-radius: 0.66rem;
+}
+
+.btn:hover {
+  background-color: var(--underlay2);
 }

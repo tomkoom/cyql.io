@@ -8,8 +8,8 @@
 
 .title {
   font-size: var(--fontSize6);
-  word-wrap: break-word;
   margin-top: 0.1rem;
+  word-wrap: break-word;
 }
 
 .tags {

@@ -2,29 +2,35 @@ import React from "react";
 import css from "./SignInBtn.module.css";
 
 // icons
-import { iSignIn } from "../../../../Icons/Icons";
+import { iSignIn } from "@icons/Icons";
 
 // auth
-import { useAuth } from "../../../../Context/AuthContext";
+import { useAuth } from "@context/AuthContext";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../../../../State/modals/modals";
+import { setSignInModal } from "@state/modals/modals";
+
+// components
+import { Spinner } from "@components/index";
 
 const SignInBtn = () => {
   const dispatch = useDispatch();
   const { signInLoading } = useAuth();
+  const openSignInModal = () => {
+    dispatch(setSignInModal(true));
+  };
 
   return !signInLoading ? (
-    <button
-      className={`${css.signInBtn} secondaryBtn`}
-      onClick={() => dispatch(setSignInModal(true))}
-    >
+    <button className={css.btn} onClick={openSignInModal}>
       <span>{iSignIn}</span>
-      Connect Wallet
+      <p>Connect Wallet</p>
     </button>
   ) : (
-    <p>Loading...</p>
+    <div className={css.btn}>
+      <p>Loading...</p>
+      <Spinner size="20" />
+    </div>
   );
 };
 

@@ -1,0 +1,30 @@
+/* title */
+
+.title {
+  max-width: 36rem;
+  font-size: var(--fontSize2);
+  line-height: 125%;
+}
+
+.pNum {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dots {
+  color: var(--tertiaryColor);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fontSize4);
+  padding: 0 1rem;
+  border-radius: 4rem;
+  background-color: var(--underlay);
+}
+
+.logo {
+  height: 2rem;
+}

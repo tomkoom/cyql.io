@@ -17,11 +17,6 @@
   font-weight: var(--fwBold);
 }
 
-.idValue,
-.copied {
-  color: var(--secondaryColor);
-}
-
 .idValue {
   height: 2rem;
   padding: 0 0.5rem;
@@ -29,19 +24,21 @@
   display: flex;
   align-items: center;
   font-weight: var(--fwBold);
+  color: var(--secondaryColor);
   box-shadow: 0 0 0 1px var(--underlay2);
   border-radius: 0.33rem;
   cursor: pointer;
 }
 
 .idValue:hover {
-  color: var(--highlightColor);
+  color: var(--primaryColor);
 }
 
 .copied {
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  color: var(--primaryColor);
 }
 
 .icon {

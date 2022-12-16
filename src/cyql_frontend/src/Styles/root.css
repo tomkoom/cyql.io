@@ -10,6 +10,7 @@
   /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
 
   --coolGray100: #121619;
+  --coolGray100Rgb: 18, 22, 25;
   --coolGray90: #21272a;
   --coolGray80: #343a3f;
   --coolGray70: #4d5358;
@@ -19,6 +20,7 @@
   --coolGray30: #c1c7cd;
   --coolGray20: #dde1e6;
   --coolGray10: #f2f4f8;
+  --coolGray10Rgb: 242, 244, 248;
 
   --black: #000000;
   --white: #ffffff;

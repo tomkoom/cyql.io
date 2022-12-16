@@ -1,9 +1,5 @@
 import React from "react";
 import css from "./Home.module.css";
-import ICLogo from "../../../assets/ic-logo.svg";
-
-// icons
-import { iArrowRight } from "@icons/Icons";
 
 // routes
 import { toApps, toUpcoming } from "@routes/routes";
@@ -11,6 +7,7 @@ import { toApps, toUpcoming } from "@routes/routes";
 // components
 import {
   Exchanges,
+  Header,
   HighlightedByCategory,
   HighlightedProjects,
   JoinCommunity,
@@ -20,11 +17,10 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects, selectProjectsLength, selectNFTs } from "@state/projects";
+import { selectProjects, selectNFTs } from "@state/projects";
 
 const Home = () => {
   const projects = useSelector(selectProjects);
-  const projectsNum = useSelector(selectProjectsLength);
   const nfts = useSelector(selectNFTs);
   const upcomingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming");
   const ongoingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Open");
@@ -43,42 +39,7 @@ const Home = () => {
 
   return (
     <main className={css.home}>
-      <section className={css.hero}>
-        <h2 className={`${css.homeTitle} pageTitle`}>
-          The curated list of{" "}
-          {projectsNum !== 0 ? (
-            <span className={css.projectsNum} onClick={toApps}>
-              {projectsNum}
-            </span>
-          ) : (
-            <span className={css.dots}>...</span>
-          )}{" "}
-          <span className={css.icBadge}>
-            <img className={css.icLogo} src={ICLogo} alt="ic-logo" />
-            <span>Internet Computer</span>
-          </span>{" "}
-          projects
-        </h2>
-        <p className="text">Discover new dApps, keep an eye out for upcoming NFT sales and more.</p>
-      </section>
-
-      <div className={css.highlights}>
-        <div className={css.highlightsI}>
-          <a
-            className={css.highlightsILinkBlock}
-            href="https://entrepot.app/marketplace/ic-apps"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <div className={css.highlightsInfo}>
-              <span className={css.highlightsIcon}>🐋</span>
-              <p className={css.highlightTitle}>cyql NFTs are available on Entrepot</p>
-            </div>
-            <span className={css.rightArrowIcon}>{iArrowRight}</span>
-          </a>
-        </div>
-        <div className={css.highlightsI}></div>
-      </div>
+      <Header />
 
       {/* recently added projects */}
       <section>
@@ -189,7 +150,6 @@ const Home = () => {
           <div className={css.titleContainer}>
             <h3 className={css.title}>Exchanges</h3>
           </div>
-          {/* <ViewAllBtn nav="" /> */}
         </div>
         <Exchanges />
       </section>

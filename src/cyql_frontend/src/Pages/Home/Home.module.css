@@ -6,103 +6,13 @@ section,
   margin-bottom: 4rem;
 }
 
-.hero {
-  margin-bottom: 0.75rem;
-}
-
-.homeTitle {
-  max-width: 36rem;
-}
-
-.projectsNum {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.dots {
-  color: var(--tertiaryColor);
-}
-
-.icBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: var(--fontSize4);
-  padding: 0 1rem;
-  border-radius: 4rem;
-  background-color: var(--underlay);
-}
-
-.icLogo {
-  height: 2rem;
-}
-
-.hero p {
-  margin-top: 0.25rem;
-  color: var(--secondaryColor);
-}
-
-/* highlights */
-
-.highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.highlightsI {
-  flex: 1;
-}
-
-.highlightTitle {
-  font-size: var(--fontSize6);
-  font-weight: var(--fwBold);
-  line-height: 133%;
-}
-
-.highlightsILinkBlock {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.5rem;
-  color: white;
-  border-radius: 3rem;
-  background: rgb(98, 0, 234);
-  background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
-}
-
-.highlightsInfo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.highlightsIcon,
-.rightArrowIcon {
-  flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-}
-
-.highlightsIcon {
-  font-size: var(--fontSize5);
-}
-
-.rightArrowIcon {
-  background-color: rgba(255, 255, 255, 0.25);
-}
-
 /* sections */
 
 .sectionHeader {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .titleContainer {
@@ -118,28 +28,14 @@ section,
   place-items: center;
   font-size: var(--fontSize5);
   color: var(--highlightColor2);
-  /* background-color: var(--underlay); */
-  /* box-shadow: 0 0 0 1px var(--underlay); */
   border-radius: 50%;
 }
 
 .title {
-  font-size: 1.33rem;
+  font-size: var(--fontSize5);
 }
 
 .divider {
   height: 1px;
   box-shadow: 0 1px 0 0 var(--underlay);
-}
-
-/* responsive */
-
-@media screen and (max-width: 1023px) {
-  .highlights {
-    flex-direction: column;
-  }
-
-  .title {
-    font-size: var(--fontSize5);
-  }
 }
