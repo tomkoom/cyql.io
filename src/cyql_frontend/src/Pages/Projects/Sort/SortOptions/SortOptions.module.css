@@ -1,7 +1,6 @@
 /* sort options */
 
 .sort {
-  width: 10rem;
   display: flex;
   flex-direction: column;
   font-weight: var(--fwMedium);

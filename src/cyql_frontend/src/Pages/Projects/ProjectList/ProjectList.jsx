@@ -40,8 +40,8 @@ const ProjectList = () => {
   const sortLeastUp = (a, b) => (a && b ? a.length - b.length : !a && b ? -1 : a && !b ? 1 : 0);
 
   // filter
-  const byCategory = (p) => (category === "All" ? p : p.category.includes(category));
   const bySearch = (p) => (sq === "" ? p : p.name.toLowerCase().includes(sq.toLowerCase()));
+  const byCategory = (p) => (category === "All" ? p : p.category.includes(category));
   const byOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
   const byOnChain = (p) => (onChain === null ? p : onChain ? p.canister : !p.canister);
   const byGrantee = (p) => (grantee === null ? p : grantee ? p.grantee : !p.canister);
@@ -53,8 +53,8 @@ const ProjectList = () => {
       ) : (
         <ul className={css.li}>
           {p
-            .filter((p) => byCategory(p))
             .filter((p) => bySearch(p))
+            .filter((p) => byCategory(p))
             .filter((p) => byOpenSource(p))
             .filter((p) => byOnChain(p))
             .filter((p) => byGrantee(p))

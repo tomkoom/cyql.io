@@ -10,12 +10,14 @@ import { useDispatch } from "react-redux";
 const FilterOptions = ({
   openFilterOptions,
   setOpenFilterOptions,
+  filterBtnWidth,
   filterBtnRef,
   filter,
   setFilter,
 }) => {
   const dispatch = useDispatch();
   const filterOptionsRef = useRef(null);
+  const style = { width: `${filterBtnWidth.toString()}px` };
 
   const handleOutsideClick = (e) => {
     if (
@@ -44,15 +46,15 @@ const FilterOptions = ({
   };
 
   return (
-    <ul className={css.filter} ref={filterOptionsRef}>
+    <ul style={style} className={css.filter} ref={filterOptionsRef}>
       <li onClick={() => clickFilter(null)}>
-        All{filter === null && <span className={css.icon}>{iCheck}</span>}
+        all {filter === null && <span className={css.icon}>{iCheck}</span>}
       </li>
       <li onClick={() => clickFilter(true)}>
-        True{filter === true && <span className={css.icon}>{iCheck}</span>}
+        true {filter === true && <span className={css.icon}>{iCheck}</span>}
       </li>
       <li onClick={() => clickFilter(false)}>
-        False{filter === false && <span className={css.icon}>{iCheck}</span>}
+        false {filter === false && <span className={css.icon}>{iCheck}</span>}
       </li>
     </ul>
   );

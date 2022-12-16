@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import css from "./Filter.module.css";
 
 // components
@@ -6,15 +6,20 @@ import { Btn, FilterOptions } from "./index";
 
 const Filter = ({ label, filter, setFilter }) => {
   const [openFilterOptions, setOpenFilterOptions] = useState();
+  const [filterBtnWidth, setFilterBtnWidth] = useState(0);
   const filterBtnRef = useRef(null);
 
-  const click = () => {
+  const openFilterMenu = () => {
     setOpenFilterOptions((prev) => !prev);
   };
 
+  useLayoutEffect(() => {
+    setFilterBtnWidth(filterBtnRef.current.offsetWidth);
+  }, [filter]);
+
   return (
     <div className={css.filter}>
-      <div onClick={click} ref={filterBtnRef}>
+      <div onClick={openFilterMenu} ref={filterBtnRef}>
         <Btn label={label} filter={filter} />
       </div>
       <div className={css.filterOptions}>
@@ -22,6 +27,7 @@ const Filter = ({ label, filter, setFilter }) => {
           <FilterOptions
             openFilterOptions={openFilterOptions}
             setOpenFilterOptions={setOpenFilterOptions}
+            filterBtnWidth={filterBtnWidth}
             filterBtnRef={filterBtnRef}
             filter={filter}
             setFilter={setFilter}

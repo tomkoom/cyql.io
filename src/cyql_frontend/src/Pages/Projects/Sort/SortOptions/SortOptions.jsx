@@ -8,10 +8,11 @@ import { iCheck } from "@icons/Icons";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSort, setSort } from "@state/projects/sort";
 
-const SortOptions = ({ openSort, setOpenSort, sortBtnRef }) => {
+const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
   const dispatch = useDispatch();
   const sortOptionsRef = useRef(null);
   const sort = useSelector(selectSort);
+  const style = { width: `${sortBtnWidth.toString()}px` };
 
   const handleOutsideClick = (e) => {
     if (
@@ -40,7 +41,7 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnRef }) => {
   };
 
   return (
-    <ul className={css.sort} ref={sortOptionsRef}>
+    <ul style={style} className={css.sort} ref={sortOptionsRef}>
       <li onClick={() => clickSort("newest-first")}>
         newest first {sort === "newest-first" && <span className={css.icon}>{iCheck}</span>}
       </li>
