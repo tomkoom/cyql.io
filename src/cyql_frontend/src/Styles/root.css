@@ -28,9 +28,11 @@
   /* highlight colors */
 
   --hColor: #6200ea;
-  --hColorRgb: 98, 0, 234;
   --hColor2: #651fff;
   --hColor3: #7c4dff;
+  --hColorRgb: 98, 0, 234;
+  --hColorRgb2: 101, 31, 255;
+  --hColorRgb3: 124, 77, 255;
 
   /* --hColor: #304ffe;
   --hColorRgb: 48, 79, 254;

@@ -3,7 +3,7 @@
 .btn {
   font-size: 0.9rem;
   font-weight: var(--fwMedium);
-  color: var(--highlightColor2);
+  color: var(--highlightColor3);
   padding: 0.5rem;
   box-shadow: 0 0 0 1px var(--underlay);
   border-radius: 0.5rem;

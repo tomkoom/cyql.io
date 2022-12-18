@@ -1,7 +1,7 @@
 /* view more btn */
 
 .btn {
-  height: 40px;
+  height: 2.5rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
   background-color: var(--underlay);
   padding: 0 1rem;
   margin-top: 1rem;
-  border-radius: 0.33rem;
+  border-radius: 0.5rem;
   border: none;
   cursor: pointer;
 }

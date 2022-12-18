@@ -15,7 +15,7 @@ const Title = () => {
 
   return (
     <h2 className={css.title}>
-      The curated list of{" "}
+      Curated list of{" "}
       {pNum && pNum > 0 ? (
         <span className={css.pNum} onClick={toApps}>
           {pNum}
