@@ -7,11 +7,15 @@
   cursor: pointer;
 }
 
-.logo img {
+.logo:hover {
+  opacity: 0.8;
+}
+
+.img {
   height: 1.88rem;
 }
 
-.logo h1 {
+.title {
   visibility: hidden;
   width: 0;
 }

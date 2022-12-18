@@ -25,6 +25,18 @@
   --black: #000000;
   --white: #ffffff;
 
+  /* highlight colors */
+
+  --hColor: #6200ea;
+  --hColorRgb: 98, 0, 234;
+  --hColor2: #651fff;
+  --hColor3: #7c4dff;
+
+  /* --hColor: #304ffe;
+  --hColorRgb: 48, 79, 254;
+  --hColor2: #536dfe;
+  --hColor3: #8c9eff; */
+
   /* system colors */
 
   --colorGreen: #64dd17;

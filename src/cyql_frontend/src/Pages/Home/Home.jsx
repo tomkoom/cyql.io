@@ -41,7 +41,7 @@ const Home = () => {
     <main className={css.home}>
       <Header />
 
-      {/* recently added projects */}
+      {/* newest projects */}
       <section>
         <div className={css.sectionHeader}>
           <h3 className={css.title}>Recently added projects</h3>
@@ -50,7 +50,7 @@ const Home = () => {
         <HighlightedProjects projects={projects.length > 0 && pProjects} />
       </section>
 
-      {/* recently added nfts */}
+      {/* newest nfts */}
       <section>
         <div className={css.sectionHeader}>
           <h3 className={css.title}>Recently added NFTs</h3>
@@ -77,7 +77,7 @@ const Home = () => {
         <HighlightedProjects projects={projects.length > 0 && popularNfts} />
       </section>
 
-      {/* upcoming nft sales */}
+      {/* upcoming nfts */}
       <section className={css.home__upcomingNfts}>
         <div className={css.sectionHeader}>
           <h3 className={css.title}>Upcoming NFT sales</h3>
@@ -86,7 +86,7 @@ const Home = () => {
         <NftSales nftSalesFiltered={upcomingNfts} />
       </section>
 
-      {/* ongoing nft sales */}
+      {/* ongoing nfts */}
       <section className={css.home__upcomingNfts}>
         <div className={css.sectionHeader}>
           <h3 className={css.title}>Ongoing NFT sales</h3>
