@@ -2,12 +2,12 @@ import React from "react";
 import css from "./Socials.module.css";
 
 // icons
-import { iTwitter, iDiscord /* iMediumM */ } from "../../Icons/Icons";
+import { iTwitter, iDiscord } from "@icons/Icons";
 
 const socials = [
   {
     label: "Twitter",
-    link: "https://twitter.com/cyql_icp",
+    link: "https://twitter.com/cyqlio",
     icon: iTwitter,
     logo: "",
   },

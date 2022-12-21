@@ -1,0 +1,26 @@
+/* socials */
+
+.socials {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+#twitter {
+  color: var(--colorTwitter);
+}
+
+#discord {
+  color: var(--colorDiscord);
+}

@@ -3,7 +3,7 @@ import css from "./Nav.module.css";
 
 // components
 import { Logo } from "../index";
-import { Desktop, Mobile } from "./index";
+import { Desktop, Mobile, Socials } from "./index";
 
 // utils
 import { useWindowSize } from "@hooks/useWindowSize";
@@ -20,8 +20,8 @@ const Nav = () => {
   const [deviceWidth] = useWindowSize();
   const mobileMenuModal = useSelector(selectMobileMenuModal);
 
-  const handleClick = (action) => {
-    action();
+  const goHome = (route) => {
+    route();
     mobileMenuModal && dispatch(setMobileMenuModal(false));
   };
 
@@ -35,11 +35,13 @@ const Nav = () => {
           {/* logo */}
           <div
             onClick={() => {
-              handleClick(toHome);
+              goHome(toHome);
             }}
           >
             <Logo />
           </div>
+
+          <Socials />
         </div>
 
         {/* profile */}

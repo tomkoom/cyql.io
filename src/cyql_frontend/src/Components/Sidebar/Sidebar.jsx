@@ -53,8 +53,8 @@ const Sidebar = () => {
         </a>
       </div>
 
-      <hr className={css.div} />
-      <Socials />
+      {/* <hr className={css.div} />
+      <Socials /> */}
     </div>
   );
 };
