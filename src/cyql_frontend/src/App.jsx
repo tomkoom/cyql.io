@@ -53,6 +53,7 @@ import {
 } from "@state/modals/modals";
 import { selectProjectModal } from "@state/modals/projectModal";
 import { selectShareModal } from "./State/modals/shareModal";
+import { selectNftModal } from "@state/modals/nftModal";
 
 // methods
 import { addUserToDb, setProfiles, setJobs, setJobsTest } from "./appMethods";
@@ -87,6 +88,7 @@ const App = () => {
   const shareModal = useSelector(selectShareModal);
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
+  const nftModal = useSelector(selectNftModal);
 
   // get projects and nfts
   useEffect(() => {
@@ -108,9 +110,10 @@ const App = () => {
   }, []);
 
   // prevent from scrolling when modal is active
-  const modals = [jobModal, signInModal, mobileMenuModal, projectModal, shareModal];
+  const modals = [jobModal, signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
   useEffect(() => {
-    const modalIsActive = jobModal || signInModal || mobileMenuModal || projectModal || shareModal;
+    const modalIsActive =
+      jobModal || signInModal || mobileMenuModal || projectModal || shareModal || nftModal;
     if (modalIsActive) {
       document.body.style.overflow = "hidden";
     } else {

@@ -1,0 +1,39 @@
+/* links */
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  flex: 1;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: var(--fwBlack);
+  padding: 0 1rem;
+  border-radius: 0.75rem;
+  /* background: rgb(98, 0, 234);
+  background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%); */
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+#primary {
+  color: #fff;
+  background-color: var(--highlightColor);
+}
+
+#secondary {
+  background: var(--underlay);
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: var(--fontSize7);
+}

@@ -11,6 +11,7 @@ import jobs from "./jobs/jobs";
 // modals
 import categories from "./modals/categories";
 import modals from "./modals/modals";
+import nftModal from "./modals/nftModal";
 import projectModal from "./modals/projectModal";
 import shareModal from "./modals/shareModal";
 
@@ -66,12 +67,13 @@ const rootReducer = combineReducers({
   profiles,
   activeTab,
   shareModal,
+  nftModal,
 });
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["theme", "view"],
+  whitelist: ["theme"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -61,6 +61,7 @@ module.exports = {
       // "@": path.resolve(__dirname, "src"),
       "@": path.resolve(__dirname, "src"),
       "@assets": path.resolve(__dirname, "src", frontendDirectory, "assets"),
+      // src
       "@components": path.resolve(__dirname, "src", frontendDirectory, "src/Components"),
       "@context": path.resolve(__dirname, "src", frontendDirectory, "src/Context"),
       "@firestore": path.resolve(__dirname, "src", frontendDirectory, "src/Firestore"),
@@ -73,7 +74,6 @@ module.exports = {
       "@state": path.resolve(__dirname, "src", frontendDirectory, "src/State"),
       "@styles": path.resolve(__dirname, "src", frontendDirectory, "src/Styles"),
       "@utils": path.resolve(__dirname, "src", frontendDirectory, "src/Utils"),
-      // "@assets": path.resolve(__dirname, "src/assets"),
       // ...etc
     },
   },

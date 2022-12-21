@@ -36,9 +36,9 @@ const toPostJob = () => {
   history.push("/jobs/post");
 };
 
-const toNft = () => {
-  history.push("/nft");
-};
+// const toNft = () => {
+//   history.push("/nft");
+// };
 
 const toProfile = () => {
   history.push("/profile");
@@ -56,7 +56,7 @@ export {
   toSubmit,
   toJobs,
   toPostJob,
-  toNft,
+  // toNft,
   toProfile,
   toAdmin,
   // –––

@@ -3,25 +3,23 @@ import css from "./Sidebar.module.css";
 import { c } from "../../../../../constants/constants";
 
 // icons
-import { iCube, iRocket, iBolt, iPlus, iList, iChartArea } from "../../Icons/Icons";
+import { iCube, iRocket, iBolt, iPlus, iList } from "@icons/Icons";
 
 // routes
-import { toApps, toUpcoming, toSubmit, toJobs, toAdmin, toNft } from "../../Routes/routes";
+import { toApps, toUpcoming, toSubmit, toJobs, toAdmin } from "@routes/routes";
 
 // auth
 import { useAuth } from "@context/AuthContext";
 
 // components
 import NavLink from "./NavLink/NavLink";
-import { Socials } from "../index";
-
-const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
-const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
-const STOIC_ADMIN_1 = c.STOIC_ADMIN_1;
-const STOIC_ADMIN_2 = c.STOIC_ADMIN_2;
 
 const Sidebar = () => {
   const { principalIdStr } = useAuth();
+  const plugAdmin1 = c.PLUG_ADMIN_1;
+  const plugAdmin2 = c.PLUG_ADMIN_2;
+  const stoicAdmin1 = c.STOIC_ADMIN_1;
+  const stoicAdmin2 = c.STOIC_ADMIN_2;
 
   return (
     <div className={css.sidebar}>
@@ -30,12 +28,11 @@ const Sidebar = () => {
         <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
         <NavLink label="Jobs" to={toJobs} icon={iBolt} />
         <NavLink label="Submit" to={toSubmit} icon={iPlus} />
-        <NavLink label="cyql NFT" to={toNft} icon={iChartArea} />
 
-        {(principalIdStr && principalIdStr === PLUG_ADMIN_1) ||
-        (principalIdStr && principalIdStr === STOIC_ADMIN_1) ||
-        (principalIdStr && principalIdStr === PLUG_ADMIN_2) ||
-        (principalIdStr && principalIdStr === STOIC_ADMIN_2) ? (
+        {(principalIdStr && principalIdStr === plugAdmin1) ||
+        (principalIdStr && principalIdStr === stoicAdmin1) ||
+        (principalIdStr && principalIdStr === plugAdmin2) ||
+        (principalIdStr && principalIdStr === stoicAdmin2) ? (
           <NavLink label="Admin" to={toAdmin} icon={iList} />
         ) : null}
 
@@ -52,9 +49,6 @@ const Sidebar = () => {
           <p>streak</p>
         </a>
       </div>
-
-      {/* <hr className={css.div} />
-      <Socials /> */}
     </div>
   );
 };

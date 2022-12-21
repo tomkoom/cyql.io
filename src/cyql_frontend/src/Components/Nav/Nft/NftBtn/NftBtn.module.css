@@ -1,0 +1,21 @@
+/* nft badge */
+
+.nftBtn {
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0 0.5rem;
+  font-weight: var(--fwBlack);
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+}
+
+.nftBtn:hover {
+  background-color: var(--underlay2);
+}
+
+.mark {
+  width: 1rem;
+  height: 1rem;
+}

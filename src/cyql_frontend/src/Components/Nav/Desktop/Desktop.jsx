@@ -9,6 +9,7 @@ import { useAuth } from "@context/AuthContext";
 
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./index";
+import { Nft } from "../index";
 import { Logo, Price, Theme } from "@components/index";
 
 const Desktop = () => {
@@ -26,6 +27,7 @@ const Desktop = () => {
       <div className={css.controls}>
         <Price />
         <Theme />
+        <Nft />
         {!isAuthenticated ? <SignInBtn /> : <ProfileBtn />}
       </div>
     </div>
