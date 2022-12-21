@@ -28,7 +28,7 @@ const Nav = () => {
   return (
     <header className={css.header}>
       <nav className={css.nav}>
-        <div className={css.left}>
+        <div className={css.navI}>
           {/* mobile menu */}
           {deviceWidth < 1024 && <Mobile />}
 
@@ -45,7 +45,7 @@ const Nav = () => {
         </div>
 
         {/* profile */}
-        <div className={css.right}>{deviceWidth > 1023 && <Desktop />}</div>
+        {deviceWidth > 1023 && <Desktop />}
       </nav>
     </header>
   );

@@ -17,14 +17,19 @@
   padding: 0.5rem 2rem;
 }
 
-.left {
+.navI {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 
 @media screen and (max-width: 1023px) {
   .nav {
     padding: 0.5rem 1rem;
+  }
+
+  .navI {
+    width: 100%;
   }
 }
