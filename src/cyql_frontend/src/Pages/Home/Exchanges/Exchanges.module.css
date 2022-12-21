@@ -48,3 +48,15 @@
   font-size: var(--fontSize5);
   color: var(--tertiaryColor);
 }
+
+@media screen and (max-width: 1023px) {
+  .exchanges {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .exchanges {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}

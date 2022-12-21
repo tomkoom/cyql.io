@@ -6,7 +6,7 @@
   gap: 1.5rem;
 }
 
-.p {
+.project {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -22,18 +22,13 @@
 }
 
 @media screen and (max-width: 1023px) {
-  .logo {
-    width: 4rem;
-    height: 4rem;
-  }
-
-  .projects {
+  .grid {
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   }
 }
 
 @media screen and (max-width: 374px) {
-  .projects {
+  .grid {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }

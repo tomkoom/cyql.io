@@ -5,30 +5,45 @@ const categories = createSlice({
   initialState: {
     categories: [
       { id: "all", label: "All", icon: "" },
-      { id: "nfts", label: "NFTs", icon: "🗿" },
-      { id: "infrastructure", label: "Infrastructure", icon: "🚀" },
-      { id: "dapps", label: "dApps", icon: "🔗" },
-      { id: "social-networks", label: "Social Networks", icon: "🎯" },
-      { id: "defi", label: "DeFi", icon: "‍🌾" },
-      { id: "tools", label: "Tools", icon: "🛠️" },
-      { id: "communities", label: "Communities", icon: "📣" },
-      { id: "games", label: "Games", icon: "⚔️" },
-      { id: "gambling", label: "Gambling", icon: "🎲" },
-      { id: "daos", label: "DAOs", icon: "🏠" },
+      // wallets, defi, tokens, payments
       { id: "wallets", label: "Wallets", icon: "👛" },
-      { id: "explorers", label: "Explorers", icon: "🌎" },
-      { id: "metaverse", label: "Metaverse", icon: "👓" },
-      { id: "ar-vr", label: "AR/VR", icon: "👓" },
-      { id: "education", label: "Education", icon: "🎓" },
+      { id: "defi", label: "DeFi", icon: "‍🌾" },
       { id: "tokens", label: "Tokens", icon: "🪙" },
       { id: "stablecoins", label: "Stablecoins", icon: "🪙" },
-      { id: "dev-tools", label: "Dev Tools", icon: "👨‍💻" },
       { id: "dexs", label: "DEXs", icon: "🐂" },
       { id: "swapping", label: "Swapping", icon: "↔️" },
+      { id: "payments-invoicing", label: "Payments/Invoicing", icon: "🧾" },
+
+      // games, gambling
+      { id: "games", label: "Games", icon: "⚔️" },
+      { id: "gambling", label: "Gambling", icon: "🎲" },
+
+      // tools, dev tools
+      { id: "tools", label: "Tools", icon: "🛠️" },
+      { id: "dev-tools", label: "Dev Tools", icon: "👨‍💻" },
+
+      // communities, daos
+      { id: "communities", label: "Communities", icon: "📣" },
+      { id: "daos", label: "DAOs", icon: "🏠" },
+
+      // infrastracture, cloud, storage
+      { id: "infrastructure", label: "Infrastructure", icon: "🚀" },
+      { id: "cloud", label: "Cloud", icon: "☁️" },
+
+      // metaverse, ar/vr
+      { id: "metaverse", label: "Metaverse", icon: "👓" },
+      { id: "ar-vr", label: "AR/VR", icon: "👓" },
+
+      //  ...
+
+      { id: "nfts", label: "NFTs", icon: "🗿" },
+      { id: "dapps", label: "dApps", icon: "🔗" },
+      { id: "social-networks", label: "Social Networks", icon: "🎯" },
+      { id: "explorers", label: "Explorers", icon: "🌎" },
+      { id: "education", label: "Education", icon: "🎓" },
       { id: "marketplace", label: "Marketplace", icon: "🔄" },
       { id: "blogging", label: "Blogging", icon: "🗒️" },
       { id: "identity", label: "Identity", icon: "🔑" },
-      { id: "cloud", label: "Cloud", icon: "☁️" },
     ],
   },
   reducers: {

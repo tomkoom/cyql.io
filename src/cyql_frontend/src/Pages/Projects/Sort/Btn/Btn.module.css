@@ -1,10 +1,10 @@
 /* sort options btn */
 
 .btn {
+  height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  height: 2.25rem;
   padding: 0 0.25rem;
   font-size: 0.9rem;
   font-weight: var(--fwMedium);

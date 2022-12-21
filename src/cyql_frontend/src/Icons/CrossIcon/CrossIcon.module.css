@@ -25,7 +25,7 @@
   height: 1.5rem;
   width: 2px;
   border-radius: 1px;
-  background-color: var(--tertiaryColor);
+  background-color: var(--secondaryColor);
 }
 
 .icon:before {

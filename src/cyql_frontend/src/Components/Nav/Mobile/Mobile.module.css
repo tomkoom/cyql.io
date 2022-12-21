@@ -1,9 +1,9 @@
-.menuBtn {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: var(--fontSize5);
-  color: var(--primaryColor);
-  cursor: pointer;
+/* mobile */
+
+.mobile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 }

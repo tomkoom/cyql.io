@@ -26,7 +26,7 @@ const HighlightedProjects = ({ projects }) => {
           <Loader />
         ) : (
           projects.slice(0, 16).map((p) => (
-            <div className={css.p} onClick={() => openProject(p.slug)} key={p.id}>
+            <div className={css.project} onClick={() => openProject(p.slug)} key={p.id}>
               <Logo name={p.name} logo={p.logo} />
               <Main
                 name={p.name}

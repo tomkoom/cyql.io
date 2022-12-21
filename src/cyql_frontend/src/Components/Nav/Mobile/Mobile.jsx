@@ -1,26 +1,33 @@
 import React from "react";
 import css from "./Mobile.module.css";
 
-// icons
-import { iBars } from "../../../Icons/Icons";
+// routes
+import { toHome } from "@routes/routes";
 
 // components
-import Modal from "./Modal/Modal";
+import { Logo } from "@components/index";
+import { Menu, MenuBtn, Socials } from "./index";
 
 // state
-import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "../../../State/modals/modals";
+import { useSelector } from "react-redux";
+import { selectMobileMenuModal } from "@state/modals/modals";
 
 const Mobile = () => {
-  const dispatch = useDispatch();
-  const mobileMenuModal = useSelector(selectMobileMenuModal);
+  const mobileMenu = useSelector(selectMobileMenuModal);
 
   return (
-    <div>
-      <div className={css.menuBtn} onClick={() => dispatch(setMobileMenuModal(true))}>
-        {iBars}
+    <div className={css.mobile}>
+      <MenuBtn />
+
+      <div onClick={toHome}>
+        <Logo />
       </div>
-      {mobileMenuModal && <Modal />}
+
+      <div>
+        <Socials />
+      </div>
+
+      {mobileMenu && <Menu />}
     </div>
   );
 };

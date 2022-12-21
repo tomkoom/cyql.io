@@ -1,0 +1,11 @@
+/* menu btn */
+
+.btn {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  font-size: var(--fontSize5);
+  color: var(--primaryColor);
+  cursor: pointer;
+}

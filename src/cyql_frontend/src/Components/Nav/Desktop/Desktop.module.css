@@ -1,6 +1,19 @@
 /* desktop */
 
 .desktop {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.controls {
   display: flex;
   align-items: center;
   gap: 0.75rem;
