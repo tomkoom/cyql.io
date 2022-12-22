@@ -16,8 +16,6 @@
   font-weight: var(--fwBlack);
   padding: 0 1rem;
   border-radius: 0.75rem;
-  /* background: rgb(98, 0, 234);
-  background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%); */
 }
 
 .link:hover {

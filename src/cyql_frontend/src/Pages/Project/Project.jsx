@@ -53,7 +53,7 @@ const Project = () => {
                   />
                 )}
 
-                {p.category === "NFTs" && (
+                {p.category.includes("NFTs") && (
                   <CollStats
                     nftSaleStatus={p.nftSaleStatus}
                     nftSaleDate={p.nftSaleDate}

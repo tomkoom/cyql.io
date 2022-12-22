@@ -18,12 +18,7 @@ const ShareLink = () => {
       <label className={css.label}>Or copy url</label>
       <div className={css.field}>
         <input className={css.input} type="text" value={url} readOnly={true} />
-        <button
-          className={`primaryBtn ${css.btn}`}
-          onClick={() => {
-            !copied && copy();
-          }}
-        >
+        <button className={css.btn} onClick={() => !copied && copy()}>
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>

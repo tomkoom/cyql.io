@@ -6,6 +6,10 @@
   gap: 0.5rem;
 }
 
+.projectName {
+  font-weight: var(--fwBlack);
+}
+
 .grantee {
   height: 2rem;
   display: flex;

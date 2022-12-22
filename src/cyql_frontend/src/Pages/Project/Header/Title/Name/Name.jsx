@@ -7,7 +7,7 @@ import { iMeteor } from "@icons/Icons";
 const Name = ({ name, grantee }) => {
   return (
     <div className={css.name}>
-      <h3>{name}</h3>
+      <h3 className={css.projectName}>{name}</h3>
       {grantee && (
         <a
           className={css.grantee}

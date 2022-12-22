@@ -34,7 +34,15 @@
 }
 
 .btn {
+  height: 3rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: var(--fwBold);
+  color: white;
+  background-color: var(--highlightColor);
+
+  /* position */
   position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
+  right: 0.25rem;
+  top: 0.25rem;
 }
