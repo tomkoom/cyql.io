@@ -11,6 +11,7 @@
 
   --coolGray100: #121619;
   --coolGray100Rgb: 18, 22, 25;
+  /* coolGray100 filter: invert(8%) sepia(10%) saturate(846%) hue-rotate(163deg) brightness(93%) contrast(99%); */
   --coolGray90: #21272a;
   --coolGray80: #343a3f;
   --coolGray70: #4d5358;
@@ -21,6 +22,7 @@
   --coolGray20: #dde1e6;
   --coolGray10: #f2f4f8;
   --coolGray10Rgb: 242, 244, 248;
+  /* coolGray10 filter: invert(99%) sepia(14%) saturate(901%) hue-rotate(177deg) brightness(99%) contrast(96%); */
 
   --black: #000000;
   --white: #ffffff;

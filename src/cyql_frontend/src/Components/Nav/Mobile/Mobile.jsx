@@ -5,8 +5,9 @@ import css from "./Mobile.module.css";
 import { toHome } from "@routes/routes";
 
 // components
-import { Logo } from "@components/index";
+import { Logo, Theme } from "@components/index";
 import { Menu, MenuBtn, Socials } from "./index";
+import { Nft } from "../index";
 
 // state
 import { useSelector } from "react-redux";
@@ -23,8 +24,12 @@ const Mobile = () => {
         <Logo />
       </div>
 
-      <div>
+      <div className={css.controls}>
         <Socials />
+        <div className={css.hide}>
+          <Theme />
+          <Nft />
+        </div>
       </div>
 
       {mobileMenu && <Menu />}

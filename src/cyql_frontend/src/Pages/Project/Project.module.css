@@ -22,3 +22,9 @@
     gap: 1rem;
   }
 }
+
+@media screen and (max-width: 359px) {
+  .twitter {
+    display: none;
+  }
+}

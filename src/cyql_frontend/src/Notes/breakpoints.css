@@ -12,3 +12,13 @@
 @media screen and (max-width: 639px) {
   /* ... */
 }
+
+/* 480 */
+@media screen and (max-width: 479px) {
+  /* ... */
+}
+
+/* 360 */
+@media screen and (max-width: 359px) {
+  /* ... */
+}

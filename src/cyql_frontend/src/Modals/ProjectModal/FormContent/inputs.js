@@ -16,12 +16,16 @@ const socials = [
   { id: "dscvr", label: "Dscvr", type: "text" },
   { id: "distrikt", label: "Distrikt", type: "text" },
   { id: "openChat", label: "OpenChat", type: "text" },
+  { id: "taggr", label: "TAGGR", type: "text" },
+  { id: "seers", label: "Seers", type: "text" },
+  { id: "nuance", label: "Nuance", type: "text" },
   { id: "catalyze", label: "Catalyze", type: "text" },
 ];
 
 const additional = [
   { id: "app", label: "App URL", type: "text" },
   { id: "docs", label: "Docs URL", type: "text" },
+  { id: "crowdfundingUrl", label: "Crowdfunding URL", type: "text" },
 ];
 
 const nft = [

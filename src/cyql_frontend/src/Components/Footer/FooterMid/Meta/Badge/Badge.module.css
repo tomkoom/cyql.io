@@ -2,6 +2,7 @@
 
 .badge {
   font-size: var(--fontSize7);
+  flex-wrap: wrap;
 }
 
 .badge,

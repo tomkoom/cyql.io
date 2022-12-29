@@ -76,6 +76,10 @@ const Project = () => {
                   dscvr={p.dscvr}
                   distrikt={p.distrikt}
                   openChat={p.openChat}
+                  taggr={p.taggr}
+                  seers={p.seers}
+                  nuance={p.nuance}
+                  catalyze={p.catalyze}
                   // social
                   twitter={p.twitter}
                   discord={p.discord}
@@ -92,7 +96,9 @@ const Project = () => {
                 <Disclaimer />
               </div>
 
-              {p.twitter && <Twitter name={p.name} twitter={p.twitter} />}
+              <div className={css.twitter}>
+                {p.twitter && <Twitter name={p.name} twitter={p.twitter} />}
+              </div>
 
               {/* modals */}
               {shareModal && (

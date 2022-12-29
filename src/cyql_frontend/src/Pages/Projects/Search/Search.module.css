@@ -8,12 +8,17 @@
   font-size: 0.9rem;
   font-weight: var(--fwBold);
   color: var(--primaryColor);
-  background-color: var(--background);
-  box-shadow: 0 0 0 1px var(--underlay2);
+  background-color: transparent;
   caret-color: var(--primaryColor);
   border-radius: 0.5rem;
   border: none;
   outline: none;
+
+  /* box-shadow */
+  box-shadow: 0 0 0 1px var(--underlay2);
+  -webkit-box-shadow: 0 0 0 1px var(--underlay2);
+  -moz-box-shadow: 0 0 0 1px var(--underlay2);
+  -webkit-appearance: none;
 }
 
 .search:hover,

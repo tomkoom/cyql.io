@@ -7,3 +7,23 @@
   justify-content: space-between;
   gap: 0.5rem;
 }
+
+.controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hide {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media screen and (max-width: 359px) {
+  .hide {
+    display: none;
+  }
+}

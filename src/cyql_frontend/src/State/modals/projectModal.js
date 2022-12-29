@@ -23,9 +23,10 @@ const projectInitialState = {
   dscvr: "",
   distrikt: "",
   openChat: "",
+  taggr: "",
+  seers: "",
+  nuance: "",
   catalyze: "",
-  // seers
-  // nuance
 
   // additional info
   app: "",
@@ -69,6 +70,7 @@ const projectInitialState = {
   grantee: null,
   upvotedBy: [],
   connectedProjects: [],
+  crowdfundingUrl: "",
 };
 
 const projectModal = createSlice({

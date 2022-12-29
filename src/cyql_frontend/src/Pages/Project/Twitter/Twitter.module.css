@@ -1,7 +1,8 @@
 /* twitter */
 
 .twitter {
-  width: 20rem;
+  max-width: 20rem;
+  width: 100%;
 }
 
 .title {

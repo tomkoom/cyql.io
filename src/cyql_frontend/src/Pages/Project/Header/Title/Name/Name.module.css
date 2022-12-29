@@ -8,6 +8,7 @@
 
 .projectName {
   font-weight: var(--fwBlack);
+  word-break: break-all;
 }
 
 .grantee {
@@ -20,4 +21,16 @@
   color: white;
   background-color: var(--colorGreen);
   border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 479px) {
+  .projectName {
+    font-size: var(--fontSize4);
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .projectName {
+    font-size: var(--fontSize5);
+  }
 }
