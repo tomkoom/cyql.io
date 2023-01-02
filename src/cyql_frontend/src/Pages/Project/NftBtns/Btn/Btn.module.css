@@ -1,10 +1,12 @@
 /* btn */
 
 .btn {
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  height: 2.5rem;
+  height: 3rem;
   padding: 0 0.5rem;
   font-size: var(--fontSize5);
   font-weight: var(--fwBold);

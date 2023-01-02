@@ -1,7 +1,8 @@
 /* coll stats */
 
 .title {
-  font-size: var(--fs6);
+  font-size: var(--fontSize5);
+  margin-top: 1rem;
 }
 
 .collStats ul {
