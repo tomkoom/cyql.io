@@ -96,9 +96,11 @@ const Project = () => {
                 <Disclaimer />
               </div>
 
-              <div className={css.twitter}>
-                {p.twitter && <Twitter name={p.name} twitter={p.twitter} />}
-              </div>
+              {p.twitter && (
+                <div className={css.twitter}>
+                  <Twitter name={p.name} twitter={p.twitter} />
+                </div>
+              )}
 
               {/* modals */}
               {shareModal && (
