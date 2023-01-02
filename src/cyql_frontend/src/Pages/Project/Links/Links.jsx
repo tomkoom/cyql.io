@@ -23,7 +23,7 @@ const Links = ({
   canister,
   app,
   docs,
-
+  crowdfundingUrl,
   // ic
   dscvr,
   distrikt,
@@ -68,6 +68,13 @@ const Links = ({
       label: "Docs",
       url: docs,
       icon: iBook,
+      tag: "main",
+    },
+    {
+      id: "crowdfundingurl",
+      label: "Crowdunfund",
+      url: crowdfundingUrl,
+      icon: "",
       tag: "main",
     },
 

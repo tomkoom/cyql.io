@@ -38,6 +38,10 @@
 [data-social="dscvr"] a,
 [data-social="distrikt"] a,
 [data-social="openchat"] a,
+[data-social="taggr"] a,
+[data-social="seers"] a,
+[data-social="nuance"] a,
+[data-social="catalyze"] a,
 [data-social="medium"] a {
   background-color: var(--underlay);
   color: var(--primaryColor);
@@ -50,6 +54,10 @@
 [data-social="dscvr"] a:hover,
 [data-social="distrikt"] a:hover,
 [data-social="openchat"] a:hover,
+[data-social="taggr"] a:hover,
+[data-social="seers"] a:hover,
+[data-social="nuance"] a:hover,
+[data-social="catalyze"] a:hover,
 [data-social="medium"] a:hover {
   color: var(--background);
   background-color: var(--primaryColor);
@@ -73,9 +81,14 @@
   background-color: var(--colorGitHub);
 }
 
+[data-social="crowdfundingurl"] a {
+  background-color: var(--colorCrowdfundNft);
+}
+
 [data-social="twitter"] a:hover,
 [data-social="discord"] a:hover,
 [data-social="telegram"] a:hover,
-[data-social="github"] a:hover {
+[data-social="github"] a:hover,
+[data-social="crowdfundingurl"] a:hover {
   opacity: 0.8;
 }
