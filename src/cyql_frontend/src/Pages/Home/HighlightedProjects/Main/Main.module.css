@@ -8,27 +8,19 @@
 
 .title {
   font-size: var(--fontSize6);
+  font-weight: var(--fwBlack);
   margin-top: 0.1rem;
   word-wrap: break-word;
 }
 
 .tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: var(--fontSize7);
+  font-size: 0.9rem;
   font-weight: var(--fwBold);
-}
-
-.tagsI {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+  color: var(--secondaryColor);
 }
 
 .description {
   font-size: 0.9rem;
-  line-height: 150%;
+  font-weight: var(--fwMedium);
   color: var(--secondaryColor);
 }
