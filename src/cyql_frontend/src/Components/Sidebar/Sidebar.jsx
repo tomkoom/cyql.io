@@ -24,16 +24,16 @@ const Sidebar = () => {
   return (
     <div className={css.sidebar}>
       <div className={css.nav}>
-        <NavLink label="Projects" to={toApps} icon={iCube} />
-        <NavLink label="Upcoming NFTs" to={toUpcoming} icon={iRocket} />
-        <NavLink label="Jobs" to={toJobs} icon={iBolt} />
-        <NavLink label="Submit" to={toSubmit} icon={iPlus} />
+        <NavLink label="projects" to={toApps} icon={iCube} />
+        <NavLink label="upcoming nfts" to={toUpcoming} icon={iRocket} />
+        <NavLink label="jobs" to={toJobs} icon={iBolt} />
+        <NavLink label="submit" to={toSubmit} icon={iPlus} />
 
         {(principalIdStr && principalIdStr === plugAdmin1) ||
         (principalIdStr && principalIdStr === stoicAdmin1) ||
         (principalIdStr && principalIdStr === plugAdmin2) ||
         (principalIdStr && principalIdStr === stoicAdmin2) ? (
-          <NavLink label="Admin" to={toAdmin} icon={iList} />
+          <NavLink label="admin" to={toAdmin} icon={iList} />
         ) : null}
 
         <a

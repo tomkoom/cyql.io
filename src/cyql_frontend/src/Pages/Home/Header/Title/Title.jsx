@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Title.module.css";
-import logo from "../../../../../assets/ic-logo.svg";
+import logo from "@assets/ic-logo.svg";
 
 // routes
 import { toApps } from "@routes/routes";
@@ -25,7 +25,7 @@ const Title = () => {
       )}{" "}
       <span className={css.badge}>
         <img className={css.logo} src={logo} alt="Internet Computer logo" />
-        <span>Internet Computer</span>
+        <span>#InternetComputer</span>
       </span>{" "}
       projects
     </h2>

@@ -2,7 +2,8 @@
 
 .title {
   max-width: 36rem;
-  font-size: var(--fontSize2);
+  font-size: var(--fontSize1);
+  font-weight: var(--fwBlack);
   line-height: 125%;
 }
 
