@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Socials.module.css";
 
 // icons
-import { iTwitter, iDiscord, iTelegram, iGithub, iMediumM } from "@icons/Icons";
+import { iTwitter, iDiscord, iTelegram, iGithub, iMedium } from "@icons/Icons";
 
 const Socials = ({ twitter, discord, telegram, github, medium }) => {
   return (
@@ -11,7 +11,7 @@ const Socials = ({ twitter, discord, telegram, github, medium }) => {
       {discord && <li>{iDiscord}</li>}
       {telegram && <li>{iTelegram}</li>}
       {github && <li>{iGithub}</li>}
-      {medium && <li>{iMediumM}</li>}
+      {medium && <li>{iMedium}</li>}
     </ul>
   );
 };

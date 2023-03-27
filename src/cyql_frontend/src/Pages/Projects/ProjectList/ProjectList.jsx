@@ -89,7 +89,15 @@ const ProjectList = () => {
                 </div>
 
                 <div className={css.socials}>
-                  <SocialsIc dscvr={p.dscvr} distrikt={p.distrikt} openChat={p.openChat} />
+                  <SocialsIc
+                    dscvr={p.dscvr}
+                    distrikt={p.distrikt}
+                    openChat={p.openChat}
+                    taggr={p.taggr}
+                    seers={p.seers}
+                    nuance={p.nuance}
+                    catalyze={p.catalyze}
+                  />
                 </div>
 
                 <div className={css.upvote}>

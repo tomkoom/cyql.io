@@ -1,13 +1,6 @@
 // icons
 
-import {
-  iDatabase,
-  iDiscord,
-  iGithub,
-  iMediumM,
-  iTelegram,
-  iTwitter,
-} from "../../../../Icons/Icons";
+import { iDatabase, iDiscord, iGithub, iMedium, iTelegram, iTwitter } from "@icons/Icons";
 
 // inputs
 
@@ -103,7 +96,7 @@ const linksSoc = [
     id: "medium",
     label: "Medium",
     hint: "",
-    icon: iMediumM,
+    icon: iMedium,
     placeholder: "https://medium.com/yourproject",
     type: "text",
     required: null,

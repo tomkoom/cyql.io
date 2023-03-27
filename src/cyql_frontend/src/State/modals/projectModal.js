@@ -30,8 +30,6 @@ const projectInitialState = {
 
   // additional info
   app: "",
-
-  // docs
   docs: "",
   faq: "",
   whitepaper: "",

@@ -7,20 +7,21 @@
 }
 
 .title {
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
   font-weight: var(--fwBlack);
   margin-top: 0.1rem;
   word-wrap: break-word;
 }
 
 .tags {
-  font-size: 0.9rem;
+  font-size: var(--text);
   font-weight: var(--fwBold);
   color: var(--secondaryColor);
+  text-transform: lowercase;
 }
 
 .description {
-  font-size: 0.9rem;
+  font-size: var(--text);
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
 }

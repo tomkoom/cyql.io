@@ -2,11 +2,11 @@ import React from "react";
 import css from "./HighlightedProjects.module.css";
 
 // routes
-import { toApp, toApps } from "@routes/routes";
+import { toApps } from "@routes/routes";
 
 // components
-import { Loader, UpvtBtn, ViewMoreBtn } from "@components/index";
-import { Logo, Main } from "./index";
+import { Loader, ViewMoreBtn } from "@components/index";
+import { Project } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -15,37 +15,31 @@ import { selectProjectsLength } from "@state/projects";
 const HighlightedProjects = ({ projects }) => {
   const pNum = useSelector(selectProjectsLength);
 
-  const openProject = (slug) => {
-    toApp(slug);
-  };
-
   return (
     <div className={css.projects}>
-      <div className={css.grid}>
-        {!projects.length ? (
-          <Loader />
-        ) : (
-          projects.slice(0, 16).map((p) => (
-            <div className={css.project} onClick={() => openProject(p.slug)} key={p.id}>
-              <Logo name={p.name} logo={p.logo} />
-              <Main
-                name={p.name}
-                category={p.category}
-                canister={p.canister}
-                github={p.github}
-                description={p.description}
-              />
-
-              <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
-                <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
-              </div>
-            </div>
-          ))
-        )}
-      </div>
+      {!projects.length ? (
+        <Loader />
+      ) : (
+        <div className={css.grid}>
+          {projects.slice(0, 24).map((p) => (
+            <Project
+              slug={p.slug}
+              id={p.id}
+              name={p.name}
+              logo={p.logo}
+              category={p.category}
+              canister={p.canister}
+              github={p.github}
+              description={p.description}
+              upvotedBy={p.upvotedBy}
+              key={p.id}
+            />
+          ))}
+        </div>
+      )}
 
       <div className={css.viewMoreBtn}>
-        {projects.length > 0 && <ViewMoreBtn nav={toApps}>View all {pNum} projects</ViewMoreBtn>}
+        {projects.length > 0 && <ViewMoreBtn nav={toApps}>view all {pNum} projects</ViewMoreBtn>}
       </div>
     </div>
   );

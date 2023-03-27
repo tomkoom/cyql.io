@@ -57,7 +57,6 @@ import {
   faTelegramPlane,
   faDiscord,
   faMedium,
-  faMediumM,
   faGithub,
   faFacebook,
   faLinkedin,
@@ -123,7 +122,6 @@ const iTelegram = <FontAwesomeIcon icon={faTelegramPlane} />;
 const iDiscord = <FontAwesomeIcon icon={faDiscord} />;
 const iGithub = <FontAwesomeIcon icon={faGithub} />;
 const iMedium = <FontAwesomeIcon icon={faMedium} />;
-const iMediumM = <FontAwesomeIcon icon={faMediumM} />;
 const iFacebook = <FontAwesomeIcon icon={faFacebook} />;
 const iLinkedin = <FontAwesomeIcon icon={faLinkedin} />;
 const iReddit = <FontAwesomeIcon icon={faReddit} />;
@@ -188,7 +186,6 @@ export {
   iDiscord,
   iGithub,
   iMedium,
-  iMediumM,
   iFacebook,
   iLinkedin,
   iReddit,

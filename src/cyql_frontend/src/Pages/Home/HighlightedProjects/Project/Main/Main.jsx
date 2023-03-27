@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Main.module.css";
 
 // icons
-import { iGithub, iDatabase, iCircleNodes } from "@icons/Icons";
+import { iGithub, iCircleNodes } from "@icons/Icons";
 
 const Main = ({ name, category, canister, github, description }) => {
   const formatName = (n) => {

@@ -10,7 +10,7 @@ import {
   iTwitter,
   iTelegram,
   iDiscord,
-  iMediumM,
+  iMedium,
   iGithub,
   iExternalLink,
   iBook,
@@ -24,6 +24,7 @@ const Links = ({
   app,
   docs,
   crowdfundingUrl,
+
   // ic
   dscvr,
   distrikt,
@@ -111,7 +112,7 @@ const Links = ({
       id: "medium",
       label: "Medium",
       url: medium,
-      icon: iMediumM,
+      icon: iMedium,
       tag: "social",
     },
 

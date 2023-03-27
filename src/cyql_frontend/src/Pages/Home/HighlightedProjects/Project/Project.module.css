@@ -1,0 +1,12 @@
+/* project */
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.upvote {
+  margin-left: auto;
+}
