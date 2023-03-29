@@ -25,8 +25,8 @@ const Sidebar = () => {
     <div className={css.sidebar}>
       <div className={css.nav}>
         <NavLink label="projects" to={toApps} icon={iCube} />
-        <NavLink label="upcoming nfts" to={toUpcoming} icon={iRocket} />
-        <NavLink label="jobs" to={toJobs} icon={iBolt} />
+        {/* <NavLink label="upcoming nfts" to={toUpcoming} icon={iRocket} />
+        <NavLink label="jobs" to={toJobs} icon={iBolt} /> */}
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
 
         {(principalIdStr && principalIdStr === plugAdmin1) ||

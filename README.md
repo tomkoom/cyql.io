@@ -10,7 +10,7 @@ To start:
 npm install
 dfx start --clean
 dfx canister create --all
-dfx build
+install vessel https://github.com/dfinity/vessel
 dfx deploy
 ```
 

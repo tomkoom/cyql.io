@@ -202,15 +202,15 @@ const App = () => {
               <Project />
             </Route>
 
-            <Route exact path="/upcoming">
+            {/* <Route exact path="/upcoming">
               <UpcomingNfts />
-            </Route>
+            </Route> */}
 
             <Route exact path="/submit">
               <Submit />
             </Route>
 
-            <Route exact path="/jobs">
+            {/* <Route exact path="/jobs">
               <Jobs />
             </Route>
 
@@ -220,7 +220,7 @@ const App = () => {
 
             <Route exact path="/nft">
               <Nft />
-            </Route>
+            </Route> */}
 
             {principalId && (
               <Route exact path="/profile">
