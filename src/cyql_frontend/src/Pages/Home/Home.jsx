@@ -78,23 +78,23 @@ const Home = () => {
       </section>
 
       {/* upcoming nfts */}
-      <section className={css.home__upcomingNfts}>
+      {/* <section className={css.home__upcomingNfts}>
         <div className={css.sectionHeader}>
           <h3 className={css.title}>Upcoming NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
         <NftSales nftSalesFiltered={upcomingNfts} />
-      </section>
+      </section> */}
 
       {/* ongoing nfts */}
-      <section className={css.home__upcomingNfts}>
+      {/* <section className={css.home__upcomingNfts}>
         <div className={css.sectionHeader}>
           <h3 className={css.title}>Ongoing NFT sales</h3>
           <ViewAllBtn nav={toUpcoming} />
         </div>
         <NftSales nftSalesFiltered={ongoingNfts} />
       </section>
-      <div className={css.divider} />
+      <div className={css.divider} /> */}
 
       {/* wallets */}
       <section>

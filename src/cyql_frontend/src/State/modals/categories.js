@@ -44,6 +44,9 @@ const categories = createSlice({
       { id: "marketplace", label: "Marketplace", icon: "🔄" },
       { id: "blogging", label: "Blogging", icon: "🗒️" },
       { id: "identity", label: "Identity", icon: "🔑" },
+
+      // to add
+      // docs - motoko book
     ],
   },
   reducers: {
