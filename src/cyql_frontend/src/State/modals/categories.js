@@ -47,6 +47,7 @@ const categories = createSlice({
 
       // to add
       // docs - motoko book
+      // dev tools to dev resources (?)
     ],
   },
   reducers: {

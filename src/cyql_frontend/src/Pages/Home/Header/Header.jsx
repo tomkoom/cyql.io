@@ -9,7 +9,7 @@ const Header = () => {
     <section className={css.header}>
       <Title />
       <p className={css.text}>
-        Discover new dApps, keep an eye out for upcoming NFT sales and more.
+        discover new #ic dapps
       </p>
       <Highlights />
     </section>

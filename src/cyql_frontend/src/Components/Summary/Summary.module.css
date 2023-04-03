@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay);
 }
@@ -13,7 +14,7 @@
 .highlight {
   font-family: var(--monospace);
   font-size: var(--fontSize6);
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
   color: var(--highlightColor3);
 }
 
@@ -23,6 +24,7 @@
   flex-wrap: nowrap;
   gap: 0.5rem;
   overflow-x: auto;
+
   /* hide scrollbar */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

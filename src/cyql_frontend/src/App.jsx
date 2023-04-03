@@ -182,7 +182,6 @@ const App = () => {
   return (
     <div className={`app ${theme}`}>
       <Summary />
-      <div className="div" />
       <Nav />
 
       <div className="content">
@@ -202,25 +201,9 @@ const App = () => {
               <Project />
             </Route>
 
-            {/* <Route exact path="/upcoming">
-              <UpcomingNfts />
-            </Route> */}
-
             <Route exact path="/submit">
               <Submit />
             </Route>
-
-            {/* <Route exact path="/jobs">
-              <Jobs />
-            </Route>
-
-            <Route exact path="/jobs/post">
-              <PostJob />
-            </Route>
-
-            <Route exact path="/nft">
-              <Nft />
-            </Route> */}
 
             {principalId && (
               <Route exact path="/profile">

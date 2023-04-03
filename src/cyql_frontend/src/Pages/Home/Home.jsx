@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Home.module.css";
 
 // routes
-import { toApps, toUpcoming } from "@routes/routes";
+import { toApps } from "@routes/routes";
 
 // components
 import {
@@ -11,19 +11,15 @@ import {
   HighlightedByCategory,
   HighlightedProjects,
   JoinCommunity,
-  NftSales,
   ViewAllBtn,
 } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects, selectNFTs } from "@state/projects";
+import { selectProjects } from "@state/projects";
 
 const Home = () => {
   const projects = useSelector(selectProjects);
-  const nfts = useSelector(selectNFTs);
-  const upcomingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Upcoming");
-  const ongoingNfts = nfts.filter((nft) => nft.nftSaleStatus === "Open");
   const pProjects = projects.filter((p) => !p.category.includes("NFTs")); // no nfts
   const pNfts = projects.filter((p) => p.category.includes("NFTs")); // nfts
   const popularProjects = projects
@@ -44,7 +40,7 @@ const Home = () => {
       {/* newest projects */}
       <section>
         <div className={css.sectionHeader}>
-          <h3 className={css.title}>Recently added projects</h3>
+          <h3 className={css.title}>new projects</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects projects={projects.length > 0 && pProjects} />
@@ -53,7 +49,7 @@ const Home = () => {
       {/* newest nfts */}
       <section>
         <div className={css.sectionHeader}>
-          <h3 className={css.title}>Recently added NFTs</h3>
+          <h3 className={css.title}>new nfts</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects projects={projects.length > 0 && pNfts} />
@@ -62,7 +58,7 @@ const Home = () => {
       {/* popular projects */}
       <section>
         <div className={css.sectionHeader}>
-          <h3 className={css.title}>Popular apps</h3>
+          <h3 className={css.title}>popular projects</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects projects={projects.length > 0 && popularProjects} />
@@ -71,36 +67,17 @@ const Home = () => {
       {/* popular nfts */}
       <section>
         <div className={css.sectionHeader}>
-          <h3 className={css.title}>Popular NFTs</h3>
+          <h3 className={css.title}>popular nfts</h3>
           <ViewAllBtn nav={toApps} />
         </div>
         <HighlightedProjects projects={projects.length > 0 && popularNfts} />
       </section>
 
-      {/* upcoming nfts */}
-      {/* <section className={css.home__upcomingNfts}>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>Upcoming NFT sales</h3>
-          <ViewAllBtn nav={toUpcoming} />
-        </div>
-        <NftSales nftSalesFiltered={upcomingNfts} />
-      </section> */}
-
-      {/* ongoing nfts */}
-      {/* <section className={css.home__upcomingNfts}>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>Ongoing NFT sales</h3>
-          <ViewAllBtn nav={toUpcoming} />
-        </div>
-        <NftSales nftSalesFiltered={ongoingNfts} />
-      </section>
-      <div className={css.divider} /> */}
-
       {/* wallets */}
       <section>
         <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
-            <h3 className={css.title}>Wallets</h3>
+            <h3 className={css.title}>wallets</h3>
           </div>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -112,7 +89,7 @@ const Home = () => {
       <section>
         <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
-            <h3 className={css.title}>Explorers</h3>
+            <h3 className={css.title}>explorers</h3>
           </div>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -124,7 +101,7 @@ const Home = () => {
       <section>
         <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
-            <h3 className={css.title}>Social Networks</h3>
+            <h3 className={css.title}>social networks</h3>
           </div>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -136,7 +113,7 @@ const Home = () => {
       <section>
         <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
-            <h3 className={css.title}>DeFi</h3>
+            <h3 className={css.title}>defi</h3>
           </div>
           <ViewAllBtn nav={toApps} />
         </div>
@@ -148,7 +125,7 @@ const Home = () => {
       <section>
         <div className={css.sectionHeader}>
           <div className={css.titleContainer}>
-            <h3 className={css.title}>Exchanges</h3>
+            <h3 className={css.title}>exchanges</h3>
           </div>
         </div>
         <Exchanges />
@@ -158,7 +135,7 @@ const Home = () => {
       {/* join community */}
       <section className={css.home__nftCollections}>
         <div className={css.sectionHeader}>
-          <h3 className={css.title}>Join community</h3>
+          <h3 className={css.title}>join community</h3>
         </div>
         <JoinCommunity />
       </section>

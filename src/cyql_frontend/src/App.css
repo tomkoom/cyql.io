@@ -30,7 +30,7 @@ body {
 }
 
 .main {
-  margin-left: 240px;
+  margin-left: 200px;
 }
 
 /* global styles */
@@ -152,11 +152,6 @@ ul {
   font-size: var(--fontSize2);
   line-height: 125%;
   margin-bottom: 0.5rem;
-}
-
-.div {
-  height: 1px;
-  box-shadow: 0 1px 0 0 var(--underlay);
 }
 
 /* cookie */

@@ -3,10 +3,10 @@ import css from "./Sidebar.module.css";
 import { c } from "../../../../../constants/constants";
 
 // icons
-import { iCube, iRocket, iBolt, iPlus, iList } from "@icons/Icons";
+import { iCube, iPlus, iList } from "@icons/Icons";
 
 // routes
-import { toApps, toUpcoming, toSubmit, toJobs, toAdmin } from "@routes/routes";
+import { toApps, toSubmit, toAdmin } from "@routes/routes";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -25,8 +25,6 @@ const Sidebar = () => {
     <div className={css.sidebar}>
       <div className={css.nav}>
         <NavLink label="projects" to={toApps} icon={iCube} />
-        {/* <NavLink label="upcoming nfts" to={toUpcoming} icon={iRocket} />
-        <NavLink label="jobs" to={toJobs} icon={iBolt} /> */}
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
 
         {(principalIdStr && principalIdStr === plugAdmin1) ||

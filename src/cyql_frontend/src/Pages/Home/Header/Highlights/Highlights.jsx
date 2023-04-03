@@ -16,7 +16,7 @@ const Highlights = () => {
         >
           <div className={css.caption}>
             <span className={css.whale}>🐋</span>
-            <p className={css.text}>cyql NFTs are available on Entrepot</p>
+            <p className={css.text}>cyql nfts are available on Entrepot</p>
           </div>
           <span className={css.arrow}>{iArrowRight}</span>
         </a>
