@@ -4,12 +4,13 @@ cyql is a directory of projects built on the [Internet Computer](https://interne
 - backend canister id: nrkmt-haaaa-aaaai-qagmq-cai
 - live: https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/
 
+dfx package tool – vessel https://github.com/dfinity/vessel
+
 ```
 npm install
 dfx start --clean
 dfx canister create --all
-install vessel https://github.com/dfinity/vessel
 dfx deploy
 ```
 
-react.js + internet computer sdk
+react.js + firestore + internet computer sdk
