@@ -150,6 +150,7 @@ ul {
 
 .pageTitle {
   font-size: var(--fontSize2);
+  font-weight: var(--fwBlack);
   line-height: 125%;
   margin-bottom: 0.5rem;
 }

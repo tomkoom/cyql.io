@@ -22,18 +22,18 @@ const Projects = () => {
 
   return (
     <div className={css.projects}>
-      <h2 className="pageTitle">Discover New Projects</h2>
+      <h2 className="pageTitle">discover new projects</h2>
       <Search />
       <div className={css.controls}>
         <div className={css.controlsI}>
           <Category />
           <Filter
-            label={"Open source:"}
+            label={"open source:"}
             filter={filterByOpenSource}
             setFilter={setFilterByOpenSource}
           />
-          <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
-          <Filter label={"Grantee:"} filter={filterByGrantee} setFilter={setFilterByGrantee} />
+          <Filter label={"on-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+          <Filter label={"grantee:"} filter={filterByGrantee} setFilter={setFilterByGrantee} />
         </div>
 
         <div className={css.controlsI}>

@@ -13,7 +13,7 @@ const Btn = () => {
 
   return (
     <button className={css.btn}>
-      <p>Category:</p>
+      <p>category:</p>
       <span className={css.category}>{category}</span>
       <span className={css.icon}>{iAngleDown}</span>
     </button>

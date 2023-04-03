@@ -4,7 +4,7 @@ import css from "./Profile.module.css";
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
 import nft_idl from "@idl/nft_idl";
-import { host } from "@context/host";
+import { mainnethost } from "@context/host";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -25,7 +25,7 @@ const Profile = () => {
   const getOwnsNft = async () => {
     const nftCanId = "dtlqp-nqaaa-aaaak-abwna-cai";
     const nft = Actor.createActor(nft_idl, {
-      agent: new HttpAgent({ host }),
+      agent: new HttpAgent({ mainnethost }),
       canisterId: nftCanId,
     });
 

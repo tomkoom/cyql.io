@@ -8,10 +8,10 @@ import SubmissionSuccess from "./SubmissionSuccess/SubmissionSuccess";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectSubmissionData } from "../../State/projectSubmission";
+import { selectProjectSubmissionData } from "@state/projectSubmission";
 
 // firestore
-import { submittedProjectsCollRef } from "../../Firestore/firestore-collections";
+import { submittedProjectsCollRef } from "@firestore/firestore-collections";
 import { addDoc } from "firebase/firestore";
 
 const SubmitNew = () => {
@@ -40,7 +40,7 @@ const SubmitNew = () => {
     <div className={css.submit}>
       {!isSubmitted ? (
         <div>
-          <h2 className="pageTitle">Submit Your Project</h2>
+          <h2 className="pageTitle">submit your project</h2>
           <form className={css.form} onSubmit={handleSubmit}>
             <div className={css.inputs}>
               <Categories />

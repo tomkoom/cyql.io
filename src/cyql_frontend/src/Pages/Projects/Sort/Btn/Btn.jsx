@@ -14,7 +14,7 @@ const Btn = () => {
   return (
     <button className={css.btn}>
       <span className={css.icon}>{iSort}</span>
-      <p>Order by:</p>
+      <p>order by:</p>
       <p className={css.category}>
         {sort === "newest-first"
           ? "newest first"

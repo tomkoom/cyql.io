@@ -19,15 +19,15 @@ import { getAccountIdentifier } from "./Utils/Principal.utils";
 import { disconnectPlug } from "./Utils/Plug.utils";
 
 // host
-import { host, localhost } from "./host";
+import { mainnethost, localhost } from "./host";
 
 const AuthContext = createContext();
 const useAuth = () => {
   return useContext(AuthContext);
 };
 
-const env = process.env.NODE_ENV;
-const h = env !== "production" ? localhost : host;
+const mode = process.env.NODE_ENV;
+const host = mode !== "production" ? localhost : mainnethost;
 
 export function AuthProvider({ children }) {
   const [defaultActor, setDefaultActor] = useState(undefined);
@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
 
   const initDefaultActor = () => {
     const actor = Actor.createActor(cyql_idl_factory, {
-      agent: new HttpAgent({ h }),
+      agent: new HttpAgent({ host }),
       canisterId: cyql_canister_id,
     });
     setDefaultActor(actor);
@@ -53,7 +53,7 @@ export function AuthProvider({ children }) {
     const publicKey = await window.ic.plug
       .requestConnect({
         whitelist: [cyql_canister_id],
-        host: h,
+        host: host,
       })
       .catch((e) => {
         console.log(e);
@@ -139,7 +139,7 @@ export function AuthProvider({ children }) {
       setSignInLoading(true);
       await window.ic.infinityWallet.requestConnect({
         whitelist,
-        host: h,
+        host: host,
       });
       await createActorWithInfinityWallet();
       await getInfinityWalletUserData();

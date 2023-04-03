@@ -21,19 +21,7 @@ import { pColRef } from "@firestore/firestore-collections";
 import { useAuth } from "@context/AuthContext";
 
 // components
-import {
-  Admin,
-  Home,
-  Nft,
-  Jobs,
-  PostJob,
-  NotFound,
-  Profile,
-  Project,
-  Projects,
-  Submit,
-  UpcomingNfts,
-} from "@pages/index";
+import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@pages/index";
 import { Summary, Nav, Sidebar, Footer } from "@components/index";
 import { JobModal, ProjectModal, SignInModal } from "@modals/index";
 
@@ -56,7 +44,7 @@ import { selectShareModal } from "./State/modals/shareModal";
 import { selectNftModal } from "@state/modals/nftModal";
 
 // methods
-import { addUserToDb, setProfiles, setJobs, setJobsTest } from "./appMethods";
+import { addUserToDb, setProfiles } from "./appMethods";
 
 const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
 const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
@@ -67,7 +55,6 @@ const App = () => {
   // hooks
   const dispatch = useDispatch();
   const {
-    defaultActor,
     initDefaultActor,
     actor,
     principalId,
@@ -146,13 +133,6 @@ const App = () => {
       setProfiles(actor);
     }
   }, [isAuth]);
-
-  useEffect(() => {
-    if (defaultActor !== undefined) {
-      setJobs(defaultActor);
-      // setJobsTest(defaultActor);
-    }
-  }, [defaultActor]);
 
   // set default actor
   useEffect(() => {
