@@ -15,9 +15,9 @@
   outline: none;
 
   /* box-shadow */
-  box-shadow: 0 0 0 1px var(--underlay2);
-  -webkit-box-shadow: 0 0 0 1px var(--underlay2);
-  -moz-box-shadow: 0 0 0 1px var(--underlay2);
+  box-shadow: 0 0 0 2px var(--underlay2);
+  -webkit-box-shadow: 0 0 0 2px var(--underlay2);
+  -moz-box-shadow: 0 0 0 2px var(--underlay2);
   -webkit-appearance: none;
 }
 

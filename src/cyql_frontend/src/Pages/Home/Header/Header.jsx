@@ -9,7 +9,7 @@ const Header = () => {
     <section className={css.header}>
       <Title />
       <p className={css.text}>
-        discover new #ic dapps
+        discover new #ic projects
       </p>
       <Highlights />
     </section>

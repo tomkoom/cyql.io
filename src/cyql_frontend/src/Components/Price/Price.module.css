@@ -11,6 +11,10 @@
   border-radius: 0.5rem;
 }
 
+.price img {
+  height: 1rem;
+}
+
 .price * {
   font-family: var(--monospace);
 }

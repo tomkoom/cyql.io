@@ -14,23 +14,22 @@ import { fetchIcpPrice } from "@state/api/icpPrice";
 
 const Price = () => {
   const dispatch = useDispatch();
-  const p = useSelector(selectIcpPrice);
+  const price = useSelector(selectIcpPrice);
   const change = useSelector(selectIcp24hPriceChange);
-
   const second = 1000;
-  const time = 60 * second;
 
   useEffect(() => {
     dispatch(fetchIcpPrice());
     const interval = setInterval(() => {
       dispatch(fetchIcpPrice());
-    }, time);
+    }, 60 * second);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className={css.price}>
-      <p className={css.icp}>ICP {"$" + p}</p>
+      <img src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/ic-logo.svg" alt="icp logo" />
+      <p className={css.icp}>{"$" + price}</p>
 
       {change > 0 ? (
         <Change change={change} icon={iArrowUp} color="var(--colorGreen)" />
