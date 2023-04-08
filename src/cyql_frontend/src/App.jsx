@@ -27,7 +27,7 @@ import { useAuth } from "@context/AuthContext";
 // components
 import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@pages/index";
 import { Summary, Nav, Sidebar, Footer } from "@components/index";
-import { JobModal, ProjectModal, SignInModal } from "@modals/index";
+import { ProjectModal, SignInModal } from "@modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +37,6 @@ import { setUpvotedProjects } from "@state/profile/profile";
 
 // state – modals
 import {
-  selectJobModal,
   setSignInModal,
   selectSignInModal,
   setMobileMenuModal,
@@ -92,7 +91,6 @@ const App = () => {
   const theme = useSelector(selectTheme);
 
   // modals
-  const jobModal = useSelector(selectJobModal);
   const projectModal = useSelector(selectProjectModal);
   const shareModal = useSelector(selectShareModal);
   const signInModal = useSelector(selectSignInModal);
@@ -119,10 +117,9 @@ const App = () => {
   }, []);
 
   // prevent from scrolling when modal is active
-  const modals = [jobModal, signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
+  const modals = [signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
   useEffect(() => {
-    const modalIsActive =
-      jobModal || signInModal || mobileMenuModal || projectModal || shareModal || nftModal;
+    const modalIsActive = signInModal || mobileMenuModal || projectModal || shareModal || nftModal;
     if (modalIsActive) {
       document.body.style.overflow = "hidden";
     } else {
@@ -258,7 +255,6 @@ const App = () => {
       {/* modals */}
       {signInModal && <SignInModal />}
       {projectModal && <ProjectModal />}
-      {jobModal && <JobModal />}
     </div>
   );
 };

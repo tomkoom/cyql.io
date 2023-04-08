@@ -3,11 +3,6 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 // api
 import icpPrice from "./api/icpPrice";
 
-// jobs
-import activeTab from "./jobs/activeTab";
-import job from "./jobs/job";
-import jobs from "./jobs/jobs";
-
 // modals
 import categories from "./modals/categories";
 import modals from "./modals/modals";
@@ -61,11 +56,8 @@ const rootReducer = combineReducers({
   profile,
   filter,
   projectSubmission,
-  jobs,
-  job,
   nft,
   profiles,
-  activeTab,
   shareModal,
   nftModal,
 });

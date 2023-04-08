@@ -3,14 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const modals = createSlice({
   name: "modals",
   initialState: {
-    jobModal: false,
     signInModal: false,
     mobileMenuModal: false,
   },
   reducers: {
-    setJobModal(state, { payload }) {
-      state.jobModal = payload;
-    },
     setSignInModal(state, { payload }) {
       state.signInModal = payload;
     },
