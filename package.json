@@ -53,6 +53,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@junobuild/core": "^0.0.10",
     "@reduxjs/toolkit": "^1.7.1",
     "firebase": "^9.6.11",
     "firestore-export-import": "^1.1.0",

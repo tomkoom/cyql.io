@@ -17,6 +17,10 @@ import { sortByDateAdded, sortByDate } from "@utils/sort";
 import { onSnapshot, query, where } from "firebase/firestore";
 import { pColRef } from "@firestore/firestore-collections";
 
+// juno https://juno.build/docs/intro
+import { initJuno } from "@junobuild/core";
+import { signIn, InternetIdentityProvider } from "@junobuild/core";
+
 // auth
 import { useAuth } from "@context/AuthContext";
 
@@ -46,6 +50,7 @@ import { selectNftModal } from "@state/modals/nftModal";
 // methods
 import { addUserToDb, setProfiles } from "./appMethods";
 
+// constants
 const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
 const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
 const STOIC_ADMIN_1 = c.STOIC_ADMIN_1;
@@ -65,6 +70,23 @@ const App = () => {
     isAuthenticated: isAuth,
   } = useAuth();
   const [deviceWidth] = useWindowSize();
+
+  // juno
+  const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
+  useEffect(() => {
+    (async () =>
+      await initJuno({
+        satelliteId,
+      }))();
+  }, []);
+
+  const junoSignIn = async () => {
+    await signIn({
+      provider: new InternetIdentityProvider({
+        domain: "ic0.app",
+      }),
+    });
+  };
 
   // theme
   const theme = useSelector(selectTheme);
@@ -161,6 +183,7 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
+      {/* <p onClick={junoSignIn}>juno sign-in</p> */}
       <Summary />
       <Nav />
 
