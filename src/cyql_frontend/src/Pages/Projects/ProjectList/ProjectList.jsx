@@ -11,7 +11,6 @@ import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects } from "@state/projects";
 import { selectCategory } from "@state/projects/category";
 import { selectSearch } from "@state/projects/search";
 import { selectItemsVisibleProjects, setItemsVisibleProjects } from "@state/loadMore";
@@ -22,16 +21,22 @@ import {
   selectFilterByGrantee,
 } from "@state/projects/filter";
 
+// juno
+import { selectJunoProjects } from "@state/junoProjects";
+
 const ProjectList = () => {
-  const p = useSelector(selectProjects);
-  const pNum = p.length;
+  // projects
+  const projects = useSelector(selectJunoProjects);
+  const projectsNum = projects.length;
   const itemsVisible = useSelector(selectItemsVisibleProjects);
-  const sort = useSelector(selectSort);
+
+  // sorting, filtering, etc
+  const searchQuery = useSelector(selectSearch);
   const category = useSelector(selectCategory);
-  const sq = useSelector(selectSearch);
   const openSource = useSelector(selectFilterByOpenSource);
   const onChain = useSelector(selectFilterByOnChain);
   const grantee = useSelector(selectFilterByGrantee);
+  const sort = useSelector(selectSort);
 
   // sort
   const sortNewest = (a, b) => (a && b ? b - a : !a && b ? 1 : a && !b ? -1 : 0);
@@ -40,7 +45,8 @@ const ProjectList = () => {
   const sortLeastUp = (a, b) => (a && b ? a.length - b.length : !a && b ? -1 : a && !b ? 1 : 0);
 
   // filter
-  const bySearch = (p) => (sq === "" ? p : p.name.toLowerCase().includes(sq.toLowerCase()));
+  const bySearch = (p) =>
+    searchQuery === "" ? p : p.name.toLowerCase().includes(searchQuery.toLowerCase());
   const byCategory = (p) => (category === "All" ? p : p.category.includes(category));
   const byOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
   const byOnChain = (p) => (onChain === null ? p : onChain ? p.canister : !p.canister);
@@ -48,11 +54,11 @@ const ProjectList = () => {
 
   return (
     <div>
-      {p.length < 1 ? (
+      {projects.length < 1 ? (
         <Loader />
       ) : (
         <ul className={css.li}>
-          {p
+          {projects
             .filter((p) => bySearch(p))
             .filter((p) => byCategory(p))
             .filter((p) => byOpenSource(p))
@@ -64,7 +70,7 @@ const ProjectList = () => {
             .sort((a, b) => sort === "least-upvoted" && sortLeastUp(a.upvotedBy, b.upvotedBy))
             .slice(0, itemsVisible)
             .map((p) => (
-              <li className={css.liI} key={p.id} onClick={() => toApp(p.slug)}>
+              <li className={css.liI} key={p.__id__} onClick={() => toApp(p.slug)}>
                 <div className={css.main}>
                   <Main logo={p.logo} name={p.name} description={p.description} />
                 </div>
@@ -109,7 +115,7 @@ const ProjectList = () => {
             ))}
         </ul>
       )}
-      {itemsVisible < pNum && (
+      {itemsVisible < projectsNum && (
         <LoadMoreBtn2 label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
       )}
     </div>

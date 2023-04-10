@@ -15,12 +15,12 @@ import Search from "./Search/Search";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjects } from "@state/projects";
+import { selectJunoProjects } from "@state/junoProjects";
 import { setProjectModal, setProject, setMode } from "@state/modals/projectModal";
 
 const Projects = () => {
   const dispatch = useDispatch();
-  const projects = useSelector(selectProjects);
+  const projects = useSelector(selectJunoProjects);
   const [search, setSearch] = useState("");
 
   const editProject = (project) => {

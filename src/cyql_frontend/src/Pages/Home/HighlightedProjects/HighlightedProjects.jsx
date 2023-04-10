@@ -10,10 +10,10 @@ import { Project } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsLength } from "@state/projects";
+import { selectJunoProjects } from "@state/junoProjects";
 
 const HighlightedProjects = ({ projects }) => {
-  const pNum = useSelector(selectProjectsLength);
+  const projectsNum = useSelector(selectJunoProjects).length;
 
   return (
     <div className={css.projects}>
@@ -24,7 +24,7 @@ const HighlightedProjects = ({ projects }) => {
           {projects.slice(0, 24).map((p) => (
             <Project
               slug={p.slug}
-              id={p.id}
+              id={p.__id__}
               name={p.name}
               logo={p.logo}
               category={p.category}
@@ -32,14 +32,14 @@ const HighlightedProjects = ({ projects }) => {
               github={p.github}
               description={p.description}
               upvotedBy={p.upvotedBy}
-              key={p.id}
+              key={p.__id__}
             />
           ))}
         </div>
       )}
 
       <div className={css.viewMoreBtn}>
-        {projects.length > 0 && <ViewMoreBtn nav={toApps}>view all {pNum} projects</ViewMoreBtn>}
+        {projects.length > 0 && <ViewMoreBtn nav={toApps}>view all {projectsNum} projects</ViewMoreBtn>}
       </div>
     </div>
   );

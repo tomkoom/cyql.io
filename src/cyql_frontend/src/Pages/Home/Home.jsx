@@ -16,10 +16,11 @@ import {
 
 // state
 import { useSelector } from "react-redux";
+import { selectJunoProjects } from "@state/junoProjects";
 import { selectProjects } from "@state/projects";
 
 const Home = () => {
-  const projects = useSelector(selectProjects);
+  const projects = useSelector(selectJunoProjects);
   const pProjects = projects.filter((p) => !p.category.includes("NFTs")); // no nfts
   const pNfts = projects.filter((p) => p.category.includes("NFTs")); // nfts
   const popularProjects = projects

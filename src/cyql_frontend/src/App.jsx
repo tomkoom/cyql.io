@@ -18,8 +18,7 @@ import { onSnapshot, query, where } from "firebase/firestore";
 import { pColRef } from "@firestore/firestore-collections";
 
 // juno https://juno.build/docs/intro
-import { initJuno } from "@junobuild/core";
-import { signIn, InternetIdentityProvider } from "@junobuild/core";
+import { initJuno, listDocs } from "@junobuild/core";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -31,9 +30,9 @@ import { ProjectModal, SignInModal } from "@modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setProjects, setNFTs } from "@state/projects";
 import { selectTheme } from "@state/theme";
 import { setUpvotedProjects } from "@state/profile/profile";
+import { setJunoProjects } from "@state/junoProjects";
 
 // state – modals
 import {
@@ -47,13 +46,16 @@ import { selectShareModal } from "./State/modals/shareModal";
 import { selectNftModal } from "@state/modals/nftModal";
 
 // methods
-import { addUserToDb, setProfiles } from "./appMethods";
+import { addUserToDb /* setProfiles */ } from "./appMethods";
 
 // constants
 const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
 const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
 const STOIC_ADMIN_1 = c.STOIC_ADMIN_1;
 const STOIC_ADMIN_2 = c.STOIC_ADMIN_2;
+
+// juno
+const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
 
 const App = () => {
   // hooks
@@ -62,30 +64,43 @@ const App = () => {
     initDefaultActor,
     actor,
     principalId,
-    principalIdStr: pStr,
-    accountIdStr: aStr,
+    principalIdStr,
+    accountIdStr,
     signInMethod,
     checkConnection,
-    isAuthenticated: isAuth,
+    isAuthenticated,
+
+    // juno
+    user,
+    signinWithII,
   } = useAuth();
+  // const { signinWithII } = junoUseAuth();
   const [deviceWidth] = useWindowSize();
 
-  // juno
-  const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
+  // juno start
   useEffect(() => {
-    (async () =>
+    (async () => {
       await initJuno({
         satelliteId,
-      }))();
-  }, []);
+      });
 
-  const junoSignIn = async () => {
-    await signIn({
-      provider: new InternetIdentityProvider({
-        domain: "ic0.app",
-      }),
-    });
-  };
+      await listDocs({
+        collection: "projects",
+        filter: {},
+      })
+        .then((projects) => {
+          const projectsData = [];
+          projects.items.forEach((project) => projectsData.push(project.data));
+
+          const projectsDataSorted = projectsData
+            .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
+            .sort((a, b) => sortByDate(a.added, b.added));
+          dispatch(setJunoProjects(projectsDataSorted));
+        })
+        .catch((err) => console.log(err));
+    })();
+  }, []);
+  // juno end
 
   // theme
   const theme = useSelector(selectTheme);
@@ -96,25 +111,6 @@ const App = () => {
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const nftModal = useSelector(selectNftModal);
-
-  // get projects and nfts
-  useEffect(() => {
-    const unsubscribe = onSnapshot(pColRef, (snapshot) => {
-      const projects = snapshot.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
-        .sort((a, b) => sortByDate(a.added, b.added));
-      const nfts = snapshot.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .filter((project) => project.category === "NFTs");
-
-      dispatch(setProjects(projects));
-      dispatch(setNFTs(nfts));
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   // prevent from scrolling when modal is active
   const modals = [signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
@@ -136,22 +132,22 @@ const App = () => {
 
   // close sign in modal after user has logged
   useEffect(() => {
-    if (isAuth) {
+    if (isAuthenticated) {
       dispatch(setSignInModal(false));
     }
-  }, [isAuth]);
+  }, [isAuthenticated]);
 
   useEffect(() => {
-    if (isAuth) {
-      addUserToDb(actor, aStr, signInMethod);
+    if (isAuthenticated) {
+      addUserToDb(actor, accountIdStr, signInMethod);
     }
-  }, [isAuth]);
+  }, [isAuthenticated]);
 
-  useEffect(() => {
-    if (isAuth) {
-      setProfiles(actor);
-    }
-  }, [isAuth]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     setProfiles(actor);
+  //   }
+  // }, [isAuthenticated]);
 
   // set default actor
   useEffect(() => {
@@ -166,8 +162,8 @@ const App = () => {
   // SET PROFILE INFO
   // get upvoted projects
   useEffect(() => {
-    if (isAuth) {
-      const upvProjectsQ = query(pColRef, where("upvotedBy", "array-contains", pStr));
+    if (isAuthenticated) {
+      const upvProjectsQ = query(pColRef, where("upvotedBy", "array-contains", principalIdStr));
       const unsubscribe = onSnapshot(upvProjectsQ, (snapshot) => {
         const upvProjects = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
         dispatch(setUpvotedProjects(upvProjects));
@@ -176,11 +172,10 @@ const App = () => {
         unsubscribe();
       };
     }
-  }, [isAuth]);
+  }, [isAuthenticated]);
 
   return (
     <div className={`app ${theme}`}>
-      {/* <p onClick={junoSignIn}>juno sign-in</p> */}
       <Summary />
       <Nav />
 
@@ -211,10 +206,10 @@ const App = () => {
               </Route>
             )}
 
-            {(isAuth && pStr === PLUG_ADMIN_1) ||
-            (isAuth && pStr === STOIC_ADMIN_1) ||
-            (isAuth && pStr === PLUG_ADMIN_2) ||
-            (isAuth && pStr === STOIC_ADMIN_2) ? (
+            {(isAuthenticated && principalIdStr === PLUG_ADMIN_1) ||
+            (isAuthenticated && principalIdStr === STOIC_ADMIN_1) ||
+            (isAuthenticated && principalIdStr === PLUG_ADMIN_2) ||
+            (isAuthenticated && principalIdStr === STOIC_ADMIN_2) ? (
               <Route exact path="/admin">
                 <Admin />
               </Route>

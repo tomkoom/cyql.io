@@ -1,4 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+
+// juno
+import { authSubscribe, signIn, InternetIdentityProvider } from "@junobuild/core";
 
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
@@ -38,6 +41,23 @@ export function AuthProvider({ children }) {
   const [signInMethod, setSignInMethod] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // juno start
+  const [user, setUser] = useState(undefined);
+  const signinWithII = async () => {
+    await signIn({
+      provider: new InternetIdentityProvider({
+        domain: "ic0.app",
+      }),
+    });
+    
+  };
+
+  useEffect(() => {
+    const sub = authSubscribe((user) => setUser(user));
+    return () => sub();
+  }, []);
+  // juno end
 
   const initDefaultActor = () => {
     const actor = Actor.createActor(cyql_idl_factory, {
@@ -253,6 +273,10 @@ export function AuthProvider({ children }) {
     // other
     checkConnection,
     signOut,
+
+    // juno
+    user,
+    signinWithII,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

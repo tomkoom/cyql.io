@@ -22,26 +22,26 @@ const addUserToDb = async (actor, accountIdStr, signInMethod) => {
 };
 
 // profiles
-const setProfiles = async (actor) => {
-  await actor
-    .getProfiles()
-    .then((res) => {
-      const profiles = [];
-      res.forEach((el) => {
-        let profile = {};
-        // bigint to num
-        for (const [key, value] of Object.entries(el[1])) {
-          if (typeof value === "bigint") {
-            profile = { ...profile, [key]: Number(value) };
-          } else {
-            profile = { ...profile, [key]: value };
-          }
-        }
-        profiles.push({ id: el[0].toText(), ...profile });
-      });
-      store.dispatch(setProfilesAction(profiles));
-    })
-    .catch((err) => console.log(err));
-};
+// const setProfiles = async (actor) => {
+//   await actor
+//     .getProfiles()
+//     .then((res) => {
+//       const profiles = [];
+//       res.forEach((el) => {
+//         let profile = {};
+//         // bigint to num
+//         for (const [key, value] of Object.entries(el[1])) {
+//           if (typeof value === "bigint") {
+//             profile = { ...profile, [key]: Number(value) };
+//           } else {
+//             profile = { ...profile, [key]: value };
+//           }
+//         }
+//         profiles.push({ id: el[0].toText(), ...profile });
+//       });
+//       store.dispatch(setProfilesAction(profiles));
+//     })
+//     .catch((err) => console.log(err));
+// };
 
-export { addUserToDb, setProfiles };
+export { addUserToDb /* setProfiles */ };

@@ -6,7 +6,7 @@ import { iCheckCircle } from "@icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects } from "@state/projects";
+import { selectJunoProjects } from "@state/junoProjects";
 import { toApp } from "@routes/routes";
 
 // components
@@ -14,7 +14,7 @@ import { UpvtBtn } from "@components/index";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
-  const projects = useSelector(selectProjects);
+  const projects = useSelector(selectJunoProjects);
 
   const sortByVerified = (a, b) => {
     return a.verified === b.verified ? 0 : a.verified ? -1 : 1;
@@ -38,29 +38,35 @@ const HighlightedByCategory = ({ filter }) => {
   return (
     <ul className={css.projects}>
       {projects
-        .filter((p) => p.category.includes(filter))
+        .filter((project) => project.category.includes(filter))
         .sort((a, b) => sortByUpvoted(a, b))
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
-        .map((p) => (
-          <li className={css.p} key={p.id} onClick={() => openProject(p.slug)}>
+        .map((project) => (
+          <li
+            className={css.project}
+            onClick={() => openProject(project.slug)}
+            key={project.__id__}
+          >
             <div className={css.main}>
-              <Logo logo={p.logo} name={p.name} />
+              <Logo logo={project.logo} name={project.name} />
               <div>
                 <div className={css.titleContainer}>
-                  {p.verified && <span className={css.icon}>{iCheckCircle}</span>}
-                  <h4 className={css.title}>{p.name}</h4>
+                  {project.verified && <span className={css.icon}>{iCheckCircle}</span>}
+                  <h4 className={css.title}>{project.name}</h4>
                 </div>
 
                 <p className={css.description}>
-                  {p.description && p.description.length > 60
-                    ? `${p.description.substring(0, 60)}…`
-                    : p.description}
+                  {project.description && project.description.length > 60
+                    ? `${project.description.substring(0, 60)}…`
+                    : project.description}
                 </p>
               </div>
             </div>
+
+            {/* upvote button */}
             <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
-              <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
+              <UpvtBtn id={project.__id__} upvotedBy={project.upvotedBy} />
             </div>
           </li>
         ))}

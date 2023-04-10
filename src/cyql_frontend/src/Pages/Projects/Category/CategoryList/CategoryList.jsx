@@ -5,15 +5,15 @@ import css from "./CategoryList.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategories } from "@state/modals/categories";
 import { setCategory, selectCategory } from "@state/projects/category";
-import { selectProjects } from "@state/projects";
+import { selectJunoProjects } from "@state/junoProjects";
 
 const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef }) => {
   const dispatch = useDispatch();
   const categoryListRef = useRef(null);
   const categories = useSelector(selectCategories);
   const category = useSelector(selectCategory);
-  const p = useSelector(selectProjects);
-  const pNum = p.length;
+  const projects = useSelector(selectJunoProjects);
+  const projectsNum = projects.length;
 
   const handleOutsideClick = (e) => {
     if (
@@ -42,14 +42,18 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   };
 
   const sort = (a, b) => {
-    const filter = (p, label) => p.category.includes(label);
-    const aLen = a.label === "All" ? pNum : p.filter((p) => filter(p, a.label)).length;
-    const bLen = b.label === "All" ? pNum : p.filter((p) => filter(p, b.label)).length;
+    const filter = (project, label) => project.category.includes(label);
+    const aLen =
+      a.label === "All" ? projectsNum : projects.filter((project) => filter(project, a.label)).length;
+    const bLen =
+      b.label === "All" ? projectsNum : projects.filter((project) => filter(project, b.label)).length;
     return bLen - aLen;
   };
 
   const num = (c) => {
-    return c.label === "All" ? pNum : p.filter((p) => p.category.includes(c.label)).length;
+    return c.label === "All"
+      ? projectsNum
+      : projects.filter((project) => project.category.includes(c.label)).length;
   };
 
   return (

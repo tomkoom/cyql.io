@@ -21,12 +21,12 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjects } from "@state/projects";
+import { selectJunoProjects } from "@state/junoProjects";
 import { selectShareModal } from "@state/modals/shareModal";
 
 const Project = () => {
   const { slug } = useParams();
-  const projects = useSelector(selectProjects);
+  const projects = useSelector(selectJunoProjects);
   const shareModal = useSelector(selectShareModal);
 
   return (

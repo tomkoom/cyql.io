@@ -10,9 +10,6 @@ import nftModal from "./modals/nftModal";
 import projectModal from "./modals/projectModal";
 import shareModal from "./modals/shareModal";
 
-// nft
-import nft from "./nft/nft";
-
 // profiles
 import profiles from "./profiles/profiles";
 
@@ -22,10 +19,12 @@ import filter from "./projects/filter";
 import search from "./projects/search";
 import sort from "./projects/sort";
 
+// juno
+import junoProjects from "./junoProjects";
+
 // ...
 import theme from "./theme";
 import loadMore from "./loadMore";
-import projects from "./projects";
 import profile from "./profile/profile";
 import projectSubmission from "./projectSubmission";
 
@@ -47,7 +46,6 @@ const rootReducer = combineReducers({
   search,
   theme,
   loadMore,
-  projects,
   modals,
   projectModal,
   category,
@@ -56,10 +54,12 @@ const rootReducer = combineReducers({
   profile,
   filter,
   projectSubmission,
-  nft,
   profiles,
   shareModal,
   nftModal,
+
+  // projects
+  junoProjects,
 });
 
 const persistConfig = {

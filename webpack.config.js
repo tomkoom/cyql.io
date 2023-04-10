@@ -62,6 +62,7 @@ module.exports = {
       "@": path.resolve(__dirname, "src"),
       "@assets": path.resolve(__dirname, "src", frontendDirectory, "assets"),
       // src
+      // "@auth": path.resolve(__dirname, "src", frontendDirectory, "src/auth"),
       "@components": path.resolve(__dirname, "src", frontendDirectory, "src/Components"),
       "@context": path.resolve(__dirname, "src", frontendDirectory, "src/Context"),
       "@firestore": path.resolve(__dirname, "src", frontendDirectory, "src/Firestore"),

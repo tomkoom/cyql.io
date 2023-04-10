@@ -4,7 +4,6 @@ import App from "./App";
 
 // react-router
 import { Router } from "react-router-dom";
-// import ScrollToTop from "./Utils/jsx/ScrollToTop";
 
 // history
 import { history } from "./Routes/history";
@@ -16,18 +15,19 @@ import store, { persistor } from "./State/_store";
 // redux-persist
 import { PersistGate } from "redux-persist/integration/react";
 
-// auth context
+// // auth context
 import AuthProvider from "./Context/AuthContext";
 
 const Index = () => {
   return (
     <Router /* basename="/" */ history={history}>
-      {/* <ScrollToTop /> */}
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
+          {/* <Auth> */}
           <AuthProvider>
             <App />
           </AuthProvider>
+          {/* </Auth> */}
         </PersistGate>
       </Provider>
     </Router>
