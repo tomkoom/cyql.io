@@ -2,10 +2,12 @@ import React from "react";
 import css from "./Projects.module.css";
 
 // components
-import { Category, Filter, ProjectList, Search, Sort } from "./index";
+import { Category, Filter, ProjectList, Sort } from "./index";
+import { Search } from "@components/ui-elements/index";
 
 // state
 import { useSelector } from "react-redux";
+import { selectSearch, setSearch } from "@state/projects/search";
 import {
   setFilterByOnChain,
   selectFilterByOnChain,
@@ -16,14 +18,23 @@ import {
 } from "@state/projects/filter";
 
 const Projects = () => {
+  const searchQuery = useSelector(selectSearch);
   const filterByOpenSource = useSelector(selectFilterByOpenSource);
   const filterByOnChain = useSelector(selectFilterByOnChain);
   const filterByGrantee = useSelector(selectFilterByGrantee);
 
+  const setProjectsSearch = (e) => {
+    dispatch(setSearch(e.target.value));
+  };
+
   return (
     <div className={css.projects}>
       <h2 className="pageTitle">discover new projects</h2>
-      <Search />
+      <Search
+        placeholder={"search by project name"}
+        searchQuery={searchQuery}
+        setSearch={setProjectsSearch}
+      />
       <div className={css.controls}>
         <div className={css.controlsI}>
           <Category />

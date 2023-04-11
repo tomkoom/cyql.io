@@ -1,5 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+// admin
+import adminSearch from "./admin/adminSearch";
+
 // api
 import icpPrice from "./api/icpPrice";
 
@@ -18,8 +21,6 @@ import category from "./projects/category";
 import filter from "./projects/filter";
 import search from "./projects/search";
 import sort from "./projects/sort";
-
-// juno
 import junoProjects from "./junoProjects";
 
 // ...
@@ -57,6 +58,9 @@ const rootReducer = combineReducers({
   profiles,
   shareModal,
   nftModal,
+
+  // admin
+  adminSearch,
 
   // projects
   junoProjects,

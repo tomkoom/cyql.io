@@ -18,7 +18,7 @@ import { onSnapshot, query, where } from "firebase/firestore";
 import { pColRef } from "@firestore/firestore-collections";
 
 // juno https://juno.build/docs/intro
-import { initJuno, listDocs } from "@junobuild/core";
+import { initJuno, listDocs, getDoc, setDoc, delDoc } from "@junobuild/core";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -176,6 +176,23 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
+      {/* <p
+        onClick={async () => {
+          const doc = await getDoc({
+            collection: "projects",
+            key: "123",
+          });
+
+          console.log(doc);
+
+          await delDoc({
+            collection: "projects",
+            doc,
+          }).then(() => console.log("deleted"));
+        }}
+      >
+        del doc
+      </p> */}
       <Summary />
       <Nav />
 

@@ -13,15 +13,13 @@ import { Main, Socials, SocialsIc, Tags } from "./index";
 import { useSelector } from "react-redux";
 import { selectCategory } from "@state/projects/category";
 import { selectSearch } from "@state/projects/search";
-import { selectItemsVisibleProjects, setItemsVisibleProjects } from "@state/loadMore";
+import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@state/loadMore";
 import { selectSort } from "@state/projects/sort";
 import {
   selectFilterByOpenSource,
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@state/projects/filter";
-
-// juno
 import { selectJunoProjects } from "@state/junoProjects";
 
 const ProjectList = () => {
@@ -45,12 +43,12 @@ const ProjectList = () => {
   const sortLeastUp = (a, b) => (a && b ? a.length - b.length : !a && b ? -1 : a && !b ? 1 : 0);
 
   // filter
-  const bySearch = (p) =>
+  const filterBySearch = (p) =>
     searchQuery === "" ? p : p.name.toLowerCase().includes(searchQuery.toLowerCase());
-  const byCategory = (p) => (category === "All" ? p : p.category.includes(category));
-  const byOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
-  const byOnChain = (p) => (onChain === null ? p : onChain ? p.canister : !p.canister);
-  const byGrantee = (p) => (grantee === null ? p : grantee ? p.grantee : !p.canister);
+  const filterByCategory = (p) => (category === "All" ? p : p.category.includes(category));
+  const filterByOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
+  const filterByOnChain = (p) => (onChain === null ? p : onChain ? p.canister : !p.canister);
+  const filterByGrantee = (p) => (grantee === null ? p : grantee ? p.grantee : !p.canister);
 
   return (
     <div>
@@ -59,11 +57,11 @@ const ProjectList = () => {
       ) : (
         <ul className={css.li}>
           {projects
-            .filter((p) => bySearch(p))
-            .filter((p) => byCategory(p))
-            .filter((p) => byOpenSource(p))
-            .filter((p) => byOnChain(p))
-            .filter((p) => byGrantee(p))
+            .filter((p) => filterBySearch(p))
+            .filter((p) => filterByCategory(p))
+            .filter((p) => filterByOpenSource(p))
+            .filter((p) => filterByOnChain(p))
+            .filter((p) => filterByGrantee(p))
             .sort((a, b) => sort === "newest-first" && sortNewest(a.added, b.added))
             .sort((a, b) => sort === "oldest-first" && sortOldest(a.added, b.added))
             .sort((a, b) => sort === "most-upvoted" && sortMostUp(a.upvotedBy, b.upvotedBy))

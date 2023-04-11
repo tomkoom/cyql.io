@@ -5,6 +5,7 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: var(--fwBold);
+  margin-bottom: 1rem;
 }
 
 .tab {

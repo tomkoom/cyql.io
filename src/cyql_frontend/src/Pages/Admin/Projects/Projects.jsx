@@ -11,17 +11,22 @@ import {
 } from "@utils/format";
 
 // components
-import Search from "./Search/Search";
+import { Search } from "@components/ui-elements/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectJunoProjects } from "@state/junoProjects";
 import { setProjectModal, setProject, setMode } from "@state/modals/projectModal";
+import { setAdminSearch, selectAdminSearch } from "@state/admin/adminSearch";
 
 const Projects = () => {
   const dispatch = useDispatch();
   const projects = useSelector(selectJunoProjects);
-  const [search, setSearch] = useState("");
+  const searchQuery = useSelector(selectAdminSearch);
+
+  const setAdminSearch = (e) => {
+    dispatch(setAdminSearch(e.target.value));
+  };
 
   const editProject = (project) => {
     dispatch(setMode("edit"));
@@ -31,7 +36,11 @@ const Projects = () => {
 
   return (
     <div className={css.projects}>
-      <Search setSearch={setSearch} />
+      <Search
+        placeholder={"search by project name"}
+        searchQuery={searchQuery}
+        setSearch={setAdminSearch}
+      />
 
       <div className={css.table}>
         <div className={css.rowHeader}>
@@ -62,20 +71,20 @@ const Projects = () => {
         </div>
 
         {projects
-          .filter((p) => {
-            if (search === "") {
-              return p;
-            } else if (p.name.toLowerCase().includes(search.toLowerCase())) {
-              return p;
+          .filter((project) => {
+            if (searchQuery === "") {
+              return project;
+            } else if (project.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+              return project;
             }
           })
           .map((p, i) => (
-            <div className={css.row} key={p.id} onClick={() => editProject(p)}>
+            <div className={css.row} key={p.__id__} onClick={() => editProject(p)}>
               <div className={css.coll25}>
                 <p>{projects.length - i}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.id && formatStr12(p.id)}</p>
+                <p>{p.__id__ && formatStr12(p.__id__)}</p>
               </div>
               <div className={css.coll139}>
                 <p>{p.name && formatStr16(p.name)}</p>
