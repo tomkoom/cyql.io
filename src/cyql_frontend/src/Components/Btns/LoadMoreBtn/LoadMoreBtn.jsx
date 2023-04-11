@@ -3,7 +3,7 @@ import css from "./LoadMoreBtn.module.css";
 
 // redux
 import { useDispatch } from "react-redux";
-import { setItemsVisible } from "../../../State/loadMore";
+import { setItemsVisible } from "../../../state/loadMore";
 
 const LoadMoreBtn = ({ loading }) => {
   const dispatch = useDispatch();

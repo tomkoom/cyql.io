@@ -58,6 +58,7 @@
     "firebase": "^9.6.11",
     "firestore-export-import": "^1.1.0",
     "history": "^4.10.1",
+    "nanoid": "^4.0.2",
     "react": "^17.0.2",
     "react-cookie-consent": "^7.3.1",
     "react-dom": "^17.0.2",

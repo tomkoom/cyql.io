@@ -18,7 +18,7 @@ import { onSnapshot, query, where } from "firebase/firestore";
 import { pColRef } from "@firestore/firestore-collections";
 
 // juno https://juno.build/docs/intro
-import { initJuno, listDocs, getDoc, setDoc, delDoc } from "@junobuild/core";
+import { initJuno, listDocs } from "@junobuild/core";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -34,15 +34,15 @@ import { selectTheme } from "@state/theme";
 import { setUpvotedProjects } from "@state/profile/profile";
 import { setJunoProjects } from "@state/junoProjects";
 
-// state – modals
+// state modals
 import {
   setSignInModal,
   selectSignInModal,
   setMobileMenuModal,
   selectMobileMenuModal,
 } from "@state/modals/modals";
-import { selectProjectModal } from "@state/modals/projectModal";
-import { selectShareModal } from "./State/modals/shareModal";
+import { selectProjectModal } from "@state/modals/projectModal/projectModal";
+import { selectShareModal } from "./state/modals/shareModal";
 import { selectNftModal } from "@state/modals/nftModal";
 
 // methods
@@ -176,23 +176,6 @@ const App = () => {
 
   return (
     <div className={`app ${theme}`}>
-      {/* <p
-        onClick={async () => {
-          const doc = await getDoc({
-            collection: "projects",
-            key: "123",
-          });
-
-          console.log(doc);
-
-          await delDoc({
-            collection: "projects",
-            doc,
-          }).then(() => console.log("deleted"));
-        }}
-      >
-        del doc
-      </p> */}
       <Summary />
       <Nav />
 

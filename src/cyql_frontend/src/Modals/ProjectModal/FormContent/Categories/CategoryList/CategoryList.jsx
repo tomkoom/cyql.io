@@ -4,13 +4,13 @@ import css from "./CategoryList.module.css";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategories } from "@state/modals/categories";
-import { selectProjectCategory, setProjectCategory } from "@state/modals/projectModal";
+import { selectProjectCategory, setProjectCategory } from "@state/modals/projectModal/projectModal";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
-  const pCat = useSelector(selectProjectCategory);
-  const pCatCopy = [...pCat];
+  const projectCategory = useSelector(selectProjectCategory);
+  const pCatCopy = [...projectCategory];
 
   const add = (c) => {
     if (pCatCopy.includes(c)) {
@@ -29,7 +29,7 @@ const CategoryList = () => {
         .map((c) => (
           <li
             className={
-              pCat.includes(c.label) ? `${css.categoryListI} ${css.selected}` : css.categoryListI
+              projectCategory.includes(c.label) ? `${css.categoryListI} ${css.selected}` : css.categoryListI
             }
             key={c.id}
             onClick={() => {

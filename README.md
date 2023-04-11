@@ -9,7 +9,7 @@ stack:
 - react.js
 - vessel - dfx package tool https://github.com/dfinity/vessel
 - juno - datastore https://juno.build/
-- internet computer sdk
+- internet computer sdk https://internetcomputer.org/docs/current/home
 
 ```
 npm install

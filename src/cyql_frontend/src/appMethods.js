@@ -1,6 +1,6 @@
 // state
-import store from "./State/_store";
-import { setProfiles as setProfilesAction } from "./State/profiles/profiles";
+import store from "./state/_store";
+import { setProfiles as setProfilesAction } from "./state/profiles/profiles";
 
 const addUserToDb = async (actor, accountIdStr, signInMethod) => {
   const timestamp = Date.now();

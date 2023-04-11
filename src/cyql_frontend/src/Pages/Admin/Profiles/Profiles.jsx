@@ -2,12 +2,12 @@ import React from "react";
 import css from "./Profiles.module.css";
 
 // utils
-import { formatId } from "../../../Utils/format";
-import { formatDate } from "../../../Utils/format";
+import { formatId } from "../../../utils/format";
+import { formatDate } from "../../../utils/format";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProfiles } from "../../../State/profiles/profiles";
+import { selectProfiles } from "../../../state/profiles/profiles";
 
 const Profiles = () => {
   const profiles = useSelector(selectProfiles);

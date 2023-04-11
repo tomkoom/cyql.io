@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const projectInitialState = {
   // main
+  __id__: "",
   name: "",
   id: "",
   slug: "",
@@ -9,7 +10,6 @@ const projectInitialState = {
   website: "",
   canister: "",
   logo: "",
-  // cover: "",
   description: "",
 
   // socials

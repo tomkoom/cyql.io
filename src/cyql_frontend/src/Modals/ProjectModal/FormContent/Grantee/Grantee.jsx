@@ -3,7 +3,7 @@ import css from "./Grantee.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProject, setProjectGrantee } from "@state/modals/projectModal";
+import { selectProject, setProjectGrantee } from "@state/modals/projectModal/projectModal";
 
 const Grantee = () => {
   const dispatch = useDispatch();

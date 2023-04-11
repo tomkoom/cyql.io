@@ -9,11 +9,11 @@ import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProject, setProject } from "@state/modals/projectModal";
+import { selectProject, setProject } from "@state/modals/projectModal/projectModal";
 
 const FormContent = () => {
   const dispatch = useDispatch();
-  const p = useSelector(selectProject);
+  const project = useSelector(selectProject);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,13 +27,13 @@ const FormContent = () => {
       </div>
 
       <div className={css.section}>
-        <h5 className={css.title}>Main</h5>
+        <h5 className={css.title}>main</h5>
         {main.map((input) => (
           <Input
             id={input.id}
             label={input.label}
             type={input.type}
-            value={p[input.id]}
+            value={project[input.id]}
             onChange={handleChange}
             key={input.id}
           />
@@ -43,13 +43,13 @@ const FormContent = () => {
       </div>
 
       <div className={css.section}>
-        <h5 className={css.sectionTitle}>Social networks</h5>
+        <h5 className={css.sectionTitle}>social networks</h5>
         {socials.map((input) => (
           <Input
             id={input.id}
             label={input.label}
             type={input.type}
-            value={p[input.id]}
+            value={project[input.id]}
             onChange={handleChange}
             key={input.id}
           />
@@ -57,26 +57,26 @@ const FormContent = () => {
       </div>
 
       <div className={css.section}>
-        <h5 className={css.sectionTitle}>Additional info</h5>
+        <h5 className={css.sectionTitle}>additional info</h5>
         {additional.map((input) => (
           <Input
             id={input.id}
             label={input.label}
             type={input.type}
-            value={p[input.id]}
+            value={project[input.id]}
             onChange={handleChange}
             key={input.id}
           />
         ))}
       </div>
 
-      {p.category.includes("NFTs") ? (
+      {project.category.includes("NFTs") ? (
         <div className={css.section}>
-          <h5 className={css.sectionTitle}>NFT data</h5>
+          <h5 className={css.sectionTitle}>nft data</h5>
           <Select
             id="nftSaleStatus"
             label="NFT sale status"
-            value={p.nftSaleStatus}
+            value={project.nftSaleStatus}
             onChange={handleChange}
             selectOptions={nftSaleStatusOptions}
           />
@@ -86,7 +86,7 @@ const FormContent = () => {
               id={input.id}
               label={input.label}
               type={input.type}
-              value={p[input.id]}
+              value={project[input.id]}
               onChange={handleChange}
               key={input.id}
             />

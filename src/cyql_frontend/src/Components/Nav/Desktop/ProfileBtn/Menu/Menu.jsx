@@ -5,14 +5,14 @@ import css from "./Menu.module.css";
 import { IdImg } from "../../../../Profile/index";
 
 // icons
-import { iSignOut } from "../../../../../Icons/Icons";
-import CrossIcon from "../../../../../Icons/CrossIcon/CrossIcon";
+import { iSignOut } from "../../../../ui-elements/icons/Icons";
+import CrossIcon from "../../../../ui-elements/icons/CrossIcon/CrossIcon";
 
 // auth
 import { useAuth } from "../../../../../Context/AuthContext";
 
 // routes
-import { toProfile } from "../../../../../Routes/routes";
+import { toProfile } from "../../../../../routes/routes";
 
 const Menu = ({ setMenuIsOpen }) => {
   const { principalIdStr, signOut } = useAuth();

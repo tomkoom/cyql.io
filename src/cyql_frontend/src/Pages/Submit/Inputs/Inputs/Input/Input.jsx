@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectProjectSubmissionData,
   setProjectSubmissionData,
-} from "../../../../../State/projectSubmission";
+} from "../../../../../state/projectSubmission";
 
 const InputsItem = ({ inputs }) => {
   const dispatch = useDispatch();

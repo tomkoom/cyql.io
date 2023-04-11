@@ -6,7 +6,7 @@ import CrossIcon from "@icons/CrossIcon/CrossIcon";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProject, setCloseProjectModal } from "@state/modals/projectModal";
+import { selectProject, setCloseProjectModal } from "@state/modals/projectModal/projectModal";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import { history } from "./history";
+import { history } from "./history.js";
 
 const goBack = () => {
   if (history.length > 2) {

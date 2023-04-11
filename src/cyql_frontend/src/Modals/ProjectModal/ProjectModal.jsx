@@ -3,13 +3,22 @@ import css from "./ProjectModal.module.css";
 
 // components
 import { Controls, FormContent, Header } from "./index";
+import { Loader } from "@components/index";
 
 // state
-import { useDispatch } from "react-redux";
-import { setCloseProjectModal } from "@state/modals/projectModal";
+import { useDispatch, useSelector } from "react-redux";
+import { setCloseProjectModal } from "@state/modals/projectModal/projectModal";
+import {
+  selectProjectModalLoadingAdd,
+  selectProjectModalLoadingEdit,
+  selectProjectModalLoadingDel,
+} from "@state/modals/projectModal/projectModalLoading";
 
 const ProjectModal = () => {
   const dispatch = useDispatch();
+  const addIsLoading = useSelector(selectProjectModalLoadingAdd);
+  const editIsLoading = useSelector(selectProjectModalLoadingEdit);
+  const delIsLoading = useSelector(selectProjectModalLoadingDel);
 
   // close modal on esc
   useEffect(() => {
@@ -24,18 +33,22 @@ const ProjectModal = () => {
     };
   }, []);
 
-  // add has token
-
   return (
     <div className={css.modal}>
-      <div className={css.content}>
-        <Header />
+      {/* loading (?) */}
 
-        <div className={css.form}>
-          <FormContent />
-          <Controls />
+      {addIsLoading || editIsLoading || delIsLoading ? (
+        <Loader />
+      ) : (
+        <div className={css.content}>
+          <Header />
+
+          <div className={css.form}>
+            <FormContent />
+            <Controls />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

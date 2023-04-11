@@ -2,11 +2,11 @@ import React from "react";
 import css from "./FooterTop.module.css";
 
 // icons
-import { iPlusSquare, iComments, iHeart } from "../../../Icons/Icons";
+import { iPlusSquare, iComments, iHeart } from "../../ui-elements/icons/Icons";
 import FooterTop from "./FooterTop/FooterTop";
 
 // routes
-import { toSubmit } from "../../../Routes/routes";
+import { toSubmit } from "../../../routes/routes";
 
 const FooterTop = () => {
   return (

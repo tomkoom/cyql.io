@@ -17,7 +17,6 @@ import {
 // state
 import { useSelector } from "react-redux";
 import { selectJunoProjects } from "@state/junoProjects";
-import { selectProjects } from "@state/projects";
 
 const Home = () => {
   const projects = useSelector(selectJunoProjects);

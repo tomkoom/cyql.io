@@ -8,11 +8,11 @@ import { useAuth } from "../../../../Context/AuthContext";
 import { upvote, unUpvote } from "../../../../Funcs/upvote";
 
 // icons
-import { iCaretUp, iCheck } from "../../../../Icons/Icons";
+import { iCaretUp, iCheck } from "../../../../Components/ui-elements/icons/Icons";
 
 // state
 import { useDispatch } from "react-redux";
-import { setSignInModal } from "../../../../State/modals/modals";
+import { setSignInModal } from "../../../../state/modals/modals";
 
 const UpvoteBtn = ({ idx, upvotedBy }) => {
   const { user } = useAuth();

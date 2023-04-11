@@ -6,7 +6,7 @@ import { Profiles, Projects, Tabs } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setProjectModal, setMode } from "@state/modals/projectModal";
+import { setProjectModal, setMode } from "@state/modals/projectModal/projectModal";
 
 const Admin = () => {
   const [tab, setTab] = useState("projects");
@@ -20,9 +20,9 @@ const Admin = () => {
   return (
     <div className={css.admin}>
       <div className={css.title}>
-        <h2 className="pageTitle">Admin</h2>
+        <h2 className="pageTitle">admin</h2>
         <button className="primaryBtn" onClick={addProject}>
-          Add project
+          add project
         </button>
       </div>
       <Tabs tab={tab} setTab={setTab} />

@@ -3,11 +3,11 @@ import css from "./Categories.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "../../../../State/modals/categories";
+import { selectCategories } from "../../../../state/modals/categories";
 import {
   selectProjectSubmissionData,
   setProjectSubmissionData,
-} from "../../../../State/projectSubmission";
+} from "../../../../state/projectSubmission";
 
 const Categories = () => {
   const dispatch = useDispatch();

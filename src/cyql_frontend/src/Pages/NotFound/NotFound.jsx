@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./NotFound.module.css";
-import { toHome } from "../../Routes/routes";
+import { toHome } from "../../routes/routes";
 
 const NotFound = () => {
   return (

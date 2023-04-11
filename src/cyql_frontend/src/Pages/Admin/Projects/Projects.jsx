@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./Projects.module.css";
 
 // formatters
@@ -16,7 +16,7 @@ import { Search } from "@components/ui-elements/index";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectJunoProjects } from "@state/junoProjects";
-import { setProjectModal, setProject, setMode } from "@state/modals/projectModal";
+import { setProjectModal, setProject, setMode } from "@state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@state/admin/adminSearch";
 
 const Projects = () => {
@@ -24,7 +24,7 @@ const Projects = () => {
   const projects = useSelector(selectJunoProjects);
   const searchQuery = useSelector(selectAdminSearch);
 
-  const setAdminSearch = (e) => {
+  const setSearch = (e) => {
     dispatch(setAdminSearch(e.target.value));
   };
 
@@ -39,7 +39,7 @@ const Projects = () => {
       <Search
         placeholder={"search by project name"}
         searchQuery={searchQuery}
-        setSearch={setAdminSearch}
+        setSearch={setSearch}
       />
 
       <div className={css.table}>
