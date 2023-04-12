@@ -29,6 +29,7 @@ const icpPriceSlice = createSlice({
     icpPriceError: null,
   },
   // reducers: {},
+  // https://redux-toolkit.js.org/api/createSlice#the-extrareducers-builder-callback-notation
   extraReducers: {
     [fetchIcpPrice.pending]: (state) => {
       state.icpPriceStatus = "loading";

@@ -2,11 +2,10 @@ import React from "react";
 import css from "./FooterTop.module.css";
 
 // icons
-import { iPlusSquare, iComments, iHeart } from "../../ui-elements/icons/Icons";
-import FooterTop from "./FooterTop/FooterTop";
+import { iPlusSquare, iComments, iHeart } from "@icons/Icons";
 
 // routes
-import { toSubmit } from "../../../routes/routes";
+import { toSubmit } from "@routes/routes";
 
 const FooterTop = () => {
   return (
@@ -34,8 +33,7 @@ const FooterTop = () => {
           <div>
             <h5 className={css.title}>Reach out</h5>
             <p className="text">
-              Didn't find what you were looking for or want to collaborate? Reach out for us, we are
-              happy to support and cooperate.
+              Didn't find what you were looking for or want to collaborate? Reach out for us, we are happy to support and cooperate.
             </p>
           </div>
         </a>
@@ -59,16 +57,6 @@ const FooterTop = () => {
               donation
             </a>
             .
-            {/* <span>
-              <a
-                className={css.donationAddress}
-                href="https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
-                rel="noreferrer noopener"
-                target="_blank"
-              >
-                edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1
-              </a>
-            </span> */}
           </p>
         </div>
       </li>

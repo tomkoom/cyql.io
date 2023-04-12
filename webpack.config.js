@@ -65,9 +65,9 @@ module.exports = {
       // src
       "@components": path.resolve(__dirname, "src", frontendDirectory, "src/Components"),
       "@constants": path.resolve(__dirname, "src", frontendDirectory, "src/constants"),
-      "@context": path.resolve(__dirname, "src", frontendDirectory, "src/Context"),
-      "@firestore": path.resolve(__dirname, "src", frontendDirectory, "src/Firestore"),
-      "@hooks": path.resolve(__dirname, "src", frontendDirectory, "src/Hooks"),
+      "@context": path.resolve(__dirname, "src", frontendDirectory, "src/context"),
+      "@firestore": path.resolve(__dirname, "src", frontendDirectory, "src/firestore"),
+      "@hooks": path.resolve(__dirname, "src", frontendDirectory, "src/hooks"),
       "@icons": path.resolve(
         __dirname,
         "src",

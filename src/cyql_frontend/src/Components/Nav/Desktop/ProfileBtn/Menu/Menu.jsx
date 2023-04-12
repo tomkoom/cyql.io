@@ -9,7 +9,7 @@ import { iSignOut } from "../../../../ui-elements/icons/Icons";
 import CrossIcon from "../../../../ui-elements/icons/CrossIcon/CrossIcon";
 
 // auth
-import { useAuth } from "../../../../../Context/AuthContext";
+import { useAuth } from "../../../../../context/AuthContext";
 
 // routes
 import { toProfile } from "../../../../../routes/routes";

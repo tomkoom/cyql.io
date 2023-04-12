@@ -2,7 +2,7 @@ import React from "react";
 import css from "./UpvoteBtn.module.css";
 
 // auth
-import { useAuth } from "../../../../Context/AuthContext";
+import { useAuth } from "../../../../context/AuthContext";
 
 // shared functions
 import { upvote, unUpvote } from "../../../../Funcs/upvote";
