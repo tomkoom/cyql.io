@@ -12,13 +12,13 @@ const Tabs = ({ tab, setTab }) => {
         className={tab === "projects" ? `${css.tab} ${css.active}` : css.tab}
         onClick={() => changeTab("projects")}
       >
-        Projects
+        projects
       </li>
       <li
         className={tab === "profiles" ? `${css.tab} ${css.active}` : css.tab}
         onClick={() => changeTab("profiles")}
       >
-        Profiles
+        profiles
       </li>
     </ul>
   );

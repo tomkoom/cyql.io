@@ -3,11 +3,11 @@ import "./App.css";
 import "@styles/root.css";
 import "@styles/theme.css";
 import "@styles/typography.css";
-
-// etc
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
-import { c } from "../../../constants/constants";
+
+// constants
+import { plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2 } from "@constants/constants";
 
 // utils
 import { useWindowSize } from "@hooks/useWindowSize";
@@ -48,12 +48,6 @@ import { selectNftModal } from "@state/modals/nftModal";
 // methods
 import { addUserToDb /* setProfiles */ } from "./appMethods";
 
-// constants
-const PLUG_ADMIN_1 = c.PLUG_ADMIN_1;
-const PLUG_ADMIN_2 = c.PLUG_ADMIN_2;
-const STOIC_ADMIN_1 = c.STOIC_ADMIN_1;
-const STOIC_ADMIN_2 = c.STOIC_ADMIN_2;
-
 // juno
 const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
 
@@ -76,6 +70,8 @@ const App = () => {
   } = useAuth();
   // const { signinWithII } = junoUseAuth();
   const [deviceWidth] = useWindowSize();
+
+  // useEffect(() => console.log(console.log(process.env.DB_HOST)));
 
   // juno start
   useEffect(() => {
@@ -206,10 +202,10 @@ const App = () => {
               </Route>
             )}
 
-            {(isAuthenticated && principalIdStr === PLUG_ADMIN_1) ||
-            (isAuthenticated && principalIdStr === STOIC_ADMIN_1) ||
-            (isAuthenticated && principalIdStr === PLUG_ADMIN_2) ||
-            (isAuthenticated && principalIdStr === STOIC_ADMIN_2) ? (
+            {(isAuthenticated && principalIdStr === plugAdmin1) ||
+            (isAuthenticated && principalIdStr === stoicAdmin1) ||
+            (isAuthenticated && principalIdStr === plugAdmin2) ||
+            (isAuthenticated && principalIdStr === stoicAdmin2) ? (
               <Route exact path="/admin">
                 <Admin />
               </Route>

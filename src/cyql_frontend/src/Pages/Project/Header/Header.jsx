@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Header.module.css";
 
 // constants
-import { c } from "../../../../../../constants/constants";
+import { plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2 } from "@constants/constants";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -14,10 +14,10 @@ import { UpvtBtn } from "@components/index";
 const Header = ({ project }) => {
   const { principalIdStr } = useAuth();
   const isAdmin =
-    principalIdStr === c.PLUG_ADMIN_1 ||
-    principalIdStr === c.PLUG_ADMIN_2 ||
-    principalIdStr === c.STOIC_ADMIN_1 ||
-    principalIdStr === c.STOIC_ADMIN_2;
+    principalIdStr === plugAdmin1 ||
+    principalIdStr === plugAdmin2 ||
+    principalIdStr === stoicAdmin1 ||
+    principalIdStr === stoicAdmin2;
 
   return (
     <div className={css.header}>

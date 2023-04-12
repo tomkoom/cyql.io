@@ -14,11 +14,11 @@
 node_modules/
 dist/
 
-# constants
-constants/
-
 # firebase
 firebase/
 
 # vessel
 .vessel/
+
+# dotenv
+.env

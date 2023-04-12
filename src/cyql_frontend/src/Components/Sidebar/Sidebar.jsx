@@ -1,6 +1,8 @@
 import React from "react";
 import css from "./Sidebar.module.css";
-import { c } from "../../../../../constants/constants";
+
+// constants
+import { plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2 } from "@constants/constants";
 
 // icons
 import { iCube, iPlus, iList } from "@icons/Icons";
@@ -16,10 +18,6 @@ import NavLink from "./NavLink/NavLink";
 
 const Sidebar = () => {
   const { principalIdStr } = useAuth();
-  const plugAdmin1 = c.PLUG_ADMIN_1;
-  const plugAdmin2 = c.PLUG_ADMIN_2;
-  const stoicAdmin1 = c.STOIC_ADMIN_1;
-  const stoicAdmin2 = c.STOIC_ADMIN_2;
 
   return (
     <div className={css.sidebar}>

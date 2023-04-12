@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-// const CopyPlugin = require("copy-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
 
 let localCanisters, prodCanisters, canisters;
 
@@ -61,8 +61,10 @@ module.exports = {
       // "@": path.resolve(__dirname, "src"),
       "@": path.resolve(__dirname, "src"),
       "@assets": path.resolve(__dirname, "src", frontendDirectory, "assets"),
+
       // src
       "@components": path.resolve(__dirname, "src", frontendDirectory, "src/Components"),
+      "@constants": path.resolve(__dirname, "src", frontendDirectory, "src/constants"),
       "@context": path.resolve(__dirname, "src", frontendDirectory, "src/Context"),
       "@firestore": path.resolve(__dirname, "src", frontendDirectory, "src/Firestore"),
       "@hooks": path.resolve(__dirname, "src", frontendDirectory, "src/Hooks"),
@@ -115,16 +117,6 @@ module.exports = {
       template: path.join(__dirname, asset_entry),
       cache: false,
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.join(__dirname, "src", "cyql_frontend", "assets"),
-    //       to: path.join(__dirname, "dist", "cyql_frontend"),
-    //     },
-    //   ],
-    // }),
-    // dfx 0.11.0
-    // https://internetcomputer.org/docs/current/developer-docs/updates/release-notes/#duplicate-asset-keys-are-now-reported-as-errors
     new webpack.EnvironmentPlugin({
       NODE_ENV: "development",
       CYQL_BACKEND_CANISTER_ID: canisters["cyql_backend"],
@@ -133,6 +125,7 @@ module.exports = {
       Buffer: [require.resolve("buffer/"), "Buffer"],
       process: require.resolve("process/browser"),
     }),
+    new Dotenv(),
   ],
   // proxy /api to port 8000 during development
   devServer: {
