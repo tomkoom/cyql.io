@@ -17,8 +17,5 @@ dist/
 # firebase
 firebase/
 
-# vessel
-.vessel/
-
 # dotenv
 .env

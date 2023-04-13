@@ -9,7 +9,7 @@ import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Time "mo:base/Time";
 
-import Canistergeek "mo:canistergeek/canistergeek";
+import Canistergeek "mo:canistergeek/canistergeek"; // no vessel
 
 import T "types";
 import Err "errors";
