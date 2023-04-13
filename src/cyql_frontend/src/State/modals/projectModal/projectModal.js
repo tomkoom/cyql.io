@@ -4,14 +4,10 @@ import { projectDoc } from "../../_types/projectDoc";
 const projectModal = createSlice({
   name: "projectModal",
   initialState: {
-    mode: "",
     projectModal: false,
     projectDoc,
   },
   reducers: {
-    setMode(state, { payload }) {
-      state.mode = payload;
-    },
     setProjectModal(state, { payload }) {
       state.projectModal = payload;
     },
@@ -28,7 +24,6 @@ const projectModal = createSlice({
       state.projectDoc.data.description = payload;
     },
     setCloseProjectModal(state) {
-      state.mode = "";
       state.projectDoc = projectDoc;
       state.projectModal = false;
     },

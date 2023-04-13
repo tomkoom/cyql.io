@@ -9,15 +9,13 @@ import { Loader } from "@components/index";
 import { useDispatch, useSelector } from "react-redux";
 import { setCloseProjectModal } from "@state/modals/projectModal/projectModal";
 import {
-  selectProjectModalLoadingAdd,
-  selectProjectModalLoadingEdit,
+  selectProjectModalLoadingSet,
   selectProjectModalLoadingDel,
 } from "@state/modals/projectModal/projectModalLoading";
 
 const ProjectModal = () => {
   const dispatch = useDispatch();
-  const addIsLoading = useSelector(selectProjectModalLoadingAdd);
-  const editIsLoading = useSelector(selectProjectModalLoadingEdit);
+  const setIsLoading = useSelector(selectProjectModalLoadingSet);
   const delIsLoading = useSelector(selectProjectModalLoadingDel);
 
   // close modal on esc
@@ -35,7 +33,7 @@ const ProjectModal = () => {
 
   return (
     <div className={css.modal}>
-      {addIsLoading || editIsLoading || delIsLoading ? (
+      {setIsLoading || delIsLoading ? (
         <Loader />
       ) : (
         <div className={css.content}>

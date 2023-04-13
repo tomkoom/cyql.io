@@ -6,12 +6,11 @@ import { iEdit } from "@icons/Icons";
 
 // state
 import { useDispatch } from "react-redux";
-import { setProjectModal, setProjectDoc, setMode } from "@state/modals/projectModal/projectModal";
+import { setProjectModal, setProjectDoc } from "@state/modals/projectModal/projectModal";
 
 const EditBtn = ({ projectDoc }) => {
   const dispatch = useDispatch();
   const editProject = () => {
-    dispatch(setMode("edit"));
     dispatch(setProjectDoc(projectDoc));
     dispatch(setProjectModal(true));
   };

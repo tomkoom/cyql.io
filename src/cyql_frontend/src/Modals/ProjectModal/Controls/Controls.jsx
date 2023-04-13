@@ -6,14 +6,9 @@ import { getDoc, setDoc, delDoc } from "@junobuild/core";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
+import { selectProjectDoc, setCloseProjectModal } from "@state/modals/projectModal/projectModal";
 import {
-  selectProjectDoc,
-  selectMode,
-  setCloseProjectModal,
-} from "@state/modals/projectModal/projectModal";
-import {
-  setProjectModalLoadingAdd,
-  setProjectModalLoadingEdit,
+  setProjectModalLoadingSet,
   setProjectModalLoadingDel,
 } from "@state/modals/projectModal/projectModalLoading";
 
@@ -26,7 +21,7 @@ const Controls = () => {
   const [deleteConfirm, setDeleteConfirm] = useState(false);
 
   // state
-  const mode = useSelector(selectMode);
+  // const mode = useSelector(selectMode);
   const projectDoc = useSelector(selectProjectDoc);
 
   // juno
@@ -34,58 +29,26 @@ const Controls = () => {
 
   const submitProject = async () => {
     const timestamp = Date.now();
-    const projectId = nanoid();
 
+    // check if doc exists
     const doc = await getDoc({ collection, key: projectDoc.key });
+    const key = doc === undefined ? nanoid() : projectDoc.key;
 
+    dispatch(setProjectModalLoadingSet(true));
     await setDoc({
       collection,
       doc: {
-        key: projectDoc.key,
+        key,
         data: {
           ...projectDoc.data,
+          ...(doc === undefined ? { added: timestamp } : { edited: timestamp }),
         },
+        ...(doc !== undefined && { updated_at: doc.updated_at }),
       },
-    });
-
-    if (mode === "add") {
-      dispatch(setProjectModalLoadingAdd(true));
-      const docAdd = {
-        key: projectId,
-        data: {
-          ...projectDoc.data,
-          __id__: projectId,
-          added: timestamp,
-        },
-      };
-      await setDoc({
-        collection,
-        doc: docAdd,
-      })
-        .then(() => console.log("Project added with the id ", projectId))
-        .catch((e) => console.log(e));
-      dispatch(setProjectModalLoadingAdd(false));
-
-      // edit
-      // fix keys / ids. setdoc by key, not id
-    } else if (mode === "edit") {
-      dispatch(setProjectModalLoadingEdit(true));
-      const docEdit = {
-        key: projectDoc.key,
-        updated_at: timestamp,
-        data: {
-          ...projectDoc.data,
-          edited: timestamp,
-        },
-      };
-      await setDoc({
-        collection,
-        doc: docEdit,
-      })
-        .then(() => console.log("Project edited with the id ", projectDoc.key))
-        .catch((e) => console.log(e));
-      dispatch(setProjectModalLoadingEdit(false));
-    }
+    })
+      .then(() => console.log("Doc set with the id ", key))
+      .catch((e) => console.log(e));
+    dispatch(setProjectModalLoadingSet(false));
     closeModal();
     // reload page (?)
   };
