@@ -7,7 +7,8 @@
 stack:
 
 - react.js
-- juno - datastore https://juno.build/
+- firebase/firestore is used to accept project submissions (todo: move to juno)
+- juno - for backend & datastore https://juno.build/
 - internet computer sdk https://internetcomputer.org/docs/current/home
 
 ```
