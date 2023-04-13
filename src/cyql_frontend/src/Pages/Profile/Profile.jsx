@@ -17,35 +17,35 @@ import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@state/profile
 import Id from "./Id/Id";
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const { principalId } = useAuth();
-  const ownsNft = useSelector(selectOwnsNft);
-  const upvotedProjects = useSelector(selectUpvotedProjects);
+  // const dispatch = useDispatch();
+  // const { principalId } = useAuth();
+  // const ownsNft = useSelector(selectOwnsNft);
+  // const upvotedProjects = useSelector(selectUpvotedProjects);
 
-  const getOwnsNft = async () => {
-    const nftCanId = "dtlqp-nqaaa-aaaak-abwna-cai";
-    const nft = Actor.createActor(nft_idl, {
-      agent: new HttpAgent({ mainnethost }),
-      canisterId: nftCanId,
-    });
+  // const getOwnsNft = async () => {
+  //   const nftCanId = "dtlqp-nqaaa-aaaak-abwna-cai";
+  //   const nft = Actor.createActor(nft_idl, {
+  //     agent: new HttpAgent({ mainnethost }),
+  //     canisterId: nftCanId,
+  //   });
 
-    await nft
-      .principalOwnsOne(principalId)
-      .then((res) => {
-        dispatch(setOwnsNft(res));
-      })
-      .catch((e) => console.log(e));
-  };
+  //   await nft
+  //     .principalOwnsOne(principalId)
+  //     .then((res) => {
+  //       dispatch(setOwnsNft(res));
+  //     })
+  //     .catch((e) => console.log(e));
+  // };
 
-  useEffect(() => {
-    getOwnsNft();
-  }, []);
+  // useEffect(() => {
+  //   getOwnsNft();
+  // }, []);
 
   return (
     <div className={css.profile}>
       <Id />
 
-      <div className={css.profileInfo}>
+      {/* <div className={css.profileInfo}>
         <p>
           NFT:{" "}
           <span className={css.badge}>{ownsNft === undefined ? "..." : ownsNft.toString()}</span>
@@ -58,7 +58,7 @@ const Profile = () => {
             ))}
           </ul>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

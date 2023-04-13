@@ -16,7 +16,7 @@ import { Search } from "@components/ui-elements/index";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectProjectsDocs } from "@state/projects";
-import { setProjectModal, setProjectDoc, setMode } from "@state/modals/projectModal/projectModal";
+import { setProjectModal, setProjectDoc } from "@state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@state/admin/adminSearch";
 
 const Projects = () => {
@@ -29,7 +29,6 @@ const Projects = () => {
   };
 
   const editProject = (projectDoc) => {
-    dispatch(setMode("edit"));
     dispatch(setProjectDoc(projectDoc));
     dispatch(setProjectModal(true));
   };

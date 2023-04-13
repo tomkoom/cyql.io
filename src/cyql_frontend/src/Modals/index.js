@@ -1,5 +1,5 @@
 // modals
 
-export { default as ProjectModal } from "./ProjectModal/ProjectModal";
-export { default as ShareModal } from "./ShareModal/ShareModal";
-export { default as SignInModal } from "./SignInModal/SignInModal";
+export { default as ProjectModal } from "./project-modal/ProjectModal";
+export { default as ShareModal } from "./share-modal/ShareModal";
+export { default as SignInModal } from "./sign-in-modal/SignInModal";

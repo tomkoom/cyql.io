@@ -13,11 +13,7 @@ import { plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2 } from "@constants/con
 import { useWindowSize } from "@hooks/useWindowSize";
 import { sortByDateAdded, sortByDate } from "@utils/sort";
 
-// firestore
-import { onSnapshot, query, where } from "firebase/firestore";
-import { pColRef } from "@firestore/firestore-collections";
-
-// juno https://juno.build/docs/intro
+// juno db https://juno.build/docs/intro
 import { initJuno, listDocs } from "@junobuild/core";
 
 // auth
@@ -34,7 +30,7 @@ import { selectTheme } from "@state/theme";
 import { setUpvotedProjects } from "@state/profile/profile";
 import { setProjectsDocs, setProjectsNum } from "@state/projects";
 
-// state modals
+// state: modals
 import {
   setSignInModal,
   selectSignInModal,
@@ -45,33 +41,15 @@ import { selectProjectModal } from "@state/modals/projectModal/projectModal";
 import { selectShareModal } from "./state/modals/shareModal";
 import { selectNftModal } from "@state/modals/nftModal";
 
-// methods
-import { addUserToDb /* setProfiles */ } from "./appMethods";
-
-// juno
-const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
-
 const App = () => {
   // hooks
   const dispatch = useDispatch();
-  const {
-    initDefaultActor,
-    actor,
-    principalId,
-    principalIdStr,
-    accountIdStr,
-    signInMethod,
-    checkConnection,
-    isAuthenticated,
-
-    // juno
-    user,
-    signinWithII,
-  } = useAuth();
-  // const { signinWithII } = junoUseAuth();
+  const { initDefaultActor, principalId, principalIdStr, checkConnection, isAuthenticated } =
+    useAuth();
   const [deviceWidth] = useWindowSize();
 
   // juno start
+  const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
   const bigIntToNum = (p) => {
     return Object.assign({}, p, {
       created_at: Number(p.created_at),
@@ -140,12 +118,6 @@ const App = () => {
     }
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      addUserToDb(actor, accountIdStr, signInMethod);
-    }
-  }, [isAuthenticated]);
-
   // set default actor
   useEffect(() => {
     initDefaultActor();
@@ -156,19 +128,12 @@ const App = () => {
     checkConnection();
   }, []);
 
-  // SET PROFILE INFO
   // get upvoted projects
   useEffect(() => {
     if (isAuthenticated) {
-      const upvProjectsQ = query(pColRef, where("upvotedBy", "array-contains", principalIdStr));
-      const unsubscribe = onSnapshot(upvProjectsQ, (snapshot) => {
-        const upvProjects = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-        dispatch(setUpvotedProjects(upvProjects));
-      });
-      return () => {
-        unsubscribe();
-      };
+      dispatch(setUpvotedProjects([]));
     }
+    // fetch updated data
   }, [isAuthenticated]);
 
   return (

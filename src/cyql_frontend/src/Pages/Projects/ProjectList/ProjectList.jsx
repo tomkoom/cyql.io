@@ -22,9 +22,19 @@ import {
 } from "@state/projects/filter";
 import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 
+// utils: sort, filter
+import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects";
+import {
+  filterBySearch,
+  filterByCategory,
+  filterByOpenSource,
+  filterByOnChain,
+  filterByGrantee,
+} from "./utils/filterProjects";
+
 const ProjectList = () => {
   // projects
-  const projects = useSelector(selectProjectsDocs);
+  const projectsDocs = useSelector(selectProjectsDocs);
   const projectsNum = useSelector(selectProjectsNum);
   const itemsVisible = useSelector(selectItemsVisibleProjects);
 
@@ -36,32 +46,18 @@ const ProjectList = () => {
   const grantee = useSelector(selectFilterByGrantee);
   const sort = useSelector(selectSort);
 
-  // sort
-  const sortNewest = (a, b) => (a && b ? b - a : !a && b ? 1 : a && !b ? -1 : 0);
-  const sortOldest = (a, b) => (a && b ? a - b : !a && b ? -1 : a && !b ? 1 : 0);
-  const sortMostUp = (a, b) => (a && b ? b.length - a.length : !a && b ? 1 : a && !b ? -1 : 0);
-  const sortLeastUp = (a, b) => (a && b ? a.length - b.length : !a && b ? -1 : a && !b ? 1 : 0);
-
-  // filter
-  const filterBySearch = (p) =>
-    searchQuery === "" ? p : p.name.toLowerCase().includes(searchQuery.toLowerCase());
-  const filterByCategory = (p) => (category === "All" ? p : p.category.includes(category));
-  const filterByOpenSource = (p) => (openSource === null ? p : openSource ? p.github : !p.github);
-  const filterByOnChain = (p) => (onChain === null ? p : onChain ? p.canister : !p.canister);
-  const filterByGrantee = (p) => (grantee === null ? p : grantee ? p.grantee : !p.canister);
-
   return (
     <div>
-      {projects.length < 1 ? (
+      {projectsDocs.length < 1 ? (
         <Loader />
       ) : (
         <ul className={css.li}>
-          {projects
-            .filter((p) => filterBySearch(p.data))
-            .filter((p) => filterByCategory(p.data))
-            .filter((p) => filterByOpenSource(p.data))
-            .filter((p) => filterByOnChain(p.data))
-            .filter((p) => filterByGrantee(p.data))
+          {projectsDocs
+            .filter((projectDoc) => filterBySearch(projectDoc, searchQuery))
+            .filter((projectDoc) => filterByCategory(projectDoc, category))
+            .filter((projectDoc) => filterByOpenSource(projectDoc, openSource))
+            .filter((projectDoc) => filterByOnChain(projectDoc, onChain))
+            .filter((projectDoc) => filterByGrantee(projectDoc, grantee))
             .sort((a, b) => sort === "newest-first" && sortNewest(a.data.added, b.data.added))
             .sort((a, b) => sort === "oldest-first" && sortOldest(a.data.added, b.data.added))
             .sort(
@@ -108,11 +104,12 @@ const ProjectList = () => {
                   />
                 </div>
 
-                <div className={css.upvote}>
+                {/* upvote btn */}
+                {/* <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
                     <UpvtBtn id={p.key} upvotedBy={p.data.upvotedBy} />
                   </div>
-                </div>
+                </div> */}
               </li>
             ))}
         </ul>

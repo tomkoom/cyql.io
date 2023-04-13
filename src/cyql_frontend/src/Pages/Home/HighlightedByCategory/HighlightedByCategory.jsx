@@ -69,9 +69,9 @@ const HighlightedByCategory = ({ filter }) => {
             </div>
 
             {/* upvote button */}
-            <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
+            {/* <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
               <UpvtBtn id={project.key} upvotedBy={project.data.upvotedBy} />
-            </div>
+            </div> */}
           </li>
         ))}
     </ul>

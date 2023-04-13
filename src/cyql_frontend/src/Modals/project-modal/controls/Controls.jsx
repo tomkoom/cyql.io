@@ -16,15 +16,9 @@ import {
 import { nanoid } from "@utils/projectId";
 
 const Controls = () => {
-  // hooks
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
-
-  // state
-  // const mode = useSelector(selectMode);
   const projectDoc = useSelector(selectProjectDoc);
-
-  // juno
   const collection = "projects";
 
   const submitProject = async () => {

@@ -25,9 +25,9 @@ const Project = (props) => {
         description={description}
       />
 
-      <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
+      {/* <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
         <UpvtBtn id={id} upvotedBy={upvotedBy} />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -10,33 +10,33 @@ const CategoryList = () => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
   const projectCategory = useSelector(selectProjectCategory);
-  const pCatCopy = [...projectCategory];
+  const projectCategoryCopy = [...projectCategory];
 
-  const add = (c) => {
-    if (pCatCopy.includes(c)) {
-      const index = pCatCopy.indexOf(c);
-      pCatCopy.splice(index, 1);
+  const updateCategory = (category) => {
+    if (projectCategoryCopy.includes(category)) {
+      const index = projectCategoryCopy.indexOf(category);
+      projectCategoryCopy.splice(index, 1);
     } else {
-      pCatCopy.push(c);
+      projectCategoryCopy.push(category);
     }
-    dispatch(setProjectCategory(pCatCopy));
+    dispatch(setProjectCategory(projectCategoryCopy));
   };
 
   return (
     <ul className={css.categoryList}>
       {categories
-        .filter((c) => c.id !== "all")
-        .map((c) => (
+        .filter((category) => category.id !== "all")
+        .map((category) => (
           <li
             className={
-              projectCategory.includes(c.label) ? `${css.categoryListI} ${css.selected}` : css.categoryListI
+              projectCategoryCopy.includes(category.label)
+                ? `${css.categoryListI} ${css.selected}`
+                : css.categoryListI
             }
-            key={c.id}
-            onClick={() => {
-              add(c.label);
-            }}
+            key={category.id}
+            onClick={() => updateCategory(category.label)}
           >
-            <p>{c.label}</p>
+            {category.label}
           </li>
         ))}
     </ul>

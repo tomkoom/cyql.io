@@ -9,7 +9,7 @@ import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectDoc, setProjectDoc } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc, setProjectDocData } from "@state/modals/projectModal/projectModal";
 
 const FormContent = () => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const FormContent = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch(setProjectDoc({ data: { [name]: value } }));
+    dispatch(setProjectDocData({ [name]: value }));
   };
 
   return (
@@ -70,7 +70,7 @@ const FormContent = () => {
         ))}
       </div>
 
-      {projectDoc.data.category.includes("NFTs") ? (
+      {projectDoc.data.category && projectDoc.data.category.includes("NFTs") ? (
         <div className={css.section}>
           <h5 className={css.sectionTitle}>nft data</h5>
           <Select

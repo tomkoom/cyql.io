@@ -110,6 +110,7 @@ const projectDocData2 = {
   // meta
   added: null,
   edited: null,
+  // archived/hidden
 
   // token
   has_token: null,

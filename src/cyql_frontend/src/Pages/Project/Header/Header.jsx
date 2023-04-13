@@ -34,9 +34,9 @@ const Header = ({ projectDoc }) => {
       <div className={css.controls}>
         {isAdmin && <EditBtn projectDoc={projectDoc} />}
         <ShareBtn />
-        <div className={css.btnContainer}>
+        {/* <div className={css.btnContainer}>
           <UpvtBtn id={projectDoc.key} upvotedBy={projectDoc.data.upvotedBy} location="project" />
-        </div>
+        </div> */}
       </div>
     </div>
   );
