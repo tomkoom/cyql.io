@@ -20,12 +20,12 @@ import {
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@state/projects/filter";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 
 const ProjectList = () => {
   // projects
-  const projects = useSelector(selectJunoProjects);
-  const projectsNum = projects.length;
+  const projects = useSelector(selectProjectsDocs);
+  const projectsNum = useSelector(selectProjectsNum);
   const itemsVisible = useSelector(selectItemsVisibleProjects);
 
   // sorting, filtering, etc
@@ -57,56 +57,60 @@ const ProjectList = () => {
       ) : (
         <ul className={css.li}>
           {projects
-            .filter((p) => filterBySearch(p))
-            .filter((p) => filterByCategory(p))
-            .filter((p) => filterByOpenSource(p))
-            .filter((p) => filterByOnChain(p))
-            .filter((p) => filterByGrantee(p))
-            .sort((a, b) => sort === "newest-first" && sortNewest(a.added, b.added))
-            .sort((a, b) => sort === "oldest-first" && sortOldest(a.added, b.added))
-            .sort((a, b) => sort === "most-upvoted" && sortMostUp(a.upvotedBy, b.upvotedBy))
-            .sort((a, b) => sort === "least-upvoted" && sortLeastUp(a.upvotedBy, b.upvotedBy))
+            .filter((p) => filterBySearch(p.data))
+            .filter((p) => filterByCategory(p.data))
+            .filter((p) => filterByOpenSource(p.data))
+            .filter((p) => filterByOnChain(p.data))
+            .filter((p) => filterByGrantee(p.data))
+            .sort((a, b) => sort === "newest-first" && sortNewest(a.data.added, b.data.added))
+            .sort((a, b) => sort === "oldest-first" && sortOldest(a.data.added, b.data.added))
+            .sort(
+              (a, b) => sort === "most-upvoted" && sortMostUp(a.data.upvotedBy, b.data.upvotedBy)
+            )
+            .sort(
+              (a, b) => sort === "least-upvoted" && sortLeastUp(a.data.upvotedBy, b.data.upvotedBy)
+            )
             .slice(0, itemsVisible)
             .map((p) => (
-              <li className={css.liI} key={p.__id__} onClick={() => toApp(p.slug)}>
+              <li className={css.liI} key={p.key} onClick={() => toApp(p.data.slug)}>
                 <div className={css.main}>
-                  <Main logo={p.logo} name={p.name} description={p.description} />
+                  <Main logo={p.data.logo} name={p.data.name} description={p.data.description} />
                 </div>
 
                 <div className={css.tags}>
                   <Tags
-                    category={p.category}
-                    nftSaleStatus={p.nftSaleStatus}
-                    canister={p.canister}
-                    github={p.github}
+                    category={p.data.category}
+                    nftSaleStatus={p.data.nftSaleStatus}
+                    canister={p.data.canister}
+                    github={p.data.github}
                   />
                 </div>
 
                 <div className={css.socials}>
                   <Socials
-                    twitter={p.twitter}
-                    discord={p.discord}
-                    telegram={p.telegram}
-                    github={p.github}
-                    medium={p.medium}
+                    twitter={p.data.twitter}
+                    discord={p.data.discord}
+                    telegram={p.data.telegram}
+                    github={p.data.github}
+                    medium={p.data.medium}
                   />
                 </div>
 
                 <div className={css.socials}>
                   <SocialsIc
-                    dscvr={p.dscvr}
-                    distrikt={p.distrikt}
-                    openChat={p.openChat}
-                    taggr={p.taggr}
-                    seers={p.seers}
-                    nuance={p.nuance}
-                    catalyze={p.catalyze}
+                    dscvr={p.data.dscvr}
+                    distrikt={p.data.distrikt}
+                    openChat={p.data.openChat}
+                    taggr={p.data.taggr}
+                    seers={p.data.seers}
+                    nuance={p.data.nuance}
+                    catalyze={p.data.catalyze}
                   />
                 </div>
 
                 <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvtBtn id={p.id} upvotedBy={p.upvotedBy} />
+                    <UpvtBtn id={p.key} upvotedBy={p.data.upvotedBy} />
                   </div>
                 </div>
               </li>

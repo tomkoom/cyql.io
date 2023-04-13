@@ -64,7 +64,6 @@ const projectInitialState = {
 
   // ...
   verified: null,
-  promoted: null,
   grantee: null,
   upvotedBy: [],
   connectedProjects: [],

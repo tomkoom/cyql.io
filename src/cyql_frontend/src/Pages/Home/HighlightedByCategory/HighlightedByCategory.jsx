@@ -6,7 +6,7 @@ import { iCheckCircle } from "@icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsDocs } from "@state/projects";
 import { toApp } from "@routes/routes";
 
 // components
@@ -14,59 +14,63 @@ import { UpvtBtn } from "@components/index";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
-  const projects = useSelector(selectJunoProjects);
-
-  const sortByVerified = (a, b) => {
-    return a.verified === b.verified ? 0 : a.verified ? -1 : 1;
-  };
+  const projects = useSelector(selectProjectsDocs);
 
   const sortByUpvoted = (a, b) => {
-    if (a.upvotedBy && b.upvotedBy) {
-      return b.upvotedBy.length - a.upvotedBy.length;
-    } else if (!a.upvotedBy && b.upvotedBy) {
+    const aUp = a.data.upvotedBy;
+    const bUp = b.data.upvotedBy;
+    if (aUp && bUp) {
+      return bUp.length - aUp.length;
+    } else if (!aUp && bUp) {
       return 1;
-    } else if (a.upvotedBy && !b.upvotedBy) {
+    } else if (aUp && !bUp) {
       return -1;
     }
     return 0;
+  };
+
+  const sortByVerified = (a, b) => {
+    return a.data.verified === b.data.verified ? 0 : a.data.verified ? -1 : 1;
   };
 
   const openProject = (slug) => {
     toApp(slug);
   };
 
+  const formatDescription = (d) => {
+    return d.length > 60 ? `${d.substring(0, 60)}…` : d;
+  };
+
   return (
     <ul className={css.projects}>
       {projects
-        .filter((project) => project.category.includes(filter))
+        .filter((project) => project.data.category.includes(filter))
         .sort((a, b) => sortByUpvoted(a, b))
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
         .map((project) => (
           <li
             className={css.project}
-            onClick={() => openProject(project.slug)}
-            key={project.__id__}
+            onClick={() => openProject(project.data.slug)}
+            key={project.key}
           >
             <div className={css.main}>
-              <Logo logo={project.logo} name={project.name} />
+              <Logo logo={project.data.logo} name={project.data.name} />
               <div>
                 <div className={css.titleContainer}>
-                  {project.verified && <span className={css.icon}>{iCheckCircle}</span>}
-                  <h4 className={css.title}>{project.name}</h4>
+                  {project.data.verified && <span className={css.icon}>{iCheckCircle}</span>}
+                  <h4 className={css.title}>{project.data.name}</h4>
                 </div>
 
                 <p className={css.description}>
-                  {project.description && project.description.length > 60
-                    ? `${project.description.substring(0, 60)}…`
-                    : project.description}
+                  {project.data.description && formatDescription(project.data.description)}
                 </p>
               </div>
             </div>
 
             {/* upvote button */}
             <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
-              <UpvtBtn id={project.__id__} upvotedBy={project.upvotedBy} />
+              <UpvtBtn id={project.key} upvotedBy={project.data.upvotedBy} />
             </div>
           </li>
         ))}

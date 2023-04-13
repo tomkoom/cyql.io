@@ -38,37 +38,42 @@ const Controls = () => {
 
     if (mode === "add") {
       dispatch(setProjectModalLoadingAdd(true));
+      const docAdd = {
+        key: projectId,
+        data: {
+          ...project,
+          __id__: projectId,
+          added: timestamp,
+        },
+      };
       await setDoc({
         collection,
-        doc: {
-          key: projectId,
-          data: {
-            ...project,
-            __id__: projectId,
-            added: timestamp,
-          },
-        },
-      }).catch((e) => console.log(e));
+        doc: docAdd,
+      })
+        .then(() => console.log("Project added with the id ", projectId))
+        .catch((e) => console.log(e));
       dispatch(setProjectModalLoadingAdd(false));
 
       // edit
       // fix keys / ids. setdoc by key, not id
     } else if (mode === "edit") {
       dispatch(setProjectModalLoadingEdit(true));
+      const docEdit = {
+        key: project.__id__,
+        updated_at: timestamp,
+        data: {
+          ...project,
+          edited: timestamp,
+        },
+      };
       await setDoc({
         collection,
-        doc: {
-          key: project.__id__,
-          data: {
-            ...project,
-            edited: timestamp,
-          },
-        },
-      }).catch((e) => console.log(e));
+        doc: docEdit,
+      })
+        .then(() => console.log("Project edited with the id ", project.__id__))
+        .catch((e) => console.log(e));
       dispatch(setProjectModalLoadingEdit(false));
     }
-
-    console.log(projectId);
     closeModal();
     // reload page (?)
   };

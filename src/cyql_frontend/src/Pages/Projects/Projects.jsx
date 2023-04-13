@@ -6,7 +6,7 @@ import { Category, Filter, ProjectList, Sort } from "./index";
 import { Search } from "@components/ui-elements/index";
 
 // state
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectSearch, setSearch } from "@state/projects/search";
 import {
   setFilterByOnChain,
@@ -18,6 +18,7 @@ import {
 } from "@state/projects/filter";
 
 const Projects = () => {
+  const dispatch = useDispatch();
   const searchQuery = useSelector(selectSearch);
   const filterByOpenSource = useSelector(selectFilterByOpenSource);
   const filterByOnChain = useSelector(selectFilterByOnChain);

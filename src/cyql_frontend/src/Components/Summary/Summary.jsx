@@ -3,10 +3,10 @@ import css from "./Summary.module.css";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsNum } from "@state/projects";
 
 const Summary = () => {
-  const projectsNum = useSelector(selectJunoProjects).length;
+  const projectsNum = useSelector(selectProjectsNum);
 
   return (
     <div className={css.summary}>

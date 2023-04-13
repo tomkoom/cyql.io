@@ -7,10 +7,10 @@ import { toApps } from "@routes/routes";
 
 // state
 import { useSelector } from "react-redux";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsNum } from "@state/projects";
 
 const Title = () => {
-  const projectsNum = useSelector(selectJunoProjects).length;
+  const projectsNum = useSelector(selectProjectsNum);
 
   return (
     <h2 className={css.title}>

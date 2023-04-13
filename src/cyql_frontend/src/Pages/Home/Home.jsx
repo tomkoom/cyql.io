@@ -16,22 +16,22 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsDocs } from "@state/projects";
 
 const Home = () => {
-  const projects = useSelector(selectJunoProjects);
-  const pProjects = projects.filter((p) => !p.category.includes("NFTs")); // no nfts
-  const pNfts = projects.filter((p) => p.category.includes("NFTs")); // nfts
+  const projects = useSelector(selectProjectsDocs);
+  const pProjects = projects.filter((p) => !p.data.category.includes("NFTs"));
+  const pNfts = projects.filter((p) => p.data.category.includes("NFTs"));
   const popularProjects = projects
-    .filter((p) => p.upvotedBy)
-    .filter((p) => !p.category.includes("NFTs"))
-    .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length);
+    .filter((p) => p.data.upvotedBy)
+    .filter((p) => !p.data.category.includes("NFTs"))
+    .sort((a, b) => b.data.upvotedBy.length - a.data.upvotedBy.length);
   const popularNfts =
     projects.length > 0 &&
     projects
-      .filter((p) => p.upvotedBy)
-      .filter((p) => p.category.includes("NFTs"))
-      .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length);
+      .filter((p) => p.data.upvotedBy)
+      .filter((p) => p.data.category.includes("NFTs"))
+      .sort((a, b) => b.data.upvotedBy.length - a.data.upvotedBy.length);
 
   return (
     <main className={css.home}>

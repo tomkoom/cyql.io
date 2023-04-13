@@ -32,7 +32,7 @@ import { ProjectModal, SignInModal } from "@modals/index";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "@state/theme";
 import { setUpvotedProjects } from "@state/profile/profile";
-import { setJunoProjects } from "@state/junoProjects";
+import { setProjectsDocs, setProjectsNum } from "@state/projects";
 
 // state modals
 import {
@@ -71,9 +71,14 @@ const App = () => {
   // const { signinWithII } = junoUseAuth();
   const [deviceWidth] = useWindowSize();
 
-  // useEffect(() => console.log(console.log(process.env.DB_HOST)));
-
   // juno start
+  const bigIntToNum = (p) => {
+    return Object.assign({}, p, {
+      created_at: Number(p.created_at),
+      updated_at: Number(p.updated_at),
+    });
+  };
+
   useEffect(() => {
     (async () => {
       await initJuno({
@@ -84,14 +89,16 @@ const App = () => {
         collection: "projects",
         filter: {},
       })
-        .then((projects) => {
-          const projectsData = [];
-          projects.items.forEach((project) => projectsData.push(project.data));
+        .then((docs) => {
+          const projectsDocs = docs.items;
+          const projectsDocsSorted = projectsDocs
+            .sort((a, b) => sortByDateAdded(a.data.dateAdded, b.data.dateAdded))
+            .sort((a, b) => sortByDate(a.data.added, b.data.added))
+            .map((project) => bigIntToNum(project));
+          const projectsNum = Number(docs.length);
 
-          const projectsDataSorted = projectsData
-            .sort((a, b) => sortByDateAdded(a.dateAdded, b.dateAdded))
-            .sort((a, b) => sortByDate(a.added, b.added));
-          dispatch(setJunoProjects(projectsDataSorted));
+          dispatch(setProjectsDocs(projectsDocsSorted));
+          dispatch(setProjectsNum(projectsNum));
         })
         .catch((err) => console.log(err));
     })();
@@ -138,12 +145,6 @@ const App = () => {
       addUserToDb(actor, accountIdStr, signInMethod);
     }
   }, [isAuthenticated]);
-
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     setProfiles(actor);
-  //   }
-  // }, [isAuthenticated]);
 
   // set default actor
   useEffect(() => {

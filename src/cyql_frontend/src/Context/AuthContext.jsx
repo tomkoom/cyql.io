@@ -18,11 +18,11 @@ import { history } from "@routes/history";
 import { toHome } from "@routes/routes";
 
 // utils
-import { getAccountIdentifier } from "./Utils/Principal.utils";
-import { disconnectPlug } from "./Utils/Plug.utils";
+import { getAccountIdentifier } from "./utils/Principal.utils";
+import { disconnectPlug } from "./utils/Plug.utils";
 
 // host
-import { mainnethost, localhost } from "./host";
+import { mainnethost, localhost } from "./host.js";
 
 const AuthContext = createContext();
 const useAuth = () => {

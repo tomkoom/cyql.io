@@ -21,12 +21,12 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsDocs } from "@state/projects";
 import { selectShareModal } from "@state/modals/shareModal";
 
 const Project = () => {
   const { slug } = useParams();
-  const projects = useSelector(selectJunoProjects);
+  const projects = useSelector(selectProjectsDocs);
   const shareModal = useSelector(selectShareModal);
 
   return (
@@ -37,79 +37,82 @@ const Project = () => {
         <Loader />
       ) : (
         projects
-          .filter((p) => p.slug === slug)
+          .filter((p) => p.data.slug === slug)
           .map((p) => (
-            <div className={css.content} key={p.id}>
+            <div className={css.content} key={p.key}>
               <div className={css.main}>
                 <Header project={p} />
 
-                <Description name={p.name} description={p.description} />
-                {(p.nftImg1 || p.nftImg2 || p.nftImg3 || p.nftImg4) && (
+                <Description name={p.data.name} description={p.data.description} />
+                {(p.data.nftImg1 || p.data.nftImg2 || p.data.nftImg3 || p.data.nftImg4) && (
                   <NftPreviews
-                    nftImg1={p.nftImg1}
-                    nftImg2={p.nftImg2}
-                    nftImg3={p.nftImg3}
-                    nftImg4={p.nftImg4}
+                    nftImg1={p.data.nftImg1}
+                    nftImg2={p.data.nftImg2}
+                    nftImg3={p.data.nftImg3}
+                    nftImg4={p.data.nftImg4}
                   />
                 )}
 
                 {p.category.includes("NFTs") && (
                   <CollStats
-                    nftSaleStatus={p.nftSaleStatus}
-                    nftSaleDate={p.nftSaleDate}
-                    nftUnits={p.nftUnits}
-                    nftUnitPrice={p.nftUnitPrice}
+                    nftSaleStatus={p.data.nftSaleStatus}
+                    nftSaleDate={p.data.nftSaleDate}
+                    nftUnits={p.data.nftUnits}
+                    nftUnitPrice={p.data.nftUnitPrice}
                   />
                 )}
 
-                {(p.nftMarketUrl || p.nftRarityChecker) && (
-                  <NftBtns nftMarketUrl={p.nftMarketUrl} nftRarityChecker={p.nftRarityChecker} />
+                {(p.data.nftMarketUrl || p.data.nftRarityChecker) && (
+                  <NftBtns
+                    nftMarketUrl={p.data.nftMarketUrl}
+                    nftRarityChecker={p.data.nftRarityChecker}
+                  />
                 )}
 
                 <Links
                   // main
-                  website={p.website}
-                  canister={p.canister}
-                  app={p.app}
-                  docs={p.docs}
-                  crowdfundingUrl={p.crowdfundingUrl}
+                  website={p.data.website}
+                  canister={p.data.canister}
+                  app={p.data.app}
+                  docs={p.data.docs}
+                  crowdfundingUrl={p.data.crowdfundingUrl}
                   // ic
-                  dscvr={p.dscvr}
-                  distrikt={p.distrikt}
-                  openChat={p.openChat}
-                  taggr={p.taggr}
-                  seers={p.seers}
-                  nuance={p.nuance}
-                  catalyze={p.catalyze}
+                  dscvr={p.data.dscvr}
+                  distrikt={p.data.distrikt}
+                  openChat={p.data.openChat}
+                  taggr={p.data.taggr}
+                  seers={p.data.seers}
+                  nuance={p.data.nuance}
+                  catalyze={p.data.catalyze}
                   // social
-                  twitter={p.twitter}
-                  discord={p.discord}
-                  github={p.github}
-                  telegram={p.telegram}
-                  medium={p.medium}
+                  twitter={p.data.twitter}
+                  discord={p.data.discord}
+                  github={p.data.github}
+                  telegram={p.data.telegram}
+                  medium={p.data.medium}
                   // nft
                   // ...
                   // crowdfunding, etc
                   // ...
                 />
 
-                <Meta added={p.added} />
+                <Meta added={p.data.added} />
                 <Disclaimer />
               </div>
 
               {p.twitter && (
                 <div className={css.twitter}>
-                  <Twitter name={p.name} twitter={p.twitter} />
+                  <Twitter name={p.data.name} twitter={p.data.twitter} />
                 </div>
               )}
 
               {/* modals */}
               {shareModal && (
                 <ShareModal
-                  slug={p.slug}
-                  name={p.name}
-                  category={p.category}
-                  description={p.description}
+                  slug={p.data.slug}
+                  name={p.data.name}
+                  category={p.data.category}
+                  description={p.data.description}
                 />
               )}
             </div>

@@ -17,6 +17,7 @@ const categories = createSlice({
       // games, gambling
       { id: "games", label: "Games", icon: "⚔️" },
       { id: "gambling", label: "Gambling", icon: "🎲" },
+      // add p2e
 
       // tools, dev tools
       { id: "tools", label: "Tools", icon: "🛠️" },

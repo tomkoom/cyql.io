@@ -25,7 +25,7 @@ import category from "./projects/category";
 import filter from "./projects/filter";
 import search from "./projects/search";
 import sort from "./projects/sort";
-import junoProjects from "./junoProjects";
+import projects from "./projects";
 
 // ...
 import theme from "./theme";
@@ -71,7 +71,7 @@ const rootReducer = combineReducers({
   adminSearch,
 
   // projects
-  junoProjects,
+  projects,
 });
 
 const persistConfig = {

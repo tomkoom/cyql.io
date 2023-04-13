@@ -5,15 +5,15 @@ import css from "./CategoryList.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategories } from "@state/modals/categories";
 import { setCategory, selectCategory } from "@state/projects/category";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 
 const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef }) => {
   const dispatch = useDispatch();
   const categoryListRef = useRef(null);
   const categories = useSelector(selectCategories);
   const category = useSelector(selectCategory);
-  const projects = useSelector(selectJunoProjects);
-  const projectsNum = projects.length;
+  const projects = useSelector(selectProjectsDocs);
+  const projectsNum = useSelector(selectProjectsNum);
 
   const handleOutsideClick = (e) => {
     if (
@@ -44,16 +44,20 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   const sort = (a, b) => {
     const filter = (project, label) => project.category.includes(label);
     const aLen =
-      a.label === "All" ? projectsNum : projects.filter((project) => filter(project, a.label)).length;
+      a.label === "All"
+        ? projectsNum
+        : projects.filter((project) => filter(project, a.label)).length;
     const bLen =
-      b.label === "All" ? projectsNum : projects.filter((project) => filter(project, b.label)).length;
+      b.label === "All"
+        ? projectsNum
+        : projects.filter((project) => filter(project, b.label)).length;
     return bLen - aLen;
   };
 
   const num = (c) => {
     return c.label === "All"
       ? projectsNum
-      : projects.filter((project) => project.category.includes(c.label)).length;
+      : projects.filter((project) => project.data.category.includes(c.label)).length;
   };
 
   return (

@@ -15,13 +15,13 @@ import { Search } from "@components/ui-elements/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectJunoProjects } from "@state/junoProjects";
+import { selectProjectsDocs } from "@state/projects";
 import { setProjectModal, setProject, setMode } from "@state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@state/admin/adminSearch";
 
 const Projects = () => {
   const dispatch = useDispatch();
-  const projects = useSelector(selectJunoProjects);
+  const projects = useSelector(selectProjectsDocs);
   const searchQuery = useSelector(selectAdminSearch);
 
   const setSearch = (e) => {
@@ -74,33 +74,33 @@ const Projects = () => {
           .filter((project) => {
             if (searchQuery === "") {
               return project;
-            } else if (project.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            } else if (project.data.name.toLowerCase().includes(searchQuery.toLowerCase())) {
               return project;
             }
           })
           .map((p, i) => (
-            <div className={css.row} key={p.__id__} onClick={() => editProject(p)}>
+            <div className={css.row} key={p.key} onClick={() => editProject(p)}>
               <div className={css.coll25}>
                 <p>{projects.length - i}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.__id__ && formatStr12(p.__id__)}</p>
+                <p>{p.key}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.name && formatStr16(p.name)}</p>
+                <p>{p.data.name && formatStr16(p.data.name)}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.slug && formatStr12(p.slug)}</p>
+                <p>{p.data.slug && formatStr12(p.data.slug)}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.category.join(", ")}</p>
+                <p>{p.data.category.join(", ")}</p>
               </div>
               <div className={css.coll139}>
-                <p>{p.logo && formatWebsite(p.logo)}</p>
+                <p>{p.data.logo && formatWebsite(p.data.logo)}</p>
               </div>
-              <div className={css.coll139}>{p.twitter && getTwitterUsername(p.twitter)}</div>
+              <div className={css.coll139}>{p.data.twitter && getTwitterUsername(p.data.twitter)}</div>
               <div className={css.coll139}>
-                <p>{p.discord && formatDiscord(p.discord)}</p>
+                <p>{p.data.discord && formatDiscord(p.data.discord)}</p>
               </div>
             </div>
           ))}
