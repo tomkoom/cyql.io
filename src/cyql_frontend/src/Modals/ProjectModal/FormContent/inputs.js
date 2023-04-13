@@ -1,3 +1,5 @@
+// sync with api docs https://tomkoom.gitbook.io/cyql-api/
+
 const main = [
   { id: "name", label: "Name", type: "text" },
   { id: "slug", label: "Slug", type: "text" },

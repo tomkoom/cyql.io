@@ -37,82 +37,88 @@ const Project = () => {
         <Loader />
       ) : (
         projects
-          .filter((p) => p.data.slug === slug)
-          .map((p) => (
-            <div className={css.content} key={p.key}>
+          .filter((projectDoc) => projectDoc.data.slug === slug)
+          .map((projectDoc) => (
+            <div className={css.content} key={projectDoc.key}>
               <div className={css.main}>
-                <Header project={p} />
+                <Header projectDoc={projectDoc} />
 
-                <Description name={p.data.name} description={p.data.description} />
-                {(p.data.nftImg1 || p.data.nftImg2 || p.data.nftImg3 || p.data.nftImg4) && (
+                <Description
+                  name={projectDoc.data.name}
+                  description={projectDoc.data.description}
+                />
+                {(projectDoc.data.nftImg1 ||
+                  projectDoc.data.nftImg2 ||
+                  projectDoc.data.nftImg3 ||
+                  projectDoc.data.nftImg4) && (
                   <NftPreviews
-                    nftImg1={p.data.nftImg1}
-                    nftImg2={p.data.nftImg2}
-                    nftImg3={p.data.nftImg3}
-                    nftImg4={p.data.nftImg4}
+                    nftImg1={projectDoc.data.nftImg1}
+                    nftImg2={projectDoc.data.nftImg2}
+                    nftImg3={projectDoc.data.nftImg3}
+                    nftImg4={projectDoc.data.nftImg4}
                   />
                 )}
 
-                {p.category.includes("NFTs") && (
+                {projectDoc.data.category.includes("NFTs") && (
                   <CollStats
-                    nftSaleStatus={p.data.nftSaleStatus}
-                    nftSaleDate={p.data.nftSaleDate}
-                    nftUnits={p.data.nftUnits}
-                    nftUnitPrice={p.data.nftUnitPrice}
+                    nftSaleStatus={projectDoc.data.nftSaleStatus}
+                    nftSaleDate={projectDoc.data.nftSaleDate}
+                    nftUnits={projectDoc.data.nftUnits}
+                    nftUnitPrice={projectDoc.data.nftUnitPrice}
                   />
                 )}
 
-                {(p.data.nftMarketUrl || p.data.nftRarityChecker) && (
+                {(projectDoc.data.nftMarketUrl || projectDoc.data.nftRarityChecker) && (
                   <NftBtns
-                    nftMarketUrl={p.data.nftMarketUrl}
-                    nftRarityChecker={p.data.nftRarityChecker}
+                    nftMarketUrl={projectDoc.data.nftMarketUrl}
+                    nftRarityChecker={projectDoc.data.nftRarityChecker}
                   />
                 )}
 
                 <Links
                   // main
-                  website={p.data.website}
-                  canister={p.data.canister}
-                  app={p.data.app}
-                  docs={p.data.docs}
-                  crowdfundingUrl={p.data.crowdfundingUrl}
+                  website={projectDoc.data.website}
+                  canister={projectDoc.data.canister}
+                  app={projectDoc.data.app}
+                  docs={projectDoc.data.docs}
+                  crowdfundingUrl={projectDoc.data.crowdfundingUrl}
                   // ic
-                  dscvr={p.data.dscvr}
-                  distrikt={p.data.distrikt}
-                  openChat={p.data.openChat}
-                  taggr={p.data.taggr}
-                  seers={p.data.seers}
-                  nuance={p.data.nuance}
-                  catalyze={p.data.catalyze}
+                  dscvr={projectDoc.data.dscvr}
+                  distrikt={projectDoc.data.distrikt}
+                  openChat={projectDoc.data.openChat}
+                  taggr={projectDoc.data.taggr}
+                  seers={projectDoc.data.seers}
+                  nuance={projectDoc.data.nuance}
+                  catalyze={projectDoc.data.catalyze}
                   // social
-                  twitter={p.data.twitter}
-                  discord={p.data.discord}
-                  github={p.data.github}
-                  telegram={p.data.telegram}
-                  medium={p.data.medium}
+                  twitter={projectDoc.data.twitter}
+                  discord={projectDoc.data.discord}
+                  github={projectDoc.data.github}
+                  telegram={projectDoc.data.telegram}
+                  medium={projectDoc.data.medium}
                   // nft
                   // ...
                   // crowdfunding, etc
                   // ...
                 />
 
-                <Meta added={p.data.added} />
+                <Meta added={projectDoc.data.added} />
                 <Disclaimer />
               </div>
 
-              {p.twitter && (
+              {projectDoc.data.twitter && (
                 <div className={css.twitter}>
-                  <Twitter name={p.data.name} twitter={p.data.twitter} />
+                  <Twitter name={projectDoc.data.name} twitter={projectDoc.data.twitter} />
                 </div>
               )}
 
               {/* modals */}
               {shareModal && (
                 <ShareModal
-                  slug={p.data.slug}
-                  name={p.data.name}
-                  category={p.data.category}
-                  description={p.data.description}
+                  slug={projectDoc.data.slug}
+                  name={projectDoc.data.name}
+                  category={projectDoc.data.category}
+                  description={projectDoc.data.description}
                 />
               )}
             </div>

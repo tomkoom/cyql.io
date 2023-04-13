@@ -11,7 +11,7 @@ import { useAuth } from "@context/AuthContext";
 import { EditBtn, Logo, ShareBtn, Title } from "./index";
 import { UpvtBtn } from "@components/index";
 
-const Header = ({ project }) => {
+const Header = ({ projectDoc }) => {
   const { principalIdStr } = useAuth();
   const isAdmin =
     principalIdStr === plugAdmin1 ||
@@ -22,20 +22,20 @@ const Header = ({ project }) => {
   return (
     <div className={css.header}>
       <div className={css.main}>
-        {project.logo && <Logo logo={project.logo} name={project.name} />}
+        {projectDoc.data.logo && <Logo logo={projectDoc.data.logo} name={projectDoc.data.name} />}
         <Title
-          name={project.name}
-          grantee={project.grantee}
-          category={project.category}
-          tags={project.tags}
+          name={projectDoc.data.name}
+          grantee={projectDoc.data.grantee}
+          category={projectDoc.data.category}
+          tags={projectDoc.data.tags}
         />
       </div>
 
       <div className={css.controls}>
-        {isAdmin && <EditBtn project={project} />}
+        {isAdmin && <EditBtn projectDoc={projectDoc} />}
         <ShareBtn />
         <div className={css.btnContainer}>
-          <UpvtBtn id={project.id} upvotedBy={project.upvotedBy} location="project" />
+          <UpvtBtn id={projectDoc.key} upvotedBy={projectDoc.data.upvotedBy} location="project" />
         </div>
       </div>
     </div>

@@ -16,21 +16,21 @@ import { Search } from "@components/ui-elements/index";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectProjectsDocs } from "@state/projects";
-import { setProjectModal, setProject, setMode } from "@state/modals/projectModal/projectModal";
+import { setProjectModal, setProjectDoc, setMode } from "@state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@state/admin/adminSearch";
 
 const Projects = () => {
   const dispatch = useDispatch();
-  const projects = useSelector(selectProjectsDocs);
+  const projectsDocs = useSelector(selectProjectsDocs);
   const searchQuery = useSelector(selectAdminSearch);
 
   const setSearch = (e) => {
     dispatch(setAdminSearch(e.target.value));
   };
 
-  const editProject = (project) => {
+  const editProject = (projectDoc) => {
     dispatch(setMode("edit"));
-    dispatch(setProject(project));
+    dispatch(setProjectDoc(projectDoc));
     dispatch(setProjectModal(true));
   };
 
@@ -44,33 +44,17 @@ const Projects = () => {
 
       <div className={css.table}>
         <div className={css.rowHeader}>
-          <div className={css.coll25}>
-            <p>#</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Id</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Name</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Slug</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Category</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Logo</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Twitter</p>
-          </div>
-          <div className={css.coll139}>
-            <p>Discord</p>
-          </div>
+          <div className={css.coll25}>#</div>
+          <div className={css.coll139}>id</div>
+          <div className={css.coll139}>name</div>
+          <div className={css.coll139}>slug</div>
+          <div className={css.coll139}>category</div>
+          <div className={css.coll139}>logo</div>
+          <div className={css.coll139}>twitter</div>
+          <div className={css.coll139}>discord</div>
         </div>
 
-        {projects
+        {projectsDocs
           .filter((project) => {
             if (searchQuery === "") {
               return project;
@@ -78,29 +62,25 @@ const Projects = () => {
               return project;
             }
           })
-          .map((p, i) => (
-            <div className={css.row} key={p.key} onClick={() => editProject(p)}>
-              <div className={css.coll25}>
-                <p>{projects.length - i}</p>
+          .map((projectDoc, i) => (
+            <div className={css.row} key={projectDoc.key} onClick={() => editProject(projectDoc)}>
+              <div className={css.coll25}>{projectsDocs.length - i}</div>
+              <div className={css.coll139}>{projectDoc.key}</div>
+              <div className={css.coll139}>
+                {projectDoc.data.name && formatStr16(projectDoc.data.name)}
               </div>
               <div className={css.coll139}>
-                <p>{p.key}</p>
+                {projectDoc.data.slug && formatStr12(projectDoc.data.slug)}
+              </div>
+              <div className={css.coll139}>{projectDoc.data.category.join(", ")}</div>
+              <div className={css.coll139}>
+                {projectDoc.data.logo && formatWebsite(projectDoc.data.logo)}
               </div>
               <div className={css.coll139}>
-                <p>{p.data.name && formatStr16(p.data.name)}</p>
+                {projectDoc.data.twitter && getTwitterUsername(projectDoc.data.twitter)}
               </div>
               <div className={css.coll139}>
-                <p>{p.data.slug && formatStr12(p.data.slug)}</p>
-              </div>
-              <div className={css.coll139}>
-                <p>{p.data.category.join(", ")}</p>
-              </div>
-              <div className={css.coll139}>
-                <p>{p.data.logo && formatWebsite(p.data.logo)}</p>
-              </div>
-              <div className={css.coll139}>{p.data.twitter && getTwitterUsername(p.data.twitter)}</div>
-              <div className={css.coll139}>
-                <p>{p.data.discord && formatDiscord(p.data.discord)}</p>
+                {projectDoc.data.discord && formatDiscord(projectDoc.data.discord)}
               </div>
             </div>
           ))}

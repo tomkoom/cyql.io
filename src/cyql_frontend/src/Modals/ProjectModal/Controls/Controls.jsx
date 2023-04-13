@@ -7,7 +7,7 @@ import { getDoc, setDoc, delDoc } from "@junobuild/core";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectProject,
+  selectProjectDoc,
   selectMode,
   setCloseProjectModal,
 } from "@state/modals/projectModal/projectModal";
@@ -27,7 +27,7 @@ const Controls = () => {
 
   // state
   const mode = useSelector(selectMode);
-  const project = useSelector(selectProject);
+  const projectDoc = useSelector(selectProjectDoc);
 
   // juno
   const collection = "projects";
@@ -36,12 +36,24 @@ const Controls = () => {
     const timestamp = Date.now();
     const projectId = nanoid();
 
+    const doc = await getDoc({ collection, key: projectDoc.key });
+
+    await setDoc({
+      collection,
+      doc: {
+        key: projectDoc.key,
+        data: {
+          ...projectDoc.data,
+        },
+      },
+    });
+
     if (mode === "add") {
       dispatch(setProjectModalLoadingAdd(true));
       const docAdd = {
         key: projectId,
         data: {
-          ...project,
+          ...projectDoc.data,
           __id__: projectId,
           added: timestamp,
         },
@@ -59,10 +71,10 @@ const Controls = () => {
     } else if (mode === "edit") {
       dispatch(setProjectModalLoadingEdit(true));
       const docEdit = {
-        key: project.__id__,
+        key: projectDoc.key,
         updated_at: timestamp,
         data: {
-          ...project,
+          ...projectDoc.data,
           edited: timestamp,
         },
       };
@@ -70,7 +82,7 @@ const Controls = () => {
         collection,
         doc: docEdit,
       })
-        .then(() => console.log("Project edited with the id ", project.__id__))
+        .then(() => console.log("Project edited with the id ", projectDoc.key))
         .catch((e) => console.log(e));
       dispatch(setProjectModalLoadingEdit(false));
     }
@@ -82,10 +94,10 @@ const Controls = () => {
     dispatch(setProjectModalLoadingDel(true));
     const doc = await getDoc({
       collection,
-      key: project.__id__,
+      key: projectDoc.key,
     });
     await delDoc({ collection, doc }).catch((e) => console.log(e));
-    console.log(`doc with the id ${project.__id__} deleted`);
+    console.log(`doc with the id ${projectDoc.key} deleted`);
 
     dispatch(setProjectModalLoadingDel(false));
     closeModal();

@@ -1,81 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const projectInitialState = {
-  // main
-  __id__: "",
-  name: "",
-  id: "",
-  slug: "",
-  category: [],
-  website: "",
-  canister: "",
-  logo: "",
-  description: "",
-
-  // socials
-  twitter: "",
-  discord: "",
-  telegram: "",
-  github: "",
-  medium: "",
-
-  // socials ic
-  dscvr: "",
-  distrikt: "",
-  openChat: "",
-  taggr: "",
-  seers: "",
-  nuance: "",
-  catalyze: "",
-
-  // additional info
-  app: "",
-  docs: "",
-  faq: "",
-  whitepaper: "",
-
-  // nft info
-  nftSaleStatus: "",
-  nftSaleDate: "",
-  nftUnits: "",
-  nftUnitPrice: "",
-  nftMarketUrl: "",
-  nftSaleUrl: "",
-  nftRarityChecker: "",
-  nftImg1: "",
-  nftImg2: "",
-  nftImg3: "",
-  nftImg4: "",
-
-  // meta
-  added: null,
-  // delete dateAdded
-  edited: null,
-
-  // token
-  hasToken: null,
-  // tokenName: "",
-  // tokenSymbol: "",
-  // tokenLogo: "",
-  // tokenCanisterId: "",
-  // tokenMarkets: [],
-  // tokenSupply: "",
-  // tokenMaxSupply: "",
-
-  // ...
-  verified: null,
-  grantee: null,
-  upvotedBy: [],
-  connectedProjects: [],
-  crowdfundingUrl: "",
-};
+import { projectDoc } from "../../_types/projectDoc";
 
 const projectModal = createSlice({
   name: "projectModal",
   initialState: {
     mode: "",
     projectModal: false,
-    project: projectInitialState,
+    projectDoc,
   },
   reducers: {
     setMode(state, { payload }) {
@@ -84,21 +15,21 @@ const projectModal = createSlice({
     setProjectModal(state, { payload }) {
       state.projectModal = payload;
     },
-    setProject(state, { payload }) {
-      state.project = { ...state.project, ...payload };
+    setProjectDoc(state, { payload }) {
+      state.projectDoc = { ...state.projectDoc, ...payload };
     },
     setProjectCategory(state, { payload }) {
-      state.project.category = payload;
+      state.projectDoc.data.category = payload;
     },
     setProjectGrantee(state, { payload }) {
-      state.project.grantee = payload;
+      state.projectDoc.data.grantee = payload;
     },
     setProjectDescription(state, { payload }) {
-      state.project.description = payload;
+      state.projectDoc.data.description = payload;
     },
     setCloseProjectModal(state) {
       state.mode = "";
-      state.project = projectInitialState;
+      state.projectDoc = projectDoc;
       state.projectModal = false;
     },
   },
@@ -106,14 +37,14 @@ const projectModal = createSlice({
 
 const selectMode = (state) => state.projectModal.mode;
 const selectProjectModal = (state) => state.projectModal.projectModal;
-const selectProject = (state) => state.projectModal.project;
-const selectProjectCategory = (state) => state.projectModal.project.category;
-const selectProjectGrantee = (state) => state.projectModal.project.grantee;
-const selectProjectDescription = (state) => state.projectModal.project.description;
+const selectProjectDoc = (state) => state.projectModal.projectDoc;
+const selectProjectCategory = (state) => state.projectModal.projectDoc.data.category;
+const selectProjectGrantee = (state) => state.projectModal.projectDoc.data.grantee;
+const selectProjectDescription = (state) => state.projectModal.projectDoc.data.description;
 export {
   selectMode,
   selectProjectModal,
-  selectProject,
+  selectProjectDoc,
   selectProjectCategory,
   selectProjectGrantee,
   selectProjectDescription,
@@ -122,7 +53,7 @@ export {
 export const {
   setMode,
   setProjectModal,
-  setProject,
+  setProjectDoc,
   setProjectCategory,
   setProjectGrantee,
   setProjectDescription,

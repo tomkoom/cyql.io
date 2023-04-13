@@ -35,8 +35,6 @@ const ProjectModal = () => {
 
   return (
     <div className={css.modal}>
-      {/* loading (?) */}
-
       {addIsLoading || editIsLoading || delIsLoading ? (
         <Loader />
       ) : (

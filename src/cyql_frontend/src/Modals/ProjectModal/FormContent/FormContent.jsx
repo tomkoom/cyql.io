@@ -9,15 +9,15 @@ import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProject, setProject } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc, setProjectDoc } from "@state/modals/projectModal/projectModal";
 
 const FormContent = () => {
   const dispatch = useDispatch();
-  const project = useSelector(selectProject);
+  const projectDoc = useSelector(selectProjectDoc);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    dispatch(setProject({ [name]: value }));
+    dispatch(setProjectDoc({ data: { [name]: value } }));
   };
 
   return (
@@ -33,7 +33,7 @@ const FormContent = () => {
             id={input.id}
             label={input.label}
             type={input.type}
-            value={project[input.id]}
+            value={projectDoc.data[input.id]}
             onChange={handleChange}
             key={input.id}
           />
@@ -49,7 +49,7 @@ const FormContent = () => {
             id={input.id}
             label={input.label}
             type={input.type}
-            value={project[input.id]}
+            value={projectDoc.data[input.id]}
             onChange={handleChange}
             key={input.id}
           />
@@ -63,20 +63,20 @@ const FormContent = () => {
             id={input.id}
             label={input.label}
             type={input.type}
-            value={project[input.id]}
+            value={projectDoc.data[input.id]}
             onChange={handleChange}
             key={input.id}
           />
         ))}
       </div>
 
-      {project.category.includes("NFTs") ? (
+      {projectDoc.data.category.includes("NFTs") ? (
         <div className={css.section}>
           <h5 className={css.sectionTitle}>nft data</h5>
           <Select
             id="nftSaleStatus"
             label="NFT sale status"
-            value={project.nftSaleStatus}
+            value={projectDoc.data.nftSaleStatus}
             onChange={handleChange}
             selectOptions={nftSaleStatusOptions}
           />
@@ -86,7 +86,7 @@ const FormContent = () => {
               id={input.id}
               label={input.label}
               type={input.type}
-              value={project[input.id]}
+              value={projectDoc.data[input.id]}
               onChange={handleChange}
               key={input.id}
             />
