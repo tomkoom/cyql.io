@@ -22,7 +22,7 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
       sortBtnRef.current &&
       !sortBtnRef.current.contains(e.target)
     ) {
-      dispatch(setOpenSort(false));
+      setOpenSort(false);
     }
   };
 

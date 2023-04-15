@@ -4,7 +4,7 @@
   width: 8rem;
   display: flex;
   flex-direction: column;
-  font-weight: var(--fwMedium);
+  font-weight: var(--fwBold);
   background-color: var(--underlay);
   border-radius: 0.5rem;
   padding: 0.5rem 0;

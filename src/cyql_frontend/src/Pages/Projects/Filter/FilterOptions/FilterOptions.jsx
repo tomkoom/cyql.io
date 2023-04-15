@@ -27,7 +27,7 @@ const FilterOptions = ({
       filterBtnRef.current &&
       !filterBtnRef.current.contains(e.target)
     ) {
-      dispatch(setOpenFilterOptions(false));
+      setOpenFilterOptions(false);
     }
   };
 

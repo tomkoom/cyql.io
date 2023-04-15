@@ -10,9 +10,9 @@ import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef }) => {
   const dispatch = useDispatch();
   const categoryListRef = useRef(null);
-  const categories = useSelector(selectCategories);
+  const allCategories = useSelector(selectCategories);
   const category = useSelector(selectCategory);
-  const projects = useSelector(selectProjectsDocs);
+  const projectsDocs = useSelector(selectProjectsDocs);
   const projectsNum = useSelector(selectProjectsNum);
 
   const handleOutsideClick = (e) => {
@@ -23,7 +23,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
       categoryBtnRef.current &&
       !categoryBtnRef.current.contains(e.target)
     ) {
-      dispatch(setOpenCategoryList(false));
+      setOpenCategoryList(false);
     }
   };
 
@@ -36,42 +36,43 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
     };
   }, [openCategoryList]);
 
-  const clickCategory = (categoryName) => {
-    dispatch(setCategory(categoryName));
+  const clickCategory = (categoryLabel) => {
+    dispatch(setCategory(categoryLabel));
     setOpenCategoryList(false);
   };
 
   const sort = (a, b) => {
-    const filter = (project, label) => project.category.includes(label);
+    const filter = (projectsDoc, label) => projectsDoc.data.category.includes(label);
     const aLen =
       a.label === "All"
         ? projectsNum
-        : projects.filter((project) => filter(project, a.label)).length;
+        : projectsDocs.filter((projectDoc) => filter(projectDoc, a.label)).length;
     const bLen =
       b.label === "All"
         ? projectsNum
-        : projects.filter((project) => filter(project, b.label)).length;
+        : projectsDocs.filter((projectDoc) => filter(projectDoc, b.label)).length;
     return bLen - aLen;
   };
 
-  const num = (c) => {
+  const categoriesNum = (c) => {
     return c.label === "All"
       ? projectsNum
-      : projects.filter((project) => project.data.category.includes(c.label)).length;
+      : projectsDocs.filter((projectsDoc) => projectsDoc.data.category.includes(c.label)).length;
   };
 
   return (
-    <ul className={css.li} ref={categoryListRef}>
-      {[...categories]
+    <ul className={css.categoryList} ref={categoryListRef}>
+      {[...allCategories]
         .sort((a, b) => sort(a, b))
         .map((c) => (
           <li
-            className={css.liI}
+            className={css.categoryListI}
             id={category === c.label ? css.active : undefined}
             key={c.id}
             onClick={() => clickCategory(c.label)}
           >
-            {c.icon} {c.label} {num(c)}
+            {c.icon} {c.label.toLowerCase()}{" "}
+            <span className={css.categoriesNum}>{categoriesNum(c)}</span>
           </li>
         ))}
     </ul>
