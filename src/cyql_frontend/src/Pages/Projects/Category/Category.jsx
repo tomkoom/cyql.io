@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import css from "./Category.module.css";
 
 // components
-import Btn from "./Btn/Btn";
-import CategoryList from "./CategoryList/CategoryList";
+import Btn from "./btn/Btn";
+import CategoryList from "./category-list/CategoryList";
 
 const Category = () => {
   const [openCategoryList, setOpenCategoryList] = useState(false);

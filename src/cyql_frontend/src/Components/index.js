@@ -23,4 +23,3 @@ export { default as ExpandableText } from "./ExpandableText/ExpandableText";
 export { default as Logo } from "./Logo/Logo";
 export { default as Price } from "./Price/Price";
 export { default as Socials } from "./Socials/Socials";
-export { default as Theme } from "./Theme/Theme";

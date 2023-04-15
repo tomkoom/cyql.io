@@ -1,9 +1,9 @@
-# Various IDEs and Editors
+# various ides and editors
 .vscode/
 .idea/
 **/*~
 
-# Mac OSX temporary files
+# mac osx temporary files
 .DS_Store
 **/.DS_Store
 

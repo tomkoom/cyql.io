@@ -80,6 +80,12 @@ module.exports = {
       "@routes": path.resolve(__dirname, "src", frontendDirectory, "src/routes"),
       "@state": path.resolve(__dirname, "src", frontendDirectory, "src/state"),
       "@styles": path.resolve(__dirname, "src", frontendDirectory, "src/styles"),
+      "@ui-elements": path.resolve(
+        __dirname,
+        "src",
+        frontendDirectory,
+        "src/Components/ui-elements"
+      ),
       "@utils": path.resolve(__dirname, "src", frontendDirectory, "src/utils"),
       // ...etc
     },

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./NftBtns.module.css";
 
 // components
-import Btn from "./Btn/Btn";
+import Btn from "./btn/Btn";
 
 const NftBtns = ({ nftMarketUrl, nftRarityChecker }) => {
   return (

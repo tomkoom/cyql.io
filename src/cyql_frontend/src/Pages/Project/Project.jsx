@@ -43,10 +43,13 @@ const Project = () => {
               <div className={css.main}>
                 <Header projectDoc={projectDoc} />
 
-                <Description
-                  name={projectDoc.data.name}
-                  description={projectDoc.data.description}
-                />
+                {projectDoc.data.description && (
+                  <Description
+                    name={projectDoc.data.name}
+                    description={projectDoc.data.description}
+                  />
+                )}
+
                 {(projectDoc.data.nftImg1 ||
                   projectDoc.data.nftImg2 ||
                   projectDoc.data.nftImg3 ||

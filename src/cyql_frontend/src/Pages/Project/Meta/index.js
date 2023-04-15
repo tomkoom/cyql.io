@@ -1,4 +1,4 @@
 // meta
 
-export { default as Edit } from "./Edit/Edit";
-export { default as Published } from "./Published/Published";
+export { default as Edit } from "./edit/Edit";
+export { default as Published } from "./published/Published";

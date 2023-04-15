@@ -1,4 +1,4 @@
 // name
 
-export { default as Name } from "./Name/Name";
-export { default as Tags } from "./Tags/Tags";
+export { default as Name } from "./name/Name";
+export { default as Tags } from "./tags/Tags";

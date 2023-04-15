@@ -6,7 +6,7 @@ import { iGithub, iCircleNodes } from "@icons/Icons";
 
 const Main = ({ name, category, canister, github, description }) => {
   const formatName = (n) => {
-    return n && n.length > 15 ? `${n.substring(0, 15)}…` : n;
+    return n && n.length > 20 ? `${n.substring(0, 15)}…` : n;
   };
 
   const formatDescription = (d) => {

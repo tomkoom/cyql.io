@@ -10,7 +10,8 @@ import { useAuth } from "@context/AuthContext";
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./index";
 import { Nft } from "../index";
-import { Logo, Price, Theme } from "@components/index";
+import { Logo, Price } from "@components/index";
+import { Theme } from "@ui-elements/index";
 
 const Desktop = () => {
   const { isAuthenticated } = useAuth();

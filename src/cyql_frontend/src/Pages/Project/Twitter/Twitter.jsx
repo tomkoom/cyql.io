@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Twitter.module.css";
 
 // components
-import TwitterTimeline from "./TwitterTimeline/TwitterTimeline";
+import TwitterTimeline from "./twitter-timeline/TwitterTimeline";
 
 const Twitter = ({ name, twitter }) => {
   return (

@@ -5,7 +5,8 @@ import css from "./Mobile.module.css";
 import { toHome } from "@routes/routes";
 
 // components
-import { Logo, Theme } from "@components/index";
+import { Logo } from "@components/index";
+import { Theme } from "@ui-elements/index";
 import { Menu, MenuBtn, Socials } from "./index";
 import { Nft } from "../index";
 

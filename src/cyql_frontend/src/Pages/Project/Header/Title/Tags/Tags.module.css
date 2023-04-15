@@ -15,3 +15,18 @@
   background-color: var(--underlay);
   border-radius: 0.5rem;
 }
+
+#open {
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+}
+
+#onchain {
+  color: #fff;
+  background-color: var(--highlightColor3);
+}
+
+#grantee {
+  color: #fff;
+  background-color: var(--colorGreen);
+}

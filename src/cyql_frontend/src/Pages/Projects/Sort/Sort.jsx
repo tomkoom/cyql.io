@@ -2,8 +2,8 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import css from "./Sort.module.css";
 
 // components
-import Btn from "./Btn/Btn";
-import SortOptions from "./SortOptions/SortOptions";
+import Btn from "./btn/Btn";
+import SortOptions from "./sort-options/SortOptions";
 
 // state
 import { useSelector } from "react-redux";
