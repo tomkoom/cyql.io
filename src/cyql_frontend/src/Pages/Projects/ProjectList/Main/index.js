@@ -1,4 +1,4 @@
 // main
 
-export { default as Logo } from "./Logo/Logo";
-export { default as Title } from "./Title/Title";
+export { default as Logo } from "./logo/Logo";
+export { default as Title } from "./title/Title";

@@ -17,11 +17,11 @@ const HighlightedProjects = ({ projects }) => {
         <div className={css.grid}>
           {projects.slice(0, 24).map((p) => (
             <Project
-              id={p.key}
               key={p.key}
+              id={p.key}
               // ...
-              slug={p.data.slug}
               name={p.data.name}
+              slug={p.data.slug}
               logo={p.data.logo}
               category={p.data.category}
               canister={p.data.canister}

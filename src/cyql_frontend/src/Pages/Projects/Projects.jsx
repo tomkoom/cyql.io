@@ -40,11 +40,11 @@ const Projects = () => {
         <div className={css.controlsI}>
           <Category />
           <Filter
-            label={"open source:"}
+            label={"open-source:"}
             filter={filterByOpenSource}
             setFilter={setFilterByOpenSource}
           />
-          <Filter label={"on-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+          <Filter label={"onchain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
           <Filter label={"grantee:"} filter={filterByGrantee} setFilter={setFilterByGrantee} />
         </div>
 

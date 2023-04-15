@@ -74,17 +74,14 @@ const ProjectList = () => {
                     logo={p.data.logo}
                     name={p.data.name}
                     description={p.data.description}
+                    github={p.data.github}
+                    canister={p.data.canister}
                     grantee={p.data.grantee}
                   />
                 </div>
 
                 <div className={css.tags}>
-                  <Tags
-                    category={p.data.category}
-                    nftSaleStatus={p.data.nftSaleStatus}
-                    canister={p.data.canister}
-                    github={p.data.github}
-                  />
+                  <Tags category={p.data.category} nftSaleStatus={p.data.nftSaleStatus} />
                 </div>
 
                 <div className={css.socials}>
