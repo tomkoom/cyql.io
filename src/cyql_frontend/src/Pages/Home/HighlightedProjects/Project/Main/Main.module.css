@@ -23,5 +23,5 @@
 .description {
   font-size: var(--text);
   font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
 }

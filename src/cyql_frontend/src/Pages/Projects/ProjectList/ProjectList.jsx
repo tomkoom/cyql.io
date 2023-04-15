@@ -70,7 +70,12 @@ const ProjectList = () => {
             .map((p) => (
               <li className={css.liI} key={p.key} onClick={() => toApp(p.data.slug)}>
                 <div className={css.main}>
-                  <Main logo={p.data.logo} name={p.data.name} description={p.data.description} />
+                  <Main
+                    logo={p.data.logo}
+                    name={p.data.name}
+                    description={p.data.description}
+                    grantee={p.data.grantee}
+                  />
                 </div>
 
                 <div className={css.tags}>

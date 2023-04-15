@@ -11,7 +11,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   const dispatch = useDispatch();
   const categoryListRef = useRef(null);
   const allCategories = useSelector(selectCategories);
-  const category = useSelector(selectCategory);
+  const projectCategory = useSelector(selectCategory);
   const projectsDocs = useSelector(selectProjectsDocs);
   const projectsNum = useSelector(selectProjectsNum);
 
@@ -67,7 +67,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
         .map((c) => (
           <li
             className={css.categoryListI}
-            id={category === c.label ? css.active : undefined}
+            id={projectCategory === c.label ? css.active : undefined}
             key={c.id}
             onClick={() => clickCategory(c.label)}
           >

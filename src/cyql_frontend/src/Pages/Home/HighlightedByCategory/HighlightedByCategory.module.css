@@ -40,8 +40,9 @@
 
 .description {
   font-size: 0.9rem;
+  font-weight: var(--fwMedium);
   line-height: 150%;
-  color: var(--secondaryColor);
+  color: var(--tertiaryColor);
 }
 
 @media screen and (max-width: 1023px) {

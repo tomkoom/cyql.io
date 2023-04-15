@@ -1,13 +1,24 @@
 /* title */
 
+.main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.33rem;
+  margin-bottom: 0.25rem;
+}
+
 .name {
   font-size: var(--fontSize6);
   font-weight: var(--fwBold);
   word-wrap: break-word;
-  margin-bottom: 0.25rem;
+}
+
+.grantee {
+  color: var(--colorGreen);
 }
 
 .description {
+  font-weight: var(--fwMedium);
   color: var(--tertiaryColor);
   font-size: 0.9rem;
   line-height: 150%;

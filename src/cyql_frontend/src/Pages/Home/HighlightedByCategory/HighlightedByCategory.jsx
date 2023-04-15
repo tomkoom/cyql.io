@@ -33,12 +33,12 @@ const HighlightedByCategory = ({ filter }) => {
     return a.data.verified === b.data.verified ? 0 : a.data.verified ? -1 : 1;
   };
 
-  const openProject = (slug) => {
-    toApp(slug);
-  };
-
   const formatDescription = (d) => {
     return d.length > 60 ? `${d.substring(0, 60)}…` : d;
+  };
+
+  const openProject = (slug) => {
+    toApp(slug);
   };
 
   return (
