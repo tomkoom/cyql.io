@@ -47,7 +47,6 @@ const categories = createSlice({
       { id: "identity", label: "Identity", icon: "🔑" },
 
       // to add
-      // docs - motoko book
       // dev tools to dev resources (?)
     ],
   },

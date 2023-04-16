@@ -37,7 +37,7 @@ export function AuthProvider({ children }) {
   const [actor, setActor] = useState(undefined);
   const [principalId, setPrincipalId] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
-  const [accountIdStr, setAccountIdStr] = useState(""); // always string
+  const [accountIdStr, setAccountIdStr] = useState("");
   const [signInMethod, setSignInMethod] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -50,7 +50,6 @@ export function AuthProvider({ children }) {
         domain: "ic0.app",
       }),
     });
-    
   };
 
   useEffect(() => {

@@ -6,11 +6,11 @@ import { iGithub, iCircleNodes } from "@icons/Icons";
 
 const Main = ({ name, category, canister, github, description }) => {
   const formatName = (n) => {
-    return n && n.length > 20 ? `${n.substring(0, 15)}…` : n;
+    return n && n.length > 40 ? `${n.substring(0, 15)}…` : n;
   };
 
   const formatDescription = (d) => {
-    return d && d.length > 35 ? `${d.substring(0, 35)}…` : d;
+    return d && d.length > 40 ? `${d.substring(0, 35)}…` : d;
   };
 
   return (

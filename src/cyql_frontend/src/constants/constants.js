@@ -5,6 +5,8 @@ const stoicAdmin2 = process.env.STOIC_ADMIN_2;
 const recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
 const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
 const donationWallet = process.env.DONATION_WALLET;
+const junoSatelliteId = process.env.JUNO_SATELLITE_ID;
+const junoDatastoreCollection = process.env.JUNO_DATASTORE_COLLECTION;
 
 export {
   // admin
@@ -19,4 +21,8 @@ export {
 
   // donations
   donationWallet,
+
+  // juno
+  junoSatelliteId,
+  junoDatastoreCollection,
 };

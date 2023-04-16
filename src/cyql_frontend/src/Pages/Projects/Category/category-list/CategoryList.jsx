@@ -3,7 +3,7 @@ import css from "./CategoryList.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "@state/modals/categories";
+import { selectCategories } from "@state/categories";
 import { setCategory, selectCategory } from "@state/projects/category";
 import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 

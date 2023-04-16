@@ -14,23 +14,24 @@ import { toApps, toSubmit, toAdmin } from "@routes/routes";
 import { useAuth } from "@context/AuthContext";
 
 // components
-import NavLink from "./NavLink/NavLink";
+import NavLink from "./nav-link/NavLink";
 
 const Sidebar = () => {
   const { principalIdStr } = useAuth();
+  const admins = [plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
+
+  const verifyAdmin = () => {
+    if (principalIdStr !== "") {
+      return admins.includes(principalIdStr);
+    }
+  };
 
   return (
     <div className={css.sidebar}>
       <div className={css.nav}>
         <NavLink label="projects" to={toApps} icon={iCube} />
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
-
-        {(principalIdStr && principalIdStr === plugAdmin1) ||
-        (principalIdStr && principalIdStr === stoicAdmin1) ||
-        (principalIdStr && principalIdStr === plugAdmin2) ||
-        (principalIdStr && principalIdStr === stoicAdmin2) ? (
-          <NavLink label="admin" to={toAdmin} icon={iList} />
-        ) : null}
+        {verifyAdmin() && <NavLink label="admin" to={toAdmin} icon={iList} />}
 
         <a
           className={css.link}

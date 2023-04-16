@@ -7,10 +7,8 @@ import adminSearch from "./admin/adminSearch";
 import icpPrice from "./api/icpPrice";
 
 // modals
-import categories from "./modals/categories";
 import modals from "./modals/modals";
 import nftModal from "./modals/nftModal";
-
 import shareModal from "./modals/shareModal";
 
 // project modal
@@ -26,6 +24,9 @@ import filter from "./projects/filter";
 import search from "./projects/search";
 import sort from "./projects/sort";
 import projects from "./projects";
+
+// project data
+import categories from "./categories";
 
 // ...
 import theme from "./theme";

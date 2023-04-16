@@ -1,4 +1,4 @@
 // id
 
-export { default as Ids } from "./Ids/Ids";
-export { default as Title } from "./Title/Title";
+export { default as Ids } from "./ids/Ids";
+export { default as Title } from "./title/Title";

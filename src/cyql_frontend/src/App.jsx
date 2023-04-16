@@ -7,11 +7,18 @@ import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // constants
-import { plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2 } from "@constants/constants";
+import {
+  plugAdmin1,
+  plugAdmin2,
+  stoicAdmin1,
+  stoicAdmin2,
+  junoSatelliteId,
+  junoDatastoreCollection,
+} from "@constants/constants";
 
 // utils
 import { useWindowSize } from "@hooks/useWindowSize";
-import { sortByDateAdded, sortByDate } from "@utils/sort";
+import { sortByDate } from "@utils/sort";
 
 // juno db https://juno.build/docs/intro
 import { initJuno, listDocs } from "@junobuild/core";
@@ -49,7 +56,6 @@ const App = () => {
   const [deviceWidth] = useWindowSize();
 
   // juno start
-  const satelliteId = "htxcx-3iaaa-aaaal-acd2q-cai";
   const bigIntToNum = (p) => {
     return Object.assign({}, p, {
       created_at: Number(p.created_at),
@@ -60,17 +66,16 @@ const App = () => {
   useEffect(() => {
     (async () => {
       await initJuno({
-        satelliteId,
+        satelliteId: junoSatelliteId,
       });
 
       await listDocs({
-        collection: "projects",
+        collection: junoDatastoreCollection,
         filter: {},
       })
         .then((docs) => {
           const projectsDocs = docs.items;
           const projectsDocsSorted = projectsDocs
-            .sort((a, b) => sortByDateAdded(a.data.dateAdded, b.data.dateAdded))
             .sort((a, b) => sortByDate(a.data.added, b.data.added))
             .map((project) => bigIntToNum(project));
           const projectsNum = Number(docs.length);

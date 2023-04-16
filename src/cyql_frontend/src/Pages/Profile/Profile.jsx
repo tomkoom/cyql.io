@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@state/profile/profile";
 
 // components
-import Id from "./Id/Id";
+import Id from "./id/Id";
 
 const Profile = () => {
   // const dispatch = useDispatch();

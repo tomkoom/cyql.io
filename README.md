@@ -2,7 +2,7 @@
 
 - fe canister id: n7ib3-4qaaa-aaaai-qagnq-cai
 - be canister id: nrkmt-haaaa-aaaai-qagmq-cai
-- live: https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/
+- live: [n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app](https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/)
 
 stack:
 
