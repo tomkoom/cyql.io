@@ -10,7 +10,6 @@ export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
 // nav, sidebar & footer
 export { default as Nav } from "./Nav/Nav";
 export { default as Sidebar } from "./sidebar/Sidebar";
-export { default as Footer } from "./Footer/Footer";
 
 // loaders
 export { default as Loader } from "./Loader/Loader";

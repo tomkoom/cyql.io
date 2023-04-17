@@ -21,8 +21,8 @@ const Meta = () => {
   return (
     <div className={css.meta}>
       <div className={css.inputs}>
-        <Input label={"added"} value={projectDoc.data.added} id={"project-added-date"} />
-        <Input label={"updated"} value={projectDoc.data.updated} id={"project-updated-date"} />
+        <Input label={"added"} value={projectDoc.data.added} id={"project-added"} />
+        <Input label={"updated"} value={projectDoc.data.updated} id={"project-updated"} />
       </div>
 
       <div className={css.btns}>

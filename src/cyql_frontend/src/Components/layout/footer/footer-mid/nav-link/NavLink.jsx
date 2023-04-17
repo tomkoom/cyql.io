@@ -7,9 +7,9 @@ const NavLink = ({ label, to }) => {
   };
 
   return (
-    <div className={css.navlink} onClick={navigate}>
-      <p className={css.label}>{label}</p>
-    </div>
+    <span className={css.navlink} onClick={navigate}>
+      {label}
+    </span>
   );
 };
 

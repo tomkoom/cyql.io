@@ -1,19 +1,18 @@
-/* text area */
+/* description */
 
-.textarea {
+.description {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.25rem;
 }
 
-.label {
-  font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
+.description label {
+  font-weight: var(--fwBold);
   color: var(--tertiaryColor);
 }
 
-.textarea textarea {
+.description textarea {
   width: 100%;
   font-size: 0.9rem;
   padding: 0.5rem;

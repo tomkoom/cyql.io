@@ -31,7 +31,7 @@ initCanisterIds();
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 const asset_entry = path.join("src", "cyql_frontend", "src", "index.html");
-const frontendDirectory = "cyql_frontend";
+const frontendDir = "cyql_frontend";
 
 module.exports = {
   target: "web",
@@ -55,38 +55,30 @@ module.exports = {
       stream: require.resolve("stream-browserify/"),
       util: require.resolve("util/"),
     },
-    // alias
-    alias: {
-      // https://www.taniarascia.com/react-architecture-directory-structure/
-      // "@": path.resolve(__dirname, "src"),
-      "@": path.resolve(__dirname, "src"),
-      "@assets": path.resolve(__dirname, "src", frontendDirectory, "assets"),
 
-      // src
-      "@components": path.resolve(__dirname, "src", frontendDirectory, "src/Components"),
-      "@constants": path.resolve(__dirname, "src", frontendDirectory, "src/constants"),
-      "@context": path.resolve(__dirname, "src", frontendDirectory, "src/context"),
-      "@firestore": path.resolve(__dirname, "src", frontendDirectory, "src/firestore"),
-      "@hooks": path.resolve(__dirname, "src", frontendDirectory, "src/hooks"),
-      "@icons": path.resolve(
-        __dirname,
-        "src",
-        frontendDirectory,
-        "src/Components/ui-elements/icons"
-      ),
-      "@idl": path.resolve(__dirname, "src", frontendDirectory, "src/idl"),
-      "@modals": path.resolve(__dirname, "src", frontendDirectory, "src/modals"),
-      "@pages": path.resolve(__dirname, "src", frontendDirectory, "src/pages"),
-      "@routes": path.resolve(__dirname, "src", frontendDirectory, "src/routes"),
-      "@state": path.resolve(__dirname, "src", frontendDirectory, "src/state"),
-      "@styles": path.resolve(__dirname, "src", frontendDirectory, "src/styles"),
-      "@ui-elements": path.resolve(
-        __dirname,
-        "src",
-        frontendDirectory,
-        "src/Components/ui-elements"
-      ),
-      "@utils": path.resolve(__dirname, "src", frontendDirectory, "src/utils"),
+    // https://www.taniarascia.com/react-architecture-directory-structure/
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+      "@assets": path.resolve(__dirname, "src", frontendDir, "assets"),
+
+      // components
+      "@components": path.resolve(__dirname, "src", frontendDir, "src/Components"),
+      "@icons": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements/icons"),
+      "@layout": path.resolve(__dirname, "src", frontendDir, "src/Components/layout"),
+      "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements"),
+      // end components
+
+      "@constants": path.resolve(__dirname, "src", frontendDir, "src/constants"),
+      "@context": path.resolve(__dirname, "src", frontendDir, "src/context"),
+      "@firestore": path.resolve(__dirname, "src", frontendDir, "src/firestore"),
+      "@hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
+      "@idl": path.resolve(__dirname, "src", frontendDir, "src/idl"),
+      "@modals": path.resolve(__dirname, "src", frontendDir, "src/modals"),
+      "@pages": path.resolve(__dirname, "src", frontendDir, "src/pages"),
+      "@routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
+      "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
+      "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
+      "@utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
       // ...etc
     },
   },

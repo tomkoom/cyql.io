@@ -16,17 +16,9 @@ const Description = () => {
   };
 
   return (
-    <div className={css.textarea}>
-      <label className={css.label} htmlFor="description">
-        Description
-      </label>
-      <textarea
-        value={description}
-        onChange={setDescription}
-        id="description"
-        name="description"
-        rows="6"
-      />
+    <div className={css.description}>
+      <label htmlFor="project-description">description</label>
+      <textarea value={description} onChange={setDescription} id="project-description" rows="6" />
     </div>
   );
 };

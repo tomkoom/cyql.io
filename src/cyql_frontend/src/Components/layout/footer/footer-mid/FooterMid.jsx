@@ -2,7 +2,7 @@ import React from "react";
 import css from "./FooterMid.module.css";
 
 // routes
-import { toHome, toApps, toUpcoming, toSubmit, toJobs } from "@routes/routes";
+import { toHome, toApps, toSubmit } from "@routes/routes";
 
 // components
 import Logo from "@components/Logo/Logo";
@@ -16,13 +16,11 @@ const FooterMid = () => {
       </div>
 
       <div className={css.nav}>
-        <NavLink label="Projects" to={toApps} />
-        <NavLink label="Upcoming NFTs" to={toUpcoming} />
-        <NavLink label="Jobs" to={toJobs} />
-        <NavLink label="Submit" to={toSubmit} />
+        <NavLink label="projects" to={toApps} />
+        <NavLink label="submit" to={toSubmit} />
       </div>
-      <Meta />
       <Socials />
+      <Meta />
     </div>
   );
 };

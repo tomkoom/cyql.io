@@ -4,6 +4,10 @@
   display: flex;
   color: var(--secondaryColor);
   font-size: var(--fontSize5);
+
+  /* align to the block above */
+  margin-left: -0.5rem;
+  margin-top: -0.25rem;
 }
 
 .socialsI a {

@@ -1,0 +1,41 @@
+/* footer top */
+
+.footerTop {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1.5rem;
+}
+
+.linkBlock {
+  cursor: pointer;
+}
+
+.linkBlock,
+.footerTopIDonation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.linkBlock p,
+.footerTopIDonation p span a {
+  color: var(--secondaryColor);
+}
+
+.footerTopI div:hover > p,
+.footerTopI a:hover > p {
+  color: var(--primaryColor);
+}
+
+.title {
+  font-size: var(--fs5);
+  font-weight: var(--fwBold);
+}
+
+.donationLink {
+  text-decoration: underline;
+}
+
+.donationLink:hover {
+  opacity: 0.8;
+}

@@ -6,9 +6,8 @@ import { iTwitter, iDiscord } from "@icons/Icons";
 
 export const Socials = () => {
   const socials = [
-    { id: "twitter", link: "https://twitter.com/cyql_icp", icon: iTwitter },
+    { id: "twitter", link: "https://twitter.com/cyqlio", icon: iTwitter },
     { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
-    // { id: "medium", link: "https://medium.com/@cyql", icon: iMediumM },
   ];
 
   return (
