@@ -5,7 +5,7 @@ import css from "./ProjectList.module.css";
 import { toApp } from "@routes/routes";
 
 // components
-import { LoadMoreBtn2, UpvtBtn } from "@components/index";
+import { LoadMoreBtn, UpvoteBtn } from "@btns/index";
 import Loader from "@components/Loader/Loader";
 import { Main, Socials, SocialsIc, Tags } from "./index";
 
@@ -109,7 +109,7 @@ const ProjectList = () => {
                 {/* upvote btn */}
                 {/* <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvtBtn id={p.key} upvotedBy={p.data.upvotedBy} />
+                    <UpvoteBtn id={p.key} upvotedBy={p.data.upvotedBy} />
                   </div>
                 </div> */}
               </li>
@@ -117,7 +117,7 @@ const ProjectList = () => {
         </ul>
       )}
       {itemsVisible < projectsNum && (
-        <LoadMoreBtn2 label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
+        <LoadMoreBtn label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
       )}
     </div>
   );

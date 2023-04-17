@@ -1,12 +1,5 @@
 // components
 
-// btns
-export { default as BackBtn } from "./Btns/BackBtn/BackBtn";
-export { default as LoadMoreBtn } from "./Btns/LoadMoreBtn/LoadMoreBtn";
-export { default as LoadMoreBtn2 } from "./Btns/LoadMoreBtn2/LoadMoreBtn2";
-export { default as UpvtBtn } from "./Btns/UpvtBtn/UpvtBtn";
-export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
-
 // nav, sidebar & footer
 export { default as Nav } from "./Nav/Nav";
 export { default as Sidebar } from "./sidebar/Sidebar";

@@ -5,7 +5,7 @@ import css from "./Inputs.module.css";
 import { main, links, linksSoc, linksIC, img, notes, nft } from "./inputsItems";
 
 // components
-import Input from "./Input/Input";
+import Input from "./input/Input";
 
 // state
 import { useSelector } from "react-redux";

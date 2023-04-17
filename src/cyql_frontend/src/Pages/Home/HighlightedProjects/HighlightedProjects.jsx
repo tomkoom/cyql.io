@@ -5,7 +5,8 @@ import css from "./HighlightedProjects.module.css";
 import { toApps } from "@routes/routes";
 
 // components
-import { Loader, ViewMoreBtn } from "@components/index";
+import { Loader } from "@components/index";
+import { ViewMoreBtn } from "@btns/index";
 import { Project } from "./index";
 
 const HighlightedProjects = ({ projects }) => {

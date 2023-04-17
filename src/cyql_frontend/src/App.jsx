@@ -29,14 +29,13 @@ import { useAuth } from "@context/AuthContext";
 // components
 import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@pages/index";
 import { Nav, Sidebar } from "@components/index"; // layout
-import { Footer } from "@layout/index";
-import { Summary } from "@ui-elements/index";
+import { Footer, Summary } from "@layout/index";
 import { ProjectModal, SignInModal } from "@modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "@state/theme";
-import { setUpvotedProjects } from "@state/profile/profile";
+// import { setUpvotedProjects } from "@state/profile/profile";
 import { setProjectsDocs, setProjectsNum } from "@state/projects";
 
 // state: modals
@@ -141,12 +140,12 @@ const App = () => {
   }, []);
 
   // get upvoted projects
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(setUpvotedProjects([]));
-    }
-    // fetch updated data
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     dispatch(setUpvotedProjects([]));
+  //   }
+  //   // fetch updated data
+  // }, [isAuthenticated]);
 
   return (
     <div className={`app ${theme}`}>

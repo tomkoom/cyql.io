@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import css from "./Submit.module.css";
 
 // components
-import { Categories, Inputs } from "./Inputs/index";
-import { SubmitBtn, ReCaptchaComponent } from "./SubmitBtn/index";
-import SubmissionSuccess from "./SubmissionSuccess/SubmissionSuccess";
+import { Categories, Inputs } from "./inputs/index";
+import { SubmitBtn, ReCaptchaComponent } from "./submit-btn/index";
+import SubmissionSuccess from "./submission-success/SubmissionSuccess";
 
 // state
 import { useSelector } from "react-redux";
@@ -14,7 +14,7 @@ import { selectProjectSubmissionData } from "@state/projectSubmission";
 import { submittedProjectsCollRef } from "@firestore/firestore-collections";
 import { addDoc } from "firebase/firestore";
 
-const SubmitNew = () => {
+const Submit = () => {
   const [isVerified, setIsVerified] = useState(false);
   const [submissionLoader, setSubmissionLoader] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -61,4 +61,4 @@ const SubmitNew = () => {
   );
 };
 
-export default SubmitNew;
+export default Submit;

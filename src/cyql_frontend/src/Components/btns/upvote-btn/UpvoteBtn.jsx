@@ -14,7 +14,7 @@ import { setSignInModal } from "@state/modals/modals";
 // components
 import { Active, NotActive } from "./index";
 
-const UpvtBtn = ({ id, upvotedBy, location }) => {
+const UpvoteBtn = ({ id, upvotedBy, location }) => {
   const dispatch = useDispatch();
   const { isAuthenticated, principalIdStr: p } = useAuth();
 
@@ -49,4 +49,4 @@ const UpvtBtn = ({ id, upvotedBy, location }) => {
   );
 };
 
-export default UpvtBtn;
+export default UpvoteBtn;

@@ -1,10 +1,10 @@
 import React from "react";
-import css from "./LoadMoreBtn2.module.css";
+import css from "./LoadMoreBtn.module.css";
 
 // redux
 import { useDispatch } from "react-redux";
 
-const LoadMoreBtn2 = ({ label, size, setItemsVisible }) => {
+const LoadMoreBtn = ({ label, size, setItemsVisible }) => {
   const dispatch = useDispatch();
   const setItems = () => {
     dispatch(setItemsVisible(size));
@@ -17,4 +17,4 @@ const LoadMoreBtn2 = ({ label, size, setItemsVisible }) => {
   );
 };
 
-export default LoadMoreBtn2;
+export default LoadMoreBtn;

@@ -63,6 +63,8 @@ module.exports = {
 
       // components
       "@components": path.resolve(__dirname, "src", frontendDir, "src/Components"),
+      // ...
+      "@btns": path.resolve(__dirname, "src", frontendDir, "src/Components/btns"),
       "@icons": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements/icons"),
       "@layout": path.resolve(__dirname, "src", frontendDir, "src/Components/layout"),
       "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements"),

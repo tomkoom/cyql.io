@@ -4,7 +4,7 @@ import css from "./Socials.module.css";
 // icons
 import { iTwitter, iDiscord } from "@icons/Icons";
 
-export const Socials = () => {
+const Socials = () => {
   const socials = [
     { id: "twitter", link: "https://twitter.com/cyqlio", icon: iTwitter },
     { id: "discord", link: "https://discord.gg/AnjyrfvvXX", icon: iDiscord },
