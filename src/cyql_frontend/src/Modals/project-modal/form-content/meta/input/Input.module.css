@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .field label {
@@ -16,7 +17,7 @@
   width: 100%;
   font-size: 0.9rem;
   padding: 0.5rem;
-  color: var(--primaryColor);
+  color: var(--tertiaryColor);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
   border: none;

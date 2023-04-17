@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Grantee.module.css";
 
 // components
-import Btn from "./btn/Btn";
+import { Btn } from "../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -18,26 +18,26 @@ const Grantee = () => {
 
   return (
     <div className={css.grantee}>
-      <p className={css.label}>grantee</p>
+      <p className={css.sectionName}>grantee</p>
 
       <div className={css.btns}>
         <Btn
-          grantee={projectDoc.data.grantee}
+          property={projectDoc.data.grantee}
           value={true}
           label={"true"}
-          setGrantee={() => setGrantee(true)}
+          setProperty={setGrantee}
         />
         <Btn
-          grantee={projectDoc.data.grantee}
+          property={projectDoc.data.grantee}
           value={false}
           label={"false"}
-          setGrantee={() => setGrantee(false)}
+          setProperty={setGrantee}
         />
         <Btn
-          grantee={projectDoc.data.grantee}
+          property={projectDoc.data.grantee}
           value={null}
           label={"unset"}
-          setGrantee={() => setGrantee(null)}
+          setProperty={setGrantee}
         />
       </div>
     </div>

@@ -39,6 +39,7 @@ const projectDocData = {
   nftImg4: "",
   added: null,
   edited: null,
+  archived: null,
   hasToken: null,
   verified: null,
   promoted: null,

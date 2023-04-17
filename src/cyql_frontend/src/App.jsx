@@ -56,6 +56,11 @@ const App = () => {
     useAuth();
   const [deviceWidth] = useWindowSize();
 
+  const admins = [plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
+  const verifyAdmin = (principalIdStr) => {
+    return admins.includes(principalIdStr);
+  };
+
   // juno start
   const bigIntToNum = (p) => {
     return Object.assign({}, p, {
@@ -174,14 +179,11 @@ const App = () => {
               </Route>
             )}
 
-            {(isAuthenticated && principalIdStr === plugAdmin1) ||
-            (isAuthenticated && principalIdStr === stoicAdmin1) ||
-            (isAuthenticated && principalIdStr === plugAdmin2) ||
-            (isAuthenticated && principalIdStr === stoicAdmin2) ? (
+            {verifyAdmin(principalIdStr) && (
               <Route exact path="/admin">
                 <Admin />
               </Route>
-            ) : null}
+            )}
 
             <Route path="*">
               <NotFound />

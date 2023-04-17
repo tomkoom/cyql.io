@@ -2,7 +2,7 @@ import React from "react";
 import css from "./FormContent.module.css";
 
 // components
-import { Categories, Grantee, Input, Select, Description } from "./index";
+import { Categories, Description, Grantee, Input, Meta, Select } from "./index";
 
 // inputs
 import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
@@ -40,6 +40,7 @@ const FormContent = () => {
         ))}
         <Description />
         <Grantee />
+        <Meta />
       </div>
 
       <div className={css.section}>

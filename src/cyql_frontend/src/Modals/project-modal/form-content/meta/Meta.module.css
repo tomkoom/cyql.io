@@ -1,4 +1,4 @@
-/* grantee */
+/* meta */
 
 .sectionName {
   font-weight: var(--fwBold);
@@ -6,7 +6,7 @@
   margin-bottom: 0.5rem;
 }
 
-.btns {
+.btnsList {
   display: flex;
   align-items: center;
   gap: 0.5rem;

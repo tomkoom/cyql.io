@@ -23,6 +23,9 @@ const projectModal = createSlice({
     setProjectGrantee(state, { payload }) {
       state.projectDoc.data.grantee = payload;
     },
+    setProjectArchived(state, { payload }) {
+      state.projectDoc.data.archived = payload;
+    },
     setProjectDescription(state, { payload }) {
       state.projectDoc.data.description = payload;
     },
@@ -38,6 +41,7 @@ const selectProjectDoc = (state) => state.projectModal.projectDoc;
 const selectProjectDocData = (state) => state.projectModal.projectDoc.data;
 const selectProjectCategory = (state) => state.projectModal.projectDoc.data.category;
 const selectProjectGrantee = (state) => state.projectModal.projectDoc.data.grantee;
+const selectProjectArchived = (state) => state.projectModal.projectDoc.data.archived;
 const selectProjectDescription = (state) => state.projectModal.projectDoc.data.description;
 export {
   selectProjectModal,
@@ -45,6 +49,7 @@ export {
   selectProjectDocData,
   selectProjectCategory,
   selectProjectGrantee,
+  selectProjectArchived,
   selectProjectDescription,
 };
 
@@ -54,6 +59,7 @@ export const {
   setProjectDocData,
   setProjectCategory,
   setProjectGrantee,
+  setProjectArchived,
   setProjectDescription,
   setCloseProjectModal,
 } = projectModal.actions;
