@@ -4,8 +4,8 @@ import css from "./Title.module.css";
 const Title = () => {
   return (
     <div className={css.title}>
-      <h6>Categories</h6>
-      <p>One or multiple</p>
+      <h6>categories</h6>
+      <p>one or multiple</p>
     </div>
   );
 };

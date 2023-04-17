@@ -8,7 +8,6 @@ export { default as UpvtBtn } from "./Btns/UpvtBtn/UpvtBtn";
 export { default as ViewMoreBtn } from "./Btns/ViewMoreBtn/ViewMoreBtn";
 
 // nav, sidebar & footer
-export { default as Summary } from "./Summary/Summary";
 export { default as Nav } from "./Nav/Nav";
 export { default as Sidebar } from "./sidebar/Sidebar";
 export { default as Footer } from "./Footer/Footer";

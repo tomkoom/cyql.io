@@ -84,7 +84,7 @@ const Project = () => {
                   canister={projectDoc.data.canister}
                   app={projectDoc.data.app}
                   docs={projectDoc.data.docs}
-                  crowdfundingUrl={projectDoc.data.crowdfundingUrl}
+                  whitepaper={projectDoc.data.whitepaper}
                   // ic
                   dscvr={projectDoc.data.dscvr}
                   distrikt={projectDoc.data.distrikt}

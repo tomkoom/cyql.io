@@ -1,4 +1,4 @@
 // categories
 
-export { default as Title } from "./Title/Title";
-export { default as CategoryList } from "./CategoryList/CategoryList";
+export { default as Title } from "./title/Title";
+export { default as CategoryList } from "./category-list/CategoryList";

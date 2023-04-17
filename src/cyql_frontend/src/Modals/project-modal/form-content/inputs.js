@@ -14,6 +14,7 @@ const socials = [
   { id: "telegram", label: "Telegram", type: "text" },
   { id: "github", label: "GitHub", type: "text" },
   { id: "medium", label: "Medium", type: "text" },
+  
   // socials ic
   { id: "dscvr", label: "Dscvr", type: "text" },
   { id: "distrikt", label: "Distrikt", type: "text" },
@@ -22,12 +23,13 @@ const socials = [
   { id: "seers", label: "Seers", type: "text" },
   { id: "nuance", label: "Nuance", type: "text" },
   { id: "catalyze", label: "Catalyze", type: "text" },
+  { id: "funded", label: "funded", type: "text" },
 ];
 
 const additional = [
-  { id: "app", label: "App URL", type: "text" },
-  { id: "docs", label: "Docs URL", type: "text" },
-  { id: "crowdfundingUrl", label: "Crowdfunding URL", type: "text" },
+  { id: "app", label: "app", type: "text" },
+  { id: "docs", label: "docs", type: "text" },
+  { id: "whitepaper", label: "whitepaper", type: "text" },
 ];
 
 const nft = [

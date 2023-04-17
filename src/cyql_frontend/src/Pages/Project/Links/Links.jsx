@@ -14,7 +14,8 @@ import {
   iGithub,
   iExternalLink,
   iBook,
-  iDatabase,
+  iCircleNodes,
+  iScroll,
 } from "@icons/Icons";
 
 const Links = ({
@@ -23,7 +24,7 @@ const Links = ({
   canister,
   app,
   docs,
-  crowdfundingUrl,
+  whitepaper,
 
   // ic
   dscvr,
@@ -54,7 +55,7 @@ const Links = ({
       id: "canister",
       label: "Canister",
       url: canister,
-      icon: iDatabase,
+      icon: iCircleNodes,
       tag: "main",
     },
     {
@@ -72,10 +73,10 @@ const Links = ({
       tag: "main",
     },
     {
-      id: "crowdfundingurl",
-      label: "Crowdunfund",
-      url: crowdfundingUrl,
-      icon: "",
+      id: "whitepaper",
+      label: "Whitepaper",
+      url: whitepaper,
+      icon: iScroll,
       tag: "main",
     },
 

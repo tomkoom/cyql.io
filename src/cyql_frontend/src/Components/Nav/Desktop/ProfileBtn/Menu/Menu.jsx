@@ -6,7 +6,7 @@ import { IdImg } from "../../../../Profile/index";
 
 // icons
 import { iSignOut } from "../../../../ui-elements/icons/Icons";
-import CrossIcon from "../../../../ui-elements/icons/CrossIcon/CrossIcon";
+import CrossIcon from "../../../../ui-elements/icons/cross-icon/CrossIcon";
 
 // auth
 import { useAuth } from "../../../../../context/AuthContext";

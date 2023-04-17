@@ -2,5 +2,8 @@
 
 export { default as Search } from "./search/Search";
 
-// // other
+// nav, sidebar & footer
+export { default as Summary } from "./summary/Summary";
+
+// other
 export { default as Theme } from "./theme/Theme";

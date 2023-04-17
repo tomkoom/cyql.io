@@ -28,7 +28,8 @@ import { useAuth } from "@context/AuthContext";
 
 // components
 import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@pages/index";
-import { Summary, Nav, Sidebar, Footer } from "@components/index";
+import { Nav, Sidebar, Footer } from "@components/index";
+import { Summary } from "@ui-elements/index";
 import { ProjectModal, SignInModal } from "@modals/index";
 
 // state

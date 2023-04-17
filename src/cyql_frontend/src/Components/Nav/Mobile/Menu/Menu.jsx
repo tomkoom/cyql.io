@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Menu.module.css";
 
 // icons
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
+import { CrossIcon } from "@icons/index";
 
 // auth
 import { useAuth } from "@context/AuthContext";

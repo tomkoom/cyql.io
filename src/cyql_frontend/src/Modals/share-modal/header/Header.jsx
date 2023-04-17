@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Header.module.css";
 
 // icons
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
+import { CrossIcon } from "@icons/index";
 
 // state
 import { useDispatch } from "react-redux";

@@ -10,6 +10,6 @@
 }
 
 .title p {
-  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
   color: var(--tertiaryColor);
 }

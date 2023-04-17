@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Header.module.css";
 
 // icons
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
+import { CrossIcon } from "@icons/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <div className={css.header}>
       <div className={css.headerI}>
-        <h4 className={css.title}>Edit {projectDoc.data.name}</h4>
+        <h4 className={css.title}>edit {projectDoc.data.name}</h4>
         {projectDoc.key && <p className={css.id}>{projectDoc.key}</p>}
       </div>
 

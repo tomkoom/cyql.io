@@ -1,6 +1,9 @@
 import React from "react";
 import css from "./Grantee.module.css";
 
+// components
+import Btn from "./btn/Btn";
+
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectProjectDoc, setProjectGrantee } from "@state/modals/projectModal/projectModal";
@@ -15,21 +18,27 @@ const Grantee = () => {
 
   return (
     <div className={css.grantee}>
-      <div className={css.label}>Grantee</div>
+      <p className={css.label}>grantee</p>
 
       <div className={css.btns}>
-        <button
-          className={projectDoc.data.grantee ? `${css.btn} ${css.active}` : css.btn}
-          onClick={() => setGrantee(true)}
-        >
-          true
-        </button>
-        <button
-          className={!projectDoc.data.grantee ? `${css.btn} ${css.active}` : css.btn}
-          onClick={() => setGrantee(false)}
-        >
-          false
-        </button>
+        <Btn
+          grantee={projectDoc.data.grantee}
+          value={true}
+          label={"true"}
+          setGrantee={() => setGrantee(true)}
+        />
+        <Btn
+          grantee={projectDoc.data.grantee}
+          value={false}
+          label={"false"}
+          setGrantee={() => setGrantee(false)}
+        />
+        <Btn
+          grantee={projectDoc.data.grantee}
+          value={null}
+          label={"unset"}
+          setGrantee={() => setGrantee(null)}
+        />
       </div>
     </div>
   );

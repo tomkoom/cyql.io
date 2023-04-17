@@ -2,7 +2,7 @@ import React from "react";
 import css from "./NftModal.module.css";
 
 // icons
-import CrossIcon from "@icons/CrossIcon/CrossIcon";
+import { CrossIcon } from "@icons/index";
 
 // components
 import { Links } from "./index";

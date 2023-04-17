@@ -40,7 +40,7 @@ const Controls = () => {
         ...(doc !== undefined && { updated_at: doc.updated_at }),
       },
     })
-      .then(() => console.log("Doc set with the id ", key))
+      .then(() => console.log("Doc set with the id", key))
       .catch((e) => console.log(e));
     dispatch(setProjectModalLoadingSet(false));
     closeModal();

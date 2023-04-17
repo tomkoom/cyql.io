@@ -36,7 +36,7 @@ const CategoryList = () => {
             key={category.id}
             onClick={() => updateCategory(category.label)}
           >
-            {category.label}
+            {category.label.toLowerCase()}
           </li>
         ))}
     </ul>

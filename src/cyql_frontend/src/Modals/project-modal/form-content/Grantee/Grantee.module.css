@@ -1,27 +1,14 @@
 /* grantee */
 
 .label {
-  font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
+  font-size: var(--fontSize6);
+  font-weight: var(--fwBold);
   color: var(--tertiaryColor);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .btns {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.btn {
-  font-size: 0.9rem;
-  font-weight: var(--fwBold);
-  padding: 0.5rem;
-  background-color: var(--underlay);
-  border-radius: 0.5rem;
-}
-
-.active {
-  color: var(--background);
-  background-color: var(--primaryColor);
 }

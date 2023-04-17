@@ -1,7 +1,7 @@
 // form content
 
-export { default as Categories } from "./Categories/Categories";
-export { default as Grantee } from "./Grantee/Grantee";
-export { default as Input } from "./Input/Input";
-export { default as Select } from "./Select/Select";
-export { default as Description } from "./Description/Description";
+export { default as Categories } from "./categories/Categories";
+export { default as Grantee } from "./grantee/Grantee";
+export { default as Input } from "./input/Input";
+export { default as Select } from "./select/Select";
+export { default as Description } from "./description/Description";
