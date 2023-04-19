@@ -3,14 +3,14 @@ import css from "./CategoryList.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "@state/categories";
+import { selectCategories as selectAllCategories } from "@state/categories";
 import { setCategory, selectCategory } from "@state/projects/category";
 import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 
 const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef }) => {
   const dispatch = useDispatch();
   const categoryListRef = useRef(null);
-  const allCategories = useSelector(selectCategories);
+  const allCategories = useSelector(selectAllCategories);
   const projectCategory = useSelector(selectCategory);
   const projectsDocs = useSelector(selectProjectsDocs);
   const projectsNum = useSelector(selectProjectsNum);
@@ -42,7 +42,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   };
 
   const sort = (a, b) => {
-    const filter = (projectsDoc, label) => projectsDoc.data.category.includes(label);
+    const filter = (projectsDoc, label) => projectsDoc.data.categories.includes(label);
     const aLen =
       a.label === "All"
         ? projectsNum
@@ -54,25 +54,26 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
     return bLen - aLen;
   };
 
-  const categoriesNum = (c) => {
-    return c.label === "All"
+  const categoriesNum = (category) => {
+    return category.label === "All"
       ? projectsNum
-      : projectsDocs.filter((projectsDoc) => projectsDoc.data.category.includes(c.label)).length;
+      : projectsDocs.filter((projectsDoc) => projectsDoc.data.categories.includes(category.label))
+          .length;
   };
 
   return (
     <ul className={css.categoryList} ref={categoryListRef}>
       {[...allCategories]
         .sort((a, b) => sort(a, b))
-        .map((c) => (
+        .map((category) => (
           <li
             className={css.categoryListI}
-            id={projectCategory === c.label ? css.active : undefined}
-            key={c.id}
-            onClick={() => clickCategory(c.label)}
+            id={projectCategory === category.label ? css.active : undefined}
+            key={category.id}
+            onClick={() => clickCategory(category.label)}
           >
-            {c.icon} {c.label.toLowerCase()}{" "}
-            <span className={css.categoriesNum}>{categoriesNum(c)}</span>
+            {category.icon} {category.label.toLowerCase()}{" "}
+            <span className={css.categoriesNum}>{categoriesNum(category)}</span>
           </li>
         ))}
     </ul>

@@ -5,7 +5,7 @@ const filterBySearch = (projectDoc, searchQuery) => {
 };
 
 const filterByCategory = (projectDoc, category) => {
-  return category === "All" ? projectDoc : projectDoc.data.category.includes(category);
+  return category === "All" ? projectDoc : projectDoc.data.categories.includes(category);
 };
 
 const filterByOpenSource = (projectDoc, openSource) => {

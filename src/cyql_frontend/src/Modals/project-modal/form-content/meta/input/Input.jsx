@@ -7,7 +7,7 @@ const Input = ({ label, value, id }) => {
       <label className={css.label} htmlFor={id}>
         {label}
       </label>
-      <input value={value} type="text" id={id} disabled />
+      <input value={value === null ? "null" : value} type="text" id={id} disabled />
     </div>
   );
 };
