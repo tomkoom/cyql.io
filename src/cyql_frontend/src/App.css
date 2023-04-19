@@ -13,13 +13,17 @@ body {
   background-color: var(--primaryColor);
 }
 
+.footer {
+  margin-top: auto;
+}
+
 .app {
   color: var(--primaryColor);
   background-color: var(--background);
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr auto;
-  /* stick footer to bottom https://kiranworkspace.com/how-to-stick-footer-to-bottom-of-page/ */
+  display: flex;
+  flex-direction: column;
+  /* https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14 */
 }
 
 .content {
