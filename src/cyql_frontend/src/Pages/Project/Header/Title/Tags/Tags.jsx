@@ -4,13 +4,13 @@ import css from "./Tags.module.css";
 // icons
 import { iGithub, iCircleNodes, iMeteor } from "@icons/Icons";
 
-const Tags = ({ category, github, canister, grantee }) => {
+const Tags = ({ categories, github, canister, grantee }) => {
   return (
     <ul className={css.tags}>
-      {category.length > 0 &&
-        category.map((c) => (
-          <li className={css.tagsI} key={c}>
-            {c.toLowerCase()}
+      {categories.length > 0 &&
+        categories.map((category) => (
+          <li className={css.tagsI} key={category.toLowerCase()}>
+            {category.toLowerCase()}
           </li>
         ))}
       {github && (

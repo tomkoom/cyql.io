@@ -63,19 +63,19 @@ const Project = () => {
                   />
                 )}
 
-                {projectDoc.data.category.includes("NFTs") && (
+                {projectDoc.data.categories.includes("NFTs") && (
                   <CollStats
-                    nftSaleStatus={projectDoc.data.nftSaleStatus}
-                    nftSaleDate={projectDoc.data.nftSaleDate}
-                    nftUnits={projectDoc.data.nftUnits}
-                    nftUnitPrice={projectDoc.data.nftUnitPrice}
+                    nftSaleDate={projectDoc.data.nft_sale_date}
+                    nftUnits={projectDoc.data.nft_units}
+                    nftUnitPrice={projectDoc.data.nft_unit_price}
                   />
                 )}
 
-                {(projectDoc.data.nftMarketUrl || projectDoc.data.nftRarityChecker) && (
+                {/* nft links */}
+                {(projectDoc.data.nft_market || projectDoc.data.nft_rarity) && (
                   <NftBtns
-                    nftMarketUrl={projectDoc.data.nftMarketUrl}
-                    nftRarityChecker={projectDoc.data.nftRarityChecker}
+                    nftMarketUrl={projectDoc.data.nft_market}
+                    nftRarityChecker={projectDoc.data.nft_rarity}
                   />
                 )}
 
@@ -94,16 +94,13 @@ const Project = () => {
                   seers={projectDoc.data.seers}
                   nuance={projectDoc.data.nuance}
                   catalyze={projectDoc.data.catalyze}
+                  funded={projectDoc.data.funded}
                   // social
                   twitter={projectDoc.data.twitter}
                   discord={projectDoc.data.discord}
                   github={projectDoc.data.github}
                   telegram={projectDoc.data.telegram}
                   medium={projectDoc.data.medium}
-                  // nft
-                  // ...
-                  // crowdfunding, etc
-                  // ...
                 />
 
                 <Meta added={projectDoc.data.added} />
@@ -121,7 +118,7 @@ const Project = () => {
                 <ShareModal
                   slug={projectDoc.data.slug}
                   name={projectDoc.data.name}
-                  category={projectDoc.data.category}
+                  categories={projectDoc.data.categories}
                   description={projectDoc.data.description}
                 />
               )}

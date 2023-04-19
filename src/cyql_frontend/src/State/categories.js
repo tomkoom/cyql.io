@@ -48,6 +48,8 @@ const categories = createSlice({
 
       // to add
       // dev tools to dev resources (?)
+      // cloud/datastore
+      // messaging
     ],
   },
   reducers: {

@@ -1,74 +1,20 @@
 // https://tomkoom.gitbook.io/cyql-api/data-formats/project-doc
+// datastore collection: cyql-projects
+
+// todos
+// [ ] add token information: token_name, token_symbol, token_logo, token_canister_id, token_markets, token_type, etc
 
 const projectDocData = {
-  __id__: "",
-  name: "",
-  id: "",
-  slug: "",
-  category: [],
-  website: "",
-  canister: "",
-  logo: "",
-  description: "",
-  twitter: "",
-  discord: "",
-  telegram: "",
-  github: "",
-  medium: "",
-  dscvr: "",
-  distrikt: "",
-  openChat: "",
-  taggr: "",
-  seers: "",
-  nuance: "",
-  catalyze: "",
-  app: "",
-  docs: "",
-  faq: "",
-  whitepaper: "",
-  nftSaleStatus: "",
-  nftSaleDate: "",
-  nftUnits: "",
-  nftUnitPrice: "",
-  nftMarketUrl: "",
-  nftSaleUrl: "",
-  nftRarityChecker: "",
-  nftImg1: "",
-  nftImg2: "",
-  nftImg3: "",
-  nftImg4: "",
-  added: null,
-  edited: null,
-  archived: null,
-  hasToken: null,
-  verified: null,
-  promoted: null,
-  grantee: null,
-  upvotedBy: [],
-  connectedProjects: [],
-  crowdfundingUrl: "",
-};
-
-const projectDoc = {
-  created_at: 0,
-  data: projectDocData,
-  key: "",
-  owner: "",
-  updated_at: 0,
-};
-
-// to update https://tomkoom.gitbook.io/cyql-api/data-formats/project-doc
-const projectDocData2 = {
   // main
   name: "",
   slug: "",
-  categories: [],
   description: "",
+  categories: [],
 
   // main links
+  logo: "",
   website: "",
   canister: "",
-  logo: "",
 
   // socials
   twitter: "",
@@ -85,46 +31,56 @@ const projectDocData2 = {
   seers: "",
   nuance: "",
   catalyze: "",
+  funded: "",
 
   // additional
   app: "",
   docs: "",
   faq: "",
   whitepaper: "",
-  crowdfunding: "",
-  verified: null,
-  grantee: null,
-
-  // nft
-  nft_sale_status: "",
-  nft_sale_date: "",
-  nft_units: "",
-  nft_unit_price: "",
-  nft_market_url: "",
-  nft_sale_url: "",
-  nft_rarity_checker: "",
-  nft_example_img_1: "",
-  nft_example_img_2: "",
-  nft_example_img_3: "",
-  nft_example_img_4: "",
+  grantee: false,
 
   // meta
   added: null,
-  edited: null,
-  // archived/hidden
+  updated: null,
+  archived: false,
 
-  // token
-  has_token: null,
-  // tokenName: "",
-  // tokenSymbol: "",
-  // tokenLogo: "",
-  // tokenCanisterId: "",
-  // tokenMarkets: [],
-  // tokenSupply: "",
-  // tokenMaxSupply: "",
+  // nft
+  nft_sale_date: "",
+  nft_sale_url: "",
+  nft_units: "",
+  nft_unit_price: "",
+
+  // nft market
+  nft_market: "",
+  nft_market_entrepot: "",
+  nft_market_ccc: "",
+  nft_market_yumi: "",
+
+  // nft rarity
+  nft_rarity: "",
+  nft_rarity_dgdg: "",
+
+  // nft stats
+  nft_stats: "",
+  nft_stats_nftgeek: "",
+
+  // nft previews
+  nft_img_1: "",
+  nft_img_2: "",
+  nft_img_3: "",
+  nft_img_4: "",
 
   // upvotes
   upvotes: [],
+};
+
+const projectDoc = {
+  created_at: 0, // initially bigint
+  data: projectDocData,
+  key: "",
+  owner: "",
+  updated_at: 0, // initially bigint
 };
 
 export { projectDoc };

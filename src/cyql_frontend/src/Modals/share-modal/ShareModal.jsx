@@ -8,7 +8,7 @@ import { Header, ShareBtns, ShareLink } from "./index";
 import { useDispatch } from "react-redux";
 import { setShareModal } from "@state/modals/shareModal";
 
-const ShareModal = ({ slug, name, category, description }) => {
+const ShareModal = ({ slug, name, categories, description }) => {
   const dispatch = useDispatch();
   const close = () => {
     dispatch(setShareModal(false));
@@ -18,7 +18,7 @@ const ShareModal = ({ slug, name, category, description }) => {
     <div className={css.modal} onClick={close}>
       <div className={css.content} onClick={(e) => e.stopPropagation()}>
         <Header name={name} />
-        <ShareBtns slug={slug} name={name} category={category} description={description} />
+        <ShareBtns slug={slug} name={name} categories={categories} description={description} />
         <ShareLink />
       </div>
     </div>

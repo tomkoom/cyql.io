@@ -6,10 +6,10 @@ import { toApp } from "@routes/routes";
 
 // components
 import { Logo, Main } from "./index";
-import { UpvtBtn } from "@components/index";
+// import { UpvoteBtn } from "@btns/index";
 
 const Project = (props) => {
-  const { slug, id, name, logo, category, canister, github, description, upvotedBy } = props;
+  const { slug, id, name, logo, categories, canister, github, description, upvotes } = props;
   const openProject = (slug) => {
     toApp(slug);
   };
@@ -19,14 +19,14 @@ const Project = (props) => {
       <Logo name={name} logo={logo} />
       <Main
         name={name}
-        category={category}
+        categories={categories}
         canister={canister}
         github={github}
         description={description}
       />
 
       {/* <div className={css.upvote} onClick={(e) => e.stopPropagation()}>
-        <UpvtBtn id={id} upvotedBy={upvotedBy} />
+        <UpvoteBtn id={id} upvotes={upvotes} />
       </div> */}
     </div>
   );

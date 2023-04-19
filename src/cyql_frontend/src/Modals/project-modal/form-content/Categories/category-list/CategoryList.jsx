@@ -4,22 +4,22 @@ import css from "./CategoryList.module.css";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategories } from "@state/categories";
-import { selectProjectCategory, setProjectCategory } from "@state/modals/projectModal/projectModal";
+import { selectProjectCategories, setProjectCategories } from "@state/modals/projectModal/projectModal";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
   const allCategories = useSelector(selectCategories);
-  const projectCategory = useSelector(selectProjectCategory);
-  const projectCategoryCopy = [...projectCategory];
+  const projectCategories = useSelector(selectProjectCategories);
+  const projectCategoriesCopy = [...projectCategories];
 
   const updateCategory = (category) => {
-    if (projectCategoryCopy.includes(category)) {
-      const index = projectCategoryCopy.indexOf(category);
-      projectCategoryCopy.splice(index, 1);
+    if (projectCategoriesCopy.includes(category)) {
+      const index = projectCategoriesCopy.indexOf(category);
+      projectCategoriesCopy.splice(index, 1);
     } else {
-      projectCategoryCopy.push(category);
+      projectCategoriesCopy.push(category);
     }
-    dispatch(setProjectCategory(projectCategoryCopy));
+    dispatch(setProjectCategories(projectCategoriesCopy));
   };
 
   return (
@@ -29,7 +29,7 @@ const CategoryList = () => {
         .map((category) => (
           <li
             className={
-              projectCategoryCopy.includes(category.label)
+              projectCategoriesCopy.includes(category.label)
                 ? `${css.categoryListI} ${css.selected}`
                 : css.categoryListI
             }

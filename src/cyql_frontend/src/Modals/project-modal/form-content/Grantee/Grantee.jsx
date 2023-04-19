@@ -33,12 +33,6 @@ const Grantee = () => {
           label={"false"}
           setProperty={setGrantee}
         />
-        <Btn
-          property={projectDoc.data.grantee}
-          value={null}
-          label={"unset"}
-          setProperty={setGrantee}
-        />
       </div>
     </div>
   );

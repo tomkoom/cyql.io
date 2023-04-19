@@ -41,12 +41,6 @@ const Meta = () => {
             label={"false"}
             setProperty={setArchived}
           />
-          <Btn
-            property={projectDoc.data.archived}
-            value={null}
-            label={"unset"}
-            setProperty={setArchived}
-          />
         </div>
       </div>
     </div>

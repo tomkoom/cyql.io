@@ -4,11 +4,11 @@ import css from "./NftBtns.module.css";
 // components
 import Btn from "./btn/Btn";
 
-const NftBtns = ({ nftMarketUrl, nftRarityChecker }) => {
+const NftBtns = ({ nftMarket, nftRarity }) => {
   return (
     <div className={css.nftBtns}>
-      {nftMarketUrl && <Btn label="Trade" url={nftMarketUrl} />}
-      {nftRarityChecker && <Btn label="Rarity" url={nftRarityChecker} />}
+      {nftMarket && <Btn label="Trade" url={nftMarket} />}
+      {nftRarity && <Btn label="Rarity" url={nftRarity} />}
     </div>
   );
 };

@@ -20,18 +20,18 @@ import { selectProjectsDocs } from "@state/projects";
 
 const Home = () => {
   const projects = useSelector(selectProjectsDocs);
-  const pProjects = projects.filter((p) => !p.data.category.includes("NFTs"));
-  const pNfts = projects.filter((p) => p.data.category.includes("NFTs"));
+  const pProjects = projects.filter((p) => !p.data.categories.includes("NFTs"));
+  const pNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
   const popularProjects = projects
-    .filter((p) => p.data.upvotedBy)
-    .filter((p) => !p.data.category.includes("NFTs"))
-    .sort((a, b) => b.data.upvotedBy.length - a.data.upvotedBy.length);
+    .filter((p) => p.data.upvotes)
+    .filter((p) => !p.data.categories.includes("NFTs"))
+    .sort((a, b) => b.data.upvotes.length - a.data.upvotes.length);
   const popularNfts =
     projects.length > 0 &&
     projects
-      .filter((p) => p.data.upvotedBy)
-      .filter((p) => p.data.category.includes("NFTs"))
-      .sort((a, b) => b.data.upvotedBy.length - a.data.upvotedBy.length);
+      .filter((p) => p.data.upvotes)
+      .filter((p) => p.data.categories.includes("NFTs"))
+      .sort((a, b) => b.data.upvotes.length - a.data.upvotes.length);
 
   return (
     <main className={css.home}>

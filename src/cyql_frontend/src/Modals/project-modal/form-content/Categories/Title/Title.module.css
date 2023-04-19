@@ -5,11 +5,11 @@
 }
 
 .title h6 {
-  font-size: var(--fontSize5);
-  margin-bottom: 0.125rem;
+  font-size: var(--fs5);
 }
 
-.title p {
+.span {
+  font-size: var(--fs6);
   font-weight: var(--fwMedium);
   color: var(--tertiaryColor);
 }

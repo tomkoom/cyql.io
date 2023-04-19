@@ -17,8 +17,8 @@ const projectModal = createSlice({
     setProjectDocData(state, { payload }) {
       state.projectDoc.data = { ...state.projectDoc.data, ...payload };
     },
-    setProjectCategory(state, { payload }) {
-      state.projectDoc.data.category = payload;
+    setProjectCategories(state, { payload }) {
+      state.projectDoc.data.categories = payload;
     },
     setProjectGrantee(state, { payload }) {
       state.projectDoc.data.grantee = payload;
@@ -39,7 +39,7 @@ const projectModal = createSlice({
 const selectProjectModal = (state) => state.projectModal.projectModal;
 const selectProjectDoc = (state) => state.projectModal.projectDoc;
 const selectProjectDocData = (state) => state.projectModal.projectDoc.data;
-const selectProjectCategory = (state) => state.projectModal.projectDoc.data.category;
+const selectProjectCategories = (state) => state.projectModal.projectDoc.data.categories;
 const selectProjectGrantee = (state) => state.projectModal.projectDoc.data.grantee;
 const selectProjectArchived = (state) => state.projectModal.projectDoc.data.archived;
 const selectProjectDescription = (state) => state.projectModal.projectDoc.data.description;
@@ -47,7 +47,7 @@ export {
   selectProjectModal,
   selectProjectDoc,
   selectProjectDocData,
-  selectProjectCategory,
+  selectProjectCategories,
   selectProjectGrantee,
   selectProjectArchived,
   selectProjectDescription,
@@ -57,7 +57,7 @@ export const {
   setProjectModal,
   setProjectDoc,
   setProjectDocData,
-  setProjectCategory,
+  setProjectCategories,
   setProjectGrantee,
   setProjectArchived,
   setProjectDescription,

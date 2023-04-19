@@ -14,11 +14,11 @@ import {
 } from "react-share";
 // https://www.npmjs.com/package/react-share
 
-const ShareBtns = ({ slug, name, category, description }) => {
+const ShareBtns = ({ slug, name, categories, description }) => {
   // const url = `https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/#/projects/${slug}`;
   const url2 = `https://cyql.io/#/projects/${slug}`;
   const summary = `${name}: ${description}`;
-  const hashtags = [...category, "ICP", "Web3", "InternetComputer"];
+  const hashtags = [...categories, "ICP", "Web3", "InternetComputer"];
 
   return (
     <ul className={css.shareBtns}>

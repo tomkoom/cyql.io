@@ -10,7 +10,7 @@ import { selectProjectsDocs } from "@state/projects";
 import { toApp } from "@routes/routes";
 
 // components
-import { UpvtBtn } from "@components/index";
+// import { UpvoteBtn } from "@btns/index";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
@@ -44,7 +44,7 @@ const HighlightedByCategory = ({ filter }) => {
   return (
     <ul className={css.projects}>
       {projects
-        .filter((project) => project.data.category.includes(filter))
+        .filter((project) => project.data.categories.includes(filter))
         .sort((a, b) => sortByUpvoted(a, b))
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
@@ -70,7 +70,7 @@ const HighlightedByCategory = ({ filter }) => {
 
             {/* upvote button */}
             {/* <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
-              <UpvtBtn id={project.key} upvotedBy={project.data.upvotedBy} />
+              <UpvoteBtn id={project.key} upvotedBy={project.data.upvotedBy} />
             </div> */}
           </li>
         ))}

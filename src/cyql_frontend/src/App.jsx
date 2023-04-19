@@ -80,14 +80,16 @@ const App = () => {
         filter: {},
       })
         .then((docs) => {
-          const projectsDocs = docs.items;
-          const projectsDocsSorted = projectsDocs
+          const projectsDocs = docs.items
             .sort((a, b) => sortByDate(a.data.added, b.data.added))
             .map((project) => bigIntToNum(project));
-          const projectsNum = Number(docs.length);
 
-          dispatch(setProjectsDocs(projectsDocsSorted));
-          dispatch(setProjectsNum(projectsNum));
+          const projectsDocsNum = projectsDocs.filter(
+            (projectDoc) => projectDoc.data.archived === false
+          ).length;
+
+          dispatch(setProjectsDocs(projectsDocs));
+          dispatch(setProjectsNum(projectsDocsNum));
         })
         .catch((err) => console.log(err));
     })();

@@ -6,4 +6,3 @@ export { default as Description } from "./description/Description";
 export { default as Grantee } from "./grantee/Grantee";
 export { default as Input } from "./input/Input";
 export { default as Meta } from "./meta/Meta";
-export { default as Select } from "./select/Select";

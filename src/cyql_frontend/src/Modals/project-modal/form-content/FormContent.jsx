@@ -2,10 +2,10 @@ import React from "react";
 import css from "./FormContent.module.css";
 
 // components
-import { Categories, Description, Grantee, Input, Meta, Select } from "./index";
+import { Categories, Description, Grantee, Input, Meta } from "./index";
 
 // inputs
-import { main, socials, additional, nft, nftSaleStatusOptions } from "./inputs";
+import { main, socials, additional, nft } from "./inputs";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -27,7 +27,7 @@ const FormContent = () => {
       </div>
 
       <div className={css.section}>
-        <h5 className={css.title}>main</h5>
+        <h5>main</h5>
         {main.map((input) => (
           <Input
             id={input.id}
@@ -44,7 +44,7 @@ const FormContent = () => {
       </div>
 
       <div className={css.section}>
-        <h5 className={css.sectionTitle}>social networks</h5>
+        <h5>social networks</h5>
         {socials.map((input) => (
           <Input
             id={input.id}
@@ -58,7 +58,7 @@ const FormContent = () => {
       </div>
 
       <div className={css.section}>
-        <h5 className={css.sectionTitle}>additional info</h5>
+        <h5>additional info</h5>
         {additional.map((input) => (
           <Input
             id={input.id}
@@ -73,15 +73,7 @@ const FormContent = () => {
 
       {projectDoc.data.category && projectDoc.data.category.includes("NFTs") ? (
         <div className={css.section}>
-          <h5 className={css.sectionTitle}>nft data</h5>
-          <Select
-            id="nftSaleStatus"
-            label="NFT sale status"
-            value={projectDoc.data.nftSaleStatus}
-            onChange={handleChange}
-            selectOptions={nftSaleStatusOptions}
-          />
-
+          <h5>nft data</h5>
           {nft.map((input) => (
             <Input
               id={input.id}

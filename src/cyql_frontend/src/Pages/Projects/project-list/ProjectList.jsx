@@ -81,7 +81,7 @@ const ProjectList = () => {
                 </div>
 
                 <div className={css.tags}>
-                  <Tags category={p.data.category} nftSaleStatus={p.data.nftSaleStatus} />
+                  <Tags categories={p.data.categories} nftSaleStatus={p.data.nftSaleStatus} />
                 </div>
 
                 <div className={css.socials}>
@@ -98,11 +98,12 @@ const ProjectList = () => {
                   <SocialsIc
                     dscvr={p.data.dscvr}
                     distrikt={p.data.distrikt}
-                    openChat={p.data.openChat}
+                    openchat={p.data.openchat}
                     taggr={p.data.taggr}
                     seers={p.data.seers}
                     nuance={p.data.nuance}
                     catalyze={p.data.catalyze}
+                    funded={p.data.funded}
                   />
                 </div>
 

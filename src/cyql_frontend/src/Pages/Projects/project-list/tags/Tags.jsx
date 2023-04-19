@@ -1,10 +1,13 @@
 import React from "react";
 import css from "./Tags.module.css";
 
-const Tags = ({ category }) => {
+const Tags = ({ categories }) => {
   return (
     <ul className={css.tags}>
-      {category.length > 0 && category.map((c) => <li key={c.toLowerCase()}>{c.toLowerCase()}</li>)}
+      {categories.length > 0 &&
+        categories.map((category) => (
+          <li key={category.toLowerCase()}>{category.toLowerCase()}</li>
+        ))}
     </ul>
   );
 };

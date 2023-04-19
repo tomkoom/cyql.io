@@ -18,17 +18,17 @@ const HighlightedProjects = ({ projects }) => {
         <div className={css.grid}>
           {projects.slice(0, 24).map((p) => (
             <Project
-              key={p.key}
               id={p.key}
+              key={p.key}
               // ...
               name={p.data.name}
               slug={p.data.slug}
               logo={p.data.logo}
-              category={p.data.category}
+              categories={p.data.categories}
               canister={p.data.canister}
               github={p.data.github}
               description={p.data.description}
-              upvotedBy={p.data.upvotedBy}
+              upvotes={p.data.upvotes}
             />
           ))}
         </div>

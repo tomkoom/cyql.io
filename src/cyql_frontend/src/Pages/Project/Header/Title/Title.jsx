@@ -4,11 +4,11 @@ import css from "./Title.module.css";
 // components
 import { Name, Tags } from "./index";
 
-const Title = ({ name, category, github, canister, grantee }) => {
+const Title = ({ name, categories, github, canister, grantee }) => {
   return (
     <div className={css.title}>
       <Name name={name} />
-      <Tags category={category} github={github} canister={canister} grantee={grantee} />
+      <Tags categories={categories} github={github} canister={canister} grantee={grantee} />
     </div>
   );
 };

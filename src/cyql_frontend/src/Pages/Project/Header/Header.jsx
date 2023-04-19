@@ -22,7 +22,7 @@ const Header = ({ projectDoc }) => {
         {projectDoc.data.logo && <Logo logo={projectDoc.data.logo} name={projectDoc.data.name} />}
         <Title
           name={projectDoc.data.name}
-          category={projectDoc.data.category}
+          categories={projectDoc.data.categories}
           github={projectDoc.data.github}
           canister={projectDoc.data.canister}
           grantee={projectDoc.data.grantee}
