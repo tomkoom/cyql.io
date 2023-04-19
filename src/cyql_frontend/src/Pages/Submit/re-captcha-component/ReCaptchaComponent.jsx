@@ -16,7 +16,6 @@ const ReCaptchaComponent = ({ setIsVerified }) => {
   return (
     <div style={recaptchaStyle}>
       <ReCAPTCHA sitekey={recaptchaSiteKey} onChange={onRecaptcha} />
-      {/* <ReCAPTCHA sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" onChange={onRecaptcha} /> */}
       {/* Test recaptcha site key: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI */}
     </div>
   );

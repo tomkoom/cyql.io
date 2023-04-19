@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const categories = createSlice({
-  name: "categories",
+const allCategories = createSlice({
+  name: "allCategories",
   initialState: {
-    categories: [
+    allCategories: [
       { id: "all", label: "All", icon: "" },
       // wallets, defi, tokens, payments
       { id: "wallets", label: "Wallets", icon: "👛" },
@@ -54,9 +54,9 @@ const categories = createSlice({
   },
   reducers: {
     setCategoryLength(state, { payload }) {
-      state.categories ===
+      state.allCategories ===
         {
-          ...state.categories,
+          ...state.allCategories,
           ...payload,
         };
     },
@@ -64,8 +64,8 @@ const categories = createSlice({
 });
 
 // selectors
-const selectCategories = (state) => state.categories.categories;
-export { selectCategories };
+const selectAllCategories = (state) => state.allCategories.allCategories;
+export { selectAllCategories };
 
-export const { setCategoryLength } = categories.actions;
-export default categories.reducer;
+export const { setCategoryLength } = allCategories.actions;
+export default allCategories.reducer;

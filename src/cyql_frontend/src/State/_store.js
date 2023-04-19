@@ -26,7 +26,7 @@ import sort from "./projects/sort";
 import projects from "./projects";
 
 // project data
-import categories from "./categories";
+import allCategories from "./allCategories";
 
 // ...
 import theme from "./theme";
@@ -53,9 +53,7 @@ const rootReducer = combineReducers({
   theme,
   loadMore,
   modals,
-
   category,
-  categories,
   sort,
   profile,
   filter,
@@ -73,6 +71,7 @@ const rootReducer = combineReducers({
 
   // projects
   projects,
+  allCategories,
 });
 
 const persistConfig = {

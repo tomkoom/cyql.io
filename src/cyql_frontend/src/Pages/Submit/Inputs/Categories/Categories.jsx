@@ -3,18 +3,15 @@ import css from "./Categories.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "../../../../state/categories";
-import {
-  selectProjectSubmissionData,
-  setProjectSubmissionData,
-} from "../../../../state/projectSubmission";
+import { selectAllCategories } from "@state/allCategories";
+import { selectProjectSubmissionData, setProjectSubmissionData } from "@state/projectSubmission";
 
 const Categories = () => {
   const dispatch = useDispatch();
-  const categories = useSelector(selectCategories);
+  const allCategories = useSelector(selectAllCategories);
   const projectSubmissionData = useSelector(selectProjectSubmissionData);
 
-  const handleInput = (e) => {
+  const setCategory = (e) => {
     dispatch(
       setProjectSubmissionData({ ...projectSubmissionData, [e.target.name]: e.target.value })
     );
@@ -24,27 +21,25 @@ const Categories = () => {
     <div className={css.categories}>
       <p className={css.label}>Project category</p>
       <ul>
-        {categories.map((c) =>
-          c.id !== "all" ? (
-            <li key={c.id}>
-              <label htmlFor={c.id}>
+        {allCategories
+          .filter((category) => category.id !== "all")
+          .map((category) => (
+            <li key={category.id}>
+              <label htmlFor={category.id}>
                 <input
-                  id={c.id}
+                  id={category.id}
                   className={css.categoryHidden}
-                  value={c.id}
+                  value={category.id}
                   type="radio"
                   name="category"
-                  onChange={handleInput}
+                  onChange={setCategory}
                 />
                 <div className={css.category}>
-                  {c.icon}&nbsp;&nbsp;{c.label}
+                  {category.icon}&nbsp;&nbsp;{category.label}
                 </div>
               </label>
             </li>
-          ) : (
-            ""
-          )
-        )}
+          ))}
       </ul>
     </div>
   );

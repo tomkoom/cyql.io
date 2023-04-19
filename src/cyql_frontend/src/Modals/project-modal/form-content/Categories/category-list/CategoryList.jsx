@@ -3,12 +3,15 @@ import css from "./CategoryList.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "@state/categories";
-import { selectProjectCategories, setProjectCategories } from "@state/modals/projectModal/projectModal";
+import { selectAllCategories } from "@state/allCategories";
+import {
+  selectProjectCategories,
+  setProjectCategories,
+} from "@state/modals/projectModal/projectModal";
 
 const CategoryList = () => {
   const dispatch = useDispatch();
-  const allCategories = useSelector(selectCategories);
+  const allCategories = useSelector(selectAllCategories);
   const projectCategories = useSelector(selectProjectCategories);
   const projectCategoriesCopy = [...projectCategories];
 

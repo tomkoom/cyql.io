@@ -71,7 +71,7 @@ const Projects = () => {
               <div className={css.coll139}>
                 {projectDoc.data.slug && formatStr12(projectDoc.data.slug)}
               </div>
-              <div className={css.coll139}>{projectDoc.data.category.join(", ")}</div>
+              <div className={css.coll139}>{projectDoc.data.categories.join(", ")}</div>
               <div className={css.coll139}>
                 {projectDoc.data.logo && formatWebsite(projectDoc.data.logo)}
               </div>

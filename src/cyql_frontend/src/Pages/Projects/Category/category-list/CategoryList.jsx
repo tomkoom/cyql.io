@@ -3,7 +3,7 @@ import css from "./CategoryList.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories as selectAllCategories } from "@state/categories";
+import { selectAllCategories } from "@state/allCategories";
 import { setCategory, selectCategory } from "@state/projects/category";
 import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
 
@@ -41,7 +41,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
     setOpenCategoryList(false);
   };
 
-  const sort = (a, b) => {
+  const sortByNum = (a, b) => {
     const filter = (projectsDoc, label) => projectsDoc.data.categories.includes(label);
     const aLen =
       a.label === "All"
@@ -64,7 +64,7 @@ const CategoryList = ({ openCategoryList, setOpenCategoryList, categoryBtnRef })
   return (
     <ul className={css.categoryList} ref={categoryListRef}>
       {[...allCategories]
-        .sort((a, b) => sort(a, b))
+        .sort((a, b) => sortByNum(a, b))
         .map((category) => (
           <li
             className={css.categoryListI}

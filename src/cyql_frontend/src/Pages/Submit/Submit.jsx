@@ -3,8 +3,7 @@ import css from "./Submit.module.css";
 
 // components
 import { Categories, Inputs } from "./inputs/index";
-import { SubmitBtn, ReCaptchaComponent } from "./submit-btn/index";
-import SubmissionSuccess from "./submission-success/SubmissionSuccess";
+import { ReCaptchaComponent, SubmissionSuccess, SubmitBtn } from "./index";
 
 // state
 import { useSelector } from "react-redux";
@@ -29,9 +28,8 @@ const Submit = () => {
         submissionDate: Date.now(),
       });
       setIsSubmitted(true);
-    } catch (err) {
-      console.log(err);
-      // toast
+    } catch (e) {
+      console.log(e);
     }
     setSubmissionLoader(false);
   };

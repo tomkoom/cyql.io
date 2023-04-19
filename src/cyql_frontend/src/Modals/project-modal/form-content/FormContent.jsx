@@ -15,7 +15,7 @@ const FormContent = () => {
   const dispatch = useDispatch();
   const projectDoc = useSelector(selectProjectDoc);
 
-  const handleChange = (e) => {
+  const updateProjectDocData = (e) => {
     const { name, value } = e.target;
     dispatch(setProjectDocData({ [name]: value }));
   };
@@ -31,10 +31,10 @@ const FormContent = () => {
         {main.map((input) => (
           <Input
             id={input.id}
-            label={input.label}
+            label={input.id}
             type={input.type}
             value={projectDoc.data[input.id]}
-            onChange={handleChange}
+            onChange={updateProjectDocData}
             key={input.id}
           />
         ))}
@@ -48,10 +48,10 @@ const FormContent = () => {
         {socials.map((input) => (
           <Input
             id={input.id}
-            label={input.label}
+            label={input.id}
             type={input.type}
             value={projectDoc.data[input.id]}
-            onChange={handleChange}
+            onChange={updateProjectDocData}
             key={input.id}
           />
         ))}
@@ -62,31 +62,29 @@ const FormContent = () => {
         {additional.map((input) => (
           <Input
             id={input.id}
-            label={input.label}
+            label={input.id}
             type={input.type}
             value={projectDoc.data[input.id]}
-            onChange={handleChange}
+            onChange={updateProjectDocData}
             key={input.id}
           />
         ))}
       </div>
 
-      {projectDoc.data.category && projectDoc.data.category.includes("NFTs") ? (
+      {projectDoc.data.categories && projectDoc.data.categories.includes("NFTs") && (
         <div className={css.section}>
           <h5>nft data</h5>
           {nft.map((input) => (
             <Input
               id={input.id}
-              label={input.label}
+              label={input.id}
               type={input.type}
               value={projectDoc.data[input.id]}
-              onChange={handleChange}
+              onChange={updateProjectDocData}
               key={input.id}
             />
           ))}
         </div>
-      ) : (
-        ""
       )}
     </div>
   );
