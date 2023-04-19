@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import css from "./Category.module.css";
 
 // components
-import Btn from "./btn/Btn";
-import CategoryList from "./category-list/CategoryList";
+import { Btn, /* CategoryList */ CategoryListModal } from "./index";
 
 const Category = () => {
   const [openCategoryList, setOpenCategoryList] = useState(false);
@@ -14,7 +13,7 @@ const Category = () => {
       <div onClick={() => setOpenCategoryList((prev) => !prev)} ref={categoryBtnRef}>
         <Btn />
       </div>
-      <div className={css.categoryList}>
+      {/* <div className={css.categoryList}>
         {openCategoryList && (
           <CategoryList
             openCategoryList={openCategoryList}
@@ -22,7 +21,13 @@ const Category = () => {
             categoryBtnRef={categoryBtnRef}
           />
         )}
-      </div>
+      </div> */}
+      {openCategoryList && (
+        <CategoryListModal
+          openCategoryList={openCategoryList}
+          setOpenCategoryList={setOpenCategoryList}
+        />
+      )}
     </div>
   );
 };

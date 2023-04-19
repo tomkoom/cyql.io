@@ -18,7 +18,9 @@ const FooterTop = () => {
       <li className={css.footerTopI}>
         <div className={css.linkBlock} onClick={toSubmit}>
           <h5 className={css.title}>{iPlus}&nbsp;&nbsp;submit your project</h5>
-          <p className="text">Submit your project and get first traction from the #IC community.</p>
+          <p className={css.text}>
+            Submit your project and get first traction from the #IC community.
+          </p>
         </div>
       </li>
 
@@ -26,7 +28,7 @@ const FooterTop = () => {
       <li className={css.footerTopI}>
         <a className={css.linkBlock} href={cyqlMsgUrl} rel="noreferrer noopener" target="_blank">
           <h5 className={css.title}>{iComments}&nbsp;&nbsp;reach out</h5>
-          <p className="text">
+          <p className={css.text}>
             Didn't find what you were looking for or want to collaborate? Reach out for us, we are
             happy to support and cooperate.
           </p>
@@ -37,7 +39,7 @@ const FooterTop = () => {
       {/* add ghost donation */}
       <li className={css.footerTopIDonation}>
         <h5 className={css.title}>{iHeart}&nbsp;&nbsp;donate</h5>
-        <p className="text">
+        <p className={css.text}>
           cyql is developed and maintained by the IC enthusiasts. You can support the project by
           making a{" "}
           <a

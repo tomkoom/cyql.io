@@ -45,7 +45,7 @@ a {
 }
 
 button {
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
   font-weight: var(--fwMedium);
   color: var(--primaryColor);
   background-color: transparent;
@@ -68,7 +68,7 @@ ul {
 
 .submitBtn {
   margin-top: 2rem;
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
   font-weight: var(--fwMedium);
   color: #fff;
   background-color: var(--highlightColor);
@@ -132,7 +132,7 @@ ul {
   align-items: center;
   padding: 0 0.75rem;
   margin: 0.5rem 0;
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
   color: var(--primaryColor);
   background-color: var(--underlay);
   caret-color: var(--primaryColor);
@@ -146,14 +146,14 @@ ul {
 }
 
 .hint {
-  font-size: var(--fontSize7);
+  font-size: var(--fs7);
   color: var(--secondaryColor);
 }
 
 /* other */
 
 .pageTitle {
-  font-size: var(--fontSize2);
+  font-size: var(--fs2);
   font-weight: var(--fwBlack);
   line-height: 125%;
   margin-bottom: 0.5rem;
@@ -179,7 +179,7 @@ ul {
 }
 
 .cookie * {
-  font-size: 0.9rem;
+  font-size: var(--fsText); /* 0.9 */
 }
 
 .cookie__content {

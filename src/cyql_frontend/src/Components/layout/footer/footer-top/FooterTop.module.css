@@ -6,6 +6,12 @@
   gap: 1.5rem;
 }
 
+.text {
+  line-height: 150%;
+  display: inline-block;
+  word-wrap: break-word;
+}
+
 .linkBlock {
   cursor: pointer;
 }
@@ -38,4 +44,12 @@
 
 .donationLink:hover {
   opacity: 0.8;
+}
+
+/* responsive */
+
+@media screen and (max-width: 479px) {
+  .footerTop {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
 }

@@ -3,8 +3,13 @@
 .category {
   display: flex;
   align-self: flex-start;
-  position: relative;
 }
+
+/* .category {
+  display: flex;
+  align-self: flex-start;
+  position: relative;
+} */
 
 .categoryList {
   position: absolute;
