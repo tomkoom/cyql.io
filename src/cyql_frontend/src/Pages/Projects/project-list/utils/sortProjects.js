@@ -3,24 +3,14 @@ const sortNewest = (a, b) => {
   // b may be number or null
 
   if (a && b) {
-    if (a < b) {
-      return 1;
-    } else if (a === b) {
-      return 0; // ambiguous
-    } else {
-      return -1;
-    }
-  }
-
-  if (a === null && b) {
+    return b - a;
+  } else if (!a && b) {
     return 1;
-  }
-
-  if (a && b === null) {
+  } else if (a && !b) {
     return -1;
+  } else {
+    return 0;
   }
-
-  return 0;
 };
 
 const sortOldest = (a, b) => {
@@ -28,74 +18,27 @@ const sortOldest = (a, b) => {
   // b may be number or null
 
   if (a && b) {
-    if (a < b) {
-      return -1;
-    } else if (a === b) {
-      return 0; // ambiguous
-    } else {
-      return 1;
-    }
-  }
-
-  if (a === null && b) {
+    return a - b;
+  } else if (!a && b) {
     return -1;
-  }
-
-  if (a && b === null) {
+  } else if (a && !b) {
     return 1;
+  } else {
+    return 0;
   }
-
-  return 0;
 };
 
 const sortMostUp = (a, b) => {
   // a is an []
   // b is an []
-
-  if (a && b) {
-    if (a.length < b.length) {
-      return 1;
-    } else if (a.length === b.length) {
-      return 0; // ambiguous
-    } else {
-      return -1;
-    }
-  }
-
-  if (!a && b) {
-    return 1;
-  }
-
-  if (a && !b) {
-    return -1;
-  }
-
-  return 0;
+  return b.length - a.length;
 };
 
 const sortLeastUp = (a, b) => {
   // a is an []
   // b is an []
 
-  if (a && b) {
-    if (a.length < b.length) {
-      return -1;
-    } else if (a.length === b.length) {
-      return 0; // ambiguous
-    } else {
-      return 1;
-    }
-  }
-
-  if (!a && b) {
-    return -1;
-  }
-
-  if (a && !b) {
-    return 1;
-  }
-
-  return 0;
+  return a.length - b.length;
 };
 
 export { sortNewest, sortOldest, sortMostUp, sortLeastUp };
