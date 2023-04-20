@@ -20,7 +20,7 @@ import {
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@state/projects/filter";
-import { selectProjectsDocs, selectProjectsNum } from "@state/projects";
+import { selectProjectsDocs } from "@state/projects";
 
 // utils: sort, filter
 import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects";
@@ -35,15 +35,19 @@ import {
 const ProjectList = () => {
   // projects
   const projectsDocs = useSelector(selectProjectsDocs);
-  const projectsNum = useSelector(selectProjectsNum);
+  const projectsDocsNum = projectsDocs.length;
   const itemsVisible = useSelector(selectItemsVisibleProjects);
 
-  // sorting, filtering, etc
+  // search
   const searchQuery = useSelector(selectSearch);
+
+  // filter
   const category = useSelector(selectCategory);
   const openSource = useSelector(selectFilterByOpenSource);
   const onChain = useSelector(selectFilterByOnChain);
   const grantee = useSelector(selectFilterByGrantee);
+
+  // sort
   const sort = useSelector(selectSort);
 
   return (
@@ -60,12 +64,8 @@ const ProjectList = () => {
             .filter((projectDoc) => filterByGrantee(projectDoc, grantee))
             .sort((a, b) => sort === "newest-first" && sortNewest(a.data.added, b.data.added))
             .sort((a, b) => sort === "oldest-first" && sortOldest(a.data.added, b.data.added))
-            .sort(
-              (a, b) => sort === "most-upvoted" && sortMostUp(a.data.upvotedBy, b.data.upvotedBy)
-            )
-            .sort(
-              (a, b) => sort === "least-upvoted" && sortLeastUp(a.data.upvotedBy, b.data.upvotedBy)
-            )
+            .sort((a, b) => sort === "most-upvoted" && sortMostUp(a.data.upvotes, b.data.upvotes))
+            .sort((a, b) => sort === "least-upvoted" && sortLeastUp(a.data.upvotes, b.data.upvotes))
             .slice(0, itemsVisible)
             .map((p) => (
               <li className={css.liI} key={p.key} onClick={() => toApp(p.data.slug)}>
@@ -110,14 +110,14 @@ const ProjectList = () => {
                 {/* upvote btn */}
                 {/* <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn id={p.key} upvotedBy={p.data.upvotedBy} />
+                    <UpvoteBtn id={p.key} upvotes={p.data.upvotes} />
                   </div>
                 </div> */}
               </li>
             ))}
         </ul>
       )}
-      {itemsVisible < projectsNum && (
+      {itemsVisible < projectsDocsNum && (
         <LoadMoreBtn label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
       )}
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./CategoryListModal.module.css";
 
 // icons
@@ -42,17 +42,8 @@ const CategoryListModal = ({ openCategoryList, setOpenCategoryList }) => {
           .length;
   };
 
-  // prevent from scrolling when modal is active
-  useEffect(() => {
-    if (openCategoryList) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [openCategoryList]);
-
   return (
-    openCategoryList && (
+    openCategoryList === true && (
       <div className={css.categoryListModal}>
         <div className={css.content}>
           <CrossIcon onClick={() => setOpenCategoryList(false)} />
