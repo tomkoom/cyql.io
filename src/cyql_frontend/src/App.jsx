@@ -208,14 +208,14 @@ const App = () => {
         buttonClasses="cookie__btn"
         expires={90}
       >
-        This website uses 🍪{" "}
+        this site uses 🍪 to enhance ux,{" "}
         <a
           className="cookie__link"
-          href="https://bit.ly/icapps-cookies"
+          href="https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
           rel="noreferrer noopener"
           target="_blank"
         >
-          Learn more
+          learn more
         </a>
       </CookieConsent>
 

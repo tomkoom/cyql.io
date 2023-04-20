@@ -28,6 +28,10 @@ const Menu = () => {
       <div className={css.menu}>
         <div className={css.content}>
           <div className={css.main}>
+            <div className={css.crossIcon}>
+              <CrossIcon onClick={() => dispatch(setMobileMenuModal(false))} />
+            </div>
+
             <Navlinks />
             <Divider />
             {!principalId ? <SignInBtn /> : <ProfileActions />}
@@ -37,10 +41,6 @@ const Menu = () => {
               <Price />
               <Theme />
             </div>
-          </div>
-
-          <div className={css.crossIcon}>
-            <CrossIcon onClick={() => dispatch(setMobileMenuModal(false))} />
           </div>
         </div>
       </div>

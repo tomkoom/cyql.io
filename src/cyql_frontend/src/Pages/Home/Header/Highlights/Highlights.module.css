@@ -19,7 +19,10 @@
   font-size: var(--fontSize6);
   font-weight: var(--fwBold);
   line-height: 150%;
-  word-break: break-all;
+
+  /* break word */
+  display: inline-block;
+  word-wrap: break-word;
 }
 
 .link {

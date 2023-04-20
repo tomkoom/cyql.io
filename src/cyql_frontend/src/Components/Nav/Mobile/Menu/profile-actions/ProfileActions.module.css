@@ -3,14 +3,15 @@
 .profileActions {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .btn {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: var(--fontSize5);
+  padding: 0.25rem 0;
+  font-size: var(--fs3);
   font-weight: var(--fwBold);
   cursor: pointer;
 }

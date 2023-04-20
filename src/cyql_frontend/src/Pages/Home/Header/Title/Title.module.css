@@ -2,7 +2,7 @@
 
 .title {
   max-width: 36rem;
-  font-size: var(--fontSize1);
+  font-size: var(--fs1);
   font-weight: var(--fwBlack);
   line-height: 125%;
 }
@@ -20,7 +20,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: var(--fontSize4);
+  font-size: var(--fs4);
   padding: 0 1rem;
   border-radius: 4rem;
   background-color: var(--underlay);
@@ -28,4 +28,13 @@
 
 .logo {
   height: 2rem;
+}
+
+@media screen and (max-width: 479px) {
+  .title {
+    max-width: 36rem;
+    font-size: var(--fs2);
+    font-weight: var(--fwBlack);
+    line-height: 125%;
+  }
 }

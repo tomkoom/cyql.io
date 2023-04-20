@@ -28,10 +28,7 @@
 }
 
 .crossIcon {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1.5rem;
+  align-self: flex-start;
 }
 
 hr.div {

@@ -2,22 +2,20 @@ import React from "react";
 import css from "./Navlinks.module.css";
 
 // icons
-import { iCube, iRocket, iPlus, iBolt, iInfinity } from "@icons/Icons";
+import { iCube, iPlus, iInfinity } from "@icons/Icons";
 
 // components
-import Navlink from "./Navlink/Navlink";
+import { Navlink } from "./index";
 
 // routes
-import { toHome, toApps, toUpcoming, toJobs, toSubmit } from "@routes/routes";
+import { toHome, toApps, toSubmit } from "@routes/routes";
 
 const Navlinks = () => {
   return (
     <div className={css.navlinks}>
-      <Navlink label="Home" to={toHome} icon={iInfinity} />
-      <Navlink label="Projects" to={toApps} icon={iCube} />
-      {/* <Navlink label="Upcoming" to={toUpcoming} icon={iRocket} />
-      <Navlink label="Jobs" to={toJobs} icon={iBolt} /> */}
-      <Navlink label="Submit" to={toSubmit} icon={iPlus} />
+      <Navlink label="home" route={toHome} icon={iInfinity} />
+      <Navlink label="projects" route={toApps} icon={iCube} />
+      <Navlink label="submit" route={toSubmit} icon={iPlus} />
     </div>
   );
 };

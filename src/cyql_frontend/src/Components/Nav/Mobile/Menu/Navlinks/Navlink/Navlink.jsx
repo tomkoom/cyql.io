@@ -5,18 +5,18 @@ import css from "./Navlink.module.css";
 import { useDispatch } from "react-redux";
 import { setMobileMenuModal } from "@state/modals/modals";
 
-const Navlink = ({ label, to, icon }) => {
+const Navlink = ({ label, route, icon }) => {
   const dispatch = useDispatch();
   const navigate = () => {
-    to();
+    route();
     dispatch(setMobileMenuModal(false));
   };
 
   return (
-    <div className={css.navlink} onClick={navigate}>
+    <button className={css.navlink} onClick={navigate}>
       {icon && <span className={css.icon}>{icon}</span>}
-      <p className={css.label}>{label}</p>
-    </div>
+      <span>{label}</span>
+    </button>
   );
 };
 

@@ -3,16 +3,23 @@ import css from "./Summary.module.css";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjectsNum } from "@state/projects";
+import { selectProjectsDocs } from "@state/projects";
 
 const Summary = () => {
-  const projectsNum = useSelector(selectProjectsNum);
+  const projectsDocs = useSelector(selectProjectsDocs);
+  const projectsDocsNum = projectsDocs.length;
+  const projectsDocsNftsNum = projectsDocs.filter((projectDoc) =>
+    projectDoc.data.categories.includes("NFTs")
+  ).length;
 
   return (
     <div className={css.summary}>
       <ul>
         <li>
-          projects:&nbsp;<span className={css.highlight}>{projectsNum}</span>
+          all projects:&nbsp;<span className={css.highlight}>{projectsDocsNum}</span>
+        </li>
+        <li>
+          nfts:&nbsp;<span className={css.highlight}>{projectsDocsNftsNum}</span>
         </li>
       </ul>
     </div>

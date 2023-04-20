@@ -8,6 +8,8 @@
 
 .text {
   line-height: 150%;
+
+  /* break word */
   display: inline-block;
   word-wrap: break-word;
 }

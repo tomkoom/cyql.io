@@ -38,14 +38,13 @@ const ProfileActions = () => {
     <div className={css.profileActions}>
       <button className={css.btn} onClick={navigate}>
         <div className={css.idImg}>
-          <IdImg size={28} />
+          <IdImg size={36} />
         </div>
         {formatId(principalIdStr)}
       </button>
 
       <button className={css.btn} onClick={handleSignOut}>
-        <span className={css.icon}>{iSignOut}</span>
-        Sign out
+        <span className={css.icon}>{iSignOut}</span> <span>sign out</span>
       </button>
     </div>
   );

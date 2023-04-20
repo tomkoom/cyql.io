@@ -1,4 +1,4 @@
 // header
 
-export { default as Highlights } from "./Highlights/Highlights";
-export { default as Title } from "./Title/Title";
+export { default as Highlights } from "./highlights/Highlights";
+export { default as Title } from "./title/Title";
