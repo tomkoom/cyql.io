@@ -62,10 +62,18 @@ const ProjectList = () => {
             .filter((projectDoc) => filterByOpenSource(projectDoc, openSource))
             .filter((projectDoc) => filterByOnChain(projectDoc, onChain))
             .filter((projectDoc) => filterByGrantee(projectDoc, grantee))
-            .sort((a, b) => sort === "newest-first" && sortNewest(a.data.added, b.data.added))
-            .sort((a, b) => sort === "oldest-first" && sortOldest(a.data.added, b.data.added))
-            .sort((a, b) => sort === "most-upvoted" && sortMostUp(a.data.upvotes, b.data.upvotes))
-            .sort((a, b) => sort === "least-upvoted" && sortLeastUp(a.data.upvotes, b.data.upvotes))
+            .sort((a, b) =>
+              sort === "newest-first" ? sortNewest(a.data.added, b.data.added) : null
+            )
+            .sort((a, b) =>
+              sort === "oldest-first" ? sortOldest(a.data.added, b.data.added) : null
+            )
+            .sort((a, b) =>
+              sort === "most-upvoted" ? sortMostUp(a.data.upvotes, b.data.upvotes) : null
+            )
+            .sort((a, b) =>
+              sort === "least-upvoted" ? sortLeastUp(a.data.upvotes, b.data.upvotes) : null
+            )
             .slice(0, itemsVisible)
             .map((p) => (
               <li className={css.liI} key={p.key} onClick={() => toApp(p.data.slug)}>
