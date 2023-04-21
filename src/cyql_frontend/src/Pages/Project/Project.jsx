@@ -5,7 +5,7 @@ import css from "./Project.module.css";
 import { useParams } from "react-router-dom";
 
 // components
-import { Loader } from "@components/index";
+import { Loader } from "@ui-elements/index";
 import { BackBtn } from "@btns/index";
 import { ShareModal } from "@modals/index";
 import {

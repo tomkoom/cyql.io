@@ -6,7 +6,7 @@ import { toApp } from "@routes/routes";
 
 // components
 import { LoadMoreBtn, UpvoteBtn } from "@btns/index";
-import Loader from "@components/Loader/Loader";
+import { Loader } from "@ui-elements/index";
 import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state

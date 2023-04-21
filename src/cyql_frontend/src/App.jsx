@@ -8,6 +8,8 @@ import CookieConsent from "react-cookie-consent";
 
 // constants
 import {
+  iiAdmin1,
+  iiAdmin2,
   plugAdmin1,
   plugAdmin2,
   stoicAdmin1,
@@ -28,8 +30,7 @@ import { useAuth } from "@context/AuthContext";
 
 // components
 import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@pages/index";
-import { Nav, Sidebar } from "@components/index"; // layout
-import { Footer, Summary } from "@layout/index";
+import { Footer, Nav, Sidebar, Summary } from "@layout/index";
 import { ProjectModal, SignInModal } from "@modals/index";
 
 // state
@@ -56,7 +57,7 @@ const App = () => {
     useAuth();
   const [deviceWidth] = useWindowSize();
 
-  const admins = [plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
+  const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
   const verifyAdmin = (principalIdStr) => {
     return admins.includes(principalIdStr);
   };
@@ -175,7 +176,7 @@ const App = () => {
               <Submit />
             </Route>
 
-            {principalId && (
+            {principalIdStr !== "" && (
               <Route exact path="/profile">
                 <Profile />
               </Route>

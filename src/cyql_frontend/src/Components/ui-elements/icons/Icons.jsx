@@ -52,6 +52,7 @@ import {
   faShareSquare,
   faCircleNodes,
   faScroll,
+  faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,
@@ -117,6 +118,7 @@ const iShare = <FontAwesomeIcon icon={faShare} />;
 const iShareSquare = <FontAwesomeIcon icon={faShareSquare} />;
 const iCircleNodes = <FontAwesomeIcon icon={faCircleNodes} />;
 const iScroll = <FontAwesomeIcon icon={faScroll} />;
+const iCircle = <FontAwesomeIcon icon={faCircle} />;
 
 // brands
 const iTwitter = <FontAwesomeIcon icon={faTwitter} />;
@@ -182,6 +184,7 @@ export {
   iShareSquare,
   iCircleNodes,
   iScroll,
+  iCircle,
 
   // brands
   iTwitter,

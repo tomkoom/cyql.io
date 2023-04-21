@@ -17,3 +17,7 @@ dfx start --clean
 dfx canister create --all
 dfx deploy
 ```
+
+api:
+
+See [cyql api docs](https://github.com/tomkoom/cyql-api-docs) to query the data from the site.

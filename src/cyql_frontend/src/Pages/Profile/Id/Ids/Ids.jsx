@@ -56,7 +56,7 @@ const Ids = () => {
 
   return (
     <ul className={css.ids}>
-      {ids.map(({ label, id, copied }) => (
+      {/* {ids.map(({ label, id, copied }) => (
         <li className={css.idsI} key={label}>
           <p className={css.label}>{label}</p>
           <div
@@ -68,7 +68,7 @@ const Ids = () => {
             {copied ? <Copied /> : <IdValue id={id} />}
           </div>
         </li>
-      ))}
+      ))} */}
     </ul>
   );
 };

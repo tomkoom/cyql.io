@@ -16,14 +16,14 @@ import { Logo } from "./index";
 const HighlightedByCategory = ({ filter }) => {
   const projects = useSelector(selectProjectsDocs);
 
-  const sortByUpvoted = (a, b) => {
-    const aUp = a.data.upvotedBy;
-    const bUp = b.data.upvotedBy;
-    if (aUp && bUp) {
-      return bUp.length - aUp.length;
-    } else if (!aUp && bUp) {
+  const sortByUpvotes = (a, b) => {
+    const aUpvotes = a.data.upvotes;
+    const bUpvotes = b.data.upvotes;
+    if (aUpvotes && bUpvotes) {
+      return bUpvotes.length - aUpvotes.length;
+    } else if (!aUpvotes && bUpvotes) {
       return 1;
-    } else if (aUp && !bUp) {
+    } else if (aUpvotes && !bUpvotes) {
       return -1;
     }
     return 0;
@@ -45,7 +45,7 @@ const HighlightedByCategory = ({ filter }) => {
     <ul className={css.projects}>
       {projects
         .filter((project) => project.data.categories.includes(filter))
-        .sort((a, b) => sortByUpvoted(a, b))
+        .sort((a, b) => sortByUpvotes(a, b))
         .sort((a, b) => sortByVerified(a, b))
         .slice(0, 16)
         .map((project) => (
@@ -70,7 +70,7 @@ const HighlightedByCategory = ({ filter }) => {
 
             {/* upvote button */}
             {/* <div className={css.upvoteBtn} onClick={(e) => e.stopPropagation()}>
-              <UpvoteBtn id={project.key} upvotedBy={project.data.upvotedBy} />
+              <UpvoteBtn id={project.key} upvotes={project.data.upvotes} />
             </div> */}
           </li>
         ))}

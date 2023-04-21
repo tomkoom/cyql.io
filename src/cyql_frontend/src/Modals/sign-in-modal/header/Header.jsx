@@ -16,8 +16,8 @@ const Header = () => {
 
   return (
     <div className={css.header}>
-      <h3 className={css.title}>Choose your wallet</h3>
       <CrossIcon onClick={close} />
+      <h3 className={css.title}>choose your sign-in method</h3>
     </div>
   );
 };

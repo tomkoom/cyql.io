@@ -1,7 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 // juno
-import { authSubscribe, signIn, InternetIdentityProvider } from "@junobuild/core";
+import {
+  authSubscribe,
+  InternetIdentityProvider,
+  signIn,
+  signOut as junoSignOut,
+} from "@junobuild/core";
 
 // backend
 import { Actor, HttpAgent } from "@dfinity/agent";
@@ -44,7 +49,7 @@ export function AuthProvider({ children }) {
 
   // juno start
   const [user, setUser] = useState(undefined);
-  const signinWithII = async () => {
+  const signInWithII = async () => {
     await signIn({
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
@@ -53,7 +58,18 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    const sub = authSubscribe((user) => setUser(user));
+    const sub = authSubscribe((user) => {
+      if (user !== null) {
+        setSignInLoading(true);
+        setPrincipalIdStr(user.key);
+        setSignInMethod(user.data.provider);
+        setUser(user);
+
+        // loading end
+        setSignInLoading(false);
+        setIsAuthenticated(true);
+      }
+    });
     return () => sub();
   }, []);
   // juno end
@@ -239,7 +255,7 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const signOut = () => {
+  const signOut = async () => {
     setDefaultActor(undefined);
     setActor(undefined);
     setPrincipalId(undefined);
@@ -251,6 +267,9 @@ export function AuthProvider({ children }) {
     signInMethod === "stoic" && disconnectStoic();
     signInMethod === "infinitywallet" && disconnectInfinityWallet();
     setSignInMethod(""); // unset sign in method
+
+    // juno
+    await junoSignOut();
 
     history.location.pathname === "/profile" && toHome();
   };
@@ -275,7 +294,7 @@ export function AuthProvider({ children }) {
 
     // juno
     user,
-    signinWithII,
+    signInWithII,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

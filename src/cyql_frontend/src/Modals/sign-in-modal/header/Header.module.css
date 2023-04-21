@@ -2,10 +2,12 @@
 
 .header {
   display: flex;
-  align-items: center;
-  gap: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
 .title {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
+  padding: 0 0.5rem;
 }

@@ -2,7 +2,14 @@ import React from "react";
 import css from "./Header.module.css";
 
 // constants
-import { plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2 } from "@constants/constants";
+import {
+  iiAdmin1,
+  iiAdmin2,
+  plugAdmin1,
+  plugAdmin2,
+  stoicAdmin1,
+  stoicAdmin2,
+} from "@constants/constants";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -13,7 +20,7 @@ import { EditBtn, Logo, ShareBtn, Title } from "./index";
 
 const Header = ({ projectDoc }) => {
   const { principalIdStr } = useAuth();
-  const admins = [plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
+  const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
   const isAdmin = admins.includes(principalIdStr);
 
   return (

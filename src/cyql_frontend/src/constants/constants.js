@@ -1,3 +1,5 @@
+const iiAdmin1 = process.env.II_ADMIN_1;
+const iiAdmin2 = process.env.II_ADMIN_2;
 const plugAdmin1 = process.env.PLUG_ADMIN_1;
 const plugAdmin2 = process.env.PLUG_ADMIN_2;
 const stoicAdmin1 = process.env.STOIC_ADMIN_1;
@@ -10,6 +12,8 @@ const junoDatastoreCollection = process.env.JUNO_DATASTORE_COLLECTION;
 
 export {
   // admin
+  iiAdmin1,
+  iiAdmin2,
   plugAdmin1,
   plugAdmin2,
   stoicAdmin1,
