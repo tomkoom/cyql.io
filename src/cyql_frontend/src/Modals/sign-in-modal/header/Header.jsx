@@ -10,13 +10,14 @@ import { setSignInModal } from "@state/modals/modals";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const close = () => {
+
+  const closeSignInModal = () => {
     dispatch(setSignInModal(false));
   };
 
   return (
     <div className={css.header}>
-      <CrossIcon onClick={close} />
+      <CrossIcon onClick={closeSignInModal} />
       <h3 className={css.title}>choose your sign-in method</h3>
     </div>
   );
