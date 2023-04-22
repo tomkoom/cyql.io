@@ -69,6 +69,7 @@ module.exports = {
       "@icons": path.resolve(__dirname, "src", frontendDir, "src/Components/icons"),
       "@layout": path.resolve(__dirname, "src", frontendDir, "src/Components/layout"),
       "@modals": path.resolve(__dirname, "src", frontendDir, "src/Components/modals"),
+      "@pages": path.resolve(__dirname, "src", frontendDir, "src/Components/pages"),
       "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements"),
       // end components
 
@@ -78,12 +79,11 @@ module.exports = {
       "@firestore": path.resolve(__dirname, "src", frontendDir, "src/firestore"),
       "@hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
       "@idl": path.resolve(__dirname, "src", frontendDir, "src/idl"),
-      "@pages": path.resolve(__dirname, "src", frontendDir, "src/pages"),
       "@routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
       "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
       "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
       "@utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
-      
+
       // backend
       "@declarations": path.resolve(__dirname, "src", declarationsDir),
     },

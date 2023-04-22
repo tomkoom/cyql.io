@@ -9,12 +9,11 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  font-weight: var(--fwBold);
   margin-top: 0.5rem;
 }
 
 .label {
-  font-size: 0.9rem;
-  font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   margin: 1rem 0;
 }
@@ -24,15 +23,13 @@
 }
 
 .category {
-  height: 2.25rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: 0.9rem;
-  font-weight: var(--fwMedium);
   background-color: var(--underlay);
-  padding: 0 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0 0.75rem;
+  border-radius: 1.25rem;
   cursor: pointer;
 }
 

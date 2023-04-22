@@ -35,7 +35,7 @@ const Categories = () => {
                   onChange={setCategory}
                 />
                 <div className={css.category}>
-                  {category.icon}&nbsp;&nbsp;{category.label}
+                  {category.icon}&nbsp;&nbsp;{category.label.toLowerCase()}
                 </div>
               </label>
             </li>

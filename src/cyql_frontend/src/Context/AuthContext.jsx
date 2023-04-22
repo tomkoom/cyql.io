@@ -27,7 +27,6 @@ const useAuth = () => {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
-  // const [accountIdStr, setAccountIdStr] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -78,7 +77,6 @@ export function AuthProvider({ children }) {
     setUser(undefined);
     setPrincipalIdStr("");
     setPrincipalIdStr("");
-    // setAccountIdStr("");
     setIsAuthenticated(false);
 
     // juno
@@ -89,7 +87,6 @@ export function AuthProvider({ children }) {
   const value = {
     user,
     principalIdStr,
-    // accountIdStr,
     signInLoading,
     isAuthenticated,
 

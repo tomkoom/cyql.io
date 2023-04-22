@@ -9,7 +9,7 @@ import Input from "./input/Input";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectSubmissionData } from "../../../../state/projectSubmission";
+import { selectProjectSubmissionData } from "../../../../../state/projectSubmission";
 
 const Inputs = () => {
   const projectSubmissionData = useSelector(selectProjectSubmissionData);
