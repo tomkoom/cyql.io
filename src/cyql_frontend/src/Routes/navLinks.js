@@ -1,4 +1,4 @@
-import { iFire } from "../Components/ui-elements/icons/Icons";
+import { iFire } from "../Components/icons/Icons";
 import { toApps, toSubmit, toUpcoming } from "./routes";
 
 const navLinks = [

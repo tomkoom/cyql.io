@@ -65,8 +65,9 @@ module.exports = {
       "@components": path.resolve(__dirname, "src", frontendDir, "src/Components"),
       // ...
       "@btns": path.resolve(__dirname, "src", frontendDir, "src/Components/btns"),
-      "@icons": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements/icons"),
+      "@icons": path.resolve(__dirname, "src", frontendDir, "src/Components/icons"),
       "@layout": path.resolve(__dirname, "src", frontendDir, "src/Components/layout"),
+      "@modals": path.resolve(__dirname, "src", frontendDir, "src/Components/modals"),
       "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements"),
       // end components
 
@@ -76,13 +77,11 @@ module.exports = {
       "@firestore": path.resolve(__dirname, "src", frontendDir, "src/firestore"),
       "@hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
       "@idl": path.resolve(__dirname, "src", frontendDir, "src/idl"),
-      "@modals": path.resolve(__dirname, "src", frontendDir, "src/modals"),
       "@pages": path.resolve(__dirname, "src", frontendDir, "src/pages"),
       "@routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
       "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
       "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
       "@utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
-      // ...etc
     },
   },
   output: {

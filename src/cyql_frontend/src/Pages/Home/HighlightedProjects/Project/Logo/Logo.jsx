@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Logo.module.css";
 
 // components
-import { EmptyLogo } from "@components/index";
+import { LogoLetter } from "@ui-elements/index";
 
 const Logo = ({ name, logo }) => {
   const sizeRem = "4.5";
@@ -16,7 +16,7 @@ const Logo = ({ name, logo }) => {
   return logo ? (
     <img style={style} className={css.logo} src={logo} alt={`${name} logo`} />
   ) : (
-    <EmptyLogo sizeRem={sizeRem} borderRadiusRem={borderRadiusRem} name={name} />
+    <LogoLetter sizeRem={sizeRem} borderRadiusRem={borderRadiusRem} name={name} />
   );
 };
 

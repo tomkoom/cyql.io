@@ -5,7 +5,7 @@ import css from "./FooterMid.module.css";
 import { toHome, toApps, toSubmit } from "@routes/routes";
 
 // components
-import Logo from "@components/Logo/Logo";
+import { Logo } from "@ui-elements/index";
 import { Meta, NavLink, Socials } from "./index";
 
 const FooterMid = () => {

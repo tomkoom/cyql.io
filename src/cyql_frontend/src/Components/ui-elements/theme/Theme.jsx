@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Theme.module.css";
 
 // icons
-import { iSun, iMoon } from "../icons/Icons";
+import { iSun, iMoon } from "../../icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

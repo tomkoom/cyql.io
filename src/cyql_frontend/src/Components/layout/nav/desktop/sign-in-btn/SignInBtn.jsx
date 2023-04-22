@@ -5,14 +5,14 @@ import css from "./SignInBtn.module.css";
 import { iSignIn } from "@icons/Icons";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@auth/AuthContext";
 
 // state
 import { useDispatch } from "react-redux";
 import { setSignInModal } from "@state/modals/modals";
 
 // components
-import { Spinner } from "@components/index";
+import { Spinner } from "@ui-elements/index";
 
 const SignInBtn = () => {
   const dispatch = useDispatch();
@@ -24,11 +24,11 @@ const SignInBtn = () => {
   return !signInLoading ? (
     <button className={css.btn} onClick={openSignInModal}>
       <span>{iSignIn}</span>
-      <p>sign in</p>
+      <span>sign in</span>
     </button>
   ) : (
     <div className={css.btn}>
-      <p>loading...</p>
+      <span>loading...</span>
       <Spinner size="20" />
     </div>
   );

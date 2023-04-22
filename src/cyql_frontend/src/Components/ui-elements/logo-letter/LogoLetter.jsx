@@ -1,7 +1,7 @@
 import React from "react";
-import css from "./EmptyLogo.module.css";
+import css from "./LogoLetter.module.css";
 
-const EmptyLogo = ({ sizeRem, borderRadiusRem, name }) => {
+const LogoLetter = ({ sizeRem, borderRadiusRem, name }) => {
   const firstLetter = name.charAt(0);
   const style = {
     width: `${sizeRem}rem`,
@@ -16,4 +16,4 @@ const EmptyLogo = ({ sizeRem, borderRadiusRem, name }) => {
   );
 };
 
-export default EmptyLogo;
+export default LogoLetter;

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Exchanges.module.css";
 
 // icons
-import { iAngleRight } from "../../../Components/ui-elements/icons/Icons";
+import { iAngleRight } from "../../../Components/icons/Icons";
 
 // utils
 import { substring70 } from "../../../utils/substring";
