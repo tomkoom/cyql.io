@@ -8,6 +8,7 @@
 }
 
 .title {
-  font-size: var(--fs5);
+  font-size: var(--fs4);
+  font-weight: var(--fwBlack);
   padding: 0 0.5rem;
 }

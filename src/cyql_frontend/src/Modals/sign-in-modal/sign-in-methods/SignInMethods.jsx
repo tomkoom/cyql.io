@@ -8,13 +8,27 @@ import { Btn } from "./index";
 import { useAuth } from "@context/AuthContext";
 
 const SignInMethods = () => {
-  const { signInWithPlug, signInWithStoic, signInWithInfinityWallet, signInWithII } = useAuth();
+  const {
+    // signInWithPlug,
+    // signInWithStoic,
+    // signInWithInfinityWallet,
+    signInWithII,
+    signInWithNfid,
+  } = useAuth();
   const signInMethods = [
     {
       id: "internet_identity",
       label: "Internet Identity",
       logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/ic-logo.svg",
       click: signInWithII,
+      aboutUrl: "https://identity.ic0.app/about",
+    },
+    {
+      id: "nfid",
+      label: "NFID",
+      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/nfid/nfid-logo.png",
+      click: signInWithNfid,
+      aboutUrl: "https://nfid.one/#FAQ",
     },
     // {
     //   id: "plug",
@@ -39,12 +53,17 @@ const SignInMethods = () => {
   return (
     <div className={css.signInMethods}>
       {signInMethods.map((signInMethod) => (
-        <Btn
-          key={signInMethod.id}
-          label={signInMethod.label}
-          logo={signInMethod.logo}
-          onClick={signInMethod.click}
-        />
+        <div className={css.signInMethod} key={signInMethod.id}>
+          <Btn label={signInMethod.label} logo={signInMethod.logo} onClick={signInMethod.click} />
+          <a
+            className={css.aboutUrl}
+            href={signInMethod.aboutUrl}
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            About {signInMethod.label}
+          </a>
+        </div>
       ))}
     </div>
   );

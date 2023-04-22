@@ -53,7 +53,7 @@ import { selectNftModal } from "@state/modals/nftModal";
 const App = () => {
   // hooks
   const dispatch = useDispatch();
-  const { initDefaultActor, principalId, principalIdStr, checkConnection, isAuthenticated } =
+  const { initDefaultActor, principalIdStr, checkConnection, isAuthenticated, signInWithNfid } =
     useAuth();
   const [deviceWidth] = useWindowSize();
 

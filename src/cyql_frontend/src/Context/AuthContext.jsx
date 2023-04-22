@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import {
   authSubscribe,
   InternetIdentityProvider,
+  NFIDProvider,
   signIn,
   signOut as junoSignOut,
 } from "@junobuild/core";
@@ -49,10 +50,27 @@ export function AuthProvider({ children }) {
 
   // juno start
   const [user, setUser] = useState(undefined);
+
+  // ii
+  // fix loading
   const signInWithII = async () => {
+    setSignInLoading(true);
     await signIn({
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
+      }),
+    });
+    setSignInLoading(false);
+  };
+
+  // nfid
+  const signInWithNfid = async () => {
+    const appName = "cyql.io";
+    const logoUrl = "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/cyql-favicon.svg";
+    await signIn({
+      provider: new NFIDProvider({
+        appName,
+        logoUrl,
       }),
     });
   };
@@ -63,6 +81,7 @@ export function AuthProvider({ children }) {
         setSignInLoading(true);
         setPrincipalIdStr(user.key);
         setSignInMethod(user.data.provider);
+        console.log(user);
         setUser(user);
 
         // loading end
@@ -295,6 +314,7 @@ export function AuthProvider({ children }) {
     // juno
     user,
     signInWithII,
+    signInWithNfid,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

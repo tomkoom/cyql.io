@@ -51,15 +51,15 @@ const Project = () => {
                   />
                 )}
 
-                {(projectDoc.data.nftImg1 ||
-                  projectDoc.data.nftImg2 ||
-                  projectDoc.data.nftImg3 ||
-                  projectDoc.data.nftImg4) && (
+                {(projectDoc.data.nft_img_1 ||
+                  projectDoc.data.nft_img_2 ||
+                  projectDoc.data.nft_img_3 ||
+                  projectDoc.data.nft_img_4) && (
                   <NftPreviews
-                    nftImg1={projectDoc.data.nftImg1}
-                    nftImg2={projectDoc.data.nftImg2}
-                    nftImg3={projectDoc.data.nftImg3}
-                    nftImg4={projectDoc.data.nftImg4}
+                    nftImg1={projectDoc.data.nft_img_1}
+                    nftImg2={projectDoc.data.nft_img_2}
+                    nftImg3={projectDoc.data.nft_img_3}
+                    nftImg4={projectDoc.data.nft_img_4}
                   />
                 )}
 

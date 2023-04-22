@@ -70,6 +70,7 @@ module.exports = {
       "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements"),
       // end components
 
+      "@auth": path.resolve(__dirname, "src", frontendDir, "src/context"),
       "@constants": path.resolve(__dirname, "src", frontendDir, "src/constants"),
       "@context": path.resolve(__dirname, "src", frontendDir, "src/context"),
       "@firestore": path.resolve(__dirname, "src", frontendDir, "src/firestore"),

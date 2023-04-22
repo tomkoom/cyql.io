@@ -3,6 +3,7 @@
 
 // todos
 // [ ] add token information: token_name, token_symbol, token_logo, token_canister_id, token_markets, token_type, etc
+// [ ] nft_contract
 
 const projectDocData = {
   // main
