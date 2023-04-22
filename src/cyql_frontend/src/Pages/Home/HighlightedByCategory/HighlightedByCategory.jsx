@@ -14,7 +14,9 @@ import { toApp } from "@routes/routes";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
-  const projects = useSelector(selectProjectsDocs);
+  const projects = useSelector(selectProjectsDocs).filter(
+    (projectDoc) => projectDoc.data.archived !== true
+  );
 
   const sortByUpvotes = (a, b) => {
     const aUpvotes = a.data.upvotes;

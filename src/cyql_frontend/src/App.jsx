@@ -53,8 +53,7 @@ import { selectNftModal } from "@state/modals/nftModal";
 const App = () => {
   // hooks
   const dispatch = useDispatch();
-  const { initDefaultActor, principalIdStr, checkConnection, isAuthenticated, signInWithNfid } =
-    useAuth();
+  const { principalIdStr, isAuthenticated } = useAuth();
   const [deviceWidth] = useWindowSize();
 
   const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
@@ -108,6 +107,7 @@ const App = () => {
   const nftModal = useSelector(selectNftModal);
 
   // prevent from scrolling when modal is active
+  // to refactor
   const modals = [signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
   useEffect(() => {
     const modalIsActive = signInModal || mobileMenuModal || projectModal || shareModal || nftModal;
@@ -131,16 +131,6 @@ const App = () => {
       dispatch(setSignInModal(false));
     }
   }, [isAuthenticated]);
-
-  // set default actor
-  useEffect(() => {
-    initDefaultActor();
-  }, []);
-
-  // check auth
-  useEffect(() => {
-    checkConnection();
-  }, []);
 
   // get upvoted projects
   // useEffect(() => {

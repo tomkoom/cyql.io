@@ -7,17 +7,20 @@ import { toApps } from "@routes/routes";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsNum } from "@state/projects";
+import { selectProjectsDocs } from "@state/projects";
 
 const Title = () => {
-  const projectsNum = useSelector(selectProjectsNum);
+  const projectsDocs = useSelector(selectProjectsDocs).filter(
+    (projectDoc) => projectDoc.data.archived !== true
+  );
+  const projectsDocsNum = projectsDocs.length;
 
   return (
     <h2 className={css.title}>
       curated list of{" "}
-      {projectsNum && projectsNum > 0 ? (
-        <span className={css.projectsNum} onClick={toApps}>
-          {projectsNum}
+      {projectsDocsNum > 0 ? (
+        <span className={css.projectsDocsNum} onClick={toApps}>
+          {projectsDocsNum}
         </span>
       ) : (
         <span className={css.dots}>...</span>

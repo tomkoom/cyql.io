@@ -19,7 +19,9 @@ import { useSelector } from "react-redux";
 import { selectProjectsDocs } from "@state/projects";
 
 const Home = () => {
-  const projects = useSelector(selectProjectsDocs);
+  const projects = useSelector(selectProjectsDocs).filter(
+    (projectDoc) => projectDoc.data.archived !== true
+  );
   const pProjects = projects.filter((p) => !p.data.categories.includes("NFTs"));
   const pNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
   const popularProjects = projects

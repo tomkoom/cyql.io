@@ -34,7 +34,9 @@ import {
 
 const ProjectList = () => {
   // projects
-  const projectsDocs = useSelector(selectProjectsDocs);
+  const projectsDocs = useSelector(selectProjectsDocs).filter(
+    (projectDoc) => projectDoc.data.archived !== true
+  );
   const projectsDocsNum = projectsDocs.length;
   const itemsVisible = useSelector(selectItemsVisibleProjects);
 

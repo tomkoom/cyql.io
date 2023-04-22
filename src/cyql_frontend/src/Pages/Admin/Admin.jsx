@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import css from "./Admin.module.css";
 
 // components
-import { Profiles, Projects, Tabs } from "./index";
+import { Projects } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
 import { setProjectModal } from "@state/modals/projectModal/projectModal";
 
 const Admin = () => {
-  const [tab, setTab] = useState("projects");
   const dispatch = useDispatch();
 
   const addProject = () => {
@@ -24,8 +23,7 @@ const Admin = () => {
           add project
         </button>
       </div>
-      <Tabs tab={tab} setTab={setTab} />
-      {tab === "projects" ? <Projects /> : tab === "profiles" ? <Profiles /> : ""}
+      <Projects />
     </div>
   );
 };

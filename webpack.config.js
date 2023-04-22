@@ -32,6 +32,7 @@ initCanisterIds();
 const isDevelopment = process.env.NODE_ENV !== "production";
 const asset_entry = path.join("src", "cyql_frontend", "src", "index.html");
 const frontendDir = "cyql_frontend";
+const declarationsDir = "declarations";
 
 module.exports = {
   target: "web",
@@ -82,6 +83,9 @@ module.exports = {
       "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
       "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
       "@utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
+      
+      // backend
+      "@declarations": path.resolve(__dirname, "src", declarationsDir),
     },
   },
   output: {

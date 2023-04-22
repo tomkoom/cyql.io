@@ -6,7 +6,9 @@ import { useSelector } from "react-redux";
 import { selectProjectsDocs } from "@state/projects";
 
 const Summary = () => {
-  const projectsDocs = useSelector(selectProjectsDocs);
+  const projectsDocs = useSelector(selectProjectsDocs).filter(
+    (projectDoc) => projectDoc.data.archived !== true
+  );
   const projectsDocsNum = projectsDocs.length;
   const projectsDocsNftsNum = projectsDocs.filter((projectDoc) =>
     projectDoc.data.categories.includes("NFTs")
