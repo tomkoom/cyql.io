@@ -8,7 +8,7 @@
 }
 
 .name {
-  font-size: var(--fontSize6);
+  font-size: var(--fontSize5);
   font-weight: var(--fwBold);
   word-wrap: break-word;
 }
@@ -32,8 +32,8 @@
 }
 
 .description {
+  font-size: var(--fs6);
   font-weight: var(--fwMedium);
   color: var(--tertiaryColor);
-  font-size: 0.9rem;
   line-height: 150%;
 }

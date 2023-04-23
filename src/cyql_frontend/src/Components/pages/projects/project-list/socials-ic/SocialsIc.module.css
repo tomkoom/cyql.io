@@ -5,8 +5,8 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-size: var(--fontSize7);
-  font-weight: var(--fwMedium);
+  font-size: var(--fsText);
+  font-weight: var(--fwBold);
 }
 
 .socialsIc li {

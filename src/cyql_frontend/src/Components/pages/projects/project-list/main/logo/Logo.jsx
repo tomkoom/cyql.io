@@ -5,8 +5,8 @@ import css from "./Logo.module.css";
 import { LogoLetter } from "@ui-elements/index";
 
 const Logo = ({ name, logo }) => {
-  const sizeRem = "4.25";
-  const borderRadiusRem = "1";
+  const sizeRem = "5";
+  const borderRadiusRem = "1.5";
   const style = {
     width: `${sizeRem}rem`,
     height: `${sizeRem}rem`,
