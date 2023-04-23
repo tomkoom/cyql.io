@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Logo.module.css";
-// import logo from "@assets/logo/cyql-logo-v2.svg";
-// import logoWhite from "@assets/logo/cyql-logo-v2-white.svg";
+
+// logos
 import logoPurple from "@assets/logo/cyql-logo-v2-purple.svg";
 import logoGray from "@assets/logo/cyql-logo-v2-gray.svg";
 
@@ -17,7 +17,7 @@ const Logo = () => {
       <img
         className={css.img}
         src={theme === "light" ? logoPurple : theme === "dark" ? logoGray : null}
-        alt="cyql logo"
+        alt="cyql.io logo"
       />
       <h1 className={css.title}>cyql</h1>
     </div>

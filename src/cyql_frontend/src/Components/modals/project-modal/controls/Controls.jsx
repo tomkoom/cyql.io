@@ -55,8 +55,9 @@ const Controls = () => {
       collection,
       key: projectDoc.key,
     });
-    await delDoc({ collection, doc }).catch((e) => console.log(e));
-    console.log(`Doc with the id ${projectDoc.key} deleted`);
+    await delDoc({ collection, doc })
+      .then(() => console.log(`Doc with the id ${projectDoc.key} deleted`))
+      .catch((e) => console.log(e));
 
     dispatch(setProjectModalLoadingDel(false));
     closeModal();

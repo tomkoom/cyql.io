@@ -1,36 +1,4 @@
 // Version: 1.0.0
-type Job =
-  {
-    applicationDiscord : Text;
-    applicationEmail : Text;
-    applicationTwitter : Text;
-    applicationUrl : Text;
-    category : Text;
-    companyLogoUrl : Text;
-    companyName : Text;
-    companyTwitter : Text;
-    companyWebsite : Text;
-    compensation : Text;
-    description : Text;
-    edited : Time;
-    equity : Text;
-    publisher : Text;
-    sourceUrl : Text;
-    submitted : Time;
-    title : Text
-  };
-type JobId = Nat;
-type Profile =
-  {
-    accountId : Text;
-    firstSignIn : Time;
-    lastVisit : Time;
-    signInMethod : Text
-  };
-type ProfileId = Principal;
-type Time = Int;
 actor {
-  stable var jobCounter : Nat;
-  stable var jobsEntries : [(JobId, Job)];
-  stable var profilesEntries : [(ProfileId, Profile)]
+  
 };

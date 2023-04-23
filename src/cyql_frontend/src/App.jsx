@@ -22,7 +22,7 @@ import {
 import { useWindowSize } from "@hooks/useWindowSize";
 import { sortByDate } from "@utils/sort";
 
-// juno db https://juno.build/docs/intro
+// juno https://juno.build/docs/intro
 import { initJuno, listDocs } from "@junobuild/core";
 
 // auth
@@ -120,14 +120,14 @@ const App = () => {
 
   // reset mobile menu when deivice size > 1023
   useEffect(() => {
-    if (mobileMenuModal && deviceWidth > 1023) {
+    if (mobileMenuModal === true && deviceWidth > 1023) {
       dispatch(setMobileMenuModal(false));
     }
   }, [deviceWidth]);
 
   // close sign in modal after user has logged
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated === true) {
       dispatch(setSignInModal(false));
     }
   }, [isAuthenticated]);

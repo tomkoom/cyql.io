@@ -10,7 +10,7 @@ const LogoLetter = ({ sizeRem, borderRadiusRem, name }) => {
   };
 
   return (
-    <div style={style} className={css.empty}>
+    <div style={style} className={css.logoLetter}>
       {firstLetter}
     </div>
   );
