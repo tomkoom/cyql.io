@@ -13,16 +13,10 @@ import {
 import { history } from "@routes/history";
 import { toHome } from "@routes/routes";
 
-// host
-// import { mainnethost, localhost } from "./host.js";
-
 const AuthContext = createContext();
 const useAuth = () => {
   return useContext(AuthContext);
 };
-
-// const mode = process.env.NODE_ENV;
-// const host = mode !== "production" ? localhost : mainnethost;
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
@@ -76,7 +70,6 @@ export function AuthProvider({ children }) {
   const signOut = async () => {
     setUser(undefined);
     setPrincipalIdStr("");
-    setPrincipalIdStr("");
     setIsAuthenticated(false);
 
     // juno
@@ -90,6 +83,7 @@ export function AuthProvider({ children }) {
     signInLoading,
     isAuthenticated,
 
+    // juno
     signInWithII,
     signInWithNfid,
     signOut,

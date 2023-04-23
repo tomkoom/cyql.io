@@ -5,12 +5,12 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0 0.5rem;
-  font-size: 0.9rem;
+  padding: 0 0.75rem;
+  font-size: var(--fsText);
   font-weight: var(--fwBold);
   color: var(--tertiaryColor);
   background-color: var(--underlay);
-  border-radius: 0.5rem;
+  border-radius: 1.25rem;
   cursor: pointer;
 }
 

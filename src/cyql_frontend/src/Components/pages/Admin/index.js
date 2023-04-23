@@ -1,3 +1,3 @@
 // admin
 
-export { default as Projects } from "./Projects/Projects";
+export { default as Projects } from "./projects/Projects";

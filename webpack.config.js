@@ -63,14 +63,14 @@ module.exports = {
       "@assets": path.resolve(__dirname, "src", frontendDir, "assets"),
 
       // components
-      "@components": path.resolve(__dirname, "src", frontendDir, "src/Components"),
+      "@components": path.resolve(__dirname, "src", frontendDir, "src/components"),
       // ...
-      "@btns": path.resolve(__dirname, "src", frontendDir, "src/Components/btns"),
-      "@icons": path.resolve(__dirname, "src", frontendDir, "src/Components/icons"),
-      "@layout": path.resolve(__dirname, "src", frontendDir, "src/Components/layout"),
-      "@modals": path.resolve(__dirname, "src", frontendDir, "src/Components/modals"),
-      "@pages": path.resolve(__dirname, "src", frontendDir, "src/Components/pages"),
-      "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/Components/ui-elements"),
+      "@btns": path.resolve(__dirname, "src", frontendDir, "src/components/btns"),
+      "@icons": path.resolve(__dirname, "src", frontendDir, "src/components/icons"),
+      "@layout": path.resolve(__dirname, "src", frontendDir, "src/components/layout"),
+      "@modals": path.resolve(__dirname, "src", frontendDir, "src/components/modals"),
+      "@pages": path.resolve(__dirname, "src", frontendDir, "src/components/pages"),
+      "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/components/ui-elements"),
       // end components
 
       "@auth": path.resolve(__dirname, "src", frontendDir, "src/context"),
