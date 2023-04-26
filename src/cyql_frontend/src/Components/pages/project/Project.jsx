@@ -89,7 +89,7 @@ const Project = () => {
                   // ic
                   dscvr={projectDoc.data.dscvr}
                   distrikt={projectDoc.data.distrikt}
-                  openChat={projectDoc.data.openChat}
+                  openchat={projectDoc.data.openchat}
                   taggr={projectDoc.data.taggr}
                   seers={projectDoc.data.seers}
                   nuance={projectDoc.data.nuance}

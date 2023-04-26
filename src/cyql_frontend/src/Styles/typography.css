@@ -11,27 +11,27 @@ h6 {
 }
 
 h1 {
-  font-size: var(--fontSize1);
+  font-size: var(--fs1);
 }
 
 h2 {
-  font-size: var(--fontSize2);
+  font-size: var(--fs2);
 }
 
 h3 {
-  font-size: var(--fontSize3);
+  font-size: var(--fs3);
 }
 
 h4 {
-  font-size: var(--fontSize4);
+  font-size: var(--fs4);
 }
 
 h5 {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
 }
 
 h6 {
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
 }
 
 .text,
@@ -48,5 +48,5 @@ h6 {
 }
 
 .subtitle {
-  font-size: var(--fontSize7);
+  font-size: var(--fs7);
 }

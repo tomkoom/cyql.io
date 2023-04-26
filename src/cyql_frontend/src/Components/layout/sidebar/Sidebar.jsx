@@ -27,7 +27,7 @@ const Sidebar = () => {
   const { principalIdStr } = useAuth();
   const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
 
-  const verifyAdmin = () => {
+  const verifyAdmin = (principalIdStr) => {
     if (principalIdStr !== "") {
       return admins.includes(principalIdStr);
     }
@@ -38,7 +38,7 @@ const Sidebar = () => {
       <div className={css.nav}>
         <NavLink label="projects" to={toApps} icon={iCube} />
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
-        {verifyAdmin() && <NavLink label="admin" to={toAdmin} icon={iCircle} />}
+        {verifyAdmin(principalIdStr) && <NavLink label="admin" to={toAdmin} icon={iCircle} />}
 
         <a
           className={css.link}

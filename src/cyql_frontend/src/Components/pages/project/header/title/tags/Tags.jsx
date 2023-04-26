@@ -13,17 +13,17 @@ const Tags = ({ categories, github, canister, grantee }) => {
             {category.toLowerCase()}
           </li>
         ))}
-      {github && (
+      {github !== "" && (
         <li id={css.open} className={css.tagsI}>
           {iGithub} open
         </li>
       )}
-      {canister && (
+      {canister !== "" && (
         <li id={css.onchain} className={css.tagsI}>
           {iCircleNodes} onchain
         </li>
       )}
-      {grantee && (
+      {grantee === true && (
         <li id={css.grantee} className={css.tagsI}>
           {iMeteor} grantee
         </li>

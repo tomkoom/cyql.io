@@ -8,12 +8,15 @@
 }
 
 .tagsI {
-  display: inline-block;
-  padding: 0.5rem;
-  font-size: var(--fontSize6);
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--fs6);
   font-weight: var(--fwBold);
   background-color: var(--underlay);
-  border-radius: 0.5rem;
+  padding: 0 0.75rem;
+  border-radius: 1.25rem;
 }
 
 #open {

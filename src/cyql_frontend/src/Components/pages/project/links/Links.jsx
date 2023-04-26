@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Links.module.css";
 
 // utils
-import { getTwitterUsername } from "@utils/format";
+import { getTwitterUsername } from "@utils/getTwitterUsername";
 
 // icons
 import {
@@ -29,7 +29,7 @@ const Links = ({
   // ic
   dscvr,
   distrikt,
-  openChat,
+  openchat,
   taggr,
   seers,
   nuance,
@@ -47,35 +47,35 @@ const Links = ({
     // main
     {
       id: "website",
-      label: "website",
+      label: "Website",
       url: website,
       icon: iLink,
       tag: "main",
     },
     {
       id: "canister",
-      label: "canister",
+      label: "Canister",
       url: canister,
       icon: iCircleNodes,
       tag: "main",
     },
     {
       id: "app",
-      label: "app",
+      label: "App",
       url: app,
       icon: iExternalLink,
       tag: "main",
     },
     {
       id: "docs",
-      label: "docs",
+      label: "Docs",
       url: docs,
       icon: iBook,
       tag: "main",
     },
     {
       id: "whitepaper",
-      label: "whitepaper",
+      label: "Whitepaper",
       url: whitepaper,
       icon: iScroll,
       tag: "main",
@@ -91,28 +91,28 @@ const Links = ({
     },
     {
       id: "discord",
-      label: "discord",
+      label: "Discord",
       url: discord,
       icon: iDiscord,
       tag: "social",
     },
     {
       id: "telegram",
-      label: "telegram",
+      label: "Telegram",
       url: telegram,
       icon: iTelegram,
       tag: "social",
     },
     {
       id: "github",
-      label: "github",
+      label: "GitHub",
       url: github,
       icon: iGithub,
       tag: "social",
     },
     {
       id: "medium",
-      label: "medium",
+      label: "Medium",
       url: medium,
       icon: iMedium,
       tag: "social",
@@ -121,56 +121,56 @@ const Links = ({
     // socials ic
     {
       id: "dscvr",
-      label: "dscvr",
+      label: "Dscvr",
       url: dscvr,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "distrikt",
-      label: "distrikt",
+      label: "Distrikt",
       url: distrikt,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "openchat",
-      label: "openchat",
-      url: openChat,
+      label: "OpenChat",
+      url: openchat,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "taggr",
-      label: "taggr",
+      label: "#TAGGR",
       url: taggr,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "seers",
-      label: "seers",
+      label: "Seers",
       url: seers,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "nuance",
-      label: "nuance",
+      label: "Nuance",
       url: nuance,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "catalyze",
-      label: "catalyze",
+      label: "Catalyze",
       url: catalyze,
       icon: "",
       tag: "socialIc",
     },
     {
       id: "funded",
-      label: "funded.app",
+      label: "Funded",
       url: funded,
       icon: "",
       tag: "socialIc",
@@ -181,12 +181,12 @@ const Links = ({
     links.length > 0 && (
       <ul className={css.links}>
         {links.map(
-          (l) =>
-            l.url && (
-              <li className={css.linksI} data-social={l.id} key={l.label}>
-                <a href={l.url} target="_blank" rel="noopener noreferrer">
-                  {l.icon && <span>{l.icon}</span>}
-                  {l.label && <p className={css.label}>{l.label}</p>}
+          (link) =>
+            link.url && (
+              <li className={css.linksI} data-social={link.id} key={link.id}>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  {link.icon && <span>{link.icon}</span>}
+                  {link.label && <p className={css.label}>{link.label}</p>}
                 </a>
               </li>
             )

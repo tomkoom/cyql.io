@@ -18,7 +18,7 @@ const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export function AuthProvider({ children }) {
+function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
   const [principalIdStr, setPrincipalIdStr] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);

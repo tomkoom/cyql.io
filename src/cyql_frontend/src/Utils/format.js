@@ -1,7 +1,12 @@
-const formatStr8 = (str) => (str.length > 8 ? `${str.substring(0, 8)}…` : str);
+const formatStr8 = (str) => {
+  return str.length > 8 ? `${str.substring(0, 8)}…` : str;
+};
 const formatStr12 = (str) => (str.length > 12 ? `${str.substring(0, 12)}…` : str);
+
 const formatStr16 = (str) => (str.length > 16 ? `${str.substring(0, 16)}…` : str);
+
 const formatStr20 = (str) => (str.length > 20 ? `${str.substring(0, 20)}…` : str);
+
 const formatStr24 = (str) => (str.length > 24 ? `${str.substring(0, 24)}…` : str);
 
 const formatId = (str) => str.substring(0, 5) + "..." + str.substring(str.length - 3);
@@ -25,8 +30,6 @@ const formatWebsite = (url) => {
   formattedURL = formattedURL.replace(/\/$/, ""); // remove trailing slash
   return formattedURL.length > 12 ? `${formattedURL.substring(0, 12)}…` : formattedURL;
 };
-
-const getTwitterUsername = (url) => url.split(".com/")[1];
 
 const formatDiscord = (url) => {
   const formattedURL = url.includes("discord.gg/")
@@ -65,7 +68,6 @@ export {
   formatProtocol,
   formatNumber,
   formatWebsite,
-  getTwitterUsername,
   formatDiscord,
   formatDate,
   formatDate2,

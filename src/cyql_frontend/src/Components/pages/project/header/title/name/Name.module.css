@@ -1,36 +1,20 @@
 /* name */
 
 .name {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.projectName {
   font-weight: var(--fwBlack);
   word-break: break-all;
 }
 
-.grantee {
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0 0.5rem;
-  font-weight: var(--fwBold);
-  color: white;
-  background-color: var(--colorGreen);
-  border-radius: 0.5rem;
-}
+/* responsive */
 
 @media screen and (max-width: 479px) {
-  .projectName {
-    font-size: var(--fontSize4);
+  .name {
+    font-size: var(--fs4);
   }
 }
 
 @media screen and (max-width: 359px) {
-  .projectName {
-    font-size: var(--fontSize5);
+  .name {
+    font-size: var(--fs5);
   }
 }
