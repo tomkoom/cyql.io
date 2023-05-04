@@ -34,7 +34,7 @@ h6 {
   font-size: var(--fs6);
 }
 
-.text,
+/* .text, */
 .subtitle {
   line-height: 150%;
 
@@ -43,9 +43,9 @@ h6 {
   word-wrap: break-word;
 }
 
-.text {
+/* .text {
   font-weight: var(--fwRegular);
-}
+} */
 
 .subtitle {
   font-size: var(--fs7);

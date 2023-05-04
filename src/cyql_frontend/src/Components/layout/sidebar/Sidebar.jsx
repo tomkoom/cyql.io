@@ -21,7 +21,7 @@ import { toApps, toSubmit, toAdmin } from "@routes/routes";
 import { useAuth } from "@context/AuthContext";
 
 // components
-import NavLink from "./nav-link/NavLink";
+import { Link, NavLink } from "./index";
 
 const Sidebar = () => {
   const { principalIdStr } = useAuth();
@@ -40,18 +40,12 @@ const Sidebar = () => {
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
         {verifyAdmin(principalIdStr) && <NavLink label="admin" to={toAdmin} icon={iCircle} />}
 
-        <a
-          className={css.link}
-          href="https://th2z2-caaaa-aaaai-qnn2a-cai.ic0.app/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          <img
-            className={css.icon}
-            src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/cyql/favicon2.svg"
-          />
-          <p>streak</p>
-        </a>
+        {/* links */}
+        <Link
+          label={"streak"}
+          url={"https://th2z2-caaaa-aaaai-qnn2a-cai.ic0.app/"}
+          logo={"https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/streak/logo.svg"}
+        />
       </div>
     </div>
   );

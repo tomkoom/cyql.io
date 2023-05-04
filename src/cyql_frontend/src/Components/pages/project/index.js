@@ -1,4 +1,4 @@
-// project page
+// project
 
 export { default as CollStats } from "./coll-stats/CollStats";
 export { default as Description } from "./description/Description";

@@ -17,7 +17,7 @@ const SignInBtn = () => {
 
   return (
     <button className={css.signInBtn} onClick={openSignInModal}>
-      <span className={css.icon}>{iSignIn}</span> <span>connect wallet</span>
+      <span className={css.icon}>{iSignIn}</span> <span>sign in</span>
     </button>
   );
 };

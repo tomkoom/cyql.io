@@ -9,20 +9,20 @@
 }
 
 .linksI a {
+  height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  white-space: nowrap;
-  height: 2.5rem;
+  font-size: var(--fs6);
+  color: #fff;
   padding: 0 0.5rem;
-  color: white;
-  font-size: var(--fontSize6);
   border-radius: 0.5rem;
+  white-space: nowrap;
   cursor: pointer;
 }
 
 .icon {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
 }
 
 .label {

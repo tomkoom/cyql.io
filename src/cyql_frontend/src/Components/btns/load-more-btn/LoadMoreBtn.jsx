@@ -11,7 +11,7 @@ const LoadMoreBtn = ({ label, size, setItemsVisible }) => {
   };
 
   return (
-    <button className={css.btn} onClick={setItems}>
+    <button className={css.loadMoreBtn} onClick={setItems}>
       Load more {label} +{size}
     </button>
   );
