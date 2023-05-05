@@ -4,28 +4,26 @@ import css from "./Links.module.css";
 // icons
 import { iExternalLink } from "@icons/Icons";
 
+const Link = ({ type, url, text }) => {
+  return (
+    <a id={css[type]} className={css.link} href={url} rel="noreferrer noopener" target="_blank">
+      {text} <span className={css.icon}>{iExternalLink}</span>
+    </a>
+  );
+};
+
 const Links = () => {
   return (
     <div className={css.links}>
-      <a
-        id={css.primary}
-        className={css.link}
-        href="https://entrepot.app/marketplace/ic-apps"
-        rel="noreferrer noopener"
-        target="_blank"
-      >
-        Trade <span className={css.icon}>{iExternalLink}</span>
-      </a>
+      <Link type={"primary"} url={"https://entrepot.app/marketplace/ic-apps"} text={"buy"} />
 
-      <a
-        id={css.secondary}
-        className={css.link}
-        href="https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        Stats <span className={css.icon}>{iExternalLink}</span>
-      </a>
+      <Link
+        type={"secondary"}
+        url={
+          "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
+        }
+        text={"stats"}
+      />
     </div>
   );
 };

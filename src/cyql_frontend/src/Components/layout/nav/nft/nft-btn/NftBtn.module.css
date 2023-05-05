@@ -8,8 +8,9 @@
   padding: 0 0.5rem;
   font-size: 0.9rem;
   font-weight: var(--fwBold);
-  background-color: var(--underlay);
-  border-radius: 0.5rem;
+  background: rgb(98, 0, 234);
+  background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
+  border-radius: 0.75rem;
 }
 
 .nftBtn:hover {

@@ -19,7 +19,6 @@ const NftBtn = () => {
   return (
     <button className={css.nftBtn} onClick={openNftModal}>
       <img className={css.mark} src={theme === "light" ? mark100 : mark10} alt="cyql mark" />
-      {/* <img className={css.mark} src={theme === "light" ? markPurple : markPurple} alt="cyql mark" /> */}
       nft
     </button>
   );
