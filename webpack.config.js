@@ -92,17 +92,11 @@ module.exports = {
     filename: "index.js",
     path: path.join(__dirname, "dist", "cyql_frontend"),
   },
-
-  // Depending in the language or framework you are using for
-  // front-end development, add module loaders to the default
-  // webpack configuration. For example, if you are using React
-  // modules and CSS as described in the "Adding a stylesheet"
-  // tutorial, uncomment the following lines:
   module: {
     rules: [
       { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-      // svg
-      { test: /\.(svg)$/, use: [{ loader: "file-loader" }] },
+      // images
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader" },
       // css modules
       {
         test: /\.css$/,

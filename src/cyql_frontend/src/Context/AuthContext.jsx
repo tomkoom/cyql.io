@@ -19,10 +19,8 @@ const useAuth = () => {
 };
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState(undefined);
   const [userKey, setUserKey] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // juno start
   // ii
@@ -56,11 +54,7 @@ function AuthProvider({ children }) {
       if (user !== null) {
         setSignInLoading(true);
         setUserKey(user.key);
-        setUser(user);
-
-        // loading end
         setSignInLoading(false);
-        setIsAuthenticated(true);
       }
     });
     return () => sub();
@@ -68,9 +62,7 @@ function AuthProvider({ children }) {
   // juno end
 
   const signOut = async () => {
-    setUser(undefined);
     setUserKey("");
-    setIsAuthenticated(false);
 
     // juno
     await junoSignOut();
@@ -78,10 +70,8 @@ function AuthProvider({ children }) {
   };
 
   const value = {
-    user,
     userKey,
     signInLoading,
-    isAuthenticated,
 
     // juno
     signInWithII,

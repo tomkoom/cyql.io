@@ -20,25 +20,9 @@ const toApp = (slug) => {
   history.push(`/projects/${slug}`);
 };
 
-const toUpcoming = () => {
-  history.push("/upcoming");
-};
-
 const toSubmit = () => {
   history.push("/submit");
 };
-
-const toJobs = () => {
-  history.push("/jobs");
-};
-
-const toPostJob = () => {
-  history.push("/jobs/post");
-};
-
-// const toNft = () => {
-//   history.push("/nft");
-// };
 
 const toProfile = () => {
   history.push("/profile");
@@ -52,11 +36,7 @@ export {
   toHome,
   toApps,
   toApp,
-  toUpcoming,
   toSubmit,
-  toJobs,
-  toPostJob,
-  // toNft,
   toProfile,
   toAdmin,
   // –––
