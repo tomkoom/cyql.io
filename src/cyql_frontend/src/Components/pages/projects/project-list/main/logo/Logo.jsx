@@ -6,7 +6,7 @@ import { LogoLetter } from "@ui-elements/index";
 
 const Logo = ({ name, logo }) => {
   const sizeRem = "5";
-  const borderRadiusRem = "1.5";
+  const borderRadiusRem = "1.25";
   const style = {
     width: `${sizeRem}rem`,
     height: `${sizeRem}rem`,

@@ -20,7 +20,7 @@ const useAuth = () => {
 
 function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
-  const [principalIdStr, setPrincipalIdStr] = useState("");
+  const [userKey, setUserKey] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -55,7 +55,7 @@ function AuthProvider({ children }) {
     const sub = authSubscribe((user) => {
       if (user !== null) {
         setSignInLoading(true);
-        setPrincipalIdStr(user.key);
+        setUserKey(user.key);
         setUser(user);
 
         // loading end
@@ -69,7 +69,7 @@ function AuthProvider({ children }) {
 
   const signOut = async () => {
     setUser(undefined);
-    setPrincipalIdStr("");
+    setUserKey("");
     setIsAuthenticated(false);
 
     // juno
@@ -79,7 +79,7 @@ function AuthProvider({ children }) {
 
   const value = {
     user,
-    principalIdStr,
+    userKey,
     signInLoading,
     isAuthenticated,
 

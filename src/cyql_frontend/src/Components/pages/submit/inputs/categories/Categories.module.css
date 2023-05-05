@@ -4,7 +4,7 @@
   margin-bottom: 1rem;
 }
 
-.categories ul {
+.list {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -14,6 +14,8 @@
 }
 
 .label {
+  font-size: var(--fs5);
+  font-weight: var(--fwBold);
   color: var(--secondaryColor);
   margin: 1rem 0;
 }
@@ -27,6 +29,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  font-size: var(--fs5);
   background-color: var(--underlay);
   padding: 0 0.75rem;
   border-radius: 1.25rem;

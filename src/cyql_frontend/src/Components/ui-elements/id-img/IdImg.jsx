@@ -4,7 +4,7 @@ import React from "react";
 import { useAuth } from "@context/AuthContext";
 
 const IdImg = ({ size }) => {
-  const { principalIdStr } = useAuth();
+  const { userKey } = useAuth();
 
   const style = {
     borderRadius: "50%",
@@ -15,7 +15,7 @@ const IdImg = ({ size }) => {
   return (
     <img
       style={style}
-      src={`https://avatars.dicebear.com/api/jdenticon/${principalIdStr}.svg`}
+      src={`https://avatars.dicebear.com/api/jdenticon/${userKey}.svg`}
       alt="id img"
     />
   );

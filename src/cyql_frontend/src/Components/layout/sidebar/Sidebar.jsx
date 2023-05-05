@@ -24,12 +24,12 @@ import { useAuth } from "@context/AuthContext";
 import { Link, NavLink } from "./index";
 
 const Sidebar = () => {
-  const { principalIdStr } = useAuth();
+  const { userKey } = useAuth();
   const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
 
-  const verifyAdmin = (principalIdStr) => {
-    if (principalIdStr !== "") {
-      return admins.includes(principalIdStr);
+  const verifyAdmin = (userKey) => {
+    if (userKey !== "") {
+      return admins.includes(userKey);
     }
   };
 
@@ -38,7 +38,7 @@ const Sidebar = () => {
       <div className={css.nav}>
         <NavLink label="projects" to={toApps} icon={iCube} />
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
-        {verifyAdmin(principalIdStr) && <NavLink label="admin" to={toAdmin} icon={iCircle} />}
+        {verifyAdmin(userKey) && <NavLink label="admin" to={toAdmin} icon={iCircle} />}
 
         {/* links */}
         <Link

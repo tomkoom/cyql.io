@@ -18,7 +18,7 @@ import { useAuth } from "@context/AuthContext";
 import { toProfile } from "@routes/routes";
 
 const Menu = ({ setMenuIsOpen }) => {
-  const { principalIdStr, signOut } = useAuth();
+  const { userKey, signOut } = useAuth();
 
   const clickMenuItem = (action) => {
     action();
@@ -33,7 +33,7 @@ const Menu = ({ setMenuIsOpen }) => {
         </span>
 
         <div className={css.idAddr}>
-          <span className={css.text}>{formatId(principalIdStr)}</span>
+          <span className={css.text}>{formatId(userKey)}</span>
           <span className={css.subtitle}>view profile</span>
         </div>
       </div>

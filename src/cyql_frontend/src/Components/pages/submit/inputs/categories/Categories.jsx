@@ -3,12 +3,12 @@ import css from "./Categories.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllCategories } from "@state/allCategories";
+import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
 import { selectProjectSubmissionData, setProjectSubmissionData } from "@state/projectSubmission";
 
 const Categories = () => {
   const dispatch = useDispatch();
-  const allCategories = useSelector(selectAllCategories);
+  const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
   const projectSubmissionData = useSelector(selectProjectSubmissionData);
 
   const setCategory = (e) => {
@@ -19,9 +19,9 @@ const Categories = () => {
 
   return (
     <div className={css.categories}>
-      <p className={css.label}>Project category</p>
-      <ul>
-        {allCategories
+      <p className={css.label}>project category</p>
+      <ul className={css.list}>
+        {categoriesSortedByNum
           .filter((category) => category.id !== "all")
           .map((category) => (
             <li key={category.id}>

@@ -25,8 +25,9 @@ import search from "./projects/search";
 import sort from "./projects/sort";
 import projects from "./projects";
 
-// project data
-import allCategories from "./allCategories";
+// categories
+import allCategories from "./categories/allCategories";
+import categoriesSortedByNum from "./categories/categoriesSortedByNum";
 
 // ...
 import theme from "./theme";
@@ -71,7 +72,10 @@ const rootReducer = combineReducers({
 
   // projects
   projects,
+
+  // categories
   allCategories,
+  categoriesSortedByNum,
 });
 
 const persistConfig = {

@@ -26,19 +26,19 @@ const IdValue = ({ id }) => {
 const Ids = () => {
   const [principalCopied, setPrincipalCopied] = useState(false);
   const [accountCopied, setAccountCopied] = useState(false);
-  const { principalIdStr, accountIdStr } = useAuth();
+  const { userKey, accountIdStr } = useAuth();
 
   const principalLabel = "principal id";
   const accountLabel = "account id";
 
   const ids = [
-    { label: principalLabel, id: principalIdStr, copied: principalCopied },
+    { label: principalLabel, id: userKey, copied: principalCopied },
     { label: accountLabel, id: accountIdStr, copied: accountCopied },
   ];
 
   const copy = (label) => {
     if (label === principalLabel) {
-      navigator.clipboard.writeText(principalIdStr);
+      navigator.clipboard.writeText(userKey);
       setPrincipalCopied(true);
       setTimeout(() => {
         setPrincipalCopied(false);

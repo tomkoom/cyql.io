@@ -7,20 +7,16 @@ import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // constants
-import {
-  iiAdmin1,
-  iiAdmin2,
-  plugAdmin1,
-  plugAdmin2,
-  stoicAdmin1,
-  stoicAdmin2,
-  junoSatelliteId,
-  junoDatastoreCollection,
-} from "@constants/constants";
+import { iiAdmin1, iiAdmin2, junoSatelliteId, junoDatastoreCollection } from "@constants/constants";
+
+// hooks
+import { useWindowSize } from "@hooks/useWindowSize";
 
 // utils
-import { useWindowSize } from "@hooks/useWindowSize";
 import { sortByDate } from "@utils/sort";
+import { bigIntToNum } from "@utils/bigIntToNum";
+import { verifyAdmin } from "@utils/verifyAdmin";
+import { sortCategoriesByNum } from "@utils/sortCategoriesByNum";
 
 // juno https://juno.build/docs/intro
 import { initJuno, listDocs } from "@junobuild/core";
@@ -38,6 +34,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "@state/theme";
 // import { setUpvotedProjects } from "@state/profile/profile";
 import { setProjectsDocs, setProjectsNum } from "@state/projects";
+import { selectProjectsDocs } from "@state/projects";
+import { selectAllCategories } from "@state/categories/allCategories";
+import { setCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
 
 // state: modals
 import {
@@ -53,22 +52,23 @@ import { selectNftModal } from "@state/modals/nftModal";
 const App = () => {
   // hooks
   const dispatch = useDispatch();
-  const { principalIdStr, isAuthenticated } = useAuth();
+  const { userKey } = useAuth();
   const [deviceWidth] = useWindowSize();
 
-  const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
-  const verifyAdmin = (principalIdStr) => {
-    return admins.includes(principalIdStr);
-  };
+  // modals
+  const projectModal = useSelector(selectProjectModal);
+  const shareModal = useSelector(selectShareModal);
+  const signInModal = useSelector(selectSignInModal);
+  const mobileMenuModal = useSelector(selectMobileMenuModal);
+  const nftModal = useSelector(selectNftModal);
+
+  // ...
+  const theme = useSelector(selectTheme);
+  const projectsDocs = useSelector(selectProjectsDocs);
+  const allCategories = useSelector(selectAllCategories);
+  const admins = [iiAdmin1, iiAdmin2];
 
   // juno start
-  const bigIntToNum = (p) => {
-    return Object.assign({}, p, {
-      created_at: Number(p.created_at),
-      updated_at: Number(p.updated_at),
-    });
-  };
-
   useEffect(() => {
     (async () => {
       await initJuno({
@@ -96,22 +96,11 @@ const App = () => {
   }, []);
   // juno end
 
-  // theme
-  const theme = useSelector(selectTheme);
-
-  // modals
-  const projectModal = useSelector(selectProjectModal);
-  const shareModal = useSelector(selectShareModal);
-  const signInModal = useSelector(selectSignInModal);
-  const mobileMenuModal = useSelector(selectMobileMenuModal);
-  const nftModal = useSelector(selectNftModal);
-
   // prevent from scrolling when modal is active
-  // to refactor
   const modals = [signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
   useEffect(() => {
-    const modalIsActive = signInModal || mobileMenuModal || projectModal || shareModal || nftModal;
-    if (modalIsActive) {
+    const activeModals = modals.filter((modal) => modal === true);
+    if (activeModals > 0) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -127,10 +116,18 @@ const App = () => {
 
   // close sign in modal after user has logged
   useEffect(() => {
-    if (isAuthenticated === true) {
+    if (userKey !== "") {
       dispatch(setSignInModal(false));
     }
-  }, [isAuthenticated]);
+  }, [userKey]);
+
+  // sort categories by num
+  useEffect(() => {
+    if (projectsDocs.length > 0) {
+      const categoriesSortedByNum = sortCategoriesByNum(allCategories, projectsDocs);
+      dispatch(setCategoriesSortedByNum(categoriesSortedByNum));
+    }
+  }, [projectsDocs]);
 
   // get upvoted projects
   // useEffect(() => {
@@ -166,13 +163,13 @@ const App = () => {
               <Submit />
             </Route>
 
-            {principalIdStr !== "" && (
+            {userKey !== "" && (
               <Route exact path="/profile">
                 <Profile />
               </Route>
             )}
 
-            {verifyAdmin(principalIdStr) && (
+            {verifyAdmin(admins, userKey) && (
               <Route exact path="/admin">
                 <Admin />
               </Route>

@@ -27,13 +27,17 @@ const allCategories = createSlice({
       { id: "communities", label: "Communities", icon: "📣" },
       { id: "daos", label: "DAOs", icon: "🏠" },
 
-      // infrastracture, cloud, storage
+      // infrastracture, cloud, storage, protocol
       { id: "infrastructure", label: "Infrastructure", icon: "🚀" },
       { id: "cloud", label: "Cloud", icon: "☁️" },
+      { id: "protocol", label: "Protocol", icon: "" },
 
       // metaverse, ar/vr
       { id: "metaverse", label: "Metaverse", icon: "👓" },
       { id: "ar-vr", label: "AR/VR", icon: "👓" },
+
+      // messaging
+      { id: "messaging", label: "Messaging", icon: "💬" },
 
       //  ...
 

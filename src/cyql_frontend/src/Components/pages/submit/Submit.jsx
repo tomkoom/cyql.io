@@ -3,11 +3,12 @@ import css from "./Submit.module.css";
 
 // components
 import { Categories, Inputs } from "./inputs/index";
-import { ReCaptchaComponent, SubmissionSuccess, SubmitBtn } from "./index";
+import { Loading, ReCaptchaComponent, SubmissionSuccess, SubmitBtn } from "./index";
 
 // state
 import { useSelector } from "react-redux";
 import { selectProjectSubmissionData } from "@state/projectSubmission";
+import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
 
 // firestore
 import { submittedProjectsCollRef } from "@firestore/firestore-collections";
@@ -18,6 +19,7 @@ const Submit = () => {
   const [submissionLoader, setSubmissionLoader] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const projectSubmissionData = useSelector(selectProjectSubmissionData);
+  const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,24 +38,30 @@ const Submit = () => {
 
   return (
     <div className={css.submit}>
-      {!isSubmitted ? (
-        <div>
-          <h2 className="pageTitle">submit your project</h2>
-          <form className={css.form} onSubmit={handleSubmit}>
-            <div className={css.inputs}>
-              <Categories />
-              <Inputs />
-            </div>
-
-            {/* submit */}
-            <div className={css.submitBtn}>
-              <ReCaptchaComponent setIsVerified={setIsVerified} />
-              <SubmitBtn submissionLoader={submissionLoader} isVerified={isVerified} />
-            </div>
-          </form>
-        </div>
+      {categoriesSortedByNum.length < 1 ? (
+        <Loading />
       ) : (
-        <SubmissionSuccess />
+        <div className={css.main}>
+          {isSubmitted === false ? (
+            <div className={css.content}>
+              <h2 className="pageTitle">submit your project</h2>
+              <form className={css.form} onSubmit={handleSubmit}>
+                <div className={css.inputs}>
+                  <Categories />
+                  <Inputs />
+                </div>
+
+                {/* submit */}
+                <div className={css.submitBtn}>
+                  <ReCaptchaComponent setIsVerified={setIsVerified} />
+                  <SubmitBtn submissionLoader={submissionLoader} isVerified={isVerified} />
+                </div>
+              </form>
+            </div>
+          ) : (
+            <SubmissionSuccess />
+          )}
+        </div>
       )}
     </div>
   );
