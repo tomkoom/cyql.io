@@ -1,15 +1,11 @@
 import React from "react";
 import css from "./Header.module.css";
 
+// utils
+import { verifyAdmin } from "@utils/verifyAdmin";
+
 // constants
-import {
-  iiAdmin1,
-  iiAdmin2,
-  plugAdmin1,
-  plugAdmin2,
-  stoicAdmin1,
-  stoicAdmin2,
-} from "@constants/constants";
+import { iiAdmin1, iiAdmin2 } from "@constants/constants";
 
 // icons
 import { iEdit, iShareSquare } from "@icons/Icons";
@@ -29,8 +25,7 @@ import { setShareModal } from "@state/modals/shareModal";
 const Header = ({ projectDoc }) => {
   const dispatch = useDispatch();
   const { userKey } = useAuth();
-  const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
-  const isAdmin = admins.includes(userKey);
+  const admins = [iiAdmin1, iiAdmin2];
 
   const editProject = () => {
     dispatch(setProjectDoc(projectDoc));
@@ -57,7 +52,7 @@ const Header = ({ projectDoc }) => {
       </div>
 
       <div className={css.controls}>
-        {isAdmin === true && <Btn icon={iEdit} onClick={editProject} />}
+        {verifyAdmin(admins, userKey) === true && <Btn icon={iEdit} onClick={editProject} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
         {/* <div className={css.btnContainer}>
           <UpvtBtn id={projectDoc.key} upvotedBy={projectDoc.data.upvotedBy} location="project" />

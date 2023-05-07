@@ -2,24 +2,24 @@
 
 import { iDatabase, iDiscord, iGithub, iMedium, iTelegram, iTwitter } from "@icons/Icons";
 
-// inputs
+// inputs, source: @state/submit
 
 const main = [
   {
     id: "name",
-    label: "Your project name*",
+    label: "your project name*",
     hint: "",
     icon: "",
-    placeholder: "Project name",
+    placeholder: "project name",
     type: "text",
     required: "required",
   },
   {
     id: "description",
-    label: "Please enter a short description of your project",
+    label: "please enter a short description of your project",
     hint: "",
     icon: "",
-    placeholder: "Tagline",
+    placeholder: "tagline",
     type: "text",
     required: null,
   },
@@ -28,28 +28,28 @@ const main = [
 const links = [
   {
     id: "website",
-    label: "Website",
+    label: "website",
     hint: "",
     icon: "",
-    placeholder: "Website URL",
+    placeholder: "website url",
     type: "text",
     required: null,
   },
   {
-    id: "appURL",
-    label: "App",
+    id: "app",
+    label: "app",
     hint: "",
     icon: "",
-    placeholder: "App URL",
+    placeholder: "app url",
     type: "text",
     required: null,
   },
   {
-    id: "docsURL",
-    label: "Docs",
+    id: "docs",
+    label: "docs",
     hint: "",
     icon: "",
-    placeholder: "Docs URL",
+    placeholder: "docs url",
     type: "text",
     required: null,
   },
@@ -58,7 +58,7 @@ const links = [
 const linksSoc = [
   {
     id: "twitter",
-    label: "Twitter",
+    label: "twitter",
     hint: "",
     icon: iTwitter,
     placeholder: "https://twitter.com/yourproject",
@@ -67,16 +67,16 @@ const linksSoc = [
   },
   {
     id: "discord",
-    label: "Discord",
-    hint: "Make sure the invite link will not expire!",
+    label: "discord",
+    hint: "make sure the invite link will not expire!",
     icon: iDiscord,
-    placeholder: "Discord",
+    placeholder: "discord",
     type: "text",
     required: null,
   },
   {
     id: "telegram",
-    label: "Telegram",
+    label: "telegram",
     hint: "",
     icon: iTelegram,
     placeholder: "https://t.me/yourproject",
@@ -85,7 +85,7 @@ const linksSoc = [
   },
   {
     id: "github",
-    label: "GitHub",
+    label: "github",
     hint: "",
     icon: iGithub,
     placeholder: "https://github.com/yourproject",
@@ -94,7 +94,7 @@ const linksSoc = [
   },
   {
     id: "medium",
-    label: "Medium",
+    label: "medium",
     hint: "",
     icon: iMedium,
     placeholder: "https://medium.com/yourproject",
@@ -106,10 +106,10 @@ const linksSoc = [
 const linksIC = [
   {
     id: "canister",
-    label: "Frontend canister URL",
+    label: "frontend canister url",
     hint: "",
     icon: iDatabase,
-    placeholder: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/",
+    placeholder: "",
     type: "text",
     required: null,
   },
@@ -132,7 +132,7 @@ const linksIC = [
     required: null,
   },
   {
-    id: "openChat",
+    id: "openchat",
     label: "OpenChat",
     hint: "",
     icon: "",
@@ -145,19 +145,10 @@ const linksIC = [
 const img = [
   {
     id: "logo",
-    label: "Logo image URL",
-    hint: "Optimal resolution: 400 x 400px, 1:1",
+    label: "logo image url",
+    hint: "400px x 400px for best perfomance",
     icon: "",
-    placeholder: "Logo image URL",
-    type: "text",
-    required: null,
-  },
-  {
-    id: "cover",
-    label: "Cover image URL",
-    hint: "Optimal resolution: 1500 x 500px, 3:1",
-    icon: "",
-    placeholder: "Cover image URL",
+    placeholder: "logo image url",
     type: "text",
     required: null,
   },
@@ -166,10 +157,10 @@ const img = [
 const notes = [
   {
     id: "notes",
-    label: "Any additional notes",
+    label: "any additional notes",
     hint: "",
     icon: "",
-    placeholder: "Notes 📝",
+    placeholder: "notes",
     type: "text",
     required: null,
   },
@@ -179,30 +170,21 @@ const notes = [
 
 const nft = [
   {
-    id: "nftUnits",
-    label: "Total NFT items",
-    hint: "E.g. 10000",
+    id: "nft_units",
+    label: "total nft items",
+    hint: "e.g. 10000",
     icon: "",
-    placeholder: "Total NFT items",
+    placeholder: "total nft items in collection",
     type: "text",
     required: null,
   },
   {
-    id: "nftUnitPrice",
-    label: "Price per NFT in ICP",
-    hint: "E.g. 2.5 ICP",
+    id: "nft_unit_price",
+    label: "price per nft in icp",
+    hint: "e.g. 2.5 icp",
     icon: "",
-    placeholder: "Price per NFT in ICP",
+    placeholder: "price per nft in icp",
     type: "text",
-    required: null,
-  },
-  {
-    id: "nftSaleDate",
-    label: "NFT sale date",
-    hint: "",
-    icon: "",
-    placeholder: "NFT sale date",
-    type: "date",
     required: null,
   },
 ];

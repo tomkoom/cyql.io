@@ -20,7 +20,7 @@ import {
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@state/projects/filter";
-import { selectProjectsDocs } from "@state/projects";
+import { selectProjectsDocsActive } from "@state/projects";
 
 // utils: sort, filter
 import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects";
@@ -34,10 +34,8 @@ import {
 
 const ProjectList = () => {
   // projects
-  const projectsDocs = useSelector(selectProjectsDocs).filter(
-    (projectDoc) => projectDoc.data.archived !== true
-  );
-  const projectsDocsNum = projectsDocs.length;
+  const projects = useSelector(selectProjectsDocsActive);
+  const projectsNum = projects.length;
   const itemsVisible = useSelector(selectItemsVisibleProjects);
 
   // search
@@ -54,16 +52,16 @@ const ProjectList = () => {
 
   return (
     <div>
-      {projectsDocs.length < 1 ? (
+      {projects.length < 1 ? (
         <Loader />
       ) : (
         <ul className={css.li}>
-          {projectsDocs
-            .filter((projectDoc) => filterBySearch(projectDoc, searchQuery))
-            .filter((projectDoc) => filterByCategory(projectDoc, category))
-            .filter((projectDoc) => filterByOpenSource(projectDoc, openSource))
-            .filter((projectDoc) => filterByOnChain(projectDoc, onChain))
-            .filter((projectDoc) => filterByGrantee(projectDoc, grantee))
+          {projects
+            .filter((project) => filterBySearch(project, searchQuery))
+            .filter((project) => filterByCategory(project, category))
+            .filter((project) => filterByOpenSource(project, openSource))
+            .filter((project) => filterByOnChain(project, onChain))
+            .filter((project) => filterByGrantee(project, grantee))
             .sort((a, b) =>
               sort === "newest-first" ? sortNewest(a.data.added, b.data.added) : null
             )
@@ -127,7 +125,7 @@ const ProjectList = () => {
             ))}
         </ul>
       )}
-      {itemsVisible < projectsDocsNum && (
+      {itemsVisible < projectsNum && (
         <LoadMoreBtn label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
       )}
     </div>

@@ -3,19 +3,14 @@ import css from "./Input.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import {
-  selectProjectSubmissionData,
-  setProjectSubmissionData,
-} from "../../../../../../state/projectSubmission";
+import { selectSubmit, setSubmit } from "@state/submit/submit";
 
 const InputsItem = ({ inputs }) => {
   const dispatch = useDispatch();
-  const projectSubmissionData = useSelector(selectProjectSubmissionData);
+  const submit = useSelector(selectSubmit);
 
   const handleInput = (e) => {
-    dispatch(
-      setProjectSubmissionData({ ...projectSubmissionData, [e.target.name]: e.target.value })
-    );
+    dispatch(setSubmit({ ...submit, [e.target.name]: e.target.value }));
   };
 
   return (

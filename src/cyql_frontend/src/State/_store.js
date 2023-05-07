@@ -25,6 +25,9 @@ import search from "./projects/search";
 import sort from "./projects/sort";
 import projects from "./projects";
 
+// submit
+import submit from "./submit/submit";
+
 // categories
 import allCategories from "./categories/allCategories";
 import categoriesSortedByNum from "./categories/categoriesSortedByNum";
@@ -50,14 +53,10 @@ import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   icpPrice,
-  search,
   theme,
   loadMore,
   modals,
-  category,
-  sort,
   profile,
-  filter,
   projectSubmission,
   profiles,
   shareModal,
@@ -71,7 +70,14 @@ const rootReducer = combineReducers({
   adminSearch,
 
   // projects
+  category,
+  filter,
+  search,
+  sort,
   projects,
+
+  // submit
+  submit,
 
   // categories
   allCategories,

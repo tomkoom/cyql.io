@@ -9,10 +9,10 @@ import Input from "./input/Input";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectSubmissionData } from "../../../../../state/projectSubmission";
+import { selectSubmit } from "@state/submit/submit";
 
 const Inputs = () => {
-  const projectSubmissionData = useSelector(selectProjectSubmissionData);
+  const submit = useSelector(selectSubmit);
 
   return (
     <div className={css.inputs}>
@@ -23,7 +23,7 @@ const Inputs = () => {
       <Input inputs={img} />
       <Input inputs={notes} />
       {/* nft */}
-      {projectSubmissionData.category === "nfts" && <Input inputs={nft} />}
+      {submit.category === "nfts" && <Input inputs={nft} />}
     </div>
   );
 };

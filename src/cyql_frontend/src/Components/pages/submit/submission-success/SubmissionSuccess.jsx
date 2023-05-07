@@ -8,7 +8,7 @@ const SubmissionSuccess = () => {
   return (
     <div className={css.submissionSuccess}>
       <div className={css.content}>
-        <p>
+        <p className={css.text}>
           Thank you for your submission! Your project has been successfully submitted and will
           appear on the site after a quick review! Go to{" "}
           <span className={css.link} onClick={toHome}>

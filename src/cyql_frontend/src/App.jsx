@@ -7,19 +7,17 @@ import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // constants
-import { iiAdmin1, iiAdmin2, junoSatelliteId, junoDatastoreCollection } from "@constants/constants";
+import { iiAdmin1, iiAdmin2 } from "@constants/constants";
 
 // hooks
 import { useWindowSize } from "@hooks/useWindowSize";
 
 // utils
-import { sortByDate } from "@utils/sort";
-import { bigIntToNum } from "@utils/bigIntToNum";
 import { verifyAdmin } from "@utils/verifyAdmin";
 import { sortCategoriesByNum } from "@utils/sortCategoriesByNum";
 
-// juno https://juno.build/docs/intro
-import { initJuno, listDocs } from "@junobuild/core";
+// juno
+import { initJuno, getProjectsDocs } from "@juno/juno";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -71,27 +69,8 @@ const App = () => {
   // juno start
   useEffect(() => {
     (async () => {
-      await initJuno({
-        satelliteId: junoSatelliteId,
-      });
-
-      await listDocs({
-        collection: junoDatastoreCollection,
-        filter: {},
-      })
-        .then((docs) => {
-          const projectsDocs = docs.items
-            .sort((a, b) => sortByDate(a.data.added, b.data.added))
-            .map((project) => bigIntToNum(project));
-
-          const projectsDocsNum = projectsDocs.filter(
-            (projectDoc) => projectDoc.data.archived === false
-          ).length;
-
-          dispatch(setProjectsDocs(projectsDocs));
-          dispatch(setProjectsNum(projectsDocsNum));
-        })
-        .catch((err) => console.log(err));
+      await initJuno();
+      await getProjectsDocs();
     })();
   }, []);
   // juno end

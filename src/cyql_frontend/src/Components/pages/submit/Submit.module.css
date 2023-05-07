@@ -1,22 +1,12 @@
 /* submit */
 
 .submit {
-  max-width: 960px;
+  max-width: 60rem;
   margin: 0 auto;
 }
 
 .form {
   margin-bottom: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inputs {
-  margin-bottom: 2rem;
-}
-
-.submitBtn {
   display: flex;
   flex-direction: column;
   align-items: center;

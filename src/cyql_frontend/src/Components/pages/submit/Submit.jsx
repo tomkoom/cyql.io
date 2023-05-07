@@ -1,38 +1,50 @@
 import React, { useState } from "react";
 import css from "./Submit.module.css";
 
+// utils
+import { nanoid } from "@utils/projectId";
+
+// constants
+import { junoCollectionSubmittedProjects } from "@constants/constants";
+
+// juno
+import { setDoc } from "@junobuild/core";
+
 // components
-import { Categories, Inputs } from "./inputs/index";
-import { Loading, ReCaptchaComponent, SubmissionSuccess, SubmitBtn } from "./index";
+import { Categories, Inputs, Loading, SubmissionSuccess, SubmitBtn } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectSubmissionData } from "@state/projectSubmission";
+import { selectSubmit } from "@state/submit/submit";
 import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
 
-// firestore
-import { submittedProjectsCollRef } from "@firestore/firestore-collections";
-import { addDoc } from "firebase/firestore";
-
 const Submit = () => {
-  const [isVerified, setIsVerified] = useState(false);
   const [submissionLoader, setSubmissionLoader] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const projectSubmissionData = useSelector(selectProjectSubmissionData);
+  const submit = useSelector(selectSubmit);
   const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
+  const collection = junoCollectionSubmittedProjects;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmissionLoader(true);
-    try {
-      await addDoc(submittedProjectsCollRef, {
-        ...projectSubmissionData,
-        submissionDate: Date.now(),
-      });
+
+    const key = nanoid();
+    const timestamp = Date.now();
+    await setDoc({
+      collection,
+      doc: {
+        key,
+        data: {
+          ...submit,
+          added: timestamp,
+        },
+      },
+    }).then(() => {
+      console.log(`Doc added with the key ${key}.`);
       setIsSubmitted(true);
-    } catch (e) {
-      console.log(e);
-    }
+    });
+
     setSubmissionLoader(false);
   };
 
@@ -40,28 +52,19 @@ const Submit = () => {
     <div className={css.submit}>
       {categoriesSortedByNum.length < 1 ? (
         <Loading />
-      ) : (
+      ) : isSubmitted === false ? (
         <div className={css.main}>
-          {isSubmitted === false ? (
-            <div className={css.content}>
-              <h2 className="pageTitle">submit your project</h2>
-              <form className={css.form} onSubmit={handleSubmit}>
-                <div className={css.inputs}>
-                  <Categories />
-                  <Inputs />
-                </div>
+          <h2 className="pageTitle">submit your project</h2>
+          <form className={css.form} onSubmit={handleSubmit}>
+            <Categories />
+            <Inputs />
 
-                {/* submit */}
-                <div className={css.submitBtn}>
-                  <ReCaptchaComponent setIsVerified={setIsVerified} />
-                  <SubmitBtn submissionLoader={submissionLoader} isVerified={isVerified} />
-                </div>
-              </form>
-            </div>
-          ) : (
-            <SubmissionSuccess />
-          )}
+            {/* submit */}
+            <SubmitBtn submissionLoader={submissionLoader} />
+          </form>
         </div>
+      ) : (
+        <SubmissionSuccess />
       )}
     </div>
   );

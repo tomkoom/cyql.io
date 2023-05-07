@@ -10,8 +10,7 @@
 
 - react.js
 - [internet computer sdk](https://internetcomputer.org/docs/current/home)
-- [juno](https://juno.build/) for storing projects data
-- firebase/firestore is used to accept project submissions (todo: move to juno)
+- [juno](https://juno.build/) for storing data
 
 ```
 npm install

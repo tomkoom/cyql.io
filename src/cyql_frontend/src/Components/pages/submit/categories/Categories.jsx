@@ -4,16 +4,16 @@ import css from "./Categories.module.css";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
-import { selectProjectSubmissionData, setProjectSubmissionData } from "@state/projectSubmission";
+import { selectSubmit, setSubmit } from "@state/submit/submit";
 
 const Categories = () => {
   const dispatch = useDispatch();
   const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
-  const projectSubmissionData = useSelector(selectProjectSubmissionData);
+  const submit = useSelector(selectSubmit);
 
   const setCategory = (e) => {
     dispatch(
-      setProjectSubmissionData({ ...projectSubmissionData, [e.target.name]: e.target.value })
+      setSubmit({ ...submit, [e.target.name]: e.target.value })
     );
   };
 
@@ -35,7 +35,8 @@ const Categories = () => {
                   onChange={setCategory}
                 />
                 <div className={css.category}>
-                  {category.icon}&nbsp;&nbsp;{category.label.toLowerCase()}
+                  {category.icon !== "" && <span className={css.icon}>{category.icon}</span>}{" "}
+                  {category.label.toLowerCase()}
                 </div>
               </label>
             </li>

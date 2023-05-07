@@ -4,21 +4,27 @@ const projects = createSlice({
   name: "projects",
   initialState: {
     projectsDocs: [],
-    projectsNum: 0,
+    projectsDocsActive: [],
+    projectsDocsActiveNum: 0,
   },
   reducers: {
     setProjectsDocs(state, { payload }) {
       state.projectsDocs = payload;
     },
-    setProjectsNum(state, { payload }) {
-      state.projectsNum = payload;
+    setProjectsDocsActive(state, { payload }) {
+      state.projectsDocsActive = payload;
+    },
+    setProjectsDocsActiveNum(state, { payload }) {
+      state.projectsDocsActiveNum = payload;
     },
   },
 });
 
 const selectProjectsDocs = (state) => state.projects.projectsDocs;
-const selectProjectsNum = (state) => state.projects.projectsNum;
-export { selectProjectsDocs, selectProjectsNum };
+const selectProjectsDocsActive = (state) => state.projects.projectsDocsActive;
+const selectProjectsDocsActiveNum = (state) => state.projects.projectsDocsActiveNum;
+export { selectProjectsDocs, selectProjectsDocsActive, selectProjectsDocsActiveNum };
 
-export const { setProjectsDocs, setProjectsNum } = projects.actions;
+export const { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } =
+  projects.actions;
 export default projects.reducer;

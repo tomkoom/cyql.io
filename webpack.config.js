@@ -79,6 +79,7 @@ module.exports = {
       "@firestore": path.resolve(__dirname, "src", frontendDir, "src/firestore"),
       "@hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
       "@idl": path.resolve(__dirname, "src", frontendDir, "src/idl"),
+      "@juno": path.resolve(__dirname, "src", frontendDir, "src/juno"),
       "@routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
       "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
       "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),

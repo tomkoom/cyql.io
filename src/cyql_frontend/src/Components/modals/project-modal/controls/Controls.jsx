@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./Controls.module.css";
 
-import { junoDatastoreCollection } from "@constants/constants";
+import { junoCollectionProjects } from "@constants/constants";
 
 // juno
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
@@ -21,7 +21,7 @@ const Controls = () => {
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const projectDoc = useSelector(selectProjectDoc);
-  const collection = junoDatastoreCollection;
+  const collection = junoCollectionProjects;
 
   const submitProject = async () => {
     const timestamp = Date.now();

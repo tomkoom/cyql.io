@@ -1,15 +1,11 @@
 import React from "react";
 import css from "./Sidebar.module.css";
 
+// utils
+import { verifyAdmin } from "@utils/verifyAdmin";
+
 // constants
-import {
-  iiAdmin1,
-  iiAdmin2,
-  plugAdmin1,
-  plugAdmin2,
-  stoicAdmin1,
-  stoicAdmin2,
-} from "@constants/constants";
+import { iiAdmin1, iiAdmin2 } from "@constants/constants";
 
 // icons
 import { iCube, iPlus, iCircle } from "@icons/Icons";
@@ -25,20 +21,16 @@ import { Link, NavLink } from "./index";
 
 const Sidebar = () => {
   const { userKey } = useAuth();
-  const admins = [iiAdmin1, iiAdmin2, plugAdmin1, plugAdmin2, stoicAdmin1, stoicAdmin2];
-
-  const verifyAdmin = (userKey) => {
-    if (userKey !== "") {
-      return admins.includes(userKey);
-    }
-  };
+  const admins = [iiAdmin1, iiAdmin2];
 
   return (
     <div className={css.sidebar}>
       <div className={css.nav}>
         <NavLink label="projects" to={toApps} icon={iCube} />
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
-        {verifyAdmin(userKey) && <NavLink label="admin" to={toAdmin} icon={iCircle} />}
+        {verifyAdmin(admins, userKey) === true && (
+          <NavLink label="admin" to={toAdmin} icon={iCircle} />
+        )}
 
         {/* links */}
         <Link

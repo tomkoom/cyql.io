@@ -4,17 +4,18 @@
   height: 2.25rem;
   display: flex;
   align-items: center;
-  gap: 0.125rem;
+  gap: 0.25rem;
   padding: 0 0.5rem;
-  font-size: 0.9rem;
+  font-size: var(--fsText);
   font-weight: var(--fwBold);
+  color: var(--coolGray10);
   background: rgb(98, 0, 234);
   background: linear-gradient(45deg, rgba(98, 0, 234, 1) 0%, rgba(48, 79, 254, 1) 100%);
   border-radius: 0.75rem;
 }
 
 .nftBtn:hover {
-  background-color: var(--underlay2);
+  opacity: 0.8;
 }
 
 .mark {

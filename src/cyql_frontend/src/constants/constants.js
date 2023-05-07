@@ -1,23 +1,18 @@
 const iiAdmin1 = process.env.II_ADMIN_1;
 const iiAdmin2 = process.env.II_ADMIN_2;
-const plugAdmin1 = process.env.PLUG_ADMIN_1;
-const plugAdmin2 = process.env.PLUG_ADMIN_2;
-const stoicAdmin1 = process.env.STOIC_ADMIN_1;
-const stoicAdmin2 = process.env.STOIC_ADMIN_2;
 const recaptchaSiteKey = process.env.RECAPTCHA_SITE_KEY;
 const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
 const donationWallet = process.env.DONATION_WALLET;
+
+// juno
 const junoSatelliteId = process.env.JUNO_SATELLITE_ID;
-const junoDatastoreCollection = process.env.JUNO_DATASTORE_COLLECTION;
+const junoCollectionProjects = process.env.JUNO_COLLECTION_PROJECTS;
+const junoCollectionSubmittedProjects = process.env.JUNO_COLLECTION_SUBMITTED_PROJECTS;
 
 export {
   // admin
   iiAdmin1,
   iiAdmin2,
-  plugAdmin1,
-  plugAdmin2,
-  stoicAdmin1,
-  stoicAdmin2,
 
   // recaptcha
   recaptchaSiteKey,
@@ -28,5 +23,6 @@ export {
 
   // juno
   junoSatelliteId,
-  junoDatastoreCollection,
+  junoCollectionProjects,
+  junoCollectionSubmittedProjects,
 };

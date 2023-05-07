@@ -1,9 +1,5 @@
 import React from "react";
 
-// firestore
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { pColRef } from "@firestore/firestore-collections";
-
 // auth
 import { useAuth } from "@context/AuthContext";
 

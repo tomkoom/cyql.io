@@ -1,1 +1,2 @@
-export const getTwitterUsername = (url) => url.split(".com/")[1];
+const getTwitterUsername = (url) => url.split(".com/")[1];
+export { getTwitterUsername };

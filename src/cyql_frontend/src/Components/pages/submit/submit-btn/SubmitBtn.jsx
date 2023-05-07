@@ -1,14 +1,10 @@
 import React from "react";
 import css from "./SubmitBtn.module.css";
 
-export const SubmitBtn = ({ submissionLoader, isVerified }) => {
+const SubmitBtn = ({ submissionLoader }) => {
   return (
-    <button
-      className={!isVerified ? `${css.submitBtn} ${css.disabled}` : css.submitBtn}
-      disabled={!isVerified}
-      type="submit"
-    >
-      {submissionLoader ? "Submitting..." : "Submit"}
+    <button className={`${css.submitBtn} primaryBtn`} type="submit">
+      {submissionLoader === true ? "submitting..." : "submit"}
     </button>
   );
 };
