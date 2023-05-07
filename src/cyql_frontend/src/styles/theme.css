@@ -1,0 +1,47 @@
+/* theme */
+
+.light {
+  /* highlight colors */
+  --highlightColor: var(--hColor);
+  --highlightColor2: var(--hColor2);
+  --highlightColor3: var(--hColor3);
+  --highlightColorRgb: var(--hColorRgb);
+  --highlightColorRgb2: var(--hColorRgb2);
+  --highlightColorRgb3: var(--hColorRgb3);
+
+  /* main */
+  --primaryColor: var(--coolGray100);
+  --primaryColorRgb: var(--coolGray100Rgb);
+  --secondaryColor: var(--coolGray70);
+  --tertiaryColor: var(--coolGray50);
+  --background: #fff;
+  --backgroundRgb: 255, 255, 255;
+
+  /* underlay */
+  --underlay: var(--coolGray10);
+  --underlay2: var(--coolGray20);
+  --underlay3: var(--coolGray30);
+}
+
+.dark {
+  /* highlight colors */
+  --highlightColor: var(--hColor);
+  --highlightColor2: var(--hColor2);
+  --highlightColor3: var(--hColor3);
+  --highlightColorRgb: var(--hColorRgb);
+  --highlightColorRgb2: var(--hColorRgb2);
+  --highlightColorRgb3: var(--hColorRgb3);
+
+  /* main */
+  --primaryColor: var(--coolGray10);
+  --primaryColorRgb: var(--coolGray10Rgb);
+  --secondaryColor: var(--coolGray30);
+  --tertiaryColor: var(--coolGray50);
+  --background: var(--coolGray100);
+  --backgroundRgb: var(--coolGray100Rgb);
+
+  /* underlay */
+  --underlay: var(--coolGray90);
+  --underlay2: var(--coolGray80);
+  --underlay3: var(--coolGray70);
+}

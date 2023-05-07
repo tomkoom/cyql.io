@@ -1,0 +1,38 @@
+/* links */
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.link {
+  flex: 1;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--fs5);
+  font-weight: var(--fwBlack);
+  padding: 0 1rem;
+  border-radius: 0.75rem;
+}
+
+.link:hover {
+  opacity: 0.8;
+}
+
+#primary {
+  color: #fff;
+  background-color: var(--highlightColor);
+}
+
+#secondary {
+  background: var(--underlay);
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: var(--fontSize7);
+}

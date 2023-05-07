@@ -1,0 +1,46 @@
+/* summary */
+
+.summary {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwMedium);
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+}
+
+.highlight {
+  font-family: var(--monospace);
+  font-size: var(--fontSize6);
+  font-weight: var(--fwBold);
+  color: var(--highlightColor3);
+}
+
+.summary ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* hide scrollbar */
+.summary ul::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .summary {
+    padding: 0.5rem 1rem;
+  }
+
+  .summary ul {
+    justify-content: unset;
+  }
+}

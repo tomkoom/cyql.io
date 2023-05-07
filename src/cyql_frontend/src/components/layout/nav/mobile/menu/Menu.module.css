@@ -1,0 +1,37 @@
+/* menu */
+
+.menu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--background);
+  padding: 2rem;
+  z-index: 1;
+}
+
+.content {
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.crossIcon {
+  align-self: flex-start;
+}
+
+hr.div {
+  border: 0;
+  border-top: 1px solid var(--underlay);
+}

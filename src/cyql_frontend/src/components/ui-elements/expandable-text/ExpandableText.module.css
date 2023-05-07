@@ -1,0 +1,27 @@
+/* expandable text */
+
+.expandable {
+  font-size: 0.9rem;
+  color: var(--secondaryColor);
+  background-color: var(--underlay);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.content {
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+}
+
+.content p {
+  line-height: 150%;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 1.5rem;
+  font-weight: var(--fwBold);
+  cursor: pointer;
+}

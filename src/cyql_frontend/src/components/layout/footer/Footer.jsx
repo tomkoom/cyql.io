@@ -1,0 +1,18 @@
+import React from "react";
+import css from "./Footer.module.css";
+
+// components
+import { FooterTop, FooterMid } from "./index";
+
+const Footer = () => {
+  return (
+    <footer className={css.footer}>
+      <div className={css.content}>
+        <FooterTop />
+        <FooterMid />
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

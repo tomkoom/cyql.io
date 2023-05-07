@@ -1,0 +1,39 @@
+/* title */
+
+.main {
+  display: flex;
+  align-items: baseline;
+  gap: 0.33rem;
+  margin-bottom: 0.25rem;
+}
+
+.name {
+  font-size: var(--fontSize5);
+  font-weight: var(--fwBold);
+  word-wrap: break-word;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+#open {
+  color: var(--primaryColor);
+}
+
+#onchain {
+  color: var(--highlightColor3);
+}
+
+#grantee {
+  color: var(--colorGreen);
+}
+
+.description {
+  font-size: var(--fs6);
+  font-weight: var(--fwMedium);
+  color: var(--tertiaryColor);
+  line-height: 150%;
+}

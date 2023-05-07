@@ -1,0 +1,17 @@
+.profileBtn {
+  position: relative;
+}
+
+.profileBtn button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: var(--fwBold);
+  cursor: pointer;
+}
+
+.idImg {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+}

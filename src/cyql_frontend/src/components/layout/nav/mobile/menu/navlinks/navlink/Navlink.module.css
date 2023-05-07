@@ -1,0 +1,19 @@
+/* navlink */
+
+.navlink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  font-size: var(--fs3);
+  font-weight: var(--fwBold);
+  cursor: pointer;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  color: var(--highlightColor3);
+}

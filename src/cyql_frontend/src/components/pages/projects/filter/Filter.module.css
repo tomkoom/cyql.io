@@ -1,0 +1,12 @@
+/* sort */
+
+.filter {
+  position: relative;
+}
+
+.filterOptions {
+  position: absolute;
+  top: calc(40px + 0.5rem);
+  left: 0;
+  z-index: 999;
+}

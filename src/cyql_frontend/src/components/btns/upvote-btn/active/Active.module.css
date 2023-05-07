@@ -1,0 +1,38 @@
+/* active */
+
+.btn {
+  height: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fontSize7);
+  color: var(--highlightColor);
+  background-color: rgba(var(--highlightColorRgb3), 0.1);
+  font-weight: var(--fwBold);
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgba(var(--highlightColorRgb3), 0.2);
+}
+
+.icon {
+  color: var(--highlightColor3);
+}
+
+.size5 {
+  font-size: var(--fontSize5);
+}
+
+.size4 {
+  font-size: var(--fontSize4);
+}
+
+.num {
+  color: var(--highlightColor3);
+  margin-top: -0.25rem;
+  padding-bottom: 0.25rem;
+}

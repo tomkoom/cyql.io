@@ -1,0 +1,13 @@
+/* meta */
+
+.sectionName {
+  font-weight: var(--fwBold);
+  color: var(--tertiaryColor);
+  margin-bottom: 0.5rem;
+}
+
+.btnsList {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

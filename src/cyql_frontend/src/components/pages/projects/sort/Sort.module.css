@@ -1,0 +1,12 @@
+/* sort */
+
+.sort {
+  position: relative;
+}
+
+.sortOptions {
+  position: absolute;
+  top: calc(40px + 0.5rem);
+  left: 0;
+  z-index: 999;
+}

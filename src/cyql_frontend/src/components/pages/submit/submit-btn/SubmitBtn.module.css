@@ -1,0 +1,17 @@
+/* submit btn */
+
+.submitBtn {
+  font-size: var(--fs5);
+  margin-top: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+.disabled {
+  opacity: 0.5;
+  color: var(--background);
+  background-color: var(--primaryColor);
+}
+
+.disabled:hover {
+  background-color: var(--primaryColor);
+}

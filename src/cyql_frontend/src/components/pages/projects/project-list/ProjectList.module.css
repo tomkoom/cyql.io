@@ -1,0 +1,95 @@
+/* project list */
+
+.li {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.liI {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.66rem 0;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 1px 0px 0px var(--underlay);
+  box-shadow: 0px 1px 0px 0px var(--underlay);
+}
+
+.liI:hover {
+  background-color: var(--underlay);
+}
+
+/* flex */
+
+.main {
+  flex: 40%;
+}
+
+.tags {
+  flex: 20%;
+}
+
+.socials {
+  flex: 15%;
+}
+
+.upvote {
+  flex: 10%;
+}
+
+/* upvote */
+
+.upvote {
+  display: inline-block;
+}
+
+.upvote .btn {
+  float: right;
+  margin-right: 1px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 639px) {
+  /* flex */
+
+  .socialsIC,
+  .socials {
+    display: none;
+  }
+
+  .main {
+    flex: calc(60% - 1rem);
+  }
+
+  .tags {
+    flex: calc(30% - 1rem);
+  }
+
+  .upvote {
+    flex: calc(10% - 1rem);
+  }
+}
+
+@media screen and (max-width: 479px) {
+  /* flex */
+
+  .liI {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .main {
+    flex: 100%;
+  }
+
+  .tags {
+    flex: calc(80% - 0.5rem);
+  }
+
+  .upvote {
+    flex: calc(20% - 0.5rem);
+  }
+}

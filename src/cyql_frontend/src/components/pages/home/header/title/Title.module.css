@@ -1,0 +1,40 @@
+/* title */
+
+.title {
+  max-width: 36rem;
+  font-size: var(--fs1);
+  font-weight: var(--fwBlack);
+  line-height: 125%;
+}
+
+.projectsDocsNum {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dots {
+  color: var(--tertiaryColor);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs4);
+  padding: 0 1rem;
+  border-radius: 4rem;
+  background-color: var(--underlay);
+}
+
+.logo {
+  height: 2rem;
+}
+
+@media screen and (max-width: 479px) {
+  .title {
+    max-width: 36rem;
+    font-size: var(--fs2);
+    font-weight: var(--fwBlack);
+    line-height: 125%;
+  }
+}

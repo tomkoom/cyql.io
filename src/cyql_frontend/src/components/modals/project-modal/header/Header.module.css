@@ -1,0 +1,30 @@
+/* header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.headerI {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: var(--fontSize4);
+}
+
+.id {
+  font-size: 0.9rem;
+  background-color: var(--underlay);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.icon {
+  font-size: var(--fontSize5);
+  cursor: pointer;
+}

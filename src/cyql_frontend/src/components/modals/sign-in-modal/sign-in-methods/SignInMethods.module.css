@@ -1,0 +1,23 @@
+/* sign in methods */
+
+.signInMethods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.signInMethod {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.aboutUrl {
+  display: inline-block;
+  color: var(--secondaryColor);
+  font-size: var(--fsText);
+}
+
+.aboutUrl:hover {
+  color: var(--primaryColor);
+}

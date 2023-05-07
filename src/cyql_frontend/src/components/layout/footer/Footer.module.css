@@ -1,0 +1,24 @@
+/* footer */
+
+.footer {
+  width: 100%;
+  padding: 3rem 2rem;
+  margin-top: 1rem;
+  background-color: var(--underlay);
+}
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .footer {
+    padding: 3rem 1rem;
+  }
+}

@@ -1,0 +1,24 @@
+/* input */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.field label {
+  font-weight: var(--fwBold);
+  color: var(--tertiaryColor);
+}
+
+.field input {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  color: var(--primaryColor);
+  background-color: var(--underlay);
+  caret-color: var(--primaryColor);
+  border: none;
+  outline: none;
+}

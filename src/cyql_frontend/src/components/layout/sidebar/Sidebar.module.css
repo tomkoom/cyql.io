@@ -1,0 +1,25 @@
+/* sidebar */
+
+.sidebar {
+  position: sticky;
+  top: 64px;
+  bottom: 0;
+  height: 0;
+  max-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+hr.div {
+  border: 0;
+  border-top: 1px solid var(--underlay);
+}
+
+/* responsive */
+
+@media screen and (max-width: 1023px) {
+  .sidebar {
+    display: none;
+  }
+}

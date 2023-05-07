@@ -1,0 +1,20 @@
+/* price */
+
+.price {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fontSize7);
+  font-weight: var(--fwBold);
+  background-color: var(--underlay);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.price img {
+  height: 1rem;
+}
+
+.price * {
+  font-family: var(--monospace);
+}

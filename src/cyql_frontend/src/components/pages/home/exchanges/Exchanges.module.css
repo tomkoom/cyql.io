@@ -1,0 +1,62 @@
+/* join community */
+
+.exchanges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1.5rem;
+}
+
+.item {
+  flex: 1;
+  border-radius: 0.5rem;
+}
+
+.item:hover {
+  opacity: 0.8;
+}
+
+.item a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.title {
+  font-size: var(--fontSize6);
+  margin-bottom: 0.25rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 150%;
+  color: var(--secondaryColor);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: var(--fontSize5);
+  color: var(--tertiaryColor);
+}
+
+@media screen and (max-width: 1023px) {
+  .exchanges {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .exchanges {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+}

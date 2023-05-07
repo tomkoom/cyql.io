@@ -1,0 +1,20 @@
+/* tags */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+  font-size: var(--fsText);
+  font-weight: var(--fwBold);
+}
+
+.tags li {
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  background-color: var(--underlay);
+  border-radius: 0.5rem;
+}

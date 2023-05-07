@@ -1,0 +1,27 @@
+/* layout breakpoints: 960px, 2048px */
+/* add breakpoints as a root values & import to app.jsx */
+
+/* 1024 */
+@media screen and (max-width: 1023px) {
+  /* ... */
+}
+
+/* 768 */
+@media screen and (max-width: 767px) {
+  /* ... */
+}
+
+/* 640 */
+@media screen and (max-width: 639px) {
+  /* ... */
+}
+
+/* 480 */
+@media screen and (max-width: 479px) {
+  /* ... */
+}
+
+/* 360 */
+@media screen and (max-width: 359px) {
+  /* ... */
+}

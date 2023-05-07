@@ -1,0 +1,13 @@
+/* grantee */
+
+.sectionName {
+  font-weight: var(--fwBold);
+  color: var(--tertiaryColor);
+  margin-bottom: 0.5rem;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
