@@ -44,7 +44,7 @@ import {
   selectMobileMenuModal,
 } from "@state/modals/modals";
 import { selectProjectModal } from "@state/modals/projectModal/projectModal";
-import { selectShareModal } from "./state/modals/shareModal";
+import { selectShareModal } from "@state/modals/shareModal";
 import { selectNftModal } from "@state/modals/nftModal";
 
 const App = () => {

@@ -1,10 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./Profile.module.css";
-
-// backend
-import { Actor, HttpAgent } from "@dfinity/agent";
-import nft_idl from "@idl/nft_idl";
-import { mainnethost } from "@context/host";
 
 // auth
 import { useAuth } from "@context/AuthContext";

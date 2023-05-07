@@ -6,7 +6,7 @@ import { formatStr12, formatStr16, formatWebsite, formatDiscord } from "@utils/f
 import { getTwitterUsername } from "@utils/getTwitterUsername";
 
 // components
-import { Search } from "@components/ui-elements/index";
+import { Search } from "@ui-elements/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";

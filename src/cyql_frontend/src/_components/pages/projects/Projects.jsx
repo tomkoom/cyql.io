@@ -3,7 +3,7 @@ import css from "./Projects.module.css";
 
 // components
 import { Category, Filter, ProjectList, Sort } from "./index";
-import { Search } from "@components/ui-elements/index";
+import { Search } from "@ui-elements/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
