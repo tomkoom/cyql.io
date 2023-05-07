@@ -109,7 +109,7 @@ const linksIC = [
     label: "frontend canister url",
     hint: "",
     icon: iDatabase,
-    placeholder: "",
+    placeholder: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app",
     type: "text",
     required: null,
   },

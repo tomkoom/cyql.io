@@ -12,7 +12,7 @@ const SubmissionSuccess = () => {
           Thank you for your submission! Your project has been successfully submitted and will
           appear on the site after a quick review! Go to{" "}
           <span className={css.link} onClick={toHome}>
-            Homepage 🏠
+            homepage 🏠
           </span>
         </p>
       </div>

@@ -19,7 +19,7 @@ import { selectSubmit } from "@state/submit/submit";
 import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
 
 const Submit = () => {
-  const [submissionLoader, setSubmissionLoader] = useState(false);
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const submit = useSelector(selectSubmit);
   const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
@@ -27,7 +27,7 @@ const Submit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmissionLoader(true);
+    setSubmitIsLoading(true);
 
     const key = nanoid();
     const timestamp = Date.now();
@@ -45,7 +45,7 @@ const Submit = () => {
       setIsSubmitted(true);
     });
 
-    setSubmissionLoader(false);
+    setSubmitIsLoading(false);
   };
 
   return (
@@ -60,7 +60,7 @@ const Submit = () => {
             <Inputs />
 
             {/* submit */}
-            <SubmitBtn submissionLoader={submissionLoader} />
+            <SubmitBtn submitIsLoading={submitIsLoading} />
           </form>
         </div>
       ) : (

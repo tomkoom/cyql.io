@@ -10,7 +10,7 @@
 .content {
   background-color: var(--underlay);
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
 }
 
 .text {

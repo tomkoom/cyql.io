@@ -5,7 +5,7 @@ import css from "./Input.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSubmit, setSubmit } from "@state/submit/submit";
 
-const InputsItem = ({ inputs }) => {
+const Input = ({ inputs }) => {
   const dispatch = useDispatch();
   const submit = useSelector(selectSubmit);
 
@@ -13,34 +13,30 @@ const InputsItem = ({ inputs }) => {
     dispatch(setSubmit({ ...submit, [e.target.name]: e.target.value }));
   };
 
-  return (
-    <div className={css.inputsComponent}>
-      {inputs.map((input) => (
-        <div className={css.field} key={input.id}>
-          <label className={css.label} htmlFor={input.id}>
-            {input.label}
-            {input.icon && (
-              <span className={css.icon}>
-                &nbsp;
-                {input.icon && input.icon}
-              </span>
-            )}
-          </label>
-          {input.hint && <p className={css.hint}>{input.hint}</p>}
-          <input
-            className={css.input}
-            type={input.type}
-            id={input.id}
-            name={input.id}
-            placeholder={input.placeholder}
-            required={input.required}
-            autoComplete="off"
-            onChange={handleInput}
-          />
-        </div>
-      ))}
+  return inputs.map((input) => (
+    <div className={css.field} key={input.id}>
+      <label className={css.label} htmlFor={input.id}>
+        {input.label}
+        {input.icon && (
+          <span className={css.icon}>
+            &nbsp;
+            {input.icon && input.icon}
+          </span>
+        )}
+      </label>
+      {input.hint && <p className={css.hint}>{input.hint}</p>}
+      <input
+        className={css.input}
+        type={input.type}
+        id={input.id}
+        name={input.id}
+        placeholder={input.placeholder}
+        required={input.required}
+        autoComplete="off"
+        onChange={handleInput}
+      />
     </div>
-  );
+  ));
 };
 
-export default InputsItem;
+export default Input;

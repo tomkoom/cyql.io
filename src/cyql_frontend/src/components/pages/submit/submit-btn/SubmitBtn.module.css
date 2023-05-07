@@ -5,3 +5,13 @@
   margin-top: 1rem;
   padding: 1.5rem 1rem;
 }
+
+.disabled {
+  opacity: 0.5;
+  color: var(--primaryColor);
+  cursor: auto;
+}
+
+.disabled:hover {
+  color: var(--primaryColor);
+}
