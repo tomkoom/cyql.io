@@ -17,12 +17,11 @@ const allCategories = createSlice({
       // games, gambling
       { id: "games", label: "Games", icon: "⚔️" },
       { id: "gambling", label: "Gambling", icon: "🎲" },
-      { id: "p2e", label: "p2e", icon: "" },
+      // add p2e
 
       // tools, dev tools
       { id: "tools", label: "Tools", icon: "🛠️" },
       { id: "dev-tools", label: "Dev Tools", icon: "👨‍💻" },
-      { id: "dev-resources", label: "Dev Resources", icon: "👨‍💻" },
 
       // communities, daos
       { id: "communities", label: "Communities", icon: "📣" },

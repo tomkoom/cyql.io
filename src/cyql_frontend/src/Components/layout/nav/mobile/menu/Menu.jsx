@@ -19,7 +19,7 @@ const Divider = () => <hr className={css.div} />;
 
 const Menu = () => {
   const dispatch = useDispatch();
-  const { userKey } = useAuth();
+  const { principalId } = useAuth();
   const mobileMenu = useSelector(selectMobileMenuModal);
 
   return (
@@ -33,7 +33,7 @@ const Menu = () => {
 
             <Navlinks />
             <Divider />
-            {userKey === "" ? <SignInBtn /> : <ProfileActions />}
+            {!principalId ? <SignInBtn /> : <ProfileActions />}
 
             <Divider />
             <div className={css.controls}>
