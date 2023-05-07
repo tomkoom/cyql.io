@@ -1,18 +1,18 @@
 import React from "react";
 import css from "./SubmitBtn.module.css";
 
-const SubmitBtn = ({ submitIsLoading }) => {
+const SubmitBtn = ({ submissionLoader }) => {
   return (
     <button
       className={
-        submitIsLoading === true
+        submissionLoader === true
           ? `${css.submitBtn} ${css.disabled} primaryBtn`
           : `${css.submitBtn} primaryBtn`
       }
       type="submit"
-      disabled={submitIsLoading === true ? true : false}
+      disabled={submissionLoader === true ? true : false}
     >
-      {submitIsLoading === true ? "submitting..." : "submit"}
+      {submissionLoader === true ? "submitting..." : "submit"}
     </button>
   );
 };
