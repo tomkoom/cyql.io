@@ -63,25 +63,23 @@ module.exports = {
       "@assets": path.resolve(__dirname, "src", frontendDir, "assets"),
 
       // components
-      "@components": path.resolve(__dirname, "src", frontendDir, "src/_components"),
-      // ...
-      "@btns": path.resolve(__dirname, "src", frontendDir, "src/_components/btns"),
-      "@icons": path.resolve(__dirname, "src", frontendDir, "src/_components/icons"),
-      "@layout": path.resolve(__dirname, "src", frontendDir, "src/_components/layout"),
-      "@modals": path.resolve(__dirname, "src", frontendDir, "src/_components/modals"),
-      "@pages": path.resolve(__dirname, "src", frontendDir, "src/_components/pages"),
-      "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/_components/ui-elements"),
+      "@btns": path.resolve(__dirname, "src", frontendDir, "src/components/btns"),
+      "@icons": path.resolve(__dirname, "src", frontendDir, "src/components/icons"),
+      "@layout": path.resolve(__dirname, "src", frontendDir, "src/components/layout"),
+      "@modals": path.resolve(__dirname, "src", frontendDir, "src/components/modals"),
+      "@pages": path.resolve(__dirname, "src", frontendDir, "src/components/pages"),
+      "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/components/ui-elements"),
       // end components
 
-      "@auth": path.resolve(__dirname, "src", frontendDir, "src/_context"),
-      "@constants": path.resolve(__dirname, "src", frontendDir, "src/_constants"),
-      "@context": path.resolve(__dirname, "src", frontendDir, "src/_context"),
-      "@hooks": path.resolve(__dirname, "src", frontendDir, "src/_hooks"),
-      "@juno": path.resolve(__dirname, "src", frontendDir, "src/_juno"),
-      "@routes": path.resolve(__dirname, "src", frontendDir, "src/_routes"),
-      "@state": path.resolve(__dirname, "src", frontendDir, "src/_state"),
-      "@styles": path.resolve(__dirname, "src", frontendDir, "src/_styles"),
-      "@utils": path.resolve(__dirname, "src", frontendDir, "src/_utils"),
+      "@auth": path.resolve(__dirname, "src", frontendDir, "src/context"),
+      "@constants": path.resolve(__dirname, "src", frontendDir, "src/constants"),
+      "@context": path.resolve(__dirname, "src", frontendDir, "src/context"),
+      "@hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
+      "@juno": path.resolve(__dirname, "src", frontendDir, "src/juno"),
+      "@routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
+      "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
+      "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
+      "@utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
 
       // backend
       "@declarations": path.resolve(__dirname, "src", declarationsDir),
