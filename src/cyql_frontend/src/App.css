@@ -66,22 +66,6 @@ ul {
 
 /* global classes – btns */
 
-.submitBtn {
-  margin-top: 2rem;
-  font-size: var(--fs6);
-  font-weight: var(--fwMedium);
-  color: #fff;
-  background-color: var(--highlightColor);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-.submitBtn:hover:not(.disabled) {
-  opacity: 0.8;
-}
-
 .primaryBtn,
 .secondaryBtn,
 .alertBtn {

@@ -41,11 +41,6 @@ const projectDocData = {
   whitepaper: "",
   grantee: false,
 
-  // meta
-  added: null,
-  updated: null,
-  archived: false,
-
   // nft
   nft_sale_date: "",
   nft_sale_url: "",
@@ -71,6 +66,11 @@ const projectDocData = {
   nft_img_2: "",
   nft_img_3: "",
   nft_img_4: "",
+
+  // meta
+  added: null,
+  updated: null,
+  archived: false,
 
   // upvotes
   upvotes: [],

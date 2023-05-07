@@ -12,7 +12,7 @@ import { Active, NotActive } from "./index";
 
 const UpvoteBtn = ({ id, upvotedBy, location }) => {
   const dispatch = useDispatch();
-  const { isAuthenticated, userKey: p } = useAuth();
+  const { userKey: p } = useAuth();
 
   const upvote = async (id, p) => {
     const docRef = doc(pColRef, id);

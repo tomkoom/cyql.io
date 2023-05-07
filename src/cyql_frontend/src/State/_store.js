@@ -36,7 +36,6 @@ import categoriesSortedByNum from "./categories/categoriesSortedByNum";
 import theme from "./theme";
 import loadMore from "./loadMore";
 import profile from "./profile/profile";
-import projectSubmission from "./projectSubmission";
 
 // redux-persist
 import {
@@ -57,7 +56,6 @@ const rootReducer = combineReducers({
   loadMore,
   modals,
   profile,
-  projectSubmission,
   profiles,
   shareModal,
   nftModal,

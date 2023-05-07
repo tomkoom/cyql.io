@@ -16,7 +16,6 @@
 .label {
   font-size: var(--fs5);
   font-weight: var(--fwBold);
-  color: var(--secondaryColor);
   margin: 1rem 0;
 }
 

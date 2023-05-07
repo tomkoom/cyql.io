@@ -18,7 +18,6 @@ import Id from "./id/Id";
 
 const Profile = () => {
   // const dispatch = useDispatch();
-  // const { principalId } = useAuth();
   // const ownsNft = useSelector(selectOwnsNft);
   // const upvotedProjects = useSelector(selectUpvotedProjects);
 
@@ -28,18 +27,6 @@ const Profile = () => {
   //     agent: new HttpAgent({ mainnethost }),
   //     canisterId: nftCanId,
   //   });
-
-  //   await nft
-  //     .principalOwnsOne(principalId)
-  //     .then((res) => {
-  //       dispatch(setOwnsNft(res));
-  //     })
-  //     .catch((e) => console.log(e));
-  // };
-
-  // useEffect(() => {
-  //   getOwnsNft();
-  // }, []);
 
   return (
     <div className={css.profile}>
