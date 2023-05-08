@@ -10,7 +10,7 @@ import { Links } from "./index";
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { setNftModal } from "@state/modals/nftModal";
-import { selectTheme } from "@state/theme";
+import { selectTheme } from "@state/ui/theme";
 
 const NftModal = () => {
   const dispatch = useDispatch();

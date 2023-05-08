@@ -15,9 +15,6 @@ import shareModal from "./modals/shareModal";
 import projectModal from "./modals/projectModal/projectModal";
 import projectModalLoading from "./modals/projectModal/projectModalLoading";
 
-// profiles
-import profiles from "./profiles/profiles";
-
 // projects
 import category from "./projects/category";
 import filter from "./projects/filter";
@@ -32,11 +29,12 @@ import submit from "./submit/submit";
 import allCategories from "./categories/allCategories";
 import categoriesSortedByNum from "./categories/categoriesSortedByNum";
 
-// ...
-import theme from "./theme";
-import loadMore from "./loadMore";
+// ui
+import theme from "./ui/theme";
+import loadMore from "./ui/loadMore";
+
+// profile
 import profile from "./profile/profile";
-import projectSubmission from "./projectSubmission";
 
 // redux-persist
 import {
@@ -53,14 +51,18 @@ import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
   icpPrice,
-  theme,
-  loadMore,
-  modals,
+
+  // profile
   profile,
-  projectSubmission,
-  profiles,
+
+  // modals
+  modals,
   shareModal,
   nftModal,
+
+  // ui
+  theme,
+  loadMore,
 
   // project modal
   projectModal,

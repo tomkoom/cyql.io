@@ -9,7 +9,12 @@ import { bigIntToNum } from "@utils/bigIntToNum";
 
 // state
 import store from "@state/_store";
-import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from "@state/projects";
+import {
+  setProjectsLoading,
+  setProjectsDocs,
+  setProjectsDocsActive,
+  setProjectsDocsActiveNum,
+} from "@state/projects";
 
 // init juno
 const initJuno = async () => {
@@ -18,7 +23,7 @@ const initJuno = async () => {
   }).catch((e) => console.log(e));
 };
 
-const getProjectsDocs = async () => {
+const getProjects = async () => {
   await listDocs({
     collection: junoCollectionProjects,
     filter: {},
@@ -31,6 +36,7 @@ const getProjectsDocs = async () => {
       const projectsActive = projects.filter((project) => project.data.archived === false);
       const projectsActiveNum = projectsActive.length;
 
+      // set state
       store.dispatch(setProjectsDocs(projects));
       store.dispatch(setProjectsDocsActive(projectsActive));
       store.dispatch(setProjectsDocsActiveNum(projectsActiveNum));
@@ -38,4 +44,4 @@ const getProjectsDocs = async () => {
     .catch((err) => console.log(err));
 };
 
-export { initJuno, getProjectsDocs };
+export { initJuno, getProjects };

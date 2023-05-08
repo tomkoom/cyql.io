@@ -13,7 +13,7 @@ import { Main, Socials, SocialsIc, Tags } from "./index";
 import { useSelector } from "react-redux";
 import { selectCategory } from "@state/projects/category";
 import { selectSearch } from "@state/projects/search";
-import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@state/loadMore";
+import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@state/ui/loadMore";
 import { selectSort } from "@state/projects/sort";
 import {
   selectFilterByOpenSource,

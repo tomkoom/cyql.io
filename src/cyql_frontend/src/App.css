@@ -13,10 +13,6 @@ body {
   background-color: var(--primaryColor);
 }
 
-.footer {
-  margin-top: auto;
-}
-
 .app {
   color: var(--primaryColor);
   background-color: var(--background);
@@ -64,24 +60,6 @@ ul {
 
 /* global classes */
 
-/* global classes – btns */
-
-.submitBtn {
-  margin-top: 2rem;
-  font-size: var(--fs6);
-  font-weight: var(--fwMedium);
-  color: #fff;
-  background-color: var(--highlightColor);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-.submitBtn:hover:not(.disabled) {
-  opacity: 0.8;
-}
-
 .primaryBtn,
 .secondaryBtn,
 .alertBtn {
@@ -90,7 +68,7 @@ ul {
   display: flex;
   align-items: center;
   padding: 0 0.75rem;
-  border-radius: 0.66rem;
+  border-radius: 0.75rem;
 }
 
 .primaryBtn {
@@ -115,42 +93,6 @@ ul {
   color: white;
   background-color: var(--colorRed);
 }
-
-/* global classes – inputs */
-
-.label {
-  display: inline-block;
-  align-self: flex-start;
-  font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
-}
-
-.input {
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  padding: 0 0.75rem;
-  margin: 0.5rem 0;
-  font-size: var(--fs6);
-  color: var(--primaryColor);
-  background-color: var(--underlay);
-  caret-color: var(--primaryColor);
-  border-radius: 0.5rem;
-  border: none;
-  outline: none;
-}
-
-.input:focus {
-  background-color: var(--underlay2);
-}
-
-.hint {
-  font-size: var(--fs7);
-  color: var(--secondaryColor);
-}
-
-/* other */
 
 .pageTitle {
   font-size: var(--fs2);

@@ -8,7 +8,7 @@ import { getTwitterUsername } from "@utils/getTwitterUsername";
 
 // state
 import { useSelector } from "react-redux";
-import { selectTheme } from "@state/theme";
+import { selectTheme } from "@state/ui/theme";
 
 const TwitterTimeline = ({ twitter }) => {
   const theme = useSelector(selectTheme);

@@ -7,7 +7,7 @@ import logoGray from "@assets/logo/cyql-logo-v2-gray.svg";
 
 // state
 import { useSelector } from "react-redux";
-import { selectTheme } from "@state/theme";
+import { selectTheme } from "@state/ui/theme";
 
 const Logo = () => {
   const theme = useSelector(selectTheme);

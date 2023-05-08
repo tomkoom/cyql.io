@@ -17,7 +17,7 @@ import { verifyAdmin } from "@utils/verifyAdmin";
 import { sortCategoriesByNum } from "@utils/sortCategoriesByNum";
 
 // juno
-import { initJuno, getProjectsDocs } from "@juno/juno";
+import { initJuno, getProjects } from "@juno/juno";
 
 // auth
 import { useAuth } from "@context/AuthContext";
@@ -29,9 +29,8 @@ import { ProjectModal, SignInModal } from "@modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { selectTheme } from "@state/theme";
+import { selectTheme } from "@state/ui/theme";
 // import { setUpvotedProjects } from "@state/profile/profile";
-import { setProjectsDocs, setProjectsNum } from "@state/projects";
 import { selectProjectsDocs } from "@state/projects";
 import { selectAllCategories } from "@state/categories/allCategories";
 import { setCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
@@ -62,7 +61,7 @@ const App = () => {
 
   // ...
   const theme = useSelector(selectTheme);
-  const projectsDocs = useSelector(selectProjectsDocs);
+  const projects = useSelector(selectProjectsDocs);
   const allCategories = useSelector(selectAllCategories);
   const admins = [iiAdmin1, iiAdmin2];
 
@@ -70,7 +69,7 @@ const App = () => {
   useEffect(() => {
     (async () => {
       await initJuno();
-      await getProjectsDocs();
+      await getProjects();
     })();
   }, []);
   // juno end
@@ -102,11 +101,11 @@ const App = () => {
 
   // sort categories by num
   useEffect(() => {
-    if (projectsDocs.length > 0) {
-      const categoriesSortedByNum = sortCategoriesByNum(allCategories, projectsDocs);
+    if (projects.length > 0) {
+      const categoriesSortedByNum = sortCategoriesByNum(allCategories, projects);
       dispatch(setCategoriesSortedByNum(categoriesSortedByNum));
     }
-  }, [projectsDocs]);
+  }, [projects]);
 
   // get upvoted projects
   // useEffect(() => {
@@ -161,9 +160,7 @@ const App = () => {
         </div>
       </div>
 
-      <div className="footer">
-        <Footer />
-      </div>
+      {projects.length > 0 && <Footer />}
 
       {/* cookies */}
       <CookieConsent

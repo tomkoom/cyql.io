@@ -14,9 +14,8 @@
 }
 
 .label {
-  font-size: var(--fs5);
-  font-weight: var(--fwBold);
-  color: var(--secondaryColor);
+  font-size: var(--fs6);
+  font-weight: var(--fwMedium);
   margin: 1rem 0;
 }
 
@@ -29,7 +28,7 @@
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  font-size: var(--fs5);
+  font-size: var(--fs6);
   background-color: var(--underlay);
   padding: 0 0.75rem;
   border-radius: 1.25rem;

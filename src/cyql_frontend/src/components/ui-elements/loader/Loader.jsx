@@ -4,7 +4,7 @@ import Loader from "react-js-loader";
 
 // state
 import { useSelector } from "react-redux";
-import { selectTheme } from "@state/theme";
+import { selectTheme } from "@state/ui/theme";
 
 const LoaderComponent = () => {
   const theme = useSelector(selectTheme);

@@ -7,7 +7,7 @@ import { Header, SignInMethods } from "./index";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { setSignInModal } from "@state/modals/modals";
-import { selectTheme } from "@state/theme";
+import { selectTheme } from "@state/ui/theme";
 
 const SignInModal = () => {
   const dispatch = useDispatch();
