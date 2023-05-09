@@ -5,8 +5,6 @@
   flex-wrap: wrap;
   gap: 0.25rem;
   align-items: center;
-  font-size: var(--fsText);
-  font-weight: var(--fwBold);
 }
 
 .tags li {
@@ -15,6 +13,9 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0 0.5rem;
+  font-size: var(--fsText);
+  font-weight: var(--fwBold);
+  color: var(--secondaryColor);
   background-color: var(--underlay);
   border-radius: 0.5rem;
 }

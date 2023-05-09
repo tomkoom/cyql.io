@@ -11,7 +11,7 @@ const Btn = ({ label, filter }) => {
       : {
           color: "#fff",
           backgroundColor: "var(--highlightColor)",
-          padding: "0.25rem 0.33rem",
+          padding: "0.25rem 0.5rem",
           borderRadius: "0.5rem",
         };
 

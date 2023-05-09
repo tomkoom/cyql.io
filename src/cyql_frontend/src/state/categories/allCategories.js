@@ -13,6 +13,7 @@ const allCategories = createSlice({
       { id: "dexs", label: "DEXs", icon: "🐂" },
       { id: "swapping", label: "Swapping", icon: "↔️" },
       { id: "payments-invoicing", label: "Payments/Invoicing", icon: "🧾" },
+      { id: "staking", label: "Staking", icon: "" },
 
       // games, gambling
       { id: "games", label: "Games", icon: "⚔️" },
@@ -31,6 +32,7 @@ const allCategories = createSlice({
       { id: "infrastructure", label: "Infrastructure", icon: "🚀" },
       { id: "cloud", label: "Cloud", icon: "☁️" },
       { id: "protocol", label: "Protocol", icon: "" },
+      { id: "search engines", label: "Search Engines", icon: "🌎" },
 
       // metaverse, ar/vr
       { id: "metaverse", label: "Metaverse", icon: "👓" },

@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import css from "./Controls.module.css";
 
-import { junoCollectionProjects } from "@constants/constants";
-
 // juno
+import { junoCollectionProjects } from "@constants/constants";
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
+
+// project id
+import { nanoid } from "@utils/projectId";
+
+// components
+import { Btn } from "./index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
@@ -14,29 +19,42 @@ import {
   setProjectModalLoadingDel,
 } from "@state/modals/projectModal/projectModalLoading";
 
-// project id
-import { nanoid } from "@utils/projectId";
-
 const Controls = () => {
   const dispatch = useDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const projectDoc = useSelector(selectProjectDoc);
+  const project = useSelector(selectProjectDoc);
   const collection = junoCollectionProjects;
 
+  const get = async (key) => {
+    await getDoc({ collection, key });
+  };
+
+  const closeModal = () => {
+    dispatch(setCloseProjectModal());
+  };
+
+  const confirmDeletion = () => {
+    setDeleteConfirm(true);
+  };
+
+  const cancelDeletion = () => {
+    setDeleteConfirm(false);
+  };
+
   const submitProject = async () => {
+    dispatch(setProjectModalLoadingSet(true));
     const timestamp = Date.now();
 
     // check if doc exists
-    const doc = await getDoc({ collection, key: projectDoc.key });
-    const key = doc === undefined ? nanoid() : projectDoc.key;
+    const doc = await get(project.key);
+    const key = doc === undefined ? nanoid() : project.key;
 
-    dispatch(setProjectModalLoadingSet(true));
     await setDoc({
       collection,
       doc: {
         key,
         data: {
-          ...projectDoc.data,
+          ...project.data,
           ...(doc === undefined ? { added: timestamp } : { edited: timestamp }),
         },
         ...(doc !== undefined && { updated_at: doc.updated_at }),
@@ -46,52 +64,35 @@ const Controls = () => {
       .catch((e) => console.log(e));
     dispatch(setProjectModalLoadingSet(false));
     closeModal();
-    // reload page (?)
   };
 
   const deleteProject = async () => {
     dispatch(setProjectModalLoadingDel(true));
-    const doc = await getDoc({
-      collection,
-      key: projectDoc.key,
-    });
+    const doc = await get(project.key);
+
     await delDoc({ collection, doc })
-      .then(() => console.log(`Doc with the id ${projectDoc.key} deleted`))
+      .then(() => console.log(`Doc with the id ${project.key} deleted.`))
       .catch((e) => console.log(e));
 
     dispatch(setProjectModalLoadingDel(false));
     closeModal();
-    // reload page (?)
-  };
-
-  const closeModal = () => {
-    dispatch(setCloseProjectModal());
   };
 
   return (
     <div className={css.controls}>
-      <p>reload page after project is added</p>
-      {!deleteConfirm ? (
-        <button id={css.alertBtn} className="alertBtn" onClick={() => setDeleteConfirm(true)}>
-          delete
-        </button>
+      {deleteConfirm === false ? (
+        <div className={css.deleteBtn}>
+          <Btn type="alertBtn" text="delete" onClick={confirmDeletion} />
+        </div>
       ) : (
         <div className={css.deleteContainer}>
-          <button className="secondaryBtn" onClick={() => setDeleteConfirm(false)}>
-            cancel
-          </button>
-          <button id={css.alertBtn} className="alertBtn" onClick={deleteProject}>
-            confirm
-          </button>
+          <Btn type="secondaryBtn" text="cancel" onClick={cancelDeletion} />
+          <Btn type="alertBtn" text="confirm" onClick={deleteProject} />
         </div>
       )}
 
-      <button className="secondaryBtn" onClick={closeModal}>
-        cancel
-      </button>
-      <button className="primaryBtn" onClick={submitProject}>
-        save
-      </button>
+      <Btn type="secondaryBtn" text="cancel" onClick={closeModal} />
+      <Btn type="primaryBtn" text="save" onClick={submitProject} />
     </div>
   );
 };

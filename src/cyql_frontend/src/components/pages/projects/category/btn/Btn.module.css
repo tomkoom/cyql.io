@@ -21,7 +21,7 @@
   color: #fff;
   background-color: var(--highlightColor);
   padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .icon {
