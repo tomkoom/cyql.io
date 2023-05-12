@@ -4,6 +4,7 @@ import css from "./Controls.module.css";
 // juno
 import { junoCollectionProjects } from "@constants/constants";
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
+import { getProjects } from "@juno/juno";
 
 // project id
 import { nanoid } from "@utils/projectId";
@@ -26,7 +27,7 @@ const Controls = () => {
   const collection = junoCollectionProjects;
 
   const get = async (key) => {
-    await getDoc({ collection, key });
+    return getDoc({ collection, key });
   };
 
   const closeModal = () => {
@@ -62,6 +63,8 @@ const Controls = () => {
     })
       .then(() => console.log("Doc set with the id", key))
       .catch((e) => console.log(e));
+
+    await getProjects();
     dispatch(setProjectModalLoadingSet(false));
     closeModal();
   };
@@ -74,6 +77,7 @@ const Controls = () => {
       .then(() => console.log(`Doc with the id ${project.key} deleted.`))
       .catch((e) => console.log(e));
 
+    await getProjects();
     dispatch(setProjectModalLoadingDel(false));
     closeModal();
   };

@@ -13,7 +13,7 @@ import { Nft } from "../index";
 import { Logo, Price, Theme } from "@ui-elements/index";
 
 const Desktop = () => {
-  const { isAuthenticated } = useAuth();
+  const { userKey } = useAuth();
 
   return (
     <div className={css.desktop}>
@@ -28,7 +28,7 @@ const Desktop = () => {
         <Price />
         <Theme />
         <Nft />
-        {!isAuthenticated ? <SignInBtn /> : <ProfileBtn />}
+        {userKey === "" ? <SignInBtn /> : <ProfileBtn />}
       </div>
     </div>
   );

@@ -109,11 +109,11 @@ const App = () => {
 
   // get upvoted projects
   // useEffect(() => {
-  //   if (isAuthenticated) {
+  //   if (userKey !== "") {
   //     dispatch(setUpvotedProjects([]));
   //   }
   //   // fetch updated data
-  // }, [isAuthenticated]);
+  // }, [userKey]);
 
   return (
     <div className={`app ${theme}`}>

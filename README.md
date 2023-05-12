@@ -6,6 +6,12 @@
 - be canister id: nrkmt-haaaa-aaaai-qagmq-cai
 - live: [n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app](https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/)
 
+### api
+
+See [cyql api docs](https://github.com/tomkoom/cyql-api-docs) to query the data from the site.
+
+- api canister: [htxcx-3iaaa-aaaal-acd2q-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=htxcx-3iaaa-aaaal-acd2q-cai)
+
 ### stack
 
 - react.js
@@ -19,9 +25,3 @@ dfx canister create --all
 dfx deploy
 npm start
 ```
-
-### api
-
-See [cyql api docs](https://github.com/tomkoom/cyql-api-docs) to query the data from the site.
-
-- api canister: [htxcx-3iaaa-aaaal-acd2q-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=htxcx-3iaaa-aaaal-acd2q-cai)
