@@ -1,7 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
-const Link = ({ label, url, logo }) => {
+interface LinkProps {
+  label: string;
+  url: string;
+  logo: string;
+}
+
+const Link: FC<LinkProps> = ({ label, url, logo }): JSX.Element => {
   return (
     <LinkStyled href={url} target="_blank" rel="noreferrer noopener">
       <Logo src={logo} />

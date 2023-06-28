@@ -9,11 +9,7 @@ import { bigIntToNum } from "@utils/bigIntToNum";
 
 // state
 import store from "@state/_store";
-import {
-  setProjectsDocs,
-  setProjectsDocsActive,
-  setProjectsDocsActiveNum,
-} from "@state/projects";
+import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from "@state/projects";
 
 // init juno
 const initJuno = async () => {
@@ -25,7 +21,6 @@ const initJuno = async () => {
 const getProjects = async () => {
   await listDocs({
     collection: junoCollectionProjects,
-    filter: {},
   })
     .then((docs) => {
       const projects = docs.items

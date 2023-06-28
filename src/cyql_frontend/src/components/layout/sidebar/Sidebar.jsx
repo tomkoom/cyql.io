@@ -26,10 +26,10 @@ const Sidebar = () => {
   return (
     <SidebarStyled>
       <div>
-        <NavLink label="projects" to={toApps} icon={iCube} />
-        <NavLink label="submit" to={toSubmit} icon={iPlus} />
+        <NavLink label="projects" route={toApps} icon={iCube} />
+        <NavLink label="submit" route={toSubmit} icon={iPlus} />
         {verifyAdmin(admins, userKey) === true && (
-          <NavLink label="admin" to={toAdmin} icon={iCircle} />
+          <NavLink label="admin" route={toAdmin} icon={iCircle} />
         )}
 
         {/* links */}

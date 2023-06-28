@@ -1,9 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
-const NavLink = ({ label, to, icon }) => {
+interface NavLinkProps {
+  label: string;
+  route: () => void;
+  icon: any;
+}
+
+const NavLink: FC<NavLinkProps> = ({ label, route, icon }) => {
   const navigate = () => {
-    to();
+    route();
   };
 
   return (
