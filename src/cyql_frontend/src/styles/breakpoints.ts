@@ -1,8 +1,10 @@
 export const size = {
+  mobile: "479px",
   tablet: "1023px",
 };
 
 export const device = {
+  mobile: `(max-width: ${size.mobile})`,
   tablet: `(max-width: ${size.tablet})`,
 };
 
