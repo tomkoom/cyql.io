@@ -2,18 +2,18 @@ import React from "react";
 import css from "./Menu.module.css";
 
 // icons
-import { CrossIcon } from "@icons/index";
+import { CrossIcon } from "@/components/icons/index";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // components
 import { Navlinks, ProfileActions, SignInBtn } from "./index";
-import { Price, Theme } from "@ui-elements/index";
+import { Price, Theme } from "@/components/ui-elements/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setMobileMenuModal, selectMobileMenuModal } from "@state/modals/modals";
+import { setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals";
 
 const Divider = () => <hr className={css.div} />;
 

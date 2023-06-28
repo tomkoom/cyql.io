@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Links.module.css";
 
 // icons
-import { iExternalLink } from "@icons/Icons";
+import { iExternalLink } from "@/components/icons/Icons";
 
 const Link = ({ type, url, text }) => {
   return (

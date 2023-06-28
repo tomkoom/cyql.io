@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Btn.module.css";
 
 // icons
-import { iAngleRight } from "@icons/Icons";
+import { iAngleRight } from "@/components/icons/Icons";
 
 const Btn = ({ label, logo, onClick }) => {
   return (

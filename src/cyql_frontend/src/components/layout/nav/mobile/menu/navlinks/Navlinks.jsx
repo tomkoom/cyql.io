@@ -2,13 +2,13 @@ import React from "react";
 import css from "./Navlinks.module.css";
 
 // icons
-import { iCube, iPlus, iInfinity } from "@icons/Icons";
+import { iCube, iPlus, iInfinity } from "@/components/icons/Icons";
 
 // components
 import { Navlink } from "./index";
 
 // routes
-import { toHome, toApps, toSubmit } from "@routes/routes";
+import { toHome, toApps, toSubmit } from "@/routes/routes";
 
 const Navlinks = () => {
   return (

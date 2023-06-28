@@ -1,7 +1,7 @@
 import React from "react";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const IdImg = ({ size }) => {
   const { userKey } = useAuth();

@@ -2,15 +2,15 @@ import React, { useEffect } from "react";
 import css from "./Price.module.css";
 
 // icons
-import { iArrowUp, iArrowDown } from "@icons/Icons";
+import { iArrowUp, iArrowDown } from "@/components/icons/Icons";
 
 // components
 import { Change } from "./index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectIcpPrice, selectIcp24hPriceChange } from "@state/api/icpPrice";
-import { fetchIcpPrice } from "@state/api/icpPrice";
+import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/api/icpPrice";
+import { fetchIcpPrice } from "@/state/api/icpPrice";
 
 const Price = () => {
   const dispatch = useDispatch();

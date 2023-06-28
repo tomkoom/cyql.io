@@ -1,20 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "@/styles/breakpoints";
 
 // utils
-import { verifyAdmin } from "@utils/verifyAdmin";
+import { verifyAdmin } from "@/utils/verifyAdmin";
 
 // constants
-import { iiAdmin1, iiAdmin2 } from "@constants/constants";
+import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
 
 // icons
-import { iCube, iPlus, iCircle } from "@icons/Icons";
+import { iCube, iPlus, iCircle } from "@/components/icons/Icons";
 
 // routes
-import { toApps, toSubmit, toAdmin } from "@routes/routes";
+import { toApps, toSubmit, toAdmin } from "@/routes/routes";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // components
 import { Link, NavLink } from "./_index";
@@ -53,7 +54,7 @@ const SidebarStyled = styled.div`
   flex-direction: column;
   gap: 1rem;
 
-  @media (max-width: 1023px) {
+  @media ${device.tablet} {
     display: none;
   }
 `;

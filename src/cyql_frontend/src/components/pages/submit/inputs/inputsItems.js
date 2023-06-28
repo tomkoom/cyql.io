@@ -1,8 +1,8 @@
 // icons
 
-import { iDatabase, iDiscord, iGithub, iMedium, iTelegram, iTwitter } from "@icons/Icons";
+import { iDatabase, iDiscord, iGithub, iMedium, iTelegram, iTwitter } from "@/components/icons/Icons";
 
-// inputs, source: @state/submit
+// inputs, source: @/state/submit
 
 const main = [
   {

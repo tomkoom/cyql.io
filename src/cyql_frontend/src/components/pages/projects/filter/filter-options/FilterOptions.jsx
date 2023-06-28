@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import css from "./FilterOptions.module.css";
 
 // icons
-import { iCheck } from "@icons/Icons";
+import { iCheck } from "@/components/icons/Icons";
 
 // state
 import { useDispatch } from "react-redux";

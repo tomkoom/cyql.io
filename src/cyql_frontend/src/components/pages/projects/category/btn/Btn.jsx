@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Btn.module.css";
 
 // icons
-import { iAngleDown } from "@icons/Icons";
+import { iAngleDown } from "@/components/icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectCategory } from "@state/projects/category";
+import { selectCategory } from "@/state/projects/category";
 
 const Btn = () => {
   const category = useSelector(selectCategory);

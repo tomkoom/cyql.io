@@ -2,14 +2,14 @@ import React from "react";
 import css from "./Title.module.css";
 
 // utils
-import { formatId } from "@utils/format";
+import { formatId } from "@/utils/format";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // state
 import { useSelector } from "react-redux";
-import { selectOwnsNft } from "@state/profile/profile";
+import { selectOwnsNft } from "@/state/profile/profile";
 
 const Title = () => {
   const ownsNft = useSelector(selectOwnsNft);

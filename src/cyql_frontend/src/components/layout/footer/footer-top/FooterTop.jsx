@@ -2,10 +2,10 @@ import React from "react";
 import css from "./FooterTop.module.css";
 
 // icons
-import { iPlus, iComments, iHeart } from "@icons/Icons";
+import { iPlus, iComments, iHeart } from "@/components/icons/Icons";
 
 // routes
-import { toSubmit } from "@routes/routes";
+import { toSubmit } from "@/routes/routes";
 
 const FooterTop = () => {
   const cyqlMsgUrl = "https://twitter.com/messages/compose?recipient_id=1386304698358116354";

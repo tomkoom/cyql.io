@@ -6,7 +6,7 @@ import { Projects } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setProjectModal } from "@state/modals/projectModal/projectModal";
+import { setProjectModal } from "@/state/modals/projectModal/projectModal";
 
 const Admin = () => {
   const dispatch = useDispatch();

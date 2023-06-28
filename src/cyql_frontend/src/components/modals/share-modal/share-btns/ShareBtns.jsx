@@ -2,7 +2,7 @@ import React from "react";
 import css from "./ShareBtns.module.css";
 
 // icons
-import { iTwitter, iTelegram, iFacebook, iRedditAlien, iLinkedin } from "@icons/Icons";
+import { iTwitter, iTelegram, iFacebook, iRedditAlien, iLinkedin } from "@/components/icons/Icons";
 
 // react share
 import {

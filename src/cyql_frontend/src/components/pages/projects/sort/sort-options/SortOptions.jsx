@@ -2,11 +2,11 @@ import React, { useEffect, useRef } from "react";
 import css from "./SortOptions.module.css";
 
 // icons
-import { iCheck } from "@icons/Icons";
+import { iCheck } from "@/components/icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSort, setSort } from "@state/projects/sort";
+import { selectSort, setSort } from "@/state/projects/sort";
 
 const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
   const dispatch = useDispatch();

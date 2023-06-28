@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Loading.module.css";
 
 // components
-import { Spinner } from "@ui-elements/index";
+import { Spinner } from "@/components/ui-elements/index";
 
 const Loading = () => {
   return (

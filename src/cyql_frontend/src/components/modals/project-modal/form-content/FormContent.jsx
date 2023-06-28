@@ -9,7 +9,7 @@ import { main, socials, additional, nft } from "./inputs";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectDoc, setProjectDocData } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc, setProjectDocData } from "@/state/modals/projectModal/projectModal";
 
 const FormContent = () => {
   const dispatch = useDispatch();

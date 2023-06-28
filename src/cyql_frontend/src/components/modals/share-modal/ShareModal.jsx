@@ -6,7 +6,7 @@ import { Header, ShareBtns, ShareLink } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setShareModal } from "@state/modals/shareModal";
+import { setShareModal } from "@/state/modals/shareModal";
 
 const ShareModal = ({ slug, name, categories, description }) => {
   const dispatch = useDispatch();

@@ -3,6 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+// const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 
 let localCanisters, prodCanisters, canisters;
 
@@ -58,31 +59,32 @@ module.exports = {
     },
 
     // https://www.taniarascia.com/react-architecture-directory-structure/
+    // https://betterprogramming.pub/the-right-usage-of-aliases-in-webpack-typescript-4418327f47fa
     alias: {
-      "@": path.resolve(__dirname, "src"),
-      "@assets": path.resolve(__dirname, "src", frontendDir, "assets"),
+      "@": path.resolve(__dirname, "src", frontendDir, "src"),
 
       // components
-      "@btns": path.resolve(__dirname, "src", frontendDir, "src/components/btns"),
-      "@icons": path.resolve(__dirname, "src", frontendDir, "src/components/icons"),
-      "@layout": path.resolve(__dirname, "src", frontendDir, "src/components/layout"),
-      "@modals": path.resolve(__dirname, "src", frontendDir, "src/components/modals"),
-      "@pages": path.resolve(__dirname, "src", frontendDir, "src/components/pages"),
-      "@ui-elements": path.resolve(__dirname, "src", frontendDir, "src/components/ui-elements"),
+      "@/components/btns": path.resolve(__dirname, "src", frontendDir, "src/components/btns"),
+      "@/components/icons": path.resolve(__dirname, "src", frontendDir, "src/components/icons"),
+      "@/components/layout": path.resolve(__dirname, "src", frontendDir, "src/components/layout"),
+      "@/components/modals": path.resolve(__dirname, "src", frontendDir, "src/components/modals"),
+      "@/components/pages": path.resolve(__dirname, "src", frontendDir, "src/components/pages"),
+      "@/components/ui-elements": path.resolve(
+        __dirname,
+        "src",
+        frontendDir,
+        "src/components/ui-elements"
+      ),
       // end components
 
-      "@auth": path.resolve(__dirname, "src", frontendDir, "src/context"),
-      "@constants": path.resolve(__dirname, "src", frontendDir, "src/constants"),
-      "@context": path.resolve(__dirname, "src", frontendDir, "src/context"),
-      "@hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
-      "@juno": path.resolve(__dirname, "src", frontendDir, "src/juno"),
-      "@routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
-      "@state": path.resolve(__dirname, "src", frontendDir, "src/state"),
-      "@styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
-      "@utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
-
-      // backend
-      "@declarations": path.resolve(__dirname, "src", declarationsDir),
+      "@/constants": path.resolve(__dirname, "src", frontendDir, "src/constants"),
+      "@/context": path.resolve(__dirname, "src", frontendDir, "src/context"),
+      "@/hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
+      "@/routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
+      "@/services": path.resolve(__dirname, "src", frontendDir, "src/services"),
+      "@/state": path.resolve(__dirname, "src", frontendDir, "src/state"),
+      "@/styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
+      "@/utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
     },
   },
   output: {
@@ -121,6 +123,7 @@ module.exports = {
       process: require.resolve("process/browser"),
     }),
     new Dotenv(),
+    // new TsconfigPathsPlugin(),
   ],
   // proxy /api to port 8000 during development
   devServer: {

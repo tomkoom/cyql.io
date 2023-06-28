@@ -6,7 +6,7 @@ import { NftBtn, NftModal } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectNftModal } from "@state/modals/nftModal";
+import { selectNftModal } from "@/state/modals/nftModal";
 
 const Nft = () => {
   const nftModal = useSelector(selectNftModal);

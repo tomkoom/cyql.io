@@ -3,7 +3,7 @@ import css from "./Input.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSubmit, setSubmit } from "@state/submit/submit";
+import { selectSubmit, setSubmit } from "@/state/submit/submit";
 
 const Input = ({ inputs }) => {
   const dispatch = useDispatch();

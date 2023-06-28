@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import css from "./Controls.module.css";
 
 // juno
-import { junoCollectionProjects } from "@constants/constants";
+import { junoCollectionProjects } from "@/constants/constants";
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
-import { getProjects } from "@juno/juno";
+import { updateProjects } from "@/services/junoServices";
 
 // project id
-import { nanoid } from "@utils/projectId";
+import { nanoid } from "@/utils/projectId";
 
 // components
 import { Btn } from "./index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectDoc, setCloseProjectModal } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc, setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
 import {
   setProjectModalLoadingSet,
   setProjectModalLoadingDel,
-} from "@state/modals/projectModal/projectModalLoading";
+} from "@/state/modals/projectModal/projectModalLoading";
 
 const Controls = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,7 @@ const Controls = () => {
       .then(() => console.log("Doc set with the id", key))
       .catch((e) => console.log(e));
 
-    await getProjects();
+    await updateProjects();
     dispatch(setProjectModalLoadingSet(false));
     closeModal();
   };
@@ -77,7 +77,7 @@ const Controls = () => {
       .then(() => console.log(`Doc with the id ${project.key} deleted.`))
       .catch((e) => console.log(e));
 
-    await getProjects();
+    await updateProjects();
     dispatch(setProjectModalLoadingDel(false));
     closeModal();
   };

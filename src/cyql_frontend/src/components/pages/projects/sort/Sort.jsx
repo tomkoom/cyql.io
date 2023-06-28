@@ -7,7 +7,7 @@ import SortOptions from "./sort-options/SortOptions";
 
 // state
 import { useSelector } from "react-redux";
-import { selectSort } from "@state/projects/sort";
+import { selectSort } from "@/state/projects/sort";
 
 const Sort = () => {
   const [openSort, setOpenSort] = useState();

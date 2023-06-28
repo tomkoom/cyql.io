@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectProjectDescription,
   setProjectDescription,
-} from "@state/modals/projectModal/projectModal";
+} from "@/state/modals/projectModal/projectModal";
 
 const Description = () => {
   const dispatch = useDispatch();

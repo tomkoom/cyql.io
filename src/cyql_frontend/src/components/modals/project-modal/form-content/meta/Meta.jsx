@@ -7,8 +7,8 @@ import { Btn } from "../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectDoc } from "@state/modals/projectModal/projectModal";
-import { setProjectArchived } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc } from "@/state/modals/projectModal/projectModal";
+import { setProjectArchived } from "@/state/modals/projectModal/projectModal";
 
 const Meta = () => {
   const dispatch = useDispatch();

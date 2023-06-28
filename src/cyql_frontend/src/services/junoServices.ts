@@ -1,36 +1,37 @@
-import { initJuno as initJuno0, listDocs } from "@junobuild/core";
+import { initJuno, listDocs } from "@junobuild/core";
 
 // constants
-import { junoSatelliteId, junoCollectionProjects } from "@constants/constants";
+import { junoSatelliteId, junoCollectionProjects } from "@/constants/constants";
 
 // utils
-import { sortByDate } from "@utils/sortByDate";
-import { bigIntToNum } from "@utils/bigIntToNum";
+import { sortByDate } from "@/utils/sortByDate";
+import { bigIntToNum } from "@/utils/bigIntToNum";
 
 // state
-import store from "@state/_store";
-import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from "@state/projects";
+import store from "@/state/_store";
+import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from "@/state/projects";
 
 // init juno
-const initJuno = async () => {
-  await initJuno0({
+const initJuno0 = async () => {
+  await initJuno({
     satelliteId: junoSatelliteId,
   }).catch((e) => console.log(e));
 };
 
-const getProjects = async () => {
+// update projects
+const updateProjects = async () => {
   await listDocs({
     collection: junoCollectionProjects,
   })
     .then((docs) => {
       const projects = docs.items
-        .sort((a, b) => sortByDate(a.data.added, b.data.added))
+        .sort((a, b) => sortByDate(a, b))
         .map((project) => bigIntToNum(project));
 
       const projectsActive = projects.filter((project) => project.data.archived === false);
       const projectsActiveNum = projectsActive.length;
 
-      // set state
+      // set projects
       store.dispatch(setProjectsDocs(projects));
       store.dispatch(setProjectsDocsActive(projectsActive));
       store.dispatch(setProjectsDocsActiveNum(projectsActiveNum));
@@ -38,4 +39,4 @@ const getProjects = async () => {
     .catch((err) => console.log(err));
 };
 
-export { initJuno, getProjects };
+export { initJuno0, updateProjects };

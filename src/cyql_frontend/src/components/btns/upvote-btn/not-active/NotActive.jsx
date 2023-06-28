@@ -2,7 +2,7 @@ import React from "react";
 import css from "./NotActive.module.css";
 
 // icons
-import { iCaretUp } from "@icons/Icons";
+import { iCaretUp } from "@/components/icons/Icons";
 
 const NotActive = ({ num, click, location }) => {
   return (

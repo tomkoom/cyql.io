@@ -2,25 +2,25 @@ import React from "react";
 import css from "./ProjectList.module.css";
 
 // routes
-import { toApp } from "@routes/routes";
+import { toApp } from "@/routes/routes";
 
 // components
-import { LoadMoreBtn, UpvoteBtn } from "@btns/index";
-import { Loader } from "@ui-elements/index";
+import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/index";
+import { Loader } from "@/components/ui-elements/index";
 import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectCategory } from "@state/projects/category";
-import { selectSearch } from "@state/projects/search";
-import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@state/ui/loadMore";
-import { selectSort } from "@state/projects/sort";
+import { selectCategory } from "@/state/projects/category";
+import { selectSearch } from "@/state/projects/search";
+import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/ui/loadMore";
+import { selectSort } from "@/state/projects/sort";
 import {
   selectFilterByOpenSource,
   selectFilterByOnChain,
   selectFilterByGrantee,
-} from "@state/projects/filter";
-import { selectProjectsDocsActive } from "@state/projects";
+} from "@/state/projects/filter";
+import { selectProjectsDocsActive } from "@/state/projects";
 
 // utils: sort, filter
 import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects";

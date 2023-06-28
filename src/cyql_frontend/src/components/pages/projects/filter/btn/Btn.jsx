@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Btn.module.css";
 
 // icons
-import { iAngleDown } from "@icons/Icons";
+import { iAngleDown } from "@/components/icons/Icons";
 
 const Btn = ({ label, filter }) => {
   const style =

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Tags.module.css";
 
 // icons
-import { iGithub, iCircleNodes, iMeteor } from "@icons/Icons";
+import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons";
 
 const Tags = ({ categories, github, canister, grantee }) => {
   return (

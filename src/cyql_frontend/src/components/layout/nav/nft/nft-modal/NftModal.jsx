@@ -2,15 +2,15 @@ import React from "react";
 import css from "./NftModal.module.css";
 
 // icons
-import { CrossIcon } from "@icons/index";
+import { CrossIcon } from "@/components/icons/index";
 
 // components
 import { Links } from "./index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setNftModal } from "@state/modals/nftModal";
-import { selectTheme } from "@state/ui/theme";
+import { setNftModal } from "@/state/modals/nftModal";
+import { selectTheme } from "@/state/ui/theme";
 
 const NftModal = () => {
   const dispatch = useDispatch();

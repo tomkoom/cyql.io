@@ -2,7 +2,7 @@ import React from "react";
 import css from "./SubmissionSuccess.module.css";
 
 // routes
-import { toHome } from "@routes/routes";
+import { toHome } from "@/routes/routes";
 
 const SubmissionSuccess = () => {
   return (

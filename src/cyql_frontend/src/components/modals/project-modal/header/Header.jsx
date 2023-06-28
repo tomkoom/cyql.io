@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Header.module.css";
 
 // icons
-import { CrossIcon } from "@icons/index";
+import { CrossIcon } from "@/components/icons/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectDoc, setCloseProjectModal } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc, setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
 
 const Header = () => {
   const dispatch = useDispatch();

@@ -2,15 +2,15 @@ import React from "react";
 import css from "./Desktop.module.css";
 
 // routes
-import { toHome } from "@routes/routes";
+import { toHome } from "@/routes/routes";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./index";
-import { Nft } from "../index";
-import { Logo, Price, Theme } from "@ui-elements/index";
+import { Nft } from "../_index";
+import { Logo, Price, Theme } from "@/components/ui-elements/index";
 
 const Desktop = () => {
   const { userKey } = useAuth();

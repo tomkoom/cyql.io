@@ -3,7 +3,7 @@ import css from "./Navlink.module.css";
 
 // state
 import { useDispatch } from "react-redux";
-import { setMobileMenuModal } from "@state/modals/modals";
+import { setMobileMenuModal } from "@/state/modals/modals";
 
 const Navlink = ({ label, route, icon }) => {
   const dispatch = useDispatch();

@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Theme.module.css";
 
 // icons
-import { iSun, iMoon } from "@icons/Icons";
+import { iSun, iMoon } from "@/components/icons/Icons";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { setTheme, selectTheme } from "@state/ui/theme";
+import { setTheme, selectTheme } from "@/state/ui/theme";
 
 const Theme = () => {
   const dispatch = useDispatch();

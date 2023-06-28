@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Title.module.css";
 
 // icons
-import { iGithub, iCircleNodes, iMeteor } from "@icons/Icons";
+import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons";
 
 const Title = ({ name, description, github, canister, grantee }) => {
   const format = (d) => {

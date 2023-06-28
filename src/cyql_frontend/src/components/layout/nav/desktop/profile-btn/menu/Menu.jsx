@@ -2,20 +2,20 @@ import React from "react";
 import css from "./Menu.module.css";
 
 // components
-import { IdImg } from "@ui-elements/index";
+import { IdImg } from "@/components/ui-elements/index";
 
 // icons
-import { iSignOut } from "@icons/Icons";
-import CrossIcon from "@icons/cross-icon/CrossIcon";
+import { iSignOut } from "@/components/icons/Icons";
+import CrossIcon from "@/components/icons/cross-icon/CrossIcon";
 
 // utils
-import { formatId } from "@utils/format";
+import { formatId } from "@/utils/format";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // routes
-import { toProfile } from "@routes/routes";
+import { toProfile } from "@/routes/routes";
 
 const Menu = ({ setMenuIsOpen }) => {
   const { userKey, signOut } = useAuth();

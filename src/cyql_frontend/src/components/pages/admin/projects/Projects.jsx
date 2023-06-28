@@ -2,17 +2,17 @@ import React from "react";
 import css from "./Projects.module.css";
 
 // formatters
-import { formatStr12, formatStr16, formatWebsite, formatDiscord } from "@utils/format";
-import { getTwitterUsername } from "@utils/getTwitterUsername";
+import { formatStr12, formatStr16, formatWebsite, formatDiscord } from "@/utils/format";
+import { getTwitterUsername } from "@/utils/getTwitterUsername";
 
 // components
-import { Search } from "@ui-elements/index";
+import { Search } from "@/components/ui-elements/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectsDocs } from "@state/projects";
-import { setProjectModal, setProjectDoc } from "@state/modals/projectModal/projectModal";
-import { setAdminSearch, selectAdminSearch } from "@state/admin/adminSearch";
+import { selectProjectsDocs } from "@/state/projects";
+import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
+import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch";
 
 const Projects = () => {
   const dispatch = useDispatch();

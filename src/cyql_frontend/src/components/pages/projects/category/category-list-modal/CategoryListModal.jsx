@@ -2,13 +2,13 @@ import React from "react";
 import css from "./CategoryListModal.module.css";
 
 // icons
-import { CrossIcon } from "@icons/index";
+import { CrossIcon } from "@/components/icons/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { setCategory, selectCategory } from "@state/projects/category";
-import { selectProjectsDocs } from "@state/projects";
-import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
+import { setCategory, selectCategory } from "@/state/projects/category";
+import { selectProjectsDocs } from "@/state/projects";
+import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 const CategoryListModal = ({ openCategoryList, setOpenCategoryList }) => {
   const dispatch = useDispatch();

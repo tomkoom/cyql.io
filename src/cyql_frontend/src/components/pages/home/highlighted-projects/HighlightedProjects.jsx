@@ -2,11 +2,11 @@ import React from "react";
 import css from "./HighlightedProjects.module.css";
 
 // routes
-import { toApps } from "@routes/routes";
+import { toApps } from "@/routes/routes";
 
 // components
-import { Loader } from "@ui-elements/index";
-import { ViewMoreBtn } from "@btns/index";
+import { Loader } from "@/components/ui-elements/index";
+import { ViewMoreBtn } from "@/components/btns/index";
 import { Project } from "./index";
 
 const HighlightedProjects = ({ projects }) => {

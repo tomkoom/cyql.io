@@ -2,10 +2,10 @@ import React from "react";
 import css from "./Exchanges.module.css";
 
 // icons
-import { iAngleRight } from "@icons/Icons";
+import { iAngleRight } from "@/components/icons/Icons";
 
 // utils
-import { substring70 } from "@utils/substring";
+import { substring70 } from "@/utils/substring";
 
 const exchanges = [
   {

@@ -4,11 +4,11 @@ import React from "react";
 import { Timeline } from "react-twitter-widgets";
 
 // utils
-import { getTwitterUsername } from "@utils/getTwitterUsername";
+import { getTwitterUsername } from "@/utils/getTwitterUsername";
 
 // state
 import { useSelector } from "react-redux";
-import { selectTheme } from "@state/ui/theme";
+import { selectTheme } from "@/state/ui/theme";
 
 const TwitterTimeline = ({ twitter }) => {
   const theme = useSelector(selectTheme);

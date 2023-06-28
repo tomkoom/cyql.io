@@ -1,39 +1,39 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import "@styles/root.css";
-import "@styles/theme.css";
-import "@styles/typography.css";
+import "@/styles/root.css";
+import "@/styles/theme.css";
+import "@/styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 
 // constants
-import { iiAdmin1, iiAdmin2 } from "@constants/constants";
+import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
 
 // hooks
-import { useWindowSize } from "@hooks/useWindowSize";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 // utils
-import { verifyAdmin } from "@utils/verifyAdmin";
-import { sortCategoriesByNum } from "@utils/sortCategoriesByNum";
+import { verifyAdmin } from "@/utils/verifyAdmin";
+import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum";
 
 // juno
-import { initJuno, getProjects } from "@juno/juno";
+import { initJuno0, updateProjects } from "@/services/junoServices";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // components
-import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@pages/index";
-import { Footer, Nav, Sidebar, Summary } from "@layout/index";
-import { ProjectModal, SignInModal } from "@modals/index";
+import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@/components/pages/index";
+import { Footer, Nav, Sidebar, Summary } from "@/components/layout/index";
+import { ProjectModal, SignInModal } from "@/components/modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { selectTheme } from "@state/ui/theme";
-// import { setUpvotedProjects } from "@state/profile/profile";
-import { selectProjectsDocs } from "@state/projects";
-import { selectAllCategories } from "@state/categories/allCategories";
-import { setCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
+import { selectTheme } from "@/state/ui/theme";
+// import { setUpvotedProjects } from "@/state/profile/profile";
+import { selectProjectsDocs } from "@/state/projects";
+import { selectAllCategories } from "@/state/categories/allCategories";
+import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 // state: modals
 import {
@@ -41,10 +41,10 @@ import {
   selectSignInModal,
   setMobileMenuModal,
   selectMobileMenuModal,
-} from "@state/modals/modals";
-import { selectProjectModal } from "@state/modals/projectModal/projectModal";
-import { selectShareModal } from "@state/modals/shareModal";
-import { selectNftModal } from "@state/modals/nftModal";
+} from "@/state/modals/modals";
+import { selectProjectModal } from "@/state/modals/projectModal/projectModal";
+import { selectShareModal } from "@/state/modals/shareModal";
+import { selectNftModal } from "@/state/modals/nftModal";
 
 const App = () => {
   // hooks
@@ -68,8 +68,8 @@ const App = () => {
   // juno start
   useEffect(() => {
     (async () => {
-      await initJuno();
-      await getProjects();
+      await initJuno0();
+      await updateProjects();
     })();
   }, []);
   // juno end

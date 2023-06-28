@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import css from "./Submit.module.css";
 
 // utils
-import { nanoid } from "@utils/projectId";
+import { nanoid } from "@/utils/projectId";
 
 // constants
-import { junoCollectionSubmittedProjects } from "@constants/constants";
+import { junoCollectionSubmittedProjects } from "@/constants/constants";
 
 // juno
 import { setDoc } from "@junobuild/core";
@@ -15,8 +15,8 @@ import { Categories, Inputs, Loading, SubmissionSuccess, SubmitBtn } from "./ind
 
 // state
 import { useSelector } from "react-redux";
-import { selectSubmit } from "@state/submit/submit";
-import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
+import { selectSubmit } from "@/state/submit/submit";
+import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 const Submit = () => {
   const [submitIsLoading, setSubmitIsLoading] = useState(false);

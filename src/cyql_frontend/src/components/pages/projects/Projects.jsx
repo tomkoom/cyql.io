@@ -3,11 +3,11 @@ import css from "./Projects.module.css";
 
 // components
 import { Category, Filter, ProjectList, Sort } from "./index";
-import { Search } from "@ui-elements/index";
+import { Search } from "@/components/ui-elements/index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectSearch, setSearch } from "@state/projects/search";
+import { selectSearch, setSearch } from "@/state/projects/search";
 import {
   setFilterByOnChain,
   selectFilterByOnChain,
@@ -15,7 +15,7 @@ import {
   selectFilterByOpenSource,
   setFilterByGrantee,
   selectFilterByGrantee,
-} from "@state/projects/filter";
+} from "@/state/projects/filter";
 
 const Projects = () => {
   const dispatch = useDispatch();

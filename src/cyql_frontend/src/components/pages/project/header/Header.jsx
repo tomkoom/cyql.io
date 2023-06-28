@@ -2,16 +2,16 @@ import React from "react";
 import css from "./Header.module.css";
 
 // utils
-import { verifyAdmin } from "@utils/verifyAdmin";
+import { verifyAdmin } from "@/utils/verifyAdmin";
 
 // constants
-import { iiAdmin1, iiAdmin2 } from "@constants/constants";
+import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
 
 // icons
-import { iEdit, iShareSquare } from "@icons/Icons";
+import { iEdit, iShareSquare } from "@/components/icons/Icons";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // components
 import { Btn, Logo, Title } from "./index";
@@ -19,8 +19,8 @@ import { Btn, Logo, Title } from "./index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setProjectModal, setProjectDoc } from "@state/modals/projectModal/projectModal";
-import { setShareModal } from "@state/modals/shareModal";
+import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
+import { setShareModal } from "@/state/modals/shareModal";
 
 const Header = ({ projectDoc }) => {
   const dispatch = useDispatch();

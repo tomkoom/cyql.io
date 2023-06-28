@@ -1,20 +1,42 @@
 import React from "react";
-import css from "./Nav.module.css";
+import styled from "styled-components";
+import { device } from "@/styles/breakpoints";
 
 // utils
-import { useWindowSize } from "@hooks/useWindowSize";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 // components
-import { Desktop, Mobile } from "./index";
+import { Desktop, Mobile } from "./_index";
 
 const Nav = () => {
   const [deviceWidth] = useWindowSize();
 
   return (
-    <header className={css.header}>
-      <nav className={css.nav}>{deviceWidth > 1023 ? <Desktop /> : <Mobile />}</nav>
-    </header>
+    <NavStyled>
+      <Main>{deviceWidth > 1023 ? <Desktop /> : <Mobile />}</Main>
+    </NavStyled>
   );
 };
+
+const NavStyled = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+`;
+
+const Main = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: var(--background);
+  height: 64px;
+  padding: 0.5rem 2rem;
+
+  @media ${device.tablet} {
+    padding: 0.5rem 1rem;
+  }
+`;
 
 export default Nav;

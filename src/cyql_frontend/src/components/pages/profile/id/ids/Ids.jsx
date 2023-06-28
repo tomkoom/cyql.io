@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import css from "./Ids.module.css";
 
 // icons
-import { iCheck } from "@icons/Icons";
+import { iCheck } from "@/components/icons/Icons";
 
 // utils
-import { formatId } from "@utils/format";
+import { formatId } from "@/utils/format";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const Copied = () => {
   return (

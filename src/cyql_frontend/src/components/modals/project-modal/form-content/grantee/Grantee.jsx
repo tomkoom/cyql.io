@@ -6,7 +6,7 @@ import { Btn } from "../index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectDoc, setProjectGrantee } from "@state/modals/projectModal/projectModal";
+import { selectProjectDoc, setProjectGrantee } from "@/state/modals/projectModal/projectModal";
 
 const Grantee = () => {
   const dispatch = useDispatch();

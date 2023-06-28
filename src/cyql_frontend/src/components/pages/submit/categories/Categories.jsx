@@ -3,8 +3,8 @@ import css from "./Categories.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategoriesSortedByNum } from "@state/categories/categoriesSortedByNum";
-import { selectSubmit, setSubmit } from "@state/submit/submit";
+import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
+import { selectSubmit, setSubmit } from "@/state/submit/submit";
 
 const Categories = () => {
   const dispatch = useDispatch();

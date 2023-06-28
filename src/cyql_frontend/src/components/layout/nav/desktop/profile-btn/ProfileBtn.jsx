@@ -3,13 +3,13 @@ import css from "./ProfileBtn.module.css";
 
 // components
 import { Menu } from "./index";
-import { IdImg } from "@ui-elements/index";
+import { IdImg } from "@/components/ui-elements/index";
 
 // icons
-import { iAngleDown } from "@icons/Icons";
+import { iAngleDown } from "@/components/icons/Icons";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const ProfileBtn = () => {
   const { userKey } = useAuth();

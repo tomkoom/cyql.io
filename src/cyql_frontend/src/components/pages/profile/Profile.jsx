@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Profile.module.css";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@state/profile/profile";
+import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@/state/profile/profile";
 
 // components
 import Id from "./id/Id";

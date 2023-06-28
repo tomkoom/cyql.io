@@ -3,11 +3,11 @@ import css from "./CategoryList.module.css";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectAllCategories } from "@state/categories/allCategories";
+import { selectAllCategories } from "@/state/categories/allCategories";
 import {
   selectProjectCategories,
   setProjectCategories,
-} from "@state/modals/projectModal/projectModal";
+} from "@/state/modals/projectModal/projectModal";
 
 const CategoryList = () => {
   const dispatch = useDispatch();

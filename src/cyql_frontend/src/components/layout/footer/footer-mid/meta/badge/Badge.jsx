@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./Badge.module.css";
-import logo from "@assets/ic-logo.svg";
+import logo from "../../../../../../../assets/ic-logo.svg";
 
 const Badge = () => {
   return (

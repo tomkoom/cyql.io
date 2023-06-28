@@ -10,8 +10,8 @@ import {
 } from "@junobuild/core";
 
 // routes
-import { history } from "@routes/history";
-import { toHome } from "@routes/routes";
+import { history } from "@/routes/history";
+import { toHome } from "@/routes/routes";
 
 const AuthContext = createContext();
 const useAuth = () => {

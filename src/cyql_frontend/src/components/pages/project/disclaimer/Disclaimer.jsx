@@ -1,7 +1,7 @@
 import React from "react";
 
 // components
-import { ExpandableText } from "@ui-elements/index";
+import { ExpandableText } from "@/components/ui-elements/index";
 
 const Disclaimer = () => {
   // const text =

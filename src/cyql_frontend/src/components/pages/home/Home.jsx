@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Home.module.css";
 
 // routes
-import { toApps } from "@routes/routes";
+import { toApps } from "@/routes/routes";
 
 // components
 import {
@@ -16,7 +16,7 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsDocs } from "@state/projects";
+import { selectProjectsDocs } from "@/state/projects";
 
 const Home = () => {
   const projects = useSelector(selectProjectsDocs).filter(

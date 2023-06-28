@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Header.module.css";
 
 // icons
-import { CrossIcon } from "@icons/index";
+import { CrossIcon } from "@/components/icons/index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setShareModal } from "@state/modals/shareModal";
+import { setShareModal } from "@/state/modals/shareModal";
 
 const Header = ({ name }) => {
   const dispatch = useDispatch();

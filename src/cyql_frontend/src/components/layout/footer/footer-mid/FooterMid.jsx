@@ -2,10 +2,10 @@ import React from "react";
 import css from "./FooterMid.module.css";
 
 // routes
-import { toHome, toApps, toSubmit } from "@routes/routes";
+import { toHome, toApps, toSubmit } from "@/routes/routes";
 
 // components
-import { Logo } from "@ui-elements/index";
+import { Logo } from "@/components/ui-elements/index";
 import { Meta, NavLink, Socials } from "./index";
 
 const FooterMid = () => {

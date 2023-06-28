@@ -2,12 +2,12 @@ import React from "react";
 import css from "./Logo.module.css";
 
 // logos
-import logoPurple from "@assets/logo/cyql-logo-v2-purple.svg";
-import logoGray from "@assets/logo/cyql-logo-v2-gray.svg";
+import logoPurple from "../../../../assets/logo/cyql-logo-v2-purple.svg";
+import logoGray from "../../../../assets/logo/cyql-logo-v2-gray.svg";
 
 // state
 import { useSelector } from "react-redux";
-import { selectTheme } from "@state/ui/theme";
+import { selectTheme } from "@/state/ui/theme";
 
 const Logo = () => {
   const theme = useSelector(selectTheme);

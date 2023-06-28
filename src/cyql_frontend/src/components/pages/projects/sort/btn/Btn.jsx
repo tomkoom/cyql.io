@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Btn.module.css";
 
 // icons
-import { iAngleDown, iSort } from "@icons/Icons";
+import { iAngleDown, iSort } from "@/components/icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectSort } from "@state/projects/sort";
+import { selectSort } from "@/state/projects/sort";
 
 const Btn = () => {
   const sort = useSelector(selectSort);

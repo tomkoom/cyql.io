@@ -3,7 +3,7 @@ import css from "./Summary.module.css";
 
 // redux
 import { useSelector } from "react-redux";
-import { selectProjectsDocsActiveNum } from "@state/projects";
+import { selectProjectsDocsActiveNum } from "@/state/projects";
 
 const Summary = () => {
   const projectsDocsNum = useSelector(selectProjectsDocsActiveNum);

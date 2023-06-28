@@ -2,7 +2,7 @@ import React from "react";
 import css from "./ViewMoreBtn.module.css";
 
 // icons
-import { iAngleRight } from "@icons/Icons";
+import { iAngleRight } from "@/components/icons/Icons";
 
 const ViewMoreBtn = ({ nav, children }) => {
   return (

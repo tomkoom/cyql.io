@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Project.module.css";
 
 // routes
-import { toApp } from "@routes/routes";
+import { toApp } from "@/routes/routes";
 
 // components
 import { Logo, Main } from "./index";
-// import { UpvoteBtn } from "@btns/index";
+// import { UpvoteBtn } from "@/components/btns/index";
 
 const Project = (props) => {
   const { slug, id, name, logo, categories, canister, github, description, upvotes } = props;

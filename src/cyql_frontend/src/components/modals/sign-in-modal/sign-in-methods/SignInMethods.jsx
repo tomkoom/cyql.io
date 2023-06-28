@@ -5,7 +5,7 @@ import css from "./SignInMethods.module.css";
 import { Btn } from "./index";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 const SignInMethods = () => {
   const {

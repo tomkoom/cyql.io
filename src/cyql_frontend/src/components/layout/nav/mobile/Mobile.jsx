@@ -2,16 +2,16 @@ import React from "react";
 import css from "./Mobile.module.css";
 
 // routes
-import { toHome } from "@routes/routes";
+import { toHome } from "@/routes/routes";
 
 // components
-import { Logo, Theme } from "@ui-elements/index";
+import { Logo, Theme } from "@/components/ui-elements/index";
 import { Menu, MenuBtn, Socials } from "./index";
-import { Nft } from "../index";
+import { Nft } from "../_index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectMobileMenuModal } from "@state/modals/modals";
+import { selectMobileMenuModal } from "@/state/modals/modals";
 
 const Mobile = () => {
   const mobileMenu = useSelector(selectMobileMenuModal);

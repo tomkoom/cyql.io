@@ -2,15 +2,15 @@ import React from "react";
 import css from "./HighlightedByCategory.module.css";
 
 // icons
-import { iCheckCircle } from "@icons/Icons";
+import { iCheckCircle } from "@/components/icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsDocs } from "@state/projects";
-import { toApp } from "@routes/routes";
+import { selectProjectsDocs } from "@/state/projects";
+import { toApp } from "@/routes/routes";
 
 // components
-// import { UpvoteBtn } from "@btns/index";
+// import { UpvoteBtn } from "@/components/btns/index";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {

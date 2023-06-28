@@ -3,15 +3,15 @@ import css from "./ProjectModal.module.css";
 
 // components
 import { Controls, FormContent, Header } from "./index";
-import { Loader } from "@ui-elements/index";
+import { Loader } from "@/components/ui-elements/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
-import { setCloseProjectModal } from "@state/modals/projectModal/projectModal";
+import { setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
 import {
   selectProjectModalLoadingSet,
   selectProjectModalLoadingDel,
-} from "@state/modals/projectModal/projectModalLoading";
+} from "@/state/modals/projectModal/projectModalLoading";
 
 const ProjectModal = () => {
   const dispatch = useDispatch();

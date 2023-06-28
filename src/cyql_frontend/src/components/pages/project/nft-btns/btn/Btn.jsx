@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Btn.module.css";
 
 // icons
-import { iExternalLink } from "@icons/Icons";
+import { iExternalLink } from "@/components/icons/Icons";
 
 const Btn = ({ label, url }) => {
   return (

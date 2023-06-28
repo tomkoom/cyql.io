@@ -4,15 +4,15 @@ import App from "./App";
 
 // react-router, history
 import { Router } from "react-router-dom";
-import { history } from "@routes/history";
+import { history } from "@/routes/history";
 
 // state, redux-persist
 import { Provider } from "react-redux";
-import store, { persistor } from "@state/_store";
+import store, { persistor } from "@/state/_store";
 import { PersistGate } from "redux-persist/integration/react";
 
 // auth
-import AuthProvider from "@context/AuthContext";
+import AuthProvider from "@/context/AuthContext";
 
 const Index = () => {
   return (

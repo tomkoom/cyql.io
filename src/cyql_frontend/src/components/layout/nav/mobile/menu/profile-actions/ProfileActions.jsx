@@ -2,23 +2,23 @@ import React from "react";
 import css from "./ProfileActions.module.css";
 
 // icons
-import { iSignOut } from "@icons/Icons";
+import { iSignOut } from "@/components/icons/Icons";
 
 // utils
-import { formatId } from "@utils/format";
+import { formatId } from "@/utils/format";
 
 // routes
-import { toProfile } from "@routes/routes";
+import { toProfile } from "@/routes/routes";
 
 // auth
-import { useAuth } from "@context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 
 // components
-import { IdImg } from "@ui-elements/index";
+import { IdImg } from "@/components/ui-elements/index";
 
 // state
 import { useDispatch } from "react-redux";
-import { setMobileMenuModal } from "@state/modals/modals";
+import { setMobileMenuModal } from "@/state/modals/modals";
 
 const ProfileActions = () => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Links.module.css";
 
 // utils
-import { getTwitterUsername } from "@utils/getTwitterUsername";
+import { getTwitterUsername } from "@/utils/getTwitterUsername";
 
 // icons
 import {
@@ -16,7 +16,7 @@ import {
   iBook,
   iCircleNodes,
   iScroll,
-} from "@icons/Icons";
+} from "@/components/icons/Icons";
 
 const Links = ({
   // main

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Socials.module.css";
 
 // icons
-import { iTwitter, iDiscord } from "@icons/Icons";
+import { iTwitter, iDiscord } from "@/components/icons/Icons";
 
 const Socials = () => {
   const socials = [
