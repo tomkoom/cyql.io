@@ -10,7 +10,6 @@ import { bigIntToNum } from "@utils/bigIntToNum";
 // state
 import store from "@state/_store";
 import {
-  setProjectsLoading,
   setProjectsDocs,
   setProjectsDocsActive,
   setProjectsDocsActiveNum,

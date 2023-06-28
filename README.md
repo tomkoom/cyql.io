@@ -15,6 +15,7 @@ See [cyql api docs](https://github.com/tomkoom/cyql-api-docs) to query the data 
 ### stack
 
 - react.js
+- webpack
 - [internet computer sdk](https://internetcomputer.org/docs/current/home)
 - [juno](https://juno.build/) for storing data
 

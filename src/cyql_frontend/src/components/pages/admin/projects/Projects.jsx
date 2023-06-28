@@ -38,7 +38,7 @@ const Projects = () => {
 
       <div className={css.table}>
         <div className={css.rowHeader}>
-          <span className={css.projecDocNum}>#</span>
+          <span>#</span>
           <span>id</span>
           <span>name</span>
           <span>slug</span>

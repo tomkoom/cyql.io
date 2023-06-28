@@ -55,6 +55,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@junobuild/core": "^0.0.15",
     "@reduxjs/toolkit": "^1.7.1",
+    "@types/styled-components": "^5.1.26",
     "history": "^4.10.1",
     "nanoid": "^4.0.2",
     "react": "^17.0.2",
@@ -68,6 +69,7 @@
     "react-twitter-widgets": "^1.11.0",
     "redux": "^4.1.2",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.4.1"
+    "redux-thunk": "^2.4.1",
+    "styled-components": "^5.3.11"
   }
 }

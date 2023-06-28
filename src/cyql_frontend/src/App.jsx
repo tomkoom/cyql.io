@@ -74,6 +74,10 @@ const App = () => {
   }, []);
   // juno end
 
+  useEffect(() => {
+    console.log(userKey);
+  }, [userKey]);
+
   // prevent from scrolling when modal is active
   const modals = [signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
   useEffect(() => {

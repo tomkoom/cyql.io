@@ -28,7 +28,7 @@ const Desktop = () => {
         <Price />
         <Theme />
         <Nft />
-        {userKey === "" ? <SignInBtn /> : <ProfileBtn />}
+        {!userKey ? <SignInBtn /> : <ProfileBtn />}
       </div>
     </div>
   );

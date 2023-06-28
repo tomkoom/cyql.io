@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./Sidebar.module.css";
+import styled from "styled-components";
 
 // utils
 import { verifyAdmin } from "@utils/verifyAdmin";
@@ -17,15 +17,15 @@ import { toApps, toSubmit, toAdmin } from "@routes/routes";
 import { useAuth } from "@context/AuthContext";
 
 // components
-import { Link, NavLink } from "./index";
+import { Link, NavLink } from "./_index";
 
 const Sidebar = () => {
   const { userKey } = useAuth();
   const admins = [iiAdmin1, iiAdmin2];
 
   return (
-    <div className={css.sidebar}>
-      <div className={css.nav}>
+    <SidebarStyled>
+      <div>
         <NavLink label="projects" to={toApps} icon={iCube} />
         <NavLink label="submit" to={toSubmit} icon={iPlus} />
         {verifyAdmin(admins, userKey) === true && (
@@ -39,8 +39,23 @@ const Sidebar = () => {
           logo={"https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/streak/logo.svg"}
         />
       </div>
-    </div>
+    </SidebarStyled>
   );
 };
+
+const SidebarStyled = styled.div`
+  position: sticky;
+  top: 64px;
+  bottom: 0;
+  height: 0;
+  max-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+`;
 
 export default Sidebar;
