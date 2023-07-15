@@ -7,13 +7,13 @@ import { CrossIcon } from "@/components/icons/index";
 // state
 import { useSelector, useDispatch } from "react-redux";
 import { setCategory, selectCategory } from "@/state/projects/category";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 const CategoryListModal = ({ openCategoryList, setOpenCategoryList }) => {
   const dispatch = useDispatch();
   const projectCategory = useSelector(selectCategory);
-  const projectsDocs = useSelector(selectProjectsDocs).filter(
+  const projectsDocs = useSelector(selectProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   );
   const projectsDocsNum = projectsDocs.length;

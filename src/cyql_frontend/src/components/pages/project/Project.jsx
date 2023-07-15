@@ -5,8 +5,8 @@ import css from "./Project.module.css";
 import { useParams } from "react-router-dom";
 
 // components
-import { Loader } from "@/components/ui-elements/index";
-import { BackBtn } from "@/components/btns/index";
+import { Loader } from "@/components/ui-elements/_index";
+import { BackBtn } from "@/components/btns/_index";
 import { ShareModal } from "@/components/modals/index";
 import {
   CollStats,
@@ -22,12 +22,12 @@ import {
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 import { selectShareModal } from "@/state/modals/shareModal";
 
 const Project = () => {
   const { slug } = useParams();
-  const projects = useSelector(selectProjectsDocs);
+  const projects = useSelector(selectProjects);
   const shareModal = useSelector(selectShareModal);
 
   return (

@@ -14,7 +14,7 @@ import { toProfile } from "@/routes/routes";
 import { useAuth } from "@/context/AuthContext";
 
 // components
-import { IdImg } from "@/components/ui-elements/index";
+import { IdImg } from "@/components/ui-elements/_index";
 
 // state
 import { useDispatch } from "react-redux";

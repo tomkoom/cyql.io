@@ -3,7 +3,7 @@ import css from "./ProfileBtn.module.css";
 
 // components
 import { Menu } from "./index";
-import { IdImg } from "@/components/ui-elements/index";
+import { IdImg } from "@/components/ui-elements/_index";
 
 // icons
 import { iAngleDown } from "@/components/icons/Icons";

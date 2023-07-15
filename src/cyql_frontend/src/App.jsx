@@ -32,14 +32,14 @@ import {
   Projects,
   Submit,
 } from "@/components/pages/index";
-import { Footer, Nav, Sidebar, Summary } from "@/components/layout/index";
+import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
 import { ProjectModal, SignInModal } from "@/components/modals/index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
 import { selectTheme } from "@/state/ui/theme";
 // import { setUpvotedProjects } from "@/state/profile/profile";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 import { selectAllCategories } from "@/state/categories/allCategories";
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
@@ -69,7 +69,7 @@ const App = () => {
 
   // ...
   const theme = useSelector(selectTheme);
-  const projects = useSelector(selectProjectsDocs);
+  const projects = useSelector(selectProjects);
   const allCategories = useSelector(selectAllCategories);
   const admins = [iiAdmin1, iiAdmin2];
 

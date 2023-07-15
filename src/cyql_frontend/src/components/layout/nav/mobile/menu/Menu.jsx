@@ -9,7 +9,7 @@ import { useAuth } from "@/context/AuthContext";
 
 // components
 import { Navlinks, ProfileActions, SignInBtn } from "./index";
-import { Price, Theme } from "@/components/ui-elements/index";
+import { Price, Theme } from "@/components/ui-elements/_index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";

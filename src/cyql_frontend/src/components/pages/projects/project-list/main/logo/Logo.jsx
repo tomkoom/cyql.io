@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Logo.module.css";
 
 // components
-import { LogoLetter } from "@/components/ui-elements/index";
+import { LogoLetter } from "@/components/ui-elements/_index";
 
 const Logo = ({ name, logo }) => {
   const sizeRem = "5";

@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./Home.module.css";
+import styled from "styled-components";
 
 // routes
 import { toApps } from "@/routes/routes";
@@ -12,18 +12,16 @@ import {
   HighlightedProjects,
   JoinCommunity,
   ViewAllBtn,
-} from "./index";
+} from "./_index";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 
 const Home = () => {
-  const projects = useSelector(selectProjectsDocs).filter(
-    (projectDoc) => projectDoc.data.archived !== true
-  );
-  const pProjects = projects.filter((p) => !p.data.categories.includes("NFTs"));
-  const pNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
+  const projects = useSelector(selectProjects).filter((p) => p.data.archived !== true);
+  const projectsNoNfts = projects.filter((p) => !p.data.categories.includes("NFTs"));
+  const projectsNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
   const popularProjects = projects
     .filter((p) => p.data.upvotes)
     .filter((p) => !p.data.categories.includes("NFTs"))
@@ -36,113 +34,124 @@ const Home = () => {
       .sort((a, b) => b.data.upvotes.length - a.data.upvotes.length);
 
   return (
-    <main className={css.home}>
+    <div>
       <Header />
 
       {/* newest projects */}
-      <section>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>new projects</h3>
+      <Section>
+        <Title>
+          <h3>new projects</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
-        <HighlightedProjects projects={projects.length > 0 && pProjects} />
-      </section>
+        </Title>
+        <HighlightedProjects projects={projects.length > 0 && projectsNoNfts} />
+      </Section>
 
       {/* newest nfts */}
-      <section>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>new nfts</h3>
+      <Section>
+        <Title>
+          <h3>new nfts</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
-        <HighlightedProjects projects={projects.length > 0 && pNfts} />
-      </section>
+        </Title>
+        <HighlightedProjects projects={projects.length > 0 && projectsNfts} />
+      </Section>
 
       {/* popular projects */}
-      <section>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>popular projects</h3>
+      <Section>
+        <Title>
+          <h3>popular projects</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
+        </Title>
         <HighlightedProjects projects={projects.length > 0 && popularProjects} />
-      </section>
+      </Section>
 
       {/* popular nfts */}
-      <section>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>popular nfts</h3>
+      <Section>
+        <Title>
+          <h3>popular nfts</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
+        </Title>
         <HighlightedProjects projects={projects.length > 0 && popularNfts} />
-      </section>
+      </Section>
 
       {/* wallets */}
-      <section>
-        <div className={css.sectionHeader}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>wallets</h3>
-          </div>
+      <Section>
+        <Title>
+          <h3>wallets</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
+        </Title>
         <HighlightedByCategory filter="Wallets" />
-      </section>
-      <div className={css.divider} />
+      </Section>
+      <Divider />
 
       {/* explorers */}
-      <section>
-        <div className={css.sectionHeader}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>explorers</h3>
-          </div>
+      <Section>
+        <Title>
+          <h3>explorers</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
+        </Title>
         <HighlightedByCategory filter="Explorers" />
-      </section>
-      <div className={css.divider} />
+      </Section>
+      <Divider />
 
       {/* social networks */}
-      <section>
-        <div className={css.sectionHeader}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>social networks</h3>
-          </div>
+      <Section>
+        <Title>
+          <h3>social networks</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
+        </Title>
         <HighlightedByCategory filter="Social Networks" />
-      </section>
-      <div className={css.divider} />
+      </Section>
+      <Divider />
 
       {/* defi */}
-      <section>
-        <div className={css.sectionHeader}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>defi</h3>
-          </div>
+      <Section>
+        <Title>
+          <h3>defi</h3>
           <ViewAllBtn nav={toApps} />
-        </div>
+        </Title>
         <HighlightedByCategory filter="DeFi" />
-      </section>
-      <div className={css.divider} />
+      </Section>
+      <Divider />
 
       {/* exchanges */}
-      <section>
-        <div className={css.sectionHeader}>
-          <div className={css.titleContainer}>
-            <h3 className={css.title}>exchanges</h3>
-          </div>
-        </div>
+      <Section>
+        <Title>
+          <h3>exchanges</h3>
+        </Title>
         <Exchanges />
-      </section>
-      <div className={css.divider} />
+      </Section>
+      <Divider />
 
       {/* join community */}
-      <section className={css.home__nftCollections}>
-        <div className={css.sectionHeader}>
-          <h3 className={css.title}>join community</h3>
-        </div>
+      <Section>
+        <Title>
+          <h3>join community</h3>
+        </Title>
         <JoinCommunity />
-      </section>
-    </main>
+      </Section>
+    </div>
   );
 };
+
+const Section = styled.section`
+  margin-bottom: 4rem;
+`;
+
+const Title = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  > h3 {
+    font-size: var(--fontSize4);
+  }
+`;
+
+const Divider = styled.div`
+  height: 1px;
+  box-shadow: 0 1px 0 0 var(--underlay);
+  margin-bottom: 4rem;
+`;
 
 export default Home;

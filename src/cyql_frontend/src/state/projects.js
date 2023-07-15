@@ -20,10 +20,10 @@ const projects = createSlice({
   },
 });
 
-const selectProjectsDocs = (state) => state.projects.projectsDocs;
+const selectProjects = (state) => state.projects.projectsDocs;
 const selectProjectsDocsActive = (state) => state.projects.projectsDocsActive;
 const selectProjectsDocsActiveNum = (state) => state.projects.projectsDocsActiveNum;
-export { selectProjectsDocs, selectProjectsDocsActive, selectProjectsDocsActiveNum };
+export { selectProjects, selectProjectsDocsActive, selectProjectsDocsActiveNum };
 
 export const { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } =
   projects.actions;

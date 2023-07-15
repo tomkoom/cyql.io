@@ -6,7 +6,7 @@ import { iCheckCircle } from "@/components/icons/Icons";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 import { toApp } from "@/routes/routes";
 
 // components
@@ -14,7 +14,7 @@ import { toApp } from "@/routes/routes";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
-  const projects = useSelector(selectProjectsDocs).filter(
+  const projects = useSelector(selectProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   );
 

@@ -6,17 +6,17 @@ import { formatStr12, formatStr16, formatWebsite, formatDiscord } from "@/utils/
 import { getTwitterUsername } from "@/utils/getTwitterUsername";
 
 // components
-import { Search } from "@/components/ui-elements/index";
+import { Search } from "@/components/ui-elements/_index";
 
 // state
 import { useSelector, useDispatch } from "react-redux";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch";
 
 const Projects = () => {
   const dispatch = useDispatch();
-  const projectsDocs = useSelector(selectProjectsDocs);
+  const projectsDocs = useSelector(selectProjects);
   const searchQuery = useSelector(selectAdminSearch);
 
   const setSearch = (e) => {

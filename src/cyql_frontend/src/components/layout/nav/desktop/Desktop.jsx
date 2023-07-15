@@ -10,7 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./index";
 import { Nft } from "../_index";
-import { Logo, Price, Theme } from "@/components/ui-elements/index";
+import { Logo, Price, Theme } from "@/components/ui-elements/_index";
 
 const Desktop = () => {
   const { userKey } = useAuth();

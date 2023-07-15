@@ -5,8 +5,8 @@ import css from "./ProjectList.module.css";
 import { toApp } from "@/routes/routes";
 
 // components
-import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/index";
-import { Loader } from "@/components/ui-elements/index";
+import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index";
+import { Loader } from "@/components/ui-elements/_index";
 import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state

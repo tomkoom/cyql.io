@@ -3,7 +3,7 @@ import css from "./ProjectModal.module.css";
 
 // components
 import { Controls, FormContent, Header } from "./index";
-import { Loader } from "@/components/ui-elements/index";
+import { Loader } from "@/components/ui-elements/_index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";

@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { setSignInModal } from "@/state/modals/modals";
 
 // components
-import { Spinner } from "@/components/ui-elements/index";
+import { Spinner } from "@/components/ui-elements/_index";
 
 const SignInBtn = () => {
   const dispatch = useDispatch();

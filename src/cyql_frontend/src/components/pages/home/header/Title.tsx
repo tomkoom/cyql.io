@@ -8,10 +8,10 @@ import { toApps } from "@/routes/routes";
 
 // state
 import { useSelector } from "react-redux";
-import { selectProjectsDocs } from "@/state/projects";
+import { selectProjects } from "@/state/projects";
 
 const Title: FC = (): JSX.Element => {
-  const projects = useSelector(selectProjectsDocs).filter(
+  const projects = useSelector(selectProjects).filter(
     (project) => project.data.archived !== true
   );
   const projectsNum = projects.length;
