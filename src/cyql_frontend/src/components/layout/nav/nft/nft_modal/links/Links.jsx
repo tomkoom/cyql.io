@@ -15,14 +15,12 @@ const Link = ({ type, url, text }) => {
 const Links = () => {
   return (
     <div className={css.links}>
-      <Link type={"primary"} url={"https://entrepot.app/marketplace/ic-apps"} text={"buy"} />
+      <Link type="primary" url="https://entrepot.app/marketplace/ic-apps" text="buy" />
 
       <Link
-        type={"secondary"}
-        url={
-          "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
-        }
-        text={"stats"}
+        type="secondary"
+        url="https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
+        text="stats"
       />
     </div>
   );

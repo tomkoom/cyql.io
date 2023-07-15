@@ -33,7 +33,7 @@ import {
   Submit,
 } from "@/components/pages/index";
 import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
-import { ProjectModal, SignInModal } from "@/components/modals/index";
+import { ProjectModal, SignInModal } from "@/components/modals/_index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";

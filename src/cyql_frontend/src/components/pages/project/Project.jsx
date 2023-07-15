@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 // components
 import { Loader } from "@/components/ui-elements/_index";
 import { BackBtn } from "@/components/btns/_index";
-import { ShareModal } from "@/components/modals/index";
+import { ShareModal } from "@/components/modals/_index";
 import {
   CollStats,
   Description,

@@ -11,6 +11,7 @@ import {
   HighlightedByCategory,
   HighlightedProjects,
   JoinCommunity,
+  Promo,
   ViewAllBtn,
 } from "./_index";
 
@@ -35,6 +36,7 @@ const Home = () => {
 
   return (
     <div>
+      <Promo />
       <Header />
 
       {/* newest projects */}
