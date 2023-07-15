@@ -1,10 +1,15 @@
-import React from "react";
-import css from "./Logo.module.css";
+import React, { FC } from "react";
+import styled from "styled-components";
 
 // components
 import { LogoLetter } from "@/components/ui-elements/_index";
 
-const Logo = ({ name, logo }) => {
+interface LogoProps {
+  name: string;
+  logo: string;
+}
+
+const Logo: FC<LogoProps> = ({ name, logo }): JSX.Element => {
   const sizeRem = "4.5";
   const borderRadiusRem = "1";
   const style = {
@@ -14,10 +19,15 @@ const Logo = ({ name, logo }) => {
   };
 
   return logo ? (
-    <img style={style} className={css.logo} src={logo} alt={`${name} logo`} />
+    <LogoStyled style={style} src={logo} alt={`${name} logo`} />
   ) : (
     <LogoLetter sizeRem={sizeRem} borderRadiusRem={borderRadiusRem} name={name} />
   );
 };
+
+const LogoStyled = styled.img`
+  flex-shrink: 0;
+  object-fit: cover;
+`;
 
 export default Logo;

@@ -1,5 +1,6 @@
 import React from "react";
-import css from "./HighlightedProjects.module.css";
+import styled from "styled-components";
+import { device } from "@/styles/breakpoints";
 
 // routes
 import { toApps } from "@/routes/routes";
@@ -7,18 +8,17 @@ import { toApps } from "@/routes/routes";
 // components
 import { Loader } from "@/components/ui-elements/_index";
 import { ViewMoreBtn } from "@/components/btns/_index";
-import { Project } from "./index";
+import { Project } from "./_index";
 
 const HighlightedProjects = ({ projects }) => {
   return (
-    <div className={css.projects}>
+    <div>
       {!projects.length ? (
         <Loader />
       ) : (
-        <div className={css.grid}>
+        <Grid>
           {projects.slice(0, 24).map((p) => (
             <Project
-              id={p.key}
               key={p.key}
               // ...
               name={p.data.name}
@@ -28,13 +28,13 @@ const HighlightedProjects = ({ projects }) => {
               canister={p.data.canister}
               github={p.data.github}
               description={p.data.description}
-              upvotes={p.data.upvotes}
+              // upvotes={p.data.upvotes}
             />
           ))}
-        </div>
+        </Grid>
       )}
 
-      <div className={css.viewMoreBtn}>
+      <div>
         {projects.length > 0 && (
           <ViewMoreBtn nav={toApps}>view all {projects.length} projects</ViewMoreBtn>
         )}
@@ -42,5 +42,20 @@ const HighlightedProjects = ({ projects }) => {
     </div>
   );
 };
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+
+  @media ${device.laptop} {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+
+  @media ${device.mobileL} {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+`;
 
 export default HighlightedProjects;

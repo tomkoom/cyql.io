@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import iclogo from "../../../../../assets/ic-logo.svg";
 import { device } from "@/styles/breakpoints";
+import iclogo from "../../../../../assets/ic-logo.svg";
 
 // routes
 import { toApps } from "@/routes/routes";
@@ -11,9 +11,7 @@ import { useSelector } from "react-redux";
 import { selectProjects } from "@/state/projects";
 
 const Title: FC = (): JSX.Element => {
-  const projects = useSelector(selectProjects).filter(
-    (project) => project.data.archived !== true
-  );
+  const projects = useSelector(selectProjects).filter((project) => project.data.archived !== true);
   const projectsNum = projects.length;
 
   return (
@@ -39,7 +37,7 @@ const TitleStyled = styled.h2`
   font-weight: var(--fwBlack);
   line-height: 125%;
 
-  @media ${device.mobile} {
+  @media ${device.mobileL} {
     font-size: var(--fs2);
   }
 `;
