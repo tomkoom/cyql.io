@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "@/styles/breakpoints";
+import { device, size } from "@/styles/breakpoints";
 
 // utils
 import { useWindowSize } from "@/hooks/useWindowSize";
@@ -9,11 +9,11 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 import { Desktop, Mobile } from "./_index";
 
 const Nav = () => {
-  const [deviceWidth] = useWindowSize();
+  const { width } = useWindowSize();
 
   return (
     <NavStyled>
-      <Main>{deviceWidth > 1023 ? <Desktop /> : <Mobile />}</Main>
+      <Main>{width > size.laptop ? <Desktop /> : <Mobile />}</Main>
     </NavStyled>
   );
 };
@@ -34,7 +34,7 @@ const Main = styled.div`
   height: 64px;
   padding: 0.5rem 2rem;
 
-  @media ${device.tablet} {
+  @media ${device.laptop} {
     padding: 0.5rem 1rem;
   }
 `;

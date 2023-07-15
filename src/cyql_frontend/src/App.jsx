@@ -23,7 +23,15 @@ import { initJuno0, updateProjects } from "@/services/junoServices";
 import { useAuth } from "@/context/AuthContext";
 
 // components
-import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@/components/pages/index";
+import {
+  Admin,
+  Home,
+  NotFound,
+  Profile,
+  Project,
+  Projects,
+  Submit,
+} from "@/components/pages/index";
 import { Footer, Nav, Sidebar, Summary } from "@/components/layout/index";
 import { ProjectModal, SignInModal } from "@/components/modals/index";
 
@@ -50,7 +58,7 @@ const App = () => {
   // hooks
   const dispatch = useDispatch();
   const { userKey } = useAuth();
-  const [deviceWidth] = useWindowSize();
+  const { width } = useWindowSize();
 
   // modals
   const projectModal = useSelector(selectProjectModal);
@@ -87,10 +95,10 @@ const App = () => {
 
   // reset mobile menu when deivice size > 1023
   useEffect(() => {
-    if (mobileMenuModal === true && deviceWidth > 1023) {
+    if (mobileMenuModal === true && width > 1023) {
       dispatch(setMobileMenuModal(false));
     }
-  }, [deviceWidth]);
+  }, [width]);
 
   // close sign in modal after user has logged
   useEffect(() => {
@@ -147,7 +155,7 @@ const App = () => {
               </Route>
             )}
 
-            {verifyAdmin(admins, userKey) && (
+            {admins.length > 0 && userKey !== "" && verifyAdmin(admins, userKey) && (
               <Route exact path="/admin">
                 <Admin />
               </Route>

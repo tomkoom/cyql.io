@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-interface NavLinkProps {
+interface NavlinkProps {
   label: string;
   route: () => void;
   icon: any;
 }
 
-const NavLink: FC<NavLinkProps> = ({ label, route, icon }) => {
+const Navlink: FC<NavlinkProps> = ({ label, route, icon }): JSX.Element => {
   const navigate = () => {
     route();
   };
@@ -28,7 +28,7 @@ const NavlinkStyled = styled.div`
   padding: 0 0.5rem;
   margin: 0 -1rem;
   font-size: var(--fs5);
-  font-weight: var(--fwBold);
+  font-weight: var(--fwMedium);
   border-radius: 1.5rem;
   cursor: pointer;
 
@@ -37,7 +37,7 @@ const NavlinkStyled = styled.div`
   }
 `;
 
-const Label = styled.p`
+const Label = styled.span`
   white-space: nowrap;
 `;
 
@@ -49,4 +49,4 @@ const Icon = styled.span`
   color: var(--highlightColor3);
 `;
 
-export default NavLink;
+export default Navlink;
