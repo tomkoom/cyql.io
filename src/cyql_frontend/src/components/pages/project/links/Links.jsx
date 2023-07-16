@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Links.module.css";
 
 // utils
-import { getTwitterUsername } from "@/utils/getTwitterUsername";
+import { twitterUsername } from "@/utils/twitterUsername";
 
 // icons
 import {
@@ -84,7 +84,7 @@ const Links = ({
     // socials
     {
       id: "twitter",
-      label: `@${getTwitterUsername(twitter)}`,
+      label: `@${twitterUsername(twitter)}`,
       url: twitter,
       icon: iTwitter,
       tag: "social",

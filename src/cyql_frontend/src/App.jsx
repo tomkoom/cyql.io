@@ -36,7 +36,7 @@ import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
 import { ProjectModal, PromoModal, SignInModal } from "@/components/modals/_index";
 
 // state
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { selectTheme } from "@/state/ui/theme";
 // import { setUpvotedProjects } from "@/state/profile/profile";
 import { selectProjects } from "@/state/projects";
@@ -57,23 +57,23 @@ import { selectNftModal } from "@/state/modals/nftModal";
 
 const App = () => {
   // hooks
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userKey } = useAuth();
   const { width } = useWindowSize();
 
   // modals
-  const projectModal = useSelector(selectProjectModal);
-  const promoModal = useSelector(selectPromoModal);
-  const shareModal = useSelector(selectShareModal);
-  const signInModal = useSelector(selectSignInModal);
-  const mobileMenuModal = useSelector(selectMobileMenuModal);
-  const nftModal = useSelector(selectNftModal);
+  const projectModal = useAppSelector(selectProjectModal);
+  const promoModal = useAppSelector(selectPromoModal);
+  const shareModal = useAppSelector(selectShareModal);
+  const signInModal = useAppSelector(selectSignInModal);
+  const mobileMenuModal = useAppSelector(selectMobileMenuModal);
+  const nftModal = useAppSelector(selectNftModal);
   const modals = [projectModal, promoModal, shareModal, signInModal, mobileMenuModal, nftModal];
 
   // ...
-  const theme = useSelector(selectTheme);
-  const projects = useSelector(selectProjects);
-  const allCategories = useSelector(selectAllCategories);
+  const theme = useAppSelector(selectTheme);
+  const projects = useAppSelector(selectProjects);
+  const allCategories = useAppSelector(selectAllCategories);
   const admins = [iiAdmin1, iiAdmin2];
 
   // juno start

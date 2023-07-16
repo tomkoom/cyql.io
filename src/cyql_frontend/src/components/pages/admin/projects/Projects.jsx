@@ -3,7 +3,7 @@ import css from "./Projects.module.css";
 
 // formatters
 import { formatStr12, formatStr16, formatWebsite, formatDiscord } from "@/utils/format";
-import { getTwitterUsername } from "@/utils/getTwitterUsername";
+import { twitterUsername } from "@/utils/twitterUsername";
 
 // components
 import { Search } from "@/components/ui-elements/_index";
@@ -66,7 +66,7 @@ const Projects = () => {
               <span>{projectDoc.data.archived.toString()}</span>
               <span>{projectDoc.data.categories.join(", ").toLowerCase()}</span>
               <span>{projectDoc.data.logo && formatWebsite(projectDoc.data.logo)}</span>
-              <span>{projectDoc.data.twitter && getTwitterUsername(projectDoc.data.twitter)}</span>
+              <span>{projectDoc.data.twitter && twitterUsername(projectDoc.data.twitter)}</span>
               <span>{projectDoc.data.discord && formatDiscord(projectDoc.data.discord)}</span>
             </div>
           ))}

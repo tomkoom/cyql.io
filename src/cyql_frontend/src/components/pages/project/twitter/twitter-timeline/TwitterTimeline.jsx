@@ -4,7 +4,7 @@ import React from "react";
 import { Timeline } from "react-twitter-widgets";
 
 // utils
-import { getTwitterUsername } from "@/utils/getTwitterUsername";
+import { twitterUsername } from "@/utils/twitterUsername";
 
 // state
 import { useSelector } from "react-redux";
@@ -17,7 +17,7 @@ const TwitterTimeline = ({ twitter }) => {
     <Timeline
       dataSource={{
         sourceType: "profile",
-        screenName: getTwitterUsername(twitter),
+        screenName: twitterUsername(twitter),
       }}
       options={{ chrome: "noheader, nofooter", theme, height: "600" }}
     />

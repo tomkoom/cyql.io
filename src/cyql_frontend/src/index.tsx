@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { FC } from "react";
 import { render } from "react-dom";
 import App from "./App";
 
@@ -14,7 +14,7 @@ import { PersistGate } from "redux-persist/integration/react";
 // auth
 import AuthProvider from "@/context/AuthContext";
 
-const Index = () => {
+const Index: FC = (): JSX.Element => {
   return (
     <Router history={history}>
       <Provider store={store}>

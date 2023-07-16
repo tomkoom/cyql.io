@@ -4,9 +4,6 @@ import css from "./Exchanges.module.css";
 // icons
 import { iAngleRight } from "@/components/icons/Icons";
 
-// utils
-import { substring70 } from "@/utils/substring";
-
 const exchanges = [
   {
     id: "binance",
@@ -52,6 +49,10 @@ const exchanges = [
 // coigecko api
 
 const Exchanges = () => {
+  const formatText = (str) => {
+    return str.length > 70 ? `${str.substring(0, 70)}…` : str;
+  };
+
   return (
     <ul className={css.exchanges}>
       {exchanges.map((exchange) => (
@@ -62,7 +63,7 @@ const Exchanges = () => {
             )}
             <div>
               <h4 className={css.title}>{exchange.label}</h4>
-              <p className={css.description}>{substring70(exchange.description)}</p>
+              <p className={css.description}>{formatText(exchange.description)}</p>
             </div>
             <div>
               <span className={css.icon}>{iAngleRight}</span>
