@@ -1,5 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+// template
+import template from "./_template";
+
 // admin
 import adminSearch from "./admin/adminSearch";
 
@@ -9,6 +12,7 @@ import icpPrice from "./api/icpPrice";
 // modals
 import modals from "./modals/modals";
 import nftModal from "./modals/nftModal";
+import promoModal from "./modals/promoModal";
 import shareModal from "./modals/shareModal";
 
 // project modal
@@ -50,6 +54,10 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
+  // template
+  template,
+
+  // ...
   icpPrice,
 
   // profile
@@ -57,8 +65,9 @@ const rootReducer = combineReducers({
 
   // modals
   modals,
-  shareModal,
   nftModal,
+  promoModal,
+  shareModal,
 
   // ui
   theme,
@@ -103,6 +112,11 @@ const store = configureStore({
       },
     }),
 });
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
 export default store;

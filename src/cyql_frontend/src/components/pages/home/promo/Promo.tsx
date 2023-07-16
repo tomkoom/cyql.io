@@ -1,26 +1,53 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import type { PromoModalData } from "@/state/_types/promoModalData";
 
 // icons
-import { iExternalLink } from "@/components/icons/Icons";
+import { iAngleDown } from "@/components/icons/Icons";
+
+// state
+import { useDispatch } from "react-redux";
+import { setPromoModal, setPromoModalData } from "@/state/modals/promoModal";
 
 const Promo: FC = (): JSX.Element => {
+  const dispatch = useDispatch();
+
+  const openModal = (promoModalData: PromoModalData): void => {
+    dispatch(setPromoModalData(promoModalData));
+    dispatch(setPromoModal(true));
+  };
+
+  const promoItems = [
+    {
+      color: "var(--background)",
+      backgroundColor: "#7888ff",
+      title: "Build with Juno",
+      text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2.",
+      ctaUrl: "https://juno.build/",
+      ctaText: "Try Juno",
+    },
+    {
+      color: "var(--primaryColor)",
+      backgroundColor: "var(--underlay)",
+      title: "Promote",
+      text: "Promote your project by highlighting on cyql.io",
+      ctaUrl:
+        "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io.",
+      ctaText: "Contact for promotion",
+    },
+  ];
+
   return (
     <PromoStyled>
-      <li id="juno">
-        <a href="https://juno.build/" target="_blank" rel="noreferrer noopener">
-          Build with Juno {iExternalLink}
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io."
-          target="_blank"
-          rel="noreferrer noopener"
+      {promoItems.map((promoItem, i) => (
+        <li
+          style={{ color: promoItem.color, backgroundColor: promoItem.backgroundColor }}
+          onClick={() => openModal(promoItem)}
+          key={i}
         >
-          Promote {iExternalLink}
-        </a>
-      </li>
+          {promoItem.title} {iAngleDown}
+        </li>
+      ))}
     </PromoStyled>
   );
 };
@@ -35,23 +62,13 @@ const PromoStyled = styled.ul`
     height: 2rem;
     display: flex;
     align-items: center;
+    gap: 0.25rem;
     font-size: var(--fsText);
     font-weight: var(--fwMedium);
-    padding: 0 0.75rem;
     white-space: nowrap;
+    padding: 0 0.75rem;
     border-radius: 1rem;
-    background-color: var(--underlay);
-
-    > a {
-      color: var(--primaryColor);
-    }
-  }
-
-  > li#juno {
-    background-color: #7888ff;
-    > a {
-      color: var(--background);
-    }
+    cursor: pointer;
   }
 `;
 

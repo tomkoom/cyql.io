@@ -33,7 +33,7 @@ import {
   Submit,
 } from "@/components/pages/index";
 import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
-import { ProjectModal, SignInModal } from "@/components/modals/_index";
+import { ProjectModal, PromoModal, SignInModal } from "@/components/modals/_index";
 
 // state
 import { useDispatch, useSelector } from "react-redux";
@@ -51,6 +51,7 @@ import {
   selectMobileMenuModal,
 } from "@/state/modals/modals";
 import { selectProjectModal } from "@/state/modals/projectModal/projectModal";
+import { selectPromoModal } from "./state/modals/promoModal";
 import { selectShareModal } from "@/state/modals/shareModal";
 import { selectNftModal } from "@/state/modals/nftModal";
 
@@ -62,10 +63,12 @@ const App = () => {
 
   // modals
   const projectModal = useSelector(selectProjectModal);
+  const promoModal = useSelector(selectPromoModal);
   const shareModal = useSelector(selectShareModal);
   const signInModal = useSelector(selectSignInModal);
   const mobileMenuModal = useSelector(selectMobileMenuModal);
   const nftModal = useSelector(selectNftModal);
+  const modals = [projectModal, promoModal, shareModal, signInModal, mobileMenuModal, nftModal];
 
   // ...
   const theme = useSelector(selectTheme);
@@ -83,10 +86,9 @@ const App = () => {
   // juno end
 
   // prevent from scrolling when modal is active
-  const modals = [signInModal, mobileMenuModal, projectModal, shareModal, nftModal];
   useEffect(() => {
     const activeModals = modals.filter((modal) => modal === true);
-    if (activeModals > 0) {
+    if (activeModals.length > 0) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -192,8 +194,9 @@ const App = () => {
       </CookieConsent>
 
       {/* modals */}
-      {signInModal && <SignInModal />}
-      {projectModal && <ProjectModal />}
+      {projectModal === true && <ProjectModal />}
+      {promoModal === true && <PromoModal />}
+      {signInModal === true && <SignInModal />}
     </div>
   );
 };

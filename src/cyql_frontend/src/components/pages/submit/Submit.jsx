@@ -54,7 +54,7 @@ const Submit = () => {
         <Loading />
       ) : isSubmitted === false ? (
         <div className={css.main}>
-          <h2 className="pageTitle">submit your project</h2>
+          <h2 className="pageTitle">add your project to cyql.io</h2>
           <form className={css.form} onSubmit={handleSubmit}>
             <Categories />
             <Inputs />
