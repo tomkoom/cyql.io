@@ -34,11 +34,7 @@ const HighlightedProjects = ({ projects }) => {
         </Grid>
       )}
 
-      <div>
-        {projects.length > 0 && (
-          <ViewMoreBtn nav={toApps}>view all {projects.length} projects</ViewMoreBtn>
-        )}
-      </div>
+      {projects.length > 0 && <ViewMoreBtn text="view all projects" nav={toApps} />}
     </div>
   );
 };

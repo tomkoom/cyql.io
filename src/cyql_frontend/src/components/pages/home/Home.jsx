@@ -43,7 +43,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>new projects</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && projectsNoNfts} />
       </Section>
@@ -52,7 +52,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>new nfts</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && projectsNfts} />
       </Section>
@@ -61,7 +61,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>popular projects</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && popularProjects} />
       </Section>
@@ -70,59 +70,59 @@ const Home = () => {
       <Section>
         <Title>
           <h3>popular nfts</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && popularNfts} />
       </Section>
 
       {/* wallets */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>wallets</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedByCategory filter="Wallets" />
       </Section>
-      <Divider />
+      <Divider /> */}
 
       {/* explorers */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>explorers</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedByCategory filter="Explorers" />
       </Section>
-      <Divider />
+      <Divider /> */}
 
       {/* social networks */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>social networks</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedByCategory filter="Social Networks" />
       </Section>
-      <Divider />
+      <Divider /> */}
 
       {/* defi */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>defi</h3>
-          <ViewAllBtn nav={toApps} />
+          <ViewAllBtn route={toApps} />
         </Title>
         <HighlightedByCategory filter="DeFi" />
       </Section>
-      <Divider />
+      <Divider /> */}
 
       {/* exchanges */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>exchanges</h3>
         </Title>
         <Exchanges />
       </Section>
-      <Divider />
+      <Divider /> */}
 
       {/* join community */}
       <Section>

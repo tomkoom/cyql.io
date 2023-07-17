@@ -6,4 +6,4 @@ export { default as HighlightedByCategory } from "./highlighted-by-category/High
 export { default as HighlightedProjects } from "./highlighted_projects/HighlightedProjects";
 export { default as JoinCommunity } from "./join-community/JoinCommunity";
 export { default as Promo } from "./promo/Promo";
-export { default as ViewAllBtn } from "./view-all-btn/ViewAllBtn";
+export { default as ViewAllBtn } from "./ViewAllBtn";
