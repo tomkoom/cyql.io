@@ -17,11 +17,11 @@ import { useAuth } from "@/context/AuthContext";
 import { IdImg } from "@/components/ui-elements/_index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setMobileMenuModal } from "@/state/modals/modals";
 
 const ProfileActions = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userKey, signOut } = useAuth();
 
   const navigate = () => {

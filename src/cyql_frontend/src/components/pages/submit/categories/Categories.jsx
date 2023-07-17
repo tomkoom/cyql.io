@@ -2,14 +2,14 @@ import React from "react";
 import css from "./Categories.module.css";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 import { selectSubmit, setSubmit } from "@/state/submit/submit";
 
 const Categories = () => {
-  const dispatch = useDispatch();
-  const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
-  const submit = useSelector(selectSubmit);
+  const dispatch = useAppDispatch();
+  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum);
+  const submit = useAppSelector(selectSubmit);
 
   const setCategory = (e) => {
     dispatch(

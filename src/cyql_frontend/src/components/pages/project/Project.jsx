@@ -21,14 +21,14 @@ import {
 } from "./index";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 import { selectShareModal } from "@/state/modals/shareModal";
 
 const Project = () => {
   const { slug } = useParams();
-  const projects = useSelector(selectProjects);
-  const shareModal = useSelector(selectShareModal);
+  const projects = useAppSelector(selectProjects);
+  const shareModal = useAppSelector(selectShareModal);
 
   return (
     <div className={css.project}>

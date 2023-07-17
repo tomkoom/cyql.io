@@ -10,11 +10,11 @@ import { Menu, MenuBtn, Socials } from "./index";
 import { Nft } from "../_index";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectMobileMenuModal } from "@/state/modals/modals";
 
 const Mobile = () => {
-  const mobileMenu = useSelector(selectMobileMenuModal);
+  const mobileMenu = useAppSelector(selectMobileMenuModal);
 
   return (
     <div className={css.mobile}>

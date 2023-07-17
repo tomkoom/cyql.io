@@ -1,7 +1,7 @@
 /* description */
 
 .description {
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   padding: 1rem;
   border-radius: 1rem;
 }

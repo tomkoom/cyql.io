@@ -2,10 +2,10 @@ import React from "react";
 import css from "./LoadMoreBtn.module.css";
 
 // redux
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 
 const LoadMoreBtn = ({ label, size, setItemsVisible }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const setItems = () => {
     dispatch(setItemsVisible(size));
   };

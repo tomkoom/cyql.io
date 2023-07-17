@@ -5,11 +5,11 @@ import css from "./MenuBtn.module.css";
 import { iBars } from "@/components/icons/Icons";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setMobileMenuModal } from "@/state/modals/modals";
 
 const MenuBtn = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <button className={css.btn} onClick={() => dispatch(setMobileMenuModal(true))}>
       {iBars}

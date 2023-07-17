@@ -8,12 +8,12 @@ import { Categories, Description, Grantee, Input, Meta } from "./index";
 import { main, socials, additional, nft } from "./inputs";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc, setProjectDocData } from "@/state/modals/projectModal/projectModal";
 
 const FormContent = () => {
-  const dispatch = useDispatch();
-  const projectDoc = useSelector(selectProjectDoc);
+  const dispatch = useAppDispatch();
+  const projectDoc = useAppSelector(selectProjectDoc);
 
   const updateProjectDocData = (e) => {
     const { name, value } = e.target;

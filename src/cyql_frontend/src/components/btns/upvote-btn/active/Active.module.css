@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   font-size: var(--fontSize7);
-  color: var(--highlightColor);
+  color: var(--highlight1);
   background-color: rgba(var(--highlightColorRgb3), 0.1);
   font-weight: var(--fwBold);
   border-radius: 0.5rem;
@@ -20,7 +20,7 @@
 }
 
 .icon {
-  color: var(--highlightColor3);
+  color: var(--highlight3);
 }
 
 .size5 {
@@ -32,7 +32,7 @@
 }
 
 .num {
-  color: var(--highlightColor3);
+  color: var(--highlight3);
   margin-top: -0.25rem;
   padding-bottom: 0.25rem;
 }

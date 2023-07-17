@@ -10,12 +10,12 @@
   padding: 0 0.5rem;
   font-size: var(--fontSize5);
   font-weight: var(--fwBold);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   border-radius: 0.5rem;
 }
 
 .btn:hover {
-  color: var(--background);
+  color: var(--backgroundColor);
   background-color: var(--primaryColor);
 }
 

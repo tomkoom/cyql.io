@@ -14,15 +14,15 @@ import { setDoc } from "@junobuild/core";
 import { Categories, Inputs, Loading, SubmissionSuccess, SubmitBtn } from "./index";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectSubmit } from "@/state/submit/submit";
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 const Submit = () => {
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const submit = useSelector(selectSubmit);
-  const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
+  const submit = useAppSelector(selectSubmit);
+  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum);
   const collection = junoCollectionSubmittedProjects;
 
   const handleSubmit = async (e) => {

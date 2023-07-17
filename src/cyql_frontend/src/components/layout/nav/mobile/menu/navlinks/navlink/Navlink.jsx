@@ -2,11 +2,11 @@ import React from "react";
 import css from "./Navlink.module.css";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setMobileMenuModal } from "@/state/modals/modals";
 
 const Navlink = ({ label, route, icon }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = () => {
     route();
     dispatch(setMobileMenuModal(false));

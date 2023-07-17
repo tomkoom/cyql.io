@@ -5,11 +5,11 @@ import css from "./Header.module.css";
 import { CrossIcon } from "@/components/icons/index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setSignInModal } from "@/state/modals/modals";
 
 const Header = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const closeSignInModal = () => {
     dispatch(setSignInModal(false));

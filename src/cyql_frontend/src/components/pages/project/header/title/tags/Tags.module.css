@@ -14,19 +14,19 @@
   gap: 0.25rem;
   font-size: var(--fs6);
   font-weight: var(--fwBold);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   padding: 0 0.75rem;
   border-radius: 1.25rem;
 }
 
 #open {
   color: var(--primaryColor);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
 }
 
 #onchain {
   color: #fff;
-  background-color: var(--highlightColor3);
+  background-color: var(--highlight3);
 }
 
 #grantee {

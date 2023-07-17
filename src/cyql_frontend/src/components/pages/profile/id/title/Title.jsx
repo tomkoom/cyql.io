@@ -8,11 +8,11 @@ import { formatId } from "@/utils/format";
 import { useAuth } from "@/context/AuthContext";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectOwnsNft } from "@/state/profile/profile";
 
 const Title = () => {
-  const ownsNft = useSelector(selectOwnsNft);
+  const ownsNft = useAppSelector(selectOwnsNft);
   const { userKey } = useAuth();
 
   return (

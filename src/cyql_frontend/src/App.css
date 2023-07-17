@@ -15,7 +15,7 @@ body {
 
 .app {
   color: var(--primaryColor);
-  background-color: var(--background);
+  background-color: var(--backgroundColor);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -73,16 +73,16 @@ ul {
 
 .primaryBtn {
   color: white;
-  background-color: var(--highlightColor);
+  background-color: var(--highlight1);
 }
 
 .primaryBtn:hover {
-  background-color: var(--highlightColor2);
+  background-color: var(--highlight2);
 }
 
 .secondaryBtn {
   color: var(--primaryColor);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
 }
 
 .secondaryBtn:hover {
@@ -116,7 +116,7 @@ ul {
   height: 3rem;
   padding: 0 1rem;
   color: var(--primaryColor);
-  background: var(--underlay);
+  background: var(--underlay1);
   border-radius: 0.5rem;
 }
 
@@ -138,7 +138,7 @@ ul {
   color: white;
   font-weight: var(--fwBold);
   text-decoration: none;
-  background-color: var(--highlightColor);
+  background-color: var(--highlight1);
   padding: 0.25rem 0.25rem;
   border-radius: 0.5rem;
   border: none;
@@ -146,7 +146,7 @@ ul {
 }
 
 .cookie__btn:hover {
-  background-color: var(--highlightColor2);
+  background-color: var(--highlight2);
 }
 
 .cookie__link {

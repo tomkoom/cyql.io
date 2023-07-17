@@ -9,15 +9,15 @@ import { twitterUsername } from "@/utils/twitterUsername";
 import { Search } from "@/components/ui-elements/_index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch";
 
 const Projects = () => {
-  const dispatch = useDispatch();
-  const projectsDocs = useSelector(selectProjects);
-  const searchQuery = useSelector(selectAdminSearch);
+  const dispatch = useAppDispatch();
+  const projectsDocs = useAppSelector(selectProjects);
+  const searchQuery = useAppSelector(selectAdminSearch);
 
   const setSearch = (e) => {
     dispatch(setAdminSearch(e.target.value));

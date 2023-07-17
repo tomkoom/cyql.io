@@ -6,7 +6,7 @@ import { Category, Filter, ProjectList, Sort } from "./index";
 import { Search } from "@/components/ui-elements/_index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectSearch, setSearch } from "@/state/projects/search";
 import {
   setFilterByOnChain,
@@ -18,11 +18,11 @@ import {
 } from "@/state/projects/filter";
 
 const Projects = () => {
-  const dispatch = useDispatch();
-  const searchQuery = useSelector(selectSearch);
-  const filterByOpenSource = useSelector(selectFilterByOpenSource);
-  const filterByOnChain = useSelector(selectFilterByOnChain);
-  const filterByGrantee = useSelector(selectFilterByGrantee);
+  const dispatch = useAppDispatch();
+  const searchQuery = useAppSelector(selectSearch);
+  const filterByOpenSource = useAppSelector(selectFilterByOpenSource);
+  const filterByOnChain = useAppSelector(selectFilterByOnChain);
+  const filterByGrantee = useAppSelector(selectFilterByGrantee);
 
   const setProjectsSearch = (e) => {
     dispatch(setSearch(e.target.value));

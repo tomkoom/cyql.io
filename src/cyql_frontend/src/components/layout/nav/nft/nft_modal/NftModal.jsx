@@ -8,13 +8,13 @@ import { CrossIcon } from "@/components/icons/index";
 import { Links } from "./index";
 
 // state
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { setNftModal } from "@/state/modals/nftModal";
 import { selectTheme } from "@/state/ui/theme";
 
 const NftModal = () => {
-  const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
+  const dispatch = useAppDispatch();
+  const theme = useAppSelector(selectTheme);
   const text =
     "cyql nft is the main asset of the project which represents its development progress and will carry a number of utilities which can be used on the platform.";
   const style =

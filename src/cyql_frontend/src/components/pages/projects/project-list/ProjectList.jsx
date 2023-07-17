@@ -10,7 +10,7 @@ import { Loader } from "@/components/ui-elements/_index";
 import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectCategory } from "@/state/projects/category";
 import { selectSearch } from "@/state/projects/search";
 import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/ui/loadMore";
@@ -34,21 +34,21 @@ import {
 
 const ProjectList = () => {
   // projects
-  const projects = useSelector(selectProjectsDocsActive);
+  const projects = useAppSelector(selectProjectsDocsActive);
   const projectsNum = projects.length;
-  const itemsVisible = useSelector(selectItemsVisibleProjects);
+  const itemsVisible = useAppSelector(selectItemsVisibleProjects);
 
   // search
-  const searchQuery = useSelector(selectSearch);
+  const searchQuery = useAppSelector(selectSearch);
 
   // filter
-  const category = useSelector(selectCategory);
-  const openSource = useSelector(selectFilterByOpenSource);
-  const onChain = useSelector(selectFilterByOnChain);
-  const grantee = useSelector(selectFilterByGrantee);
+  const category = useAppSelector(selectCategory);
+  const openSource = useAppSelector(selectFilterByOpenSource);
+  const onChain = useAppSelector(selectFilterByOnChain);
+  const grantee = useAppSelector(selectFilterByGrantee);
 
   // sort
-  const sort = useSelector(selectSort);
+  const sort = useAppSelector(selectSort);
 
   return (
     <div>

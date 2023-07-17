@@ -5,11 +5,11 @@ import css from "./Btn.module.css";
 import { iAngleDown, iSort } from "@/components/icons/Icons";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectSort } from "@/state/projects/sort";
 
 const Btn = () => {
-  const sort = useSelector(selectSort);
+  const sort = useAppSelector(selectSort);
 
   return (
     <button className={css.btn}>

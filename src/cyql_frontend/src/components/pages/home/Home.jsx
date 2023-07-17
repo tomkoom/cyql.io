@@ -16,11 +16,11 @@ import {
 } from "./_index";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 
 const Home = () => {
-  const projects = useSelector(selectProjects).filter((p) => p.data.archived !== true);
+  const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true);
   const projectsNoNfts = projects.filter((p) => !p.data.categories.includes("NFTs"));
   const projectsNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
   const popularProjects = projects
@@ -152,7 +152,7 @@ const Title = styled.div`
 
 const Divider = styled.div`
   height: 1px;
-  box-shadow: 0 1px 0 0 var(--underlay);
+  box-shadow: 0 1px 0 0 var(--underlay1);
   margin-bottom: 4rem;
 `;
 

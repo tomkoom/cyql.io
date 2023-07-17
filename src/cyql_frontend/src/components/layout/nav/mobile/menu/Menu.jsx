@@ -12,15 +12,15 @@ import { Navlinks, ProfileActions, SignInBtn } from "./index";
 import { Price, Theme } from "@/components/ui-elements/_index";
 
 // state
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals";
 
 const Divider = () => <hr className={css.div} />;
 
 const Menu = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userKey } = useAuth();
-  const mobileMenu = useSelector(selectMobileMenuModal);
+  const mobileMenu = useAppSelector(selectMobileMenuModal);
 
   return (
     mobileMenu && (

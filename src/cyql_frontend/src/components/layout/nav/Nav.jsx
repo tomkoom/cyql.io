@@ -30,7 +30,7 @@ const Main = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  background-color: var(--background);
+  background-color: var(--backgroundColor);
   height: 64px;
   padding: 0.5rem 2rem;
 

@@ -5,13 +5,13 @@ import css from "./SignInModal.module.css";
 import { Header, SignInMethods } from "./index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { setSignInModal } from "@/state/modals/modals";
 import { selectTheme } from "@/state/ui/theme";
 
 const SignInModal = () => {
-  const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
+  const dispatch = useAppDispatch();
+  const theme = useAppSelector(selectTheme);
 
   const close = () => {
     dispatch(setSignInModal(false));

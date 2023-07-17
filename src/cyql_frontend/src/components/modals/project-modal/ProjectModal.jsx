@@ -6,7 +6,7 @@ import { Controls, FormContent, Header } from "./index";
 import { Loader } from "@/components/ui-elements/_index";
 
 // state
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import { setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
 import {
   selectProjectModalLoadingSet,
@@ -14,9 +14,9 @@ import {
 } from "@/state/modals/projectModal/projectModalLoading";
 
 const ProjectModal = () => {
-  const dispatch = useDispatch();
-  const setIsLoading = useSelector(selectProjectModalLoadingSet);
-  const delIsLoading = useSelector(selectProjectModalLoadingDel);
+  const dispatch = useAppDispatch();
+  const setIsLoading = useAppSelector(selectProjectModalLoadingSet);
+  const delIsLoading = useAppSelector(selectProjectModalLoadingDel);
 
   // close modal on esc
   useEffect(() => {

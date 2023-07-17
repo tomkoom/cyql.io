@@ -5,7 +5,7 @@ import css from "./HighlightedByCategory.module.css";
 import { iCheckCircle } from "@/components/icons/Icons";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 import { toApp } from "@/routes/routes";
 
@@ -14,7 +14,7 @@ import { toApp } from "@/routes/routes";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
-  const projects = useSelector(selectProjects).filter(
+  const projects = useAppSelector(selectProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   );
 

@@ -5,17 +5,17 @@ import css from "./Profile.module.css";
 import { useAuth } from "@/context/AuthContext";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@/state/profile/profile";
 
 // components
 import Id from "./id/Id";
 
 const Profile = () => {
-  // const dispatch = useDispatch();
+  // const dispatch = useAppDispatch();
   // const { principalId } = useAuth();
-  // const ownsNft = useSelector(selectOwnsNft);
-  // const upvotedProjects = useSelector(selectUpvotedProjects);
+  // const ownsNft = useAppSelector(selectOwnsNft);
+  // const upvotedProjects = useAppSelector(selectUpvotedProjects);
 
   // const getOwnsNft = async () => {
   //   const nftCanId = "dtlqp-nqaaa-aaaak-abwna-cai";

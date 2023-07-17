@@ -8,7 +8,7 @@
   padding: 0 0.75rem;
   font-weight: var(--fwBold);
   color: var(--tertiaryColor);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   border-radius: 1.25rem;
   cursor: pointer;
 }

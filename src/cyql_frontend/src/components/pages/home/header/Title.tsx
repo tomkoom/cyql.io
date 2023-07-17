@@ -7,11 +7,11 @@ import iclogo from "../../../../../assets/ic-logo.svg";
 import { toApps } from "@/routes/routes";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 
 const Title: FC = (): JSX.Element => {
-  const projects = useSelector(selectProjects).filter((project) => project.data.archived !== true);
+  const projects = useAppSelector(selectProjects).filter((project) => project.data.archived !== true);
   const projectsNum = projects.length;
 
   return (
@@ -58,7 +58,7 @@ const Badge = styled.span`
   font-size: var(--fs4);
   padding: 0 1rem;
   border-radius: 4rem;
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
 
   > img {
     height: 2rem;

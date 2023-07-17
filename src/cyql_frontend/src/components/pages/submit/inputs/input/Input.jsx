@@ -2,12 +2,12 @@ import React from "react";
 import css from "./Input.module.css";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectSubmit, setSubmit } from "@/state/submit/submit";
 
 const Input = ({ inputs }) => {
-  const dispatch = useDispatch();
-  const submit = useSelector(selectSubmit);
+  const dispatch = useAppDispatch();
+  const submit = useAppSelector(selectSubmit);
 
   const handleInput = (e) => {
     dispatch(setSubmit({ ...submit, [e.target.name]: e.target.value }));

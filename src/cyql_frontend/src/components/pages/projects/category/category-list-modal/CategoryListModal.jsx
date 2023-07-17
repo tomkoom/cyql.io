@@ -5,19 +5,19 @@ import css from "./CategoryListModal.module.css";
 import { CrossIcon } from "@/components/icons/index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { setCategory, selectCategory } from "@/state/projects/category";
 import { selectProjects } from "@/state/projects";
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 const CategoryListModal = ({ openCategoryList, setOpenCategoryList }) => {
-  const dispatch = useDispatch();
-  const projectCategory = useSelector(selectCategory);
-  const projectsDocs = useSelector(selectProjects).filter(
+  const dispatch = useAppDispatch();
+  const projectCategory = useAppSelector(selectCategory);
+  const projectsDocs = useAppSelector(selectProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   );
   const projectsDocsNum = projectsDocs.length;
-  const categoriesSortedByNum = useSelector(selectCategoriesSortedByNum);
+  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum);
 
   const clickCategory = (categoryLabel) => {
     dispatch(setCategory(categoryLabel));

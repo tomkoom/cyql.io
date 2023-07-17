@@ -29,7 +29,7 @@
   align-items: center;
   gap: 0.25rem;
   font-size: var(--fs6);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   padding: 0 0.75rem;
   border-radius: 1.25rem;
   cursor: pointer;
@@ -41,5 +41,5 @@
 
 .categoryHidden:checked + .category {
   color: white;
-  background-color: var(--highlightColor);
+  background-color: var(--highlight1);
 }

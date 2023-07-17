@@ -2,7 +2,7 @@ import React from "react";
 import css from "./CategoryList.module.css";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectAllCategories } from "@/state/categories/allCategories";
 import {
   selectProjectCategories,
@@ -10,9 +10,9 @@ import {
 } from "@/state/modals/projectModal/projectModal";
 
 const CategoryList = () => {
-  const dispatch = useDispatch();
-  const allCategories = useSelector(selectAllCategories);
-  const projectCategories = useSelector(selectProjectCategories);
+  const dispatch = useAppDispatch();
+  const allCategories = useAppSelector(selectAllCategories);
+  const projectCategories = useAppSelector(selectProjectCategories);
   const projectCategoriesCopy = [...projectCategories];
 
   const updateCategory = (category) => {

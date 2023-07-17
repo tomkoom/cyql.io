@@ -33,7 +33,7 @@ const NavlinkStyled = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--underlay);
+    background-color: var(--underlay1);
   }
 `;
 
@@ -46,7 +46,7 @@ const Icon = styled.span`
   height: 2rem;
   display: grid;
   place-items: center;
-  color: var(--highlightColor3);
+  color: var(--highlight3);
 `;
 
 export default Navlink;

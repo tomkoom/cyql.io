@@ -5,11 +5,11 @@ import css from "./Btn.module.css";
 import { iAngleDown } from "@/components/icons/Icons";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectCategory } from "@/state/projects/category";
 
 const Btn = () => {
-  const category = useSelector(selectCategory);
+  const category = useAppSelector(selectCategory);
 
   return (
     <button className={css.btn}>

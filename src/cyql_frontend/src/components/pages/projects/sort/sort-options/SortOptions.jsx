@@ -5,13 +5,13 @@ import css from "./SortOptions.module.css";
 import { iCheck } from "@/components/icons/Icons";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectSort, setSort } from "@/state/projects/sort";
 
 const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const sortOptionsRef = useRef(null);
-  const sort = useSelector(selectSort);
+  const sort = useAppSelector(selectSort);
   const style = { width: `${sortBtnWidth.toString()}px` };
 
   const handleOutsideClick = (e) => {

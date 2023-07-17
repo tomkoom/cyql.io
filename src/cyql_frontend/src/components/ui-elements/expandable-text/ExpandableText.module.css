@@ -3,7 +3,7 @@
 .expandable {
   font-size: 0.9rem;
   color: var(--secondaryColor);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   padding: 1rem;
   border-radius: 1rem;
 }

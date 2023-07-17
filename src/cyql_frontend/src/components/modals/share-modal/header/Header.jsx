@@ -5,11 +5,11 @@ import css from "./Header.module.css";
 import { CrossIcon } from "@/components/icons/index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setShareModal } from "@/state/modals/shareModal";
 
 const Header = ({ name }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShareModal(false));
   };

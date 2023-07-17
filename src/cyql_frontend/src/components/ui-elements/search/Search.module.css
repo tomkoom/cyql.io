@@ -23,5 +23,5 @@
 
 .search:hover,
 .search:focus {
-  box-shadow: 0 0 0 2px var(--highlightColor);
+  box-shadow: 0 0 0 2px var(--highlight1);
 }

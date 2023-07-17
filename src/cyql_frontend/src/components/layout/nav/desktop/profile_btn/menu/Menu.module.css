@@ -9,7 +9,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   border-radius: 1rem;
 }
 
@@ -40,7 +40,7 @@
 
 .subtitle {
   font-size: var(--fs7);
-  color: var(--highlightColor3);
+  color: var(--highlight3);
 }
 
 .icon {

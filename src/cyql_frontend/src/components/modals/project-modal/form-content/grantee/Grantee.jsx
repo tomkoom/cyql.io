@@ -5,12 +5,12 @@ import css from "./Grantee.module.css";
 import { Btn } from "../index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc, setProjectGrantee } from "@/state/modals/projectModal/projectModal";
 
 const Grantee = () => {
-  const dispatch = useDispatch();
-  const projectDoc = useSelector(selectProjectDoc);
+  const dispatch = useAppDispatch();
+  const projectDoc = useAppSelector(selectProjectDoc);
 
   const setGrantee = (value) => {
     dispatch(setProjectGrantee(value));

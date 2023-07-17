@@ -16,6 +16,6 @@
   font-size: var(--fsText);
   font-weight: var(--fwBold);
   color: var(--secondaryColor);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   border-radius: 0.5rem;
 }

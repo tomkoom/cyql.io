@@ -25,11 +25,11 @@
 
 #primary {
   color: #fff;
-  background-color: var(--highlightColor);
+  background-color: var(--highlight1);
 }
 
 #secondary {
-  background: var(--underlay);
+  background: var(--underlay1);
 }
 
 .icon {

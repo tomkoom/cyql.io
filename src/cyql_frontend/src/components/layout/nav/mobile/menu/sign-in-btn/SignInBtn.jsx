@@ -5,11 +5,11 @@ import css from "./SignInBtn.module.css";
 import { iSignIn } from "@/components/icons/Icons";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setSignInModal } from "@/state/modals/modals";
 
 const SignInBtn = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const openSignInModal = () => {
     dispatch(setSignInModal(true));

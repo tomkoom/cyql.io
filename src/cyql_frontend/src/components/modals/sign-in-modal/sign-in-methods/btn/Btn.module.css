@@ -13,7 +13,7 @@
 }
 
 .btn:hover {
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
 }
 
 .main {

@@ -8,14 +8,14 @@ import { iArrowUp, iArrowDown } from "@/components/icons/Icons";
 import { Change } from "./index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/api/icpPrice";
 import { fetchIcpPrice } from "@/state/api/icpPrice";
 
 const Price = () => {
-  const dispatch = useDispatch();
-  const price = useSelector(selectIcpPrice);
-  const change = useSelector(selectIcp24hPriceChange);
+  const dispatch = useAppDispatch();
+  const price = useAppSelector(selectIcpPrice);
+  const change = useAppSelector(selectIcp24hPriceChange);
   const second = 1000;
 
   useEffect(() => {

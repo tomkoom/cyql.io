@@ -5,7 +5,7 @@ import css from "./FilterOptions.module.css";
 import { iCheck } from "@/components/icons/Icons";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 
 const FilterOptions = ({
   openFilterOptions,
@@ -15,7 +15,7 @@ const FilterOptions = ({
   filter,
   setFilter,
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const filterOptionsRef = useRef(null);
   const style = { width: `${filterBtnWidth.toString()}px` };
 

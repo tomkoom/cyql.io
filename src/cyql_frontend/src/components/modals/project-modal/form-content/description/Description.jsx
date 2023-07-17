@@ -2,15 +2,15 @@ import React from "react";
 import css from "./Description.module.css";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import {
   selectProjectDescription,
   setProjectDescription,
 } from "@/state/modals/projectModal/projectModal";
 
 const Description = () => {
-  const dispatch = useDispatch();
-  const description = useSelector(selectProjectDescription);
+  const dispatch = useAppDispatch();
+  const description = useAppSelector(selectProjectDescription);
   const setDescription = (e) => {
     dispatch(setProjectDescription(e.target.value));
   };

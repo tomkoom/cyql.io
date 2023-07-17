@@ -25,7 +25,7 @@
   font-size: 0.9rem;
   font-weight: var(--fwBold);
   color: var(--primaryColor);
-  background-color: var(--background);
+  background-color: var(--backgroundColor);
   box-shadow: 0 0 0 1px var(--underlay2);
   caret-color: var(--primaryColor);
   border-radius: 0.5rem;
@@ -39,7 +39,7 @@
   border-radius: 0.5rem;
   font-weight: var(--fwBold);
   color: white;
-  background-color: var(--highlightColor);
+  background-color: var(--highlight1);
 
   /* position */
   position: absolute;

@@ -44,7 +44,7 @@
 [data-social="nuance"] a,
 [data-social="catalyze"] a,
 [data-social="medium"] a {
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   color: var(--primaryColor);
 }
 
@@ -61,7 +61,7 @@
 [data-social="nuance"] a:hover,
 [data-social="catalyze"] a:hover,
 [data-social="medium"] a:hover {
-  color: var(--background);
+  color: var(--backgroundColor);
   background-color: var(--primaryColor);
 }
 

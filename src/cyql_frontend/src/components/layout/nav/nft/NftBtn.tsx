@@ -1,33 +1,19 @@
-import React from "react";
-import styled from "styled-components";
+import React, { FC } from "react";
+
+// components
+import { Btn } from "@/components/btns/_index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setNftModal } from "@/state/modals/nftModal";
 
-const NftBtn = () => {
-  const dispatch = useDispatch();
+const NftBtn: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch();
   const openNftModal = () => {
     dispatch(setNftModal(true));
   };
 
-  return <NftBtnStyled onClick={openNftModal}>cyql nft</NftBtnStyled>;
+  return <Btn btnType="primary" text="cyql nfts" onClick={openNftModal} />;
 };
-
-const NftBtnStyled = styled.button`
-  height: 2.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0 0.75rem;
-  font-size: var(--fsText);
-  font-weight: var(--fwBold);
-  background-color: var(--highlightColor);
-  border-radius: 1.125rem;
-
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 
 export default NftBtn;

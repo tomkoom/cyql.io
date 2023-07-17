@@ -5,11 +5,11 @@ import css from "./Admin.module.css";
 import { Projects } from "./index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setProjectModal } from "@/state/modals/projectModal/projectModal";
 
 const Admin = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const addProject = () => {
     dispatch(setProjectModal(true));

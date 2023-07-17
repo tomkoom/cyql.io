@@ -5,12 +5,12 @@ import css from "./Header.module.css";
 import { CrossIcon } from "@/components/icons/index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc, setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const projectDoc = useSelector(selectProjectDoc);
+  const dispatch = useAppDispatch();
+  const projectDoc = useAppSelector(selectProjectDoc);
   const closeModal = () => {
     dispatch(setCloseProjectModal());
   };

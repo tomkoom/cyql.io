@@ -19,6 +19,6 @@
 }
 
 .socialsI a:hover {
-  color: var(--background);
+  color: var(--backgroundColor);
   background-color: var(--primaryColor);
 }

@@ -6,7 +6,7 @@
   align-items: center;
   font-size: var(--fsText);
   font-weight: var(--fwBold);
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   padding: 0 1rem;
   border-radius: 1.25rem;
 }

@@ -6,4 +6,4 @@ export { default as LoadMoreBtn } from "./load-more-btn/LoadMoreBtn";
 export { default as ViewMoreBtn } from "./view-more-btn/ViewMoreBtn";
 
 // ...
-export { default as PrimaryBtn } from "./PrimaryBtn";
+export { default as Btn } from "./Btn";

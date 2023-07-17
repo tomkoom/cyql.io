@@ -10,12 +10,12 @@
   font-size: 0.9rem;
   font-weight: var(--fwBold);
   padding: 0.5rem;
-  background-color: var(--underlay);
+  background-color: var(--underlay1);
   border-radius: 0.5rem;
   cursor: pointer;
 }
 
 .selected {
   background-color: var(--primaryColor);
-  color: var(--background);
+  color: var(--backgroundColor);
 }

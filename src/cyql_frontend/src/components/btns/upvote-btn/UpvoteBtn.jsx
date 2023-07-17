@@ -4,14 +4,14 @@ import React from "react";
 import { useAuth } from "@/context/AuthContext";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setSignInModal } from "@/state/modals/modals";
 
 // components
 import { Active, NotActive } from "./index";
 
 const UpvoteBtn = ({ id, upvotedBy, location }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userKey } = useAuth();
 
   const upvote = async (id, p) => {

@@ -18,12 +18,12 @@ import { Btn, Logo, Title } from "./index";
 // import { UpvtBtn } from "@components/index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
 import { setShareModal } from "@/state/modals/shareModal";
 
 const Header = ({ projectDoc }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { userKey } = useAuth();
   const admins = [iiAdmin1, iiAdmin2];
 

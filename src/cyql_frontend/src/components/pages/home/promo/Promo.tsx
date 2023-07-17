@@ -6,11 +6,11 @@ import type { PromoModalData } from "@/state/_types/promoModalData";
 import { iAngleDown } from "@/components/icons/Icons";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setPromoModal, setPromoModalData } from "@/state/modals/promoModal";
 
 const Promo: FC = (): JSX.Element => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const openModal = (promoModalData: PromoModalData): void => {
     dispatch(setPromoModalData(promoModalData));
@@ -19,7 +19,7 @@ const Promo: FC = (): JSX.Element => {
 
   const promoItems = [
     {
-      color: "var(--background)",
+      color: "var(--backgroundColor)",
       backgroundColor: "#7888ff",
       title: "Build with Juno",
       text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2.",
@@ -28,7 +28,7 @@ const Promo: FC = (): JSX.Element => {
     },
     {
       color: "var(--primaryColor)",
-      backgroundColor: "var(--underlay)",
+      backgroundColor: "var(--underlay1)",
       title: "Promote",
       text: "Promote your project by highlighting on cyql.io",
       ctaUrl:

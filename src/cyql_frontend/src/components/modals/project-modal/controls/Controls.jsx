@@ -13,7 +13,7 @@ import { nanoid } from "@/utils/projectId";
 import { Btn } from "./index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc, setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
 import {
   setProjectModalLoadingSet,
@@ -21,9 +21,9 @@ import {
 } from "@/state/modals/projectModal/projectModalLoading";
 
 const Controls = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
-  const project = useSelector(selectProjectDoc);
+  const project = useAppSelector(selectProjectDoc);
   const collection = junoCollectionProjects;
 
   const get = async (key) => {

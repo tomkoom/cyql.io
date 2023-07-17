@@ -6,13 +6,13 @@ import { Input } from "./index";
 import { Btn } from "../index";
 
 // state
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc } from "@/state/modals/projectModal/projectModal";
 import { setProjectArchived } from "@/state/modals/projectModal/projectModal";
 
 const Meta = () => {
-  const dispatch = useDispatch();
-  const projectDoc = useSelector(selectProjectDoc);
+  const dispatch = useAppDispatch();
+  const projectDoc = useAppSelector(selectProjectDoc);
 
   const setArchived = (value) => {
     dispatch(setProjectArchived(value));

@@ -8,11 +8,11 @@ import { main, links, linksSoc, linksIC, img, notes, nft } from "./inputsItems";
 import Input from "./input/Input";
 
 // state
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/useRedux";
 import { selectSubmit } from "@/state/submit/submit";
 
 const Inputs = () => {
-  const submit = useSelector(selectSubmit);
+  const submit = useAppSelector(selectSubmit);
 
   return (
     <div className={css.inputs}>

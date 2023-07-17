@@ -28,5 +28,5 @@
   height: 2.5rem;
   display: grid;
   place-items: center;
-  color: var(--highlightColor3);
+  color: var(--highlight3);
 }

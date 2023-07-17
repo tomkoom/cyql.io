@@ -5,11 +5,11 @@ import css from "./ShareModal.module.css";
 import { Header, ShareBtns, ShareLink } from "./index";
 
 // state
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/useRedux";
 import { setShareModal } from "@/state/modals/shareModal";
 
 const ShareModal = ({ slug, name, categories, description }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const close = () => {
     dispatch(setShareModal(false));
   };
