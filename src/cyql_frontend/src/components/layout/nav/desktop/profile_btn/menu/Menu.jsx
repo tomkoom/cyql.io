@@ -6,7 +6,7 @@ import { IdImg } from "@/components/ui-elements/_index";
 
 // icons
 import { iSignOut } from "@/components/icons/Icons";
-import CrossIcon from "@/components/icons/cross-icon/CrossIcon";
+import CrossIcon from "@/components/icons/CrossIcon";
 
 // utils
 import { formatId } from "@/utils/format";

@@ -21,10 +21,18 @@ const Promo: FC = (): JSX.Element => {
     {
       color: "var(--backgroundColor)",
       backgroundColor: "#7888ff",
-      title: "Build with Juno",
+      title: "Build with Juno 🛠️",
       text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2.",
       ctaUrl: "https://juno.build/",
       ctaText: "Try Juno",
+    },
+    {
+      color: "var(--backgroundColor)",
+      backgroundColor: "#fa9d1d",
+      title: "Rabbithole: Web3 Storage 📦",
+      text: "Decentralized & encrypted file storage service based on the Internet Computer (IC).",
+      ctaUrl: "https://dqaj4-oiaaa-aaaap-aazza-cai.ic0.app/",
+      ctaText: "Try Rabbithole",
     },
     {
       color: "var(--primaryColor)",

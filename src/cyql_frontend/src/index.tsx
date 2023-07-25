@@ -16,15 +16,17 @@ import AuthProvider from "@/context/AuthContext";
 
 const Index: FC = (): JSX.Element => {
   return (
-    <Router history={history}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </PersistGate>
-      </Provider>
-    </Router>
+    <React.StrictMode>
+      <Router history={history}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </PersistGate>
+        </Provider>
+      </Router>
+    </React.StrictMode>
   );
 };
 

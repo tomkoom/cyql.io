@@ -11,6 +11,7 @@ import icpPrice from "./api/icpPrice";
 
 // modals
 import modals from "./modals/modals";
+import apiModal from "./modals/apiModal";
 import nftModal from "./modals/nftModal";
 import promoModal from "./modals/promoModal";
 import shareModal from "./modals/shareModal";
@@ -65,6 +66,7 @@ const rootReducer = combineReducers({
 
   // modals
   modals,
+  apiModal,
   nftModal,
   promoModal,
   shareModal,

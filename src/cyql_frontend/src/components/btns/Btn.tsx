@@ -1,14 +1,14 @@
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 interface BtnProps {
   btnType: "primary" | "secondary";
   text: string;
-  icon?: any;
+  icon?: ReactNode;
   onClick: () => void;
 }
 
-const Btn: FC<BtnProps> = ({ btnType, text, icon, onClick }) => {
+const Btn: FC<BtnProps> = ({ btnType, text, icon, onClick }): JSX.Element => {
   return (
     <BtnStyled btnType={btnType} onClick={onClick}>
       {icon !== undefined && <span>{icon}</span>}
@@ -18,7 +18,7 @@ const Btn: FC<BtnProps> = ({ btnType, text, icon, onClick }) => {
 };
 
 const colors = {
-  primary: "`var(--backgroundColor)`",
+  primary: "#fff",
   secondary: "var(--primaryColor)",
 };
 
@@ -43,7 +43,7 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
   font-weight: var(--fwBold);
   border-radius: 1.25rem;
 
-  /* primary / secondary */
+  /* custom */
   color: ${(p) => colors[p.btnType]};
   background-color: ${(p) => bgColors[p.btnType]};
 

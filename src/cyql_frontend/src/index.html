@@ -28,7 +28,146 @@
       gtag("config", "G-5SFM5N4EP1");
     </script>
   </head>
+
+  <style>
+    /* root styles */
+    :root {
+      /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
+
+      --coolGray100: #121619;
+      --coolGray100Rgb: 18, 22, 25;
+      --coolGray90: #21272a;
+      --coolGray80: #343a3f;
+      --coolGray70: #4d5358;
+      --coolGray60: #697077;
+      --coolGray50: #878d96;
+      --coolGray40: #a2a9b0;
+      --coolGray30: #c1c7cd;
+      --coolGray20: #dde1e6;
+      --coolGray10: #f2f4f8;
+      --coolGray10Rgb: 242, 244, 248;
+
+      --black: #000000;
+      --white: #ffffff;
+
+      /* highlight colors */
+
+      --hColor1: #6200ea;
+      --hColor2: #651fff;
+      --hColor3: #7c4dff;
+      --hColorRgb: 98, 0, 234;
+      --hColorRgb2: 101, 31, 255;
+      --hColorRgb3: 124, 77, 255;
+
+      /* style breakpoints */
+
+      /* colors */
+
+      --colorGreen: #64dd17;
+      --colorRed: #fa4d56;
+      --colorOrange: #ff3d00;
+      --colorNeutral: (var(--coolGray60));
+
+      /* social colors */
+
+      --colorTwitter: #00acee;
+      --colorDiscord: #5865f2;
+      --colorTelegram: #0088cc;
+      --colorFacebook: #1877f2;
+      --colorLinkedIn: #1877f2;
+      --colorReddit: #ff5700;
+      --colorGitHub: #1b1f23;
+      --colorEntrepot: #53bfa8;
+      --colorCrowdfundNft: #0d69ef;
+
+      /* font-size */
+
+      --fontSize1: 3.052rem;
+      --fontSize2: 2.441rem;
+      --fontSize3: 1.953rem;
+      --fontSize4: 1.563rem;
+      --fontSize5: 1.25rem;
+      --fontSize6: 1rem;
+      --fontSize7: 0.8rem;
+
+      --fs1: 3.052rem;
+      --fs2: 2.441rem;
+      --fs3: 1.953rem;
+      --fs4: 1.563rem;
+      --fs5: 1.25rem;
+      --fs6: 1rem;
+      --text: 0.9rem;
+      --fsText: 0.9rem;
+      --fs7: 0.8rem;
+
+      /* font-weight fw */
+
+      --fwBlack: 900;
+      /* --fwExtraBold: 800; */
+      --fwBold: 700;
+      /* --fwSemiBold: 600; */
+      --fwMedium: 500;
+      --fwRegular: 400;
+
+      /* font-family */
+
+      --fontFamily: "Inter", sans-serif;
+      --monospace: "Inconsolata", monospace;
+    }
+
+    /* theme */
+    /* theme */
+
+    .light {
+      /* highlight colors */
+      --highlight1: var(--hColor1);
+      --highlight2: var(--hColor2);
+      --highlight3: var(--hColor3);
+      --highlightColorRgb: var(--hColorRgb);
+      --highlightColorRgb2: var(--hColorRgb2);
+      --highlightColorRgb3: var(--hColorRgb3);
+
+      /* main */
+      --primaryColor: var(--coolGray100);
+      --primaryColorRgb: var(--coolGray100Rgb);
+      --secondaryColor: var(--coolGray70);
+      --tertiaryColor: var(--coolGray50);
+      --backgroundColor: #fff;
+      --backgroundRgb: 255, 255, 255;
+
+      /* underlay */
+      --underlay1: var(--coolGray10);
+      --underlay2: var(--coolGray20);
+      --underlay3: var(--coolGray30);
+    }
+
+    .dark {
+      /* highlight colors */
+      --highlight1: var(--hColor1);
+      --highlight2: var(--hColor2);
+      --highlight3: var(--hColor3);
+      --highlightColorRgb: var(--hColorRgb);
+      --highlightColorRgb2: var(--hColorRgb2);
+      --highlightColorRgb3: var(--hColorRgb3);
+
+      /* main */
+      --primaryColor: var(--coolGray10);
+      --primaryColorRgb: var(--coolGray10Rgb);
+      --secondaryColor: var(--coolGray30);
+      --tertiaryColor: var(--coolGray50);
+      --backgroundColor: var(--coolGray100);
+      --backgroundRgb: var(--coolGray100Rgb);
+
+      /* underlay */
+      --underlay1: var(--coolGray90);
+      --underlay2: var(--coolGray80);
+      --underlay3: var(--coolGray70);
+    }
+  </style>
+
+  <!-- content -->
   <body>
     <div id="app"></div>
+    <div id="modal"></div>
   </body>
 </html>
