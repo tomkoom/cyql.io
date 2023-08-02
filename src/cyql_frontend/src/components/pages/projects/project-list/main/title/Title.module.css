@@ -8,7 +8,7 @@
 }
 
 .name {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   font-weight: var(--fwBold);
   word-wrap: break-word;
 }

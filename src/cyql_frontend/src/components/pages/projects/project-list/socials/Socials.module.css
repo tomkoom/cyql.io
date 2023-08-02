@@ -5,7 +5,7 @@
   align-items: center;
   gap: 0.25rem;
   flex-wrap: wrap;
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   color: var(--secondaryColor);
 }
 

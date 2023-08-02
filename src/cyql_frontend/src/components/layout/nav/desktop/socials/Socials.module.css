@@ -10,7 +10,7 @@
   height: 2rem;
   display: grid;
   place-items: center;
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   border-radius: 50%;
 }
 

@@ -7,11 +7,11 @@
 }
 
 .title {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   margin-bottom: 0.25rem;
 }
 
 .text {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   line-height: 150%;
 }

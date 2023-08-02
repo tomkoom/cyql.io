@@ -16,6 +16,6 @@
 }
 
 .icon {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   color: var(--secondaryColor);
 }

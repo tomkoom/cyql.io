@@ -8,7 +8,7 @@
   gap: 0.5rem;
   height: 3rem;
   padding: 0 0.5rem;
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   font-weight: var(--fwBold);
   background-color: var(--underlay1);
   border-radius: 0.5rem;
@@ -20,6 +20,6 @@
 }
 
 .icon {
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
   color: var(--tertiaryColor);
 }

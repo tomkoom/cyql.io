@@ -16,7 +16,7 @@
   place-items: center;
   width: 3rem;
   height: 3rem;
-  font-size: var(--fontSize4);
+  font-size: var(--fs4);
   color: #fff;
   border-radius: 50%;
 }

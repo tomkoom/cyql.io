@@ -45,6 +45,13 @@ const ModalStyled = styled.div<{ theme: string }>`
   background-color: ${(p) => bgColors[p.theme]};
   padding: 1rem;
   z-index: 1;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
 `;
 
 export default Modal;

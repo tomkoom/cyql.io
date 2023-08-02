@@ -38,6 +38,6 @@
   .link {
     width: 2.5rem;
     height: 2.5rem;
-    font-size: var(--fontSize5);
+    font-size: var(--fs5);
   }
 }

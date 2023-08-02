@@ -146,7 +146,7 @@ const Title = styled.div`
   margin-bottom: 1rem;
 
   > h3 {
-    font-size: var(--fontSize4);
+    font-size: var(--fs4);
   }
 `;
 

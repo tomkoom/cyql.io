@@ -3,7 +3,7 @@
 .socials {
   display: flex;
   color: var(--secondaryColor);
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
 
   /* align to the block above */
   margin-left: -0.5rem;

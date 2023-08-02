@@ -36,6 +36,6 @@
 }
 
 .text {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
   font-weight: var(--fwRedular);
 }

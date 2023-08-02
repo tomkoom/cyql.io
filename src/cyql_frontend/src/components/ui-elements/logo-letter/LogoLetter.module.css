@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: var(--fontSize4);
+  font-size: var(--fs4);
   font-weight: var(--fwBlack);
   color: var(--tertiaryColor);
   background-color: var(--underlay1);

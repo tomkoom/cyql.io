@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: var(--fontSize7);
+  font-size: var(--fs7);
   color: var(--highlight1);
   background-color: rgba(var(--highlightColorRgb3), 0.1);
   font-weight: var(--fwBold);
@@ -24,11 +24,11 @@
 }
 
 .size5 {
-  font-size: var(--fontSize5);
+  font-size: var(--fs5);
 }
 
 .size4 {
-  font-size: var(--fontSize4);
+  font-size: var(--fs4);
 }
 
 .num {

@@ -24,7 +24,7 @@ const SummaryStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--fontSize7);
+  font-size: var(--fs7);
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
@@ -32,7 +32,7 @@ const SummaryStyled = styled.div`
 
 const Highlight = styled.span`
   font-family: var(--monospace);
-  font-size: var(--fontSize6);
+  font-size: var(--fs6);
   font-weight: var(--fwBold);
   color: var(--highlight3);
 `;
