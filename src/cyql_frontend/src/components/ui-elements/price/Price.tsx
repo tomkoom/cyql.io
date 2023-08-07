@@ -34,9 +34,9 @@ const Price: FC = (): JSX.Element => {
       <p>{"$" + price}</p>
 
       {change > 0 ? (
-        <Change change={change} icon={iArrowUp} color="var(--colorGreen)" />
+        <Change change={change} icon={iArrowUp} color="var(--colorOk)" />
       ) : change < 0 ? (
-        <Change change={change} icon={iArrowDown} color="var(--colorRed)" />
+        <Change change={change} icon={iArrowDown} color="var(--colorErr)" />
       ) : (
         <Change change={change} icon="" color="var(--colorNeutral)" />
       )}

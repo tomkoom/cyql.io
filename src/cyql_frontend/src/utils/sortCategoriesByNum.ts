@@ -1,4 +1,4 @@
-const sortCategoriesByNum = (allCategories, projects) => {
+export const sortCategoriesByNum = (allCategories, projects) => {
   const sort = (projects, a, b) => {
     const projectsNum = projects.length;
     const filter = (project, label) => project.data.categories.includes(label);
@@ -13,5 +13,3 @@ const sortCategoriesByNum = (allCategories, projects) => {
 
   return [...allCategories].sort((a, b) => sort(projects, a, b));
 };
-
-export { sortCategoriesByNum };

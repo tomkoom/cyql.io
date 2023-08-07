@@ -15,7 +15,7 @@ body {
 
 .app {
   color: var(--primaryColor);
-  background-color: var(--backgroundColor);
+  background-color: var(--background);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ ul {
 
 .alertBtn {
   color: white;
-  background-color: var(--colorRed);
+  background-color: var(--colorErr);
 }
 
 .pageTitle {

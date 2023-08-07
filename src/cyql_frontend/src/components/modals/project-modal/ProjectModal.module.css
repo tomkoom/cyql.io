@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   z-index: 1;
-  background-color: var(--backgroundColor);
+  background-color: var(--background);
 
   /* overflow */
   height: 100%;

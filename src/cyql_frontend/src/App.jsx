@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import "@/styles/root.css";
-import "@/styles/theme.css";
-import "@/styles/typography.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
 

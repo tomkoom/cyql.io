@@ -61,7 +61,7 @@
 [data-social="nuance"] a:hover,
 [data-social="catalyze"] a:hover,
 [data-social="medium"] a:hover {
-  color: var(--backgroundColor);
+  color: var(--background);
   background-color: var(--primaryColor);
 }
 

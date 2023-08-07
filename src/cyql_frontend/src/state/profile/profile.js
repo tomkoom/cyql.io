@@ -20,11 +20,9 @@ const profile = createSlice({
   },
 });
 
-// selectors
-const selectVerified = (state) => state.profile.verified;
-const selectUpvotedProjects = (state) => state.profile.upvotedProjects;
-const selectOwnsNft = (state) => state.profile.ownsNft;
-export { selectVerified, selectUpvotedProjects, selectOwnsNft };
+export const selectVerified = (state) => state.profile.verified;
+export const selectUpvotedProjects = (state) => state.profile.upvotedProjects;
+export const selectOwnsNft = (state) => state.profile.ownsNft;
 
 export const { setVerified, setUpvotedProjects, setOwnsNft } = profile.actions;
 export default profile.reducer;

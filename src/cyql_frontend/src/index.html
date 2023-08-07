@@ -30,7 +30,52 @@
   </head>
 
   <style>
-    /* root styles */
+    /* –––FONTS––– */
+
+    /* Inter */
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+    /* Inconsolata */
+    @import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&display=swap");
+
+    /* –––TYPOGRAPHY––– */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: var(--fwBold);
+      line-height: 100%;
+    }
+
+    h1 {
+      font-size: var(--fs1);
+    }
+
+    h2 {
+      font-size: var(--fs2);
+    }
+
+    h3 {
+      font-size: var(--fs3);
+    }
+
+    h4 {
+      font-size: var(--fs4);
+    }
+
+    h5 {
+      font-size: var(--fs5);
+    }
+
+    h6 {
+      font-size: var(--fs6);
+    }
+
+    /* –––ROOT––– */
+
     :root {
       /* Cool Gray IBM https://www.ibm.com/design/language/color/ */
 
@@ -63,9 +108,8 @@
 
       /* colors */
 
-      --colorGreen: #64dd17;
-      --colorRed: #fa4d56;
-      --colorOrange: #ff3d00;
+      --colorOk: #64dd17;
+      --colorErr: #fa4d56;
       --colorNeutral: (var(--coolGray60));
 
       /* social colors */
@@ -107,24 +151,23 @@
       --monospace: "Inconsolata", monospace;
     }
 
-    /* theme */
-    /* theme */
+    /* –––THEME––– */
 
     .light {
       /* highlight colors */
       --highlight1: var(--hColor1);
       --highlight2: var(--hColor2);
       --highlight3: var(--hColor3);
-      --highlightColorRgb: var(--hColorRgb);
-      --highlightColorRgb2: var(--hColorRgb2);
-      --highlightColorRgb3: var(--hColorRgb3);
+      --highlightColor1Rgb: var(--hColorRgb);
+      --highlightColor2Rgb: var(--hColorRgb2);
+      --highlightColor3Rgb: var(--hColorRgb3);
 
       /* main */
       --primaryColor: var(--coolGray100);
       --primaryColorRgb: var(--coolGray100Rgb);
       --secondaryColor: var(--coolGray70);
       --tertiaryColor: var(--coolGray50);
-      --backgroundColor: #fff;
+      --background: #fff;
       --backgroundRgb: 255, 255, 255;
 
       /* underlay */
@@ -138,16 +181,16 @@
       --highlight1: var(--hColor1);
       --highlight2: var(--hColor2);
       --highlight3: var(--hColor3);
-      --highlightColorRgb: var(--hColorRgb);
-      --highlightColorRgb2: var(--hColorRgb2);
-      --highlightColorRgb3: var(--hColorRgb3);
+      --highlightColor1Rgb: var(--hColorRgb);
+      --highlightColor2Rgb: var(--hColorRgb2);
+      --highlightColor3Rgb: var(--hColorRgb3);
 
       /* main */
       --primaryColor: var(--coolGray10);
       --primaryColorRgb: var(--coolGray10Rgb);
       --secondaryColor: var(--coolGray30);
       --tertiaryColor: var(--coolGray50);
-      --backgroundColor: var(--coolGray100);
+      --background: var(--coolGray100);
       --backgroundRgb: var(--coolGray100Rgb);
 
       /* underlay */

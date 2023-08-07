@@ -55,7 +55,7 @@ const PromoModalStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--backgroundColor);
+  background-color: var(--background);
 `;
 
 const Content = styled.div`

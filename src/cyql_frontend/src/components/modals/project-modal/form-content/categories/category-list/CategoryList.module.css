@@ -17,5 +17,5 @@
 
 .selected {
   background-color: var(--primaryColor);
-  color: var(--backgroundColor);
+  color: var(--background);
 }

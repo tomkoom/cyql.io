@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--backgroundColor);
+  background-color: var(--background);
   padding: 2rem;
   z-index: 1;
 }

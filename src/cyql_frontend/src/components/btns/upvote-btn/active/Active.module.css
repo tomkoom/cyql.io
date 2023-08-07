@@ -8,7 +8,7 @@
   justify-content: center;
   font-size: var(--fs7);
   color: var(--highlight1);
-  background-color: rgba(var(--highlightColorRgb3), 0.1);
+  background-color: rgba(var(--highlightColor3Rgb), 0.1);
   font-weight: var(--fwBold);
   border-radius: 0.5rem;
   border: none;
@@ -16,7 +16,7 @@
 }
 
 .btn:hover {
-  background-color: rgba(var(--highlightColorRgb3), 0.2);
+  background-color: rgba(var(--highlightColor3Rgb), 0.2);
 }
 
 .icon {

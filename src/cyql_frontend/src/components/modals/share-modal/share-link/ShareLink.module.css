@@ -25,7 +25,7 @@
   font-size: 0.9rem;
   font-weight: var(--fwBold);
   color: var(--primaryColor);
-  background-color: var(--backgroundColor);
+  background-color: var(--background);
   box-shadow: 0 0 0 1px var(--underlay2);
   caret-color: var(--primaryColor);
   border-radius: 0.5rem;
