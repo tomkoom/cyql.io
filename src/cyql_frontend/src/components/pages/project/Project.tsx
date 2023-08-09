@@ -6,7 +6,7 @@ import { device } from "@/styles/breakpoints";
 import { useParams } from "react-router-dom";
 
 // components
-import { Loader } from "@/components/ui-elements/_index";
+import { Loader } from "@/components/ui/_index";
 import { BackBtn } from "@/components/btns/_index";
 import { ShareModal } from "@/components/modals/_index";
 import {

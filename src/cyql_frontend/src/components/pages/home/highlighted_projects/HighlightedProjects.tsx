@@ -6,7 +6,7 @@ import { device } from "@/styles/breakpoints";
 import { toApps } from "@/routes/routes";
 
 // components
-import { Loader } from "@/components/ui-elements/_index";
+import { Loader } from "@/components/ui/_index";
 import { ViewMoreBtn } from "@/components/btns/_index";
 import { Project } from "./_index";
 

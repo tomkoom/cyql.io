@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Id.module.css";
 
 // components
-import { IdImg } from "@/components/ui-elements/_index";
+import { IdImg } from "@/components/ui/_index";
 import { Ids, Title } from "./index";
 
 const Id = () => {

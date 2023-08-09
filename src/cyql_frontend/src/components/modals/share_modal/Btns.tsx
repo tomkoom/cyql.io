@@ -1,5 +1,5 @@
-import React from "react";
-import css from "./ShareBtns.module.css";
+import React, { FC } from "react";
+import styled from "styled-components";
 
 // icons
 import { iTwitter, iTelegram, iFacebook, iRedditAlien, iLinkedin } from "@/components/icons/Icons";
@@ -14,55 +14,93 @@ import {
 } from "react-share";
 // https://www.npmjs.com/package/react-share
 
-const ShareBtns = ({ slug, name, categories, description }) => {
+interface BtnsProps {
+  slug: string;
+  name: string;
+  categories: string[];
+  description: string;
+}
+
+const Btns: FC<BtnsProps> = ({ slug, name, categories, description }): JSX.Element => {
   // const url = `https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/#/projects/${slug}`;
   const url2 = `https://cyql.io/#/projects/${slug}`;
   const summary = `${name}: ${description}`;
   const hashtags = [...categories, "ICP", "Web3", "InternetComputer"];
 
   return (
-    <ul className={css.shareBtns}>
+    <BtnsStyled>
       <li>
         <TwitterShareButton url={url2} title={`${summary} 🔗`} via="cyqlio" hashtags={hashtags}>
-          <span id={css.twitter} className={css.icon}>
-            {iTwitter}
-          </span>
+          <Icon id="twitter">{iTwitter}</Icon>
         </TwitterShareButton>
       </li>
 
       <li>
         <TelegramShareButton url={url2} title={summary}>
-          <span id={css.telegram} className={css.icon}>
-            {iTelegram}
-          </span>
+          <Icon id="telegram">{iTelegram}</Icon>
         </TelegramShareButton>
       </li>
 
       <li>
         <FacebookShareButton url={url2} quote={summary} hashtag="#Web3">
-          <span id={css.facebook} className={css.icon}>
-            {iFacebook}
-          </span>
+          <Icon id="facebook">{iFacebook}</Icon>
         </FacebookShareButton>
       </li>
 
       <li>
         <RedditShareButton url={url2} title={summary}>
-          <span id={css.reddit} className={css.icon}>
-            {iRedditAlien}
-          </span>
+          <Icon id="reddit">{iRedditAlien}</Icon>
         </RedditShareButton>
       </li>
 
       <li>
         <LinkedinShareButton url={url2} title={name} summary={summary} source="cyql.io">
-          <span id={css.linkedin} className={css.icon}>
-            {iLinkedin}
-          </span>
+          <Icon id="linkedin">{iLinkedin}</Icon>
         </LinkedinShareButton>
       </li>
-    </ul>
+    </BtnsStyled>
   );
 };
 
-export default ShareBtns;
+const BtnsStyled = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+
+  > li:hover {
+    opacity: 0.75;
+  }
+
+  > * span#twitter {
+    background-color: var(--colorTwitter);
+  }
+
+  > * span#telegram {
+    background-color: var(--colorTelegram);
+  }
+
+  > * span#facebook {
+    background-color: var(--colorFacebook);
+  }
+
+  > * span#reddit {
+    background-color: var(--colorReddit);
+  }
+
+  > * span#linkedin {
+    background-color: var(--colorLinkedIn);
+  }
+`;
+
+const Icon = styled.span`
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  font-size: var(--fs4);
+  color: #fff;
+  border-radius: 50%;
+`;
+
+export default Btns;

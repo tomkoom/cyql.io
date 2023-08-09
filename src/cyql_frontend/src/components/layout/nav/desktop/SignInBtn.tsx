@@ -12,7 +12,7 @@ import { useAppDispatch } from "@/hooks/useRedux";
 import { setSignInModal } from "@/state/modals/modals";
 
 // components
-import { Spinner } from "@/components/ui-elements/_index";
+import { Spinner } from "@/components/ui/_index";
 import { Btn } from "@/components/btns/_index";
 
 const SignInBtn: FC = (): JSX.Element => {

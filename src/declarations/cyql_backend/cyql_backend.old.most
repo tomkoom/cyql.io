@@ -1,4 +1,39 @@
 // Version: 1.0.0
+type AssetEncoding =
+  {
+    content : [Blob];
+    contentEncoding : Text;
+    modified : Time__1;
+    sha256 : ?Blob;
+    totalLength : Nat
+  };
+type CallbackStrategy =
+  {
+    callback : shared query Token -> async StreamingCallbackHttpResponse__1;
+    token : Token
+  };
+type HeaderField__3 = (Text, Text);
+type HttpRequest__3 =
+  {body : Blob; headers : [HeaderField__3]; method : Text; url : Text};
+type HttpRequest__4 = HttpRequest__3;
+type HttpResponse__3 =
+  {
+    body : Blob;
+    headers : [HeaderField__3];
+    status_code : Nat16;
+    streaming_strategy : ?StreamingStrategy__1;
+    upgrade : ?Bool
+  };
+type HttpResponse__4 = HttpResponse__3;
+type Key = Text;
+type StableAsset = {contentType : Text; encodings : [(Text, AssetEncoding)]};
+type StableAsset__1 = StableAsset;
+type StreamingCallbackHttpResponse__1 = {body : Blob; token : ?Token};
+type StreamingStrategy__1 = {#Callback : CallbackStrategy};
+type Time__1 = Int;
+type Token = {arbitrary_data : Text};
 actor {
-  
+  stable var serializedEntries :
+    ([(HttpRequest__4, (HttpResponse__4, Nat))], [(Key, StableAsset__1)],
+     [Principal])
 };

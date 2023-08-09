@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Menu.module.css";
 
 // components
-import { IdImg } from "@/components/ui-elements/_index";
+import { IdImg } from "@/components/ui/_index";
 
 // icons
 import { iSignOut } from "@/components/icons/Icons";

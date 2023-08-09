@@ -1,16 +1,16 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode, ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
 
-interface BtnProps {
+interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   btnType: "primary" | "secondary";
   text: string;
   icon?: ReactNode;
   onClick: () => void;
 }
 
-const Btn: FC<BtnProps> = ({ btnType, text, icon, onClick }): JSX.Element => {
+const Btn: FC<BtnProps> = ({ btnType, text, icon, onClick, ...props }): JSX.Element => {
   return (
-    <BtnStyled btnType={btnType} onClick={onClick}>
+    <BtnStyled btnType={btnType} onClick={onClick} {...props}>
       {icon !== undefined && <span>{icon}</span>}
       <span>{text}</span>
     </BtnStyled>

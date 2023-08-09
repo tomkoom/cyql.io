@@ -1,4 +1,4 @@
-// ui-elements
+// ui
 
 export { default as ExpandableText } from "./expandable-text/ExpandableText";
 export { default as IdImg } from "./id-img/IdImg";
