@@ -61,29 +61,6 @@ module.exports = {
     // https://betterprogramming.pub/the-right-usage-of-aliases-in-webpack-typescript-4418327f47fa
     alias: {
       "@": path.resolve(__dirname, "src", frontendDir, "src"),
-
-      // components
-      "@/components/btns": path.resolve(__dirname, "src", frontendDir, "src/components/btns"),
-      "@/components/icons": path.resolve(__dirname, "src", frontendDir, "src/components/icons"),
-      "@/components/layout": path.resolve(__dirname, "src", frontendDir, "src/components/layout"),
-      "@/components/modals": path.resolve(__dirname, "src", frontendDir, "src/components/modals"),
-      "@/components/pages": path.resolve(__dirname, "src", frontendDir, "src/components/pages"),
-      "@/components/ui-elements": path.resolve(
-        __dirname,
-        "src",
-        frontendDir,
-        "src/components/ui-elements"
-      ),
-      // end components
-
-      "@/constants": path.resolve(__dirname, "src", frontendDir, "src/constants"),
-      "@/context": path.resolve(__dirname, "src", frontendDir, "src/context"),
-      "@/hooks": path.resolve(__dirname, "src", frontendDir, "src/hooks"),
-      "@/routes": path.resolve(__dirname, "src", frontendDir, "src/routes"),
-      "@/services": path.resolve(__dirname, "src", frontendDir, "src/services"),
-      "@/state": path.resolve(__dirname, "src", frontendDir, "src/state"),
-      "@/styles": path.resolve(__dirname, "src", frontendDir, "src/styles"),
-      "@/utils": path.resolve(__dirname, "src", frontendDir, "src/utils"),
     },
   },
   output: {

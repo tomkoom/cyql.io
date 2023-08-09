@@ -1,16 +1,16 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
-import Modal from "./Modal";
+import Modal from "./_Modal";
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux";
 import { setApiModalIsOpen } from "@/state/modals/apiModal";
 
-interface ApiModalModalProps {
+interface ApiModalProps {
   isOpen: boolean;
 }
 
-const ApiModalModal: FC<ApiModalModalProps> = ({ isOpen }): JSX.Element => {
+const ApiModalModal: FC<ApiModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const closeModal = () => {

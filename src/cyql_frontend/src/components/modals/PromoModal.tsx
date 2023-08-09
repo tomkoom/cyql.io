@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import Modal from "./_Modal";
 import type { PromoModalData } from "@/state/_types/promoModalData";
 
 // icons
@@ -10,14 +11,15 @@ import { iExternalLink } from "@/components/icons/Icons";
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import {
   setPromoModal,
+  selectPromoModal,
   setClearPromoModalData,
   selectPromoModalData,
 } from "@/state/modals/promoModal";
 
 const PromoModal: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const isOpen = useAppSelector(selectPromoModal);
   const promoModalData: PromoModalData = useAppSelector(selectPromoModalData);
-  const text = "";
 
   const closeModal = () => {
     dispatch(setPromoModal(false));
@@ -25,9 +27,8 @@ const PromoModal: FC = (): JSX.Element => {
   };
 
   return (
-    <PromoModalStyled>
+    <Modal isOpen={isOpen} onClose={closeModal}>
       <Content>
-        <CrossIcon onClick={closeModal} />
         <h3>{promoModalData.title}</h3>
         <p>{promoModalData.text}</p>
 
@@ -41,32 +42,16 @@ const PromoModal: FC = (): JSX.Element => {
           {promoModalData.ctaText} {iExternalLink}
         </Cta>
       </Content>
-    </PromoModalStyled>
+    </Modal>
   );
 };
-
-const PromoModalStyled = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--background);
-`;
 
 const Content = styled.div`
   max-width: 24rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
-  color: var(--primaryColor);
-  padding: 1rem;
-  margin: 1rem;
+  gap: 0.5rem;
 
   > p {
     line-height: 150%;

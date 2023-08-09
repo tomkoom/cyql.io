@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./Admin.module.css";
 
 // components
@@ -11,7 +11,7 @@ import { setProjectModal } from "@/state/modals/projectModal/projectModal";
 const Admin = () => {
   const dispatch = useAppDispatch();
 
-  const addProject = () => {
+  const openModal = () => {
     dispatch(setProjectModal(true));
   };
 
@@ -19,7 +19,7 @@ const Admin = () => {
     <div className={css.admin}>
       <div className={css.title}>
         <h2 className="pageTitle">admin</h2>
-        <button className="primaryBtn" onClick={addProject}>
+        <button className="primaryBtn" onClick={openModal}>
           add project
         </button>
       </div>

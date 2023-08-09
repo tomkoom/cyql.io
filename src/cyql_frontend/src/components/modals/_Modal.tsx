@@ -1,6 +1,8 @@
 import React, { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
+
+// icons
 import CrossIcon from "@/components/icons/CrossIcon";
 
 // state
@@ -18,8 +20,8 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }): JSX.Element => {
   const theme = useAppSelector(selectTheme);
 
   return createPortal(
-    <ModalStyled theme={theme} className={theme}>
-      <div>
+    <ModalStyled className={theme} onClick={onClose}>
+      <div id="content" onClick={(e) => e.stopPropagation()}>
         <CrossIcon onClick={onClose} />
         {children}
       </div>
@@ -28,12 +30,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }): JSX.Element => {
   );
 };
 
-const bgColors = {
-  light: "#fff",
-  dark: "#121619",
-};
-
-const ModalStyled = styled.div<{ theme: string }>`
+const ModalStyled = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -42,15 +39,19 @@ const ModalStyled = styled.div<{ theme: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(p) => bgColors[p.theme]};
+  background-color: rgba(var(--backgroundRgb), 0.8);
   padding: 1rem;
   z-index: 1;
 
-  > div {
+  > div#content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+    color: var(--primaryColor);
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
   }
 `;
 

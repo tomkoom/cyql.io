@@ -8,7 +8,7 @@
 
 .categoryListI {
   font-size: 0.9rem;
-  font-weight: var(--fwBold);
+  font-weight: var(--fwMedium);
   padding: 0.5rem;
   background-color: var(--underlay1);
   border-radius: 0.5rem;

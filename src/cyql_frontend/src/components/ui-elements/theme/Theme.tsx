@@ -12,10 +12,10 @@ const Theme: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector(selectTheme);
 
-  const changeTheme = (theme: string): string => {
+  const changeTheme = (theme: string): { value: string } => {
     return {
-      light: "dark",
-      dark: "light",
+      light: { value: "dark" },
+      dark: { value: "light" },
     }[theme];
   };
 
@@ -36,6 +36,7 @@ const ThemeStyled = styled.div`
   flex-shrink: 0;
   color: var(--primaryColor);
   background-color: var(--underlay1);
+  /* box-shadow: rgba(var(--primaryColorRgb), 0.16) 0px 1px 4px; */
   cursor: pointer;
 
   &:hover {

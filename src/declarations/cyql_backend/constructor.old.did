@@ -1,0 +1,9 @@
+type JokeObj = 
+ record {
+   delivery: text;
+   setup: text;
+ };
+service : {
+  getJoke: () -> (opt JokeObj);
+  whoami: () -> (principal);
+}
