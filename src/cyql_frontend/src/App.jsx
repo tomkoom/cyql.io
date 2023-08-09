@@ -14,7 +14,7 @@ import { verifyAdmin } from "@/utils/verifyAdmin";
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum";
 
 // juno
-import { initJuno0, updateProjects } from "@/services/junoServices";
+import { initJuno0, updateProjects } from "@/shared/juno";
 
 // auth
 import { useAuth } from "@/context/AuthContext";

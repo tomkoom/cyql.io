@@ -31,14 +31,6 @@ const Promo: FC = (): JSX.Element => {
       ctaText: "Try Juno",
     },
     {
-      color: "var(--background)",
-      backgroundColor: "#fa9d1d",
-      title: "Rabbithole: Web3 Storage 📦",
-      text: "Decentralized & encrypted file storage service based on the Internet Computer (IC).",
-      ctaUrl: "https://dqaj4-oiaaa-aaaap-aazza-cai.ic0.app/",
-      ctaText: "Try Rabbithole",
-    },
-    {
       color: "var(--primaryColor)",
       backgroundColor: "var(--underlay1)",
       title: "Promote",
@@ -50,20 +42,21 @@ const Promo: FC = (): JSX.Element => {
   ];
 
   return (
-    <PromoStyled>
-      {/* modal */}
+    <>
       <PromoModal isOpen={isOpen} />
 
-      {promoItems.map((promoItem, i) => (
-        <li
-          style={{ color: promoItem.color, backgroundColor: promoItem.backgroundColor }}
-          onClick={() => openModal(promoItem)}
-          key={i}
-        >
-          {promoItem.title} {iAngleDown}
-        </li>
-      ))}
-    </PromoStyled>
+      <PromoStyled>
+        {promoItems.map((promoItem, i) => (
+          <li
+            style={{ color: promoItem.color, backgroundColor: promoItem.backgroundColor }}
+            onClick={() => openModal(promoItem)}
+            key={i}
+          >
+            {promoItem.title} {iAngleDown}
+          </li>
+        ))}
+      </PromoStyled>
+    </>
   );
 };
 

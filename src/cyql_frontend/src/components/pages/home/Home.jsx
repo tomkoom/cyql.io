@@ -6,12 +6,11 @@ import { toApps } from "@/routes/routes";
 
 // components
 import {
-  Exchanges,
   Header,
-  HighlightedByCategory,
   HighlightedProjects,
   JoinCommunity,
   Promo,
+  StaffPicks,
   ViewAllBtn,
 } from "./_index";
 
@@ -37,6 +36,7 @@ const Home = () => {
   return (
     <div>
       <Promo />
+      <StaffPicks />
       <Header />
 
       {/* newest projects */}

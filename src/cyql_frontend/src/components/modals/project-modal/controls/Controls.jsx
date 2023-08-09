@@ -4,7 +4,7 @@ import css from "./Controls.module.css";
 // juno
 import { junoCollectionProjects } from "@/constants/constants";
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
-import { updateProjects } from "@/services/junoServices";
+import { updateProjects } from "@/shared/juno";
 
 // project id
 import { nanoid } from "@/utils/projectId";
