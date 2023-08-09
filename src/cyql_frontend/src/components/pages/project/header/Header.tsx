@@ -1,5 +1,5 @@
-import React from "react";
-import css from "./Header.module.css";
+import React, { FC } from "react";
+import styled from "styled-components";
 
 // utils
 import { verifyAdmin } from "@/utils/verifyAdmin";
@@ -14,7 +14,7 @@ import { iEdit, iShareSquare } from "@/components/icons/Icons";
 import { useAuth } from "@/context/AuthContext";
 
 // components
-import { Btn, Logo, Title } from "./index";
+import { Btn, Logo, Title } from "./_index";
 // import { UpvtBtn } from "@components/index";
 
 // state
@@ -22,13 +22,13 @@ import { useAppDispatch } from "@/hooks/useRedux";
 import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
 import { setShareModal } from "@/state/modals/shareModal";
 
-const Header = ({ projectDoc }) => {
+const Header: FC<any> = ({ project }): JSX.Element => {
   const dispatch = useAppDispatch();
   const { userKey } = useAuth();
   const admins = [iiAdmin1, iiAdmin2];
 
   const editProject = () => {
-    dispatch(setProjectDoc(projectDoc));
+    dispatch(setProjectDoc(project));
     dispatch(setProjectModal(true));
   };
 
@@ -37,29 +37,49 @@ const Header = ({ projectDoc }) => {
   };
 
   return (
-    <div className={css.header}>
-      <div className={css.main}>
-        {projectDoc.data.logo !== "" && (
-          <Logo logo={projectDoc.data.logo} name={projectDoc.data.name} />
-        )}
+    <HeaderStyled>
+      <Main>
+        {project.data.logo !== "" && <Logo logo={project.data.logo} name={project.data.name} />}
         <Title
-          name={projectDoc.data.name}
-          categories={projectDoc.data.categories}
-          github={projectDoc.data.github}
-          canister={projectDoc.data.canister}
-          grantee={projectDoc.data.grantee}
+          name={project.data.name}
+          categories={project.data.categories}
+          github={project.data.github}
+          canister={project.data.canister}
+          grantee={project.data.grantee}
         />
-      </div>
+      </Main>
 
-      <div className={css.controls}>
+      <Controls>
         {verifyAdmin(admins, userKey) === true && <Btn icon={iEdit} onClick={editProject} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
         {/* <div className={css.btnContainer}>
-          <UpvtBtn id={projectDoc.key} upvotedBy={projectDoc.data.upvotedBy} location="project" />
+          <UpvtBtn id={project.key} upvotedBy={project.data.upvotedBy} location="project" />
         </div> */}
-      </div>
-    </div>
+      </Controls>
+    </HeaderStyled>
   );
 };
+
+const HeaderStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const Main = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
+
+const Controls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+`;
 
 export default Header;
