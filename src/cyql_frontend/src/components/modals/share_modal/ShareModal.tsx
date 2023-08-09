@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "../_Modal";
 
@@ -23,6 +23,15 @@ const ShareModal: FC<ShareModalProps> = ({ slug, name, categories, description }
   const closeModal = () => {
     dispatch(setShareModal(false));
   };
+
+  // hide scrollbar
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>

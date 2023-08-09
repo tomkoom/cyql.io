@@ -30,7 +30,7 @@ import {
   Submit,
 } from "@/components/pages/index";
 import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
-import { ProjectModal, PromoModal, SignInModal } from "@/components/modals/_index";
+import { ProjectModal } from "@/components/modals/_index";
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
@@ -41,16 +41,8 @@ import { selectAllCategories } from "@/state/categories/allCategories";
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 // state: modals
-import {
-  setSignInModal,
-  selectSignInModal,
-  setMobileMenuModal,
-  selectMobileMenuModal,
-} from "@/state/modals/modals";
+import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals";
 import { selectProjectModal } from "@/state/modals/projectModal/projectModal";
-import { selectPromoModal } from "./state/modals/promoModal";
-import { selectShareModal } from "@/state/modals/shareModal";
-import { selectNftModal } from "@/state/modals/nftModal";
 
 const App = () => {
   // hooks
@@ -60,12 +52,7 @@ const App = () => {
 
   // modals
   const projectModal = useAppSelector(selectProjectModal);
-  const promoModal = useAppSelector(selectPromoModal);
-  const shareModal = useAppSelector(selectShareModal);
-  const signInModal = useAppSelector(selectSignInModal);
   const mobileMenuModal = useAppSelector(selectMobileMenuModal);
-  const nftModal = useAppSelector(selectNftModal);
-  const modals = [projectModal, promoModal, shareModal, signInModal, mobileMenuModal, nftModal];
 
   // ...
   const theme = useAppSelector(selectTheme);
@@ -81,16 +68,6 @@ const App = () => {
     })();
   }, []);
   // juno end
-
-  // prevent from scrolling when modal is active
-  useEffect(() => {
-    const activeModals = modals.filter((modal) => modal === true);
-    if (activeModals.length > 0) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, modals);
 
   // reset mobile menu when deivice size > 1023
   useEffect(() => {
@@ -192,8 +169,6 @@ const App = () => {
 
       {/* modals */}
       {projectModal === true && <ProjectModal />}
-      {promoModal === true && <PromoModal />}
-      {signInModal === true && <SignInModal />}
     </div>
   );
 };

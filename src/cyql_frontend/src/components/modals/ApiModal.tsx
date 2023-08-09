@@ -30,7 +30,6 @@ const ApiModalModal: FC<ApiModalProps> = ({ isOpen }): JSX.Element => {
     <Modal isOpen={isOpen} onClose={closeModal}>
       <Content>
         <h3>cyql.io API</h3>
-
         <p>Query data from cyql.</p>
         <a
           href="https://github.com/tomkoom/cyql-api-docs"

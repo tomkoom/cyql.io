@@ -5,12 +5,16 @@ import type { PromoModalData } from "@/state/_types/promoModalData";
 // icons
 import { iAngleDown } from "@/components/icons/Icons";
 
+// components
+import { PromoModal } from "@/components/modals/_index";
+
 // state
-import { useAppDispatch } from "@/hooks/useRedux";
-import { setPromoModal, setPromoModalData } from "@/state/modals/promoModal";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { setPromoModal, selectPromoModal, setPromoModalData } from "@/state/modals/promoModal";
 
 const Promo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const isOpen = useAppSelector(selectPromoModal);
 
   const openModal = (promoModalData: PromoModalData): void => {
     dispatch(setPromoModalData(promoModalData));
@@ -47,6 +51,9 @@ const Promo: FC = (): JSX.Element => {
 
   return (
     <PromoStyled>
+      {/* modal */}
+      <PromoModal isOpen={isOpen} />
+
       {promoItems.map((promoItem, i) => (
         <li
           style={{ color: promoItem.color, backgroundColor: promoItem.backgroundColor }}

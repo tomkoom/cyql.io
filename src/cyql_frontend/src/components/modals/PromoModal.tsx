@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "./_Modal";
 import type { PromoModalData } from "@/state/_types/promoModalData";
@@ -16,15 +16,27 @@ import {
   selectPromoModalData,
 } from "@/state/modals/promoModal";
 
-const PromoModal: FC = (): JSX.Element => {
+interface PromoModalProps {
+  isOpen: boolean;
+}
+
+const PromoModal: FC<PromoModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch();
-  const isOpen = useAppSelector(selectPromoModal);
   const promoModalData: PromoModalData = useAppSelector(selectPromoModalData);
 
   const closeModal = () => {
     dispatch(setPromoModal(false));
     dispatch(setClearPromoModalData());
   };
+
+  // hide scrollbar
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>

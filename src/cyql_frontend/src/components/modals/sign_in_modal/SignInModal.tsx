@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "../_Modal";
 
@@ -6,16 +6,28 @@ import Modal from "../_Modal";
 import { SignInMethods } from "./_index";
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { setSignInModal, selectSignInModal } from "@/state/modals/modals";
+import { useAppDispatch } from "@/hooks/useRedux";
+import { setSignInModal } from "@/state/modals/modals";
 
-const SignInModal: FC = (): JSX.Element => {
+interface SingInModalProps {
+  isOpen: boolean;
+}
+
+const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch();
-  const isOpen = useAppSelector(selectSignInModal);
 
   const closeModal = (): void => {
     dispatch(setSignInModal(false));
   };
+
+  // hide scrollbar
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
