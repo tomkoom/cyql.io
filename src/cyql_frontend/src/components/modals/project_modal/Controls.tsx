@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import css from "./Controls.module.css";
+import React, { FC, useState } from "react";
+import styled from "styled-components";
 
 // juno
 import { junoCollectionProjects } from "@/constants/constants";
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
-import { updateProjects } from "@/shared/juno";
+import { refreshProjects } from "@/shared/juno";
 
 // project id
 import { nanoid } from "@/utils/projectId";
 
 // components
-import { Btn } from "./index";
+import { Btn } from "@/components/btns/_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
@@ -20,29 +20,29 @@ import {
   setProjectModalLoadingDel,
 } from "@/state/modals/projectModal/projectModalLoading";
 
-const Controls = () => {
+const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const project = useAppSelector(selectProjectDoc);
   const collection = junoCollectionProjects;
 
-  const get = async (key) => {
+  const get = async (key: string) => {
     return getDoc({ collection, key });
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     dispatch(setCloseProjectModal());
   };
 
-  const confirmDeletion = () => {
+  const confirmDeletion = (): void => {
     setDeleteConfirm(true);
   };
 
-  const cancelDeletion = () => {
+  const cancelDeletion = (): void => {
     setDeleteConfirm(false);
   };
 
-  const submitProject = async () => {
+  const submitProject = async (): Promise<void> => {
     dispatch(setProjectModalLoadingSet(true));
     const timestamp = Date.now();
 
@@ -64,7 +64,7 @@ const Controls = () => {
       .then(() => console.log("Doc set with the id", key))
       .catch((e) => console.log(e));
 
-    await updateProjects();
+    await refreshProjects();
     dispatch(setProjectModalLoadingSet(false));
     closeModal();
   };
@@ -77,28 +77,45 @@ const Controls = () => {
       .then(() => console.log(`Doc with the id ${project.key} deleted.`))
       .catch((e) => console.log(e));
 
-    await updateProjects();
+    await refreshProjects();
     dispatch(setProjectModalLoadingDel(false));
     closeModal();
   };
 
   return (
-    <div className={css.controls}>
+    <ControlsStyled>
       {deleteConfirm === false ? (
-        <div className={css.deleteBtn}>
-          <Btn type="alertBtn" text="delete" onClick={confirmDeletion} />
-        </div>
+        <DeleteBtn>
+          <Btn btnType="secondary" text="delete" onClick={confirmDeletion} />
+        </DeleteBtn>
       ) : (
-        <div className={css.deleteContainer}>
-          <Btn type="secondaryBtn" text="cancel" onClick={cancelDeletion} />
-          <Btn type="alertBtn" text="confirm" onClick={deleteProject} />
-        </div>
+        <DeleteContainer>
+          <Btn btnType="secondary" text="cancel" onClick={cancelDeletion} />
+          <Btn btnType="secondary" text="confirm" onClick={deleteProject} />
+        </DeleteContainer>
       )}
 
-      <Btn type="secondaryBtn" text="cancel" onClick={closeModal} />
-      <Btn type="primaryBtn" text="save" onClick={submitProject} />
-    </div>
+      <Btn btnType="secondary" text="cancel" onClick={closeModal} />
+      <Btn btnType="primary" text="save" onClick={submitProject} />
+    </ControlsStyled>
   );
 };
+
+const ControlsStyled = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1rem;
+`;
+
+const DeleteBtn = styled.div`
+  margin-right: auto;
+`;
+
+const DeleteContainer = styled.div`
+  margin-right: auto;
+  display: flex;
+  gap: 0.75rem;
+`;
 
 export default Controls;

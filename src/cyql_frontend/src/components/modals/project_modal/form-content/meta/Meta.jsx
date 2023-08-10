@@ -3,7 +3,7 @@ import css from "./Meta.module.css";
 
 // components
 import { Input } from "./index";
-import { Btn } from "../index";
+import { Btn } from "../_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";

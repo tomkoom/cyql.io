@@ -7,17 +7,23 @@ import { twitterUsername } from "@/utils/twitterUsername";
 
 // components
 import { Search } from "@/components/ui/_index";
+import { ProjectModal } from "@/components/modals/_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
-import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
+import {
+  setProjectModal,
+  selectProjectModal,
+  setProjectDoc,
+} from "@/state/modals/projectModal/projectModal";
 import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch";
 
 const Projects: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const projects = useAppSelector(selectProjects);
   const searchQuery = useAppSelector(selectAdminSearch);
+  const isOpen = useAppSelector(selectProjectModal);
 
   const setSearch = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(setAdminSearch(e.target.value));
@@ -30,6 +36,8 @@ const Projects: FC = (): JSX.Element => {
 
   return (
     <div>
+      <ProjectModal isOpen={isOpen} />
+
       <Search
         placeholder={"search by project name"}
         searchQuery={searchQuery}

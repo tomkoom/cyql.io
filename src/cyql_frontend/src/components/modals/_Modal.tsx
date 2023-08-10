@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect } from "react";
+import React, { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 

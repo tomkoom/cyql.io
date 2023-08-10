@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Grantee.module.css";
 
 // components
-import { Btn } from "../index";
+import { Btn } from "../_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";

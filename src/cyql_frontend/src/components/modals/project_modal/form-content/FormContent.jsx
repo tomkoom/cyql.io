@@ -2,7 +2,7 @@ import React from "react";
 import css from "./FormContent.module.css";
 
 // components
-import { Categories, Description, Grantee, Input, Meta } from "./index";
+import { Categories, Description, Grantee, Input, Meta } from "./_index";
 
 // inputs
 import { main, socials, additional, nft } from "./inputs";

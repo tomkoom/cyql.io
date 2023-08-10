@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import CookieConsent from "react-cookie-consent";
+import { size } from "./styles/breakpoints";
 
 // constants
 import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
@@ -14,7 +15,7 @@ import { verifyAdmin } from "@/utils/verifyAdmin";
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum";
 
 // juno
-import { initJuno0, updateProjects } from "@/shared/juno";
+import { init_juno, refreshProjects } from "@/shared/juno";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
@@ -30,7 +31,6 @@ import {
   Submit,
 } from "@/components/pages/index";
 import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
-import { ProjectModal } from "@/components/modals/_index";
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
@@ -42,7 +42,6 @@ import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByN
 
 // state: modals
 import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals";
-import { selectProjectModal } from "@/state/modals/projectModal/projectModal";
 
 const App = () => {
   // hooks
@@ -51,7 +50,6 @@ const App = () => {
   const { width } = useWindowSize();
 
   // modals
-  const projectModal = useAppSelector(selectProjectModal);
   const mobileMenuModal = useAppSelector(selectMobileMenuModal);
 
   // ...
@@ -63,15 +61,15 @@ const App = () => {
   // juno start
   useEffect(() => {
     (async () => {
-      await initJuno0();
-      await updateProjects();
+      await init_juno();
+      await refreshProjects();
     })();
   }, []);
   // juno end
 
-  // reset mobile menu when deivice size > 1023
+  // reset mobile menu when deivice size > 1024
   useEffect(() => {
-    if (mobileMenuModal === true && width > 1023) {
+    if (mobileMenuModal && width > size.laptop) {
       dispatch(setMobileMenuModal(false));
     }
   }, [width]);
@@ -166,9 +164,6 @@ const App = () => {
           learn more
         </a>
       </CookieConsent>
-
-      {/* modals */}
-      {projectModal === true && <ProjectModal />}
     </div>
   );
 };

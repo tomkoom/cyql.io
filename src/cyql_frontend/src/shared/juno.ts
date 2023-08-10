@@ -12,14 +12,14 @@ import store from "@/state/_store";
 import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from "@/state/projects";
 
 // init juno
-const initJuno0 = async () => {
+const init_juno = async () => {
   await initJuno({
     satelliteId: junoSatelliteId,
   }).catch((e) => console.log(e));
 };
 
 // update projects
-const updateProjects = async () => {
+const refreshProjects = async () => {
   await listDocs({
     collection: junoCollectionProjects,
   })
@@ -39,4 +39,4 @@ const updateProjects = async () => {
     .catch((err) => console.log(err));
 };
 
-export { initJuno0, updateProjects };
+export { init_juno, refreshProjects };
