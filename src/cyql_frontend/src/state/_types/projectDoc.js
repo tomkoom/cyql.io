@@ -1,10 +1,3 @@
-// https://tomkoom.gitbook.io/cyql-api/data-formats/project-doc
-// datastore collection: cyql-projects
-
-// todos
-// [ ] add token information: token_name, token_symbol, token_logo, token_canister_id, token_markets, token_type, etc
-// [ ] nft_contract
-
 const projectDocData = {
   // main
   name: "",

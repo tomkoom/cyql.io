@@ -1,5 +1,5 @@
-import React from "react";
-import css from "./FormContent.module.css";
+import React, { FC, ChangeEvent } from "react";
+import styled from "styled-components";
 
 // components
 import { Categories, Description, Grantee, Input, Meta } from "./_index";
@@ -11,83 +11,102 @@ import { main, socials, additional, nft } from "./inputs";
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc, setProjectDocData } from "@/state/modals/projectModal/projectModal";
 
-const FormContent = () => {
+const FormContent: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const projectDoc = useAppSelector(selectProjectDoc);
+  const project = useAppSelector(selectProjectDoc);
 
-  const updateProjectDocData = (e) => {
+  const updateProject = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     dispatch(setProjectDocData({ [name]: value }));
   };
 
   return (
-    <div className={css.formContent}>
-      <div className={css.section}>
+    <FormContentStyled>
+      <Section>
         <Categories />
-      </div>
+      </Section>
 
-      <div className={css.section}>
+      <Section>
         <h5>main</h5>
         {main.map((input) => (
           <Input
             id={input.id}
             label={input.id}
             type={input.type}
-            value={projectDoc.data[input.id]}
-            onChange={updateProjectDocData}
+            value={project.data[input.id]}
+            onChange={updateProject}
             key={input.id}
           />
         ))}
         <Description />
         <Grantee />
         <Meta />
-      </div>
+      </Section>
 
-      <div className={css.section}>
+      <Section>
         <h5>social networks</h5>
         {socials.map((input) => (
           <Input
             id={input.id}
             label={input.id}
             type={input.type}
-            value={projectDoc.data[input.id]}
-            onChange={updateProjectDocData}
+            value={project.data[input.id]}
+            onChange={updateProject}
             key={input.id}
           />
         ))}
-      </div>
+      </Section>
 
-      <div className={css.section}>
+      <Section>
         <h5>additional info</h5>
         {additional.map((input) => (
           <Input
             id={input.id}
             label={input.id}
             type={input.type}
-            value={projectDoc.data[input.id]}
-            onChange={updateProjectDocData}
+            value={project.data[input.id]}
+            onChange={updateProject}
             key={input.id}
           />
         ))}
-      </div>
+      </Section>
 
-      {projectDoc.data.categories && projectDoc.data.categories.includes("NFTs") && (
-        <div className={css.section}>
+      {project.data.categories && project.data.categories.includes("NFTs") && (
+        <Section>
           <h5>nft data</h5>
           {nft.map((input) => (
             <Input
               id={input.id}
               label={input.id}
               type={input.type}
-              value={projectDoc.data[input.id]}
-              onChange={updateProjectDocData}
+              value={project.data[input.id]}
+              onChange={updateProject}
               key={input.id}
             />
           ))}
-        </div>
+        </Section>
       )}
-    </div>
+    </FormContentStyled>
   );
 };
+
+const FormContentStyled = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+`;
+
+const Section = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 16rem;
+  margin-top: 1rem;
+
+  > h5 {
+    font-weight: var(--fwMedium);
+  }
+`;
 
 export default FormContent;

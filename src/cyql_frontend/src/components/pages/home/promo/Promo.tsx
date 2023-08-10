@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import type { PromoModalData } from "@/state/_types/promoModalData";
+import type { PromoModalData } from "@/state/_types/types";
 
 // icons
 import { iAngleDown } from "@/components/icons/Icons";

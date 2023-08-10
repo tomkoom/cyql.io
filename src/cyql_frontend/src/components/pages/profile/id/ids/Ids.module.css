@@ -12,7 +12,7 @@
 }
 
 .label {
-  font-size: 0.9rem;
+  font-size: var(--fsText);
   color: var(--tertiaryColor);
   font-weight: var(--fwBold);
 }

@@ -1,26 +1,26 @@
-import React from "react";
-import css from "./Grantee.module.css";
+import React, { FC } from "react";
+import styled from "styled-components";
 
 // components
-import { Btn } from "../_index";
+import { Btn } from "./_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import { selectProjectDoc, setProjectGrantee } from "@/state/modals/projectModal/projectModal";
 
-const Grantee = () => {
+const Grantee: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const projectDoc = useAppSelector(selectProjectDoc);
 
-  const setGrantee = (value) => {
+  const setGrantee = (value: boolean) => {
     dispatch(setProjectGrantee(value));
   };
 
   return (
-    <div className={css.grantee}>
-      <p className={css.sectionName}>grantee</p>
+    <div>
+      <SectionName>grantee</SectionName>
 
-      <div className={css.btns}>
+      <Btns>
         <Btn
           property={projectDoc.data.grantee}
           value={true}
@@ -33,9 +33,21 @@ const Grantee = () => {
           label={"false"}
           setProperty={setGrantee}
         />
-      </div>
+      </Btns>
     </div>
   );
 };
+
+const SectionName = styled.p`
+  font-weight: var(--fwMedium);
+  color: var(--tertiaryColor);
+  margin-bottom: 0.5rem;
+`;
+
+const Btns = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
 
 export default Grantee;

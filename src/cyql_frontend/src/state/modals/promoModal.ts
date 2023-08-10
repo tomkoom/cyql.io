@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "@/state/_store";
-import type { PromoModalData } from "../_types/promoModalData";
+import type { PromoModalData } from "@/state/_types/types";
 
 interface PromoModalState {
   promoModal: boolean;

@@ -46,7 +46,7 @@ const Title = styled.div`
 `;
 
 const Id = styled.p`
-  font-size: 0.9rem;
+  font-size: var(--fsText);
   background-color: var(--underlay1);
   padding: 0.5rem;
   border-radius: 0.5rem;

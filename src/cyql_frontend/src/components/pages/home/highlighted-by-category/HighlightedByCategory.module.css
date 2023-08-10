@@ -39,7 +39,7 @@
 }
 
 .description {
-  font-size: 0.9rem;
+  font-size: var(--fsText);
   font-weight: var(--fwMedium);
   line-height: 150%;
   color: var(--tertiaryColor);

@@ -6,3 +6,9 @@ export interface PromoModalData {
   ctaUrl: string;
   ctaText: string;
 }
+
+export type Category = {
+  id: string;
+  label: string;
+  icon: string;
+};

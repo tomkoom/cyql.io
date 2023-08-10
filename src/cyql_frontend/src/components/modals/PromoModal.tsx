@@ -1,17 +1,15 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "./_Modal";
-import type { PromoModalData } from "@/state/_types/promoModalData";
+import type { PromoModalData } from "@/state/_types/types";
 
 // icons
-import { CrossIcon } from "@/components/icons";
 import { iExternalLink } from "@/components/icons/Icons";
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
 import {
   setPromoModal,
-  selectPromoModal,
   setClearPromoModalData,
   selectPromoModalData,
 } from "@/state/modals/promoModal";

@@ -1,6 +1,6 @@
 // project modal
 
-export { default as FormContent } from "./form-content/FormContent";
+export { default as FormContent } from "./form_content/FormContent";
 
 // ...
 export { default as Controls } from "./Controls";
