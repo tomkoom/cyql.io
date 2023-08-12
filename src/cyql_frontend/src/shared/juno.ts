@@ -1,7 +1,7 @@
 import { initJuno, listDocs } from "@junobuild/core";
 
 // constants
-import { junoSatelliteId, junoCollectionProjects } from "@/constants/constants";
+import { satelliteId, projectsColl } from "@/constants/constants";
 
 // utils
 import { sortByDate } from "@/utils/sortByDate";
@@ -14,14 +14,14 @@ import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from
 // init juno
 const init_juno = async () => {
   await initJuno({
-    satelliteId: junoSatelliteId,
+    satelliteId: satelliteId,
   }).catch((e) => console.log(e));
 };
 
 // update projects
 const refreshProjects = async () => {
   await listDocs({
-    collection: junoCollectionProjects,
+    collection: projectsColl,
   })
     .then((docs) => {
       const projects = docs.items

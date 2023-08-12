@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
+import { iclogo } from "@/constants/constants";
 
 // icons
 import { iArrowUp, iArrowDown } from "@/components/icons/Icons";
@@ -27,10 +28,7 @@ const Price: FC = (): JSX.Element => {
 
   return (
     <PriceStyled>
-      <img
-        src="https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/ic-logo.svg"
-        alt="Internet Computer logo"
-      />
+      <img src={iclogo} alt="Internet Computer logo" />
       <p>{"$" + price}</p>
 
       {change > 0 ? (
@@ -52,7 +50,7 @@ const PriceStyled = styled.div`
   font-weight: var(--fwBold);
 
   > img {
-    height: 1rem;
+    height: 1.125rem;
   }
 
   * {
