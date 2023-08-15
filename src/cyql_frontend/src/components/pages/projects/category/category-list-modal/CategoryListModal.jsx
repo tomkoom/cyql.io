@@ -2,7 +2,7 @@ import React from "react";
 import css from "./CategoryListModal.module.css";
 
 // icons
-import { CrossIcon } from "@/components/icons/index";
+import { CrossIcon } from "@/components/icons/_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";

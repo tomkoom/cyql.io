@@ -6,7 +6,7 @@ import useNav from "@/hooks/useNav";
 
 // components
 import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index";
-import { Loader } from "@/components/ui/_index";
+import { Spinner } from "@/components/ui/_index";
 import { Main, Socials, SocialsIc, Tags } from "./index";
 
 // state
@@ -55,7 +55,7 @@ const ProjectList = () => {
   return (
     <div>
       {projects.length < 1 ? (
-        <Loader />
+        <Spinner />
       ) : (
         <ul className={css.li}>
           {projects

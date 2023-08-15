@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // components
 import { Controls, FormContent, Header } from "./_index";
-import { Loader } from "@/components/ui/_index";
+import { Spinner } from "@/components/ui/_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
@@ -28,7 +28,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   return createPortal(
     <ProjectModalStyled className={theme}>
       {setIsLoading || delIsLoading ? (
-        <Loader />
+        <Spinner />
       ) : (
         <Main>
           <Header />

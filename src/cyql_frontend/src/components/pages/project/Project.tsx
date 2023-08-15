@@ -6,10 +6,10 @@ import { device } from "@/styles/breakpoints";
 import { useParams } from "react-router-dom";
 
 // components
-import { Loader } from "@/components/ui/_index";
+import { Spinner } from "@/components/ui/_index";
 import { BackBtn } from "@/components/btns/_index";
 import { ShareModal } from "@/components/modals/_index";
-import { NotFound } from "@/components/pages/index";
+import { NotFound } from "@/components/pages/_index";
 import {
   CollStats,
   Description,
@@ -33,7 +33,7 @@ const Project: FC = (): JSX.Element => {
   const shareModal = useAppSelector(selectShareModal);
 
   if (projects.length < 1) {
-    return <Loader />;
+    return <Spinner />;
   }
 
   if (project.length < 1) {

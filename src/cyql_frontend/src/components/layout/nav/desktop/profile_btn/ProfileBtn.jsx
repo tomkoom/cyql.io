@@ -37,7 +37,7 @@ const ProfileBtn = () => {
   return (
     <div className={css.profileBtn} ref={menuRef}>
       <button onClick={() => setMenuIsOpen((prevState) => !prevState)}>
-        <IdImg size={36} />
+        <IdImg sizePx="36" />
         <p>{pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}</p>
         <span>{iAngleDown}</span>
       </button>

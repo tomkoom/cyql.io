@@ -30,7 +30,7 @@ const Menu = ({ setMenuIsOpen }) => {
     <div className={css.menu}>
       <div className={css.menuI} onClick={() => clickMenuItem(toProfile)}>
         <span className={css.icon}>
-          <IdImg size={36} />
+          <IdImg sizePx="36" />
         </span>
 
         <div className={css.idAddr}>

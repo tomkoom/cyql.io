@@ -21,7 +21,7 @@ import {
   Project,
   Projects,
   Submit,
-} from "@/components/pages/index";
+} from "@/components/pages/_index";
 
 const router = createHashRouter(
   createRoutesFromElements(

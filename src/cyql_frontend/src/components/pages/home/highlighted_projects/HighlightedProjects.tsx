@@ -6,7 +6,7 @@ import { device } from "@/styles/breakpoints";
 import useNav from "@/hooks/useNav";
 
 // components
-import { Loader } from "@/components/ui/_index";
+import { Spinner } from "@/components/ui/_index";
 import { ViewMoreBtn } from "@/components/btns/_index";
 import { Project } from "./_index";
 
@@ -16,7 +16,7 @@ const HighlightedProjects = ({ projects }) => {
   return (
     <div>
       {!projects.length ? (
-        <Loader />
+        <Spinner />
       ) : (
         <Grid>
           {projects.slice(0, 24).map((p) => (

@@ -8,7 +8,7 @@ import { Ids, Title } from "./index";
 const Id = () => {
   return (
     <div className={css.id}>
-      <IdImg size={128} />
+      <IdImg sizePx="128" />
       <div className={css.main}>
         <Title />
         <Ids />

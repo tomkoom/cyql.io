@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 // icons
-import { CrossIcon } from "@/components/icons/index";
+import { CrossIcon } from "@/components/icons/_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";

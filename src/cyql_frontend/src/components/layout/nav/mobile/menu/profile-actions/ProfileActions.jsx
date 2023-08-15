@@ -39,7 +39,7 @@ const ProfileActions = () => {
     <div className={css.profileActions}>
       <button className={css.btn} onClick={navigate}>
         <div className={css.idImg}>
-          <IdImg size={36} />
+          <IdImg sizePx="36" />
         </div>
         {formatId(userKey)}
       </button>

@@ -1,15 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
 
-const IdImg = ({ size }) => {
+interface IdImgProps {
+  sizePx: string;
+}
+
+const IdImg: FC<IdImgProps> = ({ sizePx }): JSX.Element => {
   const { userKey } = useAuth();
 
   const style = {
     borderRadius: "50%",
-    height: `${size}px`,
-    width: `${size}px`,
+    height: `${sizePx}px`,
+    width: `${sizePx}px`,
   };
 
   return (
