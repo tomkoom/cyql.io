@@ -27,9 +27,8 @@ const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
-      <Route path="projects" element={<Projects />}>
-        <Route path=":slug" element={<Project />} />
-      </Route>
+      <Route path="projects" element={<Projects />} />
+      <Route path="projects/:slug" element={<Project />} />
       <Route path="submit" element={<Submit />} />
 
       {/* protected routes */}

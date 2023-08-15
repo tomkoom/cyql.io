@@ -61,8 +61,7 @@ ul {
 /* global classes */
 
 .primaryBtn,
-.secondaryBtn,
-.alertBtn {
+.secondaryBtn {
   font-weight: var(--fwBold);
   height: 2.5rem;
   display: flex;
@@ -87,11 +86,6 @@ ul {
 
 .secondaryBtn:hover {
   background-color: var(--underlay2);
-}
-
-.alertBtn {
-  color: white;
-  background-color: var(--colorErr);
 }
 
 .pageTitle {

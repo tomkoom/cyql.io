@@ -14,7 +14,7 @@ import { setProjectsDocs, setProjectsDocsActive, setProjectsDocsActiveNum } from
 // init juno
 const init_juno = async () => {
   await initJuno({
-    SATELLITE_ID: SATELLITE_ID,
+    satelliteId: SATELLITE_ID,
   }).catch((e) => console.log(e));
 };
 

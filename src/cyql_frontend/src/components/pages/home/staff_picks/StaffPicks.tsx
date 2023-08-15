@@ -9,6 +9,11 @@ const StaffPicks: FC = (): JSX.Element => {
 
   const staffPicksItems = [
     {
+      slug: "carbon-crowd",
+      title: "Carbon Crowd",
+      text: "decarbonise cloud computing",
+    },
+    {
       slug: "taggr",
       title: "#TAGGR",
       text: "decentralized social network",

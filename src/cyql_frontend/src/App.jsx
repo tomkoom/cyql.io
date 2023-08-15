@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { size } from "./styles/breakpoints";
 
 // router

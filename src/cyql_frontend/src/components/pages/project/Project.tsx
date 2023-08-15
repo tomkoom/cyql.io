@@ -30,87 +30,87 @@ const Project: FC = (): JSX.Element => {
   const projects = useAppSelector(selectProjects);
   const shareModal = useAppSelector(selectShareModal);
 
+  if (projects.length < 1) {
+    return <Loader />;
+  }
+
   return (
     <ProjectStyled>
       <BackBtn />
 
-      {projects.length < 1 ? (
-        <Loader />
-      ) : (
-        projects
-          .filter((project) => project.data.slug === slug)
-          .map((project) => (
-            <Content key={project.key}>
-              <Header project={project} />
+      {projects
+        .filter((project) => project.data.slug === slug)
+        .map((project) => (
+          <Content key={project.key}>
+            <Header project={project} />
 
-              {project.data.description && (
-                <Description name={project.data.name} description={project.data.description} />
-              )}
+            {project.data.description && (
+              <Description name={project.data.name} description={project.data.description} />
+            )}
 
-              {(project.data.nft_img_1 ||
-                project.data.nft_img_2 ||
-                project.data.nft_img_3 ||
-                project.data.nft_img_4) && (
-                <NftPreviews
-                  nftImg1={project.data.nft_img_1}
-                  nftImg2={project.data.nft_img_2}
-                  nftImg3={project.data.nft_img_3}
-                  nftImg4={project.data.nft_img_4}
-                />
-              )}
-
-              {project.data.categories.includes("NFTs") && (
-                <CollStats
-                  nftSaleDate={project.data.nft_sale_date}
-                  nftUnits={project.data.nft_units}
-                  nftUnitPrice={project.data.nft_unit_price}
-                />
-              )}
-
-              {/* nft links */}
-              {(project.data.nft_market || project.data.nft_rarity) && (
-                <NftBtns nftMarket={project.data.nft_market} nftRarity={project.data.nft_rarity} />
-              )}
-
-              <Links
-                // main
-                website={project.data.website}
-                canister={project.data.canister}
-                app={project.data.app}
-                docs={project.data.docs}
-                whitepaper={project.data.whitepaper}
-                // ic
-                dscvr={project.data.dscvr}
-                distrikt={project.data.distrikt}
-                openchat={project.data.openchat}
-                taggr={project.data.taggr}
-                seers={project.data.seers}
-                nuance={project.data.nuance}
-                catalyze={project.data.catalyze}
-                funded={project.data.funded}
-                // social
-                twitter={project.data.twitter}
-                discord={project.data.discord}
-                github={project.data.github}
-                telegram={project.data.telegram}
-                medium={project.data.medium}
+            {(project.data.nft_img_1 ||
+              project.data.nft_img_2 ||
+              project.data.nft_img_3 ||
+              project.data.nft_img_4) && (
+              <NftPreviews
+                nftImg1={project.data.nft_img_1}
+                nftImg2={project.data.nft_img_2}
+                nftImg3={project.data.nft_img_3}
+                nftImg4={project.data.nft_img_4}
               />
+            )}
 
-              <Meta added={project.data.added} />
-              <Disclaimer />
+            {project.data.categories.includes("NFTs") && (
+              <CollStats
+                nftSaleDate={project.data.nft_sale_date}
+                nftUnits={project.data.nft_units}
+                nftUnitPrice={project.data.nft_unit_price}
+              />
+            )}
 
-              {/* modals */}
-              {shareModal && (
-                <ShareModal
-                  slug={project.data.slug}
-                  name={project.data.name}
-                  categories={project.data.categories}
-                  description={project.data.description}
-                />
-              )}
-            </Content>
-          ))
-      )}
+            {/* nft links */}
+            {(project.data.nft_market || project.data.nft_rarity) && (
+              <NftBtns nftMarket={project.data.nft_market} nftRarity={project.data.nft_rarity} />
+            )}
+
+            <Links
+              // main
+              website={project.data.website}
+              canister={project.data.canister}
+              app={project.data.app}
+              docs={project.data.docs}
+              whitepaper={project.data.whitepaper}
+              // ic
+              dscvr={project.data.dscvr}
+              distrikt={project.data.distrikt}
+              openchat={project.data.openchat}
+              taggr={project.data.taggr}
+              seers={project.data.seers}
+              nuance={project.data.nuance}
+              catalyze={project.data.catalyze}
+              funded={project.data.funded}
+              // social
+              twitter={project.data.twitter}
+              discord={project.data.discord}
+              github={project.data.github}
+              telegram={project.data.telegram}
+              medium={project.data.medium}
+            />
+
+            <Meta added={project.data.added} />
+            <Disclaimer />
+
+            {/* modals */}
+            {shareModal && (
+              <ShareModal
+                slug={project.data.slug}
+                name={project.data.name}
+                categories={project.data.categories}
+                description={project.data.description}
+              />
+            )}
+          </Content>
+        ))}
     </ProjectStyled>
   );
 };
