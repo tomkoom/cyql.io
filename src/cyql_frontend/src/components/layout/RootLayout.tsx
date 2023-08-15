@@ -2,6 +2,9 @@ import React, { FC, useEffect } from "react";
 import "./RootLayout.css";
 import CookieConsent from "react-cookie-consent";
 
+// constants
+import { COOKIE_POLICY } from "@/constants/constants";
+
 // router
 import { Outlet, useLocation } from "react-router-dom";
 
@@ -57,12 +60,7 @@ const RootLayout: FC = (): JSX.Element => {
         expires={90}
       >
         this site uses 🍪 to enhance ux,{" "}
-        <a
-          className="cookie__link"
-          href="https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
+        <a className="cookie__link" href={COOKIE_POLICY} rel="noreferrer noopener" target="_blank">
           learn more
         </a>
       </CookieConsent>

@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import styled from "styled-components";
 
 // juno
-import { projectsColl } from "@/constants/constants";
+import { PROJECTS_COLL } from "@/constants/constants";
 import { getDoc, setDoc, delDoc } from "@junobuild/core";
 import { refreshProjects } from "@/shared/juno";
 
@@ -24,7 +24,7 @@ const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const [deleteConfirm, setDeleteConfirm] = useState(false);
   const project = useAppSelector(selectProjectDoc);
-  const collection = projectsColl;
+  const collection = PROJECTS_COLL;
 
   const get = async (key: string) => {
     return getDoc({ collection, key });

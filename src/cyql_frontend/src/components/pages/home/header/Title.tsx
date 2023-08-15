@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { device } from "@/styles/breakpoints";
-import iclogo from "../../../../../assets/ic-logo.svg";
+import IC_LOGO from "../../../../../assets/ic-logo.svg";
 
 // hooks
 import useNav from "@/hooks/useNav";
@@ -24,7 +24,7 @@ const Title: FC = (): JSX.Element => {
         <Dots>...</Dots>
       )}{" "}
       <Badge>
-        <img src={iclogo} alt="Internet Computer iclogo" />
+        <img src={IC_LOGO} alt="Internet Computer IC_LOGO" />
         <span>#InternetComputer</span>
       </Badge>{" "}
       projects

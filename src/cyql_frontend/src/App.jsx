@@ -5,14 +5,10 @@ import { size } from "./styles/breakpoints";
 // router
 import { RouterProvider } from "react-router-dom";
 
-// constants
-import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
-
 // hooks
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 // utils
-import { verifyAdmin } from "@/utils/verifyAdmin";
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum";
 
 // juno
@@ -46,7 +42,6 @@ const App = () => {
   // ...
   const projects = useAppSelector(selectProjects);
   const allCategories = useAppSelector(selectAllCategories);
-  const admins = [iiAdmin1, iiAdmin2];
 
   // juno start
   useEffect(() => {

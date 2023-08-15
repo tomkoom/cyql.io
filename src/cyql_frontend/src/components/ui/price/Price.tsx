@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
-import { iclogo } from "@/constants/constants";
+import { IC_LOGO } from "@/constants/constants";
 
 // icons
 import { iArrowUp, iArrowDown } from "@/components/icons/Icons";
@@ -28,7 +28,7 @@ const Price: FC = (): JSX.Element => {
 
   return (
     <PriceStyled>
-      <img src={iclogo} alt="Internet Computer logo" />
+      <img src={IC_LOGO} alt="Internet Computer logo" />
       <p>{"$" + price}</p>
 
       {change > 0 ? (

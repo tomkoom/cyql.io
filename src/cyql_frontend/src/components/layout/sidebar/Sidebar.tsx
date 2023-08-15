@@ -6,7 +6,7 @@ import { device } from "@/styles/breakpoints";
 import { verifyAdmin } from "@/utils/verifyAdmin";
 
 // constants
-import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
+import { II_ADMIN_1 } from "@/constants/constants";
 
 // icons
 import { iInfinity, iCube, iPlus, iCircle } from "@/components/icons/Icons";
@@ -23,7 +23,7 @@ import { Navlink } from "./_index";
 const Sidebar: FC = (): JSX.Element => {
   const { userKey } = useAuth();
   const { toHome, toProjects, toSubmit, toAdmin } = useNav();
-  const admins = [iiAdmin1, iiAdmin2];
+  const admins = [II_ADMIN_1];
 
   return (
     <SidebarStyled>

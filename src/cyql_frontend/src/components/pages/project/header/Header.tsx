@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { verifyAdmin } from "@/utils/verifyAdmin";
 
 // constants
-import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
+import { II_ADMIN_1 } from "@/constants/constants";
 
 // icons
 import { iEdit, iShareSquare } from "@/components/icons/Icons";
@@ -25,7 +25,7 @@ import { setShareModal } from "@/state/modals/shareModal";
 const Header: FC<any> = ({ project }): JSX.Element => {
   const dispatch = useAppDispatch();
   const { userKey } = useAuth();
-  const admins = [iiAdmin1, iiAdmin2];
+  const admins = [II_ADMIN_1,];
 
   const editProject = () => {
     dispatch(setProjectDoc(project));

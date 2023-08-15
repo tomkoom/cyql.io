@@ -5,7 +5,7 @@ import css from "./Submit.module.css";
 import { nanoid } from "@/utils/projectId";
 
 // constants
-import { submittedProjectsColl } from "@/constants/constants";
+import { SUBMITTED_PROJECTS_COLL } from "@/constants/constants";
 
 // juno
 import { setDoc } from "@junobuild/core";
@@ -23,7 +23,7 @@ const Submit = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const submit = useAppSelector(selectSubmit);
   const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum);
-  const collection = submittedProjectsColl;
+  const collection = SUBMITTED_PROJECTS_COLL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
