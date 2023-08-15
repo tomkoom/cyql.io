@@ -4,10 +4,11 @@ import css from "./FooterTop.module.css";
 // icons
 import { iPlus, iComments, iHeart } from "@/components/icons/Icons";
 
-// routes
-import { toSubmit } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 const FooterTop = () => {
+  const { toSubmit } = useNav();
   const cyqlMsgUrl = "https://twitter.com/messages/compose?recipient_id=1386304698358116354";
   const donationWalletExplorerUrl =
     "https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1";

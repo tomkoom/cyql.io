@@ -11,8 +11,8 @@ import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
 // icons
 import { iInfinity, iCube, iPlus, iCircle } from "@/components/icons/Icons";
 
-// routes
-import { toHome, toApps, toSubmit, toAdmin } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
@@ -22,13 +22,14 @@ import { Navlink } from "./_index";
 
 const Sidebar: FC = (): JSX.Element => {
   const { userKey } = useAuth();
+  const { toHome, toProjects, toSubmit, toAdmin } = useNav();
   const admins = [iiAdmin1, iiAdmin2];
 
   return (
     <SidebarStyled>
       <div>
         <Navlink label="explore" route={toHome} icon={iInfinity} />
-        <Navlink label="projects" route={toApps} icon={iCube} />
+        <Navlink label="projects" route={toProjects} icon={iCube} />
         <Navlink label="submit" route={toSubmit} icon={iPlus} />
         {verifyAdmin(admins, userKey) === true && (
           <Navlink label="admin" route={toAdmin} icon={iCircle} />

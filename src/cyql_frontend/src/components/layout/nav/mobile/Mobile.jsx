@@ -1,8 +1,8 @@
 import React from "react";
 import css from "./Mobile.module.css";
 
-// routes
-import { toHome } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // components
 import { Logo, Theme } from "@/components/ui/_index";
@@ -14,6 +14,7 @@ import { useAppSelector } from "@/hooks/useRedux";
 import { selectMobileMenuModal } from "@/state/modals/modals";
 
 const Mobile = () => {
+  const { toHome } = useNav();
   const mobileMenu = useAppSelector(selectMobileMenuModal);
 
   return (

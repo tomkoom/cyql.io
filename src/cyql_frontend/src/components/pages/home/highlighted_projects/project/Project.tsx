@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-// routes
-import { toApp } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // components
 import { Logo, Main } from "./_index";
@@ -27,8 +27,10 @@ const Project: FC<ProjectProps> = ({
   github,
   description /* upvotes */,
 }): JSX.Element => {
+  const { toProject } = useNav();
+
   const openProject = (slug: string): void => {
-    toApp(slug);
+    toProject(slug);
   };
 
   return (

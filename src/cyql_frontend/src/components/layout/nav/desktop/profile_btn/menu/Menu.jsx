@@ -14,10 +14,11 @@ import { formatId } from "@/utils/format";
 // auth
 import { useAuth } from "@/context/AuthContext";
 
-// routes
-import { toProfile } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 const Menu = ({ setMenuIsOpen }) => {
+  const { toProfile } = useNav();
   const { userKey, signOut } = useAuth();
 
   const clickMenuItem = (action) => {

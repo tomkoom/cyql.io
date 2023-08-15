@@ -3,22 +3,23 @@ import styled from "styled-components";
 import { device } from "@/styles/breakpoints";
 import iclogo from "../../../../../assets/ic-logo.svg";
 
-// routes
-import { toApps } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 
 const Title: FC = (): JSX.Element => {
-  const projects = useAppSelector(selectProjects).filter((project) => project.data.archived !== true);
+  const { toProjects } = useNav();
+  const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true);
   const projectsNum = projects.length;
 
   return (
     <TitleStyled>
       curated list of{" "}
       {projectsNum > 0 ? (
-        <ProjectsNum onClick={toApps}>{projectsNum}</ProjectsNum>
+        <ProjectsNum onClick={toProjects}>{projectsNum}</ProjectsNum>
       ) : (
         <Dots>...</Dots>
       )}{" "}

@@ -7,8 +7,8 @@ import { iSignOut } from "@/components/icons/Icons";
 // utils
 import { formatId } from "@/utils/format";
 
-// routes
-import { toProfile } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
@@ -22,6 +22,7 @@ import { setMobileMenuModal } from "@/state/modals/modals";
 
 const ProfileActions = () => {
   const dispatch = useAppDispatch();
+  const { toProfile } = useNav();
   const { userKey, signOut } = useAuth();
 
   const navigate = () => {

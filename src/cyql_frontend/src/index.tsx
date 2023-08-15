@@ -1,10 +1,6 @@
 import React, { FC } from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App";
-
-// react-router, history
-import { Router } from "react-router-dom";
-import { history } from "@/routes/history";
 
 // state, redux-persist
 import { Provider } from "react-redux";
@@ -17,17 +13,17 @@ import AuthProvider from "@/context/AuthContext";
 const Index: FC = (): JSX.Element => {
   return (
     <React.StrictMode>
-      <Router history={history}>
-        <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <AuthProvider>
-              <App />
-            </AuthProvider>
-          </PersistGate>
-        </Provider>
-      </Router>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </PersistGate>
+      </Provider>
     </React.StrictMode>
   );
 };
 
-render(<Index />, document.getElementById("app"));
+const container = document.getElementById("app");
+const root = createRoot(container!);
+root.render(<Index />);

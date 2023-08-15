@@ -9,10 +9,6 @@ import {
   signOut as junoSignOut,
 } from "@junobuild/core";
 
-// routes
-import { history } from "@/routes/history";
-import { toHome } from "@/routes/routes";
-
 const AuthContext = createContext();
 const useAuth = () => {
   return useContext(AuthContext);
@@ -62,11 +58,10 @@ function AuthProvider({ children }) {
   // juno end
 
   const signOut = async () => {
-    setUserKey("");
-
-    // juno
     await junoSignOut();
-    history.location.pathname === "/profile" && toHome();
+
+    // clear state
+    setUserKey("");
   };
 
   const value = {

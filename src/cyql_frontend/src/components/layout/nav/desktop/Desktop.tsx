@@ -4,8 +4,8 @@ import styled from "styled-components";
 // icons
 import { iCube } from "@/components/icons/Icons";
 
-// routes
-import { toHome } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
@@ -25,6 +25,7 @@ import { selectApiModalIsOpen, setApiModalIsOpen } from "@/state/modals/apiModal
 
 const Desktop: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const { toHome } = useNav();
   const { userKey } = useAuth();
   const apiModalIsOpen = useAppSelector(selectApiModalIsOpen);
 

@@ -1,10 +1,12 @@
 import React from "react";
 import css from "./SubmissionSuccess.module.css";
 
-// routes
-import { toHome } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 const SubmissionSuccess = () => {
+  const { toHome } = useNav();
+
   return (
     <div className={css.submissionSuccess}>
       <div className={css.content}>

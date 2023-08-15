@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
-import CookieConsent from "react-cookie-consent";
 import { size } from "./styles/breakpoints";
+
+// router
+import { RouterProvider } from "react-router-dom";
 
 // constants
 import { iiAdmin1, iiAdmin2 } from "@/constants/constants";
@@ -21,20 +22,10 @@ import { init_juno, refreshProjects } from "@/shared/juno";
 import { useAuth } from "@/context/AuthContext";
 
 // components
-import {
-  Admin,
-  Home,
-  NotFound,
-  Profile,
-  Project,
-  Projects,
-  Submit,
-} from "@/components/pages/index";
-import { Footer, Nav, Sidebar, Summary } from "@/components/layout/_index";
+import { Router } from "@/routes/_index";
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
-import { selectTheme } from "@/state/ui/theme";
 // import { setUpvotedProjects } from "@/state/profile/profile";
 import { selectProjects } from "@/state/projects";
 import { selectAllCategories } from "@/state/categories/allCategories";
@@ -53,7 +44,6 @@ const App = () => {
   const mobileMenuModal = useAppSelector(selectMobileMenuModal);
 
   // ...
-  const theme = useAppSelector(selectTheme);
   const projects = useAppSelector(selectProjects);
   const allCategories = useAppSelector(selectAllCategories);
   const admins = [iiAdmin1, iiAdmin2];
@@ -97,75 +87,7 @@ const App = () => {
   //   // fetch updated data
   // }, [userKey]);
 
-  return (
-    <div className={`app ${theme}`}>
-      <Summary />
-      <Nav />
-
-      <div className="content">
-        <Sidebar />
-
-        <div className="main">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-
-            <Route exact path="/projects">
-              <Projects />
-            </Route>
-
-            <Route exact path="/projects/:slug">
-              <Project />
-            </Route>
-
-            <Route exact path="/submit">
-              <Submit />
-            </Route>
-
-            {userKey !== "" && (
-              <Route exact path="/profile">
-                <Profile />
-              </Route>
-            )}
-
-            {admins.length > 0 && userKey !== "" && verifyAdmin(admins, userKey) && (
-              <Route exact path="/admin">
-                <Admin />
-              </Route>
-            )}
-
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </div>
-      </div>
-
-      {projects.length > 0 && <Footer />}
-
-      {/* cookies */}
-      <CookieConsent
-        cookieName="cookie"
-        disableStyles={true}
-        buttonText="Ok"
-        containerClasses="cookie"
-        contentClasses="cookie__content"
-        buttonClasses="cookie__btn"
-        expires={90}
-      >
-        this site uses 🍪 to enhance ux,{" "}
-        <a
-          className="cookie__link"
-          href="https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
-          rel="noreferrer noopener"
-          target="_blank"
-        >
-          learn more
-        </a>
-      </CookieConsent>
-    </div>
-  );
+  return <RouterProvider router={Router} />;
 };
 
 export default App;

@@ -4,16 +4,19 @@ import css from "./HighlightedByCategory.module.css";
 // icons
 import { iCheckCircle } from "@/components/icons/Icons";
 
+// hooks
+import useNav from "@/hooks/useNav";
+
 // state
 import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
-import { toApp } from "@/routes/routes";
 
 // components
 // import { UpvoteBtn } from "@/components/btns/index";
 import { Logo } from "./index";
 
 const HighlightedByCategory = ({ filter }) => {
+  const { toProject } = useNav();
   const projects = useAppSelector(selectProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   );
@@ -40,7 +43,7 @@ const HighlightedByCategory = ({ filter }) => {
   };
 
   const openProject = (slug) => {
-    toApp(slug);
+    toProject(slug);
   };
 
   return (

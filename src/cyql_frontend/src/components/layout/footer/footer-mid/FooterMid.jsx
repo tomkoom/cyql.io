@@ -1,14 +1,16 @@
 import React from "react";
 import css from "./FooterMid.module.css";
 
-// routes
-import { toHome, toApps, toSubmit } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // components
 import { Logo } from "@/components/ui/_index";
 import { Meta, NavLink, Socials } from "./index";
 
 const FooterMid = () => {
+  const { toHome, toProjects, toSubmit } = useNav();
+
   return (
     <div className={css.footerMid}>
       <div className={css.logo} onClick={toHome}>
@@ -16,7 +18,7 @@ const FooterMid = () => {
       </div>
 
       <div className={css.nav}>
-        <NavLink label="projects" to={toApps} />
+        <NavLink label="projects" to={toProjects} />
         <NavLink label="submit" to={toSubmit} />
       </div>
       <Socials />

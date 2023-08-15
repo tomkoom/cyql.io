@@ -26,3 +26,7 @@ dfx canister create --all
 dfx deploy
 npm start
 ```
+
+### custom domain configuration
+
+https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/#custom-domains-on-the-boundary-nodes

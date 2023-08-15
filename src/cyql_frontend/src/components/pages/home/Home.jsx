@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-// routes
-import { toApps } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // components
 import {
@@ -19,6 +19,7 @@ import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 
 const Home = () => {
+  const { toProjects } = useNav();
   const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true);
   const projectsNoNfts = projects.filter((p) => !p.data.categories.includes("NFTs"));
   const projectsNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
@@ -43,7 +44,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>new projects</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && projectsNoNfts} />
       </Section>
@@ -52,7 +53,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>new nfts</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && projectsNfts} />
       </Section>
@@ -61,7 +62,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>popular projects</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && popularProjects} />
       </Section>
@@ -70,7 +71,7 @@ const Home = () => {
       <Section>
         <Title>
           <h3>popular nfts</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projects.length > 0 && popularNfts} />
       </Section>
@@ -79,7 +80,7 @@ const Home = () => {
       {/* <Section>
         <Title>
           <h3>wallets</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedByCategory filter="Wallets" />
       </Section>
@@ -89,7 +90,7 @@ const Home = () => {
       {/* <Section>
         <Title>
           <h3>explorers</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedByCategory filter="Explorers" />
       </Section>
@@ -99,7 +100,7 @@ const Home = () => {
       {/* <Section>
         <Title>
           <h3>social networks</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedByCategory filter="Social Networks" />
       </Section>
@@ -109,7 +110,7 @@ const Home = () => {
       {/* <Section>
         <Title>
           <h3>defi</h3>
-          <ViewAllBtn route={toApps} />
+          <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedByCategory filter="DeFi" />
       </Section>

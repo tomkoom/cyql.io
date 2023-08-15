@@ -1,8 +1,8 @@
 import React from "react";
 import css from "./ProjectList.module.css";
 
-// routes
-import { toApp } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // components
 import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index";
@@ -33,6 +33,8 @@ import {
 } from "./utils/filterProjects";
 
 const ProjectList = () => {
+  const { toProject } = useNav();
+
   // projects
   const projects = useAppSelector(selectProjectsDocsActive);
   const projectsNum = projects.length;
@@ -76,7 +78,7 @@ const ProjectList = () => {
             )
             .slice(0, itemsVisible)
             .map((p) => (
-              <li className={css.liI} key={p.key} onClick={() => toApp(p.data.slug)}>
+              <li className={css.liI} key={p.key} onClick={() => toProject(p.data.slug)}>
                 <div className={css.main}>
                   <Main
                     logo={p.data.logo}

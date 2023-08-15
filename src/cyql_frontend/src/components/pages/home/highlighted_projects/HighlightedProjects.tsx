@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { device } from "@/styles/breakpoints";
 
-// routes
-import { toApps } from "@/routes/routes";
+// hooks
+import useNav from "@/hooks/useNav";
 
 // components
 import { Loader } from "@/components/ui/_index";
@@ -11,6 +11,8 @@ import { ViewMoreBtn } from "@/components/btns/_index";
 import { Project } from "./_index";
 
 const HighlightedProjects = ({ projects }) => {
+  const { toProjects } = useNav();
+
   return (
     <div>
       {!projects.length ? (
@@ -34,7 +36,7 @@ const HighlightedProjects = ({ projects }) => {
         </Grid>
       )}
 
-      {projects.length > 0 && <ViewMoreBtn text="view all projects" nav={toApps} />}
+      {projects.length > 0 && <ViewMoreBtn text="view all projects" nav={toProjects} />}
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-// router
-import { useHistory } from "react-router";
+// hooks
+import useNav from "@/hooks/useNav";
 
 const StaffPicks: FC = (): JSX.Element => {
-  const history = useHistory();
+  const { toProject } = useNav();
 
   const staffPicksItems = [
     {
@@ -26,7 +26,7 @@ const StaffPicks: FC = (): JSX.Element => {
   ];
 
   const openProject = (slug: string): void => {
-    history.push(`projects/${slug}`);
+    toProject(slug);
   };
 
   return (
