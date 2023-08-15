@@ -25,7 +25,11 @@ import {
 
 const router = createHashRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
+    <Route
+      path="/"
+      element={<RootLayout />}
+      errorElement={<NotFound text="Something went wrong" />}
+    >
       <Route index element={<Home />} />
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:slug" element={<Project />} />

@@ -4,13 +4,17 @@ import styled from "styled-components";
 // hooks
 import useNav from "@/hooks/useNav";
 
-const NotFound: FC = (): JSX.Element => {
+interface NotFoundProps {
+  text: string;
+}
+
+const NotFound: FC<NotFoundProps> = ({ text }): JSX.Element => {
   const { toHome } = useNav();
 
   return (
     <NotFoundStyled>
-      <p className="bodyText">
-        Requested page was not found. <span onClick={toHome}>Go to homepage 🏠</span>
+      <p>
+        {text}. <span onClick={toHome}>Go to the homepage</span>
       </p>
     </NotFoundStyled>
   );
@@ -20,16 +24,13 @@ const NotFoundStyled = styled.div`
   text-align: center;
 
   > p {
-    color: var(--secondaryColor);
+    padding: 1rem;
+    margin: 8rem 0;
   }
 
   > p span {
+    text-decoration: underline;
     cursor: pointer;
-    color: var(--primaryColor);
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 `;
 
