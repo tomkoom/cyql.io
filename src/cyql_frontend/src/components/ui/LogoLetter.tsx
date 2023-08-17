@@ -10,9 +10,9 @@ interface LogoLetterProps {
 const LogoLetter: FC<LogoLetterProps> = ({ sizeRem, borderRadiusRem, name }): JSX.Element => {
   const firstLetter = name.charAt(0);
   const style = {
-    width: `${sizeRem}rem`,
-    height: `${sizeRem}rem`,
-    borderRadius: `${borderRadiusRem}rem`,
+    width: sizeRem,
+    height: sizeRem,
+    borderRadius: borderRadiusRem,
   };
 
   return <LogoLetterStyled style={style}>{firstLetter}</LogoLetterStyled>;

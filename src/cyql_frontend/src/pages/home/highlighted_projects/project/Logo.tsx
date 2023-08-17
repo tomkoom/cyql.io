@@ -10,12 +10,12 @@ interface LogoProps {
 }
 
 const Logo: FC<LogoProps> = ({ name, logo }): JSX.Element => {
-  const sizeRem = "4.5";
-  const borderRadiusRem = "1";
+  const sizeRem = "4.5rem";
+  const borderRadiusRem = "1rem";
   const style = {
-    width: `${sizeRem}rem`,
-    height: `${sizeRem}rem`,
-    borderRadius: `${borderRadiusRem}rem`,
+    width: sizeRem,
+    height: sizeRem,
+    borderRadius: borderRadiusRem,
   };
 
   return logo ? (

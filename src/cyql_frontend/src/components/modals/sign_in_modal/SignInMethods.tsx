@@ -46,17 +46,19 @@ const SignInMethods: FC = (): JSX.Element => {
 const SignInMethodsStyled = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
 `;
 
 const Item = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 `;
 
 const Url = styled.a`
-  display: inline-block;
+  align-self: flex-start;
   color: var(--secondaryColor);
   font-size: var(--fsText);
 

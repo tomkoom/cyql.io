@@ -18,7 +18,6 @@ function AuthProvider({ children }) {
   const [userKey, setUserKey] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
 
-  // juno start
   // ii
   const signInWithII = async () => {
     setSignInLoading(true);
@@ -61,7 +60,6 @@ function AuthProvider({ children }) {
     });
     return () => sub();
   }, []);
-  // juno end
 
   const signOut = async () => {
     await junoSignOut();
