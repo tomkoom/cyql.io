@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
-import Modal from "../_Modal";
+import Modal from "@/components/modals/_Modal";
 
 // components
 import { Btns, Link } from "./_index";

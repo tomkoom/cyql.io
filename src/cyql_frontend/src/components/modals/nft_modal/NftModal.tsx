@@ -3,21 +3,23 @@ import styled from "styled-components";
 import Modal from "@/components/modals/_Modal";
 
 // components
-import { SignInMethods } from "./_index";
+import { Links } from "./_index";
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux";
-import { setSignInModal } from "@/state/modals/modals";
+import { setNftModal } from "@/state/modals/nftModal";
 
-interface SingInModalProps {
+interface NftModalProps {
   isOpen: boolean;
 }
 
-const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
+const NftModal: FC<NftModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch();
+  const text =
+    "cyql nft is the main asset of the project which represents its development progress and will carry a number of utilities which can be used on the platform.";
 
-  const closeModal = (): void => {
-    dispatch(setSignInModal(false));
+  const closeModal = () => {
+    dispatch(setNftModal(false));
   };
 
   // hide scrollbar
@@ -31,9 +33,10 @@ const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
-      <Content onClick={(e) => e.stopPropagation()}>
-        <h3>choose your sign-in method</h3>
-        <SignInMethods />
+      <Content>
+        <h3>cyql nft</h3>
+        <p>{text}</p>
+        <Links />
       </Content>
     </Modal>
   );
@@ -43,7 +46,15 @@ const Content = styled.div`
   max-width: 24rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+
+  > h3 {
+    color: var(--primaryColor);
+  }
+
+  > p {
+    color: var(--primaryColor);
+  }
 `;
 
-export default SignInModal;
+export default NftModal;

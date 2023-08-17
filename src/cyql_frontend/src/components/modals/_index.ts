@@ -1,5 +1,6 @@
 // modals
 
+export { default as NftModal } from "./nft_modal/NftModal";
 export { default as ProjectModal } from "./project_modal/ProjectModal";
 export { default as ShareModal } from "./share_modal/ShareModal";
 export { default as SignInModal } from "./sign_in_modal/SignInModal";

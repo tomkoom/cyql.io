@@ -1,19 +1,20 @@
 import React, { FC } from "react";
 
 // components
-import { NftBtn, NftModal } from "./_index";
+import { NftBtn } from "./_index";
+import { NftModal } from "@/components/modals/_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
 import { selectNftModal } from "@/state/modals/nftModal";
 
 const Nft: FC = (): JSX.Element => {
-  const nftModal = useAppSelector(selectNftModal);
+  const isOpen = useAppSelector(selectNftModal);
 
   return (
     <div>
+      <NftModal isOpen={isOpen} />
       <NftBtn />
-      {nftModal === true && <NftModal />}
     </div>
   );
 };

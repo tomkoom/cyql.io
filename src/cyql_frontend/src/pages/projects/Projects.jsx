@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Projects.module.css";
 
 // components
-import { Category, Filter, ProjectList, Sort } from "./index";
+import { Category, Filter, ProjectList, Sort } from "./_index";
 import { Search } from "@/components/ui/_index";
 
 // state
