@@ -47,7 +47,6 @@ const initialState: AllCategoriesState = {
     { id: "messaging", label: "Messaging", icon: "💬" },
 
     //  ...
-
     { id: "nfts", label: "NFTs", icon: "🗿" },
     { id: "dapps", label: "dApps", icon: "🔗" },
     { id: "social-networks", label: "Social Networks", icon: "🎯" },
@@ -56,6 +55,7 @@ const initialState: AllCategoriesState = {
     { id: "marketplace", label: "Marketplace", icon: "🔄" },
     { id: "blogging", label: "Blogging", icon: "🗒️" },
     { id: "identity", label: "Identity", icon: "🔑" },
+    { id: "governance-voting", label: "Governance/Voting", icon: "" },
   ],
 };
 

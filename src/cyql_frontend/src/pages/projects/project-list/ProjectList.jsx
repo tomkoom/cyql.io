@@ -6,8 +6,8 @@ import useNav from "@/hooks/useNav";
 
 // components
 import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index";
-import { Spinner } from "@/components/ui/_index";
-import { Main, Socials, SocialsIc, Tags } from "./index";
+import { Loading, Spinner } from "@/components/ui/_index";
+import { Main, Socials, SocialsIc, Tags } from "./_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
@@ -51,6 +51,10 @@ const ProjectList = () => {
 
   // sort
   const sort = useAppSelector(selectSort);
+
+  if (projects.length < 1) {
+    return <Loading />;
+  }
 
   return (
     <div>

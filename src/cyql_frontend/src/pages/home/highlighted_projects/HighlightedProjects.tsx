@@ -6,7 +6,7 @@ import { device } from "@/styles/breakpoints";
 import useNav from "@/hooks/useNav";
 
 // components
-import { Spinner } from "@/components/ui/_index";
+import { Loading } from "@/components/ui/_index";
 import { ViewMoreBtn } from "@/components/btns/_index";
 import { Project } from "./_index";
 
@@ -18,11 +18,7 @@ const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.El
   const { toProjects } = useNav();
 
   if (!projects) {
-    return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Spinner />
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

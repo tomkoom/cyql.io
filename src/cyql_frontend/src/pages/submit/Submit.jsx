@@ -11,7 +11,8 @@ import { SUBMITTED_PROJECTS_COLL } from "@/constants/constants";
 import { setDoc } from "@junobuild/core";
 
 // components
-import { Categories, Inputs, Loading, SubmissionSuccess, SubmitBtn } from "./index";
+import { Categories, Inputs, SubmissionSuccess, SubmitBtn } from "./_index";
+import { Loading } from "@/components/ui/_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
@@ -48,24 +49,25 @@ const Submit = () => {
     setSubmitIsLoading(false);
   };
 
+  if (categoriesSortedByNum.length < 1) {
+    return <Loading />;
+  }
+
+  if (isSubmitted) {
+    return <SubmissionSuccess />;
+  }
+
   return (
     <div className={css.submit}>
-      {categoriesSortedByNum.length < 1 ? (
-        <Loading />
-      ) : isSubmitted === false ? (
-        <div className={css.main}>
-          <h2 className="pageTitle">add your project to cyql.io</h2>
-          <form className={css.form} onSubmit={handleSubmit}>
-            <Categories />
-            <Inputs />
+      <div className={css.main}>
+        <h2 className="pageTitle">add your project to cyql.io</h2>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <Categories />
+          <Inputs />
 
-            {/* submit */}
-            <SubmitBtn submitIsLoading={submitIsLoading} />
-          </form>
-        </div>
-      ) : (
-        <SubmissionSuccess />
-      )}
+          <SubmitBtn submitIsLoading={submitIsLoading} />
+        </form>
+      </div>
     </div>
   );
 };

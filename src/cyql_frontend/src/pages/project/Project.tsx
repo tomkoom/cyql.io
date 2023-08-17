@@ -6,7 +6,7 @@ import { device } from "@/styles/breakpoints";
 import { useParams } from "react-router-dom";
 
 // components
-import { Spinner } from "@/components/ui/_index";
+import { Loading } from "@/components/ui/_index";
 import { BackBtn } from "@/components/btns/_index";
 import { ShareModal } from "@/components/modals/_index";
 import { NotFound } from "@/pages/_index";
@@ -20,24 +20,23 @@ import {
   NftBtns,
   NftPreviews,
 } from "./_index";
+import { ProjectModal } from "@/components/modals/_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
 import { selectProjects } from "@/state/projects";
 import { selectShareModal } from "@/state/modals/shareModal";
+import { selectProjectModal } from "@/state/modals/projectModal/projectModal";
 
 const Project: FC = (): JSX.Element => {
   const { slug } = useParams<{ slug: string }>();
   const projects = useAppSelector(selectProjects);
   const project = projects.filter((p) => p.data.slug === slug) || [];
   const shareModal = useAppSelector(selectShareModal);
+  const projectModalIsOpen = useAppSelector(selectProjectModal);
 
   if (projects.length < 1) {
-    return (
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Spinner />
-      </div>
-    );
+    return <Loading />;
   }
 
   if (project.length < 1) {
@@ -46,9 +45,11 @@ const Project: FC = (): JSX.Element => {
 
   return (
     <ProjectStyled>
-      <BackBtn />
+      {/* modal */}
+      <ProjectModal isOpen={projectModalIsOpen} />
 
-      {project.map((project) => (
+      <BackBtn />
+      {project.map((project: any) => (
         <Content key={project.key}>
           <Header project={project} />
 
