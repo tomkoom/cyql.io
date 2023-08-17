@@ -1,26 +1,29 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
+// constants
+import { IC_LOGO } from "@/constants/constants";
+
 // components
 import { Btn } from "./_index";
 
 // auth
 import { useAuth } from "@/context/AuthContext";
 
-const SignInMethods: FC = () => {
+const SignInMethods: FC = (): JSX.Element => {
   const { signInWithII, signInWithNfid } = useAuth();
   const signInMethods = [
     {
       id: "internet_identity",
       label: "Internet Identity",
-      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/ic-logo.svg",
+      logo: IC_LOGO,
       click: signInWithII,
-      aboutUrl: "https://identity.ic0.app/about",
+      aboutUrl: "https://identity.ic0.app/",
     },
     {
       id: "nfid",
       label: "NFID",
-      logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/nfid/nfid-logo.png",
+      logo: "https://ipfs.io/ipfs/QmYPARhAF8ig8kEEP6C81Du5S1spcsGcgRv8GC7SZ9CrrG?filename=nfid-logo.png",
       click: signInWithNfid,
       aboutUrl: "https://nfid.one/#FAQ",
     },

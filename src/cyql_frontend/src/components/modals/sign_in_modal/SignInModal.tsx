@@ -2,8 +2,12 @@ import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "@/components/modals/_Modal";
 
+// auth
+import { useAuth } from "@/context/AuthContext";
+
 // components
 import { SignInMethods } from "./_index";
+import { Spinner } from "@/components/ui/_index";
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux";
@@ -15,6 +19,7 @@ interface SingInModalProps {
 
 const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch();
+  const { signInLoading } = useAuth();
 
   const closeModal = (): void => {
     dispatch(setSignInModal(false));
@@ -28,6 +33,14 @@ const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
       document.body.style.overflow = "unset";
     }
   }, [isOpen]);
+
+  if (signInLoading) {
+    return (
+      <LoadingBackdrop>
+        <Spinner />
+      </LoadingBackdrop>
+    );
+  }
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
@@ -44,6 +57,20 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+`;
+
+const LoadingBackdrop = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(var(--backgroundRgb), 0.8);
+  padding: 1rem;
+  z-index: 1;
 `;
 
 export default SignInModal;

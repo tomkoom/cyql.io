@@ -26,6 +26,9 @@ function AuthProvider({ children }) {
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
       }),
+    }).catch((err) => {
+      console.log(err);
+      setSignInLoading(false);
     });
     setSignInLoading(false);
   };
@@ -40,6 +43,9 @@ function AuthProvider({ children }) {
       provider: new NFIDProvider({
         appName,
         logoUrl,
+      }).catch((err) => {
+        console.log(err);
+        setSignInLoading(false);
       }),
     });
     setSignInLoading(false);
