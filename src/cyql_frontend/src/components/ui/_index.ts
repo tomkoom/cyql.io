@@ -1,12 +1,10 @@
 // ui
 
-export { default as ExpandableText } from "./expandable_text/ExpandableText";
-export { default as Search } from "./search/Search";
-export { default as Spinner } from "./spinner/Spinner";
-
-// ...
-export { default as IdImg } from "./id_img/IdImg";
-export { default as Logo } from "./logo/Logo";
-export { default as LogoLetter } from "./logo_letter/LogoLetter";
+export { default as ExpandableText } from "./ExpandableText";
+export { default as IdImg } from "./IdImg";
+export { default as Logo } from "./Logo";
+export { default as LogoLetter } from "./LogoLetter";
 export { default as Price } from "./price/Price";
-export { default as Theme } from "./theme/Theme";
+export { default as Search } from "./Search";
+export { default as Spinner } from "./Spinner";
+export { default as Theme } from "./Theme";

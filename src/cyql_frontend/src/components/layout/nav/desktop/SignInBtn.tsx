@@ -36,7 +36,7 @@ const SignInBtn: FC = (): JSX.Element => {
         <Btn
           btnType="secondary"
           text="loading..."
-          icon={<Spinner size={20} />}
+          icon={<Spinner sizePx={20} />}
           onClick={openSignInModal}
         />
       )}

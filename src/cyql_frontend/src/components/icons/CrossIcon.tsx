@@ -14,7 +14,6 @@ const CrossIcon: FC<CrossIconProps> = ({ onClick }): JSX.Element => {
 };
 
 const Icon = styled.div`
-  align-self: flex-start;
   height: 3rem;
   width: 3rem;
   display: grid;

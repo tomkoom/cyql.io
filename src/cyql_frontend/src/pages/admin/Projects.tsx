@@ -38,11 +38,7 @@ const Projects: FC = (): JSX.Element => {
     <div>
       <ProjectModal isOpen={isOpen} />
 
-      <Search
-        placeholder={"search by project name"}
-        searchQuery={searchQuery}
-        setSearch={setSearch}
-      />
+      <Search placeholder={"search by project name"} value={searchQuery} onChange={setSearch} />
 
       <Table>
         <RowHeader>

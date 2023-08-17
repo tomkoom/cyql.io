@@ -21,7 +21,7 @@ import { selectProjects } from "@/state/projects";
 const Home = () => {
   const { toProjects } = useNav();
   const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true);
-  const projectsNoNfts = projects.filter((p) => !p.data.categories.includes("NFTs"));
+  const projectsExcludeNfts = projects.filter((p) => !p.data.categories.includes("NFTs"));
   const projectsNfts = projects.filter((p) => p.data.categories.includes("NFTs"));
   const popularProjects = projects
     .filter((p) => p.data.upvotes)
@@ -46,7 +46,7 @@ const Home = () => {
           <h3>new projects</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
-        <HighlightedProjects projects={projects.length > 0 && projectsNoNfts} />
+        <HighlightedProjects projects={projects.length > 0 && projectsExcludeNfts} />
       </Section>
 
       {/* newest nfts */}

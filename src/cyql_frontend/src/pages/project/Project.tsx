@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { Spinner } from "@/components/ui/_index";
 import { BackBtn } from "@/components/btns/_index";
 import { ShareModal } from "@/components/modals/_index";
-import { NotFound } from "@/components/pages/_index";
+import { NotFound } from "@/pages/_index";
 import {
   CollStats,
   Description,
@@ -33,7 +33,11 @@ const Project: FC = (): JSX.Element => {
   const shareModal = useAppSelector(selectShareModal);
 
   if (projects.length < 1) {
-    return <Spinner />;
+    return (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Spinner />
+      </div>
+    );
   }
 
   if (project.length < 1) {
@@ -121,7 +125,7 @@ const Project: FC = (): JSX.Element => {
 
 const ProjectStyled = styled.div`
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0 auto 4rem auto;
 `;
 
 const Content = styled.div`

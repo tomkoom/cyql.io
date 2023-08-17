@@ -33,8 +33,8 @@ const Projects = () => {
       <h2 className="pageTitle">discover new projects</h2>
       <Search
         placeholder={"search by project name"}
-        searchQuery={searchQuery}
-        setSearch={setProjectsSearch}
+        value={searchQuery}
+        onChange={setProjectsSearch}
       />
       <div className={css.controls}>
         <div className={css.controlsI}>

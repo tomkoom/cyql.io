@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { device } from "@/styles/breakpoints";
-import IC_LOGO from "../../../../../assets/ic-logo.svg";
+import IC_LOGO from "../../../../assets/ic-logo.svg";
 
 // hooks
 import useNav from "@/hooks/useNav";

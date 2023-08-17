@@ -13,15 +13,7 @@ import { AdminRoutes, ProtectedRoutes } from "@/routes/_index";
 
 // components
 import RootLayout from "@/components/layout/RootLayout";
-import {
-  Admin,
-  Home,
-  NotFound,
-  Profile,
-  Project,
-  Projects,
-  Submit,
-} from "@/components/pages/_index";
+import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@/pages/_index";
 
 const router = createHashRouter(
   createRoutesFromElements(

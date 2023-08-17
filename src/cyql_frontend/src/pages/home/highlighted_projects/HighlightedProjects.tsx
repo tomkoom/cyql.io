@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { device } from "@/styles/breakpoints";
 
@@ -10,31 +10,39 @@ import { Spinner } from "@/components/ui/_index";
 import { ViewMoreBtn } from "@/components/btns/_index";
 import { Project } from "./_index";
 
-const HighlightedProjects = ({ projects }) => {
+interface HighlightedProjectsProps {
+  projects: any[];
+}
+
+const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.Element => {
   const { toProjects } = useNav();
+
+  if (!projects) {
+    return (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <div>
-      {!projects.length ? (
-        <Spinner />
-      ) : (
-        <Grid>
-          {projects.slice(0, 24).map((p) => (
-            <Project
-              key={p.key}
-              // ...
-              name={p.data.name}
-              slug={p.data.slug}
-              logo={p.data.logo}
-              categories={p.data.categories}
-              canister={p.data.canister}
-              github={p.data.github}
-              description={p.data.description}
-              // upvotes={p.data.upvotes}
-            />
-          ))}
-        </Grid>
-      )}
+      <Grid>
+        {projects.slice(0, 24).map((p) => (
+          <Project
+            key={p.key}
+            // ...
+            name={p.data.name}
+            slug={p.data.slug}
+            logo={p.data.logo}
+            categories={p.data.categories}
+            canister={p.data.canister}
+            github={p.data.github}
+            description={p.data.description}
+            // upvotes={p.data.upvotes}
+          />
+        ))}
+      </Grid>
 
       {projects.length > 0 && <ViewMoreBtn text="view all projects" nav={toProjects} />}
     </div>
