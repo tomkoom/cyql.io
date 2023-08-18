@@ -9,6 +9,11 @@ const StaffPicks: FC = (): JSX.Element => {
 
   const staffPicksItems = [
     {
+      slug: "nfid",
+      title: "NFID",
+      text: "identity layer for the internet",
+    },
+    {
       slug: "carbon-crowd",
       title: "Carbon Crowd",
       text: "decarbonise cloud computing",
@@ -41,7 +46,7 @@ const StaffPicks: FC = (): JSX.Element => {
       <ul>
         {staffPicksItems.map((item, i) => (
           <li onClick={() => openProject(item.slug)} key={i}>
-            <span id="title">{item.title}</span>
+            <span>{item.title}</span>
             <span id="text">{item.text}</span>
           </li>
         ))}
@@ -51,34 +56,31 @@ const StaffPicks: FC = (): JSX.Element => {
 };
 
 const StaffPicksStyled = styled.div`
+  margin-bottom: 1rem;
+
   > h3 {
-    font-size: var(--fsText);
-    font-weight: var(--fwRegular);
+    font-size: var(--fs6);
+    font-weight: var(--fwBold);
     color: var(--secondaryColor);
     margin-bottom: 0.5rem;
   }
 
   > ul {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap: 0.5rem;
     margin-bottom: 1rem;
 
     > li {
-      width: 14rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       font-size: var(--fsText);
       font-weight: var(--fwMedium);
-      white-space: nowrap;
       background-color: var(--underlay1);
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       cursor: pointer;
-
-      > span#title {
-      }
 
       > span#text {
         font-size: var(--fs7);

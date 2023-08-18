@@ -14,7 +14,7 @@ import { useAuth } from "@/context/AuthContext";
 import { ProfileBtn, SignInBtn, Socials } from "./_index";
 import { Nft } from "../_index";
 import { Logo, Price, Theme } from "@/components/ui/_index";
-import { Btn } from "@/components/btns/_index";
+import { LinkBtn } from "@/components/btns/_index";
 
 // components
 import { ApiModal } from "@/components/modals/_index";
@@ -49,7 +49,7 @@ const Desktop: FC = (): JSX.Element => {
         <Price />
         <Theme />
         {/* api */}
-        <Btn btnType="secondary" text="api" icon={iCube} onClick={openApiModal} />
+        <LinkBtn btnType="secondary" text="api" icon={iCube} url="https://docs.cyql.io/" />
         <Nft />
         {userKey === "" ? <SignInBtn /> : <ProfileBtn />}
       </Controls>

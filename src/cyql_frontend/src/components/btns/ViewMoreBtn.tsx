@@ -9,7 +9,7 @@ interface ViewMoreBtnProps {
   nav: () => void;
 }
 
-const ViewMoreBtn: FC<ViewMoreBtnProps> = ({ nav, text }): JSX.Element => {
+const ViewMoreBtn: FC<ViewMoreBtnProps> = ({ text, nav }): JSX.Element => {
   return (
     <ViewMoreBtnStyled onClick={nav}>
       {text}
