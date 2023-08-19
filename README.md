@@ -1,10 +1,10 @@
 # cyql.io
 
-[cyql.io](https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/#/) is a curated gallery of projects built on the [Internet Computer](https://internetcomputer.org/).
+[cyql.io](https://cyql.io/) is a curated gallery of projects built on the [Internet Computer](https://internetcomputer.org/).
 
 ### API
 
-See the [API guide](docs.cyql.io) to query the data from the site.
+See the [API guide](https://docs.cyql.io/) to query the data from the site.
 
 ### Stack
 
