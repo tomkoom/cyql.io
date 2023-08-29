@@ -7,6 +7,6 @@ export { default as HighlightedProjects } from "./highlighted_projects/Highlight
 export { default as JoinCommunity } from "./join-community/JoinCommunity";
 
 // ...
-export { default as Promo } from "./promo/Promo";
-export { default as StaffPicks } from "./staff_picks/StaffPicks";
+export { default as Promo } from "./Promo";
+export { default as StaffPicks } from "./StaffPicks";
 export { default as ViewAllBtn } from "./ViewAllBtn";

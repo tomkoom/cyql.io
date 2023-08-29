@@ -39,6 +39,11 @@ const StaffPicks: FC = (): JSX.Element => {
       text: "decarbonise cloud computing",
     },
     {
+      slug: "canlista",
+      title: "Canlista",
+      text: "community canister registry",
+    },
+    {
       slug: "nnscat",
       title: "NNSCat",
       text: "filter and compare NNS proposals",

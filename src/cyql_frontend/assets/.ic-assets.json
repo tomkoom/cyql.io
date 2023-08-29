@@ -1,6 +1,7 @@
 [
   {
     "match": ".well-known",
+    "allow_raw_access": true,
     "ignore": false
   },
   {

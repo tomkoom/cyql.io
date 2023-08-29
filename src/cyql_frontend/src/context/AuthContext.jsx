@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 // constants
-import { APP_ALTERNATIVE_ORIGIN } from "@/constants/constants";
+import { APP_ALTERNATIVE_ORIGIN, NETWORK } from "@/constants/constants";
 
 // utils
 import { isCustomDomain } from "@/utils/isCustomDomain";
@@ -20,9 +20,14 @@ const useAuth = () => {
   return useContext(AuthContext);
 };
 
+// host
+const host = NETWORK === "ic" ? "https://icp-api.io" : "http://localhost:8080";
+
 function AuthProvider({ children }) {
   const [userKey, setUserKey] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
+  console.log(NETWORK);
+  console.log("host", host);
 
   // ii
   const signInWithII = async () => {
