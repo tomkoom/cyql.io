@@ -31,7 +31,7 @@ function AuthProvider({ children }) {
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
         windowed: true,
-        // same ii for https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io/ and https://cyql.io/
+        // same ii for the default and custom domains
         ...(isCustomDomain() && {
           derivationOrigin: APP_ALTERNATIVE_ORIGIN,
         }),
