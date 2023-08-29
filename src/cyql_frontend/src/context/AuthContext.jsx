@@ -1,5 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// constants
+import { APP_ALTERNATIVE_ORIGIN } from "@/constants/constants";
+
+// utils
+import { isCustomDomain } from "@/utils/isCustomDomain";
+
 // juno
 import {
   authSubscribe,
@@ -24,6 +30,11 @@ function AuthProvider({ children }) {
     await signIn({
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
+        windowed: true,
+        // same ii for https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io/ and https://cyql.io/
+        ...(isCustomDomain() && {
+          derivationOrigin: APP_ALTERNATIVE_ORIGIN,
+        }),
       }),
     }).catch((err) => {
       console.log(err);
