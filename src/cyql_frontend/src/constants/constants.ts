@@ -14,5 +14,5 @@ export const IC_LOGO =
   "https://ipfs.io/ipfs/Qmb9YRW5j6nqsjpaT7DT8E66MTKFK9kdhEcofwjeXjJvaq?filename=ic-logo.svg";
 
 // ii
-export const APP_DERIVATION_ORIGIN = "https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io/";
-export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io/";
+export const APP_DERIVATION_ORIGIN = "https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io";
+export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io";
