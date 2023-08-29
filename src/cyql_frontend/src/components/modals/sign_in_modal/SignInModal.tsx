@@ -25,14 +25,14 @@ const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
     dispatch(setSignInModal(false));
   };
 
-  // hide scrollbar
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isOpen]);
+  // // hide scrollbar
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
+  // }, [isOpen]);
 
   if (signInLoading) {
     return (

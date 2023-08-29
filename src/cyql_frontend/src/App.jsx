@@ -27,7 +27,12 @@ import { selectAllCategories } from "@/state/categories/allCategories";
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
 
 // state: modals
-import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals";
+import {
+  setSignInModal,
+  setMobileMenuModal,
+  selectMobileMenuModal,
+  selectSignInModal,
+} from "@/state/modals/modals";
 
 const App = () => {
   // hooks
@@ -37,6 +42,7 @@ const App = () => {
 
   // modals
   const mobileMenuModal = useAppSelector(selectMobileMenuModal);
+  const signInModalIsOpen = useAppSelector(selectSignInModal);
 
   // ...
   const projects = useAppSelector(selectProjects);
@@ -72,6 +78,15 @@ const App = () => {
       dispatch(setCategoriesSortedByNum(categoriesSortedByNum));
     }
   }, [projects]);
+
+  // hide scrollbar when sign in modal is closed
+  useEffect(() => {
+    if (signInModalIsOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [signInModalIsOpen]);
 
   // get upvoted projects
   // useEffect(() => {

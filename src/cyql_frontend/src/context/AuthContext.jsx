@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+// import { SignInOptions } from "@junobuild/core";
 
 // constants
 import { APP_ALTERNATIVE_ORIGIN, NETWORK } from "@/constants/constants";
@@ -21,25 +22,23 @@ const useAuth = () => {
 };
 
 // host
-const host = NETWORK === "ic" ? "https://icp-api.io" : "http://localhost:8080";
+// const host = NETWORK === "ic" ? "https://icp-api.io" : "http://localhost:8080";
 
 function AuthProvider({ children }) {
   const [userKey, setUserKey] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
-  console.log(NETWORK);
-  console.log("host", host);
 
   // ii
   const signInWithII = async () => {
     setSignInLoading(true);
+
     await signIn({
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
-        windowed: true,
-        // same ii for the default and custom domains
-        ...(isCustomDomain() && {
-          derivationOrigin: APP_ALTERNATIVE_ORIGIN,
-        }),
+      }),
+      windowed: false,
+      ...(isCustomDomain() && {
+        derivationOrigin: APP_ALTERNATIVE_ORIGIN,
       }),
     }).catch((err) => {
       console.log(err);
