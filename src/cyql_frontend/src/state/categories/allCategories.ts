@@ -55,7 +55,8 @@ const initialState: AllCategoriesState = {
     { id: "marketplace", label: "Marketplace", icon: "🔄" },
     { id: "blogging", label: "Blogging", icon: "🗒️" },
     { id: "identity", label: "Identity", icon: "🔑" },
-    { id: "governance-voting", label: "Governance/Voting", icon: "" },
+    { id: "governance", label: "Governance", icon: "" },
+    { id: "ai", label: "AI", icon: "" },
   ],
 };
 

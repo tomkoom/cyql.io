@@ -14,9 +14,9 @@ const StaffPicks: FC = (): JSX.Element => {
       text: "identity layer for the internet",
     },
     {
-      slug: "carbon-crowd",
-      title: "Carbon Crowd",
-      text: "decarbonise cloud computing",
+      slug: "me-wallet",
+      title: "ME Wallet",
+      text: "a powerful multichain wallet",
     },
     {
       slug: "taggr",
@@ -32,6 +32,16 @@ const StaffPicks: FC = (): JSX.Element => {
       slug: "rabbithole-app",
       title: "Rabbithole",
       text: "🔒 encrypted file storage",
+    },
+    {
+      slug: "carbon-crowd",
+      title: "Carbon Crowd",
+      text: "decarbonise cloud computing",
+    },
+    {
+      slug: "nnscat",
+      title: "NNSCat",
+      text: "filter and compare NNS proposals",
     },
   ];
 

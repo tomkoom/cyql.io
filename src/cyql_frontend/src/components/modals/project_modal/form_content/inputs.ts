@@ -1,6 +1,3 @@
-// https://github.com/tomkoom/cyql-api-docs
-// state/_type/projectDoc -> projectDocData
-
 const main = [
   { id: "name", type: "text" },
   { id: "slug", type: "text" },
