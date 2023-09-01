@@ -44,6 +44,16 @@ const StaffPicks: FC = (): JSX.Element => {
       text: "community canister registry",
     },
     {
+      slug: "icpcoins",
+      title: "ICPCoins",
+      text: "ic cryptocurrencies by market cap",
+    },
+    {
+      slug: "blast",
+      title: "Blast",
+      text: "install & share immutable contracts",
+    },
+    {
       slug: "nnscat",
       title: "NNSCat",
       text: "filter and compare NNS proposals",

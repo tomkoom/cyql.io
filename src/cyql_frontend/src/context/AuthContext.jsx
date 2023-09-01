@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 // import { SignInOptions } from "@junobuild/core";
 
 // constants
-import { APP_DERIVATION_ORIGIN, NETWORK } from "@/constants/constants";
+import { APP_DERIVATION_ORIGIN } from "@/constants/constants";
 
 // utils
 import { isCustomDomain } from "@/utils/isCustomDomain";
@@ -21,9 +21,6 @@ const useAuth = () => {
   return useContext(AuthContext);
 };
 
-// host
-// const host = NETWORK === "ic" ? "https://icp-api.io" : "http://localhost:8080";
-
 function AuthProvider({ children }) {
   const [userKey, setUserKey] = useState("");
   const [signInLoading, setSignInLoading] = useState(false);
@@ -32,14 +29,12 @@ function AuthProvider({ children }) {
   const signInWithII = async () => {
     setSignInLoading(true);
 
-    console.log("is custom domain", isCustomDomain());
-
     await signIn({
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
       }),
       windowed: false,
-      // if domain is custom, use canonical origin (canister-id domain) for ii
+      // if domain is custom, use canonical origin (canister-id domain)
       ...(isCustomDomain() && {
         derivationOrigin: APP_DERIVATION_ORIGIN,
       }),
