@@ -1,21 +1,22 @@
-import React from "react";
-import css from "./Mobile.module.css";
+import React from "react"
+import css from "./Mobile.module.css"
 
 // hooks
-import useNav from "@/hooks/useNav";
+import useNav from "@/hooks/useNav"
 
 // components
-import { Logo, Theme } from "@/components/ui/_index";
-import { Menu, MenuBtn, Socials } from "./index";
-import { Nft } from "../_index";
+import { Logo, Theme } from "@/components/ui/_index"
+import { Menu, MenuBtn } from "./index"
+import { Nft } from "../_index"
+import { Socials } from "../desktop/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux";
-import { selectMobileMenuModal } from "@/state/modals/modals";
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectMobileMenuModal } from "@/state/modals/modals"
 
 const Mobile = () => {
-  const { toHome } = useNav();
-  const mobileMenu = useAppSelector(selectMobileMenuModal);
+  const { toHome } = useNav()
+  const mobileMenu = useAppSelector(selectMobileMenuModal)
 
   return (
     <div className={css.mobile}>
@@ -33,9 +34,10 @@ const Mobile = () => {
         </div>
       </div>
 
+      {/* modal */}
       {mobileMenu && <Menu />}
     </div>
-  );
-};
+  )
+}
 
-export default Mobile;
+export default Mobile
