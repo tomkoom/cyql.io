@@ -6,7 +6,7 @@ import useNav from "@/hooks/useNav";
 
 // components
 import { Logo } from "@/components/ui/_index";
-import { Meta, NavLink, Socials } from "./index";
+import { Meta, NavLink, Socials } from "./_index";
 
 const FooterMid = () => {
   const { toHome, toProjects, toSubmit } = useNav();

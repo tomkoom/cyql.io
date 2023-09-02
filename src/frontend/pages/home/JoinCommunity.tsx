@@ -2,6 +2,9 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 
+// constants
+import { X_URL, DISCORD_URL } from "@/constants/constants"
+
 // fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDiscord, faXTwitter } from "@fortawesome/free-brands-svg-icons"
@@ -15,10 +18,10 @@ const JoinCommunity: FC = (): JSX.Element => {
     {
       id: "x-twitter",
       label: "X / Twitter",
-      link: "https://x.com/cyqlio",
+      link: X_URL,
       icon: iconTwitter,
     },
-    { id: "discord", label: "Discord", link: "https://discord.gg/AnjyrfvvXX", icon: iconDiscord },
+    { id: "discord", label: "Discord", link: DISCORD_URL, icon: iconDiscord },
   ]
 
   return (
@@ -77,7 +80,7 @@ const JoinCommunityStyled = styled.ul`
 `
 
 const Icon = styled(FontAwesomeIcon)`
-  font-size: var(--fs3);
+  font-size: var(--fs4);
 `
 
 export default JoinCommunity

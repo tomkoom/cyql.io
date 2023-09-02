@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from "./Submit.module.css";
 
 // utils
-import { nanoid } from "@/utils/projectId";
+import { projectId } from "@/utils/projectId";
 
 // constants
 import { SUBMITTED_PROJECTS_COLL } from "@/constants/constants";
@@ -30,7 +30,7 @@ const Submit = () => {
     e.preventDefault();
     setSubmitIsLoading(true);
 
-    const key = nanoid();
+    const key = projectId();
     const timestamp = Date.now();
     await setDoc({
       collection,

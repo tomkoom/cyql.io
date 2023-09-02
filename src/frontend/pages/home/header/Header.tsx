@@ -1,17 +1,17 @@
-import React from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // components
-import { Title } from "./_index";
+import { Title } from "./_index"
 
-const Header = () => {
+const Header: FC = (): JSX.Element => {
   return (
     <HeaderStyled>
       <Title />
       <p>discover new #ic projects</p>
     </HeaderStyled>
-  );
-};
+  )
+}
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -22,6 +22,6 @@ const HeaderStyled = styled.div`
   > p {
     color: var(--secondaryColor);
   }
-`;
+`
 
-export default Header;
+export default Header

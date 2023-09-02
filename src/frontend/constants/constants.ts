@@ -17,6 +17,10 @@ export const IC_LOGO =
 export const APP_DERIVATION_ORIGIN = "https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io"
 export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io"
 
+// links
+export const X_URL = "https://x.com/cyqlio"
+export const DISCORD_URL = "https://discord.gg/AnjyrfvvXX"
+
 // network
 export const NETWORK =
   process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local")

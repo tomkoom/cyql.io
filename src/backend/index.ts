@@ -1,24 +1,32 @@
-import { $query, $update, nat } from "azle"
+import { ic, $query, $update, StableBTreeMap, Opt, Vec } from "azle"
 
-// This is a global variable that is stored on the heap
-let counter: nat = BigInt(0)
+// utils
+import { projectId } from "../frontend/utils/projectId"
 
-// Query calls complete quickly because they do not go through consensus
+// types
+import { ProposedProjectId, ProposedProject, ProjectData } from "./types"
+
+// maps
+const projectProposals = new StableBTreeMap<ProposedProjectId, ProposedProject>(0, 50, 1_000)
+
 $query
-export function get(): nat {
-  return counter
-}
-
-// Update calls take a few seconds to complete
-// This is because they persist state changes and go through consensus
-$update
-export function add(n: nat): nat {
-  counter += n //
-  return counter
+export function getProjectProposals(): Vec<ProposedProject> {
+  return projectProposals.values()
 }
 
 $update
-export function inc(): nat {
-  counter += BigInt(1)
-  return counter
+export function addProjectProposal(projectData: ProjectData): Opt<ProposedProject> {
+  const id = projectId()
+  const proposal_number = projectProposals.len()
+  const proposer = ic.id()
+
+  const projectProposal = {
+    id,
+    proposal_number,
+    proposer,
+    projectData,
+  }
+  return projectProposals.insert(id, projectProposal)
 }
+
+// get juno projects
