@@ -1,8 +1,14 @@
 {
-  "cyql_backend": {
+  "backend": {
     "ic": "nrkmt-haaaa-aaaai-qagmq-cai"
   },
-  "cyql_frontend": {
+  "frontend": {
     "ic": "n7ib3-4qaaa-aaaai-qagnq-cai"
+  },
+  "test1": {
+    "ic": "bqnir-wqaaa-aaaag-abxhq-cai"
+  },
+  "test2": {
+    "ic": "dnqgz-fyaaa-aaaag-abxia-cai"
   }
 }
