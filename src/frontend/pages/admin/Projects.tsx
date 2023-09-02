@@ -7,7 +7,7 @@ import { twitterUsername } from "@/utils/twitterUsername";
 
 // components
 import { Search } from "@/components/ui/_index";
-import { ProjectModal } from "@/components/modals/_index";
+import { ProjectModal } from "@/modals/_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";

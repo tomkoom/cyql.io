@@ -5,7 +5,7 @@ import css from "./SignInBtn.module.css";
 import { iSignIn } from "@/components/icons/Icons";
 
 // components
-import { SignInModal } from "@/components/modals/_index";
+import { SignInModal } from "@/modals/_index";
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
-import Modal from "@/components/modals/_Modal";
+import Modal from "@/modals/_Modal";
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux";

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 // components
 import { NftBtn } from "./_index";
-import { NftModal } from "@/components/modals/_index";
+import { NftModal } from "@/modals/_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";

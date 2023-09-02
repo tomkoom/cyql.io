@@ -6,7 +6,7 @@ import type { PromoModalData } from "@/state/_types/types";
 import { iAngleDown } from "@/components/icons/Icons";
 
 // components
-import { PromoModal } from "@/components/modals/_index";
+import { PromoModal } from "@/modals/_index";
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";

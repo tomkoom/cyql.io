@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 // components
 import { Loading } from "@/components/ui/_index";
 import { BackBtn } from "@/components/btns/_index";
-import { ShareModal } from "@/components/modals/_index";
+import { ShareModal } from "@/modals/_index";
 import { NotFound } from "@/pages/_index";
 import {
   CollStats,
@@ -20,7 +20,7 @@ import {
   NftBtns,
   NftPreviews,
 } from "./_index";
-import { ProjectModal } from "@/components/modals/_index";
+import { ProjectModal } from "@/modals/_index";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";

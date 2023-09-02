@@ -17,7 +17,7 @@ import { Logo, Price, Theme } from "@/components/ui/_index"
 import { LinkBtn } from "@/components/btns/_index"
 
 // components
-import { ApiModal } from "@/components/modals/_index"
+import { ApiModal } from "@/modals/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"

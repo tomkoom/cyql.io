@@ -14,7 +14,7 @@ import { selectSignInModal } from "@/state/modals/modals";
 // components
 import { Spinner } from "@/components/ui/_index";
 import { Btn } from "@/components/btns/_index";
-import { SignInModal } from "@/components/modals/_index";
+import { SignInModal } from "@/modals/_index";
 
 const SignInBtn: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
