@@ -9,38 +9,14 @@
     "Canister"
   ],
   "scripts": {
-    "build": "webpack",
-    "prebuild": "npm run copy:types",
-    "start": "webpack serve --mode development --env development",
-    "prestart": "npm run copy:types",
-    "copy:types": "rsync -avr .dfx/$(echo ${DFX_NETWORK:-'**'})/canisters/** --exclude='assets/' --exclude='idl/' --exclude='*.wasm' --delete src/declarations"
+    "dev": "vite",
+    "build": "vite build"
   },
   "devDependencies": {
-    "@types/copy-webpack-plugin": "^8.0.1",
-    "@types/terser-webpack-plugin": "^5.2.0",
-    "assert": "2.0.0",
-    "buffer": "6.0.3",
-    "copy-webpack-plugin": "^9.0.1",
-    "css-loader": "^6.5.1",
-    "dotenv-webpack": "^8.0.1",
-    "events": "3.3.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "5.3.1",
-    "postcss": "^8.3.11",
-    "postcss-loader": "^6.2.0",
+    "buffer": "^6.0.3",
     "prettier": "^2.7.1",
-    "prettier-plugin-motoko": "^0.1.5",
     "process": "0.11.10",
-    "stream-browserify": "3.0.0",
-    "style-loader": "^3.3.1",
-    "terser-webpack-plugin": "5.1.1",
-    "ts-loader": "^9.2.5",
-    "tsconfig-paths-webpack-plugin": "^4.0.1",
-    "typescript": "^4.3.5",
-    "util": "0.12.3",
-    "webpack": "^5.24.4",
-    "webpack-cli": "^5.0.2",
-    "webpack-dev-server": "^4.13.3"
+    "typescript": "^4.3.5"
   },
   "browserslist": [
     "last 2 chrome version",
@@ -59,6 +35,10 @@
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
+    "@vitejs/plugin-react": "^4.0.4",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "azle": "^0.17.1",
+    "dotenv": "^16.3.1",
     "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-cookie-consent": "^7.3.1",
@@ -71,6 +51,9 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2",
     "styled-components": "^5.3.11",
-    "usehooks-ts": "^2.9.1"
+    "usehooks-ts": "^2.9.1",
+    "vite": "^4.4.9",
+    "vite-plugin-environment": "^1.1.3",
+    "vite-plugin-svgr": "^3.2.0"
   }
 }

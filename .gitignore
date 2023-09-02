@@ -1,18 +1,34 @@
 # various ides and editors
-.vscode/
-.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 **/*~
 
 # mac osx temporary files
 .DS_Store
 **/.DS_Store
 
-# dfx temporary files
-.dfx/
+# canisters
+/src/declarations
+.dfx
+.vessel
+.mops
+.azle
 
 # frontend code
 node_modules/
 dist/
 
-# dotenv
+# environment variables
 .env
+.env.local
+.env.development
+.env.test
+.env.production

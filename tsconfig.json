@@ -7,10 +7,10 @@
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
     "esModuleInterop": true,
-    "baseUrl": "src/cyql_frontend/src",
+    "baseUrl": "src/frontend",
     "paths": {
       "@/*": ["*"]
     }
   },
-  "include": ["src/**/*", "src/custom.d.ts"]
+  "include": ["src/frontend"]
 }

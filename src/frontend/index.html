@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta
+      name="description"
+      content="cyql is a curated gallery of projects built on the Internet Computer network. Discover new projects in the IC ecosystem."
+    />
+    <title>cyql: Curated List of Internet Computer Projects</title>
+    <base href="/" />
+    <link type="text/css" rel="stylesheet" href="assets/main.css" />
+
+    <link
+      rel="icon"
+      href="https://ipfs.io/ipfs/QmVB3RCdu2s8zVLhhwt52wBgKpMjvAyX9cyXcXLKydff3R?filename=favicon.svg"
+    />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5SFM5N4EP1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
+      gtag("config", "G-5SFM5N4EP1")
+    </script>
+  </head>
+
+  <!-- content -->
+  <body>
+    <div id="root"></div>
+    <div id="modal"></div>
+    <script type="module">
+      /**
+       * @dfinity/agent requires this. Can be removed once it's fixed
+       */
+      import { Buffer } from "buffer"
+
+      window.global = window
+      window.Buffer = Buffer
+    </script>
+    <script type="module" src="./main.tsx"></script>
+  </body>
+</html>
