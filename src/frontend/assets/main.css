@@ -115,6 +115,10 @@ h6 {
 
   --fontFamily: "Inter", sans-serif;
   --monospace: "Inconsolata", monospace;
+
+  /* animaiton */
+
+  --transition: all 0.25s, opacity 1s;
 }
 
 /* –––THEME––– */

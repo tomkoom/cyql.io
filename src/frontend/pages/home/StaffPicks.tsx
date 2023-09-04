@@ -1,11 +1,11 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // hooks
-import useNav from "@/hooks/useNav";
+import useNav from "@/hooks/useNav"
 
 const StaffPicks: FC = (): JSX.Element => {
-  const { toProject } = useNav();
+  const { toProject } = useNav()
 
   const staffPicksItems = [
     {
@@ -27,6 +27,11 @@ const StaffPicks: FC = (): JSX.Element => {
       slug: "funded",
       title: "Funded",
       text: "web3 crowdfunding",
+    },
+    {
+      slug: "openchat",
+      title: "OpenChat",
+      text: "decentralized chat app",
     },
     {
       slug: "rabbithole-app",
@@ -58,11 +63,11 @@ const StaffPicks: FC = (): JSX.Element => {
       title: "NNSCat",
       text: "filter and compare NNS proposals",
     },
-  ];
+  ]
 
   const openProject = (slug: string): void => {
-    toProject(slug);
-  };
+    toProject(slug)
+  }
 
   return (
     <StaffPicksStyled>
@@ -77,8 +82,8 @@ const StaffPicks: FC = (): JSX.Element => {
         ))}
       </ul>
     </StaffPicksStyled>
-  );
-};
+  )
+}
 
 const StaffPicksStyled = styled.div`
   margin-bottom: 1rem;
@@ -113,6 +118,6 @@ const StaffPicksStyled = styled.div`
       }
     }
   }
-`;
+`
 
-export default StaffPicks;
+export default StaffPicks

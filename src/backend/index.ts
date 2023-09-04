@@ -1,32 +1,49 @@
-import { ic, $query, $update, StableBTreeMap, Opt, Vec } from "azle"
+import {
+  ic,
+  $query,
+  $update,
+  StableBTreeMap,
+  Opt,
+  Vec,
+  Principal,
+  Service,
+  serviceUpdate,
+  serviceQuery,
+  CallResult,
+  Result,
+  nat64,
+  nat,
+} from "azle"
 
 // utils
 import { projectId } from "../frontend/utils/projectId"
 
 // types
-import { ProposedProjectId, ProposedProject, ProjectData } from "./types"
+import type { ProjectId, ProjectProposal, ProjectData, Doc } from "./types"
 
 // maps
-const projectProposals = new StableBTreeMap<ProposedProjectId, ProposedProject>(0, 50, 1_000)
+const projectProposals = new StableBTreeMap<ProjectId, ProjectProposal>(0, 50, 1_000)
+const projects = new StableBTreeMap<ProjectId, ProjectData>(1, 50, 1_000)
 
 $query
-export function getProjectProposals(): Vec<ProposedProject> {
+export function getProjectProposals(): Vec<ProjectProposal> {
   return projectProposals.values()
 }
 
 $update
-export function addProjectProposal(projectData: ProjectData): Opt<ProposedProject> {
+export function addProjectProposal(projectData: ProjectData): Opt<ProjectProposal> {
   const id = projectId()
-  const proposal_number = projectProposals.len()
+  const proposalNumber = projectProposals.len()
   const proposer = ic.id()
 
   const projectProposal = {
     id,
-    proposal_number,
+    proposalNumber,
     proposer,
     projectData,
   }
   return projectProposals.insert(id, projectProposal)
 }
 
-// get juno projects
+const executeProposal = () => {}
+const updateProposalState = () => {}

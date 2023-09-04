@@ -1,17 +1,17 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // constants
-import { IC_LOGO } from "@/constants/constants";
+import { IC_LOGO } from "@/constants/constants"
 
 // components
-import { Btn } from "./_index";
+import { Btn } from "./_index"
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext"
 
 const SignInMethods: FC = (): JSX.Element => {
-  const { signInWithII, signInWithNfid } = useAuth();
+  const { signInWithII } = useAuth()
   const signInMethods = [
     {
       id: "internet_identity",
@@ -20,14 +20,7 @@ const SignInMethods: FC = (): JSX.Element => {
       click: signInWithII,
       aboutUrl: "https://identity.ic0.app/",
     },
-    {
-      id: "nfid",
-      label: "NFID",
-      logo: "https://ipfs.io/ipfs/QmYPARhAF8ig8kEEP6C81Du5S1spcsGcgRv8GC7SZ9CrrG?filename=nfid-logo.png",
-      click: signInWithNfid,
-      aboutUrl: "https://nfid.one/#FAQ",
-    },
-  ];
+  ]
 
   return (
     <SignInMethodsStyled>
@@ -40,22 +33,22 @@ const SignInMethods: FC = (): JSX.Element => {
         </Item>
       ))}
     </SignInMethodsStyled>
-  );
-};
+  )
+}
 
 const SignInMethodsStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-`;
+`
 
 const Item = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`;
+`
 
 const Url = styled.a`
   align-self: flex-start;
@@ -65,6 +58,6 @@ const Url = styled.a`
   &:hover {
     color: var(--primaryColor);
   }
-`;
+`
 
-export default SignInMethods;
+export default SignInMethods

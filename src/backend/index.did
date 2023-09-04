@@ -1,5 +1,11 @@
+type ProjectData = record { title : text };
+type ProjectProposal = record {
+  id : text;
+  projectData : ProjectData;
+  proposalNumber : nat64;
+  proposer : principal;
+};
 service : () -> {
-  add : (nat) -> (nat);
-  get : () -> (nat) query;
-  inc : () -> (nat);
+  addProjectProposal : (ProjectData) -> (opt ProjectProposal);
+  getProjectProposals : () -> (vec ProjectProposal) query;
 }

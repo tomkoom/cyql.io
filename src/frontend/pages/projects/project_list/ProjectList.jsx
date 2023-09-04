@@ -10,7 +10,7 @@ import { Loading, Spinner } from "@/components/ui/_index"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux"
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectCategory } from "@/state/projects/category"
 import { selectSearch } from "@/state/projects/search"
 import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/ui/loadMore"
@@ -33,6 +33,7 @@ import {
 } from "./utils/filterProjects"
 
 const ProjectList = () => {
+  const dispatch = useAppDispatch()
   const { toProject } = useNav()
 
   // projects
@@ -51,6 +52,10 @@ const ProjectList = () => {
 
   // sort
   const sort = useAppSelector(selectSort)
+
+  const setItemsVisible = (size) => {
+    dispatch(setItemsVisibleProjects(size))
+  }
 
   if (projects.length < 1) {
     return <Loading />
@@ -131,9 +136,7 @@ const ProjectList = () => {
             ))}
         </ul>
       )}
-      {itemsVisible < projectsNum && (
-        <LoadMoreBtn label="projects" size={64} setItemsVisible={setItemsVisibleProjects} />
-      )}
+      {itemsVisible < projectsNum && <LoadMoreBtn setVisible={() => setItemsVisible(64)} />}
     </div>
   )
 }

@@ -5,8 +5,16 @@ import styled from "styled-components"
 import useNav from "@/hooks/useNav"
 
 // components
-import { Header, HighlightedProjects, JoinCommunity, Promo, StaffPicks, ViewAllBtn } from "./_index"
+import {
+  Header,
+  HighlightedProjects,
+  JoinCommunity,
+  ProjectProposals,
+  Promo,
+  StaffPicks,
+} from "./_index"
 import { Loading } from "@/components/ui/_index"
+import { ViewAllBtn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -15,10 +23,6 @@ import { selectProjects } from "@/state/projects"
 const Home = () => {
   const { toProjects } = useNav()
   const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true)
-
-  if (projects.length < 1) {
-    return <Loading />
-  }
 
   const projectsExcludeNfts = projects.filter((p) => !p.data.categories.includes("NFTs"))
   const projectsNfts = projects.filter((p) => p.data.categories.includes("NFTs"))
@@ -31,11 +35,15 @@ const Home = () => {
     .filter((p) => p.data.categories.includes("NFTs"))
     .sort((a, b) => b.data.upvotes.length - a.data.upvotes.length)
 
+  if (projects.length < 1) {
+    return <Loading />
+  }
   return (
     <div>
       <Promo />
       <StaffPicks />
       <Header />
+      {/* <ProjectProposals /> */}
 
       {/* newest projects */}
       <Section>

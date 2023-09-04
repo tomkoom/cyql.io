@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { size } from "./styles/breakpoints"
+// import { backend } from "../declarations/backend"
 
 // router
 import { RouterProvider } from "react-router-dom"
@@ -37,7 +38,7 @@ import {
 const App = () => {
   // hooks
   const dispatch = useAppDispatch()
-  const { userKey } = useAuth()
+  const { userId, signOut } = useAuth()
   const { width } = useWindowSize()
 
   // modals
@@ -47,6 +48,10 @@ const App = () => {
   // ...
   const projects = useAppSelector(selectProjects)
   const allCategories = useAppSelector(selectAllCategories)
+
+  // useEffect(() => {
+  //   console.log(userId)
+  // }, [userId])
 
   // juno start
   useEffect(() => {
@@ -66,10 +71,10 @@ const App = () => {
 
   // close sign in modal after user has logged
   useEffect(() => {
-    if (userKey !== "") {
+    if (userId !== "") {
       dispatch(setSignInModal(false))
     }
-  }, [userKey])
+  }, [userId])
 
   // sort categories by num
   useEffect(() => {
@@ -90,13 +95,26 @@ const App = () => {
 
   // get upvoted projects
   // useEffect(() => {
-  //   if (userKey !== "") {
+  //   if (userId !== "") {
   //     dispatch(setUpvotedProjects([]));
   //   }
   //   // fetch updated data
-  // }, [userKey]);
+  // }, [userId]);
 
-  return <RouterProvider router={Router} />
+  return (
+    <div>
+      {/* <div onClick={signOut}>logout</div>
+      <div
+        onClick={async () => {
+          const res = await backend.getDoc("cyql_projects", "123")
+          console.log(res)
+        }}
+      >
+        test get_goc
+      </div> */}
+      <RouterProvider router={Router} />
+    </div>
+  )
 }
 
 export default App

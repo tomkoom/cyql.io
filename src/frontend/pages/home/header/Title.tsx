@@ -35,7 +35,6 @@ const Title: FC = (): JSX.Element => {
 }
 
 const TitleStyled = styled.h2`
-  max-width: 36rem;
   font-size: var(--fs1);
   font-weight: var(--fwBlack);
   line-height: 125%;

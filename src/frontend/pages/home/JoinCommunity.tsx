@@ -16,7 +16,7 @@ const JoinCommunity: FC = (): JSX.Element => {
 
   const links = [
     {
-      id: "x-twitter",
+      id: "x",
       label: "X / Twitter",
       link: X_URL,
       icon: iconTwitter,
@@ -62,7 +62,7 @@ const JoinCommunityStyled = styled.ul`
       padding: 1.25rem;
       border-radius: 0.75rem;
 
-      &#x-twitter:hover {
+      &#x:hover {
         color: var(--coolGray10);
         background-color: var(--colorX);
       }

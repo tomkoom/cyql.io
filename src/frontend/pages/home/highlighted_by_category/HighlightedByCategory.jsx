@@ -13,7 +13,7 @@ import { selectProjects } from "@/state/projects";
 
 // components
 // import { UpvoteBtn } from "@/components/btns/index";
-import { Logo } from "./index";
+import { Logo } from "./_index";
 
 const HighlightedByCategory = ({ filter }) => {
   const { toProject } = useNav();
