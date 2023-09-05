@@ -19,11 +19,13 @@ import {
 import { projectId } from "../frontend/utils/projectId"
 
 // types
-import type { ProjectId, ProjectProposal, ProjectData, Doc } from "./types"
+import type { ProjectId, ProjectProposal, ProjectData, Doc, Test } from "./types"
 
 // maps
-const projectProposals = new StableBTreeMap<ProjectId, ProjectProposal>(0, 50, 1_000)
-const projects = new StableBTreeMap<ProjectId, ProjectData>(1, 50, 1_000)
+const projectProposals = new StableBTreeMap<ProjectId, ProjectProposal>(0, 50, 500)
+// curatedProjects key: 20+ bytes, val: 14902+ bytes
+const curatedProjects = new StableBTreeMap<ProjectId, ProjectData>(1, 30, 20_000)
+const test = new StableBTreeMap<string, Test>(2, 50, 500)
 
 $query
 export function getProjectProposals(): Vec<ProjectProposal> {
@@ -45,5 +47,33 @@ export function addProjectProposal(projectData: ProjectData): Opt<ProjectProposa
   return projectProposals.insert(id, projectProposal)
 }
 
+$update
+export function addTestItem(item: Test): Opt<Test> {
+  const id = test.len().toString()
+  return test.insert(id, item)
+}
+
+$query
+export function listTestItems(): Vec<Test> {
+  return test.values()
+}
+
+$query
+export function whoami(): string {
+  return ic.caller().toString()
+}
+
 const executeProposal = () => {}
 const updateProposalState = () => {}
+
+// curated curatedProjects
+$update
+export function addCuratedProject(projectData: ProjectData): Opt<ProjectData> {
+  const id = projectData.id
+  return curatedProjects.insert(id, projectData)
+}
+
+$query
+export function listCuratedProjects(): Vec<ProjectData> {
+  return curatedProjects.values()
+}

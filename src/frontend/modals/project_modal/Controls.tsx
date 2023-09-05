@@ -50,6 +50,7 @@ const Controls: FC = (): JSX.Element => {
     const doc = await get(project.key)
     const key = doc === undefined ? projectId() : project.key
 
+    // sort keys alphabetically
     await setDoc({
       collection,
       doc: {

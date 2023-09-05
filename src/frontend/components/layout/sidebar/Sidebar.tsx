@@ -21,7 +21,7 @@ import { useAuth } from "@/context/AuthContext";
 import { Navlink } from "./_index";
 
 const Sidebar: FC = (): JSX.Element => {
-  const { userKey } = useAuth();
+  const { userId } = useAuth();
   const { toHome, toProjects, toSubmit, toAdmin } = useNav();
   const admins = [II_ADMIN_1];
 
@@ -31,7 +31,7 @@ const Sidebar: FC = (): JSX.Element => {
         <Navlink label="explore" route={toHome} icon={iInfinity} />
         <Navlink label="projects" route={toProjects} icon={iCube} />
         <Navlink label="submit" route={toSubmit} icon={iPlus} />
-        {verifyAdmin(admins, userKey) === true && (
+        {verifyAdmin(admins, userId) === true && (
           <Navlink label="admin" route={toAdmin} icon={iCircle} />
         )}
       </div>

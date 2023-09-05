@@ -13,11 +13,11 @@ import { selectOwnsNft } from "@/state/profile/profile";
 
 const Title = () => {
   const ownsNft = useAppSelector(selectOwnsNft);
-  const { userKey } = useAuth();
+  const { userId } = useAuth();
 
   return (
     <div className={css.title}>
-      <h2 className="pageTitle">{formatId(userKey)}</h2>
+      <h2 className="pageTitle">{formatId(userId)}</h2>
       {ownsNft && <span className={css.badge}>Hodl Gang</span>}
     </div>
   );

@@ -49,9 +49,9 @@ const App = () => {
   const projects = useAppSelector(selectProjects)
   const allCategories = useAppSelector(selectAllCategories)
 
-  // useEffect(() => {
-  //   console.log(userId)
-  // }, [userId])
+  useEffect(() => {
+    console.log(userId)
+  }, [userId])
 
   // juno start
   useEffect(() => {

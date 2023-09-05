@@ -21,7 +21,7 @@ const useAuth = () => {
 }
 
 function AuthProvider({ children }) {
-  const [userKey, setUserKey] = useState("")
+  const [userId, setUserId] = useState("")
   const [signInLoading, setSignInLoading] = useState(false)
 
   // ii
@@ -66,7 +66,7 @@ function AuthProvider({ children }) {
     const sub = authSubscribe((user) => {
       if (user !== null) {
         setSignInLoading(true)
-        setUserKey(user.key)
+        setUserId(user.key)
         setSignInLoading(false)
       }
     })
@@ -77,11 +77,11 @@ function AuthProvider({ children }) {
     await junoSignOut()
 
     // clear state
-    setUserKey("")
+    setUserId("")
   }
 
   const value = {
-    userKey,
+    userId,
     signInLoading,
 
     // juno

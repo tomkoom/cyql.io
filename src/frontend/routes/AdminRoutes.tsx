@@ -10,11 +10,11 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 
 const AdminRoutes: FC = (): JSX.Element => {
-  const { userKey } = useAuth();
+  const { userId } = useAuth();
   const admins = [II_ADMIN_1];
 
   const isAdmin = (): boolean => {
-    return admins.includes(userKey);
+    return admins.includes(userId);
   };
 
   return isAdmin() ? <Outlet /> : <Navigate to="/" />;

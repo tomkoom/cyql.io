@@ -24,7 +24,7 @@ import { setShareModal } from "@/state/modals/shareModal";
 
 const Header: FC<any> = ({ project }): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { userKey } = useAuth();
+  const { userId } = useAuth();
   const admins = [II_ADMIN_1,];
 
   const editProject = () => {
@@ -50,7 +50,7 @@ const Header: FC<any> = ({ project }): JSX.Element => {
       </Main>
 
       <Controls>
-        {verifyAdmin(admins, userKey) === true && <Btn icon={iEdit} onClick={editProject} />}
+        {verifyAdmin(admins, userId) === true && <Btn icon={iEdit} onClick={editProject} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
         {/* <div className={css.btnContainer}>
           <UpvtBtn id={project.key} upvotedBy={project.data.upvotedBy} location="project" />

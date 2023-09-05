@@ -19,7 +19,7 @@ import useNav from "@/hooks/useNav";
 
 const Menu = ({ setMenuIsOpen }) => {
   const { toProfile } = useNav();
-  const { userKey, signOut } = useAuth();
+  const { userId, signOut } = useAuth();
 
   const clickMenuItem = (action) => {
     action();
@@ -34,7 +34,7 @@ const Menu = ({ setMenuIsOpen }) => {
         </span>
 
         <div className={css.idAddr}>
-          <span className={css.text}>{formatId(userKey)}</span>
+          <span className={css.text}>{formatId(userId)}</span>
           <span className={css.subtitle}>view profile</span>
         </div>
       </div>

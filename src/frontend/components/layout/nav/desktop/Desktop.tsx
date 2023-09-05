@@ -26,7 +26,7 @@ import { selectApiModalIsOpen, setApiModalIsOpen } from "@/state/modals/apiModal
 const Desktop: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { toHome } = useNav()
-  const { userKey } = useAuth()
+  const { userId } = useAuth()
   const apiModalIsOpen = useAppSelector(selectApiModalIsOpen)
 
   const openApiModal = () => {
@@ -50,7 +50,7 @@ const Desktop: FC = (): JSX.Element => {
         <Theme />
         <LinkBtn btnType="secondary" text="api" icon={iCube} url="https://docs.cyql.io/" />
         <Nft />
-        {userKey === "" ? <SignInBtn /> : <ProfileBtn />}
+        {userId === "" ? <SignInBtn /> : <ProfileBtn />}
       </Controls>
     </DesktopStyled>
   )

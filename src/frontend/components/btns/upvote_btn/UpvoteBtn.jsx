@@ -12,7 +12,7 @@ import { Active, NotActive } from "./index";
 
 const UpvoteBtn = ({ id, upvotedBy, location }) => {
   const dispatch = useAppDispatch();
-  const { userKey } = useAuth();
+  const { userId } = useAuth();
 
   const upvote = async (id, p) => {
     const docRef = doc(pColRef, id);
@@ -28,17 +28,17 @@ const UpvoteBtn = ({ id, upvotedBy, location }) => {
     });
   };
 
-  const check = (userKey) => {
-    return upvotedBy && upvotedBy.length > 0 && upvotedBy.includes(userKey);
+  const check = (userId) => {
+    return upvotedBy && upvotedBy.length > 0 && upvotedBy.includes(userId);
   };
 
   const num = upvotedBy ? upvotedBy.length : "0";
 
-  return userKey !== "" ? (
-    check(userKey) ? (
-      <Active num={num} location={location} click={() => unUpvote(id, userKey)} />
+  return userId !== "" ? (
+    check(userId) ? (
+      <Active num={num} location={location} click={() => unUpvote(id, userId)} />
     ) : (
-      <NotActive num={num} location={location} click={() => upvote(id, userKey)} />
+      <NotActive num={num} location={location} click={() => upvote(id, userId)} />
     )
   ) : (
     <NotActive num={num} click={() => dispatch(setSignInModal(true))} />

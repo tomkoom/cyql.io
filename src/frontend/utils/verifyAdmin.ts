@@ -1,3 +1,3 @@
-export const verifyAdmin = (admins: string[], userKey: string): boolean => {
-  return admins.includes(userKey);
+export const verifyAdmin = (admins: string[], userId: string): boolean => {
+  return admins.includes(userId);
 };

@@ -23,7 +23,7 @@ import { setMobileMenuModal } from "@/state/modals/modals";
 const ProfileActions = () => {
   const dispatch = useAppDispatch();
   const { toProfile } = useNav();
-  const { userKey, signOut } = useAuth();
+  const { userId, signOut } = useAuth();
 
   const navigate = () => {
     toProfile();
@@ -41,7 +41,7 @@ const ProfileActions = () => {
         <div className={css.idImg}>
           <IdImg sizePx="36" />
         </div>
-        {formatId(userKey)}
+        {formatId(userId)}
       </button>
 
       <button className={css.btn} onClick={handleSignOut}>

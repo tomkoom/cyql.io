@@ -10,7 +10,49 @@ export type ProjectProposal = Record<{
 }>
 
 export type ProjectData = Record<{
-  title: string
+  id: string
+  submittedBy: string
+  createdAt: string
+  updatedAt: string
+  name: string
+  description: string
+  category: Vec<string>
+  logo: string
+  website: string
+  canister: string
+  twitter: string
+  discord: string
+  telegram: string
+  github: string
+  medium: string
+  dscvr: string
+  distrikt: string
+  openchat: string
+  taggr: string
+  seers: string
+  nuance: string
+  catalyze: string
+  funded: string
+  app: string
+  docs: string
+  faq: string
+  whitepaper: string
+  grantee: boolean
+  archived: boolean
+  nftSaleDate: string
+  nftSaleUrl: string
+  nftUnits: string
+  nftUnitPrice: string
+  nftMarketEntrepot: string
+  nftMarketCcc: string
+  nftMarketYumi: string
+  nftRarityDgdg: string
+  nftStatsNftgeek: string
+  nftImg1: string
+  nftImg2: string
+  nftImg3: string
+  nftImg4: string
+  upvotedBy: Vec<string>
 }>
 
 export type Doc = Record<{
@@ -19,4 +61,8 @@ export type Doc = Record<{
   data: Vec<nat8>
   description: Opt<string>
   created_at: nat64
+}>
+
+export type Test = Record<{
+  test: string
 }>

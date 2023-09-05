@@ -22,6 +22,7 @@ const HOST = IS_LOCAL_NETWORK ? `http://localhost:5173` : "https://icp0.io"
 const LOCAL_II = process.env.CANISTER_ID_INTERNET_IDENTITY
 const LOCAL_IDENTITY_PROVIDER = `http://127.0.0.1:4943/?canisterId=${LOCAL_II}`
 const IDENTITY_PROVIDER = IS_LOCAL_NETWORK ? LOCAL_IDENTITY_PROVIDER : "https://identity.ic0.app"
+const CANISTER_ID = process.env.CANISTER_ID_BACKEND || process.env.BACKEND_CANISTER_ID
 
 function AuthProvider({ children }) {
   const [signInLoading, setSignInLoading] = useState<boolean>(false)
@@ -56,7 +57,8 @@ function AuthProvider({ children }) {
       host: HOST,
       identity,
     })
-    actor = createActor(canisterId, {
+    console.log(canisterId, CANISTER_ID)
+    actor = createActor(CANISTER_ID, {
       agent,
     })
 

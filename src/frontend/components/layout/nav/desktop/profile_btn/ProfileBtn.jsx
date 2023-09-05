@@ -12,8 +12,8 @@ import { iAngleDown } from "@/components/icons/Icons";
 import { useAuth } from "@/context/AuthContext";
 
 const ProfileBtn = () => {
-  const { userKey } = useAuth();
-  const pIdStr = userKey;
+  const { userId } = useAuth();
+  const pIdStr = userId;
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const menuRef = useRef(null);
 

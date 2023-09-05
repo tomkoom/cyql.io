@@ -8,7 +8,7 @@ interface IdImgProps {
 }
 
 const IdImg: FC<IdImgProps> = ({ sizePx }): JSX.Element => {
-  const { userKey } = useAuth();
+  const { userId } = useAuth();
 
   const style = {
     borderRadius: "50%",
@@ -19,7 +19,7 @@ const IdImg: FC<IdImgProps> = ({ sizePx }): JSX.Element => {
   return (
     <img
       style={style}
-      src={`https://avatars.dicebear.com/api/jdenticon/${userKey}.svg`}
+      src={`https://avatars.dicebear.com/api/jdenticon/${userId}.svg`}
       alt="id img"
     />
   );
