@@ -22,10 +22,10 @@ import { projectId } from "../frontend/utils/projectId"
 import type { ProjectId, ProjectProposal, ProjectData, Doc, Test } from "./types"
 
 // maps
-const projectProposals = new StableBTreeMap<ProjectId, ProjectProposal>(0, 50, 500)
+const projectProposals = new StableBTreeMap<ProjectId, ProjectProposal>(0, 30, 25_000)
 // curatedProjects key: 20+ bytes, val: 14902+ bytes
-const curatedProjects = new StableBTreeMap<ProjectId, ProjectData>(1, 30, 20_000)
-const test = new StableBTreeMap<string, Test>(2, 50, 500)
+const curatedProjects = new StableBTreeMap<ProjectId, ProjectData>(1, 30, 25_000)
+const test = new StableBTreeMap<string, Test>(2, 50, 1_000)
 
 $query
 export function getProjectProposals(): Vec<ProjectProposal> {

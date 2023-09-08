@@ -1,21 +1,18 @@
 import React, { useEffect } from "react"
 import { size } from "./styles/breakpoints"
-// import { backend } from "../declarations/backend"
 
 // router
 import { RouterProvider } from "react-router-dom"
 
 // hooks
 import { useWindowSize } from "@/hooks/useWindowSize"
+import useBackend from "./hooks/useBackend"
 
 // utils
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 
-// juno
-import { init_juno, refreshProjects } from "@/shared/juno"
-
 // auth
-import { useAuth } from "@/context/AuthContext"
+import { useAuth } from "@/context/Auth"
 
 // components
 import { Router } from "@/routes/_index"
@@ -23,7 +20,7 @@ import { Router } from "@/routes/_index"
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 // import { setUpvotedProjects } from "@/state/profile/profile";
-import { selectProjects } from "@/state/projects"
+import { selectActiveProjects } from "@/state/projects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
@@ -38,7 +35,8 @@ import {
 const App = () => {
   // hooks
   const dispatch = useAppDispatch()
-  const { userId, signOut } = useAuth()
+  const { userId, actor } = useAuth()
+  const { refreshProjects } = useBackend()
   const { width } = useWindowSize()
 
   // modals
@@ -46,21 +44,17 @@ const App = () => {
   const signInModalIsOpen = useAppSelector(selectSignInModal)
 
   // ...
-  const projects = useAppSelector(selectProjects)
+  const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
 
   useEffect(() => {
+    refreshProjects()
+  }, [actor])
+
+  // test
+  useEffect(() => {
     console.log(userId)
   }, [userId])
-
-  // juno start
-  useEffect(() => {
-    ;(async () => {
-      await init_juno()
-      await refreshProjects()
-    })()
-  }, [])
-  // juno end
 
   // reset mobile menu when deivice size > 1024
   useEffect(() => {
@@ -79,8 +73,8 @@ const App = () => {
   // sort categories by num
   useEffect(() => {
     if (projects.length > 0) {
-      const categoriesSortedByNum = sortCategoriesByNum(allCategories, projects)
-      dispatch(setCategoriesSortedByNum(categoriesSortedByNum))
+      const sorted = sortCategoriesByNum(allCategories, projects)
+      dispatch(setCategoriesSortedByNum(sorted))
     }
   }, [projects])
 
@@ -101,20 +95,7 @@ const App = () => {
   //   // fetch updated data
   // }, [userId]);
 
-  return (
-    <div>
-      {/* <div onClick={signOut}>logout</div>
-      <div
-        onClick={async () => {
-          const res = await backend.getDoc("cyql_projects", "123")
-          console.log(res)
-        }}
-      >
-        test get_goc
-      </div> */}
-      <RouterProvider router={Router} />
-    </div>
-  )
+  return <RouterProvider router={Router} />
 }
 
 export default App

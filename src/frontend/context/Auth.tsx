@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react"
 import { AuthClient } from "@dfinity/auth-client"
-import { Actor, HttpAgent } from "@dfinity/agent"
+import { ActorSubclass, HttpAgent } from "@dfinity/agent"
 import type { Principal } from "@dfinity/principal"
-import { createActor, canisterId } from "../../declarations/backend/index"
+import { createActor } from "../../declarations/backend/index"
 import { backend } from "../../declarations/backend"
+import { _SERVICE } from "../../declarations/backend/backend.did"
 
 // constants
 import { APP_DERIVATION_ORIGIN } from "@/constants/constants"
@@ -17,12 +18,15 @@ const useAuth = () => {
 }
 
 // note: .env variables change after deploy
-const IS_LOCAL_NETWORK = process.env.DFX_NETWORK === "local"
-const HOST = IS_LOCAL_NETWORK ? `http://localhost:5173` : "https://icp0.io"
-const LOCAL_II = process.env.CANISTER_ID_INTERNET_IDENTITY
-const LOCAL_IDENTITY_PROVIDER = `http://127.0.0.1:4943/?canisterId=${LOCAL_II}`
-const IDENTITY_PROVIDER = IS_LOCAL_NETWORK ? LOCAL_IDENTITY_PROVIDER : "https://identity.ic0.app"
-const CANISTER_ID = process.env.CANISTER_ID_BACKEND || process.env.BACKEND_CANISTER_ID
+// const IS_LOCAL_NETWORK = process.env.DFX_NETWORK === "local"
+// const HOST = IS_LOCAL_NETWORK ? `http://localhost:5173` : "https://icp0.io"
+const HOST = "https://icp0.io"
+// const LOCAL_II = process.env.CANISTER_ID_INTERNET_IDENTITY
+// const LOCAL_IDENTITY_PROVIDER = `http://127.0.0.1:4943/?canisterId=${LOCAL_II}`
+// const IDENTITY_PROVIDER = IS_LOCAL_NETWORK ? LOCAL_IDENTITY_PROVIDER : "https://identity.ic0.app"
+const IDENTITY_PROVIDER = "https://identity.ic0.app"
+// const CANISTER_ID = process.env.CANISTER_ID_BACKEND || process.env.BACKEND_CANISTER_ID
+const CANISTER_ID = "nrkmt-haaaa-aaaai-qagmq-cai"
 
 function AuthProvider({ children }) {
   const [signInLoading, setSignInLoading] = useState<boolean>(false)
@@ -30,7 +34,7 @@ function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)
   const [userId, setUserId] = useState<string>("")
-  const [actor, setActor] = useState<Actor | null>(null)
+  const [actor, setActor] = useState<ActorSubclass<_SERVICE> | null>(null)
 
   const init = (): void => {
     resetII()
@@ -45,7 +49,7 @@ function AuthProvider({ children }) {
     let isAuthenticated: boolean = false
     let userPrincipal: Principal = null
     let userId: string = ""
-    let actor: Actor = null
+    let actor: ActorSubclass<_SERVICE> = null
 
     // ...
     authClient = await AuthClient.create()
@@ -57,7 +61,6 @@ function AuthProvider({ children }) {
       host: HOST,
       identity,
     })
-    console.log(canisterId, CANISTER_ID)
     actor = createActor(CANISTER_ID, {
       agent,
     })
