@@ -6,11 +6,11 @@ import { Btn } from "./_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectProjectDoc, setProjectGrantee } from "@/state/modals/projectModal/projectModal";
+import { selectProject, setProjectGrantee } from "@/state/modals/project_modal/projectModal";
 
 const Grantee: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const projectDoc = useAppSelector(selectProjectDoc);
+  const projectDoc = useAppSelector(selectProject);
 
   const setGrantee = (value: boolean) => {
     dispatch(setProjectGrantee(value));

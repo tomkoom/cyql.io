@@ -18,30 +18,30 @@ import { ViewAllBtn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectProjects } from "@/state/projects"
+import { selectAllProjects } from "@/state/projects"
 
 const Home = () => {
   const { toProjects } = useNav()
-  const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true)
-
-  const projectsExcludeNfts = projects.filter((p) => !p.data.categories.includes("NFTs"))
-  const projectsNfts = projects.filter((p) => p.data.categories.includes("NFTs"))
+  const projects = useAppSelector(selectAllProjects)
+  const projectsExcludeNfts = projects.filter((p) => !p.category.includes("NFTs"))
+  const projectsNfts = projects.filter((p) => p.category.includes("NFTs"))
   const popularProjects = projects
-    .filter((p) => p.data.upvotes)
-    .filter((p) => !p.data.categories.includes("NFTs"))
-    .sort((a, b) => b.data.upvotes.length - a.data.upvotes.length)
+    .filter((p) => p.upvotedBy)
+    .filter((p) => !p.category.includes("NFTs"))
+    .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
   const popularNfts = projects
-    .filter((p) => p.data.upvotes)
-    .filter((p) => p.data.categories.includes("NFTs"))
-    .sort((a, b) => b.data.upvotes.length - a.data.upvotes.length)
+    .filter((p) => p.upvotedBy)
+    .filter((p) => p.category.includes("NFTs"))
+    .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
 
   if (projects.length < 1) {
     return <Loading />
   }
+
   return (
     <div>
       <Promo />
-      <StaffPicks />
+      {/* <StaffPicks /> */}
       <Header />
       {/* <ProjectProposals /> */}
 
@@ -64,22 +64,22 @@ const Home = () => {
       </Section>
 
       {/* popular projects */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>popular projects</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={popularProjects} />
-      </Section>
+      </Section> */}
 
       {/* popular nfts */}
-      <Section>
+      {/* <Section>
         <Title>
           <h3>popular nfts</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={popularNfts} />
-      </Section>
+      </Section> */}
 
       {/* wallets */}
       {/* <Section>

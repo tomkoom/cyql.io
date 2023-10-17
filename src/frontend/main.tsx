@@ -8,8 +8,8 @@ import store, { persistor } from "@/state/_store"
 import { PersistGate } from "redux-persist/integration/react"
 
 // auth
-import AuthProvider from "@/context/AuthContext"
-import AuthProviderII from "@/context/Auth"
+// import AuthProvider from "@/context/AuthContext"
+import AuthProvider from "@/context/Auth"
 
 const Index: FC = (): JSX.Element => {
   return (
@@ -17,9 +17,7 @@ const Index: FC = (): JSX.Element => {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <AuthProvider>
-            <AuthProviderII>
-              <App />
-            </AuthProviderII>
+            <App />
           </AuthProvider>
         </PersistGate>
       </Provider>

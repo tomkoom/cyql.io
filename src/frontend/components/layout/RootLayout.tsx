@@ -9,7 +9,7 @@ import { COOKIE_POLICY } from "@/constants/constants";
 import { Outlet, useLocation } from "react-router-dom";
 
 // hooks
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 import useNav from "@/hooks/useNav";
 
 // components
@@ -18,14 +18,14 @@ import { Footer, Nav, Sidebar, Summary } from "./_index";
 // state
 import { useAppSelector } from "@/hooks/useRedux";
 import { selectTheme } from "@/state/ui/theme";
-import { selectProjects } from "@/state/projects";
+import { selectAllProjects } from "@/state/projects";
 
 const RootLayout: FC = (): JSX.Element => {
   const location = useLocation();
   const { toHome } = useNav();
   const { isAuthenticated } = useAuth();
   const theme = useAppSelector(selectTheme);
-  const projects = useAppSelector(selectProjects);
+  const projects = useAppSelector(selectAllProjects);
 
   // redirect to home if user signed out
   useEffect(() => {

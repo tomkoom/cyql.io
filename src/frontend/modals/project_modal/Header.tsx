@@ -6,11 +6,11 @@ import { CrossIcon } from "@/components/icons/_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectProjectDoc, setCloseProjectModal } from "@/state/modals/projectModal/projectModal";
+import { selectProject, setCloseProjectModal } from "@/state/modals/project_modal/projectModal";
 
 const Header: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const project = useAppSelector(selectProjectDoc);
+  const project = useAppSelector(selectProject);
 
   const closeModal = (): void => {
     dispatch(setCloseProjectModal());

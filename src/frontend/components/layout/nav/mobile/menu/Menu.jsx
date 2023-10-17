@@ -5,7 +5,7 @@ import css from "./Menu.module.css";
 import { CrossIcon } from "@/components/icons/_index";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 // components
 import { Navlinks, ProfileActions, SignInBtn } from "./index";

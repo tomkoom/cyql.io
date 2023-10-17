@@ -7,7 +7,7 @@ import { II_ADMIN_1 } from "@/constants/constants";
 import { Outlet, Navigate } from "react-router-dom";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 const AdminRoutes: FC = (): JSX.Element => {
   const { userId } = useAuth();

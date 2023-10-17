@@ -1,8 +1,6 @@
-import React from "react";
-import css from "./Meta.module.css";
-
-// components
-import { Badge, Copy } from "./index";
+import React from "react"
+import css from "./Meta.module.css"
+import { Badge, Copy } from "./_index"
 
 const Meta = () => {
   return (
@@ -10,7 +8,7 @@ const Meta = () => {
       <Badge />
       <Copy />
     </div>
-  );
-};
+  )
+}
 
-export default Meta;
+export default Meta

@@ -5,7 +5,7 @@ import css from "./Title.module.css";
 import { formatId } from "@/utils/format";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";

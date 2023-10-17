@@ -1,51 +1,49 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { II_ADMIN_1 } from "@/constants/constants"
 
 // utils
-import { verifyAdmin } from "@/utils/verifyAdmin";
-
-// constants
-import { II_ADMIN_1 } from "@/constants/constants";
+import { verifyAdmin } from "@/utils/verifyAdmin"
 
 // icons
-import { iEdit, iShareSquare } from "@/components/icons/Icons";
+import { iEdit, iShareSquare } from "@/components/icons/Icons"
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth"
 
 // components
-import { Btn, Logo, Title } from "./_index";
+import { Btn, Logo, Title } from "./_index"
 // import { UpvtBtn } from "@components/index";
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux";
-import { setProjectModal, setProjectDoc } from "@/state/modals/projectModal/projectModal";
-import { setShareModal } from "@/state/modals/shareModal";
+import { useAppDispatch } from "@/hooks/useRedux"
+import { setProjectModalIsOpen, setProject } from "@/state/modals/project_modal/projectModal"
+import { setShareModal } from "@/state/modals/shareModal"
 
 const Header: FC<any> = ({ project }): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const { userId } = useAuth();
-  const admins = [II_ADMIN_1,];
+  const dispatch = useAppDispatch()
+  const { userId } = useAuth()
+  const admins = [II_ADMIN_1]
 
   const editProject = () => {
-    dispatch(setProjectDoc(project));
-    dispatch(setProjectModal(true));
-  };
+    dispatch(setProject(project))
+    dispatch(setProjectModalIsOpen(true))
+  }
 
   const openShareModal = () => {
-    dispatch(setShareModal(true));
-  };
+    dispatch(setShareModal(true))
+  }
 
   return (
     <HeaderStyled>
       <Main>
-        {project.data.logo !== "" && <Logo logo={project.data.logo} name={project.data.name} />}
+        {project.logo !== "" && <Logo logo={project.logo} name={project.name} />}
         <Title
-          name={project.data.name}
-          categories={project.data.categories}
-          github={project.data.github}
-          canister={project.data.canister}
-          grantee={project.data.grantee}
+          name={project.name}
+          category={project.category}
+          github={project.github}
+          canister={project.canister}
+          grantee={project.grantee}
         />
       </Main>
 
@@ -53,12 +51,12 @@ const Header: FC<any> = ({ project }): JSX.Element => {
         {verifyAdmin(admins, userId) === true && <Btn icon={iEdit} onClick={editProject} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
         {/* <div className={css.btnContainer}>
-          <UpvtBtn id={project.key} upvotedBy={project.data.upvotedBy} location="project" />
+          <UpvtBtn id={project.key} upvotedBy={project.upvotedBy} location="project" />
         </div> */}
       </Controls>
     </HeaderStyled>
-  );
-};
+  )
+}
 
 const HeaderStyled = styled.div`
   display: flex;
@@ -66,13 +64,13 @@ const HeaderStyled = styled.div`
   justify-content: space-between;
   gap: 1rem;
   margin-bottom: 1rem;
-`;
+`
 
 const Main = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`;
+`
 
 const Controls = styled.div`
   display: flex;
@@ -80,6 +78,6 @@ const Controls = styled.div`
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 0.5rem;
-`;
+`
 
-export default Header;
+export default Header

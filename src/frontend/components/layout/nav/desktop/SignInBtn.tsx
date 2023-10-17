@@ -1,29 +1,29 @@
-import React, { FC } from "react";
+import React, { FC } from "react"
 
 // icons
-import { iSignIn } from "@/components/icons/Icons";
+import { iSignIn } from "@/components/icons/Icons"
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth"
 
 // state
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
-import { setSignInModal } from "@/state/modals/modals";
-import { selectSignInModal } from "@/state/modals/modals";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { setSignInModal } from "@/state/modals/modals"
+import { selectSignInModal } from "@/state/modals/modals"
 
 // components
-import { Spinner } from "@/components/ui/_index";
-import { Btn } from "@/components/btns/_index";
-import { SignInModal } from "@/modals/_index";
+import { Spinner } from "@/components/ui/_index"
+import { Btn } from "@/components/btns/_index"
+import { SignInModal } from "@/modals/_index"
 
 const SignInBtn: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const isOpen = useAppSelector(selectSignInModal);
-  const { signInLoading } = useAuth();
+  const dispatch = useAppDispatch()
+  const isOpen = useAppSelector(selectSignInModal)
+  const { signInLoading } = useAuth()
 
   const openSignInModal = (): void => {
-    dispatch(setSignInModal(true));
-  };
+    dispatch(setSignInModal(true))
+  }
 
   return (
     <div>
@@ -36,7 +36,7 @@ const SignInBtn: FC = (): JSX.Element => {
         <Btn btnType="secondary" text="loading..." icon={<Spinner />} onClick={openSignInModal} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default SignInBtn;
+export default SignInBtn

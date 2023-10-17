@@ -1,20 +1,18 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 interface TagsProps {
-  categories: string[];
+  category: string[]
 }
 
-const Tags: FC<TagsProps> = ({ categories }): JSX.Element => {
+const Tags: FC<TagsProps> = ({ category }): JSX.Element => {
   return (
     <TagsStyled>
-      {categories.length > 0 &&
-        categories.map((category) => (
-          <li key={category.toLowerCase()}>{category.toLowerCase()}</li>
-        ))}
+      {category.length > 0 &&
+        category.map((category) => <li key={category.toLowerCase()}>{category.toLowerCase()}</li>)}
     </TagsStyled>
-  );
-};
+  )
+}
 
 const TagsStyled = styled.ul`
   display: flex;
@@ -32,6 +30,6 @@ const TagsStyled = styled.ul`
     background-color: var(--underlay1);
     border-radius: 0.5rem;
   }
-`;
+`
 
-export default Tags;
+export default Tags

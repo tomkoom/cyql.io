@@ -8,13 +8,13 @@ import { Btn } from "@/components/btns/_index";
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux";
-import { setProjectModal } from "@/state/modals/projectModal/projectModal";
+import { setProjectModalIsOpen } from "@/state/modals/project_modal/projectModal";
 
 const Admin: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const openModal = (): void => {
-    dispatch(setProjectModal(true));
+    dispatch(setProjectModalIsOpen(true));
   };
 
   return (

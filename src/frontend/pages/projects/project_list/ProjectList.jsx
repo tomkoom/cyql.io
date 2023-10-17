@@ -1,6 +1,16 @@
 import React from "react"
 import css from "./ProjectList.module.css"
 
+// utils
+import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects"
+import {
+  filterBySearch,
+  filterByCategory,
+  filterByOpenSource,
+  filterByOnChain,
+  filterByGrantee,
+} from "./utils/filterProjects"
+
 // hooks
 import useNav from "@/hooks/useNav"
 
@@ -20,24 +30,14 @@ import {
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@/state/projects/filter"
-import { selectProjectsDocsActive } from "@/state/projects"
-
-// utils: sort, filter
-import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects"
-import {
-  filterBySearch,
-  filterByCategory,
-  filterByOpenSource,
-  filterByOnChain,
-  filterByGrantee,
-} from "./utils/filterProjects"
+import { selectActiveProjects } from "@/state/projects"
 
 const ProjectList = () => {
   const dispatch = useAppDispatch()
   const { toProject } = useNav()
 
   // projects
-  const projects = useAppSelector(selectProjectsDocsActive)
+  const projects = useAppSelector(selectActiveProjects)
   const projectsNum = projects.length
   const itemsVisible = useAppSelector(selectItemsVisibleProjects)
 
@@ -63,79 +63,71 @@ const ProjectList = () => {
 
   return (
     <div>
-      {projects.length < 1 ? (
-        <Spinner />
-      ) : (
-        <ul className={css.li}>
-          {projects
-            .filter((project) => filterBySearch(project, searchQuery))
-            .filter((project) => filterByCategory(project, category))
-            .filter((project) => filterByOpenSource(project, openSource))
-            .filter((project) => filterByOnChain(project, onChain))
-            .filter((project) => filterByGrantee(project, grantee))
-            .sort((a, b) =>
-              sort === "newest-first" ? sortNewest(a.data.added, b.data.added) : null
-            )
-            .sort((a, b) =>
-              sort === "oldest-first" ? sortOldest(a.data.added, b.data.added) : null
-            )
-            .sort((a, b) =>
-              sort === "most-upvoted" ? sortMostUp(a.data.upvotes, b.data.upvotes) : null
-            )
-            .sort((a, b) =>
-              sort === "least-upvoted" ? sortLeastUp(a.data.upvotes, b.data.upvotes) : null
-            )
-            .slice(0, itemsVisible)
-            .map((p) => (
-              <li className={css.liI} key={p.key} onClick={() => toProject(p.data.slug)}>
-                <div className={css.main}>
-                  <Main
-                    logo={p.data.logo}
-                    name={p.data.name}
-                    description={p.data.description}
-                    github={p.data.github}
-                    canister={p.data.canister}
-                    grantee={p.data.grantee}
-                  />
-                </div>
+      <ul className={css.li}>
+        {projects
+          // filter
+          .filter((project) => filterBySearch(project, searchQuery))
+          .filter((project) => filterByCategory(project, category))
+          .filter((project) => filterByOpenSource(project, openSource))
+          .filter((project) => filterByOnChain(project, onChain))
+          .filter((project) => filterByGrantee(project, grantee))
 
-                <div className={css.tags}>
-                  <Tags categories={p.data.categories} nftSaleStatus={p.data.nftSaleStatus} />
-                </div>
+          // sort
+          .sort((a, b) => (sort === "newest-first" ? sortNewest(a.createdAt, b.createdAt) : null))
+          .sort((a, b) => (sort === "oldest-first" ? sortOldest(a.createdAt, b.createdAt) : null))
+          .sort((a, b) => (sort === "most-upvoted" ? sortMostUp(a.upvotedBy, b.upvotedBy) : null))
+          .sort((a, b) => (sort === "least-upvoted" ? sortLeastUp(a.upvotedBy, b.upvotedBy) : null))
+          .slice(0, itemsVisible)
+          .map((p) => (
+            <li key={p.id} className={css.liI} onClick={() => toProject(p.id)}>
+              <div className={css.main}>
+                <Main
+                  logo={p.logo}
+                  name={p.name}
+                  description={p.description}
+                  github={p.github}
+                  canister={p.canister}
+                  grantee={p.grantee}
+                />
+              </div>
 
-                <div className={css.socials}>
-                  <Socials
-                    twitter={p.data.twitter}
-                    discord={p.data.discord}
-                    telegram={p.data.telegram}
-                    github={p.data.github}
-                    medium={p.data.medium}
-                  />
-                </div>
+              <div className={css.tags}>
+                <Tags category={p.category} nftSaleStatus={p.nftSaleStatus} />
+              </div>
 
-                <div className={css.socials}>
-                  <SocialsIc
-                    dscvr={p.data.dscvr}
-                    distrikt={p.data.distrikt}
-                    openchat={p.data.openchat}
-                    taggr={p.data.taggr}
-                    seers={p.data.seers}
-                    nuance={p.data.nuance}
-                    catalyze={p.data.catalyze}
-                    funded={p.data.funded}
-                  />
-                </div>
+              <div className={css.socials}>
+                <Socials
+                  twitter={p.twitter}
+                  discord={p.discord}
+                  telegram={p.telegram}
+                  github={p.github}
+                  medium={p.medium}
+                />
+              </div>
 
-                {/* upvote btn */}
-                {/* <div className={css.upvote}>
+              <div className={css.socials}>
+                <SocialsIc
+                  dscvr={p.dscvr}
+                  distrikt={p.distrikt}
+                  openchat={p.openchat}
+                  taggr={p.taggr}
+                  seers={p.seers}
+                  nuance={p.nuance}
+                  catalyze={p.catalyze}
+                  funded={p.funded}
+                />
+              </div>
+
+              {/* upvote btn */}
+              {/* <div className={css.upvote}>
                   <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn id={p.key} upvotes={p.data.upvotes} />
+                    <UpvoteBtn id={p.id} upvotedBy={p.upvotedBy} />
                   </div>
                 </div> */}
-              </li>
-            ))}
-        </ul>
-      )}
+            </li>
+          ))}
+      </ul>
+
       {itemsVisible < projectsNum && <LoadMoreBtn setVisible={() => setItemsVisible(64)} />}
     </div>
   )

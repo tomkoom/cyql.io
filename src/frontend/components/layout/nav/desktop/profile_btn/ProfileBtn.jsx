@@ -1,50 +1,64 @@
-import React, { useState, useEffect, useRef } from "react";
-import css from "./ProfileBtn.module.css";
-
-// components
-import { Menu } from "./index";
-import { IdImg } from "@/components/ui/_index";
+import React, { useState, useEffect, useRef } from "react"
+import styled from "styled-components"
 
 // icons
-import { iAngleDown } from "@/components/icons/Icons";
+import { iAngleDown } from "@/components/icons/Icons"
 
-// auth
-import { useAuth } from "@/context/AuthContext";
+// utils
+import { formatId } from "@/utils/format"
+
+// hooks
+import { useAuth } from "@/context/Auth"
+
+// components
+import { Menu } from "./_index"
+import { IdImg } from "@/components/ui/_index"
 
 const ProfileBtn = () => {
-  const { userId } = useAuth();
-  const pIdStr = userId;
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const menuRef = useRef(null);
+  const { userId } = useAuth()
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     const closeMenu = (e) => {
       if (menuRef.current) {
         if (!menuRef.current.contains(e.target)) {
-          setMenuIsOpen(false);
+          setMenuIsOpen(false)
         }
       } else {
-        return;
+        return
       }
-    };
+    }
 
-    document.body.addEventListener("click", closeMenu);
+    document.body.addEventListener("click", closeMenu)
     return () => {
-      document.body.removeEventListener("click", closeMenu);
-    }; // remove eventlistener on component unmount
-  }, []);
+      document.body.removeEventListener("click", closeMenu)
+    } // remove eventlistener on component unmount
+  }, [])
 
   return (
-    <div className={css.profileBtn} ref={menuRef}>
+    <ProfileBtnStyled ref={menuRef}>
       <button onClick={() => setMenuIsOpen((prevState) => !prevState)}>
         <IdImg sizePx="36" />
-        <p>{pIdStr.substring(0, 5) + "..." + pIdStr.substring(pIdStr.length - 3)}</p>
+        <span>{formatId(userId)}</span>
         <span>{iAngleDown}</span>
       </button>
 
       {menuIsOpen && <Menu setMenuIsOpen={setMenuIsOpen} />}
-    </div>
-  );
-};
+    </ProfileBtnStyled>
+  )
+}
 
-export default ProfileBtn;
+const ProfileBtnStyled = styled.div`
+  position: relative;
+
+  > button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: var(--fwBold);
+    cursor: pointer;
+  }
+`
+
+export default ProfileBtn

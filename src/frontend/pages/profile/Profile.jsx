@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Profile.module.css";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";

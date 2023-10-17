@@ -11,14 +11,13 @@ import icpPrice from "./api/icpPrice"
 
 // modals
 import modals from "./modals/modals"
-import apiModal from "./modals/apiModal"
 import nftModal from "./modals/nftModal"
 import promoModal from "./modals/promoModal"
 import shareModal from "./modals/shareModal"
 
 // project modal
-import projectModal from "./modals/projectModal/projectModal"
-import projectModalLoading from "./modals/projectModal/projectModalLoading"
+import projectModal from "./modals/project_modal/projectModal"
+import projectModalLoading from "./modals/project_modal/projectModalLoading"
 
 // projects
 import category from "./projects/category"
@@ -66,7 +65,6 @@ const rootReducer = combineReducers({
 
   // modals
   modals,
-  apiModal,
   nftModal,
   promoModal,
   shareModal,

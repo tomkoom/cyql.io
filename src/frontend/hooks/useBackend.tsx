@@ -1,4 +1,4 @@
-import { ProjectData } from "../../declarations/backend/backend.did"
+import type { ProjectData } from "../../declarations/backend/backend.did"
 
 // utils
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"

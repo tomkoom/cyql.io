@@ -1,16 +1,16 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // components
-import { Logo, Title } from "./_index";
+import { Logo, Title } from "./_index"
 
 interface MainProps {
-  logo: string;
-  name: string;
-  description: string;
-  github: string;
-  canister: string;
-  grantee: boolean;
+  logo: string
+  name: string
+  description: string
+  github: string
+  canister: string
+  grantee: boolean
 }
 
 const Main: FC<MainProps> = ({
@@ -32,13 +32,13 @@ const Main: FC<MainProps> = ({
         grantee={grantee}
       />
     </MainStyled>
-  );
-};
+  )
+}
 
 const MainStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`;
+`
 
-export default Main;
+export default Main

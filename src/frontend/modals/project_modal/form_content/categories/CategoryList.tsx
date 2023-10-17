@@ -1,35 +1,35 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import type { Category } from "@/state/_types/types";
+import React, { FC } from "react"
+import styled from "styled-components"
+import type { Category } from "@/state/_types/types"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectAllCategories } from "@/state/categories/allCategories";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { selectAllCategories } from "@/state/categories/allCategories"
 import {
-  selectProjectCategories,
-  setProjectCategories,
-} from "@/state/modals/projectModal/projectModal";
+  selectProjectCategory,
+  setProjectCategory,
+} from "@/state/modals/project_modal/projectModal"
 
 const CategoryList: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const allCategories = useAppSelector(selectAllCategories);
-  const categories = useAppSelector(selectProjectCategories);
-  const copy = [...categories];
+  const dispatch = useAppDispatch()
+  const allCategories = useAppSelector(selectAllCategories)
+  const category = useAppSelector(selectProjectCategory)
+  const categoryCopy = [...category]
 
-  const setCategory = (categoryLabel: string): void => {
-    if (copy.includes(categoryLabel)) {
-      const index = copy.indexOf(categoryLabel);
-      copy.splice(index, 1);
+  const setCategory = (label: string): void => {
+    if (categoryCopy.includes(label)) {
+      const index = categoryCopy.indexOf(label)
+      categoryCopy.splice(index, 1)
     } else {
-      copy.push(categoryLabel);
+      categoryCopy.push(label)
     }
-    dispatch(setProjectCategories(copy));
-  };
+    dispatch(setProjectCategory(categoryCopy))
+  }
 
   const active = {
     backgroundColor: "var(--primaryColor)",
     color: "var(--background)",
-  };
+  }
 
   return (
     <CategoryListStyled>
@@ -37,7 +37,7 @@ const CategoryList: FC = (): JSX.Element => {
         .filter((category: Category) => category.id !== "all")
         .map((category: Category) => (
           <Item
-            style={copy.includes(category.label) ? active : null}
+            style={categoryCopy.includes(category.label) ? active : null}
             key={category.id}
             onClick={() => setCategory(category.label)}
           >
@@ -45,14 +45,14 @@ const CategoryList: FC = (): JSX.Element => {
           </Item>
         ))}
     </CategoryListStyled>
-  );
-};
+  )
+}
 
 const CategoryListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-`;
+`
 
 const Item = styled.li`
   font-size: var(--fsText);
@@ -61,6 +61,6 @@ const Item = styled.li`
   background-color: var(--underlay1);
   border-radius: 0.5rem;
   cursor: pointer;
-`;
+`
 
-export default CategoryList;
+export default CategoryList

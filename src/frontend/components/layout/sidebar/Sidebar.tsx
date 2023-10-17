@@ -15,7 +15,7 @@ import { iInfinity, iCube, iPlus, iCircle } from "@/components/icons/Icons";
 import useNav from "@/hooks/useNav";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 // components
 import { Navlink } from "./_index";

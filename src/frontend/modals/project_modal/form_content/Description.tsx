@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
 import {
   selectProjectDescription,
   setProjectDescription,
-} from "@/state/modals/projectModal/projectModal";
+} from "@/state/modals/project_modal/projectModal";
 
 const Description: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();

@@ -6,9 +6,7 @@ import { iCube } from "@/components/icons/Icons"
 
 // hooks
 import useNav from "@/hooks/useNav"
-
-// auth
-import { useAuth } from "@/context/AuthContext"
+import { useAuth } from "@/context/Auth"
 
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./_index"
@@ -16,28 +14,12 @@ import { Nft } from "../_index"
 import { Logo, Price, Theme } from "@/components/ui/_index"
 import { LinkBtn } from "@/components/btns/_index"
 
-// components
-import { ApiModal } from "@/modals/_index"
-
-// state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectApiModalIsOpen, setApiModalIsOpen } from "@/state/modals/apiModal"
-
 const Desktop: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch()
   const { toHome } = useNav()
-  const { userId } = useAuth()
-  const apiModalIsOpen = useAppSelector(selectApiModalIsOpen)
-
-  const openApiModal = () => {
-    dispatch(setApiModalIsOpen(true))
-  }
+  const { isAuthenticated, userId } = useAuth()
 
   return (
     <DesktopStyled>
-      {/* modals */}
-      <ApiModal isOpen={apiModalIsOpen} />
-
       <Main>
         <div onClick={toHome}>
           <Logo />
@@ -50,7 +32,7 @@ const Desktop: FC = (): JSX.Element => {
         <Theme />
         <LinkBtn btnType="secondary" text="api" icon={iCube} url="https://docs.cyql.io/" />
         <Nft />
-        {userId === "" ? <SignInBtn /> : <ProfileBtn />}
+        {isAuthenticated && userId ? <ProfileBtn /> : <SignInBtn />}
       </Controls>
     </DesktopStyled>
   )

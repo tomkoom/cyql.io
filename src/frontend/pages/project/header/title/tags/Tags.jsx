@@ -1,14 +1,14 @@
-import React from "react";
-import css from "./Tags.module.css";
+import React from "react"
+import css from "./Tags.module.css"
 
 // icons
-import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons";
+import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons"
 
-const Tags = ({ categories, github, canister, grantee }) => {
+const Tags = ({ category, github, canister, grantee }) => {
   return (
     <ul className={css.tags}>
-      {categories.length > 0 &&
-        categories.map((category) => (
+      {category.length > 0 &&
+        category.map((category) => (
           <li className={css.tagsI} key={category.toLowerCase()}>
             {category.toLowerCase()}
           </li>
@@ -29,7 +29,7 @@ const Tags = ({ categories, github, canister, grantee }) => {
         </li>
       )}
     </ul>
-  );
-};
+  )
+}
 
-export default Tags;
+export default Tags

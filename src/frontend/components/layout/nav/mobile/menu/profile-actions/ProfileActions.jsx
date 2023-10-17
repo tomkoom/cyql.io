@@ -11,7 +11,7 @@ import { formatId } from "@/utils/format";
 import useNav from "@/hooks/useNav";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 // components
 import { IdImg } from "@/components/ui/_index";
@@ -23,7 +23,7 @@ import { setMobileMenuModal } from "@/state/modals/modals";
 const ProfileActions = () => {
   const dispatch = useAppDispatch();
   const { toProfile } = useNav();
-  const { userId, signOut } = useAuth();
+  const { userId, logout } = useAuth();
 
   const navigate = () => {
     toProfile();
@@ -31,7 +31,7 @@ const ProfileActions = () => {
   };
 
   const handleSignOut = () => {
-    signOut();
+    logout();
     dispatch(setMobileMenuModal(false));
   };
 

@@ -11,7 +11,7 @@ import { useAppSelector } from "@/hooks/useRedux";
 import {
   selectProjectModalLoadingSet,
   selectProjectModalLoadingDel,
-} from "@/state/modals/projectModal/projectModalLoading";
+} from "@/state/modals/project_modal/projectModalLoading";
 import { selectTheme } from "@/state/ui/theme";
 
 interface ProjectModalProps {

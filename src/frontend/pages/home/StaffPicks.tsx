@@ -9,64 +9,64 @@ const StaffPicks: FC = (): JSX.Element => {
 
   const staffPicksItems = [
     {
-      slug: "nfid",
+      id: "nfid",
       title: "NFID",
       text: "identity layer for the internet",
     },
     {
-      slug: "me-wallet",
+      id: "me-wallet",
       title: "ME Wallet",
       text: "a powerful multichain wallet",
     },
     {
-      slug: "taggr",
+      id: "taggr",
       title: "#TAGGR",
       text: "decentralized social network",
     },
     {
-      slug: "funded",
+      id: "funded",
       title: "Funded",
       text: "web3 crowdfunding",
     },
     {
-      slug: "openchat",
+      id: "openchat",
       title: "OpenChat",
       text: "decentralized chat app",
     },
     {
-      slug: "rabbithole-app",
+      id: "rabbithole-app",
       title: "Rabbithole",
       text: "🔒 encrypted file storage",
     },
     {
-      slug: "carbon-crowd",
+      id: "carbon-crowd",
       title: "Carbon Crowd",
       text: "decarbonise cloud computing",
     },
     {
-      slug: "canlista",
+      id: "canlista",
       title: "Canlista",
       text: "community canister registry",
     },
     {
-      slug: "icpcoins",
+      id: "icpcoins",
       title: "ICPCoins",
       text: "ic cryptocurrencies by market cap",
     },
     {
-      slug: "blast",
+      id: "blast",
       title: "Blast",
       text: "install & share immutable contracts",
     },
     {
-      slug: "nnscat",
+      id: "nnscat",
       title: "NNSCat",
       text: "filter and compare NNS proposals",
     },
   ]
 
-  const openProject = (slug: string): void => {
-    toProject(slug)
+  const openProject = (id: string): void => {
+    toProject(id)
   }
 
   return (
@@ -75,7 +75,7 @@ const StaffPicks: FC = (): JSX.Element => {
 
       <ul>
         {staffPicksItems.map((item, i) => (
-          <li onClick={() => openProject(item.slug)} key={i}>
+          <li onClick={() => openProject(item.id)} key={i}>
             <span>{item.title}</span>
             <span id="text">{item.text}</span>
           </li>

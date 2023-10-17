@@ -72,7 +72,7 @@ function AuthProvider({ children }) {
     setActor(actor)
   }
 
-  const signIn = async (): Promise<void> => {
+  const login = async (): Promise<void> => {
     if (isAuthenticated) throw new Error("already authed")
 
     setSignInLoading(true)
@@ -89,7 +89,7 @@ function AuthProvider({ children }) {
     setSignInLoading(false)
   }
 
-  const signOut = async (): Promise<void> => {
+  const logout = async (): Promise<void> => {
     if (!isAuthenticated) throw new Error("not authed")
     await authClient.logout()
     return resetII()
@@ -104,8 +104,8 @@ function AuthProvider({ children }) {
     backend,
 
     // ...
-    signIn,
-    signOut,
+    login,
+    logout,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

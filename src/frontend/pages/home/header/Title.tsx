@@ -10,11 +10,11 @@ import useNav from "@/hooks/useNav"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectProjects } from "@/state/projects"
+import { selectAllProjects } from "@/state/projects"
 
 const Title: FC = (): JSX.Element => {
   const { toProjects } = useNav()
-  const projects = useAppSelector(selectProjects).filter((p) => p.data.archived !== true)
+  const projects = useAppSelector(selectAllProjects)
   const projectsNum = projects.length
 
   return (

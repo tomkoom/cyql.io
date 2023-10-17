@@ -8,16 +8,16 @@ import { IC_LOGO } from "@/constants/constants"
 import { Btn } from "./_index"
 
 // auth
-import { useAuth } from "@/context/AuthContext"
+import { useAuth } from "@/context/Auth"
 
 const SignInMethods: FC = (): JSX.Element => {
-  const { signInWithII } = useAuth()
+  const { login } = useAuth()
   const signInMethods = [
     {
       id: "internet_identity",
       label: "Internet Identity",
       logo: IC_LOGO,
-      click: signInWithII,
+      click: login,
       aboutUrl: "https://identity.ic0.app/",
     },
   ]

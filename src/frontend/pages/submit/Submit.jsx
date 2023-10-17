@@ -1,60 +1,57 @@
-import React, { useState } from "react";
-import css from "./Submit.module.css";
+import React, { useState } from "react"
+import css from "./Submit.module.css"
 
 // utils
-import { projectId } from "@/utils/projectId";
+import { projectId } from "@/utils/projectId"
 
 // constants
-import { SUBMITTED_PROJECTS_COLL } from "@/constants/constants";
-
-// juno
-import { setDoc } from "@junobuild/core";
+import { SUBMITTED_PROJECTS_COLL } from "@/constants/constants"
 
 // components
-import { Categories, Inputs, SubmissionSuccess, SubmitBtn } from "./_index";
-import { Loading } from "@/components/ui/_index";
+import { Categories, Inputs, SubmissionSuccess, SubmitBtn } from "./_index"
+import { Loading } from "@/components/ui/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux";
-import { selectSubmit } from "@/state/submit/submit";
-import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectSubmit } from "@/state/submit/submit"
+import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
 const Submit = () => {
-  const [submitIsLoading, setSubmitIsLoading] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const submit = useAppSelector(selectSubmit);
-  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum);
-  const collection = SUBMITTED_PROJECTS_COLL;
+  const [submitIsLoading, setSubmitIsLoading] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const submit = useAppSelector(selectSubmit)
+  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum)
+  const collection = SUBMITTED_PROJECTS_COLL
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setSubmitIsLoading(true);
+    e.preventDefault()
+    setSubmitIsLoading(true)
 
-    const key = projectId();
-    const timestamp = Date.now();
-    await setDoc({
-      collection,
-      doc: {
-        key,
-        data: {
-          ...submit,
-          added: timestamp,
-        },
-      },
-    }).then(() => {
-      console.log(`Doc added with the key ${key}.`);
-      setIsSubmitted(true);
-    });
+    const key = projectId()
+    const timestamp = Date.now()
+    // await setDoc({
+    //   collection,
+    //   doc: {
+    //     key,
+    //     data: {
+    //       ...submit,
+    //       added: timestamp,
+    //     },
+    //   },
+    // }).then(() => {
+    //   console.log(`Doc added with the key ${key}.`);
+    //   setIsSubmitted(true);
+    // });
 
-    setSubmitIsLoading(false);
-  };
+    setSubmitIsLoading(false)
+  }
 
   if (categoriesSortedByNum.length < 1) {
-    return <Loading />;
+    return <Loading />
   }
 
   if (isSubmitted) {
-    return <SubmissionSuccess />;
+    return <SubmissionSuccess />
   }
 
   return (
@@ -69,7 +66,7 @@ const Submit = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Submit;
+export default Submit

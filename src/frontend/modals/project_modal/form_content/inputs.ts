@@ -1,6 +1,5 @@
 const main = [
   { id: "name", type: "text" },
-  { id: "slug", type: "text" },
   { id: "website", type: "text" },
   { id: "canister", type: "text" },
   { id: "logo", type: "text" },
@@ -53,10 +52,10 @@ const nft = [
   { id: "nft_stats_nftgeek", type: "text" },
 
   // nft images
-  { id: "nft_img_1", type: "text" },
-  { id: "nft_img_2", type: "text" },
-  { id: "nft_img_3", type: "text" },
-  { id: "nft_img_4", type: "text" },
+  { id: "nftImg1", type: "text" },
+  { id: "nftImg2", type: "text" },
+  { id: "nftImg3", type: "text" },
+  { id: "nftImg4", type: "text" },
 ];
 
 export { main, socials, additional, nft };

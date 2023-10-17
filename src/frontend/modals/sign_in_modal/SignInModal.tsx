@@ -1,9 +1,10 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import Modal from "@/modals/_Modal"
 
-// auth
-import { useAuth } from "@/context/AuthContext"
+// hooks
+import { useAuth } from "@/context/Auth"
+import { useScrollLock } from "@/hooks/useScrollLock"
 
 // components
 import { SignInMethods } from "./_index"
@@ -20,10 +21,19 @@ interface SingInModalProps {
 const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { signInLoading } = useAuth()
+  const { lockScroll, unlockScroll } = useScrollLock()
 
   const closeModal = (): void => {
     dispatch(setSignInModal(false))
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      lockScroll()
+    } else {
+      unlockScroll()
+    }
+  }, [isOpen])
 
   if (signInLoading) {
     return (
@@ -48,6 +58,10 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  h3 {
+    font-size: var(--fs4);
+  }
 `
 
 const LoadingBackdrop = styled.div`

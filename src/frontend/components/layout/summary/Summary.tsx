@@ -1,12 +1,12 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // redux
-import { useAppSelector } from "@/hooks/useRedux";
-import { selectProjectsDocsActiveNum } from "@/state/projects";
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectActiveProjectsNum } from "@/state/projects"
 
 const Summary: FC = (): JSX.Element => {
-  const projectsNum = useAppSelector(selectProjectsDocsActiveNum);
+  const projectsNum = useAppSelector(selectActiveProjectsNum)
 
   return (
     <SummaryStyled>
@@ -16,8 +16,8 @@ const Summary: FC = (): JSX.Element => {
         </li>
       </ul>
     </SummaryStyled>
-  );
-};
+  )
+}
 
 const SummaryStyled = styled.div`
   height: 2rem;
@@ -28,13 +28,13 @@ const SummaryStyled = styled.div`
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
-`;
+`
 
 const Highlight = styled.span`
   font-family: var(--monospace);
   font-size: var(--fs6);
   font-weight: var(--fwBold);
   color: var(--highlight3);
-`;
+`
 
-export default Summary;
+export default Summary

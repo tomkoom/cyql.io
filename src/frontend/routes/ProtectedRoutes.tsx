@@ -1,14 +1,10 @@
-import React, { FC } from "react";
-
-// router
-import { Outlet, Navigate } from "react-router-dom";
-
-// auth
-import { useAuth } from "@/context/AuthContext";
+import React, { FC } from "react"
+import { Outlet, Navigate } from "react-router-dom"
+import { useAuth } from "@/context/Auth"
 
 const ProtectedRoutes: FC = (): JSX.Element => {
-  const { userId } = useAuth();
-  return userId !== "" ? <Outlet /> : <Navigate to="/" />;
-};
+  const { isAuthenticated, userId } = useAuth()
+  return isAuthenticated && userId ? <Outlet /> : <Navigate to="/" />
+}
 
-export default ProtectedRoutes;
+export default ProtectedRoutes

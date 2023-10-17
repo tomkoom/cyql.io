@@ -1,35 +1,35 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 const useNav = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const goBack = () => {
-    navigate(-1);
-  };
+    navigate(-1)
+  }
 
   const toHome = () => {
-    navigate("/");
-  };
+    navigate("/")
+  }
 
   const toProjects = () => {
-    navigate("/projects");
-  };
+    navigate("/projects")
+  }
 
-  const toProject = (slug: string) => {
-    navigate(`/projects/${slug}`);
-  };
+  const toProject = (id: string) => {
+    navigate(`/projects/${id}`)
+  }
 
   const toSubmit = () => {
-    navigate("/submit");
-  };
+    navigate("/submit")
+  }
 
   const toProfile = () => {
-    navigate("/profile");
-  };
+    navigate("/profile")
+  }
 
   const toAdmin = () => {
-    navigate("/admin");
-  };
+    navigate("/admin")
+  }
 
   return {
     goBack,
@@ -39,7 +39,7 @@ const useNav = () => {
     toSubmit,
     toProfile,
     toAdmin,
-  };
-};
+  }
+}
 
-export default useNav;
+export default useNav

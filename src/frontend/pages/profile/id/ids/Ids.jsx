@@ -8,7 +8,7 @@ import { iCheck } from "@/components/icons/Icons";
 import { formatId } from "@/utils/format";
 
 // auth
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context/Auth";
 
 const Copied = () => {
   return (

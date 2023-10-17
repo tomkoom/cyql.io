@@ -9,15 +9,15 @@ import { main, socials, additional, nft } from "./inputs";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectProjectDoc, setProjectDocData } from "@/state/modals/projectModal/projectModal";
+import { selectProject, setProject } from "@/state/modals/project_modal/projectModal";
 
 const FormContent: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const project = useAppSelector(selectProjectDoc);
+  const project = useAppSelector(selectProject);
 
   const updateProject = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
-    dispatch(setProjectDocData({ [name]: value }));
+    dispatch(setProject({ [name]: value }));
   };
 
   return (

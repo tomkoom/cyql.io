@@ -9,36 +9,36 @@ import { Logo, Main } from "./_index";
 // import { UpvoteBtn } from "@/components/btns/index";
 
 interface ProjectProps {
-  slug: string;
+  id: string;
   name: string;
   logo: string;
-  categories: string[];
+  category: string[];
   canister: string;
   github: string;
   description: string;
 }
 
 const Project: FC<ProjectProps> = ({
-  slug,
+  id,
   name,
   logo,
-  categories,
+  category,
   canister,
   github,
   description /* upvotes */,
 }): JSX.Element => {
   const { toProject } = useNav();
 
-  const openProject = (slug: string): void => {
-    toProject(slug);
+  const openProject = (id: string): void => {
+    toProject(id);
   };
 
   return (
-    <ProjectStyled onClick={() => openProject(slug)}>
+    <ProjectStyled onClick={() => openProject(id)}>
       <Logo name={name} logo={logo} />
       <Main
         name={name}
-        categories={categories}
+        category={category}
         canister={canister}
         github={github}
         description={description}

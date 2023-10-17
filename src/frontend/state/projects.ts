@@ -5,16 +5,16 @@ import { ProjectData } from "../../declarations/backend/backend.did"
 interface ProjectsState {
   loading: boolean
   allProjects: ProjectData[]
-  activeProjects: ProjectData[]
   allProjectsNum: number
+  activeProjects: ProjectData[]
   activeProjectsNum: number
 }
 
 const initialState: ProjectsState = {
   loading: false,
   allProjects: [],
-  activeProjects: [],
   allProjectsNum: 0,
+  activeProjects: [],
   activeProjectsNum: 0,
 }
 

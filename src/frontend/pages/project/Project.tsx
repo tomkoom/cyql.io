@@ -1,15 +1,13 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import { device } from "@/styles/breakpoints";
-
-// router
-import { useParams } from "react-router-dom";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { device } from "@/styles/breakpoints"
+import { useParams } from "react-router-dom"
 
 // components
-import { Loading } from "@/components/ui/_index";
-import { BackBtn } from "@/components/btns/_index";
-import { ShareModal } from "@/modals/_index";
-import { NotFound } from "@/pages/_index";
+import { Loading } from "@/components/ui/_index"
+import { BackBtn } from "@/components/btns/_index"
+import { ShareModal } from "@/modals/_index"
+import { NotFound } from "@/pages/_index"
 import {
   CollStats,
   Description,
@@ -19,28 +17,28 @@ import {
   Meta,
   NftBtns,
   NftPreviews,
-} from "./_index";
-import { ProjectModal } from "@/modals/_index";
+} from "./_index"
+import { ProjectModal } from "@/modals/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux";
-import { selectProjects } from "@/state/projects";
-import { selectShareModal } from "@/state/modals/shareModal";
-import { selectProjectModal } from "@/state/modals/projectModal/projectModal";
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectAllProjects } from "@/state/projects"
+import { selectShareModal } from "@/state/modals/shareModal"
+import { selectProjectModalIsOpen } from "@/state/modals/project_modal/projectModal"
 
 const Project: FC = (): JSX.Element => {
-  const { slug } = useParams<{ slug: string }>();
-  const projects = useAppSelector(selectProjects);
-  const project = projects.filter((p) => p.data.slug === slug) || [];
-  const shareModal = useAppSelector(selectShareModal);
-  const projectModalIsOpen = useAppSelector(selectProjectModal);
+  const { id } = useParams<{ id: string }>()
+  const projects = useAppSelector(selectAllProjects)
+  const project = projects.filter((p) => p.id === id) || []
+  const shareModal = useAppSelector(selectShareModal)
+  const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)
 
   if (projects.length < 1) {
-    return <Loading />;
+    return <Loading />
   }
 
   if (project.length < 1) {
-    return <NotFound text="Project not found" />;
+    return <NotFound text="Project not found" />
   }
 
   return (
@@ -50,90 +48,87 @@ const Project: FC = (): JSX.Element => {
 
       <BackBtn />
       {project.map((project: any) => (
-        <Content key={project.key}>
+        <Content key={project.id}>
           <Header project={project} />
 
-          {project.data.description && (
-            <Description name={project.data.name} description={project.data.description} />
+          {project.description && (
+            <Description name={project.name} description={project.description} />
           )}
 
-          {(project.data.nft_img_1 ||
-            project.data.nft_img_2 ||
-            project.data.nft_img_3 ||
-            project.data.nft_img_4) && (
+          {(project.nftImg1 || project.nftImg2 || project.nftImg3 || project.nftImg4) && (
             <NftPreviews
-              nftImg1={project.data.nft_img_1}
-              nftImg2={project.data.nft_img_2}
-              nftImg3={project.data.nft_img_3}
-              nftImg4={project.data.nft_img_4}
+              nftImg1={project.nftImg1}
+              nftImg2={project.nftImg2}
+              nftImg3={project.nftImg3}
+              nftImg4={project.nftImg4}
             />
           )}
 
-          {project.data.categories.includes("NFTs") && (
+          {project.category.includes("NFTs") && (
             <CollStats
-              nftSaleDate={project.data.nft_sale_date}
-              nftUnits={project.data.nft_units}
-              nftUnitPrice={project.data.nft_unit_price}
+              nftSaleDate={project.nft_sale_date}
+              nftUnits={project.nft_units}
+              nftUnitPrice={project.nft_unit_price}
             />
           )}
 
           {/* nft links */}
-          {(project.data.nft_market || project.data.nft_rarity) && (
-            <NftBtns nftMarket={project.data.nft_market} nftRarity={project.data.nft_rarity} />
-          )}
+          {/* {(project.nft_market || project.nft_rarity) && (
+            <NftBtns nftMarket={project.nft_market} nftRarity={project.nft_rarity} />
+          )} */}
 
           <Links
             // main
-            website={project.data.website}
-            canister={project.data.canister}
-            app={project.data.app}
-            docs={project.data.docs}
-            whitepaper={project.data.whitepaper}
+            website={project.website}
+            canister={project.canister}
+            app={project.app}
+            docs={project.docs}
+            whitepaper={project.whitepaper}
             // ic
-            dscvr={project.data.dscvr}
-            distrikt={project.data.distrikt}
-            openchat={project.data.openchat}
-            taggr={project.data.taggr}
-            seers={project.data.seers}
-            nuance={project.data.nuance}
-            catalyze={project.data.catalyze}
-            funded={project.data.funded}
+            dscvr={project.dscvr}
+            distrikt={project.distrikt}
+            openchat={project.openchat}
+            taggr={project.taggr}
+            seers={project.seers}
+            nuance={project.nuance}
+            catalyze={project.catalyze}
+            funded={project.funded}
             // social
-            twitter={project.data.twitter}
-            discord={project.data.discord}
-            github={project.data.github}
-            telegram={project.data.telegram}
-            medium={project.data.medium}
+            twitter={project.twitter}
+            discord={project.discord}
+            github={project.github}
+            telegram={project.telegram}
+            medium={project.medium}
           />
 
-          <Meta added={project.data.added} />
+          <Meta createdAt={project.createdAt} />
           <Disclaimer />
 
           {/* modals */}
           {shareModal && (
             <ShareModal
-              slug={project.data.slug}
-              name={project.data.name}
-              categories={project.data.categories}
-              description={project.data.description}
+              id={project.id}
+              name={project.name}
+              category={project.category}
+              description={project.description}
             />
           )}
         </Content>
       ))}
     </ProjectStyled>
-  );
-};
+  )
+}
 
 const ProjectStyled = styled.div`
   max-width: 1280px;
   margin: 0 auto 4rem auto;
-`;
+`
 
 const Content = styled.div`
   @media ${device.laptop} {
     flex-direction: column;
     gap: 1rem;
   }
-`;
+`
 
-export default Project;
+export default Project

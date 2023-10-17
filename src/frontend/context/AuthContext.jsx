@@ -11,8 +11,8 @@ import {
   authSubscribe,
   InternetIdentityProvider,
   NFIDProvider,
-  signIn,
-  signOut as junoSignOut,
+  login,
+  logout as junoSignOut,
 } from "@junobuild/core"
 
 const AuthContext = createContext()
@@ -28,7 +28,7 @@ function AuthProvider({ children }) {
   const signInWithII = async () => {
     setSignInLoading(true)
 
-    await signIn({
+    await login({
       provider: new InternetIdentityProvider({
         domain: "ic0.app",
       }),
@@ -50,7 +50,7 @@ function AuthProvider({ children }) {
     const logoUrl = "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/cyql-favicon.svg"
 
     setSignInLoading(true)
-    await signIn({
+    await login({
       provider: new NFIDProvider({
         appName,
         logoUrl,
@@ -73,7 +73,7 @@ function AuthProvider({ children }) {
     return () => sub()
   }, [])
 
-  const signOut = async () => {
+  const logout = async () => {
     await junoSignOut()
 
     // clear state
@@ -87,7 +87,7 @@ function AuthProvider({ children }) {
     // juno
     signInWithII,
     signInWithNfid,
-    signOut,
+    logout,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

@@ -9,7 +9,7 @@ import useNav from "@/hooks/useNav";
 
 // state
 import { useAppSelector } from "@/hooks/useRedux";
-import { selectProjects } from "@/state/projects";
+import { selectAllProjects } from "@/state/projects";
 
 // components
 // import { UpvoteBtn } from "@/components/btns/index";
@@ -17,7 +17,7 @@ import { Logo } from "./_index";
 
 const HighlightedByCategory = ({ filter }) => {
   const { toProject } = useNav();
-  const projects = useAppSelector(selectProjects).filter(
+  const projects = useAppSelector(selectAllProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   );
 
@@ -42,8 +42,8 @@ const HighlightedByCategory = ({ filter }) => {
     return d.length > 60 ? `${d.substring(0, 60)}…` : d;
   };
 
-  const openProject = (slug) => {
-    toProject(slug);
+  const openProject = (id) => {
+    toProject(id);
   };
 
   return (
@@ -56,7 +56,7 @@ const HighlightedByCategory = ({ filter }) => {
         .map((project) => (
           <li
             className={css.project}
-            onClick={() => openProject(project.data.slug)}
+            onClick={() => openProject(project.data.id)}
             key={project.key}
           >
             <div className={css.main}>

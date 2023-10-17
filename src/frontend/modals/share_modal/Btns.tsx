@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // icons
-import { iTwitter, iTelegram, iFacebook, iRedditAlien, iLinkedin } from "@/components/icons/Icons";
+import { iTwitter, iTelegram, iFacebook, iRedditAlien, iLinkedin } from "@/components/icons/Icons"
 
 // react share
 import {
@@ -11,21 +11,21 @@ import {
   RedditShareButton,
   TelegramShareButton,
   TwitterShareButton,
-} from "react-share";
+} from "react-share"
 // https://www.npmjs.com/package/react-share
 
 interface BtnsProps {
-  slug: string;
-  name: string;
-  categories: string[];
-  description: string;
+  id: string
+  name: string
+  category: string[]
+  description: string
 }
 
-const Btns: FC<BtnsProps> = ({ slug, name, categories, description }): JSX.Element => {
-  // const url = `https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/#/projects/${slug}`;
-  const url2 = `https://cyql.io/#/projects/${slug}`;
-  const summary = `${name}: ${description}`;
-  const hashtags = [...categories, "ICP", "Web3", "InternetComputer"];
+const Btns: FC<BtnsProps> = ({ id, name, category, description }): JSX.Element => {
+  // const url = `https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/#/projects/${id}`;
+  const url2 = `https://cyql.io/#/projects/${id}`
+  const summary = `${name}: ${description}`
+  const hashtags = [...category, "ICP", "Web3", "InternetComputer"]
 
   return (
     <BtnsStyled>
@@ -59,8 +59,8 @@ const Btns: FC<BtnsProps> = ({ slug, name, categories, description }): JSX.Eleme
         </LinkedinShareButton>
       </li>
     </BtnsStyled>
-  );
-};
+  )
+}
 
 const BtnsStyled = styled.ul`
   display: flex;
@@ -91,7 +91,7 @@ const BtnsStyled = styled.ul`
   > * span#linkedin {
     background-color: var(--colorLinkedIn);
   }
-`;
+`
 
 const Icon = styled.span`
   display: grid;
@@ -101,6 +101,6 @@ const Icon = styled.span`
   font-size: var(--fs4);
   color: #fff;
   border-radius: 50%;
-`;
+`
 
-export default Btns;
+export default Btns
