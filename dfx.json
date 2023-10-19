@@ -2,11 +2,11 @@
   "canisters": {
     "backend": {
       "type": "custom",
+      "main": "src/backend/index.ts",
       "build": "npx azle backend",
-      "root": "src",
-      "ts": "src/backend/index.ts",
       "candid": "src/backend/index.did",
-      "wasm": ".azle/backend/backend.wasm.gz"
+      "wasm": ".azle/backend/backend.wasm",
+      "gzip": true
     },
     "frontend": {
       "dependencies": ["backend"],

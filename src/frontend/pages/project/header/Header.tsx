@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { II_ADMIN_1 } from "@/constants/constants"
 
 // utils
 import { verifyAdmin } from "@/utils/verifyAdmin"
@@ -23,7 +22,6 @@ import { setShareModal } from "@/state/modals/shareModal"
 const Header: FC<any> = ({ project }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { userId } = useAuth()
-  const admins = [II_ADMIN_1]
 
   const editProject = () => {
     dispatch(setProject(project))
@@ -48,7 +46,7 @@ const Header: FC<any> = ({ project }): JSX.Element => {
       </Main>
 
       <Controls>
-        {verifyAdmin(admins, userId) === true && <Btn icon={iEdit} onClick={editProject} />}
+        {verifyAdmin(userId) === true && <Btn icon={iEdit} onClick={editProject} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
         {/* <div className={css.btnContainer}>
           <UpvtBtn id={project.key} upvotedBy={project.upvotedBy} location="project" />

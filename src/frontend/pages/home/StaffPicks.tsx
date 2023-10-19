@@ -9,57 +9,57 @@ const StaffPicks: FC = (): JSX.Element => {
 
   const staffPicksItems = [
     {
-      id: "nfid",
+      id: "iKxyXmT6aF1a",
       title: "NFID",
       text: "identity layer for the internet",
     },
     {
-      id: "me-wallet",
+      id: "Ia53VeLrQdfS",
       title: "ME Wallet",
       text: "a powerful multichain wallet",
     },
     {
-      id: "taggr",
+      id: "bwPjciHfNxGE",
       title: "#TAGGR",
       text: "decentralized social network",
     },
     {
-      id: "funded",
+      id: "MErXd1cd7U6E",
       title: "Funded",
       text: "web3 crowdfunding",
     },
     {
-      id: "openchat",
+      id: "QX8lS9ogfjBJ",
       title: "OpenChat",
       text: "decentralized chat app",
     },
     {
-      id: "rabbithole-app",
+      id: "mRswh7bVbXb7",
       title: "Rabbithole",
       text: "🔒 encrypted file storage",
     },
     {
-      id: "carbon-crowd",
+      id: "1iUXcIQgMBIK",
       title: "Carbon Crowd",
       text: "decarbonise cloud computing",
     },
     {
-      id: "canlista",
+      id: "Z2v9LWotQCT7",
       title: "Canlista",
       text: "community canister registry",
     },
     {
-      id: "icpcoins",
+      id: "49ZWVBKMxiMa",
       title: "ICPCoins",
       text: "ic cryptocurrencies by market cap",
     },
     {
-      id: "blast",
+      id: "cuGuRsmwd3kP",
       title: "Blast",
       text: "install & share immutable contracts",
     },
     {
-      id: "nnscat",
+      id: "oOxbIjZpQPXx",
       title: "NNSCat",
       text: "filter and compare NNS proposals",
     },

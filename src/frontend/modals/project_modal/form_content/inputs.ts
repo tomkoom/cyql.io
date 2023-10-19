@@ -3,7 +3,7 @@ const main = [
   { id: "website", type: "text" },
   { id: "canister", type: "text" },
   { id: "logo", type: "text" },
-];
+]
 
 const socials = [
   { id: "twitter", type: "text" },
@@ -21,41 +21,38 @@ const socials = [
   { id: "nuance", type: "text" },
   { id: "catalyze", type: "text" },
   { id: "funded", type: "text" },
-];
+]
 
 const additional = [
   { id: "app", type: "text" },
   { id: "docs", type: "text" },
   { id: "faq", type: "text" },
   { id: "whitepaper", type: "text" },
-];
+]
 
 const nft = [
   // nft
-  { id: "nft_sale_date", type: "date" },
-  { id: "nft_sale_url", type: "text" },
-  { id: "nft_units", type: "text" },
-  { id: "nft_unit_price", type: "text" },
+  { id: "nftSaleDate", type: "date" },
+  { id: "nftSaleUrl", type: "text" },
+  { id: "nftUnits", type: "text" },
+  { id: "nftUnitPrice", type: "text" },
 
   // nft markets
-  { id: "nft_market", type: "text" },
-  { id: "nft_market_entrepot", type: "text" },
-  { id: "nft_market_ccc", type: "text" },
-  { id: "nft_market_yumi", type: "text" },
+  { id: "nftMarketEntrepot", type: "text" },
+  { id: "nftMarketCcc", type: "text" },
+  { id: "nftMarketYumi", type: "text" },
 
   // nft rarity
-  { id: "nft_rarity", type: "text" },
-  { id: "nft_rarity_dgdg", type: "text" },
+  { id: "nftRarityDgdg", type: "text" },
 
   // nft stats
-  { id: "nft_stats", type: "text" },
-  { id: "nft_stats_nftgeek", type: "text" },
+  { id: "nftStatsNftgeek", type: "text" },
 
   // nft images
   { id: "nftImg1", type: "text" },
   { id: "nftImg2", type: "text" },
   { id: "nftImg3", type: "text" },
   { id: "nftImg4", type: "text" },
-];
+]
 
-export { main, socials, additional, nft };
+export { main, socials, additional, nft }

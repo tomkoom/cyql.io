@@ -16,7 +16,7 @@ import useNav from "@/hooks/useNav"
 
 // components
 import { LoadMoreBtn /* UpvoteBtn */ } from "@/components/btns/_index"
-import { Loading, Spinner } from "@/components/ui/_index"
+import { Loading } from "@/components/ui/_index"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state

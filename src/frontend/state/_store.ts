@@ -1,6 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit"
-
-// template
+import { configureStore } from "@reduxjs/toolkit"
 import template from "./_template"
 
 // admin
@@ -40,83 +38,57 @@ import loadMore from "./ui/loadMore"
 // profile
 import profile from "./profile/profile"
 
-// redux-persist
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-  persistReducer,
-  persistStore,
-} from "redux-persist"
-import storage from "redux-persist/lib/storage"
-
-const rootReducer = combineReducers({
-  // template
-  template,
-
-  // ...
-  icpPrice,
-
-  // profile
-  profile,
-
-  // modals
-  modals,
-  nftModal,
-  promoModal,
-  shareModal,
-
-  // ui
-  theme,
-  loadMore,
-
-  // project modal
-  projectModal,
-  projectModalLoading,
-
-  // admin
-  adminSearch,
-
-  // projects
-  category,
-  filter,
-  search,
-  sort,
-  projects,
-
-  // submit
-  submit,
-
-  // categories
-  allCategories,
-  categoriesSortedByNum,
-})
-
-const persistConfig = {
-  key: "root",
-  storage,
-  whitelist: ["theme"],
-}
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
 const store = configureStore({
-  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
+      immutableCheck: { warnAfter: 128 },
+      serializableCheck: { warnAfter: 128 },
     }),
+  reducer: {
+    template,
+
+    // ...
+    icpPrice,
+
+    // profile
+    profile,
+
+    // modals
+    modals,
+    nftModal,
+    promoModal,
+    shareModal,
+
+    // ui
+    theme,
+    loadMore,
+
+    // project modal
+    projectModal,
+    projectModalLoading,
+
+    // admin
+    adminSearch,
+
+    // projects
+    category,
+    filter,
+    search,
+    sort,
+    projects,
+
+    // submit
+    submit,
+
+    // categories
+    allCategories,
+    categoriesSortedByNum,
+  },
 })
+
+export default store
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch
-
-export const persistor = persistStore(store)
-export default store

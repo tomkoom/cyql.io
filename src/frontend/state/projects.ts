@@ -28,11 +28,11 @@ const projects = createSlice({
     setAllProjects(state, { payload }: PayloadAction<ProjectData[]>) {
       state.allProjects = payload
     },
-    setActiveProjects(state, { payload }: PayloadAction<ProjectData[]>) {
-      state.activeProjects = payload
-    },
     setAllProjectsNum(state, { payload }: PayloadAction<number>) {
       state.allProjectsNum = payload
+    },
+    setActiveProjects(state, { payload }: PayloadAction<ProjectData[]>) {
+      state.activeProjects = payload
     },
     setActiveProjectsNum(state, { payload }: PayloadAction<number>) {
       state.activeProjectsNum = payload
@@ -42,8 +42,8 @@ const projects = createSlice({
 
 const selectProjectsLoading = (state: RootState) => state.projects.loading
 const selectAllProjects = (state: RootState) => state.projects.allProjects
-const selectActiveProjects = (state: RootState) => state.projects.activeProjects
 const selecttAllProjectsNum = (state: RootState) => state.projects.allProjectsNum
+const selectActiveProjects = (state: RootState) => state.projects.activeProjects
 const selectActiveProjectsNum = (state: RootState) => state.projects.activeProjectsNum
 export {
   selectProjectsLoading,

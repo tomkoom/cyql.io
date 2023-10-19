@@ -1,6 +1,7 @@
 import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
+import type { Category } from "@/state/_types/types"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -23,7 +24,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   const projectsNum = projects.length
   const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum)
 
-  const clickCategory = (categoryLabel) => {
+  const clickCategory = (categoryLabel: string) => {
     dispatch(setCategory(categoryLabel))
     closeCategoryList()
   }
@@ -32,7 +33,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
     setOpenCategoryList(false)
   }
 
-  const categoriesNum = (category) => {
+  const categoriesNum = (category: Category) => {
     return category.id === "all"
       ? projectsNum
       : projects.filter((project) => project.category.includes(category.label)).length

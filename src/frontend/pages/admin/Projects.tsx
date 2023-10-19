@@ -1,8 +1,9 @@
 import React, { FC, ChangeEvent } from "react"
 import styled, { css } from "styled-components"
+import { ProjectData } from "../../../declarations/backend/backend.did"
 
 // formatters
-import { formatStr12, formatStr16, formatWebsite, formatDiscord } from "@/utils/format"
+import { formatStr16, formatWebsite, formatDiscord } from "@/utils/format"
 import { twitterUsername } from "@/utils/twitterUsername"
 
 // components
@@ -29,7 +30,7 @@ const Projects: FC = (): JSX.Element => {
     dispatch(setAdminSearch(e.target.value))
   }
 
-  const editProject = (project: any) => {
+  const editProject = (project: ProjectData) => {
     dispatch(setProject(project))
     dispatch(setProjectModalIsOpen(true))
   }
@@ -37,7 +38,6 @@ const Projects: FC = (): JSX.Element => {
   return (
     <div>
       <ProjectModal isOpen={isOpen} />
-
       <Search placeholder={"search by project name"} value={searchQuery} onChange={setSearch} />
 
       <Table>
@@ -45,7 +45,6 @@ const Projects: FC = (): JSX.Element => {
           <span>#</span>
           <span>id</span>
           <span>name</span>
-
           <span>archived</span>
           <span>category</span>
           <span>logo</span>
@@ -54,24 +53,23 @@ const Projects: FC = (): JSX.Element => {
         </RowHeader>
 
         {projects
-          .filter((project: any) => {
+          .filter((project: ProjectData) => {
             if (searchQuery === "") {
               return project
-            } else if (project.data.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+            } else if (project.name.toLowerCase().includes(searchQuery.toLowerCase())) {
               return project
             }
           })
-          .map((project: any, i: number) => (
-            <Row key={project.key} onClick={() => editProject(project)}>
+          .map((project: ProjectData, i: number) => (
+            <Row key={project.id} onClick={() => editProject(project)}>
               <span>{projects.length - i}</span>
-              <span>{project.key}</span>
-              <span>{project.data.name && formatStr16(project.data.name)}</span>
-
-              <span>{project.data.archived.toString()}</span>
-              <span>{project.data.categories.join(", ").toLowerCase()}</span>
-              <span>{project.data.logo && formatWebsite(project.data.logo)}</span>
-              <span>{project.data.twitter && twitterUsername(project.data.twitter)}</span>
-              <span>{project.data.discord && formatDiscord(project.data.discord)}</span>
+              <span>{project.id}</span>
+              <span>{project.name && formatStr16(project.name)}</span>
+              <span>{project.archived.toString()}</span>
+              <span>{project.category.join(", ").toLowerCase()}</span>
+              <span>{project.logo && formatWebsite(project.logo)}</span>
+              <span>{project.twitter && twitterUsername(project.twitter)}</span>
+              <span>{project.discord && formatDiscord(project.discord)}</span>
             </Row>
           ))}
       </Table>
@@ -82,7 +80,7 @@ const Projects: FC = (): JSX.Element => {
 const Table = styled.div`
   margin-top: 1rem;
   width: 100%;
-  font-size: var(--fsText);
+  font-size: var(--fs6);
 `
 
 const row = css`
@@ -98,6 +96,7 @@ const RowHeader = styled.div`
 
   > span {
     flex: 1;
+    font-family: var(--monospace);
   }
 `
 
@@ -115,6 +114,7 @@ const Row = styled.div`
 
   > span {
     flex: 1;
+    font-family: var(--monospace);
   }
 `
 

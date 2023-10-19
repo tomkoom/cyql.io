@@ -1,12 +1,12 @@
-import React, { FC, ChangeEvent } from "react";
-import styled from "styled-components";
+import React, { FC, ChangeEvent } from "react"
+import styled from "styled-components"
 
 interface InputProps {
-  id: string;
-  label: string;
-  type: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  id: string
+  label: string
+  type: string
+  value: string
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 const Input: FC<InputProps> = ({ id, label, type, value, onChange }): JSX.Element => {
@@ -15,8 +15,8 @@ const Input: FC<InputProps> = ({ id, label, type, value, onChange }): JSX.Elemen
       <label htmlFor={id}>{label}</label>
       <input value={value} onChange={onChange} type={type} id={id} name={id} autoComplete="off" />
     </InputStyled>
-  );
-};
+  )
+}
 
 const InputStyled = styled.div`
   display: flex;
@@ -25,7 +25,8 @@ const InputStyled = styled.div`
   gap: 0.25rem;
 
   > label {
-    font-weight: var(--fwBold);
+    font-size: var(--fsText);
+    font-weight: var(--fwMedium);
     color: var(--tertiaryColor);
   }
 
@@ -39,6 +40,6 @@ const InputStyled = styled.div`
     border: none;
     outline: none;
   }
-`;
+`
 
-export default Input;
+export default Input

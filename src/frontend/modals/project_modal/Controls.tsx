@@ -1,7 +1,6 @@
 import React, { FC, useState } from "react"
 import styled from "styled-components"
-
-// project id
+import useBackend from "@/hooks/useBackend"
 import { projectId } from "@/utils/projectId"
 
 // components
@@ -17,17 +16,51 @@ import {
 
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
+  const { addProject } = useBackend()
   const [deleteConfirm, setDeleteConfirm] = useState(false)
   const project = useAppSelector(selectProject)
 
   const submitProject = async (): Promise<void> => {
     dispatch(setProjectModalLoadingSet(true))
-    const timestamp = Date.now()
+    const id = projectId()
+    const timestamp = String(Date.now())
+    const p = {
+      ...project,
+      id,
+      ...(project.createdAt ? { updatedAt: timestamp } : { createdAt: timestamp }),
+    }
+
+    const res = await addProject(p)
+
+    if (res) {
+      console.log(`project added with the id ${id}`)
+      if (project.createdAt) {
+        console.log(`project updated at ${timestamp}`)
+      } else {
+        console.log(`project added at ${timestamp}`)
+      }
+    }
+
+    dispatch(setProjectModalLoadingSet(false))
+  }
+
+  const deleteProject = (): void => {}
+
+  const closeModal = (): void => {
+    dispatch(setCloseProjectModal())
+  }
+
+  const confirmDeletion = (): void => {
+    setDeleteConfirm(true)
+  }
+
+  const cancelDeletion = (): void => {
+    setDeleteConfirm(false)
   }
 
   return (
     <ControlsStyled>
-      {/* {deleteConfirm === false ? (
+      {deleteConfirm === false ? (
         <DeleteBtn>
           <Btn btnType="secondary" text="delete" onClick={confirmDeletion} />
         </DeleteBtn>
@@ -39,7 +72,7 @@ const Controls: FC = (): JSX.Element => {
       )}
 
       <Btn btnType="secondary" text="cancel" onClick={closeModal} />
-      <Btn btnType="primary" text="save" onClick={submitProject} /> */}
+      <Btn btnType="primary" text="save" onClick={submitProject} />
     </ControlsStyled>
   )
 }

@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 interface InputProps {
-  label: string;
-  value: string;
-  id: string;
+  label: string
+  value: string
+  id: string
 }
 
 const Input: FC<InputProps> = ({ label, value, id }): JSX.Element => {
@@ -13,8 +13,8 @@ const Input: FC<InputProps> = ({ label, value, id }): JSX.Element => {
       <label htmlFor={id}>{label}</label>
       <input value={value === null ? "null" : value} type="text" id={id} disabled />
     </InputStyled>
-  );
-};
+  )
+}
 
 const InputStyled = styled.div`
   display: flex;
@@ -24,7 +24,8 @@ const InputStyled = styled.div`
   margin-bottom: 1rem;
 
   > label {
-    font-weight: var(--fwBold);
+    font-size: var(--fsText);
+    font-weight: var(--fwMedium);
     color: var(--tertiaryColor);
   }
 
@@ -38,6 +39,6 @@ const InputStyled = styled.div`
     border: none;
     outline: none;
   }
-`;
+`
 
-export default Input;
+export default Input

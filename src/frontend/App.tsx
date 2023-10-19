@@ -1,14 +1,12 @@
 import React, { useEffect } from "react"
 import { size } from "./styles/breakpoints"
 import { RouterProvider } from "react-router-dom"
+import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 
 // hooks
 import { useAuth } from "@/context/Auth"
 import { useWindowSize } from "@/hooks/useWindowSize"
 import useBackend from "./hooks/useBackend"
-
-// utils
-import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 
 // components
 import { Router } from "@/routes/_index"
@@ -24,7 +22,6 @@ import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByN
 import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals"
 
 const App = () => {
-  // hooks
   const dispatch = useAppDispatch()
   const { userId, actor } = useAuth()
   const { refreshProjects } = useBackend()

@@ -1,3 +1,5 @@
-export const verifyAdmin = (admins: string[], userId: string): boolean => {
-  return admins.includes(userId);
-};
+import { ADMINS } from "@/constants/constants"
+
+export const verifyAdmin = (userId: string): boolean => {
+  return ADMINS.includes(userId)
+}

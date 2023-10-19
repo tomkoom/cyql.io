@@ -1,36 +1,36 @@
-import React, { FC } from "react";
-import { createPortal } from "react-dom";
-import styled from "styled-components";
+import React, { FC } from "react"
+import { createPortal } from "react-dom"
+import styled from "styled-components"
 
 // components
-import { Controls, FormContent, Header } from "./_index";
-import { Loading } from "@/components/ui/_index";
+import { Controls, FormContent, Header } from "./_index"
+import { Loading } from "@/components/ui/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux";
+import { useAppSelector } from "@/hooks/useRedux"
 import {
   selectProjectModalLoadingSet,
   selectProjectModalLoadingDel,
-} from "@/state/modals/project_modal/projectModalLoading";
-import { selectTheme } from "@/state/ui/theme";
+} from "@/state/modals/project_modal/projectModalLoading"
+import { selectTheme } from "@/state/ui/theme"
 
 interface ProjectModalProps {
-  isOpen: boolean;
+  isOpen: boolean
 }
 
 const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
-  if (!isOpen) return null;
+  const theme = useAppSelector(selectTheme)
+  const setIsLoading = useAppSelector(selectProjectModalLoadingSet)
+  const delIsLoading = useAppSelector(selectProjectModalLoadingDel)
 
-  const theme = useAppSelector(selectTheme);
-  const setIsLoading = useAppSelector(selectProjectModalLoadingSet);
-  const delIsLoading = useAppSelector(selectProjectModalLoadingDel);
+  if (!isOpen) return null
 
   if (setIsLoading || delIsLoading) {
     return (
       <ProjectModalStyled className={theme}>
         <Loading />
       </ProjectModalStyled>
-    );
+    )
   }
 
   return createPortal(
@@ -45,8 +45,8 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
       </Main>
     </ProjectModalStyled>,
     document.getElementById("modal")
-  );
-};
+  )
+}
 
 const ProjectModalStyled = styled.div`
   width: 100vw;
@@ -56,12 +56,12 @@ const ProjectModalStyled = styled.div`
   z-index: 1;
   color: var(--primaryColor);
   background-color: var(--background);
+  padding: 2rem;
 
   /* overflow */
   height: 100%;
   overflow: auto;
-  padding: 2rem;
-`;
+`
 
 const Main = styled.div`
   width: 100%;
@@ -69,10 +69,10 @@ const Main = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
 
 const Form = styled.div`
   margin-top: 1rem;
-`;
+`
 
-export default ProjectModal;
+export default ProjectModal

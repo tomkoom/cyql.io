@@ -1,5 +1,4 @@
 // category
 
-export { default as CategoryListModal } from "./CategoryListModal";
-export { default as Btn } from "./btn/Btn";
-
+export { default as Btn } from "./Btn"
+export { default as CategoryListModal } from "./CategoryListModal"

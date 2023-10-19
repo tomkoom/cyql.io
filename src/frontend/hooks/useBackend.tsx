@@ -1,24 +1,21 @@
-import type { ProjectData } from "../../declarations/backend/backend.did"
-
-// utils
-import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
-
-// auth
 import { useAuth } from "@/context/Auth"
+import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
+import type { ProjectData } from "../../declarations/backend/backend.did"
+import { verifyAdmin } from "@/utils/verifyAdmin"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
 import {
-  setProjectsLoading,
-  setAllProjects,
   setActiveProjects,
-  setAllProjectsNum,
   setActiveProjectsNum,
+  setAllProjects,
+  setAllProjectsNum,
+  setProjectsLoading,
 } from "@/state/projects"
 
 const useBackend = () => {
   const dispatch = useAppDispatch()
-  const { actor } = useAuth()
+  const { actor, userId } = useAuth()
 
   const refreshProjects = async (): Promise<void> => {
     if (actor) {
@@ -34,7 +31,21 @@ const useBackend = () => {
     }
   }
 
-  return { refreshProjects }
+  const addProject = async (project: ProjectData): Promise<boolean> => {
+    let result = false
+    if (actor) {
+      if (verifyAdmin(userId)) {
+        await actor.addCuratedProject(project).then(() => {
+          result = true
+        })
+      }
+    }
+    return result
+  }
+
+  const deleteProject = (): void => {}
+
+  return { refreshProjects, addProject }
 }
 
 export default useBackend

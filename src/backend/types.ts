@@ -1,68 +1,56 @@
-import { nat8, nat64, Principal, Record, Vec, Opt } from "azle"
+import { Opt, Principal, Record, Vec, bool, nat64, nat8, text } from "azle"
 
-export type ProjectId = string
+export const ProjectId = text
 
-export type ProjectProposal = Record<{
-  id: ProjectId
-  proposalNumber: nat64
-  proposer: Principal
-  projectData: ProjectData
-}>
+export const ProjectData = Record({
+  id: text,
+  submittedBy: text,
+  createdAt: text,
+  updatedAt: text,
+  name: text,
+  description: text,
+  category: Vec(text),
+  logo: text,
+  website: text,
+  canister: text,
+  twitter: text,
+  discord: text,
+  telegram: text,
+  github: text,
+  medium: text,
+  dscvr: text,
+  distrikt: text,
+  openchat: text,
+  taggr: text,
+  seers: text,
+  nuance: text,
+  catalyze: text,
+  funded: text,
+  app: text,
+  docs: text,
+  faq: text,
+  whitepaper: text,
+  grantee: bool,
+  archived: bool,
+  nftSaleDate: text,
+  nftSaleUrl: text,
+  nftUnits: text,
+  nftUnitPrice: text,
+  nftMarketEntrepot: text,
+  nftMarketCcc: text,
+  nftMarketYumi: text,
+  nftRarityDgdg: text,
+  nftStatsNftgeek: text,
+  nftImg1: text,
+  nftImg2: text,
+  nftImg3: text,
+  nftImg4: text,
+  upvotedBy: Vec(text),
+})
 
-export type ProjectData = Record<{
-  id: string
-  submittedBy: string
-  createdAt: string
-  updatedAt: string
-  name: string
-  description: string
-  category: Vec<string>
-  logo: string
-  website: string
-  canister: string
-  twitter: string
-  discord: string
-  telegram: string
-  github: string
-  medium: string
-  dscvr: string
-  distrikt: string
-  openchat: string
-  taggr: string
-  seers: string
-  nuance: string
-  catalyze: string
-  funded: string
-  app: string
-  docs: string
-  faq: string
-  whitepaper: string
-  grantee: boolean
-  archived: boolean
-  nftSaleDate: string
-  nftSaleUrl: string
-  nftUnits: string
-  nftUnitPrice: string
-  nftMarketEntrepot: string
-  nftMarketCcc: string
-  nftMarketYumi: string
-  nftRarityDgdg: string
-  nftStatsNftgeek: string
-  nftImg1: string
-  nftImg2: string
-  nftImg3: string
-  nftImg4: string
-  upvotedBy: Vec<string>
-}>
-
-export type Doc = Record<{
-  updated_at: nat64
-  owner: Principal
-  data: Vec<nat8>
-  description: Opt<string>
-  created_at: nat64
-}>
-
-export type Test = Record<{
-  test: string
-}>
+export const ProjectProposal = Record({
+  id: ProjectId,
+  proposalNumber: nat64,
+  proposer: Principal,
+  projectData: ProjectData,
+})

@@ -56,6 +56,10 @@ const initialState: ProjectModalState = {
   },
 }
 
+interface ProjectItem<TValue> {
+  [key: string]: TValue
+}
+
 const projectModal = createSlice({
   name: "projectModal",
   initialState,
@@ -64,6 +68,9 @@ const projectModal = createSlice({
       state.isOpen = payload
     },
     setProject(state, { payload }: PayloadAction<ProjectData>) {
+      state.project = { ...state.project, ...payload }
+    },
+    setProjectItem(state, { payload }: PayloadAction<ProjectItem<string>>) {
       state.project = { ...state.project, ...payload }
     },
     setProjectCategory(state, { payload }: PayloadAction<string[]>) {
@@ -103,6 +110,7 @@ export {
 export const {
   setProjectModalIsOpen,
   setProject,
+  setProjectItem,
   setProjectCategory,
   setProjectGrantee,
   setProjectArchived,

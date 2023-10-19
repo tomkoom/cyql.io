@@ -13,15 +13,15 @@ const Meta: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const project = useAppSelector(selectProject)
 
-  const setArchived = (value): void => {
+  const setArchived = (value: boolean): void => {
     dispatch(setProjectArchived(value))
   }
 
   return (
     <div>
       <div>
-        <Input label={"added"} value={project.createdAt} id={"project-added"} />
-        <Input label={"updated"} value={project.updatedAt} id={"project-updated"} />
+        <Input label={"createdAt"} value={project.createdAt} id={"project-createdAt"} />
+        <Input label={"updatedAt"} value={project.updatedAt} id={"project-updatedAt"} />
       </div>
 
       <div>
@@ -42,7 +42,8 @@ const Meta: FC = (): JSX.Element => {
 }
 
 const SectionName = styled.p`
-  font-weight: var(--fwBold);
+  font-size: var(--fsText);
+  font-weight: var(--fwMedium);
   color: var(--tertiaryColor);
   margin-bottom: 0.5rem;
 `

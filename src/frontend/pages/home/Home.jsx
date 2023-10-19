@@ -1,7 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-
-// hooks
 import useNav from "@/hooks/useNav"
 
 // components
@@ -41,7 +39,7 @@ const Home = () => {
   return (
     <div>
       <Promo />
-      {/* <StaffPicks /> */}
+      <StaffPicks />
       <Header />
       {/* <ProjectProposals /> */}
 

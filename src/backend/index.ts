@@ -1,79 +1,49 @@
-import {
-  ic,
-  $query,
-  $update,
-  StableBTreeMap,
-  Opt,
-  Vec,
-  Principal,
-  Service,
-  serviceUpdate,
-  serviceQuery,
-  CallResult,
-  Result,
-  nat64,
-  nat,
-} from "azle"
-
-// utils
-import { projectId } from "../frontend/utils/projectId"
-
-// types
-import type { ProjectId, ProjectProposal, ProjectData, Doc, Test } from "./types"
+import { ic, query, update, StableBTreeMap, Opt, Vec, Canister, text } from "azle"
+import { ProjectId, ProjectProposal, ProjectData } from "./types"
 
 // maps
-const projectProposals = new StableBTreeMap<ProjectId, ProjectProposal>(0, 30, 25_000)
+// const projectProposals = StableBTreeMap<ProjectId, ProjectProposal>(0, 30, 25_000)
 // curatedProjects key: 20+ bytes, val: 14902+ bytes
-const curatedProjects = new StableBTreeMap<ProjectId, ProjectData>(1, 30, 25_000)
-const test = new StableBTreeMap<string, Test>(2, 50, 1_000)
+// const curatedProjects = StableBTreeMap<ProjectId, ProjectData>(1, 30, 25_000)
+const curatedProjects = StableBTreeMap(ProjectId, ProjectData, 1)
 
-$query
-export function getProjectProposals(): Vec<ProjectProposal> {
-  return projectProposals.values()
-}
+export default Canister({
+  addCuratedProject: update([ProjectId, ProjectData], Opt(ProjectData), (key, value) => {
+    return curatedProjects.insert(key, value)
+  }),
 
-$update
-export function addProjectProposal(projectData: ProjectData): Opt<ProjectProposal> {
-  const id = projectId()
-  const proposalNumber = projectProposals.len()
-  const proposer = ic.id()
+  deleteCuratedProject: update([ProjectId], Opt(ProjectData), (key) => {
+    return curatedProjects.remove(key)
+  }),
 
-  const projectProposal = {
-    id,
-    proposalNumber,
-    proposer,
-    projectData,
-  }
-  return projectProposals.insert(id, projectProposal)
-}
+  listCuratedProjects: query([], Vec(ProjectData), () => {
+    return curatedProjects.values()
+  }),
 
-$update
-export function addTestItem(item: Test): Opt<Test> {
-  const id = test.len().toString()
-  return test.insert(id, item)
-}
+  whoami: query([], text, () => {
+    return ic.caller().toString()
+  }),
+})
 
-$query
-export function listTestItems(): Vec<Test> {
-  return test.values()
-}
+// $query
+// export function getProjectProposals(): Vec<ProjectProposal> {
+//   return projectProposals.values()
+// }
 
-$query
-export function whoami(): string {
-  return ic.caller().toString()
-}
+// $update
+// export function addProjectProposal(projectData: ProjectData): Opt<ProjectProposal> {
+//   const id = projectId()
+//   const proposalNumber = projectProposals.len()
+//   const proposer = ic.id()
 
-const executeProposal = () => {}
-const updateProposalState = () => {}
+//   const projectProposal = {
+//     id,
+//     proposalNumber,
+//     proposer,
+//     projectData,
+//   }
+//   return projectProposals.insert(id, projectProposal)
+// }
 
-// curated curatedProjects
-$update
-export function addCuratedProject(projectData: ProjectData): Opt<ProjectData> {
-  const id = projectData.id
-  return curatedProjects.insert(id, projectData)
-}
-
-$query
-export function listCuratedProjects(): Vec<ProjectData> {
-  return curatedProjects.values()
-}
+// const executeProposal = () => {}
+// const updateProposalState = () => {}

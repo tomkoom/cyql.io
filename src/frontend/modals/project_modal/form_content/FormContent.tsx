@@ -1,24 +1,24 @@
-import React, { FC, ChangeEvent } from "react";
-import styled from "styled-components";
+import React, { FC, ChangeEvent } from "react"
+import styled from "styled-components"
 
 // components
-import { Categories, Description, Grantee, Input, Meta } from "./_index";
+import { Categories, Description, Grantee, Input, Meta } from "./_index"
 
 // inputs
-import { main, socials, additional, nft } from "./inputs";
+import { main, socials, additional, nft } from "./inputs"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectProject, setProject } from "@/state/modals/project_modal/projectModal";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { selectProject, setProjectItem } from "@/state/modals/project_modal/projectModal"
 
 const FormContent: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const project = useAppSelector(selectProject);
+  const dispatch = useAppDispatch()
+  const project = useAppSelector(selectProject)
 
   const updateProject = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { name, value } = e.target;
-    dispatch(setProject({ [name]: value }));
-  };
+    const { name, value } = e.target
+    dispatch(setProjectItem({ [name]: value }))
+  }
 
   return (
     <FormContentStyled>
@@ -27,13 +27,13 @@ const FormContent: FC = (): JSX.Element => {
       </Section>
 
       <Section>
-        <h5>main</h5>
+        <h6>main</h6>
         {main.map((input) => (
           <Input
             id={input.id}
             label={input.id}
             type={input.type}
-            value={project.data[input.id]}
+            value={project[input.id]}
             onChange={updateProject}
             key={input.id}
           />
@@ -44,13 +44,13 @@ const FormContent: FC = (): JSX.Element => {
       </Section>
 
       <Section>
-        <h5>social networks</h5>
+        <h6>social networks</h6>
         {socials.map((input) => (
           <Input
             id={input.id}
             label={input.id}
             type={input.type}
-            value={project.data[input.id]}
+            value={project[input.id]}
             onChange={updateProject}
             key={input.id}
           />
@@ -58,28 +58,28 @@ const FormContent: FC = (): JSX.Element => {
       </Section>
 
       <Section>
-        <h5>additional info</h5>
+        <h6>additional info</h6>
         {additional.map((input) => (
           <Input
             id={input.id}
             label={input.id}
             type={input.type}
-            value={project.data[input.id]}
+            value={project[input.id]}
             onChange={updateProject}
             key={input.id}
           />
         ))}
       </Section>
 
-      {project.data.categories && project.data.categories.includes("NFTs") && (
+      {project.category.length > 0 && project.category.includes("NFTs") && (
         <Section>
-          <h5>nft data</h5>
+          <h6>nft data</h6>
           {nft.map((input) => (
             <Input
               id={input.id}
               label={input.id}
               type={input.type}
-              value={project.data[input.id]}
+              value={project[input.id]}
               onChange={updateProject}
               key={input.id}
             />
@@ -87,14 +87,14 @@ const FormContent: FC = (): JSX.Element => {
         </Section>
       )}
     </FormContentStyled>
-  );
-};
+  )
+}
 
 const FormContentStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-`;
+`
 
 const Section = styled.div`
   flex: 1;
@@ -104,9 +104,9 @@ const Section = styled.div`
   min-width: 16rem;
   margin-top: 1rem;
 
-  > h5 {
+  > h6 {
     font-weight: var(--fwMedium);
   }
-`;
+`
 
-export default FormContent;
+export default FormContent

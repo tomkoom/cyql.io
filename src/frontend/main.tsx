@@ -4,22 +4,18 @@ import App from "./App"
 
 // state
 import { Provider } from "react-redux"
-import store, { persistor } from "@/state/_store"
-import { PersistGate } from "redux-persist/integration/react"
+import store from "@/state/_store"
 
-// auth
-// import AuthProvider from "@/context/AuthContext"
+// context
 import AuthProvider from "@/context/Auth"
 
 const Index: FC = (): JSX.Element => {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </PersistGate>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </Provider>
     </React.StrictMode>
   )

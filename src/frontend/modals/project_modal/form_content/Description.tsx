@@ -1,28 +1,28 @@
-import React, { FC, ChangeEvent } from "react";
-import styled from "styled-components";
+import React, { FC, ChangeEvent } from "react"
+import styled from "styled-components"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import {
   selectProjectDescription,
   setProjectDescription,
-} from "@/state/modals/project_modal/projectModal";
+} from "@/state/modals/project_modal/projectModal"
 
 const Description: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const description = useAppSelector(selectProjectDescription);
+  const dispatch = useAppDispatch()
+  const description = useAppSelector(selectProjectDescription)
 
   const setDescription = (e: ChangeEvent<HTMLTextAreaElement>): void => {
-    dispatch(setProjectDescription(e.target.value));
-  };
+    dispatch(setProjectDescription(e.target.value))
+  }
 
   return (
     <DescriptionStyled>
       <label htmlFor="project-description">description</label>
       <textarea value={description} onChange={setDescription} id="project-description" rows={6} />
     </DescriptionStyled>
-  );
-};
+  )
+}
 
 const DescriptionStyled = styled.div`
   display: flex;
@@ -31,7 +31,8 @@ const DescriptionStyled = styled.div`
   gap: 0.25rem;
 
   > label {
-    font-weight: var(--fwBold);
+    font-size: var(--fsText);
+    font-weight: var(--fwMedium);
     color: var(--tertiaryColor);
   }
 
@@ -44,6 +45,6 @@ const DescriptionStyled = styled.div`
     border: none;
     outline: none;
   }
-`;
+`
 
-export default Description;
+export default Description

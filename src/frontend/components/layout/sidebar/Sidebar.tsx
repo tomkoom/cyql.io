@@ -1,43 +1,31 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import { device } from "@/styles/breakpoints";
-
-// utils
-import { verifyAdmin } from "@/utils/verifyAdmin";
-
-// constants
-import { II_ADMIN_1 } from "@/constants/constants";
-
-// icons
-import { iInfinity, iCube, iPlus, iCircle } from "@/components/icons/Icons";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { device } from "@/styles/breakpoints"
+import { iCircle, iCube, iInfinity } from "@/components/icons/Icons"
+import { verifyAdmin } from "@/utils/verifyAdmin"
 
 // hooks
-import useNav from "@/hooks/useNav";
-
-// auth
-import { useAuth } from "@/context/Auth";
+import { useAuth } from "@/context/Auth"
+import useNav from "@/hooks/useNav"
 
 // components
-import { Navlink } from "./_index";
+import { Navlink } from "./_index"
 
 const Sidebar: FC = (): JSX.Element => {
-  const { userId } = useAuth();
-  const { toHome, toProjects, toSubmit, toAdmin } = useNav();
-  const admins = [II_ADMIN_1];
+  const { userId } = useAuth()
+  const { toHome, toProjects, toSubmit, toAdmin } = useNav()
 
   return (
     <SidebarStyled>
       <div>
         <Navlink label="explore" route={toHome} icon={iInfinity} />
         <Navlink label="projects" route={toProjects} icon={iCube} />
-        <Navlink label="submit" route={toSubmit} icon={iPlus} />
-        {verifyAdmin(admins, userId) === true && (
-          <Navlink label="admin" route={toAdmin} icon={iCircle} />
-        )}
+        {/* <Navlink label="submit" route={toSubmit} icon={iPlus} /> */}
+        {verifyAdmin(userId) && <Navlink label="admin" route={toAdmin} icon={iCircle} />}
       </div>
     </SidebarStyled>
-  );
-};
+  )
+}
 
 const SidebarStyled = styled.div`
   position: sticky;
@@ -52,6 +40,6 @@ const SidebarStyled = styled.div`
   @media ${device.laptop} {
     display: none;
   }
-`;
+`
 
-export default Sidebar;
+export default Sidebar
