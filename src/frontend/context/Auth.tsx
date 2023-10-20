@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react"
 import { AuthClient } from "@dfinity/auth-client"
-import { ActorSubclass, HttpAgent } from "@dfinity/agent"
+import { HttpAgent } from "@dfinity/agent"
 import type { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
 import { backend } from "../../declarations/backend"
@@ -26,7 +26,7 @@ const HOST = "https://icp0.io"
 // const IDENTITY_PROVIDER = IS_LOCAL_NETWORK ? LOCAL_IDENTITY_PROVIDER : "https://identity.ic0.app"
 const IDENTITY_PROVIDER = "https://identity.ic0.app"
 // const CANISTER_ID = process.env.CANISTER_ID_BACKEND || process.env.BACKEND_CANISTER_ID
-const CANISTER_ID = "nrkmt-haaaa-aaaai-qagmq-cai"
+const CANISTER_ID = "nrkmt-haaaa-aaaai-qagmq-cai" // mainnet
 
 function AuthProvider({ children }) {
   const [signInLoading, setSignInLoading] = useState<boolean>(false)
@@ -34,7 +34,7 @@ function AuthProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)
   const [userId, setUserId] = useState<string>("")
-  const [actor, setActor] = useState<ActorSubclass<_SERVICE> | null>(null)
+  const [actor, setActor] = useState<_SERVICE>(null)
 
   const init = (): void => {
     resetII()
@@ -49,7 +49,7 @@ function AuthProvider({ children }) {
     let isAuthenticated: boolean = false
     let userPrincipal: Principal = null
     let userId: string = ""
-    let actor: ActorSubclass<_SERVICE> = null
+    let actor: _SERVICE = null
 
     // ...
     authClient = await AuthClient.create()

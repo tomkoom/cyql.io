@@ -1,4 +1,5 @@
-import React from "react"
+import React, { FC } from "react"
+import styled from "styled-components"
 import css from "./ProjectList.module.css"
 
 // utils
@@ -15,7 +16,7 @@ import {
 import useNav from "@/hooks/useNav"
 
 // components
-import { LoadMoreBtn /* UpvoteBtn */ } from "@/components/btns/_index"
+import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index"
 import { Loading } from "@/components/ui/_index"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
@@ -32,7 +33,7 @@ import {
 } from "@/state/projects/filter"
 import { selectActiveProjects } from "@/state/projects"
 
-const ProjectList = () => {
+const ProjectList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { toProject } = useNav()
 
@@ -53,8 +54,9 @@ const ProjectList = () => {
   // sort
   const sort = useAppSelector(selectSort)
 
-  const setItemsVisible = (size) => {
-    dispatch(setItemsVisibleProjects(size))
+  const setItemsVisible = () => {
+    const items = 64
+    dispatch(setItemsVisibleProjects(items))
   }
 
   if (projects.length < 1) {
@@ -62,8 +64,8 @@ const ProjectList = () => {
   }
 
   return (
-    <div>
-      <ul className={css.li}>
+    <ProjectListStyled>
+      <ul>
         {projects
           // filter
           .filter((project) => filterBySearch(project, searchQuery))
@@ -79,7 +81,7 @@ const ProjectList = () => {
           .sort((a, b) => (sort === "least-upvoted" ? sortLeastUp(a.upvotedBy, b.upvotedBy) : null))
           .slice(0, itemsVisible)
           .map((p) => (
-            <li key={p.id} className={css.liI} onClick={() => toProject(p.id)}>
+            <li key={p.id} onClick={() => toProject(p.id)}>
               <div className={css.main}>
                 <Main
                   logo={p.logo}
@@ -92,7 +94,7 @@ const ProjectList = () => {
               </div>
 
               <div className={css.tags}>
-                <Tags category={p.category} nftSaleStatus={p.nftSaleStatus} />
+                <Tags category={p.category} />
               </div>
 
               <div className={css.socials}>
@@ -118,19 +120,41 @@ const ProjectList = () => {
                 />
               </div>
 
-              {/* upvote btn */}
-              {/* <div className={css.upvote}>
-                  <div className={css.btn} onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn id={p.id} upvotedBy={p.upvotedBy} />
-                  </div>
-                </div> */}
+              <div className={css.upvote}>
+                <div className={css.btn} onClick={(e) => e.stopPropagation()}>
+                  <UpvoteBtn id={p.id} upvotedBy={p.upvotedBy} />
+                </div>
+              </div>
             </li>
           ))}
       </ul>
 
-      {itemsVisible < projectsNum && <LoadMoreBtn setVisible={() => setItemsVisible(64)} />}
-    </div>
+      {itemsVisible < projectsNum && <LoadMoreBtn setVisible={setItemsVisible} />}
+    </ProjectListStyled>
   )
 }
+
+const ProjectListStyled = styled.div`
+  > ul {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+
+    > li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      -webkit-box-shadow: 0px 1px 0px 0px var(--underlay1);
+      box-shadow: 0px 1px 0px 0px var(--underlay1);
+
+      &:hover {
+        background-color: var(--underlay1);
+      }
+    }
+  }
+`
 
 export default ProjectList

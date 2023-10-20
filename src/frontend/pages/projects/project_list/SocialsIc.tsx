@@ -1,12 +1,8 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-
-interface IcSocialNetwork {
-  name: string;
-}
+import React, { FC } from "react"
+import styled from "styled-components"
 
 interface IcSocialNetworksMap {
-  [key: string]: IcSocialNetwork;
+  [key: string]: string
 }
 
 const SocialsIc: FC<IcSocialNetworksMap> = ({
@@ -30,8 +26,8 @@ const SocialsIc: FC<IcSocialNetworksMap> = ({
       {catalyze && <li>Catalyze</li>}
       {funded && <li>Funded</li>}
     </SocialsIcStyled>
-  );
-};
+  )
+}
 
 const SocialsIcStyled = styled.ul`
   display: flex;
@@ -48,6 +44,6 @@ const SocialsIcStyled = styled.ul`
     background-color: var(--underlay1);
     border-radius: 0.5rem;
   }
-`;
+`
 
-export default SocialsIc;
+export default SocialsIc

@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { ProjectData } from "../../../../backend/types"
+import { ProjectData } from "@/state/_types/types"
 import { RootState } from "@/state/_store"
 
 type ProjectModalState = {

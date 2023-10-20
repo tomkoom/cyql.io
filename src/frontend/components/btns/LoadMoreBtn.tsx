@@ -2,9 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 
 interface LoadMoreBtnProps {
-  label: string
-  size: number
-  setVisible: () => (size: number) => void
+  setVisible: () => void
 }
 
 const LoadMoreBtn: FC<LoadMoreBtnProps> = ({ setVisible }): JSX.Element => {

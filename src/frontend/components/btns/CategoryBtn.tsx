@@ -1,26 +1,24 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
 import { iAngleDown } from "@/components/icons/Icons"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectCategory } from "@/state/projects/category"
 
-const Btn: FC = (): JSX.Element => {
+const CategoryBtn: FC = (): JSX.Element => {
   const category = useAppSelector(selectCategory)
 
   return (
-    <BtnStyled>
+    <CategoryBtnStyled>
       category:
       <span className="category">{category.toLowerCase()}</span>
       <span className="icon">{iAngleDown}</span>
-    </BtnStyled>
+    </CategoryBtnStyled>
   )
 }
 
-const BtnStyled = styled.button`
+const CategoryBtnStyled = styled.button`
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -44,7 +42,7 @@ const BtnStyled = styled.button`
     color: #fff;
     background-color: var(--highlight1);
     padding: 0 0.5rem;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
   }
 
   > span.icon {
@@ -52,4 +50,4 @@ const BtnStyled = styled.button`
   }
 `
 
-export default Btn
+export default CategoryBtn

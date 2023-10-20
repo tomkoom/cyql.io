@@ -34,27 +34,31 @@ const App = () => {
     refreshProjects()
   }, [actor])
 
-  // reset mobile menu when deivice size > 1024
-  useEffect(() => {
-    if (mobileMenuModal && width > size.laptop) {
-      dispatch(setMobileMenuModal(false))
-    }
-  }, [width])
+  // useEffect(() => {
+  //   refreshProjects()
+  // }, [actor])
 
-  // close sign in modal after user has logged
-  useEffect(() => {
-    if (userId !== "") {
-      dispatch(setSignInModal(false))
-    }
-  }, [userId])
+  // // reset mobile menu when deivice size > 1024
+  // useEffect(() => {
+  //   if (mobileMenuModal && width > size.laptop) {
+  //     dispatch(setMobileMenuModal(false))
+  //   }
+  // }, [width])
 
-  // sort categories by num
-  useEffect(() => {
-    if (projects.length > 0) {
-      const sorted = sortCategoriesByNum(allCategories, projects)
-      dispatch(setCategoriesSortedByNum(sorted))
-    }
-  }, [projects])
+  // // close sign in modal after user has logged
+  // useEffect(() => {
+  //   if (userId !== "") {
+  //     dispatch(setSignInModal(false))
+  //   }
+  // }, [userId])
+
+  // // sort categories by num
+  // useEffect(() => {
+  //   if (projects.length > 0) {
+  //     const sorted = sortCategoriesByNum(allCategories, projects)
+  //     dispatch(setCategoriesSortedByNum(sorted))
+  //   }
+  // }, [projects])
 
   // get upvoted projects
   // useEffect(() => {

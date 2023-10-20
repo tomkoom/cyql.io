@@ -16,7 +16,7 @@ import {
 
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { addProject } = useBackend()
+  const { insertProject } = useBackend()
   const [deleteConfirm, setDeleteConfirm] = useState(false)
   const project = useAppSelector(selectProject)
 
@@ -30,7 +30,7 @@ const Controls: FC = (): JSX.Element => {
       ...(project.createdAt ? { updatedAt: timestamp } : { createdAt: timestamp }),
     }
 
-    const res = await addProject(p)
+    const res = await insertProject(p)
 
     if (res) {
       console.log(`project added with the id ${id}`)

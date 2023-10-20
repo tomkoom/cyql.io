@@ -1,7 +1,5 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
 import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons"
 
 interface TitleProps {

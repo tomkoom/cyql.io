@@ -1,5 +1,5 @@
 import type { Category } from "@/state/_types/types"
-import type { ProjectData } from "../../backend/types"
+import type { ProjectData } from "@/state/_types/types"
 
 export const sortCategoriesByNum = (
   allCategories: Category[],

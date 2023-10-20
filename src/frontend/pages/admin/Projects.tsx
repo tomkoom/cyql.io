@@ -1,6 +1,6 @@
 import React, { FC, ChangeEvent } from "react"
 import styled, { css } from "styled-components"
-import { ProjectData } from "../../../declarations/backend/backend.did"
+import { ProjectData } from "@/state/_types/types"
 
 // formatters
 import { formatStr16, formatWebsite, formatDiscord } from "@/utils/format"

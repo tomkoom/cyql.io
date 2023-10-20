@@ -1,4 +1,4 @@
-import type { ProjectData } from "../../../../../declarations/backend/backend.did"
+import type { ProjectData } from "@/state/_types/types"
 
 const filterBySearch = (project: ProjectData, searchQuery: string) => {
   return searchQuery === ""
