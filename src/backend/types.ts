@@ -1,4 +1,4 @@
-import { Opt, Principal, Record, Vec, bool, nat64, nat8, text } from "azle"
+import { Principal, Record, Vec, bool, nat64, text } from "azle"
 
 export const ProjectId = text
 

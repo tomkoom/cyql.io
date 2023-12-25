@@ -1,13 +1,11 @@
 import React, { FC } from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App"
+import AuthProvider from "@/context/Auth"
 
 // state
 import { Provider } from "react-redux"
 import store from "@/state/_store"
-
-// context
-import AuthProvider from "@/context/Auth"
 
 const Index: FC = (): JSX.Element => {
   return (

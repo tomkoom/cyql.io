@@ -24,7 +24,7 @@ const HOST = "https://icp0.io"
 // const LOCAL_II = process.env.CANISTER_ID_INTERNET_IDENTITY
 // const LOCAL_IDENTITY_PROVIDER = `http://127.0.0.1:4943/?canisterId=${LOCAL_II}`
 // const IDENTITY_PROVIDER = IS_LOCAL_NETWORK ? LOCAL_IDENTITY_PROVIDER : "https://identity.ic0.app"
-const IDENTITY_PROVIDER = "https://identity.ic0.app"
+// const IDENTITY_PROVIDER = "https://identity.ic0.app"
 // const CANISTER_ID = process.env.CANISTER_ID_BACKEND || process.env.BACKEND_CANISTER_ID
 const CANISTER_ID = "nrkmt-haaaa-aaaai-qagmq-cai" // mainnet
 
@@ -77,7 +77,7 @@ function AuthProvider({ children }) {
 
     setSignInLoading(true)
     authClient.login({
-      identityProvider: IDENTITY_PROVIDER,
+      // identityProvider: IDENTITY_PROVIDER,
       maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1000 * 1000 * 1000),
       ...(isCustomDomain() && {
         derivationOrigin: APP_DERIVATION_ORIGIN,

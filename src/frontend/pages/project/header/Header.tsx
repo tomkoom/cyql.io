@@ -12,7 +12,7 @@ import { useAuth } from "@/context/Auth"
 
 // components
 import { Btn, Logo, Title } from "./_index"
-// import { UpvtBtn } from "@components/index";
+// import { UpvtBtn } from "@/components/index";
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
