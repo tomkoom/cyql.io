@@ -2,10 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 
 const Copy: FC = (): JSX.Element => {
-  const d = new Date()
-  let year = d.getFullYear()
-
-  return <CopyStyled>{year.toString()} cyql</CopyStyled>
+  return <CopyStyled>© {new Date().getFullYear().toString()} cyql</CopyStyled>
 }
 
 const CopyStyled = styled.p`

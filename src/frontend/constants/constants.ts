@@ -5,6 +5,9 @@ export const DONATION_WALLET = process.env.DONATION_WALLET
 export const COOKIE_POLICY =
   "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
 
+// canister ids
+export const BACKEND_CANISTER_ID_IC = "nrkmt-haaaa-aaaai-qagmq-cai"
+
 // juno
 export const SATELLITE_ID = process.env.JUNO_SATELLITE_ID
 export const PROJECTS_COLL = process.env.JUNO_COLLECTION_PROJECTS

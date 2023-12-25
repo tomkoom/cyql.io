@@ -21,7 +21,7 @@ actor {
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
     let projectId = projects.size();
-    projects.put(projectId, project);
+    projects.put(projectId, { project with id = projectId });
     ?projectId
   };
 
@@ -47,6 +47,12 @@ actor {
         ?Principal.toText(caller)
       }
     }
+  };
+
+  // test
+
+  public shared query ({ caller }) func whoami() : async Text {
+    return Principal.toText(caller)
   };
 
   // memory

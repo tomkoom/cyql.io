@@ -1,8 +1,0 @@
-/* meta */
-
-.meta {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 0.5rem;
-}

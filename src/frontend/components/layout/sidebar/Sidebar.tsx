@@ -18,7 +18,7 @@ const Sidebar: FC = (): JSX.Element => {
   return (
     <SidebarStyled>
       <div>
-        <Navlink label="explore" route={toHome} icon={iInfinity} />
+        <Navlink label="home" route={toHome} icon={iInfinity} />
         <Navlink label="projects" route={toProjects} icon={iCube} />
         {/* <Navlink label="submit" route={toSubmit} icon={iPlus} /> */}
         {verifyAdmin(userId) && <Navlink label="admin" route={toAdmin} icon={iCircle} />}

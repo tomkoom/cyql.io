@@ -18,23 +18,25 @@ const useBackend = () => {
   const { actor, userId } = useAuth()
 
   const refreshProjects = async (): Promise<void> => {
-    if (actor) {
-      dispatch(setProjectsLoading(true))
-      const allProjects: ProjectData[] = await actor.listCuratedProjects()
-      console.log(allProjects)
+    if (!actor) return
 
-      allProjects.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
-      const aciveProjects: ProjectData[] = allProjects.filter((p) => !p.archived)
+    dispatch(setProjectsLoading(true))
+    const allProjects: ProjectData[] = await actor
+      .listProjects()
+      .then((p) => p.map((p) => ({ ...p, id: Number(p.id).toString() })))
 
-      // set state
-      dispatch(setAllProjects(allProjects))
-      dispatch(setAllProjectsNum(allProjects.length))
-      dispatch(setActiveProjects(aciveProjects))
-      dispatch(setActiveProjectsNum(aciveProjects.length))
-      dispatch(setProjectsLoading(false))
-    }
+    allProjects.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
+    const activeProjects: ProjectData[] = allProjects.filter((p) => !p.archived)
+
+    // set state
+    dispatch(setAllProjects(allProjects))
+    dispatch(setAllProjectsNum(allProjects.length))
+    dispatch(setActiveProjects(activeProjects))
+    dispatch(setActiveProjectsNum(activeProjects.length))
+    dispatch(setProjectsLoading(false))
   }
 
+  // update project
   const insertProject = async (projectId: string, project: ProjectData): Promise<boolean> => {
     let result = false
     if (verifyAdmin(userId)) {
@@ -44,8 +46,6 @@ const useBackend = () => {
     }
     return result
   }
-
-  const deleteProject = (): void => {}
 
   const getProject = async (id: string): Promise<ProjectData> => {
     let result = null

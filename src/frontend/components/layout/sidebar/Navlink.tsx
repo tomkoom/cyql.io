@@ -1,24 +1,24 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC, ReactNode } from "react"
+import styled from "styled-components"
 
 interface NavlinkProps {
-  label: string;
-  route: () => void;
-  icon: any;
+  label: string
+  route: () => void
+  icon: ReactNode
 }
 
 const Navlink: FC<NavlinkProps> = ({ label, route, icon }): JSX.Element => {
-  const navigate = () => {
-    route();
-  };
+  const navigate = (): void => {
+    route()
+  }
 
   return (
     <NavlinkStyled onClick={navigate}>
       {icon && <Icon>{icon}</Icon>}
       <Label>{label}</Label>
     </NavlinkStyled>
-  );
-};
+  )
+}
 
 const NavlinkStyled = styled.div`
   display: flex;
@@ -35,11 +35,11 @@ const NavlinkStyled = styled.div`
   &:hover {
     background-color: var(--underlay1);
   }
-`;
+`
 
 const Label = styled.span`
   white-space: nowrap;
-`;
+`
 
 const Icon = styled.span`
   width: 2rem;
@@ -47,6 +47,6 @@ const Icon = styled.span`
   display: grid;
   place-items: center;
   color: var(--highlight3);
-`;
+`
 
-export default Navlink;
+export default Navlink

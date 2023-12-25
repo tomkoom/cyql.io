@@ -5,6 +5,7 @@ import type { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
 import { backend } from "../../declarations/backend"
 import { _SERVICE } from "../../declarations/backend/backend.did"
+import { BACKEND_CANISTER_ID_IC } from "@/constants/constants"
 
 // constants
 import { APP_DERIVATION_ORIGIN } from "@/constants/constants"
@@ -26,7 +27,6 @@ const HOST = "https://icp0.io"
 // const IDENTITY_PROVIDER = IS_LOCAL_NETWORK ? LOCAL_IDENTITY_PROVIDER : "https://identity.ic0.app"
 // const IDENTITY_PROVIDER = "https://identity.ic0.app"
 // const CANISTER_ID = process.env.CANISTER_ID_BACKEND || process.env.BACKEND_CANISTER_ID
-const CANISTER_ID = "nrkmt-haaaa-aaaai-qagmq-cai" // mainnet
 
 function AuthProvider({ children }) {
   const [signInLoading, setSignInLoading] = useState<boolean>(false)
@@ -37,14 +37,14 @@ function AuthProvider({ children }) {
   const [actor, setActor] = useState<_SERVICE>(null)
 
   const init = (): void => {
-    resetII()
+    resetii()
   }
 
   useEffect(() => {
     init()
   }, [])
 
-  const resetII = async (): Promise<void> => {
+  const resetii = async (): Promise<void> => {
     let authClient: AuthClient = null
     let isAuthenticated: boolean = false
     let userPrincipal: Principal = null
@@ -61,7 +61,7 @@ function AuthProvider({ children }) {
       host: HOST,
       identity,
     })
-    actor = createActor(CANISTER_ID, {
+    actor = createActor(BACKEND_CANISTER_ID_IC, {
       agent,
     })
 
@@ -83,7 +83,7 @@ function AuthProvider({ children }) {
         derivationOrigin: APP_DERIVATION_ORIGIN,
       }),
       onSuccess: async () => {
-        await resetII()
+        await resetii()
       },
     })
     setSignInLoading(false)
@@ -92,7 +92,7 @@ function AuthProvider({ children }) {
   const logout = async (): Promise<void> => {
     if (!isAuthenticated) throw new Error("not authed")
     await authClient.logout()
-    return resetII()
+    return resetii()
   }
 
   const value = {
