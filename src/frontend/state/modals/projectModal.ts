@@ -3,12 +3,16 @@ import { ProjectData } from "@/state/_types/types"
 import { RootState } from "@/state/_store"
 
 type ProjectModalState = {
+  isLoading: boolean
   isOpen: boolean
+  mode: string
   project: ProjectData
 }
 
 const initialState: ProjectModalState = {
+  isLoading: false,
   isOpen: false,
+  mode: "",
   project: {
     id: "",
     submittedBy: "",
@@ -64,8 +68,14 @@ const projectModal = createSlice({
   name: "projectModal",
   initialState,
   reducers: {
+    setProjectModalIsLoading(state, { payload }: PayloadAction<boolean>) {
+      state.isLoading = payload
+    },
     setProjectModalIsOpen(state, { payload }: PayloadAction<boolean>) {
       state.isOpen = payload
+    },
+    setProjectModalMode(state, { payload }: PayloadAction<string>) {
+      state.mode = payload
     },
     setProject(state, { payload }: PayloadAction<ProjectData>) {
       state.project = { ...state.project, ...payload }
@@ -86,20 +96,23 @@ const projectModal = createSlice({
       state.project.description = payload
     },
     setCloseProjectModal(state) {
-      state.project = initialState.project
+      state.isLoading = false
       state.isOpen = false
+      state.mode = ""
+      state.project = initialState.project
     },
   },
 })
 
-const selectProjectModalIsOpen = (state: RootState) => state.projectModal.isOpen
+export const selectProjectModalIsLoading = (state: RootState) => state.projectModal.isLoading
+export const selectProjectModalIsOpen = (state: RootState) => state.projectModal.isOpen
+export const selectProjectModalMode = (state: RootState) => state.projectModal.mode
 const selectProject = (state: RootState) => state.projectModal.project
 const selectProjectCategory = (state: RootState) => state.projectModal.project.category
 const selectProjectGrantee = (state: RootState) => state.projectModal.project.grantee
 const selectProjectArchived = (state: RootState) => state.projectModal.project.archived
 const selectProjectDescription = (state: RootState) => state.projectModal.project.description
 export {
-  selectProjectModalIsOpen,
   selectProject,
   selectProjectCategory,
   selectProjectGrantee,
@@ -108,7 +121,9 @@ export {
 }
 
 export const {
+  setProjectModalIsLoading,
   setProjectModalIsOpen,
+  setProjectModalMode,
   setProject,
   setProjectItem,
   setProjectCategory,

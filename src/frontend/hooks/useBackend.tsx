@@ -36,27 +36,37 @@ const useBackend = () => {
     dispatch(setProjectsLoading(false))
   }
 
-  // update project
-  const insertProject = async (projectId: string, project: ProjectData): Promise<boolean> => {
-    let result = false
-    if (verifyAdmin(userId)) {
-      await actor.insertCuratedProject(projectId, project).then(() => {
-        result = true
+  const addProject = async (project: ProjectData): Promise<void> => {
+    if (!verifyAdmin(userId)) return
+    if (project.id !== "") return
+
+    await actor
+      .addProject({
+        ...project,
+        createdAt: String(Date.now()),
       })
+      .then((res) => {
+        if (res) console.log(`added`, res)
+      })
+  }
+
+  const editProject = async (project: ProjectData): Promise<void> => {
+    if (!verifyAdmin(userId)) return
+    if (project.id === "") return
+
+    const id = BigInt(Number(project.id))
+    const p = {
+      ...project,
+      id,
+      updatedAt: String(Date.now()),
     }
-    return result
-  }
 
-  const getProject = async (id: string): Promise<ProjectData> => {
-    let result = null
-    await actor.getCuratedProject(id).then((project: ProjectData) => {
-      result = project
+    await actor.editProject(id, p).then((res) => {
+      if (res) console.log(`edited:`, res)
     })
-
-    return result
   }
 
-  return { refreshProjects, insertProject, getProject }
+  return { refreshProjects, addProject, editProject }
 }
 
 export default useBackend

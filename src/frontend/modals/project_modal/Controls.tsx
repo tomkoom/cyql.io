@@ -1,78 +1,65 @@
-import React, { FC, useState } from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
 import useBackend from "@/hooks/useBackend"
-import { projectId } from "@/utils/projectId"
-
-// components
 import { Btn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setCloseProjectModal } from "@/state/modals/project_modal/projectModal"
 import {
-  setProjectModalLoadingSet,
-  setProjectModalLoadingDel,
-} from "@/state/modals/project_modal/projectModalLoading"
+  selectProject,
+  selectProjectModalMode,
+  setCloseProjectModal,
+  setProjectModalIsLoading,
+} from "@/state/modals/projectModal"
 
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { insertProject } = useBackend()
-  const [deleteConfirm, setDeleteConfirm] = useState(false)
+  const { addProject, editProject, refreshProjects } = useBackend()
   const project = useAppSelector(selectProject)
+  const mode = useAppSelector(selectProjectModalMode)
 
-  const submitProject = async (): Promise<void> => {
-    dispatch(setProjectModalLoadingSet(true))
-    const id = projectId()
-    const timestamp = String(Date.now())
-    const p = {
-      ...project,
-      id,
-      ...(project.createdAt ? { updatedAt: timestamp } : { createdAt: timestamp }),
-    }
-
-    const res = await insertProject(p)
-
-    if (res) {
-      console.log(`project added with the id ${id}`)
-      if (project.createdAt) {
-        console.log(`project updated at ${timestamp}`)
-      } else {
-        console.log(`project added at ${timestamp}`)
-      }
-    }
-
-    dispatch(setProjectModalLoadingSet(false))
+  const add = async (): Promise<void> => {
+    dispatch(setProjectModalIsLoading(true))
+    await addProject(project)
+    await refreshProjects()
+    dispatch(setProjectModalIsLoading(false))
   }
 
-  const deleteProject = (): void => {}
+  const edit = async (): Promise<void> => {
+    dispatch(setProjectModalIsLoading(true))
+    await editProject(project)
+    await refreshProjects()
+    dispatch(setProjectModalIsLoading(false))
+  }
+
+  // const archiveProject = (): void => {}
 
   const closeModal = (): void => {
     dispatch(setCloseProjectModal())
   }
 
-  const confirmDeletion = (): void => {
-    setDeleteConfirm(true)
-  }
-
-  const cancelDeletion = (): void => {
-    setDeleteConfirm(false)
-  }
-
   return (
     <ControlsStyled>
-      {deleteConfirm === false ? (
+      {/* {deleteConfirm === false ? (
         <DeleteBtn>
-          <Btn btnType="secondary" text="delete" onClick={confirmDeletion} />
+          <Btn btnType="secondary" text="archive" onClick={confirmArchive} />
         </DeleteBtn>
       ) : (
         <DeleteContainer>
           <Btn btnType="secondary" text="cancel" onClick={cancelDeletion} />
-          <Btn btnType="secondary" text="confirm" onClick={deleteProject} />
+          <Btn btnType="secondary" text="confirm" onClick={archiveProject} />
         </DeleteContainer>
-      )}
+      )} */}
 
       <Btn btnType="secondary" text="cancel" onClick={closeModal} />
-      <Btn btnType="primary" text="save" onClick={submitProject} />
+
+      {mode === "add" ? (
+        <Btn btnType="primary" text="add" onClick={add} />
+      ) : mode === "edit" ? (
+        <Btn btnType="primary" text="edit" onClick={edit} />
+      ) : (
+        ""
+      )}
     </ControlsStyled>
   )
 }

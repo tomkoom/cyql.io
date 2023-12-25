@@ -1,6 +1,7 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
+import { useScrollLock } from "@/hooks/useScrollLock"
 
 // components
 import { Controls, FormContent, Header } from "./_index"
@@ -8,10 +9,7 @@ import { Loading } from "@/components/ui/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import {
-  selectProjectModalLoadingSet,
-  selectProjectModalLoadingDel,
-} from "@/state/modals/project_modal/projectModalLoading"
+import { selectProjectModalIsLoading } from "@/state/modals/projectModal"
 import { selectTheme } from "@/state/ui/theme"
 
 interface ProjectModalProps {
@@ -19,13 +17,21 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
+  const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
-  const setIsLoading = useAppSelector(selectProjectModalLoadingSet)
-  const delIsLoading = useAppSelector(selectProjectModalLoadingDel)
+  const isLoading = useAppSelector(selectProjectModalIsLoading)
+
+  useEffect(() => {
+    if (isOpen) {
+      lockScroll()
+    } else {
+      unlockScroll()
+    }
+  }, [isOpen])
 
   if (!isOpen) return null
 
-  if (setIsLoading || delIsLoading) {
+  if (isLoading) {
     return (
       <ProjectModalStyled className={theme}>
         <Loading />

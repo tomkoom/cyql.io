@@ -8,7 +8,7 @@ import { selectAllCategories } from "@/state/categories/allCategories"
 import {
   selectProjectCategory,
   setProjectCategory,
-} from "@/state/modals/project_modal/projectModal"
+} from "@/state/modals/projectModal"
 
 const CategoryList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

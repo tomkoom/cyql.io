@@ -1,45 +1,41 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import type { PromoModalData } from "@/state/_types/types";
-
-// icons
-import { iAngleDown } from "@/components/icons/Icons";
-
-// components
-import { PromoModal } from "@/modals/_index";
+import React, { FC } from "react"
+import styled from "styled-components"
+import type { PromoModalData } from "@/state/_types/types"
+import { iAngleDown } from "@/components/icons/Icons"
+import { PromoModal } from "@/modals/_index"
 
 // state
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
-import { setPromoModal, selectPromoModal, setPromoModalData } from "@/state/modals/promoModal";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { setPromoModal, selectPromoModal, setPromoModalData } from "@/state/modals/promoModal"
+
+const promoItems = [
+  {
+    color: "var(--background)",
+    backgroundColor: "#7888ff",
+    title: "Build with Juno 🛠️",
+    text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2.",
+    ctaUrl: "https://juno.build/",
+    ctaText: "Try Juno",
+  },
+  {
+    color: "var(--primaryColor)",
+    backgroundColor: "var(--underlay1)",
+    title: "Promote",
+    text: "Promote your project by highlighting on cyql.io",
+    ctaUrl:
+      "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io.",
+    ctaText: "Contact for promotion",
+  },
+]
 
 const Promo: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const isOpen = useAppSelector(selectPromoModal);
+  const dispatch = useAppDispatch()
+  const isOpen = useAppSelector(selectPromoModal)
 
   const openModal = (promoModalData: PromoModalData): void => {
-    dispatch(setPromoModalData(promoModalData));
-    dispatch(setPromoModal(true));
-  };
-
-  const promoItems = [
-    {
-      color: "var(--background)",
-      backgroundColor: "#7888ff",
-      title: "Build with Juno 🛠️",
-      text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2.",
-      ctaUrl: "https://juno.build/",
-      ctaText: "Try Juno",
-    },
-    {
-      color: "var(--primaryColor)",
-      backgroundColor: "var(--underlay1)",
-      title: "Promote",
-      text: "Promote your project by highlighting on cyql.io",
-      ctaUrl:
-        "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io.",
-      ctaText: "Contact for promotion",
-    },
-  ];
+    dispatch(setPromoModalData(promoModalData))
+    dispatch(setPromoModal(true))
+  }
 
   return (
     <>
@@ -57,8 +53,8 @@ const Promo: FC = (): JSX.Element => {
         ))}
       </PromoStyled>
     </>
-  );
-};
+  )
+}
 
 const PromoStyled = styled.ul`
   display: flex;
@@ -78,6 +74,6 @@ const PromoStyled = styled.ul`
     border-radius: 1rem;
     cursor: pointer;
   }
-`;
+`
 
-export default Promo;
+export default Promo

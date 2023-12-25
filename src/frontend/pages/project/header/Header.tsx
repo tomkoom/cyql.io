@@ -1,13 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// utils
 import { verifyAdmin } from "@/utils/verifyAdmin"
-
-// icons
 import { iEdit, iShareSquare } from "@/components/icons/Icons"
-
-// auth
 import { useAuth } from "@/context/Auth"
 
 // components
@@ -16,19 +10,20 @@ import { Btn, Logo, Title } from "./_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setProjectModalIsOpen, setProject } from "@/state/modals/project_modal/projectModal"
+import { setProject, setProjectModalMode, setProjectModalIsOpen } from "@/state/modals/projectModal"
 import { setShareModal } from "@/state/modals/shareModal"
 
 const Header: FC<any> = ({ project }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { userId } = useAuth()
 
-  const editProject = () => {
+  const openEditModal = (): void => {
     dispatch(setProject(project))
+    dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))
   }
 
-  const openShareModal = () => {
+  const openShareModal = (): void => {
     dispatch(setShareModal(true))
   }
 
@@ -46,7 +41,7 @@ const Header: FC<any> = ({ project }): JSX.Element => {
       </Main>
 
       <Controls>
-        {verifyAdmin(userId) === true && <Btn icon={iEdit} onClick={editProject} />}
+        {verifyAdmin(userId) === true && <Btn icon={iEdit} onClick={openEditModal} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
         {/* <div className={css.btnContainer}>
           <UpvtBtn id={project.key} upvotedBy={project.upvotedBy} location="project" />

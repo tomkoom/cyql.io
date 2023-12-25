@@ -17,7 +17,7 @@ import {
   setProjectModalIsOpen,
   selectProjectModalIsOpen,
   setProject,
-} from "@/state/modals/project_modal/projectModal"
+} from "@/state/modals/projectModal"
 import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch"
 
 const Projects: FC = (): JSX.Element => {

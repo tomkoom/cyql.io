@@ -9,7 +9,7 @@ import { main, socials, additional, nft } from "./inputs"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectItem } from "@/state/modals/project_modal/projectModal"
+import { selectProject, setProjectItem } from "@/state/modals/projectModal"
 
 const FormContent: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

@@ -7,7 +7,7 @@ import { Btn } from "../_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectArchived } from "@/state/modals/project_modal/projectModal"
+import { selectProject, setProjectArchived } from "@/state/modals/projectModal"
 
 const Meta: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

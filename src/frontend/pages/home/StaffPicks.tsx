@@ -1,69 +1,67 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// hooks
 import useNav from "@/hooks/useNav"
+
+const staffPicksItems = [
+  {
+    id: "389",
+    title: "NFID",
+    text: "identity layer for the internet",
+  },
+  {
+    id: "290",
+    title: "ME Wallet",
+    text: "a powerful multichain wallet",
+  },
+  {
+    id: "280",
+    title: "#TAGGR",
+    text: "decentralized social network",
+  },
+  {
+    id: "246",
+    title: "Funded",
+    text: "web3 crowdfunding",
+  },
+  {
+    id: "369",
+    title: "OpenChat",
+    text: "decentralized chat app",
+  },
+  {
+    id: "424",
+    title: "Rabbithole",
+    text: "🔒 encrypted file storage",
+  },
+  {
+    id: "215",
+    title: "Carbon Crowd",
+    text: "decarbonise cloud computing",
+  },
+  {
+    id: "313",
+    title: "Canlista",
+    text: "community canister registry",
+  },
+  {
+    id: "79",
+    title: "ICPCoins",
+    text: "ic cryptocurrencies by market cap",
+  },
+  {
+    id: "80",
+    title: "Blast",
+    text: "install & share immutable contracts",
+  },
+  {
+    id: "386",
+    title: "NNSCat",
+    text: "filter and compare NNS proposals",
+  },
+]
 
 const StaffPicks: FC = (): JSX.Element => {
   const { toProject } = useNav()
-
-  const staffPicksItems = [
-    {
-      id: "iKxyXmT6aF1a",
-      title: "NFID",
-      text: "identity layer for the internet",
-    },
-    {
-      id: "Ia53VeLrQdfS",
-      title: "ME Wallet",
-      text: "a powerful multichain wallet",
-    },
-    {
-      id: "bwPjciHfNxGE",
-      title: "#TAGGR",
-      text: "decentralized social network",
-    },
-    {
-      id: "MErXd1cd7U6E",
-      title: "Funded",
-      text: "web3 crowdfunding",
-    },
-    {
-      id: "QX8lS9ogfjBJ",
-      title: "OpenChat",
-      text: "decentralized chat app",
-    },
-    {
-      id: "mRswh7bVbXb7",
-      title: "Rabbithole",
-      text: "🔒 encrypted file storage",
-    },
-    {
-      id: "1iUXcIQgMBIK",
-      title: "Carbon Crowd",
-      text: "decarbonise cloud computing",
-    },
-    {
-      id: "Z2v9LWotQCT7",
-      title: "Canlista",
-      text: "community canister registry",
-    },
-    {
-      id: "49ZWVBKMxiMa",
-      title: "ICPCoins",
-      text: "ic cryptocurrencies by market cap",
-    },
-    {
-      id: "cuGuRsmwd3kP",
-      title: "Blast",
-      text: "install & share immutable contracts",
-    },
-    {
-      id: "oOxbIjZpQPXx",
-      title: "NNSCat",
-      text: "filter and compare NNS proposals",
-    },
-  ]
 
   const openProject = (id: string): void => {
     toProject(id)

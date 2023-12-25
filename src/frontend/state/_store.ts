@@ -14,8 +14,7 @@ import promoModal from "./modals/promoModal"
 import shareModal from "./modals/shareModal"
 
 // project modal
-import projectModal from "./modals/project_modal/projectModal"
-import projectModalLoading from "./modals/project_modal/projectModalLoading"
+import projectModal from "./modals/projectModal"
 
 // projects
 import category from "./projects/category"
@@ -65,7 +64,6 @@ const store = configureStore({
 
     // project modal
     projectModal,
-    projectModalLoading,
 
     // admin
     adminSearch,

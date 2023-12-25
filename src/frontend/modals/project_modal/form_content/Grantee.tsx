@@ -6,7 +6,7 @@ import { Btn } from "./_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectGrantee } from "@/state/modals/project_modal/projectModal"
+import { selectProject, setProjectGrantee } from "@/state/modals/projectModal"
 
 const Grantee: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

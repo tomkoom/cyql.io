@@ -1,8 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-
-// constants
 import { X_URL, DISCORD_URL } from "@/constants/constants"
 
 // fontawesome

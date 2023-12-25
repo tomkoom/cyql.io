@@ -24,7 +24,7 @@ import { ProjectModal } from "@/modals/_index"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectAllProjects } from "@/state/projects"
 import { selectShareModal } from "@/state/modals/shareModal"
-import { selectProjectModalIsOpen } from "@/state/modals/project_modal/projectModal"
+import { selectProjectModalIsOpen } from "@/state/modals/projectModal"
 
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
