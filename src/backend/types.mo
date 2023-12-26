@@ -55,5 +55,8 @@ module {
     nftImg3 : Text;
     nftImg4 : Text;
     upvotedBy : [Text]
+
+    // to add:
+    // tokenCanister
   }
 }

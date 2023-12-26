@@ -1,40 +1,40 @@
-import React, { FC, useEffect } from "react";
-import styled from "styled-components";
-import Modal from "@/modals/_Modal";
-import type { PromoModalData } from "@/state/_types/types";
-
-// icons
-import { iExternalLink } from "@/components/icons/Icons";
+import React, { FC, useEffect } from "react"
+import styled from "styled-components"
+import Modal from "@/modals/_Modal"
+import type { PromoModalData } from "@/state/_types/types"
+import { iExternalLink } from "@/components/icons/Icons"
+import { useScrollLock } from "@/hooks/useScrollLock"
 
 // state
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import {
   setPromoModal,
   setClearPromoModalData,
   selectPromoModalData,
-} from "@/state/modals/promoModal";
+} from "@/state/modals/promoModal"
 
 interface PromoModalProps {
-  isOpen: boolean;
+  isOpen: boolean
 }
 
 const PromoModal: FC<PromoModalProps> = ({ isOpen }): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const promoModalData: PromoModalData = useAppSelector(selectPromoModalData);
+  const dispatch = useAppDispatch()
+  const { lockScroll, unlockScroll } = useScrollLock()
+  const promoModalData: PromoModalData = useAppSelector(selectPromoModalData)
 
   const closeModal = () => {
-    dispatch(setPromoModal(false));
-    dispatch(setClearPromoModalData());
-  };
+    dispatch(setPromoModal(false))
+    dispatch(setClearPromoModalData())
+  }
 
   // hide scrollbar
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      lockScroll()
     } else {
-      document.body.style.overflow = "unset";
+      unlockScroll()
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
@@ -53,8 +53,8 @@ const PromoModal: FC<PromoModalProps> = ({ isOpen }): JSX.Element => {
         </Cta>
       </Content>
     </Modal>
-  );
-};
+  )
+}
 
 const Content = styled.div`
   max-width: 24rem;
@@ -66,7 +66,7 @@ const Content = styled.div`
   > p {
     line-height: 150%;
   }
-`;
+`
 
 const Cta = styled.a<{ color: string; backgroundColor: string }>`
   color: ${(p) => p.color};
@@ -78,6 +78,6 @@ const Cta = styled.a<{ color: string; backgroundColor: string }>`
   font-weight: var(--fwBold);
   padding: 0 1rem;
   border-radius: 1.5rem;
-`;
+`
 
-export default PromoModal;
+export default PromoModal

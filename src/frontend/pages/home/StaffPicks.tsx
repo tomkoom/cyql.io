@@ -4,6 +4,11 @@ import useNav from "@/hooks/useNav"
 
 const staffPicksItems = [
   {
+    id: "430",
+    title: "DooCoins",
+    text: "rewards system for kids",
+  },
+  {
     id: "389",
     title: "NFID",
     text: "identity layer for the internet",

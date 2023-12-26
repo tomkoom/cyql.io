@@ -15,8 +15,9 @@ import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectAllProjects } from "@/state/projects"
 import {
   setProjectModalIsOpen,
-  selectProjectModalIsOpen,
   setProject,
+  setProjectModalMode,
+  selectProjectModalIsOpen,
 } from "@/state/modals/projectModal"
 import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch"
 
@@ -32,6 +33,7 @@ const Projects: FC = (): JSX.Element => {
 
   const editProject = (project: ProjectData) => {
     dispatch(setProject(project))
+    dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))
   }
 

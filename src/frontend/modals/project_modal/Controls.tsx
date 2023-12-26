@@ -8,6 +8,7 @@ import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import {
   selectProject,
   selectProjectModalMode,
+  setClearProject,
   setCloseProjectModal,
   setProjectModalIsLoading,
 } from "@/state/modals/projectModal"
@@ -22,6 +23,7 @@ const Controls: FC = (): JSX.Element => {
     dispatch(setProjectModalIsLoading(true))
     await addProject(project)
     await refreshProjects()
+    dispatch(setClearProject())
     dispatch(setProjectModalIsLoading(false))
   }
 
@@ -40,23 +42,12 @@ const Controls: FC = (): JSX.Element => {
 
   return (
     <ControlsStyled>
-      {/* {deleteConfirm === false ? (
-        <DeleteBtn>
-          <Btn btnType="secondary" text="archive" onClick={confirmArchive} />
-        </DeleteBtn>
-      ) : (
-        <DeleteContainer>
-          <Btn btnType="secondary" text="cancel" onClick={cancelDeletion} />
-          <Btn btnType="secondary" text="confirm" onClick={archiveProject} />
-        </DeleteContainer>
-      )} */}
-
       <Btn btnType="secondary" text="cancel" onClick={closeModal} />
 
       {mode === "add" ? (
         <Btn btnType="primary" text="add" onClick={add} />
       ) : mode === "edit" ? (
-        <Btn btnType="primary" text="edit" onClick={edit} />
+        <Btn btnType="primary" text="save" onClick={edit} />
       ) : (
         ""
       )}

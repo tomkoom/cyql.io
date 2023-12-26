@@ -1,21 +1,16 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-
-// constants
 import { IC_LOGO } from "@/constants/constants"
-
-// hooks
 import useNav from "@/hooks/useNav"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectAllProjects } from "@/state/projects"
+import { selectActiveProjectsNum } from "@/state/projects"
 
 const Title: FC = (): JSX.Element => {
   const { toProjects } = useNav()
-  const projects = useAppSelector(selectAllProjects)
-  const projectsNum = projects.length
+  const projectsNum = useAppSelector(selectActiveProjectsNum)
 
   return (
     <TitleStyled>

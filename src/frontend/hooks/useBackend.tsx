@@ -43,6 +43,7 @@ const useBackend = () => {
     await actor
       .addProject({
         ...project,
+        id: BigInt(0),
         createdAt: String(Date.now()),
       })
       .then((res) => {

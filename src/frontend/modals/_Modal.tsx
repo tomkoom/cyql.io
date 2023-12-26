@@ -1,8 +1,6 @@
 import React, { FC, ReactNode } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
-
-// icons
 import CrossIcon from "@/components/icons/CrossIcon"
 
 // state

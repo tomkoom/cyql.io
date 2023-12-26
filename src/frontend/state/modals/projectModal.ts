@@ -95,6 +95,10 @@ const projectModal = createSlice({
     setProjectDescription(state, { payload }: PayloadAction<string>) {
       state.project.description = payload
     },
+    setClearProject(state) {
+      console.log(1)
+      state.project = initialState.project
+    },
     setCloseProjectModal(state) {
       state.isLoading = false
       state.isOpen = false
@@ -130,6 +134,9 @@ export const {
   setProjectGrantee,
   setProjectArchived,
   setProjectDescription,
+
+  // clear state
+  setClearProject,
   setCloseProjectModal,
 } = projectModal.actions
 export default projectModal.reducer
