@@ -111,13 +111,14 @@ const StaffPicksStyled = styled.div`
       font-size: var(--fsText);
       font-weight: var(--fwMedium);
       background-color: var(--underlay1);
-      padding: 0.5rem 0.75rem;
+      padding: 0.25rem 0.5rem;
       border-radius: 0.5rem;
       cursor: pointer;
 
       > span#text {
         font-size: var(--fs7);
-        opacity: 80%;
+        font-weight: var(--fwRegular);
+        color: var(--tertiaryColor);
       }
     }
   }

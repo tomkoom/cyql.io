@@ -1,9 +1,5 @@
 import React, { FC } from "react"
-
-// icons
 import { iSignIn } from "@/components/icons/Icons"
-
-// auth
 import { useAuth } from "@/context/Auth"
 
 // state

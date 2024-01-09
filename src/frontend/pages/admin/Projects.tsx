@@ -27,11 +27,11 @@ const Projects: FC = (): JSX.Element => {
   const searchQuery = useAppSelector(selectAdminSearch)
   const isOpen = useAppSelector(selectProjectModalIsOpen)
 
-  const setSearch = (e: ChangeEvent<HTMLInputElement>) => {
+  const setSearch = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch(setAdminSearch(e.target.value))
   }
 
-  const editProject = (project: ProjectData) => {
+  const editProject = (project: ProjectData): void => {
     dispatch(setProject(project))
     dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))

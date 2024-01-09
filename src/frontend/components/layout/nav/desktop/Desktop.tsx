@@ -1,8 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
-import { iCube } from "@/components/icons/Icons"
+// import { iCube } from "@/components/icons/Icons"
 
 // hooks
 import useNav from "@/hooks/useNav"
@@ -12,7 +10,7 @@ import { useAuth } from "@/context/Auth"
 import { ProfileBtn, SignInBtn, Socials } from "./_index"
 import { Nft } from "../_index"
 import { Logo, Price, Theme } from "@/components/ui/_index"
-import { LinkBtn } from "@/components/btns/_index"
+// import { LinkBtn } from "@/components/btns/_index"
 
 const Desktop: FC = (): JSX.Element => {
   const { toHome } = useNav()
@@ -30,7 +28,7 @@ const Desktop: FC = (): JSX.Element => {
         <Price />
         <Socials />
         <Theme />
-        <LinkBtn btnType="secondary" text="api" icon={iCube} url="https://docs.cyql.io/" />
+        {/* <LinkBtn btnType="secondary" text="api" icon={iCube} url="https://docs.cyql.io/" /> */}
         <Nft />
         {isAuthenticated && userId ? <ProfileBtn /> : <SignInBtn />}
       </Controls>

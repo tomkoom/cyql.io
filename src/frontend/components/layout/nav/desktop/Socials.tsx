@@ -1,10 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// constants
 import { X_URL, DISCORD_URL } from "@/constants/constants"
-
-// icons
 import { iX, iDiscord } from "@/components/icons/Icons"
 
 const Socials: FC = (): JSX.Element => {
