@@ -5,10 +5,9 @@ import type { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
 import { backend } from "../../declarations/backend"
 import { _SERVICE } from "../../declarations/backend/backend.did"
-import { BACKEND_CANISTER_ID_IC } from "@/constants/constants"
 
 // constants
-import { APP_DERIVATION_ORIGIN } from "@/constants/constants"
+import { APP_DERIVATION_ORIGIN, BACKEND_CANISTER_ID_IC, HOST } from "@/constants/constants"
 
 // utils
 import { isCustomDomain } from "@/utils/isCustomDomain"
@@ -19,7 +18,6 @@ const useAuth = () => {
 }
 
 // note: .env variables change after deploy
-const HOST = "https://icp0.io"
 
 function AuthProvider({ children }) {
   const [signInLoading, setSignInLoading] = useState<boolean>(false)

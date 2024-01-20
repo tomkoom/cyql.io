@@ -6,6 +6,7 @@ export const COOKIE_POLICY =
   "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
 export const NETWORK =
   process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local")
+export const HOST = "https://icp0.io"
 
 // canister ids
 export const BACKEND_CANISTER_ID_IC = "nrkmt-haaaa-aaaai-qagmq-cai"
