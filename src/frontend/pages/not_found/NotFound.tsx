@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-
-// hooks
 import useNav from "@/hooks/useNav";
 
 interface NotFoundProps {

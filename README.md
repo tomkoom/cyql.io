@@ -23,5 +23,5 @@ npm install
 dfx start --clean
 dfx canister create --all
 dfx deploy
-npm start
+npm run dev
 ```
