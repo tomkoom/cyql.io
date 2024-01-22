@@ -1,15 +1,13 @@
 import React, { useEffect } from "react"
 import { size } from "./styles/breakpoints"
 import { RouterProvider } from "react-router-dom"
-import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum
+import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 import { Router } from "@/routes/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
 import { useWindowSize } from "@/hooks/useWindowSize"
 import useBackend from "./hooks/useBackend"
-
-
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"

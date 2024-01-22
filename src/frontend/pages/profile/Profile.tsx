@@ -1,17 +1,17 @@
-import React from "react";
-import css from "./Profile.module.css";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // auth
-import { useAuth } from "@/context/Auth";
+import { useAuth } from "@/context/Auth"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@/state/profile/profile";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@/state/profile/profile"
 
 // components
-import Id from "./id/Id";
+import Id from "./id/Id"
 
-const Profile = () => {
+const Profile: FC = (): JSX.Element => {
   // const dispatch = useAppDispatch();
   // const { principalId } = useAuth();
   // const ownsNft = useAppSelector(selectOwnsNft);
@@ -37,7 +37,7 @@ const Profile = () => {
   // }, []);
 
   return (
-    <div className={css.profile}>
+    <ProfileStyled>
       <Id />
 
       {/* <div className={css.profileInfo}>
@@ -54,8 +54,10 @@ const Profile = () => {
           </ul>
         )}
       </div> */}
-    </div>
-  );
-};
+    </ProfileStyled>
+  )
+}
 
-export default Profile;
+const ProfileStyled = styled.div``
+
+export default Profile
