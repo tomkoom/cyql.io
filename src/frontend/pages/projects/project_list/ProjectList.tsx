@@ -1,6 +1,8 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
-import css from "./ProjectList.module.css"
+import { device } from "@/styles/breakpoints"
+import useNav from "@/hooks/useNav"
+import { useSearchParams } from "react-router-dom"
 
 // utils
 import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects"
@@ -11,9 +13,6 @@ import {
   filterByOnChain,
   filterByGrantee,
 } from "./utils/filterProjects"
-
-// hooks
-import useNav from "@/hooks/useNav"
 
 // components
 import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index"
@@ -36,14 +35,15 @@ import { selectActiveProjects } from "@/state/projects"
 const ProjectList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { toProject } = useNav()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const search = useAppSelector(selectSearch)
+  const sort = useAppSelector(selectSort)
+  // console.log(searchParams.get("category"))
 
   // projects
   const projects = useAppSelector(selectActiveProjects)
   const projectsNum = projects.length
   const itemsVisible = useAppSelector(selectItemsVisibleProjects)
-
-  // search
-  const searchQuery = useAppSelector(selectSearch)
 
   // filter
   const category = useAppSelector(selectCategory)
@@ -51,13 +51,23 @@ const ProjectList: FC = (): JSX.Element => {
   const onChain = useAppSelector(selectFilterByOnChain)
   const grantee = useAppSelector(selectFilterByGrantee)
 
-  // sort
-  const sort = useAppSelector(selectSort)
-
-  const setItemsVisible = () => {
+  const setItemsVisible = (): void => {
     const items = 64
     dispatch(setItemsVisibleProjects(items))
   }
+
+  const updateFilter = (category: string): void => {
+    const key = "category"
+    const value = category
+    setSearchParams((searchParams) => {
+      searchParams.set(key, value)
+      return searchParams
+    })
+  }
+
+  useEffect(() => {
+    updateFilter(category)
+  }, [category])
 
   if (projects.length < 1) {
     return <Loading />
@@ -68,7 +78,7 @@ const ProjectList: FC = (): JSX.Element => {
       <ul>
         {projects
           // filter
-          .filter((project) => filterBySearch(project, searchQuery))
+          .filter((project) => filterBySearch(project, search))
           .filter((project) => filterByCategory(project, category))
           .filter((project) => filterByOpenSource(project, openSource))
           .filter((project) => filterByOnChain(project, onChain))
@@ -82,7 +92,7 @@ const ProjectList: FC = (): JSX.Element => {
           .slice(0, itemsVisible)
           .map((p) => (
             <li key={p.id} onClick={() => toProject(p.id)}>
-              <div className={css.main}>
+              <div className="main1">
                 <Main
                   logo={p.logo}
                   name={p.name}
@@ -93,11 +103,11 @@ const ProjectList: FC = (): JSX.Element => {
                 />
               </div>
 
-              <div className={css.tags}>
+              <div className="tags">
                 <Tags category={p.category} />
               </div>
 
-              <div className={css.socials}>
+              <div className="socials">
                 <Socials
                   twitter={p.twitter}
                   discord={p.discord}
@@ -107,7 +117,7 @@ const ProjectList: FC = (): JSX.Element => {
                 />
               </div>
 
-              <div className={css.socials}>
+              <div className="socials">
                 <SocialsIc
                   dscvr={p.dscvr}
                   distrikt={p.distrikt}
@@ -120,8 +130,8 @@ const ProjectList: FC = (): JSX.Element => {
                 />
               </div>
 
-              <div className={css.upvote}>
-                <div className={css.btn} onClick={(e) => e.stopPropagation()}>
+              <div className="upvote">
+                <div className="btn" onClick={(e) => e.stopPropagation()}>
                   <UpvoteBtn id={p.id} upvotedBy={p.upvotedBy} />
                 </div>
               </div>
@@ -152,6 +162,56 @@ const ProjectListStyled = styled.div`
 
       &:hover {
         background-color: var(--underlay1);
+      }
+
+      > div.main1 {
+        flex: 40%;
+
+        @media ${device.tablet} {
+          flex: calc(60% - 1rem);
+        }
+
+        @media ${device.mobileL} {
+          flex: 100%;
+        }
+      }
+
+      > div.tags {
+        flex: 20%;
+
+        @media ${device.tablet} {
+          flex: calc(30% - 1rem);
+        }
+
+        @media ${device.mobileL} {
+          flex: calc(80% - 0.5rem);
+        }
+      }
+
+      > div.socials {
+        flex: 15%;
+
+        @media ${device.tablet} {
+          display: none;
+        }
+      }
+
+      > div.upvote {
+        flex: 10%;
+        display: inline-block;
+
+        > div.btn {
+          float: right;
+          margin-right: 1px;
+        }
+
+        @media ${device.tablet} {
+          flex: calc(10% - 1rem);
+        }
+
+        @media ${device.mobileL} {
+          flex: calc(20% - 0.5rem);
+        }
       }
     }
   }

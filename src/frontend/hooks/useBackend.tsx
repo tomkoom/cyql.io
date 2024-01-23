@@ -2,6 +2,7 @@ import { useAuth } from "@/context/Auth"
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
 import type { ProjectData } from "@/state/_types/types"
 import { verifyAdmin } from "@/utils/verifyAdmin"
+import { NETWORK } from "@/constants/constants"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -47,7 +48,7 @@ const useBackend = () => {
         createdAt: String(Date.now()),
       })
       .then((res) => {
-        if (res) console.log(`added`, res)
+        if (NETWORK === "local") console.log(`added`, res)
       })
   }
 
@@ -63,7 +64,7 @@ const useBackend = () => {
     }
 
     await actor.editProject(id, p).then((res) => {
-      if (res) console.log(`edited:`, res)
+      if (NETWORK === "local") console.log(`edited:`, res)
     })
   }
 

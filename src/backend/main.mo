@@ -6,6 +6,7 @@ import Hash "mo:base/Hash";
 
 // ...
 import Debug "mo:base/Debug";
+import Array "mo:base/Array";
 import T "types";
 import U "utils";
 
@@ -32,6 +33,13 @@ actor {
 
   public query func listProjects() : async [T.Project] {
     let iter : Iter.Iter<T.Project> = projects.vals();
+    return Iter.toArray<T.Project>(iter)
+  };
+
+  public query func listProjectsPaginated() : async [T.Project] {
+    let iter : Iter.Iter<T.Project> = projects.vals();
+    let arr = Iter.toArray(iter);
+    let reversed = Array.reverse(arr);
     return Iter.toArray<T.Project>(iter)
   };
 

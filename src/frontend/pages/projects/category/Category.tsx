@@ -9,7 +9,6 @@ const Category: FC = (): JSX.Element => {
   const [openCategoryList, setOpenCategoryList] = useState(false)
   const categoryBtnRef = useRef(null)
 
-  // prevent from scrolling when modal is active
   useEffect(() => {
     if (openCategoryList) {
       lockScroll()

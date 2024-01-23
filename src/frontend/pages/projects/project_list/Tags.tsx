@@ -6,10 +6,13 @@ interface TagsProps {
 }
 
 const Tags: FC<TagsProps> = ({ category }): JSX.Element => {
+  if (category.length < 1) return null
+
   return (
     <TagsStyled>
-      {category.length > 0 &&
-        category.map((category) => <li key={category.toLowerCase()}>{category.toLowerCase()}</li>)}
+      {category.map((category) => (
+        <li key={category.toLowerCase()}>{category.toLowerCase()}</li>
+      ))}
     </TagsStyled>
   )
 }
@@ -26,7 +29,7 @@ const TagsStyled = styled.ul`
     align-items: center;
     gap: 0.5rem;
     padding: 0 0.5rem;
-    font-size: var(--fsText);
+    font-size: 0.8rem;
     background-color: var(--underlay1);
     border-radius: 0.5rem;
   }

@@ -2,26 +2,34 @@ import React, { FC, useEffect } from "react"
 import "./RootLayout.css"
 import CookieConsent from "react-cookie-consent"
 import { COOKIE_POLICY } from "@/constants/constants"
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation, useSearchParams } from "react-router-dom"
+import { Footer, Nav, Sidebar, Summary } from "./_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
 import useNav from "@/hooks/useNav"
 
-// components
-import { Footer, Nav, Sidebar, Summary } from "./_index"
-
 // state
-import { useAppSelector } from "@/hooks/useRedux"
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/ui/theme"
 import { selectAllProjects } from "@/state/projects"
+import { setCategory } from "@/state/projects/category"
 
 const RootLayout: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch()
   const location = useLocation()
-  const { toHome } = useNav()
+  const [searchParams] = useSearchParams()
   const { isAuthenticated } = useAuth()
+  const { toHome } = useNav()
   const theme = useAppSelector(selectTheme)
   const projects = useAppSelector(selectAllProjects)
+
+  // set category from query
+  useEffect(() => {
+    const category = searchParams.get("category")
+    const c = !category ? "All" : category
+    dispatch(setCategory(c))
+  }, [])
 
   // redirect to home if user signed out
   useEffect(() => {

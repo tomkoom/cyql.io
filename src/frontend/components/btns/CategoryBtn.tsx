@@ -12,7 +12,7 @@ const CategoryBtn: FC = (): JSX.Element => {
   return (
     <CategoryBtnStyled>
       category:
-      <span className="category">{category.toLowerCase()}</span>
+      <span className="category">{category}</span>
       <span className="icon">{iAngleDown}</span>
     </CategoryBtnStyled>
   )

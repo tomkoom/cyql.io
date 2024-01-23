@@ -19,24 +19,23 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   setOpenCategoryList,
 }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const projectCategory = useAppSelector(selectCategory)
+  const cat = useAppSelector(selectCategory)
   const projects = useAppSelector(selectActiveProjects)
-  const projectsNum = projects.length
-  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum)
+  const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
-  const clickCategory = (categoryLabel: string) => {
+  const clickCategory = (categoryLabel: string): void => {
     dispatch(setCategory(categoryLabel))
     closeCategoryList()
   }
 
-  const closeCategoryList = () => {
+  const closeCategoryList = (): void => {
     setOpenCategoryList(false)
   }
 
-  const categoriesNum = (category: Category) => {
+  const getCategoriesNum = (category: Category): number => {
     return category.id === "all"
-      ? projectsNum
-      : projects.filter((project) => project.category.includes(category.label)).length
+      ? projects.length
+      : projects.filter((p) => p.category.includes(category.label)).length
   }
 
   if (!openCategoryList) {
@@ -50,14 +49,13 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
         <h3>filter by category</h3>
 
         <Categories>
-          {categoriesSortedByNum.map((category) => (
+          {categoriesSorted.map((c) => (
             <li
-              key={category.id}
-              id={projectCategory === category.label ? "active" : undefined}
-              onClick={() => clickCategory(category.label)}
+              key={c.id}
+              id={cat === c.label ? "active" : undefined}
+              onClick={() => clickCategory(c.label)}
             >
-              {category.icon} {category.label.toLowerCase()}{" "}
-              <span className="categoriesNum">{categoriesNum(category)}</span>
+              {c.icon} {c.label} <span>{getCategoriesNum(c).toString()}</span>
             </li>
           ))}
         </Categories>
@@ -92,9 +90,8 @@ const Categories = styled.ul`
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-weight: var(--fwBold);
+  font-weight: var(--fwMedium);
   padding: 1rem;
-  border-radius: 0.75rem;
 
   > li {
     height: 3rem;
@@ -102,7 +99,7 @@ const Categories = styled.ul`
     align-items: center;
     gap: 0.125rem;
     white-space: nowrap;
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     background-color: var(--underlay1);
     border-radius: 1.5rem;
     cursor: pointer;
@@ -117,7 +114,7 @@ const Categories = styled.ul`
       box-shadow: unset;
     }
 
-    > span.categoriesNum {
+    > span {
       color: var(--tertiaryColor);
     }
   }

@@ -1,7 +1,5 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// components
 import { Logo, Title } from "./_index"
 
 interface MainProps {

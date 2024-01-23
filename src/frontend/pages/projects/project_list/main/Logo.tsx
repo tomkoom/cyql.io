@@ -1,7 +1,5 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// components
 import { LogoLetter } from "@/components/ui/_index"
 
 interface LogoProps {
@@ -10,7 +8,7 @@ interface LogoProps {
 }
 
 const Logo: FC<LogoProps> = ({ name, logo }): JSX.Element => {
-  const sizeRem = "4.5rem"
+  const sizeRem = "4.25rem"
   const borderRadiusRem = "1rem"
 
   if (logo) {

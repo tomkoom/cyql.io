@@ -6,7 +6,7 @@ interface CategoryState {
 }
 
 const initialState: CategoryState = {
-  category: "All",
+  category: "",
 }
 
 const category = createSlice({

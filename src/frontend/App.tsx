@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjects } from "@/state/projects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
+import { setCategory } from "./state/projects/category"
 
 // state: modals
 import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals"
@@ -32,9 +33,12 @@ const App = () => {
     refreshProjects()
   }, [actor])
 
-  // useEffect(() => {
-  //   refreshProjects()
-  // }, [actor])
+  // sort categories
+  useEffect(() => {
+    if (projects.length < 0) return
+    const sorted = sortCategoriesByNum(allCategories, projects)
+    dispatch(setCategoriesSortedByNum(sorted))
+  }, [projects])
 
   // // reset mobile menu when deivice size > 1024
   // useEffect(() => {
@@ -49,14 +53,6 @@ const App = () => {
   //     dispatch(setSignInModal(false))
   //   }
   // }, [userId])
-
-  // // sort categories by num
-  // useEffect(() => {
-  //   if (projects.length > 0) {
-  //     const sorted = sortCategoriesByNum(allCategories, projects)
-  //     dispatch(setCategoriesSortedByNum(sorted))
-  //   }
-  // }, [projects])
 
   // get upvoted projects
   // useEffect(() => {
