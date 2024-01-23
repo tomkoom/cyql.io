@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import { ProjectData } from "@/state/_types/types"
+import { Project } from "@/state/_types/types"
 
 interface ProjectsState {
   loading: boolean
-  allProjects: ProjectData[]
+  allProjects: Project[]
   allProjectsNum: number
-  activeProjects: ProjectData[]
+  activeProjects: Project[]
   activeProjectsNum: number
 }
 
@@ -25,13 +25,13 @@ const projects = createSlice({
     setProjectsLoading(state, { payload }: PayloadAction<boolean>) {
       state.loading = payload
     },
-    setAllProjects(state, { payload }: PayloadAction<ProjectData[]>) {
+    setAllProjects(state, { payload }: PayloadAction<Project[]>) {
       state.allProjects = payload
     },
     setAllProjectsNum(state, { payload }: PayloadAction<number>) {
       state.allProjectsNum = payload
     },
-    setActiveProjects(state, { payload }: PayloadAction<ProjectData[]>) {
+    setActiveProjects(state, { payload }: PayloadAction<Project[]>) {
       state.activeProjects = payload
     },
     setActiveProjectsNum(state, { payload }: PayloadAction<number>) {

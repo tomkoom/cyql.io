@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { ProjectData } from "@/state/_types/types"
+import { Project } from "@/state/_types/types"
 import { RootState } from "@/state/_store"
 
 type ProjectModalState = {
   isLoading: boolean
   isOpen: boolean
   mode: string
-  project: ProjectData
+  project: Project
 }
 
 const initialState: ProjectModalState = {
@@ -77,7 +77,7 @@ const projectModal = createSlice({
     setProjectModalMode(state, { payload }: PayloadAction<string>) {
       state.mode = payload
     },
-    setProject(state, { payload }: PayloadAction<ProjectData>) {
+    setProject(state, { payload }: PayloadAction<Project>) {
       state.project = { ...state.project, ...payload }
     },
     setProjectItem(state, { payload }: PayloadAction<ProjectItem<string>>) {

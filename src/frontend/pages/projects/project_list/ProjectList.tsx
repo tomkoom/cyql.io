@@ -56,7 +56,7 @@ const ProjectList: FC = (): JSX.Element => {
     dispatch(setItemsVisibleProjects(items))
   }
 
-  const updateFilter = (category: string): void => {
+  const updateCategory = (category: string): void => {
     const key = "category"
     const value = category
     setSearchParams((searchParams) => {
@@ -66,7 +66,7 @@ const ProjectList: FC = (): JSX.Element => {
   }
 
   useEffect(() => {
-    updateFilter(category)
+    updateCategory(category)
   }, [category])
 
   if (projects.length < 1) {

@@ -13,7 +13,7 @@ export type Category = {
   icon: string
 }
 
-export type ProjectData = {
+export type Project = {
   id: string
   submittedBy: string
   createdAt: string

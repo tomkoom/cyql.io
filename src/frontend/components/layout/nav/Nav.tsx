@@ -1,28 +1,24 @@
-import React from "react";
-import styled from "styled-components";
-import { device, size } from "@/styles/breakpoints";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { device, size } from "@/styles/breakpoints"
+import { useWindowSize } from "@/hooks/useWindowSize"
+import { Desktop, Mobile } from "./_index"
 
-// utils
-import { useWindowSize } from "@/hooks/useWindowSize";
-
-// components
-import { Desktop, Mobile } from "./_index";
-
-const Nav = () => {
-  const { width } = useWindowSize();
+const Nav: FC = (): JSX.Element => {
+  const { width } = useWindowSize()
 
   return (
     <NavStyled>
       <Main>{width > size.laptop ? <Desktop /> : <Mobile />}</Main>
     </NavStyled>
-  );
-};
+  )
+}
 
 const NavStyled = styled.header`
   position: sticky;
   top: 0;
   z-index: 1;
-`;
+`
 
 const Main = styled.div`
   display: flex;
@@ -37,6 +33,6 @@ const Main = styled.div`
   @media ${device.laptop} {
     padding: 0.5rem 1rem;
   }
-`;
+`
 
-export default Nav;
+export default Nav

@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
-import type { ProjectData } from "@/state/_types/types"
+import type { Project } from "@/state/_types/types"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { NETWORK } from "@/constants/constants"
 
@@ -22,12 +22,12 @@ const useBackend = () => {
     if (!actor) return
 
     dispatch(setProjectsLoading(true))
-    const allProjects: ProjectData[] = await actor
+    const allProjects: Project[] = await actor
       .listProjects()
       .then((p) => p.map((p) => ({ ...p, id: Number(p.id).toString() })))
 
     allProjects.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
-    const activeProjects: ProjectData[] = allProjects.filter((p) => !p.archived)
+    const activeProjects: Project[] = allProjects.filter((p) => !p.archived)
 
     // set state
     dispatch(setAllProjects(allProjects))
@@ -37,7 +37,7 @@ const useBackend = () => {
     dispatch(setProjectsLoading(false))
   }
 
-  const addProject = async (project: ProjectData): Promise<void> => {
+  const addProject = async (project: Project): Promise<void> => {
     if (!verifyAdmin(userId)) return
     if (project.id !== "") return
 
@@ -52,7 +52,7 @@ const useBackend = () => {
       })
   }
 
-  const editProject = async (project: ProjectData): Promise<void> => {
+  const editProject = async (project: Project): Promise<void> => {
     if (!verifyAdmin(userId)) return
     if (project.id === "") return
 

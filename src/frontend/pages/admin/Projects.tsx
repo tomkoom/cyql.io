@@ -1,6 +1,6 @@
 import React, { FC, ChangeEvent } from "react"
 import styled, { css } from "styled-components"
-import { ProjectData } from "@/state/_types/types"
+import { Project } from "@/state/_types/types"
 
 // formatters
 import { formatStr16, formatWebsite, formatDiscord } from "@/utils/format"
@@ -31,7 +31,7 @@ const Projects: FC = (): JSX.Element => {
     dispatch(setAdminSearch(e.target.value))
   }
 
-  const editProject = (project: ProjectData): void => {
+  const editProject = (project: Project): void => {
     dispatch(setProject(project))
     dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))
@@ -55,14 +55,14 @@ const Projects: FC = (): JSX.Element => {
         </RowHeader>
 
         {projects
-          .filter((project: ProjectData) => {
+          .filter((project: Project) => {
             if (searchQuery === "") {
               return project
             } else if (project.name.toLowerCase().includes(searchQuery.toLowerCase())) {
               return project
             }
           })
-          .map((project: ProjectData, i: number) => (
+          .map((project: Project, i: number) => (
             <Row key={project.id} onClick={() => editProject(project)}>
               <span>{projects.length - i}</span>
               <span>{project.id}</span>

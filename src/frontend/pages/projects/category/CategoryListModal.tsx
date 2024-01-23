@@ -25,10 +25,10 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
 
   const clickCategory = (categoryLabel: string): void => {
     dispatch(setCategory(categoryLabel))
-    closeCategoryList()
+    closeModal()
   }
 
-  const closeCategoryList = (): void => {
+  const closeModal = (): void => {
     setOpenCategoryList(false)
   }
 
@@ -45,14 +45,14 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   return (
     <CategoryListModalStyled>
       <Content>
-        <CrossIcon onClick={closeCategoryList} />
+        <CrossIcon onClick={closeModal} />
         <h3>filter by category</h3>
 
         <Categories>
           {categoriesSorted.map((c) => (
             <li
               key={c.id}
-              id={cat === c.label ? "active" : undefined}
+              id={cat === c.label ? "active" : null}
               onClick={() => clickCategory(c.label)}
             >
               {c.icon} {c.label} <span>{getCategoriesNum(c).toString()}</span>

@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import { useAuth } from "@/context/Auth"
 import useBackend from "@/hooks/useBackend"
-import type { ProjectData } from "@/state/_types/types"
+import type { Project } from "@/state/_types/types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -26,7 +26,7 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ id, upvotedBy }): JSX.Element => {
     // open loading modal
 
     // get project
-    const project: ProjectData = await getProject(id)
+    const project: Project = await getProject(id)
 
     // upvote
     if (project) {

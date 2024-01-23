@@ -1,16 +1,16 @@
-import type { ProjectData } from "@/state/_types/types"
+import type { Project } from "@/state/_types/types"
 
-const filterBySearch = (project: ProjectData, searchQuery: string) => {
+const filterBySearch = (project: Project, searchQuery: string) => {
   return searchQuery === ""
     ? project
     : project.name.toLowerCase().includes(searchQuery.toLowerCase())
 }
 
-const filterByCategory = (project: ProjectData, category: string) => {
+const filterByCategory = (project: Project, category: string) => {
   return category === "All" ? project : project.category.includes(category)
 }
 
-const filterByOpenSource = (project: ProjectData, openSource: boolean) => {
+const filterByOpenSource = (project: Project, openSource: boolean) => {
   return openSource === null // unset
     ? project
     : openSource === true
@@ -18,7 +18,7 @@ const filterByOpenSource = (project: ProjectData, openSource: boolean) => {
     : !project.github
 }
 
-const filterByOnChain = (project: ProjectData, onChain: boolean) => {
+const filterByOnChain = (project: Project, onChain: boolean) => {
   return onChain === null // unset
     ? project
     : onChain === true
@@ -26,7 +26,7 @@ const filterByOnChain = (project: ProjectData, onChain: boolean) => {
     : !project.canister
 }
 
-const filterByGrantee = (project: ProjectData, grantee: boolean) => {
+const filterByGrantee = (project: Project, grantee: boolean) => {
   return grantee === null // unset
     ? project
     : grantee === true
