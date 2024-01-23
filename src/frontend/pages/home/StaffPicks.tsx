@@ -4,9 +4,9 @@ import useNav from "@/hooks/useNav"
 
 const staffPicksItems = [
   {
-    id: "430",
-    title: "DooCoins",
-    text: "rewards system for kids",
+    id: "280",
+    title: "#TAGGR",
+    text: "decentralized social network",
   },
   {
     id: "389",
@@ -14,14 +14,14 @@ const staffPicksItems = [
     text: "identity layer for the internet",
   },
   {
+    id: "430",
+    title: "DooCoins",
+    text: "rewards system for kids",
+  },
+  {
     id: "290",
     title: "ME Wallet",
     text: "a powerful multichain wallet",
-  },
-  {
-    id: "280",
-    title: "#TAGGR",
-    text: "decentralized social network",
   },
   {
     id: "246",

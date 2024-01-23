@@ -88,7 +88,7 @@ h6 {
   --colorLinkedIn: #1877f2;
   --colorReddit: #ff5700;
   --colorGitHub: #1b1f23;
-  --colorCrowdfundNft: #0d69ef;
+  --colorFunded: #0d69ef;
 
   /* font-size */
 
@@ -105,9 +105,7 @@ h6 {
   /* font-weight */
 
   --fwBlack: 900;
-  /* --fwExtraBold: 800; */
   --fwBold: 700;
-  /* --fwSemiBold: 600; */
   --fwMedium: 500;
   --fwRegular: 400;
 

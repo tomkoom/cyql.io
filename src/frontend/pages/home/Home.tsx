@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
 import useNav from "@/hooks/useNav"
 
@@ -18,7 +18,7 @@ import { ViewAllBtn } from "@/components/btns/_index"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectAllProjects } from "@/state/projects"
 
-const Home = () => {
+const Home: FC = (): JSX.Element => {
   const { toProjects } = useNav()
   const projects = useAppSelector(selectAllProjects)
   const projectsExcludeNfts = projects.filter((p) => !p.category.includes("NFTs"))
@@ -38,9 +38,9 @@ const Home = () => {
 
   return (
     <div>
+      <Header />
       <Promo />
       <StaffPicks />
-      <Header />
       {/* <ProjectProposals /> */}
 
       {/* newest projects */}
