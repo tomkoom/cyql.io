@@ -24,10 +24,10 @@ const NavlinkStyled = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  height: 3rem;
+  height: 2.75rem;
   padding: 0 0.5rem;
   margin: 0 -1rem;
-  font-size: var(--fs5);
+  font-size: 1.1rem;
   font-weight: var(--fwMedium);
   border-radius: 1.5rem;
   cursor: pointer;

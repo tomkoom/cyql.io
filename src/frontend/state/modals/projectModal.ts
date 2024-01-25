@@ -96,7 +96,6 @@ const projectModal = createSlice({
       state.project.description = payload
     },
     setClearProject(state) {
-      console.log(1)
       state.project = initialState.project
     },
     setCloseProjectModal(state) {
