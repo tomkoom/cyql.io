@@ -1,23 +1,16 @@
-import React, { FC } from "react";
-
-// constants
-import { II_ADMIN_1 } from "@/constants/constants";
-
-// router
-import { Outlet, Navigate } from "react-router-dom";
-
-// auth
-import { useAuth } from "@/context/Auth";
+import React, { FC } from "react"
+import { ADMINS } from "@/constants/constants"
+import { Outlet, Navigate } from "react-router-dom"
+import { useAuth } from "@/context/Auth"
 
 const AdminRoutes: FC = (): JSX.Element => {
-  const { userId } = useAuth();
-  const admins = [II_ADMIN_1];
+  const { userId } = useAuth()
 
   const isAdmin = (): boolean => {
-    return admins.includes(userId);
-  };
+    return ADMINS.includes(userId)
+  }
 
-  return isAdmin() ? <Outlet /> : <Navigate to="/" />;
-};
+  return isAdmin() ? <Outlet /> : <Navigate to="/" />
+}
 
-export default AdminRoutes;
+export default AdminRoutes

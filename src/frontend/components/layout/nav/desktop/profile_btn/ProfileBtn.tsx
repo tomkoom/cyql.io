@@ -1,26 +1,20 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { FC, useState, useEffect, useRef } from "react"
 import styled from "styled-components"
-
-// icons
 import { iAngleDown } from "@/components/icons/Icons"
-
-// utils
 import { formatId } from "@/utils/format"
-
-// hooks
 import { useAuth } from "@/context/Auth"
 
 // components
 import { Menu } from "./_index"
-import { IdImg } from "@/components/ui/_index"
+import { Btn } from "@/components/btns/_index"
 
-const ProfileBtn = () => {
+const ProfileBtn: FC = (): JSX.Element => {
   const { userId } = useAuth()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const menuRef = useRef(null)
 
   useEffect(() => {
-    const closeMenu = (e) => {
+    const closeMenu = (e): void => {
       if (menuRef.current) {
         if (!menuRef.current.contains(e.target)) {
           setMenuIsOpen(false)
@@ -31,20 +25,19 @@ const ProfileBtn = () => {
     }
 
     document.body.addEventListener("click", closeMenu)
-    return () => {
-      document.body.removeEventListener("click", closeMenu)
-    } // remove eventlistener on component unmount
+    return () => document.body.removeEventListener("click", closeMenu)
   }, [])
 
   return (
     <ProfileBtnStyled ref={menuRef}>
-      <button onClick={() => setMenuIsOpen((prevState) => !prevState)}>
-        <IdImg sizePx="36" />
-        <span>{formatId(userId)}</span>
-        <span>{iAngleDown}</span>
-      </button>
+      <Btn
+        btnType={"secondary"}
+        text={formatId(userId)}
+        icon={iAngleDown}
+        onClick={() => setMenuIsOpen((prev) => !prev)}
+      />
 
-      {menuIsOpen && <Menu setMenuIsOpen={setMenuIsOpen} />}
+      <Menu isOpen={menuIsOpen} setMenuIsOpen={setMenuIsOpen} />
     </ProfileBtnStyled>
   )
 }

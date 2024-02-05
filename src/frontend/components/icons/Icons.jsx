@@ -54,6 +54,7 @@ import {
   faScroll,
   faCircle,
   faCoins,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons"
 import {
   faXTwitter,
@@ -122,6 +123,7 @@ const iCircleNodes = <FontAwesomeIcon icon={faCircleNodes} />
 const iScroll = <FontAwesomeIcon icon={faScroll} />
 const iCircle = <FontAwesomeIcon icon={faCircle} />
 export const iCoins = <FontAwesomeIcon icon={faCoins} />
+export const iUser = <FontAwesomeIcon icon={faUser} />
 
 // brands
 export const iX = <FontAwesomeIcon icon={faXTwitter} />

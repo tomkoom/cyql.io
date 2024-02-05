@@ -5,14 +5,13 @@ interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   btnType: "primary" | "secondary"
   text: string
   icon?: ReactNode
-  onClick: () => void
 }
 
-const Btn: FC<BtnProps> = ({ btnType, text, icon, onClick, ...props }): JSX.Element => {
+const Btn: FC<BtnProps> = ({ btnType, text, icon, ...props }): JSX.Element => {
   return (
-    <BtnStyled btnType={btnType} onClick={onClick} {...props}>
-      {icon !== undefined && <span>{icon}</span>}
-      <span>{text}</span>
+    <BtnStyled btnType={btnType} {...props}>
+      {icon !== undefined && <span className="icon">{icon}</span>}
+      {text}
     </BtnStyled>
   )
 }
@@ -49,6 +48,14 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
 
   &:hover {
     background-color: ${(p) => hoverBgColors[p.btnType]};
+  }
+
+  > span.icon {
+    width: 1rem;
+    height: 1rem;
+    display: grid;
+    place-items: center;
+    color: var(--tertiaryColor);
   }
 `
 

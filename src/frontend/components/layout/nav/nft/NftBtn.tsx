@@ -11,7 +11,7 @@ const NftBtn: FC = (): JSX.Element => {
     dispatch(setNftModal(true))
   }
 
-  return <Btn btnType={"secondary"} text="cyql nfts" onClick={openNftModal} />
+  return <Btn btnType={"secondary"} text={"cyql nfts"} onClick={openNftModal} />
 }
 
 export default NftBtn

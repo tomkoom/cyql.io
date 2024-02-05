@@ -2,24 +2,20 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { formatId } from "@/utils/format"
 import { useAuth } from "@/context/Auth"
-
-// components
-import { IdImg } from "@/components/ui/_index"
-import { Ids } from "./_index"
+// import { Ids } from "./_index"
 
 const Id: FC = (): JSX.Element => {
   const { userId } = useAuth()
 
   return (
     <IdStyled>
-      <IdImg sizePx="96" />
       <div className="text">
         <div className="principal">
           <h2 className="pageTitle">{formatId(userId)}</h2>
           <p>{userId}</p>
         </div>
 
-        <Ids />
+        {/* <Ids /> */}
       </div>
     </IdStyled>
   )

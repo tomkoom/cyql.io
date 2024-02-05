@@ -14,20 +14,26 @@ const staffPicksItems = [
     text: "identity layer for the internet",
   },
   {
+    id: "201",
+    title: "Bink",
+    text: "an alternative to Linktree",
+  },
+  {
     id: "430",
     title: "DooCoins",
     text: "rewards system for kids",
-  },
-  {
-    id: "290",
-    title: "ME Wallet",
-    text: "a powerful multichain wallet",
   },
   {
     id: "246",
     title: "Funded",
     text: "web3 crowdfunding",
   },
+  {
+    id: "290",
+    title: "ME Wallet",
+    text: "a powerful multichain wallet",
+  },
+
   {
     id: "369",
     title: "OpenChat",

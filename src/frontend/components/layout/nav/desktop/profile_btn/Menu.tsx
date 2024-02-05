@@ -1,28 +1,16 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
-import { iSignOut } from "@/components/icons/Icons"
-
-// utils
-import { formatId } from "@/utils/format"
-
-// hooks
-import { useAuth } from "@/context/Auth"
-import useNav from "@/hooks/useNav"
-import { useSignOut } from "@/hooks/useSignOut"
-
-// components
-import { IdImg } from "@/components/ui/_index"
+import { iSignOut, iUser } from "@/components/icons/Icons"
+import { useAuthenticate, useNav } from "@/hooks/_index"
 
 interface MenuProps {
+  isOpen: boolean
   setMenuIsOpen: (value: boolean) => void
 }
 
-const Menu: FC<MenuProps> = ({ setMenuIsOpen }): JSX.Element => {
+const Menu: FC<MenuProps> = ({ isOpen, setMenuIsOpen }): JSX.Element => {
   const { toProfile } = useNav()
-  const { userId } = useAuth()
-  const { signOut } = useSignOut()
+  const { signOut } = useAuthenticate()
 
   const navigate = (route: () => void): void => {
     route()
@@ -34,21 +22,16 @@ const Menu: FC<MenuProps> = ({ setMenuIsOpen }): JSX.Element => {
     setMenuIsOpen(false)
   }
 
+  if (!isOpen) return null
+
   return (
     <MenuStyled>
       <div className="item" onClick={() => navigate(toProfile)}>
-        <span className="icon">
-          <IdImg sizePx="36" />
-        </span>
-
-        <div>
-          <span className="text">{formatId(userId)}</span>
-          <br />
-          <span className="text">view profile</span>
-        </div>
+        <span className="icon">{iUser}</span>
+        <span className="text">view profile</span>
       </div>
-
       <Div />
+
       <div className="item" onClick={logout}>
         <span className="icon">{iSignOut}</span>
         <span className="text">sign out</span>
@@ -59,7 +42,7 @@ const Menu: FC<MenuProps> = ({ setMenuIsOpen }): JSX.Element => {
 
 const MenuStyled = styled.div`
   position: absolute;
-  top: 0;
+  top: 3rem;
   right: 0;
   padding: 1rem;
   background-color: var(--underlay1);
@@ -73,15 +56,14 @@ const MenuStyled = styled.div`
     cursor: pointer;
 
     > span.icon {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 1rem;
+      height: 1rem;
       display: grid;
       place-items: center;
-      border-radius: 50%;
+      color: var(--tertiaryColor);
     }
 
-    > span.text,
-    * span.text {
+    > span.text {
       white-space: nowrap;
     }
   }
