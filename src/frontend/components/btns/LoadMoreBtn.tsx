@@ -22,7 +22,7 @@ const LoadMoreBtnStyled = styled.button`
   border-radius: 1.5rem;
   border: none;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition1);
 
   &:hover {
     background-color: var(--underlay2);
