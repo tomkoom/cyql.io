@@ -95,7 +95,6 @@ const StaffPicks: FC = (): JSX.Element => {
 }
 
 const StaffPicksStyled = styled.div`
-  margin-bottom: 1rem;
 
   > h3 {
     font-size: var(--fs6);
@@ -108,7 +107,6 @@ const StaffPicksStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     gap: 0.5rem;
-    margin-bottom: 1rem;
 
     > li {
       display: flex;

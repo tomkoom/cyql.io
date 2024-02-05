@@ -60,7 +60,6 @@ const PromoStyled = styled.ul`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1rem;
 
   > li {
     height: 2rem;

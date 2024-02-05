@@ -62,7 +62,7 @@ const JoinCommunityStyled = styled.ul`
 
       &#x:hover {
         color: var(--coolGray10);
-        background-color: var(--colorX);
+        background-color: var(--colorTwitter);
       }
 
       &#discord:hover {

@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import useNav from "@/hooks/useNav"
+import { useNav } from "@/hooks/_index"
 
 // components
 import {
@@ -41,10 +41,10 @@ const Home: FC = (): JSX.Element => {
   }
 
   return (
-    <div>
+    <HomeStyled>
       <Header />
-      <Promo />
       <StaffPicks />
+      <Promo />
       {/* <ProjectProposals /> */}
 
       <Section>
@@ -145,13 +145,18 @@ const Home: FC = (): JSX.Element => {
         </Title>
         <JoinCommunity />
       </Section>
-    </div>
+    </HomeStyled>
   )
 }
 
-const Section = styled.section`
+const HomeStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   margin-bottom: 4rem;
 `
+
+const Section = styled.section``
 
 const Title = styled.div`
   display: flex;
