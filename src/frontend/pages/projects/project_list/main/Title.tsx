@@ -18,7 +18,7 @@ const Title: FC<TitleProps> = ({ name, description, github, canister, grantee })
   return (
     <div>
       <Main>
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <Icons>
           {github && <li id="open">{iGithub}</li>}
           {canister && <li id="onchain">{iCircleNodes}</li>}
@@ -35,12 +35,12 @@ const Main = styled.div`
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
-  margin-bottom: 0.125rem;
 
-  > h3 {
+  > h4 {
     font-size: var(--fs6);
     font-weight: var(--fwBold);
     word-wrap: break-word;
+    line-height: 120%;
   }
 `
 
@@ -67,7 +67,6 @@ const Icons = styled.ul`
 const Description = styled.p`
   font-size: var(--fsText);
   color: var(--tertiaryColor);
-  margin-top: 0.25rem;
   line-height: 140%;
 `
 

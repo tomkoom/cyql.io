@@ -9,7 +9,7 @@ interface LogoProps {
 
 const Logo: FC<LogoProps> = ({ name, logo }): JSX.Element => {
   const sizeRem = "4.25rem"
-  const borderRadiusRem = "1rem"
+  const borderRadiusRem = "2.125rem"
 
   if (logo) {
     return (

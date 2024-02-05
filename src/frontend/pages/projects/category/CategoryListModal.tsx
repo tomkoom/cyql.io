@@ -94,14 +94,15 @@ const Categories = styled.ul`
   padding: 1rem;
 
   > li {
-    height: 3rem;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     gap: 0.125rem;
     white-space: nowrap;
     padding: 0 0.75rem;
     background-color: var(--underlay1);
-    border-radius: 1.5rem;
+    border-radius: 1.375rem;
+    font-size: var(--fsText);
     cursor: pointer;
 
     &:hover {

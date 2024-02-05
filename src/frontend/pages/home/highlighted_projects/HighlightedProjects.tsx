@@ -1,9 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-
-// hooks
-import useNav from "@/hooks/useNav"
+import { useNav } from "@/hooks/_index"
 
 // components
 import { Loading } from "@/components/ui/_index"
@@ -47,13 +45,9 @@ const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.El
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.5rem;
   margin-bottom: 1rem;
-
-  @media ${device.laptop} {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  }
 
   @media ${device.mobileL} {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));

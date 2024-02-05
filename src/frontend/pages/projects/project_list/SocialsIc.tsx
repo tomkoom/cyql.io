@@ -34,7 +34,7 @@ const SocialsIcStyled = styled.ul`
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-size: var(--fsText);
+  font-size: var(--fs7);
 
   > li {
     height: 1.5rem;

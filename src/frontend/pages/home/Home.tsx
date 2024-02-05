@@ -7,7 +7,7 @@ import {
   Header,
   HighlightedProjects,
   JoinCommunity,
-  ProjectProposals,
+  // ProjectProposals,
   Promo,
   StaffPicks,
 } from "./_index"
@@ -23,14 +23,14 @@ const Home: FC = (): JSX.Element => {
   const projects = useAppSelector(selectAllProjects)
   const projectsExcludeNfts = projects.filter((p) => !p.category.includes("NFTs"))
   const projectsNfts = projects.filter((p) => p.category.includes("NFTs"))
-  const popularProjects = projects
-    .filter((p) => p.upvotedBy)
-    .filter((p) => !p.category.includes("NFTs"))
-    .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
-  const popularNfts = projects
-    .filter((p) => p.upvotedBy)
-    .filter((p) => p.category.includes("NFTs"))
-    .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
+  // const popularProjects = projects
+  //   .filter((p) => p.upvotedBy)
+  //   .filter((p) => !p.category.includes("NFTs"))
+  //   .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
+  // const popularNfts = projects
+  //   .filter((p) => p.upvotedBy)
+  //   .filter((p) => p.category.includes("NFTs"))
+  //   .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
 
   if (projects.length < 1) {
     return <Loading />

@@ -38,7 +38,6 @@ const ProjectList: FC = (): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams()
   const search = useAppSelector(selectSearch)
   const sort = useAppSelector(selectSort)
-  // console.log(searchParams.get("category"))
 
   // projects
   const projects = useAppSelector(selectActiveProjects)
@@ -156,12 +155,16 @@ const ProjectListStyled = styled.div`
       justify-content: space-between;
       gap: 1rem;
       padding: 0.5rem 0;
-      cursor: pointer;
-      -webkit-box-shadow: 0px 1px 0px 0px var(--underlay1);
       box-shadow: 0px 1px 0px 0px var(--underlay1);
+      cursor: pointer;
 
       &:hover {
         background-color: var(--underlay1);
+      }
+
+      @media ${device.tablet} {
+        flex-direction: column;
+        align-items: center;
       }
 
       > div.main1 {
