@@ -4,13 +4,11 @@ import { device } from "@/styles/breakpoints"
 import { iCircle, iCube, iInfinity, iCoins } from "@/components/icons/Icons"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { useNavigate } from "react-router-dom"
+import { Navlink } from "./_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import useNav from "@/hooks/useNav"
-
-// components
-import { Navlink } from "./_index"
+import { useNav } from "@/hooks/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -30,11 +28,11 @@ const Sidebar: FC = (): JSX.Element => {
   return (
     <SidebarStyled>
       <div>
-        <Navlink label="home" route={toHome} icon={iInfinity} />
-        <Navlink label="projects" route={toProjects} icon={iCube} />
-        <Navlink label="tokens" route={toTokens} icon={iCoins} />
+        <Navlink label="Home" route={toHome} icon={iInfinity} />
+        <Navlink label="Projects" route={toProjects} icon={iCube} />
+        <Navlink label="Tokens" route={toTokens} icon={iCoins} />
         {/* <Navlink label="submit" route={toSubmit} icon={iPlus} /> */}
-        {verifyAdmin(userId) && <Navlink label="admin" route={toAdmin} icon={iCircle} />}
+        {verifyAdmin(userId) && <Navlink label="Admin" route={toAdmin} icon={iCircle} />}
       </div>
     </SidebarStyled>
   )

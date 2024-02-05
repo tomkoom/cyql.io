@@ -21,8 +21,12 @@ import { selectAllProjects } from "@/state/projects"
 const Home: FC = (): JSX.Element => {
   const { toProjects } = useNav()
   const projects = useAppSelector(selectAllProjects)
-  const projectsExcludeNfts = projects.filter((p) => !p.category.includes("NFTs"))
-  const projectsNfts = projects.filter((p) => p.category.includes("NFTs"))
+  const projectsTokens = projects.filter((p) =>
+    p.category.map((c) => c.toLowerCase()).includes("tokens")
+  )
+  const projectsNfts = projects.filter((p) =>
+    p.category.map((c) => c.toLowerCase()).includes("nfts")
+  )
   // const popularProjects = projects
   //   .filter((p) => p.upvotedBy)
   //   .filter((p) => !p.category.includes("NFTs"))
@@ -43,16 +47,22 @@ const Home: FC = (): JSX.Element => {
       <StaffPicks />
       {/* <ProjectProposals /> */}
 
-      {/* newest projects */}
       <Section>
         <Title>
           <h3>new projects</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
-        <HighlightedProjects projects={projectsExcludeNfts} />
+        <HighlightedProjects projects={projects} />
       </Section>
 
-      {/* newest nfts */}
+      <Section>
+        <Title>
+          <h3>new tokens</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+        <HighlightedProjects projects={projectsTokens} />
+      </Section>
+
       <Section>
         <Title>
           <h3>new nfts</h3>
