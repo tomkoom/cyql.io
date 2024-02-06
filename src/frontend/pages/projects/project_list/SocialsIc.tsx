@@ -1,30 +1,22 @@
 import React, { FC } from "react"
 import styled from "styled-components"
+import type { Project } from "@/state/_types/types"
 
-interface IcSocialNetworksMap {
-  [key: string]: string
+interface SocialsIcProps {
+  project: Project
 }
 
-const SocialsIc: FC<IcSocialNetworksMap> = ({
-  dscvr,
-  distrikt,
-  openchat,
-  taggr,
-  seers,
-  nuance,
-  catalyze,
-  funded,
-}): JSX.Element => {
+const SocialsIc: FC<SocialsIcProps> = ({ project }): JSX.Element => {
   return (
     <SocialsIcStyled>
-      {dscvr && <li>Dscvr</li>}
-      {distrikt && <li>Distrikt</li>}
-      {openchat && <li>OpenChat</li>}
-      {taggr && <li>#TAGGR</li>}
-      {seers && <li>Seers</li>}
-      {nuance && <li>Nuance</li>}
-      {catalyze && <li>Catalyze</li>}
-      {funded && <li>Funded</li>}
+      {project.dscvr && <li>Dscvr</li>}
+      {project.distrikt && <li>Distrikt</li>}
+      {project.openchat && <li>OpenChat</li>}
+      {project.taggr && <li>#TAGGR</li>}
+      {project.seers && <li>Seers</li>}
+      {project.nuance && <li>Nuance</li>}
+      {project.catalyze && <li>Catalyze</li>}
+      {project.funded && <li>Funded</li>}
     </SocialsIcStyled>
   )
 }

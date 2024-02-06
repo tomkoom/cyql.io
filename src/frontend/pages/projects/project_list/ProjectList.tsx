@@ -30,7 +30,7 @@ import {
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@/state/projects/filter"
-import { selectActiveProjects } from "@/state/projects"
+import { selectActiveProjects, selectActiveProjectsNum } from "@/state/projects"
 
 const ProjectList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -41,7 +41,7 @@ const ProjectList: FC = (): JSX.Element => {
 
   // projects
   const projects = useAppSelector(selectActiveProjects)
-  const projectsNum = projects.length
+  const projectsNum = useAppSelector(selectActiveProjectsNum)
   const itemsVisible = useAppSelector(selectItemsVisibleProjects)
 
   // filter
@@ -84,10 +84,18 @@ const ProjectList: FC = (): JSX.Element => {
           .filter((project) => filterByGrantee(project, grantee))
 
           // sort
-          .sort((a, b) => (sort === "newest-first" ? sortNewest(a.createdAt, b.createdAt) : null))
-          .sort((a, b) => (sort === "oldest-first" ? sortOldest(a.createdAt, b.createdAt) : null))
-          .sort((a, b) => (sort === "most-upvoted" ? sortMostUp(a.upvotedBy, b.upvotedBy) : null))
-          .sort((a, b) => (sort === "least-upvoted" ? sortLeastUp(a.upvotedBy, b.upvotedBy) : null))
+          .sort((a, b) =>
+            sort === "newest-first" ? sortNewest(Number(a.createdAt), Number(b.createdAt)) : null
+          )
+          .sort((a, b) =>
+            sort === "oldest-first" ? sortOldest(Number(a.createdAt), Number(b.createdAt)) : null
+          )
+          .sort((a, b) =>
+            sort === "most-upvoted" ? sortMostUp(a.upvotedBy.length, b.upvotedBy.length) : null
+          )
+          .sort((a, b) =>
+            sort === "least-upvoted" ? sortLeastUp(a.upvotedBy.length, b.upvotedBy.length) : null
+          )
           .slice(0, itemsVisible)
           .map((p) => (
             <li key={p.id} onClick={() => toProject(p.id)}>
@@ -100,26 +108,11 @@ const ProjectList: FC = (): JSX.Element => {
               </div>
 
               <div className="socials">
-                <Socials
-                  twitter={p.twitter}
-                  discord={p.discord}
-                  telegram={p.telegram}
-                  github={p.github}
-                  medium={p.medium}
-                />
+                <Socials project={p} />
               </div>
 
               <div className="socials">
-                <SocialsIc
-                  dscvr={p.dscvr}
-                  distrikt={p.distrikt}
-                  openchat={p.openchat}
-                  taggr={p.taggr}
-                  seers={p.seers}
-                  nuance={p.nuance}
-                  catalyze={p.catalyze}
-                  funded={p.funded}
-                />
+                <SocialsIc project={p} />
               </div>
 
               <div className="upvote">
