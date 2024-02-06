@@ -9,6 +9,21 @@ const staffPicksItems = [
     text: "decentralized social network",
   },
   {
+    id: "369",
+    title: "OpenChat",
+    text: "decentralized chat app",
+  },
+  {
+    id: "79",
+    title: "ICPCoins",
+    text: "ic cryptocurrencies by market cap",
+  },
+  {
+    id: "188",
+    title: "DSCVR",
+    text: "web3 social media",
+  },
+  {
     id: "389",
     title: "NFID",
     text: "identity layer for the internet",
@@ -17,6 +32,11 @@ const staffPicksItems = [
     id: "201",
     title: "Bink",
     text: "an alternative to Linktree",
+  },
+  {
+    id: "446",
+    title: "ChainKeyX",
+    text: "non custodian neobank for #btc & #eth",
   },
   {
     id: "430",
@@ -32,12 +52,6 @@ const staffPicksItems = [
     id: "290",
     title: "ME Wallet",
     text: "a powerful multichain wallet",
-  },
-
-  {
-    id: "369",
-    title: "OpenChat",
-    text: "decentralized chat app",
   },
   {
     id: "424",
@@ -95,7 +109,6 @@ const StaffPicks: FC = (): JSX.Element => {
 }
 
 const StaffPicksStyled = styled.div`
-
   > h3 {
     font-size: var(--fs6);
     font-weight: var(--fwBold);

@@ -268,7 +268,7 @@ const LinksStyled = styled.ul`
     /* branded */
 
     &[data-social="twitter"] a {
-      background-color: var(--colorTwitter);
+      background-color: var(--colorX);
     }
 
     &[data-social="discord"] a {

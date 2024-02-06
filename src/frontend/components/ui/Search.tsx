@@ -1,34 +1,28 @@
-import React, { FC, InputHTMLAttributes } from "react";
-import styled from "styled-components";
+import React, { FC, InputHTMLAttributes } from "react"
+import styled from "styled-components"
 
 const Search: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Element => {
-  return <SearchStyled type="text" {...props} />;
-};
+  return <SearchStyled type="text" {...props} />
+}
 
 const SearchStyled = styled.input`
-  max-width: 24rem;
   width: 100%;
   height: 3rem;
   padding: 0 1rem;
   font-size: var(--fs6);
-  font-weight: var(--fwBold);
+  font-weight: var(--fwMedium);
   color: var(--primaryColor);
-  background-color: transparent;
+  background-color: var(--underlay1);
   caret-color: var(--primaryColor);
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   border: none;
   outline: none;
-
-  /* box-shadow */
-  box-shadow: 0 0 0 2px var(--underlay2);
-  -webkit-box-shadow: 0 0 0 2px var(--underlay2);
-  -moz-box-shadow: 0 0 0 2px var(--underlay2);
-  -webkit-appearance: none;
+  transition: var(--transition1);
 
   &:hover,
   &:focus {
-    box-shadow: 0 0 0 2px var(--highlight1);
+    background-color: var(--underlay2);
   }
-`;
+`
 
-export default Search;
+export default Search

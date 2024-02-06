@@ -23,13 +23,14 @@ const CategoryBtnStyled = styled.button`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  padding: 0 0.75rem;
+  padding: 0 1rem;
   font-size: var(--fsText);
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
   border-radius: 1.25rem;
   cursor: pointer;
+  transition: var(--transition1);
 
   &:hover {
     background-color: var(--underlay2);

@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { X_URL, DISCORD_URL } from "@/constants/constants"
 
-// fontawesome
+// icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDiscord, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import { iAngleRight } from "@/components/icons/Icons"
@@ -59,10 +59,11 @@ const JoinCommunityStyled = styled.ul`
       background-color: var(--underlay1);
       padding: 1.25rem;
       border-radius: 0.75rem;
+      transition: var(--transition1);
 
       &#x:hover {
         color: var(--coolGray10);
-        background-color: var(--colorTwitter);
+        background-color: var(--colorX);
       }
 
       &#discord:hover {

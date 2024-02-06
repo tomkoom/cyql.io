@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, ChangeEvent } from "react"
 import styled from "styled-components"
 
 // components
@@ -24,18 +24,14 @@ const Projects: FC = (): JSX.Element => {
   const filterByOnChain = useAppSelector(selectFilterByOnChain)
   const filterByGrantee = useAppSelector(selectFilterByGrantee)
 
-  const setProjectsSearch = (e) => {
+  const setSearchQ = (e: ChangeEvent<HTMLInputElement>): void => {
     dispatch(setSearch(e.target.value))
   }
 
   return (
     <ProjectsStyled>
       <h2 className="pageTitle">discover new projects</h2>
-      <Search
-        placeholder={"search by project name"}
-        value={searchQuery}
-        onChange={setProjectsSearch}
-      />
+      <Search placeholder={"Search by project name"} value={searchQuery} onChange={setSearchQ} />
 
       {/* controls */}
       <Controls>
