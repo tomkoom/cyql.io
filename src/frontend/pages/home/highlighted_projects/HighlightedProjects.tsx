@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
+import type { Project as P } from "@/state/_types/types"
 
 // components
 import { Loading } from "@/components/ui/_index"
@@ -9,7 +10,7 @@ import { ViewMoreBtn } from "@/components/btns/_index"
 import { Project } from "./_index"
 
 interface HighlightedProjectsProps {
-  projects: any[]
+  projects: P[]
 }
 
 const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.Element => {

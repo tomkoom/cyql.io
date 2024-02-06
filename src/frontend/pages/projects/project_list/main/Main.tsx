@@ -1,34 +1,17 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { Logo, Title } from "./_index"
+import type { Project } from "@/state/_types/types"
 
 interface MainProps {
-  logo: string
-  name: string
-  description: string
-  github: string
-  canister: string
-  grantee: boolean
+  project: Project
 }
 
-const Main: FC<MainProps> = ({
-  logo,
-  name,
-  description,
-  github,
-  canister,
-  grantee,
-}): JSX.Element => {
+const Main: FC<MainProps> = ({ project }): JSX.Element => {
   return (
     <MainStyled>
-      <Logo logo={logo} name={name} />
-      <Title
-        name={name}
-        description={description}
-        github={github}
-        canister={canister}
-        grantee={grantee}
-      />
+      <Logo logo={project.logo} name={project.name} />
+      <Title project={project} />
     </MainStyled>
   )
 }

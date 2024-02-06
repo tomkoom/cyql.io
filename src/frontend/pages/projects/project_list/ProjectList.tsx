@@ -92,14 +92,7 @@ const ProjectList: FC = (): JSX.Element => {
           .map((p) => (
             <li key={p.id} onClick={() => toProject(p.id)}>
               <div className="main1">
-                <Main
-                  logo={p.logo}
-                  name={p.name}
-                  description={p.description}
-                  github={p.github}
-                  canister={p.canister}
-                  grantee={p.grantee}
-                />
+                <Main project={p} />
               </div>
 
               <div className="tags">
@@ -131,7 +124,7 @@ const ProjectList: FC = (): JSX.Element => {
 
               <div className="upvote">
                 <div className="btn" onClick={(e) => e.stopPropagation()}>
-                  <UpvoteBtn projectId={p.id} upvotedBy={p.upvotedBy} />
+                  <UpvoteBtn projectId={p.id} location={""} upvotedBy={p.upvotedBy} />
                 </div>
               </div>
             </li>

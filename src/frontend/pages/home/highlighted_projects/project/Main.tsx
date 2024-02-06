@@ -1,7 +1,8 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import type { Project } from "@/state/_types/types"
-import { iGithub, iCircleNodes, iArrowUp } from "@/components/icons/Icons"
+import { iGithub, iCircleNodes } from "@/components/icons/Icons"
+import { UpvotesNum } from "@/components/ui/_index"
 
 interface MainProps {
   project: Project
@@ -20,12 +21,7 @@ const Main: FC<MainProps> = ({ project }): JSX.Element => {
   return (
     <MainStyled>
       <Title>
-        <h4>{formatName(project.name)}</h4>{" "}
-        {upvotesNum > 0 && (
-          <span className="upvotes">
-            <span className="icon">{iArrowUp}</span> {upvotesNum}
-          </span>
-        )}
+        <h4>{formatName(project.name)}</h4> <UpvotesNum upvotesNum={upvotesNum} />
       </Title>
 
       <Tags>
@@ -55,11 +51,6 @@ const Title = styled.div`
     font-weight: var(--fwBold);
     margin-top: 0.1rem;
     word-wrap: break-word;
-  }
-
-  > span.upvotes {
-    font-size: var(--fs7);
-    color: var(--colorOk);
   }
 `
 

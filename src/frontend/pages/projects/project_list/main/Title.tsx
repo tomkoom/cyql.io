@@ -1,16 +1,16 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons"
+import { UpvotesNum } from "@/components/ui/_index"
+import type { Project } from "@/state/_types/types"
 
 interface TitleProps {
-  name: string
-  description: string
-  github: string
-  canister: string
-  grantee: boolean
+  project: Project
 }
 
-const Title: FC<TitleProps> = ({ name, description, github, canister, grantee }): JSX.Element => {
+const Title: FC<TitleProps> = ({ project }): JSX.Element => {
+  const upvotesNum = project.upvotedBy.length
+
   const format = (description: string) => {
     return description && description.length > 70 ? `${description.substring(0, 70)}…` : description
   }
@@ -18,15 +18,16 @@ const Title: FC<TitleProps> = ({ name, description, github, canister, grantee })
   return (
     <div>
       <Main>
-        <h4>{name}</h4>
+        <h4>{project.name}</h4>
         <Icons>
-          {github && <li id="open">{iGithub}</li>}
-          {canister && <li id="onchain">{iCircleNodes}</li>}
-          {grantee && <li id="grantee">{iMeteor}</li>}
+          {project.github && <li id="open">{iGithub}</li>}
+          {project.canister && <li id="onchain">{iCircleNodes}</li>}
+          {project.grantee && <li id="grantee">{iMeteor}</li>}
         </Icons>
+        <UpvotesNum upvotesNum={upvotesNum} />
       </Main>
 
-      <Description>{format(description)}</Description>
+      <Description>{format(project.description)}</Description>
     </div>
   )
 }

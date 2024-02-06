@@ -14,19 +14,29 @@ const staffPicksItems = [
     text: "decentralized chat app",
   },
   {
-    id: "79",
-    title: "ICPCoins",
-    text: "ic cryptocurrencies by market cap",
-  },
-  {
     id: "188",
     title: "DSCVR",
     text: "web3 social media",
   },
   {
+    id: "30",
+    title: "IDgeek",
+    text: "internet identity marketplace",
+  },
+  {
+    id: "79",
+    title: "ICPCoins",
+    text: "ic cryptocurrencies by market cap",
+  },
+  {
     id: "389",
     title: "NFID",
     text: "identity layer for the internet",
+  },
+  {
+    id: "246",
+    title: "Funded",
+    text: "web3 crowdfunding",
   },
   {
     id: "201",
@@ -42,11 +52,6 @@ const staffPicksItems = [
     id: "430",
     title: "DooCoins",
     text: "rewards system for kids",
-  },
-  {
-    id: "246",
-    title: "Funded",
-    text: "web3 crowdfunding",
   },
   {
     id: "290",

@@ -53,6 +53,7 @@ import {
   faCircleNodes,
   faScroll,
   faCircle,
+  faCircleDot,
   faCoins,
   faUser,
 } from "@fortawesome/free-solid-svg-icons"
@@ -121,7 +122,8 @@ const iShare = <FontAwesomeIcon icon={faShare} />
 const iShareSquare = <FontAwesomeIcon icon={faShareSquare} />
 const iCircleNodes = <FontAwesomeIcon icon={faCircleNodes} />
 const iScroll = <FontAwesomeIcon icon={faScroll} />
-const iCircle = <FontAwesomeIcon icon={faCircle} />
+export const iCircle = <FontAwesomeIcon icon={faCircle} />
+export const iCircleDot = <FontAwesomeIcon icon={faCircleDot} />
 export const iCoins = <FontAwesomeIcon icon={faCoins} />
 export const iUser = <FontAwesomeIcon icon={faUser} />
 
@@ -190,5 +192,4 @@ export {
   iShareSquare,
   iCircleNodes,
   iScroll,
-  iCircle,
 }
