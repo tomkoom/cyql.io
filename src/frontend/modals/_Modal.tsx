@@ -37,7 +37,7 @@ const ModalStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(var(--backgroundRgb), 0.7);
+  background-color: rgba(var(--backgroundRgb), 0.6);
   padding: 1rem;
   z-index: 1;
 

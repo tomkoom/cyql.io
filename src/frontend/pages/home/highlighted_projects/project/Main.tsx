@@ -1,18 +1,14 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
-import { iGithub, iCircleNodes } from "@/components/icons/Icons"
+import type { Project } from "@/state/_types/types"
+import { iGithub, iCircleNodes, iArrowUp } from "@/components/icons/Icons"
 
 interface MainProps {
-  name: string
-  category: string[]
-  canister: string
-  github: string
-  description: string
+  project: Project
 }
 
-const Main: FC<MainProps> = ({ name, category, canister, github, description }): JSX.Element => {
+const Main: FC<MainProps> = ({ project }): JSX.Element => {
+  const upvotesNum = project.upvotedBy.length
   const formatName = (name: string): string => {
     return name.length > 40 ? `${name.substring(0, 40)}…` : name
   }
@@ -23,13 +19,22 @@ const Main: FC<MainProps> = ({ name, category, canister, github, description }):
 
   return (
     <MainStyled>
-      <h3>{formatName(name)}</h3>
+      <Title>
+        <h4>{formatName(project.name)}</h4>{" "}
+        {upvotesNum > 0 && (
+          <span className="upvotes">
+            <span className="icon">{iArrowUp}</span> {upvotesNum}
+          </span>
+        )}
+      </Title>
+
       <Tags>
-        {category.length > 0 && category.join(", ")}{" "}
-        {canister && <span>{iCircleNodes} onchain</span>} {github && <span>{iGithub} open</span>}
+        {project.category.length > 0 && project.category.join(", ")}{" "}
+        {project.canister && <span>{iCircleNodes} onchain</span>}{" "}
+        {project.github && <span>{iGithub} open</span>}
       </Tags>
 
-      <Description>{formatDescription(description)}</Description>
+      <Description>{formatDescription(project.description)}</Description>
     </MainStyled>
   )
 }
@@ -38,12 +43,23 @@ const MainStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+`
 
-  > h3 {
+const Title = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+
+  > h4 {
     font-size: var(--fs6);
     font-weight: var(--fwBold);
     margin-top: 0.1rem;
     word-wrap: break-word;
+  }
+
+  > span.upvotes {
+    font-size: var(--fs7);
+    color: var(--colorOk);
   }
 `
 

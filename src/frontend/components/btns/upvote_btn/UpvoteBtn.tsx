@@ -22,9 +22,12 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, upvotedBy }): JSX.Element =>
   const isUpvotedByUser = upvotedBy.includes(userId)
 
   const upvote = async (projectId: string): Promise<void> => {
-    let id: ProjectId = Number(projectId)
+    const id: ProjectId = Number(projectId)
     dispatch(setIsLoading(true))
-    await updateUpvote(id)
+    await updateUpvote(id).catch((err) => {
+      dispatch(setIsLoading(false))
+      throw new Error(err)
+    })
     await refreshProjects()
     dispatch(setIsLoading(false))
   }

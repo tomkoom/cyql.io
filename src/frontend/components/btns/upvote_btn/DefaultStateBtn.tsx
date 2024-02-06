@@ -24,12 +24,13 @@ const DefaultBtnStyled = styled.button`
   align-items: center;
   justify-content: center;
   font-size: var(--fs7);
-  color: var(--secondaryColor);
+
   background-color: var(--underlay1);
   font-weight: var(--fwBold);
   border-radius: 0.5rem;
   border: none;
   cursor: pointer;
+  transition: var(--transition1);
 
   &:hover {
     background-color: var(--underlay2);
@@ -41,6 +42,7 @@ const DefaultBtnStyled = styled.button`
   }
 
   > span.num {
+    color: var(--secondaryColor);
     margin-top: -0.25rem;
     padding-bottom: 0.25rem;
   }

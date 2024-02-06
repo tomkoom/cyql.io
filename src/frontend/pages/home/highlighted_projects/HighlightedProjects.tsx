@@ -23,18 +23,7 @@ const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.El
     <div>
       <Grid>
         {projects.slice(0, 24).map((p) => (
-          <Project
-            key={p.id}
-            // ...
-            name={p.name}
-            id={p.id}
-            logo={p.logo}
-            category={p.category}
-            canister={p.canister}
-            github={p.github}
-            description={p.description}
-            // upvotedBy={p.upvotedBy}
-          />
+          <Project key={p.id} project={p} />
         ))}
       </Grid>
 
