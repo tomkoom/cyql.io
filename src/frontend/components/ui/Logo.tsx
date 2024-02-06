@@ -5,7 +5,7 @@ import LOGO_GRAY from "@/assets/logo-gray.svg"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectTheme } from "@/state/ui/theme"
+import { selectTheme } from "@/state/theme"
 
 const Logo: FC = (): JSX.Element => {
   const theme = useAppSelector(selectTheme)

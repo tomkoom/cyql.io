@@ -3,10 +3,12 @@ import Iter "mo:base/Iter";
 import Principal "mo:base/Principal";
 import Nat "mo:base/Nat";
 import Hash "mo:base/Hash";
-
-// ...
+import Buffer "mo:base/Buffer";
 import Debug "mo:base/Debug";
 import Array "mo:base/Array";
+import Text "mo:base/Text";
+
+// ...
 import T "types";
 import U "utils";
 
@@ -43,6 +45,28 @@ actor {
     return Iter.toArray<T.Project>(iter)
   };
 
+  // project actions
+
+  public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
+    // add assert upvoter is user
+    assert (not U.isAnon(caller));
+
+    let userId = Principal.toText(caller);
+    let ?p = projects.get(projectId) else return null;
+    let upvotedByBuf = Buffer.fromArray<Text>(p.upvotedBy);
+    let isAlreadyUpvoted = Buffer.contains<Text>(upvotedByBuf, userId, Text.equal);
+
+    if (not isAlreadyUpvoted) {
+      upvotedByBuf.add(userId)
+    } else {
+      let ?idx = Buffer.indexOf<Text>(userId, upvotedByBuf, Text.equal) else return null;
+      let removed = upvotedByBuf.remove(idx)
+    };
+
+    projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
+    return ?projectId
+  };
+
   // users
 
   public shared ({ caller }) func registerUser() : async ?Text {
@@ -63,7 +87,7 @@ actor {
     return Principal.toText(caller)
   };
 
-  // memory
+  // stable
 
   system func preupgrade() {
     projectsEntries := Iter.toArray(projects.entries());

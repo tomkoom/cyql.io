@@ -10,7 +10,7 @@ import { Loading } from "@/components/ui/_index"
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProjectModalIsLoading } from "@/state/modals/projectModal"
-import { selectTheme } from "@/state/ui/theme"
+import { selectTheme } from "@/state/theme"
 
 interface ProjectModalProps {
   isOpen: boolean

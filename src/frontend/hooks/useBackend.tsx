@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
-import type { Project } from "@/state/_types/types"
+import type { Project, ProjectId } from "@/state/_types/types"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { NETWORK } from "@/constants/constants"
 
@@ -68,7 +68,11 @@ const useBackend = () => {
     })
   }
 
-  return { refreshProjects, addProject, editProject }
+  const updateUpvote = async (projectId: ProjectId): Promise<void> => {
+    await actor.updateUpvote(projectId).then((res) => NETWORK === "local" && console.log(res))
+  }
+
+  return { refreshProjects, addProject, editProject, updateUpvote }
 }
 
 export default useBackend

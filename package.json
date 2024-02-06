@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "backend": "dfx deploy backend && dfx generate backend"
+    "deploy_backend:local": "dfx deploy backend && dfx generate backend"
   },
   "devDependencies": {
     "buffer": "^6.0.3",

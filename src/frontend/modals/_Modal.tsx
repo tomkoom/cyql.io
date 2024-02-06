@@ -5,7 +5,7 @@ import CrossIcon from "@/components/icons/CrossIcon"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectTheme } from "@/state/ui/theme"
+import { selectTheme } from "@/state/theme"
 
 interface ModalProps {
   isOpen: boolean
@@ -37,7 +37,7 @@ const ModalStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(var(--backgroundRgb), 0.8);
+  background-color: rgba(var(--backgroundRgb), 0.7);
   padding: 1rem;
   z-index: 1;
 

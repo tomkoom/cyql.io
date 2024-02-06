@@ -1,19 +1,22 @@
 import { configureStore } from "@reduxjs/toolkit"
 import template from "./_template"
 
-// admin
+// ...
+import icpPrice from "./icpPrice"
+import theme from "./theme"
+import loadMore from "./loadMore"
 import adminSearch from "./admin/adminSearch"
-
-// api
-import icpPrice from "./api/icpPrice"
+import submit from "./submit/submit"
+import allCategories from "./categories/allCategories"
+import categoriesSortedByNum from "./categories/categoriesSortedByNum"
+import profile from "./profile/profile"
 
 // modals
 import modals from "./modals/modals"
 import nftModal from "./modals/nftModal"
 import promoModal from "./modals/promoModal"
 import shareModal from "./modals/shareModal"
-
-// project modal
+import loading from "./loading"
 import projectModal from "./modals/projectModal"
 
 // projects
@@ -22,20 +25,6 @@ import filter from "./projects/filter"
 import search from "./projects/search"
 import sort from "./projects/sort"
 import projects from "./projects"
-
-// submit
-import submit from "./submit/submit"
-
-// categories
-import allCategories from "./categories/allCategories"
-import categoriesSortedByNum from "./categories/categoriesSortedByNum"
-
-// ui
-import theme from "./ui/theme"
-import loadMore from "./ui/loadMore"
-
-// profile
-import profile from "./profile/profile"
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -48,25 +37,21 @@ const store = configureStore({
 
     // ...
     icpPrice,
-
-    // profile
+    theme,
+    loadMore,
     profile,
+    adminSearch,
+    submit,
+    allCategories,
+    categoriesSortedByNum,
 
     // modals
     modals,
     nftModal,
     promoModal,
     shareModal,
-
-    // ui
-    theme,
-    loadMore,
-
-    // project modal
+    loading,
     projectModal,
-
-    // admin
-    adminSearch,
 
     // projects
     category,
@@ -74,13 +59,6 @@ const store = configureStore({
     search,
     sort,
     projects,
-
-    // submit
-    submit,
-
-    // categories
-    allCategories,
-    categoriesSortedByNum,
   },
 })
 

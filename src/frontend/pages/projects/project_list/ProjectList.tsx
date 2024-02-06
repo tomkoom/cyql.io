@@ -23,7 +23,7 @@ import { Main, Socials, SocialsIc, Tags } from "./_index"
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectCategory } from "@/state/projects/category"
 import { selectSearch } from "@/state/projects/search"
-import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/ui/loadMore"
+import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/loadMore"
 import { selectSort } from "@/state/projects/sort"
 import {
   selectFilterByOpenSource,
@@ -131,7 +131,7 @@ const ProjectList: FC = (): JSX.Element => {
 
               <div className="upvote">
                 <div className="btn" onClick={(e) => e.stopPropagation()}>
-                  <UpvoteBtn id={p.id} upvotedBy={p.upvotedBy} />
+                  <UpvoteBtn projectId={p.id} upvotedBy={p.upvotedBy} />
                 </div>
               </div>
             </li>

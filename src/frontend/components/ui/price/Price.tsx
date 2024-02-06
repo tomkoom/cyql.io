@@ -10,8 +10,8 @@ import { Change } from "./_index";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/api/icpPrice";
-import { fetchIcpPrice } from "@/state/api/icpPrice";
+import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/icpPrice";
+import { fetchIcpPrice } from "@/state/icpPrice";
 
 const Price: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();

@@ -4,16 +4,18 @@ import CookieConsent from "react-cookie-consent"
 import { COOKIE_POLICY } from "@/constants/constants"
 import { Outlet, useLocation, useSearchParams } from "react-router-dom"
 import { Footer, Nav, Sidebar, Summary } from "./_index"
+import { LoadingModal } from "@/modals/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import useNav from "@/hooks/useNav"
+import { useNav } from "@/hooks/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectTheme } from "@/state/ui/theme"
+import { selectTheme } from "@/state/theme"
 import { selectAllProjects } from "@/state/projects"
 import { setCategory } from "@/state/projects/category"
+import { selectIsLoading } from "@/state/loading"
 
 const RootLayout: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -23,6 +25,7 @@ const RootLayout: FC = (): JSX.Element => {
   const { toHome } = useNav()
   const theme = useAppSelector(selectTheme)
   const projects = useAppSelector(selectAllProjects)
+  const isLoading = useAppSelector(selectIsLoading)
 
   // set category from query
   useEffect(() => {
@@ -40,6 +43,10 @@ const RootLayout: FC = (): JSX.Element => {
 
   return (
     <div className={`app ${theme}`}>
+      {/* modals */}
+      <LoadingModal isOpen={isLoading} />
+
+      {/* ... */}
       <Summary />
       <Nav />
 

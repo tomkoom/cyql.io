@@ -14,7 +14,7 @@ const Header: FC = (): JSX.Element => {
   return (
     <HeaderStyled>
       <Title>
-        Curated list of{" "}
+        curated list of{" "}
         <span className="projects_num" onClick={toProjects}>
           {projectsNum > 0 ? projectsNum : "..."}
         </span>{" "}

@@ -6,7 +6,7 @@ import { iSun, iMoon } from "@/components/icons/Icons";
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { setTheme, selectTheme } from "@/state/ui/theme";
+import { setTheme, selectTheme } from "@/state/theme";
 
 const Theme: FC = (): JSX.Element => {
   const dispatch = useAppDispatch();
