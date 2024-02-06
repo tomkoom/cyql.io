@@ -11,10 +11,11 @@ import { setIsLoading } from "@/state/loading"
 
 interface UpvoteBtnProps {
   projectId: string
+  location: string
   upvotedBy: string[]
 }
 
-const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, upvotedBy }): JSX.Element => {
+const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { userId, isAuthenticated } = useAuth()
   const { refreshProjects, updateUpvote } = useBackend()
@@ -37,14 +38,22 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, upvotedBy }): JSX.Element =>
   }
 
   if (!isAuthenticated) {
-    return <DefaultStateBtn upvotesNum={upvotesNum} click={openSignInModal} />
+    return <DefaultStateBtn upvotesNum={upvotesNum} location={location} click={openSignInModal} />
   }
 
   if (isUpvotedByUser) {
-    return <UpvotedStateBtn upvotesNum={upvotesNum} click={() => upvote(projectId)} />
+    return (
+      <UpvotedStateBtn
+        upvotesNum={upvotesNum}
+        location={location}
+        click={() => upvote(projectId)}
+      />
+    )
   }
 
-  return <DefaultStateBtn upvotesNum={upvotesNum} click={() => upvote(projectId)} />
+  return (
+    <DefaultStateBtn upvotesNum={upvotesNum} location={location} click={() => upvote(projectId)} />
+  )
 }
 
 export default UpvoteBtn

@@ -4,12 +4,17 @@ import { iCaretUp, iCheck } from "@/components/icons/Icons"
 
 interface UpvotedStateBtnProps {
   upvotesNum: number
+  location: string
   click: () => void
 }
 
-const UpvotedStateBtn: FC<UpvotedStateBtnProps> = ({ upvotesNum, click }): JSX.Element => {
+const UpvotedStateBtn: FC<UpvotedStateBtnProps> = ({
+  upvotesNum,
+  location,
+  click,
+}): JSX.Element => {
   return (
-    <UpvotedStateBtnStyled onClick={click}>
+    <UpvotedStateBtnStyled location={location} onClick={click}>
       <span className="icon">{iCaretUp}</span>
       <span className="num">
         {upvotesNum} {iCheck}
@@ -18,8 +23,8 @@ const UpvotedStateBtn: FC<UpvotedStateBtnProps> = ({ upvotesNum, click }): JSX.E
   )
 }
 
-const UpvotedStateBtnStyled = styled.button`
-  width: 2.5rem;
+const UpvotedStateBtnStyled = styled.button<{ location: string }>`
+  width: ${(p) => (p.location === "project_page" ? "3.5rem" : "2.5rem")};
   height: 3.5rem;
   display: flex;
   flex-direction: column;
@@ -28,7 +33,7 @@ const UpvotedStateBtnStyled = styled.button`
   font-size: var(--fs7);
   background-color: var(--underlay2);
   font-weight: var(--fwBold);
-  border-radius: 0.5rem;
+  border-radius: ${(p) => (p.location === "project_page" ? "50%" : "0.6rem")};
   border: none;
   cursor: pointer;
   transition: var(--transition1);

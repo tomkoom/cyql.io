@@ -6,7 +6,7 @@ import { useAuth } from "@/context/Auth"
 
 // components
 import { Btn, Logo, Title } from "./_index"
-// import { UpvtBtn } from "@/components/index";
+import { UpvoteBtn } from "@/components/btns/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -41,11 +41,9 @@ const Header: FC<any> = ({ project }): JSX.Element => {
       </Main>
 
       <Controls>
+        <UpvoteBtn projectId={project.id} location={"project_page"} upvotedBy={project.upvotedBy} />
         {verifyAdmin(userId) === true && <Btn icon={iEdit} onClick={openEditModal} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
-        {/* <div className={css.btnContainer}>
-          <UpvtBtn id={project.key} upvotedBy={project.upvotedBy} location="project" />
-        </div> */}
       </Controls>
     </HeaderStyled>
   )
