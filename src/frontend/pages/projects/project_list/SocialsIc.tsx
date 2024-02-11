@@ -9,14 +9,16 @@ interface SocialsIcProps {
 const SocialsIc: FC<SocialsIcProps> = ({ project }): JSX.Element => {
   return (
     <SocialsIcStyled>
-      {project.dscvr && <li>Dscvr</li>}
-      {project.distrikt && <li>Distrikt</li>}
-      {project.openchat && <li>OpenChat</li>}
       {project.taggr && <li>#TAGGR</li>}
-      {project.seers && <li>Seers</li>}
-      {project.nuance && <li>Nuance</li>}
+      {project.openchat && <li>OpenChat</li>}
+      {project.dscvr && <li>DSCVR</li>}
       {project.catalyze && <li>Catalyze</li>}
       {project.funded && <li>Funded</li>}
+      {project.seers && <li>Seers</li>}
+      {project.nuance && <li>Nuance</li>}
+
+      {/* ... */}
+      {project.distrikt && <li>Distrikt</li>}
     </SocialsIcStyled>
   )
 }

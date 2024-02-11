@@ -27,3 +27,4 @@ export const COOKIE_POLICY =
   "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
 export const IC_LOGO =
   "https://ipfs.io/ipfs/Qmb9YRW5j6nqsjpaT7DT8E66MTKFK9kdhEcofwjeXjJvaq?filename=ic-logo.svg"
+export const FLEX_URL = "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/"

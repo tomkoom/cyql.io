@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "@/state/_store";
-import type { Category } from "@/state/_types/types";
+import { createSlice } from "@reduxjs/toolkit"
+import type { RootState } from "@/state/_store"
+import type { Category } from "@/state/_types/types"
 
 interface AllCategoriesState {
-  allCategories: Category[];
+  allCategories: Category[]
 }
 
 const initialState: AllCategoriesState = {
@@ -57,18 +57,20 @@ const initialState: AllCategoriesState = {
     { id: "identity", label: "Identity", icon: "🔑" },
     { id: "governance", label: "Governance", icon: "" },
     { id: "ai", label: "AI", icon: "" },
+    { id: "btc", label: "BTC", icon: "" },
+    { id: "ethereum", label: "Ethereum", icon: "" },
   ],
-};
+}
 
 const allCategories = createSlice({
   name: "allCategories",
   initialState,
   reducers: {},
-});
+})
 
 // selectors
-const selectAllCategories = (state: RootState) => state.allCategories.allCategories;
-export { selectAllCategories };
+const selectAllCategories = (state: RootState) => state.allCategories.allCategories
+export { selectAllCategories }
 
-export const {} = allCategories.actions;
-export default allCategories.reducer;
+export const {} = allCategories.actions
+export default allCategories.reducer

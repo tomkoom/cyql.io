@@ -10,6 +10,7 @@ import {
   // ProjectProposals,
   Promo,
   StaffPicks,
+  Flex,
 } from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
@@ -44,6 +45,7 @@ const Home: FC = (): JSX.Element => {
     <HomeStyled>
       <Header />
       <StaffPicks />
+      <Flex />
       <Promo />
       {/* <ProjectProposals /> */}
 

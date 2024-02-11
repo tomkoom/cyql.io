@@ -3,7 +3,7 @@
 [cyql.io](https://cyql.io/) is a curated gallery of projects built on the [Internet Computer](https://internetcomputer.org/)
 
 - frontend canister: n7ib3-4qaaa-aaaai-qagnq-cai
-- frontend canister: nrkmt-haaaa-aaaai-qagmq-cai
+- backend canister: nrkmt-haaaa-aaaai-qagmq-cai
 - domain: cyql.io
 
 ### API
