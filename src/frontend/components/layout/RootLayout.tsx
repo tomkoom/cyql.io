@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import "./RootLayout.css"
 import { Outlet, useLocation, useSearchParams } from "react-router-dom"
-import { Footer, Nav, Sidebar, Summary, Cookie } from "./_index"
+import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 
@@ -46,14 +46,11 @@ const RootLayout: FC = (): JSX.Element => {
       <LoadingModal isOpen={isLoading} />
       <Summary />
       <Nav />
+      <Navlinks />
 
-      <div className="content">
-        <Sidebar />
-
-        <main className="main">
-          <Outlet />
-        </main>
-      </div>
+      <main className="main">
+        <Outlet />
+      </main>
 
       {projects.length > 0 && <Footer />}
       <Cookie />
@@ -70,7 +67,7 @@ const RootLayoutStyled = styled.div`
   /* footer at the bottom */
   min-height: 100vh;
 
-  > div.content {
+  > main.main {
     padding: 0 2rem;
     max-width: calc(2048px + 4rem);
     margin: 0 auto;
@@ -81,14 +78,6 @@ const RootLayoutStyled = styled.div`
 
     @media ${device.laptop} {
       padding: 1rem;
-    }
-
-    > main.main {
-      margin-left: 180px;
-
-      @media ${device.laptop} {
-        margin-left: unset;
-      }
     }
   }
 `

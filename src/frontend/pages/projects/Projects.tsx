@@ -31,7 +31,7 @@ const Projects: FC = (): JSX.Element => {
   return (
     <ProjectsStyled>
       <h2 className="pageTitle">discover new projects</h2>
-      <Search placeholder={"Search by project name"} value={searchQuery} onChange={setSearchQ} />
+      <Search placeholder={"Search project by name"} value={searchQuery} onChange={setSearchQ} />
 
       {/* controls */}
       <Controls>

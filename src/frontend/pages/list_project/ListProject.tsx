@@ -1,7 +1,18 @@
 import React, { FC } from "react"
+import styled from "styled-components"
 
 const ListProject: FC = (): JSX.Element => {
-  return <div>Listing is under dev. Thank you for being with us!</div>
+  return (
+    <ListProjectStyled>
+      <p>Listing is under dev and will be available soon. Thank you for being with us!</p>
+    </ListProjectStyled>
+  )
 }
+
+const ListProjectStyled = styled.div`
+  > p {
+    text-align: center;
+  }
+`
 
 export default ListProject

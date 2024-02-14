@@ -32,9 +32,6 @@ import {
   faAngleLeft,
   faSignInAlt,
   faSignOutAlt,
-  faInfinity,
-  faCube,
-  faCubes,
   faRocket,
   faBook,
   faWallet,
@@ -56,6 +53,7 @@ import {
   faCircleDot,
   faCoins,
   faUser,
+  faHashtag,
 } from "@fortawesome/free-solid-svg-icons"
 import {
   faXTwitter,
@@ -102,9 +100,6 @@ const iAngleDown = <FontAwesomeIcon icon={faAngleDown} />
 const iAngleLeft = <FontAwesomeIcon icon={faAngleLeft} />
 const iSignIn = <FontAwesomeIcon icon={faSignInAlt} />
 const iSignOut = <FontAwesomeIcon icon={faSignOutAlt} />
-const iInfinity = <FontAwesomeIcon icon={faInfinity} />
-const iCube = <FontAwesomeIcon icon={faCube} />
-const iCubes = <FontAwesomeIcon icon={faCubes} />
 const iRocket = <FontAwesomeIcon icon={faRocket} />
 const iBook = <FontAwesomeIcon icon={faBook} />
 const iWallet = <FontAwesomeIcon icon={faWallet} />
@@ -126,6 +121,7 @@ export const iCircle = <FontAwesomeIcon icon={faCircle} />
 export const iCircleDot = <FontAwesomeIcon icon={faCircleDot} />
 export const iCoins = <FontAwesomeIcon icon={faCoins} />
 export const iUser = <FontAwesomeIcon icon={faUser} />
+export const iHashtag = <FontAwesomeIcon icon={faHashtag} />
 
 // brands
 export const iX = <FontAwesomeIcon icon={faXTwitter} />
@@ -172,9 +168,6 @@ export {
   iAngleLeft,
   iSignIn,
   iSignOut,
-  iInfinity,
-  iCube,
-  iCubes,
   iRocket,
   iBook,
   iWallet,

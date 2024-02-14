@@ -33,6 +33,7 @@ const Title = styled.h2`
   font-size: var(--fs1);
   font-weight: var(--fwBlack);
   line-height: 125%;
+  text-align: center;
 
   > span.projects_num {
     text-decoration: underline;

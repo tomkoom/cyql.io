@@ -43,7 +43,6 @@ const CategoryBtnStyled = styled.button`
     color: #fff;
     background-color: var(--highlight1);
     padding: 0 0.5rem;
-    border-radius: 0.5rem;
   }
 
   > span.icon {
