@@ -1,19 +1,19 @@
-import React from "react";
-
-// router
-import {
-  // createBrowserRouter,
-  createHashRouter,
-  createRoutesFromElements,
-  Route,
-} from "react-router-dom";
-
-// routes
-import { AdminRoutes, ProtectedRoutes } from "@/routes/_index";
+import React from "react"
+import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
+import { AdminRoutes, ProtectedRoutes } from "@/routes/_index"
 
 // components
-import RootLayout from "@/components/layout/RootLayout";
-import { Admin, Home, NotFound, Profile, Project, Projects, Submit } from "@/pages/_index";
+import RootLayout from "@/components/layout/RootLayout"
+import {
+  Admin,
+  Home,
+  NotFound,
+  Profile,
+  Project,
+  Projects,
+  ListProject,
+  Submit,
+} from "@/pages/_index"
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -25,6 +25,7 @@ const router = createHashRouter(
       <Route index element={<Home />} />
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:id" element={<Project />} />
+      <Route path="list" element={<ListProject />} />
       {/* <Route path="submit" element={<Submit />} /> */}
 
       {/* protected routes */}
@@ -40,6 +41,6 @@ const router = createHashRouter(
       {/* not found */}
     </Route>
   )
-);
+)
 
-export default router;
+export default router

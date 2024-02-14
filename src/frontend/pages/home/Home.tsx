@@ -1,6 +1,9 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useNav } from "@/hooks/_index"
+import { useNavigate } from "react-router-dom"
+import { Btn } from "@/components/btns/_index"
+import { iPlus } from "@/components/icons/Icons"
 
 // components
 import {
@@ -21,6 +24,7 @@ import { selectAllProjects } from "@/state/projects"
 
 const Home: FC = (): JSX.Element => {
   const { toProjects } = useNav()
+  const navigate = useNavigate()
   const projects = useAppSelector(selectAllProjects)
   const projectsTokens = projects.filter((p) =>
     p.category.map((c) => c.toLowerCase()).includes("tokens")
@@ -37,6 +41,10 @@ const Home: FC = (): JSX.Element => {
   //   .filter((p) => p.category.includes("NFTs"))
   //   .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
 
+  const navigateToListProject = (): void => {
+    navigate("list")
+  }
+
   if (projects.length < 1) {
     return <Loading />
   }
@@ -44,8 +52,9 @@ const Home: FC = (): JSX.Element => {
   return (
     <HomeStyled>
       <Header />
+      <Btn btnType={"primary"} text={"List Project"} icon={iPlus} onClick={navigateToListProject} />
       <StaffPicks />
-      <Flex />
+      {/* <Flex /> */}
       <Promo />
       {/* <ProjectProposals /> */}
 

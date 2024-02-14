@@ -17,17 +17,17 @@ const Btn: FC<BtnProps> = ({ btnType, text, icon, ...props }): JSX.Element => {
 }
 
 const colors = {
-  primary: "#fff",
+  primary: "var(--background)",
   secondary: "var(--primaryColor)",
 }
 
 const bgColors = {
-  primary: "var(--highlight1)",
+  primary: "var(--primaryColor)",
   secondary: "var(--underlay1)",
 }
 
 const hoverBgColors = {
-  primary: "var(--highlight2)",
+  primary: "var(--secondaryColor)",
   secondary: "var(--underlay2)",
 }
 
@@ -36,11 +36,13 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
   height: 2.5rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0 0.75rem;
   font-size: var(--fsText);
   font-weight: var(--fwBold);
   border-radius: 1.25rem;
+  transition: var(--transition1);
 
   /* custom */
   color: ${(p) => colors[p.btnType]};

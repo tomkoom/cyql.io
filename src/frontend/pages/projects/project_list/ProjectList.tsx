@@ -143,6 +143,7 @@ const ProjectListStyled = styled.div`
       padding: 0.5rem 0;
       box-shadow: 0px 1px 0px 0px var(--underlay1);
       cursor: pointer;
+      transition: var(--transition1);
 
       &:hover {
         background-color: var(--underlay1);
