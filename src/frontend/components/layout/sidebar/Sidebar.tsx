@@ -45,6 +45,7 @@ const Sidebar: FC = (): JSX.Element => {
 }
 
 const SidebarStyled = styled.div`
+  background-color: green;
   position: sticky;
   top: 64px;
   bottom: 0;

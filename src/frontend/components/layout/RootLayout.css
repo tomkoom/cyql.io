@@ -13,28 +13,6 @@ body {
   background-color: var(--primaryColor);
 }
 
-.app {
-  color: var(--primaryColor);
-  background-color: var(--background);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* https://dev.to/nehalahmadkhan/how-to-make-footer-stick-to-bottom-of-web-page-3i14 */
-}
-
-.content {
-  padding: 0 2rem;
-  max-width: calc(2048px + 4rem);
-  margin: 0 auto;
-  width: 100%;
-}
-
-.main {
-  margin-left: 180px;
-}
-
-/* global styles */
-
 a {
   text-decoration: none;
   color: var(--primaryColor);
@@ -60,34 +38,6 @@ ul {
 
 /* global classes */
 
-.primaryBtn,
-.secondaryBtn {
-  font-weight: var(--fwBold);
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  padding: 0 0.75rem;
-  border-radius: 0.75rem;
-}
-
-.primaryBtn {
-  color: white;
-  background-color: var(--highlight1);
-}
-
-.primaryBtn:hover {
-  background-color: var(--highlight2);
-}
-
-.secondaryBtn {
-  color: var(--primaryColor);
-  background-color: var(--underlay1);
-}
-
-.secondaryBtn:hover {
-  background-color: var(--underlay2);
-}
-
 .pageTitle {
   font-size: var(--fs2);
   font-weight: var(--fwBlack);
@@ -95,74 +45,10 @@ ul {
   margin-bottom: 0.5rem;
 }
 
-/* cookie */
-
-.cookie {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  height: 3rem;
-  padding: 0 1rem;
-  color: var(--primaryColor);
-  background: var(--underlay1);
-  border-radius: 0.5rem;
-}
-
-.cookie * {
-  font-size: var(--fsText); /* 0.9 */
-}
-
-.cookie__content {
-  padding-right: 0.5rem;
-  color: var(--secondaryColor);
-}
-
-.cookie__btn {
-  height: 2rem;
-  width: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: var(--fwBold);
-  text-decoration: none;
-  background-color: var(--highlight1);
-  padding: 0.25rem 0.25rem;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-}
-
-.cookie__btn:hover {
-  background-color: var(--highlight2);
-}
-
-.cookie__link {
-  color: var(--primaryColor);
-}
-
-.cookie__link:hover {
-  text-decoration: underline;
-}
-
 /* responsive */
 
 @media screen and (max-width: 1023px) {
   html {
-    font-size: 15px; /* root font size */
-  }
-
-  .content {
-    padding: 1rem;
-  }
-
-  .main {
-    margin-left: unset;
+    font-size: 15px;
   }
 }

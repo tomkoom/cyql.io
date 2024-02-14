@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from "react"
+import styled from "styled-components"
 import "./RootLayout.css"
-import CookieConsent from "react-cookie-consent"
-import { COOKIE_POLICY } from "@/constants/constants"
 import { Outlet, useLocation, useSearchParams } from "react-router-dom"
-import { Footer, Nav, Sidebar, Summary } from "./_index"
+import { Footer, Nav, Sidebar, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
+import { device } from "@/styles/breakpoints"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -42,41 +42,55 @@ const RootLayout: FC = (): JSX.Element => {
   }, [isAuthenticated])
 
   return (
-    <div className={`app ${theme}`}>
-      {/* modals */}
+    <RootLayoutStyled className={theme}>
       <LoadingModal isOpen={isLoading} />
-
-      {/* ... */}
       <Summary />
       <Nav />
 
       <div className="content">
         <Sidebar />
 
-        <div className="main">
+        <main className="main">
           <Outlet />
-        </div>
+        </main>
       </div>
 
       {projects.length > 0 && <Footer />}
-
-      {/* cookies */}
-      <CookieConsent
-        cookieName="cookie"
-        disableStyles={true}
-        buttonText="Ok"
-        containerClasses="cookie"
-        contentClasses="cookie__content"
-        buttonClasses="cookie__btn"
-        expires={90}
-      >
-        this site uses 🍪 to enhance ux,{" "}
-        <a className="cookie__link" href={COOKIE_POLICY} rel="noreferrer noopener" target="_blank">
-          learn more
-        </a>
-      </CookieConsent>
-    </div>
+      <Cookie />
+    </RootLayoutStyled>
   )
 }
+
+const RootLayoutStyled = styled.div`
+  color: var(--primaryColor);
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+
+  /* footer at the bottom */
+  min-height: 100vh;
+
+  > div.content {
+    padding: 0 2rem;
+    max-width: calc(2048px + 4rem);
+    margin: 0 auto;
+    width: 100%;
+
+    /* footer at the bottom */
+    flex-grow: 1;
+
+    @media ${device.laptop} {
+      padding: 1rem;
+    }
+
+    > main.main {
+      margin-left: 180px;
+
+      @media ${device.laptop} {
+        margin-left: unset;
+      }
+    }
+  }
+`
 
 export default RootLayout

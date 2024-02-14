@@ -52,7 +52,12 @@ const Home: FC = (): JSX.Element => {
   return (
     <HomeStyled>
       <Header />
-      <Btn btnType={"primary"} text={"List Project"} icon={iPlus} onClick={navigateToListProject} />
+      <Btn
+        btnType={"secondary"}
+        text={"List Project"}
+        icon={iPlus}
+        onClick={navigateToListProject}
+      />
       <StaffPicks />
       {/* <Flex /> */}
       <Promo />
