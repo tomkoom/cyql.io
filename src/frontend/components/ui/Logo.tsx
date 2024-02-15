@@ -24,7 +24,6 @@ const Logo: FC = (): JSX.Element => {
 const LogoStyled = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
   cursor: pointer;
   transition: var(--transition1);
 
@@ -33,7 +32,7 @@ const LogoStyled = styled.div`
   }
 
   > img {
-    height: 1.88rem;
+    height: 1.77rem;
   }
 
   > h1 {

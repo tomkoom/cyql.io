@@ -37,7 +37,7 @@ const Navlinks: FC = (): JSX.Element => {
   return (
     <NavlinksStyled>
       <NavItem label="Home" route={toHome} />
-      <NavItem label="Projects" route={toProjects} />
+      <NavItem label="All Projects" route={toProjects} />
       <NavItem label="Tokens" route={toTokens} icon={iHashtag} />
       <NavItem label="Games" route={toGames} icon={iHashtag} />
       <NavItem label="BTC" route={toBtc} icon={iHashtag} />
@@ -51,7 +51,7 @@ const NavlinksStyled = styled.nav`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   padding: 0 1rem;
 `
 

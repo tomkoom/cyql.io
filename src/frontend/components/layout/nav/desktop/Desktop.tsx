@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
+import { device } from "@/styles/breakpoints"
 
 // hooks
 import { useNav } from "@/hooks/_index"
@@ -39,7 +40,11 @@ const DesktopStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.5rem;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    justify-content: unset;
+  }
 `
 
 const Main = styled.div`

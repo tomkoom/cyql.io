@@ -43,6 +43,7 @@ const SocialsStyled = styled.ul`
     font-size: var(--fs6);
     background-color: var(--underlay1);
     border-radius: 50%;
+    transition: var(--transition1);
 
     &#x {
       color: var(--primaryColor);

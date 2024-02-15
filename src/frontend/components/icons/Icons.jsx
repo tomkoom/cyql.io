@@ -54,6 +54,7 @@ import {
   faCoins,
   faUser,
   faHashtag,
+  faInfinity
 } from "@fortawesome/free-solid-svg-icons"
 import {
   faXTwitter,
@@ -122,6 +123,7 @@ export const iCircleDot = <FontAwesomeIcon icon={faCircleDot} />
 export const iCoins = <FontAwesomeIcon icon={faCoins} />
 export const iUser = <FontAwesomeIcon icon={faUser} />
 export const iHashtag = <FontAwesomeIcon icon={faHashtag} />
+export const iInfinity = <FontAwesomeIcon icon={faInfinity} />
 
 // brands
 export const iX = <FontAwesomeIcon icon={faXTwitter} />

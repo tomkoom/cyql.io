@@ -3,10 +3,7 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 import environment from "vite-plugin-environment"
 import svgr from "vite-plugin-svgr"
-import dotenv from "dotenv"
 import { resolve } from "node:path"
-
-dotenv.config()
 
 const alias = [{ find: "@", replacement: resolve(__dirname, "./src/frontend") }]
 

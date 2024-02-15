@@ -9,6 +9,11 @@ const staffPicksItems = [
     text: "decentralized social network",
   },
   {
+    id: "30",
+    title: "IDgeek",
+    text: "internet identity marketplace",
+  },
+  {
     id: "369",
     title: "OpenChat",
     text: "decentralized chat app",
@@ -17,11 +22,6 @@ const staffPicksItems = [
     id: "188",
     title: "DSCVR",
     text: "web3 social media",
-  },
-  {
-    id: "30",
-    title: "IDgeek",
-    text: "internet identity marketplace",
   },
   {
     id: "79",

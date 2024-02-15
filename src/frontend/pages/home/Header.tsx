@@ -18,7 +18,7 @@ const Header: FC = (): JSX.Element => {
         <span className="projects_num" onClick={toProjects}>
           {projectsNum > 0 ? projectsNum : "..."}
         </span>{" "}
-        #IC projects
+        #ic projects
       </Title>
     </HeaderStyled>
   )
