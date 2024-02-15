@@ -13,7 +13,6 @@ import {
   // ProjectProposals,
   Promo,
   StaffPicks,
-  Flex,
 } from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
@@ -59,9 +58,10 @@ const Home: FC = (): JSX.Element => {
         onClick={navigateToListProject}
       />
       <StaffPicks />
-      {/* <Flex /> */}
       <Promo />
       {/* <ProjectProposals /> */}
+
+      <Divider />
 
       <Section>
         <Title>
@@ -71,6 +71,8 @@ const Home: FC = (): JSX.Element => {
         <HighlightedProjects projects={projects} />
       </Section>
 
+      <Divider />
+
       <Section>
         <Title>
           <h3>new tokens</h3>
@@ -79,12 +81,23 @@ const Home: FC = (): JSX.Element => {
         <HighlightedProjects projects={projectsTokens} />
       </Section>
 
+      <Divider />
+
       <Section>
         <Title>
           <h3>new nfts</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projectsNfts} />
+      </Section>
+
+      <Divider />
+
+      <Section>
+        <Title style={{ justifyContent: "center" }}>
+          <h3>join community</h3>
+        </Title>
+        <JoinCommunity />
       </Section>
 
       {/* popular projects */}
@@ -153,14 +166,6 @@ const Home: FC = (): JSX.Element => {
         <Exchanges />
       </Section>
       <Divider /> */}
-
-      {/* join community */}
-      <Section>
-        <Title>
-          <h3>join community</h3>
-        </Title>
-        <JoinCommunity />
-      </Section>
     </HomeStyled>
   )
 }
@@ -181,14 +186,14 @@ const Title = styled.div`
   margin-bottom: 1rem;
 
   > h3 {
-    font-size: var(--fs4);
+    font-size: var(--fs5);
   }
 `
 
 const Divider = styled.div`
   height: 1px;
   box-shadow: 0 1px 0 0 var(--underlay1);
-  margin-bottom: 4rem;
+  margin-bottom: 3rem 0;
 `
 
 export default Home

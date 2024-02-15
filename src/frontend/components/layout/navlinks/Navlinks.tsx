@@ -17,19 +17,30 @@ const Navlinks: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { userId } = useAuth()
-  const { toHome, toProjects, toSubmit, toAdmin } = useNav()
+  const { toHome, toProjects, toAdmin } = useNav()
 
-  const toTokens = () => {
+  const toTokens = (): void => {
     navigate(`/projects`)
     dispatch(setCategory("Tokens"))
   }
+
+  const toGames = (): void => {
+    navigate(`/projects`)
+    dispatch(setCategory("Games"))
+  }
+
+  const toBtc = (): void => {
+    navigate(`/projects`)
+    dispatch(setCategory("BTC"))
+  }
+
   return (
     <NavlinksStyled>
       <NavItem label="Home" route={toHome} />
-      <NavItem label="All Projects" route={toProjects} />
+      <NavItem label="Projects" route={toProjects} />
       <NavItem label="Tokens" route={toTokens} icon={iHashtag} />
-      {/* <Navlink label="BTC" route={toBtc} icon={iHashtag} /> */}
-      {/* <Navlink label="submit" route={toSubmit} icon={iPlus} /> */}
+      <NavItem label="Games" route={toGames} icon={iHashtag} />
+      <NavItem label="BTC" route={toBtc} icon={iHashtag} />
       {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} />}
     </NavlinksStyled>
   )

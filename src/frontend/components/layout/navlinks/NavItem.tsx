@@ -10,8 +10,8 @@ interface NavItemProps {
 const NavItem: FC<NavItemProps> = ({ label, route, icon }): JSX.Element => {
   return (
     <NavItemStyled onClick={route}>
-      {icon && <Icon>{icon}</Icon>}
-      <Label>{label}</Label>
+      {icon && <span className="icon">{icon}</span>}
+      <span className="label">{label}</span>
     </NavItemStyled>
   )
 }
@@ -31,18 +31,13 @@ const NavItemStyled = styled.div`
   &:hover {
     background-color: var(--underlay1);
   }
-`
+  > span.icon {
+    color: var(--highlight3);
+  }
 
-const Label = styled.span`
-  white-space: nowrap;
-`
-
-const Icon = styled.span`
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
-  color: var(--highlight3);
+  > span.label {
+    white-space: nowrap;
+  }
 `
 
 export default NavItem

@@ -59,6 +59,7 @@ const Promo: FC = (): JSX.Element => {
 const PromoStyled = styled.ul`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 
   > li {

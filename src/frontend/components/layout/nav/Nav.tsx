@@ -21,6 +21,7 @@ const NavStyled = styled.header`
 
 const Main = styled.div`
   padding: 0.5rem 2rem;
+  background-color: var(--background);
 
   @media ${device.laptop} {
     padding: 0.5rem 1rem;

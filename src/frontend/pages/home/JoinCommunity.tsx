@@ -6,7 +6,6 @@ import { X_URL, DISCORD_URL } from "@/constants/constants"
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDiscord, faXTwitter } from "@fortawesome/free-brands-svg-icons"
-import { iAngleRight } from "@/components/icons/Icons"
 
 const JoinCommunity: FC = (): JSX.Element => {
   const iconTwitter = <Icon icon={faXTwitter} id="twitter" />
@@ -28,9 +27,7 @@ const JoinCommunity: FC = (): JSX.Element => {
         <li key={id}>
           <a id={id} href={link} rel="noreferrer noopener" target="_blank">
             {icon}
-            <span>
-              {label} {iAngleRight}
-            </span>
+            <span>{label}</span>
           </a>
         </li>
       ))}
@@ -40,7 +37,7 @@ const JoinCommunity: FC = (): JSX.Element => {
 
 const JoinCommunityStyled = styled.ul`
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 
   @media ${device.tablet} {
@@ -51,14 +48,15 @@ const JoinCommunityStyled = styled.ul`
     flex: 1;
 
     > a {
+      height: 3rem;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: center;
       gap: 0.5rem;
       font-weight: var(--fwMedium);
       background-color: var(--underlay1);
-      padding: 1.25rem;
-      border-radius: 0.75rem;
+      padding: 0 1.25rem;
+      border-radius: 1.5rem;
       transition: var(--transition1);
 
       &#x:hover {
@@ -79,7 +77,8 @@ const JoinCommunityStyled = styled.ul`
 `
 
 const Icon = styled(FontAwesomeIcon)`
-  font-size: var(--fs4);
+  font-size: var(--fs5);
+  opacity: 0.5;
 `
 
 export default JoinCommunity

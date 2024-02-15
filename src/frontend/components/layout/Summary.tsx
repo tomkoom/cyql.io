@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 
-// redux
+// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjectsNum } from "@/state/projects"
 
@@ -10,31 +10,27 @@ const Summary: FC = (): JSX.Element => {
 
   return (
     <SummaryStyled>
-      <ul>
-        <li>
-          all projects: <Highlight>{projectsNum}</Highlight>
-        </li>
-      </ul>
+      all projects: <span className="num">{projectsNum}</span>
     </SummaryStyled>
   )
 }
 
-const SummaryStyled = styled.div`
-  height: 2rem;
+const SummaryStyled = styled.span`
+  height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
   font-size: var(--fs7);
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
-`
 
-const Highlight = styled.span`
-  font-family: var(--monospace);
-  font-size: var(--fs6);
-  font-weight: var(--fwBold);
-  color: var(--highlight3);
+  > span.num {
+    font-family: var(--monospace);
+    font-size: var(--fs6);
+    color: var(--primaryColor);
+  }
 `
 
 export default Summary
