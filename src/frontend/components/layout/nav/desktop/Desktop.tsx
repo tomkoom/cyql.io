@@ -1,16 +1,14 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-// import { iCube } from "@/components/icons/Icons"
 
 // hooks
-import useNav from "@/hooks/useNav"
+import { useNav } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
 
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./_index"
 import { Nft } from "../_index"
 import { Logo, Price, Theme } from "@/components/ui/_index"
-// import { LinkBtn } from "@/components/btns/_index"
 
 const Desktop: FC = (): JSX.Element => {
   const { toHome } = useNav()
@@ -28,9 +26,8 @@ const Desktop: FC = (): JSX.Element => {
         <Price />
         <Socials />
         <Theme />
-        {/* <LinkBtn btnType="secondary" text="api" icon={iCube} url="https://docs.cyql.io/" /> */}
         <Nft />
-        {isAuthenticated && userId ? <ProfileBtn /> : <SignInBtn />}
+        {isAuthenticated ? <ProfileBtn /> : <SignInBtn />}
       </Controls>
     </DesktopStyled>
   )
@@ -41,18 +38,20 @@ const DesktopStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `
 
 const Main = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
 `
 
 const Controls = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  flex-wrap: wrap;
 `
 
 export default Desktop

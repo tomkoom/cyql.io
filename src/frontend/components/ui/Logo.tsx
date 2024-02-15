@@ -26,6 +26,7 @@ const LogoStyled = styled.div`
   align-items: center;
   gap: 0.25rem;
   cursor: pointer;
+  transition: var(--transition1);
 
   &:hover {
     opacity: 0.8;

@@ -39,8 +39,9 @@ const NavlinksStyled = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
   margin-bottom: 1rem;
+  padding: 0 1rem;
 `
 
 export default Navlinks
