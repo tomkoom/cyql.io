@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, createSearchParams } from "react-router-dom"
 
 const useNav = () => {
   const navigate = useNavigate()
@@ -12,7 +12,13 @@ const useNav = () => {
   }
 
   const toProjects = () => {
-    navigate("/projects")
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        category: "All",
+        q: "",
+      })}`,
+    })
   }
 
   const toProject = (id: string) => {

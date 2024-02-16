@@ -15,7 +15,6 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjects } from "@/state/projects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
-import { setCategory } from "./state/projects/category"
 
 // state: modals
 import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals"

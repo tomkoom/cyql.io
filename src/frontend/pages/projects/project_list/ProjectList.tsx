@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
 import { useSearchParams } from "react-router-dom"
+import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 
 // utils
 import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects"
@@ -21,7 +22,6 @@ import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectCategory } from "@/state/projects/category"
 import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/loadMore"
 import { selectSort } from "@/state/projects/sort"
 import {
@@ -38,8 +38,9 @@ interface ProjectListProps {
 const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { toProject } = useNav()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const sort = useAppSelector(selectSort)
+  const category = searchParams.get("category")
 
   // projects
   const projects = useAppSelector(selectActiveProjects)
@@ -47,7 +48,6 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   const itemsVisible = useAppSelector(selectItemsVisibleProjects)
 
   // filter
-  const category = useAppSelector(selectCategory)
   const openSource = useAppSelector(selectFilterByOpenSource)
   const onChain = useAppSelector(selectFilterByOnChain)
   const grantee = useAppSelector(selectFilterByGrantee)

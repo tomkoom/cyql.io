@@ -1,21 +1,19 @@
-import React from "react";
-import css from "./Categories.module.css";
+import React from "react"
+import css from "./Categories.module.css"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux";
-import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum";
-import { selectSubmit, setSubmit } from "@/state/submit/submit";
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
+import { selectSubmit, setSubmit } from "@/state/submit/submit"
 
 const Categories = () => {
-  const dispatch = useAppDispatch();
-  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum);
-  const submit = useAppSelector(selectSubmit);
+  const dispatch = useAppDispatch()
+  const categoriesSortedByNum = useAppSelector(selectCategoriesSortedByNum)
+  const submit = useAppSelector(selectSubmit)
 
   const setCategory = (e) => {
-    dispatch(
-      setSubmit({ ...submit, [e.target.name]: e.target.value })
-    );
-  };
+    dispatch(setSubmit({ ...submit, [e.target.name]: e.target.value }))
+  }
 
   return (
     <div className={css.categories}>
@@ -43,7 +41,7 @@ const Categories = () => {
           ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Categories;
+export default Categories

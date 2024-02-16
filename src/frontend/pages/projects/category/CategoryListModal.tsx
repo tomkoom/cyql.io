@@ -2,10 +2,11 @@ import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
 import type { Category } from "@/state/_types/types"
+import { useSearchParams } from "react-router-dom"
+import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { setCategory, selectCategory } from "@/state/projects/category"
+import { useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjects } from "@/state/projects"
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
@@ -18,18 +19,30 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   openCategoryList,
   setOpenCategoryList,
 }): JSX.Element => {
-  const dispatch = useAppDispatch()
-  const category = useAppSelector(selectCategory)
   const projects = useAppSelector(selectActiveProjects)
   const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
-  const clickCategory = (categoryLabel: string): void => {
-    dispatch(setCategory(categoryLabel))
-    closeModal()
+  // ...
+  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
+  const category = searchParams.get("category")
+
+  const updateCategory = (categoryLabel: string) => {
+    return setSearchParams(
+      (prev) => {
+        prev.set("category", categoryLabel)
+        return prev
+      },
+      { replace: true }
+    )
   }
 
   const closeModal = (): void => {
     setOpenCategoryList(false)
+  }
+
+  const clickCategory = (categoryLabel: string): void => {
+    updateCategory(categoryLabel)
+    closeModal()
   }
 
   const getCategoryNum = (category: Category): number => {

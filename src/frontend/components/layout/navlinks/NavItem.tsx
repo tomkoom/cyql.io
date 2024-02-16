@@ -22,7 +22,7 @@ const NavItemStyled = styled.div`
   gap: 0.25rem;
   height: 2.75rem;
   padding: 0 1rem;
-  font-size: 1.1rem;
+  font-size: var(--fs6);
   font-weight: var(--fwMedium);
   background-color: var(--underlay1);
   border-radius: 1.375rem;

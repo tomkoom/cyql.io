@@ -29,8 +29,16 @@ export const X_URL = "https://x.com/cyqlio"
 export const DISCORD_URL = "https://discord.gg/AnjyrfvvXX"
 export const COOKIE_POLICY =
   "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
+export const PRICE_URL =
+  "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd&include_24hr_change=true"
 
 // assets
 export const IC_LOGO = iclogo
 export const LOGO_COLOR = logo_color
 export const LOGO_GRAY = logo_gray
+
+// ...
+export const PROJECTS_SEARCH_PARAMS_INITIAL = {
+  category: "All",
+  q: "",
+}

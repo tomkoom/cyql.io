@@ -4,7 +4,7 @@ import styled from "styled-components"
 const ListProject: FC = (): JSX.Element => {
   return (
     <ListProjectStyled>
-      <p>Listing is under dev and will be available soon. Thank you for being with us!</p>
+      <p>Listing is under dev and will be available soon. Thank you for following!</p>
     </ListProjectStyled>
   )
 }

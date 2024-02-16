@@ -20,10 +20,11 @@ import {
 
 const Projects: FC = (): JSX.Element => {
   // search
-  const initial = { q: "" }
+  const initial = { category: "All", q: "" }
   const [search, setSearch] = useState("")
   const debounced = useDebounceCallback(setSearch, 500)
   const [searchParams, setSearchParams] = useSearchParams(initial)
+  const category = searchParams.get("category")
   const searchQ = searchParams.get("q")
 
   // filter

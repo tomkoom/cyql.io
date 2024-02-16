@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { NavItem } from "./_index"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, createSearchParams } from "react-router-dom"
 import { iHashtag } from "@/components/icons/Icons"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 
@@ -9,29 +9,39 @@ import { verifyAdmin } from "@/utils/verifyAdmin"
 import { useAuth } from "@/context/Auth"
 import { useNav } from "@/hooks/_index"
 
-// state
-import { useAppDispatch } from "@/hooks/useRedux"
-import { setCategory } from "@/state/projects/category"
-
 const Navlinks: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { userId } = useAuth()
   const { toHome, toProjects, toAdmin } = useNav()
 
   const toTokens = (): void => {
-    navigate(`/projects`)
-    dispatch(setCategory("Tokens"))
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        category: "Tokens",
+        q: "",
+      })}`,
+    })
   }
 
   const toGames = (): void => {
-    navigate(`/projects`)
-    dispatch(setCategory("Games"))
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        category: "Games",
+        q: "",
+      })}`,
+    })
   }
 
   const toBtc = (): void => {
-    navigate(`/projects`)
-    dispatch(setCategory("BTC"))
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        category: "BTC",
+        q: "",
+      })}`,
+    })
   }
 
   return (

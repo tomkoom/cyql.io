@@ -20,7 +20,6 @@ import loading from "./loading"
 import projectModal from "./modals/projectModal"
 
 // projects
-import category from "./projects/category"
 import filter from "./projects/filter"
 import sort from "./projects/sort"
 import projects from "./projects"
@@ -53,7 +52,6 @@ const store = configureStore({
     projectModal,
 
     // projects
-    category,
     filter,
     sort,
     projects,
