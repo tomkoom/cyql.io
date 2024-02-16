@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import LOGO_COLOR from "@/assets/logo-color.svg"
-import LOGO_GRAY from "@/assets/logo-gray.svg"
+import { LOGO_COLOR, LOGO_GRAY } from "@/constants/constants"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

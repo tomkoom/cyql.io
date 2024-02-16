@@ -1,13 +1,14 @@
-import React, { FC, ChangeEvent } from "react"
+import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components"
+import { useSearchParams } from "react-router-dom"
+import { useDebounceCallback } from "usehooks-ts"
 
 // components
 import { Category, Filter, ProjectList, Sort } from "./_index"
 import { Search } from "@/components/ui/_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectSearch, setSearch } from "@/state/projects/search"
+import { useAppSelector } from "@/hooks/useRedux"
 import {
   setFilterByOnChain,
   selectFilterByOnChain,
@@ -18,20 +19,36 @@ import {
 } from "@/state/projects/filter"
 
 const Projects: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch()
-  const searchQuery = useAppSelector(selectSearch)
+  // search
+  const initial = { q: "" }
+  const [search, setSearch] = useState("")
+  const debounced = useDebounceCallback(setSearch, 500)
+  const [searchParams, setSearchParams] = useSearchParams(initial)
+  const searchQ = searchParams.get("q")
+
+  // filter
   const filterByOpenSource = useAppSelector(selectFilterByOpenSource)
   const filterByOnChain = useAppSelector(selectFilterByOnChain)
   const filterByGrantee = useAppSelector(selectFilterByGrantee)
 
-  const setSearchQ = (e: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(setSearch(e.target.value))
-  }
+  useEffect(() => {
+    return setSearchParams(
+      (prev) => {
+        prev.set("q", search)
+        return prev
+      },
+      { replace: true }
+    )
+  }, [search])
 
   return (
     <ProjectsStyled>
       <h2 className="pageTitle">discover new projects</h2>
-      <Search placeholder={"Search project by name"} value={searchQuery} onChange={setSearchQ} />
+      <Search
+        placeholder={"Search project by name"}
+        defaultValue={search}
+        onChange={(event) => debounced(event.target.value)}
+      />
 
       {/* controls */}
       <Controls>
@@ -50,7 +67,7 @@ const Projects: FC = (): JSX.Element => {
           <Sort />
         </div>
       </Controls>
-      <ProjectList />
+      <ProjectList searchQ={searchQ} />
     </ProjectsStyled>
   )
 }

@@ -19,7 +19,7 @@ const Socials: FC<SocialsProps> = ({ project }): JSX.Element => {
   )
 }
 
-const SocialsStyyled = styled.div`
+const SocialsStyyled = styled.ul`
   display: flex;
   align-items: center;
   gap: 0.25rem;

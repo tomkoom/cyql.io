@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-import useNav from "@/hooks/useNav"
+import { useNav } from "@/hooks/_index"
 import { useSearchParams } from "react-router-dom"
 
 // utils
@@ -22,7 +22,6 @@ import { Main, Socials, SocialsIc, Tags } from "./_index"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectCategory } from "@/state/projects/category"
-import { selectSearch } from "@/state/projects/search"
 import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/loadMore"
 import { selectSort } from "@/state/projects/sort"
 import {
@@ -32,11 +31,14 @@ import {
 } from "@/state/projects/filter"
 import { selectActiveProjects, selectActiveProjectsNum } from "@/state/projects"
 
-const ProjectList: FC = (): JSX.Element => {
+interface ProjectListProps {
+  searchQ: string
+}
+
+const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { toProject } = useNav()
   const [searchParams, setSearchParams] = useSearchParams()
-  const search = useAppSelector(selectSearch)
   const sort = useAppSelector(selectSort)
 
   // projects
@@ -77,7 +79,7 @@ const ProjectList: FC = (): JSX.Element => {
       <ul>
         {projects
           // filter
-          .filter((project) => filterBySearch(project, search))
+          .filter((project) => filterBySearch(project, searchQ))
           .filter((project) => filterByCategory(project, category))
           .filter((project) => filterByOpenSource(project, openSource))
           .filter((project) => filterByOnChain(project, onChain))

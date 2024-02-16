@@ -7,6 +7,16 @@ import AuthProvider from "@/context/Auth"
 import { Provider } from "react-redux"
 import store from "@/state/_store"
 
+let container = null
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (!container) {
+    const container = document.getElementById("root") as HTMLElement
+    const root = createRoot(container!)
+    root.render(<Index />)
+  }
+})
+
 const Index: FC = (): JSX.Element => {
   return (
     <React.StrictMode>
@@ -18,7 +28,3 @@ const Index: FC = (): JSX.Element => {
     </React.StrictMode>
   )
 }
-
-const container = document.getElementById("root")
-const root = createRoot(container!)
-root.render(<Index />)

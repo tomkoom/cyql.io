@@ -19,7 +19,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   setOpenCategoryList,
 }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const cat = useAppSelector(selectCategory)
+  const category = useAppSelector(selectCategory)
   const projects = useAppSelector(selectActiveProjects)
   const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
@@ -32,7 +32,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
     setOpenCategoryList(false)
   }
 
-  const getCategoriesNum = (category: Category): number => {
+  const getCategoryNum = (category: Category): number => {
     return category.id === "all"
       ? projects.length
       : projects.filter((p) => p.category.includes(category.label)).length
@@ -52,10 +52,10 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
           {categoriesSorted.map((c) => (
             <li
               key={c.id}
-              id={cat === c.label ? "active" : null}
+              id={category === c.label ? "active" : null}
               onClick={() => clickCategory(c.label)}
             >
-              {c.icon} {c.label} <span>{getCategoriesNum(c).toString()}</span>
+              {c.label} <span>{getCategoryNum(c).toString()}</span>
             </li>
           ))}
         </Categories>
@@ -82,14 +82,14 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
 `
 
 const Categories = styled.ul`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
   font-weight: var(--fwMedium);
   padding: 1rem;
 
@@ -104,14 +104,15 @@ const Categories = styled.ul`
     border-radius: 1.375rem;
     font-size: var(--fsText);
     cursor: pointer;
+    transition: var(--transition1);
 
     &:hover {
       background-color: var(--underlay2);
     }
 
-    #active {
-      color: white;
-      background-color: var(--highlight1);
+    &#active {
+      color: var(--background);
+      background-color: var(--primaryColor);
       box-shadow: unset;
     }
 

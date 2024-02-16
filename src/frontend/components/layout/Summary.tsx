@@ -10,7 +10,7 @@ const Summary: FC = (): JSX.Element => {
 
   return (
     <SummaryStyled>
-      all projects: <span className="num">{projectsNum}</span>
+      all projects: <span className="num">{projectsNum || "..."}</span>
     </SummaryStyled>
   )
 }

@@ -1,4 +1,6 @@
 import iclogo from "@/assets/logos/ic-logo.svg"
+import logo_color from "@/assets/logos/logo-color.svg"
+import logo_gray from "@/assets/logos/logo-gray.svg"
 
 export const II_ADMIN_1 = process.env.II_ADMIN_1
 export const II_ADMIN_2 = process.env.II_ADMIN_2
@@ -30,3 +32,5 @@ export const COOKIE_POLICY =
 
 // assets
 export const IC_LOGO = iclogo
+export const LOGO_COLOR = logo_color
+export const LOGO_GRAY = logo_gray

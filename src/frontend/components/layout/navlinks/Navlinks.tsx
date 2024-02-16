@@ -51,6 +51,7 @@ const NavlinksStyled = styled.nav`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 0.25rem;
   margin: 1rem 0;
   padding: 0 1rem;
 `

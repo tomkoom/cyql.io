@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 interface CrossIconProps {
-  onClick?: () => void;
+  onClick?: () => void
 }
 
 const CrossIcon: FC<CrossIconProps> = ({ onClick }): JSX.Element => {
@@ -10,8 +10,8 @@ const CrossIcon: FC<CrossIconProps> = ({ onClick }): JSX.Element => {
     <Icon onClick={onClick ? onClick : undefined}>
       <div />
     </Icon>
-  );
-};
+  )
+}
 
 const Icon = styled.div`
   height: 3rem;
@@ -25,6 +25,7 @@ const Icon = styled.div`
   &:hover > div:before,
   &:hover > div:after {
     background-color: var(--primaryColor);
+    transition: var(--transition1);
   }
 
   > div {
@@ -41,6 +42,7 @@ const Icon = styled.div`
       width: 2px;
       border-radius: 1px;
       background-color: var(--secondaryColor);
+      transition: var(--transition1);
     }
 
     &::before {
@@ -51,6 +53,6 @@ const Icon = styled.div`
       transform: rotate(-45deg);
     }
   }
-`;
+`
 
-export default CrossIcon;
+export default CrossIcon

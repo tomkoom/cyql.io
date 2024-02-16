@@ -24,12 +24,13 @@ const NavItemStyled = styled.div`
   padding: 0 1rem;
   font-size: 1.1rem;
   font-weight: var(--fwMedium);
+  background-color: var(--underlay1);
   border-radius: 1.375rem;
   cursor: pointer;
   transition: var(--transition1);
 
   &:hover {
-    background-color: var(--underlay1);
+    background-color: var(--underlay2);
   }
   > span.icon {
     color: var(--highlight3);
