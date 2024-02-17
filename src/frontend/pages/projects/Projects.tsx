@@ -1,6 +1,7 @@
 import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components"
 import { useSearchParams } from "react-router-dom"
+import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 import { useDebounceCallback } from "usehooks-ts"
 
 // components
@@ -14,17 +15,13 @@ import {
   selectFilterByOnChain,
   setFilterByOpenSource,
   selectFilterByOpenSource,
-  setFilterByGrantee,
   selectFilterByGrantee,
 } from "@/state/projects/filter"
 
 const Projects: FC = (): JSX.Element => {
-  // search
-  const initial = { category: "All", q: "" }
   const [search, setSearch] = useState("")
   const debounced = useDebounceCallback(setSearch, 500)
-  const [searchParams, setSearchParams] = useSearchParams(initial)
-  const category = searchParams.get("category")
+  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const searchQ = searchParams.get("q")
 
   // filter
@@ -61,7 +58,6 @@ const Projects: FC = (): JSX.Element => {
             setFilter={setFilterByOpenSource}
           />
           <Filter label={"onchain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
-          <Filter label={"grantee:"} filter={filterByGrantee} setFilter={setFilterByGrantee} />
         </div>
 
         <div className="item">

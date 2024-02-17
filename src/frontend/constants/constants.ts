@@ -38,7 +38,11 @@ export const LOGO_COLOR = logo_color
 export const LOGO_GRAY = logo_gray
 
 // ...
+
 export const PROJECTS_SEARCH_PARAMS_INITIAL = {
   category: "All",
+  // openSource: "",
+  // onchain: "",
+  // order: "newest",
   q: "",
 }

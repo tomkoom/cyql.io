@@ -60,6 +60,7 @@ const initialState: AllCategoriesState = {
     { id: "btc", label: "BTC", icon: "" },
     { id: "ethereum", label: "Ethereum", icon: "" },
     { id: "ecommerse", label: "Ecommerce", icon: "" },
+    { id: "vcs", label: "VCs", icon: "" },
   ],
 }
 

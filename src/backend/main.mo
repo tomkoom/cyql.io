@@ -17,9 +17,6 @@ actor {
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
 
-  stable var usersEntries : [(T.UserId, T.User)] = [];
-  let users = HashMap.fromIter<T.UserId, T.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
-
   // projects
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
@@ -67,20 +64,6 @@ actor {
     return ?projectId
   };
 
-  // users
-
-  public shared ({ caller }) func registerUser() : async ?Text {
-    if (U.isAnon(caller)) return null;
-
-    switch (users.get(caller)) {
-      case (?u) return null;
-      case null {
-        users.put(caller, { id = Principal.toText(caller) });
-        ?Principal.toText(caller)
-      }
-    }
-  };
-
   // test
 
   public shared query ({ caller }) func whoami() : async Text {
@@ -90,12 +73,10 @@ actor {
   // stable
 
   system func preupgrade() {
-    projectsEntries := Iter.toArray(projects.entries());
-    usersEntries := Iter.toArray(users.entries())
+    projectsEntries := Iter.toArray(projects.entries())
   };
 
   system func postupgrade() {
-    projectsEntries := [];
-    usersEntries := []
+    projectsEntries := []
   }
 }
