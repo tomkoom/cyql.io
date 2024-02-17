@@ -4,11 +4,16 @@ import { NETWORK } from "@/constants/constants"
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
 
-const useBackend = () => {
+const useUsers = () => {
   const dispatch = useAppDispatch()
   const { actor, userId } = useAuth()
 
-  return {}
+  const registerUser = async (): Promise<void> => {
+    // add notify
+    await actor.registerUser()
+  }
+
+  return { registerUser }
 }
 
-export default useBackend
+export default useUsers

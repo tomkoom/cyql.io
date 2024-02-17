@@ -9,6 +9,7 @@ import Text "mo:base/Text";
 // ...
 import T "types";
 import U "utils";
+import C "_constants";
 
 actor {
 
@@ -17,16 +18,29 @@ actor {
 
   // users
 
-  public shared ({ caller }) func registerUser() : async ?Text {
-    if (U.isAnon(caller)) return null;
+  public shared ({ caller }) func registerUser(userId : T.UserId) : async ?Text {
+    assert (not U.isAnon(caller));
+    assert (U.isMain(caller));
 
-    switch (users.get(caller)) {
+    switch (users.get(userId)) {
       case (?u) return null;
       case null {
-        users.put(caller, { id = Principal.toText(caller) });
-        ?Principal.toText(caller)
+        let id = Principal.toText(userId);
+        users.put(userId, { id });
+        return ?id
       }
     }
+  };
+
+  public shared query ({ caller }) func usersNum() : async Nat {
+    assert (not U.isAnon(caller));
+    return users.size()
+  };
+
+  public shared query ({ caller }) func listUsers() : async [T.User] {
+    assert (U.isAdmin(caller));
+    let iter : Iter.Iter<T.User> = users.vals();
+    return Iter.toArray<T.User>(iter)
   };
 
   // test

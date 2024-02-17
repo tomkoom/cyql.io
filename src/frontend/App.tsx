@@ -1,13 +1,12 @@
-import React, { useEffect } from "react"
-import { size } from "./styles/breakpoints"
+import React, { FC, useEffect } from "react"
 import { RouterProvider } from "react-router-dom"
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 import { Router } from "@/routes/_index"
+import { NETWORK } from "@/constants/constants"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useWindowSize } from "@/hooks/useWindowSize"
-import useBackend from "./hooks/useBackend"
+import { useBackend, useUsers } from "./hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -16,21 +15,23 @@ import { selectActiveProjects } from "@/state/projects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
-// state: modals
-import { setSignInModal, setMobileMenuModal, selectMobileMenuModal } from "@/state/modals/modals"
-
-const App = () => {
+const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { userId, actor } = useAuth()
+  const { actor, isAuthenticated } = useAuth()
   const { refreshProjects } = useBackend()
-  const { width } = useWindowSize()
-  const mobileMenuModal = useAppSelector(selectMobileMenuModal)
+  const { registerUser } = useUsers()
   const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
 
   useEffect(() => {
+    if (!actor) return
     refreshProjects()
   }, [actor])
+
+  useEffect(() => {
+    if (!isAuthenticated) return
+    if (NETWORK !== "local") registerUser()
+  }, [isAuthenticated])
 
   // sort categories
   useEffect(() => {
@@ -38,13 +39,6 @@ const App = () => {
     const sorted = sortCategoriesByNum(allCategories, projects)
     dispatch(setCategoriesSortedByNum(sorted))
   }, [projects])
-
-  // // reset mobile menu when deivice size > 1024
-  // useEffect(() => {
-  //   if (mobileMenuModal && width > size.laptop) {
-  //     dispatch(setMobileMenuModal(false))
-  //   }
-  // }, [width])
 
   // // close sign in modal after user has logged
   // useEffect(() => {

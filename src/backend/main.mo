@@ -8,11 +8,17 @@ import Debug "mo:base/Debug";
 import Array "mo:base/Array";
 import Text "mo:base/Text";
 
+// canisters
+import Users "users_interface";
+
 // ...
 import T "types";
 import U "utils";
+import C "_constants";
 
 actor {
+  // canisters
+  let usersCanister = actor (C.usersCanisterId) : Users.Self;
 
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
@@ -62,6 +68,18 @@ actor {
 
     projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
     return ?projectId
+  };
+
+  // users
+
+  public shared ({ caller }) func registerUser() : async ?Text {
+    assert (not U.isAnon(caller));
+    let userId = caller;
+    return await usersCanister.registerUser(userId)
+  };
+
+  public func usersNum() : async Nat {
+    return await usersCanister.usersNum()
   };
 
   // test
