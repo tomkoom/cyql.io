@@ -1,13 +1,11 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-
-// icons
-import { iAngleRight } from "@/components/icons/Icons";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { iAngleRight } from "@/components/icons/Icons"
 
 interface BtnProps {
-  label: string;
-  logo: string;
-  onClick: () => void;
+  label: string
+  logo: string
+  onClick: () => void
 }
 
 const Btn: FC<BtnProps> = ({ label, logo, onClick }): JSX.Element => {
@@ -19,8 +17,8 @@ const Btn: FC<BtnProps> = ({ label, logo, onClick }): JSX.Element => {
       </div>
       <Icon>{iAngleRight}</Icon>
     </BtnStyled>
-  );
-};
+  )
+}
 
 const BtnStyled = styled.button`
   height: 3.5rem;
@@ -32,6 +30,7 @@ const BtnStyled = styled.button`
   font-size: var(--fs5);
   padding: 0 1rem;
   border-radius: 1.75rem;
+  transition: var(--transition1);
 
   &:hover {
     background-color: var(--underlay1);
@@ -44,8 +43,8 @@ const BtnStyled = styled.button`
   }
 
   > div img {
-    width: 2rem;
-    height: 2rem;
+    width: 1.75rem;
+    height: 1.75rem;
     object-fit: cover;
     border-radius: 0.5rem;
   }
@@ -53,7 +52,7 @@ const BtnStyled = styled.button`
   > div span {
     font-weight: var(--fwBold);
   }
-`;
+`
 
 const Icon = styled.span`
   width: 1rem;
@@ -61,6 +60,6 @@ const Icon = styled.span`
   display: grid;
   place-items: center;
   color: var(--secondaryColor);
-`;
+`
 
-export default Btn;
+export default Btn

@@ -1,13 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// constants
 import { IC_LOGO } from "@/constants/constants"
-
-// components
 import { Btn } from "./_index"
-
-// auth
 import { useAuth } from "@/context/Auth"
 
 const SignInMethods: FC = (): JSX.Element => {
@@ -39,7 +33,7 @@ const SignInMethods: FC = (): JSX.Element => {
 const SignInMethodsStyled = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
 `
 
@@ -51,9 +45,10 @@ const Item = styled.div`
 `
 
 const Url = styled.a`
-  align-self: flex-start;
+  align-self: center;
   color: var(--secondaryColor);
   font-size: var(--fsText);
+  transition: var(--transition1);
 
   &:hover {
     color: var(--primaryColor);
