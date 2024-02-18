@@ -30,7 +30,7 @@ const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
   const projects = useAppSelector(selectAllProjects)
   const project = projects.filter((p) => p.id === id) || []
-  const shareModal = useAppSelector(selectShareModal)
+  const isShareModalOpen = useAppSelector(selectShareModal)
   const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)
 
   if (projects.length < 1) {
@@ -43,7 +43,6 @@ const Project: FC = (): JSX.Element => {
 
   return (
     <ProjectStyled>
-      {/* modal */}
       <ProjectModal isOpen={projectModalIsOpen} />
 
       <BackBtn />
@@ -100,19 +99,16 @@ const Project: FC = (): JSX.Element => {
             telegram={project.telegram}
             medium={project.medium}
           />
-
           <Meta createdAt={project.createdAt} />
           <Disclaimer />
 
-          {/* modals */}
-          {shareModal && (
-            <ShareModal
-              id={project.id}
-              name={project.name}
-              category={project.category}
-              description={project.description}
-            />
-          )}
+          <ShareModal
+            isOpen={isShareModalOpen}
+            id={project.id}
+            name={project.name}
+            category={project.category}
+            description={project.description}
+          />
         </Content>
       ))}
     </ProjectStyled>
@@ -121,6 +117,7 @@ const Project: FC = (): JSX.Element => {
 
 const ProjectStyled = styled.div`
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto 4rem auto;
 `
 

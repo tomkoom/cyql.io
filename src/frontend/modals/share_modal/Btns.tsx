@@ -1,10 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
 import { iTwitter, iTelegram, iFacebook, iRedditAlien, iLinkedin } from "@/components/icons/Icons"
-
-// react share
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -22,39 +18,38 @@ interface BtnsProps {
 }
 
 const Btns: FC<BtnsProps> = ({ id, name, category, description }): JSX.Element => {
-  // const url = `https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/#/projects/${id}`;
-  const url2 = `https://cyql.io/#/projects/${id}`
+  const url = `https://cyql.io/#/projects/${id}`
   const summary = `${name}: ${description}`
   const hashtags = [...category, "ICP", "Web3", "InternetComputer"]
 
   return (
     <BtnsStyled>
       <li>
-        <TwitterShareButton url={url2} title={`${summary} 🔗`} via="cyqlio" hashtags={hashtags}>
+        <TwitterShareButton url={url} title={`${summary} 🔗`} via="cyqlio" hashtags={hashtags}>
           <Icon id="twitter">{iTwitter}</Icon>
         </TwitterShareButton>
       </li>
 
       <li>
-        <TelegramShareButton url={url2} title={summary}>
+        <TelegramShareButton url={url} title={summary}>
           <Icon id="telegram">{iTelegram}</Icon>
         </TelegramShareButton>
       </li>
 
       <li>
-        <FacebookShareButton url={url2} quote={summary} hashtag="#Web3">
+        <FacebookShareButton url={url} quote={summary} hashtag="#Web3">
           <Icon id="facebook">{iFacebook}</Icon>
         </FacebookShareButton>
       </li>
 
       <li>
-        <RedditShareButton url={url2} title={summary}>
+        <RedditShareButton url={url} title={summary}>
           <Icon id="reddit">{iRedditAlien}</Icon>
         </RedditShareButton>
       </li>
 
       <li>
-        <LinkedinShareButton url={url2} title={name} summary={summary} source="cyql.io">
+        <LinkedinShareButton url={url} title={name} summary={summary} source="cyql.io">
           <Icon id="linkedin">{iLinkedin}</Icon>
         </LinkedinShareButton>
       </li>
@@ -68,8 +63,12 @@ const BtnsStyled = styled.ul`
   align-items: center;
   gap: 0.5rem;
 
-  > li:hover {
-    opacity: 0.75;
+  > li {
+    transition: var(--transition1);
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   > * span#twitter {
