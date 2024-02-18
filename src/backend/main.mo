@@ -7,6 +7,7 @@ import Buffer "mo:base/Buffer";
 import Debug "mo:base/Debug";
 import Array "mo:base/Array";
 import Text "mo:base/Text";
+import Time "mo:base/Time";
 
 // canisters
 import Users "users_interface";
@@ -22,6 +23,22 @@ actor {
 
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
+
+  // text data
+  stable var projects2Entries : [(T.ProjectId, T.Project2)] = [];
+  let projects2 = HashMap.fromIter<T.ProjectId, T.Project2>(projects2Entries.vals(), 10, Nat.equal, Hash.hash);
+
+  // project proposals
+  stable var projectProposalsEntries : [(T.ProjectProposalId, T.ProjectProposal)] = [];
+  let projectProposals = HashMap.fromIter<T.ProjectProposalId, T.ProjectProposal>(projectProposalsEntries.vals(), 10, Nat.equal, Hash.hash);
+
+  // projects2
+
+  public shared ({ caller }) func addProject2(project : T.Project) : async ?T.ProjectId {
+    let projectId = projects2.size();
+    projects.put(projectId, { project with id = projectId });
+    ?projectId
+  };
 
   // projects
 
@@ -88,13 +105,47 @@ actor {
     return Principal.toText(caller)
   };
 
+  // dao
+
+  public shared ({ caller }) func proposeProject(projectData : T.ProjectData) : async ?T.ProjectProposalId {
+    assert (not U.isAnon(caller));
+    // verify proposer
+
+    let id = projectProposals.size();
+    let timestamp = Time.now();
+
+    let proposal = {
+      id;
+      createdAt = timestamp;
+      updatedAt = null;
+      proposer = Principal.toText(caller);
+      state = #open;
+
+      // votes
+      votersYes = 0;
+      votersNo = 0;
+      votesYesTokens = { e8s = 0 };
+      votesNoTokens = { e8s = 0 };
+
+      // data
+      projectData
+    };
+
+    projectProposals.put(id, proposal);
+    ?id
+  };
+
   // stable
 
   system func preupgrade() {
-    projectsEntries := Iter.toArray(projects.entries())
+    projectsEntries := Iter.toArray(projects.entries());
+    projects2Entries := Iter.toArray(projects2.entries());
+    projectProposalsEntries := Iter.toArray(projectProposals.entries())
   };
 
   system func postupgrade() {
-    projectsEntries := []
+    projectsEntries := [];
+    projects2Entries := [];
+    projectProposalsEntries := []
   }
 }

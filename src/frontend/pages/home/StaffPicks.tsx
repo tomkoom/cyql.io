@@ -119,6 +119,7 @@ const StaffPicksStyled = styled.div`
     font-weight: var(--fwBold);
     color: var(--secondaryColor);
     margin-bottom: 0.5rem;
+    text-align: center;
   }
 
   > ul {

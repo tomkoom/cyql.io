@@ -1,4 +1,5 @@
 module {
+  public type Tokens = { e8s : Nat };
 
   // users
 
@@ -58,5 +59,41 @@ module {
 
     // to add:
     // tokenCanister
-  }
+  };
+
+  public type Project2 = {
+    id : Nat;
+    addedAt : Int;
+    updatedAt : Int;
+    data : Text
+  };
+
+  // dao
+
+  public type ProjectProposalId = Nat;
+  public type ProjectProposal = {
+    id : Nat;
+    createdAt : Int;
+    updatedAt : ?Int;
+    proposer : Text; // principal
+    state : ProposalState;
+
+    // votes
+    votersYes : Nat;
+    votersNo : Nat;
+    votesYesTokens : Tokens;
+    votesNoTokens : Tokens;
+
+    // data
+    projectData : ProjectData
+  };
+
+  public type ProposalState = {
+    #failed : Text;
+    #open;
+    #rejected;
+    #accepted
+  };
+
+  public type ProjectData = Text
 }

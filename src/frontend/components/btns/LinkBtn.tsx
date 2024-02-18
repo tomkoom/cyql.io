@@ -1,11 +1,11 @@
-import React, { FC, ReactNode, AnchorHTMLAttributes } from "react";
-import styled from "styled-components";
+import React, { FC, ReactNode, AnchorHTMLAttributes } from "react"
+import styled from "styled-components"
 
 interface LinkBtnProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  btnType: "primary" | "secondary";
-  text: string;
-  icon?: ReactNode;
-  url: string;
+  btnType: "primary" | "secondary"
+  text: string
+  icon?: ReactNode
+  url: string
 }
 
 const LinkBtn: FC<LinkBtnProps> = ({ btnType, text, icon, url, ...props }): JSX.Element => {
@@ -20,23 +20,23 @@ const LinkBtn: FC<LinkBtnProps> = ({ btnType, text, icon, url, ...props }): JSX.
       {icon !== undefined && <span>{icon}</span>}
       <span>{text}</span>
     </LinkBtnStyled>
-  );
-};
+  )
+}
 
 const colors = {
   primary: "#fff",
   secondary: "var(--primaryColor)",
-};
+}
 
 const bgColors = {
   primary: "var(--highlight1)",
   secondary: "var(--underlay1)",
-};
+}
 
 const hoverBgColors = {
   primary: "var(--highlight2)",
   secondary: "var(--underlay2)",
-};
+}
 
 const LinkBtnStyled = styled.a<{ btnType: "primary" | "secondary" }>`
   /* common */
@@ -48,6 +48,7 @@ const LinkBtnStyled = styled.a<{ btnType: "primary" | "secondary" }>`
   font-size: var(--fsText);
   font-weight: var(--fwBold);
   border-radius: 1.25rem;
+  transition: var(--transition1);
 
   /* custom */
   color: ${(p) => colors[p.btnType]};
@@ -56,6 +57,6 @@ const LinkBtnStyled = styled.a<{ btnType: "primary" | "secondary" }>`
   &:hover {
     background-color: ${(p) => hoverBgColors[p.btnType]};
   }
-`;
+`
 
-export default LinkBtn;
+export default LinkBtn

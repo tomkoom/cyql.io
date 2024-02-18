@@ -2,6 +2,9 @@ import Principal "mo:base/Principal";
 import C "_constants";
 
 module {
+
+  public func generateProposal(caller : Principal) : () {};
+
   public func isAnon(caller : Principal) : Bool {
     return Principal.isAnonymous(caller)
   };

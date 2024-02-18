@@ -1,17 +1,13 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-
-// hooks
-import useNav from "@/hooks/useNav";
-
-// icons
-import { iArrowLeft } from "@/components/icons/Icons";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { useNav } from "@/hooks/_index"
+import { iArrowLeft } from "@/components/icons/Icons"
 
 const BackBtn: FC = (): JSX.Element => {
-  const { goBack } = useNav();
+  const { goBack } = useNav()
 
-  return <BackBtnStyled onClick={goBack}>{iArrowLeft}</BackBtnStyled>;
-};
+  return <BackBtnStyled onClick={goBack}>{iArrowLeft}</BackBtnStyled>
+}
 
 const BackBtnStyled = styled.button`
   width: 3rem;
@@ -23,10 +19,11 @@ const BackBtnStyled = styled.button`
   background-color: var(--underlay1);
   border-radius: 50%;
   margin-bottom: 1rem;
+  transition: var(--transition1);
 
   &:hover {
     background-color: var(--underlay2);
   }
-`;
+`
 
-export default BackBtn;
+export default BackBtn

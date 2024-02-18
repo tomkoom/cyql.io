@@ -1,12 +1,10 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-
-// icons
-import { iAngleRight } from "@/components/icons/Icons";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { iAngleRight } from "@/components/icons/Icons"
 
 interface ViewMoreBtnProps {
-  text: string;
-  nav: () => void;
+  text: string
+  nav: () => void
 }
 
 const ViewMoreBtn: FC<ViewMoreBtnProps> = ({ text, nav }): JSX.Element => {
@@ -15,8 +13,8 @@ const ViewMoreBtn: FC<ViewMoreBtnProps> = ({ text, nav }): JSX.Element => {
       {text}
       <span>{iAngleRight}</span>
     </ViewMoreBtnStyled>
-  );
-};
+  )
+}
 
 const ViewMoreBtnStyled = styled.button`
   height: 3rem;
@@ -32,6 +30,7 @@ const ViewMoreBtnStyled = styled.button`
   border-radius: 1.5rem;
   border: none;
   cursor: pointer;
+  transition: var(--transition1);
 
   &:hover {
     background-color: var(--underlay2);
@@ -40,6 +39,6 @@ const ViewMoreBtnStyled = styled.button`
   > span {
     color: var(--tertiaryColor);
   }
-`;
+`
 
-export default ViewMoreBtn;
+export default ViewMoreBtn
