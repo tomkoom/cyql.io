@@ -4,9 +4,10 @@ module {
   public type User = { id : Text };
   public type UserId = Principal;
   public type Self = actor {
-    listUsers : shared () -> async [User];
+    getUser : shared UserId -> async ?User;
+    listUsers : shared query () -> async [User];
     registerUser : shared UserId -> async ?Text;
-    usersNum : shared () -> async Nat;
+    usersNum : shared query () -> async Nat;
     whoami : shared query () -> async Text
   }
 }

@@ -8,9 +8,11 @@ import Debug "mo:base/Debug";
 import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
+import List "mo:base/List";
 
-// canisters
+// services
 import Users "users_interface";
+import Nft "nft_interface";
 
 // ...
 import T "types";
@@ -19,7 +21,9 @@ import C "_constants";
 
 actor {
   // canisters
-  let usersCanister = actor (C.usersCanisterId) : Users.Self;
+  let users = actor (C.usersCanisterId) : Users.Self;
+  let nft = actor (C.nftCanisterId) : Nft.Self;
+  let daoParams = U.daoParamsInitial;
 
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
@@ -91,12 +95,11 @@ actor {
 
   public shared ({ caller }) func registerUser() : async ?Text {
     assert (not U.isAnon(caller));
-    let userId = caller;
-    return await usersCanister.registerUser(userId)
+    return await users.registerUser(caller)
   };
 
   public func usersNum() : async Nat {
-    return await usersCanister.usersNum()
+    return await users.usersNum()
   };
 
   // test
@@ -107,9 +110,9 @@ actor {
 
   // dao
 
-  public shared ({ caller }) func proposeProject(projectData : T.ProjectData) : async ?T.ProjectProposalId {
+  public shared ({ caller }) func proposeProject(payload : T.ProjectData) : async ?T.ProjectProposalId {
     assert (not U.isAnon(caller));
-    // verify proposer
+    let user = users.getUser(caller) else return null;
 
     let id = projectProposals.size();
     let timestamp = Time.now();
@@ -124,15 +127,106 @@ actor {
       // votes
       votersYes = 0;
       votersNo = 0;
-      votesYesTokens = { e8s = 0 };
-      votesNoTokens = { e8s = 0 };
+      votesYes = 0;
+      votesNo = 0;
+      // votesYesTokens = { e8s = 0 };
+      // votesNoTokens = { e8s = 0 };
+      voters = [];
 
       // data
-      projectData
+      payload
     };
 
     projectProposals.put(id, proposal);
     ?id
+  };
+
+  // vote on proposal
+  public shared ({ caller }) func vote(args : T.VoteArgs) : async ?T.ProposalState {
+    let ?proposal = projectProposals.get(args.proposalId) else return null;
+    let ?u = await users.getUser(caller) else return null;
+
+    // votes
+    var state = proposal.state;
+    var votersYes = proposal.votersYes;
+    var votersNo = proposal.votersNo;
+    var votesYes = proposal.votesYes;
+    var votesNo = proposal.votesNo;
+
+    // verify
+    if (state != #open) return null;
+    // check if haven't voted
+
+    let voter = { id = Principal.toText(caller); votedAt = Time.now() };
+    let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
+    votersBuf.add(voter);
+    let votingPower = await calculateVotingPower(caller);
+
+    switch (args.vote) {
+      case (#yes) { votersYes += 1; votesYes += votingPower };
+      case (#no) { votersNo += 1; votesNo += votingPower }
+    };
+
+    if (votesYes >= daoParams.proposalVoteThreshold) {
+      // todo: refund the proposal deposit when there are tokens and the proposal is accepted
+      state := #accepted
+    };
+
+    if (votesNo >= daoParams.proposalVoteThreshold) {
+      state := #rejected
+    };
+
+    let updatedProposal = {
+      id = proposal.id;
+      state;
+      createdAt = proposal.createdAt;
+      updatedAt = proposal.updatedAt;
+      proposer = proposal.proposer;
+      payload = proposal.payload;
+
+      // votes
+      votersYes;
+      votersNo;
+      votesYes;
+      votesNo;
+      voters = Buffer.toArray(votersBuf)
+    };
+
+    proposalsPut(args.proposalId, updatedProposal);
+    return ?state
+  };
+
+  // get voting power based on the amount of the nfts user has
+  private func calculateVotingPower(userPrincipal : Principal) : async Nat {
+    let initialVp = 1;
+    let principalOwnsOne = await nft.principalOwnsOne(userPrincipal);
+    if (principalOwnsOne) {
+      return 50 + initialVp
+    } else { return initialVp }
+  };
+
+  // get the current dao params
+  public query func getDaoParams() : async T.DaoParams {
+    return daoParams
+  };
+
+  // query
+
+  public query func listProjectProposals() : async [T.ProjectProposal] {
+    let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
+    return Iter.toArray<T.ProjectProposal>(iter)
+  };
+
+  public query func listAcceptedProjectProposals() : async [T.ProjectProposal] {
+    let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
+    // filter
+    return Iter.toArray<T.ProjectProposal>(iter)
+  };
+
+  // utils
+
+  private func proposalsPut(proposalId : T.ProjectProposalId, proposal : T.ProjectProposal) : () {
+    return projectProposals.put(proposalId, proposal)
   };
 
   // stable

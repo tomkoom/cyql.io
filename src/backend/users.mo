@@ -32,6 +32,12 @@ actor {
     }
   };
 
+  private shared ({ caller }) func getUser(userId : T.UserId) : async ?T.User {
+    assert (not U.isAnon(caller));
+    assert (U.isMain(caller));
+    return users.get(userId)
+  };
+
   public shared query ({ caller }) func usersNum() : async Nat {
     assert (not U.isAnon(caller));
     return users.size()

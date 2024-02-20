@@ -1,3 +1,5 @@
+import List "mo:base/List";
+
 module {
   public type Tokens = { e8s : Nat };
 
@@ -69,8 +71,18 @@ module {
   };
 
   // dao
-
   public type ProjectProposalId = Nat;
+  public type Vote = { #no; #yes };
+  public type VoteArgs = { vote : Vote; proposalId : Nat };
+  public type Voter = { id : Text; votedAt : Int };
+  public type ProposalState = {
+    #failed : Text;
+    #open;
+    #rejected;
+    #accepted
+  };
+  public type ProjectData = Text;
+
   public type ProjectProposal = {
     id : Nat;
     createdAt : Int;
@@ -81,19 +93,28 @@ module {
     // votes
     votersYes : Nat;
     votersNo : Nat;
-    votesYesTokens : Tokens;
-    votesNoTokens : Tokens;
+    votesYes : Nat;
+    votesNo : Nat;
+    // votesYesTokens : Tokens;
+    // votesNoTokens : Tokens;
+    voters : [Voter];
 
     // data
-    projectData : ProjectData
+    payload : ProjectData
   };
 
-  public type ProposalState = {
-    #failed : Text;
-    #open;
-    #rejected;
-    #accepted
+  // dao params
+
+  public type DaoParams = {
+    transferFee : Tokens;
+
+    // the amount of tokens needed to vote "yes" to accept, or "no" to reject
+    proposalVoteThreshold : Nat;
+
+    // the amount of tokens that will be temporarily deducted from the account of
+    // a user that submits a proposal. If the proposal is Accepted, this deposit is returned,
+    // otherwise it is lost. This prevents users from submitting superfluous proposals.
+    proposalSubmissionDeposit : Tokens
   };
 
-  public type ProjectData = Text
 }
