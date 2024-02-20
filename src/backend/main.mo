@@ -127,7 +127,10 @@ actor {
     let voter = { id = Principal.toText(caller); votedAt = Time.now() };
     let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
     votersBuf.add(voter);
-    let votingPower = await calculateVotingPower(caller);
+
+    // get voting power
+    let accountHex = U.principalToAccountHex(caller);
+    let votingPower = await _calculateVotingPower(accountHex);
 
     // verify
     if (state != #open) return #err("Proposal isn't open for voting.");
@@ -169,12 +172,19 @@ actor {
   };
 
   // get voting power based on the amount of the nfts user has
-  private func calculateVotingPower(userPrincipal : Principal) : async Nat {
-    let initialVp = 1;
-    let principalOwnsOne = await nft.principalOwnsOne(userPrincipal);
-    if (principalOwnsOne) {
-      return 50 + initialVp
-    } else { return initialVp }
+  private func _calculateVotingPower(userAccIdHex : Text) : async Nat {
+    var votingPower = 1;
+    let registry = await nft.getRegistry();
+
+    for (nft in registry.vals()) {
+      let (_ : Nft.TokenIndex, ownerAccIdHex : Nft.AccountIdentifier__1) = nft;
+      if (ownerAccIdHex == userAccIdHex) votingPower += 10
+    };
+    return votingPower
+  };
+
+  public func getVotingPower(accountHex : Text) : async Nat {
+    return await _calculateVotingPower(accountHex)
   };
 
   // get the current dao params

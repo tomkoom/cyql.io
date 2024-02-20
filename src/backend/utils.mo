@@ -1,7 +1,14 @@
 import Principal "mo:base/Principal";
 import Time "mo:base/Time";
+import Text "mo:base/Text";
+import Iter "mo:base/Iter";
+import Nat8 "mo:base/Nat8";
+import Blob "mo:base/Blob";
+
+// ...
 import C "_constants";
 import T "types";
+import Hex "./utils/hex";
 
 module {
 
@@ -51,5 +58,23 @@ module {
 
   public func isAdmin(caller : Principal) : Bool {
     return caller == Principal.fromText(C.admin)
-  }
+  };
+
+  // accounts
+
+  public func principalToAccountHex(principal : Principal) : Text {
+    let subAccount = null;
+    let account = Principal.toLedgerAccount(principal, subAccount);
+    return blobToHex(account)
+  };
+
+  public func blobToHex(blob : Blob) : Text {
+    let arr = Blob.toArray(blob);
+    return Hex.toHex(arr)
+  };
+
+  public func nat8ArrToHex(arr : [Nat8]) : Text {
+    return Hex.toHex(arr)
+  };
+
 }
