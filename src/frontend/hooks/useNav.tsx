@@ -11,7 +11,7 @@ const useNav = () => {
     navigate("/")
   }
 
-  const toProjects = () => {
+  const toProjects = (): void => {
     navigate({
       pathname: "projects",
       search: `?${createSearchParams({
@@ -21,19 +21,19 @@ const useNav = () => {
     })
   }
 
-  const toProject = (id: string) => {
+  const toProject = (id: string): void => {
     navigate(`/projects/${id}`)
   }
 
-  const toSubmit = () => {
-    navigate("/submit")
+  const toSubmit = (): void => {
+    navigate("/list")
   }
 
-  const toProfile = () => {
+  const toProfile = (): void => {
     navigate("/profile")
   }
 
-  const toAdmin = () => {
+  const toAdmin = (): void => {
     navigate("/admin")
   }
 

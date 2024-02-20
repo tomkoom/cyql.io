@@ -11,7 +11,6 @@ import { useBackend, useUsers } from "./hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-// import { setUpvotedProjects } from "@/state/profile/profile";
 import { selectActiveProjects } from "@/state/projects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
@@ -61,14 +60,6 @@ const App: FC = (): JSX.Element => {
   //     dispatch(setSignInModal(false))
   //   }
   // }, [userId])
-
-  // get upvoted projects
-  // useEffect(() => {
-  //   if (userId !== "") {
-  //     dispatch(setUpvotedProjects([]));
-  //   }
-  //   // fetch updated data
-  // }, [userId]);
 
   return <RouterProvider router={Router} />
 }

@@ -1,17 +1,14 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iBolt } from "@/components/icons/Icons"
+import Id from "./id/Id"
 
-// auth
+// hooks
 import { useAuth } from "@/context/Auth"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@/state/profile/profile"
 import { selectVotingPower } from "@/state/user"
-
-// components
-import Id from "./id/Id"
 
 const Profile: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -35,15 +32,12 @@ const Profile: FC = (): JSX.Element => {
   //     .catch((e) => console.log(e));
   // };
 
-  // useEffect(() => {
-  //   getOwnsNft();
-  // }, []);
-
   return (
     <ProfileStyled>
       <Id />
       <div className="id_item">
         <p className="label">voting power</p>
+        <p className="hint">each cyql nft adds 10 to vp</p>
         <p className="voting_power">
           <span>{iBolt}</span> {votingPower || "..."}
         </p>
@@ -76,8 +70,10 @@ const ProfileStyled = styled.div`
   margin-bottom: 2rem;
 
   > div.id_item {
-    > p.label {
-      margin-bottom: 0.5rem;
+    > p.hint {
+      margin-top: 0.25rem;
+      font-size: var(--fsText);
+      color: var(--secondaryColor);
     }
 
     > p.voting_power {
@@ -85,6 +81,7 @@ const ProfileStyled = styled.div`
       background-color: var(--underlay1);
       font-size: var(--fs5);
       font-weight: var(--fwBold);
+      margin-top: 0.5rem;
 
       > span {
         color: var(--highlight1);

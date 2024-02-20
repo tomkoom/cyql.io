@@ -9,7 +9,6 @@ import adminSearch from "./admin/adminSearch"
 import submit from "./submit/submit"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
-import profile from "./profile/profile"
 import user from "./user"
 
 // modals
@@ -42,7 +41,6 @@ const store = configureStore({
     submit,
     allCategories,
     categoriesSortedByNum,
-    profile,
     user,
 
     // modals
