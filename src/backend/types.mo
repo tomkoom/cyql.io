@@ -10,7 +10,7 @@ module {
     id : Text
   };
 
-  // projects
+  // curated projects
 
   public type ProjectId = Nat;
   public type Project = {
@@ -63,14 +63,8 @@ module {
     // tokenCanister
   };
 
-  public type Project2 = {
-    id : Nat;
-    addedAt : Int;
-    updatedAt : Int;
-    data : Text
-  };
-
   // dao
+
   public type ProjectProposalId = Nat;
   public type Vote = { #no; #yes };
   public type VoteArgs = { vote : Vote; proposalId : Nat };

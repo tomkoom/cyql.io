@@ -21,30 +21,22 @@ import C "_constants";
 
 actor {
   // canisters
+
   let users = actor (C.usersCanisterId) : Users.Self;
   let nft = actor (C.nftCanisterId) : Nft.Self;
   let daoParams = U.daoParamsInitial;
 
+  // maps
+
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
 
-  // text data
-  stable var projects2Entries : [(T.ProjectId, T.Project2)] = [];
-  let projects2 = HashMap.fromIter<T.ProjectId, T.Project2>(projects2Entries.vals(), 10, Nat.equal, Hash.hash);
+  // proposals
 
-  // project proposals
   stable var projectProposalsEntries : [(T.ProjectProposalId, T.ProjectProposal)] = [];
   let projectProposals = HashMap.fromIter<T.ProjectProposalId, T.ProjectProposal>(projectProposalsEntries.vals(), 10, Nat.equal, Hash.hash);
 
-  // projects2
-
-  public shared ({ caller }) func addProject2(project : T.Project) : async ?T.ProjectId {
-    let projectId = projects2.size();
-    projects.put(projectId, { project with id = projectId });
-    ?projectId
-  };
-
-  // projects
+  // curated projects
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
     let projectId = projects.size();
@@ -68,8 +60,6 @@ actor {
     let reversed = Array.reverse(arr);
     return Iter.toArray<T.Project>(iter)
   };
-
-  // project actions
 
   public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
     // add assert upvoter is user
@@ -137,8 +127,8 @@ actor {
       payload
     };
 
-    projectProposals.put(id, proposal);
-    ?id
+    proposalsPut(id, proposal);
+    return ?id
   };
 
   // vote on proposal
@@ -217,11 +207,11 @@ actor {
     return Iter.toArray<T.ProjectProposal>(iter)
   };
 
-  public query func listAcceptedProjectProposals() : async [T.ProjectProposal] {
-    let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
-    // filter
-    return Iter.toArray<T.ProjectProposal>(iter)
-  };
+  // public query func listAcceptedProjectProposals() : async [T.ProjectProposal] {
+  //   let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
+  //   // filter
+  //   return Iter.toArray<T.ProjectProposal>(iter)
+  // };
 
   // utils
 
@@ -233,13 +223,11 @@ actor {
 
   system func preupgrade() {
     projectsEntries := Iter.toArray(projects.entries());
-    projects2Entries := Iter.toArray(projects2.entries());
     projectProposalsEntries := Iter.toArray(projectProposals.entries())
   };
 
   system func postupgrade() {
     projectsEntries := [];
-    projects2Entries := [];
     projectProposalsEntries := []
   }
 }
