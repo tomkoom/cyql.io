@@ -32,9 +32,7 @@ actor {
     }
   };
 
-  private shared ({ caller }) func getUser(userId : T.UserId) : async ?T.User {
-    assert (not U.isAnon(caller));
-    assert (U.isMain(caller));
+  public shared ({ caller }) func getUser(userId : T.UserId) : async ?T.User {
     return users.get(userId)
   };
 

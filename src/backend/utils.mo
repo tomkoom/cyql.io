@@ -1,4 +1,5 @@
 import Principal "mo:base/Principal";
+import Time "mo:base/Time";
 import C "_constants";
 import T "types";
 
@@ -16,7 +17,29 @@ module {
     proposalSubmissionDeposit = { e8s = 0 }
   };
 
-  public func generateProposal(caller : Principal) : () {};
+  public func generateProposal(proposer : Principal, id : Nat, payload : T.ProjectData) : T.ProjectProposal {
+    let proposal = {
+      id;
+      createdAt = Time.now();
+      updatedAt = null;
+      proposer = Principal.toText(proposer);
+      state = #open;
+
+      // votes
+      votersYes = 0;
+      votersNo = 0;
+      votesYes = 0;
+      votesNo = 0;
+      // votesYesTokens = { e8s = 0 };
+      // votesNoTokens = { e8s = 0 };
+      voters = [];
+
+      // data
+      payload
+    };
+
+    return proposal
+  };
 
   public func isAnon(caller : Principal) : Bool {
     return Principal.isAnonymous(caller)

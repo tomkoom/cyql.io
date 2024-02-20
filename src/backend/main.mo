@@ -9,6 +9,7 @@ import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
 import List "mo:base/List";
+import Result "mo:base/Result";
 
 // services
 import Users "users_interface";
@@ -100,41 +101,20 @@ actor {
 
   // dao
 
-  public shared ({ caller }) func proposeProject(payload : T.ProjectData) : async ?T.ProjectProposalId {
+  public shared ({ caller }) func proposeProject(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
-    let user = users.getUser(caller) else return null;
-
+    let user = users.getUser(caller) else return #err("User not found.");
     let id = projectProposals.size();
-    let timestamp = Time.now();
-
-    let proposal = {
-      id;
-      createdAt = timestamp;
-      updatedAt = null;
-      proposer = Principal.toText(caller);
-      state = #open;
-
-      // votes
-      votersYes = 0;
-      votersNo = 0;
-      votesYes = 0;
-      votesNo = 0;
-      // votesYesTokens = { e8s = 0 };
-      // votesNoTokens = { e8s = 0 };
-      voters = [];
-
-      // data
-      payload
-    };
+    let proposal = U.generateProposal(caller, id, payload);
 
     proposalsPut(id, proposal);
-    return ?id
+    return #ok(id)
   };
 
   // vote on proposal
-  public shared ({ caller }) func vote(args : T.VoteArgs) : async ?T.ProposalState {
-    let ?proposal = projectProposals.get(args.proposalId) else return null;
-    let ?u = await users.getUser(caller) else return null;
+  public shared ({ caller }) func vote(args : T.VoteArgs) : async Result.Result<T.ProposalState, Text> {
+    let ?proposal = projectProposals.get(args.proposalId) else return #err("Proposal not found.");
+    let ?u = await users.getUser(caller) else return #err("User not found.");
 
     // votes
     var state = proposal.state;
@@ -143,14 +123,16 @@ actor {
     var votesYes = proposal.votesYes;
     var votesNo = proposal.votesNo;
 
-    // verify
-    if (state != #open) return null;
-    // check if haven't voted
-
+    // ...
     let voter = { id = Principal.toText(caller); votedAt = Time.now() };
     let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
     votersBuf.add(voter);
     let votingPower = await calculateVotingPower(caller);
+
+    // verify
+    if (state != #open) return #err("Proposal isn't open for voting.");
+    let voted = hasVoted(voter, args.proposalId);
+    if (voted) return #err("Already voted.");
 
     switch (args.vote) {
       case (#yes) { votersYes += 1; votesYes += votingPower };
@@ -183,7 +165,7 @@ actor {
     };
 
     proposalsPut(args.proposalId, updatedProposal);
-    return ?state
+    return #ok(state)
   };
 
   // get voting power based on the amount of the nfts user has
@@ -217,6 +199,18 @@ actor {
 
   private func proposalsPut(proposalId : T.ProjectProposalId, proposal : T.ProjectProposal) : () {
     return projectProposals.put(proposalId, proposal)
+  };
+
+  private func proposalsGet(proposalId : T.ProjectProposalId) : ?T.ProjectProposal {
+    return projectProposals.get(proposalId)
+  };
+
+  private func hasVoted(voter : T.Voter, proposalId : T.ProjectProposalId) : Bool {
+    let ?proposal = proposalsGet(proposalId) else return false;
+    let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
+    func equal(a : T.Voter, b : T.Voter) : Bool { return a.id == b.id };
+
+    return Buffer.contains<T.Voter>(votersBuf, voter, equal)
   };
 
   // stable
