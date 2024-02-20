@@ -13,6 +13,7 @@ import {
   setAllProjectsNum,
   setProjectsLoading,
 } from "@/state/projects"
+import { setVotingPower } from "@/state/user"
 
 const useBackend = () => {
   const dispatch = useAppDispatch()
@@ -69,10 +70,28 @@ const useBackend = () => {
   }
 
   const updateUpvote = async (projectId: ProjectId): Promise<void> => {
-    await actor.updateUpvote(projectId).then((res) => NETWORK === "local" && console.log(res))
+    await actor
+      .updateUpvote(BigInt(projectId))
+      .then((res) => NETWORK === "local" && console.log(res))
   }
 
-  return { refreshProjects, addProject, editProject, updateUpvote }
+  // dao
+
+  const refreshVotingPower = async (): Promise<void> => {
+    await actor.getVotingPower().then((res) => {
+      dispatch(setVotingPower(Number(res)))
+    })
+  }
+
+  return {
+    refreshProjects,
+    addProject,
+    editProject,
+    updateUpvote,
+
+    // dao
+    refreshVotingPower,
+  }
 }
 
 export default useBackend

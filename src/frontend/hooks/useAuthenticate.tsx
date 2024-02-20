@@ -1,6 +1,14 @@
 import { useAuth } from "@/context/Auth"
+import { useAppDispatch } from "@/hooks/useRedux"
+import { setClearUser } from "@/state/user"
 
-const useAuthenticate = () => {
+interface UseAuthenticate {
+  signIn: () => Promise<void>
+  signOut: () => Promise<void>
+}
+
+export const useAuthenticate = (): UseAuthenticate => {
+  const dispatch = useAppDispatch()
   const { login, logout } = useAuth()
 
   const signIn = async (): Promise<void> => {
@@ -9,10 +17,8 @@ const useAuthenticate = () => {
 
   const signOut = async (): Promise<void> => {
     await logout()
-    // clear state
+    dispatch(setClearUser())
   }
 
   return { signIn, signOut }
 }
-
-export default useAuthenticate

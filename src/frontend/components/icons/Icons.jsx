@@ -38,8 +38,6 @@ import {
   faGlobe,
   faCheckCircle,
   faSort,
-  faBriefcase,
-  faBolt,
   faList,
   faEye,
   faChartArea,
@@ -54,7 +52,8 @@ import {
   faCoins,
   faUser,
   faHashtag,
-  faInfinity
+  faInfinity, // unused
+  faBolt,
 } from "@fortawesome/free-solid-svg-icons"
 import {
   faXTwitter,
@@ -107,8 +106,6 @@ const iWallet = <FontAwesomeIcon icon={faWallet} />
 const iGlobe = <FontAwesomeIcon icon={faGlobe} />
 const iCheckCircle = <FontAwesomeIcon icon={faCheckCircle} />
 const iSort = <FontAwesomeIcon icon={faSort} />
-const iBriefcase = <FontAwesomeIcon icon={faBriefcase} />
-const iBolt = <FontAwesomeIcon icon={faBolt} />
 const iList = <FontAwesomeIcon icon={faList} />
 const iEye = <FontAwesomeIcon icon={faEye} />
 const iChartArea = <FontAwesomeIcon icon={faChartArea} />
@@ -124,6 +121,7 @@ export const iCoins = <FontAwesomeIcon icon={faCoins} />
 export const iUser = <FontAwesomeIcon icon={faUser} />
 export const iHashtag = <FontAwesomeIcon icon={faHashtag} />
 export const iInfinity = <FontAwesomeIcon icon={faInfinity} />
+export const iBolt = <FontAwesomeIcon icon={faBolt} />
 
 // brands
 export const iX = <FontAwesomeIcon icon={faXTwitter} />
@@ -176,8 +174,6 @@ export {
   iGlobe,
   iCheckCircle,
   iSort,
-  iBriefcase,
-  iBolt,
   iList,
   iEye,
   iChartArea,

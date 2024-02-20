@@ -101,7 +101,7 @@ actor {
 
   // dao
 
-  public shared ({ caller }) func proposeProject(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
+  public shared ({ caller }) func addProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
     let user = users.getUser(caller) else return #err("User not found.");
     let id = projectProposals.size();
@@ -109,6 +109,10 @@ actor {
 
     proposalsPut(id, proposal);
     return #ok(id)
+  };
+
+  public shared ({ caller }) func deleteProposal(proposalId : T.ProjectProposalId) : async () {
+    return projectProposals.delete(proposalId)
   };
 
   // vote on proposal
@@ -183,7 +187,8 @@ actor {
     return votingPower
   };
 
-  public func getVotingPower(accountHex : Text) : async Nat {
+  public shared ({ caller }) func getVotingPower() : async Nat {
+    let accountHex = U.principalToAccountHex(caller);
     return await _calculateVotingPower(accountHex)
   };
 

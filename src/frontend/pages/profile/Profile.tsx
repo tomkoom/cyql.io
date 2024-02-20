@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
+import { iBolt } from "@/components/icons/Icons"
 
 // auth
 import { useAuth } from "@/context/Auth"
@@ -7,12 +8,14 @@ import { useAuth } from "@/context/Auth"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectUpvotedProjects, selectOwnsNft, setOwnsNft } from "@/state/profile/profile"
+import { selectVotingPower } from "@/state/user"
 
 // components
 import Id from "./id/Id"
 
 const Profile: FC = (): JSX.Element => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
+  const votingPower = useAppSelector(selectVotingPower)
   // const { principalId } = useAuth();
   // const ownsNft = useAppSelector(selectOwnsNft);
   // const upvotedProjects = useAppSelector(selectUpvotedProjects);
@@ -39,6 +42,12 @@ const Profile: FC = (): JSX.Element => {
   return (
     <ProfileStyled>
       <Id />
+      <div className="id_item">
+        <p className="label">voting power</p>
+        <p className="voting_power">
+          <span>{iBolt}</span> {votingPower || "..."}
+        </p>
+      </div>
 
       {/* <div className={css.profileInfo}>
         <p>
@@ -58,6 +67,30 @@ const Profile: FC = (): JSX.Element => {
   )
 }
 
-const ProfileStyled = styled.div``
+const ProfileStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  > div.id_item {
+    > p.label {
+      margin-bottom: 0.5rem;
+    }
+
+    > p.voting_power {
+      padding: 0.5rem;
+      background-color: var(--underlay1);
+      font-size: var(--fs5);
+      font-weight: var(--fwBold);
+
+      > span {
+        color: var(--highlight1);
+      }
+    }
+  }
+`
 
 export default Profile

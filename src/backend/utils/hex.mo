@@ -2,8 +2,6 @@ import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 import Nat8 "mo:base/Nat8";
 
-// https://forum.dfinity.org/t/how-does-msg-caller-convert-to-icp-address/21228/6
-// https://github.com/ICEvent/Escrow/blob/main/backend/hex.mo
 // https://github.com/crusso/motoko-hex/blob/0.6/src/Hex.mo
 // https://github.com/ninegua/tipjar/blob/main/src/tipjar/Util.mo#L145
 

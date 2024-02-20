@@ -10,6 +10,7 @@ import submit from "./submit/submit"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import profile from "./profile/profile"
+import user from "./user"
 
 // modals
 import modals from "./modals/modals"
@@ -37,11 +38,12 @@ const store = configureStore({
     icpPrice,
     theme,
     loadMore,
-    profile,
     adminSearch,
     submit,
     allCategories,
     categoriesSortedByNum,
+    profile,
+    user,
 
     // modals
     modals,

@@ -3,16 +3,21 @@ import { AuthClient } from "@dfinity/auth-client"
 import { HttpAgent } from "@dfinity/agent"
 import type { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
-import { backend } from "../../declarations/backend"
 import { _SERVICE } from "../../declarations/backend/backend.did"
-
-// constants
 import { APP_DERIVATION_ORIGIN, BACKEND_CANISTER_ID_IC, HOST } from "@/constants/constants"
-
-// utils
 import { isCustomDomain } from "@/utils/isCustomDomain"
 
-const AuthContext = createContext(null)
+interface AuthContextValue {
+  signInLoading: boolean
+  isAuthenticated: boolean
+  userPrincipal: Principal
+  userId: string
+  actor: _SERVICE
+  login: () => Promise<void>
+  logout: () => Promise<void>
+}
+
+const AuthContext = createContext<AuthContextValue>(null)
 const useAuth = () => {
   return useContext(AuthContext)
 }
@@ -86,13 +91,12 @@ function AuthProvider({ children }) {
     return resetii()
   }
 
-  const value = {
+  const value: AuthContextValue = {
     signInLoading,
     isAuthenticated,
     userPrincipal,
     userId,
     actor,
-    backend,
 
     // ...
     login,
