@@ -1,13 +1,14 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import Id from "./id/Id"
-import { VotingPower } from "./_index"
+import { VotingPower, Nfts } from "./_index"
 
 const Profile: FC = (): JSX.Element => {
   return (
     <ProfileStyled>
       <Id />
       <VotingPower />
+      <Nfts />
     </ProfileStyled>
   )
 }

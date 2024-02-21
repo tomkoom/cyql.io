@@ -12,7 +12,7 @@ const VotingPower: FC = (): JSX.Element => {
   return (
     <VotingPowerStyled>
       <p className="label">voting power</p>
-      <p className="hint">each cyql nft adds 10 to vp</p>
+      <p className="hint">each cyql nft adds 10 points to vp</p>
 
       {votingPower ? (
         <p className="voting_power">
