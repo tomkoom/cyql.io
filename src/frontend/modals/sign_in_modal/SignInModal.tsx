@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import Modal from "@/modals/_Modal"
 import { useAuth } from "@/context/Auth"
+import { useScrollLock } from "@/hooks/_index"
 
 // components
 import { SignInMethods } from "./_index"
@@ -9,7 +10,7 @@ import { Spinner } from "@/components/ui/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setSignInModal } from "@/state/modals/modals"
+import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 
 interface SingInModalProps {
   isOpen: boolean
@@ -20,7 +21,7 @@ const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
   const { signInLoading } = useAuth()
 
   const closeModal = (): void => {
-    dispatch(setSignInModal(false))
+    dispatch(setSignInModalIsOpen(false))
   }
 
   if (signInLoading) {

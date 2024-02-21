@@ -4,8 +4,7 @@ import { useAuth } from "@/context/Auth"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { setSignInModal } from "@/state/modals/modals"
-import { selectSignInModal } from "@/state/modals/modals"
+import { setSignInModalIsOpen, selectSignInModalIsOpen } from "@/state/modals/signInModal"
 
 // components
 import { Spinner } from "@/components/ui/_index"
@@ -14,11 +13,11 @@ import { SignInModal } from "@/modals/_index"
 
 const SignInBtn: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const isOpen = useAppSelector(selectSignInModal)
+  const isOpen = useAppSelector(selectSignInModalIsOpen)
   const { signInLoading } = useAuth()
 
   const openSignInModal = (): void => {
-    dispatch(setSignInModal(true))
+    dispatch(setSignInModalIsOpen(true))
   }
 
   return (

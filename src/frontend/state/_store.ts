@@ -12,12 +12,12 @@ import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
 
 // modals
-import modals from "./modals/modals"
 import nftModal from "./modals/nftModal"
 import promoModal from "./modals/promoModal"
 import shareModal from "./modals/shareModal"
 import loading from "./loading"
 import projectModal from "./modals/projectModal"
+import signInModal from "./modals/signInModal"
 
 // projects
 import filter from "./projects/filter"
@@ -44,12 +44,12 @@ const store = configureStore({
     user,
 
     // modals
-    modals,
     nftModal,
     promoModal,
     shareModal,
     loading,
     projectModal,
+    signInModal,
 
     // projects
     filter,

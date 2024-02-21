@@ -6,7 +6,7 @@ import type { ProjectId } from "@/state/_types/types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setSignInModal } from "@/state/modals/modals"
+import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 import { setIsLoading } from "@/state/loading"
 
 interface UpvoteBtnProps {
@@ -34,7 +34,7 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
   }
 
   const openSignInModal = (): void => {
-    dispatch(setSignInModal(true))
+    dispatch(setSignInModalIsOpen(true))
   }
 
   if (!isAuthenticated) {
