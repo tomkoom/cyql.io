@@ -25,6 +25,9 @@ const user = createSlice({
     setVotingPower(state, { payload }: PayloadAction<number>) {
       state.votingPower = payload
     },
+    setNftIdsOwned(state, { payload }: PayloadAction<number[]>) {
+      state.nftIdsOwned = payload
+    },
     setClearUser(state) {
       state.accountId = initialState.accountId
       state.votingPower = initialState.votingPower
@@ -37,6 +40,7 @@ const user = createSlice({
 export const selectUser = (state: RootState) => state.user
 export const selectAccountId = (state: RootState) => state.user.accountId
 export const selectVotingPower = (state: RootState) => state.user.votingPower
+export const selectNftIdsOwned = (state: RootState) => state.user.nftIdsOwned
 
-export const { setAccountId, setVotingPower, setClearUser } = user.actions
+export const { setAccountId, setVotingPower, setNftIdsOwned, setClearUser } = user.actions
 export default user.reducer

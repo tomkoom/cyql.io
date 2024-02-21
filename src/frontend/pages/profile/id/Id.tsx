@@ -4,13 +4,8 @@ import { formatId } from "@/utils/format"
 import { useAuth } from "@/context/Auth"
 // import { Ids } from "./_index"
 
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectUser } from "@/state/user"
-
 const Id: FC = (): JSX.Element => {
-  const { userId } = useAuth()
-  const { accountId } = useAppSelector(selectUser)
+  const { userId, accounntIdHex } = useAuth()
 
   return (
     <IdStyled>
@@ -23,7 +18,7 @@ const Id: FC = (): JSX.Element => {
 
       <div className="id_item">
         <p className="label">account id</p>
-        <p className="value">{accountId || "..."}</p>
+        <p className="value">{accounntIdHex}</p>
       </div>
 
       {/* <Ids /> */}

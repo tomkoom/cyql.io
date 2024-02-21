@@ -7,7 +7,7 @@ import { getAccountIdHex } from "@/utils/getAccountIdHex"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useBackend, useUsers } from "./hooks/_index"
+import { useBackend, useUsers, useNft } from "./hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -18,9 +18,10 @@ import { setAccountId } from "@/state/user"
 
 const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { actor, isAuthenticated, userPrincipal } = useAuth()
+  const { actor, nft, isAuthenticated, userPrincipal, accounntIdHex } = useAuth()
   const { refreshProjects, refreshVotingPower } = useBackend()
   const { registerUser } = useUsers()
+  const { refreshUserOwnedNfts } = useNft()
   const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
 
@@ -28,6 +29,12 @@ const App: FC = (): JSX.Element => {
     if (!actor) return
     refreshProjects()
   }, [actor])
+
+  useEffect(() => {
+    if (nft && isAuthenticated && accounntIdHex) {
+      refreshUserOwnedNfts()
+    }
+  }, [nft, isAuthenticated, accounntIdHex])
 
   useEffect(() => {
     if (!isAuthenticated) return

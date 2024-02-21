@@ -1,18 +1,28 @@
 import React, { createContext, useContext, useState, useEffect } from "react"
 import { AuthClient } from "@dfinity/auth-client"
-import { HttpAgent } from "@dfinity/agent"
+import { HttpAgent, Actor } from "@dfinity/agent"
 import type { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
 import { _SERVICE } from "../../declarations/backend/backend.did"
-import { APP_DERIVATION_ORIGIN, BACKEND_CANISTER_ID_IC, HOST } from "@/constants/constants"
+import { idlFactory } from "@/idl/nft_idl"
+import {
+  APP_DERIVATION_ORIGIN,
+  BACKEND_CANISTER_ID_IC,
+  NFT_CANISTER_ID_IC,
+  HOST,
+} from "@/constants/constants"
 import { isCustomDomain } from "@/utils/isCustomDomain"
+import { getAccountIdHex } from "@/utils/getAccountIdHex"
+import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_interface"
 
 interface AuthContextValue {
   signInLoading: boolean
   isAuthenticated: boolean
   userPrincipal: Principal
+  accounntIdHex: string
   userId: string
   actor: _SERVICE
+  nft: NFT_SERVICE
   login: () => Promise<void>
   logout: () => Promise<void>
 }
@@ -29,8 +39,10 @@ function AuthProvider({ children }) {
   const [authClient, setAuthClient] = useState<AuthClient | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)
+  const [accounntIdHex, setAccounntIdHex] = useState<string>("")
   const [userId, setUserId] = useState<string>("")
   const [actor, setActor] = useState<_SERVICE>(null)
+  const [nft, setNft] = useState<NFT_SERVICE>(null)
 
   const init = (): void => {
     resetii()
@@ -43,29 +55,43 @@ function AuthProvider({ children }) {
   const resetii = async (): Promise<void> => {
     let authClient: AuthClient = null
     let isAuthenticated: boolean = false
+    let identity = null
     let userPrincipal: Principal = null
+    let accounntIdHex: string = ""
     let userId: string = ""
     let actor: _SERVICE = null
+    let nft: NFT_SERVICE = null
 
     // ...
     authClient = await AuthClient.create()
     isAuthenticated = await authClient.isAuthenticated()
-    const identity = authClient.getIdentity()
+    identity = authClient.getIdentity()
     userPrincipal = identity.getPrincipal()
+    accounntIdHex = getAccountIdHex(userPrincipal)
     userId = userPrincipal.toString()
     const agent = new HttpAgent({
       host: HOST,
       identity,
     })
+
+    // main
     actor = createActor(BACKEND_CANISTER_ID_IC, {
       agent,
+    })
+
+    // nft
+    nft = Actor.createActor(idlFactory, {
+      agent,
+      canisterId: NFT_CANISTER_ID_IC,
     })
 
     setAuthClient(authClient)
     setIsAuthenticated(isAuthenticated)
     setUserPrincipal(userPrincipal)
+    setAccounntIdHex(accounntIdHex)
     setUserId(userId)
     setActor(actor)
+    setNft(nft)
   }
 
   const login = async (): Promise<void> => {
@@ -95,8 +121,10 @@ function AuthProvider({ children }) {
     signInLoading,
     isAuthenticated,
     userPrincipal,
+    accounntIdHex,
     userId,
     actor,
+    nft,
 
     // ...
     login,
