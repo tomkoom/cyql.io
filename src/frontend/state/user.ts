@@ -1,11 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 
+export type Tokens = { e8s: number }
+
 interface UserState {
   accountId: string
   votingPower: number
   upvotedProjects: string[]
   nftIdsOwned: number[]
+
+  // balances
+  balanceIcp: Tokens
 }
 
 const initialState: UserState = {
@@ -13,6 +18,8 @@ const initialState: UserState = {
   votingPower: 0,
   upvotedProjects: [],
   nftIdsOwned: [],
+
+  balanceIcp: { e8s: 0 },
 }
 
 const user = createSlice({
@@ -28,6 +35,9 @@ const user = createSlice({
     setNftIdsOwned(state, { payload }: PayloadAction<number[]>) {
       state.nftIdsOwned = payload
     },
+    setUserBalanceIcp(state, { payload }: PayloadAction<Tokens>) {
+      state.balanceIcp = payload
+    },
     setClearUser(state) {
       state.accountId = initialState.accountId
       state.votingPower = initialState.votingPower
@@ -41,6 +51,8 @@ export const selectUser = (state: RootState) => state.user
 export const selectAccountId = (state: RootState) => state.user.accountId
 export const selectVotingPower = (state: RootState) => state.user.votingPower
 export const selectNftIdsOwned = (state: RootState) => state.user.nftIdsOwned
+export const selectUserBalanceIcp = (state: RootState) => state.user.balanceIcp
 
-export const { setAccountId, setVotingPower, setNftIdsOwned, setClearUser } = user.actions
+export const { setAccountId, setVotingPower, setNftIdsOwned, setUserBalanceIcp, setClearUser } =
+  user.actions
 export default user.reducer

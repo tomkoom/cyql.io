@@ -1,19 +1,25 @@
 import React, { createContext, useContext, useState, useEffect } from "react"
 import { AuthClient } from "@dfinity/auth-client"
 import { HttpAgent, Actor } from "@dfinity/agent"
-import type { Principal } from "@dfinity/principal"
+import { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
 import { _SERVICE } from "../../declarations/backend/backend.did"
-import { idlFactory } from "@/idl/nft_idl"
 import {
   APP_DERIVATION_ORIGIN,
   BACKEND_CANISTER_ID_IC,
   NFT_CANISTER_ID_IC,
+  ICP_LEDGER_CANISTER_ID_IC,
   HOST,
 } from "@/constants/constants"
 import { isCustomDomain } from "@/utils/isCustomDomain"
 import { getAccountIdHex } from "@/utils/getAccountIdHex"
+
+// nft
+import { idlFactory } from "@/idl/nft_idl"
 import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_interface"
+
+// ledger
+import { LedgerCanister } from "@dfinity/ledger-icp"
 
 interface AuthContextValue {
   signInLoading: boolean
@@ -23,6 +29,7 @@ interface AuthContextValue {
   userId: string
   actor: _SERVICE
   nft: NFT_SERVICE
+  icp: LedgerCanister
   login: () => Promise<void>
   logout: () => Promise<void>
 }
@@ -43,6 +50,7 @@ function AuthProvider({ children }) {
   const [userId, setUserId] = useState<string>("")
   const [actor, setActor] = useState<_SERVICE>(null)
   const [nft, setNft] = useState<NFT_SERVICE>(null)
+  const [icp, setIcp] = useState<LedgerCanister>(null)
 
   const init = (): void => {
     resetii()
@@ -61,6 +69,7 @@ function AuthProvider({ children }) {
     let userId: string = ""
     let actor: _SERVICE = null
     let nft: NFT_SERVICE = null
+    let icp: LedgerCanister = null
 
     // ...
     authClient = await AuthClient.create()
@@ -85,6 +94,12 @@ function AuthProvider({ children }) {
       canisterId: NFT_CANISTER_ID_IC,
     })
 
+    // ledger
+    icp = LedgerCanister.create({
+      agent,
+      canisterId: Principal.fromText(ICP_LEDGER_CANISTER_ID_IC),
+    })
+
     setAuthClient(authClient)
     setIsAuthenticated(isAuthenticated)
     setUserPrincipal(userPrincipal)
@@ -92,6 +107,7 @@ function AuthProvider({ children }) {
     setUserId(userId)
     setActor(actor)
     setNft(nft)
+    setIcp(icp)
   }
 
   const login = async (): Promise<void> => {
@@ -125,6 +141,7 @@ function AuthProvider({ children }) {
     userId,
     actor,
     nft,
+    icp,
 
     // ...
     login,

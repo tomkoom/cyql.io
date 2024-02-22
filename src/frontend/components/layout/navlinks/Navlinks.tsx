@@ -14,6 +14,16 @@ const Navlinks: FC = (): JSX.Element => {
   const { userId } = useAuth()
   const { toHome, toProjects, toAdmin } = useNav()
 
+  const toDapps = (): void => {
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        category: "dApps",
+        q: "",
+      })}`,
+    })
+  }
+
   const toTokens = (): void => {
     navigate({
       pathname: "projects",
@@ -58,6 +68,7 @@ const Navlinks: FC = (): JSX.Element => {
     <NavlinksStyled>
       <NavItem label="Home" route={toHome} />
       <NavItem label="All Projects" route={toProjects} />
+      <NavItem label="dApps" route={toDapps} icon={iHashtag} />
       <NavItem label="Tokens" route={toTokens} icon={iHashtag} />
       <NavItem label="NFTs" route={toNfts} icon={iHashtag} />
       <NavItem label="Games" route={toGames} icon={iHashtag} />
