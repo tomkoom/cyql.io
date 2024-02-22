@@ -48,3 +48,4 @@ export const PROJECTS_SEARCH_PARAMS_INITIAL = {
   // order: "newest",
   q: "",
 }
+export const E8S = 10 ** 8
