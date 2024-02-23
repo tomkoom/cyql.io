@@ -3,12 +3,12 @@ import type { RootState } from "@/state/_store"
 
 interface WithdrawNftModalState {
   isOpen: boolean
-  nftId: number
+  nftIdx: number
 }
 
 const initialState: WithdrawNftModalState = {
   isOpen: false,
-  nftId: undefined,
+  nftIdx: undefined,
 }
 
 const withdrawNftModal = createSlice({
@@ -18,10 +18,14 @@ const withdrawNftModal = createSlice({
     setWithdrawNftModalIsOpen(state, { payload }: PayloadAction<boolean>) {
       state.isOpen = payload
     },
+    setWithdrawNftModalNftIdx(state, { payload }: PayloadAction<number>) {
+      state.nftIdx = payload
+    },
   },
 })
 
 export const selectWithdrawNftModalIsOpen = (state: RootState) => state.withdrawNftModal.isOpen
+export const selectWithdrawNftModalNftIdx = (state: RootState) => state.withdrawNftModal.nftIdx
 
-export const { setWithdrawNftModalIsOpen } = withdrawNftModal.actions
+export const { setWithdrawNftModalIsOpen, setWithdrawNftModalNftIdx } = withdrawNftModal.actions
 export default withdrawNftModal.reducer

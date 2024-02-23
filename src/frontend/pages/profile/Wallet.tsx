@@ -51,7 +51,7 @@ const Wallet: FC = (): JSX.Element => {
             </span>
             <Btn
               btnType={"secondary"}
-              text={"withdraw"}
+              text={"Withdraw"}
               onClick={openWithdrawModal}
               disabled={isBtnDisabled}
             />

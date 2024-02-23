@@ -2,7 +2,6 @@ import { useAuth } from "@/context/Auth"
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
 import type { Project, ProjectId } from "@/state/_types/types"
 import { verifyAdmin } from "@/utils/verifyAdmin"
-import { NETWORK } from "@/constants/constants"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -13,7 +12,6 @@ import {
   setAllProjectsNum,
   setProjectsLoading,
 } from "@/state/projects"
-import { setVotingPower } from "@/state/user"
 
 const useBackend = () => {
   const dispatch = useAppDispatch()
@@ -42,15 +40,11 @@ const useBackend = () => {
     if (!verifyAdmin(userId)) return
     if (project.id !== "") return
 
-    await actor
-      .addProject({
-        ...project,
-        id: BigInt(0),
-        createdAt: String(Date.now()),
-      })
-      .then((res) => {
-        if (NETWORK === "local") console.log(`added`, res)
-      })
+    await actor.addProject({
+      ...project,
+      id: BigInt(0),
+      createdAt: String(Date.now()),
+    })
   }
 
   const editProject = async (project: Project): Promise<void> => {
@@ -64,23 +58,11 @@ const useBackend = () => {
       updatedAt: String(Date.now()),
     }
 
-    await actor.editProject(id, p).then((res) => {
-      if (NETWORK === "local") console.log(`edited:`, res)
-    })
+    await actor.editProject(id, p)
   }
 
   const updateUpvote = async (projectId: ProjectId): Promise<void> => {
-    await actor
-      .updateUpvote(BigInt(projectId))
-      .then((res) => NETWORK === "local" && console.log(res))
-  }
-
-  // dao
-
-  const refreshVotingPower = async (): Promise<void> => {
-    await actor.getVotingPower().then((res) => {
-      dispatch(setVotingPower(Number(res)))
-    })
+    await actor.updateUpvote(BigInt(projectId))
   }
 
   return {
@@ -88,9 +70,6 @@ const useBackend = () => {
     addProject,
     editProject,
     updateUpvote,
-
-    // dao
-    refreshVotingPower,
   }
 }
 

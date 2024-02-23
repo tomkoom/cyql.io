@@ -4,7 +4,6 @@ import CrossIcon from "@/components/icons/CrossIcon"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
 import { Btn } from "@/components/btns/_index"
 import type { Tokens } from "@/state/_types/types"
-import { DISCORD_URL } from "@/constants/constants"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -12,7 +11,7 @@ import { useIcpLedger } from "@/hooks/_index"
 
 // components
 import { RootModal } from "../_index"
-import { Steps } from "./_index"
+import { Steps, GetSupport } from "./_index"
 import { TextInput } from "@/components/ui/_index"
 
 // state
@@ -30,21 +29,16 @@ const getWithdrawAmountString = (balanceIcp: Tokens, tokenSymbol: string): strin
   return ((balanceIcp.e8s - ICP_FEE_E8S) / E8S).toString() + " " + tokenSymbol
 }
 
-const GetSupport: FC = (): JSX.Element => {
-  return (
-    <GetSupportStyled href={DISCORD_URL} target="_blank" rel="noreferrer noopener">
-      get support
-    </GetSupportStyled>
-  )
-}
-
 const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { accounntIdHex } = useAuth()
   const { refreshIcpBalance, sendIcp } = useIcpLedger()
+
+  // ...
+  const initialStep = 1
+  const [step, setStep] = useState<number>(initialStep)
   const [withdrawalAccountId, setWithdrawalAccountId] = useState<string>("")
   const [err, setErr] = useState<string>("")
-  const [step, setStep] = useState<number>(1)
 
   // token
   const { balanceIcp } = useAppSelector(selectUser)
@@ -52,15 +46,16 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
   const withdrawAmountStr = getWithdrawAmountString(balanceIcp, tokenSymbol)
 
   const reset = (): void => {
-    onClose()
+    setStep(initialStep)
     setWithdrawalAccountId("")
-    setStep(1)
+    setErr("")
+    onClose()
   }
 
   const validateId = (): boolean => {
     setErr("")
     if (withdrawalAccountId === "") {
-      setErr("can't be empty")
+      setErr("Can't be empty")
       return false
     }
 
@@ -103,12 +98,11 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
             <Inputs>
               <div className="input_field">
                 <label htmlFor="withdraw_address">
-                  enter destination <span>account id</span>
+                  Enter destination <span>account id</span>
                 </label>
 
                 <TextInput
                   id="withdraw_address"
-                  type="text"
                   value={withdrawalAccountId}
                   placeholder={`e.g. ${accounntIdHex}`}
                   onChange={(e) => setId(e)}
@@ -118,27 +112,27 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
 
               <div className="input_field">
                 <label htmlFor="withdraw_amount">
-                  amount to withdraw (readonly, all amount to be withdrawn)
+                  Amount to withdraw (readonly, all amount to be withdrawn)
                 </label>
 
-                <TextInput id="withdraw_amount" type="text" value={withdrawAmountStr} readOnly />
+                <TextInput id="withdraw_amount" value={withdrawAmountStr} readOnly />
                 <span className="hint">(balance minus fee)</span>
               </div>
             </Inputs>
 
-            <Btn btnType={"primary"} text={"withdraw"} onClick={nextStep} />
+            <Btn btnType={"primary"} text={"Withdraw"} onClick={nextStep} />
             <GetSupport />
           </div>
         ) : step === 2 ? (
           <div className="step">
             <Confirm>
               <div className="data_field">
-                <p className="label">withdraw to</p>
+                <p className="label">Withdraw to</p>
                 <p className="value">{withdrawalAccountId}</p>
               </div>
 
               <div className="data_field">
-                <p className="label">withdrawal amount</p>
+                <p className="label">Withdrawal amount</p>
                 <p className="value">{withdrawAmountStr}</p>
               </div>
             </Confirm>
@@ -247,15 +241,6 @@ const Confirm = styled.div`
     > p.label {
       margin-bottom: 0.5rem;
     }
-  }
-`
-
-const GetSupportStyled = styled.a`
-  color: var(--secondaryColor);
-  transition: var(--transition1);
-
-  &:hover {
-    color: var(--primaryColor);
   }
 `
 

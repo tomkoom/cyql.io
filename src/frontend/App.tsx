@@ -19,9 +19,9 @@ const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { actor, nft, isAuthenticated, accounntIdHex } = useAuth()
   const { lockScroll, unlockScroll } = useScrollLock()
-  const { refreshProjects, refreshVotingPower } = useBackend()
+  const { refreshProjects } = useBackend()
   const { registerUser } = useUsers()
-  const { refreshOwnedNfts } = useNft()
+  const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
   const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
@@ -34,7 +34,7 @@ const App: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (nft && isAuthenticated && accounntIdHex) {
-      refreshOwnedNfts()
+      refreshNfts()
     }
   }, [nft, isAuthenticated, accounntIdHex])
 
@@ -50,7 +50,7 @@ const App: FC = (): JSX.Element => {
     }
 
     // set user data
-    ;(async () => await refreshVotingPower())()
+    // ;(async () => await refreshVotingPower())()
   }, [isAuthenticated])
 
   useEffect(() => {

@@ -12,7 +12,7 @@ const VotingPower: FC = (): JSX.Element => {
 
   return (
     <VotingPowerStyled>
-      <p className="label">Voting Power</p>
+      <p className="label">voting power</p>
       <p className="hint">
         Deposit CYQL NFTs to your Principal or Account Id to boost voting power. Each NFT adds 10
         points to {iBolt} vp
@@ -45,14 +45,14 @@ const VotingPowerStyled = styled.div`
   > p.hint {
     max-width: 20rem;
     margin-top: 0.25rem;
-    font-size: var(--fsText);
+    font-size: var(--fs6);
     color: var(--secondaryColor);
   }
 
   > div.voting_power {
     display: flex;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     background-color: var(--underlay1);
     margin-top: 0.5rem;
 
