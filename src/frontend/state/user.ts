@@ -1,15 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-
-export type Tokens = { e8s: number }
+import type { Tokens } from "./_types/types"
 
 interface UserState {
   accountId: string
   votingPower: number
   upvotedProjects: string[]
   nftIdsOwned: number[]
-
-  // balances
   balanceIcp: Tokens
 }
 
@@ -18,7 +15,6 @@ const initialState: UserState = {
   votingPower: 0,
   upvotedProjects: [],
   nftIdsOwned: [],
-
   balanceIcp: { e8s: 0 },
 }
 

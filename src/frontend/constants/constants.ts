@@ -49,3 +49,4 @@ export const PROJECTS_SEARCH_PARAMS_INITIAL = {
   q: "",
 }
 export const E8S = 10 ** 8
+export const FEE_E8S = 10_000

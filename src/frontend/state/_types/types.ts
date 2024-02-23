@@ -1,3 +1,5 @@
+export type Tokens = { e8s: number }
+
 export interface PromoModalData {
   color: string
   backgroundColor: string

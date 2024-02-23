@@ -16,5 +16,7 @@ export const useIcpLedger = () => {
     })
   }
 
-  return { refreshIcpBalance }
+  const sendIcp = async (withdrawalPrincipalId: string, amountE8s: number): Promise<void> => {}
+
+  return { refreshIcpBalance, sendIcp }
 }

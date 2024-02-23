@@ -7,7 +7,7 @@ import { formatStr16, formatWebsite, formatDiscord } from "@/utils/format"
 import { twitterUsername } from "@/utils/twitterUsername"
 
 // components
-import { Search } from "@/components/ui/_index"
+import { TextInput } from "@/components/ui/_index"
 import { ProjectModal } from "@/modals/_index"
 
 // state
@@ -40,7 +40,7 @@ const Projects: FC = (): JSX.Element => {
   return (
     <div>
       <ProjectModal isOpen={isOpen} />
-      <Search placeholder={"search by project name"} value={searchQuery} onChange={setSearch} />
+      <TextInput placeholder={"search by project name"} value={searchQuery} onChange={setSearch} />
 
       <Table>
         <RowHeader>

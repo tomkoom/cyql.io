@@ -18,6 +18,7 @@ import shareModal from "./modals/shareModal"
 import loading from "./loading"
 import projectModal from "./modals/projectModal"
 import signInModal from "./modals/signInModal"
+import withdrawModal from "./modals/withdrawModal"
 
 // projects
 import filter from "./projects/filter"
@@ -50,6 +51,7 @@ const store = configureStore({
     loading,
     projectModal,
     signInModal,
+    withdrawModal,
 
     // projects
     filter,

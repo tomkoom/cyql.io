@@ -1,11 +1,11 @@
 import React, { FC, InputHTMLAttributes } from "react"
 import styled from "styled-components"
 
-const Search: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Element => {
-  return <SearchStyled type="text" {...props} />
+const TextInput: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Element => {
+  return <TextInputStyled type="text" {...props} />
 }
 
-const SearchStyled = styled.input`
+const TextInputStyled = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   width: 100%;
   height: 3rem;
   padding: 0 1rem;
@@ -17,12 +17,13 @@ const SearchStyled = styled.input`
   border-radius: 1.5rem;
   border: none;
   outline: none;
-  transition: var(--transition1);
 
+  /* ... */
+  transition: ${(p) => (p.readOnly ? null : "var(--transition1)")};
   &:hover,
   &:focus {
-    background-color: var(--underlay2);
+    background-color: ${(p) => (p.readOnly ? null : "var(--underlay2)")};
   }
 `
 
-export default Search
+export default TextInput
