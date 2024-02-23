@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { Btn } from "@/components/btns/_index"
-import { E8S } from "@/constants/constants"
+import { E8S, ICP_FEE_E8S } from "@/constants/constants"
 import { WithdrawModal } from "@/modals/_index"
 
 // state
@@ -20,7 +20,7 @@ const Wallet: FC = (): JSX.Element => {
   const symbol = "ICP"
   const balanceIcpE8s =
     balanceIcp.e8s > 0 ? (balanceIcp.e8s / E8S).toString() : balanceIcp.e8s.toString()
-  const isBtnDisabled = !balanceIcp.e8s
+  const isBtnDisabled = !balanceIcp.e8s || balanceIcp.e8s < ICP_FEE_E8S
 
   // modal
   const isWithdrawModalOpen = useAppSelector(selectWithdrawModalIsOpen)

@@ -86,7 +86,7 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
   const confirm = async (): Promise<void> => {
     dispatch(setIsLoading(true))
     const amountE8s = balanceIcp.e8s
-    await sendIcp(accounntIdHex, amountE8s)
+    await sendIcp(withdrawalAccountId, amountE8s)
     await refreshIcpBalance(accounntIdHex)
     dispatch(setIsLoading(false))
     reset()
