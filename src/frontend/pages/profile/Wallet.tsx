@@ -26,7 +26,7 @@ const Wallet: FC = (): JSX.Element => {
   const isWithdrawModalOpen = useAppSelector(selectWithdrawModalIsOpen)
 
   const openWithdrawModal = (): void => {
-    dispatch(setWithdrawModalToken("ICP"))
+    dispatch(setWithdrawModalToken(symbol))
     dispatch(setWithdrawModalAmountE8s(balanceIcp.e8s))
     dispatch(setWithdrawModalIsOpen(true))
   }
@@ -63,10 +63,13 @@ const Wallet: FC = (): JSX.Element => {
 }
 
 const WalletStyled = styled.div`
+  width: 100%;
+
   > div {
     width: 100%;
+
     > h4 {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     > ul {

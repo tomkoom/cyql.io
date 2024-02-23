@@ -32,7 +32,6 @@ const hoverBgColors = {
 }
 
 const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
-  /* common */
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -44,7 +43,12 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
   border-radius: 1.25rem;
   transition: var(--transition1);
 
-  /* custom */
+  /* disabled */
+
+  opacity: ${(p) => (p.disabled ? "0.5" : null)};
+
+  /* type based */
+
   color: ${(p) => colors[p.btnType]};
   background-color: ${(p) => bgColors[p.btnType]};
 

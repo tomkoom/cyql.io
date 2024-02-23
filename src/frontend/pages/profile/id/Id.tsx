@@ -40,6 +40,10 @@ const IdStyled = styled.div`
       margin-bottom: 0.25rem;
       color: var(--tertiaryColor);
     }
+
+    > p.value {
+      word-break: break-word;
+    }
   }
 `
 
