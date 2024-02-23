@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 import type { Tokens } from "./_types/types"
+// import { Result_1 } from "@/idl/nft_idl_interface"
 
 interface UserState {
   accountId: string

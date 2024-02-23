@@ -1,21 +1,29 @@
 import { useAuth } from "@/context/Auth"
+import { TokenIndex, AccountIdentifier__1 } from "@/idl/nft_idl_interface"
 
 // state
 import { useAppDispatch } from "./useRedux"
 import { setNftIdsOwned } from "@/state/user"
 
-export const useNft = () => {
+interface UseNft {
+  refreshOwnedNfts: () => Promise<void>
+  sendNft: () => Promise<void>
+}
+
+export const useNft = (): UseNft => {
   const dispatch = useAppDispatch()
   const { nft, accounntIdHex } = useAuth()
 
-  const refreshUserOwnedNfts = async (): Promise<void> => {
-    let registry = []
-    await nft.getRegistry().then((res) => (registry = res))
-
-    const filtered = registry.filter((item) => item[1] === accounntIdHex).map((item) => item[0])
-
-    dispatch(setNftIdsOwned(filtered))
+  const refreshOwnedNfts = async (): Promise<void> => {
+    await nft.tokens(accounntIdHex).then((res) => {
+      if ("ok" in res) {
+        const array = Array.from(res.ok)
+        dispatch(setNftIdsOwned(array))
+      }
+    })
   }
 
-  return { refreshUserOwnedNfts }
+  const sendNft = async (): Promise<void> => {}
+
+  return { refreshOwnedNfts, sendNft }
 }

@@ -30,10 +30,10 @@ export const useIcpLedger = (): UseIcpLedger => {
   }
 
   const sendIcp = async (accounntIdHex: string, amountE8s: number): Promise<void> => {
-    const amountMinusFee = { e8s: BigInt(amountE8s - ICP_FEE_E8S) }
-    const fee = { e8s: BigInt(ICP_FEE_E8S) }
     const accountId = AccountIdentifier.fromHex(accounntIdHex)
     const accountIdUint8Array = accountId.toUint8Array()
+    const amountMinusFee = { e8s: BigInt(amountE8s - ICP_FEE_E8S) }
+    const fee = { e8s: BigInt(ICP_FEE_E8S) }
 
     const transferArgs: TransferArgs = {
       to: accountIdUint8Array,

@@ -21,7 +21,7 @@ const App: FC = (): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()
   const { refreshProjects, refreshVotingPower } = useBackend()
   const { registerUser } = useUsers()
-  const { refreshUserOwnedNfts } = useNft()
+  const { refreshOwnedNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
   const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
@@ -34,7 +34,7 @@ const App: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (nft && isAuthenticated && accounntIdHex) {
-      refreshUserOwnedNfts()
+      refreshOwnedNfts()
     }
   }, [nft, isAuthenticated, accounntIdHex])
 
