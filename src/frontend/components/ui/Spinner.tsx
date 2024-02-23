@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import styled, { keyframes } from "styled-components";
+import React, { FC } from "react"
+import styled, { keyframes } from "styled-components"
 
 const Spinner: FC = (): JSX.Element => {
-  return <SpinnerStyled />;
-};
+  return <SpinnerStyled />
+}
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
-`;
+`
 
 const SpinnerStyled = styled.div`
   flex-shrink: 0;
@@ -18,6 +18,6 @@ const SpinnerStyled = styled.div`
   border-top: 0.2rem solid rgba(var(--primaryColorRgb), 1);
   border-radius: 50%;
   animation: ${spin} 0.75s linear infinite;
-`;
+`
 
-export default Spinner;
+export default Spinner

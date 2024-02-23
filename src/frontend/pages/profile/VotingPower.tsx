@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iBolt } from "@/components/icons/Icons"
+import { Spinner } from "@/components/ui/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -15,11 +16,15 @@ const VotingPower: FC = (): JSX.Element => {
       <p className="hint">each cyql nft adds 10 points to vp</p>
 
       {votingPower ? (
-        <p className="voting_power">
-          <span>{iBolt}</span> {votingPower}
-        </p>
+        <div className="voting_power">
+          <span>
+            <span>{iBolt}</span> {votingPower}
+          </span>
+        </div>
       ) : (
-        <p className="voting_power">...</p>
+        <div className="voting_power">
+          <Spinner />
+        </div>
       )}
     </VotingPowerStyled>
   )
@@ -32,15 +37,20 @@ const VotingPowerStyled = styled.div`
     color: var(--secondaryColor);
   }
 
-  > p.voting_power {
+  > div.voting_power {
+    display: flex;
+    justify-content: center;
     padding: 0.5rem;
     background-color: var(--underlay1);
-    font-size: var(--fs5);
-    font-weight: var(--fwBold);
     margin-top: 0.5rem;
 
     > span {
-      color: var(--highlight1);
+      font-size: var(--fs5);
+      font-weight: var(--fwBold);
+
+      > span {
+        color: var(--highlight1);
+      }
     }
   }
 `

@@ -15,11 +15,12 @@ import { isCustomDomain } from "@/utils/isCustomDomain"
 import { getAccountIdHex } from "@/utils/getAccountIdHex"
 
 // nft
-import { idlFactory } from "@/idl/nft_idl"
+import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
 import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_interface"
 
 // ledger
-import { LedgerCanister } from "@dfinity/ledger-icp"
+import { idlFactory as ICP_LEDGER_IDL } from "@/idl/ledger_idl"
+import { _SERVICE as ICP_LEDGER_SERVICE } from "@/idl/ledger_idl_service"
 
 interface AuthContextValue {
   signInLoading: boolean
@@ -29,7 +30,7 @@ interface AuthContextValue {
   userId: string
   actor: _SERVICE
   nft: NFT_SERVICE
-  icp: LedgerCanister
+  icp: ICP_LEDGER_SERVICE
   login: () => Promise<void>
   logout: () => Promise<void>
 }
@@ -50,7 +51,7 @@ function AuthProvider({ children }) {
   const [userId, setUserId] = useState<string>("")
   const [actor, setActor] = useState<_SERVICE>(null)
   const [nft, setNft] = useState<NFT_SERVICE>(null)
-  const [icp, setIcp] = useState<LedgerCanister>(null)
+  const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null)
 
   const init = (): void => {
     resetii()
@@ -69,7 +70,7 @@ function AuthProvider({ children }) {
     let userId: string = ""
     let actor: _SERVICE = null
     let nft: NFT_SERVICE = null
-    let icp: LedgerCanister = null
+    let icp: ICP_LEDGER_SERVICE = null
 
     // ...
     authClient = await AuthClient.create()
@@ -89,16 +90,22 @@ function AuthProvider({ children }) {
     })
 
     // nft
-    nft = Actor.createActor(idlFactory, {
+    nft = Actor.createActor(NFT_IDL, {
       agent,
       canisterId: NFT_CANISTER_ID_IC,
     })
 
     // ledger
-    icp = LedgerCanister.create({
+    icp = Actor.createActor(ICP_LEDGER_IDL, {
       agent,
-      canisterId: Principal.fromText(ICP_LEDGER_CANISTER_ID_IC),
+      canisterId: ICP_LEDGER_CANISTER_ID_IC,
     })
+
+    // ledger
+    // icp = LedgerCanister.create({
+    //   agent,
+    //   canisterId: Principal.fromText(ICP_LEDGER_CANISTER_ID_IC),
+    // })
 
     setAuthClient(authClient)
     setIsAuthenticated(isAuthenticated)

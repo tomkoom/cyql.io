@@ -1,14 +1,14 @@
 import React, { FC, useState, ChangeEvent } from "react"
 import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
-import { E8S, FEE_E8S } from "@/constants/constants"
+import { E8S, ICP_FEE_E8S } from "@/constants/constants"
 import { Btn } from "@/components/btns/_index"
 import type { Tokens } from "@/state/_types/types"
 import { DISCORD_URL } from "@/constants/constants"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useIcpLedger } from "@/hooks/useIcpLedger"
+import { useIcpLedger } from "@/hooks/_index"
 
 // components
 import { RootModal } from "../_index"
@@ -26,41 +26,51 @@ interface WithdrawModalProps {
   onClose: () => void
 }
 
-const getWithdrawAmountStr = (balanceIcp: Tokens, tokenSymbol: string): string => {
-  return ((balanceIcp.e8s - FEE_E8S) / E8S).toString() + " " + tokenSymbol
+const getWithdrawAmountString = (balanceIcp: Tokens, tokenSymbol: string): string => {
+  return ((balanceIcp.e8s - ICP_FEE_E8S) / E8S).toString() + " " + tokenSymbol
+}
+
+const GetSupport: FC = (): JSX.Element => {
+  return (
+    <GetSupportStyled href={DISCORD_URL} target="_blank" rel="noreferrer noopener">
+      get support
+    </GetSupportStyled>
+  )
 }
 
 const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { userPrincipal, accounntIdHex } = useAuth()
+  const { accounntIdHex } = useAuth()
   const { refreshIcpBalance, sendIcp } = useIcpLedger()
-  const [withdrawalPrincipalId, setWithdrawalPrincipalId] = useState<string>("")
+  const [withdrawalAccountId, setWithdrawalAccountId] = useState<string>("")
   const [err, setErr] = useState<string>("")
   const [step, setStep] = useState<number>(1)
 
   // token
   const { balanceIcp } = useAppSelector(selectUser)
   const tokenSymbol = useAppSelector(selectWithdrawModalToken)
-  const withdrawAmountStr = getWithdrawAmountStr(balanceIcp, tokenSymbol)
+  const withdrawAmountStr = getWithdrawAmountString(balanceIcp, tokenSymbol)
 
   const reset = (): void => {
     onClose()
-    setWithdrawalPrincipalId("")
+    setWithdrawalAccountId("")
     setStep(1)
   }
 
   const validateId = (): boolean => {
     setErr("")
-    if (withdrawalPrincipalId === "") {
+    if (withdrawalAccountId === "") {
       setErr("can't be empty")
       return false
     }
+
+    // validate account id
 
     return true
   }
 
   const setId = (e: ChangeEvent<HTMLInputElement>): void => {
-    setWithdrawalPrincipalId(e.target.value)
+    setWithdrawalAccountId(e.target.value)
   }
 
   const nextStep = (): void => {
@@ -69,10 +79,14 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
     }
   }
 
+  const prevStep = (): void => {
+    setStep(1)
+  }
+
   const confirm = async (): Promise<void> => {
     dispatch(setIsLoading(true))
     const amountE8s = balanceIcp.e8s
-    await sendIcp(withdrawalPrincipalId, amountE8s)
+    await sendIcp(accounntIdHex, amountE8s)
     await refreshIcpBalance(accounntIdHex)
     dispatch(setIsLoading(false))
     reset()
@@ -89,43 +103,38 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
             <Inputs>
               <div className="input_field">
                 <label htmlFor="withdraw_address">
-                  enter destination <span>principal id</span>
+                  enter destination <span>account id</span>
                 </label>
 
                 <TextInput
                   id="withdraw_address"
                   type="text"
-                  value={withdrawalPrincipalId}
-                  placeholder={`e.g. ${userPrincipal}`}
+                  value={withdrawalAccountId}
+                  placeholder={`e.g. ${accounntIdHex}`}
                   onChange={(e) => setId(e)}
                 />
-
                 {err && <span style={{ color: "var(--colorErr)" }}>{err}</span>}
               </div>
 
               <div className="input_field">
                 <label htmlFor="withdraw_amount">
-                  amount to withdraw (readonly, all amount to be withdrawn atm)
+                  amount to withdraw (readonly, all amount to be withdrawn)
                 </label>
 
                 <TextInput id="withdraw_amount" type="text" value={withdrawAmountStr} readOnly />
-
                 <span className="hint">(balance minus fee)</span>
               </div>
             </Inputs>
 
-            <Btn btnType={"primary"} text={"Withdraw"} onClick={nextStep} />
-
-            <a href={DISCORD_URL} target="_blank" rel="noreferrer noopener">
-              get support
-            </a>
+            <Btn btnType={"primary"} text={"withdraw"} onClick={nextStep} />
+            <GetSupport />
           </div>
         ) : step === 2 ? (
           <div className="step">
             <Confirm>
               <div className="data_field">
-                <p className="label">withdraw to principal id</p>
-                <p className="value">{withdrawalPrincipalId}</p>
+                <p className="label">withdraw to</p>
+                <p className="value">{withdrawalAccountId}</p>
               </div>
 
               <div className="data_field">
@@ -134,7 +143,10 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
               </div>
             </Confirm>
 
-            <Btn btnType={"primary"} text={"Confirm"} onClick={confirm} />
+            <div className="btns">
+              <Btn btnType={"secondary"} text={"back"} onClick={prevStep} />
+              <Btn btnType={"primary"} text={"confirm"} onClick={confirm} />
+            </div>
           </div>
         ) : (
           ""
@@ -161,7 +173,7 @@ const WithdrawModalStyled = styled.div`
   padding: 1rem;
 
   > div.step {
-    max-width: 40rem;
+    max-width: 48rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -175,6 +187,13 @@ const WithdrawModalStyled = styled.div`
       &:hover {
         color: var(--primaryColor);
       }
+    }
+
+    > div.btns {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
   }
 `
@@ -222,10 +241,21 @@ const Confirm = styled.div`
 
   > div.data_field {
     text-align: center;
+    background-color: var(--underlay1);
+    padding: 0.75rem;
 
     > p.label {
       margin-bottom: 0.5rem;
     }
+  }
+`
+
+const GetSupportStyled = styled.a`
+  color: var(--secondaryColor);
+  transition: var(--transition1);
+
+  &:hover {
+    color: var(--primaryColor);
   }
 `
 

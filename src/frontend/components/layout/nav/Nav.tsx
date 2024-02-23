@@ -16,7 +16,7 @@ const Nav: FC = (): JSX.Element => {
 const NavStyled = styled.header`
   position: sticky;
   top: 0;
-  z-index: 1;
+  /* z-index: 1; */
 `
 
 const Main = styled.div`
