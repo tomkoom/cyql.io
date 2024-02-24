@@ -2,6 +2,8 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { Btn } from "@/components/btns/_index"
 import { WithdrawNftModal } from "@/modals/_index"
+import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
+import { iExternalLink } from "@/components/icons/Icons"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -37,12 +39,25 @@ const Nfts: FC = (): JSX.Element => {
           <ul>
             {nftsOwned.map((nftIdx) => (
               <li key={`nft #${nftIdx}`}>
-                <span>cyql nft #{nftIdx.toString()}</span>
-                <Btn
-                  btnType={"secondary"}
-                  text={"Withdraw"}
-                  onClick={() => openNftWithdrawModal(nftIdx)}
-                />
+                <span>CYQL NFT #{nftIdx.toString()}</span>
+                <span>
+                  <a
+                    href={`https://dtlqp-nqaaa-aaaak-abwna-cai.raw.icp0.io/?&tokenid=${getTokenIdentifier(
+                      nftIdx
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {getTokenIdentifier(nftIdx)} {iExternalLink}
+                  </a>{" "}
+                </span>
+                <span>
+                  <Btn
+                    btnType={"secondary"}
+                    text={"Withdraw"}
+                    onClick={() => openNftWithdrawModal(nftIdx)}
+                  />
+                </span>
               </li>
             ))}
           </ul>
@@ -71,7 +86,22 @@ const NftsStyled = styled.div`
         gap: 0.5rem;
         background-color: var(--underlay1);
         padding: 0.5rem 0.75rem;
-        font-weight: var(--fwBold);
+        font-weight: var(--fwMedium);
+        text-align: left;
+
+        > span {
+          flex: 1;
+
+          > a {
+            color: var(--secondaryColor);
+            font-weight: var(--fwRegular);
+            transition: var(--transition1);
+
+            &:hover {
+              color: var(--primaryColor);
+            }
+          }
+        }
       }
     }
   }

@@ -13,7 +13,7 @@ interface UserState {
 
 const initialState: UserState = {
   accountId: "",
-  votingPower: 0,
+  votingPower: 1,
   upvotedProjects: [],
   nftIdsOwned: [],
   balanceIcp: { e8s: 0 },

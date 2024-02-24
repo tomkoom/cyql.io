@@ -4,8 +4,7 @@ import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
 
 // state
 import { useAppDispatch } from "./useRedux"
-import { setNftIdsOwned } from "@/state/user"
-import { setVotingPower } from "@/state/user"
+import { setNftIdsOwned, setVotingPower } from "@/state/user"
 
 interface UseNft {
   refreshNfts: () => Promise<void>

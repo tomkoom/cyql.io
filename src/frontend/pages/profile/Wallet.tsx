@@ -49,12 +49,14 @@ const Wallet: FC = (): JSX.Element => {
             <span>
               {balanceIcpE8s} {symbol}
             </span>
-            <Btn
-              btnType={"secondary"}
-              text={"Withdraw"}
-              onClick={openWithdrawModal}
-              disabled={isBtnDisabled}
-            />
+            <span>
+              <Btn
+                btnType={"secondary"}
+                text={"Withdraw"}
+                onClick={openWithdrawModal}
+                disabled={isBtnDisabled}
+              />
+            </span>
           </li>
         </ul>
       </div>
@@ -81,6 +83,11 @@ const WalletStyled = styled.div`
         gap: 0.5rem;
         background-color: var(--underlay1);
         padding: 0.5rem 0.75rem;
+        text-align: left;
+
+        > span {
+          flex: 1;
+        }
       }
     }
   }
