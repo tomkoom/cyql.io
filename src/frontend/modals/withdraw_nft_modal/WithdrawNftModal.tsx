@@ -116,7 +116,7 @@ const WithdrawNftModal: FC<WithdrawNftModalProps> = ({ isOpen, onClose }): JSX.E
               </div>
 
               <div className="data_field">
-                <p className="label">NFT index to withdraw</p>
+                <p className="label">NFT to withdraw</p>
                 <p className="value">{"#" + nftIdx?.toString()}</p>
               </div>
             </Confirm>

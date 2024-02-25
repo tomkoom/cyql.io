@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import Id from "./id/Id"
-import { VotingPower, Nfts, Wallet } from "./_index"
+import { VotingPower, Nfts, Wallet, Id } from "./_index"
 
 const Profile: FC = (): JSX.Element => {
   return (
@@ -20,7 +19,7 @@ const ProfileStyled = styled.div`
   align-items: center;
   gap: 2rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 `
 
 export default Profile

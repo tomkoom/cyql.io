@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { formatId } from "@/utils/format"
 import { useAuth } from "@/context/Auth"
-// import { Ids } from "./_index"
 
 const Id: FC = (): JSX.Element => {
   const { userId, accounntIdHex } = useAuth()
@@ -20,8 +19,6 @@ const Id: FC = (): JSX.Element => {
         <p className="label">account id</p>
         <p className="value">{accounntIdHex}</p>
       </div>
-
-      {/* <Ids /> */}
     </IdStyled>
   )
 }

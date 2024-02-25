@@ -74,7 +74,7 @@ const NftsStyled = styled.div`
 
   > div {
     > h4 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     > ul {

@@ -71,7 +71,7 @@ const WalletStyled = styled.div`
     width: 100%;
 
     > h4 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     > ul {
