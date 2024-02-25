@@ -13,6 +13,7 @@ import {
   // ProjectProposals,
   Promo,
   StaffPicks,
+  Banner,
 } from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
@@ -58,6 +59,7 @@ const Home: FC = (): JSX.Element => {
         onClick={navigateToListProject}
       />
       <StaffPicks />
+      <Banner />
       <Promo />
       {/* <ProjectProposals /> */}
 

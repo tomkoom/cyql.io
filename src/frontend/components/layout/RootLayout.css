@@ -36,6 +36,10 @@ ul {
   color: var(--tertiaryColor);
 }
 
+img {
+  width: 100%;
+}
+
 /* global classes */
 
 .pageTitle {

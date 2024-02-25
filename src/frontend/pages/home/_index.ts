@@ -7,6 +7,7 @@ export { default as HighlightedProjects } from "./highlighted_projects/Highlight
 export { default as ProjectProposals } from "./project_proposals/ProjectProposals"
 
 // ...
+export { default as Banner } from "./Banner"
 export { default as JoinCommunity } from "./JoinCommunity"
 export { default as Promo } from "./Promo"
 export { default as StaffPicks } from "./StaffPicks"
