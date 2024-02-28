@@ -19,9 +19,6 @@
 - styled components
 
 ```
-npm install
-dfx start --clean
-dfx canister create --all
-dfx deploy
+npm i
 npm run dev
 ```
