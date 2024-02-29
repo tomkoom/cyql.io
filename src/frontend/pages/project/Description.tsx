@@ -18,7 +18,6 @@ const Description: FC<DescriptionProps> = ({ name, description }): JSX.Element =
 const DescriptionStyled = styled.div`
   background-color: var(--underlay1);
   padding: 1rem;
-  border-radius: 1rem;
 
   > h4 {
     font-size: var(--fs5);

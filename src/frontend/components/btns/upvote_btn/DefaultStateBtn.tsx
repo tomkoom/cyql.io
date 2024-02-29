@@ -27,7 +27,7 @@ const DefaultBtnStyled = styled.button<{ location: string }>`
   font-size: var(--fs7);
   box-shadow: 0 0 0 2px var(--underlay1);
   font-weight: var(--fwBold);
-  border-radius: ${(p) => (p.location === "project_page" ? "50%" : "0.6rem")};
+  /* border-radius: ${(p) => (p.location === "project_page" ? "50%" : "0.6rem")}; */
   border: none;
   cursor: pointer;
   transition: var(--transition1);

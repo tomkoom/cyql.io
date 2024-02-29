@@ -61,6 +61,8 @@ module {
 
     // to add:
     // tokenCanister
+    // sns url
+    // forum url
   };
 
   // dao
@@ -105,9 +107,8 @@ module {
     // the amount of tokens needed to vote "yes" to accept, or "no" to reject
     proposalVoteThreshold : Nat;
 
-    // the amount of tokens that will be temporarily deducted from the account of
-    // a user that submits a proposal. If the proposal is Accepted, this deposit is returned,
-    // otherwise it is lost. This prevents users from submitting superfluous proposals.
+    // the amount of tokens that will be temporarily deducted from the account of a user that submits a proposal.
+    // If the proposal is Accepted, this deposit is returned, otherwise it is lost. This prevents users from submitting superfluous proposals
     proposalSubmissionDeposit : Tokens
   };
 

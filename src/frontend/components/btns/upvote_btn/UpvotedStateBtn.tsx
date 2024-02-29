@@ -33,7 +33,7 @@ const UpvotedStateBtnStyled = styled.button<{ location: string }>`
   font-size: var(--fs7);
   background-color: var(--underlay2);
   font-weight: var(--fwBold);
-  border-radius: ${(p) => (p.location === "project_page" ? "50%" : "0.6rem")};
+  /* border-radius: ${(p) => (p.location === "project_page" ? "50%" : "0.6rem")}; */
   border: none;
   cursor: pointer;
   transition: var(--transition1);

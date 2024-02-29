@@ -1,12 +1,12 @@
-import React, { FC, useState } from "react";
-import styled from "styled-components";
+import React, { FC, useState } from "react"
+import styled from "styled-components"
 
 interface ExpandableTextProps {
-  text: string;
+  text: string
 }
 
 const ExpandableText: FC<ExpandableTextProps> = ({ text }): JSX.Element => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [expanded, setExpanded] = useState<boolean>(false)
 
   return (
     <ExpandableTextStyled>
@@ -15,16 +15,15 @@ const ExpandableText: FC<ExpandableTextProps> = ({ text }): JSX.Element => {
       </Content>
       <Expand onClick={() => setExpanded(!expanded)}>{expanded ? "Read less" : "Read more"}</Expand>
     </ExpandableTextStyled>
-  );
-};
+  )
+}
 
 const ExpandableTextStyled = styled.div`
   font-size: var(--fsText);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
   padding: 1rem;
-  border-radius: 1rem;
-`;
+`
 
 const Content = styled.div<{ expanded: boolean }>`
   overflow: hidden;
@@ -34,7 +33,7 @@ const Content = styled.div<{ expanded: boolean }>`
   > p {
     line-height: 150%;
   }
-`;
+`
 
 const Expand = styled.button`
   display: flex;
@@ -43,6 +42,6 @@ const Expand = styled.button`
   height: 1.5rem;
   font-weight: var(--fwBold);
   cursor: pointer;
-`;
+`
 
-export default ExpandableText;
+export default ExpandableText
