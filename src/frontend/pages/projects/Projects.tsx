@@ -43,7 +43,7 @@ const Projects: FC = (): JSX.Element => {
     <ProjectsStyled>
       <h2 className="pageTitle">discover new projects</h2>
       <TextInput
-        placeholder={"TextInput project by name"}
+        placeholder={"Search project by name"}
         defaultValue={search}
         onChange={(event) => debounced(event.target.value)}
       />

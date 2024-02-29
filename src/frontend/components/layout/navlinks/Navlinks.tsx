@@ -64,14 +64,25 @@ const Navlinks: FC = (): JSX.Element => {
     })
   }
 
+  const toSocialNetworks = (): void => {
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        category: "Social Networks",
+        q: "",
+      })}`,
+    })
+  }
+
   return (
     <NavlinksStyled>
       <NavItem label="Home" route={toHome} />
       <NavItem label="All Projects" route={toProjects} />
+      <NavItem label="NFTs" route={toNfts} icon={iHashtag} />
       <NavItem label="dApps" route={toDapps} icon={iHashtag} />
       <NavItem label="Tokens" route={toTokens} icon={iHashtag} />
-      <NavItem label="NFTs" route={toNfts} icon={iHashtag} />
       <NavItem label="Games" route={toGames} icon={iHashtag} />
+      <NavItem label="Social Networks" route={toSocialNetworks} icon={iHashtag} />
       <NavItem label="BTC" route={toBtc} icon={iHashtag} />
       {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} />}
     </NavlinksStyled>

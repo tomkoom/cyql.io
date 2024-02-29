@@ -1,9 +1,6 @@
 import React, { useState } from "react"
 import css from "./Submit.module.css"
 
-// utils
-import { projectId } from "@/utils/projectId"
-
 // constants
 import { SUBMITTED_PROJECTS_COLL } from "@/constants/constants"
 
@@ -27,7 +24,7 @@ const Submit = () => {
     e.preventDefault()
     setSubmitIsLoading(true)
 
-    const key = projectId()
+    const key = ""
     const timestamp = Date.now()
     // await setDoc({
     //   collection,

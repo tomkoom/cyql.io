@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import useBackend from "@/hooks/useBackend"
+import { useBackend } from "@/hooks/_index"
 import { Btn } from "@/components/btns/_index"
 
 // state
@@ -25,6 +25,7 @@ const Controls: FC = (): JSX.Element => {
     await refreshProjects()
     dispatch(setClearProject())
     dispatch(setProjectModalIsLoading(false))
+    closeModal()
   }
 
   const edit = async (): Promise<void> => {
@@ -32,9 +33,8 @@ const Controls: FC = (): JSX.Element => {
     await editProject(project)
     await refreshProjects()
     dispatch(setProjectModalIsLoading(false))
+    closeModal()
   }
-
-  // const archiveProject = (): void => {}
 
   const closeModal = (): void => {
     dispatch(setCloseProjectModal())

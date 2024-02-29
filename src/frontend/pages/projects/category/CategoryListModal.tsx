@@ -1,9 +1,9 @@
 import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
-import type { Category } from "@/state/_types/types"
 import { useSearchParams } from "react-router-dom"
 import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
+import { getCategoryNum } from "@/utils/getCategoryNum"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -45,12 +45,6 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
     closeModal()
   }
 
-  const getCategoryNum = (category: Category): number => {
-    return category.id === "all"
-      ? projects.length
-      : projects.filter((p) => p.category.includes(category.label)).length
-  }
-
   if (!openCategoryList) {
     return null
   }
@@ -68,7 +62,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
               id={category === c.label ? "active" : null}
               onClick={() => clickCategory(c.label)}
             >
-              {c.label} <span>{getCategoryNum(c).toString()}</span>
+              {c.label} <span>{getCategoryNum(projects, c.label).toString()}</span>
             </li>
           ))}
         </Categories>

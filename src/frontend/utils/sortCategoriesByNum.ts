@@ -1,21 +1,20 @@
 import type { Category } from "@/state/_types/types"
 import type { Project } from "@/state/_types/types"
 
-export const sortCategoriesByNum = (
-  allCategories: Category[],
-  projects: Project[]
-): Category[] => {
-  // sort
+export const sortCategoriesByNum = (allCategories: Category[], projects: Project[]): Category[] => {
+  const projectsNum = projects.length
 
-  const sort = (projects: Project[], a: Category, b: Category) => {
-    const projectsNum = projects.length
-    const filter = (project: Project, label: string) => project.category.includes(label)
-
+  const sort = (projects: Project[], a: Category, b: Category): number => {
     const aLen =
-      a.id === "all" ? projectsNum : projects.filter((project) => filter(project, a.label)).length
+      a.id === "all"
+        ? projectsNum
+        : projects.filter((project) => project.category.includes(a.label)).length
 
     const bLen =
-      b.id === "all" ? projectsNum : projects.filter((project) => filter(project, b.label)).length
+      b.id === "all"
+        ? projectsNum
+        : projects.filter((project) => project.category.includes(b.label)).length
+
     return bLen - aLen
   }
 
