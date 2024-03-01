@@ -15,7 +15,6 @@ import {
   selectFilterByOnChain,
   setFilterByOpenSource,
   selectFilterByOpenSource,
-  selectFilterByGrantee,
 } from "@/state/projects/filter"
 
 const Projects: FC = (): JSX.Element => {
@@ -27,7 +26,6 @@ const Projects: FC = (): JSX.Element => {
   // filter
   const filterByOpenSource = useAppSelector(selectFilterByOpenSource)
   const filterByOnChain = useAppSelector(selectFilterByOnChain)
-  const filterByGrantee = useAppSelector(selectFilterByGrantee)
 
   useEffect(() => {
     return setSearchParams(

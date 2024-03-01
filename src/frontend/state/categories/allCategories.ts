@@ -61,6 +61,7 @@ const initialState: AllCategoriesState = {
     { id: "ethereum", label: "Ethereum", icon: "" },
     { id: "ecommerse", label: "Ecommerce", icon: "" },
     { id: "vcs", label: "VCs", icon: "" },
+    { id: "automation", label: "Automation", icon: "" },
   ],
 }
 
