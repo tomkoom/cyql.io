@@ -1,7 +1,8 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, useEffect, ReactNode } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
+import { useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -15,6 +16,15 @@ interface ModalProps {
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, children }): JSX.Element => {
   const theme = useAppSelector(selectTheme)
+  const { lockScroll, unlockScroll } = useScrollLock()
+
+  useEffect(() => {
+    if (isOpen) {
+      lockScroll()
+    } else {
+      unlockScroll()
+    }
+  }, [isOpen])
 
   if (!isOpen) return null
 

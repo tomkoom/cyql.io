@@ -1,7 +1,5 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-
-// icons
 import { iExternalLink } from "@/components/icons/Icons"
 
 interface LinksProps {
@@ -20,12 +18,12 @@ const Link: FC<LinksProps> = ({ type, url, text }): JSX.Element => {
 
 const Links: FC = (): JSX.Element => {
   const links = [
-    { type: "primary", url: "https://entrepot.app/marketplace/ic-apps", text: "buy" },
     {
       type: "secondary",
       url: "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary",
-      text: "stats",
+      text: "Coll. Stats",
     },
+    { type: "primary", url: "https://entrepot.app/marketplace/ic-apps", text: "Buy" },
   ]
 
   return (
@@ -44,7 +42,7 @@ const LinksStyled = styled.div`
 `
 
 const LinkStyled = styled.a`
-  flex: 1;
+  /* flex: 1; */
   height: 2.75rem;
   display: inline-flex;
   align-items: center;

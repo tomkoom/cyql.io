@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import Modal from "@/modals/_Modal"
 import { useAuth } from "@/context/Auth"
-import { useScrollLock } from "@/hooks/_index"
 
 // components
 import { SignInMethods } from "./_index"

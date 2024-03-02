@@ -1,35 +1,24 @@
-import React, { FC, useEffect } from "react";
-import styled from "styled-components";
-import Modal from "@/modals/_Modal";
-
-// components
-import { Links } from "./_index";
+import React, { FC } from "react"
+import styled from "styled-components"
+import Modal from "@/modals/_Modal"
+import { Links } from "./_index"
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux";
-import { setNftModal } from "@/state/modals/nftModal";
+import { useAppDispatch } from "@/hooks/useRedux"
+import { setNftModal } from "@/state/modals/nftModal"
 
 interface NftModalProps {
-  isOpen: boolean;
+  isOpen: boolean
 }
 
 const NftModal: FC<NftModalProps> = ({ isOpen }): JSX.Element => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   const text =
-    "cyql nft is the main asset of the project which represents its development progress and will carry a number of utilities which can be used on the platform.";
+    "cyql nft is the main asset of the project which represents its development progress and will carry a number of utilities which can be used on the platform."
 
-  const closeModal = () => {
-    dispatch(setNftModal(false));
-  };
-
-  // hide scrollbar
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isOpen]);
+  const closeModal = (): void => {
+    dispatch(setNftModal(false))
+  }
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
@@ -39,14 +28,16 @@ const NftModal: FC<NftModalProps> = ({ isOpen }): JSX.Element => {
         <Links />
       </Content>
     </Modal>
-  );
-};
+  )
+}
 
 const Content = styled.div`
   max-width: 24rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
+  text-align: center;
 
   > h3 {
     color: var(--primaryColor);
@@ -55,6 +46,6 @@ const Content = styled.div`
   > p {
     color: var(--primaryColor);
   }
-`;
+`
 
-export default NftModal;
+export default NftModal
