@@ -14,11 +14,11 @@ const Header: FC = (): JSX.Element => {
   return (
     <HeaderStyled>
       <Title>
-        curated list of{" "}
+        Curated List of{" "}
         <span className="projects_num" onClick={toProjects}>
           {projectsNum > 0 ? projectsNum : "..."}
         </span>{" "}
-        #ic projects
+        #ic Projects
       </Title>
     </HeaderStyled>
   )

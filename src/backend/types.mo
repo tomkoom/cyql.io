@@ -60,9 +60,13 @@ module {
     upvotedBy : [Text]
 
     // to add:
-    // tokenCanister
+    // frontend canister
+    // backend canister
     // sns url
     // forum url
+
+    // token
+    // tokenCanister
   };
 
   // dao
@@ -80,7 +84,7 @@ module {
   public type ProjectData = Text;
 
   public type ProjectProposal = {
-    id : Nat;
+    id : ProjectProposalId;
     createdAt : Int;
     updatedAt : ?Int;
     proposer : Text; // principal

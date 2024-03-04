@@ -10,6 +10,7 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 import List "mo:base/List";
 import Result "mo:base/Result";
+import Int "mo:base/Int";
 
 // services
 import Users "users_interface";
@@ -47,6 +48,12 @@ actor {
 
   public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
     projects.put(projectId, project);
+    ?projectId
+  };
+
+  public shared ({ caller }) func deleteProject(projectId : T.ProjectId) : async ?T.ProjectId {
+    assert U.isAdmin(caller);
+    projects.delete(projectId);
     ?projectId
   };
 
@@ -101,14 +108,13 @@ actor {
 
   // dao
 
-  public shared ({ caller }) func addProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
+  public shared ({ caller }) func proposeProject(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
     let user = users.getUser(caller) else return #err("User not found.");
-    let id = projectProposals.size();
-    let proposal = U.generateProposal(caller, id, payload);
+    let proposal = U.generateProposal(caller, payload);
 
-    proposalsPut(id, proposal);
-    return #ok(id)
+    proposalsPut(proposal.id, proposal);
+    return #ok(proposal.id)
   };
 
   public shared ({ caller }) func deleteProposal(proposalId : T.ProjectProposalId) : async () {

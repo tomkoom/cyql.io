@@ -3,15 +3,16 @@ import styled from "styled-components"
 import { IC_LOGO } from "@/constants/constants"
 import { Btn } from "./_index"
 import { useAuth } from "@/context/Auth"
+import { useAuthenticate } from "@/hooks/_index"
 
 const SignInMethods: FC = (): JSX.Element => {
-  const { login } = useAuth()
+  const { signIn } = useAuthenticate()
   const signInMethods = [
     {
       id: "internet_identity",
       label: "Internet Identity",
       logo: IC_LOGO,
-      click: login,
+      click: signIn,
       aboutUrl: "https://identity.ic0.app/",
     },
   ]

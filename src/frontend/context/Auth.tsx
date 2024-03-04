@@ -23,7 +23,6 @@ import { idlFactory as ICP_LEDGER_IDL } from "@/idl/ledger_idl"
 import { _SERVICE as ICP_LEDGER_SERVICE } from "@/idl/ledger_idl_service"
 
 interface AuthContextValue {
-  signInLoading: boolean
   isAuthenticated: boolean
   userPrincipal: Principal
   accounntIdHex: string
@@ -43,7 +42,6 @@ const useAuth = () => {
 // note: .env variables change after deploy
 
 function AuthProvider({ children }) {
-  const [signInLoading, setSignInLoading] = useState<boolean>(false)
   const [authClient, setAuthClient] = useState<AuthClient | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)
@@ -101,12 +99,6 @@ function AuthProvider({ children }) {
       canisterId: ICP_LEDGER_CANISTER_ID_IC,
     })
 
-    // ledger
-    // icp = LedgerCanister.create({
-    //   agent,
-    //   canisterId: Principal.fromText(ICP_LEDGER_CANISTER_ID_IC),
-    // })
-
     setAuthClient(authClient)
     setIsAuthenticated(isAuthenticated)
     setUserPrincipal(userPrincipal)
@@ -120,8 +112,7 @@ function AuthProvider({ children }) {
   const login = async (): Promise<void> => {
     if (isAuthenticated) throw new Error("already authed")
 
-    setSignInLoading(true)
-    authClient.login({
+    await authClient.login({
       // identityProvider: IDENTITY_PROVIDER,
       maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1000 * 1000 * 1000),
       ...(isCustomDomain() && {
@@ -131,7 +122,6 @@ function AuthProvider({ children }) {
         await resetii()
       },
     })
-    setSignInLoading(false)
   }
 
   const logout = async (): Promise<void> => {
@@ -141,7 +131,6 @@ function AuthProvider({ children }) {
   }
 
   const value: AuthContextValue = {
-    signInLoading,
     isAuthenticated,
     userPrincipal,
     accounntIdHex,

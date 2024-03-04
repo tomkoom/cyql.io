@@ -4,6 +4,7 @@ import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 import Nat8 "mo:base/Nat8";
 import Blob "mo:base/Blob";
+import Int "mo:base/Int";
 
 // ...
 import C "_constants";
@@ -24,9 +25,9 @@ module {
     proposalSubmissionDeposit = { e8s = 0 }
   };
 
-  public func generateProposal(proposer : Principal, id : Nat, payload : T.ProjectData) : T.ProjectProposal {
+  public func generateProposal(proposer : Principal, payload : T.ProjectData) : T.ProjectProposal {
     let proposal = {
-      id;
+      id = Int.abs(Time.now());
       createdAt = Time.now();
       updatedAt = null;
       proposer = Principal.toText(proposer);

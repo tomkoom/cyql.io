@@ -135,7 +135,6 @@ const StaffPicksStyled = styled.div`
       font-weight: var(--fwMedium);
       background-color: var(--underlay1);
       padding: 0.25rem 0.5rem;
-      border-radius: 0.5rem;
       cursor: pointer;
 
       > span#text {
