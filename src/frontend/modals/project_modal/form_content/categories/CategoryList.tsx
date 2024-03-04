@@ -5,10 +5,7 @@ import type { Category } from "@/state/_types/types"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectAllCategories } from "@/state/categories/allCategories"
-import {
-  selectProjectCategory,
-  setProjectCategory,
-} from "@/state/modals/projectModal"
+import { selectProjectCategory, setProjectCategory } from "@/state/modals/projectModal"
 
 const CategoryList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
