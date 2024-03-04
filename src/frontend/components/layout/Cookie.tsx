@@ -14,7 +14,7 @@ const Cookie: FC = (): JSX.Element => {
       buttonClasses="cookie__btn"
       expires={90}
     >
-      this site uses 🍪 to enhance ux,{" "}
+      This site uses 🍪 to enhance ux,{" "}
       <a className="cookie__link" href={COOKIE_POLICY} rel="noreferrer noopener" target="_blank">
         learn more
       </a>

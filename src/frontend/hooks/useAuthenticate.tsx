@@ -1,7 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setClearUser } from "@/state/user"
-import { setIsLoading } from "@/state/loading"
 
 interface UseAuthenticate {
   signIn: () => Promise<void>

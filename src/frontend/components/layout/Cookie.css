@@ -12,7 +12,6 @@
   padding: 0 1rem;
   color: var(--primaryColor);
   background: var(--underlay1);
-  border-radius: 0.5rem;
 }
 
 .cookie * {
@@ -26,7 +25,6 @@
 
 .cookie__btn {
   height: 2rem;
-  width: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,10 +32,11 @@
   font-weight: var(--fwBold);
   text-decoration: none;
   background-color: var(--highlight1);
-  padding: 0.25rem 0.25rem;
-  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
   border: none;
   cursor: pointer;
+  transition: var(--transition1);
 }
 
 .cookie__btn:hover {
@@ -45,9 +44,11 @@
 }
 
 .cookie__link {
-  color: var(--primaryColor);
+  text-decoration: underline;
+  color: var(--secondaryColor);
+  transition: var(--transition1);
 }
 
 .cookie__link:hover {
-  text-decoration: underline;
+  color: var(--primaryColor);
 }
