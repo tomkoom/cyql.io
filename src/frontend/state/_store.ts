@@ -10,6 +10,7 @@ import submit from "./submit/submit"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
+import proposeProject from "./proposeProject"
 
 // modals
 import nftModal from "./modals/nftModal"
@@ -44,6 +45,7 @@ const store = configureStore({
     allCategories,
     categoriesSortedByNum,
     user,
+    proposeProject,
 
     // modals
     nftModal,

@@ -42,7 +42,6 @@ const LinksStyled = styled.div`
 `
 
 const LinkStyled = styled.a`
-  /* flex: 1; */
   height: 2.75rem;
   display: inline-flex;
   align-items: center;
@@ -52,6 +51,7 @@ const LinkStyled = styled.a`
   font-weight: var(--fwBold);
   padding: 0 1rem;
   border-radius: 1.375rem;
+  transition: var(--transition1);
 
   &:hover {
     opacity: 0.8;

@@ -16,7 +16,7 @@ import { getAccountIdHex } from "@/utils/getAccountIdHex"
 
 // nft
 import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
-import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_interface"
+import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_service"
 
 // ledger
 import { idlFactory as ICP_LEDGER_IDL } from "@/idl/ledger_idl"

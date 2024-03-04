@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/Auth"
-import { TransferRequest, User } from "@/idl/nft_idl_interface"
+import { TransferRequest, User } from "@/idl/nft_idl_service"
 import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
 
 // state
