@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { ProjectData } from "./_index"
+import { ProjectData, Token } from "./_index"
 
 const ListProject: FC = (): JSX.Element => {
   return (
@@ -14,6 +14,8 @@ const ListProject: FC = (): JSX.Element => {
       <div>
         <ProjectData />
       </div>
+
+      <Token />
     </ListProjectStyled>
   )
 }

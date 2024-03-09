@@ -45,9 +45,13 @@ const CategoriesStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: var(--underlay1);
+  padding: 0.75rem 0.5rem;
 
   > h6 {
     margin-bottom: 0.5rem;
+    font-size: var(--fsText);
+    font-weight: var(--fwMedium);
   }
 
   > div {
@@ -57,14 +61,14 @@ const CategoriesStyled = styled.div`
     gap: 0.5rem;
 
     > div {
-      height: 2.5rem;
+      height: 2rem;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       font-size: var(--fsText);
       font-weight: var(--fwMedium);
-      background-color: var(--underlay1);
-      padding: 0 0.75rem;
+      background-color: var(--underlay2);
+      padding: 0 0.5rem;
       cursor: pointer;
       transition: var(--transition1);
 

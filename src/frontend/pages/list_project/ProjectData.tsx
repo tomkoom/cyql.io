@@ -111,16 +111,6 @@ const ProjectData: FC = (): JSX.Element => {
           />
         </CategoriesWrapper>
       </div>
-
-      <div className="section">
-        <div className="title">
-          <h5>2. Token</h5>
-          <p>
-            Please pick the token standard and specify the ledger canister id if the project is
-            tokenized
-          </p>
-        </div>
-      </div>
     </ProjectDataStyled>
   )
 }
@@ -155,16 +145,16 @@ const ProjectDataStyled = styled.div`
       }
     }
   }
-
-  > div.categories {
-  }
 `
 
 const CategoriesWrapper = styled.div`
   width: 100%;
+  /* display: flex;
+  flex-direction: column;
+  gap: 1rem; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
 `
 
 export default ProjectData
