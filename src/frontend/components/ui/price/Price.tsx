@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { IC_LOGO } from "@/constants/constants"
-import { iArrowUp, iArrowDown } from "@/components/icons/Icons"
 import { Change } from "./_index"
 
 // state
@@ -25,15 +24,8 @@ const Price: FC = (): JSX.Element => {
   return (
     <PriceStyled>
       <img src={IC_LOGO} alt="Internet Computer logo" />
-      <p>{"$" + price}</p>
-
-      {change > 0 ? (
-        <Change change={change} icon={iArrowUp} color="var(--colorOk)" />
-      ) : change < 0 ? (
-        <Change change={change} icon={iArrowDown} color="var(--colorErr)" />
-      ) : (
-        <Change change={change} icon="" color="var(--colorNeutral)" />
-      )}
+      <span className="">{"$" + price}</span>
+      <Change change={Number(change)} />
     </PriceStyled>
   )
 }
@@ -50,10 +42,6 @@ const PriceStyled = styled.div`
 
   > img {
     height: 1.125rem;
-  }
-
-  > span {
-    color: var(--tertiaryColor);
   }
 
   * {

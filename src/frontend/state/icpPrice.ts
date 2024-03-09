@@ -2,19 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 import { PRICE_URL } from "@/constants/constants"
 
-export const fetch = createAsyncThunk("icpPrice/fetch", async (_, { rejectWithValue }) => {
-  try {
-    const res = await fetch(PRICE_URL)
-    // err
-    if (!res.ok) throw new Error("Err")
-
-    // ok
-    const data = await res.json()
-    return data
-  } catch (error) {
-    return rejectWithValue(error.message)
+export const fetchIcpPrice = createAsyncThunk(
+  "icpPrice/fetchIcpPrice",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await fetch(PRICE_URL)
+      const data = await response.json()
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
   }
-})
+)
 
 const icpPrice = createSlice({
   name: "icpPrice",
@@ -28,16 +27,18 @@ const icpPrice = createSlice({
   // https://redux-toolkit.js.org/api/createSlice#the-extrareducers-builder-callback-notation
   extraReducers: (builder) => {
     builder
-      .addCase(fetch.pending, (state) => {
+      .addCase(fetchIcpPrice.pending, (state) => {
         state.status = "loading"
         state.error = null
       })
-      .addCase(fetch.fulfilled, (state, { payload }) => {
+      .addCase(fetchIcpPrice.fulfilled, (state, { payload }) => {
         state.status = "resolved"
+        // console.log(payload["internet-computer"].usd)
+        console.log(payload)
         state.icpPrice = payload["internet-computer"].usd
         state.icp24hPriceChange = payload["internet-computer"].usd_24h_change
       })
-      .addCase(fetch.rejected, (state, { payload }) => {
+      .addCase(fetchIcpPrice.rejected, (state, { payload }) => {
         state.status = "rejected"
         state.error = payload
       })

@@ -6,7 +6,6 @@ import icpPrice from "./icpPrice"
 import theme from "./theme"
 import loadMore from "./loadMore"
 import adminSearch from "./admin/adminSearch"
-import submit from "./submit/submit"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
@@ -42,7 +41,6 @@ const store = configureStore({
     theme,
     loadMore,
     adminSearch,
-    submit,
     allCategories,
     categoriesSortedByNum,
     user,

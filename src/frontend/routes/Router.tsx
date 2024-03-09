@@ -4,16 +4,7 @@ import { AdminRoutes, ProtectedRoutes } from "@/routes/_index"
 
 // components
 import RootLayout from "@/components/layout/RootLayout"
-import {
-  Admin,
-  Home,
-  NotFound,
-  Profile,
-  Project,
-  Projects,
-  ListProject,
-  Submit,
-} from "@/pages/_index"
+import { Admin, Home, NotFound, Profile, Project, Projects, ListProject } from "@/pages/_index"
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -26,7 +17,6 @@ const router = createHashRouter(
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:id" element={<Project />} />
       <Route path="list" element={<ListProject />} />
-      {/* <Route path="submit" element={<Submit />} /> */}
 
       {/* protected routes */}
       <Route element={<ProtectedRoutes />}>
