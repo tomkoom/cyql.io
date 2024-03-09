@@ -39,7 +39,7 @@ const Projects: FC = (): JSX.Element => {
 
   return (
     <ProjectsStyled>
-      <h2 className="pageTitle">discover new projects</h2>
+      <h2 className="pageTitle">Discover New Projects</h2>
       <TextInput
         placeholder={"Search project by name"}
         defaultValue={search}
