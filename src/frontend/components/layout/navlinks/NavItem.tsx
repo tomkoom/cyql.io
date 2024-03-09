@@ -41,9 +41,6 @@ const NavItemStyled = styled.div`
   &:hover {
     background-color: var(--underlay2);
   }
-  > span.icon {
-    color: var(--highlight3);
-  }
 
   > span.label {
     white-space: nowrap;

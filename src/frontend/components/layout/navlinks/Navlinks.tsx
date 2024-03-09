@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { NavItem, Tags } from "./_index"
 import { verifyAdmin } from "@/utils/verifyAdmin"
+import { iPlus } from "@/components/icons/Icons"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -16,7 +17,7 @@ const Navlinks: FC = (): JSX.Element => {
       <div>
         <NavItem label="Home" route={toHome} />
         <NavItem label="All Projects" route={toProjects} />
-        <NavItem label="List Project" route={toSubmit} />
+        <NavItem label="List Project" route={toSubmit} icon={iPlus} />
         {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} />}
       </div>
 

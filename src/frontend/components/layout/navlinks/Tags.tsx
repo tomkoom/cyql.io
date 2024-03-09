@@ -46,7 +46,7 @@ const Tags: FC = (): JSX.Element => {
   return (
     <TagsStyled>
       {categories.slice(0, 12).map((c) => {
-        return <Tag key={c.id} label={c.id} route={() => route(c.label)} />
+        return <Tag key={c.id} label={c.label} route={() => route(c.label)} />
       })}
       <Tag label={"..."} route={toProjects} />
     </TagsStyled>
@@ -71,7 +71,9 @@ const TagStyled = styled.li`
     color: var(--primaryColor);
     background-color: var(--underlay2);
   }
+
   > span.icon {
+    font-size: 0.8rem;
     color: var(--highlight3);
   }
 
@@ -80,6 +82,7 @@ const TagStyled = styled.li`
 
     > span.num {
       color: var(--tertiaryColor);
+      font-size: 0.7rem;
     }
   }
 `

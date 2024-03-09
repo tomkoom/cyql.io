@@ -9,4 +9,3 @@ export { default as TextInput } from "./TextInput"
 export { default as Theme } from "./Theme"
 export { default as UpvotesNum } from "./UpvotesNum"
 export { default as Price } from "./price/Price"
-

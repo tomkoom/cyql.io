@@ -1,8 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { ProjectData, Token, Primary } from "./_index"
+import { ProjectData, Token, Primary, TextInputLabel } from "./_index"
+import { Btn } from "@/components/btns/_index"
 
 const ListProject: FC = (): JSX.Element => {
+  const submit = (): void => {}
+
   return (
     <ListProjectStyled>
       <div className="title">
@@ -38,9 +41,61 @@ const ListProject: FC = (): JSX.Element => {
         </div>
       </Panel>
 
-      <p>social networks web2</p>
-      <p>social networks web3</p>
-      <p>documentation</p>
+      <Panel>
+        <div className="title">
+          <h5>Web2 Links</h5>
+          <p>Twitter, Discord, etc</p>
+        </div>
+        <div className="content">
+          <TextInputLabel id={"x"} label={"X/Twitter"} />
+          <TextInputLabel id={"discord"} label={"Discord"} />
+          <TextInputLabel id={"telegram"} label={"Telegram"} />
+          <TextInputLabel id={"github"} label={"GitHub"} />
+        </div>
+      </Panel>
+
+      <Panel>
+        <div className="title">
+          <h5>Web3 #ic Links</h5>
+        </div>
+        <div className="content">
+          <TextInputLabel id={"taggr"} label={"#TAGGR"} />
+          <TextInputLabel id={"openchat"} label={"OpenChat"} />
+          <TextInputLabel id={"dscvr"} label={"DSCVR"} />
+          <TextInputLabel id={"funded"} label={"Funded"} />
+        </div>
+      </Panel>
+
+      <Panel>
+        <div className="title">
+          <h5>#ic Links</h5>
+          <p>DFINITY forum, SNS, etc</p>
+        </div>
+        <div className="content">
+          <TextInputLabel
+            id={"dfinityForumShowcase"}
+            label={"DFINITY forum [showcase] url"}
+            placeholder={"..."}
+          />
+          <TextInputLabel
+            id={"nnsProjectUrl"}
+            label={"NNS project url"}
+            placeholder={"nns.ic0.app/project/?project=..."}
+          />
+        </div>
+      </Panel>
+
+      <Panel>
+        <div className="title">
+          <h5>Docs, Whitepaper, etc</h5>
+        </div>
+        <div className="content">
+          <TextInputLabel id={"docs"} label={"Docs"} placeholder="docs.app.com" />
+          <TextInputLabel id={"whitepaper"} label={"Whitepaper"} placeholder="app.com/whitepaper" />
+        </div>
+      </Panel>
+
+      <Btn btnType={"primary"} text={"Submit Project"} onClick={submit} />
     </ListProjectStyled>
   )
 }
@@ -49,6 +104,7 @@ const ListProjectStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  margin-bottom: 4rem;
 
   > div.title {
     > p {

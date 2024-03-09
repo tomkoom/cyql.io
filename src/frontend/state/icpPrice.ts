@@ -33,8 +33,6 @@ const icpPrice = createSlice({
       })
       .addCase(fetchIcpPrice.fulfilled, (state, { payload }) => {
         state.status = "resolved"
-        // console.log(payload["internet-computer"].usd)
-        console.log(payload)
         state.icpPrice = payload["internet-computer"].usd
         state.icp24hPriceChange = payload["internet-computer"].usd_24h_change
       })
