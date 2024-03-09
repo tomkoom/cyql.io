@@ -4,19 +4,19 @@ import { Categories } from "./_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectProposedProject } from "@/state/proposedProject"
+import { selectListProject } from "@/state/listProject"
 import { selectProposedProjectCategories } from "@/state/categories/proposedProjectCategories"
 
 const ProjectData: FC = (): JSX.Element => {
-  const project = useAppSelector(selectProposedProject)
+  const project = useAppSelector(selectListProject)
   const allCategories = useAppSelector(selectProposedProjectCategories)
 
   return (
     <ProjectDataStyled>
       <div className="section">
         <div className="title">
-          <h5>1. Pick category</h5>
-          <p>One or multiple</p>
+          <h5>1. Project Category</h5>
+          <p>Pick one or multiple</p>
         </div>
 
         <p className="category_array">[{project.category.join(", ")}]</p>
@@ -122,14 +122,13 @@ const ProjectDataStyled = styled.div`
   align-items: center;
   gap: 3rem;
   text-align: center;
-  margin: 2rem 0;
 
   > div.section {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 
     > p.category_array {
       font-size: var(--fs5);

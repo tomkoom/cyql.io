@@ -9,7 +9,7 @@ import adminSearch from "./admin/adminSearch"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
-import proposedProject from "./proposedProject"
+import listProject from "./listProject"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
 
 // modals
@@ -44,7 +44,7 @@ const store = configureStore({
     allCategories,
     categoriesSortedByNum,
     user,
-    proposedProject,
+    listProject,
     proposedProjectCategories,
 
     // modals

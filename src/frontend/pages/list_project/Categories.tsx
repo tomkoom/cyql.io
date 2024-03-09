@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProposedProject, setProposedProjectCategory } from "@/state/proposedProject"
+import { selectListProject, setListProjectCategory } from "@/state/listProject"
 
 interface CategoriesProps {
   name: string
@@ -12,14 +12,14 @@ interface CategoriesProps {
 
 const Categories: FC<CategoriesProps> = ({ name, categories }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const project = useAppSelector(selectProposedProject)
+  const project = useAppSelector(selectListProject)
 
   const updateCategory = (category: string) => {
     if (project.category.includes(category)) {
       const updated = project.category.filter((c) => c !== category)
-      dispatch(setProposedProjectCategory(updated))
+      dispatch(setListProjectCategory(updated))
     } else {
-      dispatch(setProposedProjectCategory([...project.category, category]))
+      dispatch(setListProjectCategory([...project.category, category]))
     }
   }
 

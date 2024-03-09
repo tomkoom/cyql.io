@@ -1,15 +1,15 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 
-const Token: FC = (): JSX.Element => {
+const Primary: FC = (): JSX.Element => {
   return (
-    <TokenStyled>
-      <div className="title">content</div>
-    </TokenStyled>
+    <PrimaryStyled>
+      <div>content</div>
+    </PrimaryStyled>
   )
 }
 
-const TokenStyled = styled.div`
+const PrimaryStyled = styled.div`
   text-align: center;
 
   > div.title {
@@ -23,4 +23,4 @@ const TokenStyled = styled.div`
   }
 `
 
-export default Token
+export default Primary
