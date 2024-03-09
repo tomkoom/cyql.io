@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 
 interface ProposedProjectCategoriesState {
-  categories: string[]
+  allCategories: string[]
 }
 
-const categories = [
+const allCategories = [
   // infrastructure
   "infrastructure",
   "storage",
@@ -13,6 +13,7 @@ const categories = [
   "search_engines",
   "protocol",
   "automation",
+  "developer_tooling",
 
   // anaytics
   "analytics",
@@ -33,8 +34,10 @@ const categories = [
   "wallets",
   "dexs_swapping",
 
-  // games
+  // games, metaverse, ar/vr
   "games",
+  "metaverse",
+  "ar_vr",
   "p2e",
   "betting",
 
@@ -57,7 +60,6 @@ const categories = [
   "other",
   "dapps",
   "education",
-  "dev_tools",
   "payments_invoicing",
 
   // ...
@@ -66,14 +68,10 @@ const categories = [
 
   // ...
   "ai",
-
-  // ...
-  "metaverse",
-  "ar_vr",
 ]
 
 const initialState: ProposedProjectCategoriesState = {
-  categories,
+  allCategories,
 }
 
 const proposedProjectCategories = createSlice({
@@ -84,7 +82,7 @@ const proposedProjectCategories = createSlice({
 
 // selectors
 export const selectProposedProjectCategories = (state: RootState) =>
-  state.proposedProjectCategories.categories
+  state.proposedProjectCategories.allCategories
 
 export const {} = proposedProjectCategories.actions
 export default proposedProjectCategories.reducer

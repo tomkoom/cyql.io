@@ -31,6 +31,7 @@ const ProjectData: FC = (): JSX.Element => {
                 "search_engines",
                 "protocol",
                 "automation",
+                "developer_tooling",
               ].includes(c)
             )}
           />
@@ -95,7 +96,6 @@ const ProjectData: FC = (): JSX.Element => {
                 "other",
                 "dapps",
                 "education",
-                "dev_tools",
                 "payments_invoicing",
 
                 // ...

@@ -29,6 +29,7 @@ const Categories: FC<CategoriesProps> = ({ name, categories }): JSX.Element => {
       <div>
         {categories.map((c) => (
           <div
+            key={`category-${c}`}
             className={project.category.includes(c) ? "active" : null}
             onClick={() => updateCategory(c)}
           >
@@ -64,7 +65,6 @@ const CategoriesStyled = styled.div`
       font-weight: var(--fwMedium);
       background-color: var(--underlay1);
       padding: 0 0.75rem;
-      /* border-radius: 1.25rem; */
       cursor: pointer;
       transition: var(--transition1);
 
