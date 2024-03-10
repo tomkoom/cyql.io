@@ -1,10 +1,19 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { ProjectData, Token, Primary, TextInputLabel } from "./_index"
+import { Category, Token, Primary, Input } from "./_index"
 import { Btn } from "@/components/btns/_index"
+import { web2Links, web3Links, extra, extra2 } from "./_inputs"
+
+// state
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectListProject } from "@/state/listProject"
 
 const ListProject: FC = (): JSX.Element => {
-  const submit = (): void => {}
+  const project = useAppSelector(selectListProject)
+
+  const submit = (): void => {
+    console.log(project)
+  }
 
   return (
     <ListProjectStyled>
@@ -15,9 +24,15 @@ const ListProject: FC = (): JSX.Element => {
         </p>
       </div>
 
-      <div>
-        <ProjectData />
-      </div>
+      <Panel>
+        <div className="title">
+          <h5>Project Category</h5>
+          <p>Pick one or multiple</p>
+        </div>
+        <div className="content">
+          <Category />
+        </div>
+      </Panel>
 
       <Panel>
         <div className="title">
@@ -47,10 +62,9 @@ const ListProject: FC = (): JSX.Element => {
           <p>Twitter, Discord, etc</p>
         </div>
         <div className="content">
-          <TextInputLabel id={"x"} label={"X/Twitter"} />
-          <TextInputLabel id={"discord"} label={"Discord"} />
-          <TextInputLabel id={"telegram"} label={"Telegram"} />
-          <TextInputLabel id={"github"} label={"GitHub"} />
+          {web2Links.map((item) => (
+            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+          ))}
         </div>
       </Panel>
 
@@ -59,29 +73,21 @@ const ListProject: FC = (): JSX.Element => {
           <h5>Web3 #ic Links</h5>
         </div>
         <div className="content">
-          <TextInputLabel id={"taggr"} label={"#TAGGR"} />
-          <TextInputLabel id={"openchat"} label={"OpenChat"} />
-          <TextInputLabel id={"dscvr"} label={"DSCVR"} />
-          <TextInputLabel id={"funded"} label={"Funded"} />
+          {web3Links.map((item) => (
+            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+          ))}
         </div>
       </Panel>
 
       <Panel>
         <div className="title">
           <h5>#ic Links</h5>
-          <p>DFINITY forum, SNS, etc</p>
+          <p>DFINITY forum showcase url, NNS project url, etc</p>
         </div>
         <div className="content">
-          <TextInputLabel
-            id={"dfinityForumShowcase"}
-            label={"DFINITY forum [showcase] url"}
-            placeholder={"..."}
-          />
-          <TextInputLabel
-            id={"nnsProjectUrl"}
-            label={"NNS project url"}
-            placeholder={"nns.ic0.app/project/?project=..."}
-          />
+          {extra.map((item) => (
+            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+          ))}
         </div>
       </Panel>
 
@@ -90,8 +96,9 @@ const ListProject: FC = (): JSX.Element => {
           <h5>Docs, Whitepaper, etc</h5>
         </div>
         <div className="content">
-          <TextInputLabel id={"docs"} label={"Docs"} placeholder="docs.app.com" />
-          <TextInputLabel id={"whitepaper"} label={"Whitepaper"} placeholder="app.com/whitepaper" />
+          {extra2.map((item) => (
+            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+          ))}
         </div>
       </Panel>
 

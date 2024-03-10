@@ -1,33 +1,15 @@
 import React, { FC } from "react"
-import styled from "styled-components"
-import { TextInputLabel } from "./_index"
+import { Input } from "./_index"
+import { primary } from "./_inputs"
 
 const Primary: FC = (): JSX.Element => {
-  const inputs = [
-    { id: "name", label: "Project/dApp Name", placeholder: "..." },
-    { id: "description", label: "Description [up to 140 symbols]", placeholder: "..." },
-    { id: "domain", label: "Domain", placeholder: "app.io" },
-    {
-      id: "backendCanisterId",
-      label: "Backend Canister Id",
-      placeholder: "nrkmt-haaaa-aaaai-qagmq-cai",
-    },
-    {
-      id: "frontendCanisterId",
-      label: "Frontend Canister Id",
-      placeholder: "n7ib3-4qaaa-aaaai-qagnq-cai",
-    },
-  ]
-
   return (
-    <PrimaryStyled>
-      {inputs.map((input) => (
-        <TextInputLabel id={input.id} label={input.label} placeholder={input.placeholder} />
+    <div>
+      {primary.map((input) => (
+        <Input key={input.id} id={input.id} label={input.label} placeholder={input.placeholder} />
       ))}
-    </PrimaryStyled>
+    </div>
   )
 }
-
-const PrimaryStyled = styled.div``
 
 export default Primary

@@ -5,12 +5,12 @@ import styled from "styled-components"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setListProject } from "@/state/listProject"
 
-interface TextInputLabelProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string
   label: string
 }
 
-const TextInputLabel: FC<TextInputLabelProps> = ({ id, label, ...props }): JSX.Element => {
+const Input: FC<InputProps> = ({ id, label, ...props }): JSX.Element => {
   const dispatch = useAppDispatch()
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,14 +19,14 @@ const TextInputLabel: FC<TextInputLabelProps> = ({ id, label, ...props }): JSX.E
   }
 
   return (
-    <TextInputLabelStyled>
+    <InputStyled>
       <label htmlFor={id}>{label}</label>
       <input id={id} type="text" autoComplete="off" onChange={onChange} {...props} />
-    </TextInputLabelStyled>
+    </InputStyled>
   )
 }
 
-const TextInputLabelStyled = styled.div`
+const InputStyled = styled.div`
   width: 100%;
   margin-bottom: 1rem;
 
@@ -58,4 +58,4 @@ const TextInputLabelStyled = styled.div`
   }
 `
 
-export default TextInputLabel
+export default Input
