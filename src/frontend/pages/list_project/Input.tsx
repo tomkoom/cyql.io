@@ -32,7 +32,7 @@ const InputStyled = styled.div`
 
   > label {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: var(--fsText);
     padding-bottom: 0.25rem;
     pointer-events: none;
   }

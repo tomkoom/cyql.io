@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Categories } from "./_index"
+import { CategoryBlock } from "./_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -15,7 +15,7 @@ const Category: FC = (): JSX.Element => {
     <CategoryStyled>
       <p className="category_array">[{project.category.join(", ")}]</p>
       <CategoriesWrapper>
-        <Categories
+        <CategoryBlock
           name="Infrastructure"
           categories={allCategories.filter((c) =>
             [
@@ -30,60 +30,60 @@ const Category: FC = (): JSX.Element => {
           )}
         />
 
-        <Categories
+        <CategoryBlock
           name="DeFi"
           categories={allCategories.filter((c) =>
             ["defi", "staking", "wallets", "dexs_swapping"].includes(c)
           )}
         />
 
-        <Categories
+        <CategoryBlock
           name="Communication"
           categories={allCategories.filter((c) =>
             ["communication", "social_networks", "messaging"].includes(c)
           )}
         />
 
-        <Categories
+        <CategoryBlock
           name="Games, Metaverse, AR/VR"
           categories={allCategories.filter((c) =>
             ["games", "metaverse", "ar_vr", "p2e", "betting"].includes(c)
           )}
         />
 
-        <Categories
+        <CategoryBlock
           name="Governance"
           categories={allCategories.filter((c) => ["governance", "daos"].includes(c))}
         />
 
-        <Categories
+        <CategoryBlock
           name="Anaytics"
           categories={allCategories.filter((c) => ["analytics", "explorers"].includes(c))}
         />
 
-        <Categories
+        <CategoryBlock
           name="Identity"
           categories={allCategories.filter((c) => ["identity", "identity_providers"].includes(c))}
         />
 
-        <Categories
+        <CategoryBlock
           name="NFTs"
           categories={allCategories.filter((c) =>
             ["nfts", "nft_analytics", "inscriptions"].includes(c)
           )}
         />
 
-        <Categories
+        <CategoryBlock
           name="BTC, Ethereum"
           categories={allCategories.filter((c) => ["btc", "ethereum"].includes(c))}
         />
 
-        <Categories
+        <CategoryBlock
           name="Communities"
           categories={allCategories.filter((c) => ["communities"].includes(c))}
         />
 
-        <Categories
+        <CategoryBlock
           name="Other"
           categories={allCategories.filter((c) =>
             [
@@ -95,8 +95,6 @@ const Category: FC = (): JSX.Element => {
               // ...
               "vcs",
               "ai",
-
-              // ...
             ].includes(c)
           )}
         />

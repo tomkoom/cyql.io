@@ -5,12 +5,12 @@ import styled from "styled-components"
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectListProject, setListProjectCategory } from "@/state/listProject"
 
-interface CategoriesProps {
+interface CategoryBlockProps {
   name: string
   categories: string[]
 }
 
-const Categories: FC<CategoriesProps> = ({ name, categories }): JSX.Element => {
+const CategoryBlock: FC<CategoryBlockProps> = ({ name, categories }): JSX.Element => {
   const dispatch = useAppDispatch()
   const project = useAppSelector(selectListProject)
 
@@ -24,7 +24,7 @@ const Categories: FC<CategoriesProps> = ({ name, categories }): JSX.Element => {
   }
 
   return (
-    <CategoriesStyled>
+    <CategoryBlockStyled>
       <h6>{name}</h6>
       <div>
         {categories.map((c) => (
@@ -37,11 +37,11 @@ const Categories: FC<CategoriesProps> = ({ name, categories }): JSX.Element => {
           </div>
         ))}
       </div>
-    </CategoriesStyled>
+    </CategoryBlockStyled>
   )
 }
 
-const CategoriesStyled = styled.div`
+const CategoryBlockStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -84,4 +84,4 @@ const CategoriesStyled = styled.div`
   }
 `
 
-export default Categories
+export default CategoryBlock

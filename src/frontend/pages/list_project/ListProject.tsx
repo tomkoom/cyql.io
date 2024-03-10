@@ -47,9 +47,7 @@ const ListProject: FC = (): JSX.Element => {
       <Panel>
         <div className="title">
           <h5>Token Ledger and Standard</h5>
-          <p>
-            Please specify the ledger canister id and a token standard if the project is tokenized
-          </p>
+          <p>Please specify the token ledger id and a standard if the project is tokenized</p>
         </div>
         <div className="content">
           <Token />
@@ -124,7 +122,7 @@ const Panel = styled.div`
   text-align: center;
 
   > div.title {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 
     h5 {
       margin-bottom: 0.5rem;
