@@ -1,15 +1,15 @@
 export const primary = [
-  { id: "name", label: "Project/dApp Name", placeholder: "..." },
+  { id: "name", label: "Project / dApp name", placeholder: "..." },
   { id: "description", label: "Description [up to 140 symbols]", placeholder: "..." },
   { id: "domain", label: "Domain", placeholder: "app.io" },
   {
     id: "frontendCanisterId",
-    label: "Frontend Canister Id",
+    label: "Frontend canister id",
     placeholder: "n7ib3-4qaaa-aaaai-qagnq-cai",
   },
   {
     id: "backendCanisterId",
-    label: "Backend Canister Id",
+    label: "Backend canister id",
     placeholder: "nrkmt-haaaa-aaaai-qagmq-cai",
   },
 ]

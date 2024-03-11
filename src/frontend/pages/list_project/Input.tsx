@@ -39,21 +39,20 @@ const InputStyled = styled.div`
 
   > input {
     width: 100%;
-    height: 2rem;
+    height: 2.5rem;
     padding: 0 1rem;
     font-size: var(--fs6);
     font-weight: var(--fwMedium);
     color: var(--primaryColor);
-    background-color: var(--underlay1);
+    background-color: var(--underlay2);
     caret-color: var(--primaryColor);
-    text-align: center;
     border: none;
     outline: none;
     transition: var(--transition1);
 
     &:hover,
     &:focus {
-      background-color: var(--underlay2);
+      background-color: var(--underlay3);
     }
   }
 `

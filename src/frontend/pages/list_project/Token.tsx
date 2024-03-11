@@ -52,7 +52,6 @@ const TokenStyled = styled.div`
 
     > ul {
       display: flex;
-      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       gap: 0.5rem;
@@ -75,13 +74,13 @@ const TokenStyled = styled.div`
         > label {
           font-size: var(--fsText);
           font-weight: var(--fwMedium);
-          background-color: var(--underlay1);
+          background-color: var(--underlay2);
           padding: 0.4rem 0.5rem;
           cursor: pointer;
           transition: var(--transition1);
 
           &:hover {
-            background-color: var(--underlay2);
+            background-color: var(--underlay3);
           }
         }
       }

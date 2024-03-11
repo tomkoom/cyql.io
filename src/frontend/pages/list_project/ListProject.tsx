@@ -37,81 +37,103 @@ const ListProject: FC = (): JSX.Element => {
           </p>
         </div>
 
-        <Panel>
+        <Panel style={{ backgroundColor: "unset" }}>
           <div className="title">
-            <h5>Project Category</h5>
-            <p>Pick one or multiple</p>
+            <h5 style={{ textAlign: "center" }}>Project Category</h5>
+            <p style={{ textAlign: "center" }}>Pick one or multiple</p>
           </div>
           <div className="content">
             <Category />
           </div>
         </Panel>
 
-        <Panel>
-          <div className="title">
-            <h5>Core Project Information</h5>
-            <p>Name, description, etc</p>
-          </div>
-          <div className="content">
-            <Primary />
-          </div>
-        </Panel>
+        <PanelsWrapper>
+          <Panel>
+            <div className="title">
+              <h5>Core Project Information</h5>
+              <p>Name, description, etc</p>
+            </div>
+            <div className="content">
+              <Primary />
+            </div>
+          </Panel>
 
-        <Panel>
-          <div className="title">
-            <h5>Token Ledger and Standard</h5>
-            <p>Please specify the token ledger id and a standard if the project is tokenized</p>
-          </div>
-          <div className="content">
-            <Token />
-          </div>
-        </Panel>
+          <Panel>
+            <div className="title">
+              <h5>Token Data</h5>
+              <p>Please specify the token ledger id and a standard if the project is tokenized</p>
+            </div>
+            <div className="content">
+              <Token />
+            </div>
+          </Panel>
 
-        <Panel>
-          <div className="title">
-            <h5>Web2 Links</h5>
-            <p>Twitter, Discord, etc</p>
-          </div>
-          <div className="content">
-            {web2Links.map((item) => (
-              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-            ))}
-          </div>
-        </Panel>
+          <Panel>
+            <div className="title">
+              <h5>Web2 Links</h5>
+              <p>Twitter, Discord, etc</p>
+            </div>
+            <div className="content">
+              {web2Links.map((item) => (
+                <Input
+                  key={item.id}
+                  id={item.id}
+                  label={item.label}
+                  placeholder={item.placeholder}
+                />
+              ))}
+            </div>
+          </Panel>
 
-        <Panel>
-          <div className="title">
-            <h5>Web3 #ic Links</h5>
-          </div>
-          <div className="content">
-            {web3Links.map((item) => (
-              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-            ))}
-          </div>
-        </Panel>
+          <Panel>
+            <div className="title">
+              <h5>Web3 #ic Links</h5>
+            </div>
+            <div className="content">
+              {web3Links.map((item) => (
+                <Input
+                  key={item.id}
+                  id={item.id}
+                  label={item.label}
+                  placeholder={item.placeholder}
+                />
+              ))}
+            </div>
+          </Panel>
 
-        <Panel>
-          <div className="title">
-            <h5>#ic Links</h5>
-            <p>DFINITY forum showcase url, NNS project url, etc</p>
-          </div>
-          <div className="content">
-            {extra.map((item) => (
-              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-            ))}
-          </div>
-        </Panel>
+          <Panel>
+            <div className="title">
+              <h5>#ic Links</h5>
+              <p>DFINITY forum showcase url, NNS project url, etc</p>
+            </div>
+            <div className="content">
+              {extra.map((item) => (
+                <Input
+                  key={item.id}
+                  id={item.id}
+                  label={item.label}
+                  placeholder={item.placeholder}
+                />
+              ))}
+            </div>
+          </Panel>
 
-        <Panel>
-          <div className="title">
-            <h5>Docs, Whitepaper, etc</h5>
-          </div>
-          <div className="content">
-            {extra2.map((item) => (
-              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-            ))}
-          </div>
-        </Panel>
+          <Panel>
+            <div className="title">
+              <h5>Docs, Whitepaper, etc</h5>
+            </div>
+            <div className="content">
+              {extra2.map((item) => (
+                <Input
+                  key={item.id}
+                  id={item.id}
+                  label={item.label}
+                  placeholder={item.placeholder}
+                />
+              ))}
+            </div>
+          </Panel>
+        </PanelsWrapper>
 
         <Btn btnType={"primary"} text={"Submit Project"} onClick={openModal} />
       </div>
@@ -134,8 +156,16 @@ const ListProjectStyled = styled.div`
   }
 `
 
+const PanelsWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1rem;
+`
+
 const Panel = styled.div`
-  text-align: center;
+  background-color: var(--underlay1);
+  padding: 1rem;
 
   > div.title {
     margin-bottom: 1rem;

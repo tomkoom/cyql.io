@@ -46,11 +46,10 @@ const CategoryBlockStyled = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   background-color: var(--underlay1);
-  padding: 0.75rem 0.5rem;
+  padding: 1rem 0.5rem;
 
   > h6 {
     margin-bottom: 0.5rem;
-    font-size: var(--fsText);
     font-weight: var(--fwMedium);
   }
 
