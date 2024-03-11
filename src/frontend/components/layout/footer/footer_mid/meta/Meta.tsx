@@ -1,11 +1,12 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Badge, Copy } from "./_index"
+import { Badge, Copy, Onchain } from "./_index"
 
 const Meta: FC = (): JSX.Element => {
   return (
     <MetaStyled>
       <Badge />
+      <Onchain />
       <Copy />
     </MetaStyled>
   )

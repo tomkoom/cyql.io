@@ -34,6 +34,7 @@ export const COOKIE_POLICY =
 export const PRICE_URL =
   "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd&include_24hr_change=true"
 export const ICP_CC_URL = "https://icp-cc.com/"
+export const FRONTEND_CANISTER_URL = "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/"
 
 // assets
 export const IC_LOGO = iclogo
