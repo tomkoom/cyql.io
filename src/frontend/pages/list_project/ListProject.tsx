@@ -1,9 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Category, Token, Primary, Input } from "./_index"
+import { Category, Token, Primary, Input, Steps, Proposer } from "./_index"
 import { Btn } from "@/components/btns/_index"
 import { web2Links, web3Links, extra, extra2 } from "./_inputs"
 import { ListConfirmModal } from "@/modals/_index"
+import { useAuth } from "@/context/Auth"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -11,9 +12,11 @@ import {
   selectListConfirmModalIsOpen,
   setListConfirmModalIsOpen,
 } from "@/state/modals/listConfirmModal"
+import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 
 const ListProject: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
+  const { isAuthenticated } = useAuth()
   const listConfirmModalIsOpen = useAppSelector(selectListConfirmModalIsOpen)
 
   const closeModal = (): void => {
@@ -21,7 +24,11 @@ const ListProject: FC = (): JSX.Element => {
   }
 
   const openModal = (): void => {
-    dispatch(setListConfirmModalIsOpen(true))
+    if (isAuthenticated) {
+      dispatch(setListConfirmModalIsOpen(true))
+    } else {
+      dispatch(setSignInModalIsOpen(true))
+    }
   }
 
   return (
@@ -35,11 +42,12 @@ const ListProject: FC = (): JSX.Element => {
             The project will be listed as a proposal and will be voted and moderated by the
             community
           </p>
+          <Steps />
         </div>
 
         <Panel style={{ backgroundColor: "unset" }}>
           <div className="title">
-            <h5 style={{ textAlign: "center" }}>Project Category</h5>
+            <h5 style={{ textAlign: "center" }}>* Project Category</h5>
             <p style={{ textAlign: "center" }}>Pick one or multiple</p>
           </div>
           <div className="content">
@@ -75,12 +83,7 @@ const ListProject: FC = (): JSX.Element => {
             </div>
             <div className="content">
               {web2Links.map((item) => (
-                <Input
-                  key={item.id}
-                  id={item.id}
-                  label={item.label}
-                  placeholder={item.placeholder}
-                />
+                <Input key={item.id} input={item} />
               ))}
             </div>
           </Panel>
@@ -91,12 +94,7 @@ const ListProject: FC = (): JSX.Element => {
             </div>
             <div className="content">
               {web3Links.map((item) => (
-                <Input
-                  key={item.id}
-                  id={item.id}
-                  label={item.label}
-                  placeholder={item.placeholder}
-                />
+                <Input key={item.id} input={item} />
               ))}
             </div>
           </Panel>
@@ -108,12 +106,7 @@ const ListProject: FC = (): JSX.Element => {
             </div>
             <div className="content">
               {extra.map((item) => (
-                <Input
-                  key={item.id}
-                  id={item.id}
-                  label={item.label}
-                  placeholder={item.placeholder}
-                />
+                <Input key={item.id} input={item} />
               ))}
             </div>
           </Panel>
@@ -124,18 +117,18 @@ const ListProject: FC = (): JSX.Element => {
             </div>
             <div className="content">
               {extra2.map((item) => (
-                <Input
-                  key={item.id}
-                  id={item.id}
-                  label={item.label}
-                  placeholder={item.placeholder}
-                />
+                <Input key={item.id} input={item} />
               ))}
             </div>
           </Panel>
         </PanelsWrapper>
 
-        <Btn btnType={"primary"} text={"Submit Project"} onClick={openModal} />
+        <Proposer />
+        <Btn
+          btnType={"primary"}
+          text={isAuthenticated ? "Submit Project" : "Sign In to Submit"}
+          onClick={openModal}
+        />
       </div>
     </ListProjectStyled>
   )

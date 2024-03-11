@@ -1,16 +1,16 @@
 import React, { FC, InputHTMLAttributes, ChangeEvent } from "react"
 import styled from "styled-components"
+import type { Input } from "./_inputs"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setListProject } from "@/state/listProject"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  id: string
-  label: string
+  input: Input
 }
 
-const Input: FC<InputProps> = ({ id, label, ...props }): JSX.Element => {
+const Input: FC<InputProps> = ({ input, ...props }): JSX.Element => {
   const dispatch = useAppDispatch()
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -20,8 +20,17 @@ const Input: FC<InputProps> = ({ id, label, ...props }): JSX.Element => {
 
   return (
     <InputStyled>
-      <label htmlFor={id}>{label}</label>
-      <input id={id} type="text" autoComplete="off" onChange={onChange} {...props} />
+      <label htmlFor={input.id}>
+        {input.required && "*"} {input.label}
+      </label>
+      <input
+        id={input.id}
+        type="text"
+        placeholder={input.placeholder}
+        autoComplete="off"
+        onChange={onChange}
+        {...props}
+      />
     </InputStyled>
   )
 }
