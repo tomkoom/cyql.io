@@ -21,6 +21,7 @@ import projectModal from "./modals/projectModal"
 import signInModal from "./modals/signInModal"
 import withdrawModal from "./modals/withdrawModal"
 import withdrawNftModal from "./modals/withdrawNftModal"
+import listConfirmModal from "./modals/listConfirmModal"
 
 // projects
 import filter from "./projects/filter"
@@ -56,6 +57,7 @@ const store = configureStore({
     signInModal,
     withdrawModal,
     withdrawNftModal,
+    listConfirmModal,
 
     // projects
     filter,

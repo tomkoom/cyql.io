@@ -3,117 +3,133 @@ import styled from "styled-components"
 import { Category, Token, Primary, Input } from "./_index"
 import { Btn } from "@/components/btns/_index"
 import { web2Links, web3Links, extra, extra2 } from "./_inputs"
+import { ListConfirmModal } from "@/modals/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectListProject } from "@/state/listProject"
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import {
+  selectListConfirmModalIsOpen,
+  setListConfirmModalIsOpen,
+} from "@/state/modals/listConfirmModal"
 
 const ListProject: FC = (): JSX.Element => {
-  const project = useAppSelector(selectListProject)
+  const dispatch = useAppDispatch()
+  const listConfirmModalIsOpen = useAppSelector(selectListConfirmModalIsOpen)
 
-  const submit = (): void => {
-    console.log(project)
+  const closeModal = (): void => {
+    dispatch(setListConfirmModalIsOpen(false))
+  }
+
+  const openModal = (): void => {
+    dispatch(setListConfirmModalIsOpen(true))
   }
 
   return (
     <ListProjectStyled>
-      <div className="title">
-        <h2 className="pageTitle">List New #ic Project</h2>
-        <p>
-          The project will be listed as a proposal and will be voted and moderated by the community
-        </p>
+      <ListConfirmModal isOpen={listConfirmModalIsOpen} onClose={closeModal} />
+
+      <div>
+        <div className="title">
+          <h2 className="pageTitle">List New #ic Project</h2>
+          <p>
+            The project will be listed as a proposal and will be voted and moderated by the
+            community
+          </p>
+        </div>
+
+        <Panel>
+          <div className="title">
+            <h5>Project Category</h5>
+            <p>Pick one or multiple</p>
+          </div>
+          <div className="content">
+            <Category />
+          </div>
+        </Panel>
+
+        <Panel>
+          <div className="title">
+            <h5>Core Project Information</h5>
+            <p>Name, description, etc</p>
+          </div>
+          <div className="content">
+            <Primary />
+          </div>
+        </Panel>
+
+        <Panel>
+          <div className="title">
+            <h5>Token Ledger and Standard</h5>
+            <p>Please specify the token ledger id and a standard if the project is tokenized</p>
+          </div>
+          <div className="content">
+            <Token />
+          </div>
+        </Panel>
+
+        <Panel>
+          <div className="title">
+            <h5>Web2 Links</h5>
+            <p>Twitter, Discord, etc</p>
+          </div>
+          <div className="content">
+            {web2Links.map((item) => (
+              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+            ))}
+          </div>
+        </Panel>
+
+        <Panel>
+          <div className="title">
+            <h5>Web3 #ic Links</h5>
+          </div>
+          <div className="content">
+            {web3Links.map((item) => (
+              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+            ))}
+          </div>
+        </Panel>
+
+        <Panel>
+          <div className="title">
+            <h5>#ic Links</h5>
+            <p>DFINITY forum showcase url, NNS project url, etc</p>
+          </div>
+          <div className="content">
+            {extra.map((item) => (
+              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+            ))}
+          </div>
+        </Panel>
+
+        <Panel>
+          <div className="title">
+            <h5>Docs, Whitepaper, etc</h5>
+          </div>
+          <div className="content">
+            {extra2.map((item) => (
+              <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
+            ))}
+          </div>
+        </Panel>
+
+        <Btn btnType={"primary"} text={"Submit Project"} onClick={openModal} />
       </div>
-
-      <Panel>
-        <div className="title">
-          <h5>Project Category</h5>
-          <p>Pick one or multiple</p>
-        </div>
-        <div className="content">
-          <Category />
-        </div>
-      </Panel>
-
-      <Panel>
-        <div className="title">
-          <h5>Core Project Information</h5>
-          <p>Name, description, etc</p>
-        </div>
-        <div className="content">
-          <Primary />
-        </div>
-      </Panel>
-
-      <Panel>
-        <div className="title">
-          <h5>Token Ledger and Standard</h5>
-          <p>Please specify the token ledger id and a standard if the project is tokenized</p>
-        </div>
-        <div className="content">
-          <Token />
-        </div>
-      </Panel>
-
-      <Panel>
-        <div className="title">
-          <h5>Web2 Links</h5>
-          <p>Twitter, Discord, etc</p>
-        </div>
-        <div className="content">
-          {web2Links.map((item) => (
-            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-          ))}
-        </div>
-      </Panel>
-
-      <Panel>
-        <div className="title">
-          <h5>Web3 #ic Links</h5>
-        </div>
-        <div className="content">
-          {web3Links.map((item) => (
-            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-          ))}
-        </div>
-      </Panel>
-
-      <Panel>
-        <div className="title">
-          <h5>#ic Links</h5>
-          <p>DFINITY forum showcase url, NNS project url, etc</p>
-        </div>
-        <div className="content">
-          {extra.map((item) => (
-            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-          ))}
-        </div>
-      </Panel>
-
-      <Panel>
-        <div className="title">
-          <h5>Docs, Whitepaper, etc</h5>
-        </div>
-        <div className="content">
-          {extra2.map((item) => (
-            <Input key={item.id} id={item.id} label={item.label} placeholder={item.placeholder} />
-          ))}
-        </div>
-      </Panel>
-
-      <Btn btnType={"primary"} text={"Submit Project"} onClick={submit} />
     </ListProjectStyled>
   )
 }
 
 const ListProjectStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-bottom: 4rem;
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 4rem;
 
-  > div.title {
-    > p {
-      text-align: center;
+    > div.title {
+      > p {
+        text-align: center;
+      }
     }
   }
 `

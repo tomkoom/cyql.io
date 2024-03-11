@@ -1,6 +1,6 @@
 // modals
 
-export { default as ListConfirmModal } from "./ListConfirmModal"
+export { default as ListConfirmModal } from "./list_confirm_modal/ListConfirmModal"
 export { default as LoadingModal } from "./LoadingModal"
 export { default as PromoModal } from "./PromoModal"
 export { default as RootModal } from "./RootModal"

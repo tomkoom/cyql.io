@@ -73,7 +73,7 @@ const CategoryBlockStyled = styled.div`
       transition: var(--transition1);
 
       &:hover {
-        background-color: var(--underlay2);
+        background-color: var(--underlay3);
       }
 
       &.active {

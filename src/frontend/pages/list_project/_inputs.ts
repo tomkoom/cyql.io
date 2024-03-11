@@ -30,7 +30,11 @@ export const web3Links = [
 
 export const extra = [
   { id: "dfinityForumShowcase", label: "DFINITY forum [showcase] url", placeholder: "..." },
-  { id: "nnsProjectUrl", label: "NNS project url", placeholder: "..." },
+  {
+    id: "nnsProjectUrl",
+    label: "NNS project url",
+    placeholder: "nns.ic0.app/project/?project=...",
+  },
 ]
 
 export const extra2 = [

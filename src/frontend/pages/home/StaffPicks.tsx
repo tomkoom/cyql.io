@@ -99,7 +99,7 @@ const StaffPicks: FC = (): JSX.Element => {
 
   return (
     <StaffPicksStyled>
-      <h3>staff picks</h3>
+      <h3>Staff Picks</h3>
 
       <ul>
         {staffPicksItems.map((item, i) => (
