@@ -10,7 +10,7 @@ const DataItem: FC<DataItemProps> = ({ label, value }): JSX.Element => {
   return (
     <DataItemStyled>
       <span className="label">{label}</span>
-      <span className="value">{value}</span>
+      <span className="value">{value || "-/-"}</span>
     </DataItemStyled>
   )
 }
@@ -26,10 +26,6 @@ const DataItemStyled = styled.li`
 
   > span {
     flex: 1;
-  }
-
-  > span.label {
-    white-space: nowrap;
   }
 
   > span.value {
