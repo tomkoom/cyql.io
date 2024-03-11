@@ -18,6 +18,7 @@ const Icon = styled.div`
   width: 3rem;
   display: grid;
   place-items: center;
+  flex-shrink: 0;
   background-color: var(--underlay1);
   border-radius: 50%;
   cursor: pointer;

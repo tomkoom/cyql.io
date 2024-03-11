@@ -36,6 +36,7 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   gap: 0.5rem;
   padding: 0 0.75rem;
   font-size: var(--fsText);

@@ -1,8 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import Modal from "../_Modal"
+import CrossIcon from "@/components/icons/CrossIcon"
+import { RootModal } from "../_index"
 import { DataItem } from "./_index"
 import { camelCaseToWords } from "@/utils/camelCaseToWords"
+import { Btn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -16,50 +18,77 @@ interface ListConfirmModalProps {
 const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const project = useAppSelector(selectListProject)
 
+  const submit = async (): Promise<void> => {}
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <Content>
-        <h3>Confirm Project Data</h3>
+    <RootModal isOpen={isOpen}>
+      <ListConfirmModalStyled>
+        <CrossIcon onClick={onClose} />
+        <h3>Review Project Data</h3>
 
-        <ul>
-          {Object.entries(project).map(([key, value]) => (
-            <DataItem
-              key={key}
-              label={camelCaseToWords(key)}
-              value={key === "category" ? value.join().toUpperCase() : value}
-            />
-          ))}
+        <div className="content">
+          <ul>
+            {Object.entries(project).map(([key, value]) => (
+              <DataItem
+                key={key}
+                label={camelCaseToWords(key)}
+                value={key === "category" ? value.join().toUpperCase() : value}
+              />
+            ))}
+          </ul>
+        </div>
 
-          <DataItem label={"Category"} value={project.category.join(", ").toUpperCase()} />
-          <DataItem label={"Name"} value={project.name} />
-          <DataItem label={"Description"} value={project.description} />
-          <DataItem label={"Domain"} value={project.domain} />
-          <DataItem label={"Frontend Canister Id"} value={project.frontendCanisterId} />
-          <DataItem label={"Backend Canister Id"} value={project.backendCanisterId} />
-        </ul>
-      </Content>
-    </Modal>
+        <Btn
+          btnType={"primary"}
+          text={"Confirm"}
+          onClick={submit}
+          style={{ width: "100%", marginTop: "1rem" }}
+        />
+      </ListConfirmModalStyled>
+    </RootModal>
   )
 }
 
-const Content = styled.div`
-  width: 100%;
+const ListConfirmModalStyled = styled.div`
+  color: var(--primaryColor);
+  background-color: var(--background);
+  padding: 1rem 1rem 4rem 1rem;
+
+  /* ... */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* ... */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 1rem;
 
   /* overflow */
-  max-height: calc(100vh - 10rem);
+  max-height: calc(100vh);
   overflow-y: auto;
 
-  h3 {
-    font-size: var(--fs4);
+  > h3 {
+    font-size: var(--fs5);
     text-align: center;
   }
 
-  ul {
+  > div.content {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    margin-top: 0.5rem;
+    background-color: var(--underlay1);
+    padding: 1rem;
+
+    > ul {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-top: 0.5rem;
+    }
   }
 `
 

@@ -37,21 +37,21 @@ export const token: Input[] = [
   },
 ]
 
-export const web2Links = [
+export const web2Links: Input[] = [
   { id: "x", label: "X/Twitter", placeholder: "twitter.com/app", required: false },
   { id: "discord", label: "Discord", placeholder: "...", required: false },
   { id: "telegram", label: "telegram", placeholder: "t.me/app", required: false },
   { id: "github", label: "GitHub", placeholder: "github.com/app", required: false },
 ]
 
-export const web3Links = [
+export const web3Links: Input[] = [
   { id: "taggr", label: "#TAGGR", placeholder: "...", required: false },
   { id: "openchat", label: "OpenChat", placeholder: "...", required: false },
   { id: "dscvr", label: "DSCVR", placeholder: "...", required: false },
   { id: "funded", label: "Funded", placeholder: "...", required: false },
 ]
 
-export const extra = [
+export const extra: Input[] = [
   {
     id: "dfinityForumShowcase",
     label: "DFINITY forum [showcase] url",
@@ -66,7 +66,18 @@ export const extra = [
   },
 ]
 
-export const extra2 = [
+export const extra2: Input[] = [
   { id: "docs", label: "Docs", placeholder: "docs.app.io", required: false },
   { id: "whitepaper", label: "Whitepaper", placeholder: "app.io/whitepaper", required: false },
 ]
+
+// ...
+
+export const inputs = {
+  primary,
+  token,
+  web2Links,
+  web3Links,
+  extra,
+  extra2,
+}

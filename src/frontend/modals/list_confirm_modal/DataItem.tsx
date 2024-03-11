@@ -9,27 +9,43 @@ interface DataItemProps {
 const DataItem: FC<DataItemProps> = ({ label, value }): JSX.Element => {
   return (
     <DataItemStyled>
-      <span className="label">{label}</span>
-      <span className="value">{value || "-/-"}</span>
+      <div>
+        <span className="label">{label}</span>
+        <span className="value">{value || "-/-"}</span>
+      </div>
+
+      <div className="divider" />
     </DataItemStyled>
   )
 }
 
 const DataItemStyled = styled.li`
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.25rem;
-  gap: 0.5rem;
-  font-size: var(--fsText);
-  font-weight: var(--fwRegular);
-  color: var(--primaryColor);
+  flex-direction: column;
+  gap: 0.25rem;
 
-  > span {
-    flex: 1;
+  > div {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+    gap: 0.5rem;
+    font-size: var(--fsText);
+    font-weight: var(--fwRegular);
+    color: var(--primaryColor);
+
+    > span {
+      flex: 1;
+    }
+
+    > span.value {
+      color: var(--secondaryColor);
+    }
   }
 
-  > span.value {
-    color: var(--secondaryColor);
+  > div.divider {
+    height: 1px;
+    width: 100%;
+    background-color: var(--underlay2);
   }
 `
 
