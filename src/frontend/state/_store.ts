@@ -9,7 +9,7 @@ import adminSearch from "./admin/adminSearch"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
-import listProject from "./listProject"
+import listProject from "./projectProposal"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
 
 // modals

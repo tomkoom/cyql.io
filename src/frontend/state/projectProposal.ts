@@ -1,47 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
+import type { ProjectProposal } from "./_types/dao_types"
 
-interface ListProjectState {
-  category: string[]
-
-  // token
-  tokenLedgerId: string
-  tokenStandard: string
-
-  // main
-  name: string
-  description: string
-  domain: string
-  backendCanisterId: string
-  frontendCanisterId: string
-
-  // web2 links
-  x: string
-  discord: string
-  telegram: string
-  github: string
-
-  // web3 links
-  taggr: string
-  openchat: string
-  dscvr: string
-  funded: string
-
-  // ic links
-  dfinityForumShowcase: string
-  nnsProjectUrl: string
-
-  // docs, whitepaper, etc
-  docs: string
-  whitepaper: string
-}
-
-const initialState: ListProjectState = {
+const initialState: ProjectProposal = {
   category: [],
-
-  // token
-  tokenLedgerId: "",
-  tokenStandard: "",
 
   // main
   name: "",
@@ -49,6 +11,10 @@ const initialState: ListProjectState = {
   domain: "",
   backendCanisterId: "",
   frontendCanisterId: "",
+
+  // token
+  tokenLedgerId: "",
+  tokenStandard: "",
 
   // web2 links
   x: "",
@@ -78,8 +44,6 @@ const listProject = createSlice({
     setListProject(state, { payload }: PayloadAction<{ [key: string]: string }>) {
       const key = Object.keys(payload)[0]
       const value = Object.values(payload)[0]
-
-      console.log(payload)
 
       if (key in state) {
         state[key] = value

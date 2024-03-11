@@ -5,10 +5,11 @@ import { RootModal } from "../_index"
 import { DataItem } from "./_index"
 import { camelCaseToWords } from "@/utils/camelCaseToWords"
 import { Btn } from "@/components/btns/_index"
+import { useBackend } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectListProject } from "@/state/listProject"
+import { selectListProject } from "@/state/projectProposal"
 
 interface ListConfirmModalProps {
   isOpen: boolean
@@ -16,15 +17,18 @@ interface ListConfirmModalProps {
 }
 
 const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.Element => {
+  const { createProjectProposal } = useBackend()
   const project = useAppSelector(selectListProject)
 
-  const submit = async (): Promise<void> => {}
+  const submit = async (): Promise<void> => {
+    await createProjectProposal(project)
+  }
 
   return (
     <RootModal isOpen={isOpen}>
       <ListConfirmModalStyled>
         <CrossIcon onClick={onClose} />
-        <h3>Review Project Data</h3>
+        <h3>Review & Confirm</h3>
 
         <div className="content">
           <ul>
@@ -32,7 +36,7 @@ const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.E
               <DataItem
                 key={key}
                 label={camelCaseToWords(key)}
-                value={key === "category" ? value.join().toUpperCase() : value}
+                value={typeof value === "object" ? value.join().toUpperCase() : value}
               />
             ))}
           </ul>

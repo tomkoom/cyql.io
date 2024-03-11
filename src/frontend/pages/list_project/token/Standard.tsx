@@ -1,31 +1,61 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 
+// state
+import { useAppDispatch } from "@/hooks/useRedux"
+import { setListProject } from "@/state/projectProposal"
+
 const Standard: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch()
+
+  const inputs = [
+    {
+      id: "icrc_1",
+      label: "ICRC-1",
+      name: "token_standard",
+      value: "icrc_1",
+    },
+    {
+      id: "icrc_2",
+      label: "ICRC-2",
+      name: "token_standard",
+      value: "icrc_2",
+    },
+    {
+      id: "ext",
+      label: "EXT",
+      name: "token_standard",
+      value: "ext",
+    },
+    {
+      id: "dip20",
+      label: "DIP20",
+      name: "token_standard",
+      value: "dip20",
+    },
+  ]
+
+  const updateTokenStandard = (value: string): void => {
+    dispatch(setListProject({ tokenStandard: value }))
+  }
+
   return (
     <StandardStyled>
       <span>Token standard</span>
 
       <ul>
-        <li>
-          <input type="radio" id="icrc_1" name="token_standard" value="icrc_1" />
-          <label htmlFor="icrc_1">ICRC-1</label>
-        </li>
-
-        <li>
-          <input type="radio" id="icrc_2" name="token_standard" value="icrc_2" />
-          <label htmlFor="icrc_2">ICRC-2</label>
-        </li>
-
-        <li>
-          <input type="radio" id="ext" name="token_standard" value="ext" />
-          <label htmlFor="ext">EXT</label>
-        </li>
-
-        <li>
-          <input type="radio" id="dip20" name="token_standard" value="dip20" />
-          <label htmlFor="dip20">DIP20</label>
-        </li>
+        {inputs.map((input) => (
+          <li key={input.id}>
+            <input
+              type="radio"
+              id={input.id}
+              name={input.name}
+              value={input.value}
+              onClick={() => updateTokenStandard(input.value)}
+            />
+            <label htmlFor={input.id}>{input.label}</label>
+          </li>
+        ))}
       </ul>
     </StandardStyled>
   )

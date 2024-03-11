@@ -2,6 +2,7 @@ import { useAuth } from "@/context/Auth"
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
 import type { Project, ProjectId } from "@/state/_types/types"
 import { verifyAdmin } from "@/utils/verifyAdmin"
+import { ProjectProposal } from "@/state/_types/dao_types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -65,11 +66,20 @@ const useBackend = () => {
     await actor.updateUpvote(BigInt(projectId))
   }
 
+  // dao
+
+  const createProjectProposal = async (projectData: ProjectProposal): Promise<void> => {
+    console.log(projectData)
+  }
+
   return {
     refreshProjects,
     addProject,
     editProject,
     updateUpvote,
+
+    // dao
+    createProjectProposal,
   }
 }
 

@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectListProject, setListProjectCategory } from "@/state/listProject"
+import { selectListProject, setListProjectCategory } from "@/state/projectProposal"
 
 interface CategoryBlockProps {
   name: string
