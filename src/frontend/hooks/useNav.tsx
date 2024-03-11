@@ -29,6 +29,10 @@ const useNav = () => {
     navigate("/list")
   }
 
+  const toProposals = (): void => {
+    navigate("/proposals")
+  }
+
   const toProfile = (): void => {
     navigate("/profile")
   }
@@ -43,6 +47,7 @@ const useNav = () => {
     toProjects,
     toProject,
     toSubmit,
+    toProposals,
     toProfile,
     toAdmin,
   }

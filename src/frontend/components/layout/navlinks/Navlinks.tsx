@@ -10,14 +10,15 @@ import { useNav } from "@/hooks/_index"
 
 const Navlinks: FC = (): JSX.Element => {
   const { userId } = useAuth()
-  const { toHome, toProjects, toSubmit, toAdmin } = useNav()
+  const { toHome, toProjects, toSubmit, toProposals, toAdmin } = useNav()
 
   return (
     <NavlinksStyled>
       <div>
         <NavItem label="Home" route={toHome} />
-        <NavItem label="All Projects" route={toProjects} />
+        <NavItem label="Curated Projects" route={toProjects} />
         <NavItem label="List Project" route={toSubmit} icon={iPlus} />
+        <NavItem label="Project Proposals" route={toProposals} />
         {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} />}
       </div>
 
