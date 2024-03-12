@@ -117,9 +117,9 @@ actor {
     return #ok(proposal.id)
   };
 
-  public shared ({ caller }) func deleteProposal(proposalId : T.ProjectProposalId) : async () {
+  public shared ({ caller }) func removeProposal(proposalId : T.ProjectProposalId) : async ?T.ProjectProposal {
     assert (U.isAdmin(caller));
-    return projectProposals.delete(proposalId)
+    return projectProposals.remove(proposalId)
   };
 
   public query func listProposals() : async [T.ProjectProposal] {

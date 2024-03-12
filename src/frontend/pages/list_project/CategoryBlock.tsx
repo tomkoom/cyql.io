@@ -46,7 +46,7 @@ const CategoryBlockStyled = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   background-color: var(--underlay1);
-  padding: 1rem 0.5rem;
+  padding: 0.75rem;
 
   > h6 {
     margin-bottom: 0.5rem;
@@ -55,7 +55,6 @@ const CategoryBlockStyled = styled.div`
 
   > div {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
 

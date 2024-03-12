@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import { ProjectProposalData } from "@/state/_types/dao_types"
-import { bigintToNum } from "@/utils/bigintToNum"
+import { bigintToString } from "@/utils/serializeBigint"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -25,7 +25,7 @@ export const useDao = (): UseDao => {
   const refreshProposals = async (): Promise<void> => {
     if (!actor) return
     await actor.listProposals().then((res) => {
-      const serialized = res.map((item) => bigintToNum(item))
+      const serialized = res.map((item) => bigintToString(item))
       dispatch(setProposals(serialized))
     })
   }

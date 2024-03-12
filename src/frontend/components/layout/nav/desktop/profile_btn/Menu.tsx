@@ -28,13 +28,13 @@ const Menu: FC<MenuProps> = ({ isOpen, setMenuIsOpen }): JSX.Element => {
     <MenuStyled>
       <div className="item" onClick={() => navigate(toProfile)}>
         <span className="icon">{iUser}</span>
-        <span className="text">view profile</span>
+        <span className="text">View Profile</span>
       </div>
       <Div />
 
       <div className="item" onClick={logout}>
         <span className="icon">{iSignOut}</span>
-        <span className="text">sign out</span>
+        <span className="text">Sign Out</span>
       </div>
     </MenuStyled>
   )
@@ -44,16 +44,19 @@ const MenuStyled = styled.div`
   position: absolute;
   top: 3rem;
   right: 0;
-  padding: 1rem;
   background-color: var(--underlay1);
-  border-radius: 1rem;
 
   > div.item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.25rem 0;
+    padding: 1rem;
     cursor: pointer;
+    transition: var(--transition1);
+
+    &:hover {
+      background-color: var(--underlay2);
+    }
 
     > span.icon {
       width: 1rem;
@@ -70,7 +73,6 @@ const MenuStyled = styled.div`
 `
 
 const Div = styled.hr`
-  margin: 1rem 0;
   border: 0;
   border-top: 1px solid var(--underlay2);
 `

@@ -109,7 +109,6 @@ const CategoryStyled = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  text-align: center;
 
   > p.category_array {
     font-size: var(--fs5);

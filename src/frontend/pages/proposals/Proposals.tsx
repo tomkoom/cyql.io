@@ -12,7 +12,7 @@ const Proposals: FC = (): JSX.Element => {
     <ProposalsStyled>
       <div className="title">
         <h2 className="pageTitle">Proposed Projects</h2>
-        <p>List of proposed projects</p>
+        <p>Vote to list add projects to the registry</p>
       </div>
 
       <div className="header">
@@ -22,16 +22,20 @@ const Proposals: FC = (): JSX.Element => {
       </div>
 
       <ul>
-        {proposals.map((proposal) => (
-          <li key={`proposal_id_${proposal.id}`}>
-            <span className="main">
-              <span>{proposal.id.toString()}</span>
-              <span className="status">{Object.keys(proposal.state)[0]}</span>
-            </span>
-            <span>{proposal.votesYes ? proposal.votesYes.toString() : "N/A"}</span>
-            <span>{proposal.votesNo ? proposal.votesNo.toString() : "N/A"}</span>
-          </li>
-        ))}
+        {proposals.length > 0 ? (
+          proposals.map((proposal) => (
+            <li key={`proposal_id_${proposal.id}`}>
+              <span className="main">
+                <span>{proposal.id}</span>
+                <span className="status">{Object.keys(proposal.state)[0]}</span>
+              </span>
+              <span>{proposal.votesYes !== "0" || "N/A"}</span>
+              <span>{proposal.votesNo !== "0" || "N/A"}</span>
+            </li>
+          ))
+        ) : (
+          <li>...</li>
+        )}
       </ul>
     </ProposalsStyled>
   )
@@ -39,10 +43,15 @@ const Proposals: FC = (): JSX.Element => {
 
 const ProposalsStyled = styled.div`
   margin-bottom: 4rem;
+  font-size: var(--fsText);
 
   > div.title {
     text-align: center;
     margin-bottom: 2rem;
+
+    > p {
+      color: var(--secondaryColor);
+    }
   }
 
   > div.header,
@@ -70,7 +79,6 @@ const ProposalsStyled = styled.div`
       justify-content: space-between;
       gap: 0.5rem;
       background-color: var(--underlay1);
-      font-size: var(--fsText);
       cursor: pointer;
       transition: var(--transition1);
 

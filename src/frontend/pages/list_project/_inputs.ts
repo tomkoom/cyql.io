@@ -60,7 +60,7 @@ export const extra: Input[] = [
   },
   {
     id: "nnsProjectUrl",
-    label: "NNS project url",
+    label: "NNS project url / SNS url",
     placeholder: "nns.ic0.app/project/?project=...",
     required: false,
   },
