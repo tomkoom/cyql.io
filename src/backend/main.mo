@@ -106,9 +106,9 @@ actor {
     return Principal.toText(caller)
   };
 
-  // dao
+  // -- dao --
 
-  public shared ({ caller }) func proposeProject(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
+  public shared ({ caller }) func createProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
     let user = users.getUser(caller) else return #err("User not found.");
     let proposal = U.generateProposal(caller, payload);
@@ -118,7 +118,13 @@ actor {
   };
 
   public shared ({ caller }) func deleteProposal(proposalId : T.ProjectProposalId) : async () {
+    assert (U.isAdmin(caller));
     return projectProposals.delete(proposalId)
+  };
+
+  public query func listProposals() : async [T.ProjectProposal] {
+    let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
+    return Iter.toArray<T.ProjectProposal>(iter)
   };
 
   // vote on proposal
@@ -204,11 +210,6 @@ actor {
   };
 
   // query
-
-  public query func listProjectProposals() : async [T.ProjectProposal] {
-    let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
-    return Iter.toArray<T.ProjectProposal>(iter)
-  };
 
   // public query func listAcceptedProjectProposals() : async [T.ProjectProposal] {
   //   let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();

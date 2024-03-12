@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { ProjectProposal } from "./_types/dao_types"
+import type { ProjectProposalData } from "./_types/dao_types"
 
-const initialState: ProjectProposal = {
+const initialState: ProjectProposalData = {
   category: [],
 
   // main

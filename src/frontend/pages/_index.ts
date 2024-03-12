@@ -8,4 +8,3 @@ export { default as Profile } from "./profile/Profile"
 export { default as Project } from "./project/Project"
 export { default as ProjectProposals } from "./project_proposals/ProjectProposals"
 export { default as Projects } from "./projects/Projects"
-

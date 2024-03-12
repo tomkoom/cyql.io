@@ -12,6 +12,9 @@ import user from "./user"
 import listProject from "./projectProposal"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
 
+// dao
+import proposals from "./dao/proposals"
+
 // modals
 import nftModal from "./modals/nftModal"
 import promoModal from "./modals/promoModal"
@@ -47,6 +50,9 @@ const store = configureStore({
     user,
     listProject,
     proposedProjectCategories,
+
+    // dao
+    proposals,
 
     // modals
     nftModal,

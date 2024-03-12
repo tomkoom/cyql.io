@@ -2,7 +2,7 @@ import { useAuth } from "@/context/Auth"
 import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
 import type { Project, ProjectId } from "@/state/_types/types"
 import { verifyAdmin } from "@/utils/verifyAdmin"
-import { ProjectProposal } from "@/state/_types/dao_types"
+import { ProjectProposalData } from "@/state/_types/dao_types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -68,7 +68,7 @@ const useBackend = () => {
 
   // dao
 
-  const createProjectProposal = async (projectData: ProjectProposal): Promise<void> => {
+  const createProjectProposalData = async (projectData: ProjectProposalData): Promise<void> => {
     console.log(projectData)
   }
 
@@ -79,7 +79,7 @@ const useBackend = () => {
     updateUpvote,
 
     // dao
-    createProjectProposal,
+    createProjectProposalData,
   }
 }
 

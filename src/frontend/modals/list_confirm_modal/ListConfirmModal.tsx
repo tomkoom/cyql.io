@@ -5,7 +5,7 @@ import { RootModal } from "../_index"
 import { DataItem } from "./_index"
 import { camelCaseToWords } from "@/utils/camelCaseToWords"
 import { Btn } from "@/components/btns/_index"
-import { useBackend } from "@/hooks/_index"
+import { useDao } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -17,11 +17,11 @@ interface ListConfirmModalProps {
 }
 
 const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.Element => {
-  const { createProjectProposal } = useBackend()
+  const { createProposal } = useDao()
   const project = useAppSelector(selectListProject)
 
   const submit = async (): Promise<void> => {
-    await createProjectProposal(project)
+    await createProposal(project).then(() => onClose())
   }
 
   return (
@@ -42,12 +42,7 @@ const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.E
           </ul>
         </div>
 
-        <Btn
-          btnType={"primary"}
-          text={"Confirm"}
-          onClick={submit}
-          style={{ width: "100%", marginTop: "1rem" }}
-        />
+        <Btn btnType={"primary"} text={"Confirm"} onClick={submit} style={{ width: "100%" }} />
       </ListConfirmModalStyled>
     </RootModal>
   )
@@ -85,6 +80,7 @@ const ListConfirmModalStyled = styled.div`
     width: 100%;
     background-color: var(--underlay1);
     padding: 1rem;
+    margin-bottom: 1rem;
 
     > ul {
       width: 100%;

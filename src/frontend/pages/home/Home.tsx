@@ -10,7 +10,7 @@ import {
   Header,
   HighlightedProjects,
   JoinCommunity,
-  // ProjectProposals,
+  // ProjectProposalData,
   Promo,
   StaffPicks,
   Banner,
@@ -61,7 +61,7 @@ const Home: FC = (): JSX.Element => {
       <StaffPicks />
       <Banner />
       <Promo />
-      {/* <ProjectProposals /> */}
+      {/* <ProjectProposalData /> */}
 
       <Divider />
 

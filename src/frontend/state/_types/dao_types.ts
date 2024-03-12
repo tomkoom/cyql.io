@@ -1,6 +1,6 @@
-export type ProjectProposalId = number
+export type ProjectProposalDataId = number
 
-export type ProjectProposal = {
+export type ProjectProposalData = {
   category: string[]
 
   // main
