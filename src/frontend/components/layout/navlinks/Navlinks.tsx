@@ -17,7 +17,7 @@ const Navlinks: FC = (): JSX.Element => {
       <div>
         <NavItem label="Home" route={toHome} />
         <NavItem label="Curated Projects" route={toProjects} />
-        <NavItem label="List Project" route={toSubmit} icon={iPlus} />
+        <NavItem label="Propose Project" route={toSubmit} icon={iPlus} />
         <NavItem label="Project Proposals" route={toProposals} />
         {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} />}
       </div>

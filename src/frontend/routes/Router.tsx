@@ -12,7 +12,7 @@ import {
   Project,
   Projects,
   ListProject,
-  ProjectProposals,
+  Proposals,
 } from "@/pages/_index"
 
 const router = createHashRouter(
@@ -26,7 +26,7 @@ const router = createHashRouter(
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:id" element={<Project />} />
       <Route path="list" element={<ListProject />} />
-      <Route path="proposals" element={<ProjectProposals />} />
+      <Route path="proposals" element={<Proposals />} />
 
       {/* protected routes */}
       <Route element={<ProtectedRoutes />}>

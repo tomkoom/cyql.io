@@ -8,7 +8,7 @@ import { setProposals } from "@/state/dao/proposals"
 
 interface UseDao {
   createProposal: (projectData: ProjectProposalData) => Promise<void>
-  listProposals: () => Promise<void>
+  refreshProposals: () => Promise<void>
 }
 
 export const useDao = (): UseDao => {
@@ -22,7 +22,7 @@ export const useDao = (): UseDao => {
     await actor.createProposal(data)
   }
 
-  const listProposals = async (): Promise<void> => {
+  const refreshProposals = async (): Promise<void> => {
     if (!actor) return
     if (!isAuthenticated) return
     await actor.listProposals().then((res) => {
@@ -31,5 +31,5 @@ export const useDao = (): UseDao => {
     })
   }
 
-  return { createProposal, listProposals }
+  return { createProposal, refreshProposals }
 }
