@@ -3,8 +3,8 @@ import styled from "styled-components"
 import type { Input } from "./_inputs"
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux"
-import { setListProject } from "@/state/projectProposal"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { setListProject, selectListProject } from "@/state/projectProposal"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   input: Input
@@ -12,6 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input: FC<InputProps> = ({ input, ...props }): JSX.Element => {
   const dispatch = useAppDispatch()
+  const project = useAppSelector(selectListProject)
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target
@@ -23,9 +24,11 @@ const Input: FC<InputProps> = ({ input, ...props }): JSX.Element => {
       <label htmlFor={input.id}>
         {input.required && "*"} {input.label}
       </label>
+
       <input
         id={input.id}
         type="text"
+        value={project[input.id]}
         placeholder={input.placeholder}
         autoComplete="off"
         onChange={onChange}

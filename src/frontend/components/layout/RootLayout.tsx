@@ -5,6 +5,7 @@ import { Outlet, useLocation } from "react-router-dom"
 import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
+import { Toaster } from "react-hot-toast"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -33,7 +34,10 @@ const RootLayout: FC = (): JSX.Element => {
 
   return (
     <RootLayoutStyled className={theme}>
+      <Toaster position={"bottom-center"} toastOptions={{ duration: 5000 }} />
       <LoadingModal isOpen={isLoading} />
+
+      {/* ... */}
       <Summary />
       <Nav />
       <Navlinks />

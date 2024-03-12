@@ -26,6 +26,7 @@ const router = createHashRouter(
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:id" element={<Project />} />
       <Route path="list" element={<ListProject />} />
+      <Route path="add" element={<ListProject />} />
       <Route path="proposals" element={<Proposals />} />
 
       {/* protected routes */}

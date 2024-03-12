@@ -58,10 +58,16 @@ const listProject = createSlice({
     setListProjectTokenStandard(state, { payload }: PayloadAction<string>) {
       state.tokenStandard = payload
     },
+
+    // reset
+    setClearProposedProject: () => {
+      return initialState
+    },
   },
 })
 
 export const selectListProject = (state: RootState) => state.listProject
 
-export const { setListProject, setListProjectCategory } = listProject.actions
+export const { setListProject, setListProjectCategory, setClearProposedProject } =
+  listProject.actions
 export default listProject.reducer

@@ -1,6 +1,6 @@
 // modals
 
-export { default as ListConfirmModal } from "./list_confirm_modal/ListConfirmModal"
+export { default as ListConfirmModal } from "./confirm_proposal_modal/ConfirmProposalModal"
 export { default as LoadingModal } from "./LoadingModal"
 export { default as PromoModal } from "./PromoModal"
 export { default as RootModal } from "./RootModal"
@@ -10,4 +10,3 @@ export { default as ShareModal } from "./share_modal/ShareModal"
 export { default as SignInModal } from "./sign_in_modal/SignInModal"
 export { default as WithdrawModal } from "./withdraw_modal/WithdrawModal"
 export { default as WithdrawNftModal } from "./withdraw_nft_modal/WithdrawNftModal"
-

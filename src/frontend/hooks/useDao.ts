@@ -24,7 +24,6 @@ export const useDao = (): UseDao => {
 
   const refreshProposals = async (): Promise<void> => {
     if (!actor) return
-    if (!isAuthenticated) return
     await actor.listProposals().then((res) => {
       const serialized = res.map((item) => bigintToNum(item))
       dispatch(setProposals(serialized))

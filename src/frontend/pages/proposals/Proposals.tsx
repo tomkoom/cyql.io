@@ -10,7 +10,11 @@ const Proposals: FC = (): JSX.Element => {
 
   return (
     <ProposalsStyled>
-      <h2 className="pageTitle">Proposed Projects</h2>
+      <div className="title">
+        <h2 className="pageTitle">Proposed Projects</h2>
+        <p>List of proposed projects</p>
+      </div>
+
       <div className="header">
         <span>Id</span>
         <span>Voting power to accept</span>
@@ -20,7 +24,10 @@ const Proposals: FC = (): JSX.Element => {
       <ul>
         {proposals.map((proposal) => (
           <li key={`proposal_id_${proposal.id}`}>
-            <span>{proposal.id.toString()}</span>
+            <span className="main">
+              <span>{proposal.id.toString()}</span>
+              <span className="status">{Object.keys(proposal.state)[0]}</span>
+            </span>
             <span>{proposal.votesYes ? proposal.votesYes.toString() : "N/A"}</span>
             <span>{proposal.votesNo ? proposal.votesNo.toString() : "N/A"}</span>
           </li>
@@ -31,8 +38,11 @@ const Proposals: FC = (): JSX.Element => {
 }
 
 const ProposalsStyled = styled.div`
-  > h2 {
+  margin-bottom: 4rem;
+
+  > div.title {
     text-align: center;
+    margin-bottom: 2rem;
   }
 
   > div.header,
@@ -70,6 +80,18 @@ const ProposalsStyled = styled.div`
 
       > span {
         flex: 1;
+
+        &.main {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.25rem;
+
+          > span.status {
+            padding: 0.125rem;
+            background-color: var(--underlay2);
+          }
+        }
       }
     }
   }

@@ -6,10 +6,12 @@ import { DataItem } from "./_index"
 import { camelCaseToWords } from "@/utils/camelCaseToWords"
 import { Btn } from "@/components/btns/_index"
 import { useDao } from "@/hooks/_index"
+import { notifyErr, notifySuccess } from "@/utils/notify"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectListProject } from "@/state/projectProposal"
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { selectListProject, setClearProposedProject } from "@/state/projectProposal"
+import { setIsLoading } from "@/state/loading"
 
 interface ListConfirmModalProps {
   isOpen: boolean
@@ -17,11 +19,24 @@ interface ListConfirmModalProps {
 }
 
 const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.Element => {
+  const dispatch = useAppDispatch()
   const { createProposal } = useDao()
   const project = useAppSelector(selectListProject)
 
   const submit = async (): Promise<void> => {
-    await createProposal(project).then(() => onClose())
+    dispatch(setIsLoading(true))
+
+    await createProposal(project)
+      .then(() => {
+        dispatch(setClearProposedProject())
+        onClose()
+        dispatch(setIsLoading(false))
+        notifySuccess("Proposal submitted.")
+      })
+      .catch((err) => {
+        dispatch(setIsLoading(false))
+        notifyErr(err.message || "Err")
+      })
   }
 
   return (
@@ -36,7 +51,7 @@ const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.E
               <DataItem
                 key={key}
                 label={camelCaseToWords(key)}
-                value={typeof value === "object" ? value.join().toUpperCase() : value}
+                value={Array.isArray(value) ? value.join().toUpperCase() : value}
               />
             ))}
           </ul>
