@@ -24,7 +24,7 @@ const Details: FC<DetailsProps> = ({ proposal }): JSX.Element => {
       <li>
         <span className="label">Updated at</span>
         <span className="value">
-          {proposal.updatedAt.length > 0 ? String(proposal.updatedAt[0]) : "n/a"}
+          {proposal.updatedAt.length > 0 ? String(proposal.updatedAt[0]) : "..."}
         </span>
       </li>
     </DetailsStyled>

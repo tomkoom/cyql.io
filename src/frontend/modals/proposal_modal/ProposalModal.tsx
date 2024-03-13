@@ -3,7 +3,7 @@ import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { RootModal } from "../_index"
 import { modalStyles } from "../_modalStyles"
-import { Details, Votes } from "./_index"
+import { Details, Votes, ProjectData } from "./_index"
 import type { ProjectProposalData } from "@/state/_types/dao_types"
 
 // state
@@ -37,6 +37,11 @@ const ProposalModal: FC<ProposalModalProps> = ({ isOpen, onClose }): JSX.Element
             <div className="panel">
               <h4>Votes</h4>
               <Votes proposal={proposal} />
+            </div>
+
+            <div className="panel">
+              <h4>Project Data</h4>
+              <ProjectData project={project} />
             </div>
           </div>
         ) : (
