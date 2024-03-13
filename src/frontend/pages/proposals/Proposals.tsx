@@ -5,18 +5,24 @@ import { ProposalModal } from "@/modals/_index"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectProposals } from "@/state/dao/proposals"
-import { setProposalModalIsOpen, selectProposalModalIsOpen } from "@/state/modals/proposalModal"
+import {
+  setProposalModalIsOpen,
+  selectProposalModalIsOpen,
+  setProposalModalData,
+} from "@/state/modals/proposalModal"
 
 const Proposals: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const proposals = useAppSelector(selectProposals)
   const proposalModalIsOpen = useAppSelector(selectProposalModalIsOpen)
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     dispatch(setProposalModalIsOpen(false))
   }
 
-  const openModal = () => {
+  const openModal = (proposalId: string): void => {
+    const proposal = proposals.filter((p) => p.id === proposalId)[0]
+    dispatch(setProposalModalData(proposal))
     dispatch(setProposalModalIsOpen(true))
   }
 
@@ -39,7 +45,7 @@ const Proposals: FC = (): JSX.Element => {
         <ul>
           {proposals.length > 0 ? (
             proposals.map((proposal) => (
-              <li key={`proposal_id_${proposal.id}`} onClick={openModal}>
+              <li key={`proposal_id_${proposal.id}`} onClick={() => openModal(proposal.id)}>
                 <span className="main">
                   <span>{proposal.id}</span>
                   <span className="status">{Object.keys(proposal.state)[0]}</span>
