@@ -20,5 +20,6 @@
 
 ```
 npm i
+dfx generate
 npm run dev
 ```

@@ -45,7 +45,7 @@ const ListProject: FC = (): JSX.Element => {
           <Steps />
         </div>
 
-        <Panel style={{ backgroundColor: "unset" }}>
+        <Panel style={{ backgroundColor: "unset", padding: "unset" }}>
           <div className="title">
             <h5 style={{ textAlign: "center" }}>* Project Category</h5>
             <p style={{ textAlign: "center" }}>Pick one or multiple</p>
