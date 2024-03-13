@@ -3,7 +3,7 @@ import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { RootModal } from "../_index"
 import { modalStyles } from "../_modalStyles"
-import { Details } from "./_index"
+import { Details, Votes } from "./_index"
 import type { ProjectProposalData } from "@/state/_types/dao_types"
 
 // state
@@ -29,7 +29,15 @@ const ProposalModal: FC<ProposalModalProps> = ({ isOpen, onClose }): JSX.Element
 
         {project ? (
           <div className="content">
-            <Details proposal={proposal} />
+            <div className="panel">
+              <h4>Details</h4>
+              <Details proposal={proposal} />
+            </div>
+
+            <div className="panel">
+              <h4>Votes</h4>
+              <Votes proposal={proposal} />
+            </div>
           </div>
         ) : (
           <div>{String(project)}</div>
@@ -54,6 +62,18 @@ const ProposalModalStyled = styled.div`
 
   > div.content {
     width: 100%;
+
+    > div.panel {
+      width: 100%;
+      background-color: var(--underlay1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+
+      > h4 {
+        font-size: var(--fs6);
+        margin-bottom: 0.5rem;
+      }
+    }
   }
 `
 
