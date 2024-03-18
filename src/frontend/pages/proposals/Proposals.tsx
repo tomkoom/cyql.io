@@ -1,37 +1,17 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { ProposalModal } from "@/modals/_index"
 import { useNav } from "@/hooks/_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppSelector } from "@/hooks/useRedux"
 import { selectProposals } from "@/state/dao/proposals"
-import {
-  setProposalModalIsOpen,
-  selectProposalModalIsOpen,
-  setProposalModalData,
-} from "@/state/modals/proposalModal"
 
 const Proposals: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch()
   const { toProposal } = useNav()
   const proposals = useAppSelector(selectProposals)
-  const proposalModalIsOpen = useAppSelector(selectProposalModalIsOpen)
-
-  const closeModal = (): void => {
-    dispatch(setProposalModalIsOpen(false))
-  }
-
-  const openModal = (proposalId: string): void => {
-    const proposal = proposals.filter((p) => p.id === proposalId)[0]
-    dispatch(setProposalModalData(proposal))
-    dispatch(setProposalModalIsOpen(true))
-  }
 
   return (
     <ProposalsStyled>
-      <ProposalModal isOpen={proposalModalIsOpen} onClose={closeModal} />
-
       <div>
         <div className="title">
           <h2 className="pageTitle">Proposed Projects</h2>
@@ -40,8 +20,8 @@ const Proposals: FC = (): JSX.Element => {
 
         <div className="header">
           <span>Id</span>
-          <span>Voting power to accept</span>
-          <span>Voting power to reject</span>
+          {/* <span>Voting power to accept</span>
+          <span>Voting power to reject</span> */}
         </div>
 
         <ul>
@@ -50,10 +30,11 @@ const Proposals: FC = (): JSX.Element => {
               <li key={`proposal_id_${proposal.id}`} onClick={() => toProposal(proposal.id)}>
                 <span className="main">
                   <span>{proposal.id}</span>
+                  <span>Proposal to list {JSON.parse(proposal.payload).name || "[...]"}</span>
                   <span className="status">{Object.keys(proposal.state)[0]}</span>
                 </span>
-                <span>{proposal.votesYes !== "0" || "..."}</span>
-                <span>{proposal.votesNo !== "0" || "..."}</span>
+                {/* <span>{proposal.votesYes !== "0" || "..."}</span>
+                <span>{proposal.votesNo !== "0" || "..."}</span> */}
               </li>
             ))
           ) : (
