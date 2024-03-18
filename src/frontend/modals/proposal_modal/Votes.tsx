@@ -2,11 +2,13 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { Btn } from "@/components/btns/_index"
 import { useAuth } from "@/context/Auth"
+import { useDao } from "@/hooks/_index"
+import { VoteArgs, Vote } from "@/state/_types/dao_types"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProposalModalData } from "@/state/modals/proposalModal"
+import { useAppDispatch } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
+import { setIsLoading } from "@/state/loading"
 
 interface VotesProps {
   proposal: any
@@ -15,10 +17,28 @@ interface VotesProps {
 const Votes: FC<VotesProps> = ({ proposal }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { isAuthenticated } = useAuth()
+  const { vote, refreshProposals } = useDao()
 
   const openSignInModal = (): void => {
     dispatch(setSignInModalIsOpen(true))
   }
+
+  const castVote = async (v: Vote): Promise<void> => {
+    try {
+      dispatch(setIsLoading(true))
+      const voteArgs: VoteArgs = {
+        vote: v,
+        proposalId: proposal.id,
+      }
+      await vote(voteArgs)
+      await refreshProposals()
+    } catch (e) {
+      throw new Error(e)
+    } finally {
+      dispatch(setIsLoading(false))
+    }
+  }
+
   return (
     <VotesStyled>
       <ul>
@@ -49,18 +69,22 @@ const Votes: FC<VotesProps> = ({ proposal }): JSX.Element => {
       </ul>
 
       {!isAuthenticated ? (
-        <Btn btnType={"primary"} text={"Sign in to Vote"} onClick={openSignInModal} />
+        <div className="actions">
+          <Btn btnType={"primary"} text={"Sign in to Vote"} onClick={openSignInModal} />
+        </div>
       ) : (
         <div className="actions">
           <Btn
             btnType={"primary"}
             text={"Reject"}
             style={{ backgroundColor: "var(--colorErr)", color: "#fff" }}
+            onClick={() => castVote({ no: null })}
           />
           <Btn
             btnType={"primary"}
             text={"Accept"}
             style={{ backgroundColor: "var(--colorAccept)", color: "#fff" }}
+            onClick={() => castVote({ yes: null })}
           />
         </div>
       )}

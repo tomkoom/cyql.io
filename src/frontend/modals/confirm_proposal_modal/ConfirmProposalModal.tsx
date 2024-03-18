@@ -14,12 +14,12 @@ import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectListProject, setClearProposedProject } from "@/state/projectProposal"
 import { setIsLoading } from "@/state/loading"
 
-interface ListConfirmModalProps {
+interface ConfirmProposalModalProps {
   isOpen: boolean
   onClose: () => void
 }
 
-const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.Element => {
+const ConfirmProposalModal: FC<ConfirmProposalModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { createProposal } = useDao()
   const project = useAppSelector(selectListProject)
@@ -42,7 +42,7 @@ const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.E
 
   return (
     <RootModal isOpen={isOpen}>
-      <ListConfirmModalStyled>
+      <ConfirmProposalModalStyled>
         <CrossIcon onClick={onClose} />
         <h3>Review & Confirm</h3>
 
@@ -59,12 +59,12 @@ const ListConfirmModal: FC<ListConfirmModalProps> = ({ isOpen, onClose }): JSX.E
         </div>
 
         <Btn btnType={"primary"} text={"Confirm"} onClick={submit} style={{ width: "100%" }} />
-      </ListConfirmModalStyled>
+      </ConfirmProposalModalStyled>
     </RootModal>
   )
 }
 
-const ListConfirmModalStyled = styled.div`
+const ConfirmProposalModalStyled = styled.div`
   ${modalStyles}
 
   > h3 {
@@ -88,4 +88,4 @@ const ListConfirmModalStyled = styled.div`
   }
 `
 
-export default ListConfirmModal
+export default ConfirmProposalModal

@@ -131,61 +131,65 @@ actor {
   // vote on proposal
   public shared ({ caller }) func vote(args : T.VoteArgs) : async Result.Result<T.ProposalState, Text> {
     let ?proposal = projectProposals.get(args.proposalId) else return #err("Proposal not found.");
-    let ?u = await users.getUser(caller) else return #err("User not found.");
+    let u = await users.getUser(caller);
 
-    // votes
-    var state = proposal.state;
-    var votersYes = proposal.votersYes;
-    var votersNo = proposal.votersNo;
-    var votesYes = proposal.votesYes;
-    var votesNo = proposal.votesNo;
+    switch (u) {
+      case (null) { return #err("User not found.") };
+      case (user) {
+        var state = proposal.state;
+        var votersYes = proposal.votersYes;
+        var votersNo = proposal.votersNo;
+        var votesYes = proposal.votesYes;
+        var votesNo = proposal.votesNo;
 
-    // ...
-    let voter = { id = Principal.toText(caller); votedAt = Time.now() };
-    let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
-    votersBuf.add(voter);
+        // ...
+        let voter = { id = Principal.toText(caller); votedAt = Time.now() };
+        let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
+        votersBuf.add(voter);
 
-    // get voting power
-    let accountHex = U.principalToAccountHex(caller);
-    let votingPower = await _calculateVotingPower(accountHex);
+        // get voting power
+        let accountHex = U.principalToAccountHex(caller);
+        let votingPower = await _calculateVotingPower(accountHex);
 
-    // verify
-    if (state != #open) return #err("Proposal isn't open for voting.");
-    let voted = hasVoted(voter, args.proposalId);
-    if (voted) return #err("Already voted.");
+        // verify
+        if (state != #open) return #err("Proposal isn't open for voting.");
+        let voted = hasVoted(voter, args.proposalId);
+        if (voted) return #err("Already voted.");
 
-    switch (args.vote) {
-      case (#yes) { votersYes += 1; votesYes += votingPower };
-      case (#no) { votersNo += 1; votesNo += votingPower }
-    };
+        switch (args.vote) {
+          case (#yes) { votersYes += 1; votesYes += votingPower };
+          case (#no) { votersNo += 1; votesNo += votingPower }
+        };
 
-    if (votesYes >= daoParams.proposalVoteThreshold) {
-      // todo: refund the proposal deposit when there are tokens and the proposal is accepted
-      state := #accepted
-    };
+        if (votesYes >= daoParams.proposalVoteThreshold) {
+          // todo: refund the proposal deposit when there are tokens and the proposal is accepted
+          state := #accepted
+        };
 
-    if (votesNo >= daoParams.proposalVoteThreshold) {
-      state := #rejected
-    };
+        if (votesNo >= daoParams.proposalVoteThreshold) {
+          state := #rejected
+        };
 
-    let updatedProposal = {
-      id = proposal.id;
-      state;
-      createdAt = proposal.createdAt;
-      updatedAt = proposal.updatedAt;
-      proposer = proposal.proposer;
-      payload = proposal.payload;
+        let updatedProposal = {
+          id = proposal.id;
+          state;
+          createdAt = proposal.createdAt;
+          updatedAt = proposal.updatedAt;
+          proposer = proposal.proposer;
+          payload = proposal.payload;
 
-      // votes
-      votersYes;
-      votersNo;
-      votesYes;
-      votesNo;
-      voters = Buffer.toArray(votersBuf)
-    };
+          // votes
+          votersYes;
+          votersNo;
+          votesYes;
+          votesNo;
+          voters = Buffer.toArray(votersBuf)
+        };
 
-    proposalsPut(args.proposalId, updatedProposal);
-    return #ok(state)
+        proposalsPut(args.proposalId, updatedProposal);
+        return #ok(state)
+      }
+    }
   };
 
   // get voting power based on the amount of the nfts user has

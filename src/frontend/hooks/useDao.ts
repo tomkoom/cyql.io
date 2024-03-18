@@ -45,8 +45,8 @@ export const useDao = (): UseDao => {
     if (!actor) return
     if (!isAuthenticated) return
 
-    const formatted = { ...voteArgs, ...{ proposalId: BigInt(voteArgs.proposalId) } }
     try {
+      const formatted = { ...voteArgs, ...{ proposalId: BigInt(voteArgs.proposalId) } }
       const res = await actor.vote(formatted)
       if ("ok" in res) {
         notifySuccess(`Voted. Proposal state: ${JSON.stringify(res)}`)
