@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
-import "./RootLayout.css"
+import "./Layout.css"
 import { Outlet, useLocation } from "react-router-dom"
 import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
@@ -17,7 +17,7 @@ import { selectTheme } from "@/state/theme"
 import { selectAllProjects } from "@/state/projects"
 import { selectIsLoading } from "@/state/loading"
 
-const RootLayout: FC = (): JSX.Element => {
+const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated } = useAuth()
   const { toHome } = useNav()
@@ -33,7 +33,7 @@ const RootLayout: FC = (): JSX.Element => {
   }, [isAuthenticated])
 
   return (
-    <RootLayoutStyled className={theme}>
+    <LayoutStyled className={theme}>
       <Toaster position={"bottom-center"} toastOptions={{ duration: 5000 }} />
       <LoadingModal isOpen={isLoading} />
 
@@ -48,15 +48,13 @@ const RootLayout: FC = (): JSX.Element => {
 
       {projects.length > 0 && <Footer />}
       <Cookie />
-    </RootLayoutStyled>
+    </LayoutStyled>
   )
 }
 
-const RootLayoutStyled = styled.div`
+const LayoutStyled = styled.div`
   color: var(--primaryColor);
   background-color: var(--background);
-  display: flex;
-  flex-direction: column;
 
   /* footer at the bottom */
   min-height: 100vh;
@@ -76,4 +74,4 @@ const RootLayoutStyled = styled.div`
   }
 `
 
-export default RootLayout
+export default Layout

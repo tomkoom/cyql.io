@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { ProposalModal } from "@/modals/_index"
+import { useNav } from "@/hooks/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -13,6 +14,7 @@ import {
 
 const Proposals: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
+  const { toProposal } = useNav()
   const proposals = useAppSelector(selectProposals)
   const proposalModalIsOpen = useAppSelector(selectProposalModalIsOpen)
 
@@ -45,7 +47,7 @@ const Proposals: FC = (): JSX.Element => {
         <ul>
           {proposals.length > 0 ? (
             proposals.map((proposal) => (
-              <li key={`proposal_id_${proposal.id}`} onClick={() => openModal(proposal.id)}>
+              <li key={`proposal_id_${proposal.id}`} onClick={() => toProposal(proposal.id)}>
                 <span className="main">
                   <span>{proposal.id}</span>
                   <span className="status">{Object.keys(proposal.state)[0]}</span>

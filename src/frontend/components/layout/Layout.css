@@ -50,6 +50,12 @@ img {
   text-align: center;
 }
 
+.wrapper1440 {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 /* responsive */
 
 @media (max-width: 1024px) {

@@ -3,14 +3,15 @@ import { useNavigate, createSearchParams } from "react-router-dom"
 const useNav = () => {
   const navigate = useNavigate()
 
-  const goBack = () => {
+  const goBack = (): void => {
     navigate(-1)
   }
 
-  const toHome = () => {
+  const toHome = (): void => {
     navigate("/")
   }
 
+  // projects
   const toProjects = (): void => {
     navigate({
       pathname: "projects",
@@ -21,33 +22,31 @@ const useNav = () => {
     })
   }
 
-  const toProject = (id: string): void => {
-    navigate(`/projects/${id}`)
-  }
+  const toProject = (id: string): void => navigate(`/projects/${id}`)
 
-  const toSubmit = (): void => {
-    navigate("/list")
-  }
+  // proposals
+  const toProposals = (): void => navigate("/proposals")
+  const toProposal = (id: string): void => navigate(`/proposals/${id}`)
 
-  const toProposals = (): void => {
-    navigate("/proposals")
-  }
-
-  const toProfile = (): void => {
-    navigate("/profile")
-  }
-
-  const toAdmin = (): void => {
-    navigate("/admin")
-  }
+  // ...
+  const toSubmit = (): void => navigate("/list")
+  const toProfile = (): void => navigate("/profile")
+  const toAdmin = (): void => navigate("/admin")
 
   return {
     goBack,
     toHome,
+
+    // projects
     toProjects,
     toProject,
-    toSubmit,
+
+    // proposals
     toProposals,
+    toProposal,
+
+    // ...
+    toSubmit,
     toProfile,
     toAdmin,
   }

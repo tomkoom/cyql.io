@@ -3,7 +3,7 @@ import { createHashRouter, createRoutesFromElements, Route } from "react-router-
 import { AdminRoutes, ProtectedRoutes } from "@/routes/_index"
 
 // components
-import RootLayout from "@/components/layout/RootLayout"
+import Layout from "@/components/layout/Layout"
 import {
   Admin,
   Home,
@@ -12,22 +12,25 @@ import {
   Project,
   Projects,
   ListProject,
+  Proposal,
   Proposals,
 } from "@/pages/_index"
 
 const router = createHashRouter(
   createRoutesFromElements(
-    <Route
-      path="/"
-      element={<RootLayout />}
-      errorElement={<NotFound text="Something went wrong" />}
-    >
+    <Route path="/" element={<Layout />} errorElement={<NotFound text="Something went wrong" />}>
       <Route index element={<Home />} />
+      {/* projects */}
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:id" element={<Project />} />
+
+      {/* proposals */}
+      <Route path="proposals" element={<Proposals />} />
+      <Route path="proposals/:id" element={<Proposal />} />
+
+      {/* add */}
       <Route path="list" element={<ListProject />} />
       <Route path="add" element={<ListProject />} />
-      <Route path="proposals" element={<Proposals />} />
 
       {/* protected routes */}
       <Route element={<ProtectedRoutes />}>
