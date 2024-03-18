@@ -5,10 +5,12 @@ import { useNav } from "@/hooks/_index"
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProposals } from "@/state/dao/proposals"
+import { formatDateTime } from "@/utils/formatDateTime"
 
 const Proposals: FC = (): JSX.Element => {
   const { toProposal } = useNav()
   const proposals = useAppSelector(selectProposals)
+  const proposalsCopy = [...proposals]
 
   return (
     <ProposalsStyled>
@@ -19,24 +21,36 @@ const Proposals: FC = (): JSX.Element => {
         </div>
 
         <div className="header">
+          <span>Proposal</span>
           <span>Id</span>
+          <span>State</span>
           {/* <span>Voting power to accept</span>
           <span>Voting power to reject</span> */}
         </div>
 
         <ul>
-          {proposals.length > 0 ? (
-            proposals.map((proposal) => (
-              <li key={`proposal_id_${proposal.id}`} onClick={() => toProposal(proposal.id)}>
-                <span className="main">
-                  <span>{proposal.id}</span>
-                  <span>Proposal to list {JSON.parse(proposal.payload).name || "[...]"}</span>
-                  <span className="status">{Object.keys(proposal.state)[0]}</span>
-                </span>
-                {/* <span>{proposal.votesYes !== "0" || "..."}</span>
+          {proposalsCopy.length > 0 ? (
+            proposalsCopy
+              .sort((a, b) => Number(b.id) - Number(a.id))
+              .map((proposal) => (
+                <li key={`proposal_id_${proposal.id}`} onClick={() => toProposal(proposal.id)}>
+                  <span className="main">
+                    <span>Proposal to list {JSON.parse(proposal.payload).name || "[...]"}</span>
+                    <span>Created at {formatDateTime(Number(proposal.createdAt) / 1_000_000)}</span>
+                  </span>
+
+                  <span>
+                    <span>{proposal.id}</span>
+                  </span>
+
+                  <span className="state">
+                    <span>{Object.keys(proposal.state)[0]}</span>
+                  </span>
+
+                  {/* <span>{proposal.votesYes !== "0" || "..."}</span>
                 <span>{proposal.votesNo !== "0" || "..."}</span> */}
-              </li>
-            ))
+                </li>
+              ))
           ) : (
             <li>...</li>
           )}
@@ -67,7 +81,7 @@ const ProposalsStyled = styled.div`
 
     > div.header {
       display: flex;
-      align-items: flex-start;
+      gap: 0.5rem;
 
       > span {
         flex: 1;
@@ -81,8 +95,6 @@ const ProposalsStyled = styled.div`
 
       li {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
         gap: 0.5rem;
         background-color: var(--underlay1);
         cursor: pointer;
@@ -100,11 +112,13 @@ const ProposalsStyled = styled.div`
             flex-direction: column;
             align-items: flex-start;
             gap: 0.25rem;
+          }
+        }
 
-            > span.status {
-              padding: 0.125rem;
-              background-color: var(--underlay2);
-            }
+        > span.state {
+          > span {
+            padding: 0.125rem;
+            background-color: var(--underlay2);
           }
         }
       }

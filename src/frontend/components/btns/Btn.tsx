@@ -17,17 +17,17 @@ const Btn: FC<BtnProps> = ({ btnType, text, icon, ...props }): JSX.Element => {
 }
 
 const colors = {
-  primary: "var(--background)",
+  primary: "#fff",
   secondary: "var(--primaryColor)",
 }
 
 const bgColors = {
-  primary: "var(--primaryColor)",
+  primary: "var(--highlight1)",
   secondary: "var(--underlay1)",
 }
 
 const hoverBgColors = {
-  primary: "var(--secondaryColor)",
+  primary: "var(--highlight2)",
   secondary: "var(--underlay2)",
 }
 

@@ -14,7 +14,7 @@ const ProjectData: FC<ProjectDataProps> = ({ project }): JSX.Element => {
         <DataItem
           key={key}
           label={key}
-          value={Array.isArray(value) ? value.join().toUpperCase() : value}
+          value={Array.isArray(value) ? value.join(", ").toUpperCase() : value}
           isLast={Object.entries(project).length - 1 === i}
         />
       ))}

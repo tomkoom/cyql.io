@@ -6,17 +6,26 @@ const Proposer: FC = (): JSX.Element => {
   const { userId } = useAuth()
   return (
     <ProposerStyled>
-      Proposer: <span>{userId === "2vxsx-fae" ? "..." : userId}</span>
+      <span className="label">Proposer</span>
+      <span className="value">{userId === "2vxsx-fae" ? "..." : userId}</span>
     </ProposerStyled>
   )
 }
 
-const ProposerStyled = styled.p`
-  text-align: center;
-  line-height: 150%;
-  color: var(--secondaryColor);
+const ProposerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   > span {
+    line-height: 150%;
+  }
+
+  > span.label {
+    color: var(--secondaryColor);
+  }
+
+  > span.value {
     background-color: var(--underlay1);
     color: var(--primaryColor);
   }

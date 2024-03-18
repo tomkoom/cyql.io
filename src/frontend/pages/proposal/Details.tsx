@@ -11,7 +11,7 @@ const Details: FC<DetailsProps> = ({ proposal }): JSX.Element => {
     <DetailsStyled>
       <li>
         <span className="label">State</span>
-        <span className="value">{Object.keys(proposal.state)[0]}</span>
+        <span className="value state">{Object.keys(proposal.state)[0]}</span>
       </li>
       <li>
         <span className="label">Proposer</span>
@@ -34,12 +34,12 @@ const Details: FC<DetailsProps> = ({ proposal }): JSX.Element => {
 const DetailsStyled = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.25rem;
 
   > li {
     width: 100%;
     display: flex;
+
     gap: 0.5rem;
     font-size: var(--fsText);
     font-weight: var(--fwRegular);
@@ -47,6 +47,12 @@ const DetailsStyled = styled.ul`
 
     > span {
       flex: 1;
+    }
+
+    > span.value {
+      &.state {
+        background-color: var(--underlay2);
+      }
     }
 
     > span.label {

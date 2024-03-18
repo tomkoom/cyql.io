@@ -56,71 +56,75 @@ const ListProject: FC = (): JSX.Element => {
         </Panel>
 
         <PanelsWrapper>
-          <Panel>
-            <div className="title">
-              <h5>Core Project Information</h5>
-              <p>Name, description, etc</p>
-            </div>
-            <div className="content">
-              <Primary />
-            </div>
-          </Panel>
+          <h5>* Project Information</h5>
 
-          <Panel>
-            <div className="title">
-              <h5>Token Data</h5>
-              <p>Please specify the token ledger id and a standard if the project is tokenized</p>
-            </div>
-            <div className="content">
-              <Token />
-            </div>
-          </Panel>
+          <div>
+            <Panel>
+              <div className="title">
+                <h5>Core Project Information</h5>
+                <p>Name, description, etc</p>
+              </div>
+              <div className="content">
+                <Primary />
+              </div>
+            </Panel>
 
-          <Panel>
-            <div className="title">
-              <h5>Web2 Links</h5>
-              <p>Twitter, Discord, etc</p>
-            </div>
-            <div className="content">
-              {web2Links.map((item) => (
-                <Input key={item.id} input={item} />
-              ))}
-            </div>
-          </Panel>
+            <Panel>
+              <div className="title">
+                <h5>Token Data</h5>
+                <p>Please specify the token ledger id and a standard if the project is tokenized</p>
+              </div>
+              <div className="content">
+                <Token />
+              </div>
+            </Panel>
 
-          <Panel>
-            <div className="title">
-              <h5>Web3 #ic Links</h5>
-            </div>
-            <div className="content">
-              {web3Links.map((item) => (
-                <Input key={item.id} input={item} />
-              ))}
-            </div>
-          </Panel>
+            <Panel>
+              <div className="title">
+                <h5>Web2 Links</h5>
+                <p>Twitter, Discord, etc</p>
+              </div>
+              <div className="content">
+                {web2Links.map((item) => (
+                  <Input key={item.id} input={item} />
+                ))}
+              </div>
+            </Panel>
 
-          <Panel>
-            <div className="title">
-              <h5>#ic Links</h5>
-              <p>DFINITY forum showcase url, NNS project url, etc</p>
-            </div>
-            <div className="content">
-              {extra.map((item) => (
-                <Input key={item.id} input={item} />
-              ))}
-            </div>
-          </Panel>
+            <Panel>
+              <div className="title">
+                <h5>Web3 #ic Links</h5>
+              </div>
+              <div className="content">
+                {web3Links.map((item) => (
+                  <Input key={item.id} input={item} />
+                ))}
+              </div>
+            </Panel>
 
-          <Panel>
-            <div className="title">
-              <h5>Docs, Whitepaper, etc</h5>
-            </div>
-            <div className="content">
-              {extra2.map((item) => (
-                <Input key={item.id} input={item} />
-              ))}
-            </div>
-          </Panel>
+            <Panel>
+              <div className="title">
+                <h5>#ic Links</h5>
+                <p>DFINITY forum showcase url, NNS project url, etc</p>
+              </div>
+              <div className="content">
+                {extra.map((item) => (
+                  <Input key={item.id} input={item} />
+                ))}
+              </div>
+            </Panel>
+
+            <Panel>
+              <div className="title">
+                <h5>Docs, Whitepaper, etc</h5>
+              </div>
+              <div className="content">
+                {extra2.map((item) => (
+                  <Input key={item.id} input={item} />
+                ))}
+              </div>
+            </Panel>
+          </div>
         </PanelsWrapper>
 
         <Proposer />
@@ -150,10 +154,18 @@ const ListProjectStyled = styled.div`
 `
 
 const PanelsWrapper = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  gap: 1rem;
+  > h5 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: var(--fwMedium);
+  }
+
+  > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+    gap: 1rem;
+  }
 `
 
 const Panel = styled.div`

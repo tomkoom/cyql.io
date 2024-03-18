@@ -5,7 +5,7 @@ import { RootModal } from "../_index"
 import { DataItem } from "./_index"
 import { camelCaseToWords } from "@/utils/camelCaseToWords"
 import { Btn } from "@/components/btns/_index"
-import { useDao } from "@/hooks/_index"
+import { useDao, useNav } from "@/hooks/_index"
 import { notifyErr, notifySuccess } from "@/utils/notify"
 import { modalStyles } from "../_modalStyles"
 
@@ -22,22 +22,23 @@ interface ConfirmProposalModalProps {
 const ConfirmProposalModal: FC<ConfirmProposalModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { createProposal } = useDao()
+  const { toProposals } = useNav()
   const project = useAppSelector(selectListProject)
 
   const submit = async (): Promise<void> => {
-    dispatch(setIsLoading(true))
-
-    await createProposal(project)
-      .then(() => {
-        dispatch(setClearProposedProject())
-        onClose()
-        dispatch(setIsLoading(false))
-        notifySuccess("Proposal submitted.")
-      })
-      .catch((err) => {
-        dispatch(setIsLoading(false))
-        notifyErr(err.message || "Err")
-      })
+    try {
+      dispatch(setIsLoading(true))
+      await createProposal(project)
+      dispatch(setClearProposedProject())
+      onClose()
+      notifySuccess("Proposal submitted.")
+      toProposals()
+    } catch (e) {
+      notifyErr(e.message || "Err")
+      throw new Error(e)
+    } finally {
+      dispatch(setIsLoading(false))
+    }
   }
 
   return (
