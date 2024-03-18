@@ -1,6 +1,7 @@
 // utils
 
-export { camelCaseToWords as camelCaseToWords } from "./camelCaseToWords"
-export { createActor as createActor } from "./createActor"
-export { bigintToNumber as bigintToNumber, bigintToString as bigintToString } from "./serializeBigint"
+export { camelCaseToWords } from "./camelCaseToWords"
+export { createActor } from "./createActor"
+export { bigintToNumber, bigintToString } from "./serializeBigint"
+export { verifyAdmin } from "./verifyAdmin"
 

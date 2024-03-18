@@ -1,5 +1,3 @@
-import List "mo:base/List";
-
 module {
   public type Tokens = { e8s : Nat };
 
@@ -7,7 +5,9 @@ module {
 
   public type UserId = Principal;
   public type User = {
-    id : Text
+    id : Text;
+    // totalVotes : Nat;
+    // totalVotingPower : Nat
   };
 
   // curated projects

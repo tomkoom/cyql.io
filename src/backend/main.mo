@@ -8,9 +8,7 @@ import Debug "mo:base/Debug";
 import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
-import List "mo:base/List";
 import Result "mo:base/Result";
-import Int "mo:base/Int";
 
 // services
 import Users "users_interface";
@@ -41,12 +39,14 @@ actor {
   // curated projects
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
+    // verify caller
     let projectId = projects.size();
     projects.put(projectId, { project with id = projectId });
     ?projectId
   };
 
   public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
+    // verify caller
     projects.put(projectId, project);
     ?projectId
   };
@@ -62,12 +62,12 @@ actor {
     return Iter.toArray<T.Project>(iter)
   };
 
-  public query func listProjectsPaginated() : async [T.Project] {
-    let iter : Iter.Iter<T.Project> = projects.vals();
-    let arr = Iter.toArray(iter);
-    let reversed = Array.reverse(arr);
-    return Iter.toArray<T.Project>(iter)
-  };
+  // public query func listProjectsPaginated() : async [T.Project] {
+  //   let iter : Iter.Iter<T.Project> = projects.vals();
+  //   let arr = Iter.toArray(iter);
+  //   let reversed = Array.reverse(arr);
+  //   return Iter.toArray<T.Project>(iter)
+  // };
 
   public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
     // add assert upvoter is user
@@ -111,6 +111,7 @@ actor {
   public shared ({ caller }) func createProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
     let user = users.getUser(caller) else return #err("User not found.");
+    // verify caller
     let proposal = U.generateProposal(caller, payload);
 
     proposalsPut(proposal.id, proposal);

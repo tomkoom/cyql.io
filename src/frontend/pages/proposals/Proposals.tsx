@@ -50,8 +50,8 @@ const Proposals: FC = (): JSX.Element => {
                   <span>{proposal.id}</span>
                   <span className="status">{Object.keys(proposal.state)[0]}</span>
                 </span>
-                <span>{proposal.votesYes !== "0" || "N/A"}</span>
-                <span>{proposal.votesNo !== "0" || "N/A"}</span>
+                <span>{proposal.votesYes !== "0" || "..."}</span>
+                <span>{proposal.votesNo !== "0" || "..."}</span>
               </li>
             ))
           ) : (

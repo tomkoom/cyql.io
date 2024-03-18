@@ -4,9 +4,10 @@ import styled from "styled-components"
 interface DataItemProps {
   label: string
   value: string
+  isLast: boolean
 }
 
-const DataItem: FC<DataItemProps> = ({ label, value }): JSX.Element => {
+const DataItem: FC<DataItemProps> = ({ label, value, isLast }): JSX.Element => {
   return (
     <DataItemStyled>
       <div className="data">
@@ -14,7 +15,7 @@ const DataItem: FC<DataItemProps> = ({ label, value }): JSX.Element => {
         <span className="value1">{value || "..."}</span>
       </div>
 
-      <div className="divider" />
+      {!isLast && <div className="divider" />}
     </DataItemStyled>
   )
 }
@@ -23,13 +24,11 @@ const DataItemStyled = styled.li`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: unset;
-  padding: unset;
 
   > div.data {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 0.25rem;
+    margin: 0.5rem 0;
     gap: 0.25rem;
     font-size: var(--fsText);
     font-weight: var(--fwRegular);

@@ -10,11 +10,12 @@ interface ProjectDataProps {
 const ProjectData: FC<ProjectDataProps> = ({ project }): JSX.Element => {
   return (
     <ProjectDataStyled>
-      {Object.entries(project).map(([key, value]) => (
+      {Object.entries(project).map(([key, value], i) => (
         <DataItem
           key={key}
           label={key}
           value={Array.isArray(value) ? value.join().toUpperCase() : value}
+          isLast={Object.entries(project).length - 1 === i}
         />
       ))}
     </ProjectDataStyled>
@@ -25,7 +26,6 @@ const ProjectDataStyled = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.25rem;
 `
 
 export default ProjectData

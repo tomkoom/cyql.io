@@ -1,5 +1,17 @@
-export type ProjectProposalDataId = number
+// vote
+export type Yes = {
+  yes: null
+}
 
+export type No = {
+  no: null
+}
+
+export type Vote = Yes | No
+export type VoteArgs = { vote: Vote; proposalId: number }
+
+// data
+export type ProjectProposalDataId = number
 export type ProjectProposalData = {
   category: string[]
 

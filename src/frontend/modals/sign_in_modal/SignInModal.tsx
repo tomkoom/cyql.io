@@ -21,7 +21,7 @@ const SignInModal: FC<SingInModalProps> = ({ isOpen }): JSX.Element => {
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
       <Content onClick={(e) => e.stopPropagation()}>
-        <h3>sign-in</h3>
+        <h3>Sign In</h3>
         <SignInMethods />
       </Content>
     </Modal>

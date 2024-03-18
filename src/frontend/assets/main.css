@@ -77,6 +77,8 @@ h6 {
   --colorOk: #64dd17;
   --colorErr: #fa4d56;
   --colorNeutral: (var(--coolGray60));
+  --colorAccept: #00c853;
+  --colorReject: #ff5252;
 
   /* social colors */
 

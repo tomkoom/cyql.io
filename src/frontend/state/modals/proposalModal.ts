@@ -8,7 +8,7 @@ interface ProposalModalState {
 
 const initialState: ProposalModalState = {
   isOpen: false,
-  proposal: {},
+  proposal: null,
 }
 
 const proposalModal = createSlice({
