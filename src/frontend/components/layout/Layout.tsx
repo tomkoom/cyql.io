@@ -58,6 +58,8 @@ const LayoutStyled = styled.div`
 
   /* footer at the bottom */
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   > main.main {
     padding: 0 2rem;

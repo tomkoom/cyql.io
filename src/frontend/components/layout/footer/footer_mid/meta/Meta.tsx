@@ -16,7 +16,7 @@ const MetaStyled = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 `
 
 export default Meta

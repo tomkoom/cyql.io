@@ -80,6 +80,7 @@ const Votes: FC<VotesProps> = ({ proposal }): JSX.Element => {
             style={{ backgroundColor: "var(--colorErr)", color: "#fff" }}
             onClick={() => castVote({ no: null })}
           />
+
           <Btn
             btnType={"primary"}
             text={"Accept"}
