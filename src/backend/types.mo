@@ -74,6 +74,7 @@ module {
   public type ProjectProposalId = Nat;
   public type Vote = { #no; #yes };
   public type VoteArgs = { vote : Vote; proposalId : Nat };
+  public type VoteArgs2 = { vote : Vote; votingPower : Nat; proposalId : Nat };
   public type Voter = { id : Text; votedAt : Int };
   public type ProposalState = {
     #failed : Text;

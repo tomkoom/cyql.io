@@ -1,16 +1,15 @@
 import { useAuth } from "@/context/Auth"
-import type { ProjectProposalData, VoteArgs } from "@/state/_types/dao_types"
-import { bigintToString } from "@/utils/serializeBigint"
+import type { ProjectProposalData, VoteArgs, VoteArgs2 } from "@/state/_types/dao_types"
+import { bigintToString, notifyErr, notifySuccess } from "@/utils/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setProposals } from "@/state/dao/proposals"
-import { notifyErr, notifySuccess } from "@/utils/notify"
 
 interface UseDao {
   createProposal: (projectData: ProjectProposalData) => Promise<void>
   refreshProposals: () => Promise<void>
-  vote: (voteArgs: VoteArgs) => Promise<void>
+  vote: (voteArgs: VoteArgs2) => Promise<void>
 }
 
 export const useDao = (): UseDao => {
@@ -41,12 +40,16 @@ export const useDao = (): UseDao => {
     }
   }
 
-  const vote = async (voteArgs: VoteArgs): Promise<void> => {
+  const vote = async (voteArgs: VoteArgs2): Promise<void> => {
     if (!actor) return
     if (!isAuthenticated) return
 
     try {
-      const formatted = { ...voteArgs, ...{ proposalId: BigInt(voteArgs.proposalId) } }
+      const formatted = {
+        ...voteArgs,
+        ...{ votingPower: BigInt(voteArgs.votingPower) },
+        ...{ proposalId: BigInt(voteArgs.proposalId) },
+      }
       const res = await actor.vote(formatted)
       if ("ok" in res) {
         notifySuccess(`Voted. Proposal state: ${JSON.stringify(res)}`)

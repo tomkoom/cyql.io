@@ -3,10 +3,9 @@ import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { RootModal } from "../_index"
 import { DataItem } from "./_index"
-import { camelCaseToWords } from "@/utils/camelCaseToWords"
+import { camelCaseToWords, notifyErr, notifySuccess } from "@/utils/_index"
 import { Btn } from "@/components/btns/_index"
 import { useDao, useNav } from "@/hooks/_index"
-import { notifyErr, notifySuccess } from "@/utils/notify"
 import { modalStyles } from "../_modalStyles"
 
 // state
@@ -21,14 +20,15 @@ interface ConfirmProposalModalProps {
 
 const ConfirmProposalModal: FC<ConfirmProposalModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { createProposal } = useDao()
+  const { createProposal, refreshProposals } = useDao()
   const { toProposals } = useNav()
-  const project = useAppSelector(selectListProject)
+  const proposalPayload = useAppSelector(selectListProject)
 
   const submit = async (): Promise<void> => {
     try {
       dispatch(setIsLoading(true))
-      await createProposal(project)
+      await createProposal(proposalPayload)
+      await refreshProposals()
       dispatch(setClearProposedProject())
       onClose()
       notifySuccess("Proposal submitted.")
@@ -49,7 +49,7 @@ const ConfirmProposalModal: FC<ConfirmProposalModalProps> = ({ isOpen, onClose }
 
         <div className="content">
           <ul>
-            {Object.entries(project).map(([key, value]) => (
+            {Object.entries(proposalPayload).map(([key, value]) => (
               <DataItem
                 key={key}
                 label={camelCaseToWords(key)}

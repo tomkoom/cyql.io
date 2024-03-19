@@ -129,7 +129,7 @@ actor {
   };
 
   // vote on proposal
-  public shared ({ caller }) func vote(args : T.VoteArgs) : async Result.Result<T.ProposalState, Text> {
+  public shared ({ caller }) func vote(args : T.VoteArgs2) : async Result.Result<T.ProposalState, Text> {
     let ?proposal = projectProposals.get(args.proposalId) else return #err("Proposal not found.");
     let u = await users.getUser(caller);
 
@@ -148,8 +148,9 @@ actor {
         votersBuf.add(voter);
 
         // get voting power
-        let accountHex = U.principalToAccountHex(caller);
-        let votingPower = await _calculateVotingPower(accountHex);
+        // let accountHex = U.principalToAccountHex(caller);
+        // let votingPower = await _calculateVotingPower(accountHex);
+        let votingPower = args.votingPower;
 
         // verify
         if (state != #open) return #err("Proposal isn't open for voting.");

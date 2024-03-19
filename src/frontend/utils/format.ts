@@ -1,11 +1,3 @@
-export const formatStr8 = (str: string): string => {
-  return str.length > 8 ? `${str.substring(0, 8)}…` : str
-}
-
-export const formatStr12 = (str: string): string => {
-  return str.length > 12 ? `${str.substring(0, 12)}…` : str
-}
-
 export const formatStr16 = (str: string): string => {
   return str.length > 16 ? `${str.substring(0, 16)}…` : str
 }

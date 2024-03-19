@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { formatDate } from "@/utils/formatDate"
+import { formatDateTime } from "@/utils/_index"
 
 interface PublishedProps {
   createdAt: string
@@ -11,7 +11,7 @@ const Published: FC<PublishedProps> = ({ createdAt }): JSX.Element => {
     return null
   }
 
-  return <PublishedStyled>Published {formatDate(createdAt)}</PublishedStyled>
+  return <PublishedStyled>Published {formatDateTime(Number(createdAt))}</PublishedStyled>
 }
 
 const PublishedStyled = styled.div`

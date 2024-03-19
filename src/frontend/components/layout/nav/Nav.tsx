@@ -13,14 +13,14 @@ const Nav: FC = (): JSX.Element => {
   )
 }
 
-const NavStyled = styled.header`
-  position: sticky;
+const NavStyled = styled.div`
+  /* position: sticky;
   top: 0;
+  background-color: var(--background); */
 `
 
 const Main = styled.div`
   padding: 0.5rem 2rem;
-  background-color: var(--background);
 
   @media ${device.laptop} {
     padding: 0.5rem 1rem;

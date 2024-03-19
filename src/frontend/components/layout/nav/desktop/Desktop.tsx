@@ -13,7 +13,7 @@ import { Logo, Price, Theme } from "@/components/ui/_index"
 
 const Desktop: FC = (): JSX.Element => {
   const { toHome } = useNav()
-  const { isAuthenticated, userId } = useAuth()
+  const { isAuthenticated,  } = useAuth()
 
   return (
     <DesktopStyled>
