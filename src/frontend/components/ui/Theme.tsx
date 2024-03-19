@@ -19,7 +19,7 @@ const Theme: FC = (): JSX.Element => {
 
   return (
     <ThemeStyled onClick={() => dispatch(setTheme(changeTheme(theme)))}>
-      {theme === "light" ? iSun : theme === "dark" ? iMoon : null}
+      {theme === "light" ? iMoon : theme === "dark" ? iSun : null}
     </ThemeStyled>
   )
 }

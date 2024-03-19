@@ -1,6 +1,6 @@
 import iclogo from "@/assets/logos/ic-logo.svg"
-import logo_color from "@/assets/logos/logo-color.svg"
-import logo_gray from "@/assets/logos/logo-gray.svg"
+import logo_color from "@/assets/logos/cyql_logo_color.svg"
+import logo_gray from "@/assets/logos/cyql_logo_gray.svg"
 
 export const II_ADMIN_1 = process.env.II_ADMIN_1
 export const II_ADMIN_2 = process.env.II_ADMIN_2
