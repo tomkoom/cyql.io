@@ -11,7 +11,7 @@ const FooterUpper: FC = (): JSX.Element => {
       {/* submit */}
       <li>
         <Link to="/list">
-          <h5>{iPlus}&nbsp;&nbsp;list your project</h5>
+          <h5>{iPlus}&nbsp;&nbsp;List Your Project</h5>
           <p>Submit your project to the cyql db</p>
         </Link>
       </li>
@@ -19,7 +19,7 @@ const FooterUpper: FC = (): JSX.Element => {
       {/* reach out */}
       <li>
         <a href={CYQL_MSG_URL} rel="noreferrer noopener" target="_blank">
-          <h5>{iComments}&nbsp;&nbsp;reach out</h5>
+          <h5>{iComments}&nbsp;&nbsp;Reach Out</h5>
           <p>
             Didn't find what you were looking for or want to collaborate? Reach out for us, we are
             happy to support and cooperate
@@ -30,7 +30,7 @@ const FooterUpper: FC = (): JSX.Element => {
       {/* donate */}
       <li>
         <a href={DONATION_WALLET_URL} rel="noreferrer noopener" target="_blank">
-          <h5>{iHeart}&nbsp;&nbsp;donate</h5>
+          <h5>{iHeart}&nbsp;&nbsp;Donate</h5>
           <p>
             cyql is developed and maintained by the IC enthusiasts. You can support the project by
             making a donation

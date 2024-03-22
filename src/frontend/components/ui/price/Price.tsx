@@ -24,7 +24,7 @@ const Price: FC = (): JSX.Element => {
   return (
     <PriceStyled>
       <img src={IC_LOGO} alt="Internet Computer logo" />
-      <span className="">{"$" + price}</span>
+      <span>{"$" + price}</span>
       <Change change={Number(change)} />
     </PriceStyled>
   )
@@ -34,6 +34,8 @@ const PriceStyled = styled.div`
   height: 2rem;
   display: flex;
   align-items: center;
+  align-self: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0 0.5rem;
   font-size: 0.9rem;
@@ -41,7 +43,9 @@ const PriceStyled = styled.div`
   background-color: var(--underlay1);
 
   > img {
-    height: 1.125rem;
+    height: 1rem;
+    width: 1rem;
+    object-fit: contain;
   }
 
   * {

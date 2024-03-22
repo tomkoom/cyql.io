@@ -13,7 +13,7 @@ import { Logo, Price, Theme } from "@/components/ui/_index"
 
 const Desktop: FC = (): JSX.Element => {
   const { toHome } = useNav()
-  const { isAuthenticated,  } = useAuth()
+  const { isAuthenticated } = useAuth()
 
   return (
     <DesktopStyled>
@@ -56,8 +56,8 @@ const Controls = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
   flex-wrap: wrap;
+  gap: 0.25rem;
 `
 
 export default Desktop
