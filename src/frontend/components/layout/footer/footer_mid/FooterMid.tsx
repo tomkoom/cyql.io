@@ -14,8 +14,8 @@ const FooterMid: FC = (): JSX.Element => {
 
   return (
     <FooterMidStyled>
-      <div className="logo" onClick={toHome}>
-        <Logo />
+      <div>
+        <Logo onClick={toHome} />
       </div>
 
       <ul className="nav">
@@ -33,10 +33,6 @@ const FooterMidStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
-
-  > div.logo {
-    cursor: pointer;
-  }
 
   > ul.nav {
     display: flex;

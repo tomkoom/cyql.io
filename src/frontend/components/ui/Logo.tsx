@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, HTMLAttributes } from "react"
 import styled from "styled-components"
 import { LOGO_COLOR, LOGO_GRAY } from "@/constants/constants"
 
@@ -6,11 +6,15 @@ import { LOGO_COLOR, LOGO_GRAY } from "@/constants/constants"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/theme"
 
-const Logo: FC = (): JSX.Element => {
+interface LogoProps extends HTMLAttributes<HTMLDivElement> {
+  onClick?: () => void
+}
+
+const Logo: FC<LogoProps> = ({ onClick }): JSX.Element => {
   const theme = useAppSelector(selectTheme)
 
   return (
-    <LogoStyled>
+    <LogoStyled onClick={onClick}>
       <img
         src={theme === "light" ? LOGO_COLOR : theme === "dark" ? LOGO_GRAY : null}
         alt="cyql.io logo"
