@@ -1,4 +1,5 @@
 // footer
 
-export { default as FooterTop } from "./footer_top/FooterTop";
-export { default as FooterMid } from "./footer_mid/FooterMid";
+export { default as FooterUpper } from "./FooterUpper"
+export { default as FooterLower } from "./footer_lower/FooterLower"
+

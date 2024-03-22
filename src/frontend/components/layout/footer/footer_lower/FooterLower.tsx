@@ -8,12 +8,12 @@ import { useNavlinks } from "@/hooks/_index"
 import { Logo } from "@/components/ui/_index"
 import { Meta, NavLink, Socials } from "./_index"
 
-const FooterMid: FC = (): JSX.Element => {
+const FooterLower: FC = (): JSX.Element => {
   const { toHome } = useNav()
   const { navlinks } = useNavlinks()
 
   return (
-    <FooterMidStyled>
+    <FooterLowerStyled>
       <div>
         <Logo onClick={toHome} />
       </div>
@@ -25,11 +25,11 @@ const FooterMid: FC = (): JSX.Element => {
       </ul>
       <Socials />
       <Meta />
-    </FooterMidStyled>
+    </FooterLowerStyled>
   )
 }
 
-const FooterMidStyled = styled.div`
+const FooterLowerStyled = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
   gap: 1.5rem;
@@ -46,4 +46,4 @@ const FooterMidStyled = styled.div`
   }
 `
 
-export default FooterMid
+export default FooterLower
