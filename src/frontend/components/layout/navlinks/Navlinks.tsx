@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { NavItem, Tags } from "./_index"
 import { verifyAdmin } from "@/utils/verifyAdmin"
-import { iPlus } from "@/components/icons/Icons"
+import { useNavlinks } from "@/hooks/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -10,16 +10,22 @@ import { useNav } from "@/hooks/_index"
 
 const Navlinks: FC = (): JSX.Element => {
   const { userId } = useAuth()
-  const { toHome, toProjects, toSubmit, toProposals, toAdmin } = useNav()
+  const { toAdmin } = useNav()
+  const { navlinks } = useNavlinks()
 
   return (
     <NavlinksStyled>
       <div>
-        <NavItem label="Home" route={toHome} />
-        <NavItem label="Curated Projects" route={toProjects} />
-        <NavItem label="Propose Project" route={toSubmit} icon={iPlus} />
-        <NavItem label="Project Proposals" route={toProposals} />
-        {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} />}
+        {navlinks.map((navlink) => (
+          <NavItem
+            key={navlink.label}
+            label={navlink.label}
+            route={navlink.route}
+            icon={navlink.icon}
+          />
+        ))}
+
+        {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} icon={undefined} />}
       </div>
 
       <div>

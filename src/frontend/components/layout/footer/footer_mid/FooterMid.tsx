@@ -2,13 +2,15 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
+import { useNavlinks } from "@/hooks/_index"
 
 // components
 import { Logo } from "@/components/ui/_index"
 import { Meta, NavLink, Socials } from "./_index"
 
 const FooterMid: FC = (): JSX.Element => {
-  const { toHome, toProjects, toSubmit } = useNav()
+  const { toHome } = useNav()
+  const { navlinks } = useNavlinks()
 
   return (
     <FooterMidStyled>
@@ -16,10 +18,11 @@ const FooterMid: FC = (): JSX.Element => {
         <Logo />
       </div>
 
-      <div className="nav">
-        <NavLink label="projects" to={toProjects} />
-        <NavLink label="submit" to={toSubmit} />
-      </div>
+      <ul className="nav">
+        {navlinks.map((navlink) => (
+          <NavLink key={navlink.label} label={navlink.label} route={navlink.route} />
+        ))}
+      </ul>
       <Socials />
       <Meta />
     </FooterMidStyled>
@@ -35,7 +38,7 @@ const FooterMidStyled = styled.div`
     cursor: pointer;
   }
 
-  > div.nav {
+  > ul.nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
