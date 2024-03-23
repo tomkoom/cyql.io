@@ -44,7 +44,7 @@ const Details: FC<DetailsProps> = ({ proposal }): JSX.Element => {
 const DetailsStyled = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.4rem;
 
   > li {
     width: 100%;

@@ -56,6 +56,7 @@ import {
   faBolt,
   faRightLeft,
   faLeaf,
+  faCopy,
 } from "@fortawesome/free-solid-svg-icons"
 import {
   faXTwitter,
@@ -127,6 +128,7 @@ export const iFire = <FontAwesomeIcon icon={faFireAlt} />
 export const iCheck = <FontAwesomeIcon icon={faCheck} />
 export const iLeaf = <FontAwesomeIcon icon={faLeaf} />
 export const iExternalLink = <FontAwesomeIcon icon={faExternalLinkAlt} />
+export const iCopy = <FontAwesomeIcon icon={faCopy} />
 
 // brands
 export const iX = <FontAwesomeIcon icon={faXTwitter} />

@@ -56,6 +56,18 @@ img {
   margin: 0 auto;
 }
 
+.wrapper1280 {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrapper1024 {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 /* responsive */
 
 @media (max-width: 1024px) {

@@ -41,7 +41,7 @@ const Wallet: FC = (): JSX.Element => {
     <WalletStyled>
       <WithdrawModal isOpen={isWithdrawModalOpen} onClose={closeWithdrawModal} />
       <div>
-        <h4>wallet</h4>
+        <h4>Wallet</h4>
 
         <ul>
           <li>

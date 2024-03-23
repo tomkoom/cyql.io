@@ -17,7 +17,7 @@ const Proposal: FC = (): JSX.Element => {
   if (!proposal) return null
 
   return (
-    <ProposalStyled className="wrapper1440">
+    <ProposalStyled className="wrapper1280">
       <BackBtn />
       <div className="content">
         <Header proposal={proposal} />
@@ -57,7 +57,7 @@ const ProposalStyled = styled.div`
 
         > h4 {
           font-size: var(--fs5);
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.6rem;
         }
       }
     }

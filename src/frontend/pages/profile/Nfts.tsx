@@ -34,7 +34,7 @@ const Nfts: FC = (): JSX.Element => {
       <WithdrawNftModal isOpen={withdrawNftModalIsOpen} onClose={closeNftWithdrawModal} />
 
       <div>
-        <h4>cyql nfts</h4>
+        <h4>cyql NFTs</h4>
         {nftsOwned.length > 0 ? (
           <ul>
             {nftsOwned.map((nftIdx) => (

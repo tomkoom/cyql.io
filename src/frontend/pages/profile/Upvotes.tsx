@@ -1,9 +1,7 @@
-import React from 'react'
+import React, { FC } from "react"
 
-const Upvotes = () => {
-  return (
-    <div>Upvotes</div>
-  )
+const Upvotes: FC = (): JSX.Element => {
+  return <div>Upvotes</div>
 }
 
 export default Upvotes
