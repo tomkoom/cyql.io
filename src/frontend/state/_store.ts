@@ -12,6 +12,10 @@ import user from "./user"
 import listProject from "./projectProposal"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
 
+// icrc scan
+import icrcTransactions from "./icrcTransactions"
+import icrcTotalSupply from "./icrcTotalSupply"
+
 // dao
 import proposals from "./dao/proposals"
 
@@ -50,6 +54,10 @@ const store = configureStore({
     user,
     listProject,
     proposedProjectCategories,
+
+    // icrc scan
+    icrcTransactions,
+    icrcTotalSupply,
 
     // dao
     proposals,

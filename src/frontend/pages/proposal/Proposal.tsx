@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import { BackBtn } from "@/components/btns/_index"
-import { Details, Votes, ProjectData } from "./_index"
+import { Details, Votes, ProjectData, Header } from "./_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -20,13 +20,7 @@ const Proposal: FC = (): JSX.Element => {
     <ProposalStyled className="wrapper1440">
       <BackBtn />
       <div className="content">
-        <div className="header">
-          <h2 className="pageTitle">
-            Proposal to List <span className="name">{payload.name || "[...]"}</span>
-          </h2>
-          <span className="id">{proposal.id}</span>
-          <span className="state">{Object.keys(proposal.state)[0]}</span>
-        </div>
+        <Header proposal={proposal} />
 
         <div className="panels">
           <div className="panel">
@@ -53,37 +47,6 @@ const ProposalStyled = styled.div`
   margin-bottom: 4rem;
 
   > div.content {
-    > div.header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.125rem;
-      margin-bottom: 2rem;
-
-      > h2 {
-        margin: unset;
-        color: var(--secondaryColor);
-
-        > span.name {
-          color: var(--primaryColor);
-        }
-      }
-
-      > span.id {
-        font-size: var(--fsText);
-        color: var(--secondaryColor);
-        margin-bottom: 0.125rem;
-      }
-
-      > span.state {
-        color: var(--primaryColor);
-        background-color: var(--underlay1);
-        font-size: var(--fsText);
-        font-weight: var(--fwMedium);
-        padding: 0.25rem;
-      }
-    }
-
     > div.panels {
       width: 100%;
 

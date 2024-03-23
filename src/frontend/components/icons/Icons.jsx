@@ -54,6 +54,8 @@ import {
   faHashtag,
   faInfinity, // unused
   faBolt,
+  faRightLeft,
+  faLeaf,
 } from "@fortawesome/free-solid-svg-icons"
 import {
   faXTwitter,
@@ -73,7 +75,6 @@ const iLink = <FontAwesomeIcon icon={faLink} />
 const iBars = <FontAwesomeIcon icon={faBars} />
 const iTh = <FontAwesomeIcon icon={faTh} />
 const iTimes = <FontAwesomeIcon icon={faTimes} />
-const iFire = <FontAwesomeIcon icon={faFireAlt} />
 const iSun = <FontAwesomeIcon icon={faSun} />
 const iMoon = <FontAwesomeIcon icon={faMoon} />
 const iArrowUp = <FontAwesomeIcon icon={faArrowUp} />
@@ -85,7 +86,6 @@ const iPlus = <FontAwesomeIcon icon={faPlus} />
 const iPlusSquare = <FontAwesomeIcon icon={faPlusSquare} />
 const iComments = <FontAwesomeIcon icon={faComments} />
 const iHeart = <FontAwesomeIcon icon={faHeart} />
-const iExternalLink = <FontAwesomeIcon icon={faExternalLinkAlt} />
 const iSearch = <FontAwesomeIcon icon={faSearch} />
 const iEdit = <FontAwesomeIcon icon={faEdit} />
 const iTrash = <FontAwesomeIcon icon={faTrash} />
@@ -93,7 +93,7 @@ const iCaretUp = <FontAwesomeIcon icon={faCaretUp} />
 const iCaretRight = <FontAwesomeIcon icon={faCaretRight} />
 const iCaretDown = <FontAwesomeIcon icon={faCaretDown} />
 const iCaretLeft = <FontAwesomeIcon icon={faCaretLeft} />
-const iCheck = <FontAwesomeIcon icon={faCheck} />
+
 const iAngleUp = <FontAwesomeIcon icon={faAngleUp} />
 const iAngleRight = <FontAwesomeIcon icon={faAngleRight} />
 const iAngleDown = <FontAwesomeIcon icon={faAngleDown} />
@@ -122,6 +122,11 @@ export const iUser = <FontAwesomeIcon icon={faUser} />
 export const iHashtag = <FontAwesomeIcon icon={faHashtag} />
 export const iInfinity = <FontAwesomeIcon icon={faInfinity} />
 export const iBolt = <FontAwesomeIcon icon={faBolt} />
+export const iRightLeft = <FontAwesomeIcon icon={faRightLeft} />
+export const iFire = <FontAwesomeIcon icon={faFireAlt} />
+export const iCheck = <FontAwesomeIcon icon={faCheck} />
+export const iLeaf = <FontAwesomeIcon icon={faLeaf} />
+export const iExternalLink = <FontAwesomeIcon icon={faExternalLinkAlt} />
 
 // brands
 export const iX = <FontAwesomeIcon icon={faXTwitter} />
@@ -141,7 +146,6 @@ export {
   iBars,
   iTh,
   iTimes,
-  iFire,
   iSun,
   iMoon,
   iArrowUp,
@@ -153,7 +157,6 @@ export {
   iPlusSquare,
   iComments,
   iHeart,
-  iExternalLink,
   iSearch,
   iEdit,
   iTrash,
@@ -161,7 +164,6 @@ export {
   iCaretRight,
   iCaretDown,
   iCaretLeft,
-  iCheck,
   iAngleUp,
   iAngleRight,
   iAngleDown,

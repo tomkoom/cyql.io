@@ -14,6 +14,7 @@ import {
   ListProject,
   Proposal,
   Proposals,
+  IcrcScan,
 } from "@/pages/_index"
 
 const router = createHashRouter(
@@ -31,6 +32,9 @@ const router = createHashRouter(
       {/* add */}
       <Route path="list" element={<ListProject />} />
       <Route path="add" element={<ListProject />} />
+
+      {/* icrc scan */}
+      <Route path="icrc_scan" element={<IcrcScan />} />
 
       {/* protected routes */}
       <Route element={<ProtectedRoutes />}>
