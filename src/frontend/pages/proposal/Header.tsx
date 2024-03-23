@@ -1,5 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 
 interface HeaderProps {
   proposal: any
@@ -14,7 +15,7 @@ const Header: FC<HeaderProps> = ({ proposal }): JSX.Element => {
         Proposal to List <span className="name">{payload.name || "[...]"}</span>
       </h2>
       <span className="id">Proposal id: {proposal.id}</span>
-      <span className="state">{Object.keys(proposal.state)[0]}</span>
+      <span className="state">{capitalizeFirstLetter(Object.keys(proposal.state)[0])}</span>
     </HeaderStyled>
   )
 }
@@ -46,7 +47,7 @@ const HeaderStyled = styled.div`
     background-color: var(--underlay1);
     font-size: var(--fsText);
     font-weight: var(--fwMedium);
-    padding: 0.25rem;
+    padding: 0.25rem 0.4rem;
   }
 `
 

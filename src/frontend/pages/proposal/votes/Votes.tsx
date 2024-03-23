@@ -4,13 +4,14 @@ import { Btn } from "@/components/btns/_index"
 import { useAuth } from "@/context/Auth"
 import { useDao } from "@/hooks/_index"
 import { VoteArgs, VoteArgs2, Vote } from "@/state/_types/dao_types"
-import { iBolt } from "@/components/icons/Icons"
+import { VotingBar } from "./_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 import { setIsLoading } from "@/state/loading"
 import { selectVotingPower } from "@/state/user"
+import { iBolt } from "@/components/icons/Icons"
 
 interface VotesProps {
   proposal: any
@@ -45,36 +46,8 @@ const Votes: FC<VotesProps> = ({ proposal }): JSX.Element => {
 
   return (
     <VotesStyled>
-      <ul>
-        <li>
-          <span className="label">{iBolt} Voting power to accept</span>
-          <span className="value">
-            {iBolt} {proposal.votesYes}
-          </span>
-        </li>
-
-        <li>
-          <span className="label">{iBolt} Voting power to reject</span>
-          <span className="value">
-            {iBolt} {proposal.votesNo}
-          </span>
-        </li>
-
-        <li>
-          <span className="label">Voters to accept</span>
-          <span className="value">{proposal.votersYes}</span>
-        </li>
-
-        <li>
-          <span className="label">Voters to reject</span>
-          <span className="value">{proposal.votersNo}</span>
-        </li>
-
-        <li>
-          <span className="label">Total voters</span>
-          <span className="value">{+proposal.votersYes + +proposal.votersNo}</span>
-        </li>
-      </ul>
+      <p>Minimum voting threshold to list a project: {iBolt} 108 (~4%)</p>
+      <VotingBar proposal={proposal} />
 
       {!isAuthenticated ? (
         <div className="actions">
@@ -83,16 +56,16 @@ const Votes: FC<VotesProps> = ({ proposal }): JSX.Element => {
       ) : (
         <div className="actions">
           <Btn
-            btnType={"primary"}
+            btnType={"reject"}
             text={"Reject"}
-            style={{ backgroundColor: "var(--colorErr)", color: "#fff" }}
+            // style={{ backgroundColor: "var(--colorErr)", color: "#fff" }}
             onClick={() => castVote({ no: null }, votingPower)}
           />
 
           <Btn
-            btnType={"primary"}
+            btnType={"accept"}
             text={"Accept"}
-            style={{ backgroundColor: "var(--colorAccept)", color: "#fff" }}
+            // style={{ backgroundColor: "var(--colorOk)", color: "#fff" }}
             onClick={() => castVote({ yes: null }, votingPower)}
           />
         </div>
@@ -102,35 +75,16 @@ const Votes: FC<VotesProps> = ({ proposal }): JSX.Element => {
 }
 
 const VotesStyled = styled.div`
-  > ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-
-    > li {
-      width: 100%;
-      display: flex;
-      gap: 0.5rem;
-      font-size: var(--fsText);
-      font-weight: var(--fwRegular);
-      color: var(--primaryColor);
-
-      > span {
-        flex: 1;
-      }
-
-      > span.label {
-        color: var(--secondaryColor);
-      }
-    }
+  > p {
+    font-size: var(--fsText);
+    color: var(--tertiaryColor);
   }
 
   > div.actions {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
     margin-top: 1rem;
 
     > button {

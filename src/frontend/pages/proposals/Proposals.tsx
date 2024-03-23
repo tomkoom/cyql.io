@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useNav } from "@/hooks/_index"
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -36,7 +37,9 @@ const Proposals: FC = (): JSX.Element => {
                 <li key={`proposal_id_${proposal.id}`} onClick={() => toProposal(proposal.id)}>
                   <span className="main">
                     <span>Proposal to list {JSON.parse(proposal.payload).name || "[...]"}</span>
-                    <span>Created at {formatDateTime(Number(proposal.createdAt) / 1_000_000)}</span>
+                    <span className="created_at">
+                      Created at {formatDateTime(Number(proposal.createdAt) / 1_000_000)}
+                    </span>
                   </span>
 
                   <span>
@@ -44,7 +47,7 @@ const Proposals: FC = (): JSX.Element => {
                   </span>
 
                   <span className="state">
-                    <span>{Object.keys(proposal.state)[0]}</span>
+                    <span>{capitalizeFirstLetter(Object.keys(proposal.state)[0])}</span>
                   </span>
 
                   {/* <span>{proposal.votesYes !== "0" || "..."}</span>
@@ -113,11 +116,15 @@ const ProposalsStyled = styled.div`
             align-items: flex-start;
             gap: 0.25rem;
           }
+
+          > span.created_at {
+            color: var(--tertiaryColor);
+          }
         }
 
         > span.state {
           > span {
-            padding: 0.125rem;
+            padding: 0.25rem 0.4rem;
             background-color: var(--underlay2);
           }
         }

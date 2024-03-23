@@ -52,11 +52,11 @@ const ProposalStyled = styled.div`
 
       > div.panel {
         background-color: var(--underlay1);
-        padding: 1rem;
+        padding: 1.5rem;
         margin-bottom: 1rem;
 
         > h4 {
-          font-size: var(--fs6);
+          font-size: var(--fs5);
           margin-bottom: 0.5rem;
         }
       }

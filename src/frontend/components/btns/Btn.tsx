@@ -2,7 +2,7 @@ import React, { FC, ReactNode, ButtonHTMLAttributes } from "react"
 import styled from "styled-components"
 
 interface BtnProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  btnType: "primary" | "secondary"
+  btnType: "primary" | "secondary" | "accept" | "reject"
   text: string
   icon?: ReactNode
 }
@@ -19,19 +19,25 @@ const Btn: FC<BtnProps> = ({ btnType, text, icon, ...props }): JSX.Element => {
 const colors = {
   primary: "#fff",
   secondary: "var(--primaryColor)",
+  accept: "#fff",
+  reject: "#fff",
 }
 
 const bgColors = {
   primary: "var(--highlight1)",
   secondary: "var(--underlay1)",
+  accept: "var(--colorAccept1)",
+  reject: "var(--colorReject1)",
 }
 
 const hoverBgColors = {
   primary: "var(--highlight2)",
   secondary: "var(--underlay2)",
+  accept: "var(--colorAccept2)",
+  reject: "var(--colorReject2)",
 }
 
-const BtnStyled = styled.button<{ btnType: "primary" | "secondary" }>`
+const BtnStyled = styled.button<{ btnType: "primary" | "secondary" | "accept" | "reject" }>`
   height: 2.5rem;
   display: flex;
   align-items: center;
