@@ -1,26 +1,36 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { formatDateTime } from "@/utils/formatDateTime"
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 
 interface DetailsProps {
   proposal: any
 }
 
 const Details: FC<DetailsProps> = ({ proposal }): JSX.Element => {
+  const now = Date.now()
+  const duration = Math.abs(+proposal.createdAt / 1_000_000 - now) / 1000
+  const daysAgo = Math.floor(duration / 86400)
+
   return (
     <DetailsStyled>
       <li>
         <span className="label">State</span>
-        <span className="value state">{Object.keys(proposal.state)[0]}</span>
+        <span className="value">{capitalizeFirstLetter(Object.keys(proposal.state)[0])}</span>
       </li>
+
       <li>
         <span className="label">Proposer</span>
         <span className="value">{proposal.proposer}</span>
       </li>
+
       <li>
         <span className="label">Created at</span>
-        <span className="value">{formatDateTime(+proposal.createdAt / 1000_000)}</span>
+        <span className="value">
+          {formatDateTime(+proposal.createdAt / 1_000_000)} <span>({daysAgo} days ago)</span>
+        </span>
       </li>
+
       <li>
         <span className="label">Updated at</span>
         <span className="value">
@@ -34,7 +44,7 @@ const Details: FC<DetailsProps> = ({ proposal }): JSX.Element => {
 const DetailsStyled = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.3rem;
 
   > li {
     width: 100%;
@@ -50,8 +60,8 @@ const DetailsStyled = styled.ul`
     }
 
     > span.value {
-      &.state {
-        background-color: var(--underlay2);
+      > span {
+        color: var(--tertiaryColor);
       }
     }
 

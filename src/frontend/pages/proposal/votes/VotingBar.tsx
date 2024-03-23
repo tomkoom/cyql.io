@@ -6,11 +6,16 @@ interface VotingBarProps {
   proposal: any
 }
 
+const calculateVpPercent = (vp: number) => {
+  const maxVp = 2680
+  return (vp / maxVp) * 100
+}
+
 const VotingBar: FC<VotingBarProps> = ({ proposal }): JSX.Element => {
   const votingPowerToAccept = proposal.votesYes
   const votingPowerToReject = proposal.votesNo
-  const vpPercentToAccept = (votingPowerToAccept / 2680) * 100
-  const vpPercentToReject = (votingPowerToReject / 2680) * 100
+  const vpPercentToAccept = calculateVpPercent(votingPowerToAccept)
+  const vpPercentToReject = calculateVpPercent(votingPowerToReject)
 
   return (
     <VotingBarStyled>
