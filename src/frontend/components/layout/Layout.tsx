@@ -34,7 +34,7 @@ const Layout: FC = (): JSX.Element => {
 
   return (
     <LayoutStyled className={theme}>
-      <Toaster position={"bottom-center"} toastOptions={{ duration: 5000 }} />
+      <Toaster position={"top-center"} toastOptions={{ duration: 5000 }} />
       <LoadingModal isOpen={isLoading} />
 
       {/* ... */}

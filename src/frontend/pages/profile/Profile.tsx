@@ -8,7 +8,7 @@ const Profile: FC = (): JSX.Element => {
   const { userId } = useAuth()
 
   return (
-    <ProfileStyled>
+    <ProfileStyled className="wrapper1440">
       <h2 className="pageTitle">{formatId(userId)}</h2>
       <Id />
       <VotingPower />
