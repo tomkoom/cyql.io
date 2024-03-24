@@ -8,6 +8,10 @@
       "main": "src/backend/users.mo",
       "type": "motoko"
     },
+    "project_proposals": {
+      "main": "src/backend/project_proposals.mo",
+      "type": "motoko"
+    },
     "frontend": {
       "dependencies": ["backend", "users"],
       "frontend": {

@@ -37,7 +37,7 @@ const BannerStyled = styled.a`
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    background-color: var(--underlay2);
+    background-color: var(--coolGray80);
 
     > img {
       max-width: 6rem;

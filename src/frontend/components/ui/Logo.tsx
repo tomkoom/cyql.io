@@ -31,7 +31,7 @@ const LogoStyled = styled.div`
   transition: var(--transition1);
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.6;
   }
 
   > img {

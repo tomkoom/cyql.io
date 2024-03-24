@@ -1,17 +1,18 @@
 {
   "backend": {
-    "ic": "nrkmt-haaaa-aaaai-qagmq-cai"
+    "ic": "nrkmt-haaaa-aaaai-qagmq-cai",
+    "local": "nrkmt-haaaa-aaaai-qagmq-cai"
   },
   "frontend": {
     "ic": "n7ib3-4qaaa-aaaai-qagnq-cai"
   },
-  "test1": {
+  "users": {
+    "ic": "fy4cw-pqaaa-aaaag-ahkvq-cai"
+  },
+  "project_proposals": {
     "ic": "bqnir-wqaaa-aaaag-abxhq-cai"
   },
   "test2": {
     "ic": "dnqgz-fyaaa-aaaag-abxia-cai"
-  },
-  "users": {
-    "ic": "fy4cw-pqaaa-aaaag-ahkvq-cai"
   }
 }

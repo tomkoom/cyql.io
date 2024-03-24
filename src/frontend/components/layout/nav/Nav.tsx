@@ -17,11 +17,7 @@ const Nav: FC = (): JSX.Element => {
 
   return (
     <NavStyled>
-      <Main>
-        <div onClick={toHome}>
-          <Logo />
-        </div>
-      </Main>
+      <Logo onClick={toHome} />
 
       <Controls>
         <Price />
@@ -42,19 +38,14 @@ const NavStyled = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  @media ${device.laptop} {
-    padding: 0.5rem 1rem;
-  }
-
   @media ${device.tablet} {
     flex-direction: column;
     justify-content: unset;
   }
-`
 
-const Main = styled.div`
-  display: flex;
-  align-items: center;
+  @media ${device.laptop} {
+    padding: 0.5rem 1rem;
+  }
 `
 
 const Controls = styled.div`
