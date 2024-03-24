@@ -68,7 +68,7 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" | "accept" | 
     height: 1rem;
     display: grid;
     place-items: center;
-    color: var(--tertiaryColor);
+    opacity: 0.6;
   }
 `
 

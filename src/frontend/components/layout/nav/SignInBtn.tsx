@@ -20,7 +20,7 @@ const SignInBtn: FC = (): JSX.Element => {
   return (
     <div>
       <SignInModal isOpen={isOpen} />
-      <Btn btnType="secondary" text="Sign In" icon={iSignIn} onClick={openSignInModal} />
+      <Btn btnType={"primary"} text={"Sign In"} icon={iSignIn} onClick={openSignInModal} />
     </div>
   )
 }
