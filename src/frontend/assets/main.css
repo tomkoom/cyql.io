@@ -148,6 +148,14 @@ h6 {
   --underlay1: var(--coolGray10);
   --underlay2: var(--coolGray20);
   --underlay3: var(--coolGray30);
+
+  /* ... */
+  --shadow1: rgba(var(--primaryColorRgb), 0.05) 0px 6px 24px 0px,
+    rgba(var(--primaryColorRgb), 0.08) 0px 0px 0px 1px;
+  --boxShadow1: 0 0 0 1px var(--underlay1);
+  --boxShadow2: 0 0 0 1px var(--underlay2);
+  --boxShadow1Inset: inset 0 0 0 1px var(--underlay1);
+  --boxShadow2Inset: inset 0 0 0 1px var(--underlay2);
 }
 
 .dark {
@@ -171,4 +179,11 @@ h6 {
   --underlay1: var(--coolGray90);
   --underlay2: var(--coolGray80);
   --underlay3: var(--coolGray70);
+
+  /* ... */
+  --shadow1: rgba(var(--primaryColorRgb), 0.12) 0px 0px 0px 1px;
+  --boxShadow1: 0 0 0 2px var(--underlay1);
+  --boxShadow2: 0 0 0 1px var(--underlay2);
+  --boxShadow1Inset: inset 0 0 0 2px var(--underlay1);
+  --boxShadow2Inset: inset 0 0 0 1px var(--underlay2);
 }

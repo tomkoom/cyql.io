@@ -39,7 +39,7 @@ const NavlinksStyled = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
   margin: 1rem 0;
   padding: 0 1rem;
 

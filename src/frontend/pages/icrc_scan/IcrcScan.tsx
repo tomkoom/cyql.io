@@ -14,7 +14,7 @@ import { selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
 import { notifyErr } from "@/utils/notify"
 
 const IcrcScan: FC = (): JSX.Element => {
-  const [ledgerId, setLedgerId] = useState("")
+  const [ledgerId, setLedgerId] = useState(CKBTC_LEDGER_CANISTER_ID_IC)
   const { getTxs } = useIcrcScan()
   const [searchParams, setSearchParams] = useSearchParams()
   const ledgerIdParam = searchParams.get("ledger_id")
@@ -41,11 +41,11 @@ const IcrcScan: FC = (): JSX.Element => {
 
   return (
     <IcrcScanStyled>
-      <h2 className="pageTitle">ICRC Scan</h2>
+      <h2 className="pageTitle">ICRC Tokens Explorer</h2>
 
       <div>
         <div className="input">
-          <label htmlFor="ledger_id">Ledger id</label>
+          <label htmlFor="ledger_id">Token ledger id</label>
 
           <div>
             <TextInputOutlined

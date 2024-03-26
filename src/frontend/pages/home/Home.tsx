@@ -6,15 +6,7 @@ import { Btn } from "@/components/btns/_index"
 import { iPlus } from "@/components/icons/Icons"
 
 // components
-import {
-  Header,
-  HighlightedProjects,
-  JoinCommunity,
-  // ProjectProposalData,
-  Promo,
-  StaffPicks,
-  Banner,
-} from "./_index"
+import { Header, HighlightedProjects, JoinCommunity, Promo, StaffPicks, Banner } from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
 
@@ -32,14 +24,6 @@ const Home: FC = (): JSX.Element => {
   const projectsNfts = projects.filter((p) =>
     p.category.map((c) => c.toLowerCase()).includes("nfts")
   )
-  // const popularProjects = projects
-  //   .filter((p) => p.upvotedBy)
-  //   .filter((p) => !p.category.includes("NFTs"))
-  //   .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
-  // const popularNfts = projects
-  //   .filter((p) => p.upvotedBy)
-  //   .filter((p) => p.category.includes("NFTs"))
-  //   .sort((a, b) => b.upvotedBy.length - a.upvotedBy.length)
 
   const navigateToListProject = (): void => {
     navigate("list")
@@ -61,8 +45,6 @@ const Home: FC = (): JSX.Element => {
       <StaffPicks />
       <Banner />
       <Promo />
-      {/* <ProjectProposalData /> */}
-
       <Divider />
 
       <Section>
@@ -72,7 +54,6 @@ const Home: FC = (): JSX.Element => {
         </Title>
         <HighlightedProjects projects={projects} />
       </Section>
-
       <Divider />
 
       <Section>
@@ -82,7 +63,6 @@ const Home: FC = (): JSX.Element => {
         </Title>
         <HighlightedProjects projects={projectsTokens} />
       </Section>
-
       <Divider />
 
       <Section>
@@ -92,7 +72,6 @@ const Home: FC = (): JSX.Element => {
         </Title>
         <HighlightedProjects projects={projectsNfts} />
       </Section>
-
       <Divider />
 
       <Section>
@@ -101,73 +80,6 @@ const Home: FC = (): JSX.Element => {
         </Title>
         <JoinCommunity />
       </Section>
-
-      {/* popular projects */}
-      {/* <Section>
-        <Title>
-          <h3>popular projects</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-        <HighlightedProjects projects={popularProjects} />
-      </Section> */}
-
-      {/* popular nfts */}
-      {/* <Section>
-        <Title>
-          <h3>popular nfts</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-        <HighlightedProjects projects={popularNfts} />
-      </Section> */}
-
-      {/* wallets */}
-      {/* <Section>
-        <Title>
-          <h3>wallets</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-        <HighlightedByCategory filter="Wallets" />
-      </Section>
-      <Divider /> */}
-
-      {/* explorers */}
-      {/* <Section>
-        <Title>
-          <h3>explorers</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-        <HighlightedByCategory filter="Explorers" />
-      </Section>
-      <Divider /> */}
-
-      {/* social networks */}
-      {/* <Section>
-        <Title>
-          <h3>social networks</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-        <HighlightedByCategory filter="Social Networks" />
-      </Section>
-      <Divider /> */}
-
-      {/* defi */}
-      {/* <Section>
-        <Title>
-          <h3>defi</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-        <HighlightedByCategory filter="DeFi" />
-      </Section>
-      <Divider /> */}
-
-      {/* exchanges */}
-      {/* <Section>
-        <Title>
-          <h3>exchanges</h3>
-        </Title>
-        <Exchanges />
-      </Section>
-      <Divider /> */}
     </HomeStyled>
   )
 }

@@ -61,15 +61,15 @@ const TagStyled = styled.li`
   padding: 0 0.5rem;
   font-size: var(--fsText);
   font-weight: var(--fwRegular);
-  color: var(--secondaryColor);
-  background-color: var(--underlay1);
-  border-radius: 1rem;
+  color: var(--tertiaryColor);
+  box-shadow: var(--boxShadow1Inset);
+  border-radius: 0.4rem;
   cursor: pointer;
   transition: var(--transition1);
 
   &:hover {
     color: var(--primaryColor);
-    background-color: var(--underlay2);
+    background-color: var(--underlay1);
   }
 
   > span.icon {
