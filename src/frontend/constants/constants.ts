@@ -18,6 +18,7 @@ export const HOST = "https://icp0.io"
 export const BACKEND_CANISTER_ID_IC = "nrkmt-haaaa-aaaai-qagmq-cai"
 export const NFT_CANISTER_ID_IC = "dtlqp-nqaaa-aaaak-abwna-cai"
 export const ICP_LEDGER_CANISTER_ID_IC = "ryjl3-tyaaa-aaaaa-aaaba-cai"
+export const CKBTC_LEDGER_CANISTER_ID_IC = "mxzaz-hqaaa-aaaar-qaada-cai"
 
 // juno
 export const SUBMITTED_PROJECTS_COLL = process.env.JUNO_COLLECTION_SUBMITTED_PROJECTS
@@ -46,6 +47,10 @@ export const LOGO_GRAY = logo_gray
 
 // ...
 
+export const E8S = 10 ** 8
+export const ICP_FEE_E8S = 10_000
+
+// search params
 export const PROJECTS_SEARCH_PARAMS_INITIAL = {
   category: "All",
   // openSource: "",
@@ -53,5 +58,7 @@ export const PROJECTS_SEARCH_PARAMS_INITIAL = {
   // order: "newest",
   q: "",
 }
-export const E8S = 10 ** 8
-export const ICP_FEE_E8S = 10_000
+
+export const ICRC_SCAN_SEARCH_PARAMS_INITIAL = {
+  ledger_id: "mxzaz-hqaaa-aaaar-qaada-cai",
+}

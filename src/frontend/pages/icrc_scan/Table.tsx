@@ -1,28 +1,15 @@
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
-import { trimZeroes, capitalizeFirstLetter, formatDateTime, formatId } from "@/utils/_index"
+import { trimZeroes, capitalizeFirstLetter, formatDateTime, formatIdLong } from "@/utils/_index"
 import { E8S } from "@/constants/constants"
 import { iRightLeft, iFire, iCheck, iLeaf, iExternalLink } from "@/components/icons/Icons"
-import { useIcrcScan } from "@/hooks/useIcrcScan"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectIcrcTransactionsPagination } from "@/state/icrcTransactions"
-import { selectIcrcTransactionsData } from "@/state/icrcTransactions"
+import { selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
 
-const Table = () => {
-  const { getTxs, getTotalSupply } = useIcrcScan()
-  const pagination = useAppSelector(selectIcrcTransactionsPagination)
-  const itemsPerPage = pagination.itemsPerPage
-  const offset = pagination.itemOffset
-  const CKBTC_LEDGER_CANISTER = "mxzaz-hqaaa-aaaar-qaada-cai"
+const Table: FC = (): JSX.Element => {
   const txs = useAppSelector(selectIcrcTransactionsData)
-  const symbol = "ckBTC"
-
-  useEffect(() => {
-    ;(async () => await getTxs(CKBTC_LEDGER_CANISTER, offset, itemsPerPage))()
-    ;(async () => await getTotalSupply(CKBTC_LEDGER_CANISTER))()
-  }, [offset])
 
   return (
     <TableStyled>
@@ -45,9 +32,7 @@ const Table = () => {
               rel="noreferrer noopener"
             >
               <span className="index">{tx.index.toString()}</span>
-              <span>
-                {trimZeroes((+tx.amount / E8S).toFixed(8))} {symbol}
-              </span>
+              <span>{trimZeroes((+tx.amount / E8S).toFixed(8))}</span>
               <span className="type">
                 <span>
                   <span className="icon">
@@ -60,8 +45,8 @@ const Table = () => {
                 </span>
               </span>
               <span>{formatDateTime(+tx.timestamp / 1_000_000)}</span>
-              <span>{tx.from_owner ? formatId(tx.from_owner) : "..."}</span>
-              <span>{tx.to_owner ? formatId(tx.to_owner) : "..."}</span>
+              <span>{tx.from_owner ? formatIdLong(tx.from_owner) : "..."}</span>
+              <span>{tx.to_owner ? formatIdLong(tx.to_owner) : "..."}</span>
               <span className="icon">{iExternalLink}</span>
             </a>
           </li>

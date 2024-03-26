@@ -8,7 +8,7 @@ import {
   selectIcrcTransactionsPagination,
   setIcrcTransactionsPaginationItemOffset,
   setIcrcTransactionsPaginationSelectedPage,
-} from "@/state/icrcTransactions"
+} from "@/state/icrc_scan/icrcTransactions"
 
 const Pagination: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

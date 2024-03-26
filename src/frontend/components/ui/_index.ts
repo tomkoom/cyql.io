@@ -6,6 +6,8 @@ export { default as Logo } from "./Logo"
 export { default as LogoLetter } from "./LogoLetter"
 export { default as Spinner } from "./Spinner"
 export { default as TextInput } from "./TextInput"
+export { default as TextInputOutlined } from "./TextInputOutlined"
 export { default as Theme } from "./Theme"
 export { default as UpvotesNum } from "./UpvotesNum"
 export { default as Price } from "./price/Price"
+

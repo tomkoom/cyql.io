@@ -1,14 +1,11 @@
-// state
 import { useAppDispatch } from "./useRedux"
 import {
   setIcrcTransactionsPaginationTotalItems,
   setIcrcTransactionsData,
-} from "@/state/icrcTransactions"
-import { setIcrcTotalSupply } from "@/state/icrcTotalSupply"
+} from "@/state/icrc_scan/icrcTransactions"
 
 interface UseIcrcScan {
   getTxs: (ledgerCanister: string, offset: number, itemsPerPage: number) => Promise<void>
-  getTotalSupply: (ledgerCanister: string) => Promise<void>
 }
 
 export const useIcrcScan = (): UseIcrcScan => {
@@ -32,18 +29,5 @@ export const useIcrcScan = (): UseIcrcScan => {
     }
   }
 
-  const getTotalSupply = async (ledgerCanister: string): Promise<void> => {
-    const url = `https://icrc-api.internetcomputer.org/api/v1/ledgers/${ledgerCanister}/total-supply`
-
-    try {
-      const response = await fetch(url)
-      //   console.log("fetch total supply")
-      const data = await response.json()
-      dispatch(setIcrcTotalSupply(data.data[0][1]))
-    } catch (e) {
-      console.log(e)
-    }
-  }
-
-  return { getTxs, getTotalSupply }
+  return { getTxs }
 }

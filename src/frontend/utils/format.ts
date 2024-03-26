@@ -6,6 +6,10 @@ export const formatId = (str: string): string => {
   return str.substring(0, 2) + ".." + str.substring(str.length - 3)
 }
 
+export const formatIdLong = (str: string): string => {
+  return str.substring(0, 11) + ".." + str.substring(str.length - 3)
+}
+
 export const formatWebsite = (url: string): string => {
   let formattedURL = url.replace(/(^\w+:|^)\/\//, "")
   formattedURL = formattedURL.replace(/\/$/, "") // remove trailing slash

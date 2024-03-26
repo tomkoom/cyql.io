@@ -13,8 +13,9 @@ import listProject from "./projectProposal"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
 
 // icrc scan
-import icrcTransactions from "./icrcTransactions"
-import icrcTotalSupply from "./icrcTotalSupply"
+import icrcTransactions from "./icrc_scan/icrcTransactions"
+import icrcTotalSupply from "./icrc_scan/icrcTotalSupply"
+import icrcLedger from "./icrc_scan/icrcLedger"
 
 // dao
 import proposals from "./dao/proposals"
@@ -58,6 +59,7 @@ const store = configureStore({
     // icrc scan
     icrcTransactions,
     icrcTotalSupply,
+    icrcLedger,
 
     // dao
     proposals,

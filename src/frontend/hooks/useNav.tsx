@@ -1,4 +1,5 @@
 import { useNavigate, createSearchParams } from "react-router-dom"
+import { ICRC_SCAN_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 
 const useNav = () => {
   const navigate = useNavigate()
@@ -23,9 +24,17 @@ const useNav = () => {
   const toProposals = (): void => navigate("/proposals")
   const toProposal = (id: string): void => navigate(`/proposals/${id}`)
 
+  // icrc scan
+
+  const toIcrcScan = (): void => {
+    navigate({
+      pathname: "icrc_scan",
+      search: `?${createSearchParams(ICRC_SCAN_SEARCH_PARAMS_INITIAL)}`,
+    })
+  }
+
   // ...
   const toSubmit = (): void => navigate("/list")
-  const toIcrcScan = (): void => navigate("/icrc_scan")
   const toProfile = (): void => navigate("/profile")
   const toAdmin = (): void => navigate("/admin")
 

@@ -6,8 +6,8 @@ import { Btn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectIcrcTotalSupply } from "@/state/icrcTotalSupply"
-import { selectIcrcTransactionsPagination } from "@/state/icrcTransactions"
+import { selectIcrcTotalSupply } from "@/state/icrc_scan/icrcTotalSupply"
+import { selectIcrcTransactionsPagination } from "@/state/icrc_scan/icrcTransactions"
 
 const TotalSupply: FC = (): JSX.Element => {
   const navigate = useNavigate()

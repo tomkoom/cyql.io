@@ -19,7 +19,7 @@ import {
 
 const Projects: FC = (): JSX.Element => {
   const [search, setSearch] = useState("")
-  const debounced = useDebounceCallback(setSearch, 500)
+  const debounced = useDebounceCallback(setSearch, 400)
   const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const searchQ = searchParams.get("q")
 
