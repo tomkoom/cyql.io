@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import { useNav } from "./_index"
 import { ReactNode } from "react"
 import { iPlus } from "@/components/icons/Icons"
@@ -15,20 +14,14 @@ interface UseNavlinks {
 }
 
 export const useNavlinks = (): UseNavlinks => {
-  const navigate = useNavigate()
-  const { toHome, toProjects, toSubmit, toProposals } = useNav()
-
-  const nav = (pathname: string): void => {
-    navigate({
-      pathname,
-    })
-  }
+  const { toHome, toProjects, toSubmit, toProposals, toIcrcScan } = useNav()
 
   const navlinks: Navlink[] = [
     { label: "Home", pathname: "/", route: toHome, icon: undefined },
     { label: "Curated Projects", pathname: "/projects", route: toProjects, icon: undefined },
     { label: "Propose Project", pathname: "/list", route: toSubmit, icon: iPlus },
     { label: "Project Proposals", pathname: "/proposals", route: toProposals, icon: undefined },
+    { label: "ICRC Scan", pathname: "/icrc_scan", route: toIcrcScan, icon: undefined },
   ]
 
   return { navlinks }

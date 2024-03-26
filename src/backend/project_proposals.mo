@@ -33,7 +33,7 @@ actor {
 
   // manage
 
-  public shared ({ caller }) func createProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
+  public shared ({ caller }) func createProjectProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
     let u = await users.getUser(caller);
 
@@ -49,7 +49,7 @@ actor {
   };
 
   // to rm
-  public shared ({ caller }) func removeProposal(proposalId : T.ProjectProposalId) : async ?T.ProjectProposal {
+  public shared ({ caller }) func removeProjectProposal(proposalId : T.ProjectProposalId) : async ?T.ProjectProposal {
     assert (U.isAdmin(caller));
     return proposals.remove(proposalId)
   };
