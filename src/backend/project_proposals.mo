@@ -14,11 +14,12 @@ import Users "users_interface";
 import Nft "nft_interface";
 
 // ...
+import DT "dao_types";
 import T "types";
 import U "utils";
 import C "_constants";
 
-actor {
+shared actor class DAO(init : DT.DaoStableStorage) = Self {
 
   // constants
 
@@ -27,7 +28,7 @@ actor {
 
   // dao params
 
-  stable let daoParams = U.daoParamsInitial;
+  stable var systemParams = init.systemParams;
 
   // canisters
 
@@ -97,12 +98,12 @@ actor {
           case (#no) { votersNo += 1; votesNo += votingPower }
         };
 
-        if (votesYes >= daoParams.proposalVoteThreshold) {
+        if (votesYes >= systemParams.proposalVoteThreshold) {
           // todo: refund the proposal deposit when there are tokens and the proposal is accepted
           state := #accepted
         };
 
-        if (votesNo >= daoParams.proposalVoteThreshold) {
+        if (votesNo >= systemParams.proposalVoteThreshold) {
           state := #rejected
         };
 
@@ -168,7 +169,6 @@ actor {
     let ?proposal = proposalsGet(proposalId) else return false;
     let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
     func equal(a : T.Voter, b : T.Voter) : Bool { return a.id == b.id };
-
     return Buffer.contains<T.Voter>(votersBuf, voter, equal)
   };
 
