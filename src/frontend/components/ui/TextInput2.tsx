@@ -1,7 +1,7 @@
 import React, { FC, InputHTMLAttributes } from "react"
 import styled from "styled-components"
 
-const TextInputOutlined: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Element => {
+const TextInput2: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Element => {
   return <TextInputOutlinedStyled type="text" {...props} />
 }
 
@@ -28,4 +28,4 @@ const TextInputOutlinedStyled = styled.input<InputHTMLAttributes<HTMLInputElemen
   }
 `
 
-export default TextInputOutlined
+export default TextInput2

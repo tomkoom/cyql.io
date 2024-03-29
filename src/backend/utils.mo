@@ -1,7 +1,6 @@
 import Principal "mo:base/Principal";
 import Time "mo:base/Time";
 import Text "mo:base/Text";
-import Iter "mo:base/Iter";
 import Nat8 "mo:base/Nat8";
 import Blob "mo:base/Blob";
 import Int "mo:base/Int";
@@ -14,6 +13,7 @@ import Hex "./utils/hex";
 module {
 
   public let daoParamsInitial : T.DaoParams = {
+    // rm
     transferFee = { e8s = 0 };
 
     // the amount of tokens needed to vote "yes" to accept, or "no" to reject

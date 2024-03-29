@@ -6,7 +6,7 @@ import { useDebounceCallback } from "usehooks-ts"
 
 // components
 import { Category, Filter, ProjectList, Sort } from "./_index"
-import { TextInput } from "@/components/ui/_index"
+import { TextInput2 } from "@/components/ui/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -40,7 +40,7 @@ const Projects: FC = (): JSX.Element => {
   return (
     <ProjectsStyled>
       <h2 className="pageTitle">Discover New Projects</h2>
-      <TextInput
+      <TextInput2
         placeholder={"Search project by name"}
         defaultValue={search}
         onChange={(event) => debounced(event.target.value)}

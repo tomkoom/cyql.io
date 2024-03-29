@@ -16,6 +16,11 @@ export const useNft = (): UseNft => {
   const { nft, accounntIdHex } = useAuth()
 
   const refreshNfts = async (): Promise<void> => {
+    try {
+    } catch (e) {
+      console.log(e)
+    }
+
     await nft.tokens(accounntIdHex).then((res) => {
       if ("ok" in res) {
         const array = Array.from(res.ok)

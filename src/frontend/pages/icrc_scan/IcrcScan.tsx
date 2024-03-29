@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components"
-import { TextInputOutlined } from "@/components/ui/_index"
+import { TextInput2 } from "@/components/ui/_index"
 import { Btn } from "@/components/btns/_index"
 import { useSearchParams } from "react-router-dom"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
@@ -48,7 +48,7 @@ const IcrcScan: FC = (): JSX.Element => {
           <label htmlFor="ledger_id">Token ledger id</label>
 
           <div>
-            <TextInputOutlined
+            <TextInput2
               id="ledger_id"
               placeholder={CKBTC_LEDGER_CANISTER_ID_IC}
               defaultValue={ledgerIdParam}

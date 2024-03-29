@@ -20,6 +20,7 @@ import U "utils";
 import C "_constants";
 
 actor {
+
   // canisters
 
   let users = actor (C.usersCanisterId) : Users.Self;
@@ -61,13 +62,6 @@ actor {
     let iter : Iter.Iter<T.Project> = projects.vals();
     return Iter.toArray<T.Project>(iter)
   };
-
-  // public query func listProjectsPaginated() : async [T.Project] {
-  //   let iter : Iter.Iter<T.Project> = projects.vals();
-  //   let arr = Iter.toArray(iter);
-  //   let reversed = Array.reverse(arr);
-  //   return Iter.toArray<T.Project>(iter)
-  // };
 
   public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
     // add assert upvoter is user
@@ -193,35 +187,10 @@ actor {
     }
   };
 
-  // get voting power based on the amount of the nfts user has
-  private func _calculateVotingPower(userAccIdHex : Text) : async Nat {
-    var votingPower = 1;
-    let registry = await nft.getRegistry();
-
-    for (nft in registry.vals()) {
-      let (_ : Nft.TokenIndex, ownerAccIdHex : Nft.AccountIdentifier__1) = nft;
-      if (ownerAccIdHex == userAccIdHex) votingPower += 10
-    };
-    return votingPower
-  };
-
-  public shared ({ caller }) func getVotingPower() : async Nat {
-    let accountHex = U.principalToAccountHex(caller);
-    return await _calculateVotingPower(accountHex)
-  };
-
   // get the current dao params
   public query func getDaoParams() : async T.DaoParams {
     return daoParams
   };
-
-  // query
-
-  // public query func listAcceptedProjectProposals() : async [T.ProjectProposal] {
-  //   let iter : Iter.Iter<T.ProjectProposal> = projectProposals.vals();
-  //   // filter
-  //   return Iter.toArray<T.ProjectProposal>(iter)
-  // };
 
   // utils
 
