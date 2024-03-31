@@ -10,16 +10,17 @@ import Time "mo:base/Time";
 import Result "mo:base/Result";
 
 // services
-import Users "users_interface";
-import Nft "nft_interface";
+import Users "../users/users_interface";
+import Nft "../nft_interface";
 
 // ...
-import DT "dao_types";
-import T "types";
-import U "utils";
-import C "_constants";
+import PPT "project_proposals_types";
+import UT "../users/users_types";
+import T "../types";
+import U "../utils";
+import C "../_constants";
 
-shared actor class DAO(init : DT.DaoStableStorage) = Self {
+shared actor class DAO(init : PPT.DaoStableStorage) = Self {
 
   // constants
 
@@ -42,7 +43,7 @@ shared actor class DAO(init : DT.DaoStableStorage) = Self {
 
   // -- manage --
 
-  public shared ({ caller }) func createProjectProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
+  public shared ({ caller }) func createProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
     assert (not U.isAnon(caller));
     let u = await users.getUser(caller);
 
@@ -51,14 +52,14 @@ shared actor class DAO(init : DT.DaoStableStorage) = Self {
       case (null) { return #err("User not found.") };
       case (user) {
         let proposal = U.generateProposal(caller, payload);
-        proposalsPut(proposal.id, proposal);
+        _proposalsPut(proposal.id, proposal);
         return #ok(proposal.id)
       }
     }
   };
 
   // to rm
-  public shared ({ caller }) func removeProjectProposal(proposalId : T.ProjectProposalId) : async ?T.ProjectProposal {
+  public shared ({ caller }) func removeProposal(proposalId : T.ProjectProposalId) : async ?T.ProjectProposal {
     assert (U.isAdmin(caller));
     return proposals.remove(proposalId)
   };
@@ -90,7 +91,7 @@ shared actor class DAO(init : DT.DaoStableStorage) = Self {
 
         // verify
         if (state != #open) return #err("Proposal isn't open for voting.");
-        let voted = hasVoted(voter, args.proposalId);
+        let voted = _hasVoted(voter, args.proposalId);
         if (voted) return #err("Already voted.");
 
         switch (args.vote) {
@@ -123,7 +124,7 @@ shared actor class DAO(init : DT.DaoStableStorage) = Self {
           voters = Buffer.toArray(votersBuf)
         };
 
-        proposalsPut(args.proposalId, updatedProposal);
+        _proposalsPut(args.proposalId, updatedProposal);
         return #ok(state)
       }
     }
@@ -151,22 +152,24 @@ shared actor class DAO(init : DT.DaoStableStorage) = Self {
   };
 
   public shared ({ caller }) func getVotingPower() : async Nat {
+    assert (not U.isAnon(caller));
+    // assert is user
     let accountHex = U.principalToAccountHex(caller);
     return await _calculateVotingPower(accountHex)
   };
 
   // utils
 
-  private func proposalsPut(proposalId : T.ProjectProposalId, proposal : T.ProjectProposal) : () {
+  private func _proposalsPut(proposalId : T.ProjectProposalId, proposal : T.ProjectProposal) : () {
     return proposals.put(proposalId, proposal)
   };
 
-  private func proposalsGet(proposalId : T.ProjectProposalId) : ?T.ProjectProposal {
+  private func _proposalsGet(proposalId : T.ProjectProposalId) : ?T.ProjectProposal {
     return proposals.get(proposalId)
   };
 
-  private func hasVoted(voter : T.Voter, proposalId : T.ProjectProposalId) : Bool {
-    let ?proposal = proposalsGet(proposalId) else return false;
+  private func _hasVoted(voter : T.Voter, proposalId : T.ProjectProposalId) : Bool {
+    let ?proposal = _proposalsGet(proposalId) else return false;
     let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
     func equal(a : T.Voter, b : T.Voter) : Bool { return a.id == b.id };
     return Buffer.contains<T.Voter>(votersBuf, voter, equal)

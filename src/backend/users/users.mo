@@ -2,14 +2,11 @@ import HashMap "mo:base/HashMap";
 import Iter "mo:base/Iter";
 import Principal "mo:base/Principal";
 import Nat "mo:base/Nat";
-import Hash "mo:base/Hash";
-import Array "mo:base/Array";
 import Text "mo:base/Text";
 
 // ...
-import T "types";
-import U "utils";
-import C "_constants";
+import T "../types";
+import U "../utils";
 
 actor {
 
