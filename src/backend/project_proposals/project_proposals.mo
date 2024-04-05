@@ -14,13 +14,12 @@ import Users "../users/users_interface";
 import Nft "../nft_interface";
 
 // ...
-import PPT "project_proposals_types";
-import UT "../users/users_types";
-import T "../types";
+// import UT "../users/users_types";
+import T "./project_proposals_types";
 import U "../utils";
 import C "../_constants";
 
-shared actor class DAO(init : PPT.DaoStableStorage) = Self {
+shared actor class DAO(init : T.DaoStableStorage) = Self {
 
   // constants
 
@@ -38,12 +37,12 @@ shared actor class DAO(init : PPT.DaoStableStorage) = Self {
 
   // maps
 
-  stable var proposalsEntries : [(T.ProjectProposalId, T.ProjectProposal)] = [];
-  let proposals = HashMap.fromIter<T.ProjectProposalId, T.ProjectProposal>(proposalsEntries.vals(), 10, Nat.equal, Hash.hash);
+  stable var proposalsEntries : [(T.ProposalId, T.Proposal)] = [];
+  let proposals = HashMap.fromIter<T.ProposalId, T.Proposal>(proposalsEntries.vals(), 10, Nat.equal, Hash.hash);
 
   // -- manage --
 
-  public shared ({ caller }) func createProposal(payload : T.ProjectData) : async Result.Result<T.ProjectProposalId, Text> {
+  public shared ({ caller }) func createProposal(payload : T.Payload) : async Result.Result<T.ProposalId, Text> {
     assert (not U.isAnon(caller));
     let u = await users.getUser(caller);
 
@@ -59,9 +58,16 @@ shared actor class DAO(init : PPT.DaoStableStorage) = Self {
   };
 
   // to rm
-  public shared ({ caller }) func removeProposal(proposalId : T.ProjectProposalId) : async ?T.ProjectProposal {
+  public shared ({ caller }) func removeProposal(proposalId : T.ProposalId) : async ?T.Proposal {
     assert (U.isAdmin(caller));
     return proposals.remove(proposalId)
+  };
+
+  // -- query --
+
+  public query func listProposals() : async [T.Proposal] {
+    let iter : Iter.Iter<T.Proposal> = proposals.vals();
+    return Iter.toArray<T.Proposal>(iter)
   };
 
   // -- update --
@@ -115,6 +121,7 @@ shared actor class DAO(init : PPT.DaoStableStorage) = Self {
           updatedAt = proposal.updatedAt;
           proposer = proposal.proposer;
           payload = proposal.payload;
+          upvotes = proposal.upvotes;
 
           // votes
           votersYes;
@@ -160,15 +167,15 @@ shared actor class DAO(init : PPT.DaoStableStorage) = Self {
 
   // utils
 
-  private func _proposalsPut(proposalId : T.ProjectProposalId, proposal : T.ProjectProposal) : () {
+  private func _proposalsPut(proposalId : T.ProposalId, proposal : T.Proposal) : () {
     return proposals.put(proposalId, proposal)
   };
 
-  private func _proposalsGet(proposalId : T.ProjectProposalId) : ?T.ProjectProposal {
+  private func _proposalsGet(proposalId : T.ProposalId) : ?T.Proposal {
     return proposals.get(proposalId)
   };
 
-  private func _hasVoted(voter : T.Voter, proposalId : T.ProjectProposalId) : Bool {
+  private func _hasVoted(voter : T.Voter, proposalId : T.ProposalId) : Bool {
     let ?proposal = _proposalsGet(proposalId) else return false;
     let votersBuf = Buffer.fromArray<T.Voter>(proposal.voters);
     func equal(a : T.Voter, b : T.Voter) : Bool { return a.id == b.id };

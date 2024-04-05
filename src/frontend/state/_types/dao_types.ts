@@ -9,7 +9,7 @@ export type No = {
 
 export type Vote = Yes | No
 export type VoteArgs = { vote: Vote; proposalId: number }
-export type VoteArgs2 = { vote: Vote; votingPower: number; proposalId: number }
+// export type VoteArgs2 = { vote: Vote; votingPower: number; proposalId: number }
 
 // data
 export type ProjectProposalDataId = number

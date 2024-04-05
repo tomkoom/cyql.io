@@ -6,6 +6,7 @@ export { useIcpLedger } from "./useIcpLedger"
 export { useIcrcScan } from "./useIcrcScan"
 export { default as useNav } from "./useNav"
 export { useNavlinks } from "./useNavlinks"
+export { useProposals } from "./useProposals"
 export { useScrollLock } from "./useScrollLock"
 export { useWindowSize } from "./useWindowSize"
 

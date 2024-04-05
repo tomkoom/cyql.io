@@ -1,9 +1,10 @@
+import Principal "mo:base/Principal";
 // import Principal "mo:base/Principal";
 // import Buffer "mo:base/Buffer";
 
 module {
   public type Tokens = { amount_e8s : Nat };
-  public type ProjectProposalId = Nat;
+  public type ProposalId = Nat;
   public type Vote = { #no; #yes };
   public type VoteArgs = { vote : Vote; proposalId : Nat };
   public type Voter = { id : Text; votedAt : Int };
@@ -14,14 +15,16 @@ module {
     #rejected;
     #accepted
   };
-  public type Payload = Text;
+  public type Payload = Text; // project metadata
+  public type Upvote = { upvoter : Principal; timestamp : Int };
 
   public type Proposal = {
-    id : ProjectProposalId;
+    id : ProposalId;
     createdAt : Int;
     updatedAt : ?Int;
     proposer : Text; // principal
     state : ProposalState;
+    upvotes : [Upvote];
 
     // votes
     votersYes : Nat;

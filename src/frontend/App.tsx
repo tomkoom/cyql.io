@@ -6,7 +6,14 @@ import { NETWORK } from "@/constants/constants"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useBackend, useUsers, useNft, useScrollLock, useIcpLedger, useDao } from "./hooks/_index"
+import {
+  useBackend,
+  useUsers,
+  useNft,
+  useScrollLock,
+  useIcpLedger,
+  useProposals,
+} from "./hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -23,7 +30,7 @@ const App: FC = (): JSX.Element => {
   const { registerUser } = useUsers()
   const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
-  const { refreshProposals } = useDao()
+  const { refreshProposals } = useProposals()
   const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
   const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)

@@ -4,15 +4,21 @@ import { HttpAgent, Actor } from "@dfinity/agent"
 import { Principal } from "@dfinity/principal"
 import { createActor } from "../../declarations/backend/index"
 import { _SERVICE } from "../../declarations/backend/backend.did"
+
 import {
   APP_DERIVATION_ORIGIN,
   BACKEND_CANISTER_ID_IC,
+  PROPOSALS_CANISTER_ID_IC,
   NFT_CANISTER_ID_IC,
   ICP_LEDGER_CANISTER_ID_IC,
   HOST,
 } from "@/constants/constants"
 import { isCustomDomain } from "@/utils/isCustomDomain"
 import { getAccountIdHex } from "@/utils/getAccountIdHex"
+
+// proposals
+import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
+import { idlFactory as PROPOSALS_IDL } from "@/idl/proposals.did"
 
 // nft
 import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
@@ -28,6 +34,7 @@ interface AuthContextValue {
   accounntIdHex: string
   userId: string
   actor: _SERVICE
+  proposals: PROPOSALS_SERVICE
   nft: NFT_SERVICE
   icp: ICP_LEDGER_SERVICE
   login: () => Promise<void>
@@ -48,6 +55,7 @@ function AuthProvider({ children }) {
   const [accounntIdHex, setAccounntIdHex] = useState<string>("")
   const [userId, setUserId] = useState<string>("")
   const [actor, setActor] = useState<_SERVICE>(null)
+  const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null)
   const [nft, setNft] = useState<NFT_SERVICE>(null)
   const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null)
 
@@ -67,6 +75,7 @@ function AuthProvider({ children }) {
     let accounntIdHex: string = ""
     let userId: string = ""
     let actor: _SERVICE = null
+    let proposals: PROPOSALS_SERVICE = null
     let nft: NFT_SERVICE = null
     let icp: ICP_LEDGER_SERVICE = null
 
@@ -87,6 +96,12 @@ function AuthProvider({ children }) {
       agent,
     })
 
+    // proposals
+    proposals = Actor.createActor(PROPOSALS_IDL, {
+      agent,
+      canisterId: PROPOSALS_CANISTER_ID_IC,
+    })
+
     // nft
     nft = Actor.createActor(NFT_IDL, {
       agent,
@@ -105,6 +120,7 @@ function AuthProvider({ children }) {
     setAccounntIdHex(accounntIdHex)
     setUserId(userId)
     setActor(actor)
+    setProposals(proposals)
     setNft(nft)
     setIcp(icp)
   }
@@ -136,6 +152,7 @@ function AuthProvider({ children }) {
     accounntIdHex,
     userId,
     actor,
+    proposals,
     nft,
     icp,
 

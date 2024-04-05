@@ -53,7 +53,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
     <CategoryListModalStyled>
       <Content>
         <CrossIcon onClick={closeModal} />
-        <h3>filter by category</h3>
+        <h3>Filter by Category</h3>
 
         <Categories>
           {categoriesSorted.map((c) => (
@@ -108,7 +108,7 @@ const Categories = styled.ul`
     white-space: nowrap;
     padding: 0 0.75rem;
     background-color: var(--underlay1);
-    border-radius: 1.375rem;
+    /* border-radius: 1.375rem; */
     font-size: var(--fsText);
     cursor: pointer;
     transition: var(--transition1);

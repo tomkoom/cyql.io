@@ -29,7 +29,7 @@ const BtnStyled = styled.button`
   gap: 1rem;
   font-size: var(--fs5);
   padding: 0 1rem;
-  border-radius: 1.75rem;
+  /* border-radius: 1.75rem; */
   transition: var(--transition1);
 
   &:hover {

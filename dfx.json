@@ -12,7 +12,7 @@
       "main": "src/backend/users/users.mo",
       "type": "motoko"
     },
-    "project_proposals": {
+    "proposals": {
       "main": "src/backend/project_proposals/project_proposals.mo",
       "type": "motoko"
     },
