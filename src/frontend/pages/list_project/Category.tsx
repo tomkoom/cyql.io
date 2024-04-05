@@ -119,7 +119,7 @@ const CategoriesWrapper = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 1rem;
+  gap: 2px;
 `
 
 export default Category

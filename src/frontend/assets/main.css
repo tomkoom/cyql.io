@@ -172,13 +172,17 @@ h6 {
   --primaryColorRgb: var(--coolGray10Rgb);
   --secondaryColor: var(--coolGray30);
   --tertiaryColor: var(--coolGray50);
-  --background: var(--coolGray100);
+  /* --background: var(--coolGray100); */
+  --background: #000;
   --backgroundRgb: var(--coolGray100Rgb);
 
   /* underlay */
-  --underlay1: var(--coolGray90);
+  --underlay1: var(--coolGray100);
+  --underlay2: var(--coolGray90);
+  --underlay3: var(--coolGray80);
+  /* --underlay1: var(--coolGray90);
   --underlay2: var(--coolGray80);
-  --underlay3: var(--coolGray70);
+  --underlay3: var(--coolGray70); */
 
   /* ... */
   --shadow1: rgba(var(--primaryColorRgb), 0.12) 0px 0px 0px 1px;

@@ -9,7 +9,7 @@ import { useAuth } from "@/context/Auth"
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./_index"
 import { Nft } from "./_index"
-import { Logo, Price, Theme } from "@/components/ui/_index"
+import { Logo, Price } from "@/components/ui/_index"
 
 const Nav: FC = (): JSX.Element => {
   const { toHome } = useNav()
@@ -22,7 +22,6 @@ const Nav: FC = (): JSX.Element => {
       <Controls>
         <Price />
         <Socials />
-        <Theme />
         <Nft />
         {isAuthenticated ? <ProfileBtn /> : <SignInBtn />}
       </Controls>
