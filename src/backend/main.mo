@@ -4,15 +4,15 @@ import Principal "mo:base/Principal";
 import Nat "mo:base/Nat";
 import Hash "mo:base/Hash";
 import Buffer "mo:base/Buffer";
-import Debug "mo:base/Debug";
-import Array "mo:base/Array";
+// import Debug "mo:base/Debug";
+// import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
 import Result "mo:base/Result";
 
 // services
-import Users "users_interface";
-import Nft "nft_interface";
+import Users "./users/users_interface";
+// import Nft "nft_interface";
 
 // ...
 import T "types";
@@ -24,7 +24,7 @@ actor {
   // canisters
 
   let users = actor (C.usersCanisterId) : Users.Self;
-  let nft = actor (C.nftCanisterId) : Nft.Self;
+  // let nft = actor (C.nftCanisterId) : Nft.Self;
   let daoParams = U.daoParamsInitial;
 
   // maps

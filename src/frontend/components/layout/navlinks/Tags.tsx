@@ -62,8 +62,8 @@ const TagStyled = styled.li`
   font-size: var(--fsText);
   font-weight: var(--fwRegular);
   color: var(--tertiaryColor);
-  box-shadow: var(--boxShadow2Inset);
-  /* border-radius: 0.4rem; */
+  background-color: var(--underlay1);
+  border-radius: 1rem;
   cursor: pointer;
   transition: var(--transition1);
 

@@ -8,6 +8,10 @@ import { iRightLeft, iFire, iCheck, iLeaf, iExternalLink } from "@/components/ic
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
 
+// interface TableProps {
+//   ledgerId: string
+// }
+
 const Table: FC = (): JSX.Element => {
   const txs = useAppSelector(selectIcrcTransactionsData)
 

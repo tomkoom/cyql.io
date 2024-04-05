@@ -15,20 +15,23 @@ const Navlinks: FC = (): JSX.Element => {
 
   return (
     <NavlinksStyled>
-      <div>
+      <div className="navlinks">
         {navlinks.map((navlink) => (
           <NavItem
             key={navlink.label}
             label={navlink.label}
-            route={navlink.route}
+            pathname={navlink.pathname}
             icon={navlink.icon}
+            route={navlink.route}
           />
         ))}
 
-        {verifyAdmin(userId) && <NavItem label="Admin" route={toAdmin} icon={undefined} />}
+        {verifyAdmin(userId) && (
+          <NavItem label="Admin" pathname={"/admin"} icon={undefined} route={toAdmin} />
+        )}
       </div>
 
-      <div>
+      <div className="tags">
         <Tags />
       </div>
     </NavlinksStyled>
@@ -41,9 +44,17 @@ const NavlinksStyled = styled.nav`
   align-items: center;
   gap: 0.7rem;
   margin: 1rem 0;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
 
-  > div {
+  > div.navlinks {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  > div.tags {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

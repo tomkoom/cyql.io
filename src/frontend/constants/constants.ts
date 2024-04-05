@@ -62,3 +62,11 @@ export const PROJECTS_SEARCH_PARAMS_INITIAL = {
 export const ICRC_SCAN_SEARCH_PARAMS_INITIAL = {
   ledger_id: "mxzaz-hqaaa-aaaar-qaada-cai",
 }
+
+// ledgers
+export const ledgers = [
+  { label: "ckBTC", id: CKBTC_LEDGER_CANISTER_ID_IC, decimals: 8 },
+  { label: "ckETH", id: "ss2fx-dyaaa-aaaar-qacoq-cai", decimals: 18 },
+  { label: "CHAT", id: "2ouva-viaaa-aaaaq-aaamq-cai", decimals: 8 },
+  // ...
+]

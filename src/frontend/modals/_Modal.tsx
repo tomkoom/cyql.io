@@ -60,6 +60,7 @@ const ModalStyled = styled.div`
     color: var(--primaryColor);
     background-color: var(--background);
     padding: 1.5rem;
+    box-shadow: var(--boxShadow1);
   }
 `
 

@@ -5,7 +5,11 @@
       "type": "motoko"
     },
     "users": {
-      "main": "src/backend/users.mo",
+      "main": "src/backend/users_old.mo",
+      "type": "motoko"
+    },
+    "users_new": {
+      "main": "src/backend/users/users.mo",
       "type": "motoko"
     },
     "project_proposals": {

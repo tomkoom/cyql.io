@@ -64,7 +64,7 @@ const LayoutStyled = styled.div`
   > main.main {
     padding: 0 2rem;
     max-width: calc(2048px + 4rem);
-    margin: 0 auto;
+    margin: 2rem auto;
     width: 100%;
 
     /* footer at the bottom */
