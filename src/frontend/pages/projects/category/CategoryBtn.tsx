@@ -10,7 +10,7 @@ const CategoryBtn: FC = (): JSX.Element => {
 
   return (
     <CategoryBtnStyled>
-      category:
+      Category:
       <span className="category">{category}</span>
       <span className="icon">{iAngleDown}</span>
     </CategoryBtnStyled>
@@ -27,7 +27,6 @@ const CategoryBtnStyled = styled.button`
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
-  border-radius: 1.25rem;
   cursor: pointer;
   transition: var(--transition1);
 

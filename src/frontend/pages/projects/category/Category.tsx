@@ -1,8 +1,7 @@
 import React, { FC, useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { useScrollLock } from "@/hooks/useScrollLock"
-import { CategoryListModal } from "./_index"
-import { CategoryBtn } from "@/components/btns/_index"
+import { CategoryListModal, CategoryBtn } from "./_index"
 
 const Category: FC = (): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()

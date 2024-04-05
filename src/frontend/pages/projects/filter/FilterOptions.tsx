@@ -1,13 +1,21 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
-
-// icons
-import { iCheck } from "@/components/icons/Icons";
+import React, { FC, useEffect, useRef } from "react"
+import styled from "styled-components"
+import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit"
+import { iCheck } from "@/components/icons/Icons"
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux";
+import { useAppDispatch } from "@/hooks/useRedux"
 
-const FilterOptions = ({
+interface FilterOptionsProps {
+  isOpen: boolean
+  setIsOpen: (value: boolean) => void
+  filterBtnWidth: number
+  filterBtnRef: React.MutableRefObject<HTMLDivElement>
+  filter: boolean
+  setFilter: ActionCreatorWithOptionalPayload<boolean>
+}
+
+const FilterOptions: FC<FilterOptionsProps> = ({
   isOpen,
   setIsOpen,
   filterBtnWidth,
@@ -15,9 +23,9 @@ const FilterOptions = ({
   filter,
   setFilter,
 }): JSX.Element => {
-  const dispatch = useAppDispatch();
-  const filterOptionsRef = useRef(null);
-  const style = { width: `${filterBtnWidth.toString()}px` };
+  const dispatch = useAppDispatch()
+  const filterOptionsRef = useRef(null)
+  const style = { width: `${filterBtnWidth.toString()}px` }
 
   const handleOutsideClick = (e) => {
     if (
@@ -27,40 +35,40 @@ const FilterOptions = ({
       filterBtnRef.current &&
       !filterBtnRef.current.contains(e.target)
     ) {
-      setIsOpen(false);
+      setIsOpen(false)
     }
-  };
+  }
 
   useEffect(() => {
     // bind the event listener
-    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("mousedown", handleOutsideClick)
     return () => {
       // unbind the event listener on clean up
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isOpen]);
+      document.removeEventListener("mousedown", handleOutsideClick)
+    }
+  }, [isOpen])
 
   const onFilter = (value: null | boolean) => {
-    dispatch(setFilter(value));
-    setIsOpen(false);
-  };
+    dispatch(setFilter(value))
+    setIsOpen(false)
+  }
 
   return (
     <FilterOptionsStyled style={style} ref={filterOptionsRef}>
-      <li onClick={() => onFilter(null)}>all {filter === null && <Icon>{iCheck}</Icon>}</li>
-      <li onClick={() => onFilter(true)}>true {filter === true && <Icon>{iCheck}</Icon>}</li>
-      <li onClick={() => onFilter(false)}>false {filter === false && <Icon>{iCheck}</Icon>}</li>
+      <li onClick={() => onFilter(null)}>All {filter === null && <Icon>{iCheck}</Icon>}</li>
+      <li onClick={() => onFilter(true)}>True {filter === true && <Icon>{iCheck}</Icon>}</li>
+      <li onClick={() => onFilter(false)}>False {filter === false && <Icon>{iCheck}</Icon>}</li>
     </FilterOptionsStyled>
-  );
-};
+  )
+}
 
 const FilterOptionsStyled = styled.ul`
   display: flex;
   flex-direction: column;
-  font-weight: var(--fwBold);
-  background-color: var(--underlay1);
+  font-size: var(--fsText);
+  font-weight: var(--fwMedium);
+  background-color: var(--underlay2);
   padding: 0.5rem 0;
-  border-radius: 1rem;
 
   > li {
     height: 2.5rem;
@@ -70,15 +78,16 @@ const FilterOptionsStyled = styled.ul`
     white-space: nowrap;
     padding: 0 1rem;
     cursor: pointer;
+    transition: var(--transition1);
 
     &:hover {
-      background-color: var(--underlay2);
+      background-color: var(--underlay3);
     }
   }
-`;
+`
 
 const Icon = styled.span`
   color: var(--colorOk);
-`;
+`
 
-export default FilterOptions;
+export default FilterOptions

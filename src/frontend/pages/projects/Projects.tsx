@@ -51,11 +51,11 @@ const Projects: FC = (): JSX.Element => {
         <div className="item">
           <Category />
           <Filter
-            label={"open-source:"}
+            label={"Open-source:"}
             filter={filterByOpenSource}
             setFilter={setFilterByOpenSource}
           />
-          <Filter label={"onchain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+          <Filter label={"Onchain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
         </div>
 
         <div className="item">
@@ -87,7 +87,7 @@ const Controls = styled.div`
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
 `
 

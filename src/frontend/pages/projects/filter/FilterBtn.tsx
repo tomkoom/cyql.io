@@ -15,7 +15,6 @@ const FilterBtn: FC<FilterBtnProps> = ({ label, filter }): JSX.Element => {
           color: "#fff",
           backgroundColor: "var(--highlight1)",
           padding: "0.25rem 0.5rem",
-          borderRadius: "0.5rem",
         }
 
   return (
@@ -39,7 +38,6 @@ const FilterBtnStyled = styled.button`
   font-weight: var(--fwMedium);
   color: var(--secondaryColor);
   background-color: var(--underlay1);
-  border-radius: 1.25rem;
   cursor: pointer;
   transition: var(--transition1);
 

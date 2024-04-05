@@ -59,7 +59,7 @@ const IcrcScan: FC = (): JSX.Element => {
 
       <div className="content">
         <div className="input">
-          <label htmlFor="ledger_id">Token ledger id</label>
+          <label htmlFor="ledger_id">ICRC token ledger id</label>
 
           <div>
             <TextInput2
