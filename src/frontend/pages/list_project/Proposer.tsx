@@ -7,7 +7,7 @@ const Proposer: FC = (): JSX.Element => {
   return (
     <ProposerStyled>
       <span className="label">Proposer</span>
-      <span className="value">{userId === "2vxsx-fae" ? "[ Sign in first ]" : userId}</span>
+      <span className="value">{userId === "2vxsx-fae" ? "[ sign in ]" : userId}</span>
     </ProposerStyled>
   )
 }

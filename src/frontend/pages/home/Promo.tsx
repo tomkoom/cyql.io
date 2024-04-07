@@ -13,7 +13,7 @@ const promoItems = [
     color: "var(--background)",
     backgroundColor: "#7888ff",
     title: "Build with Juno 🛠️",
-    text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2.",
+    text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2",
     ctaUrl: "https://juno.build/",
     ctaText: "Try Juno",
   },
@@ -23,7 +23,7 @@ const promoItems = [
     title: "Promote",
     text: "Promote your project by highlighting on cyql.io",
     ctaUrl:
-      "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io.",
+      "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io",
     ctaText: "Contact for promotion",
   },
 ]
@@ -70,8 +70,7 @@ const PromoStyled = styled.ul`
     font-size: var(--fsText);
     font-weight: var(--fwMedium);
     white-space: nowrap;
-    padding: 0 0.75rem;
-    border-radius: 1rem;
+    padding: 0 0.5rem;
     cursor: pointer;
   }
 `

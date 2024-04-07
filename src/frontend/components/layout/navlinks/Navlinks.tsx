@@ -44,7 +44,6 @@ const NavlinksStyled = styled.nav`
   align-items: center;
   gap: 0.7rem;
   margin: 1rem 0;
-  /* padding: 0 1rem; */
 
   > div.navlinks {
     width: 100%;

@@ -48,24 +48,33 @@ const Content = styled.div`
   max-width: 24rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.5rem;
 
+  > h3 {
+    text-align: center;
+  }
+
   > p {
+    text-align: left;
     line-height: 150%;
   }
 `
 
 const Cta = styled.a<{ color: string; backgroundColor: string }>`
-  color: ${(p) => p.color};
-  background-color: ${(p) => p.backgroundColor};
-  height: 3rem;
+  color: #fff;
+  background-color: var(--highlight1);
+  height: 2.5rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
   font-weight: var(--fwBold);
   padding: 0 1rem;
-  border-radius: 1.5rem;
+  transition: var(--transition1);
+  align-self: center;
+
+  &:hover {
+    background-color: var(--highlight2);
+  }
 `
 
 export default PromoModal

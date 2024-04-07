@@ -63,7 +63,7 @@ const TagStyled = styled.li`
   font-weight: var(--fwRegular);
   color: var(--tertiaryColor);
   background-color: var(--underlay1);
-  border-radius: 1rem;
+  /* border-radius: 1rem; */
   cursor: pointer;
   transition: var(--transition1);
 
@@ -92,7 +92,7 @@ const TagsStyled = styled.ul`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: 2px;
 `
 
 export default Tags

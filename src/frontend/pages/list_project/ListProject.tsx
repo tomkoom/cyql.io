@@ -167,7 +167,7 @@ const ListProjectStyled = styled.div`
 `
 
 const StepWrapper = styled.div`
-  box-shadow: var(--boxShadow3);
+  box-shadow: var(--boxShadow2);
   padding: 2rem;
 
   > div.title {
