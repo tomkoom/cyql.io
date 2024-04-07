@@ -43,28 +43,33 @@ const ListProject: FC = (): JSX.Element => {
     <ListProjectStyled>
       <ListConfirmModal isOpen={listConfirmModalIsOpen} onClose={closeConfirmProposalModal} />
 
-      <div>
-        <div className="title">
+      <div className="content">
+        <div className="header">
           <h2 className="pageTitle">List New #ic Project</h2>
           <p>
             The project will be listed as a proposal and will be voted and moderated by the
             community
           </p>
-          <Steps />
+          {/* <Steps /> */}
         </div>
 
-        <Panel style={{ backgroundColor: "unset", padding: "unset" }}>
+        <StepWrapper>
           <div className="title">
-            <h5 style={{ textAlign: "center" }}>Step 1: Pick Project Category</h5>
-            <p style={{ textAlign: "center" }}>One or multiple</p>
+            <h5>Step 1: Pick Project Category</h5>
+            <p>One or multiple</p>
           </div>
-          <div className="content">
-            <Category />
-          </div>
-        </Panel>
 
-        <PanelsWrapper>
-          <h5>Step 2: Fill in the Project Data</h5>
+          <Panel style={{ backgroundColor: "unset", padding: "unset" }}>
+            <div className="content">
+              <Category />
+            </div>
+          </Panel>
+        </StepWrapper>
+
+        <StepWrapper>
+          <div className="title">
+            <h5>Step 2: Fill in the Project Data</h5>
+          </div>
 
           <div>
             <Panel>
@@ -133,11 +138,11 @@ const ListProject: FC = (): JSX.Element => {
               </div>
             </Panel>
           </div>
-        </PanelsWrapper>
+        </StepWrapper>
 
         <Proposer />
         <Btn
-          btnType={"primary"}
+          btnType={isAuthenticated ? "primary" : "secondary"}
           text={isAuthenticated ? "Submit Project" : "Sign In to Submit"}
           onClick={openModal}
         />
@@ -147,13 +152,13 @@ const ListProject: FC = (): JSX.Element => {
 }
 
 const ListProjectStyled = styled.div`
-  > div {
+  > div.content {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     margin-bottom: 4rem;
 
-    > div.title {
+    > div.header {
       > p {
         text-align: center;
       }
@@ -161,11 +166,24 @@ const ListProjectStyled = styled.div`
   }
 `
 
-const PanelsWrapper = styled.div`
-  > h5 {
-    text-align: center;
+const StepWrapper = styled.div`
+  box-shadow: var(--boxShadow3);
+  padding: 2rem;
+
+  > div.title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
     margin-bottom: 2rem;
-    font-weight: var(--fwMedium);
+
+    > h5 {
+      font-weight: var(--fwMedium);
+    }
+
+    > p {
+      font-size: var(--fsText);
+      color: var(--tertiaryColor);
+    }
   }
 
   > div {

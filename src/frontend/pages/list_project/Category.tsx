@@ -13,7 +13,17 @@ const Category: FC = (): JSX.Element => {
 
   return (
     <CategoryStyled>
-      <p className="category_array">[{project.category.join(", ")}]</p>
+      {project.category.length > 0 && (
+        <div className="selected">
+          <p>Selected categories:</p>
+          <div>
+            {project.category.map((category) => (
+              <span key={category}>{category}</span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <CategoriesWrapper>
         <CategoryBlock
           name="Infrastructure"
@@ -107,11 +117,26 @@ const CategoryStyled = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1rem;
 
-  > p.category_array {
-    font-size: var(--fs5);
+  > div.selected {
+    > p {
+      font-size: var(--fsText);
+      margin-bottom: 0.5rem;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+
+      > span {
+        padding: 0.5rem;
+        background-color: var(--underlay2);
+        font-size: var(--fsText);
+      }
+    }
   }
 `
 

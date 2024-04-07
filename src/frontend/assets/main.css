@@ -186,8 +186,9 @@ h6 {
 
   /* ... */
   --shadow1: rgba(var(--primaryColorRgb), 0.12) 0px 0px 0px 1px;
-  --boxShadow1: 0 0 0 2px var(--underlay1);
+  --boxShadow1: 0 0 0 1px var(--underlay1);
   --boxShadow2: 0 0 0 1px var(--underlay2);
+  --boxShadow3: 0 0 0 1px var(--underlay3);
   --boxShadow1Inset: inset 0 0 0 2px var(--underlay1);
-  --boxShadow2Inset: inset 0 0 0 1px var(--underlay2);
+  --boxShadow2Inset: inset 0 0 0 2px var(--underlay2);
 }
