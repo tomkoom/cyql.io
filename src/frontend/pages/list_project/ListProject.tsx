@@ -19,21 +19,29 @@ const ListProject: FC = (): JSX.Element => {
   const { isAuthenticated } = useAuth()
   const listConfirmModalIsOpen = useAppSelector(selectListConfirmModalIsOpen)
 
-  const closeModal = (): void => {
+  const closeConfirmProposalModal = (): void => {
     dispatch(setListConfirmModalIsOpen(false))
+  }
+
+  const openConfirmProposalModal = (): void => {
+    dispatch(setListConfirmModalIsOpen(false))
+  }
+
+  const openSingInModal = (): void => {
+    dispatch(setSignInModalIsOpen(true))
   }
 
   const openModal = (): void => {
     if (isAuthenticated) {
-      dispatch(setListConfirmModalIsOpen(true))
+      openConfirmProposalModal()
     } else {
-      dispatch(setSignInModalIsOpen(true))
+      openSingInModal()
     }
   }
 
   return (
     <ListProjectStyled>
-      <ListConfirmModal isOpen={listConfirmModalIsOpen} onClose={closeModal} />
+      <ListConfirmModal isOpen={listConfirmModalIsOpen} onClose={closeConfirmProposalModal} />
 
       <div>
         <div className="title">
@@ -47,8 +55,8 @@ const ListProject: FC = (): JSX.Element => {
 
         <Panel style={{ backgroundColor: "unset", padding: "unset" }}>
           <div className="title">
-            <h5 style={{ textAlign: "center" }}>* Project Category</h5>
-            <p style={{ textAlign: "center" }}>Pick one or multiple</p>
+            <h5 style={{ textAlign: "center" }}>Step 1: Pick Project Category</h5>
+            <p style={{ textAlign: "center" }}>One or multiple</p>
           </div>
           <div className="content">
             <Category />
@@ -56,7 +64,7 @@ const ListProject: FC = (): JSX.Element => {
         </Panel>
 
         <PanelsWrapper>
-          <h5>* Project Information</h5>
+          <h5>Step 2: Fill in the Project Data</h5>
 
           <div>
             <Panel>
