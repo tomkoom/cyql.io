@@ -40,14 +40,13 @@ const hoverBgColors = {
 
 const LinkBtnStyled = styled.a<{ btnType: "primary" | "secondary" }>`
   /* common */
-  height: 2.5rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0 0.75rem;
   font-size: var(--fsText);
   font-weight: var(--fwBold);
-  border-radius: 1.25rem;
   transition: var(--transition1);
 
   /* custom */

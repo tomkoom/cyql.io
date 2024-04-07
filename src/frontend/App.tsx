@@ -2,38 +2,27 @@ import React, { FC, useEffect } from "react"
 import { RouterProvider } from "react-router-dom"
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 import { Router } from "@/routes/_index"
-import { NETWORK } from "@/constants/constants"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import {
-  useBackend,
-  useUsers,
-  useNft,
-  useScrollLock,
-  useIcpLedger,
-  useProposals,
-} from "./hooks/_index"
+import { useBackend, useNft, useIcpLedger, useProposals } from "./hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjects } from "@/state/projects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
-import { setSignInModalIsOpen, selectSignInModalIsOpen } from "./state/modals/signInModal"
+import { setSignInModalIsOpen } from "./state/modals/signInModal"
 
 const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { actor, nft, isAuthenticated, accounntIdHex } = useAuth()
-  const { lockScroll, unlockScroll } = useScrollLock()
   const { refreshProjects } = useBackend()
-  const { registerUser } = useUsers()
   const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
   const { refreshProposals } = useProposals()
   const projects = useAppSelector(selectActiveProjects)
   const allCategories = useAppSelector(selectAllCategories)
-  const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
 
   const refresh = async (): Promise<void> => {
     await refreshProposals()
@@ -56,14 +45,6 @@ const App: FC = (): JSX.Element => {
 
     // close sign-in modal
     dispatch(setSignInModalIsOpen(false))
-
-    // register
-    if (NETWORK !== "local") {
-      ;(async () => await registerUser())()
-    }
-
-    // set user data
-    // ;(async () => await refreshVotingPower())()
   }, [isAuthenticated])
 
   useEffect(() => {
@@ -78,15 +59,6 @@ const App: FC = (): JSX.Element => {
     const sorted = sortCategoriesByNum(allCategories, projects)
     dispatch(setCategoriesSortedByNum(sorted))
   }, [projects])
-
-  // lock scroll when modal is open
-  useEffect(() => {
-    if (signInModalIsOpen) {
-      lockScroll()
-    } else {
-      unlockScroll()
-    }
-  }, [signInModalIsOpen])
 
   return <RouterProvider router={Router} />
 }

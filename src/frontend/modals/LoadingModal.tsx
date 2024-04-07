@@ -4,13 +4,13 @@ import styled from "styled-components"
 import { Spinner } from "@/components/ui/_index"
 import { useScrollLock } from "@/hooks/_index"
 
-interface LoadingModalProps {
-  isOpen: boolean
-}
-
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/theme"
+
+interface LoadingModalProps {
+  isOpen: boolean
+}
 
 const LoadingModal: FC<LoadingModalProps> = ({ isOpen }): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()

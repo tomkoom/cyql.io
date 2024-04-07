@@ -4,6 +4,7 @@ import CrossIcon from "@/components/icons/CrossIcon"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
 import { Btn } from "@/components/btns/_index"
 import type { Tokens } from "@/state/_types/types"
+import { notifyErr } from "@/utils/notify"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -79,12 +80,17 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
   }
 
   const confirm = async (): Promise<void> => {
-    dispatch(setIsLoading(true))
-    const amountE8s = balanceIcp.e8s
-    await sendIcp(withdrawalAccountId, amountE8s)
-    await refreshIcpBalance(accounntIdHex)
-    dispatch(setIsLoading(false))
-    reset()
+    try {
+      dispatch(setIsLoading(true))
+      await sendIcp(withdrawalAccountId, balanceIcp.e8s)
+      await refreshIcpBalance(accounntIdHex)
+    } catch (e) {
+      notifyErr(e.message || "Err")
+      throw new Error(e)
+    } finally {
+      dispatch(setIsLoading(false))
+      reset()
+    }
   }
 
   return (

@@ -1,8 +1,7 @@
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
 import Modal from "@/modals/_Modal"
 import { iExternalLink } from "@/components/icons/Icons"
-import { useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -18,22 +17,12 @@ interface PromoModalProps {
 
 const PromoModal: FC<PromoModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { lockScroll, unlockScroll } = useScrollLock()
   const promoModalData = useAppSelector(selectPromoModalData)
 
   const closeModal = () => {
     dispatch(setPromoModal(false))
     dispatch(setClearPromoModalData())
   }
-
-  // hide scrollbar
-  useEffect(() => {
-    if (isOpen) {
-      lockScroll()
-    } else {
-      unlockScroll()
-    }
-  }, [isOpen])
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>

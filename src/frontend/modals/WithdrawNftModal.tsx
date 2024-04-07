@@ -9,7 +9,7 @@ import { useAuth } from "@/context/Auth"
 import { useNft } from "@/hooks/_index"
 
 // components
-import { Steps, GetSupport } from "../withdraw_modal/_index"
+import { Steps, GetSupport } from "./withdraw_modal/_index"
 import { TextInput } from "@/components/ui/_index"
 
 // state

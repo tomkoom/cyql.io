@@ -41,16 +41,16 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
   return (
     <SortOptionsStyled style={style} ref={sortOptionsRef}>
       <li onClick={() => clickSort("newest-first")}>
-        newest first {sort === "newest-first" && <span>{iCheck}</span>}
+        Newest first {sort === "newest-first" && <span>{iCheck}</span>}
       </li>
       <li onClick={() => clickSort("oldest-first")}>
-        oldest first {sort === "oldest-first" && <span>{iCheck}</span>}
+        Oldest first {sort === "oldest-first" && <span>{iCheck}</span>}
       </li>
       <li onClick={() => clickSort("most-upvoted")}>
-        most upvoted {sort === "most-upvoted" && <span>{iCheck}</span>}
+        Most upvoted {sort === "most-upvoted" && <span>{iCheck}</span>}
       </li>
       <li onClick={() => clickSort("least-upvoted")}>
-        least upvoted {sort === "least-upvoted" && <span>{iCheck}</span>}
+        Least upvoted {sort === "least-upvoted" && <span>{iCheck}</span>}
       </li>
     </SortOptionsStyled>
   )

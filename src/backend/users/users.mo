@@ -17,26 +17,25 @@ actor {
 
   // -- manage --
 
-  public shared ({ caller }) func registerUser(userId : UT.UserId) : async ?Text {
+  public shared ({ caller }) func registerUser() : async ?Text {
     assert (not U.isAnon(caller));
-    assert (U.isMain(caller));
 
-    switch (users.get(userId)) {
+    switch (users.get(caller)) {
       case (?u) return null;
       case null {
         let user = {
-          id = Principal.toText(userId);
+          id = Principal.toText(caller);
           registeredAt = Time.now();
           votedTimes = 0;
           totalVotingPowerApplied = 0
         };
-        users.put(userId, user);
+        users.put(caller, user);
         return ?user.id
       }
     }
   };
 
-  public func getUser(userId : UT.UserId) : async ?UT.User {
+  public query func getUser(userId : UT.UserId) : async ?UT.User {
     return users.get(userId)
   };
 

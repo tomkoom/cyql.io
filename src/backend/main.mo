@@ -7,28 +7,23 @@ import Buffer "mo:base/Buffer";
 import Text "mo:base/Text";
 
 // services
-import Users "./users/users_interface";
+// import Users "./users/users_interface";
 
 // ...
 import T "types";
 import U "utils";
-import C "_constants";
+// import C "_constants";
 
 actor {
 
   // canisters
 
-  let users = actor (C.usersCanisterId) : Users.Self;
+  // let users = actor (C.usersCanisterId) : Users.Self;
 
   // maps
 
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
-
-  // proposals
-
-  stable var projectProposalsEntries : [(T.ProjectProposalId, T.ProjectProposal)] = [];
-  let projectProposals = HashMap.fromIter<T.ProjectProposalId, T.ProjectProposal>(projectProposalsEntries.vals(), 10, Nat.equal, Hash.hash);
 
   // curated projects
 
@@ -42,13 +37,13 @@ actor {
   public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
     // verify caller
     projects.put(projectId, project);
-    ?projectId
+    return ?projectId
   };
 
   public shared ({ caller }) func deleteProject(projectId : T.ProjectId) : async ?T.ProjectId {
     assert U.isAdmin(caller);
     projects.delete(projectId);
-    ?projectId
+    return ?projectId
   };
 
   public query func listProjects() : async [T.Project] {
@@ -78,14 +73,14 @@ actor {
 
   // users
 
-  public shared ({ caller }) func registerUser() : async ?Text {
-    assert (not U.isAnon(caller));
-    return await users.registerUser(caller)
-  };
+  // public shared ({ caller }) func registerUser() : async ?Text {
+  //   assert (not U.isAnon(caller));
+  //   return await users.registerUser(caller)
+  // };
 
-  public func usersNum() : async Nat {
-    return await users.usersNum()
-  };
+  // public func usersNum() : async Nat {
+  //   return await users.usersNum()
+  // };
 
   // test
 
@@ -96,12 +91,10 @@ actor {
   // stable
 
   system func preupgrade() {
-    projectsEntries := Iter.toArray(projects.entries());
-    projectProposalsEntries := Iter.toArray(projectProposals.entries())
+    projectsEntries := Iter.toArray(projects.entries())
   };
 
   system func postupgrade() {
-    projectsEntries := [];
-    projectProposalsEntries := []
+    projectsEntries := []
   }
 }
