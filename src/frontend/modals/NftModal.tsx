@@ -15,7 +15,7 @@ interface NftModalProps {
 const NftModal: FC<NftModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch()
   const text =
-    "cyql NFT is the main asset of the project which represents its development progress and will carry a number of utilities which can be used on the platform."
+    "cyql NFT is the main asset of the project which represents its development progress and will carry a number of utilities which can be used on the platform"
 
   const closeModal = (): void => {
     dispatch(setNftModal(false))
@@ -54,7 +54,6 @@ const Content = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  text-align: center;
 
   > h3 {
     color: var(--primaryColor);
@@ -62,7 +61,7 @@ const Content = styled.div`
 
   > p {
     font-size: var(--fsText);
-    color: var(--primaryColor);
+    color: var(--secondaryColor);
   }
 
   > div.links {

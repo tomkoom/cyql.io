@@ -1,7 +1,7 @@
 import { useNavigate, createSearchParams } from "react-router-dom"
 import { ICRC_SCAN_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 
-const useNav = () => {
+export const useNav = () => {
   const navigate = useNavigate()
 
   const goBack = (): void => navigate(-1)
@@ -57,5 +57,3 @@ const useNav = () => {
     toAdmin,
   }
 }
-
-export default useNav

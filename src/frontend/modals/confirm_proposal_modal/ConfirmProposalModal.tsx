@@ -5,7 +5,7 @@ import { RootModal } from "../_index"
 import { DataItem } from "./_index"
 import { camelCaseToWords, notifyErr, notifySuccess } from "@/utils/_index"
 import { Btn } from "@/components/btns/_index"
-import { useDao, useNav } from "@/hooks/_index"
+import { useNav, useProposals } from "@/hooks/_index"
 import { modalStyles } from "../_modalStyles"
 
 // state
@@ -20,7 +20,7 @@ interface ConfirmProposalModalProps {
 
 const ConfirmProposalModal: FC<ConfirmProposalModalProps> = ({ isOpen, onClose }): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { createProposal, refreshProposals } = useDao()
+  const { createProposal, refreshProposals } = useProposals()
   const { toProposals } = useNav()
   const proposalPayload = useAppSelector(selectListProject)
 

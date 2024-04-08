@@ -55,8 +55,8 @@ const Content = styled.div`
   }
 
   > p {
-    text-align: left;
-    line-height: 150%;
+    font-size: var(--fsText);
+    color: var(--secondaryColor);
   }
 `
 

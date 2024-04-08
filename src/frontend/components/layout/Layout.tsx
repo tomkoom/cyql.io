@@ -9,21 +9,24 @@ import { Toaster } from "react-hot-toast"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useNav } from "@/hooks/_index"
+import { useNav, useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/theme"
 import { selectAllProjects } from "@/state/projects"
 import { selectIsLoading } from "@/state/loading"
+import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated } = useAuth()
   const { toHome } = useNav()
+  const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
   const projects = useAppSelector(selectAllProjects)
   const isLoading = useAppSelector(selectIsLoading)
+  const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
 
   // redirect to home if user signed out
   useEffect(() => {
@@ -31,6 +34,15 @@ const Layout: FC = (): JSX.Element => {
       toHome()
     }
   }, [isAuthenticated])
+
+  // lock scroll when modal is open
+  useEffect(() => {
+    if (signInModalIsOpen) {
+      lockScroll()
+    } else {
+      unlockScroll()
+    }
+  }, [signInModalIsOpen])
 
   return (
     <LayoutStyled className={theme}>

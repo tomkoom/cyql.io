@@ -13,7 +13,7 @@ import {
   setProjectsLoading,
 } from "@/state/projects"
 
-const useBackend = () => {
+export const useBackend = () => {
   const dispatch = useAppDispatch()
   const { actor, userId } = useAuth()
 
@@ -72,5 +72,3 @@ const useBackend = () => {
     updateUpvote,
   }
 }
-
-export default useBackend

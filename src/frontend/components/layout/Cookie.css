@@ -15,7 +15,7 @@
 }
 
 .cookie * {
-  font-size: var(--fsText); /* 0.9 */
+  font-size: var(--fsText);
 }
 
 .cookie__content {
@@ -33,7 +33,6 @@
   text-decoration: none;
   background-color: var(--highlight1);
   padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
   border: none;
   cursor: pointer;
   transition: var(--transition1);

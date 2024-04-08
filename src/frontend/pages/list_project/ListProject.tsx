@@ -24,7 +24,7 @@ const ListProject: FC = (): JSX.Element => {
   }
 
   const openConfirmProposalModal = (): void => {
-    dispatch(setListConfirmModalIsOpen(false))
+    dispatch(setListConfirmModalIsOpen(true))
   }
 
   const openSingInModal = (): void => {

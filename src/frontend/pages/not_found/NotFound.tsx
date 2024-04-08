@@ -1,13 +1,13 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-import useNav from "@/hooks/useNav";
+import React, { FC } from "react"
+import styled from "styled-components"
+import { useNav } from "@/hooks/_index"
 
 interface NotFoundProps {
-  text: string;
+  text: string
 }
 
 const NotFound: FC<NotFoundProps> = ({ text }): JSX.Element => {
-  const { toHome } = useNav();
+  const { toHome } = useNav()
 
   return (
     <NotFoundStyled>
@@ -15,8 +15,8 @@ const NotFound: FC<NotFoundProps> = ({ text }): JSX.Element => {
         {text}. <span onClick={toHome}>Go to the homepage</span>
       </p>
     </NotFoundStyled>
-  );
-};
+  )
+}
 
 const NotFoundStyled = styled.div`
   text-align: center;
@@ -30,6 +30,6 @@ const NotFoundStyled = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
-`;
+`
 
-export default NotFound;
+export default NotFound

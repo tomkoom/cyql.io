@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-import useNav from "@/hooks/useNav"
+import { useNav } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

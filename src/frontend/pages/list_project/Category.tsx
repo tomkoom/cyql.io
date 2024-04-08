@@ -133,7 +133,7 @@ const CategoryStyled = styled.div`
 
       > span {
         padding: 0.5rem;
-        background-color: var(--underlay2);
+        background-color: var(--underlay3);
         font-size: var(--fsText);
       }
     }
