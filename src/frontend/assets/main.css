@@ -79,7 +79,9 @@ h6 {
   --colorReject1: #ff5252;
   --colorReject2: #ff7474;
   --colorOk: #64dd17;
+  --colorOkRgb: 100, 221, 23;
   --colorErr: #fa4d56;
+  --colorErrRgb: 250, 77, 86;
   --colorNeutral: (var(--coolGray60));
   --colorAccept: #00c853;
   --colorReject: #ff5252;

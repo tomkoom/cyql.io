@@ -28,6 +28,7 @@ const ProposerStyled = styled.div`
   > span.value {
     background-color: var(--underlay1);
     color: var(--primaryColor);
+    padding: 0.5rem;
   }
 `
 

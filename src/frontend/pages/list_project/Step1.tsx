@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from "react"
+import React, { Dispatch, FC, SetStateAction, useState } from "react"
 import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
 import { Category, Token, Primary, Input, Proposer } from "./_index"
@@ -6,8 +6,9 @@ import { Btn } from "@/components/btns/_index"
 import { web2Links, web3Links, extra, extra2 } from "./_inputs"
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
+import { selectListProject } from "@/state/projectProposal"
 
 interface Step1Props {
   setStep: Dispatch<SetStateAction<number>>
@@ -16,14 +17,39 @@ interface Step1Props {
 const Step1: FC<Step1Props> = ({ setStep }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { isAuthenticated } = useAuth()
+  const [err, setErr] = useState<string>("")
+  const project = useAppSelector(selectListProject)
 
   const openSingInModal = (): void => {
     dispatch(setSignInModalIsOpen(true))
   }
 
+  const validate = (): boolean => {
+    setErr("")
+
+    if (project.category.length < 1) {
+      setErr("Category is not selected")
+      return false
+    }
+
+    if (!project.name) {
+      setErr("Project name hasn't been entered")
+      return false
+    }
+
+    if (!project.description) {
+      setErr("Project description hasn't been entered")
+      return false
+    }
+
+    return true
+  }
+
   const nextStep = (): void => {
     if (isAuthenticated) {
-      setStep(2)
+      if (validate()) {
+        setStep(2)
+      }
     } else {
       openSingInModal()
     }
@@ -121,11 +147,18 @@ const Step1: FC<Step1Props> = ({ setStep }): JSX.Element => {
       </StepWrapper>
 
       <Proposer />
+
       <Btn
         btnType={isAuthenticated ? "primary" : "secondary"}
         text={isAuthenticated ? "Next" : "Sign In"}
         onClick={nextStep}
       />
+
+      {err && (
+        <div className="err_message">
+          <p>{err}</p>
+        </div>
+      )}
     </Step1Styled>
   )
 }
@@ -138,6 +171,14 @@ const Step1Styled = styled.div`
   > h3 {
     text-align: center;
     font-size: var(--fs4);
+  }
+
+  > div.err_message {
+    color: var(--colorErr);
+    background-color: rgba(var(--colorErrRgb), 0.1);
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: -1rem;
   }
 `
 

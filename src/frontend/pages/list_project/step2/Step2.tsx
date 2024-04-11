@@ -48,7 +48,7 @@ const Step2: FC<Step2Props> = ({ setStep }): JSX.Element => {
     <Step2Styled className="wrapper1280">
       <div className="title">
         <h3>2. Review and Submit</h3>
-        <p>Review project data and submit proposal</p>
+        <p>Review project information and submit proposal</p>
       </div>
 
       <ul>
@@ -56,7 +56,7 @@ const Step2: FC<Step2Props> = ({ setStep }): JSX.Element => {
           <DataItem
             key={key}
             label={camelCaseToWords(key)}
-            value={Array.isArray(value) ? value.join().toUpperCase() : value}
+            value={Array.isArray(value) ? value.join(", ").toUpperCase() : value}
           />
         ))}
       </ul>
