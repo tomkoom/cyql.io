@@ -1,19 +1,22 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { trimZeroes, capitalizeFirstLetter, formatDateTime, formatIdLong } from "@/utils/_index"
-import { E8S } from "@/constants/constants"
 import { iRightLeft, iFire, iCheck, iLeaf, iExternalLink } from "@/components/icons/Icons"
+import type { IcrcMetadata } from "@/hooks/useIcrcScan"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
 
-// interface TableProps {
-//   ledgerId: string
-// }
+interface TableProps {
+  icrcMetadata: IcrcMetadata
+}
 
-const Table: FC = (): JSX.Element => {
+const Table: FC<TableProps> = ({ icrcMetadata }): JSX.Element => {
   const txs = useAppSelector(selectIcrcTransactionsData)
+  const decimalsMultiplied = 10 ** Number(icrcMetadata?.icrc1_decimals)
+  console.log(icrcMetadata)
+  console.log(decimalsMultiplied)
 
   return (
     <TableStyled>
@@ -36,7 +39,7 @@ const Table: FC = (): JSX.Element => {
               rel="noreferrer noopener"
             >
               <span className="index">{tx.index.toString()}</span>
-              <span>{trimZeroes((+tx.amount / E8S).toFixed(8))}</span>
+              <span>{trimZeroes((+tx.amount / decimalsMultiplied).toFixed(8))}</span>
               <span className="type">
                 <span>
                   <span className="icon">

@@ -62,9 +62,19 @@ export const ICRC_SCAN_SEARCH_PARAMS_INITIAL = {
 }
 
 // ledgers
-export const ledgers = [
-  { label: "ckBTC", id: CKBTC_LEDGER_CANISTER_ID_IC, decimals: 8 },
-  { label: "ckETH", id: "ss2fx-dyaaa-aaaar-qacoq-cai", decimals: 18 },
-  { label: "CHAT", id: "2ouva-viaaa-aaaaq-aaamq-cai", decimals: 8 },
-  // ...
-]
+export const LEDGERS = [
+  { symbol: "ckBTC", name: "ckBTC", id: CKBTC_LEDGER_CANISTER_ID_IC },
+  { symbol: "ckETH", name: "ckETH", id: "ss2fx-dyaaa-aaaar-qacoq-cai" },
+  { symbol: "CHAT", name: "CHAT", id: "2ouva-viaaa-aaaaq-aaamq-cai" },
+  { symbol: "CAT", name: "CatalyzeDAO", id: "uf2wh-taaaa-aaaaq-aabna-cai" },
+  { symbol: "BOOM", name: "BoomDAO", id: "vtrom-gqaaa-aaaaq-aabia-cai" },
+  { symbol: "GHOST", name: "GHOST", id: "4c4fd-caaaa-aaaaq-aaa3a-cai" },
+  { symbol: "HOT", name: "HotOrNot", id: "6rdgd-kyaaa-aaaaq-aaavq-cai" },
+  { symbol: "ICL", name: "ICLighthouse DAO", id: "hhaaz-2aaaa-aaaaq-aacla-cai" },
+  { symbol: "ICS", name: "ICPSwap Token", id: "ca6gz-lqaaa-aaaaq-aacwa-cai" },
+  { symbol: "KINIC", name: "KINIC", id: "73mez-iiaaa-aaaaq-aaasq-cai" },
+].sort((a, b) => {
+  const textA = a.symbol.toUpperCase()
+  const textB = b.symbol.toUpperCase()
+  return textA < textB ? -1 : textA > textB ? 1 : 0
+})

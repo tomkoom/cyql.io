@@ -31,7 +31,6 @@ const TagsStyled = styled.ul`
     padding: 0 0.5rem;
     font-size: 0.8rem;
     background-color: var(--underlay1);
-    border-radius: 0.5rem;
   }
 `
 

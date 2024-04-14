@@ -6,6 +6,7 @@ import { useSearchParams } from "react-router-dom"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
 import { Pagination, Table } from "./_index"
 import { useIcrcScan } from "@/hooks/_index"
+import { LEDGERS } from "@/constants/constants"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -13,23 +14,15 @@ import { selectIcrcTransactionsPagination } from "@/state/icrc_scan/icrcTransact
 import { selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
 import { notifyErr } from "@/utils/notify"
 
-const ledgerIds = [
-  { label: "ckBTC", id: CKBTC_LEDGER_CANISTER_ID_IC, decimals: 8 },
-  { label: "ckETH", id: "ss2fx-dyaaa-aaaar-qacoq-cai", decimals: 18 },
-  { label: "CHAT", id: "2ouva-viaaa-aaaaq-aaamq-cai", decimals: 8 },
-]
-
 const IcrcScan: FC = (): JSX.Element => {
-  // const [ledger, setLedger] = useState()
   const [ledgerId, setLedgerId] = useState(CKBTC_LEDGER_CANISTER_ID_IC)
-  const { getTxs } = useIcrcScan()
   const [searchParams, setSearchParams] = useSearchParams()
   const ledgerIdParam = searchParams.get("ledger_id")
   const txs = useAppSelector(selectIcrcTransactionsData)
   const pagination = useAppSelector(selectIcrcTransactionsPagination)
   const itemsPerPage = pagination.itemsPerPage
   const offset = pagination.itemOffset
-  // console.log(ledgerIdParam)
+  const { icrcMetadata, getIcrcTxs, getIcrcMetadata } = useIcrcScan()
 
   const setLedgerIdParam = (ledgerId: string): void => {
     setLedgerId(ledgerId)
@@ -45,9 +38,14 @@ const IcrcScan: FC = (): JSX.Element => {
     )
   }
 
+  const getIcrcLedgerData = async (): Promise<void> => {
+    await getIcrcMetadata(ledgerIdParam)
+    await getIcrcTxs(ledgerIdParam, offset, itemsPerPage)
+  }
+
   useEffect(() => {
     if (!ledgerIdParam) return
-    getTxs(ledgerIdParam, offset, itemsPerPage)
+    getIcrcLedgerData()
   }, [ledgerIdParam, offset, itemsPerPage])
 
   return (
@@ -77,19 +75,20 @@ const IcrcScan: FC = (): JSX.Element => {
           </div>
         </div>
 
-        {/* <ul className="ledger_ids">
-          {ledgerIds.map((ledgerId) => (
+        <ul className="ledgers">
+          {LEDGERS.map((ledger) => (
             <li
-              key={`${ledgerId.label}-${ledgerId.id}`}
-              onClick={() => setLedgerIdParam(ledgerId.id)}
+              key={`${ledger.symbol}-${ledger.id}`}
+              className={ledger.id === ledgerIdParam ? "active" : null}
+              onClick={() => setLedgerIdParam(ledger.id)}
             >
-              {ledgerId.label}
+              {ledger.symbol}
             </li>
           ))}
-        </ul> */}
+        </ul>
 
         {txs?.length > 0 && <Pagination />}
-        {txs?.length > 0 && <Table />}
+        {txs?.length > 0 && <Table icrcMetadata={icrcMetadata} />}
         {txs?.length > 0 && <Pagination />}
       </div>
     </IcrcScanStyled>
@@ -112,7 +111,8 @@ const IcrcScanStyled = styled.div`
   > div.content {
     > div.input {
       > label {
-        font-size: var(--fs6);
+        font-size: var(--fsText);
+        color: var(--secondaryColor);
         margin-bottom: 0.25rem;
         display: inline-block;
       }
@@ -124,23 +124,28 @@ const IcrcScanStyled = styled.div`
       }
     }
 
-    > ul.ledger_ids {
+    > ul.ledgers {
       display: flex;
       align-items: center;
-      gap: 0.125rem;
-      margin-top: 0.125rem;
+      gap: 0.25rem;
+      margin-top: 0.5rem;
+      font-weight: var(--fwBold);
 
       > li {
-        font-weight: var(--fwMedium);
         color: var(--secondaryColor);
-        background-color: var(--underlay1);
-        padding: 0.75rem 0.5rem;
+        background-color: var(--underlay2);
+        padding: 0.6rem 0.6rem;
         cursor: pointer;
         transition: var(--transition1);
 
         &:hover {
           color: var(--primaryColor);
-          background-color: var(--underlay2);
+          background-color: var(--underlay3);
+        }
+
+        &.active {
+          color: var(--background);
+          background-color: var(--primaryColor);
         }
       }
     }
