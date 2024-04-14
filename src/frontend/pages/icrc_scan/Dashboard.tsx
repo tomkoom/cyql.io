@@ -9,35 +9,36 @@ interface DashboardProps {
 }
 
 const Dashboard: FC<DashboardProps> = ({ icrcMetadata }): JSX.Element => {
-  const totalSupply = +icrcMetadata.icrc1_total_supply / 10 ** +icrcMetadata.icrc1_decimals
-  const fee = +icrcMetadata.icrc1_fee / 10 ** +icrcMetadata.icrc1_decimals
-  console.log(icrcMetadata)
+  const totalSupply = +icrcMetadata?.icrc1_total_supply / 10 ** +icrcMetadata?.icrc1_decimals
+  const fee = +icrcMetadata?.icrc1_fee / 10 ** +icrcMetadata?.icrc1_decimals
 
   return (
     <DashboardStyled>
       <ul>
         <li>
           <p className="label">Total Supply</p>
-          <p className="value">
-            {icrcMetadata.icrc1_symbol === "ckBTC" || icrcMetadata.icrc1_symbol === "ckETH"
-              ? "..."
-              : formatNumber(totalSupply)}
-          </p>
+          {icrcMetadata?.icrc1_symbol && (
+            <p className="value">
+              {icrcMetadata.icrc1_symbol === "ckBTC" || icrcMetadata.icrc1_symbol === "ckETH"
+                ? "..."
+                : formatNumber(totalSupply)}
+            </p>
+          )}
         </li>
 
         <li>
           <p className="label">Name</p>
-          <p className="value">{icrcMetadata.icrc1_name}</p>
+          {icrcMetadata?.icrc1_name && <p className="value">{icrcMetadata.icrc1_name}</p>}
         </li>
 
         <li>
           <p className="label">Symbol</p>
-          <p className="value">{icrcMetadata.icrc1_symbol}</p>
+          {icrcMetadata?.icrc1_symbol && <p className="value">{icrcMetadata.icrc1_symbol}</p>}
         </li>
 
         <li>
           <p className="label">Decimals</p>
-          <p className="value">{icrcMetadata.icrc1_decimals}</p>
+          {icrcMetadata?.icrc1_decimals && <p className="value">{icrcMetadata.icrc1_decimals}</p>}
         </li>
 
         <li>
