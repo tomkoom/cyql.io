@@ -3,8 +3,8 @@ import styled from "styled-components"
 import { TextInput2 } from "@/components/ui/_index"
 import { RectBtn } from "@/components/btns/_index"
 import { useSearchParams } from "react-router-dom"
-import { CKBTC_LEDGER_CANISTER_ID_IC, LEDGERS } from "@/constants/constants"
-import { Pagination, Table, Dashboard } from "./_index"
+import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
+import { Pagination, Table, Dashboard, Ledgers } from "./_index"
 import { useIcrcScan } from "@/hooks/_index"
 import { notifyErr } from "@/utils/_index"
 
@@ -81,17 +81,7 @@ const IcrcScan: FC = (): JSX.Element => {
           </div>
         </div>
 
-        <ul className="ledgers">
-          {LEDGERS.map((ledger) => (
-            <li
-              key={`${ledger.symbol}-${ledger.id}`}
-              className={ledger.id === ledgerIdParam ? "active" : null}
-              onClick={() => setLedgerIdParam(ledger.id)}
-            >
-              {ledger.symbol}
-            </li>
-          ))}
-        </ul>
+        <Ledgers ledgerIdParam={ledgerIdParam} setLedgerIdParam={setLedgerIdParam} />
 
         {txs?.length > 0 && <Dashboard icrcMetadata={icrcMetadata} />}
         {txs?.length > 0 && <Pagination />}
@@ -128,33 +118,6 @@ const IcrcScanStyled = styled.div`
         display: flex;
         align-items: center;
         gap: 0.5rem;
-      }
-    }
-
-    > ul.ledgers {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.25rem;
-      margin-top: 0.5rem;
-      font-weight: var(--fwBold);
-
-      > li {
-        color: var(--secondaryColor);
-        background-color: var(--underlay2);
-        padding: 0.6rem 0.6rem;
-        cursor: pointer;
-        transition: var(--transition1);
-
-        &:hover {
-          color: var(--primaryColor);
-          background-color: var(--underlay3);
-        }
-
-        &.active {
-          color: var(--background);
-          background-color: var(--primaryColor);
-        }
       }
     }
   }
