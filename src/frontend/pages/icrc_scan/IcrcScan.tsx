@@ -1,31 +1,34 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { TextInput2 } from "@/components/ui/_index"
 import { RectBtn } from "@/components/btns/_index"
 import { useSearchParams } from "react-router-dom"
-import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
+import { CKBTC_LEDGER_CANISTER_ID_IC, LEDGERS } from "@/constants/constants"
 import { Pagination, Table, Dashboard } from "./_index"
 import { useIcrcScan } from "@/hooks/_index"
-import { LEDGERS } from "@/constants/constants"
+import { notifyErr } from "@/utils/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectIcrcTransactionsPagination } from "@/state/icrc_scan/icrcTransactions"
-import { selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
-import { notifyErr } from "@/utils/notify"
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import {
+  selectIcrcTransactionsPagination,
+  selectIcrcTransactionsData,
+} from "@/state/icrc_scan/icrcTransactions"
+import { selectIcrcLedgerId, setIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 
 const IcrcScan: FC = (): JSX.Element => {
-  const [ledgerId, setLedgerId] = useState(CKBTC_LEDGER_CANISTER_ID_IC)
+  const dispatch = useAppDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const ledgerIdParam = searchParams.get("ledger_id")
+  const { icrcMetadata, getIcrcTxs, getIcrcMetadata } = useIcrcScan()
+  const ledgerId = useAppSelector(selectIcrcLedgerId)
   const txs = useAppSelector(selectIcrcTransactionsData)
   const pagination = useAppSelector(selectIcrcTransactionsPagination)
   const itemsPerPage = pagination.itemsPerPage
   const offset = pagination.itemOffset
-  const { icrcMetadata, getIcrcTxs, getIcrcMetadata } = useIcrcScan()
 
   const setLedgerIdParam = (ledgerId: string): void => {
-    setLedgerId(ledgerId)
+    dispatch(setIcrcLedgerId(ledgerId))
     return setSearchParams(
       (prev) => {
         if (ledgerId.length !== 27) {
@@ -39,8 +42,12 @@ const IcrcScan: FC = (): JSX.Element => {
   }
 
   const getIcrcLedgerData = async (): Promise<void> => {
-    await getIcrcMetadata(ledgerIdParam)
-    await getIcrcTxs(ledgerIdParam, offset, itemsPerPage)
+    try {
+      await getIcrcMetadata(ledgerIdParam)
+      await getIcrcTxs(ledgerIdParam, offset, itemsPerPage)
+    } catch (e) {
+      throw new Error(e)
+    }
   }
 
   useEffect(() => {
@@ -64,7 +71,7 @@ const IcrcScan: FC = (): JSX.Element => {
               id="ledger_id"
               placeholder={CKBTC_LEDGER_CANISTER_ID_IC}
               value={ledgerId}
-              onChange={(e) => setLedgerId(e.target.value)}
+              onChange={(e) => dispatch(setIcrcLedgerId(e.target.value))}
             />
             <RectBtn
               btnType={"secondary"}
@@ -127,6 +134,7 @@ const IcrcScanStyled = styled.div`
     > ul.ledgers {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 0.25rem;
       margin-top: 0.5rem;
       font-weight: var(--fwBold);

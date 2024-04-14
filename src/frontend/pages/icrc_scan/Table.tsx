@@ -52,7 +52,8 @@ const Table: FC<TableProps> = ({ icrcMetadata }): JSX.Element => {
             <span>{formatDateTime(+tx.timestamp / 1_000_000)}</span>
             <span>{tx.from_owner ? formatIdLong(tx.from_owner) : "..."}</span>
             <span>{tx.to_owner ? formatIdLong(tx.to_owner) : "..."}</span>
-            <span className="icon">{iExternalLink}</span>
+            <span className="icon"></span>
+            {/* <span className="icon">{iExternalLink}</span> */}
             {/* </a> */}
           </li>
         ))}
@@ -87,6 +88,8 @@ const TableStyled = styled.div`
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
       padding: 0.75rem;
       transition: var(--transition1);
 

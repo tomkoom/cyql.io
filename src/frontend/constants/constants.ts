@@ -57,10 +57,6 @@ export const PROJECTS_SEARCH_PARAMS_INITIAL = {
   q: "",
 }
 
-export const ICRC_SCAN_SEARCH_PARAMS_INITIAL = {
-  ledger_id: "mxzaz-hqaaa-aaaar-qaada-cai",
-}
-
 // ledgers
 export const LEDGERS = [
   { symbol: "ckBTC", name: "ckBTC", id: CKBTC_LEDGER_CANISTER_ID_IC },

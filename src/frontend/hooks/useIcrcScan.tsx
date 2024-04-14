@@ -40,7 +40,6 @@ export const useIcrcScan = (): UseIcrcScan => {
 
     try {
       const response = await fetch(url)
-      // console.log("fetch txs")
       const data = await response.json()
       dispatch(setIcrcTransactionsPaginationTotalItems(data.total_transactions))
       dispatch(setIcrcTransactionsData(data.data))
