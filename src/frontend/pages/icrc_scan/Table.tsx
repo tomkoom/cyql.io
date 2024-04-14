@@ -15,8 +15,6 @@ interface TableProps {
 const Table: FC<TableProps> = ({ icrcMetadata }): JSX.Element => {
   const txs = useAppSelector(selectIcrcTransactionsData)
   const decimalsMultiplied = 10 ** Number(icrcMetadata?.icrc1_decimals)
-  console.log(icrcMetadata)
-  console.log(decimalsMultiplied)
 
   return (
     <TableStyled>
@@ -33,29 +31,29 @@ const Table: FC<TableProps> = ({ icrcMetadata }): JSX.Element => {
       <ul className="content">
         {txs.map((tx, i) => (
           <li key={i}>
-            <a
+            {/* <a
               href={`https://dashboard.internetcomputer.org/bitcoin/transaction/${tx.index}`}
               target="_blank"
               rel="noreferrer noopener"
-            >
-              <span className="index">{tx.index.toString()}</span>
-              <span>{trimZeroes((+tx.amount / decimalsMultiplied).toFixed(8))}</span>
-              <span className="type">
-                <span>
-                  <span className="icon">
-                    {(tx.kind === "transfer" && iRightLeft) ||
-                      (tx.kind === "burn" && iFire) ||
-                      (tx.kind === "approve" && iCheck) ||
-                      (tx.kind === "mint" && iLeaf)}
-                  </span>{" "}
-                  {capitalizeFirstLetter(tx.kind)}
-                </span>
+            > */}
+            <span className="index">{tx.index.toString()}</span>
+            <span>{trimZeroes((+tx.amount / decimalsMultiplied).toFixed(8))}</span>
+            <span className="type">
+              <span>
+                <span className="icon">
+                  {(tx.kind === "transfer" && iRightLeft) ||
+                    (tx.kind === "burn" && iFire) ||
+                    (tx.kind === "approve" && iCheck) ||
+                    (tx.kind === "mint" && iLeaf)}
+                </span>{" "}
+                {capitalizeFirstLetter(tx.kind)}
               </span>
-              <span>{formatDateTime(+tx.timestamp / 1_000_000)}</span>
-              <span>{tx.from_owner ? formatIdLong(tx.from_owner) : "..."}</span>
-              <span>{tx.to_owner ? formatIdLong(tx.to_owner) : "..."}</span>
-              <span className="icon">{iExternalLink}</span>
-            </a>
+            </span>
+            <span>{formatDateTime(+tx.timestamp / 1_000_000)}</span>
+            <span>{tx.from_owner ? formatIdLong(tx.from_owner) : "..."}</span>
+            <span>{tx.to_owner ? formatIdLong(tx.to_owner) : "..."}</span>
+            <span className="icon">{iExternalLink}</span>
+            {/* </a> */}
           </li>
         ))}
       </ul>
@@ -85,55 +83,55 @@ const TableStyled = styled.div`
     }
 
     > li {
-      > a {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 0.75rem;
-        transition: var(--transition1);
+      /* > a { */
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0.75rem;
+      transition: var(--transition1);
 
-        &:hover {
-          background-color: var(--underlay2);
-        }
+      &:hover {
+        background-color: var(--underlay2);
+      }
+
+      > span {
+        color: var(--secondaryColor);
+        flex: 1;
+      }
+
+      > span.index {
+        color: var(--primaryColor);
+      }
+
+      > span.icon {
+        flex: 0.1;
+        color: var(--tertiaryColor);
+      }
+
+      > span.type {
+        display: flex;
 
         > span {
-          color: var(--secondaryColor);
-          flex: 1;
-        }
-
-        > span.index {
-          color: var(--primaryColor);
-        }
-
-        > span.icon {
-          flex: 0.1;
-          color: var(--tertiaryColor);
-        }
-
-        > span.type {
+          height: 1.5rem;
           display: flex;
+          align-items: center;
+          align-self: flex-start;
+          gap: 0.2rem;
+          font-size: 0.7rem;
+          font-weight: var(--fwBold);
+          color: var(--background);
+          background-color: var(--secondaryColor);
+          padding: 0 0.4rem;
 
-          > span {
-            height: 1.5rem;
-            display: flex;
-            align-items: center;
-            align-self: flex-start;
-            gap: 0.2rem;
-            font-size: 0.7rem;
-            font-weight: var(--fwBold);
-            color: var(--background);
-            background-color: var(--secondaryColor);
-            padding: 0 0.4rem;
-
-            > span.icon {
-              width: 1rem;
-              height: 1rem;
-              display: grid;
-              place-items: center;
-            }
+          > span.icon {
+            width: 1rem;
+            height: 1rem;
+            display: grid;
+            place-items: center;
           }
         }
       }
+      /* } */
     }
   }
 `

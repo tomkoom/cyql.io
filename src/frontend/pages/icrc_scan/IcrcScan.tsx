@@ -4,7 +4,7 @@ import { TextInput2 } from "@/components/ui/_index"
 import { RectBtn } from "@/components/btns/_index"
 import { useSearchParams } from "react-router-dom"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
-import { Pagination, Table } from "./_index"
+import { Pagination, Table, Dashboard } from "./_index"
 import { useIcrcScan } from "@/hooks/_index"
 import { LEDGERS } from "@/constants/constants"
 
@@ -63,7 +63,6 @@ const IcrcScan: FC = (): JSX.Element => {
             <TextInput2
               id="ledger_id"
               placeholder={CKBTC_LEDGER_CANISTER_ID_IC}
-              defaultValue={ledgerIdParam}
               value={ledgerId}
               onChange={(e) => setLedgerId(e.target.value)}
             />
@@ -87,6 +86,7 @@ const IcrcScan: FC = (): JSX.Element => {
           ))}
         </ul>
 
+        {txs?.length > 0 && <Dashboard icrcMetadata={icrcMetadata} />}
         {txs?.length > 0 && <Pagination />}
         {txs?.length > 0 && <Table icrcMetadata={icrcMetadata} />}
         {txs?.length > 0 && <Pagination />}
