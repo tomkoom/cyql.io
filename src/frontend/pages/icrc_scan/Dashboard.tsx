@@ -42,7 +42,7 @@ const Dashboard: FC<DashboardProps> = ({ icrcMetadata }): JSX.Element => {
         </li>
 
         <li>
-          <p className="label">Fee</p>
+          <p className="label">Transaction Fee</p>
           <p className="value">{trimZeroes(fee.toFixed(8))}</p>
         </li>
       </ul>

@@ -1,7 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useNav } from "@/hooks/_index"
-import { useNavigate } from "react-router-dom"
 import { Btn } from "@/components/btns/_index"
 import { iPlus } from "@/components/icons/Icons"
 
@@ -15,8 +14,7 @@ import { useAppSelector } from "@/hooks/useRedux"
 import { selectAllProjects } from "@/state/projects"
 
 const Home: FC = (): JSX.Element => {
-  const { toProjects } = useNav()
-  const navigate = useNavigate()
+  const { toProjects, toList } = useNav()
   const projects = useAppSelector(selectAllProjects)
   const projectsTokens = projects.filter((p) =>
     p.category.map((c) => c.toLowerCase()).includes("tokens")
@@ -25,10 +23,6 @@ const Home: FC = (): JSX.Element => {
     p.category.map((c) => c.toLowerCase()).includes("nfts")
   )
 
-  const navigateToListProject = (): void => {
-    navigate("list")
-  }
-
   if (projects.length < 1) {
     return <Loading />
   }
@@ -36,12 +30,7 @@ const Home: FC = (): JSX.Element => {
   return (
     <HomeStyled>
       <Header />
-      <Btn
-        btnType={"secondary"}
-        text={"List Project"}
-        icon={iPlus}
-        onClick={navigateToListProject}
-      />
+      <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} />
       <StaffPicks />
       <Banner />
       <Promo />

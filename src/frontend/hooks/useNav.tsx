@@ -27,6 +27,7 @@ export const useNav = () => {
 
   // proposals
 
+  const toList = (): void => navigate("list")
   const toProposals = (): void => navigate("/proposals")
   const toProposal = (id: string): void => navigate(`/proposals/${id}`)
 
@@ -57,6 +58,7 @@ export const useNav = () => {
     toProject,
 
     // proposals
+    toList,
     toProposals,
     toProposal,
 

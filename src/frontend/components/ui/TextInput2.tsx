@@ -13,9 +13,7 @@ const TextInputOutlinedStyled = styled.input<InputHTMLAttributes<HTMLInputElemen
   font-weight: var(--fwMedium);
   color: var(--primaryColor);
   background-color: var(--underlay1);
-  /* background-color: transparent; */
   caret-color: var(--primaryColor);
-  /* box-shadow: inset 0 0 0 2px var(--underlay2); */
   border: none;
   outline: none;
 
@@ -24,7 +22,6 @@ const TextInputOutlinedStyled = styled.input<InputHTMLAttributes<HTMLInputElemen
   &:hover,
   &:focus {
     background-color: ${(p) => (p.readOnly ? null : "var(--underlay2)")};
-    /* box-shadow: ${(p) => (p.readOnly ? null : "inset 0 0 0 2px var(--highlight1)")}; */
   }
 `
 

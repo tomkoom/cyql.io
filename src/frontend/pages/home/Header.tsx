@@ -1,6 +1,5 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
 
 // state
@@ -13,13 +12,11 @@ const Header: FC = (): JSX.Element => {
 
   return (
     <HeaderStyled>
-      <Title>
-        Curated List of{" "}
-        <span className="projects_num" onClick={toProjects}>
-          {projectsNum > 0 ? projectsNum : "..."}
-        </span>{" "}
-        #ic Projects
-      </Title>
+      <h2>Internet Computer Ecosystem "Playground"</h2>
+      <p>
+        Explore <span onClick={toProjects}>{projectsNum > 0 ? projectsNum : "..."}</span> #ic
+        projects
+      </p>
     </HeaderStyled>
   )
 }
@@ -27,26 +24,22 @@ const Header: FC = (): JSX.Element => {
 const HeaderStyled = styled.div`
   display: flex;
   flex-direction: column;
-`
-
-const Title = styled.h2`
-  font-size: var(--fs1);
-  font-weight: var(--fwBlack);
-  line-height: 125%;
   text-align: center;
 
-  > span.projects_num {
-    text-decoration: underline;
-    cursor: pointer;
-    transition: var(--transition1);
-
-    &:hover {
-      color: var(--secondaryColor);
-    }
+  > h2 {
+    font-size: var(--fs1);
+    font-weight: var(--fwBlack);
+    line-height: 125%;
   }
 
-  @media ${device.mobileL} {
-    font-size: var(--fs2);
+  > p {
+    font-size: var(--fs5);
+    color: var(--secondaryColor);
+
+    > span {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 `
 

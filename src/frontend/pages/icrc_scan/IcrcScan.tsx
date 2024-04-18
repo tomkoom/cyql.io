@@ -55,10 +55,14 @@ const IcrcScan: FC = (): JSX.Element => {
     getIcrcLedgerData()
   }, [ledgerIdParam, offset, itemsPerPage])
 
+  useEffect(() => {
+    dispatch(setIcrcLedgerId(ledgerIdParam))
+  }, [])
+
   return (
     <IcrcScanStyled>
       <div className="title">
-        <h2 className="pageTitle">ICRC Tokens Explorer</h2>
+        <h2 className="pageTitle">ICRC Explorer</h2>
         <p>Explore ICRC tokens transactions and stats</p>
       </div>
 
@@ -74,6 +78,7 @@ const IcrcScan: FC = (): JSX.Element => {
               onChange={(e) => dispatch(setIcrcLedgerId(e.target.value))}
             />
             <RectBtn
+              style={{ height: "4rem" }}
               btnType={"secondary"}
               text={"Search"}
               onClick={() => setLedgerIdParam(ledgerId)}
