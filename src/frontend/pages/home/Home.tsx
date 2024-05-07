@@ -5,7 +5,15 @@ import { Btn } from "@/components/btns/_index"
 import { iPlus } from "@/components/icons/Icons"
 
 // components
-import { Header, HighlightedProjects, JoinCommunity, Promo, StaffPicks, Banner } from "./_index"
+import {
+  Header,
+  HighlightedProjects,
+  JoinCommunity,
+  Promo,
+  StaffPicks,
+  Banner,
+  FlexBanner,
+} from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
 
@@ -32,13 +40,14 @@ const Home: FC = (): JSX.Element => {
       <Header />
       <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} />
       <StaffPicks />
+      <FlexBanner />
       <Banner />
       <Promo />
       <Divider />
 
       <Section>
         <Title>
-          <h3>new projects</h3>
+          <h3>New projects</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projects} />
@@ -47,7 +56,7 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title>
-          <h3>new tokens</h3>
+          <h3>New tokens</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projectsTokens} />
@@ -56,7 +65,7 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title>
-          <h3>new nfts</h3>
+          <h3>New NFTs</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
         <HighlightedProjects projects={projectsNfts} />
@@ -65,7 +74,7 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title style={{ justifyContent: "center" }}>
-          <h3>join community</h3>
+          <h3>Join community</h3>
         </Title>
         <JoinCommunity />
       </Section>

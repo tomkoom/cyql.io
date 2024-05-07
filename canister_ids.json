@@ -1,6 +1,7 @@
 {
   "frontend": {
-    "ic": "n7ib3-4qaaa-aaaai-qagnq-cai"
+    "ic": "n7ib3-4qaaa-aaaai-qagnq-cai",
+    "local": "n7ib3-4qaaa-aaaai-qagnq-cai"
   },
   "backend": {
     "ic": "nrkmt-haaaa-aaaai-qagmq-cai",
@@ -11,9 +12,11 @@
     "local": "bqnir-wqaaa-aaaag-abxhq-cai"
   },
   "users": {
-    "ic": "fy4cw-pqaaa-aaaag-ahkvq-cai"
+    "ic": "fy4cw-pqaaa-aaaag-ahkvq-cai",
+    "local": "fy4cw-pqaaa-aaaag-ahkvq-cai"
   },
   "users_new": {
-    "ic": "dnqgz-fyaaa-aaaag-abxia-cai"
+    "ic": "dnqgz-fyaaa-aaaag-abxia-cai",
+    "local": "dnqgz-fyaaa-aaaag-abxia-cai"
   }
 }

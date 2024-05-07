@@ -12,7 +12,7 @@ const Header: FC = (): JSX.Element => {
 
   return (
     <HeaderStyled>
-      <h2>Internet Computer Ecosystem "Playground"</h2>
+      <h2>Internet Computer Ecosystem Playground</h2>
       <p>
         Explore <span onClick={toProjects}>{projectsNum > 0 ? projectsNum : "..."}</span> #ic
         projects
