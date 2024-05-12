@@ -17,7 +17,7 @@ const Proposals: FC = (): JSX.Element => {
     <ProposalsStyled>
       <div>
         <div className="title">
-          <h2 className="pageTitle">Project Proposals</h2>
+          <h2 className="pageTitle">Proposed Projects</h2>
           <p>Vote to list add projects to the registry</p>
         </div>
 

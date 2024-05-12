@@ -23,6 +23,9 @@ export type ProjectProposalData = {
   backendCanisterId: string
   frontendCanisterId: string
 
+  // logo
+  logo: string
+
   // token
   tokenLedgerId: string
   tokenStandard: string

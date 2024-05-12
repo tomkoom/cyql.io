@@ -12,6 +12,9 @@ const initialState: ProjectProposalData = {
   backendCanisterId: "",
   frontendCanisterId: "",
 
+  // logo
+  logo: "",
+
   // token
   tokenLedgerId: "",
   tokenStandard: "",
@@ -52,6 +55,9 @@ const listProject = createSlice({
     setListProjectCategory(state, { payload }: PayloadAction<string[]>) {
       state.category = payload
     },
+    setListProjectLogo(state, { payload }: PayloadAction<string>) {
+      state.logo = payload
+    },
     setListProjectTokenLedgerId(state, { payload }: PayloadAction<string>) {
       state.tokenLedgerId = payload
     },
@@ -68,6 +74,10 @@ const listProject = createSlice({
 
 export const selectListProject = (state: RootState) => state.listProject
 
-export const { setListProject, setListProjectCategory, setClearProposedProject } =
-  listProject.actions
+export const {
+  setListProject,
+  setListProjectCategory,
+  setListProjectLogo,
+  setClearProposedProject,
+} = listProject.actions
 export default listProject.reducer

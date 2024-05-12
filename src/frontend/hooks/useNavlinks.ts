@@ -19,7 +19,7 @@ export const useNavlinks = (): UseNavlinks => {
   const navlinks: Navlink[] = [
     { label: "Home", pathname: "/", route: toHome, icon: undefined },
     { label: "Curated Projects", pathname: "/projects", route: toProjects, icon: undefined },
-    { label: "Propose Project", pathname: "/list", route: toSubmit, icon: iPlus },
+    { label: "Add Project", pathname: "/list", route: toSubmit, icon: iPlus },
     { label: "Proposals", pathname: "/proposals", route: toProposals, icon: undefined },
     { label: "ICRC Explorer", pathname: "/icrc_scan", route: toIcrcScan, icon: undefined },
   ]

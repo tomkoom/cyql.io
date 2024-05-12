@@ -1,5 +1,12 @@
 export type Tokens = { e8s: number }
 
+export interface CompressedFile {
+  url: string
+  name: string
+  size: number
+  blob: Blob
+}
+
 export interface PromoModalData {
   color: string
   backgroundColor: string

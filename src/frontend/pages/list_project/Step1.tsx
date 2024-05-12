@@ -1,7 +1,7 @@
 import React, { Dispatch, FC, SetStateAction, useState } from "react"
 import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
-import { Category, Token, Primary, Input, Proposer } from "./_index"
+import { Category, Token, Primary, Input, Proposer, AddLogo } from "./_index"
 import { Btn } from "@/components/btns/_index"
 import { web2Links, web3Links, extra, extra2 } from "./_inputs"
 
@@ -61,7 +61,7 @@ const Step1: FC<Step1Props> = ({ setStep }): JSX.Element => {
 
       <StepWrapper>
         <div className="title">
-          <h5>Step 1: Pick Project Category</h5>
+          <h5>1: pick project category</h5>
           <p>One or multiple</p>
         </div>
 
@@ -74,7 +74,21 @@ const Step1: FC<Step1Props> = ({ setStep }): JSX.Element => {
 
       <StepWrapper>
         <div className="title">
-          <h5>Step 2: Fill in the Project Data</h5>
+          <h5>2: add logo</h5>
+          <p>Upload logo</p>
+        </div>
+
+        <Panel>
+          <div className="content">
+            <AddLogo />
+          </div>
+        </Panel>
+      </StepWrapper>
+
+      <StepWrapper>
+        <div className="title">
+          <h5>3: add project data</h5>
+          <p>Fill in core project information</p>
         </div>
 
         <div>
