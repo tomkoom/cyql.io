@@ -7,7 +7,7 @@ const Proposer: FC = (): JSX.Element => {
   return (
     <ProposerStyled>
       <span className="label">Proposer</span>
-      <span className="value">{userId === "2vxsx-fae" ? "[ sign in ]" : userId}</span>
+      <span className="value">{userId === "2vxsx-fae" ? "[...]" : userId}</span>
     </ProposerStyled>
   )
 }
@@ -23,12 +23,6 @@ const ProposerStyled = styled.div`
 
   > span.label {
     color: var(--secondaryColor);
-  }
-
-  > span.value {
-    background-color: var(--underlay1);
-    color: var(--primaryColor);
-    padding: 0.5rem;
   }
 `
 

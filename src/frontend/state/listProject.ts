@@ -2,70 +2,73 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 import type { ListProjectData } from "./_types/dao_types"
 
-const initialState: ListProjectData = {
-  category: [],
+interface ListProjectInitialState {
+  isLogoCompressLoading: boolean
+  project: ListProjectData
+}
 
-  // main
-  name: "",
-  description: "",
-  domain: "",
-  backendCanisterId: "",
-  frontendCanisterId: "",
+const initialState: ListProjectInitialState = {
+  isLogoCompressLoading: false,
+  project: {
+    category: [],
 
-  // logo
-  logo_data_url: "",
+    // main
+    name: "",
+    description: "",
+    domain: "",
+    backend_canister_id: "",
+    frontend_canister_id: "",
 
-  // token
-  tokenLedgerId: "",
-  tokenStandard: "",
+    // logo
+    logo_data_url: "",
 
-  // web2 links
-  x: "",
-  x_twitter: "",
-  discord: "",
-  telegram: "",
-  github: "",
+    // token
+    token_ledger_id: "",
+    token_standard: "",
 
-  // web3 links
-  taggr: "",
-  openchat: "",
-  dscvr: "",
-  funded: "",
+    // web2 links
+    x_twitter: "",
+    discord: "",
+    telegram: "",
+    github: "",
 
-  // ic links
-  dfinityForumShowcase: "",
-  nnsProjectUrl: "",
+    // web3 links
+    taggr: "",
+    openchat: "",
+    dscvr: "",
+    funded: "",
 
-  // docs, whitepaper, etc
-  docs: "",
-  whitepaper: "",
+    // ic links
+    dfinity_forum_showcase: "",
+    nns_launchpad_url: "",
+
+    // docs, whitepaper, etc
+    docs: "",
+    whitepaper: "",
+  },
 }
 
 const listProject = createSlice({
   name: "listProject",
   initialState,
   reducers: {
+    setListProjectIsLogoCompressLoading(state, { payload }: PayloadAction<boolean>) {
+      state.isLogoCompressLoading = payload
+    },
     setListProject(state, { payload }: PayloadAction<{ [key: string]: string }>) {
       const key = Object.keys(payload)[0]
       const value = Object.values(payload)[0]
 
-      if (key in state) {
-        state[key] = value
+      if (key in state.project) {
+        state.project[key] = value
       }
     },
     setListProjectCategory(state, { payload }: PayloadAction<string[]>) {
-      state.category = payload
+      state.project.category = payload
     },
     setListProjectLogoDataUrl(state, { payload }: PayloadAction<string>) {
-      state.logo_data_url = payload
+      state.project.logo_data_url = payload
     },
-    setListProjectTokenLedgerId(state, { payload }: PayloadAction<string>) {
-      state.tokenLedgerId = payload
-    },
-    setListProjectTokenStandard(state, { payload }: PayloadAction<string>) {
-      state.tokenStandard = payload
-    },
-
     // reset
     setClearProposedProject: () => {
       return initialState
@@ -73,9 +76,12 @@ const listProject = createSlice({
   },
 })
 
-export const selectListProject = (state: RootState) => state.listProject
+export const selectListProjectIsLogoCompressLoading = (state: RootState) =>
+  state.listProject.isLogoCompressLoading
+export const selectListProject = (state: RootState) => state.listProject.project
 
 export const {
+  setListProjectIsLogoCompressLoading,
   setListProject,
   setListProjectCategory,
   setListProjectLogoDataUrl,

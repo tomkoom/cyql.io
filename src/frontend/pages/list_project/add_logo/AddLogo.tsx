@@ -10,7 +10,10 @@ import { ReactCropperElement } from "react-cropper"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectListProject } from "@/state/listProject"
-import { setListProjectLogoDataUrl } from "@/state/listProject"
+import {
+  setListProjectLogoDataUrl,
+  selectListProjectIsLogoCompressLoading,
+} from "@/state/listProject"
 
 const AddLogo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -20,6 +23,7 @@ const AddLogo: FC = (): JSX.Element => {
   const [logoDimensions, setLogoDimensions] = useState<Dimensions>()
   const project = useAppSelector(selectListProject)
   const projectLogo = project.logo_data_url
+  const isLogoCompressLoading = useAppSelector(selectListProjectIsLogoCompressLoading)
   const cropperRef = useRef<ReactCropperElement>(null)
 
   const setDimensions = async (fileUrl: string): Promise<void> => {
@@ -68,13 +72,19 @@ const AddLogo: FC = (): JSX.Element => {
   return (
     <AddLogoStyled>
       {/* <p>Logo will be cropped to 400x400 pixels</p> */}
-      <FileBtn logo={logo} setLogo={setLogo} setCompressedFile={setCompressedFile} />
+      <FileBtn
+        logo={logo}
+        compressedFile={compressedFile}
+        setLogo={setLogo}
+        setCompressedFile={setCompressedFile}
+      />
 
       <div className="input">
         {compressedFile && (
           <div className="crop">
             <p>Crop</p>
             <ImgCrop
+              isLogoCompressLoading={isLogoCompressLoading}
               compressedFile={compressedFile}
               logoDimensions={logoDimensions}
               cropperRef={cropperRef}

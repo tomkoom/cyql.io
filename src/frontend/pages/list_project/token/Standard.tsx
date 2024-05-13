@@ -36,7 +36,7 @@ const Standard: FC = (): JSX.Element => {
   ]
 
   const updateTokenStandard = (value: string): void => {
-    dispatch(setListProject({ tokenStandard: value }))
+    dispatch(setListProject({ token_standard: value }))
   }
 
   return (

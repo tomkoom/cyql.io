@@ -10,21 +10,27 @@ import { useAppDispatch } from "@/hooks/useRedux"
 import { setListProjectLogoDataUrl } from "@/state/listProject"
 
 interface ImgCropProps {
+  isLogoCompressLoading: boolean
   compressedFile: CompressedFile
   logoDimensions: Dimensions
   cropperRef: MutableRefObject<ReactCropperElement>
 }
 
-const ImgCrop: FC<ImgCropProps> = ({ compressedFile, logoDimensions, cropperRef }) => {
+const ImgCrop: FC<ImgCropProps> = ({
+  isLogoCompressLoading,
+  compressedFile,
+  logoDimensions,
+  cropperRef,
+}) => {
   const dispatch = useAppDispatch()
 
-  const onCrop = () => {
+  const onCrop = (): void => {
     const cropper = cropperRef.current?.cropper
     const url = cropper.getCroppedCanvas().toDataURL()
-    // console.log(url)
     dispatch(setListProjectLogoDataUrl(url))
   }
 
+  if (isLogoCompressLoading) return <p>Loading...</p>
   if (!compressedFile) return null
   if (!logoDimensions) return null
   if (!cropperRef) return null
@@ -58,10 +64,6 @@ const ImgCrop: FC<ImgCropProps> = ({ compressedFile, logoDimensions, cropperRef 
   )
 }
 
-const ImgCropStyled = styled.div`
-  > img {
-    max-width: 400px;
-  }
-`
+const ImgCropStyled = styled.div``
 
 export default ImgCrop

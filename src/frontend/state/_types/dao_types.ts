@@ -9,7 +9,6 @@ export type No = {
 
 export type Vote = Yes | No
 export type VoteArgs = { vote: Vote; proposalId: number }
-// export type VoteArgs2 = { vote: Vote; votingPower: number; proposalId: number }
 
 // data
 export type ListProjectDataId = number
@@ -20,18 +19,17 @@ export type ListProjectData = {
   name: string
   description: string
   domain: string
-  backendCanisterId: string
-  frontendCanisterId: string
+  backend_canister_id: string
+  frontend_canister_id: string
 
   // logo
   logo_data_url: string
 
   // token
-  tokenLedgerId: string
-  tokenStandard: string
+  token_ledger_id: string
+  token_standard: string
 
   // web2 links
-  x: string
   x_twitter: string
   discord: string
   telegram: string
@@ -44,8 +42,8 @@ export type ListProjectData = {
   funded: string
 
   // ic links
-  dfinityForumShowcase: string
-  nnsProjectUrl: string
+  dfinity_forum_showcase: string
+  nns_launchpad_url: string
 
   // docs, whitepaper, etc
   docs: string

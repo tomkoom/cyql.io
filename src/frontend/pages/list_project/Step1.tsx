@@ -164,7 +164,7 @@ const Step1: FC<Step1Props> = ({ setStep }): JSX.Element => {
 
       <Btn
         btnType={isAuthenticated ? "primary" : "secondary"}
-        text={isAuthenticated ? "Next" : "Sign In"}
+        text={isAuthenticated ? "Next" : "Sign in to List"}
         onClick={nextStep}
       />
 

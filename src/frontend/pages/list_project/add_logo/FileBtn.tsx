@@ -5,13 +5,24 @@ import { CompressedFile } from "@/state/_types/types"
 import { getImageSize } from "react-image-size"
 import { iPlus, iTimes } from "@/components/icons/Icons"
 
+// state
+import { useAppDispatch } from "@/hooks/useRedux"
+import { setListProjectIsLogoCompressLoading } from "@/state/listProject"
+
 interface FileBtnProps {
   logo: File
+  compressedFile: CompressedFile
   setLogo: Dispatch<SetStateAction<File>>
   setCompressedFile: Dispatch<SetStateAction<CompressedFile>>
 }
 
-const FileBtn: FC<FileBtnProps> = ({ logo, setLogo, setCompressedFile }): JSX.Element => {
+const FileBtn: FC<FileBtnProps> = ({
+  logo,
+  // compressedFile,
+  setLogo,
+  setCompressedFile,
+}): JSX.Element => {
+  const dispatch = useAppDispatch()
   const fileInputRef = useRef<HTMLInputElement>()
 
   const clickInput = (): void => {
@@ -27,12 +38,15 @@ const FileBtn: FC<FileBtnProps> = ({ logo, setLogo, setCompressedFile }): JSX.El
       const logo = e.target.files[0]
       setLogo(logo)
 
+      dispatch(setListProjectIsLogoCompressLoading(true))
       try {
         const logoObjectUrl = URL.createObjectURL(logo)
         const dimensions = await getImageSize(logoObjectUrl)
         compressLogo(logo, dimensions, setCompressedFile)
       } catch (error) {
         console.error(error)
+      } finally {
+        dispatch(setListProjectIsLogoCompressLoading(false))
       }
     }
   }

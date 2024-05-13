@@ -15,13 +15,13 @@ export const primary: Input[] = [
   },
   { id: "domain", label: "Domain", placeholder: "app.io", required: false },
   {
-    id: "frontendCanisterId",
+    id: "frontend_canister_id",
     label: "Frontend canister id",
     placeholder: "n7ib3-4qaaa-aaaai-qagnq-cai",
     required: false,
   },
   {
-    id: "backendCanisterId",
+    id: "backend_canister_id",
     label: "Backend canister id",
     placeholder: "nrkmt-haaaa-aaaai-qagmq-cai",
     required: false,
@@ -30,7 +30,7 @@ export const primary: Input[] = [
 
 export const token: Input[] = [
   {
-    id: "tokenLedgerId",
+    id: "token_ledger_id",
     label: "Token ledger id",
     placeholder: "ryjl3-tyaaa-aaaaa-aaaba-cai",
     required: false,
@@ -38,7 +38,7 @@ export const token: Input[] = [
 ]
 
 export const web2Links: Input[] = [
-  { id: "x", label: "X/Twitter", placeholder: "twitter.com/app", required: false },
+  { id: "x_twitter", label: "X/Twitter", placeholder: "twitter.com/app", required: false },
   { id: "discord", label: "Discord", placeholder: "...", required: false },
   { id: "telegram", label: "telegram", placeholder: "t.me/app", required: false },
   { id: "github", label: "GitHub", placeholder: "github.com/app", required: false },
@@ -53,13 +53,13 @@ export const web3Links: Input[] = [
 
 export const extra: Input[] = [
   {
-    id: "dfinityForumShowcase",
+    id: "dfinity_forum_showcase",
     label: "DFINITY forum [showcase] url",
     placeholder: "...",
     required: false,
   },
   {
-    id: "nnsProjectUrl",
+    id: "nns_launchpad_url",
     label: "NNS project url / SNS url",
     placeholder: "nns.ic0.app/project/?project=...",
     required: false,
