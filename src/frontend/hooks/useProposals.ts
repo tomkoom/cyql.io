@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/Auth"
-import type { ProjectProposalData, VoteArgs } from "@/state/_types/dao_types"
+import type { ListProjectData, VoteArgs } from "@/state/_types/dao_types"
 import { bigintToString, notifyErr, notifySuccess } from "@/utils/_index"
 
 // state
@@ -7,7 +7,7 @@ import { useAppDispatch } from "@/hooks/useRedux"
 import { setProposals } from "@/state/dao/proposals"
 
 interface UseProposals {
-  createProposal: (projectData: ProjectProposalData) => Promise<void>
+  createProposal: (projectData: ListProjectData) => Promise<void>
   refreshProposals: () => Promise<void>
   vote: (voteArgs: VoteArgs) => Promise<void>
 }
@@ -16,7 +16,7 @@ export const useProposals = (): UseProposals => {
   const dispatch = useAppDispatch()
   const { proposals, isAuthenticated } = useAuth()
 
-  const createProposal = async (projectData: ProjectProposalData): Promise<void> => {
+  const createProposal = async (projectData: ListProjectData): Promise<void> => {
     if (!proposals) return
     if (!isAuthenticated) return
 

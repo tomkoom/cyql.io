@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { ProjectProposalData } from "@/state/_types/dao_types"
+import type { ListProjectData } from "@/state/_types/dao_types"
 import { DataItem } from "./_index"
 
 interface ProjectDataProps {
-  project: ProjectProposalData
+  project: ListProjectData
 }
 
 const ProjectData: FC<ProjectDataProps> = ({ project }): JSX.Element => {

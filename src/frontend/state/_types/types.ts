@@ -31,7 +31,7 @@ export type Project = {
   name: string
   description: string
   category: string[]
-  logo: string
+  logo_data_url: string
   website: string
   canister: string
   twitter: string

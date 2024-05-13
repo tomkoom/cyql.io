@@ -4,7 +4,7 @@ import type { Input } from "./_inputs"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { setListProject, selectListProject } from "@/state/projectProposal"
+import { setListProject, selectListProject } from "@/state/listProject"
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   input: Input

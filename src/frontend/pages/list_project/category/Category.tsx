@@ -4,7 +4,7 @@ import { CategoryBlock } from "./_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectListProject } from "@/state/projectProposal"
+import { selectListProject } from "@/state/listProject"
 import { selectProposedProjectCategories } from "@/state/categories/proposedProjectCategories"
 
 const Category: FC = (): JSX.Element => {

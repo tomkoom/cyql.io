@@ -7,7 +7,7 @@ import { Dimensions } from "react-image-size"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setListProjectLogo } from "@/state/projectProposal"
+import { setListProjectLogoDataUrl } from "@/state/listProject"
 
 interface ImgCropProps {
   compressedFile: CompressedFile
@@ -22,7 +22,7 @@ const ImgCrop: FC<ImgCropProps> = ({ compressedFile, logoDimensions, cropperRef 
     const cropper = cropperRef.current?.cropper
     const url = cropper.getCroppedCanvas().toDataURL()
     // console.log(url)
-    dispatch(setListProjectLogo(url))
+    dispatch(setListProjectLogoDataUrl(url))
   }
 
   if (!compressedFile) return null
@@ -34,7 +34,7 @@ const ImgCrop: FC<ImgCropProps> = ({ compressedFile, logoDimensions, cropperRef 
       <Cropper
         src={compressedFile.url}
         // style={{ height: 400, width: "100%" }}
-        style={{ height: logoDimensions.height, width: logoDimensions.width }}
+        style={{ height: logoDimensions.height, width: "100%" }}
         // Cropper.js options
         autoCrop={true}
         autoCropArea={1}

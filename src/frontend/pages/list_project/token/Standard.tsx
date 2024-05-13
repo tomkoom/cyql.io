@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setListProject } from "@/state/projectProposal"
+import { setListProject } from "@/state/listProject"
 
 const Standard: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

@@ -8,7 +8,7 @@ import { useAuth } from "@/context/Auth"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectListProject, setClearProposedProject } from "@/state/projectProposal"
+import { selectListProject, setClearProposedProject } from "@/state/listProject"
 import { setIsLoading } from "@/state/loading"
 
 interface Step2Props {

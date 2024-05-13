@@ -1,35 +1,28 @@
-import React, { FC, useState, ChangeEvent, useEffect, useRef } from "react"
+import React, { FC, useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { getImageSize, Dimensions } from "react-image-size"
-import { compressLogo, blobToDataUrl } from "@/utils/process_img/_index"
+import { blobToDataUrl } from "@/utils/process_img/_index"
 import { CompressedFile } from "@/state/_types/types"
-import { formatBytes } from "@/utils/formatBytes"
-import { ImgCrop } from "./_index"
+// import { formatBytes } from "@/utils/formatBytes"
+import { ImgCrop, FileBtn } from "./_index"
 import { ReactCropperElement } from "react-cropper"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectListProject } from "@/state/projectProposal"
-import { setListProjectLogo } from "@/state/projectProposal"
+import { selectListProject } from "@/state/listProject"
+import { setListProjectLogoDataUrl } from "@/state/listProject"
 
 const AddLogo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  // cropper
-  const cropperRef = useRef<ReactCropperElement>(null)
-
-  // ...
   const [logo, setLogo] = useState<File>(null)
   const [logoDataUrl, setLogoDataUrl] = useState<string>(null)
   const [compressedFile, setCompressedFile] = useState<CompressedFile>(null)
   const [logoDimensions, setLogoDimensions] = useState<Dimensions>()
   const project = useAppSelector(selectListProject)
-  const projectLogo = project.logo
+  const projectLogo = project.logo_data_url
+  const cropperRef = useRef<ReactCropperElement>(null)
 
-  const resetLogo = () => {
-    setLogo(null)
-  }
-
-  const setDimensions = async (fileUrl: string) => {
+  const setDimensions = async (fileUrl: string): Promise<void> => {
     try {
       const dimensions = await getImageSize(fileUrl)
       setLogoDimensions(dimensions)
@@ -40,9 +33,8 @@ const AddLogo: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (logo) {
-      // ...
-      const sizeInitial = formatBytes(logo.size)
-      console.log("size initial:", sizeInitial)
+      // const sizeInitial = formatBytes(logo.size)
+      // console.log("size initial:", sizeInitial)
 
       const reader = new FileReader()
       reader.onloadend = () => {
@@ -59,55 +51,24 @@ const AddLogo: FC = (): JSX.Element => {
       setLogoDataUrl(null)
       setCompressedFile(null)
       setLogoDimensions(null)
-      dispatch(setListProjectLogo(""))
+      dispatch(setListProjectLogoDataUrl(""))
     }
   }, [logo])
 
   useEffect(() => {
     if (compressedFile && compressedFile.blob) {
-      const sizeCompressed = formatBytes(compressedFile.size)
-      console.log("size compressed:", sizeCompressed)
+      // const sizeCompressed = formatBytes(compressedFile.size)
+      // console.log("size compressed:", sizeCompressed)
+
       blobToDataUrl(compressedFile.blob, setLogoDataUrl)
       setDimensions(compressedFile.url)
     }
   }, [compressedFile])
 
-  const onImageChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const logo = e.target.files[0]
-      setLogo(logo)
-
-      try {
-        const logoObjectUrl = URL.createObjectURL(logo)
-        const dimensions = await getImageSize(logoObjectUrl)
-        compressLogo(logo, dimensions, setCompressedFile)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-  }
-
   return (
     <AddLogoStyled>
-      <p>Logo will be cropped to 400x400 pixels</p>
-
-      <div>
-        {!logo ? (
-          <input
-            type="file"
-            id="logo"
-            name="logo"
-            accept="image/png, image/jpeg"
-            onChange={(e) => onImageChange(e)}
-          />
-        ) : (
-          <div>
-            <p>{logo.name}</p>
-            <button onClick={resetLogo}>Reset</button>
-            {/* <CrossIcon onClick={resetLogo} /> */}
-          </div>
-        )}
-      </div>
+      {/* <p>Logo will be cropped to 400x400 pixels</p> */}
+      <FileBtn logo={logo} setLogo={setLogo} setCompressedFile={setCompressedFile} />
 
       <div className="input">
         {compressedFile && (
@@ -118,17 +79,12 @@ const AddLogo: FC = (): JSX.Element => {
               logoDimensions={logoDimensions}
               cropperRef={cropperRef}
             />
-            {logoDimensions && (
-              <p className="hint">
-                {logoDimensions.width}x{logoDimensions.height}px
-              </p>
-            )}
           </div>
         )}
 
         {projectLogo && (
           <div>
-            <p>Preview</p>
+            <p>Logo preview</p>
             <img className="logo" src={projectLogo} alt={`${project.name}-logo`} />
           </div>
         )}
@@ -140,29 +96,24 @@ const AddLogo: FC = (): JSX.Element => {
 const AddLogoStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
 
   > div.input {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     flex-wrap: wrap;
 
     > div {
-      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-
-      &.crop {
-        > p.hint {
-          font-size: var(--fs7);
-          color: var(--tertiaryColor);
-        }
-      }
+      font-size: var(--fsText);
 
       > img.logo {
         width: 100%;
         max-width: 200px;
+        border-radius: 50%;
       }
     }
   }

@@ -8,7 +8,7 @@ import { web2Links, web3Links, extra, extra2 } from "./_inputs"
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
-import { selectListProject } from "@/state/projectProposal"
+import { selectListProject } from "@/state/listProject"
 
 interface Step1Props {
   setStep: Dispatch<SetStateAction<number>>

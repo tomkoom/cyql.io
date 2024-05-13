@@ -12,8 +12,8 @@ export type VoteArgs = { vote: Vote; proposalId: number }
 // export type VoteArgs2 = { vote: Vote; votingPower: number; proposalId: number }
 
 // data
-export type ProjectProposalDataId = number
-export type ProjectProposalData = {
+export type ListProjectDataId = number
+export type ListProjectData = {
   category: string[]
 
   // main
@@ -24,7 +24,7 @@ export type ProjectProposalData = {
   frontendCanisterId: string
 
   // logo
-  logo: string
+  logo_data_url: string
 
   // token
   tokenLedgerId: string
@@ -32,6 +32,7 @@ export type ProjectProposalData = {
 
   // web2 links
   x: string
+  x_twitter: string
   discord: string
   telegram: string
   github: string

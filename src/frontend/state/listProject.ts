@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { ProjectProposalData } from "./_types/dao_types"
+import type { ListProjectData } from "./_types/dao_types"
 
-const initialState: ProjectProposalData = {
+const initialState: ListProjectData = {
   category: [],
 
   // main
@@ -13,7 +13,7 @@ const initialState: ProjectProposalData = {
   frontendCanisterId: "",
 
   // logo
-  logo: "",
+  logo_data_url: "",
 
   // token
   tokenLedgerId: "",
@@ -21,6 +21,7 @@ const initialState: ProjectProposalData = {
 
   // web2 links
   x: "",
+  x_twitter: "",
   discord: "",
   telegram: "",
   github: "",
@@ -55,8 +56,8 @@ const listProject = createSlice({
     setListProjectCategory(state, { payload }: PayloadAction<string[]>) {
       state.category = payload
     },
-    setListProjectLogo(state, { payload }: PayloadAction<string>) {
-      state.logo = payload
+    setListProjectLogoDataUrl(state, { payload }: PayloadAction<string>) {
+      state.logo_data_url = payload
     },
     setListProjectTokenLedgerId(state, { payload }: PayloadAction<string>) {
       state.tokenLedgerId = payload
@@ -77,7 +78,7 @@ export const selectListProject = (state: RootState) => state.listProject
 export const {
   setListProject,
   setListProjectCategory,
-  setListProjectLogo,
+  setListProjectLogoDataUrl,
   setClearProposedProject,
 } = listProject.actions
 export default listProject.reducer
