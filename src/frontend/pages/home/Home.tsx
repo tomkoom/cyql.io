@@ -41,7 +41,7 @@ const Home: FC = (): JSX.Element => {
       <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} />
       <StaffPicks />
       <FlexBanner />
-      <Banner />
+      {/* <Banner /> */}
       <Promo />
       <Divider />
 

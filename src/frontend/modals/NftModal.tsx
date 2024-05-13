@@ -31,7 +31,7 @@ const NftModal: FC<NftModalProps> = ({ isOpen }): JSX.Element => {
           <LinkBtn
             btnType={"secondary"}
             url={CYQL_NFT_STATS_URL}
-            text={"Coll. Stats"}
+            text={"Collection Stats"}
             icon={iExternalLink}
           />
 

@@ -69,7 +69,7 @@ module {
     // tokenCanister
   };
 
-  public type Project2 = {
+  public type ProjectV2 = {
     // main
     id : Nat;
     name : Text;

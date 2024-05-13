@@ -46,7 +46,7 @@ module {
   };
 
   public func isAdmin(caller : Principal) : Bool {
-    return caller == Principal.fromText(C.admin)
+    return caller == Principal.fromText(C.adminId)
   };
 
   // accounts
