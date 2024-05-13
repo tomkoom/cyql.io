@@ -39,6 +39,12 @@ export const DONATION_WALLET_URL =
 export const CYQL_MSG_URL = "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
 export const FLEX_SITE_URL = "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/"
 
+// nft
+export const CYQL_NFT_FUNDED_URL = "https://marketplace.funded.app/collections/ic-apps"
+export const CYQL_NFT_ENTREPOT_URL = "https://entrepot.app/marketplace/ic-apps"
+export const CYQL_NFT_STATS_URL =
+  "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
+
 // assets
 export const IC_LOGO = iclogo
 export const LOGO_COLOR = logo_color

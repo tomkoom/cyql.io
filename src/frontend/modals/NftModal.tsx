@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Modal from "@/modals/_Modal"
 import { LinkBtn } from "@/components/btns/_index"
 import { iExternalLink } from "@/components/icons/Icons"
+import { CYQL_NFT_FUNDED_URL, CYQL_NFT_STATS_URL } from "@/constants/constants"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -29,16 +30,14 @@ const NftModal: FC<NftModalProps> = ({ isOpen }): JSX.Element => {
         <div className="links">
           <LinkBtn
             btnType={"secondary"}
-            url={
-              "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
-            }
+            url={CYQL_NFT_STATS_URL}
             text={"Coll. Stats"}
             icon={iExternalLink}
           />
 
           <LinkBtn
             btnType={"primary"}
-            url={"https://entrepot.app/marketplace/ic-apps"}
+            url={CYQL_NFT_FUNDED_URL}
             text={"Buy"}
             icon={iExternalLink}
           />
@@ -60,6 +59,7 @@ const Content = styled.div`
   }
 
   > p {
+    text-align: center;
     font-size: var(--fsText);
     color: var(--secondaryColor);
   }

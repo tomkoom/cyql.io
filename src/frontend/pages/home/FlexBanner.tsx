@@ -5,12 +5,10 @@ import { FLEX_SITE_URL } from "@/constants/constants"
 const FlexBanner: FC = (): JSX.Element => {
   return (
     <FlexBannerStyled href={FLEX_SITE_URL} target="_blank" rel="noreferrer noopener">
-      <span>🔥</span>
       <div className="main">
-        <h6>FLEX</h6>
+        <h6>🔥 FLEX 🔥</h6>
         <p>P2P & Meme Currency on the IC</p>
       </div>
-      <span>🔥</span>
     </FlexBannerStyled>
   )
 }
@@ -30,10 +28,6 @@ const FlexBannerStyled = styled.a`
     background-color: var(--primaryColor);
   }
 
-  > span {
-    font-size: var(--fs5);
-  }
-
   > div.main {
     display: flex;
     flex-direction: column;
@@ -41,7 +35,7 @@ const FlexBannerStyled = styled.a`
     justify-content: center;
 
     > h6 {
-      font-size: var(--fs4);
+      font-size: var(--fs6);
       font-weight: var(--fwBlack);
     }
 

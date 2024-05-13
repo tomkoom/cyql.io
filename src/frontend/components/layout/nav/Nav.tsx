@@ -1,15 +1,13 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-
-// hooks
 import { useNav } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
 
 // components
 import { ProfileBtn, SignInBtn, Socials } from "./_index"
 import { Nft } from "./_index"
-import { Logo, Price } from "@/components/ui/_index"
+import { Logo } from "@/components/ui/_index"
 
 const Nav: FC = (): JSX.Element => {
   const { toHome } = useNav()
@@ -20,7 +18,6 @@ const Nav: FC = (): JSX.Element => {
       <Logo onClick={toHome} />
 
       <Controls>
-        <Price />
         <Socials />
         <Nft />
         {isAuthenticated ? <ProfileBtn /> : <SignInBtn />}

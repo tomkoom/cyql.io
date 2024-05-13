@@ -78,7 +78,6 @@ module {
     website : Text;
 
     // logo
-    logo : Text;
     logoUrl : Text;
     logoDataUrl : Text;
 
