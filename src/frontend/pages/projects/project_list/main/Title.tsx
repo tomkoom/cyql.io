@@ -1,17 +1,17 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { iGithub, iCircleNodes, iMeteor } from "@/components/icons/Icons"
+import { iGithub, iCircleNodes } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui/_index"
-import type { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 interface TitleProps {
-  project: Project
+  project: ProjectV2
 }
 
 const Title: FC<TitleProps> = ({ project }): JSX.Element => {
   const upvotesNum = project.upvotedBy.length
 
-  const format = (description: string) => {
+  const format = (description: string): string => {
     return description && description.length > 70 ? `${description.substring(0, 70)}…` : description
   }
 
@@ -21,8 +21,7 @@ const Title: FC<TitleProps> = ({ project }): JSX.Element => {
         <h4>{project.name}</h4>
         <Icons>
           {project.github && <li id="open">{iGithub}</li>}
-          {project.canister && <li id="onchain">{iCircleNodes}</li>}
-          {project.grantee && <li id="grantee">{iMeteor}</li>}
+          {project.frontendCanisterId && <li id="onchain">{iCircleNodes}</li>}
         </Icons>
         <UpvotesNum upvotesNum={upvotesNum} />
       </Main>

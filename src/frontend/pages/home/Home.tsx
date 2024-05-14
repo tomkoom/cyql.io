@@ -5,25 +5,17 @@ import { Btn } from "@/components/btns/_index"
 import { iPlus } from "@/components/icons/Icons"
 
 // components
-import {
-  Header,
-  HighlightedProjects,
-  JoinCommunity,
-  Promo,
-  StaffPicks,
-  Banner,
-  FlexBanner,
-} from "./_index"
+import { Header, HighlightedProjects, JoinCommunity, Promo, StaffPicks, FlexBanner } from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectAllProjects } from "@/state/projects"
+import { selectAllCuratedProjects } from "@/state/curatedProjects"
 
 const Home: FC = (): JSX.Element => {
   const { toProjects, toList } = useNav()
-  const projects = useAppSelector(selectAllProjects)
+  const projects = useAppSelector(selectAllCuratedProjects)
   const projectsTokens = projects.filter((p) =>
     p.category.map((c) => c.toLowerCase()).includes("tokens")
   )

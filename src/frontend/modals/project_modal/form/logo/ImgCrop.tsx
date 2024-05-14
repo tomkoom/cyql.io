@@ -1,46 +1,41 @@
-import React, { FC, MutableRefObject } from "react"
+import React, { FC, MutableRefObject, SetStateAction, Dispatch } from "react"
 import styled from "styled-components"
+
+// cropper
 import Cropper, { ReactCropperElement } from "react-cropper"
 import "cropperjs/dist/cropper.css"
-import { CompressedFile } from "@/state/_types/types"
-import { Dimensions } from "react-image-size"
-
-// state
-import { useAppDispatch } from "@/hooks/useRedux"
-import { setListProjectLogoDataUrl } from "@/state/listProject"
 
 interface ImgCropProps {
-  isLogoCompressLoading: boolean
-  compressedFile: CompressedFile
-  logoDimensions: Dimensions
+  logo: File
+  setLogoDataUrl: Dispatch<SetStateAction<string>>
+  // setLogoBlob: Dispatch<SetStateAction<Blob>>
+  logoObjectUrl: string
   cropperRef: MutableRefObject<ReactCropperElement>
 }
 
 const ImgCrop: FC<ImgCropProps> = ({
-  isLogoCompressLoading,
-  compressedFile,
-  logoDimensions,
+  logo,
+  setLogoDataUrl,
+  // setLogoBlob,
+  logoObjectUrl,
   cropperRef,
 }) => {
-  const dispatch = useAppDispatch()
-
   const onCrop = (): void => {
     const cropper = cropperRef.current?.cropper
-    const url = cropper.getCroppedCanvas().toDataURL()
-    dispatch(setListProjectLogoDataUrl(url))
+    const url = cropper.getCroppedCanvas().toDataURL(logo.type)
+    // const blob = cropper.getCroppedCanvas().toBlob(logo.type)
+    setLogoDataUrl(url)
+    // setLogoBlob(blob)
   }
 
-  if (isLogoCompressLoading) return <p>Loading...</p>
-  if (!compressedFile) return null
-  if (!logoDimensions) return null
+  if (!logoObjectUrl) return null
   if (!cropperRef) return null
 
   return (
     <ImgCropStyled>
       <Cropper
-        src={compressedFile.url}
-        // style={{ height: 400, width: "100%" }}
-        style={{ height: logoDimensions.height, width: "100%" }}
+        src={logoObjectUrl}
+        style={{ height: 400, width: "100%" }}
         // Cropper.js options
         autoCrop={true}
         autoCropArea={1}

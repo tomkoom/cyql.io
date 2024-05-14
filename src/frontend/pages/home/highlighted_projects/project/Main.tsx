@@ -1,11 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 import { iGithub, iCircleNodes } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui/_index"
 
 interface MainProps {
-  project: Project
+  project: ProjectV2
 }
 
 const Main: FC<MainProps> = ({ project }): JSX.Element => {
@@ -26,7 +26,7 @@ const Main: FC<MainProps> = ({ project }): JSX.Element => {
 
       <Tags>
         {project.category.length > 0 && project.category.join(", ")}{" "}
-        {project.canister && <span>{iCircleNodes} onchain</span>}{" "}
+        {project.frontendCanisterId && <span>{iCircleNodes} onchain</span>}{" "}
         {project.github && <span>{iGithub} open</span>}
       </Tags>
 

@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { Project } from "@/state/_types/types"
 import { RootState } from "@/state/_store"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 type ProjectModalState = {
   isLoading: boolean
   isOpen: boolean
   mode: string
-  project: Project
+  project: ProjectV2
 }
 
 const initialState: ProjectModalState = {
@@ -14,21 +14,25 @@ const initialState: ProjectModalState = {
   isOpen: false,
   mode: "",
   project: {
-    id: "",
-    submittedBy: "",
-    createdAt: "",
-    updatedAt: "",
+    // main
+    id: 0,
     name: "",
     description: "",
     category: [],
-    logo: "",
     website: "",
-    canister: "",
+
+    // logo
+    logoUrl: "",
+    logoDataUrl: "",
+
+    // links web2
     twitter: "",
     discord: "",
     telegram: "",
     github: "",
     medium: "",
+
+    // links web3
     dscvr: "",
     distrikt: "",
     openchat: "",
@@ -37,12 +41,8 @@ const initialState: ProjectModalState = {
     nuance: "",
     catalyze: "",
     funded: "",
-    app: "",
-    docs: "",
-    faq: "",
-    whitepaper: "",
-    grantee: false,
-    archived: false,
+
+    // nft
     nftSaleDate: "",
     nftSaleUrl: "",
     nftUnits: "",
@@ -56,6 +56,30 @@ const initialState: ProjectModalState = {
     nftImg2: "",
     nftImg3: "",
     nftImg4: "",
+
+    // ...
+    app: "",
+    docs: "",
+    faq: "",
+    whitepaper: "",
+
+    // canisters
+    frontendCanisterId: "",
+    backendCanisterId: "",
+
+    // ...
+    dfinityForumShowcase: "",
+    nnsLaunchpadUrl: "",
+
+    // token
+    tokenCanisterId: "",
+    tokenStandard: "",
+
+    // meta
+    archived: false,
+    createdAt: "",
+    updatedAt: "",
+    submittedBy: "",
     upvotedBy: [],
   },
 }
@@ -77,7 +101,12 @@ const projectModal = createSlice({
     setProjectModalMode(state, { payload }: PayloadAction<string>) {
       state.mode = payload
     },
-    setProject(state, { payload }: PayloadAction<Project>) {
+    setProjectModalLogo(state, { payload }: PayloadAction<string>) {
+      state.mode = payload
+    },
+
+    // ...
+    setProject(state, { payload }: PayloadAction<ProjectV2>) {
       state.project = { ...state.project, ...payload }
     },
     setProjectItem(state, { payload }: PayloadAction<ProjectItem<string>>) {
@@ -86,8 +115,8 @@ const projectModal = createSlice({
     setProjectCategory(state, { payload }: PayloadAction<string[]>) {
       state.project.category = payload
     },
-    setProjectGrantee(state, { payload }: PayloadAction<boolean>) {
-      state.project.grantee = payload
+    setProjectLogoDataUrl(state, { payload }: PayloadAction<string>) {
+      state.project.logoDataUrl = payload
     },
     setProjectArchived(state, { payload }: PayloadAction<boolean>) {
       state.project.archived = payload
@@ -110,18 +139,12 @@ const projectModal = createSlice({
 export const selectProjectModalIsLoading = (state: RootState) => state.projectModal.isLoading
 export const selectProjectModalIsOpen = (state: RootState) => state.projectModal.isOpen
 export const selectProjectModalMode = (state: RootState) => state.projectModal.mode
-const selectProject = (state: RootState) => state.projectModal.project
-const selectProjectCategory = (state: RootState) => state.projectModal.project.category
-const selectProjectGrantee = (state: RootState) => state.projectModal.project.grantee
-const selectProjectArchived = (state: RootState) => state.projectModal.project.archived
-const selectProjectDescription = (state: RootState) => state.projectModal.project.description
-export {
-  selectProject,
-  selectProjectCategory,
-  selectProjectGrantee,
-  selectProjectArchived,
-  selectProjectDescription,
-}
+export const selectProjectModal = (state: RootState) => state.projectModal
+// ...
+export const selectProject = (state: RootState) => state.projectModal.project
+export const selectProjectCategory = (state: RootState) => state.projectModal.project.category
+export const selectProjectArchived = (state: RootState) => state.projectModal.project.archived
+export const selectProjectDescription = (state: RootState) => state.projectModal.project.description
 
 export const {
   setProjectModalIsLoading,
@@ -130,7 +153,7 @@ export const {
   setProject,
   setProjectItem,
   setProjectCategory,
-  setProjectGrantee,
+  setProjectLogoDataUrl,
   setProjectArchived,
   setProjectDescription,
 

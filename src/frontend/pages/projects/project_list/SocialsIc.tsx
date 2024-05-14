@@ -1,9 +1,9 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 interface SocialsIcProps {
-  project: Project
+  project: ProjectV2
 }
 
 const SocialsIc: FC<SocialsIcProps> = ({ project }): JSX.Element => {

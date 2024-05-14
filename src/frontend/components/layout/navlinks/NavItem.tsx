@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjects } from "@/state/projects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 
 interface NavItemProps {
   label: string
@@ -15,7 +15,7 @@ interface NavItemProps {
 }
 
 const NavItem: FC<NavItemProps> = ({ label, pathname, icon, route }): JSX.Element => {
-  const projects = useAppSelector(selectActiveProjects)
+  const projects = useAppSelector(selectActiveCuratedProjects)
   const locationPathname = useLocation().pathname
 
   return (

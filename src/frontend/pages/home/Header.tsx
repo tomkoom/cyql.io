@@ -4,11 +4,11 @@ import { useNav } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjectsNum } from "@/state/projects"
+import { selectActiveCuratedProjectsNum } from "@/state/curatedProjects"
 
 const Header: FC = (): JSX.Element => {
   const { toProjects } = useNav()
-  const projectsNum = useAppSelector(selectActiveProjectsNum)
+  const projectsNum = useAppSelector(selectActiveCuratedProjectsNum)
 
   return (
     <HeaderStyled>

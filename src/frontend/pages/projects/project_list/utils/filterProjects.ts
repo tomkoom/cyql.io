@@ -1,16 +1,16 @@
-import type { Project } from "@/state/_types/types"
+import { ProjectV2 } from "@/state/_types/curated_projects_types"
 
-const filterBySearch = (project: Project, searchQuery: string) => {
+const filterBySearch = (project: ProjectV2, searchQuery: string) => {
   return searchQuery === ""
     ? project
     : project.name.toLowerCase().includes(searchQuery.toLowerCase())
 }
 
-const filterByCategory = (project: Project, category: string) => {
+const filterByCategory = (project: ProjectV2, category: string) => {
   return category === "All" ? project : project.category.includes(category)
 }
 
-const filterByOpenSource = (project: Project, openSource: boolean) => {
+const filterByOpenSource = (project: ProjectV2, openSource: boolean) => {
   return openSource === null // unset
     ? project
     : openSource === true
@@ -18,20 +18,12 @@ const filterByOpenSource = (project: Project, openSource: boolean) => {
     : !project.github
 }
 
-const filterByOnChain = (project: Project, onChain: boolean) => {
+const filterByOnChain = (project: ProjectV2, onChain: boolean) => {
   return onChain === null // unset
     ? project
     : onChain === true
-    ? project.canister
-    : !project.canister
+    ? project.frontendCanisterId
+    : !project.frontendCanisterId
 }
 
-const filterByGrantee = (project: Project, grantee: boolean) => {
-  return grantee === null // unset
-    ? project
-    : grantee === true
-    ? project.grantee
-    : !project.grantee
-}
-
-export { filterBySearch, filterByCategory, filterByOpenSource, filterByOnChain, filterByGrantee }
+export { filterBySearch, filterByCategory, filterByOpenSource, filterByOnChain }

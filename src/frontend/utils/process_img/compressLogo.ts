@@ -2,7 +2,7 @@ import Compressor from "compressorjs"
 import { CompressedFile } from "@/state/_types/types"
 import { Dimensions } from "react-image-size"
 
-const getIsPortrait = (dimensions: Dimensions) => {
+const getIsPortrait = (dimensions: Dimensions): boolean => {
   return dimensions.height > dimensions.width
 }
 
@@ -24,7 +24,8 @@ export const compressLogo = (
   fileDimension: Dimensions,
   setFile: (file: CompressedFile) => void
 ): void => {
-  const quality = 0.7
+  // const quality = 0.7
+  const quality = 0.6
   let options = {}
 
   const isPortrait = getIsPortrait(fileDimension)

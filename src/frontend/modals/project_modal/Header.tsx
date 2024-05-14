@@ -18,12 +18,12 @@ const Header: FC = (): JSX.Element => {
     <HeaderStyled>
       {project.id ? (
         <Title>
-          <h5>edit {project.name}</h5>
-          {project.id && <Id>{project.id}</Id>}
+          <h5>Edit {project.name}</h5>
+          {project.id && <p>{project.id}</p>}
         </Title>
       ) : (
         <Title>
-          <h5>add project</h5>
+          <h5>Add new project</h5>
         </Title>
       )}
 
@@ -47,13 +47,13 @@ const Title = styled.div`
   > h4 {
     font-size: var(--fs4);
   }
-`
 
-const Id = styled.p`
-  font-size: var(--fsText);
-  background-color: var(--underlay1);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  > p {
+    font-size: var(--fsText);
+    background-color: var(--underlay1);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
 `
 
 export default Header

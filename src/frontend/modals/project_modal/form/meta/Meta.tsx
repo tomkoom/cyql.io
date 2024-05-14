@@ -25,7 +25,7 @@ const Meta: FC = (): JSX.Element => {
       </div>
 
       <div>
-        <SectionName>archived</SectionName>
+        <SectionName>Archived</SectionName>
 
         <BtnsList>
           <Btn property={project.archived} value={true} label={"true"} setProperty={setArchived} />

@@ -1,11 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 import { useNav } from "@/hooks/_index"
 import { Logo, Main } from "./_index"
 
 interface ProjectProps {
-  project: Project
+  project: ProjectV2
 }
 
 const Project: FC<ProjectProps> = ({ project }): JSX.Element => {
@@ -16,8 +16,8 @@ const Project: FC<ProjectProps> = ({ project }): JSX.Element => {
   }
 
   return (
-    <ProjectStyled onClick={() => openProject(project.id)}>
-      <Logo name={project.name} logo={project.logo} />
+    <ProjectStyled onClick={() => openProject(project.id.toString())}>
+      <Logo name={project.name} logo={project.logoUrl} />
       <Main project={project} />
     </ProjectStyled>
   )

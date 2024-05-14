@@ -7,7 +7,7 @@ import { useNavigate, createSearchParams } from "react-router-dom"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjects } from "@/state/projects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
 interface TagProps {
@@ -16,7 +16,7 @@ interface TagProps {
 }
 
 const Tag: FC<TagProps> = ({ label, route }): JSX.Element => {
-  const projects = useAppSelector(selectActiveProjects)
+  const projects = useAppSelector(selectActiveCuratedProjects)
 
   return (
     <TagStyled onClick={route}>

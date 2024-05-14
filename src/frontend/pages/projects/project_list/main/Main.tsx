@@ -1,16 +1,16 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { Logo, Title } from "./_index"
-import type { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 interface MainProps {
-  project: Project
+  project: ProjectV2
 }
 
 const Main: FC<MainProps> = ({ project }): JSX.Element => {
   return (
     <MainStyled>
-      <Logo logo={project.logo} name={project.name} />
+      <Logo logo={project.logoUrl} name={project.name} />
       <Title project={project} />
     </MainStyled>
   )

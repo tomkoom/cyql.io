@@ -34,7 +34,6 @@ import listConfirmModal from "./modals/listConfirmModal"
 // projects
 import filter from "./projects/filter"
 import sort from "./projects/sort"
-import projects from "./projects"
 import curatedProjects from "./curatedProjects"
 
 const store = configureStore({
@@ -79,7 +78,6 @@ const store = configureStore({
     // projects
     filter,
     sort,
-    projects,
     curatedProjects,
   },
 })

@@ -15,14 +15,14 @@ import {
 
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { addProject, editProject, refreshProjects } = useBackend()
+  const { addCuratedProject, editCuratedProject, refreshCuratedProjects } = useBackend()
   const project = useAppSelector(selectProject)
   const mode = useAppSelector(selectProjectModalMode)
 
   const add = async (): Promise<void> => {
     dispatch(setProjectModalIsLoading(true))
-    await addProject(project)
-    await refreshProjects()
+    await addCuratedProject(project)
+    await refreshCuratedProjects()
     dispatch(setClearProject())
     dispatch(setProjectModalIsLoading(false))
     closeModal()
@@ -30,8 +30,8 @@ const Controls: FC = (): JSX.Element => {
 
   const edit = async (): Promise<void> => {
     dispatch(setProjectModalIsLoading(true))
-    await editProject(project)
-    await refreshProjects()
+    await editCuratedProject(project)
+    await refreshCuratedProjects()
     dispatch(setProjectModalIsLoading(false))
     closeModal()
   }

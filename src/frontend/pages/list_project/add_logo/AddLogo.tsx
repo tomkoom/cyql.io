@@ -60,7 +60,7 @@ const AddLogo: FC = (): JSX.Element => {
   }, [logo])
 
   useEffect(() => {
-    if (compressedFile && compressedFile.blob) {
+    if (compressedFile?.blob) {
       // const sizeCompressed = formatBytes(compressedFile.size)
       // console.log("size compressed:", sizeCompressed)
 

@@ -1,6 +1,6 @@
 import React, { FC, ChangeEvent } from "react"
 import styled, { css } from "styled-components"
-import { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 // formatters
 import { formatStr16, formatWebsite, formatDiscord } from "@/utils/format"
@@ -12,7 +12,7 @@ import { ProjectModal } from "@/modals/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectAllProjects } from "@/state/projects"
+import { selectAllCuratedProjects } from "@/state/curatedProjects"
 import {
   setProjectModalIsOpen,
   setProject,
@@ -23,7 +23,7 @@ import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch"
 
 const Projects: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const projects = useAppSelector(selectAllProjects)
+  const projects = useAppSelector(selectAllCuratedProjects)
   const searchQuery = useAppSelector(selectAdminSearch)
   const isOpen = useAppSelector(selectProjectModalIsOpen)
 
@@ -31,7 +31,7 @@ const Projects: FC = (): JSX.Element => {
     dispatch(setAdminSearch(e.target.value))
   }
 
-  const editProject = (project: Project): void => {
+  const editProject = (project: ProjectV2): void => {
     dispatch(setProject(project))
     dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))
@@ -55,21 +55,21 @@ const Projects: FC = (): JSX.Element => {
         </RowHeader>
 
         {projects
-          .filter((project: Project) => {
+          .filter((project: ProjectV2) => {
             if (searchQuery === "") {
               return project
             } else if (project.name.toLowerCase().includes(searchQuery.toLowerCase())) {
               return project
             }
           })
-          .map((project: Project, i: number) => (
+          .map((project: ProjectV2, i: number) => (
             <Row key={project.id} onClick={() => editProject(project)}>
               <span>{projects.length - i}</span>
               <span>{project.id}</span>
               <span>{project.name && formatStr16(project.name)}</span>
               <span>{project.archived.toString()}</span>
               <span>{project.category.join(", ").toLowerCase()}</span>
-              <span>{project.logo && formatWebsite(project.logo)}</span>
+              <span>{project.logoUrl && formatWebsite(project.logoUrl)}</span>
               <span>{project.twitter && twitterUsername(project.twitter)}</span>
               <span>{project.discord && formatDiscord(project.discord)}</span>
             </Row>

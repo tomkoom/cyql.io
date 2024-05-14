@@ -18,18 +18,18 @@ interface UpvoteBtnProps {
 const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { userId, isAuthenticated } = useAuth()
-  const { refreshProjects, updateUpvote } = useBackend()
+  const { refreshCuratedProjects, updateCuratedProjectUpvote } = useBackend()
   const upvotesNum = upvotedBy.length
   const isUpvotedByUser = upvotedBy.includes(userId)
 
   const upvote = async (projectId: string): Promise<void> => {
     const id: ProjectId = Number(projectId)
     dispatch(setIsLoading(true))
-    await updateUpvote(id).catch((err) => {
+    await updateCuratedProjectUpvote(id).catch((err) => {
       dispatch(setIsLoading(false))
       throw new Error(err)
     })
-    await refreshProjects()
+    await refreshCuratedProjects()
     dispatch(setIsLoading(false))
   }
 

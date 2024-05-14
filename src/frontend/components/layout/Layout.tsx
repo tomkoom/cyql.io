@@ -14,7 +14,7 @@ import { useNav, useScrollLock } from "@/hooks/_index"
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/theme"
-import { selectAllProjects } from "@/state/projects"
+import { selecttAllCuratedProjectsNum } from "@/state/curatedProjects"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 
@@ -24,7 +24,7 @@ const Layout: FC = (): JSX.Element => {
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
-  const projects = useAppSelector(selectAllProjects)
+  const allProjectsNum = useAppSelector(selecttAllCuratedProjectsNum)
   const isLoading = useAppSelector(selectIsLoading)
   const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
 
@@ -58,7 +58,7 @@ const Layout: FC = (): JSX.Element => {
         <Outlet />
       </main>
 
-      {projects.length > 0 && <Footer />}
+      {allProjectsNum > 0 && <Footer />}
       <Cookie />
     </LayoutStyled>
   )

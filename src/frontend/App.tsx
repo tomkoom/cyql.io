@@ -9,7 +9,7 @@ import { useBackend, useNft, useIcpLedger, useProposals } from "./hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjects } from "@/state/projects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 import { setSignInModalIsOpen } from "./state/modals/signInModal"
@@ -17,16 +17,16 @@ import { setSignInModalIsOpen } from "./state/modals/signInModal"
 const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { actor, nft, isAuthenticated, accounntIdHex } = useAuth()
-  const { refreshProjects } = useBackend()
+  const { refreshCuratedProjects } = useBackend()
   const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
   const { refreshProposals } = useProposals()
-  const projects = useAppSelector(selectActiveProjects)
+  const projects = useAppSelector(selectActiveCuratedProjects)
   const allCategories = useAppSelector(selectAllCategories)
 
   const refresh = async (): Promise<void> => {
     await refreshProposals()
-    await refreshProjects()
+    await refreshCuratedProjects()
   }
 
   useEffect(() => {

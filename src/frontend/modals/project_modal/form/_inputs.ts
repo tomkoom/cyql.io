@@ -1,8 +1,8 @@
 const main = [
   { id: "name", type: "text" },
   { id: "website", type: "text" },
-  { id: "canister", type: "text" },
-  { id: "logo", type: "text" },
+  { id: "frontendCanisterId", type: "text" },
+  { id: "logoUrl", type: "text" },
 ]
 
 const socials = [

@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iTwitter, iDiscord, iTelegram, iGithub, iMedium } from "@/components/icons/Icons"
-import { Project } from "@/state/_types/types"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 interface SocialsProps {
-  project: Project
+  project: ProjectV2
 }
 
 const Socials: FC<SocialsProps> = ({ project }): JSX.Element => {

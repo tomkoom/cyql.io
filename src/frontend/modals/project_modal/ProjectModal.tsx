@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
-import { useScrollLock } from "@/hooks/useScrollLock"
+import { useScrollLock } from "@/hooks/_index"
 
 // components
-import { Controls, FormContent, Header } from "./_index"
+import { Controls, Form, Header } from "./_index"
 import { Loading } from "@/components/ui/_index"
 
 // state
@@ -41,14 +41,14 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
 
   return createPortal(
     <ProjectModalStyled className={theme}>
-      <Main>
+      <div className="content">
         <Header />
 
-        <Form>
-          <FormContent />
+        <div className="form">
+          <Form />
           <Controls />
-        </Form>
-      </Main>
+        </div>
+      </div>
     </ProjectModalStyled>,
     document.getElementById("modal")
   )
@@ -67,18 +67,18 @@ const ProjectModalStyled = styled.div`
   /* overflow */
   height: 100%;
   overflow: auto;
-`
 
-const Main = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
+  > div.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-const Form = styled.div`
-  margin-top: 1rem;
+    > div.form {
+      margin-top: 1rem;
+    }
+  }
 `
 
 export default ProjectModal

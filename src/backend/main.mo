@@ -81,19 +81,17 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   // ...
-  // curate projects v2
+  // curated projects v2
 
   public shared ({ caller }) func addProjectV2(project : T.ProjectV2) : async ?T.ProjectId {
-    // verify caller
-    assert (not Principal.isAnonymous(caller));
+    assert (caller == frontendAdminId1Principal or caller == frontendAdminId2Principal);
     let projectId = Int.abs(Time.now());
     curatedProjectsV2.put(projectId, { project with id = projectId });
     return ?projectId
   };
 
   public shared ({ caller }) func editProjectV2(projectId : T.ProjectId, project : T.ProjectV2) : async ?T.ProjectId {
-    // verify caller
-    assert (frontendAdminId1Principal == caller or frontendAdminId2Principal == caller);
+    assert (caller == frontendAdminId1Principal or caller == frontendAdminId2Principal);
     curatedProjectsV2.put(projectId, project);
     return ?projectId
   };
@@ -102,6 +100,18 @@ shared actor class _CURATED_PROJECTS() = Self {
     assert U.isAdmin(caller);
     curatedProjectsV2.delete(projectId);
     return ?projectId
+  };
+
+  public shared ({ caller }) func deleteAllProjectsV2() : async () {
+    assert U.isAdmin(caller);
+    for (p in curatedProjectsV2.vals()) {
+      curatedProjectsV2.delete(p.id)
+    }
+  };
+
+  public shared ({ caller }) func getAllProjectsNumV2() : async Nat {
+    assert U.isAdmin(caller);
+    return curatedProjectsV2.size()
   };
 
   public query func listProjectsV2() : async [T.ProjectV2] {

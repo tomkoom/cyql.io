@@ -48,16 +48,20 @@ const CategoryList: FC = (): JSX.Element => {
 const CategoryListStyled = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
 `
 
 const Item = styled.li`
   font-size: var(--fsText);
   font-weight: var(--fwMedium);
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: var(--underlay1);
-  border-radius: 0.5rem;
   cursor: pointer;
+  transition: var(--transition1);
+
+  &:hover {
+    background-color: var(--underlay2);
+  }
 `
 
 export default CategoryList

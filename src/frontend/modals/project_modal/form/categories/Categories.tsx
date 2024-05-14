@@ -6,7 +6,7 @@ const Categories: FC = (): JSX.Element => {
   return (
     <div>
       <Title>
-        category <span>one or multiple</span>
+        Category <span>one or multiple</span>
       </Title>
       <CategoryList />
     </div>

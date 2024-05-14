@@ -7,7 +7,7 @@ import { getCategoryNum } from "@/utils/getCategoryNum"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjects } from "@/state/projects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
 interface CategoryListModalProps {
@@ -19,7 +19,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   openCategoryList,
   setOpenCategoryList,
 }): JSX.Element => {
-  const projects = useAppSelector(selectActiveProjects)
+  const projects = useAppSelector(selectActiveCuratedProjects)
   const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
   // ...

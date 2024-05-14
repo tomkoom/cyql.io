@@ -1,74 +1,94 @@
 import { useAuth } from "@/context/Auth"
-import { sortProjectsByDate } from "@/utils/sortProjectsByDate"
-import type { Project, ProjectId } from "@/state/_types/types"
-import { verifyAdmin } from "@/utils/_index"
+import { verifyAdmin, sortProjectsByDate } from "@/utils/_index"
+import type { ProjectV2, ProjectId } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
 import {
-  setActiveProjects,
-  setActiveProjectsNum,
-  setAllProjects,
-  setAllProjectsNum,
-  setProjectsLoading,
-} from "@/state/projects"
+  setActiveCuratedProjects,
+  setAllCuratedProjects,
+  setCuratedProjectsIsLoading,
+} from "@/state/curatedProjects"
 
-export const useBackend = () => {
+interface UseBackend {
+  refreshCuratedProjects: () => Promise<void>
+  addCuratedProject: (project: ProjectV2) => Promise<void>
+  editCuratedProject: (project: ProjectV2) => Promise<void>
+  updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<void>
+}
+
+export const useBackend = (): UseBackend => {
   const dispatch = useAppDispatch()
   const { actor, userId } = useAuth()
 
-  const refreshProjects = async (): Promise<void> => {
+  const refreshCuratedProjects = async (): Promise<void> => {
     if (!actor) return
 
-    dispatch(setProjectsLoading(true))
-    const allProjects: Project[] = await actor
-      .listProjects()
-      .then((p) => p.map((p) => ({ ...p, id: Number(p.id).toString() })))
+    dispatch(setCuratedProjectsIsLoading(true))
+    try {
+      const allProjects = await actor.listProjectsV2()
+      const serialized = allProjects.map((p) => ({ ...p, id: Number(p.id) }))
+      serialized.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
+      const activeProjects: ProjectV2[] = serialized.filter((p) => !p.archived)
 
-    allProjects.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
-    const activeProjects: Project[] = allProjects.filter((p) => !p.archived)
-
-    // set state
-    dispatch(setAllProjects(allProjects))
-    dispatch(setAllProjectsNum(allProjects.length))
-    dispatch(setActiveProjects(activeProjects))
-    dispatch(setActiveProjectsNum(activeProjects.length))
-    dispatch(setProjectsLoading(false))
-  }
-
-  const addProject = async (project: Project): Promise<void> => {
-    if (!verifyAdmin(userId)) return
-    if (project.id !== "") return
-
-    await actor.addProject({
-      ...project,
-      id: BigInt(0),
-      createdAt: String(Date.now()),
-    })
-  }
-
-  const editProject = async (project: Project): Promise<void> => {
-    if (!verifyAdmin(userId)) return
-    if (project.id === "") return
-
-    const id = BigInt(Number(project.id))
-    const p = {
-      ...project,
-      id,
-      updatedAt: String(Date.now()),
+      // set state
+      dispatch(setAllCuratedProjects(serialized))
+      dispatch(setActiveCuratedProjects(activeProjects))
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      dispatch(setCuratedProjectsIsLoading(false))
     }
-
-    await actor.editProject(id, p)
   }
 
-  const updateUpvote = async (projectId: ProjectId): Promise<void> => {
-    await actor.updateUpvote(BigInt(projectId))
+  const addCuratedProject = async (project: ProjectV2): Promise<void> => {
+    if (!actor) return
+    if (!verifyAdmin(userId)) return
+    if (project.id) return
+
+    try {
+      await actor.addProjectV2({
+        ...project,
+        id: BigInt(0), // placeholder id
+        createdAt: String(Date.now()),
+      })
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const editCuratedProject = async (project: ProjectV2): Promise<void> => {
+    if (!actor) return
+    if (!verifyAdmin(userId)) return
+    if (!project.id) return
+
+    try {
+      const id = BigInt(Number(project.id))
+      const p = {
+        ...project,
+        id,
+        updatedAt: String(Date.now()),
+      }
+      await actor.editProjectV2(id, p)
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const updateCuratedProjectUpvote = async (projectId: ProjectId): Promise<void> => {
+    if (!actor) return
+
+    try {
+      await actor.updateUpvoteV2(BigInt(projectId))
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   return {
-    refreshProjects,
-    addProject,
-    editProject,
-    updateUpvote,
+    refreshCuratedProjects,
+    addCuratedProject,
+    editCuratedProject,
+    updateCuratedProjectUpvote,
   }
 }

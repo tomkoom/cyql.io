@@ -1,50 +1,46 @@
-import React from "react";
-import css from "./HighlightedByCategory.module.css";
-
-// icons
-import { iCheckCircle } from "@/components/icons/Icons";
-
-// hooks
-import useNav from "@/hooks/useNav";
+import React from "react"
+import css from "./HighlightedByCategory.module.css"
+import { iCheckCircle } from "@/components/icons/Icons"
+import { useNav } from "@/hooks/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux";
-import { selectAllProjects } from "@/state/projects";
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectAllCuratedProjects } from "@/state/curatedProjects"
 
 // components
 // import { UpvoteBtn } from "@/components/btns/index";
-import { Logo } from "./_index";
+import { Logo } from "./_index"
 
 const HighlightedByCategory = ({ filter }) => {
-  const { toProject } = useNav();
-  const projects = useAppSelector(selectAllProjects).filter(
+  const { toProject } = useNav()
+  const projects = useAppSelector(selectAllCuratedProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
-  );
+  )
 
   const sortByUpvotes = (a, b) => {
-    const aUpvotes = a.data.upvotes;
-    const bUpvotes = b.data.upvotes;
+    const aUpvotes = a.data.upvotes
+    const bUpvotes = b.data.upvotes
     if (aUpvotes && bUpvotes) {
-      return bUpvotes.length - aUpvotes.length;
+      return bUpvotes.length - aUpvotes.length
     } else if (!aUpvotes && bUpvotes) {
-      return 1;
+      return 1
     } else if (aUpvotes && !bUpvotes) {
-      return -1;
+      return -1
     }
-    return 0;
-  };
+    return 0
+  }
 
   const sortByVerified = (a, b) => {
-    return a.data.verified === b.data.verified ? 0 : a.data.verified ? -1 : 1;
-  };
+    return a.data.verified === b.data.verified ? 0 : a.data.verified ? -1 : 1
+  }
 
   const formatDescription = (d) => {
-    return d.length > 60 ? `${d.substring(0, 60)}…` : d;
-  };
+    return d.length > 60 ? `${d.substring(0, 60)}…` : d
+  }
 
   const openProject = (id) => {
-    toProject(id);
-  };
+    toProject(id)
+  }
 
   return (
     <ul className={css.projects}>
@@ -80,7 +76,7 @@ const HighlightedByCategory = ({ filter }) => {
           </li>
         ))}
     </ul>
-  );
-};
+  )
+}
 
-export default HighlightedByCategory;
+export default HighlightedByCategory

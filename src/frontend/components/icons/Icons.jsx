@@ -116,6 +116,8 @@ const iShare = <FontAwesomeIcon icon={faShare} />
 const iShareSquare = <FontAwesomeIcon icon={faShareSquare} />
 const iCircleNodes = <FontAwesomeIcon icon={faCircleNodes} />
 const iScroll = <FontAwesomeIcon icon={faScroll} />
+
+// ...
 export const iCircle = <FontAwesomeIcon icon={faCircle} />
 export const iCircleDot = <FontAwesomeIcon icon={faCircleDot} />
 export const iCoins = <FontAwesomeIcon icon={faCoins} />

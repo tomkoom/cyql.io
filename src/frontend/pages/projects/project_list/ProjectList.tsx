@@ -12,7 +12,6 @@ import {
   filterByCategory,
   filterByOpenSource,
   filterByOnChain,
-  filterByGrantee,
 } from "./utils/filterProjects"
 
 // components
@@ -29,7 +28,10 @@ import {
   selectFilterByOnChain,
   selectFilterByGrantee,
 } from "@/state/projects/filter"
-import { selectActiveProjects, selectActiveProjectsNum } from "@/state/projects"
+import {
+  selectActiveCuratedProjects,
+  selectActiveCuratedProjectsNum,
+} from "@/state/curatedProjects"
 
 interface ProjectListProps {
   searchQ: string
@@ -43,8 +45,8 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   const category = searchParams.get("category")
 
   // projects
-  const projects = useAppSelector(selectActiveProjects)
-  const projectsNum = useAppSelector(selectActiveProjectsNum)
+  const projects = useAppSelector(selectActiveCuratedProjects)
+  const projectsNum = useAppSelector(selectActiveCuratedProjectsNum)
   const itemsVisible = useAppSelector(selectItemsVisibleProjects)
 
   // filter
@@ -83,7 +85,6 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
           .filter((project) => filterByCategory(project, category))
           .filter((project) => filterByOpenSource(project, openSource))
           .filter((project) => filterByOnChain(project, onChain))
-          .filter((project) => filterByGrantee(project, grantee))
 
           // sort
           .sort((a, b) =>
@@ -100,7 +101,7 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
           )
           .slice(0, itemsVisible)
           .map((p) => (
-            <li key={p.id} onClick={() => toProject(p.id)}>
+            <li key={p.id} onClick={() => toProject(p.id.toString())}>
               <div className="main1">
                 <Main project={p} />
               </div>
@@ -119,7 +120,7 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
 
               <div className="upvote">
                 <div className="btn" onClick={(e) => e.stopPropagation()}>
-                  <UpvoteBtn projectId={p.id} location={""} upvotedBy={p.upvotedBy} />
+                  <UpvoteBtn projectId={p.id.toString()} location={""} upvotedBy={p.upvotedBy} />
                 </div>
               </div>
             </li>
