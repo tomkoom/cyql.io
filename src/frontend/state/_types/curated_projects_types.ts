@@ -1,46 +1,26 @@
-// curated projects types
-
-export type Tokens = { e8s: number }
-
-export interface CompressedFile {
-  url: string
-  name: string
-  size: number
-  blob: Blob
-}
-
-export interface PromoModalData {
-  color: string
-  backgroundColor: string
-  title: string
-  text: string
-  ctaUrl: string
-  ctaText: string
-}
-
-export type Category = {
-  id: string
-  label: string
-  icon: string
-}
+// backend/types.mo
 
 export type ProjectId = number
-export type Project = {
-  id: string
-  submittedBy: string
-  createdAt: string
-  updatedAt: string
+export type ProjectV2 = {
+  // main
+  id: ProjectId
   name: string
   description: string
   category: string[]
-  logo_data_url: string
   website: string
-  canister: string
+
+  // logo
+  logoUrl: string
+  logoDataUrl: string
+
+  // links web2
   twitter: string
   discord: string
   telegram: string
   github: string
   medium: string
+
+  // links web3
   dscvr: string
   distrikt: string
   openchat: string
@@ -49,12 +29,8 @@ export type Project = {
   nuance: string
   catalyze: string
   funded: string
-  app: string
-  docs: string
-  faq: string
-  whitepaper: string
-  grantee: boolean
-  archived: boolean
+
+  // nft
   nftSaleDate: string
   nftSaleUrl: string
   nftUnits: string
@@ -68,5 +44,29 @@ export type Project = {
   nftImg2: string
   nftImg3: string
   nftImg4: string
+
+  // ...
+  app: string
+  docs: string
+  faq: string
+  whitepaper: string
+
+  // canisters
+  frontendCanisterId: string
+  backendCanisterId: string
+
+  // ...
+  dfinityForumShowcase: string
+  nnsLaunchpadUrl: string
+
+  // token
+  tokenCanisterId: string
+  tokenStandard: string
+
+  // meta
+  archived: boolean
+  createdAt: string
+  updatedAt: string
+  submittedBy: string
   upvotedBy: string[]
 }

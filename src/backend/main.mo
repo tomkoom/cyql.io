@@ -16,7 +16,7 @@ import T "types";
 import U "utils";
 import C "_constants";
 
-shared actor class CURATED_PROJECTS() = Self {
+shared actor class _CURATED_PROJECTS() = Self {
 
   let frontendAdminId1Principal = Principal.fromText(C.frontendAdminId1);
   let frontendAdminId2Principal = Principal.fromText(C.frontendAdminId2);
@@ -61,7 +61,7 @@ shared actor class CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
-    // add assert upvoter is user
+    // verify caller
     assert (not U.isAnon(caller));
 
     let userId = Principal.toText(caller);
@@ -107,6 +107,26 @@ shared actor class CURATED_PROJECTS() = Self {
   public query func listProjectsV2() : async [T.ProjectV2] {
     let iter : Iter.Iter<T.ProjectV2> = curatedProjectsV2.vals();
     return Iter.toArray<T.ProjectV2>(iter)
+  };
+
+  public shared ({ caller }) func updateUpvoteV2(projectId : T.ProjectId) : async ?T.ProjectId {
+    // verify caller
+    assert (not Principal.isAnonymous(caller));
+
+    let userId = Principal.toText(caller);
+    let ?p = curatedProjectsV2.get(projectId) else return null;
+    let upvotedByBuf = Buffer.fromArray<Text>(p.upvotedBy);
+    let isAlreadyUpvoted = Buffer.contains<Text>(upvotedByBuf, userId, Text.equal);
+
+    if (not isAlreadyUpvoted) {
+      upvotedByBuf.add(userId)
+    } else {
+      let ?idx = Buffer.indexOf<Text>(userId, upvotedByBuf, Text.equal) else return null;
+      let _removed = upvotedByBuf.remove(idx)
+    };
+
+    curatedProjectsV2.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
+    return ?projectId
   };
 
   // test

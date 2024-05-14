@@ -120,7 +120,6 @@ module {
     whitepaper : Text;
 
     // canisters
-    canister : Text;
     frontendCanisterId : Text;
     backendCanisterId : Text;
 

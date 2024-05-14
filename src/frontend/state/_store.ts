@@ -35,6 +35,7 @@ import listConfirmModal from "./modals/listConfirmModal"
 import filter from "./projects/filter"
 import sort from "./projects/sort"
 import projects from "./projects"
+import curatedProjects from "./curatedProjects"
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -79,6 +80,7 @@ const store = configureStore({
     filter,
     sort,
     projects,
+    curatedProjects,
   },
 })
 
