@@ -14,7 +14,6 @@ const TextInputStyled = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   color: var(--primaryColor);
   background-color: var(--underlay1);
   caret-color: var(--primaryColor);
-  border-radius: 1.5rem;
   border: none;
   outline: none;
 

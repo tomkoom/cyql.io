@@ -19,7 +19,7 @@ const Header: FC = (): JSX.Element => {
       {project.id ? (
         <Title>
           <h5>Edit {project.name}</h5>
-          {project.id && <p>{project.id}</p>}
+          {project.id && <p>id: {project.id}</p>}
         </Title>
       ) : (
         <Title>
@@ -52,7 +52,6 @@ const Title = styled.div`
     font-size: var(--fsText);
     background-color: var(--underlay1);
     padding: 0.5rem;
-    border-radius: 0.5rem;
   }
 `
 

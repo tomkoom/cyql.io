@@ -9,7 +9,7 @@ import { Loading } from "@/components/ui/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectProjectModalIsLoading } from "@/state/modals/projectModal"
+import { selectProjectModalIsLoading, selectProjectModalMode } from "@/state/modals/projectModal"
 import { selectTheme } from "@/state/theme"
 
 interface ProjectModalProps {
@@ -20,6 +20,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectProjectModalIsLoading)
+  const mode = useAppSelector(selectProjectModalMode)
 
   useEffect(() => {
     if (isOpen) {
@@ -42,6 +43,7 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   return createPortal(
     <ProjectModalStyled className={theme}>
       <div className="content">
+        <p>Mode: {mode}</p>
         <Header />
 
         <div className="form">

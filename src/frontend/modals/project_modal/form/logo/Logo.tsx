@@ -10,7 +10,11 @@ import Compressor from "compressorjs"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectLogoDataUrl } from "@/state/modals/projectModal"
+import {
+  selectProject,
+  setProjectLogoDataUrl,
+  selectProjectModalMode,
+} from "@/state/modals/projectModal"
 
 const Logo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -20,9 +24,11 @@ const Logo: FC = (): JSX.Element => {
   // const [logoBlob, setLogoBlob] = useState<Blob>(null)
   const [compressedFile, setCompressedFile] = useState<CompressedFile>(null)
   // ...
+  const mode = useAppSelector(selectProjectModalMode)
   const project = useAppSelector(selectProject)
   const projectLogo = project.logoDataUrl
   const cropperRef = useRef<ReactCropperElement>(null)
+  console.log(projectLogo)
 
   // compress image after crop
   const crop = async (logoDataUrl: string) => {
@@ -38,14 +44,12 @@ const Logo: FC = (): JSX.Element => {
     new Compressor(logoBlob, {
       ...options,
       success: (compressedResult: Blob) => {
-        const url = URL.createObjectURL(compressedResult)
-        const name = compressedResult.name
-        const size = compressedResult.size
         // const type = compressedResult.type
         const file = {
-          url,
-          name,
-          size,
+          url: URL.createObjectURL(compressedResult),
+          name: compressedResult.name,
+          size: compressedResult.size,
+          // type
           blob: compressedResult,
         }
         setCompressedFile(file)
@@ -58,23 +62,25 @@ const Logo: FC = (): JSX.Element => {
 
   // create object url
   useEffect(() => {
-    if (logo) {
-      const logoObjUrl = URL.createObjectURL(logo)
-      setLogoObjectUrl(logoObjUrl)
+    if (mode === "add") {
+      if (logo) {
+        const logoObjUrl = URL.createObjectURL(logo)
+        setLogoObjectUrl(logoObjUrl)
 
-      const sizeInitial = formatBytes(logo.size)
-      console.log("size initial: ", sizeInitial)
-    } else {
-      // reset cropper
-      if (cropperRef) {
-        const cropper = cropperRef.current?.cropper
-        cropper?.clear()
+        const sizeInitial = formatBytes(logo.size)
+        console.log("size initial: ", sizeInitial)
+      } else {
+        // reset cropper
+        if (cropperRef) {
+          const cropper = cropperRef.current?.cropper
+          cropper?.clear()
+        }
+
+        setLogoObjectUrl("")
+        setLogoDataUrl(null)
+        setCompressedFile(null)
+        dispatch(setProjectLogoDataUrl(""))
       }
-
-      setLogoObjectUrl("")
-      setLogoDataUrl(null)
-      setCompressedFile(null)
-      dispatch(setProjectLogoDataUrl(""))
     }
   }, [logo])
 

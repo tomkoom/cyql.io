@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { useBackend } from "@/hooks/_index"
 import { Btn } from "@/components/btns/_index"
+import type { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -16,24 +17,36 @@ import {
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { addCuratedProject, editCuratedProject, refreshCuratedProjects } = useBackend()
-  const project = useAppSelector(selectProject)
+  const project: ProjectV2 = useAppSelector(selectProject)
   const mode = useAppSelector(selectProjectModalMode)
 
   const add = async (): Promise<void> => {
     dispatch(setProjectModalIsLoading(true))
-    await addCuratedProject(project)
-    await refreshCuratedProjects()
-    dispatch(setClearProject())
-    dispatch(setProjectModalIsLoading(false))
-    closeModal()
+
+    try {
+      await addCuratedProject(project)
+      await refreshCuratedProjects()
+      dispatch(setClearProject())
+      closeModal()
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      dispatch(setProjectModalIsLoading(false))
+    }
   }
 
   const edit = async (): Promise<void> => {
     dispatch(setProjectModalIsLoading(true))
-    await editCuratedProject(project)
-    await refreshCuratedProjects()
-    dispatch(setProjectModalIsLoading(false))
-    closeModal()
+
+    try {
+      await editCuratedProject(project)
+      await refreshCuratedProjects()
+      closeModal()
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      dispatch(setProjectModalIsLoading(false))
+    }
   }
 
   const closeModal = (): void => {

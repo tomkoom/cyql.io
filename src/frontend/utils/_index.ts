@@ -11,5 +11,5 @@ export { notifyErr, notifySuccess } from "./notify"
 export { bigintToNumber, bigintToString } from "./serializeBigint"
 export { sortProjectsByDate } from "./sortProjectsByDate"
 export { trimZeroes } from "./trimZeroes"
+export { twitterUsername } from "./twitterUsername"
 export { verifyAdmin } from "./verifyAdmin"
-

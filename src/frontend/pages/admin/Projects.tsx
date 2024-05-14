@@ -1,14 +1,8 @@
-import React, { FC, ChangeEvent } from "react"
+import React, { FC } from "react"
 import styled, { css } from "styled-components"
 import type { ProjectV2 } from "@/state/_types/curated_projects_types"
-
-// formatters
-import { formatStr16, formatWebsite, formatDiscord } from "@/utils/format"
-import { twitterUsername } from "@/utils/twitterUsername"
-
-// components
-import { TextInput } from "@/components/ui/_index"
 import { ProjectModal } from "@/modals/_index"
+import { twitterUsername, formatStr16, formatWebsite, formatDiscord } from "@/utils/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -19,7 +13,7 @@ import {
   setProjectModalMode,
   selectProjectModalIsOpen,
 } from "@/state/modals/projectModal"
-import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch"
+import { selectAdminSearch } from "@/state/admin/adminSearch"
 
 const Projects: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -27,11 +21,8 @@ const Projects: FC = (): JSX.Element => {
   const searchQuery = useAppSelector(selectAdminSearch)
   const isOpen = useAppSelector(selectProjectModalIsOpen)
 
-  const setSearch = (e: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(setAdminSearch(e.target.value))
-  }
-
   const editProject = (project: ProjectV2): void => {
+    console.log(project)
     dispatch(setProject(project))
     dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))
@@ -40,7 +31,6 @@ const Projects: FC = (): JSX.Element => {
   return (
     <div>
       <ProjectModal isOpen={isOpen} />
-      <TextInput placeholder={"search by project name"} value={searchQuery} onChange={setSearch} />
 
       <Table>
         <RowHeader>
