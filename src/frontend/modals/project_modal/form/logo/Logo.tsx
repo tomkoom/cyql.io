@@ -28,7 +28,6 @@ const Logo: FC = (): JSX.Element => {
   const project = useAppSelector(selectProject)
   const projectLogo = project.logoDataUrl
   const cropperRef = useRef<ReactCropperElement>(null)
-  console.log(projectLogo)
 
   // compress image after crop
   const crop = async (logoDataUrl: string) => {

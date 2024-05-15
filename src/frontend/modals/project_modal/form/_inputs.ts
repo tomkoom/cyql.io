@@ -13,14 +13,14 @@ const socials = [
   { id: "medium", type: "text" },
 
   // socials ic
-  { id: "dscvr", type: "text" },
-  { id: "distrikt", type: "text" },
   { id: "openchat", type: "text" },
   { id: "taggr", type: "text" },
-  { id: "seers", type: "text" },
-  { id: "nuance", type: "text" },
-  { id: "catalyze", type: "text" },
+  { id: "dscvr", type: "text" },
   { id: "funded", type: "text" },
+  { id: "catalyze", type: "text" },
+  { id: "nuance", type: "text" },
+  // { id: "seers", type: "text" },
+  // { id: "distrikt", type: "text" },
 ]
 
 const additional = [

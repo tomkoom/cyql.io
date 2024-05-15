@@ -34,12 +34,12 @@ const Projects: FC = (): JSX.Element => {
 
       <Table>
         <RowHeader>
-          <span>#</span>
+          <span className="num">#</span>
           <span>id</span>
           <span>name</span>
           <span>archived</span>
           <span>category</span>
-          <span>logo</span>
+          <span>logoUrl</span>
           <span>twitter</span>
           <span>discord</span>
         </RowHeader>
@@ -54,7 +54,7 @@ const Projects: FC = (): JSX.Element => {
           })
           .map((project: ProjectV2, i: number) => (
             <Row key={project.id} onClick={() => editProject(project)}>
-              <span>{projects.length - i}</span>
+              <span className="num">{projects.length - i}</span>
               <span>{project.id}</span>
               <span>{project.name && formatStr16(project.name)}</span>
               <span>{project.archived.toString()}</span>
@@ -86,9 +86,13 @@ const RowHeader = styled.div`
   ${row}
   font-weight: var(--fwBold);
 
-  > span {
+  > span.num {
+    width: 2rem;
+  }
+
+  > span:not(.num) {
     flex: 1;
-    font-family: var(--monospace);
+    font-size: var(--fsText);
   }
 `
 
@@ -104,9 +108,13 @@ const Row = styled.div`
     background-color: var(--underlay2);
   }
 
-  > span {
+  > span.num {
+    width: 2rem;
+  }
+
+  > span:not(.num) {
     flex: 1;
-    font-family: var(--monospace);
+    font-size: var(--fsText);
   }
 `
 
