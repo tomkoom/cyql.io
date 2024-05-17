@@ -27,7 +27,7 @@ export const useBackend = (): UseBackend => {
     dispatch(setCuratedProjectsIsLoading(true))
     try {
       const allProjects = await actor.listProjectsV2()
-      const serialized = allProjects.map((p) => ({ ...p, id: Number(p.id) }))
+      const serialized = allProjects.map((p) => ({ ...p, id: p.id.toString() }))
       serialized.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
       const activeProjects: ProjectV2[] = serialized.filter((p) => !p.archived)
 

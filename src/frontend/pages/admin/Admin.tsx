@@ -22,7 +22,7 @@ const Admin: FC = (): JSX.Element => {
     <AdminStyled>
       <Title>
         <h2 className="pageTitle">Admin</h2>
-        <Btn btnType="primary" text="add project" onClick={openAddProjectModal} />
+        <Btn btnType="primary" text="Add Project" onClick={openAddProjectModal} />
       </Title>
       <Search />
       <Projects />

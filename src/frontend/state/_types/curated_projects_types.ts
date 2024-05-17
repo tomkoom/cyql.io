@@ -1,6 +1,6 @@
 // backend/types.mo
 
-export type ProjectId = number
+export type ProjectId = string
 export type ProjectV2 = {
   // main
   id: ProjectId

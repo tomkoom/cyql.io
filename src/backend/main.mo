@@ -8,9 +8,6 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 import Int "mo:base/Int";
 
-// services
-// import Users "./users/users_interface";
-
 // ...
 import T "types";
 import U "utils";
@@ -96,10 +93,10 @@ shared actor class _CURATED_PROJECTS() = Self {
     return ?projectId
   };
 
-  public shared ({ caller }) func deleteProjectV2(projectId : T.ProjectId) : async ?T.ProjectId {
+  public shared ({ caller }) func removeProjectV2(projectId : T.ProjectId) : async ?T.ProjectV2 {
     assert U.isAdmin(caller);
-    curatedProjectsV2.delete(projectId);
-    return ?projectId
+    let removed = curatedProjectsV2.remove(projectId);
+    return removed
   };
 
   public shared ({ caller }) func deleteAllProjectsV2() : async () {
@@ -107,6 +104,11 @@ shared actor class _CURATED_PROJECTS() = Self {
     for (p in curatedProjectsV2.vals()) {
       curatedProjectsV2.delete(p.id)
     }
+  };
+
+  public shared ({ caller }) func getProjectV2(projectId : T.ProjectId) : async ?T.ProjectV2 {
+    assert U.isAdmin(caller);
+    return curatedProjectsV2.get(projectId)
   };
 
   public shared ({ caller }) func getAllProjectsNumV2() : async Nat {
