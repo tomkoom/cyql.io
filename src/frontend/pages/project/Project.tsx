@@ -2,6 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useParams } from "react-router-dom"
+import { ProjectV2 } from "@/state/_types/curated_projects_types"
 
 // components
 import { Loading } from "@/components/ui/_index"
@@ -46,7 +47,7 @@ const Project: FC = (): JSX.Element => {
       <ProjectModal isOpen={projectModalIsOpen} />
 
       <BackBtn />
-      {project.map((project: any) => (
+      {project.map((project: ProjectV2) => (
         <Content key={project.id}>
           <Header project={project} />
 
@@ -65,9 +66,9 @@ const Project: FC = (): JSX.Element => {
 
           {project.category.includes("NFTs") && (
             <CollStats
-              nftSaleDate={project.nft_sale_date}
-              nftUnits={project.nft_units}
-              nftUnitPrice={project.nft_unit_price}
+              nftSaleDate={project.nftSaleDate}
+              nftUnits={project.nftUnits}
+              nftUnitPrice={project.nftUnitPrice}
             />
           )}
 
@@ -79,7 +80,7 @@ const Project: FC = (): JSX.Element => {
           <Links
             // main
             website={project.website}
-            canister={project.canister}
+            canister={project.frontendCanisterId}
             app={project.app}
             docs={project.docs}
             whitepaper={project.whitepaper}

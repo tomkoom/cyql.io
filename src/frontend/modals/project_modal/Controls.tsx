@@ -55,12 +55,12 @@ const Controls: FC = (): JSX.Element => {
 
   return (
     <ControlsStyled>
-      <Btn btnType="secondary" text="cancel" onClick={closeModal} />
+      <Btn btnType="secondary" text="Cancel" onClick={closeModal} />
 
       {mode === "add" ? (
-        <Btn btnType="primary" text="add" onClick={add} />
+        <Btn btnType="primary" text="Add" onClick={add} />
       ) : mode === "edit" ? (
-        <Btn btnType="primary" text="save" onClick={edit} />
+        <Btn btnType="primary" text="Save" onClick={edit} />
       ) : (
         ""
       )}
@@ -73,16 +73,6 @@ const ControlsStyled = styled.div`
   justify-content: flex-end;
   gap: 0.75rem;
   margin-top: 1rem;
-`
-
-const DeleteBtn = styled.div`
-  margin-right: auto;
-`
-
-const DeleteContainer = styled.div`
-  margin-right: auto;
-  display: flex;
-  gap: 0.75rem;
 `
 
 export default Controls

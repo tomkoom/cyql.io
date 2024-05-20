@@ -15,8 +15,10 @@ import C "_constants";
 
 shared actor class _CURATED_PROJECTS() = Self {
 
-  let frontendAdminId1Principal = Principal.fromText(C.frontendAdminId1);
-  let frontendAdminId2Principal = Principal.fromText(C.frontendAdminId2);
+  let adminPrincipal = Principal.fromText(C.adminId);
+  let frontendAdmin1Principal = Principal.fromText(C.frontendAdminId1);
+  let frontendAdmin2Principal = Principal.fromText(C.frontendAdminId2);
+  stable var secret : T.Secret = "";
 
   // maps
 
@@ -81,14 +83,14 @@ shared actor class _CURATED_PROJECTS() = Self {
   // curated projects v2
 
   public shared ({ caller }) func addProjectV2(project : T.ProjectV2) : async ?T.ProjectId {
-    assert (caller == frontendAdminId1Principal or caller == frontendAdminId2Principal);
+    assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
     let projectId = Int.abs(Time.now());
     curatedProjectsV2.put(projectId, { project with id = projectId });
     return ?projectId
   };
 
   public shared ({ caller }) func editProjectV2(projectId : T.ProjectId, project : T.ProjectV2) : async ?T.ProjectId {
-    assert (caller == frontendAdminId1Principal or caller == frontendAdminId2Principal);
+    assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
     curatedProjectsV2.put(projectId, project);
     return ?projectId
   };
@@ -139,6 +141,14 @@ shared actor class _CURATED_PROJECTS() = Self {
 
     curatedProjectsV2.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
     return ?projectId
+  };
+
+  // admin
+
+  public shared ({ caller }) func updateSecret(newSecret : T.Secret) : async Text {
+    assert (caller == adminPrincipal);
+    secret := newSecret;
+    return "ok"
   };
 
   // test

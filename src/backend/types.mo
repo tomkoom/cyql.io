@@ -1,5 +1,6 @@
 module {
   public type Tokens = { e8s : Nat };
+  public type Secret = Text;
 
   // users
 
