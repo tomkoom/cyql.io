@@ -1,18 +1,12 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { CrossIcon } from "@/components/icons/_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setCloseProjectModal } from "@/state/modals/projectModal"
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectProject } from "@/state/modals/projectModal"
 
 const Header: FC = (): JSX.Element => {
-  const dispatch = useAppDispatch()
   const project = useAppSelector(selectProject)
-
-  const closeModal = (): void => {
-    dispatch(setCloseProjectModal())
-  }
 
   return (
     <HeaderStyled>
@@ -26,8 +20,6 @@ const Header: FC = (): JSX.Element => {
           <h5>Add new project</h5>
         </Title>
       )}
-
-      <CrossIcon onClick={closeModal} />
     </HeaderStyled>
   )
 }
@@ -35,8 +27,6 @@ const Header: FC = (): JSX.Element => {
 const HeaderStyled = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
 `
 
 const Title = styled.div`

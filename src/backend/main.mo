@@ -31,33 +31,6 @@ shared actor class _CURATED_PROJECTS() = Self {
   let curatedProjectsV2 = HashMap.fromIter<T.ProjectId, T.ProjectV2>(curatedProjectsV2Entries.vals(), 100, Nat.equal, Hash.hash);
 
   // ...
-  // curated projects v1
-
-  public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
-    // verify caller
-    assert U.isAdmin(caller);
-    let projectId = projects.size();
-    projects.put(projectId, { project with id = projectId });
-    ?projectId
-  };
-
-  public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
-    // verify caller
-    assert U.isAdmin(caller);
-    projects.put(projectId, project);
-    return ?projectId
-  };
-
-  public shared ({ caller }) func deleteProject(projectId : T.ProjectId) : async ?T.ProjectId {
-    assert U.isAdmin(caller);
-    projects.delete(projectId);
-    return ?projectId
-  };
-
-  public query func listProjects() : async [T.Project] {
-    let iter : Iter.Iter<T.Project> = projects.vals();
-    return Iter.toArray<T.Project>(iter)
-  };
 
   public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
     // verify caller
@@ -80,7 +53,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   // ...
-  // curated projects v2
+  // curated projects
 
   public shared ({ caller }) func addProjectV2(project : T.ProjectV2) : async ?T.ProjectId {
     assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
@@ -99,13 +72,6 @@ shared actor class _CURATED_PROJECTS() = Self {
     assert U.isAdmin(caller);
     let removed = curatedProjectsV2.remove(projectId);
     return removed
-  };
-
-  public shared ({ caller }) func deleteAllProjectsV2() : async () {
-    assert U.isAdmin(caller);
-    for (p in curatedProjectsV2.vals()) {
-      curatedProjectsV2.delete(p.id)
-    }
   };
 
   public shared ({ caller }) func getProjectV2(projectId : T.ProjectId) : async ?T.ProjectV2 {

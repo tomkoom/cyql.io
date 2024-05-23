@@ -31,14 +31,19 @@ const InputStyled = styled.div`
   }
 
   > input {
+    height: 2.5rem;
     width: 100%;
     font-size: var(--fsText);
-    padding: 0.5rem;
+    padding: 0 1rem;
     color: var(--primaryColor);
     background-color: var(--underlay1);
     caret-color: var(--primaryColor);
     border: none;
     outline: none;
+
+    &:focus {
+      background-color: var(--underlay2);
+    }
   }
 `
 

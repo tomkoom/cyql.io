@@ -63,7 +63,7 @@ export const useBackend = (): UseBackend => {
     if (!project.id) return
 
     try {
-      const id = BigInt(Number(project.id))
+      const id = BigInt(project.id)
       const p = {
         ...project,
         id,

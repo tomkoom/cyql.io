@@ -2,14 +2,19 @@ import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { useScrollLock } from "@/hooks/_index"
+import { CrossIcon } from "@/components/icons/_index"
 
 // components
 import { Controls, Form, Header } from "./_index"
 import { Loading } from "@/components/ui/_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectProjectModalIsLoading, selectProjectModalMode } from "@/state/modals/projectModal"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import {
+  selectProjectModalIsLoading,
+  selectProjectModalMode,
+  setCloseProjectModal,
+} from "@/state/modals/projectModal"
 import { selectTheme } from "@/state/theme"
 
 interface ProjectModalProps {
@@ -17,10 +22,15 @@ interface ProjectModalProps {
 }
 
 const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
+  const dispatch = useAppDispatch()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectProjectModalIsLoading)
   const mode = useAppSelector(selectProjectModalMode)
+
+  const closeModal = (): void => {
+    dispatch(setCloseProjectModal())
+  }
 
   useEffect(() => {
     if (isOpen) {
@@ -43,8 +53,11 @@ const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   return createPortal(
     <ProjectModalStyled className={theme}>
       <div className="content">
-        <p>Mode: {mode}</p>
-        <Header />
+        <div className="header">
+          <CrossIcon onClick={closeModal} />
+          <p>Mode: {mode}</p>
+          <Header />
+        </div>
 
         <div className="form">
           <Form />
@@ -64,7 +77,7 @@ const ProjectModalStyled = styled.div`
   z-index: 1;
   color: var(--primaryColor);
   background-color: var(--background);
-  padding: 2rem;
+  padding: 1rem;
 
   /* overflow */
   height: 100%;
@@ -76,6 +89,13 @@ const ProjectModalStyled = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    > div.header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
     > div.form {
       margin-top: 1rem;

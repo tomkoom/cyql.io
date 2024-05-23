@@ -28,7 +28,7 @@ const Form: FC = (): JSX.Element => {
         </Section>
 
         <Section>
-          <h6>main</h6>
+          <h6>Main</h6>
           {main.map((input) => (
             <Input
               id={input.id}
@@ -95,14 +95,16 @@ const FormContentStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  max-width: 960px;
+  margin: 0 auto;
 
   > div.logo {
   }
 
   > div.main {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
-    flex-wrap: wrap;
   }
 `
 
