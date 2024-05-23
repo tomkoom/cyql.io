@@ -6,7 +6,7 @@ const FlexBanner: FC = (): JSX.Element => {
   return (
     <FlexBannerStyled href={FLEX_SITE_URL} target="_blank" rel="noreferrer noopener">
       <div className="main">
-        <h6>🔥 FLEX 🔥</h6>
+        <h6>🔥💪 FLEX 💪🔥</h6>
         <p>P2P & Meme Currency on the IC</p>
       </div>
     </FlexBannerStyled>
@@ -19,13 +19,12 @@ const FlexBannerStyled = styled.a`
   justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  box-shadow: var(--boxShadow1), var(--shadow2);
+  box-shadow: var(--boxShadow1);
   padding: 0.75rem 1rem;
   transition: var(--transition1);
 
   &:hover {
-    color: var(--background);
-    background-color: var(--primaryColor);
+    background-color: var(--underlay1);
   }
 
   > div.main {

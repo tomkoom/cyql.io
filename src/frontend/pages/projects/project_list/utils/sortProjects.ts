@@ -14,4 +14,8 @@ const sortLeastUp = (a: number, b: number): number => {
   return a - b
 }
 
-export { sortNewest, sortOldest, sortMostUp, sortLeastUp }
+const sortRecentlyUpdated = (a: number, b: number): number => {
+  return b - a
+}
+
+export { sortNewest, sortOldest, sortMostUp, sortLeastUp, sortRecentlyUpdated }

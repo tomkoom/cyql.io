@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { iCheck } from "@/components/icons/Icons"
+import type { SortOptions } from "@/state/projects/sort"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -33,24 +34,31 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
     }
   }, [openSort])
 
-  const clickSort = (sortType) => {
-    dispatch(setSort(sortType))
+  const clickSort = (sortOption: SortOptions) => {
+    dispatch(setSort(sortOption))
     setOpenSort(false)
   }
 
   return (
     <SortOptionsStyled style={style} ref={sortOptionsRef}>
-      <li onClick={() => clickSort("newest-first")}>
-        Newest first {sort === "newest-first" && <span>{iCheck}</span>}
+      <li onClick={() => clickSort("newest_first")}>
+        Newest first {sort === "newest_first" && <span>{iCheck}</span>}
       </li>
-      <li onClick={() => clickSort("oldest-first")}>
-        Oldest first {sort === "oldest-first" && <span>{iCheck}</span>}
+
+      <li onClick={() => clickSort("oldest_first")}>
+        Oldest first {sort === "oldest_first" && <span>{iCheck}</span>}
       </li>
-      <li onClick={() => clickSort("most-upvoted")}>
-        Most upvoted {sort === "most-upvoted" && <span>{iCheck}</span>}
+
+      <li onClick={() => clickSort("most_upvoted")}>
+        Most upvoted {sort === "most_upvoted" && <span>{iCheck}</span>}
       </li>
-      <li onClick={() => clickSort("least-upvoted")}>
-        Least upvoted {sort === "least-upvoted" && <span>{iCheck}</span>}
+
+      <li onClick={() => clickSort("least_upvoted")}>
+        Least upvoted {sort === "least_upvoted" && <span>{iCheck}</span>}
+      </li>
+
+      <li onClick={() => clickSort("recently_updated")}>
+        Recently updated {sort === "recently_updated" && <span>{iCheck}</span>}
       </li>
     </SortOptionsStyled>
   )

@@ -1,38 +1,31 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "@/state/_store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import type { RootState } from "@/state/_store"
 
 interface FilterState {
-  filterByOpenSource: null | boolean;
-  filterByOnChain: null | boolean;
-  filterByGrantee: null | boolean;
+  filterByOpenSource: null | boolean
+  filterByOnChain: null | boolean
 }
 
 const initialState: FilterState = {
   filterByOpenSource: null,
   filterByOnChain: null,
-  filterByGrantee: null,
-};
+}
 
 const filter = createSlice({
   name: "filter",
   initialState,
   reducers: {
     setFilterByOpenSource(state, { payload }: PayloadAction<null | boolean>) {
-      state.filterByOpenSource = payload;
+      state.filterByOpenSource = payload
     },
     setFilterByOnChain(state, { payload }: PayloadAction<null | boolean>) {
-      state.filterByOnChain = payload;
-    },
-    setFilterByGrantee(state, { payload }: PayloadAction<null | boolean>) {
-      state.filterByGrantee = payload;
+      state.filterByOnChain = payload
     },
   },
-});
+})
 
-const selectFilterByOpenSource = (state: RootState) => state.filter.filterByOpenSource;
-const selectFilterByOnChain = (state: RootState) => state.filter.filterByOnChain;
-const selectFilterByGrantee = (state: RootState) => state.filter.filterByGrantee;
-export { selectFilterByOpenSource, selectFilterByOnChain, selectFilterByGrantee };
+export const selectFilterByOpenSource = (state: RootState) => state.filter.filterByOpenSource
+export const selectFilterByOnChain = (state: RootState) => state.filter.filterByOnChain
 
-export const { setFilterByOpenSource, setFilterByOnChain, setFilterByGrantee } = filter.actions;
-export default filter.reducer;
+export const { setFilterByOpenSource, setFilterByOnChain } = filter.actions
+export default filter.reducer

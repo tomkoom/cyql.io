@@ -6,7 +6,13 @@ import { useSearchParams } from "react-router-dom"
 import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 
 // utils
-import { sortNewest, sortOldest, sortMostUp, sortLeastUp } from "./utils/sortProjects"
+import {
+  sortNewest,
+  sortOldest,
+  sortMostUp,
+  sortLeastUp,
+  sortRecentlyUpdated,
+} from "./utils/sortProjects"
 import {
   filterBySearch,
   filterByCategory,
@@ -23,11 +29,7 @@ import { Main, Socials, SocialsIc, Tags } from "./_index"
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/loadMore"
 import { selectSort } from "@/state/projects/sort"
-import {
-  selectFilterByOpenSource,
-  selectFilterByOnChain,
-  selectFilterByGrantee,
-} from "@/state/projects/filter"
+import { selectFilterByOpenSource, selectFilterByOnChain } from "@/state/projects/filter"
 import {
   selectActiveCuratedProjects,
   selectActiveCuratedProjectsNum,
@@ -52,7 +54,6 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   // filter
   const openSource = useAppSelector(selectFilterByOpenSource)
   const onChain = useAppSelector(selectFilterByOnChain)
-  const grantee = useAppSelector(selectFilterByGrantee)
 
   const setItemsVisible = (): void => {
     const items = 64
@@ -88,16 +89,21 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
 
           // sort
           .sort((a, b) =>
-            sort === "newest-first" ? sortNewest(Number(a.createdAt), Number(b.createdAt)) : null
+            sort === "newest_first" ? sortNewest(Number(a.createdAt), Number(b.createdAt)) : null
           )
           .sort((a, b) =>
-            sort === "oldest-first" ? sortOldest(Number(a.createdAt), Number(b.createdAt)) : null
+            sort === "oldest_first" ? sortOldest(Number(a.createdAt), Number(b.createdAt)) : null
           )
           .sort((a, b) =>
-            sort === "most-upvoted" ? sortMostUp(a.upvotedBy.length, b.upvotedBy.length) : null
+            sort === "most_upvoted" ? sortMostUp(a.upvotedBy.length, b.upvotedBy.length) : null
           )
           .sort((a, b) =>
-            sort === "least-upvoted" ? sortLeastUp(a.upvotedBy.length, b.upvotedBy.length) : null
+            sort === "least_upvoted" ? sortLeastUp(a.upvotedBy.length, b.upvotedBy.length) : null
+          )
+          .sort((a, b) =>
+            sort === "recently_updated"
+              ? sortRecentlyUpdated(Number(a.updatedAt), Number(b.updatedAt))
+              : null
           )
           .slice(0, itemsVisible)
           .map((p) => (

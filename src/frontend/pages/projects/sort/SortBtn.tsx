@@ -14,14 +14,16 @@ const SortBtn: FC = (): JSX.Element => {
       <span className="icon">{iSort}</span>
       <span>Order by:</span>
       <span className="selected">
-        {sort === "newest-first"
+        {sort === "newest_first"
           ? "newest first"
-          : sort === "oldest-first"
+          : sort === "oldest_first"
           ? "oldest first"
-          : sort === "most-upvoted"
+          : sort === "most_upvoted"
           ? "most upvoted"
-          : sort === "least-upvoted"
+          : sort === "least_upvoted"
           ? "least upvoted"
+          : sort === "recently_updated"
+          ? "Recently updated"
           : null}
       </span>
       <span className="icon">{iAngleDown}</span>

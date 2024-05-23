@@ -47,7 +47,7 @@ const Projects: FC = (): JSX.Element => {
       />
 
       {/* controls */}
-      <Controls>
+      <Filters>
         <div className="item">
           <Category />
           <Filter
@@ -61,7 +61,7 @@ const Projects: FC = (): JSX.Element => {
         <div className="item">
           <Sort />
         </div>
-      </Controls>
+      </Filters>
       <ProjectList searchQ={searchQ} />
     </ProjectsStyled>
   )
@@ -74,12 +74,12 @@ const ProjectsStyled = styled.div`
   margin-bottom: 4rem;
 `
 
-const Controls = styled.div`
+const Filters = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
   margin-top: 0.25rem;
 
   > div.item {
