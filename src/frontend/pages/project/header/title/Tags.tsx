@@ -15,8 +15,8 @@ const Tags: FC<TagsProps> = ({ project }) => {
           <li key={category.toLowerCase()}>{category.toLowerCase()}</li>
         ))}
 
-      {project.github !== "" && <li id="open">{iGithub} open</li>}
-      {project.frontendCanisterId !== "" && <li id="onchain">{iCircleNodes} onchain</li>}
+      {project.github && <li id="open">{iGithub} open</li>}
+      {project.frontendCanisterId && <li id="onchain">{iCircleNodes} onchain</li>}
     </TagsStyled>
   )
 }

@@ -113,8 +113,9 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-width: 16rem;
   margin-top: 1rem;
+  box-shadow: var(--boxShadow2);
+  padding: 2rem;
 
   > h6 {
     font-weight: var(--fwMedium);

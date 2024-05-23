@@ -77,29 +77,7 @@ const Project: FC = (): JSX.Element => {
             <NftBtns nftMarket={project.nft_market} nftRarity={project.nft_rarity} />
           )} */}
 
-          <Links
-            // main
-            website={project.website}
-            canister={project.frontendCanisterId}
-            app={project.app}
-            docs={project.docs}
-            whitepaper={project.whitepaper}
-            // ic
-            dscvr={project.dscvr}
-            distrikt={project.distrikt}
-            openchat={project.openchat}
-            taggr={project.taggr}
-            seers={project.seers}
-            nuance={project.nuance}
-            catalyze={project.catalyze}
-            funded={project.funded}
-            // social
-            twitter={project.twitter}
-            discord={project.discord}
-            github={project.github}
-            telegram={project.telegram}
-            medium={project.medium}
-          />
+          <Links project={project} />
           <Meta createdAt={project.createdAt} />
           <Disclaimer />
 

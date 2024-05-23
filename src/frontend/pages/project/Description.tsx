@@ -9,7 +9,7 @@ interface DescriptionProps {
 const Description: FC<DescriptionProps> = ({ name, description }): JSX.Element => {
   return (
     <DescriptionStyled>
-      <h4>about {name}</h4>
+      <h4>About {name}</h4>
       <p>{description}</p>
     </DescriptionStyled>
   )
