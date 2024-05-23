@@ -138,6 +138,9 @@ module {
     updatedAt : Text;
     submittedBy : Text;
     upvotedBy : [Text]
+
+    // ...
+    // frontendCanisterUrl : Text
   };
 
 }

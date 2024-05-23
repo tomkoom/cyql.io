@@ -12,8 +12,8 @@ import {
   iMedium,
   iGithub,
   iExternalLink,
-  iBook,
-  iScroll,
+  // iBook,
+  // iScroll,
 } from "@/components/icons/Icons"
 
 interface Link {
@@ -43,20 +43,6 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       label: "App",
       url: project.app,
       icon: iExternalLink,
-      tag: "main",
-    },
-    {
-      id: "docs",
-      label: "Docs",
-      url: project.docs,
-      icon: iBook,
-      tag: "main",
-    },
-    {
-      id: "whitepaper",
-      label: "Whitepaper",
-      url: project.whitepaper,
-      icon: iScroll,
       tag: "main",
     },
 
@@ -160,6 +146,43 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
         )}
       </ul>
 
+      <div className="about">
+        {/* dfinity forum showcase url */}
+        {project.dfinityForumShowcase && (
+          <a href={project.dfinityForumShowcase} target="_blank" rel="noreferrer noopener">
+            DFINITY Forum Showcase {iExternalLink}
+          </a>
+        )}
+
+        {/* nns launchpad url */}
+        {project.nnsLaunchpadUrl && (
+          <a href={project.nnsLaunchpadUrl} target="_blank" rel="noreferrer noopener">
+            NNS Launchpad URL {iExternalLink}
+          </a>
+        )}
+
+        {/* docs */}
+        {project.docs && (
+          <a href={project.docs} target="_blank" rel="noreferrer noopener">
+            Docs {iExternalLink}
+          </a>
+        )}
+
+        {/* faq */}
+        {project.faq && (
+          <a href={project.faq} target="_blank" rel="noreferrer noopener">
+            FAQ {iExternalLink}
+          </a>
+        )}
+
+        {/* whitepaper */}
+        {project.whitepaper && (
+          <a href={project.whitepaper} target="_blank" rel="noreferrer noopener">
+            Whitepaper {iExternalLink}
+          </a>
+        )}
+      </div>
+
       {/* frontend canister */}
       {project.frontendCanisterId.length === 27 ? (
         <div>
@@ -184,12 +207,37 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
 }
 
 const LinksStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+
+  > div.about {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    > a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      background-color: var(--underlay1);
+      font-size: var(--fsText);
+      transition: var(--transition1);
+
+      &:hover {
+        background-color: var(--underlay2);
+      }
+    }
+  }
+
   > ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 0.25rem;
-    margin: 1rem 0;
 
     > li {
       > a {
