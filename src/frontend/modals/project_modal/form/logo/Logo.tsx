@@ -32,7 +32,7 @@ const Logo: FC = (): JSX.Element => {
   // compress image after crop
   const crop = async (logoDataUrl: string) => {
     const logoBlob = dataUrlToBlob(logoDataUrl)
-    console.log(logoBlob.type)
+    console.log("type initial: ", logoBlob.type)
 
     const options = {
       maxWidth: 400,
@@ -43,12 +43,11 @@ const Logo: FC = (): JSX.Element => {
     new Compressor(logoBlob, {
       ...options,
       success: (compressedResult: Blob) => {
-        // const type = compressedResult.type
         const file = {
           url: URL.createObjectURL(compressedResult),
           name: compressedResult.name,
           size: compressedResult.size,
-          // type
+          // type: compressedResult.type
           blob: compressedResult,
         }
         setCompressedFile(file)
@@ -88,7 +87,7 @@ const Logo: FC = (): JSX.Element => {
     if (compressedFile) {
       const sizeCompressed = formatBytes(compressedFile.size)
       console.log("size compressed: ", sizeCompressed)
-      console.log("blob type: ", compressedFile.blob.type)
+      console.log("type compressed: ", compressedFile.blob.type)
 
       // blob to data url
       const reader = new FileReader()

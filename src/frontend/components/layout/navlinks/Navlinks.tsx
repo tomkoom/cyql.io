@@ -2,11 +2,11 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { NavItem, Tags } from "./_index"
 import { verifyAdmin } from "@/utils/verifyAdmin"
-import { useNavlinks } from "@/hooks/_index"
+import { device } from "@/styles/breakpoints"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useNav } from "@/hooks/_index"
+import { useNavlinks, useNav } from "@/hooks/_index"
 
 const Navlinks: FC = (): JSX.Element => {
   const { userId } = useAuth()
@@ -44,6 +44,11 @@ const NavlinksStyled = styled.nav`
   align-items: center;
   gap: 0.7rem;
   margin: 1rem 0;
+  padding: 0 2rem;
+
+  @media ${device.laptop} {
+    padding: 0 1rem;
+  }
 
   > div.navlinks {
     width: 100%;

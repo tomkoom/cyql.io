@@ -15,7 +15,7 @@ const Search: FC = (): JSX.Element => {
 
   return (
     <div>
-      <TextInput placeholder={"search by project name"} value={searchQuery} onChange={setSearch} />
+      <TextInput placeholder={"Search by project name"} value={searchQuery} onChange={setSearch} />
     </div>
   )
 }
