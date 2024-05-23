@@ -5,7 +5,7 @@ import { useNav } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectAllCuratedProjects } from "@/state/curatedProjects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 
 // components
 // import { UpvoteBtn } from "@/components/btns/index";
@@ -13,7 +13,7 @@ import { Logo } from "./_index"
 
 const HighlightedByCategory = ({ filter }) => {
   const { toProject } = useNav()
-  const projects = useAppSelector(selectAllCuratedProjects).filter(
+  const projects = useAppSelector(selectActiveCuratedProjects).filter(
     (projectDoc) => projectDoc.data.archived !== true
   )
 

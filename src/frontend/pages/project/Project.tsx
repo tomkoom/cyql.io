@@ -23,13 +23,13 @@ import { ProjectModal } from "@/modals/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectAllCuratedProjects } from "@/state/curatedProjects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectShareModal } from "@/state/modals/shareModal"
 import { selectProjectModalIsOpen } from "@/state/modals/projectModal"
 
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
-  const projects = useAppSelector(selectAllCuratedProjects)
+  const projects = useAppSelector(selectActiveCuratedProjects)
   const project = projects.filter((p) => p.id.toString() === id) || []
   const isShareModalOpen = useAppSelector(selectShareModal)
   const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)

@@ -11,11 +11,11 @@ import { ViewAllBtn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectAllCuratedProjects } from "@/state/curatedProjects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 
 const Home: FC = (): JSX.Element => {
   const { toProjects, toList } = useNav()
-  const projects = useAppSelector(selectAllCuratedProjects)
+  const projects = useAppSelector(selectActiveCuratedProjects)
   const projectsTokens = projects.filter((p) =>
     p.category.map((c) => c.toLowerCase()).includes("tokens")
   )

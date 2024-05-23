@@ -3,7 +3,6 @@ const main = [
   { id: "website", type: "text" },
   { id: "frontendCanisterId", type: "text" },
   { id: "backendCanisterId", type: "text" },
-  { id: "logoUrl", type: "text" },
 ]
 
 const socials = [
@@ -20,8 +19,6 @@ const socials = [
   { id: "funded", type: "text" },
   { id: "catalyze", type: "text" },
   { id: "nuance", type: "text" },
-  // { id: "seers", type: "text" },
-  // { id: "distrikt", type: "text" },
 ]
 
 const additional = [

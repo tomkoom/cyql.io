@@ -22,7 +22,6 @@ const Projects: FC = (): JSX.Element => {
   const isOpen = useAppSelector(selectProjectModalIsOpen)
 
   const editProject = (project: ProjectV2): void => {
-    console.log(project)
     dispatch(setProject(project))
     dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))

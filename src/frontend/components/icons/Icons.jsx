@@ -94,7 +94,6 @@ const iCaretUp = <FontAwesomeIcon icon={faCaretUp} />
 const iCaretRight = <FontAwesomeIcon icon={faCaretRight} />
 const iCaretDown = <FontAwesomeIcon icon={faCaretDown} />
 const iCaretLeft = <FontAwesomeIcon icon={faCaretLeft} />
-
 const iAngleUp = <FontAwesomeIcon icon={faAngleUp} />
 const iAngleRight = <FontAwesomeIcon icon={faAngleRight} />
 const iAngleDown = <FontAwesomeIcon icon={faAngleDown} />
@@ -102,7 +101,6 @@ const iAngleLeft = <FontAwesomeIcon icon={faAngleLeft} />
 const iSignIn = <FontAwesomeIcon icon={faSignInAlt} />
 const iSignOut = <FontAwesomeIcon icon={faSignOutAlt} />
 const iRocket = <FontAwesomeIcon icon={faRocket} />
-const iBook = <FontAwesomeIcon icon={faBook} />
 const iWallet = <FontAwesomeIcon icon={faWallet} />
 const iGlobe = <FontAwesomeIcon icon={faGlobe} />
 const iCheckCircle = <FontAwesomeIcon icon={faCheckCircle} />
@@ -111,10 +109,13 @@ const iList = <FontAwesomeIcon icon={faList} />
 const iEye = <FontAwesomeIcon icon={faEye} />
 const iChartArea = <FontAwesomeIcon icon={faChartArea} />
 const iChartBar = <FontAwesomeIcon icon={faChartBar} />
-const iMeteor = <FontAwesomeIcon icon={faMeteor} />
 const iShare = <FontAwesomeIcon icon={faShare} />
 const iShareSquare = <FontAwesomeIcon icon={faShareSquare} />
 const iCircleNodes = <FontAwesomeIcon icon={faCircleNodes} />
+
+// unused
+const iBook = <FontAwesomeIcon icon={faBook} />
+const iMeteor = <FontAwesomeIcon icon={faMeteor} />
 const iScroll = <FontAwesomeIcon icon={faScroll} />
 
 // ...
@@ -175,7 +176,6 @@ export {
   iSignIn,
   iSignOut,
   iRocket,
-  iBook,
   iWallet,
   iGlobe,
   iCheckCircle,
@@ -184,9 +184,7 @@ export {
   iEye,
   iChartArea,
   iChartBar,
-  iMeteor,
   iShare,
   iShareSquare,
   iCircleNodes,
-  iScroll,
 }

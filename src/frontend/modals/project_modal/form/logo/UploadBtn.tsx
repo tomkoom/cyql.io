@@ -21,7 +21,6 @@ const FileBtn: FC<FileBtnProps> = ({ logo, setLogo }): JSX.Element => {
   const onImageChange = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
     if (e.target.files && e.target.files[0]) {
       const logo = e.target.files[0]
-      console.log(logo)
       setLogo(logo)
     }
   }

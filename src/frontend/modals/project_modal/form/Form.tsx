@@ -44,7 +44,7 @@ const Form: FC = (): JSX.Element => {
         </Section>
 
         <Section>
-          <h6>social networks</h6>
+          <h6>Social Networks</h6>
           {socials.map((input) => (
             <Input
               id={input.id}
@@ -58,7 +58,7 @@ const Form: FC = (): JSX.Element => {
         </Section>
 
         <Section>
-          <h6>additional info</h6>
+          <h6>Additional Info</h6>
           {additional.map((input) => (
             <Input
               id={input.id}
@@ -73,7 +73,7 @@ const Form: FC = (): JSX.Element => {
 
         {project.category.length > 0 && project.category.includes("NFTs") && (
           <Section>
-            <h6>nft data</h6>
+            <h6>NFT Data</h6>
             {nft.map((input) => (
               <Input
                 id={input.id}
