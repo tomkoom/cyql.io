@@ -2,6 +2,7 @@ const main = [
   { id: "name", type: "text" },
   { id: "website", type: "text" },
   { id: "frontendCanisterId", type: "text" },
+  { id: "backendCanisterId", type: "text" },
   { id: "logoUrl", type: "text" },
 ]
 
@@ -24,6 +25,9 @@ const socials = [
 ]
 
 const additional = [
+  { id: "dfinityForumShowcase", type: "text" },
+  { id: "nnsLaunchpadUrl", type: "text" },
+  // ...
   { id: "app", type: "text" },
   { id: "docs", type: "text" },
   { id: "faq", type: "text" },

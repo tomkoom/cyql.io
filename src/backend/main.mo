@@ -9,9 +9,9 @@ import Time "mo:base/Time";
 import Int "mo:base/Int";
 
 // ...
-import T "types";
-import U "utils";
-import C "_constants";
+import T "./types";
+import U "./utils";
+import C "./_constants";
 
 shared actor class _CURATED_PROJECTS() = Self {
 
@@ -144,6 +144,11 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   // admin
+
+  public shared query ({ caller }) func showSecret() : async Text {
+    assert (caller == adminPrincipal);
+    return secret
+  };
 
   public shared ({ caller }) func updateSecret(newSecret : T.Secret) : async Text {
     assert (caller == adminPrincipal);
