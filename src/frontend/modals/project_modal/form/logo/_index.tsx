@@ -1,5 +1,4 @@
 // logo
 
-export { default as ImgCrop } from "./ImgCrop"
+export { default as Cropper } from "./Cropper"
 export { default as UploadBtn } from "./UploadBtn"
-

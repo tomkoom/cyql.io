@@ -1,6 +1,6 @@
 import React, { FC, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { UploadBtn, ImgCrop } from "./_index"
+import { UploadBtn, Cropper } from "./_index"
 import { ReactCropperElement } from "react-cropper"
 import { CompressedFile } from "@/state/_types/types"
 import { dataUrlToBlob } from "@/utils/process_img/_index"
@@ -61,26 +61,26 @@ const Logo: FC = (): JSX.Element => {
 
   // create object url
   useEffect(() => {
-    if (mode === "add") {
-      if (logo) {
-        const logoObjUrl = URL.createObjectURL(logo)
-        setLogoObjectUrl(logoObjUrl)
+    // if (mode === "add") {
+    if (logo) {
+      const logoObjUrl = URL.createObjectURL(logo)
+      setLogoObjectUrl(logoObjUrl)
 
-        const sizeInitial = formatBytes(logo.size)
-        console.log("size initial: ", sizeInitial)
-      } else {
-        // reset cropper
-        if (cropperRef) {
-          const cropper = cropperRef.current?.cropper
-          cropper?.clear()
-        }
-
-        setLogoObjectUrl("")
-        setLogoDataUrl(null)
-        setCompressedFile(null)
-        dispatch(setProjectLogoDataUrl(""))
+      const sizeInitial = formatBytes(logo.size)
+      console.log("size initial: ", sizeInitial)
+    } else {
+      // reset cropper
+      if (cropperRef) {
+        const cropper = cropperRef.current?.cropper
+        cropper?.clear()
       }
+
+      setLogoObjectUrl("")
+      setLogoDataUrl(null)
+      setCompressedFile(null)
+      dispatch(setProjectLogoDataUrl(""))
     }
+    // }
   }, [logo])
 
   // set project logo data url to state
@@ -110,7 +110,7 @@ const Logo: FC = (): JSX.Element => {
       {logoObjectUrl && (
         <div className="crop">
           <p>Crop</p>
-          <ImgCrop
+          <Cropper
             logo={logo}
             setLogoDataUrl={setLogoDataUrl}
             logoObjectUrl={logoObjectUrl}

@@ -1,8 +1,5 @@
 import React, { FC, Dispatch, SetStateAction, ChangeEvent, useRef } from "react"
 import styled from "styled-components"
-import { compressLogo } from "@/utils/process_img/_index"
-import { CompressedFile } from "@/state/_types/types"
-import { getImageSize } from "react-image-size"
 import { iPlus, iTimes } from "@/components/icons/Icons"
 
 interface FileBtnProps {
@@ -24,6 +21,7 @@ const FileBtn: FC<FileBtnProps> = ({ logo, setLogo }): JSX.Element => {
   const onImageChange = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
     if (e.target.files && e.target.files[0]) {
       const logo = e.target.files[0]
+      console.log(logo)
       setLogo(logo)
     }
   }

@@ -5,7 +5,7 @@ import styled from "styled-components"
 import Cropper, { ReactCropperElement } from "react-cropper"
 import "cropperjs/dist/cropper.css"
 
-interface ImgCropProps {
+interface ImgCropperProps {
   logo: File
   setLogoDataUrl: Dispatch<SetStateAction<string>>
   // setLogoBlob: Dispatch<SetStateAction<Blob>>
@@ -13,7 +13,7 @@ interface ImgCropProps {
   cropperRef: MutableRefObject<ReactCropperElement>
 }
 
-const ImgCrop: FC<ImgCropProps> = ({
+const ImgCropper: FC<ImgCropperProps> = ({
   logo,
   setLogoDataUrl,
   // setLogoBlob,
@@ -32,7 +32,7 @@ const ImgCrop: FC<ImgCropProps> = ({
   if (!cropperRef) return null
 
   return (
-    <ImgCropStyled>
+    <ImgCropperStyled>
       <Cropper
         src={logoObjectUrl}
         style={{ height: 400, width: "100%" }}
@@ -55,10 +55,10 @@ const ImgCrop: FC<ImgCropProps> = ({
         crop={onCrop}
         ref={cropperRef}
       />
-    </ImgCropStyled>
+    </ImgCropperStyled>
   )
 }
 
-const ImgCropStyled = styled.div``
+const ImgCropperStyled = styled.div``
 
-export default ImgCrop
+export default ImgCropper

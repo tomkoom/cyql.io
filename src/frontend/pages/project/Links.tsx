@@ -191,7 +191,7 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
         </div>
       ) : (
         <a href={project.frontendCanisterId} target="_blank" rel="noopener noreferrer">
-          Frontend Canister URL
+          Frontend Canister URL {iExternalLink}
         </a>
       )}
 
