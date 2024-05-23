@@ -7,6 +7,8 @@ interface DescriptionProps {
 }
 
 const Description: FC<DescriptionProps> = ({ name, description }): JSX.Element => {
+  if (!description) return null
+
   return (
     <DescriptionStyled>
       <h4>About {name}</h4>

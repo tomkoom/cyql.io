@@ -184,12 +184,14 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       </div>
 
       {/* frontend canister */}
-      {project.frontendCanisterId.length === 27 ? (
+      {project.frontendCanisterId.length === 27 && (
         <div>
           <p>Frontend canister id:</p>
           <p>{project.frontendCanisterId}</p>
         </div>
-      ) : (
+      )}
+
+      {project.frontendCanisterId.length > 27 && (
         <a href={project.frontendCanisterId} target="_blank" rel="noopener noreferrer">
           Frontend Canister URL {iExternalLink}
         </a>

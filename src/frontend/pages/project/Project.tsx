@@ -50,27 +50,9 @@ const Project: FC = (): JSX.Element => {
       {project.map((project: ProjectV2) => (
         <Content key={project.id}>
           <Header project={project} />
-
-          {project.description && (
-            <Description name={project.name} description={project.description} />
-          )}
-
-          {(project.nftImg1 || project.nftImg2 || project.nftImg3 || project.nftImg4) && (
-            <NftPreviews
-              nftImg1={project.nftImg1}
-              nftImg2={project.nftImg2}
-              nftImg3={project.nftImg3}
-              nftImg4={project.nftImg4}
-            />
-          )}
-
-          {project.category.includes("NFTs") && (
-            <CollStats
-              nftSaleDate={project.nftSaleDate}
-              nftUnits={project.nftUnits}
-              nftUnitPrice={project.nftUnitPrice}
-            />
-          )}
+          <Description name={project.name} description={project.description} />
+          <NftPreviews project={project} />
+          {project.category.includes("NFTs") && <CollStats project={project} />}
 
           {/* nft links */}
           {/* {(project.nft_market || project.nft_rarity) && (
