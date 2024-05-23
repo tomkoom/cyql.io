@@ -1,5 +1,7 @@
 export const formatDateTime = (timestamp: number): string => {
   if (typeof timestamp !== "number") return
+  if (!timestamp) return
+  console.log(timestamp)
   const date = new Date(timestamp)
 
   const optionsDate = { year: "numeric", month: "short", day: "numeric" } as const

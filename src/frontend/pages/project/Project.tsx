@@ -60,7 +60,7 @@ const Project: FC = (): JSX.Element => {
           )} */}
 
           <Links project={project} />
-          <Meta createdAt={project.createdAt} />
+          <Meta project={project} />
           <Disclaimer />
 
           <ShareModal

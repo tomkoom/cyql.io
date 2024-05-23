@@ -7,15 +7,11 @@ interface PublishedProps {
 }
 
 const Published: FC<PublishedProps> = ({ createdAt }): JSX.Element => {
-  if (!createdAt) {
-    return null
-  }
-
+  if (!createdAt) return null
   return <PublishedStyled>Published {formatDateTime(Number(createdAt))}</PublishedStyled>
 }
 
 const PublishedStyled = styled.div`
-  white-space: nowrap;
   color: var(--tertiaryColor);
 `
 

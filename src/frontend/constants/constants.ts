@@ -38,6 +38,8 @@ export const DONATION_WALLET_URL =
   "https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
 export const CYQL_MSG_URL = "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
 export const FLEX_SITE_URL = "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/"
+export const X_DIRECT_MSG_URL =
+  "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
 
 // nft
 export const CYQL_NFT_FUNDED_URL = "https://marketplace.funded.app/collections/ic-apps"
