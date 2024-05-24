@@ -6,7 +6,7 @@ interface ViewAllBtnProps {
 }
 
 const ViewAllBtn: FC<ViewAllBtnProps> = ({ route }): JSX.Element => {
-  return <Btn btnType="secondary" text="view all" onClick={route} />
+  return <Btn btnType={"secondary"} text={"View All"} onClick={route} />
 }
 
 export default ViewAllBtn

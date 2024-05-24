@@ -6,6 +6,7 @@ import { X_URL, DISCORD_URL } from "@/constants/constants"
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faDiscord, faXTwitter } from "@fortawesome/free-brands-svg-icons"
+import { iExternalLink } from "@/components/icons/Icons"
 
 const JoinCommunity: FC = (): JSX.Element => {
   const iconTwitter = <Icon icon={faXTwitter} id="twitter" />
@@ -24,10 +25,12 @@ const JoinCommunity: FC = (): JSX.Element => {
   return (
     <JoinCommunityStyled>
       {links.map(({ id, label, link, icon }) => (
-        <li key={id}>
-          <a id={id} href={link} rel="noreferrer noopener" target="_blank">
-            {icon}
-            <span>{label}</span>
+        <li key={`${id}-url`}>
+          <a id={id} href={link} target="_blank" rel="noreferrer noopener">
+            <span className="icon">{icon}</span>
+            <span className="label">
+              On {label} <span>{iExternalLink}</span>
+            </span>
           </a>
         </li>
       ))}
@@ -48,20 +51,20 @@ const JoinCommunityStyled = styled.ul`
     flex: 1;
 
     > a {
-      height: 3rem;
+      height: 4rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.25rem;
       font-weight: var(--fwMedium);
       background-color: var(--underlay1);
       padding: 0 1.25rem;
-      border-radius: 1.5rem;
       transition: var(--transition1);
 
       &#x:hover {
         color: var(--coolGray10);
-        background-color: var(--colorX);
+        background-color: var(--underlay2);
       }
 
       &#discord:hover {
@@ -69,8 +72,16 @@ const JoinCommunityStyled = styled.ul`
         background-color: var(--colorDiscord);
       }
 
-      > span {
+      > span.icon {
         font-size: var(--fs6);
+      }
+
+      > span.label {
+        font-size: var(--fsText);
+
+        > span {
+          color: var(--tertiaryColor);
+        }
       }
     }
   }

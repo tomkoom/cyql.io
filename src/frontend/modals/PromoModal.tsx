@@ -57,6 +57,7 @@ const Content = styled.div`
   > p {
     font-size: var(--fsText);
     color: var(--secondaryColor);
+    text-align: center;
   }
 `
 

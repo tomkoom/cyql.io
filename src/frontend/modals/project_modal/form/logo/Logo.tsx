@@ -10,11 +10,7 @@ import Compressor from "compressorjs"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import {
-  selectProject,
-  setProjectLogoDataUrl,
-  selectProjectModalMode,
-} from "@/state/modals/projectModal"
+import { selectProject, setProjectLogoDataUrl } from "@/state/modals/projectModal"
 
 const Logo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -24,10 +20,17 @@ const Logo: FC = (): JSX.Element => {
   // const [logoBlob, setLogoBlob] = useState<Blob>(null)
   const [compressedFile, setCompressedFile] = useState<CompressedFile>(null)
   // ...
-  const mode = useAppSelector(selectProjectModalMode)
   const project = useAppSelector(selectProject)
-  const projectLogo = project.logoDataUrl
+  const projectLogoDataUrl = project.logoDataUrl
   const cropperRef = useRef<ReactCropperElement>(null)
+  console.log(project)
+
+  const reset = (): void => {
+    setLogoObjectUrl("")
+    setLogoDataUrl(null)
+    setCompressedFile(null)
+    dispatch(setProjectLogoDataUrl(""))
+  }
 
   // compress image after crop
   const crop = async (logoDataUrl: string) => {
@@ -60,27 +63,24 @@ const Logo: FC = (): JSX.Element => {
 
   // create object url
   useEffect(() => {
-    // if (mode === "add") {
-    if (logo) {
-      const logoObjUrl = URL.createObjectURL(logo)
-      setLogoObjectUrl(logoObjUrl)
+    if (!projectLogoDataUrl) {
+      if (logo) {
+        const logoObjUrl = URL.createObjectURL(logo)
+        setLogoObjectUrl(logoObjUrl)
 
-      const sizeInitial = formatBytes(logo.size)
-      console.log("size initial: ", sizeInitial)
-    } else {
-      // reset cropper
-      if (cropperRef) {
-        const cropper = cropperRef.current?.cropper
-        cropper?.clear()
+        const sizeInitial = formatBytes(logo.size)
+        console.log("size initial: ", sizeInitial)
+      } else {
+        // reset cropper
+        if (cropperRef) {
+          const cropper = cropperRef.current?.cropper
+          cropper?.clear()
+        }
+
+        reset()
       }
-
-      setLogoObjectUrl("")
-      setLogoDataUrl(null)
-      setCompressedFile(null)
-      dispatch(setProjectLogoDataUrl(""))
     }
-    // }
-  }, [logo])
+  }, [projectLogoDataUrl, logo])
 
   // set project logo data url to state
   useEffect(() => {
@@ -103,7 +103,7 @@ const Logo: FC = (): JSX.Element => {
     <LogoStyled>
       <div>
         <p>Choose logo</p>
-        <UploadBtn logo={logo} setLogo={setLogo} />
+        <UploadBtn logo={logo} setLogo={setLogo} reset={reset} />
       </div>
 
       {logoObjectUrl && (
@@ -119,10 +119,10 @@ const Logo: FC = (): JSX.Element => {
         </div>
       )}
 
-      {projectLogo && (
+      {projectLogoDataUrl && (
         <div className="preview">
           <p>Logo preview</p>
-          <img className="logo" src={projectLogo} alt={`${project.name}-logo`} />
+          <img className="logo" src={projectLogoDataUrl} alt={`${project.name}-logo`} />
         </div>
       )}
     </LogoStyled>
@@ -133,12 +133,6 @@ const LogoStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-  > div {
-    p {
-      margin-bottom: 0.5rem;
-    }
-  }
 
   > div.preview {
     > img {

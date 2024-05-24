@@ -1,8 +1,8 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useNav } from "@/hooks/_index"
-import { Btn } from "@/components/btns/_index"
-import { iPlus } from "@/components/icons/Icons"
+// import { Btn } from "@/components/btns/_index"
+// import { iPlus } from "@/components/icons/Icons"
 
 // components
 import { Header, HighlightedProjects, JoinCommunity, Promo, StaffPicks, FlexBanner } from "./_index"
@@ -30,8 +30,8 @@ const Home: FC = (): JSX.Element => {
   return (
     <HomeStyled>
       <Header />
-      <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} />
-      <StaffPicks />
+      {/* <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} /> */}
+      {/* <StaffPicks /> */}
       <FlexBanner />
       <Promo />
       <Divider />
@@ -65,10 +65,12 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title style={{ justifyContent: "center" }}>
-          <h3>Join community</h3>
+          <h3>Follow</h3>
         </Title>
         <JoinCommunity />
       </Section>
+
+      <span className="inf">♾️♾️♾️</span>
     </HomeStyled>
   )
 }
@@ -77,7 +79,11 @@ const HomeStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 4rem;
+  /* margin-bottom: 2rem; */
+
+  > span.inf {
+    text-align: center;
+  }
 `
 
 const Section = styled.section``

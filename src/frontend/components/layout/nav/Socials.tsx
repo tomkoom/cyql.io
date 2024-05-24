@@ -51,7 +51,7 @@ const SocialsStyled = styled.ul`
 
     &#x:hover {
       color: #fff;
-      background-color: var(--colorX);
+      background-color: var(--underlay2);
     }
 
     &#discord {

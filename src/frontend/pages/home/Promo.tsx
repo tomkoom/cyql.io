@@ -20,11 +20,11 @@ const promoItems = [
   {
     color: "var(--primaryColor)",
     backgroundColor: "var(--underlay1)",
-    title: "Promote",
-    text: "Promote your project by highlighting on cyql.io",
+    title: "Promote your project",
+    text: "Promote your project on cyql.io",
     ctaUrl:
       "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io",
-    ctaText: "Contact for promotion",
+    ctaText: "Contact For Promotion",
   },
 ]
 

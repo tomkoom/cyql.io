@@ -5,9 +5,9 @@ import { FLEX_SITE_URL } from "@/constants/constants"
 const FlexBanner: FC = (): JSX.Element => {
   return (
     <FlexBannerStyled href={FLEX_SITE_URL} target="_blank" rel="noreferrer noopener">
-      <div className="main">
+      <div className="content">
         <h6>🔥💪 FLEX 💪🔥</h6>
-        <p>P2P & Meme Currency on the IC</p>
+        <p>P2P & Meme Currency ♾️</p>
       </div>
     </FlexBannerStyled>
   )
@@ -17,8 +17,6 @@ const FlexBannerStyled = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
   box-shadow: var(--boxShadow1);
   padding: 0.75rem 1rem;
   transition: var(--transition1);
@@ -27,7 +25,7 @@ const FlexBannerStyled = styled.a`
     background-color: var(--underlay1);
   }
 
-  > div.main {
+  > div.content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +37,9 @@ const FlexBannerStyled = styled.a`
     }
 
     > p {
-      font-weight: var(--fwBold);
+      font-weight: var(--fwMedium);
+      color: var(--tertiaryColor);
+      font-size: var(--fsText);
     }
   }
 `
