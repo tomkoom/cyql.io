@@ -9,28 +9,30 @@ interface MainProps {
 }
 
 const Main: FC<MainProps> = ({ project }): JSX.Element => {
-  const upvotesNum = project.upvotedBy.length
-  const formatName = (name: string): string => {
-    return name.length > 40 ? `${name.substring(0, 40)}…` : name
+  const { name, upvotedBy, category, frontendCanisterId, github, description } = project
+  const upvotesNum = upvotedBy.length
+
+  const formatName = (s: string): string => {
+    return s.length > 40 ? `${s.substring(0, 40)}…` : s
   }
 
-  const formatDescription = (description: string): string => {
-    return description.length > 40 ? `${description.substring(0, 40)}…` : description
+  const formatDescription = (s: string): string => {
+    return s.length > 40 ? `${s.substring(0, 40)}…` : s
   }
 
   return (
     <MainStyled>
-      <Title>
-        <h4>{formatName(project.name)}</h4> <UpvotesNum upvotesNum={upvotesNum} />
-      </Title>
+      <div className="title">
+        <h4>{formatName(name)}</h4> <UpvotesNum upvotesNum={upvotesNum} />
+      </div>
 
-      <Tags>
-        {project.category.length > 0 && project.category.join(", ")}{" "}
-        {project.frontendCanisterId && <span>{iCircleNodes} onchain</span>}{" "}
-        {project.github && <span>{iGithub} open</span>}
-      </Tags>
+      <div className="tags">
+        {category.length > 0 && category.join(", ")}{" "}
+        {frontendCanisterId && <span>{iCircleNodes} onchain</span>}{" "}
+        {github && <span>{iGithub} open</span>}
+      </div>
 
-      <Description>{formatDescription(project.description)}</Description>
+      <p className="description">{formatDescription(description)}</p>
     </MainStyled>
   )
 }
@@ -38,33 +40,36 @@ const Main: FC<MainProps> = ({ project }): JSX.Element => {
 const MainStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-`
+  gap: 0.1rem;
 
-const Title = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  > div.title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
 
-  > h4 {
-    font-size: var(--fs6);
-    font-weight: var(--fwBold);
-    margin-top: 0.1rem;
-    word-wrap: break-word;
+    > h4 {
+      font-size: var(--fs6);
+      font-weight: var(--fwBold);
+      margin-top: 0.1rem;
+      word-wrap: break-word;
+      line-height: 125%;
+    }
   }
-`
 
-const Tags = styled.span`
-  font-size: var(--text);
-  font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
-  text-transform: lowercase;
-`
+  > div.tags {
+    font-size: var(--text);
+    font-weight: var(--fwMedium);
+    color: var(--secondaryColor);
+    text-transform: lowercase;
+    line-height: 125%;
+  }
 
-const Description = styled.p`
-  font-size: var(--text);
-  font-weight: var(--fwMedium);
-  color: var(--tertiaryColor);
+  > p.description {
+    font-size: var(--text);
+    font-weight: var(--fwMedium);
+    color: var(--tertiaryColor);
+    line-height: 125%;
+  }
 `
 
 export default Main

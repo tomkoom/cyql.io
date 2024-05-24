@@ -23,7 +23,6 @@ const Logo: FC = (): JSX.Element => {
   const project = useAppSelector(selectProject)
   const projectLogoDataUrl = project.logoDataUrl
   const cropperRef = useRef<ReactCropperElement>(null)
-  console.log(project)
 
   const reset = (): void => {
     setLogoObjectUrl("")

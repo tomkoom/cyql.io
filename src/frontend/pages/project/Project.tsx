@@ -33,7 +33,6 @@ const Project: FC = (): JSX.Element => {
   const project = projects.filter((p) => p.id.toString() === id) || []
   const isShareModalOpen = useAppSelector(selectShareModal)
   const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)
-  console.log(project)
 
   if (projects.length < 1) {
     return <Loading />

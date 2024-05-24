@@ -10,6 +10,14 @@ import { setPromoModal, selectPromoModal, setPromoModalData } from "@/state/moda
 
 const promoItems = [
   {
+    color: "var(--primaryColor)",
+    backgroundColor: "var(--underlay1)",
+    title: "💪 FLEX 💪",
+    text: "FLEXY P2P & MEME CURRENCY ON THE INTERNET COMPUTER",
+    ctaUrl: "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/",
+    ctaText: "Get FLEX",
+  },
+  {
     color: "var(--background)",
     backgroundColor: "#7888ff",
     title: "Build with Juno 🛠️",
