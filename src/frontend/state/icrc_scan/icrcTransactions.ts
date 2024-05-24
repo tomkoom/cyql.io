@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-
-interface Pagination {
-  itemsPerPage: number
-  itemOffset: number
-  totalItems: number
-  selectedPage: number
-}
+import type { Pagination } from "@/state/_types/types"
 
 interface Transaction {
   index: number
@@ -23,7 +17,7 @@ interface IcrcTransactionsState {
 }
 
 const initialState: IcrcTransactionsState = {
-  pagination: { itemsPerPage: 25, itemOffset: 0, totalItems: 0, selectedPage: 0 },
+  pagination: { itemsPerPage: 25, itemOffset: 0, endOffset: 0, totalItems: 0, selectedPage: 0 },
   data: [],
 }
 

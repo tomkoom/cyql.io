@@ -2,6 +2,14 @@
 
 export type Tokens = { e8s: number }
 
+export interface Pagination {
+  itemsPerPage: number
+  itemOffset: number
+  endOffset: number
+  totalItems: number
+  selectedPage: number
+}
+
 export interface CompressedFile {
   url: string
   name: string
@@ -23,6 +31,8 @@ export type Category = {
   label: string
   icon: string
 }
+
+// archive
 
 export type ProjectId = number
 export type Project = {

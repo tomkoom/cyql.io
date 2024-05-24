@@ -9,23 +9,19 @@ interface DefaultBtnProps {
 }
 
 const DefaultBtn: FC<DefaultBtnProps> = ({ upvotesNum, location, click }) => {
-  return (
-    <div>
-      {location === "project_page" ? (
-        <DefaultBtnStyled_ProjectPage onClick={click}>
-          Upvote
-          <div>
-            <span className="icon">{iCaretUp}</span>
-            <span className="num">{upvotesNum}</span>
-          </div>
-        </DefaultBtnStyled_ProjectPage>
-      ) : (
-        <DefaultBtnStyled_Projects onClick={click}>
-          <span className="icon">{iCaretUp}</span>
-          <span className="num">{upvotesNum}</span>
-        </DefaultBtnStyled_Projects>
-      )}
-    </div>
+  return location === "project_page" ? (
+    <DefaultBtnStyled_ProjectPage onClick={click}>
+      Upvote
+      <div>
+        <span className="icon">{iCaretUp}</span>
+        <span className="num">{upvotesNum}</span>
+      </div>
+    </DefaultBtnStyled_ProjectPage>
+  ) : (
+    <DefaultBtnStyled_Projects onClick={click}>
+      <span className="icon">{iCaretUp}</span>
+      <span className="num">{upvotesNum}</span>
+    </DefaultBtnStyled_Projects>
   )
 }
 

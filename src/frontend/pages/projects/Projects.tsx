@@ -5,7 +5,7 @@ import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 import { useDebounceCallback } from "usehooks-ts"
 
 // components
-import { Category, Filter, ProjectList, Sort } from "./_index"
+import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
 import { TextInput2 } from "@/components/ui/_index"
 
 // state
@@ -46,7 +46,7 @@ const Projects: FC = (): JSX.Element => {
         onChange={(event) => debounced(event.target.value)}
       />
 
-      {/* controls */}
+      {/* filters */}
       <Filters>
         <div className="item">
           <Category />
@@ -62,7 +62,11 @@ const Projects: FC = (): JSX.Element => {
           <Sort />
         </div>
       </Filters>
+
+      {/* table */}
+      <Pagination />
       <ProjectList searchQ={searchQ} />
+      <Pagination />
     </ProjectsStyled>
   )
 }

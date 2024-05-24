@@ -21,7 +21,7 @@ import {
 } from "./utils/filterProjects"
 
 // components
-import { LoadMoreBtn, UpvoteBtn } from "@/components/btns/_index"
+import { UpvoteBtn } from "@/components/btns/_index"
 import { Loading } from "@/components/ui/_index"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
@@ -34,6 +34,7 @@ import {
   selectActiveCuratedProjects,
   selectActiveCuratedProjectsNum,
 } from "@/state/curatedProjects"
+import { selectProjectsPagination } from "@/state/projects/projectsPagination"
 
 interface ProjectListProps {
   searchQ: string
@@ -45,6 +46,7 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const sort = useAppSelector(selectSort)
   const category = searchParams.get("category")
+  const pagination = useAppSelector(selectProjectsPagination)
 
   // projects
   const projects = useAppSelector(selectActiveCuratedProjects)
@@ -81,6 +83,7 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
     <ProjectListStyled>
       <ul>
         {projects
+          .slice(pagination.itemOffset, pagination.endOffset)
           // filter
           .filter((project) => filterBySearch(project, searchQ))
           .filter((project) => filterByCategory(project, category))
@@ -132,8 +135,6 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
             </li>
           ))}
       </ul>
-
-      {itemsVisible < projectsNum && <LoadMoreBtn setVisible={setItemsVisible} />}
     </ProjectListStyled>
   )
 }

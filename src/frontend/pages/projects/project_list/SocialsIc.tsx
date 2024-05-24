@@ -34,9 +34,8 @@ const SocialsIcStyled = styled.ul`
     height: 1.5rem;
     display: flex;
     align-items: center;
-    padding: 0 0.33rem;
+    padding: 0 0.3rem;
     background-color: var(--underlay1);
-    border-radius: 0.5rem;
   }
 `
 

@@ -19,8 +19,7 @@ const template = createSlice({
   },
 })
 
-const selectTemplate = (state: RootState) => state.template.template
-export { selectTemplate }
+export const selectTemplate = (state: RootState) => state.template.template
 
 export const { setTemplate } = template.actions
 export default template.reducer

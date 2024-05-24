@@ -13,25 +13,21 @@ const UpvotedStateBtn: FC<UpvotedStateBtnProps> = ({
   location,
   click,
 }): JSX.Element => {
-  return (
-    <div>
-      {location === "project_page" ? (
-        <UpvotedStateBtnStyled_ProjectPage onClick={click}>
-          {iCheck} Upvoted
-          <div>
-            <span className="icon">{iCaretUp}</span>
-            <span className="num">{upvotesNum}</span>
-          </div>
-        </UpvotedStateBtnStyled_ProjectPage>
-      ) : (
-        <UpvotedStateBtnStyled_Projects onClick={click}>
-          <span className="icon">{iCaretUp}</span>
-          <span className="num">
-            {iCheck} {upvotesNum}
-          </span>
-        </UpvotedStateBtnStyled_Projects>
-      )}
-    </div>
+  return location === "project_page" ? (
+    <UpvotedStateBtnStyled_ProjectPage onClick={click}>
+      {iCheck} Upvoted
+      <div>
+        <span className="icon">{iCaretUp}</span>
+        <span className="num">{upvotesNum}</span>
+      </div>
+    </UpvotedStateBtnStyled_ProjectPage>
+  ) : (
+    <UpvotedStateBtnStyled_Projects onClick={click}>
+      <span className="icon">{iCaretUp}</span>
+      <span className="num">
+        {iCheck} {upvotesNum}
+      </span>
+    </UpvotedStateBtnStyled_Projects>
   )
 }
 

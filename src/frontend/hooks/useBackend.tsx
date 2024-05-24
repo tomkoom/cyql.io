@@ -10,6 +10,7 @@ import {
   setAllCuratedProjects,
   setCuratedProjectsIsLoading,
 } from "@/state/curatedProjects"
+import { setProjectsPaginationTotalItems } from "@/state/projects/projectsPagination"
 
 interface UseBackend {
   refreshCuratedProjects: () => Promise<void>
@@ -35,6 +36,7 @@ export const useBackend = (): UseBackend => {
       // set state
       dispatch(setAllCuratedProjects(serialized))
       dispatch(setActiveCuratedProjects(activeProjects))
+      dispatch(setProjectsPaginationTotalItems(activeProjects.length))
     } catch (error) {
       throw new Error(error)
     } finally {
