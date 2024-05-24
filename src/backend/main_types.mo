@@ -1,34 +1,28 @@
 module {
-
-  // users
-
-  public type UserId = Principal;
-  public type User = {
-    id : Text;
-    // totalVotes : Nat;
-    // totalVotingPower : Nat
-  };
-
-  // archive
+  public type Tokens = { e8s : Nat };
+  public type Secret = Text;
 
   public type ProjectId = Nat;
   public type Project = {
+    // main
     id : Nat;
-    // id : Text;
-    submittedBy : Text;
-    createdAt : Text;
-    updatedAt : Text;
     name : Text;
     description : Text;
     category : [Text];
-    logo : Text;
     website : Text;
-    canister : Text;
+
+    // logo
+    logoUrl : Text;
+    logoDataUrl : Text;
+
+    // links web2
     twitter : Text;
     discord : Text;
     telegram : Text;
     github : Text;
     medium : Text;
+
+    // links web3
     dscvr : Text;
     distrikt : Text;
     openchat : Text;
@@ -37,12 +31,8 @@ module {
     nuance : Text;
     catalyze : Text;
     funded : Text;
-    app : Text;
-    docs : Text;
-    faq : Text;
-    whitepaper : Text;
-    grantee : Bool;
-    archived : Bool;
+
+    // nft
     nftSaleDate : Text;
     nftSaleUrl : Text;
     nftUnits : Text;
@@ -56,15 +46,33 @@ module {
     nftImg2 : Text;
     nftImg3 : Text;
     nftImg4 : Text;
-    upvotedBy : [Text]
 
-    // to add:
-    // frontend canister
-    // backend canister
-    // sns url
-    // forum url
+    // ...
+    app : Text;
+    docs : Text;
+    faq : Text;
+    whitepaper : Text;
+
+    // canisters
+    frontendCanisterId : Text;
+    backendCanisterId : Text;
+
+    // ...
+    dfinityForumShowcase : Text;
+    nnsLaunchpadUrl : Text;
 
     // token
-    // tokenCanister
+    tokenCanisterId : Text;
+    tokenStandard : Text;
+
+    // meta
+    archived : Bool;
+    createdAt : Text;
+    updatedAt : Text;
+    submittedBy : Text;
+    upvotedBy : [Text]
+
+    // ...
+    // frontendCanisterUrl : Text
   }
 }

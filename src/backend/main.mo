@@ -9,7 +9,8 @@ import Time "mo:base/Time";
 import Int "mo:base/Int";
 
 // ...
-import T "./types";
+import T "./main_types";
+import T_ARCHIVE "./types";
 import U "./utils";
 import C "./_constants";
 
@@ -23,58 +24,36 @@ shared actor class _CURATED_PROJECTS() = Self {
   // maps
 
   // curated projects v1
-  stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
-  let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
+  stable var projectsEntries : [(T_ARCHIVE.ProjectId, T_ARCHIVE.Project)] = [];
+  let projects = HashMap.fromIter<T_ARCHIVE.ProjectId, T_ARCHIVE.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
 
   // curated projects v2
-  stable var curatedProjectsV2Entries : [(T.ProjectId, T.ProjectV2)] = [];
-  let curatedProjectsV2 = HashMap.fromIter<T.ProjectId, T.ProjectV2>(curatedProjectsV2Entries.vals(), 100, Nat.equal, Hash.hash);
+  stable var curatedProjectsV2Entries : [(T.ProjectId, T.Project)] = [];
+  let curatedProjectsV2 = HashMap.fromIter<T.ProjectId, T.Project>(curatedProjectsV2Entries.vals(), 100, Nat.equal, Hash.hash);
 
   // ...
+  // curated projects v2
 
-  public shared ({ caller }) func updateUpvote(projectId : T.ProjectId) : async ?T.ProjectId {
-    // verify caller
-    assert (not U.isAnon(caller));
-
-    let userId = Principal.toText(caller);
-    let ?p = projects.get(projectId) else return null;
-    let upvotedByBuf = Buffer.fromArray<Text>(p.upvotedBy);
-    let isAlreadyUpvoted = Buffer.contains<Text>(upvotedByBuf, userId, Text.equal);
-
-    if (not isAlreadyUpvoted) {
-      upvotedByBuf.add(userId)
-    } else {
-      let ?idx = Buffer.indexOf<Text>(userId, upvotedByBuf, Text.equal) else return null;
-      let _removed = upvotedByBuf.remove(idx)
-    };
-
-    projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
-    return ?projectId
-  };
-
-  // ...
-  // curated projects
-
-  public shared ({ caller }) func addProjectV2(project : T.ProjectV2) : async ?T.ProjectId {
+  public shared ({ caller }) func addProjectV2(project : T.Project) : async ?T.ProjectId {
     assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
     let projectId = Int.abs(Time.now());
     curatedProjectsV2.put(projectId, { project with id = projectId });
     return ?projectId
   };
 
-  public shared ({ caller }) func editProjectV2(projectId : T.ProjectId, project : T.ProjectV2) : async ?T.ProjectId {
+  public shared ({ caller }) func editProjectV2(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
     assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
     curatedProjectsV2.put(projectId, project);
     return ?projectId
   };
 
-  public shared ({ caller }) func removeProjectV2(projectId : T.ProjectId) : async ?T.ProjectV2 {
+  public shared ({ caller }) func removeProjectV2(projectId : T.ProjectId) : async ?T.Project {
     assert U.isAdmin(caller);
     let removed = curatedProjectsV2.remove(projectId);
     return removed
   };
 
-  public shared ({ caller }) func getProjectV2(projectId : T.ProjectId) : async ?T.ProjectV2 {
+  public shared ({ caller }) func getProjectV2(projectId : T.ProjectId) : async ?T.Project {
     assert U.isAdmin(caller);
     return curatedProjectsV2.get(projectId)
   };
@@ -84,16 +63,20 @@ shared actor class _CURATED_PROJECTS() = Self {
     return curatedProjectsV2.size()
   };
 
-  public query func listProjectsV2() : async [T.ProjectV2] {
-    let iter : Iter.Iter<T.ProjectV2> = curatedProjectsV2.vals();
-    return Iter.toArray<T.ProjectV2>(iter)
+  // query
+
+  public query func listProjectsV2(feSecret : T.Secret) : async [T.Project] {
+    assert (secret == feSecret);
+
+    let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
+    return Iter.toArray<T.Project>(iter)
   };
 
-  public shared ({ caller }) func updateUpvoteV2(frontendSecret : T.Secret, projectId : T.ProjectId) : async Text {
+  public shared ({ caller }) func updateUpvoteV2(feSecret : T.Secret, projectId : T.ProjectId) : async Text {
 
     // verify
     assert (not Principal.isAnonymous(caller));
-    if (secret != frontendSecret) {
+    if (secret != feSecret) {
       return "Wrong secret."
     };
 

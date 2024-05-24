@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import { useAuth } from "@/context/Auth"
 import { useBackend } from "@/hooks/_index"
 import { UpvotedStateBtn, DefaultStateBtn } from "./_index"
-import type { ProjectId } from "@/state/_types/types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
