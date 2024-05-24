@@ -23,14 +23,15 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
   const isUpvotedByUser = upvotedBy.includes(userId)
 
   const upvote = async (projectId: string): Promise<void> => {
-    const id: ProjectId = Number(projectId)
     dispatch(setIsLoading(true))
-    await updateCuratedProjectUpvote(id).catch((err) => {
+    try {
+      await updateCuratedProjectUpvote(projectId)
+      await refreshCuratedProjects()
+    } catch (error) {
+      throw new Error(error)
+    } finally {
       dispatch(setIsLoading(false))
-      throw new Error(err)
-    })
-    await refreshCuratedProjects()
-    dispatch(setIsLoading(false))
+    }
   }
 
   const openSignInModal = (): void => {

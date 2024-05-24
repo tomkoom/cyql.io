@@ -10,21 +10,21 @@ import { setPromoModal, selectPromoModal, setPromoModalData } from "@/state/moda
 
 const promoItems = [
   {
-    color: "var(--primaryColor)",
-    backgroundColor: "var(--underlay1)",
-    title: "💪 FLEX 💪",
+    color: "var(--background)",
+    backgroundColor: "#aeea00",
+    title: "🪙 Get FLEX 🪙",
     text: "FLEXY P2P & MEME CURRENCY ON THE INTERNET COMPUTER",
     ctaUrl: "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/",
     ctaText: "Get FLEX",
   },
-  {
-    color: "var(--background)",
-    backgroundColor: "#7888ff",
-    title: "Build with Juno 🛠️",
-    text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2",
-    ctaUrl: "https://juno.build/",
-    ctaText: "Try Juno",
-  },
+  // {
+  //   color: "var(--background)",
+  //   backgroundColor: "#7888ff",
+  //   title: "Build with Juno 🛠️",
+  //   text: "Juno is an open-source, blockchainless platform that offers developers all the necessary features to build any Web3 application. Start building your decentralized app with the same ease as Web2",
+  //   ctaUrl: "https://juno.build/",
+  //   ctaText: "Try Juno",
+  // },
   {
     color: "var(--primaryColor)",
     backgroundColor: "var(--underlay1)",
@@ -76,7 +76,7 @@ const PromoStyled = styled.ul`
     align-items: center;
     gap: 0.25rem;
     font-size: var(--fsText);
-    font-weight: var(--fwMedium);
+    font-weight: var(--fwBold);
     white-space: nowrap;
     padding: 0 0.5rem;
     cursor: pointer;

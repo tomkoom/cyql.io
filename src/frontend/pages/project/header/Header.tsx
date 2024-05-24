@@ -40,9 +40,9 @@ const Header: FC<HeaderProps> = ({ project }): JSX.Element => {
       </Main>
 
       <Controls>
-        <UpvoteBtn projectId={project.id} location={"project_page"} upvotedBy={project.upvotedBy} />
-        {verifyAdmin(userId) === true && <Btn icon={iEdit} onClick={openEditModal} />}
+        {verifyAdmin(userId) && <Btn icon={iEdit} onClick={openEditModal} />}
         <Btn icon={iShareSquare} onClick={openShareModal} />
+        <UpvoteBtn projectId={project.id} location={"project_page"} upvotedBy={project.upvotedBy} />
       </Controls>
     </HeaderStyled>
   )

@@ -89,24 +89,28 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Iter.toArray<T.ProjectV2>(iter)
   };
 
-  public shared ({ caller }) func updateUpvoteV2(projectId : T.ProjectId) : async ?T.ProjectId {
-    // verify caller
+  public shared ({ caller }) func updateUpvoteV2(frontendSecret : T.Secret, projectId : T.ProjectId) : async Text {
+
+    // verify
     assert (not Principal.isAnonymous(caller));
+    if (secret != frontendSecret) {
+      return "Wrong secret."
+    };
 
     let userId = Principal.toText(caller);
-    let ?p = curatedProjectsV2.get(projectId) else return null;
+    let ?p = curatedProjectsV2.get(projectId) else return "Project not found.";
     let upvotedByBuf = Buffer.fromArray<Text>(p.upvotedBy);
     let isAlreadyUpvoted = Buffer.contains<Text>(upvotedByBuf, userId, Text.equal);
 
     if (not isAlreadyUpvoted) {
       upvotedByBuf.add(userId)
     } else {
-      let ?idx = Buffer.indexOf<Text>(userId, upvotedByBuf, Text.equal) else return null;
+      let ?idx = Buffer.indexOf<Text>(userId, upvotedByBuf, Text.equal) else return "User idx not found.";
       let _removed = upvotedByBuf.remove(idx)
     };
 
     curatedProjectsV2.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
-    return ?projectId
+    return Nat.toText(projectId)
   };
 
   // admin

@@ -32,7 +32,7 @@ const ShareModal: FC<ShareModalProps> = ({
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
       <Content>
-        <h3>share {name} via</h3>
+        <h3>Share {name} via</h3>
         <Btns id={id} name={name} category={category} description={description} />
         <Link />
       </Content>

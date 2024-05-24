@@ -1,6 +1,7 @@
 import { useAuth } from "@/context/Auth"
 import { verifyAdmin, sortProjectsByDate } from "@/utils/_index"
 import type { ProjectV2, ProjectId } from "@/state/_types/curated_projects_types"
+import { SECRET } from "@/constants/constants"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -14,7 +15,7 @@ interface UseBackend {
   refreshCuratedProjects: () => Promise<void>
   addCuratedProject: (project: ProjectV2) => Promise<void>
   editCuratedProject: (project: ProjectV2) => Promise<void>
-  updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<void>
+  updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
 }
 
 export const useBackend = (): UseBackend => {
@@ -75,11 +76,13 @@ export const useBackend = (): UseBackend => {
     }
   }
 
-  const updateCuratedProjectUpvote = async (projectId: ProjectId): Promise<void> => {
+  const updateCuratedProjectUpvote = async (projectId: ProjectId): Promise<string> => {
     if (!actor) return
 
     try {
-      await actor.updateUpvoteV2(BigInt(projectId))
+      const id = BigInt(projectId)
+      const res = await actor.updateUpvoteV2(SECRET, id)
+      return res
     } catch (error) {
       throw new Error(error)
     }

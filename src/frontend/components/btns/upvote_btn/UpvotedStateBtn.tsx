@@ -14,17 +14,63 @@ const UpvotedStateBtn: FC<UpvotedStateBtnProps> = ({
   click,
 }): JSX.Element => {
   return (
-    <UpvotedStateBtnStyled location={location} onClick={click}>
-      <span className="icon">{iCaretUp}</span>
-      <span className="num">
-        {upvotesNum} {iCheck}
-      </span>
-    </UpvotedStateBtnStyled>
+    <div>
+      {location === "project_page" ? (
+        <UpvotedStateBtnStyled_ProjectPage onClick={click}>
+          {iCheck} Upvoted
+          <div>
+            <span className="icon">{iCaretUp}</span>
+            <span className="num">{upvotesNum}</span>
+          </div>
+        </UpvotedStateBtnStyled_ProjectPage>
+      ) : (
+        <UpvotedStateBtnStyled_Projects onClick={click}>
+          <span className="icon">{iCaretUp}</span>
+          <span className="num">
+            {iCheck} {upvotesNum}
+          </span>
+        </UpvotedStateBtnStyled_Projects>
+      )}
+    </div>
   )
 }
 
-const UpvotedStateBtnStyled = styled.button<{ location: string }>`
-  width: ${(p) => (p.location === "project_page" ? "3.5rem" : "2.5rem")};
+const UpvotedStateBtnStyled_ProjectPage = styled.button`
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fsText);
+  background-color: var(--underlay1);
+  font-weight: var(--fwBold);
+  padding: 0 1rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition1);
+
+  &:hover {
+    background-color: var(--underlay2);
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > span.icon {
+      color: var(--primaryColor);
+    }
+
+    > span.num {
+      color: var(--primaryColor);
+      margin-top: -0.25rem;
+      padding-bottom: 0.25rem;
+    }
+  }
+`
+
+const UpvotedStateBtnStyled_Projects = styled.button`
+  width: 2.5rem;
   height: 3.5rem;
   display: flex;
   flex-direction: column;
@@ -33,7 +79,6 @@ const UpvotedStateBtnStyled = styled.button<{ location: string }>`
   font-size: var(--fs7);
   background-color: var(--underlay2);
   font-weight: var(--fwBold);
-  /* border-radius: ${(p) => (p.location === "project_page" ? "50%" : "0.6rem")}; */
   border: none;
   cursor: pointer;
   transition: var(--transition1);
