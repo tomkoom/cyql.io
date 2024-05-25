@@ -44,8 +44,8 @@ const ImgCrop: FC<ImgCropProps> = ({
         // Cropper.js options
         autoCrop={true}
         autoCropArea={1}
-        minContainerWidth={400}
-        minCropBoxHeight={400}
+        minContainerWidth={200}
+        minCropBoxHeight={200}
         viewMode={1}
         highlight={true}
         // image

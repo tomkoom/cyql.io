@@ -16,12 +16,14 @@ import {
   setFilterByOpenSource,
   selectFilterByOpenSource,
 } from "@/state/projects/filter"
+import { selectActiveCuratedProjectsNum } from "@/state/curatedProjects"
 
 const Projects: FC = (): JSX.Element => {
   const [search, setSearch] = useState("")
   const debounced = useDebounceCallback(setSearch, 400)
   const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const searchQ = searchParams.get("q")
+  const projectsNum = useAppSelector(selectActiveCuratedProjectsNum)
 
   // filter
   const filterByOpenSource = useAppSelector(selectFilterByOpenSource)
@@ -64,9 +66,9 @@ const Projects: FC = (): JSX.Element => {
       </Filters>
 
       {/* table */}
-      <Pagination />
+      {projectsNum > 0 && !searchQ && <Pagination />}
       <ProjectList searchQ={searchQ} />
-      <Pagination />
+      {projectsNum > 0 && !searchQ && <Pagination />}
     </ProjectsStyled>
   )
 }

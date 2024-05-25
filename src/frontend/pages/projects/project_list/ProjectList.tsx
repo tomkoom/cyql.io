@@ -26,14 +26,10 @@ import { Loading } from "@/components/ui/_index"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { setItemsVisibleProjects, selectItemsVisibleProjects } from "@/state/loadMore"
+import { useAppSelector } from "@/hooks/useRedux"
 import { selectSort } from "@/state/projects/sort"
 import { selectFilterByOpenSource, selectFilterByOnChain } from "@/state/projects/filter"
-import {
-  selectActiveCuratedProjects,
-  selectActiveCuratedProjectsNum,
-} from "@/state/curatedProjects"
+import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectProjectsPagination } from "@/state/projects/projectsPagination"
 
 interface ProjectListProps {
@@ -41,26 +37,16 @@ interface ProjectListProps {
 }
 
 const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
-  const dispatch = useAppDispatch()
   const { toProject } = useNav()
   const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const sort = useAppSelector(selectSort)
   const category = searchParams.get("category")
   const pagination = useAppSelector(selectProjectsPagination)
-
-  // projects
   const projects = useAppSelector(selectActiveCuratedProjects)
-  const projectsNum = useAppSelector(selectActiveCuratedProjectsNum)
-  const itemsVisible = useAppSelector(selectItemsVisibleProjects)
 
   // filter
   const openSource = useAppSelector(selectFilterByOpenSource)
   const onChain = useAppSelector(selectFilterByOnChain)
-
-  const setItemsVisible = (): void => {
-    const items = 64
-    dispatch(setItemsVisibleProjects(items))
-  }
 
   const updateCategory = (category: string): void => {
     const key = "category"
@@ -83,9 +69,10 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
     <ProjectListStyled>
       <ul>
         {projects
-          .slice(pagination.itemOffset, pagination.endOffset)
-          // filter
+          // search
           .filter((project) => filterBySearch(project, searchQ))
+
+          // filter
           .filter((project) => filterByCategory(project, category))
           .filter((project) => filterByOpenSource(project, openSource))
           .filter((project) => filterByOnChain(project, onChain))
@@ -108,32 +95,36 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
               ? sortRecentlyUpdated(Number(a.updatedAt), Number(b.updatedAt))
               : null
           )
-          .slice(0, itemsVisible)
-          .map((p) => (
-            <li key={p.id} onClick={() => toProject(p.id.toString())}>
-              <div className="main1">
-                <Main project={p} />
-              </div>
 
-              <div className="tags">
-                <Tags category={p.category} />
-              </div>
-
-              <div className="socials">
-                <Socials project={p} />
-              </div>
-
-              <div className="socials">
-                <SocialsIc project={p} />
-              </div>
-
-              <div className="upvote">
-                <div className="btn" onClick={(e) => e.stopPropagation()}>
-                  <UpvoteBtn projectId={p.id.toString()} location={""} upvotedBy={p.upvotedBy} />
+          // pagination
+          .slice(pagination.itemOffset, pagination.endOffset)
+          .map((p) => {
+            return (
+              <li key={p.id} onClick={() => toProject(p.id.toString())}>
+                <div className="main1">
+                  <Main project={p} />
                 </div>
-              </div>
-            </li>
-          ))}
+
+                <div className="tags">
+                  <Tags category={p.category} />
+                </div>
+
+                <div className="socials">
+                  <Socials project={p} />
+                </div>
+
+                <div className="socials">
+                  <SocialsIc project={p} />
+                </div>
+
+                <div className="upvote">
+                  <div className="btn" onClick={(e) => e.stopPropagation()}>
+                    <UpvoteBtn projectId={p.id.toString()} location={""} upvotedBy={p.upvotedBy} />
+                  </div>
+                </div>
+              </li>
+            )
+          })}
       </ul>
     </ProjectListStyled>
   )

@@ -4,7 +4,6 @@ import template from "./_template"
 // ...
 import icpPrice from "./icpPrice"
 import theme from "./theme"
-import loadMore from "./loadMore"
 import adminSearch from "./admin/adminSearch"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
@@ -49,7 +48,6 @@ const store = configureStore({
     // ...
     icpPrice,
     theme,
-    loadMore,
     adminSearch,
     allCategories,
     categoriesSortedByNum,
