@@ -25,18 +25,17 @@ const TagsStyled = styled.ul`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.25rem;
 
   > li {
-    height: 2.5rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    font-size: var(--fs6);
-    font-weight: var(--fwBold);
+    font-size: var(--fsText);
+    font-weight: var(--fwMedium);
     background-color: var(--underlay1);
-    padding: 0 0.75rem;
-    border-radius: 1.25rem;
+    padding: 0 0.5rem;
 
     &#open {
       color: var(--primaryColor);

@@ -4,6 +4,7 @@ import { CrossIcon } from "@/components/icons/_index"
 import { useSearchParams } from "react-router-dom"
 import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 import { getCategoryNum } from "@/utils/getCategoryNum"
+import { Btn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -40,9 +41,13 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
     setOpenCategoryList(false)
   }
 
-  const clickCategory = (categoryLabel: string): void => {
+  const setCategory = (categoryLabel: string): void => {
     updateCategory(categoryLabel)
     closeModal()
+  }
+
+  const reset = (): void => {
+    updateCategory("All")
   }
 
   if (!openCategoryList) {
@@ -60,12 +65,17 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
             <li
               key={c.id}
               id={category === c.label ? "active" : null}
-              onClick={() => clickCategory(c.label)}
+              onClick={() => setCategory(c.label)}
             >
-              {c.label} <span>{getCategoryNum(projects, c.label).toString()}</span>
+              <span className="label">{c.label}</span>
+              <span className="num">{getCategoryNum(projects, c.label).toString()}</span>
             </li>
           ))}
         </Categories>
+
+        {category !== "All" && (
+          <Btn style={{ width: "100%" }} btnType={"secondary"} text={"Reset"} onClick={reset} />
+        )}
       </Content>
     </CategoryListModalStyled>
   )
@@ -89,7 +99,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 1rem;
 `
 
 const Categories = styled.ul`
@@ -98,17 +108,16 @@ const Categories = styled.ul`
   flex-wrap: wrap;
   gap: 0.25rem;
   font-weight: var(--fwMedium);
-  padding: 1rem;
+  margin: 0.5rem 0;
 
   > li {
     height: 2.75rem;
     display: flex;
     align-items: center;
-    gap: 0.125rem;
+    gap: 0.25rem;
     white-space: nowrap;
     padding: 0 0.75rem;
     background-color: var(--underlay1);
-    /* border-radius: 1.375rem; */
     font-size: var(--fsText);
     cursor: pointer;
     transition: var(--transition1);
@@ -123,7 +132,7 @@ const Categories = styled.ul`
       box-shadow: unset;
     }
 
-    > span {
+    > span.num {
       color: var(--tertiaryColor);
     }
   }

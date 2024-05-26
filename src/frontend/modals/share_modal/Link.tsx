@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react"
 import styled from "styled-components"
 import { Btn } from "@/components/btns/_index"
+import { iCopy } from "@/components/icons/Icons"
 
 const Link: FC = (): JSX.Element => {
   const [copied, setCopied] = useState(false)
@@ -23,6 +24,7 @@ const Link: FC = (): JSX.Element => {
           style={{ width: "100%" }}
           btnType={"secondary"}
           text={copied ? "Copied!" : "Copy"}
+          icon={copied ? undefined : iCopy}
           onClick={() => !copied && copy()}
         />
       </Field>

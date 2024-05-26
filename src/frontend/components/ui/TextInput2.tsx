@@ -7,7 +7,7 @@ const TextInput2: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Eleme
 
 const TextInputOutlinedStyled = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   width: 100%;
-  height: 4rem;
+  height: 3.2rem;
   padding: 0 1rem;
   font-size: var(--fs6);
   font-weight: var(--fwMedium);
