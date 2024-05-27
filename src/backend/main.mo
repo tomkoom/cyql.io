@@ -8,14 +8,13 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Array "mo:base/Array";
-import Float "mo:base/Float";
-import Order "mo:base/Order";
 
 // ...
 import T "./main_types";
-import T_ARCHIVE "./types";
+import T_Archive "./types";
 import U "./utils";
 import C "./_constants";
+import Handle "./utils/handleProjects";
 
 shared actor class _CURATED_PROJECTS() = Self {
 
@@ -27,8 +26,8 @@ shared actor class _CURATED_PROJECTS() = Self {
   // maps
 
   // curated projects v1
-  stable var projectsEntries : [(T_ARCHIVE.ProjectId, T_ARCHIVE.Project)] = [];
-  let projects = HashMap.fromIter<T_ARCHIVE.ProjectId, T_ARCHIVE.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
+  stable var projectsEntries : [(T_Archive.ProjectId, T_Archive.Project)] = [];
+  let projects = HashMap.fromIter<T_Archive.ProjectId, T_Archive.Project>(projectsEntries.vals(), 10, Nat.equal, Hash.hash);
 
   // curated projects v2
   stable var curatedProjectsV2Entries : [(T.ProjectId, T.Project)] = [];
@@ -105,78 +104,26 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // filter, sort, paginate
 
-  public query func getProjects(args : T.GetProjectsArgs) : async ?T.PaginatedRes {
+  public query func getProjects(args : T.GetProjectsArgs) : async ?T.PaginatedResult {
     assert (secret == args.secret);
-    let { sort; page; pageSize } = args;
+    let { filterByCategory; filterByOpenSource; filterByOnchain; sort; page; pageSize } = args;
 
     // get projects
     let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
     let allProjects = Iter.toArray<T.Project>(iter);
     let activeProjects = Array.filter<T.Project>(allProjects, func(p) { p.archived == false });
 
-    // filter, sort, paginate
-    let sorted = _sort(activeProjects, sort);
-    let paginated = _paginate(sorted, page, pageSize);
+    // filter
+    let filteredByCategory = Handle.filterByCategory(activeProjects, filterByCategory);
+    let filteredByOpenSource = Handle.filterByOpenSource(filteredByCategory, filterByOpenSource);
+    let filteredByOnchain = Handle.filterByOnchain(filteredByOpenSource, filterByOnchain);
+
+    // sort
+    let sorted = Handle.sort(filteredByOnchain, sort);
+
+    // paginate
+    let paginated = Handle.paginate(sorted, page, pageSize);
     return paginated
-  };
-
-  private func _sort(projects : [T.Project], sortOption : T.SortOptions) : [T.Project] {
-
-    switch sortOption {
-      case (#newest_first) {
-        return Array.sort<T.Project>(projects, sortNewestFirst)
-      };
-      case (#oldest_first) {
-        return Array.sort<T.Project>(projects, sortOldestFirst)
-      };
-      case (#most_upvoted) {
-        return Array.sort<T.Project>(projects, sortMostUpvoted)
-      };
-      case (#least_upvoted) {
-        return Array.sort<T.Project>(projects, sortLeastUpvoted)
-      };
-      case (#recently_updated) {
-        return Array.sort<T.Project>(projects, sortRecentlyUpdated)
-      }
-    };
-
-    return []
-  };
-
-  private func _paginate(projects : [T.Project], page : Nat, pageSize : Nat) : ?T.PaginatedRes {
-
-    if (page > 0) {
-      let totalItems = projects.size();
-
-      // calculate the start and end indexes for the requested page
-      let startIndex = (page - 1) * pageSize;
-      var endIndex = page * pageSize;
-
-      if (endIndex > totalItems) {
-        endIndex := totalItems
-      };
-
-      // slice the products array based on the indexes
-      let slice = Array.slice<T.Project>(projects, startIndex, endIndex);
-      let paginatedProjects = Iter.toArray<T.Project>(slice);
-
-      // calculate total pages
-      let totalPages = Float.ceil(Float.fromInt(totalItems) / Float.fromInt(pageSize));
-
-      // send the paginated products response
-      let res : T.PaginatedRes = {
-        data = paginatedProjects;
-        selectedPage = page;
-        itemsPerPage = pageSize;
-        startIndex;
-        endIndex;
-        totalItems;
-        totalPages = Int.abs(Float.toInt(totalPages))
-      };
-      return ?res
-    };
-
-    return null
   };
 
   // admin
@@ -194,35 +141,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // utils
 
-  let sortNewestFirst = func(a : T.Project, b : T.Project) : Order.Order {
-    if (b.createdAt > a.createdAt) return #greater;
-    if (b.createdAt < a.createdAt) return #less;
-    return #equal
-  };
-
-  let sortOldestFirst = func(a : T.Project, b : T.Project) : Order.Order {
-    if (b.createdAt > a.createdAt) return #less;
-    if (b.createdAt < a.createdAt) return #greater;
-    return #equal
-  };
-
-  let sortMostUpvoted = func(a : T.Project, b : T.Project) : Order.Order {
-    if (b.upvotedBy.size() > a.upvotedBy.size()) return #greater;
-    if (b.upvotedBy.size() < a.upvotedBy.size()) return #less;
-    return #equal
-  };
-
-  let sortLeastUpvoted = func(a : T.Project, b : T.Project) : Order.Order {
-    if (b.upvotedBy.size() > a.upvotedBy.size()) return #less;
-    if (b.upvotedBy.size() < a.upvotedBy.size()) return #greater;
-    return #equal
-  };
-
-  let sortRecentlyUpdated = func(a : T.Project, b : T.Project) : Order.Order {
-    if (b.updatedAt > a.updatedAt) return #greater;
-    if (b.updatedAt < a.updatedAt) return #less;
-    return #equal
-  };
+  // ...
 
   // test
 

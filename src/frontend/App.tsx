@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react"
 import { RouterProvider } from "react-router-dom"
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 import { Router } from "@/routes/_index"
+import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -13,22 +14,41 @@ import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
+import { selectPaginated } from "./state/projects/paginated"
 
 const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { actor, nft, isAuthenticated, accounntIdHex } = useAuth()
-  const { refreshCuratedProjects, refreshPaginated } = useBackend()
+  const { refreshPaginated } = useBackend()
   const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
   const { refreshProposals } = useProposals()
   const projects = useAppSelector(selectActiveCuratedProjects)
   const allCategories = useAppSelector(selectAllCategories)
 
+  // pagination
+  const paginated = useAppSelector(selectPaginated)
+  const page = paginated.selectedPage
+  const itemsPerPage = paginated.itemsPerPage
+
   const refresh = async (): Promise<void> => {
-    await refreshProposals()
-    // await refreshCuratedProjects()
-    const sort = { newest_first: null }
-    await refreshPaginated(sort, 1, 50)
+    try {
+      await refreshProposals()
+      // await refreshCuratedProjects()
+
+      const args: RefreshProjectsArgs = {
+        filterByCategory: "All",
+        filterByOnchain: [],
+        filterByOpenSource: [],
+        sort: { newest_first: null },
+        page,
+        pageSize: itemsPerPage,
+      }
+
+      await refreshPaginated(args)
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   useEffect(() => {

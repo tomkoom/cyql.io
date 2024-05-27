@@ -1,13 +1,9 @@
 import { useAuth } from "@/context/Auth"
 import { verifyAdmin, sortProjectsByDate, serializeProjectsToString } from "@/utils/_index"
-import type {
-  ProjectV2,
-  ProjectId,
-  Paginated,
-  SortOptions,
-} from "@/state/_types/curated_projects_types"
+import type { ProjectV2, ProjectId, Paginated } from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
 import { GetProjectsArgs } from "../../declarations/backend/backend.did"
+import type { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -21,7 +17,7 @@ import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 
 interface UseBackend {
   refreshCuratedProjects: () => Promise<void>
-  refreshPaginated: (sortOption: SortOptions, page: number, pageSize: number) => Promise<void>
+  refreshPaginated: (args: RefreshProjectsArgs) => Promise<void>
   addCuratedProject: (project: ProjectV2) => Promise<void>
   editCuratedProject: (project: ProjectV2) => Promise<void>
   updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
@@ -53,17 +49,18 @@ export const useBackend = (): UseBackend => {
   }
 
   // get paginated
-  const refreshPaginated = async (
-    sort: SortOptions,
-    page: number,
-    pageSize: number
-  ): Promise<void> => {
+  const refreshPaginated = async (refreshProjectsArgs: RefreshProjectsArgs): Promise<void> => {
     if (!actor) return
+    const { filterByCategory, filterByOpenSource, filterByOnchain, sort, page, pageSize } =
+      refreshProjectsArgs
 
     dispatch(setPaginatedIsLoading(true))
     try {
       const args: GetProjectsArgs = {
         secret: SECRET,
+        filterByCategory,
+        filterByOpenSource,
+        filterByOnchain,
         sort,
         page: BigInt(page),
         pageSize: BigInt(pageSize),

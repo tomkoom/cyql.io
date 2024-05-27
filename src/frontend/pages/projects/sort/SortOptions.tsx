@@ -4,6 +4,8 @@ import { iCheck } from "@/components/icons/Icons"
 import type { SortOptions } from "../../../../declarations/backend/backend.did"
 import { useBackend } from "@/hooks/useBackend"
 import { LoadingModal } from "@/modals/_index"
+import { useSearchParams } from "react-router-dom"
+import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -31,6 +33,11 @@ const SortOpt = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }): JSX.Eleme
   const itemsPerPage = paginated.itemsPerPage
   const isLoading = useAppSelector(selectPaginatedIsLoading)
 
+  // category
+  const [searchParams, setSearchParams] = useSearchParams()
+  // const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
+  const category = searchParams.get("category")
+
   const handleOutsideClick = (e) => {
     if (
       openSort &&
@@ -52,10 +59,18 @@ const SortOpt = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }): JSX.Eleme
     }
   }, [openSort])
 
-  const clickSort = async (sortOption: SortOptions): Promise<void> => {
+  const clickSort = async (sort: SortOptions): Promise<void> => {
     try {
-      await refreshPaginated(sortOption, page, itemsPerPage)
-      dispatch(setSort(sortOption))
+      const args: RefreshProjectsArgs = {
+        filterByCategory: category,
+        filterByOnchain: [],
+        filterByOpenSource: [],
+        sort,
+        page,
+        pageSize: itemsPerPage,
+      }
+      await refreshPaginated(args)
+      dispatch(setSort(sort))
       setOpenSort(false)
     } catch (error) {
       throw new Error(error)

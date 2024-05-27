@@ -3,11 +3,13 @@ import ReactPaginate from "react-paginate"
 import "./Pagination.css"
 import { useBackend } from "@/hooks/useBackend"
 import { LoadingModal } from "@/modals/_index"
+import { useSearchParams } from "react-router-dom"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/paginated"
 import { selectSort } from "@/state/projects/sort"
+import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 
 const Pagination: FC = (): JSX.Element => {
   const { refreshPaginated } = useBackend()
@@ -23,11 +25,23 @@ const Pagination: FC = (): JSX.Element => {
   const startIndex = paginated.startIndex
   const endIndex = paginated.endIndex
 
+  // category
+  const [searchParams, setSearchParams] = useSearchParams()
+  const category = searchParams.get("category")
+
   const handlePageClick = async (event: any): Promise<void> => {
     try {
       const selected = event.selected // starts from 0
       const page = selected + 1
-      await refreshPaginated(sort, page, itemsPerPage)
+      const args: RefreshProjectsArgs = {
+        filterByCategory: category,
+        filterByOnchain: [],
+        filterByOpenSource: [],
+        sort,
+        page,
+        pageSize: itemsPerPage,
+      }
+      await refreshPaginated(args)
     } catch (error) {
       throw new Error(error)
     }

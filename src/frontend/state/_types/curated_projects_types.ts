@@ -2,6 +2,15 @@
 
 // pagination, sorting, filtering
 
+export interface RefreshProjectsArgs {
+  filterByCategory: string
+  filterByOpenSource: [] | [boolean]
+  filterByOnchain: [] | [boolean]
+  sort: SortOptions
+  page: number
+  pageSize: number
+}
+
 export type SortOptions =
   | { newest_first: null }
   | { oldest_first: null }

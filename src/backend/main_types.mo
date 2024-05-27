@@ -4,12 +4,15 @@ module {
 
   public type GetProjectsArgs = {
     secret : Secret;
+    filterByCategory : Text;
+    filterByOpenSource : ?Bool;
+    filterByOnchain : ?Bool;
     sort : SortOptions;
     page : Nat;
     pageSize : Nat
   };
 
-  public type PaginatedRes = {
+  public type PaginatedResult = {
     data : [Project];
     selectedPage : Nat;
     itemsPerPage : Nat;
