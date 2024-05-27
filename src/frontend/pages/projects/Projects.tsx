@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { useSearchParams } from "react-router-dom"
 import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 import { useDebounceCallback } from "usehooks-ts"
+import { useBackend } from "@/hooks/useBackend"
 
 // components
 import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
@@ -19,6 +20,7 @@ import {
 import { selectActiveCuratedProjectsNum } from "@/state/curatedProjects"
 
 const Projects: FC = (): JSX.Element => {
+  const { refreshPaginated } = useBackend()
   const [search, setSearch] = useState("")
   const debounced = useDebounceCallback(setSearch, 400)
   const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
@@ -67,6 +69,7 @@ const Projects: FC = (): JSX.Element => {
 
       {/* table */}
       {projectsNum > 0 && !searchQ && <Pagination />}
+      <Pagination />
       <ProjectList searchQ={searchQ} />
       {projectsNum > 0 && !searchQ && <Pagination />}
     </ProjectsStyled>

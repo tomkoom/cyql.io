@@ -28,7 +28,7 @@ const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.El
         ))}
       </Grid>
 
-      {projects.length > 0 && <ViewMoreBtn text="view all projects" nav={toProjects} />}
+      {projects.length > 0 && <ViewMoreBtn text="View All Projects" nav={toProjects} />}
     </div>
   )
 }

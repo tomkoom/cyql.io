@@ -1,7 +1,13 @@
 import { useAuth } from "@/context/Auth"
-import { verifyAdmin, sortProjectsByDate } from "@/utils/_index"
-import type { ProjectV2, ProjectId } from "@/state/_types/curated_projects_types"
+import { verifyAdmin, sortProjectsByDate, serializeProjectsToString } from "@/utils/_index"
+import type {
+  ProjectV2,
+  ProjectId,
+  Paginated,
+  SortOptions,
+} from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
+import { GetProjectsArgs } from "../../declarations/backend/backend.did"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -11,9 +17,11 @@ import {
   setCuratedProjectsIsLoading,
 } from "@/state/curatedProjects"
 import { setProjectsPaginationTotalItems } from "@/state/projects/projectsPagination"
+import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 
 interface UseBackend {
   refreshCuratedProjects: () => Promise<void>
+  refreshPaginated: (sortOption: SortOptions, page: number, pageSize: number) => Promise<void>
   addCuratedProject: (project: ProjectV2) => Promise<void>
   editCuratedProject: (project: ProjectV2) => Promise<void>
   updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
@@ -41,6 +49,46 @@ export const useBackend = (): UseBackend => {
       throw new Error(error)
     } finally {
       dispatch(setCuratedProjectsIsLoading(false))
+    }
+  }
+
+  // get paginated
+  const refreshPaginated = async (
+    sort: SortOptions,
+    page: number,
+    pageSize: number
+  ): Promise<void> => {
+    if (!actor) return
+
+    dispatch(setPaginatedIsLoading(true))
+    try {
+      const args: GetProjectsArgs = {
+        secret: SECRET,
+        sort,
+        page: BigInt(page),
+        pageSize: BigInt(pageSize),
+      }
+      const paginated = await actor.getProjects(args)
+
+      if (paginated.length > 0) {
+        const serializedData = serializeProjectsToString(paginated[0].data)
+        const data: Paginated = {
+          data: serializedData,
+          selectedPage: Number(paginated[0].selectedPage),
+          itemsPerPage: Number(paginated[0].itemsPerPage),
+          startIndex: Number(paginated[0].startIndex),
+          endIndex: Number(paginated[0].endIndex),
+          totalItems: Number(paginated[0].totalItems),
+          totalPages: Number(paginated[0].totalPages),
+        }
+        dispatch(setPaginated(data))
+      } else {
+        console.log(paginated)
+      }
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      dispatch(setPaginatedIsLoading(false))
     }
   }
 
@@ -92,6 +140,7 @@ export const useBackend = (): UseBackend => {
 
   return {
     refreshCuratedProjects,
+    refreshPaginated,
     addCuratedProject,
     editCuratedProject,
     updateCuratedProjectUpvote,

@@ -14,15 +14,15 @@ const SortBtn: FC = (): JSX.Element => {
       <span className="icon">{iSort}</span>
       <span>Order by:</span>
       <span className="selected">
-        {sort === "newest_first"
+        {Object.keys(sort)[0] === "newest_first"
           ? "newest first"
-          : sort === "oldest_first"
+          : Object.keys(sort)[0] === "oldest_first"
           ? "oldest first"
-          : sort === "most_upvoted"
+          : Object.keys(sort)[0] === "most_upvoted"
           ? "most upvoted"
-          : sort === "least_upvoted"
+          : Object.keys(sort)[0] === "least_upvoted"
           ? "least upvoted"
-          : sort === "recently_updated"
+          : Object.keys(sort)[0] === "recently_updated"
           ? "Recently updated"
           : null}
       </span>

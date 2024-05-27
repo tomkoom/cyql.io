@@ -1,4 +1,34 @@
 module {
+
+  // pagination
+
+  public type GetProjectsArgs = {
+    secret : Secret;
+    sort : SortOptions;
+    page : Nat;
+    pageSize : Nat
+  };
+
+  public type PaginatedRes = {
+    data : [Project];
+    selectedPage : Nat;
+    itemsPerPage : Nat;
+    startIndex : Nat;
+    endIndex : Nat;
+    totalItems : Nat;
+    totalPages : Nat
+  };
+
+  public type SortOptions = {
+    #newest_first;
+    #oldest_first;
+    #most_upvoted;
+    #least_upvoted;
+    #recently_updated
+  };
+
+  // ...
+
   public type Tokens = { e8s : Nat };
   public type Secret = Text;
 

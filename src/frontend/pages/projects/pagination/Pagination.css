@@ -1,12 +1,12 @@
-.pagination {
+.pagination .main {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 1rem 0;
 }
 
-.pagination span {
+.pagination .main span {
   font-size: var(--fsText);
   color: var(--secondaryColor);
 }

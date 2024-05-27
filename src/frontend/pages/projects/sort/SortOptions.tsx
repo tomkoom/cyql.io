@@ -1,17 +1,35 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import { iCheck } from "@/components/icons/Icons"
-import type { SortOptions } from "@/state/projects/sort"
+import type { SortOptions } from "../../../../declarations/backend/backend.did"
+import { useBackend } from "@/hooks/useBackend"
+import { LoadingModal } from "@/modals/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectSort, setSort } from "@/state/projects/sort"
+import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/paginated"
 
-const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
+const sortItems = [
+  { label: "Newest first", value: { newest_first: null } },
+  { label: "Oldest first", value: { oldest_first: null } },
+  { label: "Most upvoted", value: { most_upvoted: null } },
+  { label: "Least upvoted", value: { least_upvoted: null } },
+  { label: "Recently updated", value: { recently_updated: null } },
+]
+
+const SortOpt = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }): JSX.Element => {
   const dispatch = useAppDispatch()
   const sortOptionsRef = useRef(null)
+  const { refreshPaginated } = useBackend()
   const sort = useAppSelector(selectSort)
   const style = { width: `${sortBtnWidth.toString()}px` }
+
+  // pagination
+  const paginated = useAppSelector(selectPaginated)
+  const page = paginated.selectedPage
+  const itemsPerPage = paginated.itemsPerPage
+  const isLoading = useAppSelector(selectPaginatedIsLoading)
 
   const handleOutsideClick = (e) => {
     if (
@@ -34,33 +52,32 @@ const SortOptions = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }) => {
     }
   }, [openSort])
 
-  const clickSort = (sortOption: SortOptions) => {
-    dispatch(setSort(sortOption))
-    setOpenSort(false)
+  const clickSort = async (sortOption: SortOptions): Promise<void> => {
+    try {
+      await refreshPaginated(sortOption, page, itemsPerPage)
+      dispatch(setSort(sortOption))
+      setOpenSort(false)
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   return (
-    <SortOptionsStyled style={style} ref={sortOptionsRef}>
-      <li onClick={() => clickSort("newest_first")}>
-        Newest first {sort === "newest_first" && <span>{iCheck}</span>}
-      </li>
+    <div>
+      <LoadingModal isOpen={isLoading} />
 
-      <li onClick={() => clickSort("oldest_first")}>
-        Oldest first {sort === "oldest_first" && <span>{iCheck}</span>}
-      </li>
+      <SortOptionsStyled style={style} ref={sortOptionsRef}>
+        {sortItems.map((item) => {
+          const isActive = Object.keys(item.value)[0] === Object.keys(sort)[0]
 
-      <li onClick={() => clickSort("most_upvoted")}>
-        Most upvoted {sort === "most_upvoted" && <span>{iCheck}</span>}
-      </li>
-
-      <li onClick={() => clickSort("least_upvoted")}>
-        Least upvoted {sort === "least_upvoted" && <span>{iCheck}</span>}
-      </li>
-
-      <li onClick={() => clickSort("recently_updated")}>
-        Recently updated {sort === "recently_updated" && <span>{iCheck}</span>}
-      </li>
-    </SortOptionsStyled>
+          return (
+            <li key={Object.keys(sort)[0]} onClick={() => clickSort(item.value)}>
+              {item.label} {isActive && <span>{iCheck}</span>}
+            </li>
+          )
+        })}
+      </SortOptionsStyled>
+    </div>
   )
 }
 
@@ -92,4 +109,4 @@ const SortOptionsStyled = styled.ul`
   }
 `
 
-export default SortOptions
+export default SortOpt

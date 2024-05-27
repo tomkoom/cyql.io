@@ -12,12 +12,12 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
-import { setSignInModalIsOpen } from "./state/modals/signInModal"
+import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 
 const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { actor, nft, isAuthenticated, accounntIdHex } = useAuth()
-  const { refreshCuratedProjects } = useBackend()
+  const { refreshCuratedProjects, refreshPaginated } = useBackend()
   const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
   const { refreshProposals } = useProposals()
@@ -26,7 +26,9 @@ const App: FC = (): JSX.Element => {
 
   const refresh = async (): Promise<void> => {
     await refreshProposals()
-    await refreshCuratedProjects()
+    // await refreshCuratedProjects()
+    const sort = { newest_first: null }
+    await refreshPaginated(sort, 1, 50)
   }
 
   useEffect(() => {

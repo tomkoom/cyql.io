@@ -23,11 +23,11 @@ const ViewMoreBtnStyled = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  font-size: var(--fsText);
   font-weight: var(--fwBold);
   background-color: var(--underlay1);
   padding: 0 1rem;
   margin-top: 2rem;
-  border-radius: 1.5rem;
   border: none;
   cursor: pointer;
   transition: var(--transition1);

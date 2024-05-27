@@ -1,4 +1,23 @@
-// backend/types.mo
+// backend/main_types.mo
+
+// pagination, sorting, filtering
+
+export type SortOptions =
+  | { newest_first: null }
+  | { oldest_first: null }
+  | { most_upvoted: null }
+  | { least_upvoted: null }
+  | { recently_updated: null }
+
+export interface Paginated {
+  data: ProjectV2[]
+  selectedPage: number
+  itemsPerPage: number
+  startIndex: number
+  endIndex: number
+  totalItems: number
+  totalPages: number
+}
 
 export type ProjectId = string
 export type Secret = string

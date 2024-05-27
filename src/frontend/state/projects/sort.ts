@@ -1,12 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-
-export type SortOptions =
-  | "newest_first"
-  | "oldest_first"
-  | "most_upvoted"
-  | "least_upvoted"
-  | "recently_updated"
+import type { SortOptions } from "../../../declarations/backend/backend.did"
 
 interface SortState {
   sort: SortOptions
@@ -14,7 +8,7 @@ interface SortState {
 }
 
 const initialState: SortState = {
-  sort: "newest_first",
+  sort: { newest_first: null },
   sortModal: false,
 }
 

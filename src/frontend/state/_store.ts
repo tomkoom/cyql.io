@@ -33,6 +33,7 @@ import listConfirmModal from "./modals/listConfirmModal"
 // projects
 import filter from "./projects/filter"
 import sort from "./projects/sort"
+import paginated from "./projects/paginated"
 import projectsPagination from "./projects/projectsPagination"
 import curatedProjects from "./curatedProjects"
 
@@ -77,6 +78,7 @@ const store = configureStore({
     // projects
     filter,
     sort,
+    paginated,
     projectsPagination,
     curatedProjects,
   },

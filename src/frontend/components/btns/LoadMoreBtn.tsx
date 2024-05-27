@@ -19,7 +19,6 @@ const LoadMoreBtnStyled = styled.button`
   background-color: var(--underlay1);
   margin-top: 2rem;
   padding: 0 1rem;
-  border-radius: 1.5rem;
   border: none;
   cursor: pointer;
   transition: var(--transition1);

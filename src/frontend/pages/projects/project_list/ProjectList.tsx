@@ -29,8 +29,7 @@ import { Main, Socials, SocialsIc, Tags } from "./_index"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectSort } from "@/state/projects/sort"
 import { selectFilterByOpenSource, selectFilterByOnChain } from "@/state/projects/filter"
-import { selectActiveCuratedProjects } from "@/state/curatedProjects"
-import { selectProjectsPagination } from "@/state/projects/projectsPagination"
+import { selectPaginated } from "@/state/projects/paginated"
 
 interface ProjectListProps {
   searchQ: string
@@ -41,8 +40,10 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
   const sort = useAppSelector(selectSort)
   const category = searchParams.get("category")
-  const pagination = useAppSelector(selectProjectsPagination)
-  const projects = useAppSelector(selectActiveCuratedProjects)
+
+  // data
+  const paginated = useAppSelector(selectPaginated)
+  const projects = paginated.data
 
   // filter
   const openSource = useAppSelector(selectFilterByOpenSource)
@@ -79,25 +80,33 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
 
           // sort
           .sort((a, b) =>
-            sort === "newest_first" ? sortNewest(Number(a.createdAt), Number(b.createdAt)) : null
+            Object.keys(sort)[0] === "newest_first"
+              ? sortNewest(Number(a.createdAt), Number(b.createdAt))
+              : null
           )
           .sort((a, b) =>
-            sort === "oldest_first" ? sortOldest(Number(a.createdAt), Number(b.createdAt)) : null
+            Object.keys(sort)[0] === "oldest_first"
+              ? sortOldest(Number(a.createdAt), Number(b.createdAt))
+              : null
           )
           .sort((a, b) =>
-            sort === "most_upvoted" ? sortMostUp(a.upvotedBy.length, b.upvotedBy.length) : null
+            Object.keys(sort)[0] === "most_upvoted"
+              ? sortMostUp(a.upvotedBy.length, b.upvotedBy.length)
+              : null
           )
           .sort((a, b) =>
-            sort === "least_upvoted" ? sortLeastUp(a.upvotedBy.length, b.upvotedBy.length) : null
+            Object.keys(sort)[0] === "least_upvoted"
+              ? sortLeastUp(a.upvotedBy.length, b.upvotedBy.length)
+              : null
           )
           .sort((a, b) =>
-            sort === "recently_updated"
+            Object.keys(sort)[0] === "recently_updated"
               ? sortRecentlyUpdated(Number(a.updatedAt), Number(b.updatedAt))
               : null
           )
 
           // pagination
-          .slice(pagination.itemOffset, pagination.endOffset)
+          // .slice(pagination.itemOffset, pagination.endOffset)
           .map((p) => {
             return (
               <li key={p.id} onClick={() => toProject(p.id.toString())}>

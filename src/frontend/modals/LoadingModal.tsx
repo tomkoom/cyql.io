@@ -15,7 +15,8 @@ interface LoadingModalProps {
 const LoadingModal: FC<LoadingModalProps> = ({ isOpen }): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
-  const text = ["Writing to chain 🔗..."]
+  // const text = ["Writing to chain 🔗..."]
+  const text2 = ["Loading..."]
 
   // hide scrollbar
   useEffect(() => {
@@ -31,7 +32,7 @@ const LoadingModal: FC<LoadingModalProps> = ({ isOpen }): JSX.Element => {
   return createPortal(
     <LoadingModalStyled className={theme}>
       <Spinner />
-      <p>{text[0]}</p>
+      <p>{text2[0]}</p>
     </LoadingModalStyled>,
     document.getElementById("modal")
   )
