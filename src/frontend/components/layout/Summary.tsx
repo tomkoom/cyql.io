@@ -22,7 +22,7 @@ const Summary: FC = (): JSX.Element => {
     dispatch(fetchIcpPrice())
     const interval = setInterval(() => {
       dispatch(fetchIcpPrice())
-    }, 60 * 1000)
+    }, 60 * 1_000)
     return () => clearInterval(interval)
   }, [])
 
@@ -33,7 +33,7 @@ const Summary: FC = (): JSX.Element => {
       </p>
 
       <p>
-        Project Proposals: <span className="num">{projectProposals || "..."}</span>
+        Proposed Projects: <span className="num">{projectProposals || "..."}</span>
       </p>
 
       <div>

@@ -1,4 +1,4 @@
-const main = [
+export const main = [
   { id: "name", type: "text" },
   { id: "website", type: "text" },
   { id: "frontendCanisterId", type: "text" },
@@ -6,7 +6,7 @@ const main = [
   { id: "logoUrl", type: "text" },
 ]
 
-const socials = [
+export const socials = [
   { id: "twitter", type: "text" },
   { id: "discord", type: "text" },
   { id: "telegram", type: "text" },
@@ -22,7 +22,12 @@ const socials = [
   { id: "nuance", type: "text" },
 ]
 
-const additional = [
+export const token = [
+  { id: "tokenCanisterId", type: "text" },
+  { id: "tokenStandard", type: "text" },
+]
+
+export const additional = [
   { id: "dfinityForumShowcase", type: "text" },
   { id: "nnsLaunchpadUrl", type: "text" },
   // ...
@@ -32,7 +37,7 @@ const additional = [
   { id: "whitepaper", type: "text" },
 ]
 
-const nft = [
+export const nft = [
   // nft
   { id: "nftSaleDate", type: "date" },
   { id: "nftSaleUrl", type: "text" },
@@ -56,5 +61,3 @@ const nft = [
   { id: "nftImg3", type: "text" },
   { id: "nftImg4", type: "text" },
 ]
-
-export { main, socials, additional, nft }

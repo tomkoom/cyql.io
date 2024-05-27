@@ -1,7 +1,7 @@
 import React, { FC, ChangeEvent } from "react"
 import styled from "styled-components"
 import { Categories, Description, Input, Meta, Logo } from "./_index"
-import { main, socials, additional, nft } from "./_inputs"
+import { main, socials, token, additional, nft } from "./_inputs"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -46,6 +46,20 @@ const Form: FC = (): JSX.Element => {
         <Section>
           <h6>Social Networks</h6>
           {socials.map((input) => (
+            <Input
+              id={input.id}
+              label={input.id}
+              type={input.type}
+              value={project[input.id]}
+              onChange={updateProject}
+              key={input.id}
+            />
+          ))}
+        </Section>
+
+        <Section>
+          <h6>Token</h6>
+          {token.map((input) => (
             <Input
               id={input.id}
               label={input.id}

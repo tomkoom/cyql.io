@@ -129,8 +129,7 @@ h6 {
 
 /* –––THEME––– */
 
-.light {
-  /* highlight colors */
+/* .light {
   --highlight1: var(--hColor1);
   --highlight2: var(--hColor2);
   --highlight3: var(--hColor3);
@@ -138,7 +137,6 @@ h6 {
   --highlightColor2Rgb: var(--hColorRgb2);
   --highlightColor3Rgb: var(--hColorRgb3);
 
-  /* main */
   --primaryColor: var(--coolGray100);
   --primaryColorRgb: var(--coolGray100Rgb);
   --secondaryColor: var(--coolGray70);
@@ -146,19 +144,17 @@ h6 {
   --background: #fff;
   --backgroundRgb: 255, 255, 255;
 
-  /* underlay */
   --underlay1: var(--coolGray10);
   --underlay2: var(--coolGray20);
   --underlay3: var(--coolGray30);
 
-  /* ... */
   --shadow1: rgba(var(--primaryColorRgb), 0.05) 0px 6px 24px 0px,
     rgba(var(--primaryColorRgb), 0.08) 0px 0px 0px 1px;
   --boxShadow1: 0 0 0 1px var(--underlay1);
   --boxShadow2: 0 0 0 1px var(--underlay2);
   --boxShadow1Inset: inset 0 0 0 1px var(--underlay1);
   --boxShadow2Inset: inset 0 0 0 1px var(--underlay2);
-}
+} */
 
 .dark {
   /* highlight colors */
@@ -182,6 +178,11 @@ h6 {
   --underlay1: var(--coolGray100);
   --underlay2: var(--coolGray90);
   --underlay3: var(--coolGray80);
+
+  /* underline */
+  --underlinePrimary: 0 2px var(--primaryColor);
+  --underlineSecondary: 0 2px var(--secondaryColor);
+  --underlineTertiary: 0 2px var(--tertiaryColor);
 
   /* ... */
   --shadow1: rgba(var(--primaryColorRgb), 0.12) 0px 0px 0px 1px;

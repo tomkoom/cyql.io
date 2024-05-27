@@ -46,6 +46,8 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       tag: "main",
     },
 
+    // token
+
     // socials
     {
       id: "twitter",
@@ -150,35 +152,35 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
         {/* dfinity forum showcase url */}
         {project.dfinityForumShowcase && (
           <a href={project.dfinityForumShowcase} target="_blank" rel="noreferrer noopener">
-            DFINITY Forum Showcase {iExternalLink}
+            DFINITY Forum Showcase <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* nns launchpad url */}
         {project.nnsLaunchpadUrl && (
           <a href={project.nnsLaunchpadUrl} target="_blank" rel="noreferrer noopener">
-            NNS Launchpad URL {iExternalLink}
+            NNS Launchpad URL <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* docs */}
         {project.docs && (
           <a href={project.docs} target="_blank" rel="noreferrer noopener">
-            Docs {iExternalLink}
+            Docs <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* faq */}
         {project.faq && (
           <a href={project.faq} target="_blank" rel="noreferrer noopener">
-            FAQ {iExternalLink}
+            FAQ <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* whitepaper */}
         {project.whitepaper && (
           <a href={project.whitepaper} target="_blank" rel="noreferrer noopener">
-            Whitepaper {iExternalLink}
+            Whitepaper <span>{iExternalLink}</span>
           </a>
         )}
       </div>
@@ -204,6 +206,20 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
           <p>{project.backendCanisterId}</p>
         </div>
       )}
+
+      {/* token */}
+      {project.tokenCanisterId && (
+        <div className="token">
+          <p>Token ledger id:</p>
+          <a
+            href={`https://dashboard.internetcomputer.org/canister/${project.tokenCanisterId}`}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {project.tokenCanisterId} <span>{iExternalLink}</span>
+          </a>
+        </div>
+      )}
     </LinksStyled>
   )
 }
@@ -213,7 +229,7 @@ const LinksStyled = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
 
   > div.about {
     display: flex;
@@ -231,6 +247,32 @@ const LinksStyled = styled.div`
 
       &:hover {
         background-color: var(--underlay2);
+      }
+
+      > span {
+        font-size: var(--fs7);
+        color: var(--tertiaryColor);
+      }
+    }
+  }
+
+  > div.token {
+    > a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      background-color: var(--underlay1);
+      font-size: var(--fsText);
+      transition: var(--transition1);
+
+      &:hover {
+        background-color: var(--underlay2);
+      }
+
+      > span {
+        font-size: var(--fs7);
+        color: var(--tertiaryColor);
       }
     }
   }

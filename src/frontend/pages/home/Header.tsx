@@ -37,8 +37,16 @@ const HeaderStyled = styled.div`
     color: var(--secondaryColor);
 
     > span {
-      text-decoration: underline;
+      font-weight: var(--fwBold);
+      color: var(--primaryColor);
       cursor: pointer;
+      box-shadow: var(--underlinePrimary);
+      transition: var(--transition1);
+
+      &:hover {
+        color: var(--secondaryColor);
+        box-shadow: var(--underlineSecondary);
+      }
     }
   }
 `
