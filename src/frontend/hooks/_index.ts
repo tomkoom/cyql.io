@@ -6,6 +6,7 @@ export { useIcrcScan } from "./useIcrcScan"
 export { useNav } from "./useNav"
 export { useNavlinks } from "./useNavlinks"
 export { useProposals } from "./useProposals"
+export { useQueryParams } from "./useQueryParams"
 export { useScrollLock } from "./useScrollLock"
 export { useWindowSize } from "./useWindowSize"
 
@@ -13,3 +14,4 @@ export { useWindowSize } from "./useWindowSize"
 export { useBackend } from "./useBackend"
 export { useNft } from "./useNft"
 export { useUsers } from "./useUsers"
+

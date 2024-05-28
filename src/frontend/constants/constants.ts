@@ -59,15 +59,6 @@ export const LOGO_GRAY = logo_gray
 export const E8S = 10 ** 8
 export const ICP_FEE_E8S = 10_000
 
-// search params
-export const PROJECTS_SEARCH_PARAMS_INITIAL = {
-  category: "All",
-  // openSource: "",
-  // onchain: "",
-  // order: "newest",
-  q: "",
-}
-
 // ledgers
 export const LEDGERS = [
   { symbol: "ckBTC", name: "ckBTC", id: CKBTC_LEDGER_CANISTER_ID_IC },

@@ -6,6 +6,8 @@ import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
+import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
+import { useBackend, useProposals, useQueryParams } from "@/hooks/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -20,13 +22,45 @@ import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
-  const { isAuthenticated } = useAuth()
+  const { isAuthenticated, actor } = useAuth()
+  const { refreshPaginated } = useBackend()
+  const { refreshProposals } = useProposals()
+  const { selectedPage, itemsPerPage, category } = useQueryParams()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
   const allProjectsNum = useAppSelector(selecttAllCuratedProjectsNum)
   const isLoading = useAppSelector(selectIsLoading)
   const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
+
+  // refresh data
+
+  const refresh = async (): Promise<void> => {
+    try {
+      await refreshProposals()
+      // await refreshCuratedProjects()
+
+      const args: RefreshProjectsArgs = {
+        category,
+        // filterByOpenSource: openSource === "true" ? [true] : openSource === "false" ? [false] : [],
+        // filterByOnchain: onChain === "true" ? [true] : onChain === "false" ? [false] : [],
+        // sort: getSort(sort),
+        selectedPage,
+        itemsPerPage,
+      }
+
+      await refreshPaginated(args)
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  useEffect(() => {
+    if (!actor) return
+    refresh()
+  }, [actor])
+
+  // ...
 
   // redirect to home if user signed out
   useEffect(() => {

@@ -4,22 +4,40 @@ module {
 
   public type GetProjectsArgs = {
     secret : Secret;
-    filterByCategory : Text;
-    filterByOpenSource : ?Bool;
-    filterByOnchain : ?Bool;
+
+    // filter
+    category : Text;
+    openSource : ?Bool;
+    onChain : ?Bool;
+
+    // sort
     sort : SortOptions;
+
+    // paginate
     page : Nat;
     pageSize : Nat
   };
 
   public type PaginatedResult = {
     data : [Project];
+
+    // pagination
     selectedPage : Nat;
     itemsPerPage : Nat;
     startIndex : Nat;
     endIndex : Nat;
     totalItems : Nat;
     totalPages : Nat
+  };
+
+  public type GetProjectsResult = PaginatedResult and {
+    // filter
+    category : Text;
+    openSource : ?Bool;
+    onChain : ?Bool;
+
+    // sort
+    sort : SortOptions
   };
 
   public type SortOptions = {

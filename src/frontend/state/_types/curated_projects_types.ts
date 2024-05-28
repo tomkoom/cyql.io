@@ -3,12 +3,12 @@
 // pagination, sorting, filtering
 
 export interface RefreshProjectsArgs {
-  filterByCategory: string
-  filterByOpenSource: [] | [boolean]
-  filterByOnchain: [] | [boolean]
-  sort: SortOptions
-  page: number
-  pageSize: number
+  category: string
+  // filterByOpenSource: [] | [boolean]
+  // filterByOnchain: [] | [boolean]
+  // sort: SortOptions
+  selectedPage: number
+  itemsPerPage: number
 }
 
 export type SortOptions =

@@ -2,11 +2,10 @@ import React, { FC, useEffect } from "react"
 import { RouterProvider } from "react-router-dom"
 import { sortCategoriesByNum } from "@/utils/sortCategoriesByNum"
 import { Router } from "@/routes/_index"
-import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useBackend, useNft, useIcpLedger, useProposals } from "./hooks/_index"
+import { useNft, useIcpLedger } from "@/hooks/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -14,47 +13,14 @@ import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectAllCategories } from "@/state/categories/allCategories"
 import { setCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
-import { selectPaginated } from "./state/projects/paginated"
 
 const App: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { actor, nft, isAuthenticated, accounntIdHex } = useAuth()
-  const { refreshPaginated } = useBackend()
+  const { nft, isAuthenticated, accounntIdHex } = useAuth()
   const { refreshNfts } = useNft()
   const { refreshIcpBalance } = useIcpLedger()
-  const { refreshProposals } = useProposals()
   const projects = useAppSelector(selectActiveCuratedProjects)
   const allCategories = useAppSelector(selectAllCategories)
-
-  // pagination
-  const paginated = useAppSelector(selectPaginated)
-  const page = paginated.selectedPage
-  const itemsPerPage = paginated.itemsPerPage
-
-  const refresh = async (): Promise<void> => {
-    try {
-      await refreshProposals()
-      // await refreshCuratedProjects()
-
-      const args: RefreshProjectsArgs = {
-        filterByCategory: "All",
-        filterByOnchain: [],
-        filterByOpenSource: [],
-        sort: { newest_first: null },
-        page,
-        pageSize: itemsPerPage,
-      }
-
-      await refreshPaginated(args)
-    } catch (error) {
-      throw new Error(error)
-    }
-  }
-
-  useEffect(() => {
-    if (!actor) return
-    refresh()
-  }, [actor])
 
   useEffect(() => {
     if (nft && isAuthenticated && accounntIdHex) {

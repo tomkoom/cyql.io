@@ -1,10 +1,10 @@
 import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
-import { useSearchParams } from "react-router-dom"
-import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
-import { getCategoryNum } from "@/utils/getCategoryNum"
+import { getCategoryNum } from "@/utils/_index"
 import { Btn } from "@/components/btns/_index"
+import { useBackend, useQueryParams } from "@/hooks/_index"
+import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -20,34 +20,49 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   openCategoryList,
   setOpenCategoryList,
 }): JSX.Element => {
+  const { refreshPaginated } = useBackend()
+  const { selectedPage, itemsPerPage, category } = useQueryParams()
   const projects = useAppSelector(selectActiveCuratedProjects)
   const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
-  // ...
-  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
-  const category = searchParams.get("category")
+  const refresh = async (updatedCategory: string): Promise<void> => {
+    try {
+      const args: RefreshProjectsArgs = {
+        category: updatedCategory,
+        // filterByOpenSource: openSource === "true" ? [true] : openSource === "false" ? [false] : [],
+        // filterByOnchain: onChain === "true" ? [true] : onChain === "false" ? [false] : [],
+        // sort: getSort(sort),
+        selectedPage,
+        itemsPerPage,
+      }
+      console.log(args)
 
-  const updateCategory = (categoryLabel: string) => {
-    return setSearchParams(
-      (prev) => {
-        prev.set("category", categoryLabel)
-        return prev
-      },
-      { replace: true }
-    )
+      await refreshPaginated(args)
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   const closeModal = (): void => {
     setOpenCategoryList(false)
   }
 
-  const setCategory = (categoryLabel: string): void => {
-    updateCategory(categoryLabel)
-    closeModal()
+  const setCategory = async (updatedCategory: string): Promise<void> => {
+    try {
+      await refresh(updatedCategory)
+      closeModal()
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
-  const reset = (): void => {
-    updateCategory("All")
+  const reset = async (): Promise<void> => {
+    try {
+      const updatedCategory = "All"
+      await refresh(updatedCategory)
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   if (!openCategoryList) {
@@ -64,7 +79,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
           {categoriesSorted.map((c) => (
             <li
               key={c.id}
-              id={category === c.label ? "active" : null}
+              id={category.toLowerCase() === c.label.toLowerCase() ? "active" : null}
               onClick={() => setCategory(c.label)}
             >
               <span className="label">{c.label}</span>

@@ -10,7 +10,7 @@ const Sort: FC = (): JSX.Element => {
   const [openSort, setOpenSort] = useState<boolean>(false)
   const [sortBtnWidth, setSortBtnWidth] = useState<number>(0)
   const sort = useAppSelector(selectSort)
-  const sortBtnRef = useRef(null)
+  const sortBtnRef = useRef<HTMLDivElement>(null)
 
   const openSortMenu = () => {
     setOpenSort((prev) => !prev)

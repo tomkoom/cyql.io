@@ -1,9 +1,14 @@
 import { useAuth } from "@/context/Auth"
 import { verifyAdmin, sortProjectsByDate, serializeProjectsToString } from "@/utils/_index"
-import type { ProjectV2, ProjectId, Paginated } from "@/state/_types/curated_projects_types"
+import type {
+  ProjectV2,
+  ProjectId,
+  Paginated,
+  RefreshProjectsArgs,
+} from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
-import { GetProjectsArgs } from "../../declarations/backend/backend.did"
-import type { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
+import type { GetProjectsArgs } from "../../declarations/backend/backend.did"
+import { useQueryParams } from "@/hooks/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -26,6 +31,7 @@ interface UseBackend {
 export const useBackend = (): UseBackend => {
   const dispatch = useAppDispatch()
   const { actor, userId } = useAuth()
+  const { updateQueryParam } = useQueryParams()
 
   const refreshCuratedProjects = async (): Promise<void> => {
     if (!actor) return
@@ -49,38 +55,60 @@ export const useBackend = (): UseBackend => {
   }
 
   // get paginated
-  const refreshPaginated = async (refreshProjectsArgs: RefreshProjectsArgs): Promise<void> => {
+  const refreshPaginated = async (refreshArgs: RefreshProjectsArgs): Promise<void> => {
     if (!actor) return
-    const { filterByCategory, filterByOpenSource, filterByOnchain, sort, page, pageSize } =
-      refreshProjectsArgs
+    const { selectedPage, itemsPerPage, category } = refreshArgs
 
     dispatch(setPaginatedIsLoading(true))
     try {
-      const args: GetProjectsArgs = {
+      const getArgs: GetProjectsArgs = {
         secret: SECRET,
-        filterByCategory,
-        filterByOpenSource,
-        filterByOnchain,
-        sort,
-        page: BigInt(page),
-        pageSize: BigInt(pageSize),
+        category,
+        openSource: [],
+        onChain: [],
+        sort: { newest_first: null },
+        page: BigInt(selectedPage),
+        pageSize: BigInt(itemsPerPage),
       }
-      const paginated = await actor.getProjects(args)
+      const res = await actor.getProjects(getArgs)
 
-      if (paginated.length > 0) {
-        const serializedData = serializeProjectsToString(paginated[0].data)
+      if (res.length > 0) {
+        const serializedData = serializeProjectsToString(res[0].data)
+        const selectedPage = Number(res[0].selectedPage)
+        const itemsPerPage = Number(res[0].itemsPerPage)
+
+        // filter, sort
+        const category = res[0].category
+        const openSource = res[0].openSource
+        const onChain = res[0].onChain
+        const sort = res[0].sort
+
         const data: Paginated = {
           data: serializedData,
-          selectedPage: Number(paginated[0].selectedPage),
-          itemsPerPage: Number(paginated[0].itemsPerPage),
-          startIndex: Number(paginated[0].startIndex),
-          endIndex: Number(paginated[0].endIndex),
-          totalItems: Number(paginated[0].totalItems),
-          totalPages: Number(paginated[0].totalPages),
+
+          // filter
+          // ...
+
+          // sort
+          // ...
+
+          // pagination
+          selectedPage,
+          itemsPerPage,
+          startIndex: Number(res[0].startIndex),
+          endIndex: Number(res[0].endIndex),
+          totalItems: Number(res[0].totalItems),
+          totalPages: Number(res[0].totalPages),
         }
+
+        updateQueryParam("page", selectedPage.toString())
+        updateQueryParam("itemsPerPage", itemsPerPage.toString())
+        updateQueryParam("category", category)
+
+        // state
         dispatch(setPaginated(data))
       } else {
-        console.log(paginated)
+        console.log(res)
       }
     } catch (error) {
       throw new Error(error)

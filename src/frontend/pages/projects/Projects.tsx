@@ -1,9 +1,7 @@
 import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components"
-import { useSearchParams } from "react-router-dom"
-import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
 import { useDebounceCallback } from "usehooks-ts"
-import { useBackend } from "@/hooks/useBackend"
+import { useQueryParams } from "@/hooks/_index"
 
 // components
 import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
@@ -17,28 +15,18 @@ import {
   setFilterByOpenSource,
   selectFilterByOpenSource,
 } from "@/state/projects/filter"
-import { selectActiveCuratedProjectsNum } from "@/state/curatedProjects"
 
 const Projects: FC = (): JSX.Element => {
-  const { refreshPaginated } = useBackend()
   const [search, setSearch] = useState("")
+  const { updateQueryParam } = useQueryParams()
   const debounced = useDebounceCallback(setSearch, 400)
-  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
-  const searchQ = searchParams.get("q")
-  const projectsNum = useAppSelector(selectActiveCuratedProjectsNum)
 
   // filter
   const filterByOpenSource = useAppSelector(selectFilterByOpenSource)
   const filterByOnChain = useAppSelector(selectFilterByOnChain)
 
   useEffect(() => {
-    return setSearchParams(
-      (prev) => {
-        prev.set("q", search)
-        return prev
-      },
-      { replace: true }
-    )
+    updateQueryParam("q", search)
   }, [search])
 
   return (
@@ -59,7 +47,7 @@ const Projects: FC = (): JSX.Element => {
             filter={filterByOpenSource}
             setFilter={setFilterByOpenSource}
           />
-          <Filter label={"Onchain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+          <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
         </div>
 
         <div className="item">
@@ -68,10 +56,9 @@ const Projects: FC = (): JSX.Element => {
       </Filters>
 
       {/* table */}
-      {projectsNum > 0 && !searchQ && <Pagination />}
       <Pagination />
-      <ProjectList searchQ={searchQ} />
-      {projectsNum > 0 && !searchQ && <Pagination />}
+      <ProjectList />
+      <Pagination />
     </ProjectsStyled>
   )
 }

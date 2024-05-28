@@ -1,24 +1,9 @@
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
-import { useSearchParams } from "react-router-dom"
-import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
-
-// utils
-import {
-  sortNewest,
-  sortOldest,
-  sortMostUp,
-  sortLeastUp,
-  sortRecentlyUpdated,
-} from "./utils/sortProjects"
-import {
-  filterBySearch,
-  filterByCategory,
-  filterByOpenSource,
-  filterByOnChain,
-} from "./utils/filterProjects"
+import { useQueryParams } from "@/hooks/_index"
+import { filterBySearch } from "./utils/filterProjects"
 
 // components
 import { UpvoteBtn } from "@/components/btns/_index"
@@ -27,40 +12,13 @@ import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectSort } from "@/state/projects/sort"
-import { selectFilterByOpenSource, selectFilterByOnChain } from "@/state/projects/filter"
 import { selectPaginated } from "@/state/projects/paginated"
 
-interface ProjectListProps {
-  searchQ: string
-}
-
-const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
+const ProjectList: FC = (): JSX.Element => {
   const { toProject } = useNav()
-  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
-  const sort = useAppSelector(selectSort)
-  const category = searchParams.get("category")
-
-  // data
+  const { searchQuery } = useQueryParams()
   const paginated = useAppSelector(selectPaginated)
   const projects = paginated.data
-
-  // filter
-  const openSource = useAppSelector(selectFilterByOpenSource)
-  const onChain = useAppSelector(selectFilterByOnChain)
-
-  const updateCategory = (category: string): void => {
-    const key = "category"
-    const value = category
-    setSearchParams((searchParams) => {
-      searchParams.set(key, value)
-      return searchParams
-    })
-  }
-
-  useEffect(() => {
-    updateCategory(category)
-  }, [category])
 
   if (projects.length < 1) {
     return <Loading />
@@ -71,42 +29,7 @@ const ProjectList: FC<ProjectListProps> = ({ searchQ }): JSX.Element => {
       <ul>
         {projects
           // search
-          .filter((project) => filterBySearch(project, searchQ))
-
-          // filter
-          .filter((project) => filterByCategory(project, category))
-          .filter((project) => filterByOpenSource(project, openSource))
-          .filter((project) => filterByOnChain(project, onChain))
-
-          // sort
-          .sort((a, b) =>
-            Object.keys(sort)[0] === "newest_first"
-              ? sortNewest(Number(a.createdAt), Number(b.createdAt))
-              : null
-          )
-          .sort((a, b) =>
-            Object.keys(sort)[0] === "oldest_first"
-              ? sortOldest(Number(a.createdAt), Number(b.createdAt))
-              : null
-          )
-          .sort((a, b) =>
-            Object.keys(sort)[0] === "most_upvoted"
-              ? sortMostUp(a.upvotedBy.length, b.upvotedBy.length)
-              : null
-          )
-          .sort((a, b) =>
-            Object.keys(sort)[0] === "least_upvoted"
-              ? sortLeastUp(a.upvotedBy.length, b.upvotedBy.length)
-              : null
-          )
-          .sort((a, b) =>
-            Object.keys(sort)[0] === "recently_updated"
-              ? sortRecentlyUpdated(Number(a.updatedAt), Number(b.updatedAt))
-              : null
-          )
-
-          // pagination
-          // .slice(pagination.itemOffset, pagination.endOffset)
+          .filter((project) => filterBySearch(project, searchQuery))
           .map((p) => {
             return (
               <li key={p.id} onClick={() => toProject(p.id.toString())}>

@@ -106,9 +106,11 @@ module {
   public func filterByCategory(projects : [T.Project], value : Text) : [T.Project] {
     if (Text.toLowercase(value) == "all") return projects;
 
-    func filter(project : T.Project) : Bool {
-      let _ = Array.find<Text>(project.category, func(category) { Text.toLowercase(category) == Text.toLowercase(value) }) else return false;
-      return true
+    func filter(p : T.Project) : Bool {
+      switch (Array.find<Text>(p.category, func(category) { Text.toLowercase(category) == Text.toLowercase(value) })) {
+        case (null) return false;
+        case (?some) return true
+      }
     };
 
     return Array.filter<T.Project>(projects, filter)

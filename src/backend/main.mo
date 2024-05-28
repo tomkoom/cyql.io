@@ -12,15 +12,15 @@ import Array "mo:base/Array";
 // ...
 import T "./main_types";
 import T_Archive "./types";
-import U "./utils";
-import C "./_constants";
+import Constants "./_constants";
+import Utils "./utils";
 import Handle "./utils/handleProjects";
 
 shared actor class _CURATED_PROJECTS() = Self {
 
-  let adminPrincipal = Principal.fromText(C.adminId);
-  let frontendAdmin1Principal = Principal.fromText(C.frontendAdminId1);
-  let frontendAdmin2Principal = Principal.fromText(C.frontendAdminId2);
+  let adminPrincipal = Principal.fromText(Constants.adminId);
+  let frontendAdmin1Principal = Principal.fromText(Constants.frontendAdminId1);
+  let frontendAdmin2Principal = Principal.fromText(Constants.frontendAdminId2);
   stable var secret : T.Secret = "";
 
   // maps
@@ -54,18 +54,18 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func removeProjectV2(projectId : T.ProjectId) : async ?T.Project {
-    assert U.isAdmin(caller);
+    assert Utils.isAdmin(caller);
     let removed = curatedProjectsV2.remove(projectId);
     return removed
   };
 
   public shared ({ caller }) func getProjectV2(projectId : T.ProjectId) : async ?T.Project {
-    assert U.isAdmin(caller);
+    assert Utils.isAdmin(caller);
     return curatedProjectsV2.get(projectId)
   };
 
   public shared ({ caller }) func getAllProjectsNum() : async Nat {
-    assert U.isAdmin(caller);
+    assert Utils.isAdmin(caller);
     return curatedProjectsV2.size()
   };
 
@@ -104,26 +104,36 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // filter, sort, paginate
 
-  public query func getProjects(args : T.GetProjectsArgs) : async ?T.PaginatedResult {
+  public query func getProjects(args : T.GetProjectsArgs) : async ?T.GetProjectsResult {
     assert (secret == args.secret);
-    let { filterByCategory; filterByOpenSource; filterByOnchain; sort; page; pageSize } = args;
+    let { category; openSource; onChain; sort; page; pageSize } = args;
 
     // get projects
     let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
     let allProjects = Iter.toArray<T.Project>(iter);
     let activeProjects = Array.filter<T.Project>(allProjects, func(p) { p.archived == false });
 
-    // filter
-    let filteredByCategory = Handle.filterByCategory(activeProjects, filterByCategory);
-    let filteredByOpenSource = Handle.filterByOpenSource(filteredByCategory, filterByOpenSource);
-    let filteredByOnchain = Handle.filterByOnchain(filteredByOpenSource, filterByOnchain);
-
-    // sort
+    // filter, sort, paginate
+    let filteredByCategory = Handle.filterByCategory(activeProjects, category);
+    let filteredByOpenSource = Handle.filterByOpenSource(filteredByCategory, openSource);
+    let filteredByOnchain = Handle.filterByOnchain(filteredByOpenSource, onChain);
+    // ...
     let sorted = Handle.sort(filteredByOnchain, sort);
+    // ...
+    let ?paginated = Handle.paginate(sorted, page, pageSize) else return null;
 
-    // paginate
-    let paginated = Handle.paginate(sorted, page, pageSize);
-    return paginated
+    let res : T.GetProjectsResult = {
+      paginated with
+
+      // filter
+      category;
+      openSource;
+      onChain;
+
+      // sort
+      sort
+    };
+    return ?res
   };
 
   // admin

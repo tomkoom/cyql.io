@@ -36,7 +36,7 @@
 .previousLinkClassName:hover,
 .nextLinkClassName:hover,
 .breakLinkClassName:hover {
-  background-color: var(--underlay2);
+  background-color: var(--underlay3);
 }
 
 .activeLinkClassName {

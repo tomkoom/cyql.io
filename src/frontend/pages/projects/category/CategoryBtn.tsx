@@ -1,12 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iAngleDown } from "@/components/icons/Icons"
-import { useSearchParams } from "react-router-dom"
-import { PROJECTS_SEARCH_PARAMS_INITIAL } from "@/constants/constants"
+import { useQueryParams } from "@/hooks/_index"
 
 const CategoryBtn: FC = (): JSX.Element => {
-  const [searchParams, setSearchParams] = useSearchParams(PROJECTS_SEARCH_PARAMS_INITIAL)
-  const category = searchParams.get("category")
+  const { category } = useQueryParams()
 
   return (
     <CategoryBtnStyled>
