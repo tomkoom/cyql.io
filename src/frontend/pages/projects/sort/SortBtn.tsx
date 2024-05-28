@@ -1,13 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iAngleDown, iSort } from "@/components/icons/Icons"
-
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectSort } from "@/state/projects/sort"
+import { useQueryParams } from "@/hooks/_index"
 
 const SortBtn: FC = (): JSX.Element => {
-  const sort = useAppSelector(selectSort)
+  const { refreshProjectsParams } = useQueryParams()
+  const { sort } = refreshProjectsParams
 
   return (
     <SortBtnStyled>

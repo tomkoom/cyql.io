@@ -28,13 +28,9 @@ import projectModal from "./modals/projectModal"
 import signInModal from "./modals/signInModal"
 import withdrawModal from "./modals/withdrawModal"
 import withdrawNftModal from "./modals/withdrawNftModal"
-import listConfirmModal from "./modals/listConfirmModal"
 
 // projects
-import filter from "./projects/filter"
-import sort from "./projects/sort"
 import paginated from "./projects/paginated"
-import projectsPagination from "./projects/projectsPagination"
 import curatedProjects from "./curatedProjects"
 
 const store = configureStore({
@@ -73,13 +69,9 @@ const store = configureStore({
     signInModal,
     withdrawModal,
     withdrawNftModal,
-    listConfirmModal,
 
     // projects
-    filter,
-    sort,
     paginated,
-    projectsPagination,
     curatedProjects,
   },
 })

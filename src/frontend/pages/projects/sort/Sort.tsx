@@ -1,24 +1,21 @@
 import React, { FC, useState, useRef, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { SortBtn, SortOptions } from "./_index"
-
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectSort } from "@/state/projects/sort"
+import { useQueryParams } from "@/hooks/_index"
 
 const Sort: FC = (): JSX.Element => {
+  const { refreshProjectsParams } = useQueryParams()
   const [openSort, setOpenSort] = useState<boolean>(false)
   const [sortBtnWidth, setSortBtnWidth] = useState<number>(0)
-  const sort = useAppSelector(selectSort)
   const sortBtnRef = useRef<HTMLDivElement>(null)
 
-  const openSortMenu = () => {
+  const openSortMenu = (): void => {
     setOpenSort((prev) => !prev)
   }
 
   useLayoutEffect(() => {
     setSortBtnWidth(sortBtnRef.current.offsetWidth)
-  }, [sort])
+  }, [refreshProjectsParams.sort])
 
   return (
     <SortStyled>

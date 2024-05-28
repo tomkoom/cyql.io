@@ -89,9 +89,6 @@ const FilterOptions: FC<FilterOptionsProps> = ({
           )}
         </li>
       ))}
-      {/* <li onClick={() => onFilter(null)}>All {filter === null && <Icon>{iCheck}</Icon>}</li>
-      <li onClick={() => onFilter(true)}>True {filter === true && <Icon>{iCheck}</Icon>}</li>
-      <li onClick={() => onFilter(false)}>False {filter === false && <Icon>{iCheck}</Icon>}</li> */}
     </FilterOptionsStyled>
   )
 }

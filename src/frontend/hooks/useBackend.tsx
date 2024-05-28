@@ -23,7 +23,6 @@ import {
   setAllCuratedProjects,
   setCuratedProjectsIsLoading,
 } from "@/state/curatedProjects"
-import { setProjectsPaginationTotalItems } from "@/state/projects/projectsPagination"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 
 interface UseBackend {
@@ -52,7 +51,7 @@ export const useBackend = (): UseBackend => {
       // set state
       dispatch(setAllCuratedProjects(serialized))
       dispatch(setActiveCuratedProjects(activeProjects))
-      dispatch(setProjectsPaginationTotalItems(activeProjects.length))
+      // dispatch(setProjectsPaginationTotalItems(activeProjects.length))
     } catch (error) {
       throw new Error(error)
     } finally {
