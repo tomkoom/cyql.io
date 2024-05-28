@@ -3,7 +3,7 @@ import ReactPaginate from "react-paginate"
 import "./Pagination.css"
 import { useBackend, useQueryParams } from "@/hooks/_index"
 import { LoadingModal } from "@/modals/_index"
-import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
+import { RefreshProjectsParams } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -11,7 +11,7 @@ import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/pagi
 
 const Pagination: FC = (): JSX.Element => {
   const { refreshPaginated } = useBackend()
-  const { searchQuery, selectedPage, itemsPerPage, category } = useQueryParams()
+  const { refreshProjectsParams } = useQueryParams()
   const isLoading = useAppSelector(selectPaginatedIsLoading)
 
   // pagination
@@ -24,13 +24,9 @@ const Pagination: FC = (): JSX.Element => {
 
   const handlePageClick = async (event: any): Promise<void> => {
     try {
-      const args: RefreshProjectsArgs = {
-        category,
-        // filterByOpenSource: openSource === "true" ? [true] : openSource === "false" ? [false] : [],
-        // filterByOnchain: onChain === "true" ? [true] : onChain === "false" ? [false] : [],
-        // sort: getSort(sort),
+      const args: RefreshProjectsParams = {
+        ...refreshProjectsParams,
         selectedPage: event.selected + 1,
-        itemsPerPage,
       }
       await refreshPaginated(args)
     } catch (error) {
@@ -42,14 +38,14 @@ const Pagination: FC = (): JSX.Element => {
     return null
   }
 
-  if (searchQuery) {
+  if (refreshProjectsParams.q) {
     return null
   }
 
   return (
     <div className="pagination">
       <LoadingModal isOpen={isLoading} />
-      {totalItems > itemsPerPage && (
+      {totalItems > refreshProjectsParams.itemsPerPage && (
         <div className="main">
           <span>
             {totalItems.toString()} total items, showing {(startIndex + 1).toString()}-
@@ -73,7 +69,7 @@ const Pagination: FC = (): JSX.Element => {
             // ...
             activeLinkClassName="activeLinkClassName"
             // sync components
-            forcePage={selectedPage - 1}
+            forcePage={refreshProjectsParams.selectedPage - 1}
           />
         </div>
       )}

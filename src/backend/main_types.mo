@@ -1,9 +1,10 @@
 module {
 
-  // pagination
+  // filter, sort, pagination
 
-  public type GetProjectsArgs = {
-    secret : Secret;
+  public type GetProjectsBase = {
+    // search query
+    q : Text;
 
     // filter
     category : Text;
@@ -11,14 +12,16 @@ module {
     onChain : ?Bool;
 
     // sort
-    sort : SortOptions;
-
-    // paginate
-    page : Nat;
-    pageSize : Nat
+    sort : SortOptions
   };
 
-  public type PaginatedResult = {
+  public type GetProjectsArgs = GetProjectsBase and {
+    secret : Secret;
+    selectedPage : Nat;
+    itemsPerPage : Nat
+  };
+
+  public type PaginateResult = {
     data : [Project];
 
     // pagination
@@ -30,15 +33,7 @@ module {
     totalPages : Nat
   };
 
-  public type GetProjectsResult = PaginatedResult and {
-    // filter
-    category : Text;
-    openSource : ?Bool;
-    onChain : ?Bool;
-
-    // sort
-    sort : SortOptions
-  };
+  public type GetProjectsResult = PaginateResult and GetProjectsBase;
 
   public type SortOptions = {
     #newest_first;

@@ -1,13 +1,13 @@
 import type { Category } from "@/state/_types/types"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/_types/curated_projects_types"
 
 export const sortCategoriesByNum = (
   allCategories: Category[],
-  projects: ProjectV2[]
+  projects: Project[]
 ): Category[] => {
   const projectsNum = projects.length
 
-  const sort = (projects: ProjectV2[], a: Category, b: Category): number => {
+  const sort = (projects: Project[], a: Category, b: Category): number => {
     const aLen =
       a.id === "all"
         ? projectsNum

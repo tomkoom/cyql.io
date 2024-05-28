@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { Name, Tags } from "./_index"
-import { ProjectV2 } from "@/state/_types/curated_projects_types"
+import { Project } from "@/state/_types/curated_projects_types"
 
 interface TitleProps {
-  project: ProjectV2
+  project: Project
 }
 
 const Title: FC<TitleProps> = ({ project }) => {

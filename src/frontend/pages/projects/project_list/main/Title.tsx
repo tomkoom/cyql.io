@@ -2,10 +2,10 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { iGithub, iCircleNodes } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui/_index"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/_types/curated_projects_types"
 
 interface TitleProps {
-  project: ProjectV2
+  project: Project
 }
 
 const Title: FC<TitleProps> = ({ project }): JSX.Element => {

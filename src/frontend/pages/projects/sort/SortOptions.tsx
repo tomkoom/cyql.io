@@ -4,12 +4,18 @@ import { iCheck } from "@/components/icons/Icons"
 import type { SortOptions } from "../../../../declarations/backend/backend.did"
 import { useBackend, useQueryParams } from "@/hooks/_index"
 import { LoadingModal } from "@/modals/_index"
-import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
+import { RefreshProjectsParams } from "@/state/_types/curated_projects_types"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectSort, setSort } from "@/state/projects/sort"
-import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/paginated"
+import { useAppSelector } from "@/hooks/useRedux"
+import { selectPaginatedIsLoading } from "@/state/projects/paginated"
+
+interface SortOptProps {
+  openSort: boolean
+  setOpenSort: Dispatch<SetStateAction<boolean>>
+  sortBtnWidth: number
+  sortBtnRef: MutableRefObject<HTMLDivElement>
+}
 
 const sortItems = [
   { label: "Newest first", value: { newest_first: null } },
@@ -19,33 +25,19 @@ const sortItems = [
   { label: "Recently updated", value: { recently_updated: null } },
 ]
 
-interface SortOptProps {
-  openSort: boolean
-  setOpenSort: Dispatch<SetStateAction<boolean>>
-  sortBtnWidth: number
-  sortBtnRef: MutableRefObject<HTMLDivElement>
-}
-
 const SortOpt: FC<SortOptProps> = ({
   openSort,
   setOpenSort,
   sortBtnWidth,
   sortBtnRef,
 }): JSX.Element => {
-  const dispatch = useAppDispatch()
   const sortOptionsRef = useRef(null)
   const { refreshPaginated } = useBackend()
-  const { category } = useQueryParams()
-  const sort = useAppSelector(selectSort)
+  const { refreshProjectsParams } = useQueryParams()
   const style = { width: `${sortBtnWidth.toString()}px` }
-
-  // pagination
   const isLoading = useAppSelector(selectPaginatedIsLoading)
-  const paginated = useAppSelector(selectPaginated)
-  const selectedPage = paginated.selectedPage
-  const itemsPerPage = paginated.itemsPerPage
 
-  const handleOutsideClick = (e) => {
+  const handleOutsideClick = (e: any) => {
     if (
       openSort &&
       sortOptionsRef.current &&
@@ -68,16 +60,11 @@ const SortOpt: FC<SortOptProps> = ({
 
   const clickSort = async (sort: SortOptions): Promise<void> => {
     try {
-      const args: RefreshProjectsArgs = {
-        category,
-        // filterByOnchain: [],
-        // filterByOpenSource: [],
-        // sort,
-        selectedPage,
-        itemsPerPage,
+      const args: RefreshProjectsParams = {
+        ...refreshProjectsParams,
+        sort,
       }
       await refreshPaginated(args)
-      dispatch(setSort(sort))
       setOpenSort(false)
     } catch (error) {
       throw new Error(error)
@@ -90,10 +77,10 @@ const SortOpt: FC<SortOptProps> = ({
 
       <SortOptionsStyled style={style} ref={sortOptionsRef}>
         {sortItems.map((item) => {
-          const isActive = Object.keys(item.value)[0] === Object.keys(sort)[0]
+          const isActive = Object.keys(item.value)[0] === Object.keys(refreshProjectsParams.sort)[0]
 
           return (
-            <li key={Object.keys(item)[0]} onClick={() => clickSort(item.value)}>
+            <li key={Object.keys(item.value)[0]} onClick={() => clickSort(item.value)}>
               {item.label} {isActive && <span>{iCheck}</span>}
             </li>
           )

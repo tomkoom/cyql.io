@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { useBackend } from "@/hooks/_index"
 import { Btn } from "@/components/btns/_index"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
@@ -17,7 +17,7 @@ import {
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { addCuratedProject, editCuratedProject, refreshCuratedProjects } = useBackend()
-  const project: ProjectV2 = useAppSelector(selectProject)
+  const project: Project = useAppSelector(selectProject)
   const mode = useAppSelector(selectProjectModalMode)
 
   const add = async (): Promise<void> => {

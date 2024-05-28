@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { Edit, Published, Updated } from "./_index"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/_types/curated_projects_types"
 
 interface MetaProps {
-  project: ProjectV2
+  project: Project
 }
 
 const Meta: FC<MetaProps> = ({ project }): JSX.Element => {

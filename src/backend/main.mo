@@ -106,7 +106,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   public query func getProjects(args : T.GetProjectsArgs) : async ?T.GetProjectsResult {
     assert (secret == args.secret);
-    let { category; openSource; onChain; sort; page; pageSize } = args;
+    let { q; category; openSource; onChain; sort; selectedPage; itemsPerPage } = args;
 
     // get projects
     let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
@@ -117,13 +117,14 @@ shared actor class _CURATED_PROJECTS() = Self {
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
     let filteredByOpenSource = Handle.filterByOpenSource(filteredByCategory, openSource);
     let filteredByOnchain = Handle.filterByOnchain(filteredByOpenSource, onChain);
-    // ...
     let sorted = Handle.sort(filteredByOnchain, sort);
-    // ...
-    let ?paginated = Handle.paginate(sorted, page, pageSize) else return null;
+    let ?paginated = Handle.paginate(sorted, selectedPage, itemsPerPage) else return null;
 
     let res : T.GetProjectsResult = {
       paginated with
+
+      // search q
+      q;
 
       // filter
       category;

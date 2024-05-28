@@ -1,10 +1,10 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iGithub, iCircleNodes } from "@/components/icons/Icons"
-import { ProjectV2 } from "@/state/_types/curated_projects_types"
+import { Project } from "@/state/_types/curated_projects_types"
 
 interface TagsProps {
-  project: ProjectV2
+  project: Project
 }
 
 const Tags: FC<TagsProps> = ({ project }) => {

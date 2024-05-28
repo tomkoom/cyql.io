@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { iEdit, iShareSquare } from "@/components/icons/Icons"
 import { useAuth } from "@/context/Auth"
-import { ProjectV2 } from "@/state/_types/curated_projects_types"
+import { Project } from "@/state/_types/curated_projects_types"
 
 // components
 import { Btn, Logo, Title } from "./_index"
@@ -15,7 +15,7 @@ import { setProject, setProjectModalMode, setProjectModalIsOpen } from "@/state/
 import { setShareModal } from "@/state/modals/shareModal"
 
 interface HeaderProps {
-  project: ProjectV2
+  project: Project
 }
 
 const Header: FC<HeaderProps> = ({ project }): JSX.Element => {

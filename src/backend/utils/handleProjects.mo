@@ -12,12 +12,12 @@ module {
 
   // paginate
 
-  public func paginate(projects : [T.Project], page : Nat, pageSize : Nat) : ?T.PaginatedResult {
-    if (page < 1) return null;
+  public func paginate(projects : [T.Project], selectedPage : Nat, itemsPerPage : Nat) : ?T.PaginateResult {
+    if (selectedPage < 1) return null;
 
     // calculate the start and end indexes for the requested page
-    let startIndex = (page - 1) * pageSize;
-    var endIndex = page * pageSize;
+    let startIndex = (selectedPage - 1) * itemsPerPage;
+    var endIndex = selectedPage * itemsPerPage;
 
     let totalItems = projects.size();
     if (endIndex > totalItems) {
@@ -29,13 +29,13 @@ module {
     let paginatedProjects = Iter.toArray<T.Project>(slice);
 
     // calculate total pages
-    let totalPages = Float.ceil(Float.fromInt(totalItems) / Float.fromInt(pageSize));
+    let totalPages = Float.ceil(Float.fromInt(totalItems) / Float.fromInt(itemsPerPage));
 
     // send the paginated response
-    let res : T.PaginatedResult = {
+    let res : T.PaginateResult = {
       data = paginatedProjects;
-      selectedPage = page;
-      itemsPerPage = pageSize;
+      selectedPage;
+      itemsPerPage;
       startIndex;
       endIndex;
       totalItems;

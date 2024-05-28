@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled, { css } from "styled-components"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/_types/curated_projects_types"
 import { ProjectModal } from "@/modals/_index"
 import { twitterUsername, formatStr16, formatWebsite, formatDiscord } from "@/utils/_index"
 
@@ -21,7 +21,7 @@ const Projects: FC = (): JSX.Element => {
   const searchQuery = useAppSelector(selectAdminSearch)
   const isOpen = useAppSelector(selectProjectModalIsOpen)
 
-  const editProject = (project: ProjectV2): void => {
+  const editProject = (project: Project): void => {
     dispatch(setProject(project))
     dispatch(setProjectModalMode("edit"))
     dispatch(setProjectModalIsOpen(true))
@@ -44,14 +44,14 @@ const Projects: FC = (): JSX.Element => {
         </RowHeader>
 
         {projects
-          .filter((project: ProjectV2) => {
+          .filter((project: Project) => {
             if (searchQuery === "") {
               return project
             } else if (project.name.toLowerCase().includes(searchQuery.toLowerCase())) {
               return project
             }
           })
-          .map((project: ProjectV2, i: number) => (
+          .map((project: Project, i: number) => (
             <Row key={project.id} onClick={() => editProject(project)}>
               <span className="num">{projects.length - i}</span>
               <span>{project.id}</span>

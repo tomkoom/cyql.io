@@ -1,12 +1,17 @@
 // backend/main_types.mo
 
+// ...
+
+export type Option = [] | [boolean]
+
 // pagination, sorting, filtering
 
-export interface RefreshProjectsArgs {
+export interface RefreshProjectsParams {
+  q: string
   category: string
-  // filterByOpenSource: [] | [boolean]
-  // filterByOnchain: [] | [boolean]
-  // sort: SortOptions
+  openSource: Option
+  onChain: Option
+  sort: SortOptions
   selectedPage: number
   itemsPerPage: number
 }
@@ -19,7 +24,7 @@ export type SortOptions =
   | { recently_updated: null }
 
 export interface Paginated {
-  data: ProjectV2[]
+  data: Project[]
   selectedPage: number
   itemsPerPage: number
   startIndex: number
@@ -30,7 +35,7 @@ export interface Paginated {
 
 export type ProjectId = string
 export type Secret = string
-export type ProjectV2 = {
+export type Project = {
   // main
   id: ProjectId
   name: string

@@ -4,12 +4,12 @@ import { iAngleDown } from "@/components/icons/Icons"
 import { useQueryParams } from "@/hooks/_index"
 
 const CategoryBtn: FC = (): JSX.Element => {
-  const { category } = useQueryParams()
+  const { refreshProjectsParams } = useQueryParams()
 
   return (
     <CategoryBtnStyled>
       Category:
-      <span className="category">{category}</span>
+      <span className="category">{refreshProjectsParams.category}</span>
       <span className="icon">{iAngleDown}</span>
     </CategoryBtnStyled>
   )
@@ -38,7 +38,7 @@ const CategoryBtnStyled = styled.button`
     align-items: center;
     color: #fff;
     background-color: var(--highlight1);
-    padding: 0 0.25rem;
+    padding: 0 0.3rem;
   }
 
   > span.icon {

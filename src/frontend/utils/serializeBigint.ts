@@ -1,4 +1,4 @@
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/_types/curated_projects_types"
 
 export const bigintToString = (obj: Object): Object => {
   const serialized = JSON.stringify(obj, (_, v) => (typeof v === "bigint" ? String(v) : v))
@@ -12,7 +12,7 @@ export const bigintToNumber = (obj: Object): Object => {
 
 // projects
 
-export const serializeProjectsToString = (obj: Object): ProjectV2[] => {
+export const serializeProjectsToString = (obj: Object): Project[] => {
   const serialized = JSON.stringify(obj, (_, v) => (typeof v === "bigint" ? String(v) : v))
   return JSON.parse(serialized)
 }

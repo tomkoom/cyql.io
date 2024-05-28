@@ -7,23 +7,10 @@ import { useQueryParams } from "@/hooks/_index"
 import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
 import { TextInput2 } from "@/components/ui/_index"
 
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import {
-  setFilterByOnChain,
-  selectFilterByOnChain,
-  setFilterByOpenSource,
-  selectFilterByOpenSource,
-} from "@/state/projects/filter"
-
 const Projects: FC = (): JSX.Element => {
   const [search, setSearch] = useState("")
-  const { updateQueryParam } = useQueryParams()
+  const { updateQueryParam, refreshProjectsParams } = useQueryParams()
   const debounced = useDebounceCallback(setSearch, 400)
-
-  // filter
-  const filterByOpenSource = useAppSelector(selectFilterByOpenSource)
-  const filterByOnChain = useAppSelector(selectFilterByOnChain)
 
   useEffect(() => {
     updateQueryParam("q", search)
@@ -42,12 +29,13 @@ const Projects: FC = (): JSX.Element => {
       <Filters>
         <div className="item">
           <Category />
+
           <Filter
+            filterId={"openSource"}
             label={"Open-source:"}
-            filter={filterByOpenSource}
-            setFilter={setFilterByOpenSource}
+            filter={refreshProjectsParams.openSource}
           />
-          <Filter label={"On-chain:"} filter={filterByOnChain} setFilter={setFilterByOnChain} />
+          <Filter filterId={"onChain"} label={"On-chain:"} filter={refreshProjectsParams.onChain} />
         </div>
 
         <div className="item">

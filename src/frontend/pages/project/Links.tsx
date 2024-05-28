@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react"
 import styled from "styled-components"
 import { twitterUsername } from "@/utils/twitterUsername"
-import { ProjectV2 } from "@/state/_types/curated_projects_types"
+import { Project } from "@/state/_types/curated_projects_types"
 
 // icons
 import {
@@ -25,7 +25,7 @@ interface Link {
 }
 
 interface LinkProps {
-  project: ProjectV2
+  project: Project
 }
 
 const Links: FC<LinkProps> = ({ project }): JSX.Element => {

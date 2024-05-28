@@ -1,15 +1,15 @@
 import React, { FC, useState, useRef, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { FilterOptions, FilterBtn } from "./_index"
-import { ActionCreatorWithOptionalPayload } from "@reduxjs/toolkit"
+import { Option } from "@/state/_types/curated_projects_types"
 
 interface FilterProps {
+  filterId: string
   label: string
-  filter: boolean
-  setFilter: ActionCreatorWithOptionalPayload<boolean>
+  filter: Option
 }
 
-const Filter: FC<FilterProps> = ({ label, filter, setFilter }): JSX.Element => {
+const Filter: FC<FilterProps> = ({ filterId, label, filter }): JSX.Element => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [filterBtnWidth, setFilterBtnWidth] = useState<number>(0)
   const filterBtnRef = useRef<HTMLDivElement>(null)
@@ -31,12 +31,12 @@ const Filter: FC<FilterProps> = ({ label, filter, setFilter }): JSX.Element => {
       <Options>
         {isOpen && (
           <FilterOptions
+            filterId={filterId}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             filterBtnWidth={filterBtnWidth}
             filterBtnRef={filterBtnRef}
             filter={filter}
-            setFilter={setFilter}
           />
         )}
       </Options>

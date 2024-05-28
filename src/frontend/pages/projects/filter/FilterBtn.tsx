@@ -1,27 +1,34 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iAngleDown } from "@/components/icons/Icons"
+import { Option } from "@/state/_types/curated_projects_types"
 
 interface FilterBtnProps {
   label: string
-  filter: boolean
+  filter: Option
 }
 
 const FilterBtn: FC<FilterBtnProps> = ({ label, filter }): JSX.Element => {
   const style =
-    filter === null
+    filter.length < 1
       ? null
       : {
           color: "#fff",
           backgroundColor: "var(--highlight1)",
-          padding: "0.25rem 0.5rem",
+          padding: "0.25rem 0.3rem",
         }
 
   return (
     <FilterBtnStyled>
       <span>{label}</span>
       <span className="category" style={style}>
-        {filter === null ? "all" : filter ? "true" : "false"}
+        {filter.length < 1
+          ? "all"
+          : filter[0] === true
+          ? "true"
+          : filter[0] === false
+          ? "false"
+          : null}
       </span>
       <span className="icon">{iAngleDown}</span>
     </FilterBtnStyled>

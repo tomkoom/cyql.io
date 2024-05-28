@@ -1,10 +1,16 @@
 import { useAuth } from "@/context/Auth"
-import { verifyAdmin, sortProjectsByDate, serializeProjectsToString } from "@/utils/_index"
+import {
+  verifyAdmin,
+  sortProjectsByDate,
+  serializeProjectsToString,
+  filterToSearchParam,
+  sortToSearchParam,
+} from "@/utils/_index"
 import type {
-  ProjectV2,
+  Project,
   ProjectId,
   Paginated,
-  RefreshProjectsArgs,
+  RefreshProjectsParams,
 } from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
 import type { GetProjectsArgs } from "../../declarations/backend/backend.did"
@@ -22,9 +28,9 @@ import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 
 interface UseBackend {
   refreshCuratedProjects: () => Promise<void>
-  refreshPaginated: (args: RefreshProjectsArgs) => Promise<void>
-  addCuratedProject: (project: ProjectV2) => Promise<void>
-  editCuratedProject: (project: ProjectV2) => Promise<void>
+  refreshPaginated: (args: RefreshProjectsParams) => Promise<void>
+  addCuratedProject: (project: Project) => Promise<void>
+  editCuratedProject: (project: Project) => Promise<void>
   updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
 }
 
@@ -41,7 +47,7 @@ export const useBackend = (): UseBackend => {
       const allProjects = await actor.listProjectsV2(SECRET)
       const serialized = allProjects.map((p) => ({ ...p, id: p.id.toString() }))
       serialized.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
-      const activeProjects: ProjectV2[] = serialized.filter((p) => !p.archived)
+      const activeProjects: Project[] = serialized.filter((p) => !p.archived)
 
       // set state
       dispatch(setAllCuratedProjects(serialized))
@@ -55,20 +61,16 @@ export const useBackend = (): UseBackend => {
   }
 
   // get paginated
-  const refreshPaginated = async (refreshArgs: RefreshProjectsArgs): Promise<void> => {
+  const refreshPaginated = async (refreshArgs: RefreshProjectsParams): Promise<void> => {
     if (!actor) return
-    const { selectedPage, itemsPerPage, category } = refreshArgs
 
     dispatch(setPaginatedIsLoading(true))
     try {
       const getArgs: GetProjectsArgs = {
         secret: SECRET,
-        category,
-        openSource: [],
-        onChain: [],
-        sort: { newest_first: null },
-        page: BigInt(selectedPage),
-        pageSize: BigInt(itemsPerPage),
+        ...refreshArgs,
+        selectedPage: BigInt(refreshArgs.selectedPage),
+        itemsPerPage: BigInt(refreshArgs.itemsPerPage),
       }
       const res = await actor.getProjects(getArgs)
 
@@ -79,18 +81,12 @@ export const useBackend = (): UseBackend => {
 
         // filter, sort
         const category = res[0].category
-        const openSource = res[0].openSource
-        const onChain = res[0].onChain
-        const sort = res[0].sort
+        const openSource = filterToSearchParam(res[0].openSource)
+        const onChain = filterToSearchParam(res[0].onChain)
+        const sort = sortToSearchParam(res[0].sort)
 
         const data: Paginated = {
           data: serializedData,
-
-          // filter
-          // ...
-
-          // sort
-          // ...
 
           // pagination
           selectedPage,
@@ -101,11 +97,15 @@ export const useBackend = (): UseBackend => {
           totalPages: Number(res[0].totalPages),
         }
 
+        // set search params
         updateQueryParam("page", selectedPage.toString())
         updateQueryParam("itemsPerPage", itemsPerPage.toString())
         updateQueryParam("category", category)
+        updateQueryParam("openSource", openSource)
+        updateQueryParam("onChain", onChain)
+        updateQueryParam("sort", sort)
 
-        // state
+        // set pagination
         dispatch(setPaginated(data))
       } else {
         console.log(res)
@@ -117,7 +117,7 @@ export const useBackend = (): UseBackend => {
     }
   }
 
-  const addCuratedProject = async (project: ProjectV2): Promise<void> => {
+  const addCuratedProject = async (project: Project): Promise<void> => {
     if (!actor) return
     if (!verifyAdmin(userId)) return
     if (project.id) return
@@ -133,7 +133,7 @@ export const useBackend = (): UseBackend => {
     }
   }
 
-  const editCuratedProject = async (project: ProjectV2): Promise<void> => {
+  const editCuratedProject = async (project: Project): Promise<void> => {
     if (!actor) return
     if (!verifyAdmin(userId)) return
     if (!project.id) return

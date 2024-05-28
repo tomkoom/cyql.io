@@ -1,12 +1,11 @@
-import React, { FC, useState, useEffect, useRef } from "react"
+import React, { FC, useState, useEffect } from "react"
 import styled from "styled-components"
-import { useScrollLock } from "@/hooks/useScrollLock"
+import { useScrollLock } from "@/hooks/_index"
 import { CategoryListModal, CategoryBtn } from "./_index"
 
 const Category: FC = (): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()
   const [openCategoryList, setOpenCategoryList] = useState(false)
-  const categoryBtnRef = useRef(null)
 
   useEffect(() => {
     if (openCategoryList) {
@@ -18,7 +17,7 @@ const Category: FC = (): JSX.Element => {
 
   return (
     <CategoryStyled>
-      <div onClick={() => setOpenCategoryList((prev) => !prev)} ref={categoryBtnRef}>
+      <div onClick={() => setOpenCategoryList((prev) => !prev)}>
         <CategoryBtn />
       </div>
 

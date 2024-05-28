@@ -6,7 +6,6 @@ import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
 import { useBackend, useProposals, useQueryParams } from "@/hooks/_index"
 
 // hooks
@@ -15,7 +14,6 @@ import { useNav, useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectTheme } from "@/state/theme"
 import { selecttAllCuratedProjectsNum } from "@/state/curatedProjects"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
@@ -25,10 +23,10 @@ const Layout: FC = (): JSX.Element => {
   const { isAuthenticated, actor } = useAuth()
   const { refreshPaginated } = useBackend()
   const { refreshProposals } = useProposals()
-  const { selectedPage, itemsPerPage, category } = useQueryParams()
+  const { refreshProjectsParams } = useQueryParams()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
-  const theme = useAppSelector(selectTheme)
+  const theme = "dark"
   const allProjectsNum = useAppSelector(selecttAllCuratedProjectsNum)
   const isLoading = useAppSelector(selectIsLoading)
   const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
@@ -40,16 +38,7 @@ const Layout: FC = (): JSX.Element => {
       await refreshProposals()
       // await refreshCuratedProjects()
 
-      const args: RefreshProjectsArgs = {
-        category,
-        // filterByOpenSource: openSource === "true" ? [true] : openSource === "false" ? [false] : [],
-        // filterByOnchain: onChain === "true" ? [true] : onChain === "false" ? [false] : [],
-        // sort: getSort(sort),
-        selectedPage,
-        itemsPerPage,
-      }
-
-      await refreshPaginated(args)
+      await refreshPaginated(refreshProjectsParams)
     } catch (error) {
       throw new Error(error)
     }

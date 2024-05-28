@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useParams } from "react-router-dom"
-import { ProjectV2 } from "@/state/_types/curated_projects_types"
+import { Project as P } from "@/state/_types/curated_projects_types"
 
 // components
 import { Loading } from "@/components/ui/_index"
@@ -47,7 +47,7 @@ const Project: FC = (): JSX.Element => {
       <ProjectModal isOpen={projectModalIsOpen} />
 
       <BackBtn />
-      {project.map((project: ProjectV2) => (
+      {project.map((project: P) => (
         <Content key={project.id}>
           <Header project={project} />
           <Description name={project.name} description={project.description} />

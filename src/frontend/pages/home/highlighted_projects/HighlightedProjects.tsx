@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project as P } from "@/state/_types/curated_projects_types"
 
 // components
 import { Loading } from "@/components/ui/_index"
@@ -10,7 +10,7 @@ import { ViewMoreBtn } from "@/components/btns/_index"
 import { Project } from "./_index"
 
 interface HighlightedProjectsProps {
-  projects: ProjectV2[]
+  projects: P[]
 }
 
 const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.Element => {

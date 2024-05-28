@@ -1,11 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { ProjectV2 } from "@/state/_types/curated_projects_types"
+import type { Project as P } from "@/state/_types/curated_projects_types"
 import { useNav } from "@/hooks/_index"
 import { Logo, Main } from "./_index"
 
 interface ProjectProps {
-  project: ProjectV2
+  project: P
 }
 
 const Project: FC<ProjectProps> = ({ project }): JSX.Element => {

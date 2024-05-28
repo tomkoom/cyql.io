@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import { ProjectV2 } from "@/state/_types/curated_projects_types"
+import { Project } from "@/state/_types/curated_projects_types"
 
 interface CuratedProjectsState {
   isLoading: boolean
-  allCuratedProjects: ProjectV2[]
+  allCuratedProjects: Project[]
   allCuratedProjectsNum: number
-  activeCuratedProjects: ProjectV2[]
+  activeCuratedProjects: Project[]
   activeCuratedProjectsNum: number
 }
 
@@ -25,11 +25,11 @@ const curatedProjects = createSlice({
     setCuratedProjectsIsLoading(state, { payload }: PayloadAction<boolean>) {
       state.isLoading = payload
     },
-    setAllCuratedProjects(state, { payload }: PayloadAction<ProjectV2[]>) {
+    setAllCuratedProjects(state, { payload }: PayloadAction<Project[]>) {
       state.allCuratedProjects = payload
       state.allCuratedProjectsNum = payload.length
     },
-    setActiveCuratedProjects(state, { payload }: PayloadAction<ProjectV2[]>) {
+    setActiveCuratedProjects(state, { payload }: PayloadAction<Project[]>) {
       state.activeCuratedProjects = payload
       state.activeCuratedProjectsNum = payload.length
     },

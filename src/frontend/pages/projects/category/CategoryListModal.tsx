@@ -4,7 +4,7 @@ import { CrossIcon } from "@/components/icons/_index"
 import { getCategoryNum } from "@/utils/_index"
 import { Btn } from "@/components/btns/_index"
 import { useBackend, useQueryParams } from "@/hooks/_index"
-import { RefreshProjectsArgs } from "@/state/_types/curated_projects_types"
+import { RefreshProjectsParams } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -21,22 +21,16 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   setOpenCategoryList,
 }): JSX.Element => {
   const { refreshPaginated } = useBackend()
-  const { selectedPage, itemsPerPage, category } = useQueryParams()
+  const { refreshProjectsParams } = useQueryParams()
   const projects = useAppSelector(selectActiveCuratedProjects)
   const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
   const refresh = async (updatedCategory: string): Promise<void> => {
     try {
-      const args: RefreshProjectsArgs = {
+      const args: RefreshProjectsParams = {
+        ...refreshProjectsParams,
         category: updatedCategory,
-        // filterByOpenSource: openSource === "true" ? [true] : openSource === "false" ? [false] : [],
-        // filterByOnchain: onChain === "true" ? [true] : onChain === "false" ? [false] : [],
-        // sort: getSort(sort),
-        selectedPage,
-        itemsPerPage,
       }
-      console.log(args)
-
       await refreshPaginated(args)
     } catch (error) {
       throw new Error(error)
@@ -79,7 +73,11 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
           {categoriesSorted.map((c) => (
             <li
               key={c.id}
-              id={category.toLowerCase() === c.label.toLowerCase() ? "active" : null}
+              id={
+                refreshProjectsParams.category.toLowerCase() === c.label.toLowerCase()
+                  ? "active"
+                  : null
+              }
               onClick={() => setCategory(c.label)}
             >
               <span className="label">{c.label}</span>
@@ -88,7 +86,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
           ))}
         </Categories>
 
-        {category !== "All" && (
+        {refreshProjectsParams.category !== "All" && (
           <Btn style={{ width: "100%" }} btnType={"secondary"} text={"Reset"} onClick={reset} />
         )}
       </Content>
