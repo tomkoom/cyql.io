@@ -6,7 +6,8 @@ import { useBackend, useQueryParams } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
+// import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
+import { selectAllCategories } from "@/state/categories/allCategories"
 
 interface CategoryListModalProps {
   openCategoryList: boolean
@@ -18,13 +19,13 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   setOpenCategoryList,
 }): JSX.Element => {
   const { refreshPaginated } = useBackend()
-  const { refreshProjectsParams } = useQueryParams()
-  const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
+  const { queryParams } = useQueryParams()
+  const categoriesSorted = useAppSelector(selectAllCategories)
 
   const refresh = async (updatedCategory: string): Promise<void> => {
     try {
       await refreshPaginated({
-        ...refreshProjectsParams,
+        ...queryParams,
         category: updatedCategory,
       })
     } catch (error) {
@@ -45,15 +46,6 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
     }
   }
 
-  const reset = async (): Promise<void> => {
-    try {
-      const updatedCategory = "All"
-      await refresh(updatedCategory)
-    } catch (error) {
-      throw new Error(error)
-    }
-  }
-
   if (!openCategoryList) {
     return null
   }
@@ -69,7 +61,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
             <li
               key={c.id}
               id={
-                refreshProjectsParams.category.toLowerCase() === c.label.toLowerCase()
+                queryParams.category.toLowerCase() === c.label.toLowerCase()
                   ? "active"
                   : null
               }
@@ -81,8 +73,13 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
           ))}
         </Categories>
 
-        {refreshProjectsParams.category !== "All" && (
-          <Btn style={{ width: "100%" }} btnType={"secondary"} text={"Reset"} onClick={reset} />
+        {queryParams.category !== "All" && (
+          <Btn
+            style={{ width: "100%" }}
+            btnType={"secondary"}
+            text={"Reset Filter"}
+            onClick={() => setCategory("All")}
+          />
         )}
       </Content>
     </CategoryListModalStyled>

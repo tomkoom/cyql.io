@@ -31,7 +31,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 }): JSX.Element => {
   const filterOptionsRef = useRef(null)
   const { refreshPaginated } = useBackend()
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const style = { width: `${filterBtnWidth.toString()}px` }
 
   const handleOutsideClick = (e) => {
@@ -58,7 +58,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
 
   const onFilter = async (filter: Option): Promise<void> => {
     try {
-      await refreshPaginated({ ...refreshProjectsParams, ...{ [filterId]: filter } })
+      await refreshPaginated({ ...queryParams, ...{ [filterId]: filter } })
     } catch (error) {
       throw new Error(error)
     } finally {

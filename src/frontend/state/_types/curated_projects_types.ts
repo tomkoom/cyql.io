@@ -4,9 +4,9 @@
 
 export type Option = [] | [boolean]
 
-// pagination, sorting, filtering
+// query params
 
-export interface RefreshProjectsParams {
+export interface QueryParams {
   q: string
   category: string
   openSource: Option
@@ -15,6 +15,12 @@ export interface RefreshProjectsParams {
   selectedPage: number
   itemsPerPage: number
 }
+
+export interface QueryParamsString {
+  [key: string]: string
+}
+
+// pagination, sorting, filtering
 
 export type SortOptions =
   | { newest_first: null }

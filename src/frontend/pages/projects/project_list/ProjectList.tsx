@@ -16,7 +16,7 @@ import { selectPaginated } from "@/state/projects/paginated"
 
 const ProjectList: FC = (): JSX.Element => {
   const { toProject } = useNav()
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const paginated = useAppSelector(selectPaginated)
   const projects = paginated.data
 
@@ -29,7 +29,7 @@ const ProjectList: FC = (): JSX.Element => {
       <ul>
         {projects
           // search
-          .filter((project) => filterBySearch(project, refreshProjectsParams.q))
+          .filter((project) => filterBySearch(project, queryParams.q))
           .map((p) => {
             return (
               <li key={p.id} onClick={() => toProject(p.id.toString())}>

@@ -10,7 +10,7 @@ import type {
   Project,
   ProjectId,
   Paginated,
-  RefreshProjectsParams,
+  QueryParams,
 } from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
 import type { GetProjectsArgs } from "../../declarations/backend/backend.did"
@@ -26,10 +26,11 @@ import {
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setHomeHighlighted, setHomeNew } from "@/state/home/home"
 import { setProject } from "@/state/project"
+import { setQueryParams } from "@/state/projects/queryParams"
 
 interface UseBackend {
   refreshCuratedProjects: () => Promise<void>
-  refreshPaginated: (args: RefreshProjectsParams) => Promise<void>
+  refreshPaginated: (queryParams: QueryParams) => Promise<void>
   refreshNew: (length: number) => Promise<void>
   refreshHighligted: (category: string, length: number) => Promise<void>
   refreshActiveProjectsNum: () => Promise<void>
@@ -42,7 +43,7 @@ interface UseBackend {
 export const useBackend = (): UseBackend => {
   const dispatch = useAppDispatch()
   const { actor, userId } = useAuth()
-  const { updateQueryParam } = useQueryParams()
+  const { updateQueryParams } = useQueryParams()
 
   const refreshCuratedProjects = async (): Promise<void> => {
     if (!actor) return
@@ -66,31 +67,24 @@ export const useBackend = (): UseBackend => {
   }
 
   // get paginated
-  const refreshPaginated = async (refreshArgs: RefreshProjectsParams): Promise<void> => {
+  const refreshPaginated = async (queryParams: QueryParams): Promise<void> => {
     if (!actor) return
 
     dispatch(setPaginatedIsLoading(true))
     try {
-      const getArgs: GetProjectsArgs = {
+      const res = await actor.getProjects({
         secret: SECRET,
-        ...refreshArgs,
-        selectedPage: BigInt(refreshArgs.selectedPage),
-        itemsPerPage: BigInt(refreshArgs.itemsPerPage),
-      }
-      const res = await actor.getProjects(getArgs)
+        ...queryParams,
+        selectedPage: BigInt(queryParams.selectedPage),
+        itemsPerPage: BigInt(queryParams.itemsPerPage),
+      })
 
       if (res.length > 0) {
         const serializedData = serializeProjectsToString(res[0].data)
         const selectedPage = Number(res[0].selectedPage)
         const itemsPerPage = Number(res[0].itemsPerPage)
 
-        // filter, sort
-        const category = res[0].category
-        const openSource = filterToSearchParam(res[0].openSource)
-        const onChain = filterToSearchParam(res[0].onChain)
-        const sort = sortToSearchParam(res[0].sort)
-
-        const data: Paginated = {
+        const paginated: Paginated = {
           data: serializedData,
 
           // pagination
@@ -102,16 +96,37 @@ export const useBackend = (): UseBackend => {
           totalPages: Number(res[0].totalPages),
         }
 
-        // set search params
-        updateQueryParam("page", selectedPage.toString())
-        updateQueryParam("itemsPerPage", itemsPerPage.toString())
-        updateQueryParam("category", category)
-        updateQueryParam("openSource", openSource)
-        updateQueryParam("onChain", onChain)
-        updateQueryParam("sort", sort)
+        // set params string
+        const q = res[0].q
+        const category = res[0].category
+        const openSource = filterToSearchParam(res[0].openSource)
+        const onChain = filterToSearchParam(res[0].onChain)
+        const sort = sortToSearchParam(res[0].sort)
+        updateQueryParams({
+          q,
+          selectedPage: selectedPage.toString(),
+          itemsPerPage: itemsPerPage.toString(),
+          category,
+          openSource,
+          onChain,
+          sort,
+        })
 
-        // set pagination
-        dispatch(setPaginated(data))
+        // set params state
+        dispatch(
+          setQueryParams({
+            q,
+            selectedPage: selectedPage,
+            itemsPerPage: itemsPerPage,
+            category,
+            openSource: res[0].openSource,
+            onChain: res[0].onChain,
+            sort: res[0].sort,
+          })
+        )
+
+        // set paginated data
+        dispatch(setPaginated(paginated))
       } else {
         console.log(res)
       }

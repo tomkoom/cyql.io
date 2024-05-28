@@ -10,7 +10,7 @@ import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/pagi
 
 const Pagination: FC = (): JSX.Element => {
   const { refreshPaginated } = useBackend()
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const isLoading = useAppSelector(selectPaginatedIsLoading)
 
   // pagination
@@ -24,7 +24,7 @@ const Pagination: FC = (): JSX.Element => {
   const handlePageClick = async (event: any): Promise<void> => {
     try {
       await refreshPaginated({
-        ...refreshProjectsParams,
+        ...queryParams,
         selectedPage: event.selected + 1,
       })
     } catch (error) {
@@ -36,14 +36,14 @@ const Pagination: FC = (): JSX.Element => {
     return null
   }
 
-  if (refreshProjectsParams.q) {
+  if (queryParams.q) {
     return null
   }
 
   return (
     <div className="pagination">
       <LoadingModal isOpen={isLoading} />
-      {totalItems > refreshProjectsParams.itemsPerPage && (
+      {totalItems > queryParams.itemsPerPage && (
         <div className="main">
           <span>
             {totalItems.toString()} total items, showing {(startIndex + 1).toString()}-
@@ -67,7 +67,7 @@ const Pagination: FC = (): JSX.Element => {
             // ...
             activeLinkClassName="activeLinkClassName"
             // sync components
-            forcePage={refreshProjectsParams.selectedPage - 1}
+            forcePage={queryParams.selectedPage - 1}
           />
         </div>
       )}

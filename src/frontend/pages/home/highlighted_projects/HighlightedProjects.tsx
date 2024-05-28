@@ -38,7 +38,6 @@ const HighlightedProjectsStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 1.5rem;
-    margin-bottom: 1rem;
 
     @media ${device.mobileL} {
       grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));

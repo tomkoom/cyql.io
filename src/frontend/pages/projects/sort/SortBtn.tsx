@@ -4,8 +4,8 @@ import { iAngleDown, iSort } from "@/components/icons/Icons"
 import { useQueryParams } from "@/hooks/_index"
 
 const SortBtn: FC = (): JSX.Element => {
-  const { refreshProjectsParams } = useQueryParams()
-  const { sort } = refreshProjectsParams
+  const { queryParams } = useQueryParams()
+  const { sort } = queryParams
 
   return (
     <SortBtnStyled>

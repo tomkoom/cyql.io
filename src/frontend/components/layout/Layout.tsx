@@ -23,7 +23,7 @@ const Layout: FC = (): JSX.Element => {
   const { isAuthenticated, actor } = useAuth()
   const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveProjectsNum } = useBackend()
   const { refreshProposals } = useProposals()
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = "dark"
@@ -39,7 +39,7 @@ const Layout: FC = (): JSX.Element => {
       await refreshNew(24)
       await refreshHighligted("Tokens", 24)
       await refreshHighligted("NFTs", 24)
-      await refreshPaginated(refreshProjectsParams)
+      await refreshPaginated(queryParams)
     } catch (error) {
       throw new Error(error)
     }

@@ -4,12 +4,12 @@ import { iAngleDown } from "@/components/icons/Icons"
 import { useQueryParams } from "@/hooks/_index"
 
 const CategoryBtn: FC = (): JSX.Element => {
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
 
   return (
     <CategoryBtnStyled>
       Category:
-      <span className="category">{refreshProjectsParams.category}</span>
+      <span className="category">{queryParams.category}</span>
       <span className="icon">{iAngleDown}</span>
     </CategoryBtnStyled>
   )

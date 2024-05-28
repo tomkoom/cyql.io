@@ -26,7 +26,6 @@ const Home: FC = (): JSX.Element => {
       {/* <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} /> */}
       <FlexBanner />
       <Promo />
-      <Divider />
 
       <Section>
         <Title>
@@ -96,7 +95,7 @@ const Title = styled.div`
 const Divider = styled.div`
   height: 1px;
   box-shadow: 0 1px 0 0 var(--underlay1);
-  margin-bottom: 3rem 0;
+  margin: 2rem 0;
 `
 
 export default Home

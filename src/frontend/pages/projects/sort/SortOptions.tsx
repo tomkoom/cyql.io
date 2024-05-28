@@ -32,7 +32,7 @@ const SortOpt: FC<SortOptProps> = ({
 }): JSX.Element => {
   const sortOptionsRef = useRef(null)
   const { refreshPaginated } = useBackend()
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const style = { width: `${sortBtnWidth.toString()}px` }
   const isLoading = useAppSelector(selectPaginatedIsLoading)
 
@@ -60,7 +60,7 @@ const SortOpt: FC<SortOptProps> = ({
   const clickSort = async (sort: SortOptions): Promise<void> => {
     try {
       await refreshPaginated({
-        ...refreshProjectsParams,
+        ...queryParams,
         sort,
       })
       setOpenSort(false)
@@ -75,7 +75,7 @@ const SortOpt: FC<SortOptProps> = ({
 
       <ul style={style} ref={sortOptionsRef}>
         {sortItems.map((item) => {
-          const isActive = Object.keys(item.value)[0] === Object.keys(refreshProjectsParams.sort)[0]
+          const isActive = Object.keys(item.value)[0] === Object.keys(queryParams.sort)[0]
 
           return (
             <li key={Object.keys(item.value)[0]} onClick={() => clickSort(item.value)}>

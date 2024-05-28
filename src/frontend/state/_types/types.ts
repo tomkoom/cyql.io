@@ -1,5 +1,3 @@
-// curated projects types
-
 export type Tokens = { e8s: number }
 
 export interface Pagination {

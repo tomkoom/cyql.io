@@ -1,11 +1,13 @@
 import { useNavigate, createSearchParams } from "react-router-dom"
+import { useQueryParams } from "@/hooks/_index"
 
 // state
-import { useAppSelector } from "./useRedux"
+import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 
 export const useNav = () => {
   const navigate = useNavigate()
+  const { queryParamsString } = useQueryParams()
   const icrcLedgerId = useAppSelector(selectIcrcLedgerId)
 
   const goBack = (): void => navigate(-1)
@@ -17,8 +19,7 @@ export const useNav = () => {
     navigate({
       pathname: "projects",
       search: `?${createSearchParams({
-        category: "All",
-        q: "",
+        ...queryParamsString,
       })}`,
     })
   }

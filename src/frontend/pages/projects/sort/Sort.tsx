@@ -4,7 +4,7 @@ import { SortBtn, SortOptions } from "./_index"
 import { useQueryParams } from "@/hooks/_index"
 
 const Sort: FC = (): JSX.Element => {
-  const { refreshProjectsParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const [openSort, setOpenSort] = useState<boolean>(false)
   const [sortBtnWidth, setSortBtnWidth] = useState<number>(0)
   const sortBtnRef = useRef<HTMLDivElement>(null)
@@ -15,7 +15,7 @@ const Sort: FC = (): JSX.Element => {
 
   useLayoutEffect(() => {
     setSortBtnWidth(sortBtnRef.current.offsetWidth)
-  }, [refreshProjectsParams.sort])
+  }, [queryParams.sort])
 
   return (
     <SortStyled>
