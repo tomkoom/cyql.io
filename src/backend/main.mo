@@ -64,19 +64,26 @@ shared actor class _CURATED_PROJECTS() = Self {
     return curatedProjectsV2.get(projectId)
   };
 
-  public shared ({ caller }) func getAllProjectsNum() : async Nat {
-    assert Utils.isAdmin(caller);
-    return curatedProjectsV2.size()
-  };
-
   // query
 
   public query func listProjectsV2(feSecret : T.Secret) : async [T.Project] {
     assert (secret == feSecret);
-
     let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
     return Iter.toArray<T.Project>(iter)
   };
+
+  public query func getActiveProjectsNum(feSecret : T.Secret) : async Nat {
+    assert (secret == feSecret);
+    let activeProjects = _getActiveProjects();
+    return activeProjects.size()
+  };
+
+  public query func getProjectById(feSecret : T.Secret, id : T.ProjectId) : async ?T.Project {
+    assert (secret == feSecret);
+    return curatedProjectsV2.get(id)
+  };
+
+  // ...
 
   public shared ({ caller }) func updateUpvoteV2(feSecret : T.Secret, projectId : T.ProjectId) : async Text {
 
@@ -109,9 +116,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     let { q; category; openSource; onChain; sort; selectedPage; itemsPerPage } = args;
 
     // get projects
-    let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
-    let allProjects = Iter.toArray<T.Project>(iter);
-    let activeProjects = Array.filter<T.Project>(allProjects, func(p) { p.archived == false });
+    let activeProjects = _getActiveProjects();
 
     // filter, sort, paginate
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
@@ -122,19 +127,32 @@ shared actor class _CURATED_PROJECTS() = Self {
 
     let res : T.GetProjectsResult = {
       paginated with
-
-      // search q
       q;
-
-      // filter
       category;
       openSource;
       onChain;
-
-      // sort
       sort
     };
     return ?res
+  };
+
+  // homepage
+
+  public query func getNewProjects(feSecret : T.Secret, length : Nat) : async [T.Project] {
+    assert (secret == feSecret);
+    let activeProjects = _getActiveProjects();
+    let sorted = Handle.sort(activeProjects, #newest_first);
+    let sliced = Array.slice(sorted, 0, length);
+    return Iter.toArray<T.Project>(sliced)
+  };
+
+  public query func getHighlightedProjects(feSecret : T.Secret, category : Text, length : Nat) : async [T.Project] {
+    assert (secret == feSecret);
+    let activeProjects = _getActiveProjects();
+    let filteredByCategory = Handle.filterByCategory(activeProjects, category);
+    let sorted = Handle.sort(filteredByCategory, #newest_first);
+    let sliced = Array.slice(sorted, 0, length);
+    return Iter.toArray<T.Project>(sliced)
   };
 
   // admin
@@ -152,7 +170,12 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // utils
 
-  // ...
+  private func _getActiveProjects() : [T.Project] {
+    let iter : Iter.Iter<T.Project> = curatedProjectsV2.vals();
+    let allProjects = Iter.toArray<T.Project>(iter);
+    let activeProjects = Array.filter<T.Project>(allProjects, func(p) { p.archived == false });
+    return activeProjects
+  };
 
   // test
 

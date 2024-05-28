@@ -1,13 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iHashtag } from "@/components/icons/Icons"
-import { getCategoryNum } from "@/utils/getCategoryNum"
 import { useNav } from "@/hooks/_index"
 import { useNavigate, createSearchParams } from "react-router-dom"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
 interface TagProps {
@@ -16,13 +14,12 @@ interface TagProps {
 }
 
 const Tag: FC<TagProps> = ({ label, route }): JSX.Element => {
-  const projects = useAppSelector(selectActiveCuratedProjects)
-
   return (
     <TagStyled onClick={route}>
       <span className="icon">{iHashtag}</span>
       <span className="label">
-        {label} <span className="num">{getCategoryNum(projects, label) || ""}</span>
+        {label}
+        {/* <span className="num">{getCategoryNum(projects, label) || ""}</span> */}
       </span>
     </TagStyled>
   )
@@ -33,12 +30,12 @@ const Tags: FC = (): JSX.Element => {
   const navigate = useNavigate()
   const categories = useAppSelector(selectCategoriesSortedByNum)
 
-  const route = (categoryLabel: string): void => {
+  const route = (category: string): void => {
     navigate({
       pathname: "projects",
       search: `?${createSearchParams({
-        category: categoryLabel,
         q: "",
+        category,
       })}`,
     })
   }

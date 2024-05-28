@@ -3,7 +3,6 @@ import ReactPaginate from "react-paginate"
 import "./Pagination.css"
 import { useBackend, useQueryParams } from "@/hooks/_index"
 import { LoadingModal } from "@/modals/_index"
-import { RefreshProjectsParams } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -24,11 +23,10 @@ const Pagination: FC = (): JSX.Element => {
 
   const handlePageClick = async (event: any): Promise<void> => {
     try {
-      const args: RefreshProjectsParams = {
+      await refreshPaginated({
         ...refreshProjectsParams,
         selectedPage: event.selected + 1,
-      }
-      await refreshPaginated(args)
+      })
     } catch (error) {
       throw new Error(error)
     }

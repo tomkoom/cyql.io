@@ -5,33 +5,25 @@ import { useNav } from "@/hooks/_index"
 // import { iPlus } from "@/components/icons/Icons"
 
 // components
-import { Header, HighlightedProjects, JoinCommunity, Promo, StaffPicks, FlexBanner } from "./_index"
+import { Header, HighlightedProjects, JoinCommunity, Promo, FlexBanner } from "./_index"
 import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveCuratedProjects } from "@/state/curatedProjects"
+import { selectHome } from "@/state/home/home"
 
 const Home: FC = (): JSX.Element => {
   const { toProjects, toList } = useNav()
-  const projects = useAppSelector(selectActiveCuratedProjects)
-  const projectsTokens = projects.filter((p) =>
-    p.category.map((c) => c.toLowerCase()).includes("tokens")
-  )
-  const projectsNfts = projects.filter((p) =>
-    p.category.map((c) => c.toLowerCase()).includes("nfts")
-  )
-
-  if (projects.length < 1) {
-    return <Loading />
-  }
+  const home = useAppSelector(selectHome)
+  const newProjects = home.new
+  const tokens = home.highlighted.tokens
+  const nfts = home.highlighted.nfts
 
   return (
     <HomeStyled>
       <Header />
       {/* <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} /> */}
-      {/* <StaffPicks /> */}
       <FlexBanner />
       <Promo />
       <Divider />
@@ -41,7 +33,8 @@ const Home: FC = (): JSX.Element => {
           <h3>New projects</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
-        <HighlightedProjects projects={projects} />
+
+        {newProjects.length > 0 ? <HighlightedProjects projects={newProjects} /> : <Loading />}
       </Section>
       <Divider />
 
@@ -50,7 +43,8 @@ const Home: FC = (): JSX.Element => {
           <h3>New tokens</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
-        <HighlightedProjects projects={projectsTokens} />
+
+        {tokens.length > 0 ? <HighlightedProjects projects={tokens} /> : <Loading />}
       </Section>
       <Divider />
 
@@ -59,7 +53,8 @@ const Home: FC = (): JSX.Element => {
           <h3>New NFTs</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
-        <HighlightedProjects projects={projectsNfts} />
+
+        {nfts.length > 0 ? <HighlightedProjects projects={nfts} /> : <Loading />}
       </Section>
       <Divider />
 
@@ -79,7 +74,6 @@ const HomeStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  /* margin-bottom: 2rem; */
 
   > span.inf {
     text-align: center;

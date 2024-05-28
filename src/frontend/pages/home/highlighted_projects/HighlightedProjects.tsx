@@ -21,26 +21,28 @@ const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.El
   }
 
   return (
-    <div>
-      <Grid>
+    <HighlightedProjectsStyled>
+      <div className="grid">
         {projects.slice(0, 24).map((p) => (
           <Project key={p.id.toString()} project={p} />
         ))}
-      </Grid>
+      </div>
 
       {projects.length > 0 && <ViewMoreBtn text="View All Projects" nav={toProjects} />}
-    </div>
+    </HighlightedProjectsStyled>
   )
 }
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+const HighlightedProjectsStyled = styled.div`
+  > div.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
 
-  @media ${device.mobileL} {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    @media ${device.mobileL} {
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    }
   }
 `
 

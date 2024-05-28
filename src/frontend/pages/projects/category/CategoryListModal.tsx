@@ -1,14 +1,11 @@
 import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
-import { getCategoryNum } from "@/utils/_index"
 import { Btn } from "@/components/btns/_index"
 import { useBackend, useQueryParams } from "@/hooks/_index"
-import { RefreshProjectsParams } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
 
 interface CategoryListModalProps {
@@ -22,16 +19,14 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
 }): JSX.Element => {
   const { refreshPaginated } = useBackend()
   const { refreshProjectsParams } = useQueryParams()
-  const projects = useAppSelector(selectActiveCuratedProjects)
   const categoriesSorted = useAppSelector(selectCategoriesSortedByNum)
 
   const refresh = async (updatedCategory: string): Promise<void> => {
     try {
-      const args: RefreshProjectsParams = {
+      await refreshPaginated({
         ...refreshProjectsParams,
         category: updatedCategory,
-      }
-      await refreshPaginated(args)
+      })
     } catch (error) {
       throw new Error(error)
     }
@@ -81,7 +76,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
               onClick={() => setCategory(c.label)}
             >
               <span className="label">{c.label}</span>
-              <span className="num">{getCategoryNum(projects, c.label).toString()}</span>
+              {/* <span className="num">{getCategoryNum(projects, c.label).toString()}</span> */}
             </li>
           ))}
         </Categories>

@@ -1,11 +1,6 @@
 import React, { FC, ReactNode } from "react"
 import styled from "styled-components"
-import { getCategoryNum } from "@/utils/getCategoryNum"
 import { useLocation } from "react-router-dom"
-
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveCuratedProjects } from "@/state/curatedProjects"
 
 interface NavItemProps {
   label: string
@@ -15,7 +10,6 @@ interface NavItemProps {
 }
 
 const NavItem: FC<NavItemProps> = ({ label, pathname, icon, route }): JSX.Element => {
-  const projects = useAppSelector(selectActiveCuratedProjects)
   const locationPathname = useLocation().pathname
 
   return (
@@ -25,7 +19,8 @@ const NavItem: FC<NavItemProps> = ({ label, pathname, icon, route }): JSX.Elemen
     >
       {icon && <span className="icon">{icon}</span>}
       <span className="label">
-        {label} <span className="num">{getCategoryNum(projects, label) || ""}</span>
+        {label}
+        {/* <span className="num">{getCategoryNum(projects, label) || ""}</span> */}
       </span>
     </NavItemStyled>
   )

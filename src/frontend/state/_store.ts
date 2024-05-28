@@ -10,6 +10,7 @@ import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
 import listProject from "./listProject"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
+import project from "./project"
 
 // icrc scan
 import icrcTransactions from "./icrc_scan/icrcTransactions"
@@ -33,6 +34,9 @@ import withdrawNftModal from "./modals/withdrawNftModal"
 import paginated from "./projects/paginated"
 import curatedProjects from "./curatedProjects"
 
+// home
+import home from "./home/home"
+
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -51,6 +55,7 @@ const store = configureStore({
     user,
     listProject,
     proposedProjectCategories,
+    project,
 
     // icrc scan
     icrcTransactions,
@@ -73,6 +78,9 @@ const store = configureStore({
     // projects
     paginated,
     curatedProjects,
+
+    // home
+    home,
   },
 })
 

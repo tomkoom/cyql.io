@@ -6,7 +6,6 @@ interface CuratedProjectsState {
   isLoading: boolean
   allCuratedProjects: Project[]
   allCuratedProjectsNum: number
-  activeCuratedProjects: Project[]
   activeCuratedProjectsNum: number
 }
 
@@ -14,7 +13,6 @@ const initialState: CuratedProjectsState = {
   isLoading: false,
   allCuratedProjects: [],
   allCuratedProjectsNum: 0,
-  activeCuratedProjects: [],
   activeCuratedProjectsNum: 0,
 }
 
@@ -29,9 +27,8 @@ const curatedProjects = createSlice({
       state.allCuratedProjects = payload
       state.allCuratedProjectsNum = payload.length
     },
-    setActiveCuratedProjects(state, { payload }: PayloadAction<Project[]>) {
-      state.activeCuratedProjects = payload
-      state.activeCuratedProjectsNum = payload.length
+    setActiveCuratedProjectsNum(state, { payload }: PayloadAction<number>) {
+      state.activeCuratedProjectsNum = payload
     },
   },
 })
@@ -41,11 +38,9 @@ export const selectAllCuratedProjects = (state: RootState) =>
   state.curatedProjects.allCuratedProjects
 export const selecttAllCuratedProjectsNum = (state: RootState) =>
   state.curatedProjects.allCuratedProjectsNum
-export const selectActiveCuratedProjects = (state: RootState) =>
-  state.curatedProjects.activeCuratedProjects
 export const selectActiveCuratedProjectsNum = (state: RootState) =>
   state.curatedProjects.activeCuratedProjectsNum
 
-export const { setCuratedProjectsIsLoading, setAllCuratedProjects, setActiveCuratedProjects } =
+export const { setCuratedProjectsIsLoading, setAllCuratedProjects, setActiveCuratedProjectsNum } =
   curatedProjects.actions
 export default curatedProjects.reducer

@@ -12,8 +12,8 @@ import { fetchIcpPrice } from "@/state/icpPrice"
 
 const Summary: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const projectsNum = useAppSelector(selectActiveCuratedProjectsNum)
-  const projectProposals = useAppSelector(selectProposalsNum)
+  const curatedNum = useAppSelector(selectActiveCuratedProjectsNum)
+  const proposedNum = useAppSelector(selectProposalsNum)
   // icp price
   const price = useAppSelector(selectIcpPrice)
   const change = useAppSelector(selectIcp24hPriceChange)
@@ -29,11 +29,11 @@ const Summary: FC = (): JSX.Element => {
   return (
     <SummaryStyled>
       <p>
-        Curated Projects: <span className="num">{projectsNum || "..."}</span>
+        Curated Projects: <span className="num">{curatedNum.toString() || "..."}</span>
       </p>
 
       <p>
-        Proposed Projects: <span className="num">{projectProposals || "..."}</span>
+        Proposed Projects: <span className="num">{proposedNum.toString() || "..."}</span>
       </p>
 
       <div>

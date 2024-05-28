@@ -14,30 +14,31 @@ import { useNav, useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-import { selecttAllCuratedProjectsNum } from "@/state/curatedProjects"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
+import { selectHome } from "@/state/home/home"
 
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
-  const { refreshPaginated } = useBackend()
+  const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveProjectsNum } = useBackend()
   const { refreshProposals } = useProposals()
   const { refreshProjectsParams } = useQueryParams()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = "dark"
-  const allProjectsNum = useAppSelector(selecttAllCuratedProjectsNum)
   const isLoading = useAppSelector(selectIsLoading)
   const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
+  const newProjects = useAppSelector(selectHome).new
 
   // refresh data
-
   const refresh = async (): Promise<void> => {
     try {
       await refreshProposals()
-      // await refreshCuratedProjects()
-
+      await refreshActiveProjectsNum()
+      await refreshNew(24)
+      await refreshHighligted("Tokens", 24)
+      await refreshHighligted("NFTs", 24)
       await refreshPaginated(refreshProjectsParams)
     } catch (error) {
       throw new Error(error)
@@ -81,7 +82,7 @@ const Layout: FC = (): JSX.Element => {
         <Outlet />
       </main>
 
-      {allProjectsNum > 0 && <Footer />}
+      {newProjects.length > 0 && <Footer />}
       <Cookie />
     </LayoutStyled>
   )

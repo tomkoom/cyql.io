@@ -4,7 +4,6 @@ import { iCheck } from "@/components/icons/Icons"
 import type { SortOptions } from "../../../../declarations/backend/backend.did"
 import { useBackend, useQueryParams } from "@/hooks/_index"
 import { LoadingModal } from "@/modals/_index"
-import { RefreshProjectsParams } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -60,11 +59,10 @@ const SortOpt: FC<SortOptProps> = ({
 
   const clickSort = async (sort: SortOptions): Promise<void> => {
     try {
-      const args: RefreshProjectsParams = {
+      await refreshPaginated({
         ...refreshProjectsParams,
         sort,
-      }
-      await refreshPaginated(args)
+      })
       setOpenSort(false)
     } catch (error) {
       throw new Error(error)
@@ -72,10 +70,10 @@ const SortOpt: FC<SortOptProps> = ({
   }
 
   return (
-    <div>
+    <SortOptionsStyled>
       <LoadingModal isOpen={isLoading} />
 
-      <SortOptionsStyled style={style} ref={sortOptionsRef}>
+      <ul style={style} ref={sortOptionsRef}>
         {sortItems.map((item) => {
           const isActive = Object.keys(item.value)[0] === Object.keys(refreshProjectsParams.sort)[0]
 
@@ -85,35 +83,37 @@ const SortOpt: FC<SortOptProps> = ({
             </li>
           )
         })}
-      </SortOptionsStyled>
-    </div>
+      </ul>
+    </SortOptionsStyled>
   )
 }
 
 const SortOptionsStyled = styled.ul`
-  display: flex;
-  flex-direction: column;
-  font-size: var(--fsText);
-  font-weight: var(--fwMedium);
-  background-color: var(--underlay2);
-  padding: 0.5rem 0;
-
-  > li {
-    height: 2.5rem;
+  > ul {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    white-space: nowrap;
-    padding: 0 1rem;
-    cursor: pointer;
-    transition: var(--transition1);
+    flex-direction: column;
+    font-size: var(--fsText);
+    font-weight: var(--fwMedium);
+    background-color: var(--underlay2);
+    padding: 0.5rem 0;
 
-    &:hover {
-      background-color: var(--underlay3);
-    }
+    > li {
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      padding: 0 1rem;
+      cursor: pointer;
+      transition: var(--transition1);
 
-    > span {
-      color: var(--colorOk);
+      &:hover {
+        background-color: var(--underlay3);
+      }
+
+      > span {
+        color: var(--colorOk);
+      }
     }
   }
 `
