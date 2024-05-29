@@ -1,5 +1,8 @@
 module {
 
+  public type Category = Text;
+  public type Length = Nat;
+
   // filter, sort, pagination
 
   public type GetProjectsBase = {

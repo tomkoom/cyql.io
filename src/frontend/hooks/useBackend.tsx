@@ -34,7 +34,7 @@ export const useBackend = (): UseBackend => {
 
     dispatch(setCuratedProjectsIsLoading(true))
     try {
-      const allProjects = await actor.listProjectsV2(SECRET)
+      const allProjects = await actor.listProjects(SECRET)
       const serialized = allProjects.map((p) => ({ ...p, id: p.id.toString() }))
       serialized.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
       // const activeProjects: Project[] = serialized.filter((p) => !p.archived)
@@ -171,7 +171,7 @@ export const useBackend = (): UseBackend => {
     if (project.id) return
 
     try {
-      await actor.addProjectV2({
+      await actor.addProject({
         ...project,
         id: BigInt(0), // placeholder id
         createdAt: String(Date.now()),
@@ -193,7 +193,7 @@ export const useBackend = (): UseBackend => {
         id,
         updatedAt: String(Date.now()),
       }
-      await actor.editProjectV2(id, p)
+      await actor.editProject(id, p)
     } catch (error) {
       throw new Error(error)
     }
@@ -204,7 +204,7 @@ export const useBackend = (): UseBackend => {
 
     try {
       const id = BigInt(projectId)
-      const res = await actor.updateUpvoteV2(SECRET, id)
+      const res = await actor.updateUpvote(SECRET, id)
       return res
     } catch (error) {
       throw new Error(error)
