@@ -3,12 +3,12 @@ import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useParams } from "react-router-dom"
 import { useProjects } from "@/hooks/_index"
+import { useAuth } from "@/context/Auth"
 
 // components
 import { Loading } from "@/components/ui/_index"
 import { BackBtn } from "@/components/btns/_index"
 import { ShareModal } from "@/modals/_index"
-import { NotFound } from "@/pages/_index"
 import { CollStats, Description, Disclaimer, Header, Links, Meta, NftBtns, NftPreviews } from "./_index"
 import { ProjectModal } from "@/modals/_index"
 
@@ -20,23 +20,30 @@ import { selectProject } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
+  const { actor } = useAuth()
   const { refreshProjectById } = useProjects()
   const project = useAppSelector(selectProject)
   const isShareModalOpen = useAppSelector(selectShareModal)
   const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)
 
-  const refresh = async (): Promise<void> => {
-    await refreshProjectById(id)
+  const refresh = async (id: string): Promise<void> => {
+    if (!id) return
+
+    try {
+      await refreshProjectById(id)
+    } catch (error) {
+      throw new Error(error)
+    }
   }
 
   useEffect(() => {
-    if (id) {
-      refresh()
+    if (actor) {
+      refresh(id)
     }
-  }, [id])
+  }, [actor, id])
 
   if (!id) {
-    return <NotFound text="Project not found." />
+    return <p style={{ textAlign: "center" }}>Project not found.</p>
   }
 
   if (!project) {

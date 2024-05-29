@@ -82,8 +82,8 @@ export const useProjects = (): UseBackend => {
           totalPages: Number(res[0].totalPages),
         }
 
-        // set query params if on projects page
-        if (locationPathname === "projects") {
+        // set query params if on /projects page
+        if (locationPathname === "/projects") {
           const q = res[0].q
           const category = res[0].category
           const openSource = filterToSearchParam(res[0].openSource)
@@ -126,6 +126,8 @@ export const useProjects = (): UseBackend => {
   }
 
   const refreshNew = async (length: number): Promise<void> => {
+    if (!actor) return
+
     try {
       const res = await actor.getNewProjects(SECRET, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
@@ -136,6 +138,8 @@ export const useProjects = (): UseBackend => {
   }
 
   const refreshHighligted = async (category: string, length: number): Promise<void> => {
+    if (!actor) return
+
     try {
       const str = category
       const replacement = "_"
@@ -149,6 +153,8 @@ export const useProjects = (): UseBackend => {
   }
 
   const refreshActiveProjectsNum = async (): Promise<void> => {
+    if (!actor) return
+
     try {
       const res = await actor.getActiveProjectsNum(SECRET)
       dispatch(setActiveCuratedProjectsNum(Number(res)))
@@ -158,6 +164,8 @@ export const useProjects = (): UseBackend => {
   }
 
   const refreshProjectById = async (id: string): Promise<void> => {
+    if (!actor) return
+
     try {
       const res = await actor.getProjectById(SECRET, BigInt(id))
       if (res.length > 0) {
