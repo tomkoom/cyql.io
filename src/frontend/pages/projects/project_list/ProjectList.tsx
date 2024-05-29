@@ -51,7 +51,7 @@ const ProjectList: FC = (): JSX.Element => {
 
                 <div className="upvote">
                   <div className="btn" onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn projectId={p.id.toString()} location={""} upvotedBy={p.upvotedBy} />
+                    <UpvoteBtn projectId={p.id.toString()} location={"project_list"} upvotedBy={p.upvotedBy} />
                   </div>
                 </div>
               </li>

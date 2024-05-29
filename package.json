@@ -48,6 +48,7 @@
     "cropperjs": "^1.6.2",
     "dotenv": "^16.3.1",
     "react": "^18.2.0",
+    "react-confetti-explosion": "^2.1.2",
     "react-cookie-consent": "^7.3.1",
     "react-copy-to-clipboard": "^5.1.0",
     "react-cropper": "^2.3.3",

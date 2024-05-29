@@ -2,30 +2,36 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { iCaretUp } from "@/components/icons/Icons"
 
-interface DefaultBtnProps {
+interface UnUpvotedBtnProps {
   upvotesNum: number
   location: string
   click: () => void
 }
 
-const DefaultBtn: FC<DefaultBtnProps> = ({ upvotesNum, location, click }) => {
-  return location === "project_page" ? (
-    <DefaultBtnStyled_ProjectPage onClick={click}>
-      Upvote
-      <div>
-        <span className="icon">{iCaretUp}</span>
-        <span className="num">{upvotesNum}</span>
-      </div>
-    </DefaultBtnStyled_ProjectPage>
-  ) : (
-    <DefaultBtnStyled_Projects onClick={click}>
-      <span className="icon">{iCaretUp}</span>
-      <span className="num">{upvotesNum}</span>
-    </DefaultBtnStyled_Projects>
+const UnUpvotedBtn: FC<UnUpvotedBtnProps> = ({ upvotesNum, location, click }) => {
+  return (
+    <UnUpvotedBtnStyled>
+      {location === "project_page" ? (
+        <ProjectPageBtn onClick={click}>
+          Upvote
+          <div>
+            <span className="icon">{iCaretUp}</span>
+            <span className="num">{upvotesNum}</span>
+          </div>
+        </ProjectPageBtn>
+      ) : (
+        <ProjectsBtn onClick={click}>
+          <span className="icon">{iCaretUp}</span>
+          <span className="num">{upvotesNum}</span>
+        </ProjectsBtn>
+      )}
+    </UnUpvotedBtnStyled>
   )
 }
 
-const DefaultBtnStyled_ProjectPage = styled.button`
+const UnUpvotedBtnStyled = styled.div``
+
+const ProjectPageBtn = styled.button`
   height: 3rem;
   display: flex;
   align-items: center;
@@ -59,7 +65,7 @@ const DefaultBtnStyled_ProjectPage = styled.button`
   }
 `
 
-const DefaultBtnStyled_Projects = styled.button`
+const ProjectsBtn = styled.button`
   width: 2.5rem;
   height: 3.5rem;
   display: flex;
@@ -89,4 +95,4 @@ const DefaultBtnStyled_Projects = styled.button`
   }
 `
 
-export default DefaultBtn
+export default UnUpvotedBtn

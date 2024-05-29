@@ -2,36 +2,32 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { iCaretUp, iCheck } from "@/components/icons/Icons"
 
-interface UpvotedStateBtnProps {
+interface UpvotedBtnProps {
   upvotesNum: number
   location: string
   click: () => void
 }
 
-const UpvotedStateBtn: FC<UpvotedStateBtnProps> = ({
-  upvotesNum,
-  location,
-  click,
-}): JSX.Element => {
+const UpvotedBtn: FC<UpvotedBtnProps> = ({ upvotesNum, location, click }): JSX.Element => {
   return location === "project_page" ? (
-    <UpvotedStateBtnStyled_ProjectPage onClick={click}>
+    <UpvotedBtnStyled_ProjectPage onClick={click}>
       {iCheck} Upvoted
       <div>
         <span className="icon">{iCaretUp}</span>
         <span className="num">{upvotesNum}</span>
       </div>
-    </UpvotedStateBtnStyled_ProjectPage>
+    </UpvotedBtnStyled_ProjectPage>
   ) : (
-    <UpvotedStateBtnStyled_Projects onClick={click}>
+    <UpvotedBtnStyled_Projects onClick={click}>
       <span className="icon">{iCaretUp}</span>
       <span className="num">
         {iCheck} {upvotesNum}
       </span>
-    </UpvotedStateBtnStyled_Projects>
+    </UpvotedBtnStyled_Projects>
   )
 }
 
-const UpvotedStateBtnStyled_ProjectPage = styled.button`
+const UpvotedBtnStyled_ProjectPage = styled.button`
   height: 3rem;
   display: flex;
   align-items: center;
@@ -65,7 +61,7 @@ const UpvotedStateBtnStyled_ProjectPage = styled.button`
   }
 `
 
-const UpvotedStateBtnStyled_Projects = styled.button`
+const UpvotedBtnStyled_Projects = styled.button`
   width: 2.5rem;
   height: 3.5rem;
   display: flex;
@@ -94,4 +90,4 @@ const UpvotedStateBtnStyled_Projects = styled.button`
   }
 `
 
-export default UpvotedStateBtn
+export default UpvotedBtn

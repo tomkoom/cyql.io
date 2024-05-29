@@ -1,7 +1,7 @@
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState } from "react"
 import styled from "styled-components"
 import { useDebounceCallback } from "usehooks-ts"
-import { useBackend, useQueryParams } from "@/hooks/_index"
+import { useQueryParams } from "@/hooks/_index"
 
 // components
 import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
@@ -9,37 +9,18 @@ import { TextInput2 } from "@/components/ui/_index"
 
 const Projects: FC = (): JSX.Element => {
   const [search, setSearch] = useState("")
-  const { refreshPaginated } = useBackend()
-  const { schema, queryParams } = useQueryParams()
+  const { queryParams } = useQueryParams()
   const debounced = useDebounceCallback(setSearch, 500)
-
-  const refresh = async (): Promise<void> => {
-    await refreshPaginated(queryParams)
-  }
-
-  useEffect(() => {
-    const schemaStr = JSON.stringify(schema)
-    const queryParamsStr = JSON.stringify(schema)
-    console.log(schemaStr === queryParamsStr)
-    if (schemaStr !== queryParamsStr) {
-      refresh()
-    }
-  }, [])
 
   return (
     <ProjectsStyled>
       <h2 className="pageTitle">Discover New Projects</h2>
-      <TextInput2
-        placeholder={"Search project by name"}
-        defaultValue={search}
-        onChange={(event) => debounced(event.target.value)}
-      />
+      <TextInput2 placeholder={"Search project by name"} defaultValue={search} onChange={(event) => debounced(event.target.value)} />
 
       {/* filters */}
       <Filters>
         <div className="item">
           <Category />
-
           <Filter filterId={"openSource"} label={"Open-source:"} filter={queryParams.openSource} />
           <Filter filterId={"onChain"} label={"On-chain:"} filter={queryParams.onChain} />
         </div>
