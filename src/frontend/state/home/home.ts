@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 import type { Project } from "@/state/_types/curated_projects_types"
 
-type HighlightedItem = { [key: string]: Project[] }
+export type HighlightedItem = { [key: string]: Project[] }
 
 interface HomeState {
   new: Project[]

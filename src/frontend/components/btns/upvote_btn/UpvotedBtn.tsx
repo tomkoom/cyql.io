@@ -4,12 +4,12 @@ import { iCaretUp, iCheck } from "@/components/icons/Icons"
 
 interface UpvotedBtnProps {
   upvotesNum: number
-  location: string
+  btnLocation: string
   click: () => void
 }
 
-const UpvotedBtn: FC<UpvotedBtnProps> = ({ upvotesNum, location, click }): JSX.Element => {
-  return location === "project_page" ? (
+const UpvotedBtn: FC<UpvotedBtnProps> = ({ upvotesNum, btnLocation, click }): JSX.Element => {
+  return btnLocation === "project_page" ? (
     <UpvotedBtnStyled_ProjectPage onClick={click}>
       {iCheck} Upvoted
       <div>
@@ -17,7 +17,7 @@ const UpvotedBtn: FC<UpvotedBtnProps> = ({ upvotesNum, location, click }): JSX.E
         <span className="num">{upvotesNum}</span>
       </div>
     </UpvotedBtnStyled_ProjectPage>
-  ) : location === "project_list" ? (
+  ) : btnLocation === "project_list" ? (
     <UpvotedBtnStyled_Projects onClick={click}>
       <span className="icon">{iCaretUp}</span>
       <span className="num">

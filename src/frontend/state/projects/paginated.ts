@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { Paginated } from "@/state/_types/curated_projects_types"
+import type { Paginated, Project } from "@/state/_types/curated_projects_types"
 
 interface PaginatedState {
   isLoading: boolean
@@ -32,11 +32,14 @@ const paginated = createSlice({
     setPaginated(state, { payload }: PayloadAction<Paginated>) {
       state.paginated = payload
     },
+    setPaginatedData(state, { payload }: PayloadAction<Project[]>) {
+      state.paginated.data = payload
+    },
   },
 })
 
 export const selectPaginatedIsLoading = (state: RootState) => state.paginated.isLoading
 export const selectPaginated = (state: RootState) => state.paginated.paginated
 
-export const { setPaginatedIsLoading, setPaginated } = paginated.actions
+export const { setPaginatedIsLoading, setPaginated, setPaginatedData } = paginated.actions
 export default paginated.reducer

@@ -78,7 +78,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return activeProjects.size()
   };
 
-  public query func getProjectById(feSecret : T.Secret, id : T.ProjectId) : async ?T.Project {
+  public query func refreshProjectById(feSecret : T.Secret, id : T.ProjectId) : async ?T.Project {
     assert (secret == feSecret);
     return curatedProjectsV2.get(id)
   };

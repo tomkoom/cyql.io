@@ -14,5 +14,5 @@ export { bigintToNumber, bigintToString, serializeProjectsToString } from "./ser
 export { sortProjectsByDate } from "./sortProjectsByDate"
 export { trimZeroes } from "./trimZeroes"
 export { twitterUsername } from "./twitterUsername"
+export { updateInHighlighted, updateInProjects } from "./updateProjectInProjects"
 export { verifyAdmin } from "./verifyAdmin"
-

@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
-import { useBackend, useQueryParams } from "@/hooks/_index"
+import { useUpvote } from "@/hooks/_index"
 import { UpvotedBtn, UnUpvotedBtn, NotSignedBtn } from "./_index"
 // https://www.npmjs.com/package/react-confetti-explosion
 import ConfettiExplosion from "react-confetti-explosion"
@@ -13,21 +13,20 @@ import { setIsLoading } from "@/state/loading"
 
 interface UpvoteBtnProps {
   projectId: string
-  location: "project_page" | "project_list"
+  btnLocation: "project_page" | "project_list"
   upvotedBy: string[]
 }
 
-const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.Element => {
+const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, btnLocation, upvotedBy }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { userId, isAuthenticated } = useAuth()
-  const { refreshPaginated, getProjectById, updateCuratedProjectUpvote } = useBackend()
-  const { queryParams } = useQueryParams()
+  const { updateUpvote } = useUpvote()
   const [isExploding, setIsExploding] = useState(false)
   const upvotesNum = upvotedBy.length
   const isUpvotedByUser = upvotedBy.includes(userId)
 
   // confetti
-  const duration = 3_000
+  const duration = 2_000
   const explodeProps = {
     force: 0.8,
     duration,
@@ -38,39 +37,10 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
     colors: ["#aeea00", "#ffff00", "#6200ea", "#7c4dff"],
   }
 
-  const updateUpvote = async (): Promise<void> => {
-    try {
-      await updateCuratedProjectUpvote(projectId)
-      await getProjectById(projectId)
-      await refreshPaginated(queryParams)
-
-      // confetti
-      if (location === "project_page") {
-        setIsExploding(true)
-        setTimeout(() => {
-          setIsExploding(false)
-        }, duration)
-      }
-    } catch (error) {
-      throw new Error(error)
-    }
-  }
-
-  const downvote = async (): Promise<void> => {
+  const onUpvote = async (): Promise<void> => {
     dispatch(setIsLoading(true))
     try {
-      await updateUpvote()
-    } catch (error) {
-      throw new Error(error)
-    } finally {
-      dispatch(setIsLoading(false))
-    }
-  }
-
-  const upvote = async (): Promise<void> => {
-    dispatch(setIsLoading(true))
-    try {
-      await updateUpvote()
+      await updateUpvote(projectId, btnLocation, setIsExploding, duration)
     } catch (error) {
       throw new Error(error)
     } finally {
@@ -83,7 +53,7 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
   }
 
   if (!isAuthenticated) {
-    return <NotSignedBtn upvotesNum={upvotesNum} location={location} click={openSignInModal} />
+    return <NotSignedBtn upvotesNum={upvotesNum} btnLocation={btnLocation} click={openSignInModal} />
   }
 
   if (isUpvotedByUser) {
@@ -96,12 +66,12 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
             </div>
           </ConfettiStyled>
         )}
-        <UpvotedBtn upvotesNum={upvotesNum} location={location} click={downvote} />
+        <UpvotedBtn upvotesNum={upvotesNum} btnLocation={btnLocation} click={onUpvote} />
       </div>
     )
   }
 
-  return <UnUpvotedBtn upvotesNum={upvotesNum} location={location} click={upvote} />
+  return <UnUpvotedBtn upvotesNum={upvotesNum} btnLocation={btnLocation} click={onUpvote} />
 }
 
 const ConfettiStyled = styled.div`

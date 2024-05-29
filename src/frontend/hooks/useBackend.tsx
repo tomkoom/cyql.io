@@ -1,28 +1,12 @@
 import { useAuth } from "@/context/Auth"
-import {
-  verifyAdmin,
-  sortProjectsByDate,
-  serializeProjectsToString,
-  filterToSearchParam,
-  sortToSearchParam,
-} from "@/utils/_index"
-import type {
-  Project,
-  ProjectId,
-  Paginated,
-  QueryParams,
-} from "@/state/_types/curated_projects_types"
+import { verifyAdmin, sortProjectsByDate, serializeProjectsToString, filterToSearchParam, sortToSearchParam } from "@/utils/_index"
+import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
-import type { GetProjectsArgs } from "../../declarations/backend/backend.did"
 import { useQueryParams } from "@/hooks/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import {
-  setActiveCuratedProjectsNum,
-  setAllCuratedProjects,
-  setCuratedProjectsIsLoading,
-} from "@/state/curatedProjects"
+import { setActiveCuratedProjectsNum, setAllCuratedProjects, setCuratedProjectsIsLoading } from "@/state/curatedProjects"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setHomeHighlighted, setHomeNew } from "@/state/home/home"
 import { setProject } from "@/state/project"
@@ -34,7 +18,7 @@ interface UseBackend {
   refreshNew: (length: number) => Promise<void>
   refreshHighligted: (category: string, length: number) => Promise<void>
   refreshActiveProjectsNum: () => Promise<void>
-  getProjectById: (id: string) => Promise<void>
+  refreshProjectById: (id: string) => Promise<void>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
   updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
@@ -169,7 +153,7 @@ export const useBackend = (): UseBackend => {
     }
   }
 
-  const getProjectById = async (id: string): Promise<void> => {
+  const refreshProjectById = async (id: string): Promise<void> => {
     try {
       const res = await actor.getProjectById(SECRET, BigInt(id))
       if (res.length > 0) {
@@ -233,7 +217,7 @@ export const useBackend = (): UseBackend => {
     refreshNew,
     refreshHighligted,
     refreshActiveProjectsNum,
-    getProjectById,
+    refreshProjectById,
 
     // ...
     addCuratedProject,

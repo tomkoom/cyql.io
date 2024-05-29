@@ -4,14 +4,14 @@ import { iCaretUp } from "@/components/icons/Icons"
 
 interface UnUpvotedBtnProps {
   upvotesNum: number
-  location: string
+  btnLocation: string
   click: () => void
 }
 
-const UnUpvotedBtn: FC<UnUpvotedBtnProps> = ({ upvotesNum, location, click }) => {
+const UnUpvotedBtn: FC<UnUpvotedBtnProps> = ({ upvotesNum, btnLocation, click }) => {
   return (
     <div>
-      {location === "project_page" ? (
+      {btnLocation === "project_page" ? (
         <ProjectPageBtn onClick={click}>
           Upvote
           <div>
@@ -19,7 +19,7 @@ const UnUpvotedBtn: FC<UnUpvotedBtnProps> = ({ upvotesNum, location, click }) =>
             <span className="num">{upvotesNum}</span>
           </div>
         </ProjectPageBtn>
-      ) : location === "project_list" ? (
+      ) : btnLocation === "project_list" ? (
         <ProjectListBtn onClick={click}>
           <span className="icon">{iCaretUp}</span>
           <span className="num">{upvotesNum}</span>

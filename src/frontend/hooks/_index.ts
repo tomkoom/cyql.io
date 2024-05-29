@@ -8,6 +8,7 @@ export { useNavlinks } from "./useNavlinks"
 export { useProposals } from "./useProposals"
 export { useQueryParams } from "./useQueryParams"
 export { useScrollLock } from "./useScrollLock"
+export { useUpvote } from "./useUpvote"
 export { useWindowSize } from "./useWindowSize"
 
 // backend

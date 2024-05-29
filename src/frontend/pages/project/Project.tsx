@@ -9,16 +9,7 @@ import { Loading } from "@/components/ui/_index"
 import { BackBtn } from "@/components/btns/_index"
 import { ShareModal } from "@/modals/_index"
 import { NotFound } from "@/pages/_index"
-import {
-  CollStats,
-  Description,
-  Disclaimer,
-  Header,
-  Links,
-  Meta,
-  NftBtns,
-  NftPreviews,
-} from "./_index"
+import { CollStats, Description, Disclaimer, Header, Links, Meta, NftBtns, NftPreviews } from "./_index"
 import { ProjectModal } from "@/modals/_index"
 
 // state
@@ -29,26 +20,27 @@ import { selectProject } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
-  const { getProjectById } = useBackend()
+  const { refreshProjectById } = useBackend()
   const project = useAppSelector(selectProject)
   const isShareModalOpen = useAppSelector(selectShareModal)
   const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)
 
+  const refresh = async (): Promise<void> => {
+    await refreshProjectById(id)
+  }
+
   useEffect(() => {
     if (id) {
-      const get = async () => {
-        await getProjectById(id)
-      }
-      get()
+      refresh()
     }
   }, [id])
 
   if (!id) {
-    return <NotFound text="Project not found" />
+    return <NotFound text="Project not found." />
   }
 
   if (!project) {
-    return <p>...</p>
+    return <Loading />
   }
 
   return (
@@ -71,13 +63,7 @@ const Project: FC = (): JSX.Element => {
         <Meta project={project} />
         <Disclaimer />
 
-        <ShareModal
-          isOpen={isShareModalOpen}
-          id={project.id}
-          name={project.name}
-          category={project.category}
-          description={project.description}
-        />
+        <ShareModal isOpen={isShareModalOpen} id={project.id} name={project.name} category={project.category} description={project.description} />
       </Content>
     </ProjectStyled>
   )

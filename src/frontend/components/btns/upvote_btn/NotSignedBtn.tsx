@@ -4,14 +4,14 @@ import { iCaretUp, iSignIn } from "@/components/icons/Icons"
 
 interface DefaultBtnProps {
   upvotesNum: number
-  location: string
+  btnLocation: string
   click: () => void
 }
 
-const NotSignedBtn: FC<DefaultBtnProps> = ({ upvotesNum, location, click }) => {
+const NotSignedBtn: FC<DefaultBtnProps> = ({ upvotesNum, btnLocation, click }) => {
   return (
     <NotSignedBtnStyled>
-      {location === "project_page" ? (
+      {btnLocation === "project_page" ? (
         <div className="_">
           <div className="upvotes_num">
             <span className="icon">{iCaretUp}</span>
@@ -19,7 +19,7 @@ const NotSignedBtn: FC<DefaultBtnProps> = ({ upvotesNum, location, click }) => {
           </div>
           <ProjectPageBtn onClick={click}>{iSignIn} Sign in to Upvote</ProjectPageBtn>
         </div>
-      ) : location === "project_page" ? (
+      ) : btnLocation === "project_page" ? (
         <ProjectListBtn onClick={click}>
           <span className="icon">{iCaretUp}</span>
           <span className="num">{upvotesNum}</span>
