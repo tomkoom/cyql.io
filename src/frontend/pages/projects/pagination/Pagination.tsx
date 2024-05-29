@@ -12,6 +12,7 @@ const Pagination: FC = (): JSX.Element => {
   const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
   const isLoading = useAppSelector(selectPaginatedIsLoading)
+  const page = queryParams.selectedPage - 1
 
   // pagination
   const paginated = useAppSelector(selectPaginated)
@@ -43,34 +44,33 @@ const Pagination: FC = (): JSX.Element => {
   return (
     <div className="pagination">
       <LoadingModal isOpen={isLoading} />
-      {totalItems > queryParams.itemsPerPage && (
-        <div className="main">
-          <span>
-            {totalItems.toString()} total items, showing {(startIndex + 1).toString()}-
-            {endIndex < totalItems ? endIndex.toString() : totalItems.toString()} items
-          </span>
+      {/* {totalItems > queryParams.itemsPerPage && ( */}
+      <div className="main">
+        <span>
+          {totalItems.toString()} total items, showing {(startIndex + 1).toString()}-{endIndex < totalItems ? endIndex.toString() : totalItems.toString()} items
+        </span>
 
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="next >"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={3}
-            pageCount={totalPages}
-            previousLabel="< prev"
-            renderOnZeroPageCount={null}
-            // styles
-            containerClassName="containerClassName"
-            pageLinkClassName="pageLinkClassName"
-            previousLinkClassName="previousLinkClassName"
-            nextLinkClassName="nextLinkClassName"
-            breakLinkClassName="breakLinkClassName"
-            // ...
-            activeLinkClassName="activeLinkClassName"
-            // sync components
-            forcePage={queryParams.selectedPage - 1}
-          />
-        </div>
-      )}
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={totalPages}
+          previousLabel="< prev"
+          renderOnZeroPageCount={null}
+          // styles
+          containerClassName="containerClassName"
+          pageLinkClassName="pageLinkClassName"
+          previousLinkClassName="previousLinkClassName"
+          nextLinkClassName="nextLinkClassName"
+          breakLinkClassName="breakLinkClassName"
+          // ...
+          activeLinkClassName="activeLinkClassName"
+          // sync components
+          forcePage={page}
+        />
+      </div>
+      {/* )} */}
     </div>
   )
 }

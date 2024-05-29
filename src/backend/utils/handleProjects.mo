@@ -4,6 +4,7 @@ import Float "mo:base/Float";
 import Int "mo:base/Int";
 import Order "mo:base/Order";
 import Text "mo:base/Text";
+import Nat "mo:base/Nat";
 
 // ...
 import T "../main_types";
@@ -14,10 +15,11 @@ module {
 
   public func paginate(projects : [T.Project], selectedPage : Nat, itemsPerPage : Nat) : ?T.PaginateResult {
     if (selectedPage < 1) return null;
+    var page = selectedPage;
 
     // calculate the start and end indexes for the requested page
-    let startIndex = (selectedPage - 1) * itemsPerPage;
-    var endIndex = selectedPage * itemsPerPage;
+    let startIndex = (page - 1) * itemsPerPage;
+    var endIndex = page * itemsPerPage;
 
     let totalItems = projects.size();
     if (endIndex > totalItems) {
@@ -29,17 +31,22 @@ module {
     let paginatedProjects = Iter.toArray<T.Project>(slice);
 
     // calculate total pages
-    let totalPages = Float.ceil(Float.fromInt(totalItems) / Float.fromInt(itemsPerPage));
+    let totalPages = Int.abs(Float.toInt(Float.ceil(Float.fromInt(totalItems) / Float.fromInt(itemsPerPage))));
+
+    // ...
+    if (page > totalPages) {
+      page := totalPages
+    };
 
     // send the paginated response
     let res : T.PaginateResult = {
       data = paginatedProjects;
-      selectedPage;
+      selectedPage = page;
+      totalPages;
       itemsPerPage;
       startIndex;
       endIndex;
-      totalItems;
-      totalPages = Int.abs(Float.toInt(totalPages))
+      totalItems
     };
     return ?res
   };

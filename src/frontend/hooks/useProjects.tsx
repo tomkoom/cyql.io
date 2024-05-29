@@ -83,35 +83,35 @@ export const useProjects = (): UseBackend => {
         }
 
         // set query params if on /projects page
-        if (locationPathname === "/projects") {
-          const q = res[0].q
-          const category = res[0].category
-          const openSource = filterToSearchParam(res[0].openSource)
-          const onChain = filterToSearchParam(res[0].onChain)
-          const sort = sortToSearchParam(res[0].sort)
-          updateQueryParams({
-            q,
-            selectedPage: selectedPage.toString(),
-            itemsPerPage: itemsPerPage.toString(),
-            category,
-            openSource,
-            onChain,
-            sort,
-          })
+        // if (locationPathname === "/projects") {
+        const q = res[0].q
+        const category = res[0].category
+        const openSource = filterToSearchParam(res[0].openSource)
+        const onChain = filterToSearchParam(res[0].onChain)
+        const sort = sortToSearchParam(res[0].sort)
+        updateQueryParams({
+          q,
+          selectedPage: selectedPage.toString(),
+          itemsPerPage: itemsPerPage.toString(),
+          category,
+          openSource,
+          onChain,
+          sort,
+        })
 
-          // set params state
-          dispatch(
-            setQueryParams({
-              q,
-              selectedPage: selectedPage,
-              itemsPerPage: itemsPerPage,
-              category,
-              openSource: res[0].openSource,
-              onChain: res[0].onChain,
-              sort: res[0].sort,
-            })
-          )
-        }
+        // set params state
+        dispatch(
+          setQueryParams({
+            q,
+            selectedPage: selectedPage,
+            itemsPerPage: itemsPerPage,
+            category,
+            openSource: res[0].openSource,
+            onChain: res[0].onChain,
+            sort: res[0].sort,
+          })
+        )
+        // }
 
         // set paginated data
         dispatch(setPaginated(paginated))
