@@ -6,7 +6,7 @@ import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { useBackend, useProposals, useQueryParams } from "@/hooks/_index"
+import { useProjects, useProposals, useQueryParams } from "@/hooks/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -21,7 +21,7 @@ import { selectHome } from "@/state/home/home"
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
-  const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveProjectsNum } = useBackend()
+  const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveProjectsNum } = useProjects()
   const { refreshProposals } = useProposals()
   const { queryParams } = useQueryParams()
   const { toHome } = useNav()

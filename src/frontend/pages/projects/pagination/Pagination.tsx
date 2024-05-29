@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import ReactPaginate from "react-paginate"
 import "./Pagination.css"
-import { useBackend, useQueryParams } from "@/hooks/_index"
+import { useProjects, useQueryParams } from "@/hooks/_index"
 import { LoadingModal } from "@/modals/_index"
 
 // state
@@ -9,7 +9,7 @@ import { useAppSelector } from "@/hooks/useRedux"
 import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/paginated"
 
 const Pagination: FC = (): JSX.Element => {
-  const { refreshPaginated } = useBackend()
+  const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
   const isLoading = useAppSelector(selectPaginatedIsLoading)
 

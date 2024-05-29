@@ -2,7 +2,7 @@ import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
 import { Btn } from "@/components/btns/_index"
-import { useBackend, useQueryParams } from "@/hooks/_index"
+import { useProjects, useQueryParams } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -18,7 +18,7 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
   openCategoryList,
   setOpenCategoryList,
 }): JSX.Element => {
-  const { refreshPaginated } = useBackend()
+  const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
   const categoriesSorted = useAppSelector(selectAllCategories)
 

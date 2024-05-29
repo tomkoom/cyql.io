@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useBackend } from "@/hooks/_index"
+import { useProjects } from "@/hooks/_index"
 import { Btn } from "@/components/btns/_index"
 import type { Project } from "@/state/_types/curated_projects_types"
 
@@ -16,7 +16,7 @@ import {
 
 const Controls: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { addCuratedProject, editCuratedProject, refreshCuratedProjects } = useBackend()
+  const { addCuratedProject, editCuratedProject, refreshCuratedProjects } = useProjects()
   const project: Project = useAppSelector(selectProject)
   const mode = useAppSelector(selectProjectModalMode)
 

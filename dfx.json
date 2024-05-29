@@ -1,21 +1,5 @@
 {
   "canisters": {
-    "backend": {
-      "main": "src/backend/main.mo",
-      "type": "motoko"
-    },
-    "users": {
-      "main": "src/backend/users_old.mo",
-      "type": "motoko"
-    },
-    "users_new": {
-      "main": "src/backend/users/users.mo",
-      "type": "motoko"
-    },
-    "proposals": {
-      "main": "src/backend/project_proposals/project_proposals.mo",
-      "type": "motoko"
-    },
     "frontend": {
       "dependencies": ["backend", "users"],
       "frontend": {
@@ -23,6 +7,22 @@
       },
       "source": ["src/frontend/assets", "dist/"],
       "type": "assets"
+    },
+    "backend": {
+      "main": "src/backend/main.mo",
+      "type": "motoko"
+    },
+    "proposals": {
+      "main": "src/backend/project_proposals/project_proposals.mo",
+      "type": "motoko"
+    },
+    "users": {
+      "main": "src/backend/users/users.mo",
+      "type": "motoko"
+    },
+    "test": {
+      "main": "src/backend/test.mo",
+      "type": "motoko"
     }
   },
   "defaults": {

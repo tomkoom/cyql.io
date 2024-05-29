@@ -3,6 +3,7 @@ import { verifyAdmin, sortProjectsByDate, serializeProjectsToString, filterToSea
 import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
 import { useQueryParams } from "@/hooks/_index"
+import { useLocation } from "react-router-dom"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -24,8 +25,9 @@ interface UseBackend {
   updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
 }
 
-export const useBackend = (): UseBackend => {
+export const useProjects = (): UseBackend => {
   const dispatch = useAppDispatch()
+  const locationPathname = useLocation().pathname
   const { actor, userId } = useAuth()
   const { updateQueryParams } = useQueryParams()
 
@@ -80,34 +82,36 @@ export const useBackend = (): UseBackend => {
           totalPages: Number(res[0].totalPages),
         }
 
-        // set params string
-        const q = res[0].q
-        const category = res[0].category
-        const openSource = filterToSearchParam(res[0].openSource)
-        const onChain = filterToSearchParam(res[0].onChain)
-        const sort = sortToSearchParam(res[0].sort)
-        updateQueryParams({
-          q,
-          selectedPage: selectedPage.toString(),
-          itemsPerPage: itemsPerPage.toString(),
-          category,
-          openSource,
-          onChain,
-          sort,
-        })
-
-        // set params state
-        dispatch(
-          setQueryParams({
+        // set query params if on projects page
+        if (locationPathname === "projects") {
+          const q = res[0].q
+          const category = res[0].category
+          const openSource = filterToSearchParam(res[0].openSource)
+          const onChain = filterToSearchParam(res[0].onChain)
+          const sort = sortToSearchParam(res[0].sort)
+          updateQueryParams({
             q,
-            selectedPage: selectedPage,
-            itemsPerPage: itemsPerPage,
+            selectedPage: selectedPage.toString(),
+            itemsPerPage: itemsPerPage.toString(),
             category,
-            openSource: res[0].openSource,
-            onChain: res[0].onChain,
-            sort: res[0].sort,
+            openSource,
+            onChain,
+            sort,
           })
-        )
+
+          // set params state
+          dispatch(
+            setQueryParams({
+              q,
+              selectedPage: selectedPage,
+              itemsPerPage: itemsPerPage,
+              category,
+              openSource: res[0].openSource,
+              onChain: res[0].onChain,
+              sort: res[0].sort,
+            })
+          )
+        }
 
         // set paginated data
         dispatch(setPaginated(paginated))

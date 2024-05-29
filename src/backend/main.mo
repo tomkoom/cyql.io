@@ -11,7 +11,6 @@ import Array "mo:base/Array";
 
 // ...
 import T "./main_types";
-import T_Archive "./types";
 import Constants "./_constants";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
@@ -19,42 +18,41 @@ import Handle "./utils/handleProjects";
 shared actor class _CURATED_PROJECTS() = Self {
 
   let adminPrincipal = Principal.fromText(Constants.adminId);
+  let nodeAdminPrincipal = Principal.fromText(Constants.nodeAdminId);
   let frontendAdmin1Principal = Principal.fromText(Constants.frontendAdminId1);
   let frontendAdmin2Principal = Principal.fromText(Constants.frontendAdminId2);
   stable var secret : T.Secret = "";
 
   // maps
 
-  // curated projects v1
-  stable var projectsV1Entries : [(T_Archive.ProjectId, T_Archive.Project)] = [];
-  let projectsV1 = HashMap.fromIter<T_Archive.ProjectId, T_Archive.Project>(projectsV1Entries.vals(), 10, Nat.equal, Hash.hash);
-
-  // curated projects v2
-  stable var projectsV2Entries : [(T.ProjectId, T.Project)] = [];
-  let projectsV2 = HashMap.fromIter<T.ProjectId, T.Project>(projectsV2Entries.vals(), 100, Nat.equal, Hash.hash);
-
-  // archive
-  stable var curatedProjectsEntries_archive : [(T.ProjectId, T.Project)] = [];
-  let curatedProjects_archive = HashMap.fromIter<T.ProjectId, T.Project>(projectsV2Entries.vals(), 100, Nat.equal, Hash.hash);
+  // curated projects
+  stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
+  let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, Hash.hash);
 
   // ...
+
+  public shared ({ caller }) func addProjectNode(project : T.Project) : async ?T.ProjectId {
+    assert (caller == nodeAdminPrincipal);
+    projects.put(project.id, project);
+    return ?project.id
+  };
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
     assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
     let projectId = Int.abs(Time.now());
-    projectsV2.put(projectId, { project with id = projectId });
+    projects.put(projectId, { project with id = projectId });
     return ?projectId
   };
 
   public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
     assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
-    projectsV2.put(projectId, project);
+    projects.put(projectId, project);
     return ?projectId
   };
 
   public shared ({ caller }) func removeProject(projectId : T.ProjectId) : async ?T.Project {
     assert Utils.isAdmin(caller);
-    let removed = projectsV2.remove(projectId);
+    let removed = projects.remove(projectId);
     return removed
   };
 
@@ -62,7 +60,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   public query func listProjects(feSecret : T.Secret) : async [T.Project] {
     assert (secret == feSecret);
-    let iter : Iter.Iter<T.Project> = projectsV2.vals();
+    let iter : Iter.Iter<T.Project> = projects.vals();
     return Iter.toArray<T.Project>(iter)
   };
 
@@ -74,7 +72,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   public query func getProjectById(feSecret : T.Secret, id : T.ProjectId) : async ?T.Project {
     assert (secret == feSecret);
-    return projectsV2.get(id)
+    return projects.get(id)
   };
 
   // ...
@@ -88,7 +86,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     };
 
     let userId = Principal.toText(caller);
-    let ?p = projectsV2.get(projectId) else return "Project not found.";
+    let ?p = projects.get(projectId) else return "Project not found.";
     let upvotedByBuf = Buffer.fromArray<Text>(p.upvotedBy);
     let isAlreadyUpvoted = Buffer.contains<Text>(upvotedByBuf, userId, Text.equal);
 
@@ -99,7 +97,7 @@ shared actor class _CURATED_PROJECTS() = Self {
       let _removed = upvotedByBuf.remove(idx)
     };
 
-    projectsV2.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
+    projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
     return Nat.toText(projectId)
   };
 
@@ -162,10 +160,15 @@ shared actor class _CURATED_PROJECTS() = Self {
     return "ok"
   };
 
+  public shared query ({ caller }) func getAllProjectsNumAdmin() : async Nat {
+    assert Utils.isAdmin(caller);
+    return projects.size()
+  };
+
   // utils
 
   private func _getActiveProjects() : [T.Project] {
-    let iter : Iter.Iter<T.Project> = projectsV2.vals();
+    let iter : Iter.Iter<T.Project> = projects.vals();
     let allProjects = Iter.toArray<T.Project>(iter);
     let activeProjects = Array.filter<T.Project>(allProjects, func(p) { p.archived == false });
     return activeProjects
@@ -180,16 +183,10 @@ shared actor class _CURATED_PROJECTS() = Self {
   // stable
 
   system func preupgrade() {
-    projectsV1Entries := Iter.toArray(projectsV1.entries());
-    projectsV2Entries := Iter.toArray(projectsV2.entries());
-    // ...
-    curatedProjectsEntries_archive := Iter.toArray(curatedProjects_archive.entries())
+    projectsEntries := Iter.toArray(projects.entries())
   };
 
   system func postupgrade() {
-    projectsV1Entries := [];
-    projectsV2Entries := [];
-    // ...
-    curatedProjectsEntries_archive := []
+    projectsEntries := []
   }
 }

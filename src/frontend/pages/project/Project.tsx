@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useParams } from "react-router-dom"
-import { useBackend } from "@/hooks/_index"
+import { useProjects } from "@/hooks/_index"
 
 // components
 import { Loading } from "@/components/ui/_index"
@@ -20,7 +20,7 @@ import { selectProject } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
-  const { refreshProjectById } = useBackend()
+  const { refreshProjectById } = useProjects()
   const project = useAppSelector(selectProject)
   const isShareModalOpen = useAppSelector(selectShareModal)
   const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)

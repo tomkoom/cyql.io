@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { iCheck } from "@/components/icons/Icons"
-import { useQueryParams, useBackend } from "@/hooks/_index"
+import { useQueryParams, useProjects } from "@/hooks/_index"
 import { Option } from "@/state/_types/curated_projects_types"
 
 interface FilterOptionsProps {
@@ -30,7 +30,7 @@ const FilterOptions: FC<FilterOptionsProps> = ({
   filterId,
 }): JSX.Element => {
   const filterOptionsRef = useRef(null)
-  const { refreshPaginated } = useBackend()
+  const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
   const style = { width: `${filterBtnWidth.toString()}px` }
 

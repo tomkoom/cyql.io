@@ -11,9 +11,13 @@ export const useNav = () => {
   const icrcLedgerId = useAppSelector(selectIcrcLedgerId)
 
   const goBack = (): void => navigate(-1)
-  const toHome = (): void => navigate("/")
 
-  // projects
+  const toHome = (): void => {
+    navigate({
+      pathname: "/",
+      search: "",
+    })
+  }
 
   const toProjects = (): void => {
     navigate({
@@ -24,13 +28,31 @@ export const useNav = () => {
     })
   }
 
-  const toProject = (id: string): void => navigate(`/projects/${id}`)
+  const toProject = (id: string): void =>
+    navigate({
+      pathname: `/projects/${id}`,
+      search: "",
+    })
 
   // proposals
 
-  const toList = (): void => navigate("list")
-  const toProposals = (): void => navigate("/proposals")
-  const toProposal = (id: string): void => navigate(`/proposals/${id}`)
+  const toList = (): void =>
+    navigate({
+      pathname: "/list",
+      search: "",
+    })
+
+  const toProposals = (): void =>
+    navigate({
+      pathname: "/proposals",
+      search: "",
+    })
+
+  const toProposal = (id: string): void =>
+    navigate({
+      pathname: `/proposals/${id}`,
+      search: "",
+    })
 
   // icrc scan
 
@@ -46,9 +68,18 @@ export const useNav = () => {
   }
 
   // ...
-  const toSubmit = (): void => navigate("/list")
-  const toProfile = (): void => navigate("/profile")
-  const toAdmin = (): void => navigate("/admin")
+
+  const toProfile = (): void =>
+    navigate({
+      pathname: "/profile",
+      search: "",
+    })
+
+  const toAdmin = (): void =>
+    navigate({
+      pathname: "/admin",
+      search: "",
+    })
 
   return {
     goBack,
@@ -64,7 +95,6 @@ export const useNav = () => {
     toProposal,
 
     // ...
-    toSubmit,
     toIcrcScan,
     toProfile,
     toAdmin,

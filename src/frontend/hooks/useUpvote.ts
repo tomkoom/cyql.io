@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import { useAuth } from "@/context/Auth"
-import { useBackend } from "@/hooks/_index"
+import { useProjects } from "@/hooks/_index"
 import { SECRET } from "@/constants/constants"
 import { updateInProjects, updateInHighlighted } from "@/utils/_index"
 
@@ -17,7 +17,7 @@ interface useUpvote {
 export const useUpvote = () => {
   const dispatch = useAppDispatch()
   const { actor } = useAuth()
-  const { updateCuratedProjectUpvote } = useBackend()
+  const { updateCuratedProjectUpvote } = useProjects()
 
   // ...
   const paginatedProjects = useAppSelector(selectPaginated).data

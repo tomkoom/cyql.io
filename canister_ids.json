@@ -1,22 +1,17 @@
 {
   "frontend": {
-    "ic": "n7ib3-4qaaa-aaaai-qagnq-cai",
-    "local": "n7ib3-4qaaa-aaaai-qagnq-cai"
+    "ic": "n7ib3-4qaaa-aaaai-qagnq-cai"
   },
   "backend": {
-    "ic": "nrkmt-haaaa-aaaai-qagmq-cai",
-    "local": "nrkmt-haaaa-aaaai-qagmq-cai"
+    "ic": "nrkmt-haaaa-aaaai-qagmq-cai"
   },
   "proposals": {
-    "ic": "bqnir-wqaaa-aaaag-abxhq-cai",
-    "local": "bqnir-wqaaa-aaaag-abxhq-cai"
+    "ic": "bqnir-wqaaa-aaaag-abxhq-cai"
   },
   "users": {
-    "ic": "fy4cw-pqaaa-aaaag-ahkvq-cai",
-    "local": "fy4cw-pqaaa-aaaag-ahkvq-cai"
+    "ic": "dnqgz-fyaaa-aaaag-abxia-cai"
   },
-  "users_new": {
-    "ic": "dnqgz-fyaaa-aaaag-abxia-cai",
-    "local": "dnqgz-fyaaa-aaaag-abxia-cai"
+  "test": {
+    "ic": "fy4cw-pqaaa-aaaag-ahkvq-cai"
   }
 }

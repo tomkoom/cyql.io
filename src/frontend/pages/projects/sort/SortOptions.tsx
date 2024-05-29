@@ -2,7 +2,7 @@ import React, { Dispatch, FC, SetStateAction, useEffect, useRef, MutableRefObjec
 import styled from "styled-components"
 import { iCheck } from "@/components/icons/Icons"
 import type { SortOptions } from "../../../../declarations/backend/backend.did"
-import { useBackend, useQueryParams } from "@/hooks/_index"
+import { useProjects, useQueryParams } from "@/hooks/_index"
 import { LoadingModal } from "@/modals/_index"
 
 // state
@@ -31,7 +31,7 @@ const SortOpt: FC<SortOptProps> = ({
   sortBtnRef,
 }): JSX.Element => {
   const sortOptionsRef = useRef(null)
-  const { refreshPaginated } = useBackend()
+  const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
   const style = { width: `${sortBtnWidth.toString()}px` }
   const isLoading = useAppSelector(selectPaginatedIsLoading)
