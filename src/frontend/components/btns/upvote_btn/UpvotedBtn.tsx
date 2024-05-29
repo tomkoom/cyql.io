@@ -17,14 +17,14 @@ const UpvotedBtn: FC<UpvotedBtnProps> = ({ upvotesNum, location, click }): JSX.E
         <span className="num">{upvotesNum}</span>
       </div>
     </UpvotedBtnStyled_ProjectPage>
-  ) : (
+  ) : location === "project_list" ? (
     <UpvotedBtnStyled_Projects onClick={click}>
       <span className="icon">{iCaretUp}</span>
       <span className="num">
         {iCheck} {upvotesNum}
       </span>
     </UpvotedBtnStyled_Projects>
-  )
+  ) : null
 }
 
 const UpvotedBtnStyled_ProjectPage = styled.button`

@@ -12,25 +12,25 @@ const NotSignedBtn: FC<DefaultBtnProps> = ({ upvotesNum, location, click }) => {
   return (
     <NotSignedBtnStyled>
       {location === "project_page" ? (
-        <div className="pp">
+        <div className="_">
           <div className="upvotes_num">
             <span className="icon">{iCaretUp}</span>
             <span className="num">{upvotesNum}</span>
           </div>
-          <ProjectPageBtn onClick={click}>{iSignIn} Sign In To Upvote</ProjectPageBtn>
+          <ProjectPageBtn onClick={click}>{iSignIn} Sign in to Upvote</ProjectPageBtn>
         </div>
-      ) : (
-        <ProjectsBtn onClick={click}>
+      ) : location === "project_page" ? (
+        <ProjectListBtn onClick={click}>
           <span className="icon">{iCaretUp}</span>
           <span className="num">{upvotesNum}</span>
-        </ProjectsBtn>
-      )}
+        </ProjectListBtn>
+      ) : null}
     </NotSignedBtnStyled>
   )
 }
 
 const NotSignedBtnStyled = styled.div`
-  > div.pp {
+  > div._ {
     display: flex;
     align-items: stretch;
     gap: 0.5rem;
@@ -43,6 +43,16 @@ const NotSignedBtnStyled = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      > span.icon {
+        color: var(--secondaryColor);
+      }
+
+      > span.num {
+        color: var(--secondaryColor);
+        margin-top: -0.25rem;
+        padding-bottom: 0.25rem;
+      }
     }
   }
 `
@@ -63,25 +73,9 @@ const ProjectPageBtn = styled.button`
   &:hover {
     background-color: var(--highlight3);
   }
-
-  > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    > span.icon {
-      color: var(--secondaryColor);
-    }
-
-    > span.num {
-      color: var(--secondaryColor);
-      margin-top: -0.25rem;
-      padding-bottom: 0.25rem;
-    }
-  }
 `
 
-const ProjectsBtn = styled.button`
+const ProjectListBtn = styled.button`
   width: 2.5rem;
   height: 3.5rem;
   display: flex;

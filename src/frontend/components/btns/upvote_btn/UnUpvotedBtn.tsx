@@ -10,7 +10,7 @@ interface UnUpvotedBtnProps {
 
 const UnUpvotedBtn: FC<UnUpvotedBtnProps> = ({ upvotesNum, location, click }) => {
   return (
-    <UnUpvotedBtnStyled>
+    <div>
       {location === "project_page" ? (
         <ProjectPageBtn onClick={click}>
           Upvote
@@ -19,17 +19,15 @@ const UnUpvotedBtn: FC<UnUpvotedBtnProps> = ({ upvotesNum, location, click }) =>
             <span className="num">{upvotesNum}</span>
           </div>
         </ProjectPageBtn>
-      ) : (
-        <ProjectsBtn onClick={click}>
+      ) : location === "project_list" ? (
+        <ProjectListBtn onClick={click}>
           <span className="icon">{iCaretUp}</span>
           <span className="num">{upvotesNum}</span>
-        </ProjectsBtn>
-      )}
-    </UnUpvotedBtnStyled>
+        </ProjectListBtn>
+      ) : null}
+    </div>
   )
 }
-
-const UnUpvotedBtnStyled = styled.div``
 
 const ProjectPageBtn = styled.button`
   height: 3rem;
@@ -65,7 +63,7 @@ const ProjectPageBtn = styled.button`
   }
 `
 
-const ProjectsBtn = styled.button`
+const ProjectListBtn = styled.button`
   width: 2.5rem;
   height: 3.5rem;
   display: flex;

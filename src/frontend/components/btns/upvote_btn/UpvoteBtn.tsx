@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react"
+import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
 import { useBackend, useQueryParams } from "@/hooks/_index"
 import { UpvotedBtn, UnUpvotedBtn, NotSignedBtn } from "./_index"
@@ -9,7 +10,6 @@ import ConfettiExplosion from "react-confetti-explosion"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 import { setIsLoading } from "@/state/loading"
-import styled from "styled-components"
 
 interface UpvoteBtnProps {
   projectId: string
@@ -43,6 +43,14 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
       await updateCuratedProjectUpvote(projectId)
       await getProjectById(projectId)
       await refreshPaginated(queryParams)
+
+      // confetti
+      if (location === "project_page") {
+        setIsExploding(true)
+        setTimeout(() => {
+          setIsExploding(false)
+        }, duration)
+      }
     } catch (error) {
       throw new Error(error)
     }
@@ -66,14 +74,6 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
     } catch (error) {
       throw new Error(error)
     } finally {
-      // confetti
-      if (location === "project_page") {
-        setIsExploding(true)
-        setTimeout(() => {
-          setIsExploding(false)
-        }, duration)
-      }
-
       dispatch(setIsLoading(false))
     }
   }
@@ -82,22 +82,23 @@ const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, location, upvotedBy }): JSX.
     dispatch(setSignInModalIsOpen(true))
   }
 
-  if (isExploding) {
-    return (
-      <ConfettiStyled>
-        <div className="source">
-          <ConfettiExplosion {...explodeProps} />
-        </div>
-      </ConfettiStyled>
-    )
-  }
-
   if (!isAuthenticated) {
     return <NotSignedBtn upvotesNum={upvotesNum} location={location} click={openSignInModal} />
   }
 
   if (isUpvotedByUser) {
-    return <UpvotedBtn upvotesNum={upvotesNum} location={location} click={downvote} />
+    return (
+      <div>
+        {isExploding && (
+          <ConfettiStyled>
+            <div className="source">
+              <ConfettiExplosion {...explodeProps} />
+            </div>
+          </ConfettiStyled>
+        )}
+        <UpvotedBtn upvotesNum={upvotesNum} location={location} click={downvote} />
+      </div>
+    )
   }
 
   return <UnUpvotedBtn upvotesNum={upvotesNum} location={location} click={upvote} />
