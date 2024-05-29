@@ -17,11 +17,23 @@ module {
     if (selectedPage < 1) return null;
     var page = selectedPage;
 
+    // calculate total pages
+    let totalItems = projects.size();
+    let totalPages = Int.abs(Float.toInt(Float.ceil(Float.fromInt(totalItems) / Float.fromInt(itemsPerPage))));
+
+    // ...
+    if (page > totalPages) {
+      if (totalPages == 0) {
+        page := 1
+      } else {
+        page := totalPages
+      }
+    };
+
     // calculate the start and end indexes for the requested page
     let startIndex = (page - 1) * itemsPerPage;
     var endIndex = page * itemsPerPage;
 
-    let totalItems = projects.size();
     if (endIndex > totalItems) {
       endIndex := totalItems
     };
@@ -29,14 +41,6 @@ module {
     // slice array based on the indexes
     let slice = Array.slice<T.Project>(projects, startIndex, endIndex);
     let paginatedProjects = Iter.toArray<T.Project>(slice);
-
-    // calculate total pages
-    let totalPages = Int.abs(Float.toInt(Float.ceil(Float.fromInt(totalItems) / Float.fromInt(itemsPerPage))));
-
-    // ...
-    if (page > totalPages) {
-      page := totalPages
-    };
 
     // send the paginated response
     let res : T.PaginateResult = {
