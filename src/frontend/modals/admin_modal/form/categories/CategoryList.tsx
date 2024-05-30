@@ -1,17 +1,16 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Category } from "@/state/_types/types"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectAllCategories } from "@/state/categories/allCategories"
 import { selectAdmin, setAdminProjectItemArray } from "@/state/admin/admin"
+import { selectCategories } from "@/state/categories/categories"
 
 const categoryKey = "category"
 
 const CategoryList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const allCategories = useAppSelector(selectAllCategories)
+  const categories = useAppSelector(selectCategories).categoriesWithSize
   const category = useAppSelector(selectAdmin).project.category
   const copy = category.slice()
 
@@ -32,11 +31,11 @@ const CategoryList: FC = (): JSX.Element => {
 
   return (
     <CategoryListStyled>
-      {allCategories
-        .filter((category: Category) => category.id !== "all")
-        .map((category: Category) => (
-          <Item style={copy.includes(category.label) ? active : null} key={category.id} onClick={() => setCategory(category.label)}>
-            {category.label.toLowerCase()}
+      {categories
+        .filter((c) => c.category.id !== "all")
+        .map((c) => (
+          <Item key={c.category.id} style={copy.includes(c.category.lbl) ? active : null} onClick={() => setCategory(c.category.lbl)}>
+            {c.category.lbl.toLowerCase()}
           </Item>
         ))}
     </CategoryListStyled>

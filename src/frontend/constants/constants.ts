@@ -9,11 +9,10 @@ export const II_ADMIN_3 = process.env.II_ADMIN_3
 export const II_ADMIN_4 = process.env.II_ADMIN_4
 export const ADMINS = [II_ADMIN_1, II_ADMIN_2, II_ADMIN_3, II_ADMIN_4]
 export const DONATION_WALLET = process.env.DONATION_WALLET
-export const SECRET = process.env.SECRET
+export const KEY = process.env.API_KEY
 
 // newtwork, host
-export const NETWORK =
-  process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local")
+export const NETWORK = process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local")
 export const HOST = "https://icp0.io"
 
 // canister ids
@@ -30,24 +29,19 @@ export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io"
 // links
 export const X_URL = "https://x.com/cyqlio"
 export const DISCORD_URL = "https://discord.gg/AnjyrfvvXX"
-export const COOKIE_POLICY =
-  "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
-export const PRICE_URL =
-  "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd&include_24hr_change=true"
+export const COOKIE_POLICY = "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
+export const PRICE_URL = "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd&include_24hr_change=true"
 export const ICP_CC_URL = "https://icp-cc.com/"
 export const FRONTEND_CANISTER_URL = "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/"
-export const DONATION_WALLET_URL =
-  "https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
+export const DONATION_WALLET_URL = "https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
 export const CYQL_MSG_URL = "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
 export const FLEX_SITE_URL = "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/"
-export const X_DIRECT_MSG_URL =
-  "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
+export const X_DIRECT_MSG_URL = "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
 
 // nft
 export const CYQL_NFT_FUNDED_URL = "https://marketplace.funded.app/collections/ic-apps"
 export const CYQL_NFT_ENTREPOT_URL = "https://entrepot.app/marketplace/ic-apps"
-export const CYQL_NFT_STATS_URL =
-  "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
+export const CYQL_NFT_STATS_URL = "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
 
 // assets
 export const IC_LOGO = iclogo

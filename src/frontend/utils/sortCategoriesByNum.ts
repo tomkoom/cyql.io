@@ -1,25 +1,13 @@
-import type { Category } from "@/state/_types/types"
-import type { Project } from "@/state/_types/curated_projects_types"
+import type { CategoryWithSize } from "@/state/_types/curated_projects_types"
 
-export const sortCategoriesByNum = (
-  allCategories: Category[],
-  projects: Project[]
-): Category[] => {
-  const projectsNum = projects.length
+const compareSize = (a: CategoryWithSize, b: CategoryWithSize): number => {
+  if (a.size < b.size) return 1
+  if (a.size > b.size) return -1
+  return 0
+}
 
-  const sort = (projects: Project[], a: Category, b: Category): number => {
-    const aLen =
-      a.id === "all"
-        ? projectsNum
-        : projects.filter((project) => project.category.includes(a.label)).length
-
-    const bLen =
-      b.id === "all"
-        ? projectsNum
-        : projects.filter((project) => project.category.includes(b.label)).length
-
-    return bLen - aLen
-  }
-
-  return [...allCategories].sort((a, b) => sort(projects, a, b))
+export const sortCategoriesByNum = (categories: CategoryWithSize[]): CategoryWithSize[] => {
+  const copy = categories.slice()
+  copy.sort(compareSize)
+  return copy
 }

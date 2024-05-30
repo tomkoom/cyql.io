@@ -3,6 +3,9 @@
 // ...
 
 export type Option = [] | [boolean]
+export type CategoryLabel = string
+export type Category = { id: string; lbl: CategoryLabel }
+export type CategoryWithSize = { category: Category; size: number }
 
 // query params
 
@@ -22,12 +25,7 @@ export interface QueryParamsString {
 
 // pagination, sorting, filtering
 
-export type SortOptions =
-  | { newest_first: null }
-  | { oldest_first: null }
-  | { most_upvoted: null }
-  | { least_upvoted: null }
-  | { recently_updated: null }
+export type SortOptions = { newest_first: null } | { oldest_first: null } | { most_upvoted: null } | { least_upvoted: null } | { recently_updated: null }
 
 export interface Paginated {
   data: Project[]

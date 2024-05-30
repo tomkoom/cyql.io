@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react"
 import { useAuth } from "@/context/Auth"
 import { useProjects } from "@/hooks/_index"
-import { SECRET } from "@/constants/constants"
+import { KEY } from "@/constants/constants"
 import { updateInProjects, updateInHighlighted } from "@/utils/_index"
 
 // state
@@ -27,7 +27,7 @@ export const useUpvote = () => {
   const updateUpvote = async (projectId: string, location: string, setIsExploding: Dispatch<SetStateAction<boolean>>, duration: number): Promise<void> => {
     try {
       await updateCuratedProjectUpvote(projectId)
-      const project = await actor.getProjectById(SECRET, BigInt(projectId))
+      const project = await actor.getProjectById(KEY, BigInt(projectId))
 
       if (project.length > 0) {
         const p = { ...project[0], id: String(project[0].id) }

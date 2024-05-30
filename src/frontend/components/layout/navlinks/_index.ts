@@ -1,5 +1,5 @@
 // navlinks
 
 export { default as NavItem } from "./NavItem"
-export { default as Tags } from "./Tags"
+export { default as Tags } from "./tags/Tags"
 

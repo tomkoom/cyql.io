@@ -1,61 +1,70 @@
 module {
-  public let categories = [
-    "all",
+
+  public type CategoryLabel = Text;
+  public type Category = { id : Text; lbl : CategoryLabel };
+  public type CategoryWithSize = {
+    category : Category;
+    size : Nat
+  };
+
+  public let categories : [Category] = [
+    { id = "all"; lbl = "All" },
 
     // wallets, defi, tokens, payments
-    "wallets",
-    "defi",
-    "tokens",
-    "stablecoins",
-    "dexs",
-    "swapping",
-    "payments_invoicing",
-    "staking",
+    { id = "wallets"; lbl = "Wallets" },
+    { id = "defi"; lbl = "DeFi" },
+    { id = "tokens"; lbl = "Tokens" },
+    { id = "stablecoins"; lbl = "Stablecoins" },
+    { id = "dexs"; lbl = "DEXs" },
+    { id = "swapping"; lbl = "Swapping" },
+    { id = "payments_invoicing"; lbl = "Payments/Invoicing" },
+    { id = "staking"; lbl = "Staking" },
 
     // games, p2e
-    "games",
-    "gambling",
-    "betting",
+    { id = "games"; lbl = "Games" },
+    { id = "gambling"; lbl = "Gambling" },
+    { id = "betting"; lbl = "Betting" },
 
     // tools, dev tools
-    "tools",
-    "dev_tools",
+    { id = "tools"; lbl = "Tools" },
+    { id = "dev_tools"; lbl = "Dev Tools" },
 
     // communities, daos, governance
-    "communities",
-    "daos",
-    "governance",
+    { id = "communities"; lbl = "Communities" },
+    { id = "daos"; lbl = "DAOs" },
+    { id = "governance"; lbl = "Governance" },
 
     // infrastracture, cloud, storage, protocol
-    "infrastructure",
-    "cloud",
-    "storage",
-    "protocol",
-    "search_engines",
+    { id = "infrastructure"; lbl = "Infrastructure" },
+    { id = "cloud"; lbl = "Cloud" },
+    { id = "storage"; lbl = "Storage" },
+    { id = "protocol"; lbl = "Protocol" },
+    { id = "search_engines"; lbl = "Search Engines" },
 
     // metaverse, ar/vr
-    "metaverse",
-    "ar_vr",
+    { id = "metaverse"; lbl = "Metaverse" },
+    { id = "ar_vr"; lbl = "AR/VR" },
 
     // messaging, blogging
-    "messaging",
-    "blogging",
+    { id = "messaging"; lbl = "Messaging" },
+    { id = "blogging"; lbl = "Blogging" },
 
     // chains
-    "btc",
-    "ethereum",
+    { id = "btc"; lbl = "BTC" },
+    { id = "ethereum"; lbl = "Ethereum" },
 
     //  ...
-    "nfts",
-    "dapps",
-    "social_networks",
-    "explorers",
-    "education",
-    "marketplace",
-    "identity",
-    "ai",
-    "ecommerse",
-    "vcs",
-    "automation",
-  ]
+    { id = "nfts"; lbl = "NFTs" },
+    { id = "dapps"; lbl = "dApps" },
+    { id = "social_networks"; lbl = "Social Networks" },
+    { id = "explorers"; lbl = "Explorers" },
+    { id = "education"; lbl = "Education" },
+    { id = "marketplace"; lbl = "Marketplace" },
+    { id = "identity"; lbl = "Identity" },
+    { id = "ai"; lbl = "AI" },
+    { id = "ecommerse"; lbl = "Ecommerce" },
+    { id = "vcs"; lbl = "VCs" },
+    { id = "automation"; lbl = "Automation" },
+  ];
+
 }

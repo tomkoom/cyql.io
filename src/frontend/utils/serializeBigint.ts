@@ -5,7 +5,7 @@ export const bigintToString = (obj: Object): Object => {
   return JSON.parse(serialized)
 }
 
-export const bigintToNumber = (obj: Object): Object => {
+export const bigintToNumber = (obj: Object) => {
   const serialized = JSON.stringify(obj, (_, v) => (typeof v === "bigint" ? Number(v) : v))
   return JSON.parse(serialized)
 }

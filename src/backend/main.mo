@@ -8,20 +8,26 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Array "mo:base/Array";
+import Bool "mo:base/Bool";
 
 // ...
 import T "./main_types";
 import Constants "./_constants";
+import Category "./_categories";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
 
 shared actor class _CURATED_PROJECTS() = Self {
 
+  private stable var secret : T.ApiKey = "";
+  // private stable var apiKeys : [T.ApiKey] = [];
   let adminPrincipal = Principal.fromText(Constants.adminId);
   let nodeAdminPrincipal = Principal.fromText(Constants.nodeAdminId);
   let frontendAdmin1Principal = Principal.fromText(Constants.frontendAdminId1);
   let frontendAdmin2Principal = Principal.fromText(Constants.frontendAdminId2);
-  stable var secret : T.Secret = "";
+
+  // ...
+  let categories = Category.categories;
 
   // maps
 
@@ -29,7 +35,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, Hash.hash);
 
-  // ...
+  // update
 
   public shared ({ caller }) func addProjectNode(project : T.Project) : async ?T.ProjectId {
     assert (caller == nodeAdminPrincipal);
@@ -56,33 +62,11 @@ shared actor class _CURATED_PROJECTS() = Self {
     return removed
   };
 
-  // query
-
-  public query func getActiveProjectsNum(feSecret : T.Secret) : async Nat {
-    assert (secret == feSecret);
-    let activeProjects = _getActiveProjects();
-    return activeProjects.size()
-  };
-
-  public query func getProjectById(feSecret : T.Secret, id : T.ProjectId) : async ?T.Project {
-    assert (secret == feSecret);
-    return projects.get(id)
-  };
-
-  public query func getAllProjects(feSecret : T.Secret) : async [T.Project] {
-    assert (secret == feSecret);
-    let iter : Iter.Iter<T.Project> = projects.vals();
-    let allProjects = Iter.toArray<T.Project>(iter);
-    return Handle.sort(allProjects, #newest_first)
-  };
-
-  // ...
-
-  public shared ({ caller }) func updateUpvote(feSecret : T.Secret, projectId : T.ProjectId) : async Text {
+  public shared ({ caller }) func updateUpvote(apiKey : T.ApiKey, projectId : T.ProjectId) : async Text {
 
     // verify
     assert (not Principal.isAnonymous(caller));
-    if (secret != feSecret) {
+    if (secret != apiKey) {
       return "Wrong secret."
     };
 
@@ -101,6 +85,60 @@ shared actor class _CURATED_PROJECTS() = Self {
     projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
     return Nat.toText(projectId)
   };
+
+  // query
+
+  public query func getActiveProjectsNum(apiKey : T.ApiKey) : async Nat {
+    assert (secret == apiKey);
+    let activeProjects = _getActiveProjects();
+    return activeProjects.size()
+  };
+
+  public query func getProjectById(apiKey : T.ApiKey, id : T.ProjectId) : async ?T.Project {
+    assert (secret == apiKey);
+    return projects.get(id)
+  };
+
+  public query func getAllProjects(apiKey : T.ApiKey) : async [T.Project] {
+    assert (secret == apiKey);
+    let iter : Iter.Iter<T.Project> = projects.vals();
+    let allProjects = Iter.toArray<T.Project>(iter);
+    return Handle.sort(allProjects, #newest_first)
+  };
+
+  public query func getCategories(apiKey : T.ApiKey) : async [Category.Category] {
+    assert (secret == apiKey);
+    return categories
+  };
+
+  public query func getCategoriesWithSize(apiKey : T.ApiKey) : async [Category.CategoryWithSize] {
+    assert (secret == apiKey);
+
+    let activeProjects = _getActiveProjects();
+    let buff = Buffer.Buffer<Category.CategoryWithSize>(categories.size());
+
+    for (category in categories.vals()) {
+      if (category.id == "all") {
+        buff.add({ category; size = activeProjects.size() })
+
+      } else {
+        let filter = func(p : T.Project) : Bool {
+          let exists = Array.find<Category.CategoryLabel>(p.category, func(x) { x == category.lbl });
+
+          switch (exists) {
+            case (null) return false;
+            case (?some) return true
+          }
+        };
+
+        let filtered = Array.filter(activeProjects, filter);
+        buff.add({ category; size = filtered.size() })
+      }
+    };
+    return Buffer.toArray(buff)
+  };
+
+  // ...
 
   // filter, sort, paginate
 
@@ -131,16 +169,16 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // homepage
 
-  public query func getNewProjects(feSecret : T.Secret, length : T.Length) : async [T.Project] {
-    assert (secret == feSecret);
+  public query func getNewProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
+    assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sorted = Handle.sort(activeProjects, #newest_first);
     let sliced = Array.slice(sorted, 0, length);
     return Iter.toArray<T.Project>(sliced)
   };
 
-  public query func getHighlightedProjects(feSecret : T.Secret, category : T.Category, length : T.Length) : async [T.Project] {
-    assert (secret == feSecret);
+  public query func getHighlightedProjects(apiKey : T.ApiKey, category : Category.CategoryLabel, length : T.Length) : async [T.Project] {
+    assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
     let sorted = Handle.sort(filteredByCategory, #newest_first);
@@ -150,14 +188,14 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // admin
 
-  public shared query ({ caller }) func showSecret() : async Text {
+  public shared query ({ caller }) func showApiKey() : async Text {
     assert (caller == adminPrincipal);
     return secret
   };
 
-  public shared ({ caller }) func updateSecret(newSecret : T.Secret) : async Text {
+  public shared ({ caller }) func updateApiKey(newApiKey : T.ApiKey) : async Text {
     assert (caller == adminPrincipal);
-    secret := newSecret;
+    secret := newApiKey;
     return "ok"
   };
 

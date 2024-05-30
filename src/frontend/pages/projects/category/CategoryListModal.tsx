@@ -6,21 +6,17 @@ import { useProjects, useQueryParams } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
-// import { selectCategoriesSortedByNum } from "@/state/categories/categoriesSortedByNum"
-import { selectAllCategories } from "@/state/categories/allCategories"
+import { selectCategories } from "@/state/categories/categories"
 
 interface CategoryListModalProps {
   openCategoryList: boolean
   setOpenCategoryList: Dispatch<SetStateAction<boolean>>
 }
 
-const CategoryListModal: FC<CategoryListModalProps> = ({
-  openCategoryList,
-  setOpenCategoryList,
-}): JSX.Element => {
+const CategoryListModal: FC<CategoryListModalProps> = ({ openCategoryList, setOpenCategoryList }): JSX.Element => {
   const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
-  const categoriesSorted = useAppSelector(selectAllCategories)
+  const categories = useAppSelector(selectCategories).categoriesWithSize
 
   const refresh = async (updatedCategory: string): Promise<void> => {
     try {
@@ -57,30 +53,19 @@ const CategoryListModal: FC<CategoryListModalProps> = ({
         <h3>Filter by Category</h3>
 
         <Categories>
-          {categoriesSorted.map((c) => (
+          {categories.map((c) => (
             <li
-              key={c.id}
-              id={
-                queryParams.category.toLowerCase() === c.label.toLowerCase()
-                  ? "active"
-                  : null
-              }
-              onClick={() => setCategory(c.label)}
+              key={c.category.id}
+              id={queryParams.category.toLowerCase() === c.category.lbl.toLowerCase() ? "active" : null}
+              onClick={() => setCategory(c.category.lbl)}
             >
-              <span className="label">{c.label}</span>
-              {/* <span className="num">{getCategoryNum(projects, c.label).toString()}</span> */}
+              <span className="label">{c.category.lbl}</span>
+              <span className="num">{c.size.toString()}</span>
             </li>
           ))}
         </Categories>
 
-        {queryParams.category !== "All" && (
-          <Btn
-            style={{ width: "100%" }}
-            btnType={"secondary"}
-            text={"Reset Filter"}
-            onClick={() => setCategory("All")}
-          />
-        )}
+        {queryParams.category !== "All" && <Btn style={{ width: "100%" }} btnType={"secondary"} text={"Reset Filter"} onClick={() => setCategory("All")} />}
       </Content>
     </CategoryListModalStyled>
   )

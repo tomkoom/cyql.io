@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 
 interface ProposedProjectCategoriesState {
-  allCategories: string[]
+  categories: string[]
 }
 
-const allCategories = [
+const categories = [
   // infrastructure
   "infrastructure",
   "storage",
@@ -71,7 +71,7 @@ const allCategories = [
 ]
 
 const initialState: ProposedProjectCategoriesState = {
-  allCategories,
+  categories,
 }
 
 const proposedProjectCategories = createSlice({
@@ -81,8 +81,7 @@ const proposedProjectCategories = createSlice({
 })
 
 // selectors
-export const selectProposedProjectCategories = (state: RootState) =>
-  state.proposedProjectCategories.allCategories
+export const selectProposedProjectCategories = (state: RootState) => state.proposedProjectCategories.categories
 
 export const {} = proposedProjectCategories.actions
 export default proposedProjectCategories.reducer

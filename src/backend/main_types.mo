@@ -1,6 +1,7 @@
+import Category "./_categories";
+
 module {
 
-  public type Category = Text;
   public type Length = Nat;
 
   // filter, sort, pagination
@@ -19,7 +20,7 @@ module {
   };
 
   public type GetProjectsArgs = GetProjectsBase and {
-    secret : Secret;
+    secret : ApiKey;
     selectedPage : Nat;
     itemsPerPage : Nat
   };
@@ -49,7 +50,7 @@ module {
   // ...
 
   public type Tokens = { e8s : Nat };
-  public type Secret = Text;
+  public type ApiKey = Text;
 
   public type ProjectId = Nat;
   public type Project = {
@@ -57,7 +58,7 @@ module {
     id : Nat;
     name : Text;
     description : Text;
-    category : [Text];
+    category : [Category.CategoryLabel];
     website : Text;
 
     // logo

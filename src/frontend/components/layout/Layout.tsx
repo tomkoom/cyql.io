@@ -22,7 +22,7 @@ import { selectTheme } from "@/state/theme"
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
-  const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
+  const { refreshCategories, refreshPaginated, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
   const { refreshProposals } = useProposals()
   const { queryParams } = useQueryParams()
   const { toHome } = useNav()
@@ -35,6 +35,7 @@ const Layout: FC = (): JSX.Element => {
   // refresh data
   const refresh = async (): Promise<void> => {
     try {
+      await refreshCategories()
       await refreshProposals()
       await refreshActiveNum()
       await refreshNew(24)

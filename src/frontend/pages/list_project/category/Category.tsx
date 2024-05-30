@@ -9,7 +9,7 @@ import { selectProposedProjectCategories } from "@/state/categories/proposedProj
 
 const Category: FC = (): JSX.Element => {
   const project = useAppSelector(selectListProject)
-  const allCategories = useAppSelector(selectProposedProjectCategories)
+  const categories = useAppSelector(selectProposedProjectCategories)
 
   return (
     <CategoryStyled>
@@ -27,75 +27,32 @@ const Category: FC = (): JSX.Element => {
       <CategoriesWrapper>
         <CategoryBlock
           name="Infrastructure"
-          categories={allCategories.filter((c) =>
-            [
-              "infrastructure",
-              "storage",
-              "computing",
-              "search_engines",
-              "protocol",
-              "automation",
-              "developer_tooling",
-            ].includes(c)
+          categories={categories.filter((c) =>
+            ["infrastructure", "storage", "computing", "search_engines", "protocol", "automation", "developer_tooling"].includes(c)
           )}
         />
 
-        <CategoryBlock
-          name="DeFi"
-          categories={allCategories.filter((c) =>
-            ["defi", "staking", "wallets", "dexs_swapping"].includes(c)
-          )}
-        />
+        <CategoryBlock name="DeFi" categories={categories.filter((c) => ["defi", "staking", "wallets", "dexs_swapping"].includes(c))} />
 
-        <CategoryBlock
-          name="Communication"
-          categories={allCategories.filter((c) =>
-            ["communication", "social_networks", "messaging"].includes(c)
-          )}
-        />
+        <CategoryBlock name="Communication" categories={categories.filter((c) => ["communication", "social_networks", "messaging"].includes(c))} />
 
-        <CategoryBlock
-          name="Games, Metaverse, AR/VR"
-          categories={allCategories.filter((c) =>
-            ["games", "metaverse", "ar_vr", "p2e", "betting"].includes(c)
-          )}
-        />
+        <CategoryBlock name="Games, Metaverse, AR/VR" categories={categories.filter((c) => ["games", "metaverse", "ar_vr", "p2e", "betting"].includes(c))} />
 
-        <CategoryBlock
-          name="Governance"
-          categories={allCategories.filter((c) => ["governance", "daos"].includes(c))}
-        />
+        <CategoryBlock name="Governance" categories={categories.filter((c) => ["governance", "daos"].includes(c))} />
 
-        <CategoryBlock
-          name="Anaytics"
-          categories={allCategories.filter((c) => ["analytics", "explorers"].includes(c))}
-        />
+        <CategoryBlock name="Anaytics" categories={categories.filter((c) => ["analytics", "explorers"].includes(c))} />
 
-        <CategoryBlock
-          name="Identity"
-          categories={allCategories.filter((c) => ["identity", "identity_providers"].includes(c))}
-        />
+        <CategoryBlock name="Identity" categories={categories.filter((c) => ["identity", "identity_providers"].includes(c))} />
 
-        <CategoryBlock
-          name="NFTs"
-          categories={allCategories.filter((c) =>
-            ["nfts", "nft_analytics", "inscriptions"].includes(c)
-          )}
-        />
+        <CategoryBlock name="NFTs" categories={categories.filter((c) => ["nfts", "nft_analytics", "inscriptions"].includes(c))} />
 
-        <CategoryBlock
-          name="BTC, Ethereum"
-          categories={allCategories.filter((c) => ["btc", "ethereum"].includes(c))}
-        />
+        <CategoryBlock name="BTC, Ethereum" categories={categories.filter((c) => ["btc", "ethereum"].includes(c))} />
 
-        <CategoryBlock
-          name="Communities"
-          categories={allCategories.filter((c) => ["communities"].includes(c))}
-        />
+        <CategoryBlock name="Communities" categories={categories.filter((c) => ["communities"].includes(c))} />
 
         <CategoryBlock
           name="Other"
-          categories={allCategories.filter((c) =>
+          categories={categories.filter((c) =>
             [
               "other",
               "dapps",

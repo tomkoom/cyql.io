@@ -4,8 +4,7 @@ import template from "./_template"
 // ...
 import icpPrice from "./icpPrice"
 import theme from "./theme"
-import allCategories from "./categories/allCategories"
-import categoriesSortedByNum from "./categories/categoriesSortedByNum"
+import categories from "./categories/categories"
 import user from "./user"
 import listProject from "./listProject"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
@@ -51,8 +50,7 @@ const store = configureStore({
     // ...
     icpPrice,
     theme,
-    allCategories,
-    categoriesSortedByNum,
+    categories,
     user,
     listProject,
     proposedProjectCategories,

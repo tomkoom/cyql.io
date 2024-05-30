@@ -1,9 +1,10 @@
 import { useAuth } from "@/context/Auth"
 import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam } from "@/utils/_index"
 import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
-import { SECRET } from "@/constants/constants"
+import { KEY } from "@/constants/constants"
 import { useQueryParams } from "@/hooks/_index"
 import { useLocation } from "react-router-dom"
+import { bigintToNumber, sortCategoriesByNum } from "@/utils/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -13,8 +14,10 @@ import { setHomeHighlighted, setHomeNew } from "@/state/home/home"
 import { setProject } from "@/state/project"
 import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
+import { setCategoriesWithSize } from "@/state/categories/categories"
 
 interface UseBackend {
+  refreshCategories: () => Promise<void>
   refreshAll: () => Promise<void>
   refreshPaginated: (queryParams: QueryParams) => Promise<void>
   refreshNew: (length: number) => Promise<void>
@@ -32,11 +35,23 @@ export const useProjects = (): UseBackend => {
   const { actor, userId } = useAuth()
   const { updateQueryParams } = useQueryParams()
 
+  const refreshCategories = async (): Promise<void> => {
+    if (!actor) return
+
+    try {
+      const res = await actor.getCategoriesWithSize(KEY)
+      const sorted = sortCategoriesByNum(bigintToNumber(res))
+      dispatch(setCategoriesWithSize(bigintToNumber(sorted)))
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   const refreshAll = async (): Promise<void> => {
     if (!actor) return
 
     try {
-      const res = await actor.getAllProjects(SECRET)
+      const res = await actor.getAllProjects(KEY)
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setAdminAllProjects(serialized))
     } catch (error) {
@@ -51,7 +66,7 @@ export const useProjects = (): UseBackend => {
     dispatch(setPaginatedIsLoading(true))
     try {
       const res = await actor.getProjects({
-        secret: SECRET,
+        secret: KEY,
         ...queryParams,
         selectedPage: BigInt(queryParams.selectedPage),
         itemsPerPage: BigInt(queryParams.itemsPerPage),
@@ -121,7 +136,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getNewProjects(SECRET, BigInt(length))
+      const res = await actor.getNewProjects(KEY, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeNew(serialized))
     } catch (error) {
@@ -136,7 +151,7 @@ export const useProjects = (): UseBackend => {
       const str = category
       const replacement = "_"
       const key = str.replace(/\//g, replacement).toLowerCase() // change slashes to underscores
-      const res = await actor.getHighlightedProjects(SECRET, category, BigInt(length))
+      const res = await actor.getHighlightedProjects(KEY, category, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeHighlighted({ [key as string]: serialized }))
     } catch (error) {
@@ -148,7 +163,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getActiveProjectsNum(SECRET)
+      const res = await actor.getActiveProjectsNum(KEY)
       dispatch(setActiveProjectsNum(Number(res)))
     } catch (error) {
       throw new Error(error)
@@ -159,7 +174,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getProjectById(SECRET, BigInt(id))
+      const res = await actor.getProjectById(KEY, BigInt(id))
       if (res.length > 0) {
         dispatch(setProject({ ...res[0], id: res[0].id.toString() }))
       }
@@ -207,7 +222,7 @@ export const useProjects = (): UseBackend => {
 
     try {
       const id = BigInt(projectId)
-      const res = await actor.updateUpvote(SECRET, id)
+      const res = await actor.updateUpvote(KEY, id)
       return res
     } catch (error) {
       throw new Error(error)
@@ -215,6 +230,7 @@ export const useProjects = (): UseBackend => {
   }
 
   return {
+    refreshCategories,
     refreshAll,
     refreshPaginated,
     refreshNew,
