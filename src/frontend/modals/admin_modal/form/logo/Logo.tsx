@@ -10,7 +10,9 @@ import Compressor from "compressorjs"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectLogoDataUrl } from "@/state/modals/projectModal"
+import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
+
+const logoDataUrlkey = "logoDataUrl"
 
 const Logo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -20,7 +22,7 @@ const Logo: FC = (): JSX.Element => {
   // const [logoBlob, setLogoBlob] = useState<Blob>(null)
   const [compressedFile, setCompressedFile] = useState<CompressedFile>(null)
   // ...
-  const project = useAppSelector(selectProject)
+  const project = useAppSelector(selectAdmin).project
   const projectLogoDataUrl = project.logoDataUrl
   const cropperRef = useRef<ReactCropperElement>(null)
 
@@ -28,7 +30,7 @@ const Logo: FC = (): JSX.Element => {
     setLogoObjectUrl("")
     setLogoDataUrl(null)
     setCompressedFile(null)
-    dispatch(setProjectLogoDataUrl(""))
+    dispatch(setAdminProjectItemString({ [logoDataUrlkey]: "" }))
   }
 
   // compress image after crop
@@ -92,7 +94,7 @@ const Logo: FC = (): JSX.Element => {
       const reader = new FileReader()
       reader.onload = function (e) {
         const proccessedDataUrl = e.target.result as string
-        dispatch(setProjectLogoDataUrl(proccessedDataUrl))
+        dispatch(setAdminProjectItemString({ [logoDataUrlkey]: proccessedDataUrl }))
       }
       reader.readAsDataURL(compressedFile.blob)
     }
@@ -101,19 +103,14 @@ const Logo: FC = (): JSX.Element => {
   return (
     <LogoStyled>
       <div>
-        <p>Choose logo</p>
+        <h5 style={{ marginBottom: "0.5rem" }}>Logo</h5>
         <UploadBtn logo={logo} setLogo={setLogo} reset={reset} />
       </div>
 
       {logoObjectUrl && (
         <div className="crop">
           <p>Crop</p>
-          <Cropper
-            logo={logo}
-            setLogoDataUrl={setLogoDataUrl}
-            logoObjectUrl={logoObjectUrl}
-            cropperRef={cropperRef}
-          />
+          <Cropper logo={logo} setLogoDataUrl={setLogoDataUrl} logoObjectUrl={logoObjectUrl} cropperRef={cropperRef} />
           <Btn btnType={"secondary"} text={"Crop"} onClick={() => crop(logoDataUrl)} />
         </div>
       )}

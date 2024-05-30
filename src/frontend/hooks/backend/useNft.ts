@@ -3,7 +3,7 @@ import { TransferRequest, User } from "@/idl/nft_idl_service"
 import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
 
 // state
-import { useAppDispatch } from "./useRedux"
+import { useAppDispatch } from "../useRedux"
 import { setNftIdsOwned, setVotingPower } from "@/state/user"
 
 interface UseNft {

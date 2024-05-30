@@ -11,7 +11,7 @@ import { UpvoteBtn } from "@/components/btns/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setProject, setProjectModalMode, setProjectModalIsOpen } from "@/state/modals/projectModal"
+import { setAdminProject, setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
 import { setShareModal } from "@/state/modals/shareModal"
 
 interface HeaderProps {
@@ -23,9 +23,9 @@ const Header: FC<HeaderProps> = ({ project }): JSX.Element => {
   const { userId } = useAuth()
 
   const openEditModal = (): void => {
-    dispatch(setProject(project))
-    dispatch(setProjectModalMode("edit"))
-    dispatch(setProjectModalIsOpen(true))
+    dispatch(setAdminProject(project))
+    dispatch(setAdminMode("edit"))
+    dispatch(setAdminIsModalOpen(true))
   }
 
   const openShareModal = (): void => {

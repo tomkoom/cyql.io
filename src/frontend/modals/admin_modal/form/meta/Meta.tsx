@@ -7,21 +7,23 @@ import { Btn } from "../_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectArchived } from "@/state/modals/projectModal"
+import { selectAdmin, setAdminProjectItemBoolean } from "@/state/admin/admin"
+
+const archivedKey = "archived"
 
 const Meta: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const project = useAppSelector(selectProject)
+  const project = useAppSelector(selectAdmin).project
 
   const setArchived = (value: boolean): void => {
-    dispatch(setProjectArchived(value))
+    dispatch(setAdminProjectItemBoolean({ [archivedKey]: value }))
   }
 
   return (
     <div>
       <div>
-        <Input label={"createdAt"} value={project.createdAt} id={"project-createdAt"} />
-        <Input label={"updatedAt"} value={project.updatedAt} id={"project-updatedAt"} />
+        <Input label={"createdAt"} value={project.createdAt} id={"project_createdAt"} />
+        <Input label={"updatedAt"} value={project.updatedAt} id={"project_updatedAt"} />
       </div>
 
       <div>
@@ -29,12 +31,7 @@ const Meta: FC = (): JSX.Element => {
 
         <BtnsList>
           <Btn property={project.archived} value={true} label={"true"} setProperty={setArchived} />
-          <Btn
-            property={project.archived}
-            value={false}
-            label={"false"}
-            setProperty={setArchived}
-          />
+          <Btn property={project.archived} value={false} label={"false"} setProperty={setArchived} />
         </BtnsList>
       </div>
     </div>

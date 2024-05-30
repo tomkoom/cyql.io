@@ -10,26 +10,22 @@ import { Loading } from "@/components/ui/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import {
-  selectProjectModalIsLoading,
-  selectProjectModalMode,
-  setCloseProjectModal,
-} from "@/state/modals/projectModal"
+import { selectAdmin, setAdminCloseModal } from "@/state/admin/admin"
 import { selectTheme } from "@/state/theme"
 
 interface ProjectModalProps {
   isOpen: boolean
 }
 
-const ProjectModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
+const AdminModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
-  const isLoading = useAppSelector(selectProjectModalIsLoading)
-  const mode = useAppSelector(selectProjectModalMode)
+  const isLoading = useAppSelector(selectAdmin).isLoading
+  const mode = useAppSelector(selectAdmin).mode
 
   const closeModal = (): void => {
-    dispatch(setCloseProjectModal())
+    dispatch(setAdminCloseModal())
   }
 
   useEffect(() => {
@@ -77,7 +73,7 @@ const ProjectModalStyled = styled.div`
   z-index: 1;
   color: var(--primaryColor);
   background-color: var(--background);
-  padding: 1rem;
+  padding: 1rem 2rem;
 
   /* overflow */
   height: 100%;
@@ -98,9 +94,9 @@ const ProjectModalStyled = styled.div`
     }
 
     > div.form {
-      margin-top: 1rem;
+      margin: 2rem 0;
     }
   }
 `
 
-export default ProjectModal
+export default AdminModal

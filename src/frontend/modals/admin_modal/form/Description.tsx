@@ -3,23 +3,21 @@ import styled from "styled-components"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import {
-  selectProjectDescription,
-  setProjectDescription,
-} from "@/state/modals/projectModal"
+import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
 
 const Description: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const description = useAppSelector(selectProjectDescription)
+  const description = useAppSelector(selectAdmin).project.description
 
   const setDescription = (e: ChangeEvent<HTMLTextAreaElement>): void => {
-    dispatch(setProjectDescription(e.target.value))
+    const key = "description"
+    dispatch(setAdminProjectItemString({ [key]: e.target.value }))
   }
 
   return (
     <DescriptionStyled>
-      <label htmlFor="project-description">description</label>
-      <textarea value={description} onChange={setDescription} id="project-description" rows={6} />
+      <label htmlFor="project_description">description</label>
+      <textarea value={description} onChange={setDescription} id="project_description" rows={6} />
     </DescriptionStyled>
   )
 }

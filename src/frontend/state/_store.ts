@@ -4,7 +4,6 @@ import template from "./_template"
 // ...
 import icpPrice from "./icpPrice"
 import theme from "./theme"
-import adminSearch from "./admin/adminSearch"
 import allCategories from "./categories/allCategories"
 import categoriesSortedByNum from "./categories/categoriesSortedByNum"
 import user from "./user"
@@ -25,7 +24,6 @@ import nftModal from "./modals/nftModal"
 import promoModal from "./modals/promoModal"
 import shareModal from "./modals/shareModal"
 import loading from "./loading"
-import projectModal from "./modals/projectModal"
 import signInModal from "./modals/signInModal"
 import withdrawModal from "./modals/withdrawModal"
 import withdrawNftModal from "./modals/withdrawNftModal"
@@ -37,6 +35,9 @@ import curatedProjects from "./curatedProjects"
 
 // home
 import home from "./home/home"
+
+// admin
+import admin from "./admin/admin"
 
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -50,7 +51,6 @@ const store = configureStore({
     // ...
     icpPrice,
     theme,
-    adminSearch,
     allCategories,
     categoriesSortedByNum,
     user,
@@ -71,7 +71,6 @@ const store = configureStore({
     promoModal,
     shareModal,
     loading,
-    projectModal,
     signInModal,
     withdrawModal,
     withdrawNftModal,
@@ -83,6 +82,9 @@ const store = configureStore({
 
     // home
     home,
+
+    // admin
+    admin,
   },
 })
 

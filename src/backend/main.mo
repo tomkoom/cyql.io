@@ -58,12 +58,6 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // query
 
-  public query func listProjects(feSecret : T.Secret) : async [T.Project] {
-    assert (secret == feSecret);
-    let iter : Iter.Iter<T.Project> = projects.vals();
-    return Iter.toArray<T.Project>(iter)
-  };
-
   public query func getActiveProjectsNum(feSecret : T.Secret) : async Nat {
     assert (secret == feSecret);
     let activeProjects = _getActiveProjects();
@@ -73,6 +67,13 @@ shared actor class _CURATED_PROJECTS() = Self {
   public query func getProjectById(feSecret : T.Secret, id : T.ProjectId) : async ?T.Project {
     assert (secret == feSecret);
     return projects.get(id)
+  };
+
+  public query func getAllProjects(feSecret : T.Secret) : async [T.Project] {
+    assert (secret == feSecret);
+    let iter : Iter.Iter<T.Project> = projects.vals();
+    let allProjects = Iter.toArray<T.Project>(iter);
+    return Handle.sort(allProjects, #newest_first)
   };
 
   // ...

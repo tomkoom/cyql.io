@@ -5,14 +5,14 @@ import { Change } from "@/components/ui/price/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectActiveCuratedProjectsNum } from "@/state/curatedProjects"
+import { selectActiveProjectsNum } from "@/state/curatedProjects"
 import { selectProposalsNum } from "@/state/dao/proposals"
 import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/icpPrice"
 import { fetchIcpPrice } from "@/state/icpPrice"
 
 const Summary: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const curatedNum = useAppSelector(selectActiveCuratedProjectsNum)
+  const curatedNum = useAppSelector(selectActiveProjectsNum)
   const proposedNum = useAppSelector(selectProposalsNum)
   // icp price
   const price = useAppSelector(selectIcpPrice)

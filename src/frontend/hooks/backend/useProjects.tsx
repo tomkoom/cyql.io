@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/Auth"
-import { verifyAdmin, sortProjectsByDate, serializeProjectsToString, filterToSearchParam, sortToSearchParam } from "@/utils/_index"
+import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam } from "@/utils/_index"
 import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { SECRET } from "@/constants/constants"
 import { useQueryParams } from "@/hooks/_index"
@@ -7,19 +7,20 @@ import { useLocation } from "react-router-dom"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setActiveCuratedProjectsNum, setAllCuratedProjects, setCuratedProjectsIsLoading } from "@/state/curatedProjects"
+import { setActiveProjectsNum } from "@/state/curatedProjects"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setHomeHighlighted, setHomeNew } from "@/state/home/home"
 import { setProject } from "@/state/project"
 import { setQueryParams } from "@/state/projects/queryParams"
+import { setAdminAllProjects } from "@/state/admin/admin"
 
 interface UseBackend {
-  refreshCuratedProjects: () => Promise<void>
+  refreshAll: () => Promise<void>
   refreshPaginated: (queryParams: QueryParams) => Promise<void>
   refreshNew: (length: number) => Promise<void>
   refreshHighligted: (category: string, length: number) => Promise<void>
-  refreshActiveProjectsNum: () => Promise<void>
-  refreshProjectById: (id: string) => Promise<void>
+  refreshActiveNum: () => Promise<void>
+  refreshById: (id: string) => Promise<void>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
   updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
@@ -31,24 +32,15 @@ export const useProjects = (): UseBackend => {
   const { actor, userId } = useAuth()
   const { updateQueryParams } = useQueryParams()
 
-  const refreshCuratedProjects = async (): Promise<void> => {
+  const refreshAll = async (): Promise<void> => {
     if (!actor) return
 
-    dispatch(setCuratedProjectsIsLoading(true))
     try {
-      const allProjects = await actor.listProjects(SECRET)
-      const serialized = allProjects.map((p) => ({ ...p, id: p.id.toString() }))
-      serialized.sort((a, b) => sortProjectsByDate(a.createdAt, b.createdAt))
-      // const activeProjects: Project[] = serialized.filter((p) => !p.archived)
-
-      // set state
-      dispatch(setAllCuratedProjects(serialized))
-      // dispatch(setActiveCuratedProjects(activeProjects))
-      // dispatch(setProjectsPaginationTotalItems(activeProjects.length))
+      const res = await actor.getAllProjects(SECRET)
+      const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
+      dispatch(setAdminAllProjects(serialized))
     } catch (error) {
       throw new Error(error)
-    } finally {
-      dispatch(setCuratedProjectsIsLoading(false))
     }
   }
 
@@ -143,7 +135,7 @@ export const useProjects = (): UseBackend => {
     try {
       const str = category
       const replacement = "_"
-      const key = str.replace(/\//g, replacement).toLowerCase() // change slashes to underscore
+      const key = str.replace(/\//g, replacement).toLowerCase() // change slashes to underscores
       const res = await actor.getHighlightedProjects(SECRET, category, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeHighlighted({ [key as string]: serialized }))
@@ -152,25 +144,24 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  const refreshActiveProjectsNum = async (): Promise<void> => {
+  const refreshActiveNum = async (): Promise<void> => {
     if (!actor) return
 
     try {
       const res = await actor.getActiveProjectsNum(SECRET)
-      dispatch(setActiveCuratedProjectsNum(Number(res)))
+      dispatch(setActiveProjectsNum(Number(res)))
     } catch (error) {
       throw new Error(error)
     }
   }
 
-  const refreshProjectById = async (id: string): Promise<void> => {
+  const refreshById = async (id: string): Promise<void> => {
     if (!actor) return
 
     try {
       const res = await actor.getProjectById(SECRET, BigInt(id))
       if (res.length > 0) {
-        const p = { ...res[0], id: res[0].id.toString() }
-        dispatch(setProject(p))
+        dispatch(setProject({ ...res[0], id: res[0].id.toString() }))
       }
     } catch (error) {
       throw new Error(error)
@@ -224,12 +215,12 @@ export const useProjects = (): UseBackend => {
   }
 
   return {
-    refreshCuratedProjects,
+    refreshAll,
     refreshPaginated,
     refreshNew,
     refreshHighligted,
-    refreshActiveProjectsNum,
-    refreshProjectById,
+    refreshActiveNum,
+    refreshById,
 
     // ...
     addCuratedProject,

@@ -1,28 +1,36 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-
-// components
+import { useProjects } from "@/hooks/_index"
 import { Projects, Search } from "./_index"
 import { Btn } from "@/components/btns/_index"
+import { useAuth } from "@/context/Auth"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setProjectModalMode, setProjectModalIsOpen } from "@/state/modals/projectModal"
+import { setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
 
 const Admin: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
+  const { actor } = useAuth()
+  const { refreshAll } = useProjects()
 
-  const openAddProjectModal = (): void => {
-    dispatch(setProjectModalMode("add"))
-    dispatch(setProjectModalIsOpen(true))
+  const openAdminModal = (): void => {
+    dispatch(setAdminMode("add"))
+    dispatch(setAdminIsModalOpen(true))
   }
+
+  useEffect(() => {
+    if (actor) {
+      refreshAll()
+    }
+  }, [actor])
 
   return (
     <AdminStyled>
       <Title>
         <h2 className="pageTitle">Admin</h2>
-        <Btn btnType="primary" text="Add Project" onClick={openAddProjectModal} />
+        <Btn btnType="primary" text="Add Project" onClick={openAdminModal} />
       </Title>
       <Search />
       <Projects />

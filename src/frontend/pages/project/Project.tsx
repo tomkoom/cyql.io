@@ -10,27 +10,27 @@ import { Loading } from "@/components/ui/_index"
 import { BackBtn } from "@/components/btns/_index"
 import { ShareModal } from "@/modals/_index"
 import { CollStats, Description, Disclaimer, Header, Links, Meta, NftBtns, NftPreviews } from "./_index"
-import { ProjectModal } from "@/modals/_index"
+import { AdminModal } from "@/modals/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectShareModal } from "@/state/modals/shareModal"
-import { selectProjectModalIsOpen } from "@/state/modals/projectModal"
+import { selectAdmin } from "@/state/admin/admin"
 import { selectProject } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
   const { actor } = useAuth()
-  const { refreshProjectById } = useProjects()
+  const { refreshById } = useProjects()
   const project = useAppSelector(selectProject)
   const isShareModalOpen = useAppSelector(selectShareModal)
-  const projectModalIsOpen = useAppSelector(selectProjectModalIsOpen)
+  const isOpen = useAppSelector(selectAdmin).isModalOpen
 
   const refresh = async (id: string): Promise<void> => {
     if (!id) return
 
     try {
-      await refreshProjectById(id)
+      await refreshById(id)
     } catch (error) {
       throw new Error(error)
     }
@@ -52,7 +52,7 @@ const Project: FC = (): JSX.Element => {
 
   return (
     <ProjectStyled>
-      <ProjectModal isOpen={projectModalIsOpen} />
+      <AdminModal isOpen={isOpen} />
       <BackBtn />
 
       <Content key={project.id}>

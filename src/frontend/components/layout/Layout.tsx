@@ -17,25 +17,26 @@ import { useAppSelector } from "@/hooks/useRedux"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 import { selectHome } from "@/state/home/home"
+import { selectTheme } from "@/state/theme"
 
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
-  const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveProjectsNum } = useProjects()
+  const { refreshPaginated, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
   const { refreshProposals } = useProposals()
   const { queryParams } = useQueryParams()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
-  const theme = "dark"
+  const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectIsLoading)
-  const signInModalIsOpen = useAppSelector(selectSignInModalIsOpen)
+  const isSignInModalOpen = useAppSelector(selectSignInModalIsOpen)
   const newProjects = useAppSelector(selectHome).new
 
   // refresh data
   const refresh = async (): Promise<void> => {
     try {
       await refreshProposals()
-      await refreshActiveProjectsNum()
+      await refreshActiveNum()
       await refreshNew(24)
       await refreshHighligted("Tokens", 24)
       await refreshHighligted("NFTs", 24)
@@ -61,12 +62,12 @@ const Layout: FC = (): JSX.Element => {
 
   // lock scroll when modal is open
   useEffect(() => {
-    if (signInModalIsOpen) {
+    if (isSignInModalOpen) {
       lockScroll()
     } else {
       unlockScroll()
     }
-  }, [signInModalIsOpen])
+  }, [isSignInModalOpen])
 
   return (
     <LayoutStyled className={theme}>

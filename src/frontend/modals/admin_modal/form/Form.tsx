@@ -5,20 +5,20 @@ import { main, socials, token, additional, nft } from "./_inputs"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectProject, setProjectItem } from "@/state/modals/projectModal"
+import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
 
 const Form: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const project = useAppSelector(selectProject)
+  const project = useAppSelector(selectAdmin).project
 
-  const updateProject = (e: ChangeEvent<HTMLInputElement>): void => {
+  const updateProjectItem = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target
-    dispatch(setProjectItem({ [name]: value }))
+    dispatch(setAdminProjectItemString({ [name]: value }))
   }
 
   return (
     <FormContentStyled>
-      <div className="logo">
+      <div>
         <Logo />
       </div>
 
@@ -28,16 +28,9 @@ const Form: FC = (): JSX.Element => {
         </Section>
 
         <Section>
-          <h6>Main</h6>
+          <h6>Core</h6>
           {main.map((input) => (
-            <Input
-              id={input.id}
-              label={input.id}
-              type={input.type}
-              value={project[input.id]}
-              onChange={updateProject}
-              key={input.id}
-            />
+            <Input id={input.id} label={input.id} type={input.type} value={project[input.id]} onChange={updateProjectItem} key={input.id} />
           ))}
           <Description />
           <Meta />
@@ -46,42 +39,21 @@ const Form: FC = (): JSX.Element => {
         <Section>
           <h6>Social Networks</h6>
           {socials.map((input) => (
-            <Input
-              id={input.id}
-              label={input.id}
-              type={input.type}
-              value={project[input.id]}
-              onChange={updateProject}
-              key={input.id}
-            />
+            <Input id={input.id} label={input.id} type={input.type} value={project[input.id]} onChange={updateProjectItem} key={input.id} />
           ))}
         </Section>
 
         <Section>
           <h6>Token</h6>
           {token.map((input) => (
-            <Input
-              id={input.id}
-              label={input.id}
-              type={input.type}
-              value={project[input.id]}
-              onChange={updateProject}
-              key={input.id}
-            />
+            <Input id={input.id} label={input.id} type={input.type} value={project[input.id]} onChange={updateProjectItem} key={input.id} />
           ))}
         </Section>
 
         <Section>
           <h6>Additional Info</h6>
           {additional.map((input) => (
-            <Input
-              id={input.id}
-              label={input.id}
-              type={input.type}
-              value={project[input.id]}
-              onChange={updateProject}
-              key={input.id}
-            />
+            <Input id={input.id} label={input.id} type={input.type} value={project[input.id]} onChange={updateProjectItem} key={input.id} />
           ))}
         </Section>
 
@@ -89,14 +61,7 @@ const Form: FC = (): JSX.Element => {
           <Section>
             <h6>NFT Data</h6>
             {nft.map((input) => (
-              <Input
-                id={input.id}
-                label={input.id}
-                type={input.type}
-                value={project[input.id]}
-                onChange={updateProject}
-                key={input.id}
-              />
+              <Input id={input.id} label={input.id} type={input.type} value={project[input.id]} onChange={updateProjectItem} key={input.id} />
             ))}
           </Section>
         )}
@@ -109,15 +74,11 @@ const FormContentStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 960px;
   margin: 0 auto;
 
-  > div.logo {
-  }
-
   > div.main {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
     gap: 1rem;
   }
 `
@@ -127,7 +88,6 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1rem;
   box-shadow: var(--boxShadow2);
   padding: 2rem;
 

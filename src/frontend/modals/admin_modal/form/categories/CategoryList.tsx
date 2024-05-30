@@ -5,22 +5,24 @@ import type { Category } from "@/state/_types/types"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectAllCategories } from "@/state/categories/allCategories"
-import { selectProjectCategory, setProjectCategory } from "@/state/modals/projectModal"
+import { selectAdmin, setAdminProjectItemArray } from "@/state/admin/admin"
+
+const categoryKey = "category"
 
 const CategoryList: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const allCategories = useAppSelector(selectAllCategories)
-  const category = useAppSelector(selectProjectCategory)
-  const categoryCopy = [...category]
+  const category = useAppSelector(selectAdmin).project.category
+  const copy = category.slice()
 
   const setCategory = (label: string): void => {
-    if (categoryCopy.includes(label)) {
-      const index = categoryCopy.indexOf(label)
-      categoryCopy.splice(index, 1)
+    if (copy.includes(label)) {
+      const index = copy.indexOf(label)
+      copy.splice(index, 1)
     } else {
-      categoryCopy.push(label)
+      copy.push(label)
     }
-    dispatch(setProjectCategory(categoryCopy))
+    dispatch(setAdminProjectItemArray({ [categoryKey]: copy }))
   }
 
   const active = {
@@ -33,11 +35,7 @@ const CategoryList: FC = (): JSX.Element => {
       {allCategories
         .filter((category: Category) => category.id !== "all")
         .map((category: Category) => (
-          <Item
-            style={categoryCopy.includes(category.label) ? active : null}
-            key={category.id}
-            onClick={() => setCategory(category.label)}
-          >
+          <Item style={copy.includes(category.label) ? active : null} key={category.id} onClick={() => setCategory(category.label)}>
             {category.label.toLowerCase()}
           </Item>
         ))}

@@ -12,7 +12,7 @@ export { useUpvote } from "./useUpvote"
 export { useWindowSize } from "./useWindowSize"
 
 // backend
-export { useNft } from "./useNft"
-export { useProjects } from "./useProjects"
-export { useUsers } from "./useUsers"
+export { useNft } from "./backend/useNft"
+export { useProjects } from "./backend/useProjects"
+export { useUsers } from "./backend/useUsers"
 

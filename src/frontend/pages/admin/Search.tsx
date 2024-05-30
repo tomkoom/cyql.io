@@ -1,21 +1,21 @@
 import React, { FC, ChangeEvent } from "react"
-import { TextInput } from "@/components/ui/_index"
+import { TextInput2 } from "@/components/ui/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { setAdminSearch, selectAdminSearch } from "@/state/admin/adminSearch"
+import { selectAdmin, setAdminSearchQ } from "@/state/admin/admin"
 
 const Search: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const searchQuery = useAppSelector(selectAdminSearch)
+  const searchQ = useAppSelector(selectAdmin).searchQ
 
   const setSearch = (e: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(setAdminSearch(e.target.value))
+    dispatch(setAdminSearchQ(e.target.value))
   }
 
   return (
     <div>
-      <TextInput placeholder={"Search by project name"} value={searchQuery} onChange={setSearch} />
+      <TextInput2 placeholder={"Search by project name"} value={searchQ} onChange={setSearch} />
     </div>
   )
 }
