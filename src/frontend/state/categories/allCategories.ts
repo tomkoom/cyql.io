@@ -8,60 +8,63 @@ interface AllCategoriesState {
 
 const initialState: AllCategoriesState = {
   allCategories: [
-    // all
-    { id: "all", label: "All", icon: "" },
+    { id: "all", label: "All" },
 
     // wallets, defi, tokens, payments
-    { id: "wallets", label: "Wallets", icon: "👛" },
-    { id: "defi", label: "DeFi", icon: "‍🌾" },
-    { id: "tokens", label: "Tokens", icon: "🪙" },
-    { id: "stablecoins", label: "Stablecoins", icon: "🪙" },
-    { id: "dexs", label: "DEXs", icon: "🐂" },
-    { id: "swapping", label: "Swapping", icon: "↔️" },
-    { id: "payments-invoicing", label: "Payments/Invoicing", icon: "🧾" },
-    { id: "staking", label: "Staking", icon: "" },
+    { id: "wallets", label: "Wallets" },
+    { id: "defi", label: "DeFi" },
+    { id: "tokens", label: "Tokens" },
+    { id: "stablecoins", label: "Stablecoins" },
+    { id: "dexs", label: "DEXs" },
+    { id: "swapping", label: "Swapping" },
+    { id: "payments_invoicing", label: "Payments/Invoicing" },
+    { id: "staking", label: "Staking" },
 
     // games, p2e
-    { id: "games", label: "Games", icon: "⚔️" },
-    { id: "gambling", label: "Gambling", icon: "🎲" },
+    { id: "games", label: "Games" },
+    { id: "gambling", label: "Gambling" },
+    { id: "betting", label: "Betting" },
 
     // tools, dev tools
-    { id: "tools", label: "Tools", icon: "🛠️" },
-    { id: "dev-tools", label: "Dev Tools", icon: "👨‍💻" },
+    { id: "tools", label: "Tools" },
+    { id: "dev_tools", label: "Dev Tools" },
 
-    // communities, daos
-    { id: "communities", label: "Communities", icon: "📣" },
-    { id: "daos", label: "DAOs", icon: "🏠" },
+    // communities, daos, governance
+    { id: "communities", label: "Communities" },
+    { id: "daos", label: "DAOs" },
+    { id: "governance", label: "Governance" },
 
     // infrastracture, cloud, storage, protocol
-    { id: "infrastructure", label: "Infrastructure", icon: "🚀" },
-    { id: "cloud", label: "Cloud", icon: "☁️" },
-    { id: "protocol", label: "Protocol", icon: "" },
-    { id: "search engines", label: "Search Engines", icon: "🌎" },
+    { id: "infrastructure", label: "Infrastructure" },
+    { id: "cloud", label: "Cloud" },
+    { id: "storage", label: "Storage" },
+    { id: "protocol", label: "Protocol" },
+    { id: "search_engines", label: "Search Engines" },
 
     // metaverse, ar/vr
-    { id: "metaverse", label: "Metaverse", icon: "👓" },
-    { id: "ar-vr", label: "AR/VR", icon: "👓" },
+    { id: "metaverse", label: "Metaverse" },
+    { id: "ar_vr", label: "AR/VR" },
 
-    // messaging
-    { id: "messaging", label: "Messaging", icon: "💬" },
+    // messaging, blogging
+    { id: "messaging", label: "Messaging" },
+    { id: "blogging", label: "Blogging" },
+
+    // chains
+    { id: "btc", label: "BTC" },
+    { id: "ethereum", label: "Ethereum" },
 
     //  ...
-    { id: "nfts", label: "NFTs", icon: "🗿" },
-    { id: "dapps", label: "dApps", icon: "🔗" },
-    { id: "social-networks", label: "Social Networks", icon: "🎯" },
-    { id: "explorers", label: "Explorers", icon: "🌎" },
-    { id: "education", label: "Education", icon: "🎓" },
-    { id: "marketplace", label: "Marketplace", icon: "🔄" },
-    { id: "blogging", label: "Blogging", icon: "🗒️" },
-    { id: "identity", label: "Identity", icon: "🔑" },
-    { id: "governance", label: "Governance", icon: "" },
-    { id: "ai", label: "AI", icon: "" },
-    { id: "btc", label: "BTC", icon: "" },
-    { id: "ethereum", label: "Ethereum", icon: "" },
-    { id: "ecommerse", label: "Ecommerce", icon: "" },
-    { id: "vcs", label: "VCs", icon: "" },
-    { id: "automation", label: "Automation", icon: "" },
+    { id: "nfts", label: "NFTs" },
+    { id: "dapps", label: "dApps" },
+    { id: "social_networks", label: "Social Networks" },
+    { id: "explorers", label: "Explorers" },
+    { id: "education", label: "Education" },
+    { id: "marketplace", label: "Marketplace" },
+    { id: "identity", label: "Identity" },
+    { id: "ai", label: "AI" },
+    { id: "ecommerse", label: "Ecommerce" },
+    { id: "vcs", label: "VCs" },
+    { id: "automation", label: "Automation" },
   ],
 }
 
