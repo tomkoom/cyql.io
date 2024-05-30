@@ -38,7 +38,7 @@ const Layout: FC = (): JSX.Element => {
       await refreshCategories()
       await refreshProposals()
       await refreshActiveNum()
-      await refreshNew(24)
+      await refreshNew()
       await refreshHighligted("Tokens", 24)
       await refreshHighligted("NFTs", 24)
       await refreshPaginated(queryParams)

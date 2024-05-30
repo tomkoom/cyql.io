@@ -31,10 +31,10 @@ const InputStyled = styled.div`
   }
 
   > input {
-    height: 2.5rem;
+    height: 3rem;
     width: 100%;
     font-size: var(--fsText);
-    padding: 0 1rem;
+    padding: 0 0.8rem;
     color: var(--primaryColor);
     background-color: var(--underlay1);
     caret-color: var(--primaryColor);

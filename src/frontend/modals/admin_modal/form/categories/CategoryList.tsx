@@ -35,7 +35,7 @@ const CategoryList: FC = (): JSX.Element => {
         .filter((c) => c.category.id !== "all")
         .map((c) => (
           <Item key={c.category.id} style={copy.includes(c.category.lbl) ? active : null} onClick={() => setCategory(c.category.lbl)}>
-            {c.category.lbl.toLowerCase()}
+            {c.category.lbl.toLowerCase()} {c.size.toString()}
           </Item>
         ))}
     </CategoryListStyled>

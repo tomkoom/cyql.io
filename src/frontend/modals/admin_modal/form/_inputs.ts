@@ -22,6 +22,23 @@ export const socials = [
   { id: "nuance", type: "text" },
 ]
 
+export const web2Links = [
+  { id: "twitter", type: "text" },
+  { id: "discord", type: "text" },
+  { id: "telegram", type: "text" },
+  { id: "github", type: "text" },
+  { id: "medium", type: "text" },
+]
+
+export const web3Links = [
+  { id: "openchat", type: "text" },
+  { id: "taggr", type: "text" },
+  { id: "dscvr", type: "text" },
+  { id: "funded", type: "text" },
+  { id: "catalyze", type: "text" },
+  { id: "nuance", type: "text" },
+]
+
 export const token = [
   { id: "tokenCanisterId", type: "text" },
   { id: "tokenStandard", type: "text" },

@@ -65,6 +65,9 @@ module {
     { id = "ecommerse"; lbl = "Ecommerce" },
     { id = "vcs"; lbl = "VCs" },
     { id = "automation"; lbl = "Automation" },
+
+    // sustainability
+    // ...
   ];
 
 }

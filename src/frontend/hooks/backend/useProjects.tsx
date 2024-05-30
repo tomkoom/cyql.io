@@ -20,7 +20,7 @@ interface UseBackend {
   refreshCategories: () => Promise<void>
   refreshAll: () => Promise<void>
   refreshPaginated: (queryParams: QueryParams) => Promise<void>
-  refreshNew: (length: number) => Promise<void>
+  refreshNew: () => Promise<void>
   refreshHighligted: (category: string, length: number) => Promise<void>
   refreshActiveNum: () => Promise<void>
   refreshById: (id: string) => Promise<void>
@@ -132,11 +132,11 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  const refreshNew = async (length: number): Promise<void> => {
+  const refreshNew = async (): Promise<void> => {
     if (!actor) return
 
     try {
-      const res = await actor.getNewProjects(KEY, BigInt(length))
+      const res = await actor.getNewProjects(KEY, BigInt(24))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeNew(serialized))
     } catch (error) {

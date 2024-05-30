@@ -211,11 +211,7 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       {project.tokenCanisterId && (
         <div className="token">
           <p>Token ledger id:</p>
-          <a
-            href={`https://dashboard.internetcomputer.org/canister/${project.tokenCanisterId}`}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+          <a href={`https://dashboard.internetcomputer.org/canister/${project.tokenCanisterId}`} target="_blank" rel="noreferrer noopener">
             {project.tokenCanisterId} <span>{iExternalLink}</span>
           </a>
         </div>
@@ -338,7 +334,7 @@ const LinksStyled = styled.div`
       /* branded */
 
       &[data-social="twitter"] a {
-        background-color: var(--colorX);
+        background-color: var(--underlay1);
       }
 
       &[data-social="discord"] a {
@@ -370,7 +366,7 @@ const LinksStyled = styled.div`
       &[data-social="telegram"] a:hover,
       &[data-social="github"] a:hover,
       &[data-social="crowdfundingurl"] a:hover {
-        opacity: 0.8;
+        opacity: 0.6;
       }
     }
   }
