@@ -1,13 +1,12 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
-import { useQueryParams } from "@/hooks/_index"
+import { useQueryParams, useProjects } from "@/hooks/_index"
 import { filterBySearch } from "./utils/filterProjects"
 
 // components
 import { UpvoteBtn } from "@/components/btns/_index"
-import { Loading } from "@/components/ui/_index"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state
@@ -16,12 +15,19 @@ import { selectPaginated } from "@/state/projects/paginated"
 
 const ProjectList: FC = (): JSX.Element => {
   const { toProject } = useNav()
+  const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
   const paginated = useAppSelector(selectPaginated)
   const projects = paginated.data
 
+  useEffect(() => {
+    if (projects.length < 1) {
+      refreshPaginated(queryParams)
+    }
+  }, [projects])
+
   if (projects.length < 1) {
-    return <Loading />
+    return null
   }
 
   return (

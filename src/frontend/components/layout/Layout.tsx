@@ -6,7 +6,7 @@ import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { useProjects, useProposals, useQueryParams } from "@/hooks/_index"
+import { useProjects, useProposals } from "@/hooks/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
@@ -22,9 +22,8 @@ import { selectTheme } from "@/state/theme"
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
-  const { refreshCategories, refreshPaginated, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
+  const { refreshCategories, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
   const { refreshProposals } = useProposals()
-  const { queryParams } = useQueryParams()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
@@ -41,7 +40,6 @@ const Layout: FC = (): JSX.Element => {
       await refreshNew()
       await refreshHighligted("Tokens", 24)
       await refreshHighligted("NFTs", 24)
-      await refreshPaginated(queryParams)
     } catch (error) {
       throw new Error(error)
     }
