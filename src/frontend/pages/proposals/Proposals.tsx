@@ -18,15 +18,14 @@ const Proposals: FC = (): JSX.Element => {
       <div>
         <div className="title">
           <h2 className="pageTitle">Proposed Projects</h2>
-          <p>Vote to list add projects to the registry</p>
+          <p>Under dev</p>
+          {/* <p>Vote to list add projects to the registry</p> */}
         </div>
 
-        <div className="header">
+        {/* <div className="header">
           <span>Proposal</span>
           <span>Id</span>
           <span>State</span>
-          {/* <span>Voting power to accept</span>
-          <span>Voting power to reject</span> */}
         </div>
 
         <ul>
@@ -37,9 +36,7 @@ const Proposals: FC = (): JSX.Element => {
                 <li key={`proposal_id_${proposal.id}`} onClick={() => toProposal(proposal.id)}>
                   <span className="main">
                     <span>Proposal to list {JSON.parse(proposal.payload).name || "[...]"}</span>
-                    <span className="created_at">
-                      Created at {formatDateTime(Number(proposal.createdAt) / 1_000_000)}
-                    </span>
+                    <span className="created_at">Created at {formatDateTime(Number(proposal.createdAt) / 1_000_000)}</span>
                   </span>
 
                   <span>
@@ -49,15 +46,12 @@ const Proposals: FC = (): JSX.Element => {
                   <span className="state">
                     <span>{capitalizeFirstLetter(Object.keys(proposal.state)[0])}</span>
                   </span>
-
-                  {/* <span>{proposal.votesYes !== "0" || "..."}</span>
-                <span>{proposal.votesNo !== "0" || "..."}</span> */}
                 </li>
               ))
           ) : (
             <li>...</li>
           )}
-        </ul>
+        </ul> */}
       </div>
     </ProposalsStyled>
   )
@@ -66,14 +60,15 @@ const Proposals: FC = (): JSX.Element => {
 const ProposalsStyled = styled.div`
   > div {
     margin-bottom: 4rem;
-    font-size: var(--fsText);
+    /* font-size: var(--fsText); */
 
     > div.title {
       text-align: center;
       margin-bottom: 2rem;
 
       > p {
-        color: var(--secondaryColor);
+        font-weight: var(--fwMedium);
+        color: var(--tertiaryColor);
       }
     }
 

@@ -94,7 +94,7 @@ const ProjectModalStyled = styled.div`
     }
 
     > div.form {
-      margin: 2rem 0;
+      margin: 2rem 0 4rem 0;
     }
   }
 `

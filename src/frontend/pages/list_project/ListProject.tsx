@@ -10,14 +10,15 @@ const ListProject: FC = (): JSX.Element => {
       <div className="content">
         <div className="header">
           <h2 className="pageTitle">List New #ic Project</h2>
-          <p>
+          <p>Under dev</p>
+          {/* <p>
             The project will be listed as a proposal and will be voted and moderated by the
             community
           </p>
-          <Steps step={step} />
+          <Steps step={step} /> */}
         </div>
 
-        {step === 1 ? <Step1 setStep={setStep} /> : step === 2 ? <Step2 setStep={setStep} /> : null}
+        {/* {step === 1 ? <Step1 setStep={setStep} /> : step === 2 ? <Step2 setStep={setStep} /> : null} */}
       </div>
     </ListProjectStyled>
   )

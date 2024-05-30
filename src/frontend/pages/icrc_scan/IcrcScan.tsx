@@ -10,10 +10,7 @@ import { notifyErr } from "@/utils/_index"
 
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import {
-  selectIcrcTransactionsPagination,
-  selectIcrcTransactionsData,
-} from "@/state/icrc_scan/icrcTransactions"
+import { selectIcrcTransactionsPagination, selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
 import { selectIcrcLedgerId, setIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 
 const IcrcScan: FC = (): JSX.Element => {
@@ -71,18 +68,8 @@ const IcrcScan: FC = (): JSX.Element => {
           <label htmlFor="ledger_id">ICRC token ledger id</label>
 
           <div>
-            <TextInput2
-              id="ledger_id"
-              placeholder={CKBTC_LEDGER_CANISTER_ID_IC}
-              value={ledgerId}
-              onChange={(e) => dispatch(setIcrcLedgerId(e.target.value))}
-            />
-            <RectBtn
-              style={{ height: "4rem" }}
-              btnType={"secondary"}
-              text={"Search"}
-              onClick={() => setLedgerIdParam(ledgerId)}
-            />
+            <TextInput2 id="ledger_id" placeholder={CKBTC_LEDGER_CANISTER_ID_IC} value={ledgerId} onChange={(e) => dispatch(setIcrcLedgerId(e.target.value))} />
+            <RectBtn style={{ height: "4rem" }} btnType={"secondary"} text={"Search"} onClick={() => setLedgerIdParam(ledgerId)} />
           </div>
         </div>
 
@@ -106,7 +93,7 @@ const IcrcScanStyled = styled.div`
 
     > p {
       font-size: var(--fs6);
-      color: var(--secondaryColor);
+      color: var(--tertiaryColor);
     }
   }
 
