@@ -40,6 +40,7 @@ const DescriptionStyled = styled.div`
     padding: 0.5rem;
     color: var(--primaryColor);
     background-color: var(--underlay1);
+    line-height: 150%;
     border: none;
     outline: none;
   }

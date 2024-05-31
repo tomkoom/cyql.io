@@ -15,6 +15,7 @@ const Controls: FC = (): JSX.Element => {
 
   const refresh = async (project: Project): Promise<void> => {
     try {
+      console.log("added / updated")
       console.log(project)
       await refreshById(project.id)
       await refreshAll()

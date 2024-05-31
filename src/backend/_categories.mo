@@ -34,12 +34,15 @@ module {
     { id = "daos"; lbl = "DAOs" },
     { id = "governance"; lbl = "Governance" },
 
-    // infrastracture, cloud, storage, protocol
+    // infrastracture, cloud, storage
     { id = "infrastructure"; lbl = "Infrastructure" },
     { id = "cloud"; lbl = "Cloud" },
     { id = "storage"; lbl = "Storage" },
-    { id = "protocol"; lbl = "Protocol" },
     { id = "search_engines"; lbl = "Search Engines" },
+
+    // frameworks, protocol
+    { id = "frameworks"; lbl = "Frameworks" },
+    { id = "protocol"; lbl = "Protocol" }, // to upds
 
     // metaverse, ar/vr
     { id = "metaverse"; lbl = "Metaverse" },
@@ -53,6 +56,9 @@ module {
     { id = "btc"; lbl = "BTC" },
     { id = "ethereum"; lbl = "Ethereum" },
 
+    // sustainability
+    { id = "sustainability"; lbl = "Sustainability" },
+
     //  ...
     { id = "nfts"; lbl = "NFTs" },
     { id = "dapps"; lbl = "dApps" },
@@ -65,9 +71,7 @@ module {
     { id = "ecommerse"; lbl = "Ecommerce" },
     { id = "vcs"; lbl = "VCs" },
     { id = "automation"; lbl = "Automation" },
-
-    // sustainability
-    // ...
+    { id = "analytics"; lbl = "Analytics" },
   ];
 
 }

@@ -4,6 +4,7 @@ import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks/_index"
 import { useQueryParams, useProjects } from "@/hooks/_index"
 import { filterBySearch } from "./utils/filterProjects"
+import { useAuth } from "@/context/Auth"
 
 // components
 import { UpvoteBtn } from "@/components/btns/_index"
@@ -14,6 +15,7 @@ import { useAppSelector } from "@/hooks/useRedux"
 import { selectPaginated } from "@/state/projects/paginated"
 
 const ProjectList: FC = (): JSX.Element => {
+  const { actor } = useAuth()
   const { toProject } = useNav()
   const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
@@ -21,10 +23,12 @@ const ProjectList: FC = (): JSX.Element => {
   const projects = paginated.data
 
   useEffect(() => {
-    if (projects.length < 1) {
-      refreshPaginated(queryParams)
+    if (actor) {
+      if (projects.length < 1) {
+        refreshPaginated(queryParams)
+      }
     }
-  }, [projects])
+  }, [actor, projects])
 
   if (projects.length < 1) {
     return null
