@@ -7,13 +7,15 @@ import { Btn } from "@/components/btns/_index"
 import { useAuth } from "@/context/Auth"
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
+import { selectAdmin } from "@/state/admin/admin"
 
 const Admin: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const { actor } = useAuth()
   const { refreshAll } = useProjects()
+  const allProjects = useAppSelector(selectAdmin).allProjects
 
   const openAdminModal = (): void => {
     dispatch(setAdminMode("add"))
@@ -22,7 +24,9 @@ const Admin: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (actor) {
-      refreshAll()
+      if (allProjects.length < 1) {
+        refreshAll()
+      }
     }
   }, [actor])
 

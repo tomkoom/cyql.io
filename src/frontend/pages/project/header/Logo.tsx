@@ -8,29 +8,29 @@ interface LogoProps {
 }
 
 const Logo: FC<LogoProps> = ({ logo, name }) => {
-  const sizeRem = "6rem"
-  const borderRadiusRem = "3rem"
+  const size = "6rem"
+  const borderRadius = "3rem"
 
   return (
     <div>
       {logo ? (
         <LogoStyled
-          sizeRem={sizeRem}
-          borderRadiusRem={borderRadiusRem}
+          size={size}
+          borderRadius={borderRadius}
           src={logo}
           alt={`${name} logo`}
         />
       ) : (
-        <LogoLetter sizeRem={sizeRem} borderRadiusRem={borderRadiusRem} name={name} />
+        <LogoLetter size={size} borderRadius={borderRadius} name={name} />
       )}
     </div>
   )
 }
 
-const LogoStyled = styled.img<{ sizeRem: string; borderRadiusRem: string }>`
-  width: ${(p) => p.sizeRem};
-  height: ${(p) => p.sizeRem};
-  border-radius: ${(p) => p.borderRadiusRem};
+const LogoStyled = styled.img<{ size: string; borderRadius: string }>`
+  width: ${(p) => p.size};
+  height: ${(p) => p.size};
+  border-radius: ${(p) => p.borderRadius};
   flex-shrink: 0;
   object-fit: cover;
 `

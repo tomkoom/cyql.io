@@ -1,33 +1,29 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // components
-import { LogoLetter } from "@/components/ui/_index";
+import { LogoLetter } from "@/components/ui/_index"
 
 interface LogoProps {
-  name: string;
-  logo: string;
+  name: string
+  logo: string
 }
 
 const Logo: FC<LogoProps> = ({ name, logo }): JSX.Element => {
-  const sizeRem = "4.5rem";
-  const borderRadiusRem = "2.25rem";
+  const size = "5rem"
+  const borderRadius = "2.5rem"
   const style = {
-    width: sizeRem,
-    height: sizeRem,
-    borderRadius: borderRadiusRem,
-  };
+    width: size,
+    height: size,
+    borderRadius: borderRadius,
+  }
 
-  return logo ? (
-    <LogoStyled style={style} src={logo} alt={`${name} logo`} />
-  ) : (
-    <LogoLetter sizeRem={sizeRem} borderRadiusRem={borderRadiusRem} name={name} />
-  );
-};
+  return logo ? <LogoStyled style={style} src={logo} alt={`${name} logo`} /> : <LogoLetter size={size} borderRadius={borderRadius} name={name} />
+}
 
 const LogoStyled = styled.img`
   flex-shrink: 0;
   object-fit: cover;
-`;
+`
 
-export default Logo;
+export default Logo

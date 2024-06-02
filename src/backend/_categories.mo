@@ -59,6 +59,10 @@ module {
     // sustainability
     { id = "sustainability"; lbl = "Sustainability" },
 
+    // marketing, analytics
+    { id = "marketing"; lbl = "Marketing" },
+    { id = "analytics"; lbl = "Analytics" },
+
     //  ...
     { id = "nfts"; lbl = "NFTs" },
     { id = "dapps"; lbl = "dApps" },
@@ -71,7 +75,6 @@ module {
     { id = "ecommerse"; lbl = "Ecommerce" },
     { id = "vcs"; lbl = "VCs" },
     { id = "automation"; lbl = "Automation" },
-    { id = "analytics"; lbl = "Analytics" },
   ];
 
 }
