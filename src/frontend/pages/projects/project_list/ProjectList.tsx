@@ -24,7 +24,7 @@ const ProjectList: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (actor) {
-      if (projects.length < 1) {
+      if (projects.length < 1 && queryParams.q === "") {
         refreshPaginated(queryParams)
       }
     }

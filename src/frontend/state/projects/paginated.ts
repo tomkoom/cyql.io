@@ -9,17 +9,19 @@ interface PaginatedState {
 
 const itemsPerPage = 50
 
+const paginatedInitialState = {
+  data: [],
+  selectedPage: 1,
+  itemsPerPage: itemsPerPage,
+  startIndex: 0,
+  endIndex: itemsPerPage,
+  totalItems: 0,
+  totalPages: 0,
+}
+
 const initialState: PaginatedState = {
   isLoading: false,
-  paginated: {
-    data: [],
-    selectedPage: 1,
-    itemsPerPage: itemsPerPage,
-    startIndex: 0,
-    endIndex: itemsPerPage,
-    totalItems: 0,
-    totalPages: 0,
-  },
+  paginated: paginatedInitialState,
 }
 
 const paginated = createSlice({

@@ -37,14 +37,10 @@ const Pagination: FC = (): JSX.Element => {
     return null
   }
 
-  if (queryParams.q) {
-    return null
-  }
-
   return (
     <div className="pagination">
       <LoadingModal isOpen={isLoading} />
-      {/* {totalItems > queryParams.itemsPerPage && ( */}
+
       <div className="main">
         <span>
           {totalItems.toString()} total items, showing {(startIndex + 1).toString()}-{endIndex < totalItems ? endIndex.toString() : totalItems.toString()} items
@@ -70,7 +66,6 @@ const Pagination: FC = (): JSX.Element => {
           forcePage={page}
         />
       </div>
-      {/* )} */}
     </div>
   )
 }

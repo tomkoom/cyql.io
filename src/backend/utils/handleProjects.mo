@@ -11,6 +11,17 @@ import T "../main_types";
 
 module {
 
+  // filter by search q
+
+  public func filteredBySearchQ(projects : [T.Project], searchQ : Text) : [T.Project] {
+    func filter(p : T.Project) : Bool {
+      let q = Text.toLowercase(searchQ);
+      return Text.contains(Text.toLowercase(p.name), #text q)
+    };
+
+    return Array.filter(projects, filter)
+  };
+
   // paginate
 
   public func paginate(projects : [T.Project], selectedPage : Nat, itemsPerPage : Nat) : ?T.PaginateResult {

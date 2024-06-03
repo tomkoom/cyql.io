@@ -138,19 +138,25 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Buffer.toArray(buff)
   };
 
-  // ...
-
   // filter, sort, paginate
 
   public query func getProjects(args : T.GetProjectsArgs) : async ?T.GetProjectsResult {
     assert (secret == args.secret);
     let { q; category; openSource; onChain; sort; selectedPage; itemsPerPage } = args;
 
-    // get projectsV1
+    // get projects
     let activeProjects = _getActiveProjects();
+    var result : [T.Project] = [];
+
+    // search query
+    if (q != "") {
+      result := Handle.filteredBySearchQ(activeProjects, q)
+    } else {
+      result := activeProjects
+    };
 
     // filter, sort, paginate
-    let filteredByCategory = Handle.filterByCategory(activeProjects, category);
+    let filteredByCategory = Handle.filterByCategory(result, category);
     let filteredByOpenSource = Handle.filterByOpenSource(filteredByCategory, openSource);
     let filteredByOnchain = Handle.filterByOnchain(filteredByOpenSource, onChain);
     let sorted = Handle.sort(filteredByOnchain, sort);

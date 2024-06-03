@@ -23,7 +23,6 @@ const Home: FC = (): JSX.Element => {
   const games = home.highlighted.games
   const defi = home.highlighted.defi
   const nfts = home.highlighted.nfts
-  console.log(home.highlighted)
 
   return (
     <HomeStyled>

@@ -1,21 +1,42 @@
-import React, { FC, useState } from "react"
+import React, { ChangeEvent, FC } from "react"
 import styled from "styled-components"
-import { useDebounceCallback } from "usehooks-ts"
-import { useQueryParams } from "@/hooks/_index"
+import { useQueryParams, useProjects } from "@/hooks/_index"
+import { Btn } from "@/components/btns/_index"
 
 // components
 import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
 import { TextInput2 } from "@/components/ui/_index"
 
+// state
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { setSearchQ, selectSearchQ } from "@/state/projects/searchQ"
+
 const Projects: FC = (): JSX.Element => {
-  const [search, setSearch] = useState("")
+  const dispatch = useAppDispatch()
   const { queryParams } = useQueryParams()
-  const debounced = useDebounceCallback(setSearch, 500)
+  const { refreshPaginated } = useProjects()
+  const searchQ = useAppSelector(selectSearchQ)
+
+  const updateSearchQ = (e: ChangeEvent<HTMLInputElement>): void => {
+    dispatch(setSearchQ(e.target.value))
+  }
+
+  const submitSearchQ = async (): Promise<void> => {
+    try {
+      await refreshPaginated({ ...queryParams, q: searchQ })
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 
   return (
     <ProjectsStyled>
       <h2 className="pageTitle">Discover New Projects</h2>
-      <TextInput2 placeholder={"Search project by name"} defaultValue={search} onChange={(event) => debounced(event.target.value)} />
+
+      <div className="search">
+        <TextInput2 placeholder={"Search project by name"} value={searchQ} onChange={updateSearchQ} />
+        <Btn style={{ height: "3.2rem" }} btnType={"secondary"} text={"Search"} onClick={submitSearchQ} />
+      </div>
 
       {/* filters */}
       <Filters>
@@ -43,6 +64,12 @@ const ProjectsStyled = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 4rem;
+
+  > div.search {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
 `
 
 const Filters = styled.div`

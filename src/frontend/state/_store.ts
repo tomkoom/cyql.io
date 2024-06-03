@@ -30,6 +30,7 @@ import withdrawNftModal from "./modals/withdrawNftModal"
 // projects
 import paginated from "./projects/paginated"
 import queryParams from "./projects/queryParams"
+import searchQ from "./projects/searchQ"
 import curatedProjects from "./curatedProjects"
 
 // home
@@ -76,6 +77,7 @@ const store = configureStore({
     // projects
     paginated,
     queryParams,
+    searchQ,
     curatedProjects,
 
     // home
