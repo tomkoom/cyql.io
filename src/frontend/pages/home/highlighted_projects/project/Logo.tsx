@@ -10,8 +10,8 @@ interface LogoProps {
 }
 
 const Logo: FC<LogoProps> = ({ name, logo }): JSX.Element => {
-  const size = "5rem"
-  const borderRadius = "2.5rem"
+  const size = "4.5rem"
+  const borderRadius = "2.25rem"
   const style = {
     width: size,
     height: size,

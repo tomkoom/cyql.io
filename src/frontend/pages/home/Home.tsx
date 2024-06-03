@@ -18,7 +18,12 @@ const Home: FC = (): JSX.Element => {
   const home = useAppSelector(selectHome)
   const newProjects = home.new
   const tokens = home.highlighted.tokens
+  const dapps = home.highlighted.dapps
+  const socialNetworks = home.highlighted.social_networks
+  const games = home.highlighted.games
+  const defi = home.highlighted.defi
   const nfts = home.highlighted.nfts
+  console.log(home.highlighted)
 
   return (
     <HomeStyled>
@@ -29,7 +34,7 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title>
-          <h3>New projects</h3>
+          <h3>Latest Projects</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
 
@@ -39,7 +44,7 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title>
-          <h3>New tokens</h3>
+          <h3>Latest Tokens</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
 
@@ -49,7 +54,47 @@ const Home: FC = (): JSX.Element => {
 
       <Section>
         <Title>
-          <h3>New NFTs</h3>
+          <h3>Latest dApps</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {tokens.length > 0 ? <HighlightedProjects projects={dapps} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Latest Social Networks</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {tokens.length > 0 ? <HighlightedProjects projects={socialNetworks} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Latest Games</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {tokens.length > 0 ? <HighlightedProjects projects={games} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Latest DeFi Projects</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {tokens.length > 0 ? <HighlightedProjects projects={defi} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Latest NFTs</h3>
           <ViewAllBtn route={toProjects} />
         </Title>
 

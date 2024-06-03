@@ -6,11 +6,8 @@ import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { useProjects, useProposals } from "@/hooks/_index"
-
-// hooks
+import { useProjects, useProposals, useNav, useScrollLock } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
-import { useNav, useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -34,12 +31,17 @@ const Layout: FC = (): JSX.Element => {
   // refresh data
   const refresh = async (): Promise<void> => {
     try {
+      const length = 16
       await refreshCategories()
       await refreshProposals()
       await refreshActiveNum()
       await refreshNew()
-      await refreshHighligted("Tokens", 24)
-      await refreshHighligted("NFTs", 24)
+      await refreshHighligted("Tokens", length)
+      await refreshHighligted("dApps", length)
+      await refreshHighligted("Social Networks", length)
+      await refreshHighligted("Games", length)
+      await refreshHighligted("DeFi", length)
+      await refreshHighligted("NFTs", length)
     } catch (error) {
       throw new Error(error)
     }

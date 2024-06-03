@@ -150,7 +150,8 @@ export const useProjects = (): UseBackend => {
     try {
       const str = category
       const replacement = "_"
-      const key = str.replace(/\//g, replacement).toLowerCase() // change slashes to underscores
+      var key = str.replace(/\//g, replacement).toLowerCase() // change slashes to underscores
+      key = key.replace(" ", "_") // change spaces to underscores
       const res = await actor.getHighlightedProjects(KEY, category, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeHighlighted({ [key as string]: serialized }))
