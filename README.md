@@ -8,7 +8,7 @@
 
 ### API
 
-[nrkmt-haaaa-aaaai-qagmq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=nrkmt-haaaa-aaaai-qagmq-cai) -> listProjects()
+- ...
 
 ### stack
 
@@ -20,6 +20,7 @@
 
 ```
 npm i
+update .env
 dfx generate
 npm run dev
 ```
