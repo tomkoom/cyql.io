@@ -12,27 +12,47 @@ const Main: FC<MainProps> = ({ project }): JSX.Element => {
   const { name, upvotedBy, category, frontendCanisterId, github, description } = project
   const upvotesNum = upvotedBy.length
 
-  const formatName = (s: string): string => {
+  const trimName = (s: string): string => {
     return s.length > 40 ? `${s.substring(0, 40)}…` : s
   }
 
-  const formatDescription = (s: string): string => {
-    return s.length > 40 ? `${s.substring(0, 40)}…` : s
+  const trimDescription = (s: string): string => {
+    const maxLength = 40
+
+    // trim the string to the maximum length
+    let trimmed = s.substring(0, maxLength)
+
+    // re-trim if we are in the middle of a word
+    trimmed = trimmed.substring(0, Math.min(trimmed.length, trimmed.lastIndexOf(" ")))
+
+    // remove comma in the end
+    trimmed = trimmed.replace(/,(?=[^,]*$)/, "")
+
+    return trimmed + "…"
   }
 
   return (
     <MainStyled>
       <div className="title">
-        <h4>{formatName(name)}</h4> <UpvotesNum upvotesNum={upvotesNum} />
+        <h4>{trimName(name)}</h4> <UpvotesNum upvotesNum={upvotesNum} />
       </div>
 
-      <div className="tags">
-        {category.length > 0 && category.join(", ")}{" "}
-        {frontendCanisterId && <span>{iCircleNodes} onchain</span>}{" "}
-        {github && <span>{iGithub} open</span>}
+      <div className="category_tags">
+        <ul className="category">
+          {category.map((c) => (
+            <li key={c}>{c.toLocaleLowerCase()}</li>
+          ))}
+        </ul>
+
+        {(frontendCanisterId || github) && (
+          <ul className="tags">
+            {frontendCanisterId && <li>{iCircleNodes} onchain</li>}
+            {github && <li>{iGithub} open</li>}
+          </ul>
+        )}
       </div>
 
-      <p className="description">{formatDescription(description)}</p>
+      <p className="description">{trimDescription(description)}</p>
     </MainStyled>
   )
 }
@@ -56,12 +76,43 @@ const MainStyled = styled.div`
     }
   }
 
-  > div.tags {
-    font-size: var(--text);
-    font-weight: var(--fwMedium);
-    color: var(--secondaryColor);
-    text-transform: lowercase;
-    line-height: 125%;
+  > div.category_tags {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+
+    > ul.category {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+
+      > li {
+        font-size: var(--fs7);
+        font-weight: var(--fwMedium);
+        color: var(--secondaryColor);
+        text-transform: lowercase;
+        line-height: 125%;
+        padding: 0.125rem 0.25rem;
+        background-color: var(--underlay2);
+      }
+    }
+
+    > ul.tags {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+
+      > li {
+        font-size: var(--fs7);
+        font-weight: var(--fwMedium);
+        color: var(--secondaryColor);
+        text-transform: lowercase;
+        line-height: 125%;
+      }
+    }
   }
 
   > p.description {

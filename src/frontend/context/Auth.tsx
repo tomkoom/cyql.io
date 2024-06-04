@@ -130,7 +130,7 @@ function AuthProvider({ children }) {
 
     await authClient.login({
       // identityProvider: IDENTITY_PROVIDER,
-      maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1000 * 1000 * 1000),
+      maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1000 * 1000 * 1000), // 7 days in nanoseconds
       ...(isCustomDomain() && {
         derivationOrigin: APP_DERIVATION_ORIGIN,
       }),

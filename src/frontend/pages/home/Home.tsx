@@ -17,11 +17,11 @@ const Home: FC = (): JSX.Element => {
   const { toProjects, toList } = useNav()
   const home = useAppSelector(selectHome)
   const newProjects = home.new
-  const tokens = home.highlighted.tokens
   const dapps = home.highlighted.dapps
   const socialNetworks = home.highlighted.social_networks
   const games = home.highlighted.games
   const defi = home.highlighted.defi
+  const tokens = home.highlighted.tokens
   const nfts = home.highlighted.nfts
 
   return (
@@ -38,16 +38,6 @@ const Home: FC = (): JSX.Element => {
         </Title>
 
         {newProjects.length > 0 ? <HighlightedProjects projects={newProjects} /> : <Loading />}
-      </Section>
-      <Divider />
-
-      <Section>
-        <Title>
-          <h3>Latest Tokens</h3>
-          <ViewAllBtn route={toProjects} />
-        </Title>
-
-        {tokens.length > 0 ? <HighlightedProjects projects={tokens} /> : <Loading />}
       </Section>
       <Divider />
 
@@ -88,6 +78,16 @@ const Home: FC = (): JSX.Element => {
         </Title>
 
         {tokens.length > 0 ? <HighlightedProjects projects={defi} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Latest Tokens</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {tokens.length > 0 ? <HighlightedProjects projects={tokens} /> : <Loading />}
       </Section>
       <Divider />
 

@@ -10,13 +10,12 @@ interface TagsProps {
 const Tags: FC<TagsProps> = ({ project }) => {
   return (
     <TagsStyled>
-      {project.category.length > 0 &&
-        project.category.map((category) => (
-          <li key={category.toLowerCase()}>{category.toLowerCase()}</li>
-        ))}
+      {/* category */}
+      {project.category.length > 0 && project.category.map((category) => <li key={category.toLowerCase()}>{category.toLowerCase()}</li>)}
 
-      {project.github && <li id="open">{iGithub} open</li>}
-      {project.frontendCanisterId && <li id="onchain">{iCircleNodes} onchain</li>}
+      {/* tags */}
+      {project.github && <li id="open">{iGithub} Open-Source</li>}
+      {project.frontendCanisterId && <li id="onchain">{iCircleNodes} On-Chain</li>}
     </TagsStyled>
   )
 }

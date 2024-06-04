@@ -32,9 +32,9 @@ const Summary: FC = (): JSX.Element => {
         Curated Projects: <span className="num">{curatedNum.toString() || "..."}</span>
       </p>
 
-      <p>
+      {/* <p>
         Proposed Projects: <span className="num">{proposedNum.toString() || "..."}</span>
-      </p>
+      </p> */}
 
       <div>
         <img src={IC_LOGO} alt="Internet Computer logo" />

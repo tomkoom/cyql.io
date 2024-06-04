@@ -20,7 +20,7 @@ const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
   const { refreshCategories, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
-  const { refreshProposals } = useProposals()
+  // const { refreshProposals } = useProposals()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
@@ -33,7 +33,7 @@ const Layout: FC = (): JSX.Element => {
     try {
       const length = 16
       await refreshCategories()
-      await refreshProposals()
+      // await refreshProposals()
       await refreshActiveNum()
       await refreshNew()
       await refreshHighligted("Tokens", length)
