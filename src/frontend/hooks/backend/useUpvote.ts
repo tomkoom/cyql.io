@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react"
 import { useAuth } from "@/context/Auth"
 import { useProjects } from "@/hooks/_index"
 import { KEY } from "@/constants/constants"
-import { updateInProjects, updateInHighlighted } from "@/utils/_index"
+import { updateInProjects, updateInHighlighted, notifySuccess } from "@/utils/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -26,7 +26,7 @@ export const useUpvote = () => {
 
   const updateUpvote = async (projectId: string, location: string, setIsExploding: Dispatch<SetStateAction<boolean>>, duration: number): Promise<void> => {
     try {
-      await updateCuratedProjectUpvote(projectId)
+      const res = await updateCuratedProjectUpvote(projectId)
       const project = await actor.getProjectById(KEY, BigInt(projectId))
 
       if (project.length > 0) {
@@ -41,6 +41,7 @@ export const useUpvote = () => {
         updateInHighlighted(p, highligted, setHomeHighlighted)
 
         // confetti
+        notifySuccess(res)
         if (location === "project_page") {
           setIsExploding(true)
           setTimeout(() => {

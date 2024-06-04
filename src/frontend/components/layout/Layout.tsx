@@ -1,12 +1,13 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import "./Layout.css"
+import "./Toaster.css"
 import { Outlet, useLocation } from "react-router-dom"
 import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { useProjects, useProposals, useNav, useScrollLock } from "@/hooks/_index"
+import { useProjects, useNav, useScrollLock } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
 
 // state
@@ -72,7 +73,13 @@ const Layout: FC = (): JSX.Element => {
 
   return (
     <LayoutStyled className={theme}>
-      <Toaster position={"top-center"} toastOptions={{ duration: 5000 }} />
+      <Toaster
+        position={"top-center"}
+        toastOptions={{
+          duration: 5000,
+          className: "toaster",
+        }}
+      />
       <LoadingModal isOpen={isLoading} />
 
       {/* ... */}

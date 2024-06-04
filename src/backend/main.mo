@@ -76,14 +76,15 @@ shared actor class _CURATED_PROJECTS() = Self {
     let isAlreadyUpvoted = Buffer.contains<Text>(upvotedByBuf, userId, Text.equal);
 
     if (not isAlreadyUpvoted) {
-      upvotedByBuf.add(userId)
+      upvotedByBuf.add(userId);
+      projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
+      return "Upvoted."
     } else {
       let ?idx = Buffer.indexOf<Text>(userId, upvotedByBuf, Text.equal) else return "User idx not found.";
-      let _removed = upvotedByBuf.remove(idx)
-    };
-
-    projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
-    return Nat.toText(projectId)
+      let _ = upvotedByBuf.remove(idx);
+      projects.put(projectId, { p with upvotedBy = Buffer.toArray(upvotedByBuf) });
+      return "Upvote removed."
+    }
   };
 
   // query

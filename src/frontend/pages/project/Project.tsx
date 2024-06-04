@@ -27,8 +27,6 @@ const Project: FC = (): JSX.Element => {
   const isOpen = useAppSelector(selectAdmin).isModalOpen
 
   const refresh = async (id: string): Promise<void> => {
-    if (!id) return
-
     try {
       await refreshById(id)
     } catch (error) {
@@ -38,7 +36,9 @@ const Project: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (actor) {
-      refresh(id)
+      if (id) {
+        refresh(id)
+      }
     }
   }, [actor, id])
 

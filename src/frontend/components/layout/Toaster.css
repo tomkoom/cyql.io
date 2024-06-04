@@ -1,0 +1,8 @@
+.toaster {
+  border: none;
+  padding: 0.7rem 1rem;
+  font-size: var(--fsText);
+  color: var(--primaryColor);
+  background-color: var(--underlay1);
+  border-radius: unset;
+}

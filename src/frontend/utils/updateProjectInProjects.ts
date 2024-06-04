@@ -21,11 +21,12 @@ export const updateInHighlighted = (project: Project, highlighted: HighlightedIt
 
   keys.forEach((key) => {
     const projects = highlighted[key]
-    const idx = projects.findIndex((p) => p.id === project.id)
+    const copy = projects.slice()
+    const idx = copy.findIndex((p) => p.id === project.id)
 
     if (idx !== -1) {
-      projects[idx] = project
-      dispatch(setHomeHighlighted({ key: projects }))
+      copy[idx] = project
+      dispatch(setHomeHighlighted({ key: copy }))
     }
   })
 }

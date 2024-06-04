@@ -7,12 +7,12 @@ import { useLocation } from "react-router-dom"
 import { bigintToNumber, sortCategoriesByNum } from "@/utils/_index"
 
 // state
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { useAppDispatch } from "@/hooks/useRedux"
 import { setActiveProjectsNum } from "@/state/curatedProjects"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setHomeHighlighted, setHomeNew } from "@/state/home/home"
 import { setProject } from "@/state/project"
-import { setQueryParams, selectQueryParamsSchema } from "@/state/projects/queryParams"
+import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
 
@@ -34,7 +34,6 @@ export const useProjects = (): UseBackend => {
   const locationPathname = useLocation().pathname
   const { actor, userId } = useAuth()
   const { updateQueryParams } = useQueryParams()
-  const queryParamsSchema = useAppSelector(selectQueryParamsSchema)
 
   const refreshCategories = async (): Promise<void> => {
     if (!actor) return
