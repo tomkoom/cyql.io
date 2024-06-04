@@ -1,15 +1,11 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { VotingPower, Nfts, Wallet, Id } from "./_index"
-import { formatId } from "@/utils/format"
-import { useAuth } from "@/context/Auth"
+import { VotingPower, Nfts, Wallet, Id, Header } from "./_index"
 
 const Profile: FC = (): JSX.Element => {
-  const { userId } = useAuth()
-
   return (
     <ProfileStyled className="wrapper1440">
-      <h2 className="pageTitle">{formatId(userId)}</h2>
+      <Header />
       <Id />
       <VotingPower />
       <Nfts />

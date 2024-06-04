@@ -1,7 +1,6 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import "./Layout.css"
-import "./Toaster.css"
 import { Outlet, useLocation } from "react-router-dom"
 import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
@@ -16,6 +15,15 @@ import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 import { selectHome } from "@/state/home/home"
 import { selectTheme } from "@/state/theme"
+
+const toasterStyle = {
+  border: "none",
+  padding: "0.7rem 1rem",
+  fontSize: "var(--fsText)",
+  color: "var(--primaryColor)",
+  backgroundColor: "var(--underlay1)",
+  borderRadius: "unset",
+}
 
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
@@ -77,7 +85,7 @@ const Layout: FC = (): JSX.Element => {
         position={"top-center"}
         toastOptions={{
           duration: 5000,
-          className: "toaster",
+          style: toasterStyle,
         }}
       />
       <LoadingModal isOpen={isLoading} />

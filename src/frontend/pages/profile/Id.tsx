@@ -8,70 +8,81 @@ import { CopyToClipboard } from "react-copy-to-clipboard"
 const Id: FC = (): JSX.Element => {
   const { userId, accounntIdHex } = useAuth()
 
-  const copy = () => {
-    notifySuccess("Copied")
+  const copy = (): void => {
+    notifySuccess("Copied.")
   }
 
   return (
     <IdStyled>
-      <div className="id_item">
-        <span className="label">Principal Id</span>
-        <span className="value">{userId}</span>
+      <li className="id_item">
+        <p className="label">Principal Id</p>
+        <p className="value">{userId}</p>
 
         <CopyToClipboard text={userId} onCopy={copy}>
-          <span className="icon">{iCopy}</span>
+          <button>
+            Copy <span className="icon">{iCopy}</span>
+          </button>
         </CopyToClipboard>
-      </div>
+      </li>
 
-      <div className="id_item">
-        <span className="label">Account Id</span>
-        <span className="value">{accounntIdHex}</span>
+      <li className="id_item">
+        <p className="label">Account Id</p>
+        <p className="value">{accounntIdHex}</p>
 
         <CopyToClipboard text={accounntIdHex} onCopy={copy}>
-          <span className="icon">{iCopy}</span>
+          <button>
+            Copy <span className="icon">{iCopy}</span>
+          </button>
         </CopyToClipboard>
-      </div>
+      </li>
     </IdStyled>
   )
 }
 
-const IdStyled = styled.div`
+const IdStyled = styled.ul`
   text-align: left;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
 
-  > div.id_item {
+  > li.id_item {
     flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     padding: 0.8rem;
     background-color: var(--underlay1);
 
-    > span.label {
+    > p.label {
       font-size: var(--fsText);
       color: var(--tertiaryColor);
       margin-bottom: 0.25rem;
     }
 
-    > span.value {
+    > p.value {
       word-break: break-word;
     }
 
-    > span.icon {
-      width: 2rem;
-      height: 2rem;
-      display: grid;
-      place-items: center;
+    > button {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      font-size: var(--fsText);
       color: var(--secondaryColor);
+      padding: 0.5rem;
       background-color: var(--underlay2);
-      cursor: pointer;
       transition: var(--transition1);
+      margin-top: 0.5rem;
 
       &:hover {
         color: var(--primaryColor);
         background-color: var(--underlay3);
+      }
+
+      > span.icon {
+        color: var(--secondaryColor);
       }
     }
   }
