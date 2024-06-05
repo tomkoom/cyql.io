@@ -14,12 +14,13 @@ import { useAppSelector } from "@/hooks/useRedux"
 import { selectHome } from "@/state/home/home"
 
 const Home: FC = (): JSX.Element => {
-  const { toProjects, toList } = useNav()
+  const { toProjects, toMostUpvoted, toList } = useNav()
   const home = useAppSelector(selectHome)
   const newProjects = home.new
   const mostUpvoted = home.mostUpvoted
   const dapps = home.highlighted.dapps
   const socialNetworks = home.highlighted.social_networks
+  const marketplace = home.highlighted.marketplace
   const games = home.highlighted.games
   const defi = home.highlighted.defi
   const tokens = home.highlighted.tokens
@@ -59,6 +60,16 @@ const Home: FC = (): JSX.Element => {
         </Title>
 
         {tokens.length > 0 ? <HighlightedProjects projects={socialNetworks} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Latest Marketplaces</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {tokens.length > 0 ? <HighlightedProjects projects={marketplace} /> : <Loading />}
       </Section>
       <Divider />
 
@@ -108,7 +119,7 @@ const Home: FC = (): JSX.Element => {
           <ViewAllBtn route={toProjects} />
         </Title>
 
-        {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} /> : <Loading />}
+        {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} btnText="View All Most Upvoted" route={toMostUpvoted} /> : <Loading />}
       </Section>
       <Divider />
 

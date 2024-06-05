@@ -48,6 +48,7 @@ const Layout: FC = (): JSX.Element => {
       await refreshHighligted("Tokens")
       await refreshHighligted("dApps")
       await refreshHighligted("Social Networks")
+      await refreshHighligted("Marketplace", 8)
       await refreshHighligted("Games")
       await refreshHighligted("DeFi")
       await refreshHighligted("NFTs")

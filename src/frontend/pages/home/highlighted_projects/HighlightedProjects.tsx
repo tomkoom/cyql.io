@@ -11,9 +11,11 @@ import { Project } from "./_index"
 
 interface HighlightedProjectsProps {
   projects: P[]
+  btnText?: string
+  route?: () => void
 }
 
-const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.Element => {
+const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects, btnText = "View All Projects", route }): JSX.Element => {
   const { toProjects } = useNav()
 
   if (!projects) {
@@ -28,7 +30,7 @@ const HighlightedProjects: FC<HighlightedProjectsProps> = ({ projects }): JSX.El
         ))}
       </div>
 
-      {projects.length > 0 && <ViewMoreBtn text="View All Projects" nav={toProjects} />}
+      {projects.length > 0 && <ViewMoreBtn text={btnText} nav={route || toProjects} />}
     </HighlightedProjectsStyled>
   )
 }

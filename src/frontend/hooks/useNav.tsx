@@ -28,6 +28,16 @@ export const useNav = () => {
     })
   }
 
+  const toMostUpvoted = (): void => {
+    navigate({
+      pathname: "projects",
+      search: `?${createSearchParams({
+        ...queryParamsString,
+        sort: "most_upvoted",
+      })}`,
+    })
+  }
+
   const toProject = (id: string): void =>
     navigate({
       pathname: `/projects/${id}`,
@@ -87,6 +97,7 @@ export const useNav = () => {
 
     // projects
     toProjects,
+    toMostUpvoted,
     toProject,
 
     // proposals
