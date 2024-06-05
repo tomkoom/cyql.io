@@ -5,15 +5,18 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 
 // ...
-import UT "./users_types";
+import T "./users_types";
 import U "../utils";
 
 actor {
 
   // maps
 
-  stable var usersEntries : [(UT.UserId, UT.User)] = [];
-  let users = HashMap.fromIter<UT.UserId, UT.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
+  stable var usersEntries : [(T.UserId, T.User)] = [];
+  let users = HashMap.fromIter<T.UserId, T.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
+
+  stable var usersNewEntries : [(T.UserIdNew, T.UserNew)] = [];
+  let usersNew = HashMap.fromIter<T.UserIdNew, T.UserNew>(usersNewEntries.vals(), 10, Text.equal, Text.hash);
 
   // -- manage --
 
@@ -35,14 +38,41 @@ actor {
     }
   };
 
-  public query func getUser(userId : UT.UserId) : async ?UT.User {
+  public query func getUser(userId : T.UserId) : async ?T.User {
     return users.get(userId)
   };
 
-  public shared query ({ caller }) func listUsers() : async [UT.User] {
+  // new
+
+  public shared ({ caller }) func registerUserNew() : async ?Text {
+    assert (not U.isAnon(caller));
+    let userId = Principal.toText(caller);
+
+    switch (usersNew.get(userId)) {
+      case (?u) return null;
+      case null {
+        usersNew.put(
+          userId,
+          {
+            id = userId;
+            registeredAt = Time.now()
+          },
+        );
+        return ?userId
+      }
+    }
+  };
+
+  public query func getUserNew(userId : T.UserIdNew) : async ?T.UserNew {
+    return usersNew.get(userId)
+  };
+
+  // query
+
+  public shared query ({ caller }) func listUsers() : async [T.UserNew] {
     assert (U.isAdmin(caller));
-    let iter : Iter.Iter<UT.User> = users.vals();
-    return Iter.toArray<UT.User>(iter)
+    let iter : Iter.Iter<T.UserNew> = usersNew.vals();
+    return Iter.toArray<T.UserNew>(iter)
   };
 
   // test
@@ -54,10 +84,12 @@ actor {
   // stable
 
   system func preupgrade() {
-    usersEntries := Iter.toArray(users.entries())
+    usersEntries := Iter.toArray(users.entries());
+    usersNewEntries := Iter.toArray(usersNew.entries())
   };
 
   system func postupgrade() {
-    usersEntries := []
+    usersEntries := [];
+    usersNewEntries := []
   }
 }

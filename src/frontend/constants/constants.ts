@@ -17,6 +17,7 @@ export const HOST = "https://icp0.io"
 
 // canister ids
 export const BACKEND_CANISTER_ID_IC = "nrkmt-haaaa-aaaai-qagmq-cai"
+export const USERS_CANISTER_ID_IC = "dnqgz-fyaaa-aaaag-abxia-cai"
 export const PROPOSALS_CANISTER_ID_IC = "bqnir-wqaaa-aaaag-abxhq-cai"
 export const NFT_CANISTER_ID_IC = "dtlqp-nqaaa-aaaak-abwna-cai"
 export const ICP_LEDGER_CANISTER_ID_IC = "ryjl3-tyaaa-aaaaa-aaaba-cai"

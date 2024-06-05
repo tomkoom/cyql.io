@@ -2,12 +2,11 @@ import React, { createContext, useContext, useState, useEffect } from "react"
 import { AuthClient } from "@dfinity/auth-client"
 import { HttpAgent, Actor } from "@dfinity/agent"
 import { Principal } from "@dfinity/principal"
-import { createActor } from "../../declarations/backend/index"
-import { _SERVICE } from "../../declarations/backend/backend.did"
 
 import {
   APP_DERIVATION_ORIGIN,
   BACKEND_CANISTER_ID_IC,
+  USERS_CANISTER_ID_IC,
   PROPOSALS_CANISTER_ID_IC,
   NFT_CANISTER_ID_IC,
   ICP_LEDGER_CANISTER_ID_IC,
@@ -16,9 +15,17 @@ import {
 import { isCustomDomain } from "@/utils/isCustomDomain"
 import { getAccountIdHex } from "@/utils/getAccountIdHex"
 
+// curated projects
+import { _SERVICE } from "../../declarations/backend/backend.did"
+import * as CuratedProjects from "../../declarations/backend/index"
+
+// users
+import { _SERVICE as USERS_SERVICE } from "../../declarations/users/users.did"
+import * as Users from "../../declarations/users/index"
+
 // proposals
 import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
-import { idlFactory as PROPOSALS_IDL } from "@/idl/proposals.did"
+import * as Proposals from "../../declarations/proposals/index"
 
 // nft
 import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
@@ -33,12 +40,15 @@ interface AuthContextValue {
   userPrincipal: Principal
   accounntIdHex: string
   userId: string
+  login: () => Promise<void>
+  logout: () => Promise<void>
+
+  // actors
   actor: _SERVICE
+  users: USERS_SERVICE
   proposals: PROPOSALS_SERVICE
   nft: NFT_SERVICE
   icp: ICP_LEDGER_SERVICE
-  login: () => Promise<void>
-  logout: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextValue>(null)
@@ -54,10 +64,13 @@ function AuthProvider({ children }) {
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)
   const [accounntIdHex, setAccounntIdHex] = useState<string>("")
   const [userId, setUserId] = useState<string>("")
-  const [actor, setActor] = useState<_SERVICE>(null)
-  const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null)
-  const [nft, setNft] = useState<NFT_SERVICE>(null)
-  const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null)
+
+  // actors
+  const [actor, setActor] = useState<_SERVICE>(null) // curated projects
+  const [users, setUsers] = useState<USERS_SERVICE>(null) // users
+  const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null) // proposals
+  const [nft, setNft] = useState<NFT_SERVICE>(null) // nft
+  const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null) // icp ledger
 
   const init = (): void => {
     resetii()
@@ -74,7 +87,9 @@ function AuthProvider({ children }) {
     let userPrincipal: Principal = null
     let accounntIdHex: string = ""
     let userId: string = ""
+    // actors
     let actor: _SERVICE = null
+    let users: USERS_SERVICE = null
     let proposals: PROPOSALS_SERVICE = null
     let nft: NFT_SERVICE = null
     let icp: ICP_LEDGER_SERVICE = null
@@ -91,15 +106,19 @@ function AuthProvider({ children }) {
       identity,
     })
 
-    // main
-    actor = createActor(BACKEND_CANISTER_ID_IC, {
+    // curated projects
+    actor = CuratedProjects.createActor(BACKEND_CANISTER_ID_IC, {
+      agent,
+    })
+
+    // users
+    users = Users.createActor(USERS_CANISTER_ID_IC, {
       agent,
     })
 
     // proposals
-    proposals = Actor.createActor(PROPOSALS_IDL, {
+    proposals = Proposals.createActor(PROPOSALS_CANISTER_ID_IC, {
       agent,
-      canisterId: PROPOSALS_CANISTER_ID_IC,
     })
 
     // nft
@@ -119,7 +138,10 @@ function AuthProvider({ children }) {
     setUserPrincipal(userPrincipal)
     setAccounntIdHex(accounntIdHex)
     setUserId(userId)
+
+    // actors
     setActor(actor)
+    setUsers(users)
     setProposals(proposals)
     setNft(nft)
     setIcp(icp)
@@ -151,7 +173,9 @@ function AuthProvider({ children }) {
     userPrincipal,
     accounntIdHex,
     userId,
+    // actors
     actor,
+    users,
     proposals,
     nft,
     icp,

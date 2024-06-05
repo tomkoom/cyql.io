@@ -18,7 +18,7 @@ const Controls: FC = (): JSX.Element => {
       console.log("added / updated")
       console.log(project)
       await refreshById(project.id)
-      await refreshAll()
+      // await refreshAll()
     } catch (error) {
       throw new Error(error)
     }
