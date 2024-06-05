@@ -20,12 +20,12 @@ const Tabs: FC = (): JSX.Element => {
 
   return (
     <TabsStyled>
-      <li style={tab === "wallet" ? activeStyle : null} onClick={() => updateTab("wallet")}>
-        Wallet
-      </li>
-
       <li style={tab === "upvotes" ? activeStyle : null} onClick={() => updateTab("upvotes")}>
         Upvotes
+      </li>
+
+      <li style={tab === "wallet" ? activeStyle : null} onClick={() => updateTab("wallet")}>
+        Wallet
       </li>
     </TabsStyled>
   )

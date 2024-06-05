@@ -14,7 +14,7 @@ const Profile: FC = (): JSX.Element => {
       <Header />
       <Id />
       <Tabs />
-      {tab === "wallet" ? <Wallet /> : <Upvotes />}
+      {tab === "upvotes" ? <Upvotes /> : <Wallet />}
     </ProfileStyled>
   )
 }

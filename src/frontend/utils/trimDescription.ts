@@ -8,7 +8,11 @@ export const trimDescription = (s: string, length: number = 40): string => {
   trimmed = trimmed.substring(0, Math.min(trimmed.length, trimmed.lastIndexOf(" ")))
 
   // remove comma in the end
-  trimmed = trimmed.replace(/,(?=[^,]*$)/, "")
+  // trimmed = trimmed.replace(/,(?=[^,]*$)/, "")
+
+  // remove symbols in the end of string
+  if (trimmed.charAt(trimmed.length - 1) === ",") trimmed = trimmed.slice(0, -1)
+  if (trimmed.charAt(trimmed.length - 1) === ":") trimmed = trimmed.slice(0, -1)
 
   return trimmed + "…"
 }

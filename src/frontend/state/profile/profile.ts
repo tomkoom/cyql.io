@@ -8,7 +8,7 @@ interface ProfileState {
 }
 
 const initialState: ProfileState = {
-  tab: "wallet",
+  tab: "upvotes",
   upvotedProjects: [],
 }
 

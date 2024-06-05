@@ -14,6 +14,10 @@ const Header: FC = (): JSX.Element => {
   )
 }
 
-const HeaderStyled = styled.div``
+const HeaderStyled = styled.div`
+  > p {
+    color: var(--tertiaryColor);
+  }
+`
 
 export default Header
