@@ -39,6 +39,9 @@ import home from "./home/home"
 // admin
 import admin from "./admin/admin"
 
+// profile
+import profile from "./profile/profile"
+
 const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -85,6 +88,9 @@ const store = configureStore({
 
     // admin
     admin,
+
+    // profile
+    profile,
   },
 })
 

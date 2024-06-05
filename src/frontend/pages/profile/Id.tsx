@@ -40,11 +40,10 @@ const Id: FC = (): JSX.Element => {
 }
 
 const IdStyled = styled.ul`
-  text-align: left;
   width: 100%;
   display: flex;
+  gap: 2px;
   flex-wrap: wrap;
-  gap: 1rem;
 
   > li.id_item {
     flex: 1;
