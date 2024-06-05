@@ -36,7 +36,7 @@ const Summary: FC = (): JSX.Element => {
       </p>
 
       <p>
-        Authed users since 05.06.2024: <span className="num">{users.length.toString() || "..."}</span>
+        Unique authed users since 05.06.2024: <span className="num">{users.length.toString() || "..."}</span>
       </p>
 
       {/* <p>
