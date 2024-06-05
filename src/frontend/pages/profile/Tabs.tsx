@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Tabs } from "@/state/profile/profile"
+import type { Tabs } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"

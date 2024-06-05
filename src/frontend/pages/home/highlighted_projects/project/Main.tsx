@@ -3,6 +3,7 @@ import styled from "styled-components"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { iGithub, iCircleNodes } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui/_index"
+import { trimDescription } from "@/utils/_index"
 
 interface MainProps {
   project: Project
@@ -14,21 +15,6 @@ const Main: FC<MainProps> = ({ project }): JSX.Element => {
 
   const trimName = (s: string): string => {
     return s.length > 40 ? `${s.substring(0, 40)}…` : s
-  }
-
-  const trimDescription = (s: string): string => {
-    const maxLength = 40
-
-    // trim the string to the maximum length
-    let trimmed = s.substring(0, maxLength)
-
-    // re-trim if we are in the middle of a word
-    trimmed = trimmed.substring(0, Math.min(trimmed.length, trimmed.lastIndexOf(" ")))
-
-    // remove comma in the end
-    trimmed = trimmed.replace(/,(?=[^,]*$)/, "")
-
-    return trimmed + "…"
   }
 
   return (

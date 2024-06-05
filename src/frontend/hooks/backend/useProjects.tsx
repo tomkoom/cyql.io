@@ -15,8 +15,10 @@ import { setProject } from "@/state/project"
 import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
+import { setProfileUpvotedProjects } from "@/state/profile/profile"
 
 interface UseBackend {
+  refreshUserUpvotedProjects: () => Promise<void>
   refreshCategories: () => Promise<void>
   refreshAll: () => Promise<void>
   refreshPaginated: (queryParams: QueryParams) => Promise<void>
@@ -34,6 +36,18 @@ export const useProjects = (): UseBackend => {
   const locationPathname = useLocation().pathname
   const { actor, userId } = useAuth()
   const { updateQueryParams } = useQueryParams()
+
+  const refreshUserUpvotedProjects = async (): Promise<void> => {
+    if (!actor) return
+
+    try {
+      const res = await actor.getUserUpvotedProjects(KEY)
+      const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
+      dispatch(setProfileUpvotedProjects(serialized))
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 
   const refreshCategories = async (): Promise<void> => {
     if (!actor) return
@@ -231,6 +245,7 @@ export const useProjects = (): UseBackend => {
   }
 
   return {
+    refreshUserUpvotedProjects,
     refreshCategories,
     refreshAll,
     refreshPaginated,

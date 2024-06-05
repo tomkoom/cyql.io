@@ -6,6 +6,7 @@ export type Option = [] | [boolean]
 export type CategoryLabel = string
 export type Category = { id: string; lbl: CategoryLabel }
 export type CategoryWithSize = { category: Category; size: number }
+export type Tabs = "upvotes" | "wallet"
 
 // query params
 

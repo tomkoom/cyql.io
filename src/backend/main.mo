@@ -139,6 +139,23 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Buffer.toArray(buff)
   };
 
+  public shared query ({ caller }) func getUserUpvotedProjects(apiKey : T.ApiKey) : async [T.Project] {
+    assert (secret == apiKey);
+    let activeProjects = _getActiveProjects();
+    let sortedByNewest = Handle.sort(activeProjects, #newest_first);
+    let userId = Principal.toText(caller);
+
+    let filter = func(x : T.Project) : Bool {
+      let idx = Array.indexOf<Text>(userId, x.upvotedBy, func(a : Text, b : Text) : Bool { a == b });
+      switch (idx) {
+        case (null) return false;
+        case (?some) return true
+      }
+    };
+
+    return Array.filter(sortedByNewest, filter)
+  };
+
   // filter, sort, paginate
 
   public query func getProjects(args : T.GetProjectsArgs) : async ?T.GetProjectsResult {
@@ -179,8 +196,8 @@ shared actor class _CURATED_PROJECTS() = Self {
   public query func getNewProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
-    let sorted = Handle.sort(activeProjects, #newest_first);
-    let sliced = Array.slice(sorted, 0, length);
+    let sortedByNewest = Handle.sort(activeProjects, #newest_first);
+    let sliced = Array.slice(sortedByNewest, 0, length);
     return Iter.toArray<T.Project>(sliced)
   };
 
@@ -188,8 +205,8 @@ shared actor class _CURATED_PROJECTS() = Self {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
-    let sorted = Handle.sort(filteredByCategory, #newest_first);
-    let sliced = Array.slice(sorted, 0, length);
+    let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
+    let sliced = Array.slice(sortedByNewest, 0, length);
     return Iter.toArray<T.Project>(sliced)
   };
 
