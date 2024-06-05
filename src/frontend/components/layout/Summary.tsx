@@ -6,14 +6,17 @@ import { Change } from "@/components/ui/price/_index"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectActiveProjectsNum } from "@/state/curatedProjects"
-import { selectProposalsNum } from "@/state/dao/proposals"
+// import { selectProposalsNum } from "@/state/dao/proposals"
 import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/icpPrice"
 import { fetchIcpPrice } from "@/state/icpPrice"
+import { selectUsers } from "@/state/users"
 
 const Summary: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
   const curatedNum = useAppSelector(selectActiveProjectsNum)
-  const proposedNum = useAppSelector(selectProposalsNum)
+  // const proposedNum = useAppSelector(selectProposalsNum)
+  const users = useAppSelector(selectUsers).users
+
   // icp price
   const price = useAppSelector(selectIcpPrice)
   const change = useAppSelector(selectIcp24hPriceChange)
@@ -29,7 +32,11 @@ const Summary: FC = (): JSX.Element => {
   return (
     <SummaryStyled>
       <p>
-        Curated Projects: <span className="num">{curatedNum.toString() || "..."}</span>
+        Curated projects: <span className="num">{curatedNum.toString() || "..."}</span>
+      </p>
+
+      <p>
+        Authed users since 05.06.2024: <span className="num">{users.length.toString() || "..."}</span>
       </p>
 
       {/* <p>

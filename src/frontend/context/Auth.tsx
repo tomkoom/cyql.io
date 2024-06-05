@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react"
 import { AuthClient } from "@dfinity/auth-client"
 import { HttpAgent, Actor } from "@dfinity/agent"
 import { Principal } from "@dfinity/principal"
-
+import { isCustomDomain, getAccountIdHex } from "@/utils/_index"
 import {
   APP_DERIVATION_ORIGIN,
   BACKEND_CANISTER_ID_IC,
@@ -12,8 +12,6 @@ import {
   ICP_LEDGER_CANISTER_ID_IC,
   HOST,
 } from "@/constants/constants"
-import { isCustomDomain } from "@/utils/isCustomDomain"
-import { getAccountIdHex } from "@/utils/getAccountIdHex"
 
 // curated projects
 import { _SERVICE } from "../../declarations/backend/backend.did"
@@ -87,6 +85,7 @@ function AuthProvider({ children }) {
     let userPrincipal: Principal = null
     let accounntIdHex: string = ""
     let userId: string = ""
+
     // actors
     let actor: _SERVICE = null
     let users: USERS_SERVICE = null

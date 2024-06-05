@@ -1,8 +1,6 @@
 import React, { FC, useEffect } from "react"
 import { RouterProvider } from "react-router-dom"
 import { Router } from "@/routes/_index"
-
-// hooks
 import { useAuth } from "@/context/Auth"
 import { useNft, useIcpLedger } from "@/hooks/_index"
 
@@ -24,8 +22,6 @@ const App: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (!isAuthenticated) return
-
-    // close sign-in modal
     dispatch(setSignInModalIsOpen(false))
   }, [isAuthenticated])
 

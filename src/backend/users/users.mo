@@ -5,47 +5,30 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 
 // ...
-import T "./users_types";
+import T "../main_types";
+import UT "./users_types";
 import U "../utils";
+import Constants "../_constants";
 
 actor {
 
+  private stable var secret : T.ApiKey = "";
+  let adminPrincipal = Principal.fromText(Constants.adminId);
+
   // maps
 
-  stable var usersEntries : [(T.UserId, T.User)] = [];
-  let users = HashMap.fromIter<T.UserId, T.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
+  stable var usersEntries : [(UT.UserId, UT.User)] = [];
+  let users = HashMap.fromIter<UT.UserId, UT.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
 
-  stable var usersNewEntries : [(T.UserIdNew, T.UserNew)] = [];
-  let usersNew = HashMap.fromIter<T.UserIdNew, T.UserNew>(usersNewEntries.vals(), 10, Text.equal, Text.hash);
+  stable var usersNewEntries : [(UT.UserIdNew, UT.UserNew)] = [];
+  let usersNew = HashMap.fromIter<UT.UserIdNew, UT.UserNew>(usersNewEntries.vals(), 10, Text.equal, Text.hash);
 
   // -- manage --
 
-  public shared ({ caller }) func registerUser() : async ?Text {
+  public shared ({ caller }) func register(apiKey : T.ApiKey) : async ?Text {
     assert (not U.isAnon(caller));
+    assert (secret == apiKey);
 
-    switch (users.get(caller)) {
-      case (?u) return null;
-      case null {
-        let user = {
-          id = Principal.toText(caller);
-          registeredAt = Time.now();
-          votedTimes = 0;
-          totalVotingPowerApplied = 0
-        };
-        users.put(caller, user);
-        return ?user.id
-      }
-    }
-  };
-
-  public query func getUser(userId : T.UserId) : async ?T.User {
-    return users.get(userId)
-  };
-
-  // new
-
-  public shared ({ caller }) func registerUserNew() : async ?Text {
-    assert (not U.isAnon(caller));
     let userId = Principal.toText(caller);
 
     switch (usersNew.get(userId)) {
@@ -63,16 +46,30 @@ actor {
     }
   };
 
-  public query func getUserNew(userId : T.UserIdNew) : async ?T.UserNew {
+  public query func getById(apiKey : T.ApiKey, userId : UT.UserIdNew) : async ?UT.UserNew {
+    assert (secret == apiKey);
     return usersNew.get(userId)
   };
 
   // query
 
-  public shared query ({ caller }) func listUsers() : async [T.UserNew] {
-    assert (U.isAdmin(caller));
-    let iter : Iter.Iter<T.UserNew> = usersNew.vals();
-    return Iter.toArray<T.UserNew>(iter)
+  public query func listUsers(apiKey : T.ApiKey) : async [UT.UserNew] {
+    assert (secret == apiKey);
+    let iter : Iter.Iter<UT.UserNew> = usersNew.vals();
+    return Iter.toArray<UT.UserNew>(iter)
+  };
+
+  // admin
+
+  public shared query ({ caller }) func showApiKey() : async Text {
+    assert (caller == adminPrincipal);
+    return secret
+  };
+
+  public shared ({ caller }) func updateApiKey(newApiKey : T.ApiKey) : async Text {
+    assert (caller == adminPrincipal);
+    secret := newApiKey;
+    return "ok"
   };
 
   // test

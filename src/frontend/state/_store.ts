@@ -9,6 +9,7 @@ import user from "./user"
 import listProject from "./listProject"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
 import project from "./project"
+import users from "./users"
 
 // icrc scan
 import icrcTransactions from "./icrc_scan/icrcTransactions"
@@ -59,6 +60,7 @@ const store = configureStore({
     listProject,
     proposedProjectCategories,
     project,
+    users,
 
     // icrc scan
     icrcTransactions,

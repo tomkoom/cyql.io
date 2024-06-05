@@ -6,7 +6,7 @@ import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
 import { LoadingModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { useProjects, useNav, useScrollLock } from "@/hooks/_index"
+import { useProjects, useNav, useScrollLock, useUsers } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
 
 // state
@@ -27,40 +27,48 @@ const toasterStyle = {
 
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
-  const { isAuthenticated, actor } = useAuth()
+  const { isAuthenticated, actor, users } = useAuth()
   const { refreshCategories, refreshNew, refreshHighligted, refreshMostUpvoted, refreshActiveNum } = useProjects()
   // const { refreshProposals } = useProposals()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
+  const { registerUser, listUsers } = useUsers()
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectIsLoading)
   const isSignInModalOpen = useAppSelector(selectSignInModalIsOpen)
   const newProjects = useAppSelector(selectHome).new
 
   // refresh data
-  const refresh = async (): Promise<void> => {
+  const init = async (): Promise<void> => {
     try {
-      await refreshCategories()
-      // await refreshProposals()
-      await refreshActiveNum()
-      await refreshNew()
-      await refreshMostUpvoted()
-      await refreshHighligted("Tokens")
-      await refreshHighligted("dApps")
-      await refreshHighligted("Social Networks")
-      await refreshHighligted("Marketplace", 8)
-      await refreshHighligted("Games")
-      await refreshHighligted("DeFi")
-      await refreshHighligted("NFTs")
+      const promises = [
+        refreshActiveNum(),
+        refreshCategories(),
+        refreshNew(),
+        refreshMostUpvoted(),
+        refreshHighligted("Tokens"),
+        refreshHighligted("dApps"),
+        refreshHighligted("Social Networks"),
+        refreshHighligted("Marketplace", 8),
+        refreshHighligted("Games"),
+        refreshHighligted("DeFi"),
+        refreshHighligted("NFTs"),
+
+        // users
+        registerUser(),
+        listUsers(),
+      ]
+
+      Promise.allSettled(promises)
     } catch (error) {
       throw new Error(error)
     }
   }
 
   useEffect(() => {
-    if (!actor) return
-    refresh()
-  }, [actor])
+    if (!actor || !users) return
+    init()
+  }, [actor, users])
 
   // ...
 
