@@ -191,7 +191,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return ?res
   };
 
-  // homepage
+  // query homepage
 
   public query func getNewProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
     assert (secret == apiKey);
@@ -207,6 +207,14 @@ shared actor class _CURATED_PROJECTS() = Self {
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
     let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
     let sliced = Array.slice(sortedByNewest, 0, length);
+    return Iter.toArray<T.Project>(sliced)
+  };
+
+  public query func getMostUpvotedProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
+    assert (secret == apiKey);
+    let activeProjects = _getActiveProjects();
+    let sortedByMostUpvoted = Handle.sort(activeProjects, #most_upvoted);
+    let sliced = Array.slice(sortedByMostUpvoted, 0, length);
     return Iter.toArray<T.Project>(sliced)
   };
 

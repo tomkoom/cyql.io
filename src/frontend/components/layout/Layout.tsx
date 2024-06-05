@@ -28,7 +28,7 @@ const toasterStyle = {
 const Layout: FC = (): JSX.Element => {
   const location = useLocation()
   const { isAuthenticated, actor } = useAuth()
-  const { refreshCategories, refreshNew, refreshHighligted, refreshActiveNum } = useProjects()
+  const { refreshCategories, refreshNew, refreshHighligted, refreshMostUpvoted, refreshActiveNum } = useProjects()
   // const { refreshProposals } = useProposals()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
@@ -40,17 +40,17 @@ const Layout: FC = (): JSX.Element => {
   // refresh data
   const refresh = async (): Promise<void> => {
     try {
-      const length = 16
       await refreshCategories()
       // await refreshProposals()
       await refreshActiveNum()
       await refreshNew()
-      await refreshHighligted("Tokens", length)
-      await refreshHighligted("dApps", length)
-      await refreshHighligted("Social Networks", length)
-      await refreshHighligted("Games", length)
-      await refreshHighligted("DeFi", length)
-      await refreshHighligted("NFTs", length)
+      await refreshMostUpvoted()
+      await refreshHighligted("Tokens")
+      await refreshHighligted("dApps")
+      await refreshHighligted("Social Networks")
+      await refreshHighligted("Games")
+      await refreshHighligted("DeFi")
+      await refreshHighligted("NFTs")
     } catch (error) {
       throw new Error(error)
     }

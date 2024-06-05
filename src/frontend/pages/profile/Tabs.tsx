@@ -37,6 +37,7 @@ const TabsStyled = styled.ul`
   align-items: center;
   gap: 2px;
   font-size: var(--fsText);
+  font-weight: var(--fwBold);
 
   > li {
     flex: 1;

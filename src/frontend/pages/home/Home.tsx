@@ -17,6 +17,7 @@ const Home: FC = (): JSX.Element => {
   const { toProjects, toList } = useNav()
   const home = useAppSelector(selectHome)
   const newProjects = home.new
+  const mostUpvoted = home.mostUpvoted
   const dapps = home.highlighted.dapps
   const socialNetworks = home.highlighted.social_networks
   const games = home.highlighted.games
@@ -98,6 +99,16 @@ const Home: FC = (): JSX.Element => {
         </Title>
 
         {nfts.length > 0 ? <HighlightedProjects projects={nfts} /> : <Loading />}
+      </Section>
+      <Divider />
+
+      <Section>
+        <Title>
+          <h3>Most Upvoted Projects</h3>
+          <ViewAllBtn route={toProjects} />
+        </Title>
+
+        {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} /> : <Loading />}
       </Section>
       <Divider />
 

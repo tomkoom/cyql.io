@@ -8,7 +8,7 @@ import { updateInProjects, updateInHighlighted, notifySuccess } from "@/utils/_i
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setProject } from "@/state/project"
 import { selectPaginated, setPaginatedData } from "@/state/projects/paginated"
-import { selectHome, setHomeNew, setHomeHighlighted } from "@/state/home/home"
+import { selectHome, setHomeNew, setHomeMostUpvoted, setHomeHighlighted } from "@/state/home/home"
 
 interface useUpvote {
   updateUpvote: (projectId: string, location: string, setIsExploding: Dispatch<SetStateAction<boolean>>, duration: number) => Promise<void>
@@ -22,6 +22,7 @@ export const useUpvote = () => {
   // ...
   const paginatedProjects = useAppSelector(selectPaginated).data
   const newProjects = useAppSelector(selectHome).new
+  const mostUpvoted = useAppSelector(selectHome).mostUpvoted
   const highligted = useAppSelector(selectHome).highlighted
 
   const updateUpvote = async (projectId: string, location: string, setIsExploding: Dispatch<SetStateAction<boolean>>, duration: number): Promise<void> => {
@@ -38,6 +39,7 @@ export const useUpvote = () => {
 
         // update home
         updateInProjects(p, newProjects, setHomeNew)
+        updateInProjects(p, mostUpvoted, setHomeMostUpvoted)
         updateInHighlighted(p, highligted, setHomeHighlighted)
 
         // confetti

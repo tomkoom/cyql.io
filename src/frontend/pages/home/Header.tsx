@@ -14,8 +14,7 @@ const Header: FC = (): JSX.Element => {
     <HeaderStyled>
       <h2>Internet Computer Ecosystem Playground</h2>
       <p>
-        Explore <span onClick={toProjects}>{projectsNum > 0 ? projectsNum : "..."}</span> #ic
-        projects
+        Explore <span onClick={toProjects}>{projectsNum > 0 ? projectsNum : "..."}</span> #ic projects
       </p>
     </HeaderStyled>
   )
@@ -29,12 +28,13 @@ const HeaderStyled = styled.div`
   > h2 {
     font-size: var(--fs1);
     font-weight: var(--fwBlack);
-    line-height: 125%;
+    line-height: 110%;
   }
 
   > p {
     font-size: var(--fs5);
     color: var(--secondaryColor);
+    margin-top: 0.5rem;
 
     > span {
       font-weight: var(--fwBold);

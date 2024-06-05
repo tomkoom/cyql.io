@@ -13,7 +13,7 @@ const promoItems = [
     color: "var(--background)",
     backgroundColor: "#aeea00",
     title: "🪙 Get FLEX 🪙",
-    text: "FLEXY P2P & MEME CURRENCY ON THE INTERNET COMPUTER",
+    text: "FLEXY P2P & MEME CURRENCY ON THE INTERNET COMPUTER.",
     ctaUrl: "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/",
     ctaText: "Get FLEX",
   },
@@ -30,8 +30,7 @@ const promoItems = [
     backgroundColor: "var(--underlay1)",
     title: "Promote your project",
     text: "Promote your project on cyql.io",
-    ctaUrl:
-      "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io",
+    ctaUrl: "https://twitter.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io",
     ctaText: "Contact For Promotion",
   },
 ]
@@ -51,11 +50,7 @@ const Promo: FC = (): JSX.Element => {
 
       <PromoStyled>
         {promoItems.map((promoItem, i) => (
-          <li
-            style={{ color: promoItem.color, backgroundColor: promoItem.backgroundColor }}
-            onClick={() => openModal(promoItem)}
-            key={i}
-          >
+          <li style={{ color: promoItem.color, backgroundColor: promoItem.backgroundColor }} onClick={() => openModal(promoItem)} key={i}>
             {promoItem.title} {iAngleDown}
           </li>
         ))}

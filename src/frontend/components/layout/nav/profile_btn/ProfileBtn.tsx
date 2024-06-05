@@ -1,8 +1,9 @@
 import React, { FC, useState, useEffect, useRef } from "react"
 import styled from "styled-components"
 import { iAngleDown } from "@/components/icons/Icons"
-import { formatId } from "@/utils/format"
+import { formatId } from "@/utils/_index"
 import { useAuth } from "@/context/Auth"
+import { useLocation } from "react-router-dom"
 
 // components
 import { Menu } from "./_index"
@@ -11,6 +12,7 @@ import { Btn } from "@/components/btns/_index"
 const ProfileBtn: FC = (): JSX.Element => {
   const { userId } = useAuth()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const pathname = useLocation().pathname
   const menuRef = useRef(null)
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const ProfileBtn: FC = (): JSX.Element => {
   return (
     <ProfileBtnStyled ref={menuRef}>
       <Btn
-        btnType={"secondary"}
+        btnType={pathname === "/profile" ? "primary" : "secondary"}
         text={formatId(userId)}
         icon={iAngleDown}
         onClick={() => setMenuIsOpen((prev) => !prev)}

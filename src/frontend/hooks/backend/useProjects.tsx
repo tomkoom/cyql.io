@@ -1,16 +1,15 @@
 import { useAuth } from "@/context/Auth"
-import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam } from "@/utils/_index"
+import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam, bigintToNumber, sortCategoriesByNum } from "@/utils/_index"
 import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { KEY } from "@/constants/constants"
 import { useQueryParams } from "@/hooks/_index"
 import { useLocation } from "react-router-dom"
-import { bigintToNumber, sortCategoriesByNum } from "@/utils/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setActiveProjectsNum } from "@/state/curatedProjects"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
-import { setHomeHighlighted, setHomeNew } from "@/state/home/home"
+import { setHomeHighlighted, setHomeNew, setHomeMostUpvoted } from "@/state/home/home"
 import { setProject } from "@/state/project"
 import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
@@ -22,9 +21,14 @@ interface UseBackend {
   refreshCategories: () => Promise<void>
   refreshAll: () => Promise<void>
   refreshPaginated: (queryParams: QueryParams) => Promise<void>
-  refreshNew: () => Promise<void>
-  refreshHighligted: (category: string, length: number) => Promise<void>
+
+  // home
+  refreshNew: (length?: number) => Promise<void>
+  refreshMostUpvoted: (length?: number) => Promise<void>
+  refreshHighligted: (category: string, length?: number) => Promise<void>
   refreshActiveNum: () => Promise<void>
+
+  // ...
   refreshById: (id: string) => Promise<void>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
@@ -146,11 +150,13 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  const refreshNew = async (): Promise<void> => {
+  // homepage
+
+  const refreshNew = async (length: number = 16): Promise<void> => {
     if (!actor) return
 
     try {
-      const res = await actor.getNewProjects(KEY, BigInt(24))
+      const res = await actor.getNewProjects(KEY, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeNew(serialized))
     } catch (error) {
@@ -158,7 +164,19 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  const refreshHighligted = async (category: string, length: number): Promise<void> => {
+  const refreshMostUpvoted = async (length: number = 16): Promise<void> => {
+    if (!actor) return
+
+    try {
+      const res = await actor.getMostUpvotedProjects(KEY, BigInt(length))
+      const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
+      dispatch(setHomeMostUpvoted(serialized))
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const refreshHighligted = async (category: string, length: number = 16): Promise<void> => {
     if (!actor) return
 
     try {
@@ -184,6 +202,8 @@ export const useProjects = (): UseBackend => {
       throw new Error(error)
     }
   }
+
+  // ...
 
   const refreshById = async (id: string): Promise<void> => {
     if (!actor) return
@@ -249,9 +269,14 @@ export const useProjects = (): UseBackend => {
     refreshCategories,
     refreshAll,
     refreshPaginated,
+
+    // home
     refreshNew,
+    refreshMostUpvoted,
     refreshHighligted,
     refreshActiveNum,
+
+    // ...
     refreshById,
 
     // ...

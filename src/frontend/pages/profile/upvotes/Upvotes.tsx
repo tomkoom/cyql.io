@@ -35,7 +35,7 @@ const Upvotes: FC = (): JSX.Element => {
             <div className="left">
               {p.logoDataUrl ? <img src={p.logoDataUrl} alt={`${p.name} logo`} /> : <LogoLetter size="3rem" borderRadius="1.5rem" name={p.name} />}
               <div>
-                <p>{p.name}</p>
+                <p className="name">{p.name}</p>
                 <p className="description">{trimDescription(p.description, 70)}</p>
               </div>
             </div>
@@ -101,6 +101,10 @@ const UpvotesStyled = styled.div`
         }
 
         > div {
+          > p.name {
+            font-weight: var(--fwBold);
+          }
+
           > p.description {
             font-size: var(--fsText);
             color: var(--tertiaryColor);

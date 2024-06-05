@@ -6,11 +6,13 @@ export type HighlightedItem = { [key: string]: Project[] }
 
 interface HomeState {
   new: Project[]
+  mostUpvoted: Project[]
   highlighted: HighlightedItem
 }
 
 const initialState: HomeState = {
   new: [],
+  mostUpvoted: [],
   highlighted: {
     tokens: [],
     nfts: [],
@@ -24,6 +26,9 @@ const home = createSlice({
     setHomeNew(state, { payload }: PayloadAction<Project[]>) {
       state.new = payload
     },
+    setHomeMostUpvoted(state, { payload }: PayloadAction<Project[]>) {
+      state.mostUpvoted = payload
+    },
     setHomeHighlighted(state, { payload }: PayloadAction<HighlightedItem>) {
       const key = Object.keys(payload)[0]
       state.highlighted[key] = payload[key]
@@ -33,5 +38,5 @@ const home = createSlice({
 
 export const selectHome = (state: RootState) => state.home
 
-export const { setHomeNew, setHomeHighlighted } = home.actions
+export const { setHomeNew, setHomeMostUpvoted, setHomeHighlighted } = home.actions
 export default home.reducer
