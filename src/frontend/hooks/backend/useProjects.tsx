@@ -15,6 +15,7 @@ import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
 import { setProfileUpvotedProjects } from "@/state/profile/profile"
+import { setIsLoading } from "@/state/loading"
 
 interface UseBackend {
   refreshUserUpvotedProjects: () => Promise<void>
@@ -28,11 +29,11 @@ interface UseBackend {
   refreshHighligted: (category: string, length?: number) => Promise<void>
 
   // project
-  getRelated: (projectId: ProjectId, length?: number) => Promise<void>
+  getRelated: (projectId: ProjectId, length?: number) => Promise<Project[]>
 
   // ...
   refreshActiveNum: () => Promise<void>
-  refreshById: (id: ProjectId) => Promise<void>
+  refreshById: (id: ProjectId) => Promise<Project>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
   updateCuratedProjectUpvote: (id: ProjectId) => Promise<string>
@@ -155,7 +156,7 @@ export const useProjects = (): UseBackend => {
 
   // homepage
 
-  const refreshNew = async (length: number = 16): Promise<void> => {
+  const refreshNew = async (length: number = 24): Promise<void> => {
     if (!actor) return
 
     try {
@@ -195,20 +196,6 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  // project page
-
-  const getRelated = async (id: ProjectId, length: number = 16): Promise<void> => {
-    if (!actor) return
-
-    try {
-      const res = await actor.getRelatedProjects(KEY, BigInt(id), BigInt(length))
-      const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
-      dispatch(setProjectRelated(serialized))
-    } catch (error) {
-      throw new Error(error)
-    }
-  }
-
   // ...
 
   const refreshActiveNum = async (): Promise<void> => {
@@ -222,16 +209,39 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  const refreshById = async (id: string): Promise<void> => {
+  // project page
+
+  const refreshById = async (id: string): Promise<Project> => {
     if (!actor) return
 
     try {
+      dispatch(setIsLoading(true))
       const res = await actor.getProjectById(KEY, BigInt(id))
       if (res.length > 0) {
-        dispatch(setProject({ ...res[0], id: res[0].id.toString() }))
+        const project = { ...res[0], id: res[0].id.toString() }
+        dispatch(setProject({ ...project, id: project.id.toString() }))
+        return project
       }
     } catch (error) {
       throw new Error(error)
+    } finally {
+      dispatch(setIsLoading(false))
+    }
+  }
+
+  const getRelated = async (id: ProjectId, length: number = 16): Promise<Project[]> => {
+    if (!actor) return
+
+    try {
+      dispatch(setIsLoading(true))
+      const res = await actor.getRelatedProjects(KEY, BigInt(id), BigInt(length))
+      const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
+      // dispatch(setProjectRelated(serialized))
+      return serialized
+    } catch (error) {
+      throw new Error(error)
+    } finally {
+      dispatch(setIsLoading(false))
     }
   }
 

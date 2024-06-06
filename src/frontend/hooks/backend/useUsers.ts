@@ -14,6 +14,7 @@ export const useUsers = () => {
 
     try {
       await users.register(KEY)
+      await users.listUsers(KEY)
     } catch (error) {
       throw new Error(error)
     }

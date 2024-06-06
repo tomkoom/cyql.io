@@ -3,38 +3,57 @@ import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import { useProjects } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
+import type { Project } from "@/state/_types/curated_projects_types"
+import { shuffle2 } from "@/utils/_index"
 
 // components
-import { Loading } from "@/components/ui/_index"
 import { BackBtn } from "@/components/btns/_index"
 import { ShareModal, AdminModal } from "@/modals/_index"
 import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "./_index"
 
 // state
-import { useAppSelector } from "@/hooks/useRedux"
+import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectShareModal } from "@/state/modals/shareModal"
 import { selectAdmin } from "@/state/admin/admin"
-import { selectProject } from "@/state/project"
+import { selectProject, setProject, setProjectRelated } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {
+  const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
   const { actor } = useAuth()
-  const { refreshById } = useProjects()
+  const { refreshById, getRelated } = useProjects()
   const project = useAppSelector(selectProject).project
   const isShareModalOpen = useAppSelector(selectShareModal)
   const isAdminModalOpen = useAppSelector(selectAdmin).isModalOpen
 
+  const refresh = async (id: string) => {
+    try {
+      const project = await refreshById(id)
+      const related = await getRelated(project.id)
+
+      // filter
+      const filtered = related.filter((p) => p.id !== project.id).slice()
+      const shuffled = shuffle2(filtered)
+
+      // set
+      dispatch(setProject(project))
+      dispatch(setProjectRelated(shuffled))
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   useEffect(() => {
-    if (actor && id) {
-      refreshById(id)
+    if (actor) {
+      if (id) {
+        refresh(id)
+      }
     }
   }, [actor, id])
 
   return (
     <ProjectStyled>
-      {!project ? (
-        <Loading />
-      ) : (
+      {!project ? null : (
         <div className="main">
           <AdminModal isOpen={isAdminModalOpen} />
           <BackBtn />

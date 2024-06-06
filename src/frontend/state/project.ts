@@ -22,10 +22,14 @@ const project = createSlice({
     setProjectRelated(state, { payload }: PayloadAction<Project[]>) {
       state.relatedProjects = payload
     },
+    setProjectClear(state) {
+      state.project = initialState.project
+      state.relatedProjects = initialState.relatedProjects
+    },
   },
 })
 
 export const selectProject = (state: RootState) => state.project
 
-export const { setProject, setProjectRelated } = project.actions
+export const { setProject, setProjectRelated, setProjectClear } = project.actions
 export default project.reducer
