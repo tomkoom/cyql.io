@@ -19,29 +19,16 @@ import { selectProject } from "@/state/project"
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
   const { actor } = useAuth()
-  const { refreshById, getRelated } = useProjects()
+  const { refreshById } = useProjects()
   const project = useAppSelector(selectProject).project
   const isShareModalOpen = useAppSelector(selectShareModal)
-  const isOpen = useAppSelector(selectAdmin).isModalOpen
-
-  const refresh = async (id: string): Promise<void> => {
-    try {
-      const promises = [refreshById(id), getRelated(id)]
-      Promise.allSettled(promises)
-    } catch (error) {
-      throw new Error(error)
-    }
-  }
+  const isAdminModalOpen = useAppSelector(selectAdmin).isModalOpen
 
   useEffect(() => {
     if (actor && id) {
-      refresh(id)
+      refreshById(id)
     }
   }, [actor, id])
-
-  if (!id) {
-    return <p style={{ textAlign: "center" }}>Project not found.</p>
-  }
 
   return (
     <ProjectStyled>
@@ -49,7 +36,7 @@ const Project: FC = (): JSX.Element => {
         <Loading />
       ) : (
         <div className="main">
-          <AdminModal isOpen={isOpen} />
+          <AdminModal isOpen={isAdminModalOpen} />
           <BackBtn />
           <div className="content">
             <Header project={project} />

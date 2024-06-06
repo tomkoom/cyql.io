@@ -1,9 +1,8 @@
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import styled from "styled-components"
-import { useNav } from "@/hooks/_index"
+import { useNav, useProjects } from "@/hooks/_index"
 import { shuffle1, trimDescription, trimName } from "@/utils/_index"
-import { LogoLetter } from "@/components/ui/_index"
-import { Loading } from "@/components/ui/_index"
+import { LogoLetter, Loading } from "@/components/ui/_index"
 import type { Project } from "@/state/_types/curated_projects_types"
 
 // state
@@ -12,10 +11,24 @@ import { selectProject } from "@/state/project"
 
 const RelatedProjects: FC = (): JSX.Element => {
   const { toProject } = useNav()
-  const relatedProjects = useAppSelector(selectProject).relatedProjects
-  const copy = relatedProjects.slice()
+  const { getRelated } = useProjects()
+  const [shuffled, setShuffled] = useState<Project[]>([])
+  const project = useAppSelector(selectProject).project
+  const related = useAppSelector(selectProject).relatedProjects
 
-  if (copy.length < 1) {
+  useEffect(() => {
+    if (project) {
+      getRelated(project.id)
+    }
+  }, [project])
+
+  useEffect(() => {
+    if (related.length > 0) {
+      setShuffled(shuffle1(related.slice()))
+    }
+  }, [related])
+
+  if (related.length < 1) {
     return <Loading />
   }
 
@@ -24,21 +37,19 @@ const RelatedProjects: FC = (): JSX.Element => {
       <h4>More Related Projects</h4>
 
       <ul className="grid">
-        {shuffle1(copy)
-          .slice(0, 12)
-          .map((p: Project) => (
-            <li key={p.id} onClick={() => toProject(p.id)}>
-              <div>
-                {p.logoDataUrl ? <img src={p.logoDataUrl} alt={`${p.name} logo`} /> : <LogoLetter size="4.5rem" borderRadius="2.25rem" name={p.name} />}
+        {shuffled.slice(0, 12).map((p: Project) => (
+          <li key={p.id} onClick={() => toProject(p.id)}>
+            <div>
+              {p.logoDataUrl ? <img src={p.logoDataUrl} alt={`${p.name} logo`} /> : <LogoLetter size="4.5rem" borderRadius="2.25rem" name={p.name} />}
 
-                <div>
-                  <p className="name">{trimName(p.name)}</p>
-                  <p className="category">{p.category.join(", ").toLowerCase()}</p>
-                  <p className="description">{trimDescription(p.description)}</p>
-                </div>
+              <div>
+                <p className="name">{trimName(p.name)}</p>
+                <p className="category">{p.category.join(", ").toLowerCase()}</p>
+                <p className="description">{trimDescription(p.description)}</p>
               </div>
-            </li>
-          ))}
+            </div>
+          </li>
+        ))}
       </ul>
     </RelatedProjectsStyled>
   )
@@ -64,7 +75,7 @@ const RelatedProjectsStyled = styled.div`
       > div {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
 
         > img {
           width: 4.5rem;
@@ -77,7 +88,7 @@ const RelatedProjectsStyled = styled.div`
         > div {
           > p.name {
             font-weight: var(--fwBold);
-            line-height: 125%;
+            line-height: 150%;
           }
 
           > p.category {

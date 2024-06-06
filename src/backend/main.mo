@@ -218,7 +218,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Iter.toArray<T.Project>(sliced)
   };
 
-  // project page
+  // project
 
   public query func getRelatedProjects(apiKey : T.ApiKey, projectId : T.ProjectId, length : T.Length) : async [T.Project] {
     assert (secret == apiKey);
