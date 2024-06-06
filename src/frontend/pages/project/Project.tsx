@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react"
+import React, { FC, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
 import { useProjects } from "@/hooks/_index"
@@ -22,18 +22,19 @@ const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
   const { actor } = useAuth()
   const { refreshById, getRelated } = useProjects()
+  const [projectId, setProjectId] = useState<string>("")
   const project = useAppSelector(selectProject).project
   const isShareModalOpen = useAppSelector(selectShareModal)
   const isAdminModalOpen = useAppSelector(selectAdmin).isModalOpen
 
-  const refresh = async (id: string) => {
+  const refreshData = async (id: string) => {
     try {
       const project = await refreshById(id)
       const related = await getRelated(project.id)
 
       // filter
-      const filtered = related.filter((p) => p.id !== project.id).slice()
-      const shuffled = shuffle2(filtered)
+      const filtered = related.filter((p) => p.id !== project.id)
+      const shuffled = shuffle2(filtered.slice())
 
       // set
       dispatch(setProject(project))
@@ -44,9 +45,15 @@ const Project: FC = (): JSX.Element => {
   }
 
   useEffect(() => {
+    if (projectId) {
+      refreshData(projectId)
+    }
+  }, [projectId])
+
+  useEffect(() => {
     if (actor) {
       if (id) {
-        refresh(id)
+        setProjectId(id)
       }
     }
   }, [actor, id])
