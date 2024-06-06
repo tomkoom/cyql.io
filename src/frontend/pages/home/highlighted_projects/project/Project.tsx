@@ -17,7 +17,7 @@ const Project: FC<ProjectProps> = ({ project }): JSX.Element => {
 
   return (
     <ProjectStyled onClick={() => openProject(project.id)}>
-      <Logo name={project.name} logo={project.logoDataUrl || project.logoUrl} />
+      <Logo name={project.name} logo={project.logoDataUrl} />
       <Main project={project} />
     </ProjectStyled>
   )

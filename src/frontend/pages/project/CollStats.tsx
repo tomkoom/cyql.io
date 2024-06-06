@@ -9,6 +9,10 @@ interface CollStatsProps {
 const CollStats: FC<CollStatsProps> = ({ project }) => {
   const { nftSaleDate, nftUnits, nftUnitPrice } = project
 
+  if (!project.category.includes("NFTs")) {
+    return null
+  }
+
   return (
     <CollStatsStyled>
       <h5>Collection Stats</h5>

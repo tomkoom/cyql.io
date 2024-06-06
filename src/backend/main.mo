@@ -9,6 +9,7 @@ import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Array "mo:base/Array";
 import Bool "mo:base/Bool";
+import Order "mo:base/Order";
 
 // ...
 import T "./main_types";
@@ -141,8 +142,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   public shared query ({ caller }) func getUserUpvotedProjects(apiKey : T.ApiKey) : async [T.Project] {
     assert (secret == apiKey);
-    let activeProjects = _getActiveProjects();
-    let sortedByNewest = Handle.sort(activeProjects, #newest_first);
+    let sortedByNewest = Handle.sort(_getActiveProjects(), #newest_first);
     let userId = Principal.toText(caller);
 
     let filter = func(x : T.Project) : Bool {
@@ -191,7 +191,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return ?res
   };
 
-  // query homepage
+  // homepage
 
   public query func getNewProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
     assert (secret == apiKey);
@@ -216,6 +216,30 @@ shared actor class _CURATED_PROJECTS() = Self {
     let sortedByMostUpvoted = Handle.sort(activeProjects, #most_upvoted);
     let sliced = Array.slice(sortedByMostUpvoted, 0, length);
     return Iter.toArray<T.Project>(sliced)
+  };
+
+  // project page
+
+  public query func getRelatedProjects(apiKey : T.ApiKey, projectId : T.ProjectId, length : T.Length) : async [T.Project] {
+    assert (secret == apiKey);
+    let activeProjects = _getActiveProjects();
+    let ?project = projects.get(projectId) else return [];
+    let categories = project.category;
+    let buf = Buffer.Buffer<T.Project>(10);
+
+    for (c in categories.vals()) {
+      let filtered = Handle.filterByCategory(activeProjects, c);
+      buf.append(Buffer.fromArray<T.Project>(filtered))
+    };
+
+    let compare = func(a : T.Project, b : T.Project) : Order.Order {
+      if (a.id > b.id) return #greater;
+      if (a.id < b.id) return #less;
+      return #equal
+    };
+
+    Buffer.removeDuplicates<T.Project>(buf, compare);
+    return Buffer.toArray<T.Project>(buf)
   };
 
   // admin

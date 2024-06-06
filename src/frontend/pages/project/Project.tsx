@@ -1,6 +1,5 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
-import { device } from "@/styles/breakpoints"
 import { useParams } from "react-router-dom"
 import { useProjects } from "@/hooks/_index"
 import { useAuth } from "@/context/Auth"
@@ -8,9 +7,8 @@ import { useAuth } from "@/context/Auth"
 // components
 import { Loading } from "@/components/ui/_index"
 import { BackBtn } from "@/components/btns/_index"
-import { ShareModal } from "@/modals/_index"
-import { CollStats, Description, Disclaimer, Header, Links, Meta, NftBtns, NftPreviews } from "./_index"
-import { AdminModal } from "@/modals/_index"
+import { ShareModal, AdminModal } from "@/modals/_index"
+import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "./_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -21,24 +19,23 @@ import { selectProject } from "@/state/project"
 const Project: FC = (): JSX.Element => {
   const { id } = useParams<{ id: string }>()
   const { actor } = useAuth()
-  const { refreshById } = useProjects()
-  const project = useAppSelector(selectProject)
+  const { refreshById, getRelated } = useProjects()
+  const project = useAppSelector(selectProject).project
   const isShareModalOpen = useAppSelector(selectShareModal)
   const isOpen = useAppSelector(selectAdmin).isModalOpen
 
   const refresh = async (id: string): Promise<void> => {
     try {
-      await refreshById(id)
+      const promises = [refreshById(id), getRelated(id)]
+      Promise.allSettled(promises)
     } catch (error) {
       throw new Error(error)
     }
   }
 
   useEffect(() => {
-    if (actor) {
-      if (id) {
-        refresh(id)
-      }
+    if (actor && id) {
+      refresh(id)
     }
   }, [actor, id])
 
@@ -46,47 +43,43 @@ const Project: FC = (): JSX.Element => {
     return <p style={{ textAlign: "center" }}>Project not found.</p>
   }
 
-  if (!project) {
-    return <Loading />
-  }
-
   return (
     <ProjectStyled>
-      <AdminModal isOpen={isOpen} />
-      <BackBtn />
+      {!project ? (
+        <Loading />
+      ) : (
+        <div className="main">
+          <AdminModal isOpen={isOpen} />
+          <BackBtn />
+          <div className="content">
+            <Header project={project} />
+            <Description name={project.name} description={project.description} />
+            <NftPreviews project={project} />
+            <CollStats project={project} />
+            <Links project={project} />
+            <Meta project={project} />
+            <Disclaimer />
 
-      <Content key={project.id}>
-        <Header project={project} />
-        <Description name={project.name} description={project.description} />
-        <NftPreviews project={project} />
-        {project.category.includes("NFTs") && <CollStats project={project} />}
+            {/* modal */}
+            <ShareModal isOpen={isShareModalOpen} id={project.id} name={project.name} category={project.category} description={project.description} />
+          </div>
+        </div>
+      )}
 
-        {/* nft links */}
-        {/* {(project.nft_market || project.nft_rarity) && (
-            <NftBtns nftMarket={project.nft_market} nftRarity={project.nft_rarity} />
-          )} */}
-
-        <Links project={project} />
-        <Meta project={project} />
-        <Disclaimer />
-
-        <ShareModal isOpen={isShareModalOpen} id={project.id} name={project.name} category={project.category} description={project.description} />
-      </Content>
+      <div className="related_projects">
+        <RelatedProjects />
+      </div>
     </ProjectStyled>
   )
 }
 
 const ProjectStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
   max-width: 1280px;
   width: 100%;
   margin: 0 auto 4rem auto;
-`
-
-const Content = styled.div`
-  @media ${device.laptop} {
-    flex-direction: column;
-    gap: 1rem;
-  }
 `
 
 export default Project

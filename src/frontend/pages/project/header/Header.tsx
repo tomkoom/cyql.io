@@ -35,7 +35,7 @@ const Header: FC<HeaderProps> = ({ project }): JSX.Element => {
   return (
     <HeaderStyled>
       <Main>
-        <Logo logo={project.logoDataUrl || project.logoUrl} name={project.name} />
+        <Logo logo={project.logoDataUrl} name={project.name} />
         <Title project={project} />
       </Main>
 

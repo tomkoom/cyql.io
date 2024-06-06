@@ -4,10 +4,12 @@ import type { Project } from "@/state/_types/curated_projects_types"
 
 interface ProjectState {
   project: Project
+  relatedProjects: Project[]
 }
 
 const initialState: ProjectState = {
   project: null,
+  relatedProjects: [],
 }
 
 const project = createSlice({
@@ -17,10 +19,13 @@ const project = createSlice({
     setProject(state, { payload }: PayloadAction<Project>) {
       state.project = payload
     },
+    setProjectRelated(state, { payload }: PayloadAction<Project[]>) {
+      state.relatedProjects = payload
+    },
   },
 })
 
-export const selectProject = (state: RootState) => state.project.project
+export const selectProject = (state: RootState) => state.project
 
-export const { setProject } = project.actions
+export const { setProject, setProjectRelated } = project.actions
 export default project.reducer

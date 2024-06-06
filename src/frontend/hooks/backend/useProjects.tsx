@@ -10,7 +10,7 @@ import { useAppDispatch } from "@/hooks/useRedux"
 import { setActiveProjectsNum } from "@/state/curatedProjects"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setHomeHighlighted, setHomeNew, setHomeMostUpvoted } from "@/state/home/home"
-import { setProject } from "@/state/project"
+import { setProject, setProjectRelated } from "@/state/project"
 import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
@@ -26,13 +26,16 @@ interface UseBackend {
   refreshNew: (length?: number) => Promise<void>
   refreshMostUpvoted: (length?: number) => Promise<void>
   refreshHighligted: (category: string, length?: number) => Promise<void>
-  refreshActiveNum: () => Promise<void>
+
+  // project
+  getRelated: (projectId: ProjectId, length?: number) => Promise<void>
 
   // ...
-  refreshById: (id: string) => Promise<void>
+  refreshActiveNum: () => Promise<void>
+  refreshById: (id: ProjectId) => Promise<void>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
-  updateCuratedProjectUpvote: (projectId: ProjectId) => Promise<string>
+  updateCuratedProjectUpvote: (id: ProjectId) => Promise<string>
 }
 
 export const useProjects = (): UseBackend => {
@@ -192,6 +195,22 @@ export const useProjects = (): UseBackend => {
     }
   }
 
+  // project page
+
+  const getRelated = async (id: ProjectId, length: number = 16): Promise<void> => {
+    if (!actor) return
+
+    try {
+      const res = await actor.getRelatedProjects(KEY, BigInt(id), BigInt(length))
+      const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
+      dispatch(setProjectRelated(serialized))
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  // ...
+
   const refreshActiveNum = async (): Promise<void> => {
     if (!actor) return
 
@@ -202,8 +221,6 @@ export const useProjects = (): UseBackend => {
       throw new Error(error)
     }
   }
-
-  // ...
 
   const refreshById = async (id: string): Promise<void> => {
     if (!actor) return
@@ -274,9 +291,12 @@ export const useProjects = (): UseBackend => {
     refreshNew,
     refreshMostUpvoted,
     refreshHighligted,
-    refreshActiveNum,
+
+    // project
+    getRelated,
 
     // ...
+    refreshActiveNum,
     refreshById,
 
     // ...

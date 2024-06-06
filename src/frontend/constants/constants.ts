@@ -30,6 +30,7 @@ export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io"
 // links
 export const X_URL = "https://x.com/cyqlio"
 export const DISCORD_URL = "https://discord.gg/AnjyrfvvXX"
+export const GITHUB_URL = "https://github.com/tomkoom/cyql.io"
 export const COOKIE_POLICY = "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
 export const PRICE_URL = "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd&include_24hr_change=true"
 export const ICP_CC_URL = "https://icp-cc.com/"

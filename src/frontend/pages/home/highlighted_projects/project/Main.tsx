@@ -3,7 +3,7 @@ import styled from "styled-components"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { iGithub, iCircleNodes } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui/_index"
-import { trimDescription } from "@/utils/_index"
+import { trimDescription, trimName } from "@/utils/_index"
 
 interface MainProps {
   project: Project
@@ -12,10 +12,6 @@ interface MainProps {
 const Main: FC<MainProps> = ({ project }): JSX.Element => {
   const { name, upvotedBy, category, frontendCanisterId, github, description } = project
   const upvotesNum = upvotedBy.length
-
-  const trimName = (s: string): string => {
-    return s.length > 40 ? `${s.substring(0, 40)}…` : s
-  }
 
   return (
     <MainStyled>
