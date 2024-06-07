@@ -1,28 +1,8 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC } from "react"
 import styled from "styled-components"
-import { twitterUsername } from "@/utils/twitterUsername"
-import { Project } from "@/state/_types/curated_projects_types"
-
-// icons
-import {
-  iLink,
-  iX,
-  iTelegram,
-  iDiscord,
-  iMedium,
-  iGithub,
-  iExternalLink,
-  // iBook,
-  // iScroll,
-} from "@/components/icons/Icons"
-
-interface Link {
-  id: string
-  label: string
-  url: string
-  icon: ReactNode
-  tag: string
-}
+import { twitterUsername } from "@/utils/_index"
+import { Project, Link } from "@/state/_types/curated_projects_types"
+import { iLink, iX, iTelegram, iDiscord, iMedium, iGithub, iExternalLink } from "@/components/icons/Icons"
 
 interface LinkProps {
   project: Project

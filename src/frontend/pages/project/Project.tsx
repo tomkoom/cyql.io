@@ -15,7 +15,7 @@ import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, R
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectShareModal } from "@/state/modals/shareModal"
 import { selectAdmin } from "@/state/admin/admin"
-import { selectProject, setProject, setProjectRelated } from "@/state/project"
+import { selectProject, setProject, setProjectClear, setProjectRelated } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -27,7 +27,7 @@ const Project: FC = (): JSX.Element => {
   const isShareModalOpen = useAppSelector(selectShareModal)
   const isAdminModalOpen = useAppSelector(selectAdmin).isModalOpen
 
-  const refreshData = async (id: string) => {
+  const setProjectData = async (id: string) => {
     try {
       const project = await refreshById(id)
       const related = await getRelated(project.id)
@@ -46,7 +46,9 @@ const Project: FC = (): JSX.Element => {
 
   useEffect(() => {
     if (projectId) {
-      refreshData(projectId)
+      setProjectData(projectId)
+    } else {
+      dispatch(setProjectClear())
     }
   }, [projectId])
 

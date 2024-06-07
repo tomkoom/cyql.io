@@ -10,7 +10,7 @@ import { useAppDispatch } from "@/hooks/useRedux"
 import { setActiveProjectsNum } from "@/state/curatedProjects"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setHomeHighlighted, setHomeNew, setHomeMostUpvoted } from "@/state/home/home"
-import { setProject, setProjectRelated } from "@/state/project"
+import { setProject } from "@/state/project"
 import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
@@ -29,11 +29,11 @@ interface UseBackend {
   refreshHighligted: (category: string, length?: number) => Promise<void>
 
   // project
+  refreshById: (id: ProjectId) => Promise<Project>
   getRelated: (projectId: ProjectId, length?: number) => Promise<Project[]>
 
   // ...
   refreshActiveNum: () => Promise<void>
-  refreshById: (id: ProjectId) => Promise<Project>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
   updateCuratedProjectUpvote: (id: ProjectId) => Promise<string>
@@ -303,11 +303,11 @@ export const useProjects = (): UseBackend => {
     refreshHighligted,
 
     // project
+    refreshById,
     getRelated,
 
     // ...
     refreshActiveNum,
-    refreshById,
 
     // ...
     addCuratedProject,

@@ -26,7 +26,7 @@ const toasterStyle = {
 }
 
 const Layout: FC = (): JSX.Element => {
-  const location = useLocation()
+  const pathname = useLocation().pathname
   const { isAuthenticated, actor, users } = useAuth()
   const { refreshCategories, refreshNew, refreshHighligted, refreshMostUpvoted, refreshActiveNum } = useProjects()
   // const { refreshProposals } = useProposals()
@@ -74,7 +74,7 @@ const Layout: FC = (): JSX.Element => {
 
   // redirect to home if user signed out
   useEffect(() => {
-    if (!isAuthenticated && location.pathname === "/profile") {
+    if (!isAuthenticated && pathname === "/profile") {
       toHome()
     }
   }, [isAuthenticated])

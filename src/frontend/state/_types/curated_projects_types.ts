@@ -1,4 +1,4 @@
-// backend/main_types.mo
+import { ReactNode } from "react"
 
 // ...
 
@@ -7,6 +7,14 @@ export type CategoryLabel = string
 export type Category = { id: string; lbl: CategoryLabel }
 export type CategoryWithSize = { category: Category; size: number }
 export type Tabs = "upvotes" | "wallet"
+
+export interface Link {
+  id: string
+  label: string
+  url: string
+  icon: ReactNode
+  tag: string
+}
 
 // query params
 
