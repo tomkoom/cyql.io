@@ -242,6 +242,16 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Buffer.toArray<T.Project>(buf)
   };
 
+  // admin route
+
+  public query func getProjectsBySearchQ(apiKey : T.ApiKey, searchQ : Text) : async [T.Project] {
+    assert (secret == apiKey);
+    let allProjects = Iter.toArray<T.Project>(projects.vals());
+    let sortedByNewest = Handle.sort(allProjects, #newest_first);
+    let q = Text.toLowercase(searchQ);
+    return Array.filter<T.Project>(sortedByNewest, func(x) { Text.contains(Text.toLowercase(x.name), #text q) })
+  };
+
   // admin
 
   public shared query ({ caller }) func showApiKey() : async Text {

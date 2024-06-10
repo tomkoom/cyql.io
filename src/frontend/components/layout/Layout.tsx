@@ -92,7 +92,7 @@ const Layout: FC = (): JSX.Element => {
       <Toaster
         position={"top-center"}
         toastOptions={{
-          duration: 5000,
+          duration: 4_000,
           style: toasterStyle,
         }}
       />

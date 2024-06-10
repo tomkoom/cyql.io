@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import styled, { css } from "styled-components"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { AdminModal } from "@/modals/_index"
@@ -8,10 +8,13 @@ import { Loading } from "@/components/ui/_index"
 // state
 import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
 import { selectAdmin, setAdminProject, setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
+import { selectPaginated } from "@/state/projects/paginated"
 
 const Projects: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
-  const { allProjects, searchQ, isModalOpen } = useAppSelector(selectAdmin)
+  const [p, setP] = useState<Project[]>([])
+  const { isModalOpen, searchQProjects } = useAppSelector(selectAdmin)
+  const projects = useAppSelector(selectPaginated).data
 
   const editProject = (project: Project): void => {
     dispatch(setAdminProject(project))
@@ -19,7 +22,15 @@ const Projects: FC = (): JSX.Element => {
     dispatch(setAdminIsModalOpen(true))
   }
 
-  if (allProjects.length < 1) {
+  useEffect(() => {
+    if (searchQProjects.length > 0) {
+      setP(searchQProjects)
+    } else {
+      setP(projects)
+    }
+  }, [searchQProjects])
+
+  if (p.length < 1) {
     return <Loading />
   }
 
@@ -39,26 +50,18 @@ const Projects: FC = (): JSX.Element => {
           <span>discord</span>
         </RowHeader>
 
-        {allProjects
-          .filter((project: Project) => {
-            if (searchQ === "") {
-              return project
-            } else if (project.name.toLowerCase().includes(searchQ.toLowerCase())) {
-              return project
-            }
-          })
-          .map((project: Project, i: number) => (
-            <Row key={project.id} onClick={() => editProject(project)}>
-              <span className="num">{allProjects.length - i}</span>
-              <span>{project.id}</span>
-              <span>{project.name && formatStr16(project.name)}</span>
-              <span>{project.archived.toString()}</span>
-              <span>{project.category.join(", ").toLowerCase()}</span>
-              <span>{project.logoUrl && formatWebsite(project.logoUrl)}</span>
-              <span>{project.twitter && twitterUsername(project.twitter)}</span>
-              <span>{project.discord && formatDiscord(project.discord)}</span>
-            </Row>
-          ))}
+        {p.map((project: Project, i: number) => (
+          <Row key={project.id} onClick={() => editProject(project)}>
+            <span className="num">{p.length - i}</span>
+            <span>{project.id}</span>
+            <span>{project.name && formatStr16(project.name)}</span>
+            <span>{project.archived.toString()}</span>
+            <span>{project.category.join(", ").toLowerCase()}</span>
+            <span>{project.logoUrl && formatWebsite(project.logoUrl)}</span>
+            <span>{project.twitter && twitterUsername(project.twitter)}</span>
+            <span>{project.discord && formatDiscord(project.discord)}</span>
+          </Row>
+        ))}
       </Table>
     </div>
   )

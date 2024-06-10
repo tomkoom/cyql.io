@@ -16,7 +16,10 @@ interface AdminState {
   project: Project
   // ...
   allProjects: Project[]
+
+  // ...
   searchQ: string
+  searchQProjects: Project[]
 }
 
 const initialState: AdminState = {
@@ -24,9 +27,13 @@ const initialState: AdminState = {
   isModalOpen: false,
   mode: "add",
   project: projectInitialState,
+
   // ...
   allProjects: [],
+
+  // ...
   searchQ: "",
+  searchQProjects: [],
 }
 
 const admin = createSlice({
@@ -70,6 +77,9 @@ const admin = createSlice({
     setAdminSearchQ(state, { payload }: PayloadAction<string>) {
       state.searchQ = payload
     },
+    setAdminSearchQProjects(state, { payload }: PayloadAction<Project[]>) {
+      state.searchQProjects = payload
+    },
     setAdminCloseModal(state) {
       state.isLoading = false
       state.isModalOpen = false
@@ -94,6 +104,7 @@ export const {
   // ...
   setAdminAllProjects,
   setAdminSearchQ,
+  setAdminSearchQProjects,
   setAdminCloseModal,
 } = admin.actions
 export default admin.reducer

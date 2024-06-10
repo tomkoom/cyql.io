@@ -44,6 +44,7 @@ const IdStyled = styled.ul`
   display: flex;
   gap: 2px;
   flex-wrap: wrap;
+  text-align: left;
 
   > li.id_item {
     flex: 1;
