@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
 import type { Tokens } from "./_types/types"
-// import { Result_1 } from "@/idl/nft_idl_service"
 
 interface UserState {
   accountId: string
@@ -50,6 +49,5 @@ export const selectVotingPower = (state: RootState) => state.user.votingPower
 export const selectNftIdsOwned = (state: RootState) => state.user.nftIdsOwned
 export const selectUserBalanceIcp = (state: RootState) => state.user.balanceIcp
 
-export const { setAccountId, setVotingPower, setNftIdsOwned, setUserBalanceIcp, setClearUser } =
-  user.actions
+export const { setAccountId, setVotingPower, setNftIdsOwned, setUserBalanceIcp, setClearUser } = user.actions
 export default user.reducer

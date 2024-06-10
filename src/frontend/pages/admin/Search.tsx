@@ -13,11 +13,7 @@ const Search: FC = (): JSX.Element => {
     dispatch(setAdminSearchQ(e.target.value))
   }
 
-  return (
-    <div>
-      <TextInput2 placeholder={"Search by project name"} value={searchQ} onChange={setSearch} />
-    </div>
-  )
+  return <TextInput2 placeholder={"Search by project name"} value={searchQ} onChange={setSearch} />
 }
 
 export default Search

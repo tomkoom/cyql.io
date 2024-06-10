@@ -29,7 +29,6 @@ const Layout: FC = (): JSX.Element => {
   const pathname = useLocation().pathname
   const { isAuthenticated, actor, users } = useAuth()
   const { refreshCategories, refreshNew, refreshHighligted, refreshMostUpvoted, refreshActiveNum } = useProjects()
-  // const { refreshProposals } = useProposals()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const { registerUser, listUsers } = useUsers()
