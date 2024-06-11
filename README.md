@@ -20,7 +20,6 @@
 
 ```
 npm i
-update .env
 dfx generate
 npm run dev
 ```
