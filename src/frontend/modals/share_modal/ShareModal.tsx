@@ -1,7 +1,8 @@
-import React, { FC } from "react"
+import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import Modal from "@/modals/_Modal"
 import { Btns, Link } from "./_index"
+import { useScrollLock } from "@/hooks/_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -15,20 +16,24 @@ interface ShareModalProps {
   description: string
 }
 
-const ShareModal: FC<ShareModalProps> = ({
-  isOpen,
-  id,
-  name,
-  category,
-  description,
-}): JSX.Element => {
+const ShareModal: FC<ShareModalProps> = ({ isOpen, id, name, category, description }): JSX.Element => {
   const dispatch = useAppDispatch()
+  const { lockScroll, unlockScroll } = useScrollLock()
 
   const closeModal = (): void => {
     dispatch(setShareModal(false))
   }
 
+  useEffect(() => {
+    if (isOpen) {
+      lockScroll()
+    } else {
+      unlockScroll()
+    }
+  }, [isOpen])
+
   if (!isOpen) return
+
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
       <Content>

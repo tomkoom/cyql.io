@@ -1,8 +1,7 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-import { useNav } from "@/hooks/_index"
-import { useQueryParams, useProjects } from "@/hooks/_index"
+import { useQueryParams, useProjects, useNav } from "@/hooks/_index"
 import { filterBySearch } from "./utils/filterProjects"
 import { useAuth } from "@/context/Auth"
 
@@ -59,10 +58,8 @@ const ProjectList: FC = (): JSX.Element => {
                   <SocialsIc project={p} />
                 </div>
 
-                <div className="upvote">
-                  <div className="btn" onClick={(e) => e.stopPropagation()}>
-                    <UpvoteBtn projectId={p.id.toString()} btnLocation={"project_list"} upvotedBy={p.upvotedBy} />
-                  </div>
+                <div onClick={(e) => e.stopPropagation()}>
+                  <UpvoteBtn projectId={p.id.toString()} btnLocation={"project_list"} upvotedBy={p.upvotedBy} />
                 </div>
               </li>
             )
@@ -92,20 +89,15 @@ const ProjectListStyled = styled.div`
         background-color: var(--underlay1);
       }
 
-      @media ${device.tablet} {
-        flex-direction: column;
-        align-items: center;
-      }
-
       > div.main1 {
-        flex: 40%;
+        flex: 50%;
 
         @media ${device.tablet} {
-          flex: calc(60% - 1rem);
+          flex: calc(70% - 1rem);
         }
 
         @media ${device.mobileL} {
-          flex: 100%;
+          flex: unset;
         }
       }
 
@@ -117,33 +109,15 @@ const ProjectListStyled = styled.div`
         }
 
         @media ${device.mobileL} {
-          flex: calc(80% - 0.5rem);
-        }
-      }
-
-      > div.socials {
-        flex: 15%;
-
-        @media ${device.tablet} {
           display: none;
         }
       }
 
-      > div.upvote {
-        flex: 10%;
-        display: inline-block;
-
-        > div.btn {
-          float: right;
-          margin-right: 1px;
-        }
+      > div.socials {
+        flex: 15%; // x2
 
         @media ${device.tablet} {
-          flex: calc(10% - 1rem);
-        }
-
-        @media ${device.mobileL} {
-          flex: calc(20% - 0.5rem);
+          display: none;
         }
       }
     }
