@@ -18,7 +18,9 @@
     "buffer": "^6.0.3",
     "prettier": "^2.7.1",
     "process": "0.11.10",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "vite": "^7.0.2",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "browserslist": [
     "last 2 chrome version",
@@ -29,13 +31,14 @@
   "dependencies": {
     "@babel/helpers": "^7.27.6",
     "@babel/runtime": "^7.27.6",
-    "@dfinity/agent": "^0.20.2",
-    "@dfinity/auth-client": "^0.20.2",
-    "@dfinity/candid": "^0.20.2",
-    "@dfinity/ledger-icp": "^2.2.0",
-    "@dfinity/nns-proto": "^1.0.1",
-    "@dfinity/principal": "^0.20.2",
-    "@dfinity/utils": "^2.1.1",
+    "@dfinity/agent": "^2.4.1",
+    "@dfinity/auth-client": "^2.4.1",
+    "@dfinity/candid": "^2.4.1",
+    "@dfinity/identity": "^2.4.1",
+    "@dfinity/ledger-icp": "^3.0.0",
+    "@dfinity/nns-proto": "^2.0.2",
+    "@dfinity/principal": "^2.4.1",
+    "@dfinity/utils": "^2.13.1",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
@@ -68,8 +71,6 @@
     "rollup": "^3.29.5",
     "styled-components": "^5.3.11",
     "usehooks-ts": "^2.14.0",
-    "vite": "^7.0.2",
-    "vite-plugin-environment": "^1.1.3",
-    "vite-plugin-svgr": "^3.2.0"
+    "vite-plugin-environment": "^1.1.3"
   }
 }

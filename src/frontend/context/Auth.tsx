@@ -3,6 +3,7 @@ import { AuthClient } from "@dfinity/auth-client"
 import { HttpAgent, Actor } from "@dfinity/agent"
 import { Principal } from "@dfinity/principal"
 import { isCustomDomain, getAccountIdHex } from "@/utils/_index"
+
 import {
   APP_DERIVATION_ORIGIN,
   BACKEND_CANISTER_ID_IC,
@@ -13,36 +14,30 @@ import {
   HOST,
 } from "@/constants/constants"
 
-// curated projects
-import { _SERVICE } from "../../declarations/backend/backend.did"
+// canister interfaces
+import { _SERVICE as BACKEND_SERVICE } from "../../declarations/backend/backend.did"
 import * as CuratedProjects from "../../declarations/backend/index"
 
-// users
 import { _SERVICE as USERS_SERVICE } from "../../declarations/users/users.did"
 import * as Users from "../../declarations/users/index"
 
-// proposals
 import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
 import * as Proposals from "../../declarations/proposals/index"
 
-// nft
 import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
 import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_service"
 
-// ledger
 import { idlFactory as ICP_LEDGER_IDL } from "@/idl/ledger_idl"
 import { _SERVICE as ICP_LEDGER_SERVICE } from "@/idl/ledger_idl_service"
 
 interface AuthContextValue {
   isAuthenticated: boolean
-  userPrincipal: Principal
+  userPrincipal: Principal | null
   accounntIdHex: string
   userId: string
   login: () => Promise<void>
   logout: () => Promise<void>
-
-  // actors
-  actor: _SERVICE
+  actor: BACKEND_SERVICE
   users: USERS_SERVICE
   proposals: PROPOSALS_SERVICE
   nft: NFT_SERVICE
@@ -50,121 +45,79 @@ interface AuthContextValue {
 }
 
 const AuthContext = createContext<AuthContextValue>(null)
-const useAuth = () => {
-  return useContext(AuthContext)
-}
+const useAuth = () => useContext(AuthContext)
 
-// note: .env variables change after deploy
-
-function AuthProvider({ children }) {
+function AuthProvider({ children }: { children: React.ReactNode }) {
   const [authClient, setAuthClient] = useState<AuthClient | null>(null)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)
-  const [accounntIdHex, setAccounntIdHex] = useState<string>("")
-  const [userId, setUserId] = useState<string>("")
+  const [accounntIdHex, setAccounntIdHex] = useState("")
+  const [userId, setUserId] = useState("")
 
-  // actors
-  const [actor, setActor] = useState<_SERVICE>(null) // curated projects
-  const [users, setUsers] = useState<USERS_SERVICE>(null) // users
-  const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null) // proposals
-  const [nft, setNft] = useState<NFT_SERVICE>(null) // nft
-  const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null) // icp ledger
-
-  const init = (): void => {
-    resetii()
-  }
+  const [actor, setActor] = useState<BACKEND_SERVICE>(null)
+  const [users, setUsers] = useState<USERS_SERVICE>(null)
+  const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null)
+  const [nft, setNft] = useState<NFT_SERVICE>(null)
+  const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null)
 
   useEffect(() => {
-    init()
+    resetSession()
   }, [])
 
-  const resetii = async (): Promise<void> => {
-    let authClient: AuthClient = null
-    let isAuthenticated: boolean = false
-    let identity = null
-    let userPrincipal: Principal = null
-    let accounntIdHex: string = ""
-    let userId: string = ""
+  const resetSession = async (): Promise<void> => {
+    const authClient = await AuthClient.create()
+    const isAuthed = await authClient.isAuthenticated()
+    const identity = authClient.getIdentity()
 
-    // actors
-    let actor: _SERVICE = null
-    let users: USERS_SERVICE = null
-    let proposals: PROPOSALS_SERVICE = null
-    let nft: NFT_SERVICE = null
-    let icp: ICP_LEDGER_SERVICE = null
+    const principal = identity.getPrincipal()
+    const accountHex = getAccountIdHex(principal)
 
-    // ...
-    authClient = await AuthClient.create()
-    isAuthenticated = await authClient.isAuthenticated()
-    identity = authClient.getIdentity()
-    userPrincipal = identity.getPrincipal()
-    accounntIdHex = getAccountIdHex(userPrincipal)
-    userId = userPrincipal.toString()
-    const agent = new HttpAgent({
-      host: HOST,
-      identity,
-    })
+    const agent = new HttpAgent({ host: HOST, identity })
+    if (HOST.includes("localhost")) await agent.fetchRootKey()
 
-    // curated projects
-    actor = CuratedProjects.createActor(BACKEND_CANISTER_ID_IC, {
-      agent,
-    })
-
-    // users
-    users = Users.createActor(USERS_CANISTER_ID_IC, {
-      agent,
-    })
-
-    // proposals
-    proposals = Proposals.createActor(PROPOSALS_CANISTER_ID_IC, {
-      agent,
-    })
-
-    // nft
-    nft = Actor.createActor(NFT_IDL, {
+    const backendActor = CuratedProjects.createActor(BACKEND_CANISTER_ID_IC, { agent })
+    const usersActor = Users.createActor(USERS_CANISTER_ID_IC, { agent })
+    const proposalsActor = Proposals.createActor(PROPOSALS_CANISTER_ID_IC, { agent })
+    const nftActor = Actor.createActor(NFT_IDL, {
       agent,
       canisterId: NFT_CANISTER_ID_IC,
-    })
-
-    // ledger
-    icp = Actor.createActor(ICP_LEDGER_IDL, {
+    }) as NFT_SERVICE
+    const icpActor = Actor.createActor(ICP_LEDGER_IDL, {
       agent,
       canisterId: ICP_LEDGER_CANISTER_ID_IC,
-    })
+    }) as ICP_LEDGER_SERVICE
 
     setAuthClient(authClient)
-    setIsAuthenticated(isAuthenticated)
-    setUserPrincipal(userPrincipal)
-    setAccounntIdHex(accounntIdHex)
-    setUserId(userId)
+    setIsAuthenticated(isAuthed)
+    setUserPrincipal(principal)
+    setAccounntIdHex(accountHex)
+    setUserId(principal.toString())
 
-    // actors
-    setActor(actor)
-    setUsers(users)
-    setProposals(proposals)
-    setNft(nft)
-    setIcp(icp)
+    setActor(backendActor)
+    setUsers(usersActor)
+    setProposals(proposalsActor)
+    setNft(nftActor)
+    setIcp(icpActor)
   }
 
   const login = async (): Promise<void> => {
-    if (isAuthenticated) throw new Error("already authed")
+    if (isAuthenticated || !authClient) return
 
-    await authClient.login({
-      // identityProvider: IDENTITY_PROVIDER,
-      maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1000 * 1000 * 1000), // 7 days in nanoseconds
-      ...(isCustomDomain() && {
-        derivationOrigin: APP_DERIVATION_ORIGIN,
-      }),
-      onSuccess: async () => {
-        await resetii()
-      },
-    })
+    try {
+      await authClient.login({
+        maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1_000_000_000), // 7 days
+        ...(isCustomDomain() && { derivationOrigin: APP_DERIVATION_ORIGIN }),
+      })
+      await resetSession()
+    } catch (error) {
+      console.warn("Login failed:", error)
+    }
   }
 
   const logout = async (): Promise<void> => {
-    if (!isAuthenticated) throw new Error("not authed")
+    if (!isAuthenticated || !authClient) return
     await authClient.logout()
-    return resetii()
+    await resetSession()
   }
 
   const value: AuthContextValue = {
@@ -172,14 +125,11 @@ function AuthProvider({ children }) {
     userPrincipal,
     accounntIdHex,
     userId,
-    // actors
     actor,
     users,
     proposals,
     nft,
     icp,
-
-    // ...
     login,
     logout,
   }
