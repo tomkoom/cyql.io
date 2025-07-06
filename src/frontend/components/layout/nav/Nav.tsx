@@ -1,55 +1,20 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { device } from "@/styles/breakpoints"
-import { useNav } from "@/hooks/_index"
-import { useAuth } from "@/context/Auth"
-
-// components
-import { ProfileBtn, SignInBtn, Socials } from "./_index"
-import { Nft } from "./_index"
 import { Logo } from "@/components/ui/_index"
+import { useAuth } from "@/context/Auth"
+import { useNav } from "@/hooks/_index"
+import React from "react"
+import { ProfileBtn, SignInBtn, Socials } from "."
 
-const Nav: FC = (): JSX.Element => {
+export default function Nav(): JSX.Element {
   const { toHome } = useNav()
   const { isAuthenticated } = useAuth()
 
   return (
-    <NavStyled>
+    <div className="px-4 w-full flex items-center justify-between flex-wrap lg:px-8">
       <Logo onClick={toHome} />
-
-      <Controls>
+      <div className="flex items-center justify-center flex-wrap gap-1">
         <Socials />
-        <Nft />
         {isAuthenticated ? <ProfileBtn /> : <SignInBtn />}
-      </Controls>
-    </NavStyled>
+      </div>
+    </div>
   )
 }
-
-const NavStyled = styled.div`
-  padding: 0.5rem 2rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  @media ${device.tablet} {
-    flex-direction: column;
-    justify-content: unset;
-  }
-
-  @media ${device.laptop} {
-    padding: 0.5rem 1rem;
-  }
-`
-
-const Controls = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-`
-
-export default Nav
