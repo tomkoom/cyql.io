@@ -1,15 +1,11 @@
-import React, { FC } from "react"
-import { iSignIn } from "@/components/icons/Icons"
-
-// components
 import { Btn } from "@/components/btns/_index"
-import { SignInModal } from "@/modals/_index"
-
-// state
+import { iSignIn } from "@/components/icons/Icons"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { setSignInModalIsOpen, selectSignInModalIsOpen } from "@/state/modals/signInModal"
+import { SignInModal } from "@/modals/_index"
+import { selectSignInModalIsOpen, setSignInModalIsOpen } from "@/state/modals/signInModal"
+import React from "react"
 
-const SignInBtn: FC = (): JSX.Element => {
+export default function SignInBtn() {
   const dispatch = useAppDispatch()
   const isOpen = useAppSelector(selectSignInModalIsOpen)
 
@@ -25,4 +21,4 @@ const SignInBtn: FC = (): JSX.Element => {
   )
 }
 
-export default SignInBtn
+

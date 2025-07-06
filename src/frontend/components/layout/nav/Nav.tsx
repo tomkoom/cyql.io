@@ -4,7 +4,7 @@ import { useNav } from "@/hooks/_index"
 import React from "react"
 import { ProfileBtn, SignInBtn, Socials } from "."
 
-export default function Nav(): JSX.Element {
+export default function Nav() {
   const { toHome } = useNav()
   const { isAuthenticated } = useAuth()
 

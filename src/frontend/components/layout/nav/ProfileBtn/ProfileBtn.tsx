@@ -4,9 +4,7 @@ import { iAngleDown } from "@/components/icons/Icons"
 import { formatId } from "@/utils/_index"
 import { useAuth } from "@/context/Auth"
 import { useLocation } from "react-router-dom"
-
-// components
-import { Menu } from "./_index"
+import { Menu } from "."
 import { Btn } from "@/components/btns/_index"
 
 const ProfileBtn: FC = (): JSX.Element => {
