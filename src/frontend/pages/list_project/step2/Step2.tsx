@@ -1,7 +1,7 @@
 import React, { FC, Dispatch, SetStateAction } from "react"
 import styled from "styled-components"
 import { camelCaseToWords, notifyErr, notifySuccess } from "@/utils/_index"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { useNav, useProposals } from "@/hooks/_index"
 import { DataItem } from "./_index"
 import { useAuth } from "@/context/Auth"

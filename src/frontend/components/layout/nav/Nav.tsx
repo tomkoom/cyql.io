@@ -2,7 +2,7 @@ import { Logo } from "@/components/ui/_index"
 import { useAuth } from "@/context/Auth"
 import { useNav } from "@/hooks/_index"
 import React from "react"
-import { ProfileBtn, SignInBtn, Socials } from "."
+import { ProfileBtn, SignInBtn, Socials } from "./components"
 
 export default function Nav() {
   const { toHome } = useNav()

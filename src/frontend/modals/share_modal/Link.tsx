@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import styled from "styled-components"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { iCopy } from "@/components/icons/Icons"
 
 const Link: FC = (): JSX.Element => {

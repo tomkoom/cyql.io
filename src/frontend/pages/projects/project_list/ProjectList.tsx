@@ -6,7 +6,7 @@ import { filterBySearch } from "./utils/filterProjects"
 import { useAuth } from "@/context/Auth"
 
 // components
-import { UpvoteBtn } from "@/components/btns/_index"
+import { UpvoteBtn } from "@/components/btns"
 import { Main, Socials, SocialsIc, Tags } from "./_index"
 
 // state

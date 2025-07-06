@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 
 interface ViewAllBtnProps {
   route: () => void

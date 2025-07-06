@@ -3,11 +3,11 @@ export const formatStr16 = (str: string): string => {
 }
 
 export const formatId = (str: string): string => {
-  return str.substring(0, 2) + ".." + str.substring(str.length - 3)
+  return str.substring(0, 2) + "..." + str.substring(str.length - 3)
 }
 
 export const formatIdLong = (str: string): string => {
-  return str.substring(0, 11) + ".." + str.substring(str.length - 3)
+  return str.substring(0, 11) + "..." + str.substring(str.length - 3)
 }
 
 export const formatWebsite = (url: string): string => {

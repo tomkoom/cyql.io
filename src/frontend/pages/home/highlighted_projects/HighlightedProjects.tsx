@@ -6,7 +6,7 @@ import type { Project as P } from "@/state/_types/curated_projects_types"
 
 // components
 import { Loading } from "@/components/ui/_index"
-import { ViewMoreBtn } from "@/components/btns/_index"
+import { ViewMoreBtn } from "@/components/btns"
 import { Project } from "./_index"
 
 interface HighlightedProjectsProps {

@@ -7,7 +7,7 @@ import { Project } from "@/state/_types/curated_projects_types"
 
 // components
 import { Btn, Logo, Title } from "./_index"
-import { UpvoteBtn } from "@/components/btns/_index"
+import { UpvoteBtn } from "@/components/btns"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"

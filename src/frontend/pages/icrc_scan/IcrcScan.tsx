@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { TextInput2 } from "@/components/ui/_index"
-import { RectBtn } from "@/components/btns/_index"
+import { RectBtn } from "@/components/btns"
 import { useSearchParams } from "react-router-dom"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
 import { Pagination, Table, Dashboard, Ledgers } from "./_index"

@@ -1,12 +1,10 @@
-import React, { FC } from "react"
-import { NftBtn } from "./_index"
+import { NftBtn } from "."
 import { NftModal } from "@/modals/_index"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
+import React from "react"
 import { selectNftModal } from "@/state/modals/nftModal"
 
-const Nft: FC = (): JSX.Element => {
+export default function Nft() {
   const isOpen = useAppSelector(selectNftModal)
 
   return (
@@ -16,5 +14,3 @@ const Nft: FC = (): JSX.Element => {
     </div>
   )
 }
-
-export default Nft

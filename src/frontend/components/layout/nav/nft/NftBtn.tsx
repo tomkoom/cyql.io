@@ -1,18 +1,14 @@
-import React, { FC } from "react"
-import { Btn } from "@/components/btns/_index"
-
-// state
+import { Btn } from "@/components/btns"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setNftModal } from "@/state/modals/nftModal"
+import React from "react"
 
-const NftBtn: FC = (): JSX.Element => {
+export default function NftBtn() {
   const dispatch = useAppDispatch()
 
   const openNftModal = (): void => {
     dispatch(setNftModal(true))
   }
 
-  return <Btn btnType={"secondary"} text={"cyql NFTs"} onClick={openNftModal} />
+  return <Btn btnType="secondary" text="cyql NFTs" onClick={openNftModal} />
 }
-
-export default NftBtn

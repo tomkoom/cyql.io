@@ -2,7 +2,7 @@ import React, { FC, useState, ChangeEvent } from "react"
 import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import type { Tokens } from "@/state/_types/types"
 import { notifyErr } from "@/utils/_index"
 

@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
-import { BackBtn } from "@/components/btns/_index"
+import { BackBtn } from "@/components/btns"
 import { Details, Votes, ProjectData, Header } from "./_index"
 
 // state

@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
 import { WithdrawModal } from "@/modals/_index"
 import { IC_LOGO } from "@/constants/constants"

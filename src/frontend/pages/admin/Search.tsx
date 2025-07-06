@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { TextInput2 } from "@/components/ui/_index"
 import { useAuth } from "@/context/Auth"
 import { KEY } from "@/constants/constants"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { useProjects, useQueryParams } from "@/hooks/_index"
 
 // state

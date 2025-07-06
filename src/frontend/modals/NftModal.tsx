@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import Modal from "@/modals/_Modal"
-import { LinkBtn } from "@/components/btns/_index"
+import { LinkBtn } from "@/components/btns"
 import { iExternalLink } from "@/components/icons/Icons"
 import { CYQL_NFT_FUNDED_URL, CYQL_NFT_STATS_URL } from "@/constants/constants"
 

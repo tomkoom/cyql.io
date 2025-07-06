@@ -134,72 +134,8 @@ h6 {
 
   --radius: 0.625rem;
 
-  --background: oklch(1 0 0);
-
-  --foreground: oklch(0.145 0 0);
-
-  --card: oklch(1 0 0);
-
-  --card-foreground: oklch(0.145 0 0);
-
-  --popover: oklch(1 0 0);
-
-  --popover-foreground: oklch(0.145 0 0);
-
-  --primary: oklch(0.205 0 0);
-
-  --primary-foreground: oklch(0.985 0 0);
-
-  --secondary: oklch(0.97 0 0);
-
-  --secondary-foreground: oklch(0.205 0 0);
-
-  --muted: oklch(0.97 0 0);
-
-  --muted-foreground: oklch(0.556 0 0);
-
-  --accent: oklch(0.97 0 0);
-
-  --accent-foreground: oklch(0.205 0 0);
-
-  --destructive: oklch(0.577 0.245 27.325);
-
-  --border: oklch(0.922 0 0);
-
-  --input: oklch(0.922 0 0);
-
-  --ring: oklch(0.708 0 0);
-
-  --chart-1: oklch(0.646 0.222 41.116);
-
-  --chart-2: oklch(0.6 0.118 184.704);
-
-  --chart-3: oklch(0.398 0.07 227.392);
-
-  --chart-4: oklch(0.828 0.189 84.429);
-
-  --chart-5: oklch(0.769 0.188 70.08);
-
-  --sidebar: oklch(0.985 0 0);
-
-  --sidebar-foreground: oklch(0.145 0 0);
-
-  --sidebar-primary: oklch(0.205 0 0);
-
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-
-  --sidebar-accent: oklch(0.97 0 0);
-
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-
-  --sidebar-border: oklch(0.922 0 0);
-
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-/* –––THEME––– */
-
-/* .light {
+  /* DEFAULT THEME: DARK */
+  /* highlight colors */
   --highlight1: var(--hColor1);
   --highlight2: var(--hColor2);
   --highlight3: var(--hColor3);
@@ -207,25 +143,137 @@ h6 {
   --highlightColor2Rgb: var(--hColorRgb2);
   --highlightColor3Rgb: var(--hColorRgb3);
 
+  /* main */
+  --primaryColor: var(--coolGray10);
+  --primaryColorRgb: var(--coolGray10Rgb);
+  --secondaryColor: var(--coolGray30);
+  --tertiaryColor: var(--coolGray50);
+  --background: oklch(0.145 0 0);
+  --backgroundRgb: var(--coolGray100Rgb);
+
+  /* underlay */
+  --underlay1: var(--coolGray100);
+  --underlay2: var(--coolGray90);
+  --underlay3: var(--coolGray80);
+
+  /* underline */
+  --underlinePrimary: 0 2px var(--primaryColor);
+  --underlineSecondary: 0 2px var(--secondaryColor);
+  --underlineTertiary: 0 2px var(--tertiaryColor);
+
+  /* shadows */
+  --shadow1: rgba(var(--primaryColorRgb), 0.12) 0px 0px 0px 1px;
+  --shadow2: rgba(var(--primaryColorRgb), 0.12) 0px 2px 8px 0px;
+  --boxShadow1: 0 0 0 1px var(--underlay1);
+  --boxShadow2: 0 0 0 1px var(--underlay2);
+  --boxShadow3: 0 0 0 1px var(--underlay3);
+  --boxShadow1Inset: inset 0 0 0 2px var(--underlay1);
+  --boxShadow2Inset: inset 0 0 0 2px var(--underlay2);
+  
+  /* shadcn dark theme variables */
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* –––THEME––– */
+
+.light {
+  /* highlight colors */
+  --highlight1: var(--hColor1);
+  --highlight2: var(--hColor2);
+  --highlight3: var(--hColor3);
+  --highlightColor1Rgb: var(--hColorRgb);
+  --highlightColor2Rgb: var(--hColorRgb2);
+  --highlightColor3Rgb: var(--hColorRgb3);
+
+  /* main */
   --primaryColor: var(--coolGray100);
   --primaryColorRgb: var(--coolGray100Rgb);
   --secondaryColor: var(--coolGray70);
   --tertiaryColor: var(--coolGray50);
-  --background: #fff;
+  --background: oklch(1 0 0);
   --backgroundRgb: 255, 255, 255;
 
+  /* underlay */
   --underlay1: var(--coolGray10);
   --underlay2: var(--coolGray20);
   --underlay3: var(--coolGray30);
 
+  /* underline */
+  --underlinePrimary: 0 2px var(--primaryColor);
+  --underlineSecondary: 0 2px var(--secondaryColor);
+  --underlineTertiary: 0 2px var(--tertiaryColor);
+
+  /* shadows */
   --shadow1: rgba(var(--primaryColorRgb), 0.05) 0px 6px 24px 0px,
     rgba(var(--primaryColorRgb), 0.08) 0px 0px 0px 1px;
   --boxShadow1: 0 0 0 1px var(--underlay1);
   --boxShadow2: 0 0 0 1px var(--underlay2);
   --boxShadow1Inset: inset 0 0 0 1px var(--underlay1);
   --boxShadow2Inset: inset 0 0 0 1px var(--underlay2);
-} */
+  
+  /* shadcn light theme variables */
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
 
+/* Keep .dark class for backwards compatibility but it's now empty since dark is default */
 .dark {
   /* highlight colors */
   --highlight1: var(--hColor1);

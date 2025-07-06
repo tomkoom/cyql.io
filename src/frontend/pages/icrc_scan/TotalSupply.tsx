@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
 import { E8S } from "@/constants/constants"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

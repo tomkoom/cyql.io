@@ -5,7 +5,7 @@ import { ReactCropperElement } from "react-cropper"
 import { CompressedFile } from "@/state/_types/types"
 import { dataUrlToBlob } from "@/utils/process_img/_index"
 import { formatBytes } from "@/utils/formatBytes"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import Compressor from "compressorjs"
 
 // state

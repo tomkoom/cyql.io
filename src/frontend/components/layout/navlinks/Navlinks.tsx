@@ -3,8 +3,6 @@ import styled from "styled-components"
 import { NavItem, Tags } from "./_index"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { device } from "@/styles/breakpoints"
-
-// hooks
 import { useAuth } from "@/context/Auth"
 import { useNavlinks, useNav } from "@/hooks/_index"
 
@@ -17,18 +15,10 @@ const Navlinks: FC = (): JSX.Element => {
     <NavlinksStyled>
       <div className="navlinks">
         {navlinks.map((navlink) => (
-          <NavItem
-            key={navlink.label}
-            label={navlink.label}
-            pathname={navlink.pathname}
-            icon={navlink.icon}
-            route={navlink.route}
-          />
+          <NavItem key={navlink.label} label={navlink.label} pathname={navlink.pathname} icon={navlink.icon} route={navlink.route} />
         ))}
 
-        {verifyAdmin(userId) && (
-          <NavItem label="Admin" pathname={"/admin"} icon={undefined} route={toAdmin} />
-        )}
+        {verifyAdmin(userId) && <NavItem label="Admin" pathname={"/admin"} icon={undefined} route={toAdmin} />}
       </div>
 
       <div className="tags">

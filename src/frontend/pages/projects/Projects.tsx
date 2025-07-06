@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FC } from "react"
 import styled from "styled-components"
 import { useQueryParams, useProjects } from "@/hooks/_index"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 
 // components
 import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"

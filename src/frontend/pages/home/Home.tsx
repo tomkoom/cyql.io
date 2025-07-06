@@ -7,7 +7,7 @@ import { useNav } from "@/hooks/_index"
 // components
 import { Header, HighlightedProjects, JoinCommunity, Promo, FlexBanner } from "./_index"
 import { Loading } from "@/components/ui/_index"
-import { ViewAllBtn } from "@/components/btns/_index"
+import { ViewAllBtn } from "@/components/btns"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

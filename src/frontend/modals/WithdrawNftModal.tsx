@@ -2,7 +2,7 @@ import React, { FC, useState, ChangeEvent } from "react"
 import styled from "styled-components"
 import { RootModal } from "@/modals/_index"
 import CrossIcon from "@/components/icons/CrossIcon"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 
 // hooks
 import { useAuth } from "@/context/Auth"

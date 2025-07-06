@@ -7,7 +7,7 @@ import type { Project } from "@/state/_types/curated_projects_types"
 import { shuffle2 } from "@/utils/_index"
 
 // components
-import { BackBtn } from "@/components/btns/_index"
+import { BackBtn } from "@/components/btns"
 import { ShareModal, AdminModal } from "@/modals/_index"
 import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "./_index"
 

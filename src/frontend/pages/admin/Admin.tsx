@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
 import { Projects, Search } from "./_index"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"

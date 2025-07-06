@@ -2,7 +2,7 @@ import React, { Dispatch, FC, SetStateAction, useState } from "react"
 import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
 import { Category, Token, Primary, Input, Proposer, AddLogo } from "./_index"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { web2Links, web3Links, extra, extra2 } from "./_inputs"
 
 // state

@@ -1,7 +1,7 @@
 import React, { Dispatch, FC, SetStateAction } from "react"
 import styled from "styled-components"
 import { CrossIcon } from "@/components/icons/_index"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { useProjects, useQueryParams } from "@/hooks/_index"
 
 // state

@@ -48,6 +48,7 @@ const BtnStyled = styled.button<{ btnType: "primary" | "secondary" | "accept" | 
   font-size: var(--fsText);
   font-weight: var(--fwBold);
   /* border-radius: 1.25rem; */
+  /* border-radius: 4px; */
   transition: var(--transition1);
 
   /* disabled */

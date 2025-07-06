@@ -1,4 +1,4 @@
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { iSignIn } from "@/components/icons/Icons"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { SignInModal } from "@/modals/_index"
@@ -9,7 +9,7 @@ export default function SignInBtn() {
   const dispatch = useAppDispatch()
   const isOpen = useAppSelector(selectSignInModalIsOpen)
 
-  const openSignInModal = (): void => {
+  const openSignInModal = () => {
     dispatch(setSignInModalIsOpen(true))
   }
 
@@ -20,5 +20,3 @@ export default function SignInBtn() {
     </div>
   )
 }
-
-

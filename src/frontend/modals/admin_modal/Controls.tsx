@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { useProjects } from "@/hooks/_index"
-import { Btn } from "@/components/btns/_index"
+import { Btn } from "@/components/btns"
 import { Project } from "@/state/_types/curated_projects_types"
 
 // state
