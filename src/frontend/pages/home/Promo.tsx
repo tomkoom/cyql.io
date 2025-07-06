@@ -9,14 +9,14 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setPromoModal, selectPromoModal, setPromoModalData } from "@/state/modals/promoModal"
 
 const promoItems = [
-  {
-    color: "var(--background)",
-    backgroundColor: "#aeea00",
-    title: "🪙 Get FLEX 🪙",
-    text: "FLEXY P2P & MEME CURRENCY ON THE INTERNET COMPUTER.",
-    ctaUrl: "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/",
-    ctaText: "Get FLEX",
-  },
+  // {
+  //   color: "var(--background)",
+  //   backgroundColor: "#aeea00",
+  //   title: "🪙 Get FLEX 🪙",
+  //   text: "FLEXY P2P & MEME CURRENCY ON THE INTERNET COMPUTER.",
+  //   ctaUrl: "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/",
+  //   ctaText: "Get FLEX",
+  // },
   // {
   //   color: "var(--background)",
   //   backgroundColor: "#7888ff",

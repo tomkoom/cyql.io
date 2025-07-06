@@ -1,6 +1,6 @@
+import { APP_NAME_TLD, LOGO_COLOR, LOGO_GRAY } from "@/constants/constants"
 import React, { FC, HTMLAttributes } from "react"
 import styled from "styled-components"
-import { LOGO_COLOR, LOGO_GRAY } from "@/constants/constants"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -17,9 +17,9 @@ const Logo: FC<LogoProps> = ({ onClick }): JSX.Element => {
     <LogoStyled onClick={onClick}>
       <img
         src={theme === "light" ? LOGO_COLOR : theme === "dark" ? LOGO_GRAY : null}
-        alt="cyql.io logo"
+        alt={`${APP_NAME_TLD} logo`}
       />
-      <h1>cyql</h1>
+      <h1>{APP_NAME_TLD}</h1>
     </LogoStyled>
   )
 }

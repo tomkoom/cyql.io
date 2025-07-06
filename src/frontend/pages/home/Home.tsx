@@ -30,7 +30,7 @@ const Home: FC = (): JSX.Element => {
     <HomeStyled>
       <Header />
       {/* <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} /> */}
-      <FlexBanner />
+      {/* <FlexBanner /> */}
       <Promo />
 
       <Section>
