@@ -1,8 +1,7 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import type { IcrcMetadata } from "@/hooks/useIcrcScan"
-import { trimZeroes } from "@/utils/_index"
-import { formatNumber } from "@/utils/_index"
+import { formatNumber, trimZeroes } from "@/utils/index"
+import { FC } from "react"
+import styled from "styled-components"
 
 interface DashboardProps {
   icrcMetadata: IcrcMetadata
@@ -18,11 +17,7 @@ const Dashboard: FC<DashboardProps> = ({ icrcMetadata }): JSX.Element => {
         <li>
           <p className="label">Total Supply</p>
           {icrcMetadata?.icrc1_symbol && (
-            <p className="value">
-              {icrcMetadata.icrc1_symbol === "ckBTC" || icrcMetadata.icrc1_symbol === "ckETH"
-                ? "..."
-                : formatNumber(totalSupply)}
-            </p>
+            <p className="value">{icrcMetadata.icrc1_symbol === "ckBTC" || icrcMetadata.icrc1_symbol === "ckETH" ? "..." : formatNumber(totalSupply)}</p>
           )}
         </li>
 

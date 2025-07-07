@@ -6,7 +6,7 @@
     "lib": ["es2020", "ES2018", "DOM"] /* Specify library files to be included in the compilation. */,
     "allowJs": true /* Allow javascript files to be compiled. */,
     "checkJs": false,
-    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+    "jsx": "react-jsx" /* Specify JSX code generation: 'preserve', 'react-native', 'react-jsx', or 'react-jsxdev'. */,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
@@ -16,5 +16,6 @@
       "@/*": ["*"]
     }
   },
-  "include": ["src"]
+  "include": ["src/frontend"],
+  "exclude": ["src/frontend/idl/*.js"]
 }

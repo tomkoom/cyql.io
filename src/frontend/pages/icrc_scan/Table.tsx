@@ -1,8 +1,8 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { trimZeroes, capitalizeFirstLetter, formatDateTime, formatIdLong } from "@/utils/_index"
-import { iRightLeft, iFire, iCheck, iLeaf, iExternalLink } from "@/components/icons/Icons"
+import { iCheck, iFire, iLeaf, iRightLeft } from "@/components/icons/Icons"
 import type { IcrcMetadata } from "@/hooks/useIcrcScan"
+import { capitalizeFirstLetter, formatDateTime, formatIdLong, trimZeroes } from "@/utils/index"
+import { FC } from "react"
+import styled from "styled-components"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { twitterUsername } from "@/utils/_index"
+import { twitterUsername } from "@/utils/index"
 import { Project, Link } from "@/state/_types/curated_projects_types"
 import { iLink, iX, iTelegram, iDiscord, iMedium, iGithub, iExternalLink } from "@/components/icons/Icons"
 

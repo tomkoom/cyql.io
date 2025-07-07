@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom"
 import { QueryParams, QueryParamsString, Option, SortOptions } from "@/state/_types/curated_projects_types"
-import { getSortParam, getFilterParam, filterToSearchParam, sortToSearchParam } from "@/utils/_index"
+import { getSortParam, getFilterParam, filterToSearchParam, sortToSearchParam } from "@/utils/index"
 
 interface UseQueryParams {
   queryParams: QueryParams

@@ -1,17 +1,15 @@
-import React, { FC, useEffect } from "react"
-import styled from "styled-components"
-import { TextInput2 } from "@/components/ui/_index"
 import { RectBtn } from "@/components/btns"
-import { useSearchParams } from "react-router-dom"
+import { TextInput2 } from "@/components/ui/_index"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
-import { Pagination, Table, Dashboard, Ledgers } from "./_index"
 import { useIcrcScan } from "@/hooks"
-import { notifyErr } from "@/utils/_index"
-
-// state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectIcrcTransactionsPagination, selectIcrcTransactionsData } from "@/state/icrc_scan/icrcTransactions"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcLedgerId, setIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
+import { selectIcrcTransactionsData, selectIcrcTransactionsPagination } from "@/state/icrc_scan/icrcTransactions"
+import { notifyErr } from "@/utils/index"
+import { FC, useEffect } from "react"
+import { useSearchParams } from "react-router-dom"
+import styled from "styled-components"
+import { Dashboard, Ledgers, Pagination, Table } from "./_index"
 
 const IcrcScan: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
-import React from "react"
 
 export default function SignInBtn() {
   const dispatch = useAppDispatch()

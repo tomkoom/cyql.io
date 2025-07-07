@@ -4,6 +4,7 @@
   bottom: 0;
   margin-left: 1rem;
   margin-bottom: 1rem;
+  margin-right: 1rem;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -12,6 +13,7 @@
   padding: 0 1rem;
   color: var(--primaryColor);
   background: var(--underlay1);
+  border-radius: 0.25rem;
 }
 
 .cookie * {
@@ -23,23 +25,24 @@
   color: var(--secondaryColor);
 }
 
-.cookie__btn {
+.cookie .cookie__btn {
   height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: white !important;
   font-weight: var(--fwBold);
   text-decoration: none;
-  background-color: var(--highlight1);
+  background-color: var(--highlight1) !important;
   padding: 0.25rem 0.75rem;
   border: none;
   cursor: pointer;
   transition: var(--transition1);
+  border-radius: 0.25rem;
 }
 
-.cookie__btn:hover {
-  background-color: var(--highlight2);
+.cookie .cookie__btn:hover {
+  background-color: var(--highlight2) !important;
 }
 
 .cookie__link {

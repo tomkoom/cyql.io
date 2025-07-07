@@ -1,28 +1,28 @@
-import React, { createContext, useContext, useState, useEffect } from "react"
+import { getAccountIdHex, isCustomDomain } from "@/utils/index"
+import { Actor, HttpAgent } from "@dfinity/agent"
 import { AuthClient } from "@dfinity/auth-client"
-import { HttpAgent, Actor } from "@dfinity/agent"
 import { Principal } from "@dfinity/principal"
-import { isCustomDomain, getAccountIdHex } from "@/utils/_index"
+import { ReactNode, createContext, useContext, useEffect, useState } from "react"
 
 import {
   APP_DERIVATION_ORIGIN,
   BACKEND_CANISTER_ID_IC,
-  USERS_CANISTER_ID_IC,
-  PROPOSALS_CANISTER_ID_IC,
-  NFT_CANISTER_ID_IC,
-  ICP_LEDGER_CANISTER_ID_IC,
   HOST,
+  ICP_LEDGER_CANISTER_ID_IC,
+  NFT_CANISTER_ID_IC,
+  PROPOSALS_CANISTER_ID_IC,
+  USERS_CANISTER_ID_IC,
 } from "@/constants/constants"
 
 // canister interfaces
 import { _SERVICE as BACKEND_SERVICE } from "../../declarations/backend/backend.did"
 import * as CuratedProjects from "../../declarations/backend/index"
 
-import { _SERVICE as USERS_SERVICE } from "../../declarations/users/users.did"
 import * as Users from "../../declarations/users/index"
+import { _SERVICE as USERS_SERVICE } from "../../declarations/users/users.did"
 
-import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
 import * as Proposals from "../../declarations/proposals/index"
+import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
 
 import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
 import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_service"
@@ -47,7 +47,7 @@ interface AuthContextValue {
 const AuthContext = createContext<AuthContextValue>(null)
 const useAuth = () => useContext(AuthContext)
 
-function AuthProvider({ children }: { children: React.ReactNode }) {
+function AuthProvider({ children }: { children: ReactNode }) {
   const [authClient, setAuthClient] = useState<AuthClient | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userPrincipal, setUserPrincipal] = useState<Principal | null>(null)

@@ -1,14 +1,12 @@
-import { Dispatch, SetStateAction } from "react"
+import { KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useProjects } from "@/hooks"
-import { KEY } from "@/constants/constants"
-import { updateInProjects, updateInHighlighted, notifySuccess } from "@/utils/_index"
-
-// state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectHome, setHomeHighlighted, setHomeMostUpvoted, setHomeNew } from "@/state/home/home"
 import { setProject } from "@/state/project"
 import { selectPaginated, setPaginatedData } from "@/state/projects/paginated"
-import { selectHome, setHomeNew, setHomeMostUpvoted, setHomeHighlighted } from "@/state/home/home"
+import { notifySuccess, updateInHighlighted, updateInProjects } from "@/utils/index"
+import { Dispatch, SetStateAction } from "react"
 
 interface useUpvote {
   updateUpvote: (projectId: string, location: string, setIsExploding: Dispatch<SetStateAction<boolean>>, duration: number) => Promise<void>

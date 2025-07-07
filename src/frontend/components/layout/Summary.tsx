@@ -1,21 +1,16 @@
-import React, { FC, useEffect } from "react"
-import styled from "styled-components"
-import { IC_LOGO } from "@/constants/constants"
 import { Change } from "@/components/ui/price/_index"
-
-// state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { IC_LOGO } from "@/constants/constants"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjectsNum } from "@/state/curatedProjects"
+import { useEffect } from "react"
+import styled from "styled-components"
 // import { selectProposalsNum } from "@/state/dao/proposals"
-import { selectIcpPrice, selectIcp24hPriceChange } from "@/state/icpPrice"
-import { fetchIcpPrice } from "@/state/icpPrice"
-import { selectUsers } from "@/state/users"
+import { fetchIcpPrice, selectIcp24hPriceChange, selectIcpPrice } from "@/state/icpPrice"
 
-const Summary: FC = (): JSX.Element => {
+export default function Summary() {
   const dispatch = useAppDispatch()
   const curatedNum = useAppSelector(selectActiveProjectsNum)
   // const proposedNum = useAppSelector(selectProposalsNum)
-  const users = useAppSelector(selectUsers).users
 
   // icp price
   const price = useAppSelector(selectIcpPrice)
@@ -35,7 +30,7 @@ const Summary: FC = (): JSX.Element => {
         Projects: <span className="num">{curatedNum.toString() || "..."}</span>
       </p>
 
-      <div className="w-px h-4 bg-gray-200"></div>
+      <div className="w-px h-4 bg-coolgray-800"></div>
 
       {/* <p>
         Unique authed users since 05.06.2024: <span className="num">{users.length.toString() || "..."}</span>
@@ -93,5 +88,3 @@ const SummaryStyled = styled.span`
     }
   }
 `
-
-export default Summary

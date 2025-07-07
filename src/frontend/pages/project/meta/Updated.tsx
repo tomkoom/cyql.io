@@ -1,18 +1,10 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { formatDateTime } from "@/utils/_index"
+import { formatDateTime } from "@/utils/index"
 
 interface UpdatedProps {
   updatedAt: string
 }
 
-const Updated: FC<UpdatedProps> = ({ updatedAt }): JSX.Element => {
+export default function Updated({ updatedAt }: UpdatedProps) {
   if (!updatedAt) return null
-  return <UpdatedStyled>Updated {formatDateTime(Number(updatedAt))}</UpdatedStyled>
+  return <div className="text-coolgray-500">Updated {formatDateTime(Number(updatedAt))}</div>
 }
-
-const UpdatedStyled = styled.div`
-  color: var(--tertiaryColor);
-`
-
-export default Updated

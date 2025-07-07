@@ -445,6 +445,24 @@ h6 {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom Cool Gray colors */
+  --color-coolgray-50: #f9fafb;
+  --color-coolgray-100: #f2f4f8;
+  --color-coolgray-200: #dde1e6;
+  --color-coolgray-300: #c1c7cd;
+  --color-coolgray-400: #a2a9b0;
+  --color-coolgray-500: #878d96;
+  --color-coolgray-600: #697077;
+  --color-coolgray-700: #4d5358;
+  --color-coolgray-800: #343a3f;
+  --color-coolgray-900: #21272a;
+  --color-coolgray-950: #121619;
+  
+  /* Custom Accent colors */
+  --color-accent-1: #6200ea;
+  --color-accent-2: #651fff;
+  --color-accent-3: #7c4dff;
 }
 
 @layer base {

@@ -4,7 +4,7 @@ import CrossIcon from "@/components/icons/CrossIcon"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
 import { Btn } from "@/components/btns"
 import type { Tokens } from "@/state/_types/types"
-import { notifyErr } from "@/utils/_index"
+import { notifyErr } from "@/utils/index"
 
 // hooks
 import { useAuth } from "@/context/Auth"

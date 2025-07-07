@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import type { ListProjectData, VoteArgs } from "@/state/_types/dao_types"
-import { bigintToString, notifyErr, notifySuccess } from "@/utils/_index"
+import { bigintToString, notifyErr, notifySuccess } from "@/utils/index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"

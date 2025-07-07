@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { useProjects } from "@/hooks"
 import { useAuth } from "@/context/Auth"
 import type { Project } from "@/state/_types/curated_projects_types"
-import { shuffle2 } from "@/utils/_index"
+import { shuffle2 } from "@/utils/index"
 
 // components
 import { BackBtn } from "@/components/btns"

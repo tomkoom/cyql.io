@@ -1,23 +1,13 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { formatId } from "@/utils/_index"
 import { useAuth } from "@/context/Auth"
+import { formatId } from "@/utils/index"
 
-const Header: FC = (): JSX.Element => {
+export default function Header() {
   const { userId } = useAuth()
 
   return (
-    <HeaderStyled>
+    <div>
       <h2 className="pageTitle">{formatId(userId)}</h2>
-      <p>{userId}</p>
-    </HeaderStyled>
+      <p className="text-coolgray-500">{userId}</p>
+    </div>
   )
 }
-
-const HeaderStyled = styled.div`
-  > p {
-    color: var(--tertiaryColor);
-  }
-`
-
-export default Header

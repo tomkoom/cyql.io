@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/Auth"
-import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam, bigintToNumber, sortCategoriesByNum } from "@/utils/_index"
+import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam, bigintToNumber, sortCategoriesByNum } from "@/utils/index"
 import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { KEY } from "@/constants/constants"
 import { useQueryParams } from "@/hooks"

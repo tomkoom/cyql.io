@@ -1,5 +1,5 @@
-import { Btn } from "@/components/btns"
-import { iAngleDown, iSignOut, iUser } from "@/components/icons/Icons"
+import { iSignOut, iUser } from "@/components/icons/Icons"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,17 +8,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icon } from "@/components/ui/Icon"
 import { useAuth } from "@/context/Auth"
 import { useAuthenticate, useNav } from "@/hooks"
-import { formatId, formatIdLong } from "@/utils/_index"
-import React from "react"
+import { formatIdLong, formatIdNormal } from "@/utils/index"
 import { useLocation } from "react-router-dom"
+import stc from "string-to-color"
 
 export default function ProfileBtn() {
   const { userId } = useAuth()
   const pathname = useLocation().pathname
   const { toProfile } = useNav()
   const { signOut } = useAuthenticate()
+  const color = stc(userId)
 
   const handleProfileClick = (): void => {
     toProfile()
@@ -32,15 +34,18 @@ export default function ProfileBtn() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="relative">
-          <Btn
-            btnType={pathname === "/profile" ? "primary" : "secondary"}
-            text={formatId(userId)}
-            icon={iAngleDown}
+          <Button
+            className="h-10 font-bold"
+            variant={pathname === "/profile" ? "accent" : "secondary"}
             // onClick={() => {}} // No-op, shadcn handles the dropdown
-          />
+          >
+            <div style={{ backgroundColor: color }} className="w-4 h-4 rounded-full"></div>
+            <span>{formatIdNormal(userId)}</span>
+            <Icon lucideName="ChevronDown" className="text-coolgray-500" />
+          </Button>
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56 p-2 bg-card border border-border shadow-lg animate-in slide-in-from-top-2 duration-200" sideOffset={8}>
+      <DropdownMenuContent align="end" className="p-2 bg-card border border-border shadow-lg animate-in slide-in-from-top-2 duration-200" sideOffset={8}>
         <DropdownMenuLabel className="px-3 py-2 text-sm font-medium text-foreground">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">My Account</p>

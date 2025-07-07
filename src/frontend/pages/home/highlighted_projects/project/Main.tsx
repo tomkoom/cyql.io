@@ -3,7 +3,7 @@ import styled from "styled-components"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { iGithub, iCircleNodes } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui/_index"
-import { trimDescription, trimName } from "@/utils/_index"
+import { trimDescription, trimName } from "@/utils/index"
 
 interface MainProps {
   project: Project

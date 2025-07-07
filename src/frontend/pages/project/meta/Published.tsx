@@ -1,18 +1,10 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { formatDateTime } from "@/utils/_index"
+import { formatDateTime } from "@/utils/index"
 
 interface PublishedProps {
   createdAt: string
 }
 
-const Published: FC<PublishedProps> = ({ createdAt }): JSX.Element => {
+export default function Published({ createdAt }: PublishedProps) {
   if (!createdAt) return null
-  return <PublishedStyled>Published {formatDateTime(Number(createdAt))}</PublishedStyled>
+  return <div className="text-coolgray-500">Published {formatDateTime(Number(createdAt))}</div>
 }
-
-const PublishedStyled = styled.div`
-  color: var(--tertiaryColor);
-`
-
-export default Published

@@ -1,11 +1,10 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { useAuth } from "@/context/Auth"
 import { iCopy } from "@/components/icons/Icons"
-import { notifySuccess } from "@/utils/_index"
+import { useAuth } from "@/context/Auth"
+import { notifySuccess } from "@/utils/index"
 import { CopyToClipboard } from "react-copy-to-clipboard"
+import styled from "styled-components"
 
-const Id: FC = (): JSX.Element => {
+export default function Id() {
   const { userId, accounntIdHex } = useAuth()
 
   const copy = (): void => {
@@ -87,5 +86,3 @@ const IdStyled = styled.ul`
     }
   }
 `
-
-export default Id

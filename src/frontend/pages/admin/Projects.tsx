@@ -1,13 +1,13 @@
-import React, { FC, useEffect, useState } from "react"
-import styled, { css } from "styled-components"
-import type { Project } from "@/state/_types/curated_projects_types"
-import { AdminModal } from "@/modals/_index"
-import { twitterUsername, formatStr16, formatWebsite, formatDiscord } from "@/utils/_index"
 import { Loading } from "@/components/ui/_index"
+import { AdminModal } from "@/modals/_index"
+import type { Project } from "@/state/_types/curated_projects_types"
+import { formatDiscord, formatStr16, formatWebsite, twitterUsername } from "@/utils/index"
+import { FC, useEffect, useState } from "react"
+import styled, { css } from "styled-components"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectAdmin, setAdminProject, setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectAdmin, setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
 import { selectPaginated } from "@/state/projects/paginated"
 
 const Projects: FC = (): JSX.Element => {
