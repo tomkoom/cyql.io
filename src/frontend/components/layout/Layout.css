@@ -26,7 +26,8 @@ p {
   line-height: 150%;
 }
 
-button {
+/* Global button reset - exclude shadcn buttons */
+button:not([data-slot="button"]) {
   font-size: var(--fs6);
   font-weight: var(--fwMedium);
   color: var(--primaryColor);

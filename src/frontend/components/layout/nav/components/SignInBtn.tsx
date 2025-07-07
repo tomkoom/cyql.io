@@ -1,5 +1,4 @@
-import { Btn } from "@/components/btns"
-import { iSignIn } from "@/components/icons/Icons"
+import { Button } from "@/components/ui/button"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 import React from "react"
@@ -12,6 +11,8 @@ export default function SignInBtn() {
   }
 
   return (
-    <Btn btnType={"primary"} text={"Sign In"} icon={iSignIn} onClick={openSignInModal} />
+    <Button variant="accent" className="font-bold h-10" onClick={openSignInModal}>
+      Sign In
+    </Button>
   )
 }

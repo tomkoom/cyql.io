@@ -171,8 +171,7 @@ h6 {
   --boxShadow2Inset: inset 0 0 0 2px var(--underlay2);
   
   /* shadcn dark theme variables */
-  /* Default neutral values (commented out) */
-  /* --foreground: oklch(0.985 0 0);
+  --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -201,39 +200,7 @@ h6 {
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0); */
-
-  /* Cool Gray based dark theme variables - ULTRA DARK with BLACK backgrounds */
-  --foreground: var(--coolGray10);            /* #f2f4f8 - Light text */
-  --card: var(--black);                       /* #000000 - Pure black card background */
-  --card-foreground: var(--coolGray10);       /* #f2f4f8 - Light text on cards */
-  --popover: var(--black);                    /* #000000 - Pure black popover background */
-  --popover-foreground: var(--coolGray10);    /* #f2f4f8 - Light text in popovers */
-  --primary: var(--coolGray10);               /* #f2f4f8 - Light primary */
-  --primary-foreground: var(--black);         /* #000000 - Black text on primary */
-  --secondary: var(--coolGray100);            /* #121619 - Darkest Cool Gray secondary */
-  --secondary-foreground: var(--coolGray10);  /* #f2f4f8 - Light text on secondary */
-  --muted: var(--coolGray100);                /* #121619 - Darkest Cool Gray muted background */
-  --muted-foreground: var(--coolGray30);      /* #c1c7cd - Lighter text on muted for contrast */
-  --accent: var(--coolGray100);               /* #121619 - Darkest Cool Gray accent */
-  --accent-foreground: var(--coolGray10);     /* #f2f4f8 - Light text on accent */
-  --destructive: oklch(0.704 0.191 22.216);   /* Keep destructive color as is */
-  --border: var(--coolGray90);                /* #21272a - Very dark border */
-  --input: var(--coolGray90);                 /* #21272a - Very dark input border */
-  --ring: var(--coolGray50);                  /* #878d96 - Medium focus ring */
-  --chart-1: oklch(0.488 0.243 264.376);      /* Keep chart colors as is */
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: var(--black);                    /* #000000 - Pure black sidebar */
-  --sidebar-foreground: var(--coolGray10);    /* #f2f4f8 - Light sidebar text */
-  --sidebar-primary: var(--coolGray10);       /* #f2f4f8 - Light sidebar primary */
-  --sidebar-primary-foreground: var(--black); /* #000000 - Black text on sidebar primary */
-  --sidebar-accent: var(--coolGray100);       /* #121619 - Darkest Cool Gray sidebar accent */
-  --sidebar-accent-foreground: var(--coolGray10); /* #f2f4f8 - Light text on sidebar accent */
-  --sidebar-border: var(--coolGray90);        /* #21272a - Very dark sidebar border */
-  --sidebar-ring: var(--coolGray50);          /* #878d96 - Medium sidebar focus ring */
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 /* –––THEME––– */
@@ -274,8 +241,7 @@ h6 {
   --boxShadow2Inset: inset 0 0 0 1px var(--underlay2);
   
   /* shadcn light theme variables */
-  /* Default neutral values (commented out) */
-  /* --foreground: oklch(0.145 0 0);
+  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -304,39 +270,7 @@ h6 {
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0); */
-  
-  /* Cool Gray based theme variables */
-  --foreground: var(--coolGray100);           /* #121619 - Dark text */
-  --card: var(--coolGray10);                  /* #f2f4f8 - Light card background */
-  --card-foreground: var(--coolGray100);      /* #121619 - Dark text on cards */
-  --popover: var(--coolGray10);               /* #f2f4f8 - Light popover background */
-  --popover-foreground: var(--coolGray100);   /* #121619 - Dark text in popovers */
-  --primary: var(--coolGray90);               /* #21272a - Dark primary */
-  --primary-foreground: var(--coolGray10);    /* #f2f4f8 - Light text on primary */
-  --secondary: var(--coolGray20);             /* #dde1e6 - Light secondary */
-  --secondary-foreground: var(--coolGray90);  /* #21272a - Dark text on secondary */
-  --muted: var(--coolGray20);                 /* #dde1e6 - Light muted background */
-  --muted-foreground: var(--coolGray60);      /* #697077 - Medium text on muted */
-  --accent: var(--coolGray20);                /* #dde1e6 - Light accent */
-  --accent-foreground: var(--coolGray90);     /* #21272a - Dark text on accent */
-  --destructive: oklch(0.577 0.245 27.325);   /* Keep destructive color as is */
-  --border: var(--coolGray30);                /* #c1c7cd - Medium border */
-  --input: var(--coolGray30);                 /* #c1c7cd - Medium input border */
-  --ring: var(--coolGray60);                  /* #697077 - Medium focus ring */
-  --chart-1: oklch(0.646 0.222 41.116);       /* Keep chart colors as is */
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: var(--coolGray10);               /* #f2f4f8 - Light sidebar */
-  --sidebar-foreground: var(--coolGray100);   /* #121619 - Dark sidebar text */
-  --sidebar-primary: var(--coolGray90);       /* #21272a - Dark sidebar primary */
-  --sidebar-primary-foreground: var(--coolGray10); /* #f2f4f8 - Light text on sidebar primary */
-  --sidebar-accent: var(--coolGray20);        /* #dde1e6 - Light sidebar accent */
-  --sidebar-accent-foreground: var(--coolGray90); /* #21272a - Dark text on sidebar accent */
-  --sidebar-border: var(--coolGray30);        /* #c1c7cd - Medium sidebar border */
-  --sidebar-ring: var(--coolGray60);          /* #697077 - Medium sidebar focus ring */
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 /* Keep .dark class for backwards compatibility but it's now empty since dark is default */
@@ -354,6 +288,7 @@ h6 {
   --primaryColorRgb: var(--coolGray10Rgb);
   --secondaryColor: var(--coolGray30);
   --tertiaryColor: var(--coolGray50);
+  /* --background: var(--coolGray100); */
   --background: oklch(0.145 0 0);
   --backgroundRgb: var(--coolGray100Rgb);
 
@@ -375,38 +310,36 @@ h6 {
   --boxShadow3: 0 0 0 1px var(--underlay3);
   --boxShadow1Inset: inset 0 0 0 2px var(--underlay1);
   --boxShadow2Inset: inset 0 0 0 2px var(--underlay2);
-  
-  /* Cool Gray based dark theme variables - ULTRA DARK with BLACK backgrounds (same as :root for consistency) */
-  --foreground: var(--coolGray10);            /* #f2f4f8 - Light text */
-  --card: var(--black);                       /* #000000 - Pure black card background */
-  --card-foreground: var(--coolGray10);       /* #f2f4f8 - Light text on cards */
-  --popover: var(--black);                    /* #000000 - Pure black popover background */
-  --popover-foreground: var(--coolGray10);    /* #f2f4f8 - Light text in popovers */
-  --primary: var(--coolGray10);               /* #f2f4f8 - Light primary */
-  --primary-foreground: var(--black);         /* #000000 - Black text on primary */
-  --secondary: var(--coolGray100);            /* #121619 - Darkest Cool Gray secondary */
-  --secondary-foreground: var(--coolGray10);  /* #f2f4f8 - Light text on secondary */
-  --muted: var(--coolGray100);                /* #121619 - Darkest Cool Gray muted background */
-  --muted-foreground: var(--coolGray30);      /* #c1c7cd - Lighter text on muted for contrast */
-  --accent: var(--coolGray100);               /* #121619 - Darkest Cool Gray accent */
-  --accent-foreground: var(--coolGray10);     /* #f2f4f8 - Light text on accent */
-  --destructive: oklch(0.704 0.191 22.216);   /* Keep destructive color as is */
-  --border: var(--coolGray90);                /* #21272a - Very dark border */
-  --input: var(--coolGray90);                 /* #21272a - Very dark input border */
-  --ring: var(--coolGray50);                  /* #878d96 - Medium focus ring */
-  --chart-1: oklch(0.488 0.243 264.376);      /* Keep chart colors as is */
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: var(--black);                    /* #000000 - Pure black sidebar */
-  --sidebar-foreground: var(--coolGray10);    /* #f2f4f8 - Light sidebar text */
-  --sidebar-primary: var(--coolGray10);       /* #f2f4f8 - Light sidebar primary */
-  --sidebar-primary-foreground: var(--black); /* #000000 - Black text on sidebar primary */
-  --sidebar-accent: var(--coolGray100);       /* #121619 - Darkest Cool Gray sidebar accent */
-  --sidebar-accent-foreground: var(--coolGray10); /* #f2f4f8 - Light text on sidebar accent */
-  --sidebar-border: var(--coolGray90);        /* #21272a - Very dark sidebar border */
-  --sidebar-ring: var(--coolGray50);          /* #878d96 - Medium sidebar focus ring */
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @theme inline {

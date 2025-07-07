@@ -44,7 +44,7 @@ export default function ProfileBtn() {
         <DropdownMenuLabel className="px-3 py-2 text-sm font-medium text-foreground">
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium leading-none">My Account</p>
-            <p className="leading-none text-muted-foreground font-mono">{formatIdLong(userId)}</p>
+            <p className="leading-none text-muted-foreground !font-mono">{formatIdLong(userId)}</p>
           </div>
         </DropdownMenuLabel>
 
