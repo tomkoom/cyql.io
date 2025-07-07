@@ -1,7 +1,5 @@
 import { useNavigate, createSearchParams } from "react-router-dom"
 import { useQueryParams } from "@/hooks"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 

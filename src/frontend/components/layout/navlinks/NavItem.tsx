@@ -1,6 +1,6 @@
-import React, { FC, ReactNode } from "react"
-import styled from "styled-components"
+import { FC, ReactNode } from "react"
 import { useLocation } from "react-router-dom"
+import styled from "styled-components"
 
 interface NavItemProps {
   label: string

@@ -1,54 +1,21 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import { useNav } from "@/hooks"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectActiveProjectsNum } from "@/state/curatedProjects"
 
-const Header: FC = (): JSX.Element => {
+export default function Header() {
   const { toProjects } = useNav()
   const projectsNum = useAppSelector(selectActiveProjectsNum)
 
   return (
-    <HeaderStyled>
-      <h2>Internet Computer Ecosystem Playground</h2>
-      <p>
-        Explore <span onClick={toProjects}>{projectsNum > 0 ? projectsNum : "..."}</span> #ic projects
+    <header className="flex flex-col items-center justify-center text-center">
+      <h2 className="!text-5xl !font-black leading-tight">Internet Computer Ecosystem Playground</h2>
+      <p className="text-xl text-coolgray-500 mt-4">
+        Explore{" "}
+        <span className="font-bold text-coolgray-200 cursor-pointer underline hover:text-white transition-all duration-300" onClick={toProjects}>
+          {projectsNum > 0 ? projectsNum : "..."}
+        </span>{" "}
+        #ic projects
       </p>
-    </HeaderStyled>
+    </header>
   )
 }
-
-const HeaderStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  > h2 {
-    font-size: var(--fs1);
-    font-weight: var(--fwBlack);
-    line-height: 110%;
-  }
-
-  > p {
-    font-size: var(--fs5);
-    color: var(--secondaryColor);
-    margin-top: 0.5rem;
-
-    > span {
-      font-weight: var(--fwBold);
-      color: var(--primaryColor);
-      cursor: pointer;
-      box-shadow: var(--underlinePrimary);
-      transition: var(--transition1);
-
-      &:hover {
-        color: var(--secondaryColor);
-        box-shadow: var(--underlineSecondary);
-      }
-    }
-  }
-`
-
-export default Header

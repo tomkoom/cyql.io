@@ -3,28 +3,13 @@
   font-family: var(--fontFamily);
 }
 
-/* Reset only specific elements instead of universal reset */
-h1, h2, h3, h4, h5, h6, p, ul, ol, li, blockquote, pre, hr {
-  margin: 0;
-  padding: 0;
-}
+/* html {
+  font-size: 16px;
+} */
 
-html {
-  font-size: 16px; /* root font size */
-}
-
-body {
+/* body {
   background-color: var(--primaryColor);
-}
-
-a {
-  text-decoration: none;
-  color: var(--primaryColor);
-}
-
-p {
-  line-height: 150%;
-}
+} */
 
 /* Global button reset - exclude shadcn buttons */
 button:not([data-slot="button"]) {

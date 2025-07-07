@@ -1,20 +1,18 @@
-import React, { FC, useEffect } from "react"
-import styled from "styled-components"
-import "./Layout.css"
-import { Outlet, useLocation } from "react-router-dom"
-import { Footer, Nav, Navlinks, Summary, Cookie } from "."
-import { LoadingModal, SignInModal } from "@/modals/_index"
-import { device } from "@/styles/breakpoints"
-import { Toaster } from "react-hot-toast"
-import { useProjects, useNav, useScrollLock, useUsers } from "@/hooks"
 import { useAuth } from "@/context/Auth"
-
-// state
+import { useNav, useProjects, useScrollLock, useUsers } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
+import { LoadingModal, SignInModal } from "@/modals/_index"
+import { selectHome } from "@/state/home/home"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
-import { selectHome } from "@/state/home/home"
 import { selectTheme } from "@/state/theme"
+import { device } from "@/styles/breakpoints"
+import { FC, useEffect } from "react"
+import { Toaster } from "react-hot-toast"
+import { Outlet, useLocation } from "react-router-dom"
+import styled from "styled-components"
+import { Cookie, Footer, Nav, Summary } from "."
+import "./Layout.css"
 
 const toasterStyle = {
   border: "none",
@@ -102,7 +100,7 @@ const Layout: FC = (): JSX.Element => {
       {/* ... */}
       <Summary />
       <Nav />
-      <Navlinks />
+      {/* <Navlinks /> */}
 
       <main className="main">
         <Outlet />

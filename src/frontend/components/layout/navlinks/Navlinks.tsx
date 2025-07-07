@@ -1,14 +1,10 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { NavItem, Tags } from "./_index"
-import { verifyAdmin } from "@/utils/verifyAdmin"
+import { useNavlinks } from "@/hooks"
 import { device } from "@/styles/breakpoints"
-import { useAuth } from "@/context/Auth"
-import { useNavlinks, useNav } from "@/hooks"
+import { FC } from "react"
+import styled from "styled-components"
+import { NavItem, Tags } from "."
 
 const Navlinks: FC = (): JSX.Element => {
-  const { userId } = useAuth()
-  const { toAdmin } = useNav()
   const { navlinks } = useNavlinks()
 
   return (
@@ -17,8 +13,6 @@ const Navlinks: FC = (): JSX.Element => {
         {navlinks.map((navlink) => (
           <NavItem key={navlink.label} label={navlink.label} pathname={navlink.pathname} icon={navlink.icon} route={navlink.route} />
         ))}
-
-        {verifyAdmin(userId) && <NavItem label="Admin" pathname={"/admin"} icon={undefined} route={toAdmin} />}
       </div>
 
       <div className="tags">

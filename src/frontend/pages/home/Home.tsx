@@ -1,20 +1,12 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { useNav } from "@/hooks"
-// import { Btn } from "@/components/btns/_index"
-// import { iPlus } from "@/components/icons/Icons"
-
-// components
-import { Header, HighlightedProjects, JoinCommunity, Promo, FlexBanner } from "./_index"
-import { Loading } from "@/components/ui/_index"
 import { ViewAllBtn } from "@/components/btns"
-
-// state
+import { Loading } from "@/components/ui/_index"
+import { useNav } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectHome } from "@/state/home/home"
+import { Header, HighlightedProjects, JoinCommunity, Promo } from "."
 
-const Home: FC = (): JSX.Element => {
-  const { toProjects, toMostUpvoted, toList } = useNav()
+export default function Home() {
+  const { toProjects, toMostUpvoted } = useNav()
   const home = useAppSelector(selectHome)
   const newProjects = home.new
   const mostUpvoted = home.mostUpvoted
@@ -27,141 +19,106 @@ const Home: FC = (): JSX.Element => {
   const nfts = home.highlighted.nfts
 
   return (
-    <HomeStyled>
+    <div className="flex flex-col gap-8">
       <Header />
-      {/* <Btn btnType={"secondary"} text={"List Project"} icon={iPlus} onClick={toList} /> */}
-      {/* <FlexBanner /> */}
       <Promo />
 
-      <Section>
-        <Title>
-          <h3>Latest Projects</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New Listings</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {newProjects.length > 0 ? <HighlightedProjects projects={newProjects} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest dApps</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in dApps</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={dapps} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest Social Networks</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in Social Networks</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={socialNetworks} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest Marketplaces</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in Marketplaces</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={marketplace} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest Games</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in Games</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={games} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest DeFi Projects</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in DeFi</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={defi} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest Tokens</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in Tokens</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={tokens} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Latest NFTs</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">New in NFTs</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {nfts.length > 0 ? <HighlightedProjects projects={nfts} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title>
-          <h3>Most Upvoted Projects</h3>
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="!text-2xl">Most Upvoted</h3>
           <ViewAllBtn route={toProjects} />
-        </Title>
+        </div>
 
         {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} btnText="View All Most Upvoted" route={toMostUpvoted} /> : <Loading />}
-      </Section>
-      <Divider />
+      </section>
+      <div className="h-px bg-coolgray-950 my-4" />
 
-      <Section>
-        <Title style={{ justifyContent: "center" }}>
-          <h3>Follow</h3>
-        </Title>
+      <section className="mb-8">
+        <div className="flex items-center justify-center mb-4">
+          <h3 className="!text-3xl">Follow</h3>
+        </div>
         <JoinCommunity />
-      </Section>
-
-      <span className="inf">♾️♾️♾️</span>
-    </HomeStyled>
+      </section>
+    </div>
   )
 }
-
-const HomeStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  > span.inf {
-    text-align: center;
-  }
-`
-
-const Section = styled.section``
-
-const Title = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-
-  > h3 {
-    font-size: var(--fs5);
-  }
-`
-
-const Divider = styled.div`
-  height: 1px;
-  box-shadow: 0 1px 0 0 var(--underlay1);
-  margin: 2rem 0;
-`
-
-export default Home
