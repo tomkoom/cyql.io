@@ -2,7 +2,7 @@ import React, { FC, Dispatch, SetStateAction } from "react"
 import styled from "styled-components"
 import { camelCaseToWords, notifyErr, notifySuccess } from "@/utils/_index"
 import { Btn } from "@/components/btns"
-import { useNav, useProposals } from "@/hooks/_index"
+import { useNav, useProposals } from "@/hooks"
 import { DataItem } from "./_index"
 import { useAuth } from "@/context/Auth"
 

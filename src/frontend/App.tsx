@@ -1,14 +1,12 @@
-import React, { FC, useEffect } from "react"
-import { RouterProvider } from "react-router-dom"
-import { Router } from "@/routes/_index"
 import { useAuth } from "@/context/Auth"
-import { useNft, useIcpLedger } from "@/hooks/_index"
-
-// state
+import { useIcpLedger, useNft } from "@/hooks"
 import { useAppDispatch } from "@/hooks/useRedux"
+import { Router } from "@/routes"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
+import React, { useEffect } from "react"
+import { RouterProvider } from "react-router-dom"
 
-const App: FC = (): JSX.Element => {
+export default function App() {
   const dispatch = useAppDispatch()
   const { nft, isAuthenticated, accounntIdHex } = useAuth()
   const { refreshNfts } = useNft()
@@ -21,9 +19,10 @@ const App: FC = (): JSX.Element => {
   }, [nft, isAuthenticated, accounntIdHex])
 
   useEffect(() => {
-    if (!isAuthenticated) return
-    dispatch(setSignInModalIsOpen(false))
-  }, [isAuthenticated])
+    if (isAuthenticated) {
+      dispatch(setSignInModalIsOpen(false))
+    }
+  }, [isAuthenticated, dispatch])
 
   useEffect(() => {
     if (accounntIdHex) {
@@ -33,5 +32,3 @@ const App: FC = (): JSX.Element => {
 
   return <RouterProvider router={Router} />
 }
-
-export default App

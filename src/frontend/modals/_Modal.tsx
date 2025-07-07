@@ -2,7 +2,7 @@ import React, { FC, useEffect, ReactNode } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
-import { useScrollLock } from "@/hooks/_index"
+import { useScrollLock } from "@/hooks"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

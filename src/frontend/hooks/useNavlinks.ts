@@ -1,4 +1,4 @@
-import { useNav } from "./_index"
+import { useNav } from "."
 import { ReactNode } from "react"
 import { iPlus } from "@/components/icons/Icons"
 

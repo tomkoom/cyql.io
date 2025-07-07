@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import type { Project as P } from "@/state/_types/curated_projects_types"
-import { useNav } from "@/hooks/_index"
+import { useNav } from "@/hooks"
 import { Logo, Main } from "./_index"
 
 interface ProjectProps {

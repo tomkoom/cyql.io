@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react"
 import { useAuth } from "@/context/Auth"
-import { useProjects } from "@/hooks/_index"
+import { useProjects } from "@/hooks"
 import { KEY } from "@/constants/constants"
 import { updateInProjects, updateInHighlighted, notifySuccess } from "@/utils/_index"
 

@@ -64,6 +64,59 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     resetSession()
   }, [])
 
+  // Listen for when user returns from Internet Identity
+  useEffect(() => {
+    let focusTimeout: NodeJS.Timeout
+
+    const handleWindowFocus = () => {
+      // Clear any existing timeout
+      if (focusTimeout) clearTimeout(focusTimeout)
+
+      // Check if we just returned from Internet Identity
+      const urlParams = new URLSearchParams(window.location.search)
+      const hasIICallback = urlParams.has("sessionkey") || window.location.hash.includes("sessionkey")
+
+      if (hasIICallback) {
+        console.log("🔄 Detected return from Internet Identity, refreshing auth state...")
+        resetSession()
+      } else if (!isAuthenticated) {
+        // If not currently authenticated, check if we should be after a small delay
+        // This handles cases where URL params aren't present but user completed II flow
+        focusTimeout = setTimeout(async () => {
+          if (authClient) {
+            const wasAuthenticated = await authClient.isAuthenticated()
+            if (wasAuthenticated && !isAuthenticated) {
+              // console.log("🔄 Authentication detected on focus, refreshing auth state...")
+              resetSession()
+            }
+          }
+        }, 500)
+      }
+    }
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden && !isAuthenticated) {
+        // Check if we just returned from Internet Identity
+        const urlParams = new URLSearchParams(window.location.search)
+        const hasIICallback = urlParams.has("sessionkey") || window.location.hash.includes("sessionkey")
+
+        if (hasIICallback) {
+          console.log("🔄 Detected return from Internet Identity via visibility change, refreshing auth state...")
+          resetSession()
+        }
+      }
+    }
+
+    window.addEventListener("focus", handleWindowFocus)
+    document.addEventListener("visibilitychange", handleVisibilityChange)
+
+    return () => {
+      window.removeEventListener("focus", handleWindowFocus)
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
+      if (focusTimeout) clearTimeout(focusTimeout)
+    }
+  }, [isAuthenticated, authClient])
+
   const resetSession = async (): Promise<void> => {
     const authClient = await AuthClient.create()
     const isAuthed = await authClient.isAuthenticated()
@@ -104,11 +157,14 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     if (isAuthenticated || !authClient) return
 
     try {
+      // console.log("🔐 Initiating Internet Identity login...")
       await authClient.login({
         maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1_000_000_000), // 7 days
         ...(isCustomDomain() && { derivationOrigin: APP_DERIVATION_ORIGIN }),
       })
-      await resetSession()
+      // Don't call resetSession() here - let the window focus/visibility listeners handle it
+      // when the user returns from Internet Identity
+      // console.log("🔐 Login initiated, waiting for user to return from Internet Identity...")
     } catch (error) {
       console.warn("Login failed:", error)
     }

@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-import { useNav } from "@/hooks/_index"
+import { useNav } from "@/hooks"
 import type { Project as P } from "@/state/_types/curated_projects_types"
 
 // components

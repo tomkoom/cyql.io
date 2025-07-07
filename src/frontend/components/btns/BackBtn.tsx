@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useNav } from "@/hooks/_index"
+import { useNav } from "@/hooks"
 import { iArrowLeft } from "@/components/icons/Icons"
 
 const BackBtn: FC = (): JSX.Element => {

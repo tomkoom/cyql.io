@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-import { useQueryParams, useProjects, useNav } from "@/hooks/_index"
+import { useQueryParams, useProjects, useNav } from "@/hooks"
 import { filterBySearch } from "./utils/filterProjects"
 import { useAuth } from "@/context/Auth"
 

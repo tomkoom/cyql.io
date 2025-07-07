@@ -6,7 +6,7 @@ import { Btn } from "@/components/btns"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useNft } from "@/hooks/_index"
+import { useNft } from "@/hooks"
 
 // components
 import { Steps, GetSupport } from "./withdraw_modal/_index"

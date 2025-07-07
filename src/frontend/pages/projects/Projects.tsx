@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC } from "react"
 import styled from "styled-components"
-import { useQueryParams, useProjects } from "@/hooks/_index"
+import { useQueryParams, useProjects } from "@/hooks"
 import { Btn } from "@/components/btns"
 
 // components

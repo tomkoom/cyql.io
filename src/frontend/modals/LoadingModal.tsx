@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 import { Spinner } from "@/components/ui/_index"
-import { useScrollLock } from "@/hooks/_index"
+import { useScrollLock } from "@/hooks"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

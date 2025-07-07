@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useNav } from "@/hooks/_index"
+import { useNav } from "@/hooks"
 
 const staffPicksItems = [
   {

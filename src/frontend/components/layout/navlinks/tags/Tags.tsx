@@ -1,9 +1,9 @@
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useNav } from "@/hooks/_index"
+import { useNav } from "@/hooks"
 import { useNavigate, createSearchParams } from "react-router-dom"
 import { Tag } from "./_index"
-import { useQueryParams, useProjects } from "@/hooks/_index"
+import { useQueryParams, useProjects } from "@/hooks"
 import { LoadingModal } from "@/modals/_index"
 
 // state

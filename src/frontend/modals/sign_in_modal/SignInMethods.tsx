@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { IC_LOGO } from "@/constants/constants"
 import { Btn } from "./_index"
 import { useAuth } from "@/context/Auth"
-import { useAuthenticate } from "@/hooks/_index"
+import { useAuthenticate } from "@/hooks"
 
 const SignInMethods: FC = (): JSX.Element => {
   const { signIn } = useAuthenticate()

@@ -1,6 +1,6 @@
 import { Logo } from "@/components/ui/_index"
 import { useAuth } from "@/context/Auth"
-import { useNav } from "@/hooks/_index"
+import { useNav } from "@/hooks"
 import React from "react"
 import { ProfileBtn, SignInBtn, Socials } from "./components"
 

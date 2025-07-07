@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/context/Auth"
-import { useAuthenticate, useNav } from "@/hooks/_index"
+import { useAuthenticate, useNav } from "@/hooks"
 import { formatId, formatIdLong } from "@/utils/_index"
 import React from "react"
 import { useLocation } from "react-router-dom"

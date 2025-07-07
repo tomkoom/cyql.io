@@ -5,7 +5,7 @@ import { RectBtn } from "@/components/btns"
 import { useSearchParams } from "react-router-dom"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
 import { Pagination, Table, Dashboard, Ledgers } from "./_index"
-import { useIcrcScan } from "@/hooks/_index"
+import { useIcrcScan } from "@/hooks"
 import { notifyErr } from "@/utils/_index"
 
 // state

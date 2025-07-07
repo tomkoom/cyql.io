@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
-import { useProjects, useNav } from "@/hooks/_index"
+import { useProjects, useNav } from "@/hooks"
 import { LogoLetter } from "@/components/ui/_index"
 import { trimDescription } from "@/utils/_index"
 import { iCaretUp } from "@/components/icons/Icons"

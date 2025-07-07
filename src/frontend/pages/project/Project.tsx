@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useParams } from "react-router-dom"
-import { useProjects } from "@/hooks/_index"
+import { useProjects } from "@/hooks"
 import { useAuth } from "@/context/Auth"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { shuffle2 } from "@/utils/_index"

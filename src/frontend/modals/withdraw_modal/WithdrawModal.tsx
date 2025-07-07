@@ -8,7 +8,7 @@ import { notifyErr } from "@/utils/_index"
 
 // hooks
 import { useAuth } from "@/context/Auth"
-import { useIcpLedger } from "@/hooks/_index"
+import { useIcpLedger } from "@/hooks"
 
 // components
 import { RootModal } from "../_index"

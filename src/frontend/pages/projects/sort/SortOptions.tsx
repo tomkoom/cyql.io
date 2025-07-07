@@ -2,7 +2,7 @@ import React, { Dispatch, FC, SetStateAction, useEffect, useRef, MutableRefObjec
 import styled from "styled-components"
 import { iCheck } from "@/components/icons/Icons"
 import type { SortOptions } from "../../../../declarations/backend/backend.did"
-import { useProjects, useQueryParams } from "@/hooks/_index"
+import { useProjects, useQueryParams } from "@/hooks"
 import { LoadingModal } from "@/modals/_index"
 
 // state

@@ -1,5 +1,3 @@
-// hooks
-
 export { useAuthenticate } from "./useAuthenticate"
 export { useIcpLedger } from "./useIcpLedger"
 export { useIcrcScan } from "./useIcrcScan"
@@ -15,4 +13,3 @@ export { useProjects } from "./backend/useProjects"
 export { useProposals } from "./backend/useProposals"
 export { useUpvote } from "./backend/useUpvote"
 export { useUsers } from "./backend/useUsers"
-

@@ -2,7 +2,7 @@ import { useAuth } from "@/context/Auth"
 import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam, bigintToNumber, sortCategoriesByNum } from "@/utils/_index"
 import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { KEY } from "@/constants/constants"
-import { useQueryParams } from "@/hooks/_index"
+import { useQueryParams } from "@/hooks"
 import { useLocation } from "react-router-dom"
 
 // state

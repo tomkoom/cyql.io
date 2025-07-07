@@ -3,10 +3,10 @@ import styled from "styled-components"
 import "./Layout.css"
 import { Outlet, useLocation } from "react-router-dom"
 import { Footer, Nav, Navlinks, Summary, Cookie } from "./_index"
-import { LoadingModal } from "@/modals/_index"
+import { LoadingModal, SignInModal } from "@/modals/_index"
 import { device } from "@/styles/breakpoints"
 import { Toaster } from "react-hot-toast"
-import { useProjects, useNav, useScrollLock, useUsers } from "@/hooks/_index"
+import { useProjects, useNav, useScrollLock, useUsers } from "@/hooks"
 import { useAuth } from "@/context/Auth"
 
 // state
@@ -97,6 +97,7 @@ const Layout: FC = (): JSX.Element => {
         }}
       />
       <LoadingModal isOpen={isLoading} />
+      <SignInModal isOpen={isSignInModalOpen} />
 
       {/* ... */}
       <Summary />

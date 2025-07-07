@@ -4,7 +4,7 @@ import { NavItem, Tags } from "./_index"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { device } from "@/styles/breakpoints"
 import { useAuth } from "@/context/Auth"
-import { useNavlinks, useNav } from "@/hooks/_index"
+import { useNavlinks, useNav } from "@/hooks"
 
 const Navlinks: FC = (): JSX.Element => {
   const { userId } = useAuth()

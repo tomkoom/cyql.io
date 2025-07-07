@@ -1,6 +1,6 @@
 import React from "react"
 import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
-import { AdminRoutes, ProtectedRoutes } from "@/routes/_index"
+import { AdminRoutes, ProtectedRoutes } from "@/routes"
 
 // components
 import Layout from "@/components/layout/Layout"

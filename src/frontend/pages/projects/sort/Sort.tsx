@@ -1,7 +1,7 @@
 import React, { FC, useState, useRef, useLayoutEffect } from "react"
 import styled from "styled-components"
 import { SortBtn, SortOptions } from "./_index"
-import { useQueryParams } from "@/hooks/_index"
+import { useQueryParams } from "@/hooks"
 
 const Sort: FC = (): JSX.Element => {
   const { queryParams } = useQueryParams()

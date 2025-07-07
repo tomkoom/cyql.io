@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
-import { useNav, useNavlinks } from "@/hooks/_index"
+import { useNav, useNavlinks } from "@/hooks"
 
 // components
 import { Logo } from "@/components/ui/_index"

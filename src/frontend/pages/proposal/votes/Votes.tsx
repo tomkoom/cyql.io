@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 import { Btn } from "@/components/btns"
 import { useAuth } from "@/context/Auth"
-import { useProposals } from "@/hooks/_index"
+import { useProposals } from "@/hooks"
 import { VoteArgs, Vote } from "@/state/_types/dao_types"
 import { VotingBar } from "./_index"
 

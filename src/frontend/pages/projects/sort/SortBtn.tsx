@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import styled from "styled-components"
 import { iAngleDown, iSort } from "@/components/icons/Icons"
-import { useQueryParams } from "@/hooks/_index"
+import { useQueryParams } from "@/hooks"
 
 const SortBtn: FC = (): JSX.Element => {
   const { queryParams } = useQueryParams()

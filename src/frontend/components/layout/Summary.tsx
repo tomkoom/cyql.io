@@ -32,12 +32,14 @@ const Summary: FC = (): JSX.Element => {
   return (
     <SummaryStyled>
       <p>
-        Curated projects: <span className="num">{curatedNum.toString() || "..."}</span>
+        Projects: <span className="num">{curatedNum.toString() || "..."}</span>
       </p>
 
-      <p>
+      <div className="w-px h-4 bg-gray-200"></div>
+
+      {/* <p>
         Unique authed users since 05.06.2024: <span className="num">{users.length.toString() || "..."}</span>
-      </p>
+      </p> */}
 
       {/* <p>
         Proposed Projects: <span className="num">{proposedNum.toString() || "..."}</span>

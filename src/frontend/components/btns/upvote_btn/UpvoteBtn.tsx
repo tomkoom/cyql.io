@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react"
 import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
-import { useUpvote } from "@/hooks/_index"
+import { useUpvote } from "@/hooks"
 import { UpvotedBtn, UnUpvotedBtn, NotSignedBtn } from "./_index"
 // https://www.npmjs.com/package/react-confetti-explosion
 import ConfettiExplosion from "react-confetti-explosion"
