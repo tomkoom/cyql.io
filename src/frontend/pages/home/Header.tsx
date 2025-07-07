@@ -8,10 +8,12 @@ export default function Header() {
 
   return (
     <header className="flex flex-col items-center justify-center text-center">
-      <h2 className="!text-5xl !font-black leading-tight">Internet Computer Ecosystem Playground</h2>
+      <h2 className="!text-5xl !font-black leading-tight">
+        <span className="text-accent-1">Internet Computer</span> Ecosystem Playground
+      </h2>
       <p className="text-xl text-coolgray-500 mt-4">
         Explore{" "}
-        <span className="font-bold text-coolgray-200 cursor-pointer underline hover:text-white transition-all duration-300" onClick={toProjects}>
+        <span className="font-bold text-accent-1 cursor-pointer underline hover:text-accent-2 transition-all duration-300" onClick={toProjects}>
           {projectsNum > 0 ? projectsNum : "..."}
         </span>{" "}
         #ic projects
