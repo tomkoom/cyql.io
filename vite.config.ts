@@ -16,29 +16,29 @@ export default defineConfig(async () => {
   const { default: tailwindcss } = await import("@tailwindcss/vite")
   
   return {
-    root: "src/frontend",
-    build: {
-      outDir: "../../dist",
-      emptyOutDir: true,
-    },
-    resolve: {
-      alias,
-    },
-    optimizeDeps: {
-      esbuildOptions: {
-        define: {
-          global: "globalThis",
-        },
+  root: "src/frontend",
+  build: {
+    outDir: "../../dist",
+    emptyOutDir: true,
+  },
+  resolve: {
+    alias,
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: "globalThis",
       },
     },
-    server: {
-      proxy: {
-        "/api": {
-          target: "http://127.0.0.1:4943",
-          changeOrigin: true,
-        },
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:4943",
+        changeOrigin: true,
       },
     },
-    plugins: [react(), environment("all"), svgr(), tailwindcss()],
+  },
+  plugins: [react(), environment("all"), svgr(), tailwindcss()],
   }
 })

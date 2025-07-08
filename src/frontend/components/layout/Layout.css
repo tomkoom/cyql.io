@@ -3,16 +3,12 @@
   font-family: var(--fontFamily);
 }
 
-/* html {
-  font-size: 16px;
-} */
-
 /* body {
   background-color: var(--primaryColor);
 } */
 
 /* Global button reset - exclude shadcn buttons */
-button:not([data-slot="button"]) {
+/* button:not([data-slot="button"]) {
   font-size: var(--fs6);
   font-weight: var(--fwMedium);
   color: var(--primaryColor);
@@ -20,7 +16,7 @@ button:not([data-slot="button"]) {
   text-align: left;
   cursor: pointer;
   border: none;
-}
+} */
 
 ul {
   list-style-type: none;

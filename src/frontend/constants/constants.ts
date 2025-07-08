@@ -1,6 +1,6 @@
-import iclogo from "@/assets/logos/ic-logo.svg"
 import logo_color from "@/assets/logos/cyql_logo_color.svg"
 import logo_gray from "@/assets/logos/cyql_logo_gray.svg"
+import iclogo from "@/assets/logos/ic-logo.svg"
 
 export const APP_NAME = "cyql"
 export const APP_NAME_TLD = "cyql.io"
@@ -32,6 +32,8 @@ export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io"
 
 // links
 export const X_URL = "https://x.com/cyqlio"
+export const X_PROMOTE_URL =
+  "https://x.com/messages/compose?recipient_id=1386304698358116354&text=Hi!%20I%20would%20like%20to%20promote%20my%20project%20on%20cyql.io"
 export const DISCORD_URL = "https://discord.gg/AnjyrfvvXX"
 export const GITHUB_URL = "https://github.com/tomkoom/cyql.io"
 export const COOKIE_POLICY = "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
