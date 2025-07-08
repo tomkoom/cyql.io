@@ -13,7 +13,7 @@ export default function Nav() {
   const [dialogOpen, setDialogOpen] = useState(false)
 
   return (
-    <div className="flex w-full flex-wrap items-center justify-between px-4 lg:px-8">
+    <div className="flex w-full flex-wrap items-center justify-between px-4 py-2 lg:px-8">
       <Logo onClick={toHome} />
       <div className="flex flex-wrap items-center justify-center gap-4">
         <div className="flex flex-wrap items-center justify-center gap-4">
