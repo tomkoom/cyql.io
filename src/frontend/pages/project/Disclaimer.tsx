@@ -1,5 +1,5 @@
+import { ExpandableText } from "@/components/ui"
 import React, { FC } from "react"
-import { ExpandableText } from "@/components/ui/_index"
 
 const Disclaimer: FC = (): JSX.Element => {
   const text =

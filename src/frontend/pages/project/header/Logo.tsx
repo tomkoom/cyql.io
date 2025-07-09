@@ -1,6 +1,6 @@
+import { LogoLetter } from "@/components/ui"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { LogoLetter } from "@/components/ui/_index"
 
 interface LogoProps {
   logo: string
@@ -14,12 +14,7 @@ const Logo: FC<LogoProps> = ({ logo, name }) => {
   return (
     <div>
       {logo ? (
-        <LogoStyled
-          size={size}
-          borderRadius={borderRadius}
-          src={logo}
-          alt={`${name} logo`}
-        />
+        <LogoStyled size={size} borderRadius={borderRadius} src={logo} alt={`${name} logo`} />
       ) : (
         <LogoLetter size={size} borderRadius={borderRadius} name={name} />
       )}

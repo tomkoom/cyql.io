@@ -1,5 +1,5 @@
 import { RectBtn } from "@/components/btns"
-import { TextInput2 } from "@/components/ui/_index"
+import { TextInput2 } from "@/components/ui"
 import { CKBTC_LEDGER_CANISTER_ID_IC } from "@/constants/constants"
 import { useIcrcScan } from "@/hooks"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"

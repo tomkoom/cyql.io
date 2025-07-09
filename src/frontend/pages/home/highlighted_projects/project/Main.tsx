@@ -1,15 +1,14 @@
-import React, { FC } from "react"
-import styled from "styled-components"
+import { iCircleNodes, iGithub } from "@/components/icons/Icons"
+import { UpvotesNum } from "@/components/ui"
 import type { Project } from "@/state/_types/curated_projects_types"
-import { iGithub, iCircleNodes } from "@/components/icons/Icons"
-import { UpvotesNum } from "@/components/ui/_index"
 import { trimDescription, trimName } from "@/utils/index"
+import styled from "styled-components"
 
 interface MainProps {
   project: Project
 }
 
-const Main: FC<MainProps> = ({ project }): JSX.Element => {
+export default function Main({ project }: MainProps) {
   const { name, upvotedBy, category, frontendCanisterId, github, description } = project
   const upvotesNum = upvotedBy.length
 
@@ -104,5 +103,3 @@ const MainStyled = styled.div`
     line-height: 125%;
   }
 `
-
-export default Main

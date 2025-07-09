@@ -1,6 +1,6 @@
+import { Spinner } from "@/components/ui"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Spinner } from "@/components/ui/_index"
 
 const Loading: FC = (): JSX.Element => {
   return (

@@ -1,9 +1,9 @@
+import { LogoLetter } from "@/components/ui"
+import { useNav } from "@/hooks"
+import type { Project } from "@/state/_types/curated_projects_types"
+import { trimDescription, trimName } from "@/utils/index"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useNav } from "@/hooks"
-import { trimDescription, trimName } from "@/utils/index"
-import { LogoLetter } from "@/components/ui/_index"
-import type { Project } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

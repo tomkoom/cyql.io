@@ -1,10 +1,10 @@
+import { useNav, useNavlinks } from "@/hooks"
+import { device } from "@/styles/breakpoints"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { device } from "@/styles/breakpoints"
-import { useNav, useNavlinks } from "@/hooks"
 
 // components
-import { Logo } from "@/components/ui/_index"
+import { Logo } from "@/components/ui"
 import { Meta, NavLink, Socials } from "./_index"
 
 const FooterLower: FC = (): JSX.Element => {

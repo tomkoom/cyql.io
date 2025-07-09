@@ -1,25 +1,25 @@
-import React, { FC, useState, ChangeEvent } from "react"
-import styled from "styled-components"
+import { Btn } from "@/components/btns"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
-import { Btn } from "@/components/btns"
 import type { Tokens } from "@/state/_types/types"
 import { notifyErr } from "@/utils/index"
+import React, { ChangeEvent, FC, useState } from "react"
+import styled from "styled-components"
 
 // hooks
 import { useAuth } from "@/context/Auth"
 import { useIcpLedger } from "@/hooks"
 
 // components
+import { TextInput } from "@/components/ui"
 import { RootModal } from "../_index"
-import { Steps, GetSupport } from "./_index"
-import { TextInput } from "@/components/ui/_index"
+import { GetSupport, Steps } from "./_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { setIsLoading } from "@/state/loading"
 import { selectWithdrawModalToken } from "@/state/modals/withdrawModal"
 import { selectUser } from "@/state/user"
-import { setIsLoading } from "@/state/loading"
 
 interface WithdrawModalProps {
   isOpen: boolean
@@ -107,19 +107,12 @@ const WithdrawModal: FC<WithdrawModalProps> = ({ isOpen, onClose }): JSX.Element
                   Enter destination <span>account id</span>
                 </label>
 
-                <TextInput
-                  id="withdraw_address"
-                  value={withdrawalAccountId}
-                  placeholder={`e.g. ${accounntIdHex}`}
-                  onChange={(e) => setId(e)}
-                />
+                <TextInput id="withdraw_address" value={withdrawalAccountId} placeholder={`e.g. ${accounntIdHex}`} onChange={(e) => setId(e)} />
                 {err && <span style={{ color: "var(--colorErr)" }}>{err}</span>}
               </div>
 
               <div className="input_field">
-                <label htmlFor="withdraw_amount">
-                  Amount to withdraw (readonly, all amount to be withdrawn)
-                </label>
+                <label htmlFor="withdraw_amount">Amount to withdraw (readonly, all amount to be withdrawn)</label>
 
                 <TextInput id="withdraw_amount" value={withdrawAmountStr} readOnly />
                 <span className="hint">(balance minus fee)</span>

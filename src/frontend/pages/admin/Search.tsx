@@ -1,13 +1,13 @@
-import React, { FC, useEffect, ChangeEvent } from "react"
-import styled from "styled-components"
-import { TextInput2 } from "@/components/ui/_index"
-import { useAuth } from "@/context/Auth"
-import { KEY } from "@/constants/constants"
 import { Btn } from "@/components/btns"
+import { TextInput2 } from "@/components/ui"
+import { KEY } from "@/constants/constants"
+import { useAuth } from "@/context/Auth"
 import { useProjects, useQueryParams } from "@/hooks"
+import React, { ChangeEvent, FC, useEffect } from "react"
+import styled from "styled-components"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminSearchQ, setAdminSearchQProjects } from "@/state/admin/admin"
 import { selectPaginated } from "@/state/projects/paginated"
 

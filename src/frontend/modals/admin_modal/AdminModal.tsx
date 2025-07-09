@@ -1,12 +1,12 @@
+import { CrossIcon } from "@/components/icons/_index"
+import { useScrollLock } from "@/hooks"
 import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
-import { useScrollLock } from "@/hooks"
-import { CrossIcon } from "@/components/icons/_index"
 
 // components
+import { Loading } from "@/components/ui"
 import { Controls, Form, Header } from "./_index"
-import { Loading } from "@/components/ui/_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"

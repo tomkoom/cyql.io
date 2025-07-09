@@ -1,7 +1,7 @@
+import { iBolt } from "@/components/icons/Icons"
+import { Spinner } from "@/components/ui"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { iBolt } from "@/components/icons/Icons"
-import { Spinner } from "@/components/ui/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -14,10 +14,7 @@ const VotingPower: FC = (): JSX.Element => {
     <VotingPowerStyled>
       <div>
         <h4>Voting Power</h4>
-        <p className="text">
-          Deposit CYQL NFTs to your principal or account to boost voting power. Each NFT adds 10
-          points to {iBolt} vp
-        </p>
+        <p className="text">Deposit CYQL NFTs to your principal or account to boost voting power. Each NFT adds 10 points to {iBolt} vp</p>
       </div>
 
       {votingPower ? (

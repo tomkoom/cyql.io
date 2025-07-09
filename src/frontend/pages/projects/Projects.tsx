@@ -1,15 +1,15 @@
+import { Btn } from "@/components/btns"
+import { useProjects, useQueryParams } from "@/hooks"
 import React, { ChangeEvent, FC } from "react"
 import styled from "styled-components"
-import { useQueryParams, useProjects } from "@/hooks"
-import { Btn } from "@/components/btns"
 
 // components
-import { Category, Filter, ProjectList, Sort, Pagination } from "./_index"
-import { TextInput2 } from "@/components/ui/_index"
+import { TextInput2 } from "@/components/ui"
+import { Category, Filter, Pagination, ProjectList, Sort } from "./_index"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { setSearchQ, selectSearchQ } from "@/state/projects/searchQ"
+import { selectSearchQ, setSearchQ } from "@/state/projects/searchQ"
 
 const Projects: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

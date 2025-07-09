@@ -1,5 +1,3 @@
-// pages
-
 export { default as Admin } from "./admin/Admin"
 export { default as CommunityListed } from "./community_listed/CommunityListed"
 export { default as Home } from "./home/Home"

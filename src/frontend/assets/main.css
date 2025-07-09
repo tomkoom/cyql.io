@@ -12,42 +12,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* –––TYPOGRAPHY––– */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: var(--fwBold);
-  /* line-height: 100%; */
-}
-
-/* h1 {
-  font-size: var(--fs1);
-}
-
-h2 {
-  font-size: var(--fs2);
-}
-
-h3 {
-  font-size: var(--fs3);
-}
-
-h4 {
-  font-size: var(--fs4);
-}
-
-h5 {
-  font-size: var(--fs5);
-}
-
-h6 {
-  font-size: var(--fs6);
-} */
-
 /* –––ROOT––– */
 
 :root {

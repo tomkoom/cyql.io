@@ -1,4 +1,4 @@
-import { Loading } from "@/components/ui/_index"
+import { Loading } from "@/components/ui"
 import { AdminModal } from "@/modals/_index"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { formatDiscord, formatStr16, formatWebsite, twitterUsername } from "@/utils/index"

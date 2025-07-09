@@ -1,19 +1,19 @@
-import React, { FC, useState, ChangeEvent } from "react"
-import styled from "styled-components"
-import { RootModal } from "@/modals/_index"
-import CrossIcon from "@/components/icons/CrossIcon"
 import { Btn } from "@/components/btns"
+import CrossIcon from "@/components/icons/CrossIcon"
+import { RootModal } from "@/modals/_index"
+import React, { ChangeEvent, FC, useState } from "react"
+import styled from "styled-components"
 
 // hooks
 import { useAuth } from "@/context/Auth"
 import { useNft } from "@/hooks"
 
 // components
-import { Steps, GetSupport } from "./withdraw_modal/_index"
-import { TextInput } from "@/components/ui/_index"
+import { TextInput } from "@/components/ui"
+import { GetSupport, Steps } from "./withdraw_modal/_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { setIsLoading } from "@/state/loading"
 import { selectWithdrawNftModalNftIdx } from "@/state/modals/withdrawNftModal"
 
@@ -89,12 +89,7 @@ const WithdrawNftModal: FC<WithdrawNftModalProps> = ({ isOpen, onClose }): JSX.E
                   Enter destination <span>Account Id</span>
                 </label>
 
-                <TextInput
-                  id="withdraw_address"
-                  value={withdrawalAccountId}
-                  placeholder={`e.g. ${accounntIdHex}`}
-                  onChange={(e) => setWithdrawalId(e)}
-                />
+                <TextInput id="withdraw_address" value={withdrawalAccountId} placeholder={`e.g. ${accounntIdHex}`} onChange={(e) => setWithdrawalId(e)} />
                 {err && <span style={{ color: "var(--colorErr)" }}>{err}</span>}
               </div>
 

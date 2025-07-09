@@ -1,5 +1,5 @@
 import { ViewAllBtn } from "@/components/btns"
-import { Loading } from "@/components/ui/_index"
+import { Loading } from "@/components/ui"
 import { useNav } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectHome } from "@/state/home/home"
@@ -24,7 +24,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New Listings</h3>
+          <h3 className="text-2xl">New Listings</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -34,7 +34,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in dApps</h3>
+          <h3 className="text-2xl">New in dApps</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -44,7 +44,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in Social Networks</h3>
+          <h3 className="text-2xl">New in Social Networks</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -54,7 +54,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in Marketplaces</h3>
+          <h3 className="text-2xl">New in Marketplaces</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -64,7 +64,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in Games</h3>
+          <h3 className="text-2xl">New in Games</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -74,7 +74,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in DeFi</h3>
+          <h3 className="text-2xl">New in DeFi</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -84,7 +84,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in Tokens</h3>
+          <h3 className="text-2xl">New in Tokens</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -94,7 +94,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">New in NFTs</h3>
+          <h3 className="text-2xl">New in NFTs</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -104,7 +104,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="!text-2xl">Most Upvoted</h3>
+          <h3 className="text-2xl">Most Upvoted</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 

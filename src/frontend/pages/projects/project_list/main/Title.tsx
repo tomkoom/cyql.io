@@ -1,8 +1,8 @@
+import { iCircleNodes, iGithub } from "@/components/icons/Icons"
+import { UpvotesNum } from "@/components/ui"
+import type { Project } from "@/state/_types/curated_projects_types"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { iGithub, iCircleNodes } from "@/components/icons/Icons"
-import { UpvotesNum } from "@/components/ui/_index"
-import type { Project } from "@/state/_types/curated_projects_types"
 
 interface TitleProps {
   project: Project

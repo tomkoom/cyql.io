@@ -1,21 +1,7 @@
-import React from "react"
-import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
-import { AdminRoutes, ProtectedRoutes } from "@/routes"
-
-// components
 import Layout from "@/components/layout/Layout"
-import {
-  Admin,
-  Home,
-  NotFound,
-  Profile,
-  Project,
-  Projects,
-  ListProject,
-  Proposal,
-  Proposals,
-  // IcrcScan,
-} from "@/pages/_index"
+import { Admin, Home, ListProject, NotFound, Profile, Project, Projects, Proposal, Proposals } from "@/pages"
+import { AdminRoutes, ProtectedRoutes } from "@/routes"
+import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
 
 const router = createHashRouter(
   createRoutesFromElements(

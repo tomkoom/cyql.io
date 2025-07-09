@@ -1,12 +1,12 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { device } from "@/styles/breakpoints"
 import { useNav } from "@/hooks"
 import type { Project as P } from "@/state/_types/curated_projects_types"
+import { device } from "@/styles/breakpoints"
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // components
-import { Loading } from "@/components/ui/_index"
 import { ViewMoreBtn } from "@/components/btns"
+import { Loading } from "@/components/ui"
 import { Project } from "./_index"
 
 interface HighlightedProjectsProps {

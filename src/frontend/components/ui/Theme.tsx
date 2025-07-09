@@ -1,10 +1,8 @@
-import React, { FC } from "react"
+import { iMoon, iSun } from "@/components/icons/Icons"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectTheme, setTheme } from "@/state/theme"
+import { FC } from "react"
 import styled from "styled-components"
-import { iSun, iMoon } from "@/components/icons/Icons"
-
-// state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { setTheme, selectTheme } from "@/state/theme"
 
 const Theme: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -17,11 +15,7 @@ const Theme: FC = (): JSX.Element => {
     }[theme]
   }
 
-  return (
-    <ThemeStyled onClick={() => dispatch(setTheme(changeTheme(theme)))}>
-      {theme === "light" ? iMoon : theme === "dark" ? iSun : null}
-    </ThemeStyled>
-  )
+  return <ThemeStyled onClick={() => dispatch(setTheme(changeTheme(theme)))}>{theme === "light" ? iMoon : theme === "dark" ? iSun : null}</ThemeStyled>
 }
 
 const ThemeStyled = styled.div`

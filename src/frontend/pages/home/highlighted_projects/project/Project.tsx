@@ -1,33 +1,22 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import type { Project as P } from "@/state/_types/curated_projects_types"
 import { useNav } from "@/hooks"
+import type { Project as ProjectType } from "@/state/_types/curated_projects_types"
 import { Logo, Main } from "./_index"
 
 interface ProjectProps {
-  project: P
+  project: ProjectType
 }
 
-const Project: FC<ProjectProps> = ({ project }): JSX.Element => {
+export default function Project({ project }: ProjectProps) {
   const { toProject } = useNav()
 
-  const openProject = (id: string): void => {
+  const openProject = (id: string) => {
     toProject(id)
   }
 
   return (
-    <ProjectStyled onClick={() => openProject(project.id)}>
+    <div className="flex cursor-pointer items-center gap-4" onClick={() => openProject(project.id)}>
       <Logo name={project.name} logo={project.logoDataUrl} />
       <Main project={project} />
-    </ProjectStyled>
+    </div>
   )
 }
-
-const ProjectStyled = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-`
-
-export default Project

@@ -2,7 +2,7 @@ import React, { FC } from "react"
 import styled from "styled-components"
 
 // components
-import { LogoLetter } from "@/components/ui/_index"
+import { LogoLetter } from "@/components/ui"
 
 interface LogoProps {
   name: string

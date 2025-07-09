@@ -1,9 +1,9 @@
+import { iCaretUp } from "@/components/icons/Icons"
+import { LogoLetter } from "@/components/ui"
+import { useNav, useProjects } from "@/hooks"
+import { trimDescription } from "@/utils/index"
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
-import { useProjects, useNav } from "@/hooks"
-import { LogoLetter } from "@/components/ui/_index"
-import { trimDescription } from "@/utils/index"
-import { iCaretUp } from "@/components/icons/Icons"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
