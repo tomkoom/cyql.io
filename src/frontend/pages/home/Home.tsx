@@ -115,12 +115,7 @@ export default function Home() {
       </section>
       <div className="bg-coolgray-950 my-4 h-px" />
 
-      <section className="mb-8">
-        <div className="mb-4 flex items-center justify-center">
-          <h3 className="!text-3xl">Follow</h3>
-        </div>
-        <JoinCommunity />
-      </section>
+      <JoinCommunity />
     </div>
   )
 }

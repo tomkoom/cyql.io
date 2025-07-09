@@ -59,13 +59,6 @@ export default function Promote({ dialogOpen, setDialogOpen }: PromoteProps) {
               </div>
             ))}
           </div>
-
-          <div className="from-accent-1/10 to-accent-2/10 rounded-lg bg-gradient-to-r p-4">
-            <p className="text-coolgray-200 text-sm">
-              Ready to showcase your dapp to thousands of ICP enthusiasts?
-              <span className="text-accent-3 font-medium"> Let's discuss your promotion strategy.</span>
-            </p>
-          </div>
         </div>
 
         <DialogFooter className="flex gap-3">
@@ -75,7 +68,7 @@ export default function Promote({ dialogOpen, setDialogOpen }: PromoteProps) {
           <Button
             size="lg"
             onClick={() => {
-              //   window.open(X_URL, "_blank", "noopener,noreferrer")
+              // window.open(X_URL, "_blank", "noopener,noreferrer")
               window.open(X_PROMOTE_URL, "_blank", "noopener,noreferrer")
               setDialogOpen(false)
             }}
