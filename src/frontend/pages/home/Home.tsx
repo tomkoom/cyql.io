@@ -1,12 +1,13 @@
 import { ViewAllBtn } from "@/components/btns"
 import { Loading } from "@/components/ui"
+import { Button } from "@/components/ui/button"
 import { useNav } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectHome } from "@/state/home/home"
 import { Header, HighlightedProjects, JoinCommunity } from "."
 
 export default function Home() {
-  const { toProjects, toMostUpvoted } = useNav()
+  const { toProjects } = useNav()
   const home = useAppSelector(selectHome)
   const newProjects = home.new
   const mostUpvoted = home.mostUpvoted
@@ -24,8 +25,10 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New Listings</h3>
-          <ViewAllBtn route={toProjects} />
+          <h3 className="text-xl">Newly Listed</h3>
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {newProjects.length > 0 ? <HighlightedProjects projects={newProjects} /> : <Loading />}
@@ -34,7 +37,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in dApps</h3>
+          <h3 className="text-xl">New in dApps</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -44,7 +47,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in Social Networks</h3>
+          <h3 className="text-xl">New in Social Networks</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -54,7 +57,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in Marketplaces</h3>
+          <h3 className="text-xl">New in Marketplaces</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -64,7 +67,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in Games</h3>
+          <h3 className="text-xl">New in Games</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -74,7 +77,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in DeFi</h3>
+          <h3 className="text-xl">New in DeFi</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -84,7 +87,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in Tokens</h3>
+          <h3 className="text-xl">New in Tokens</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -94,7 +97,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">New in NFTs</h3>
+          <h3 className="text-xl">New in NFTs</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
@@ -104,11 +107,11 @@ export default function Home() {
 
       <section>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-2xl">Most Upvoted</h3>
+          <h3 className="text-xl">Most Upvoted</h3>
           <ViewAllBtn route={toProjects} />
         </div>
 
-        {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} btnText="View All Most Upvoted" route={toMostUpvoted} /> : <Loading />}
+        {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} /> : <Loading />}
       </section>
       <div className="bg-coolgray-950 my-4 h-px" />
 

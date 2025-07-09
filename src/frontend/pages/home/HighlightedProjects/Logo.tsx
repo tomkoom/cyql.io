@@ -1,8 +1,6 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// components
 import { LogoLetter } from "@/components/ui"
+import { FC } from "react"
+import styled from "styled-components"
 
 interface LogoProps {
   name: string
