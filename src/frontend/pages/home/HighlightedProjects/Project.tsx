@@ -14,14 +14,10 @@ export default function Project({ project }: ProjectProps) {
   const { name, upvotedBy, category, frontendCanisterId, github, description } = project
   const upvotesNum = upvotedBy.length
 
-  const openProject = (id: string) => {
-    toProject(id)
-  }
-
   return (
     <div
       className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 flex cursor-pointer flex-col gap-3 rounded-3xl p-4 transition-colors"
-      onClick={() => openProject(project.id)}
+      onClick={() => toProject(project.id)}
     >
       <div className="flex items-start gap-3">
         <Logo name={project.name} logo={project.logoDataUrl} />

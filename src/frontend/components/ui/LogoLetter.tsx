@@ -1,4 +1,3 @@
-import React, { FC } from "react"
 import styled from "styled-components"
 
 interface LogoLetterProps {
@@ -7,7 +6,7 @@ interface LogoLetterProps {
   name: string
 }
 
-const LogoLetter: FC<LogoLetterProps> = ({ size, borderRadius, name }): JSX.Element => {
+export default function LogoLetter({ size, borderRadius, name }: LogoLetterProps) {
   const firstLetter = name.charAt(0)
   const style = {
     width: size,
@@ -28,5 +27,3 @@ const LogoLetterStyled = styled.div`
   color: var(--tertiaryColor);
   background-color: var(--underlay1);
 `
-
-export default LogoLetter

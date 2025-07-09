@@ -1,14 +1,14 @@
-import React, { FC } from "react"
 import { device } from "@/styles/breakpoints"
+import { FC } from "react"
 import styled from "styled-components"
-import { FooterUpper, FooterLower } from "./_index"
+import { FooterBottom, FooterTop } from "."
 
 const Footer: FC = (): JSX.Element => {
   return (
     <FooterStyled>
       <Content>
-        <FooterUpper />
-        <FooterLower />
+        <FooterTop />
+        <FooterBottom />
       </Content>
     </FooterStyled>
   )

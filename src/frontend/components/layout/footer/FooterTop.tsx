@@ -1,11 +1,11 @@
-import React, { FC } from "react"
-import styled from "styled-components"
+import { iComments, iHeart, iPlus } from "@/components/icons/Icons"
+import { CYQL_MSG_URL, DONATION_WALLET_URL } from "@/constants/constants"
 import { device } from "@/styles/breakpoints"
-import { iPlus, iComments, iHeart } from "@/components/icons/Icons"
+import { FC } from "react"
 import { Link } from "react-router-dom"
-import { DONATION_WALLET_URL, CYQL_MSG_URL } from "@/constants/constants"
+import styled from "styled-components"
 
-const FooterUpper: FC = (): JSX.Element => {
+const FooterTop: FC = (): JSX.Element => {
   return (
     <FooterUpperStyled>
       {/* submit */}
@@ -20,10 +20,7 @@ const FooterUpper: FC = (): JSX.Element => {
       <li>
         <a href={CYQL_MSG_URL} rel="noreferrer noopener" target="_blank">
           <h5>{iComments}&nbsp;&nbsp;Reach Out</h5>
-          <p>
-            Didn't find what you were looking for or want to collaborate? Reach out for us, we are
-            happy to support and cooperate
-          </p>
+          <p>Didn't find what you were looking for or want to collaborate? Reach out for us, we are happy to support and cooperate</p>
         </a>
       </li>
 
@@ -31,10 +28,7 @@ const FooterUpper: FC = (): JSX.Element => {
       <li>
         <a href={DONATION_WALLET_URL} rel="noreferrer noopener" target="_blank">
           <h5>{iHeart}&nbsp;&nbsp;Donate</h5>
-          <p>
-            cyql is developed and maintained by the IC enthusiasts. You can support the project by
-            making a donation
-          </p>
+          <p>cyql is developed and maintained by the IC enthusiasts. You can support the project by making a donation</p>
         </a>
       </li>
     </FooterUpperStyled>
@@ -82,4 +76,4 @@ const FooterUpperStyled = styled.ul`
   }
 `
 
-export default FooterUpper
+export default FooterTop

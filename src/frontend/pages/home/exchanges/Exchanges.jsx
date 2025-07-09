@@ -1,8 +1,6 @@
-import React from "react";
-import css from "./Exchanges.module.css";
-
-// icons
-import { iAngleRight } from "@/components/icons/Icons";
+import { iAngleRight } from "@/components/icons/Icons"
+import React from "react"
+import css from "./Exchanges.module.css"
 
 const exchanges = [
   {
@@ -24,8 +22,7 @@ const exchanges = [
     label: "Coinbase",
     link: "https://pro.coinbase.com/trade/ICP-USD",
     logo: "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/brand/exchanges/coinbase/coinbase-logo.svg",
-    description:
-      "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
+    description: "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
   },
   {
     id: "gate-io",
@@ -42,7 +39,7 @@ const exchanges = [
     description:
       "KuCoin is a secure cryptocurrency exchange that makes it easier to buy, sell, and store cryptocurrencies like BTC, ETH, KCS, SHIB, DOGE, Gari etc.",
   },
-];
+]
 
 // get volume
 // https://coinmarketcap.com/currencies/internet-computer/markets/
@@ -50,17 +47,15 @@ const exchanges = [
 
 const Exchanges = () => {
   const formatText = (str) => {
-    return str.length > 70 ? `${str.substring(0, 70)}…` : str;
-  };
+    return str.length > 70 ? `${str.substring(0, 70)}…` : str
+  }
 
   return (
     <ul className={css.exchanges}>
       {exchanges.map((exchange) => (
         <li className={css.item} key={exchange.id}>
           <a href={exchange.link} rel="noreferrer noopener" target="_blank">
-            {exchange.logo && (
-              <img className={css.logo} src={exchange.logo} alt={`${exchange.label}-logo`} />
-            )}
+            {exchange.logo && <img className={css.logo} src={exchange.logo} alt={`${exchange.label}-logo`} />}
             <div>
               <h4 className={css.title}>{exchange.label}</h4>
               <p className={css.description}>{formatText(exchange.description)}</p>
@@ -72,7 +67,7 @@ const Exchanges = () => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
 
-export default Exchanges;
+export default Exchanges

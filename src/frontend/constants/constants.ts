@@ -38,11 +38,10 @@ export const DISCORD_URL = "https://discord.gg/AnjyrfvvXX"
 export const GITHUB_URL = "https://github.com/tomkoom/cyql.io"
 export const COOKIE_POLICY = "https://tomkoom.notion.site/cyql-io-cookie-policy-f48e5d0a4b194e68bdcce944a2d9193b"
 export const PRICE_URL = "https://api.coingecko.com/api/v3/simple/price?ids=internet-computer&vs_currencies=usd&include_24hr_change=true"
-export const ICP_CC_URL = "https://icp-cc.com/"
-export const FRONTEND_CANISTER_URL = "https://n7ib3-4qaaa-aaaai-qagnq-cai.raw.ic0.app/"
+export const FRONTEND_CANISTER_URL = "https://n7ib3-4qaaa-aaaai-qagnq-cai.ic0.app"
 export const DONATION_WALLET_URL = "https://dashboard.internetcomputer.org/account/edf5163b9cc9084ae504ef56c239b0bfb6afbbc6e6e7c88e9cb3069fb2e135c1"
 export const CYQL_MSG_URL = "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
-export const FLEX_SITE_URL = "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io/"
+export const FLEX_SITE_URL = "https://qw6bl-qqaaa-aaaag-acika-cai.icp0.io"
 export const X_DIRECT_MSG_URL = "https://twitter.com/messages/compose?recipient_id=1386304698358116354"
 
 // nft

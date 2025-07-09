@@ -1,4 +1,3 @@
-import { ViewAllBtn } from "@/components/btns"
 import { Loading } from "@/components/ui"
 import { Button } from "@/components/ui/button"
 import { useNav } from "@/hooks"
@@ -38,7 +37,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in dApps</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={dapps} /> : <Loading />}
@@ -48,7 +49,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in Social Networks</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={socialNetworks} /> : <Loading />}
@@ -58,7 +61,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in Marketplaces</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={marketplace} /> : <Loading />}
@@ -68,7 +73,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in Games</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={games} /> : <Loading />}
@@ -78,7 +85,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in DeFi</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={defi} /> : <Loading />}
@@ -88,7 +97,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in Tokens</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {tokens.length > 0 ? <HighlightedProjects projects={tokens} /> : <Loading />}
@@ -98,7 +109,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">New in NFTs</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {nfts.length > 0 ? <HighlightedProjects projects={nfts} /> : <Loading />}
@@ -108,7 +121,9 @@ export default function Home() {
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">Most Upvoted</h3>
-          <ViewAllBtn route={toProjects} />
+          <Button variant="secondary" size="sm" onClick={toProjects}>
+            View All
+          </Button>
         </div>
 
         {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} /> : <Loading />}

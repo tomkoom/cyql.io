@@ -1,6 +1,6 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import { useNav } from "@/hooks"
+import { FC } from "react"
+import styled from "styled-components"
 
 const staffPicksItems = [
   {
@@ -90,7 +90,7 @@ const staffPicksItems = [
   },
 ]
 
-const StaffPicks: FC = (): JSX.Element => {
+const StaffPicks: FC = () => {
   const { toProject } = useNav()
 
   const openProject = (id: string): void => {

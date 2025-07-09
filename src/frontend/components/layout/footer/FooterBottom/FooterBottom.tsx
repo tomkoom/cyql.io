@@ -1,13 +1,10 @@
+import { Logo } from "@/components/ui"
 import { useNav, useNavlinks } from "@/hooks"
 import { device } from "@/styles/breakpoints"
-import React, { FC } from "react"
 import styled from "styled-components"
+import { Meta, NavLink, Socials } from "."
 
-// components
-import { Logo } from "@/components/ui"
-import { Meta, NavLink, Socials } from "./_index"
-
-const FooterLower: FC = (): JSX.Element => {
+export default function FooterBottom() {
   const { toHome } = useNav()
   const { navlinks } = useNavlinks()
 
@@ -44,5 +41,3 @@ const FooterLowerStyled = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 `
-
-export default FooterLower

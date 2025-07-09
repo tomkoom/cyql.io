@@ -1,15 +1,13 @@
-import React, { FC, useState } from "react"
-import styled from "styled-components"
 import { useAuth } from "@/context/Auth"
 import { useUpvote } from "@/hooks"
-import { UpvotedBtn, UnUpvotedBtn, NotSignedBtn } from "./_index"
+import { FC, useState } from "react"
+import styled from "styled-components"
+import { NotSignedBtn, UnUpvotedBtn, UpvotedBtn } from "."
 // https://www.npmjs.com/package/react-confetti-explosion
-import ConfettiExplosion from "react-confetti-explosion"
-
-// state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 import { setIsLoading } from "@/state/loading"
+import { setSignInModalIsOpen } from "@/state/modals/signInModal"
+import ConfettiExplosion from "react-confetti-explosion"
 
 interface UpvoteBtnProps {
   projectId: string
