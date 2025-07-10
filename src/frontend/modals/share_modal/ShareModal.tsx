@@ -1,8 +1,8 @@
+import { useScrollLock } from "@/hooks"
+import Modal from "@/modals/Modal"
 import React, { FC, useEffect } from "react"
 import styled from "styled-components"
-import Modal from "@/modals/_Modal"
 import { Btns, Link } from "./_index"
-import { useScrollLock } from "@/hooks"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"

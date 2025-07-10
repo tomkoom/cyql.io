@@ -1,15 +1,11 @@
+import { iExternalLink } from "@/components/icons/Icons"
+import Modal from "@/modals/Modal"
 import React, { FC } from "react"
 import styled from "styled-components"
-import Modal from "@/modals/_Modal"
-import { iExternalLink } from "@/components/icons/Icons"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import {
-  setPromoModal,
-  setClearPromoModalData,
-  selectPromoModalData,
-} from "@/state/modals/promoModal"
+import { selectPromoModalData, setClearPromoModalData, setPromoModal } from "@/state/modals/promoModal"
 
 interface PromoModalProps {
   isOpen: boolean

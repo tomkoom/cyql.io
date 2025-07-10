@@ -1,20 +1,19 @@
-import React, { FC, useEffect, ReactNode } from "react"
-import { createPortal } from "react-dom"
-import styled from "styled-components"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { useScrollLock } from "@/hooks"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/theme"
+import { FC, ReactNode, useEffect } from "react"
+import { createPortal } from "react-dom"
+import styled from "styled-components"
 
 interface ModalProps {
   isOpen: boolean
   onClose: () => void
   children: ReactNode
+  showCloseIcon?: boolean
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, onClose, children }): JSX.Element => {
+const Modal: FC<ModalProps> = ({ isOpen, onClose, children, showCloseIcon = true }): JSX.Element => {
   const theme = useAppSelector(selectTheme)
   const { lockScroll, unlockScroll } = useScrollLock()
 
@@ -31,7 +30,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, children }): JSX.Element => {
   return createPortal(
     <ModalStyled className={theme} onClick={onClose}>
       <div className="content" onClick={(e) => e.stopPropagation()}>
-        <CrossIcon onClick={onClose} />
+        {showCloseIcon && <CrossIcon onClick={onClose} />}
         {children}
       </div>
     </ModalStyled>,
@@ -60,6 +59,7 @@ const ModalStyled = styled.div`
     color: var(--primaryColor);
     background-color: var(--background);
     padding: 1.5rem;
+    border-radius: 1rem;
     /* box-shadow: var(--boxShadow1); */
   }
 `

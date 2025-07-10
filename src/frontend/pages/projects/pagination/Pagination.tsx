@@ -1,8 +1,8 @@
+import { useProjects, useQueryParams } from "@/hooks"
+import { LoadingModal } from "@/modals"
 import React, { FC } from "react"
 import ReactPaginate from "react-paginate"
 import "./Pagination.css"
-import { useProjects, useQueryParams } from "@/hooks"
-import { LoadingModal } from "@/modals/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

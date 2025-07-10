@@ -12,7 +12,7 @@ import { useIcpLedger } from "@/hooks"
 
 // components
 import { TextInput } from "@/components/ui"
-import { RootModal } from "../_index"
+import { RootModal } from ".."
 import { GetSupport, Steps } from "./_index"
 
 // state

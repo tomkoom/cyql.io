@@ -1,10 +1,9 @@
+import { useNav, useProjects, useQueryParams } from "@/hooks"
+import { LoadingModal } from "@/modals"
 import React, { FC } from "react"
+import { createSearchParams, useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import { useNav } from "@/hooks"
-import { useNavigate, createSearchParams } from "react-router-dom"
 import { Tag } from "./_index"
-import { useQueryParams, useProjects } from "@/hooks"
-import { LoadingModal } from "@/modals/_index"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"

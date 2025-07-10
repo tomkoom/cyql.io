@@ -1,18 +1,14 @@
+import { Btn } from "@/components/btns"
+import { iExternalLink } from "@/components/icons/Icons"
+import { WithdrawNftModal } from "@/modals"
+import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Btn } from "@/components/btns"
-import { WithdrawNftModal } from "@/modals/_index"
-import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
-import { iExternalLink } from "@/components/icons/Icons"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectWithdrawNftModalIsOpen, setWithdrawNftModalIsOpen, setWithdrawNftModalNftIdx } from "@/state/modals/withdrawNftModal"
 import { selectNftIdsOwned } from "@/state/user"
-import {
-  setWithdrawNftModalIsOpen,
-  selectWithdrawNftModalIsOpen,
-  setWithdrawNftModalNftIdx,
-} from "@/state/modals/withdrawNftModal"
 
 const Nfts: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -41,22 +37,12 @@ const Nfts: FC = (): JSX.Element => {
               <li key={`nft #${nftIdx}`}>
                 <span>CYQL NFT #{nftIdx.toString()}</span>
                 <span>
-                  <a
-                    href={`https://dtlqp-nqaaa-aaaak-abwna-cai.raw.icp0.io/?&tokenid=${getTokenIdentifier(
-                      nftIdx
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
+                  <a href={`https://dtlqp-nqaaa-aaaak-abwna-cai.raw.icp0.io/?&tokenid=${getTokenIdentifier(nftIdx)}`} target="_blank" rel="noreferrer noopener">
                     {getTokenIdentifier(nftIdx)} {iExternalLink}
                   </a>{" "}
                 </span>
                 <span>
-                  <Btn
-                    btnType={"secondary"}
-                    text={"Withdraw"}
-                    onClick={() => openNftWithdrawModal(nftIdx)}
-                  />
+                  <Btn btnType={"secondary"} text={"Withdraw"} onClick={() => openNftWithdrawModal(nftIdx)} />
                 </span>
               </li>
             ))}

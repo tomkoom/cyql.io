@@ -1,20 +1,20 @@
-import React, { FC, useEffect, useState } from "react"
-import styled from "styled-components"
-import { useParams } from "react-router-dom"
-import { useProjects } from "@/hooks"
 import { useAuth } from "@/context/Auth"
+import { useProjects } from "@/hooks"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { shuffle2 } from "@/utils/index"
+import React, { FC, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import styled from "styled-components"
 
 // components
 import { BackBtn } from "@/components/btns"
-import { ShareModal, AdminModal } from "@/modals/_index"
+import { AdminModal, ShareModal } from "@/modals"
 import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "./_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectShareModal } from "@/state/modals/shareModal"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin } from "@/state/admin/admin"
+import { selectShareModal } from "@/state/modals/shareModal"
 import { selectProject, setProject, setProjectClear, setProjectRelated } from "@/state/project"
 
 const Project: FC = (): JSX.Element => {

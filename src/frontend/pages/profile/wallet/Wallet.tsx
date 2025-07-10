@@ -1,14 +1,13 @@
+import { Btn } from "@/components/btns"
+import { E8S, IC_LOGO, ICP_FEE_E8S } from "@/constants/constants"
+import { WithdrawModal } from "@/modals"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { Btn } from "@/components/btns"
-import { E8S, ICP_FEE_E8S } from "@/constants/constants"
-import { WithdrawModal } from "@/modals/_index"
-import { IC_LOGO } from "@/constants/constants"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectWithdrawModalIsOpen, setWithdrawModalAmountE8s, setWithdrawModalIsOpen, setWithdrawModalToken } from "@/state/modals/withdrawModal"
 import { selectUserBalanceIcp } from "@/state/user"
-import { setWithdrawModalIsOpen, selectWithdrawModalIsOpen, setWithdrawModalToken, setWithdrawModalAmountE8s } from "@/state/modals/withdrawModal"
 
 const Wallet: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

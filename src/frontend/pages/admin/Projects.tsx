@@ -1,5 +1,5 @@
 import { Loading } from "@/components/ui"
-import { AdminModal } from "@/modals/_index"
+import { AdminModal } from "@/modals"
 import type { Project } from "@/state/_types/curated_projects_types"
 import { formatDiscord, formatStr16, formatWebsite, twitterUsername } from "@/utils/index"
 import { FC, useEffect, useState } from "react"

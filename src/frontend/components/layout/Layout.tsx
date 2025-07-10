@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/Auth"
 import { useNav, useProjects, useScrollLock, useUsers } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
-import { LoadingModal, SignInModal } from "@/modals/_index"
+import { LoadingModal, SignInModal } from "@/modals"
 import { selectHome } from "@/state/home/home"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"

@@ -1,6 +1,6 @@
 import { Btn } from "@/components/btns"
 import CrossIcon from "@/components/icons/CrossIcon"
-import { RootModal } from "@/modals/_index"
+import { RootModal } from "@/modals"
 import React, { ChangeEvent, FC, useState } from "react"
 import styled from "styled-components"
 

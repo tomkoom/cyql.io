@@ -1,9 +1,9 @@
-import React, { Dispatch, FC, SetStateAction, useEffect, useRef, MutableRefObject } from "react"
-import styled from "styled-components"
 import { iCheck } from "@/components/icons/Icons"
-import type { SortOptions } from "../../../../declarations/backend/backend.did"
 import { useProjects, useQueryParams } from "@/hooks"
-import { LoadingModal } from "@/modals/_index"
+import { LoadingModal } from "@/modals"
+import React, { Dispatch, FC, MutableRefObject, SetStateAction, useEffect, useRef } from "react"
+import styled from "styled-components"
+import type { SortOptions } from "../../../../declarations/backend/backend.did"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -24,12 +24,7 @@ const sortItems = [
   { label: "Recently updated", value: { recently_updated: null } },
 ]
 
-const SortOpt: FC<SortOptProps> = ({
-  openSort,
-  setOpenSort,
-  sortBtnWidth,
-  sortBtnRef,
-}): JSX.Element => {
+const SortOpt: FC<SortOptProps> = ({ openSort, setOpenSort, sortBtnWidth, sortBtnRef }): JSX.Element => {
   const sortOptionsRef = useRef(null)
   const { refreshPaginated } = useProjects()
   const { queryParams } = useQueryParams()
@@ -37,13 +32,7 @@ const SortOpt: FC<SortOptProps> = ({
   const isLoading = useAppSelector(selectPaginatedIsLoading)
 
   const handleOutsideClick = (e: any) => {
-    if (
-      openSort &&
-      sortOptionsRef.current &&
-      !sortOptionsRef.current.contains(e.target) &&
-      sortBtnRef.current &&
-      !sortBtnRef.current.contains(e.target)
-    ) {
+    if (openSort && sortOptionsRef.current && !sortOptionsRef.current.contains(e.target) && sortBtnRef.current && !sortBtnRef.current.contains(e.target)) {
       setOpenSort(false)
     }
   }

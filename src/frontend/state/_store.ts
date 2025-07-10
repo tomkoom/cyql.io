@@ -2,37 +2,36 @@ import { configureStore } from "@reduxjs/toolkit"
 import template from "./_template"
 
 // ...
-import icpPrice from "./icpPrice"
-import theme from "./theme"
 import categories from "./categories/categories"
-import user from "./user"
-import listProject from "./listProject"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
+import icpPrice from "./icpPrice"
+import listProject from "./listProject"
 import project from "./project"
+import theme from "./theme"
+import user from "./user"
 import users from "./users"
 
 // icrc scan
-import icrcTransactions from "./icrc_scan/icrcTransactions"
-import icrcTotalSupply from "./icrc_scan/icrcTotalSupply"
 import icrcLedger from "./icrc_scan/icrcLedger"
+import icrcTotalSupply from "./icrc_scan/icrcTotalSupply"
+import icrcTransactions from "./icrc_scan/icrcTransactions"
 
 // dao
 import proposals from "./dao/proposals"
 
 // modals
-import nftModal from "./modals/nftModal"
+import loading from "./loading"
 import promoModal from "./modals/promoModal"
 import shareModal from "./modals/shareModal"
-import loading from "./loading"
 import signInModal from "./modals/signInModal"
 import withdrawModal from "./modals/withdrawModal"
 import withdrawNftModal from "./modals/withdrawNftModal"
 
 // projects
+import curatedProjects from "./curatedProjects"
 import paginated from "./projects/paginated"
 import queryParams from "./projects/queryParams"
 import searchQ from "./projects/searchQ"
-import curatedProjects from "./curatedProjects"
 
 // home
 import home from "./home/home"
@@ -71,7 +70,6 @@ const store = configureStore({
     proposals,
 
     // modals
-    nftModal,
     promoModal,
     shareModal,
     loading,
