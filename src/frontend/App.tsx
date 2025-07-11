@@ -3,7 +3,7 @@ import { useIcpLedger, useNft } from "@/hooks"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { Router } from "@/routes"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { RouterProvider } from "react-router-dom"
 
 export default function App() {
