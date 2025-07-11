@@ -4,6 +4,9 @@ import iclogo from "@/assets/logos/ic-logo.svg"
 
 export const APP_NAME = "cyql"
 export const APP_NAME_TLD = "cyql.io"
+export const MODE = process.env.NODE_ENV
+export const IS_DEV = MODE === "development"
+export const IS_PROD = MODE === "production"
 
 // env
 export const II_ADMIN_1 = process.env.II_ADMIN_1
@@ -55,7 +58,6 @@ export const LOGO_COLOR = logo_color
 export const LOGO_GRAY = logo_gray
 
 // ...
-
 export const E8S = 10 ** 8
 export const ICP_FEE_E8S = 10_000
 

@@ -1,17 +1,13 @@
 import { Btn } from "@/components/btns"
-import { useProjects, useQueryParams } from "@/hooks"
-import React, { ChangeEvent, FC } from "react"
-import styled from "styled-components"
-
-// components
 import { TextInput2 } from "@/components/ui"
-import { Category, Filter, Pagination, ProjectList, Sort } from "./_index"
-
-// state
+import { useProjects, useQueryParams } from "@/hooks"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectSearchQ, setSearchQ } from "@/state/projects/searchQ"
+import { ChangeEvent } from "react"
+import styled from "styled-components"
+import { Category, Filter, Pagination, ProjectList, Sort } from "."
 
-const Projects: FC = (): JSX.Element => {
+export default function Projects() {
   const dispatch = useAppDispatch()
   const { queryParams } = useQueryParams()
   const { refreshPaginated } = useProjects()
@@ -88,5 +84,3 @@ const Filters = styled.div`
     gap: 0.25rem;
   }
 `
-
-export default Projects
