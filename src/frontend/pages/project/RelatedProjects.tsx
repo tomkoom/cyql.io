@@ -1,13 +1,11 @@
 import { LogoLetter } from "@/components/ui"
 import { useNav } from "@/hooks"
-import type { Project } from "@/state/_types/curated_projects_types"
-import { trimDescription, trimName } from "@/utils/index"
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
+import type { Project } from "@/state/_types/curated_projects_types"
 import { selectProject } from "@/state/project"
+import { trimDescription, trimName } from "@/utils/index"
+import { FC } from "react"
+import styled from "styled-components"
 
 const RelatedProjects: FC = (): JSX.Element => {
   const { toProject } = useNav()

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { Icon } from "@/components/ui/Icon"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 
@@ -10,8 +11,8 @@ export default function SignInBtn() {
   }
 
   return (
-    <Button variant="accent" className="font-bold h-10" onClick={openSignInModal}>
-      Sign In
+    <Button variant="accent" className="h-10 font-bold" onClick={openSignInModal}>
+      <Icon lucideName="LogIn" /> Sign In
     </Button>
   )
 }

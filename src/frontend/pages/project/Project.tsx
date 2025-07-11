@@ -1,21 +1,17 @@
+import { BackBtn } from "@/components/btns"
 import { useAuth } from "@/context/Auth"
 import { useProjects } from "@/hooks"
-import type { Project } from "@/state/_types/curated_projects_types"
-import { shuffle2 } from "@/utils/index"
-import React, { FC, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import styled from "styled-components"
-
-// components
-import { BackBtn } from "@/components/btns"
-import { AdminModal, ShareModal } from "@/modals"
-import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "./_index"
-
-// state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { AdminModal, ShareModal } from "@/modals"
+import type { Project } from "@/state/_types/curated_projects_types"
 import { selectAdmin } from "@/state/admin/admin"
 import { selectShareModal } from "@/state/modals/shareModal"
 import { selectProject, setProject, setProjectClear, setProjectRelated } from "@/state/project"
+import { shuffle2 } from "@/utils/index"
+import { FC, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import styled from "styled-components"
+import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "."
 
 const Project: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

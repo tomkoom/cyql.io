@@ -1,4 +1,4 @@
-import { CrossIcon } from "@/components/icons/_index"
+import { CrossIcon } from "@/components/icons"
 import { useScrollLock } from "@/hooks"
 import React, { FC, useEffect } from "react"
 import { createPortal } from "react-dom"
