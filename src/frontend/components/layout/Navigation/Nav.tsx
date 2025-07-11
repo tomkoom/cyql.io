@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
 import { ProfileBtn, Promote, SignInBtn, Socials } from "./components"
 
-export default function Nav() {
+export default function Navigation() {
   const { navlinks } = useNavlinks()
   const { toHome } = useNav()
   const { isAuthenticated } = useAuth()
@@ -22,7 +22,7 @@ export default function Nav() {
               key={link.pathname}
               to={link.pathname}
               className={twMerge(
-                "hover:text-accent-1 relative px-3 py-2 text-xl text-white transition-all duration-200 ease-in-out",
+                "hover:text-accent-3 relative px-3 py-2 text-xl text-white transition-all duration-200 ease-in-out",
                 link.isActive && "text-accent-3 shadow-[0_2px_0_0_theme(colors.accent.1)]"
               )}
             >

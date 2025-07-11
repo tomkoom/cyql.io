@@ -1,36 +1,51 @@
-import { useProjects, useQueryParams } from "@/hooks"
+import { useProjectsQuery, useQueryParams } from "@/hooks"
 import { LoadingModal } from "@/modals"
-import React, { FC } from "react"
 import ReactPaginate from "react-paginate"
 import "./Pagination.css"
 
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectPaginated, selectPaginatedIsLoading } from "@/state/projects/paginated"
+interface ProjectsCountProps {
+  totalItems: number
+  startIndex: number
+  endIndex: number
+  isFiltered: boolean
+}
 
-const Pagination: FC = (): JSX.Element => {
-  const { refreshPaginated } = useProjects()
-  const { queryParams } = useQueryParams()
-  const isLoading = useAppSelector(selectPaginatedIsLoading)
+const ProjectsCount = ({ totalItems, startIndex, endIndex, isFiltered }: ProjectsCountProps) => (
+  <div>
+    {isFiltered ? (
+      <span className="!text-coolgray-400 !font-mono !text-sm">
+        {totalItems} project{totalItems !== 1 ? "s" : ""} found.
+      </span>
+    ) : (
+      <span className="!text-coolgray-400 !font-mono !text-sm">
+        {totalItems} project{totalItems !== 1 ? "s" : ""} total.
+      </span>
+    )}{" "}
+    {totalItems > 0 && (
+      <span className="!text-coolgray-400 !font-mono !text-sm">
+        Showing {startIndex + 1}-{endIndex} of {totalItems}
+      </span>
+    )}
+  </div>
+)
+
+export default function Pagination() {
+  const { queryParams, updateQueryParam } = useQueryParams()
+  const { data: projectsData, isLoading } = useProjectsQuery()
+
   const page = queryParams.selectedPage - 1
 
-  // pagination
-  const paginated = useAppSelector(selectPaginated)
-  const projects = paginated.data
-  const totalItems = paginated.totalItems
-  const totalPages = paginated.totalPages
-  const startIndex = paginated.startIndex
-  const endIndex = paginated.endIndex
+  const projects = projectsData?.data || []
+  const totalItems = projectsData?.totalItems || 0
+  const totalPages = projectsData?.totalPages || 0
+  const startIndex = projectsData?.startIndex || 0
+  const endIndex = projectsData?.endIndex || 0
 
-  const handlePageClick = async (event: any): Promise<void> => {
-    try {
-      await refreshPaginated({
-        ...queryParams,
-        selectedPage: event.selected + 1,
-      })
-    } catch (error) {
-      throw new Error(error)
-    }
+  // Check if any filters are applied
+  const isFiltered = queryParams.q !== "" || queryParams.category !== "All" || queryParams.openSource.length > 0 || queryParams.onChain.length > 0
+
+  const handlePageClick = (event: any): void => {
+    updateQueryParam("selectedPage", (event.selected + 1).toString())
   }
 
   if (projects.length < 1) {
@@ -41,10 +56,8 @@ const Pagination: FC = (): JSX.Element => {
     <div className="pagination">
       <LoadingModal isOpen={isLoading} />
 
-      <div className="main">
-        <span>
-          {totalItems.toString()} total items, showing {(startIndex + 1).toString()}-{endIndex < totalItems ? endIndex.toString() : totalItems.toString()} items
-        </span>
+      <div className="main flex items-center justify-between">
+        <ProjectsCount totalItems={totalItems} startIndex={startIndex} endIndex={endIndex} isFiltered={isFiltered} />
 
         <ReactPaginate
           breakLabel="..."
@@ -69,5 +82,3 @@ const Pagination: FC = (): JSX.Element => {
     </div>
   )
 }
-
-export default Pagination

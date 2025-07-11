@@ -1,86 +1,54 @@
 import { Btn } from "@/components/btns"
 import { TextInput2 } from "@/components/ui"
-import { useProjects, useQueryParams } from "@/hooks"
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { selectSearchQ, setSearchQ } from "@/state/projects/searchQ"
-import { ChangeEvent } from "react"
-import styled from "styled-components"
-import { Category, Filter, Pagination, ProjectList, Sort } from "."
+import { useQueryParams } from "@/hooks"
+import { ChangeEvent, KeyboardEvent, useState } from "react"
+import { Category, Filter, Pagination, ProjectsList, Sort } from "."
 
 export default function Projects() {
-  const dispatch = useAppDispatch()
-  const { queryParams } = useQueryParams()
-  const { refreshPaginated } = useProjects()
-  const searchQ = useAppSelector(selectSearchQ)
+  const { queryParams, updateQueryParam } = useQueryParams()
+  const [searchInput, setSearchInput] = useState(queryParams.q || "")
 
-  const updateSearchQ = (e: ChangeEvent<HTMLInputElement>): void => {
-    dispatch(setSearchQ(e.target.value))
+  const updateSearchInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value)
   }
 
-  const submitSearchQ = async (): Promise<void> => {
-    try {
-      await refreshPaginated({ ...queryParams, q: searchQ })
-    } catch (error) {
-      throw new Error(error)
+  const submitSearch = () => {
+    updateQueryParam("q", searchInput)
+    updateQueryParam("selectedPage", "1")
+  }
+
+  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      submitSearch()
     }
   }
 
   return (
-    <ProjectsStyled>
-      <h2 className="pageTitle">Discover New Projects</h2>
+    <div className="mb-16 flex flex-col gap-2">
+      <h2 className="mb-4 text-2xl font-bold">Discover New Projects</h2>
 
-      <div className="search">
-        <TextInput2 placeholder={"Search project by name"} value={searchQ} onChange={updateSearchQ} />
-        <Btn style={{ height: "3.2rem" }} btnType={"secondary"} text={"Search"} onClick={submitSearchQ} />
+      <div className="flex items-center gap-1">
+        <TextInput2 placeholder="Search project by name" value={searchInput} onChange={updateSearchInput} onKeyPress={handleKeyPress} />
+        <Btn style={{ height: "3.2rem" }} btnType="secondary" text="Search" onClick={submitSearch} />
       </div>
 
       {/* filters */}
-      <Filters>
-        <div className="item">
+      <div className="mt-1 flex flex-wrap items-center justify-between gap-1">
+        <div className="flex flex-wrap items-center justify-start gap-1">
           <Category />
-          <Filter filterId={"openSource"} label={"Open-source:"} filter={queryParams.openSource} />
-          <Filter filterId={"onChain"} label={"On-chain:"} filter={queryParams.onChain} />
+          <Filter filterId="openSource" label="Open-source:" filter={queryParams.openSource} />
+          <Filter filterId="onChain" label="On-chain:" filter={queryParams.onChain} />
         </div>
 
-        <div className="item">
+        <div className="flex flex-wrap items-center justify-start gap-1">
           <Sort />
         </div>
-      </Filters>
+      </div>
 
       {/* table */}
       <Pagination />
-      <ProjectList />
+      <ProjectsList />
       <Pagination />
-    </ProjectsStyled>
+    </div>
   )
 }
-
-const ProjectsStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 4rem;
-
-  > div.search {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-`
-
-const Filters = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin-top: 0.25rem;
-
-  > div.item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
-`
