@@ -74,7 +74,7 @@ export default function Projects() {
       </div>
 
       {/* table */}
-      <Pagination />
+      {/* <Pagination /> */}
       <ProjectsList />
       <Pagination />
     </div>

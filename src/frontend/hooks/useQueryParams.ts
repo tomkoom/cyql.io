@@ -1,6 +1,8 @@
+import { useAppSelector } from "@/hooks/useRedux"
+import { Option, QueryParams, QueryParamsString, SortOptions } from "@/state/_types/curated_projects_types"
+import { selectQueryParams } from "@/state/projects/queryParams"
+import { filterToSearchParam, getFilterParam, getSortParam, sortToSearchParam } from "@/utils/index"
 import { useSearchParams } from "react-router-dom"
-import { QueryParams, QueryParamsString, Option, SortOptions } from "@/state/_types/curated_projects_types"
-import { getSortParam, getFilterParam, filterToSearchParam, sortToSearchParam } from "@/utils/index"
 
 interface UseQueryParams {
   queryParams: QueryParams
@@ -8,10 +10,6 @@ interface UseQueryParams {
   updateQueryParam: (param: string, value: string) => void
   updateQueryParams: (params: QueryParamsString) => void
 }
-
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectQueryParams } from "@/state/projects/queryParams"
 
 export const useQueryParams = (): UseQueryParams => {
   const queryParamsState = useAppSelector(selectQueryParams)
