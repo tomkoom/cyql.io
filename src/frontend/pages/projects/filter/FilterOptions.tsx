@@ -1,14 +1,14 @@
 import { iCheck } from "@/components/icons/Icons"
 import { useProjects, useQueryParams } from "@/hooks"
 import { Option } from "@/state/types/curated_projects_types"
-import React, { FC, useEffect, useRef } from "react"
+import { FC, MutableRefObject, useEffect, useRef } from "react"
 import styled from "styled-components"
 
 interface FilterOptionsProps {
   isOpen: boolean
   setIsOpen: (value: boolean) => void
   filterBtnWidth: number
-  filterBtnRef: React.MutableRefObject<HTMLDivElement>
+  filterBtnRef: MutableRefObject<HTMLDivElement>
   // ...
   filterId: string
   filter: Option

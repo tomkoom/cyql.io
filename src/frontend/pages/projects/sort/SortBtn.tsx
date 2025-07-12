@@ -1,7 +1,7 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import { iAngleDown, iSort } from "@/components/icons/Icons"
 import { useQueryParams } from "@/hooks"
+import { FC } from "react"
+import styled from "styled-components"
 
 const SortBtn: FC = (): JSX.Element => {
   const { queryParams } = useQueryParams()
@@ -15,14 +15,14 @@ const SortBtn: FC = (): JSX.Element => {
         {Object.keys(sort)[0] === "newest_first"
           ? "newest first"
           : Object.keys(sort)[0] === "oldest_first"
-          ? "oldest first"
-          : Object.keys(sort)[0] === "most_upvoted"
-          ? "most upvoted"
-          : Object.keys(sort)[0] === "least_upvoted"
-          ? "least upvoted"
-          : Object.keys(sort)[0] === "recently_updated"
-          ? "Recently updated"
-          : null}
+            ? "oldest first"
+            : Object.keys(sort)[0] === "most_upvoted"
+              ? "most upvoted"
+              : Object.keys(sort)[0] === "least_upvoted"
+                ? "least upvoted"
+                : Object.keys(sort)[0] === "recently_updated"
+                  ? "Recently updated"
+                  : null}
       </span>
       <span className="icon">{iAngleDown}</span>
     </SortBtnStyled>

@@ -1,42 +1,31 @@
 import type { Project } from "@/state/types/curated_projects_types"
-import React, { FC } from "react"
-import styled from "styled-components"
 
 interface SocialsIcProps {
   project: Project
 }
 
-const SocialsIc: FC<SocialsIcProps> = ({ project }): JSX.Element => {
-  return (
-    <SocialsIcStyled>
-      {project.taggr && <li>#TAGGR</li>}
-      {project.openchat && <li>OpenChat</li>}
-      {project.dscvr && <li>DSCVR</li>}
-      {project.catalyze && <li>Catalyze</li>}
-      {project.funded && <li>Funded</li>}
-      {project.seers && <li>Seers</li>}
-      {project.nuance && <li>Nuance</li>}
+const socialPlatforms = [
+  { key: "taggr", label: "#TAGGR" },
+  { key: "openchat", label: "OpenChat" },
+  { key: "dscvr", label: "DSCVR" },
+  { key: "catalyze", label: "Catalyze" },
+  { key: "funded", label: "Funded" },
+  { key: "seers", label: "Seers" },
+  { key: "nuance", label: "Nuance" },
+  { key: "distrikt", label: "Distrikt" },
+] as const
 
-      {/* ... */}
-      {project.distrikt && <li>Distrikt</li>}
-    </SocialsIcStyled>
+export default function SocialsIc({ project }: SocialsIcProps) {
+  return (
+    <ul className="flex flex-wrap items-center gap-2 text-xs">
+      {socialPlatforms.map(
+        ({ key, label }) =>
+          project[key as keyof Project] && (
+            <li key={key} className="bg-coolgray-950 text-coolgray-300 flex h-6 items-center rounded-sm px-2">
+              {label}
+            </li>
+          )
+      )}
+    </ul>
   )
 }
-
-const SocialsIcStyled = styled.ul`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  font-size: var(--fs7);
-
-  > li {
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    padding: 0 0.3rem;
-    background-color: var(--underlay1);
-  }
-`
-
-export default SocialsIc

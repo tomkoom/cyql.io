@@ -30,7 +30,7 @@ export default function Project({ project }: ProjectProps) {
       </div>
 
       <div>
-        <div className="flex flex-wrap items-center gap-1">
+        <div className="flex flex-wrap items-center gap-2">
           <ul className="flex flex-wrap items-center gap-1">
             {category.map((category) => (
               <li key={category} className="bg-coolgray-900 text-coolgray-300 rounded-sm px-1 py-0.5 !font-mono text-xs">
@@ -40,9 +40,17 @@ export default function Project({ project }: ProjectProps) {
           </ul>
 
           {(frontendCanisterId || github) && (
-            <ul className="flex flex-wrap items-center gap-1">
-              {frontendCanisterId && <li className="text-coolgray-300 text-sm">{iCircleNodes} onchain</li>}
-              {github && <li className="text-coolgray-300 text-sm">{iGithub} open</li>}
+            <ul className="flex flex-wrap items-center gap-2">
+              {frontendCanisterId && (
+                <li className="text-coolgray-300 font-mono text-sm">
+                  <span className="text-green-500">{iCircleNodes}</span> onchain
+                </li>
+              )}
+              {github && (
+                <li className="text-coolgray-300 text-sm">
+                  <span className="text-blue-500">{iGithub}</span> open
+                </li>
+              )}
             </ul>
           )}
         </div>

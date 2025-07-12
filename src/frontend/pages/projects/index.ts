@@ -1,5 +1,5 @@
 export { default as Category } from "./category/Category"
-export { default as Filter } from "./filter/Filter"
+export { default as Filter } from "./Filter/Filter"
 export { default as Pagination } from "./Pagination/Pagination"
 export { default as ProjectsList } from "./ProjectsList/ProjectsList"
-export { default as Sort } from "./sort/Sort"
+export { default as Sort } from "./Sort/Sort"

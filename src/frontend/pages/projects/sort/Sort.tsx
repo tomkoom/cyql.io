@@ -1,7 +1,7 @@
-import React, { FC, useState, useRef, useLayoutEffect } from "react"
-import styled from "styled-components"
-import { SortBtn, SortOptions } from "./_index"
 import { useQueryParams } from "@/hooks"
+import { FC, useLayoutEffect, useRef, useState } from "react"
+import styled from "styled-components"
+import { SortBtn, SortOptions } from "."
 
 const Sort: FC = (): JSX.Element => {
   const { queryParams } = useQueryParams()
@@ -24,14 +24,7 @@ const Sort: FC = (): JSX.Element => {
       </div>
 
       <div className="sort_options">
-        {openSort && (
-          <SortOptions
-            openSort={openSort}
-            setOpenSort={setOpenSort}
-            sortBtnWidth={sortBtnWidth}
-            sortBtnRef={sortBtnRef}
-          />
-        )}
+        {openSort && <SortOptions openSort={openSort} setOpenSort={setOpenSort} sortBtnWidth={sortBtnWidth} sortBtnRef={sortBtnRef} />}
       </div>
     </SortStyled>
   )

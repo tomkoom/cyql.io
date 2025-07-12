@@ -34,7 +34,10 @@ export default function Projects() {
 
   return (
     <div className="mx-auto mb-16 flex max-w-[1920px] flex-col gap-2">
-      <h1 className="mb-4 text-4xl font-bold">Discover New Projects</h1>
+      <div className="mb-2 flex flex-col gap-1">
+        <h1 className="text-4xl font-bold">Discover New Projects</h1>
+        <p className="text-coolgray-600 text-xs">Web3-native data on the Internet Computer</p>
+      </div>
 
       <div className="flex items-center gap-2">
         <div className="relative flex-1">

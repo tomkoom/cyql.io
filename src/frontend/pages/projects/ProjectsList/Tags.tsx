@@ -1,37 +1,17 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-
 interface TagsProps {
   category: string[]
 }
 
-const Tags: FC<TagsProps> = ({ category }): JSX.Element => {
+export default function Tags({ category }: TagsProps) {
   if (category.length < 1) return null
 
   return (
-    <TagsStyled>
+    <ul className="flex flex-wrap items-center gap-1">
       {category.map((category) => (
-        <li key={category.toLowerCase()}>{category.toLowerCase()}</li>
+        <li key={category.toLowerCase()} className="bg-coolgray-950 text-coolgray-300 flex h-6 items-center gap-2 rounded-sm px-2 !font-mono text-xs">
+          {category}
+        </li>
       ))}
-    </TagsStyled>
+    </ul>
   )
 }
-
-const TagsStyled = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  align-items: center;
-
-  > li {
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0 0.5rem;
-    font-size: 0.8rem;
-    background-color: var(--underlay1);
-  }
-`
-
-export default Tags
