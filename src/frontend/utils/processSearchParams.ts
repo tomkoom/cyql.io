@@ -1,4 +1,4 @@
-import { Option, SortOptions } from "@/state/_types/curated_projects_types"
+import { Option, SortOptions } from "@/state/types/curated_projects_types"
 
 export const getSortParam = (sort: string): SortOptions => {
   if (sort === "newest_first") return { newest_first: null }

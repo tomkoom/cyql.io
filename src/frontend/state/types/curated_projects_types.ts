@@ -1,7 +1,5 @@
 import { ReactNode } from "react"
 
-// ...
-
 export type Option = [] | [boolean]
 export type CategoryLabel = string
 export type Category = { id: string; lbl: CategoryLabel }

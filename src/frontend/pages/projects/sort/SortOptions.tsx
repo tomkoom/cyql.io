@@ -1,13 +1,11 @@
 import { iCheck } from "@/components/icons/Icons"
 import { useProjects, useQueryParams } from "@/hooks"
+import { useAppSelector } from "@/hooks/useRedux"
 import { LoadingModal } from "@/modals"
-import React, { Dispatch, FC, MutableRefObject, SetStateAction, useEffect, useRef } from "react"
+import { selectPaginatedIsLoading } from "@/state/projects/paginated"
+import { Dispatch, FC, MutableRefObject, SetStateAction, useEffect, useRef } from "react"
 import styled from "styled-components"
 import type { SortOptions } from "../../../../declarations/backend/backend.did"
-
-// state
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectPaginatedIsLoading } from "@/state/projects/paginated"
 
 interface SortOptProps {
   openSort: boolean

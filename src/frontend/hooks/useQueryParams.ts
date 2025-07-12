@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/hooks/useRedux"
-import { Option, QueryParams, QueryParamsString, SortOptions } from "@/state/_types/curated_projects_types"
 import { selectQueryParams } from "@/state/projects/queryParams"
+import { Option, QueryParams, QueryParamsString, SortOptions } from "@/state/types/curated_projects_types"
 import { filterToSearchParam, getFilterParam, getSortParam, sortToSearchParam } from "@/utils/index"
 import { useSearchParams } from "react-router-dom"
 

@@ -1,6 +1,6 @@
+import type { Project } from "@/state/types/curated_projects_types"
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Project } from "@/state/_types/curated_projects_types"
 
 interface NftPreviewsProps {
   project: Project

@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { Pagination } from "@/state/_types/types"
+import type { Pagination } from "@/state/types/types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface Transaction {
   index: number
@@ -45,8 +45,7 @@ const icrcTransactions = createSlice({
   },
 })
 
-export const selectIcrcTransactionsPagination = (state: RootState) =>
-  state.icrcTransactions.pagination
+export const selectIcrcTransactionsPagination = (state: RootState) => state.icrcTransactions.pagination
 export const selectIcrcTransactionsData = (state: RootState) => state.icrcTransactions.data
 
 export const {

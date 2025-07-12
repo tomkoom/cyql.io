@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { Project } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/types/curated_projects_types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { projectInitialState } from "./projectInitialState"
 
 type Mode = "add" | "edit"

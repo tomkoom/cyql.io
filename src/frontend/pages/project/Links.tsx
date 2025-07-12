@@ -1,8 +1,8 @@
+import { iDiscord, iExternalLink, iGithub, iLink, iMedium, iTelegram, iX } from "@/components/icons/Icons"
+import { Link, Project } from "@/state/types/curated_projects_types"
+import { twitterUsername } from "@/utils/index"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { twitterUsername } from "@/utils/index"
-import { Project, Link } from "@/state/_types/curated_projects_types"
-import { iLink, iX, iTelegram, iDiscord, iMedium, iGithub, iExternalLink } from "@/components/icons/Icons"
 
 interface LinkProps {
   project: Project

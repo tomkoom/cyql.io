@@ -19,7 +19,7 @@ export default function Home() {
   const nfts = home.highlighted.nfts
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="mx-auto flex max-w-[1920px] flex-col gap-8">
       <Header />
 
       <section>

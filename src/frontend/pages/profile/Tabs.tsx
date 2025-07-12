@@ -1,10 +1,10 @@
+import type { Tabs } from "@/state/types/curated_projects_types"
 import React, { FC } from "react"
 import styled from "styled-components"
-import type { Tabs } from "@/state/_types/curated_projects_types"
 
 // state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { setProfileTab, selectProfile } from "@/state/profile/profile"
+import { selectProfile, setProfileTab } from "@/state/profile/profile"
 
 const activeStyle = {
   backgroundColor: "var(--highlight1)",

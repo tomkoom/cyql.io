@@ -1,14 +1,12 @@
 import { Loading } from "@/components/ui"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { AdminModal } from "@/modals"
-import type { Project } from "@/state/_types/curated_projects_types"
+import { selectAdmin, setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
+import { selectPaginated } from "@/state/projects/paginated"
+import type { Project } from "@/state/types/curated_projects_types"
 import { formatDiscord, formatStr16, formatWebsite, twitterUsername } from "@/utils/index"
 import { FC, useEffect, useState } from "react"
 import styled, { css } from "styled-components"
-
-// state
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { selectAdmin, setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
-import { selectPaginated } from "@/state/projects/paginated"
 
 const Projects: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()

@@ -3,15 +3,13 @@ import { TextInput2 } from "@/components/ui"
 import { KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useProjects, useQueryParams } from "@/hooks"
-import React, { ChangeEvent, FC, useEffect } from "react"
-import styled from "styled-components"
-
-// state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminSearchQ, setAdminSearchQProjects } from "@/state/admin/admin"
 import { selectPaginated } from "@/state/projects/paginated"
+import { ChangeEvent, FC, useEffect } from "react"
+import styled from "styled-components"
 
-const Search: FC = (): JSX.Element => {
+const Search: FC = () => {
   const dispatch = useAppDispatch()
   const { actor } = useAuth()
   const { refreshPaginated } = useProjects()

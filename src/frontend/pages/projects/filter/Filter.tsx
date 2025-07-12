@@ -1,7 +1,7 @@
-import React, { FC, useState, useRef, useLayoutEffect } from "react"
+import { Option } from "@/state/types/curated_projects_types"
+import React, { FC, useLayoutEffect, useRef, useState } from "react"
 import styled from "styled-components"
-import { FilterOptions, FilterBtn } from "./_index"
-import { Option } from "@/state/_types/curated_projects_types"
+import { FilterBtn, FilterOptions } from "./_index"
 
 interface FilterProps {
   filterId: string

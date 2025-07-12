@@ -1,5 +1,5 @@
+import { CompressedFile } from "@/state/types/types"
 import Compressor from "compressorjs"
-import { CompressedFile } from "@/state/_types/types"
 import { Dimensions } from "react-image-size"
 
 const getIsPortrait = (dimensions: Dimensions): boolean => {
@@ -19,11 +19,7 @@ const blobToDataUrl = (blob: Blob): string => {
   return dataUrl
 }
 
-export const compressLogo = (
-  file: File,
-  fileDimension: Dimensions,
-  setFile: (file: CompressedFile) => void
-): void => {
+export const compressLogo = (file: File, fileDimension: Dimensions, setFile: (file: CompressedFile) => void): void => {
   // const quality = 0.7
   const quality = 0.6
   let options = {}

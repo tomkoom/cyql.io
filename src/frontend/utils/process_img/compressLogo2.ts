@@ -1,10 +1,7 @@
+import { CompressedFile } from "@/state/types/types"
 import Compressor from "compressorjs"
-import { CompressedFile } from "@/state/_types/types"
 
-export const compressLogo2 = (
-  file: Blob,
-  setCompressedFile: (file: CompressedFile) => void
-): void => {
+export const compressLogo2 = (file: Blob, setCompressedFile: (file: CompressedFile) => void): void => {
   const options = {
     maxWidth: 400,
     maxHeight: 400,

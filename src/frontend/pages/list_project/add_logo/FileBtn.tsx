@@ -1,9 +1,9 @@
-import React, { FC, Dispatch, SetStateAction, ChangeEvent, useRef } from "react"
-import styled from "styled-components"
-import { compressLogo } from "@/utils/process_img/_index"
-import { CompressedFile } from "@/state/_types/types"
-import { getImageSize } from "react-image-size"
 import { iPlus, iTimes } from "@/components/icons/Icons"
+import { CompressedFile } from "@/state/types/types"
+import { compressLogo } from "@/utils/process_img/_index"
+import React, { ChangeEvent, Dispatch, FC, SetStateAction, useRef } from "react"
+import { getImageSize } from "react-image-size"
+import styled from "styled-components"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -57,14 +57,7 @@ const FileBtn: FC<FileBtnProps> = ({
         <div>
           <button onClick={clickInput}>{iPlus} Choose Image</button>
           <p>No image chosen</p>
-          <input
-            type="file"
-            id="logo"
-            name="logo"
-            accept="image/png, image/jpeg"
-            onChange={(e) => onImageChange(e)}
-            ref={fileInputRef}
-          />
+          <input type="file" id="logo" name="logo" accept="image/png, image/jpeg" onChange={(e) => onImageChange(e)} ref={fileInputRef} />
         </div>
       ) : (
         <div>

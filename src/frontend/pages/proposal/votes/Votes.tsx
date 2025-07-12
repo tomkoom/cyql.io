@@ -1,16 +1,16 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import { Btn } from "@/components/btns"
 import { useAuth } from "@/context/Auth"
 import { useProposals } from "@/hooks"
-import { VoteArgs, Vote } from "@/state/_types/dao_types"
+import { Vote, VoteArgs } from "@/state/types/dao_types"
+import React, { FC } from "react"
+import styled from "styled-components"
 import { VotingBar } from "./_index"
 
 // state
-import { useAppDispatch } from "@/hooks/useRedux"
-import { setSignInModalIsOpen } from "@/state/modals/signInModal"
-import { setIsLoading } from "@/state/loading"
 import { iBolt } from "@/components/icons/Icons"
+import { useAppDispatch } from "@/hooks/useRedux"
+import { setIsLoading } from "@/state/loading"
+import { setSignInModalIsOpen } from "@/state/modals/signInModal"
 
 interface VotesProps {
   proposal: any

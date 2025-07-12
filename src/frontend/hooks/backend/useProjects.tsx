@@ -1,21 +1,19 @@
-import { useAuth } from "@/context/Auth"
-import { verifyAdmin, serializeProjectsToString, filterToSearchParam, sortToSearchParam, bigintToNumber, sortCategoriesByNum } from "@/utils/index"
-import type { Project, ProjectId, Paginated, QueryParams } from "@/state/_types/curated_projects_types"
 import { KEY } from "@/constants/constants"
+import { useAuth } from "@/context/Auth"
 import { useQueryParams } from "@/hooks"
-import { useLocation } from "react-router-dom"
-
-// state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setActiveProjectsNum } from "@/state/curatedProjects"
-import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
-import { setHomeHighlighted, setHomeNew, setHomeMostUpvoted } from "@/state/home/home"
-import { setProject } from "@/state/project"
-import { setQueryParams } from "@/state/projects/queryParams"
 import { setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
-import { setProfileUpvotedProjects } from "@/state/profile/profile"
+import { setActiveProjectsNum } from "@/state/curatedProjects"
+import { setHomeHighlighted, setHomeMostUpvoted, setHomeNew } from "@/state/home/home"
 import { setIsLoading } from "@/state/loading"
+import { setProfileUpvotedProjects } from "@/state/profile/profile"
+import { setProject } from "@/state/project"
+import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
+import { setQueryParams } from "@/state/projects/queryParams"
+import type { Paginated, Project, ProjectId, QueryParams } from "@/state/types/curated_projects_types"
+import { bigintToNumber, filterToSearchParam, serializeProjectsToString, sortCategoriesByNum, sortToSearchParam, verifyAdmin } from "@/utils/index"
+import { useLocation } from "react-router-dom"
 
 interface UseBackend {
   refreshUserUpvotedProjects: () => Promise<void>
@@ -156,7 +154,7 @@ export const useProjects = (): UseBackend => {
 
   // homepage
 
-  const refreshNew = async (length: number = 24): Promise<void> => {
+  const refreshNew = async (length: number = 15): Promise<void> => {
     if (!actor) return
 
     try {
@@ -168,7 +166,7 @@ export const useProjects = (): UseBackend => {
     }
   }
 
-  const refreshMostUpvoted = async (length: number = 16): Promise<void> => {
+  const refreshMostUpvoted = async (length: number = 10): Promise<void> => {
     if (!actor) return
 
     try {

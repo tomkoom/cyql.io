@@ -1,7 +1,5 @@
-import { useAuth } from "@/context/Auth"
 import { KEY } from "@/constants/constants"
-
-// state
+import { useAuth } from "@/context/Auth"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setUsers } from "@/state/users"
 

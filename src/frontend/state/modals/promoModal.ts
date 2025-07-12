@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "@/state/_store";
-import type { PromoModalData } from "@/state/_types/types";
+import type { RootState } from "@/state/_store"
+import type { PromoModalData } from "@/state/types/types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface PromoModalState {
-  promoModal: boolean;
-  data: PromoModalData;
+  promoModal: boolean
+  data: PromoModalData
 }
 
 const initialState: PromoModalState = {
@@ -17,27 +17,27 @@ const initialState: PromoModalState = {
     ctaUrl: "",
     ctaText: "",
   },
-};
+}
 
 const promoModal = createSlice({
   name: "promoModal",
   initialState,
   reducers: {
     setPromoModal(state, { payload }: PayloadAction<boolean>) {
-      state.promoModal = payload;
+      state.promoModal = payload
     },
     setPromoModalData(state, { payload }: PayloadAction<PromoModalData>) {
-      state.data = payload;
+      state.data = payload
     },
     setClearPromoModalData(state) {
-      state.data = initialState.data;
+      state.data = initialState.data
     },
   },
-});
+})
 
-const selectPromoModal = (state: RootState) => state.promoModal.promoModal;
-const selectPromoModalData = (state: RootState) => state.promoModal.data;
-export { selectPromoModal, selectPromoModalData };
+const selectPromoModal = (state: RootState) => state.promoModal.promoModal
+const selectPromoModalData = (state: RootState) => state.promoModal.data
+export { selectPromoModal, selectPromoModalData }
 
-export const { setPromoModal, setPromoModalData, setClearPromoModalData } = promoModal.actions;
-export default promoModal.reducer;
+export const { setPromoModal, setPromoModalData, setClearPromoModalData } = promoModal.actions
+export default promoModal.reducer

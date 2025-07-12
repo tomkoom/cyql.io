@@ -1,9 +1,9 @@
-import React, { FC, MutableRefObject } from "react"
-import styled from "styled-components"
-import Cropper, { ReactCropperElement } from "react-cropper"
+import { CompressedFile } from "@/state/types/types"
 import "cropperjs/dist/cropper.css"
-import { CompressedFile } from "@/state/_types/types"
+import React, { FC, MutableRefObject } from "react"
+import Cropper, { ReactCropperElement } from "react-cropper"
 import { Dimensions } from "react-image-size"
+import styled from "styled-components"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -16,12 +16,7 @@ interface ImgCropProps {
   cropperRef: MutableRefObject<ReactCropperElement>
 }
 
-const ImgCrop: FC<ImgCropProps> = ({
-  isLogoCompressLoading,
-  compressedFile,
-  logoDimensions,
-  cropperRef,
-}) => {
+const ImgCrop: FC<ImgCropProps> = ({ isLogoCompressLoading, compressedFile, logoDimensions, cropperRef }) => {
   const dispatch = useAppDispatch()
 
   const onCrop = (): void => {

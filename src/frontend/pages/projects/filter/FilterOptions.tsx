@@ -1,8 +1,8 @@
+import { iCheck } from "@/components/icons/Icons"
+import { useProjects, useQueryParams } from "@/hooks"
+import { Option } from "@/state/types/curated_projects_types"
 import React, { FC, useEffect, useRef } from "react"
 import styled from "styled-components"
-import { iCheck } from "@/components/icons/Icons"
-import { useQueryParams, useProjects } from "@/hooks"
-import { Option } from "@/state/_types/curated_projects_types"
 
 interface FilterOptionsProps {
   isOpen: boolean
@@ -69,24 +69,8 @@ const FilterOptions: FC<FilterOptionsProps> = ({
   return (
     <FilterOptionsStyled style={style} ref={filterOptionsRef}>
       {filterItems.map((item) => (
-        <li
-          key={item.label}
-          onClick={() =>
-            onFilter(
-              item.value.length < 1
-                ? []
-                : item.value[0] === true
-                ? [true]
-                : item.value[0] === false
-                ? [false]
-                : null
-            )
-          }
-        >
-          {item.label}{" "}
-          {(item?.value[0] === filter[0] || (item.value.length === 0 && filter.length === 0)) && (
-            <Icon>{iCheck}</Icon>
-          )}
+        <li key={item.label} onClick={() => onFilter(item.value.length < 1 ? [] : item.value[0] === true ? [true] : item.value[0] === false ? [false] : null)}>
+          {item.label} {(item?.value[0] === filter[0] || (item.value.length === 0 && filter.length === 0)) && <Icon>{iCheck}</Icon>}
         </li>
       ))}
     </FilterOptionsStyled>

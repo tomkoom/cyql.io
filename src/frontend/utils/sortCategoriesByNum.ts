@@ -1,4 +1,4 @@
-import type { CategoryWithSize } from "@/state/_types/curated_projects_types"
+import type { CategoryWithSize } from "@/state/types/curated_projects_types"
 
 const compareSize = (a: CategoryWithSize, b: CategoryWithSize): number => {
   if (a.size < b.size) return 1

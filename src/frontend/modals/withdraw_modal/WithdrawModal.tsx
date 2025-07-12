@@ -1,7 +1,7 @@
 import { Btn } from "@/components/btns"
 import CrossIcon from "@/components/icons/CrossIcon"
 import { E8S, ICP_FEE_E8S } from "@/constants/constants"
-import type { Tokens } from "@/state/_types/types"
+import type { Tokens } from "@/state/types/types"
 import { notifyErr } from "@/utils/index"
 import React, { ChangeEvent, FC, useState } from "react"
 import styled from "styled-components"

@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { ListProjectData } from "./_types/dao_types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import type { ListProjectData } from "./types/dao_types"
 
 interface ListProjectInitialState {
   isLogoCompressLoading: boolean
@@ -76,15 +76,9 @@ const listProject = createSlice({
   },
 })
 
-export const selectListProjectIsLogoCompressLoading = (state: RootState) =>
-  state.listProject.isLogoCompressLoading
+export const selectListProjectIsLogoCompressLoading = (state: RootState) => state.listProject.isLogoCompressLoading
 export const selectListProject = (state: RootState) => state.listProject.project
 
-export const {
-  setListProjectIsLogoCompressLoading,
-  setListProject,
-  setListProjectCategory,
-  setListProjectLogoDataUrl,
-  setClearProposedProject,
-} = listProject.actions
+export const { setListProjectIsLogoCompressLoading, setListProject, setListProjectCategory, setListProjectLogoDataUrl, setClearProposedProject } =
+  listProject.actions
 export default listProject.reducer

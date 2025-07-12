@@ -1,15 +1,15 @@
-import React, { FC, useState, useRef, useEffect } from "react"
-import styled from "styled-components"
-import { UploadBtn, Cropper } from "./_index"
-import { ReactCropperElement } from "react-cropper"
-import { CompressedFile } from "@/state/_types/types"
-import { dataUrlToBlob } from "@/utils/process_img/_index"
-import { formatBytes } from "@/utils/formatBytes"
 import { Btn } from "@/components/btns"
+import { CompressedFile } from "@/state/types/types"
+import { formatBytes } from "@/utils/formatBytes"
+import { dataUrlToBlob } from "@/utils/process_img/_index"
 import Compressor from "compressorjs"
+import React, { FC, useEffect, useRef, useState } from "react"
+import { ReactCropperElement } from "react-cropper"
+import styled from "styled-components"
+import { Cropper, UploadBtn } from "./_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
 
 const logoDataUrlkey = "logoDataUrl"

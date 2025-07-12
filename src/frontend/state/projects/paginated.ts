@@ -1,13 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { Paginated, Project } from "@/state/_types/curated_projects_types"
+import type { Paginated, Project } from "@/state/types/curated_projects_types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface PaginatedState {
   isLoading: boolean
   paginated: Paginated
 }
 
-const itemsPerPage = 50
+const itemsPerPage = 25
 
 const paginatedInitialState = {
   data: [],

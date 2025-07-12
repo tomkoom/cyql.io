@@ -1,11 +1,11 @@
+import { Btn } from "@/components/btns"
+import { useProjects } from "@/hooks"
+import { Project } from "@/state/types/curated_projects_types"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useProjects } from "@/hooks"
-import { Btn } from "@/components/btns"
-import { Project } from "@/state/_types/curated_projects_types"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminClearProject, setAdminCloseModal, setAdminIsLoading } from "@/state/admin/admin"
 
 const Controls: FC = (): JSX.Element => {

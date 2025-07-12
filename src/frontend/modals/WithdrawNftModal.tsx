@@ -1,21 +1,15 @@
 import { Btn } from "@/components/btns"
 import CrossIcon from "@/components/icons/CrossIcon"
-import { RootModal } from "@/modals"
-import React, { ChangeEvent, FC, useState } from "react"
-import styled from "styled-components"
-
-// hooks
+import { TextInput } from "@/components/ui"
 import { useAuth } from "@/context/Auth"
 import { useNft } from "@/hooks"
-
-// components
-import { TextInput } from "@/components/ui"
-import { GetSupport, Steps } from "./withdraw_modal/_index"
-
-// state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { RootModal } from "@/modals"
 import { setIsLoading } from "@/state/loading"
 import { selectWithdrawNftModalNftIdx } from "@/state/modals/withdrawNftModal"
+import { ChangeEvent, FC, useState } from "react"
+import styled from "styled-components"
+import { GetSupport, Steps } from "./withdraw_modal/_index"
 
 interface WithdrawNftModalProps {
   isOpen: boolean

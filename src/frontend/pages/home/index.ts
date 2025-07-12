@@ -1,4 +1,3 @@
-// export { default as Exchanges } from "./exchanges/Exchanges"
 export { default as Header } from "./Header"
 export { default as HighlightedProjects } from "./HighlightedProjects/HighlightedProjects"
 export { default as JoinCommunity } from "./JoinCommunity"

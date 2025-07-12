@@ -1,7 +1,7 @@
+import { iDiscord, iGithub, iMedium, iTelegram, iTwitter } from "@/components/icons/Icons"
+import type { Project } from "@/state/types/curated_projects_types"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { iTwitter, iDiscord, iTelegram, iGithub, iMedium } from "@/components/icons/Icons"
-import type { Project } from "@/state/_types/curated_projects_types"
 
 interface SocialsProps {
   project: Project

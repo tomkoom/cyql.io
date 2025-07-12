@@ -1,19 +1,15 @@
-import React, { FC, useState, useEffect, useRef } from "react"
-import styled from "styled-components"
-import { getImageSize, Dimensions } from "react-image-size"
+import { CompressedFile } from "@/state/types/types"
 import { blobToDataUrl } from "@/utils/process_img/_index"
-import { CompressedFile } from "@/state/_types/types"
+import React, { FC, useEffect, useRef, useState } from "react"
+import { Dimensions, getImageSize } from "react-image-size"
+import styled from "styled-components"
 // import { formatBytes } from "@/utils/formatBytes"
-import { ImgCrop, FileBtn } from "./_index"
 import { ReactCropperElement } from "react-cropper"
+import { FileBtn, ImgCrop } from "./_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectListProject } from "@/state/listProject"
-import {
-  setListProjectLogoDataUrl,
-  selectListProjectIsLogoCompressLoading,
-} from "@/state/listProject"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectListProject, selectListProjectIsLogoCompressLoading, setListProjectLogoDataUrl } from "@/state/listProject"
 
 const AddLogo: FC = (): JSX.Element => {
   const dispatch = useAppDispatch()
@@ -72,23 +68,13 @@ const AddLogo: FC = (): JSX.Element => {
   return (
     <AddLogoStyled>
       {/* <p>Logo will be cropped to 400x400 pixels</p> */}
-      <FileBtn
-        logo={logo}
-        compressedFile={compressedFile}
-        setLogo={setLogo}
-        setCompressedFile={setCompressedFile}
-      />
+      <FileBtn logo={logo} compressedFile={compressedFile} setLogo={setLogo} setCompressedFile={setCompressedFile} />
 
       <div className="input">
         {compressedFile && (
           <div className="crop">
             <p>Crop</p>
-            <ImgCrop
-              isLogoCompressLoading={isLogoCompressLoading}
-              compressedFile={compressedFile}
-              logoDimensions={logoDimensions}
-              cropperRef={cropperRef}
-            />
+            <ImgCrop isLogoCompressLoading={isLogoCompressLoading} compressedFile={compressedFile} logoDimensions={logoDimensions} cropperRef={cropperRef} />
           </div>
         )}
 

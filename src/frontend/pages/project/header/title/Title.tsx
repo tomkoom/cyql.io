@@ -1,7 +1,7 @@
+import { Project } from "@/state/types/curated_projects_types"
 import React, { FC } from "react"
 import styled from "styled-components"
 import { Name, Tags } from "./_index"
-import { Project } from "@/state/_types/curated_projects_types"
 
 interface TitleProps {
   project: Project

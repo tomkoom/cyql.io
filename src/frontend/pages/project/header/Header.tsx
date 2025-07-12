@@ -1,17 +1,17 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { verifyAdmin } from "@/utils/verifyAdmin"
 import { iEdit, iShareSquare } from "@/components/icons/Icons"
 import { useAuth } from "@/context/Auth"
-import { Project } from "@/state/_types/curated_projects_types"
+import { Project } from "@/state/types/curated_projects_types"
+import { verifyAdmin } from "@/utils/verifyAdmin"
+import React, { FC } from "react"
+import styled from "styled-components"
 
 // components
-import { Btn, Logo, Title } from "./_index"
 import { UpvoteBtn } from "@/components/btns"
+import { Btn, Logo, Title } from "./_index"
 
 // state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setAdminProject, setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
+import { setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
 import { setShareModal } from "@/state/modals/shareModal"
 
 interface HeaderProps {

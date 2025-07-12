@@ -1,14 +1,12 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { device } from "@/styles/breakpoints"
-import { Projects, Search } from "./_index"
 import { Btn } from "@/components/btns"
-
-// state
 import { useAppDispatch } from "@/hooks/useRedux"
-import { setAdminMode, setAdminIsModalOpen } from "@/state/admin/admin"
+import { setAdminIsModalOpen, setAdminMode } from "@/state/admin/admin"
+import { device } from "@/styles/breakpoints"
+import { FC } from "react"
+import styled from "styled-components"
+import { Projects, Search } from "."
 
-const Admin: FC = (): JSX.Element => {
+const Admin: FC = () => {
   const dispatch = useAppDispatch()
 
   const openAdminModal = (): void => {

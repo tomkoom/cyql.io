@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import type { RootState } from "@/state/_store"
-import type { User } from "@/state/_types/users_types"
+import type { User } from "@/state/types/users_types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface UsersState {
   users: User[]

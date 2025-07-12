@@ -1,4 +1,4 @@
-import type { Project } from "@/state/_types/curated_projects_types"
+import type { Project } from "@/state/types/curated_projects_types"
 
 export const bigintToString = (obj: Object): Object => {
   const serialized = JSON.stringify(obj, (_, v) => (typeof v === "bigint" ? String(v) : v))

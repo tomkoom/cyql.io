@@ -1,10 +1,8 @@
 import { useAuth } from "@/context/Auth"
 import { TransferRequest, User } from "@/idl/nft_idl_service"
-import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
-
-// state
-import { useAppDispatch } from "../useRedux"
 import { setNftIdsOwned, setVotingPower } from "@/state/user"
+import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
+import { useAppDispatch } from "../useRedux"
 
 interface UseNft {
   refreshNfts: () => Promise<void>
