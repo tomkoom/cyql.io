@@ -15,7 +15,7 @@ function ProjectCard({ project, onClick }: ProjectCardProps) {
     <li onClick={onClick} className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 cursor-pointer rounded-lg transition-colors">
       <div className="flex items-center gap-4 p-4">
         {project.logoDataUrl ? (
-          <img src={project.logoDataUrl} alt={`${project.name} logo`} className="h-18 w-18 shrink-0 rounded-2xl object-cover" />
+          <img src={project.logoDataUrl} alt={`${project.name} logo`} className="h-18 w-18 shrink-0 rounded-3xl object-cover" />
         ) : (
           <LogoLetter size="4.5rem" borderRadius="2.25rem" name={project.name} />
         )}

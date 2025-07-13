@@ -1,25 +1,30 @@
 # cyql.io
 
-[cyql.io](https://cyql.io/) is a curated gallery of projects built on the [Internet Computer](https://internetcomputer.org/)
+[cyql.io](https://cyql.io/) is a curated gallery of projects built on the [Internet Computer](https://internetcomputer.org/).
 
-- frontend canister: n7ib3-4qaaa-aaaai-qagnq-cai
-- backend canister: nrkmt-haaaa-aaaai-qagmq-cai
-- domain: cyql.io
+It serves as a visual and functional directory for exploring the growing ecosystem of decentralized applications (dApps) powered by ICP. cyql.io highlights projects across categories like DeFi, NFTs, gaming, infrastructure, and more — all running natively on-chain.
 
-### API
+The platform aims to provide both newcomers and seasoned developers with a centralized hub to discover, evaluate, and support Internet Computer projects. Each listing includes key information, live links, and categorization to help users find what they’re looking for quickly and intuitively.
 
-- ...
+---
 
-### stack
+## Canisters
 
-- react.js
-- redux
-- vite
-- [motoko](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- styled components
+- **Frontend**: [`n7ib3-4qaaa-aaaai-qagnq-cai`](https://n7ib3-4qaaa-aaaai-qagnq-cai.ic0.app)
+- **Backend**: [`nrkmt-haaaa-aaaai-qagmq-cai`](https://dashboard.internetcomputer.org/canister/nrkmt-haaaa-aaaai-qagmq-cai)
+- **Domain**: [cyql.io](https://cyql.io)
 
-```
-npm i
+---
+
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Generate actor interfaces from canisters
 dfx generate
+
+# Start the local development server
 npm run dev
 ```

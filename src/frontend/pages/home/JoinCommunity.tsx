@@ -28,7 +28,7 @@ export default function JoinCommunity() {
       <section className="animate-fadeInUp">
         <header className="mb-8 text-center max-md:mb-6">
           <h2 className="text-foreground mb-2 text-2xl leading-tight font-bold">Join Our Community</h2>
-          <p className="text-muted-foreground text-base font-normal">Connect with us and stay updated</p>
+          <p className="text-coolgray-500 text-base font-normal">Connect with us and stay updated</p>
         </header>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 max-md:grid-cols-1 max-md:gap-3.5">
@@ -48,7 +48,7 @@ export default function JoinCommunity() {
                 rel="noreferrer noopener"
                 aria-label={`${fullLabel} - ${description}`}
                 data-platform={id}
-                className="group bg-card text-foreground focus-visible:border-ring focus-visible:ring-ring/20 relative flex items-center gap-4 overflow-hidden rounded-[var(--radius)] border border-transparent p-5 no-underline shadow-sm transition-colors duration-300 ease-out hover:bg-[var(--coolGray100)] focus-visible:ring-4 focus-visible:outline-none max-md:gap-3.5 max-md:p-4"
+                className="group bg-coolgray-950/50 text-foreground focus-visible:border-ring focus-visible:ring-ring/20 relative flex items-center gap-4 overflow-hidden rounded-[var(--radius)] border border-transparent p-5 no-underline shadow-sm transition-colors duration-300 ease-out hover:bg-[var(--coolGray100)] focus-visible:ring-4 focus-visible:outline-none max-md:gap-3.5 max-md:p-4"
               >
                 {/* Icon Container */}
                 <div
@@ -69,7 +69,7 @@ export default function JoinCommunity() {
                       <Icon lucideName="ExternalLink" />
                     </span>
                   </div>
-                  <div className="text-muted-foreground group-hover:text-secondary-foreground text-sm leading-relaxed transition-colors duration-200">
+                  <div className="text-coolgray-500 group-hover:text-secondary-foreground text-sm leading-relaxed transition-colors duration-200">
                     {description}
                   </div>
                 </div>
