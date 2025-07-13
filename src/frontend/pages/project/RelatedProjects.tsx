@@ -12,7 +12,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
-    <li onClick={onClick} className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 cursor-pointer rounded-lg transition-colors">
+    <li onClick={onClick} className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 cursor-pointer rounded-lg transition-all">
       <div className="flex items-center gap-4 p-4">
         {project.logoDataUrl ? (
           <img src={project.logoDataUrl} alt={`${project.name} logo`} className="h-18 w-18 shrink-0 rounded-3xl object-cover" />
@@ -21,7 +21,7 @@ function ProjectCard({ project, onClick }: ProjectCardProps) {
         )}
 
         <div>
-          <p className="group-hover:text-accent-3 line-clamp-1 leading-[150%] font-bold transition-colors">{project.name}</p>
+          <p className="group-hover:text-accent-3 line-clamp-1 leading-[150%] font-bold transition-all">{project.name}</p>
           <p className="text-coolgray-400 text-sm leading-[150%] font-medium">{project.category.join(", ").toLowerCase()}</p>
           <p className="text-coolgray-600 line-clamp-2 text-sm leading-[150%] break-words">{project.description}</p>
         </div>

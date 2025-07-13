@@ -61,7 +61,7 @@ export default function Header() {
       </ul>
       <p className="text-coolgray-500 text-xl">
         Explore{" "}
-        <span className="text-accent-1 hover:text-accent-2 cursor-pointer font-bold underline transition-all duration-300" onClick={toProjects}>
+        <span className="text-accent-3 hover:text-accent-1 cursor-pointer font-bold underline transition-all duration-300" onClick={toProjects}>
           {formattedCount}
         </span>{" "}
         #ic projects

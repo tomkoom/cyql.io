@@ -22,7 +22,7 @@ export const useProjectsCount = () => {
       return count
     },
     enabled: !!actor,
-    staleTime: 5 * 60 * 1000, // 5 minutes - count doesn't change frequently
+    staleTime: 10 * 60 * 1000, // 10 minutes - count doesn't change frequently
     gcTime: 10 * 60 * 1000, // 10 minutes
     retry: 3,
   })

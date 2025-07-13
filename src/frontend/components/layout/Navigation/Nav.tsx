@@ -23,7 +23,7 @@ export default function Navigation() {
               to={link.pathname}
               className={twMerge(
                 "hover:text-accent-3 relative px-3 py-2 text-xl text-white transition-all duration-200 ease-in-out",
-                link.isActive && "text-accent-3 shadow-[0_2px_0_0_theme(colors.accent.1)]"
+                link.isActive && "text-accent-3 shadow-[0_2px_0_0_theme(colors.accent.3)]"
               )}
             >
               {link.label}
