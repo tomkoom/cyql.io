@@ -193,12 +193,71 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // homepage
 
+  // Helper function to safely take items from array
+  private func safeTake<A>(arr : [A], n : Nat) : [A] {
+    let len = arr.size();
+    if (n >= len) {
+      arr
+    } else {
+      let sliced = Array.slice(arr, 0, n);
+      Iter.toArray<A>(sliced)
+    }
+  };
+
+  public query func getHomepageData(
+    apiKey : T.ApiKey,
+    categories : [Text],
+    itemsPerCategory : Nat,
+    newProjectsCount : Nat,
+    mostUpvotedCount : Nat,
+  ) : async T.HomepageData {
+    assert (secret == apiKey);
+
+    let activeProjects = _getActiveProjects();
+
+    // Get new projects
+    let sortedByNewest = Handle.sort(activeProjects, #newest_first);
+    let newProjects = safeTake(sortedByNewest, newProjectsCount);
+
+    // Get most upvoted projects
+    let sortedByMostUpvoted = Handle.sort(activeProjects, #most_upvoted);
+    let mostUpvoted = safeTake(sortedByMostUpvoted, mostUpvotedCount);
+
+    // Get highlighted projects by category
+    let highlighted = Array.map<Text, T.CategoryProjects>(
+      categories,
+      func(categoryLabel : Text) : T.CategoryProjects {
+        // Use the category label directly for filtering since that's what projects store
+        let filteredByCategory = Handle.filterByCategory(activeProjects, categoryLabel);
+        let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
+        let projects = safeTake(sortedByNewest, itemsPerCategory);
+
+        // Find the category ID from the categories array for the response
+        let categoryId = switch (Array.find<Category.Category>(Category.categories, func(cat) = cat.lbl == categoryLabel)) {
+          case (?cat) cat.id;
+          case null Text.toLowercase(categoryLabel); // fallback to lowercase label if ID not found
+        };
+
+        {
+          categoryId = categoryId;
+          categoryLabel = categoryLabel;
+          projects = projects
+        }
+      },
+    );
+
+    {
+      new = newProjects;
+      mostUpvoted = mostUpvoted;
+      highlighted = highlighted
+    }
+  };
+
   public query func getNewProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sortedByNewest = Handle.sort(activeProjects, #newest_first);
-    let sliced = Array.slice(sortedByNewest, 0, length);
-    return Iter.toArray<T.Project>(sliced)
+    return safeTake(sortedByNewest, length)
   };
 
   public query func getHighlightedProjects(apiKey : T.ApiKey, category : Category.CategoryLabel, length : T.Length) : async [T.Project] {
@@ -206,16 +265,42 @@ shared actor class _CURATED_PROJECTS() = Self {
     let activeProjects = _getActiveProjects();
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
     let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
-    let sliced = Array.slice(sortedByNewest, 0, length);
-    return Iter.toArray<T.Project>(sliced)
+    return safeTake(sortedByNewest, length)
+  };
+
+  public query func getMultipleHighlightedProjects(apiKey : T.ApiKey, categories : [Category.CategoryLabel], length : T.Length) : async [T.CategoryProjects] {
+    assert (secret == apiKey);
+    let activeProjects = _getActiveProjects();
+
+    let highlighted = Array.map<Category.CategoryLabel, T.CategoryProjects>(
+      categories,
+      func(categoryLabel : Category.CategoryLabel) : T.CategoryProjects {
+        let filteredByCategory = Handle.filterByCategory(activeProjects, categoryLabel);
+        let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
+        let projects = safeTake(sortedByNewest, length);
+
+        // Find the category ID from the categories array for the response
+        let categoryId = switch (Array.find<Category.Category>(Category.categories, func(cat) = cat.lbl == categoryLabel)) {
+          case (?cat) cat.id;
+          case null Text.toLowercase(categoryLabel); // fallback to lowercase label if ID not found
+        };
+
+        {
+          categoryId = categoryId;
+          categoryLabel = categoryLabel;
+          projects = projects
+        }
+      },
+    );
+
+    return highlighted
   };
 
   public query func getMostUpvotedProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sortedByMostUpvoted = Handle.sort(activeProjects, #most_upvoted);
-    let sliced = Array.slice(sortedByMostUpvoted, 0, length);
-    return Iter.toArray<T.Project>(sliced)
+    return safeTake(sortedByMostUpvoted, length)
   };
 
   // project
@@ -242,7 +327,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Buffer.toArray<T.Project>(buf)
   };
 
-  // admin route
+  // admin
 
   public query func getProjectsBySearchQ(apiKey : T.ApiKey, searchQ : Text) : async [T.Project] {
     assert (secret == apiKey);
@@ -251,8 +336,6 @@ shared actor class _CURATED_PROJECTS() = Self {
     let q = Text.toLowercase(searchQ);
     return Array.filter<T.Project>(sortedByNewest, func(x) { Text.contains(Text.toLowercase(x.name), #text q) })
   };
-
-  // admin
 
   public shared query ({ caller }) func showApiKey() : async Text {
     assert (caller == adminPrincipal);

@@ -1,8 +1,8 @@
 import { useAuth } from "@/context/Auth"
-import { useNav, useProjects, useScrollLock, useUsers } from "@/hooks"
+import { useNav, useScrollLock, useUsers } from "@/hooks"
+import { useHomeQuery } from "@/hooks/queries/useHomeQuery"
 import { useAppSelector } from "@/hooks/useRedux"
 import { LoadingModal, SignInModal } from "@/modals"
-import { selectHome } from "@/state/home/home"
 import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 import { selectTheme } from "@/state/theme"
@@ -26,48 +26,30 @@ const toasterStyle = {
 const Layout: FC = (): JSX.Element => {
   const pathname = useLocation().pathname
   const { isAuthenticated, actor, users } = useAuth()
-  const { refreshCategories, refreshNew, refreshHighligted, refreshMostUpvoted, refreshActiveNum } = useProjects()
   const { toHome } = useNav()
   const { lockScroll, unlockScroll } = useScrollLock()
   const { registerUser, listUsers } = useUsers()
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectIsLoading)
   const isSignInModalOpen = useAppSelector(selectSignInModalIsOpen)
-  const newProjects = useAppSelector(selectHome).new
 
-  // refresh data
-  const init = async (): Promise<void> => {
+  // Use TanStack Query for homepage data instead of Redux
+  const { data: homeData } = useHomeQuery()
+  const newProjects = homeData?.new || []
+
+  // Initialize users when actor is available
+  const initUsers = async (): Promise<void> => {
     try {
-      const promises = [
-        refreshActiveNum(),
-        refreshCategories(),
-        refreshNew(),
-        refreshMostUpvoted(),
-        refreshHighligted("Tokens"),
-        refreshHighligted("dApps"),
-        refreshHighligted("Social Networks"),
-        refreshHighligted("Marketplace", 8),
-        refreshHighligted("Games"),
-        refreshHighligted("DeFi"),
-        refreshHighligted("NFTs"),
-
-        // users
-        registerUser(),
-        listUsers(),
-      ]
-
-      Promise.allSettled(promises)
+      await Promise.allSettled([registerUser(), listUsers()])
     } catch (error) {
-      throw new Error(error)
+      console.error("Error initializing users:", error)
     }
   }
 
   useEffect(() => {
     if (!actor || !users) return
-    init()
+    initUsers()
   }, [actor, users])
-
-  // ...
 
   // redirect to home if user signed out
   useEffect(() => {
@@ -100,7 +82,6 @@ const Layout: FC = (): JSX.Element => {
       {/* ... */}
       <Summary />
       <Nav />
-      {/* <Navlinks /> */}
 
       <main className="main">
         <Outlet />

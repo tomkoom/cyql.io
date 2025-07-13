@@ -12,7 +12,8 @@
     "dev": "vite",
     "build": "vite build",
     "deploy": "dfx deploy --network=ic",
-    "deploy_backend:local": "dfx deploy backend && dfx generate backend"
+    "deploy_backend:local": "dfx deploy backend && dfx generate backend",
+    "start:clean": "dfx start --clean"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

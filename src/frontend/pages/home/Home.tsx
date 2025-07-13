@@ -1,27 +1,46 @@
 import { Loading } from "@/components/ui"
 import { Button } from "@/components/ui/button"
-import { useNav } from "@/hooks"
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectHome } from "@/state/home/home"
+import { useHomeQuery, useNav } from "@/hooks"
 import { Header, HighlightedProjects, JoinCommunity } from "."
 
 export default function Home() {
   const { toProjects } = useNav()
-  const home = useAppSelector(selectHome)
-  const newProjects = home.new
-  const mostUpvoted = home.mostUpvoted
-  const dapps = home.highlighted.dapps
-  const socialNetworks = home.highlighted.social_networks
-  const marketplace = home.highlighted.marketplace
-  const games = home.highlighted.games
-  const defi = home.highlighted.defi
-  const tokens = home.highlighted.tokens
-  const nfts = home.highlighted.nfts
+  const { data: homeData, isLoading, isError, error } = useHomeQuery()
+
+  if (isError || (!isLoading && !homeData)) {
+    return (
+      <div className="mx-auto flex max-w-[1920px] flex-col gap-8">
+        <Header />
+        <div className="flex flex-col items-center justify-center py-12">
+          <h2 className="mb-4 text-xl">Something went wrong. Please try again.</h2>
+          <p className="text-coolgray-500 mb-4">{error?.message || "Unable to load homepage data"}</p>
+          <Button onClick={() => window.location.reload()}>Try Again</Button>
+        </div>
+      </div>
+    )
+  }
+
+  const {
+    new: newProjects,
+    mostUpvoted,
+    highlighted,
+    isNewLoading,
+    isMostUpvotedLoading,
+    isHighlightedLoading,
+  } = homeData || {
+    new: [],
+    mostUpvoted: [],
+    highlighted: [],
+    isNewLoading: true,
+    isMostUpvotedLoading: true,
+    isHighlightedLoading: true,
+  }
 
   return (
     <div className="mx-auto flex max-w-[1920px] flex-col gap-8">
       <Header />
 
+      {/* New Projects Section */}
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">Newly Listed</h3>
@@ -30,94 +49,47 @@ export default function Home() {
           </Button>
         </div>
 
-        {newProjects.length > 0 ? <HighlightedProjects projects={newProjects} /> : <Loading />}
+        {isNewLoading ? (
+          <Loading />
+        ) : newProjects.length > 0 ? (
+          <HighlightedProjects projects={newProjects} />
+        ) : (
+          <div className="text-coolgray-400 flex justify-center text-sm">No new projects found</div>
+        )}
       </section>
       <div className="bg-coolgray-950 my-4 h-px" />
 
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in dApps</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
+      {/* Highlighted Categories */}
+      {isHighlightedLoading ? (
+        <section>
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-xl">Loading Categories...</h3>
+          </div>
+          <Loading />
+        </section>
+      ) : (
+        highlighted.map((categoryData) => (
+          <div key={categoryData.categoryId}>
+            <section>
+              <div className="mb-4 flex items-center justify-between">
+                <h3 className="text-xl">New in {categoryData.categoryLabel}</h3>
+                <Button variant="secondary" size="sm" onClick={toProjects}>
+                  View All
+                </Button>
+              </div>
 
-        {tokens.length > 0 ? <HighlightedProjects projects={dapps} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
+              {categoryData.projects.length > 0 ? (
+                <HighlightedProjects projects={categoryData.projects} />
+              ) : (
+                <div className="text-coolgray-400 flex justify-center text-sm">No projects found in {categoryData.categoryLabel}</div>
+              )}
+            </section>
+            <div className="bg-coolgray-950 my-4 h-px" />
+          </div>
+        ))
+      )}
 
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in Social Networks</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
-
-        {tokens.length > 0 ? <HighlightedProjects projects={socialNetworks} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
-
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in Marketplaces</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
-
-        {tokens.length > 0 ? <HighlightedProjects projects={marketplace} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
-
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in Games</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
-
-        {tokens.length > 0 ? <HighlightedProjects projects={games} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
-
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in DeFi</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
-
-        {tokens.length > 0 ? <HighlightedProjects projects={defi} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
-
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in Tokens</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
-
-        {tokens.length > 0 ? <HighlightedProjects projects={tokens} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
-
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-xl">New in NFTs</h3>
-          <Button variant="secondary" size="sm" onClick={toProjects}>
-            View All
-          </Button>
-        </div>
-
-        {nfts.length > 0 ? <HighlightedProjects projects={nfts} /> : <Loading />}
-      </section>
-      <div className="bg-coolgray-950 my-4 h-px" />
-
+      {/* Most Upvoted Section */}
       <section>
         <div className="mb-4 flex items-center justify-between">
           <h3 className="text-xl">Most Upvoted</h3>
@@ -126,7 +98,13 @@ export default function Home() {
           </Button>
         </div>
 
-        {mostUpvoted.length > 0 ? <HighlightedProjects projects={mostUpvoted} /> : <Loading />}
+        {isMostUpvotedLoading ? (
+          <Loading />
+        ) : mostUpvoted.length > 0 ? (
+          <HighlightedProjects projects={mostUpvoted} />
+        ) : (
+          <div className="text-coolgray-400 flex justify-center text-sm">No upvoted projects found</div>
+        )}
       </section>
       <div className="bg-coolgray-950 my-4 h-px" />
 

@@ -15,7 +15,7 @@ export default function Project({ project }: ProjectProps) {
 
   return (
     <div
-      className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 flex cursor-pointer flex-col gap-3 rounded-3xl p-4 transition-colors"
+      className="group bg-coolgray-950/50 hover:bg-coolgray-950 flex cursor-pointer flex-col gap-3 rounded-3xl p-4 transition-colors"
       onClick={() => toProject(project.id)}
     >
       <div className="flex items-start gap-3">

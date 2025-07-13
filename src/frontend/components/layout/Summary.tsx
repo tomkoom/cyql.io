@@ -1,14 +1,14 @@
 import { Change } from "@/components/ui/price/_index"
 import { IC_LOGO } from "@/constants/constants"
+import { useFormattedProjectsCount } from "@/hooks/queries/useProjectsStats"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjectsNum } from "@/state/curatedProjects"
 import { fetchIcpPrice, selectIcp24hPriceChange, selectIcpPrice } from "@/state/icpPrice"
 import { useEffect } from "react"
 import styled from "styled-components"
 
 export default function Summary() {
   const dispatch = useAppDispatch()
-  const curatedNum = useAppSelector(selectActiveProjectsNum)
+  const { formattedCount, isLoading: isProjectsLoading } = useFormattedProjectsCount()
   const price = useAppSelector(selectIcpPrice)
   const change = useAppSelector(selectIcp24hPriceChange)
 
@@ -23,7 +23,7 @@ export default function Summary() {
   return (
     <SummaryStyled>
       <p>
-        Projects: <span className="num">{curatedNum.toString() || "..."}</span>
+        Projects: <span className={`num ${isProjectsLoading ? "loading" : ""}`}>{formattedCount}</span>
       </p>
       <div className="bg-coolgray-800 h-4 w-px"></div>
 
@@ -54,6 +54,11 @@ const SummaryStyled = styled.span`
       font-family: var(--monospace);
       font-size: var(--fs6);
       color: var(--primaryColor);
+
+      &.loading {
+        opacity: 0.7;
+        animation: pulse 1.5s ease-in-out infinite;
+      }
     }
   }
 
@@ -72,6 +77,16 @@ const SummaryStyled = styled.span`
       height: 1rem;
       width: 1rem;
       object-fit: contain;
+    }
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
     }
   }
 `

@@ -1,7 +1,6 @@
 import { Icon, LucideIconsKeys } from "@/components/ui/Icon"
 import { useNav } from "@/hooks"
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectActiveProjectsNum } from "@/state/curatedProjects"
+import { useFormattedProjectsCount } from "@/hooks/queries/useProjectsStats"
 
 type HeaderElement = {
   icon: LucideIconsKeys | ""
@@ -41,7 +40,7 @@ const HEADER_ELEMENTS: HeaderElement[] = [
 
 export default function Header() {
   const { toProjects } = useNav()
-  const projectsNum = useAppSelector(selectActiveProjectsNum)
+  const { formattedCount } = useFormattedProjectsCount()
 
   return (
     <header className="flex flex-col items-center justify-center space-y-2 text-center">
@@ -63,7 +62,7 @@ export default function Header() {
       <p className="text-coolgray-500 text-xl">
         Explore{" "}
         <span className="text-accent-1 hover:text-accent-2 cursor-pointer font-bold underline transition-all duration-300" onClick={toProjects}>
-          {projectsNum > 0 ? projectsNum : "..."}
+          {formattedCount}
         </span>{" "}
         #ic projects
       </p>

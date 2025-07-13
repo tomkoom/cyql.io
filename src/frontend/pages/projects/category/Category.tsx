@@ -1,7 +1,7 @@
-import React, { FC, useState, useEffect } from "react"
-import styled from "styled-components"
 import { useScrollLock } from "@/hooks"
-import { CategoryListModal, CategoryBtn } from "./_index"
+import { FC, useEffect, useState } from "react"
+import styled from "styled-components"
+import { CategoryBtn, CategoryListModal } from "./_index"
 
 const Category: FC = (): JSX.Element => {
   const { lockScroll, unlockScroll } = useScrollLock()
@@ -21,12 +21,7 @@ const Category: FC = (): JSX.Element => {
         <CategoryBtn />
       </div>
 
-      {openCategoryList && (
-        <CategoryListModal
-          openCategoryList={openCategoryList}
-          setOpenCategoryList={setOpenCategoryList}
-        />
-      )}
+      {openCategoryList && <CategoryListModal openCategoryList={openCategoryList} setOpenCategoryList={setOpenCategoryList} />}
     </CategoryStyled>
   )
 }

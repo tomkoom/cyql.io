@@ -124,5 +124,19 @@ module {
 
     // ...
     // frontendCanisterUrl : Text
-  }
+  };
+
+  // Homepage data types
+  public type CategoryProjects = {
+    categoryId : Text;
+    categoryLabel : Text;
+    projects : [Project]
+  };
+
+  public type HomepageData = {
+    new : [Project];
+    mostUpvoted : [Project];
+    highlighted : [CategoryProjects]
+  };
+
 }
