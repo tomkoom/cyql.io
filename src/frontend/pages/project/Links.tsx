@@ -1,110 +1,106 @@
 import { iDiscord, iExternalLink, iGithub, iLink, iMedium, iTelegram, iX } from "@/components/icons/Icons"
 import { Link, Project } from "@/state/types/curated_projects_types"
 import { twitterUsername } from "@/utils/index"
-import React, { FC } from "react"
+import { addSourceParam } from "@/utils/utils"
 import styled from "styled-components"
 
 interface LinkProps {
   project: Project
 }
 
-const Links: FC<LinkProps> = ({ project }): JSX.Element => {
+export default function Links({ project }: LinkProps) {
   const links: Link[] = [
     // main
     {
       id: "website",
       label: "Website",
-      url: project.website,
+      url: project.website ? addSourceParam(project.website) : project.website,
       icon: iLink,
       tag: "main",
     },
     {
       id: "app",
       label: "App",
-      url: project.app,
+      url: project.app ? addSourceParam(project.app) : project.app,
       icon: iExternalLink,
       tag: "main",
     },
-
-    // token
-
     // socials
     {
       id: "twitter",
       label: `@${twitterUsername(project.twitter)}`,
-      url: project.twitter,
+      url: project.twitter ? addSourceParam(project.twitter) : project.twitter,
       icon: iX,
       tag: "social",
     },
     {
       id: "discord",
       label: "Discord",
-      url: project.discord,
+      url: project.discord ? addSourceParam(project.discord) : project.discord,
       icon: iDiscord,
       tag: "social",
     },
     {
       id: "telegram",
       label: "Telegram",
-      url: project.telegram,
+      url: project.telegram ? addSourceParam(project.telegram) : project.telegram,
       icon: iTelegram,
       tag: "social",
     },
     {
       id: "github",
       label: "GitHub",
-      url: project.github,
+      url: project.github ? addSourceParam(project.github) : project.github,
       icon: iGithub,
       tag: "social",
     },
     {
       id: "medium",
       label: "Medium",
-      url: project.medium,
+      url: project.medium ? addSourceParam(project.medium) : project.medium,
       icon: iMedium,
       tag: "social",
     },
-
     // socials ic
     {
       id: "dscvr",
       label: "Dscvr",
-      url: project.dscvr,
+      url: project.dscvr ? addSourceParam(project.dscvr) : project.dscvr,
       icon: "",
       tag: "social_ic",
     },
     {
       id: "openchat",
       label: "OpenChat",
-      url: project.openchat,
+      url: project.openchat ? addSourceParam(project.openchat) : project.openchat,
       icon: "",
       tag: "social_ic",
     },
     {
       id: "taggr",
       label: "#TAGGR",
-      url: project.taggr,
+      url: project.taggr ? addSourceParam(project.taggr) : project.taggr,
       icon: "",
       tag: "social_ic",
     },
     {
       id: "nuance",
       label: "Nuance",
-      url: project.nuance,
+      url: project.nuance ? addSourceParam(project.nuance) : project.nuance,
       icon: "",
       tag: "social_ic",
     },
     {
       id: "catalyze",
       label: "Catalyze",
-      url: project.catalyze,
+      url: project.catalyze ? addSourceParam(project.catalyze) : project.catalyze,
       icon: "",
       tag: "social_ic",
     },
     {
       id: "funded",
       label: "Funded",
-      url: project.funded,
+      url: project.funded ? addSourceParam(project.funded) : project.funded,
       icon: "",
       tag: "social_ic",
     },
@@ -131,35 +127,35 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       <div className="about">
         {/* dfinity forum showcase url */}
         {project.dfinityForumShowcase && (
-          <a href={project.dfinityForumShowcase} target="_blank" rel="noreferrer noopener">
+          <a href={addSourceParam(project.dfinityForumShowcase)} target="_blank" rel="noreferrer noopener">
             DFINITY Forum Showcase <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* nns launchpad url */}
         {project.nnsLaunchpadUrl && (
-          <a href={project.nnsLaunchpadUrl} target="_blank" rel="noreferrer noopener">
+          <a href={addSourceParam(project.nnsLaunchpadUrl)} target="_blank" rel="noreferrer noopener">
             NNS Launchpad URL <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* docs */}
         {project.docs && (
-          <a href={project.docs} target="_blank" rel="noreferrer noopener">
+          <a href={addSourceParam(project.docs)} target="_blank" rel="noreferrer noopener">
             Docs <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* faq */}
         {project.faq && (
-          <a href={project.faq} target="_blank" rel="noreferrer noopener">
+          <a href={addSourceParam(project.faq)} target="_blank" rel="noreferrer noopener">
             FAQ <span>{iExternalLink}</span>
           </a>
         )}
 
         {/* whitepaper */}
         {project.whitepaper && (
-          <a href={project.whitepaper} target="_blank" rel="noreferrer noopener">
+          <a href={addSourceParam(project.whitepaper)} target="_blank" rel="noreferrer noopener">
             Whitepaper <span>{iExternalLink}</span>
           </a>
         )}
@@ -174,7 +170,7 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       )}
 
       {project.frontendCanisterId.length > 27 && (
-        <a href={project.frontendCanisterId} target="_blank" rel="noopener noreferrer">
+        <a href={addSourceParam(project.frontendCanisterId)} target="_blank" rel="noopener noreferrer">
           Frontend Canister URL {iExternalLink}
         </a>
       )}
@@ -191,7 +187,7 @@ const Links: FC<LinkProps> = ({ project }): JSX.Element => {
       {project.tokenCanisterId && (
         <div className="token">
           <p>Token ledger id:</p>
-          <a href={`https://dashboard.internetcomputer.org/canister/${project.tokenCanisterId}`} target="_blank" rel="noreferrer noopener">
+          <a href={addSourceParam(`https://dashboard.internetcomputer.org/canister/${project.tokenCanisterId}`)} target="_blank" rel="noreferrer noopener">
             {project.tokenCanisterId} <span>{iExternalLink}</span>
           </a>
         </div>
@@ -351,5 +347,3 @@ const LinksStyled = styled.div`
     }
   }
 `
-
-export default Links

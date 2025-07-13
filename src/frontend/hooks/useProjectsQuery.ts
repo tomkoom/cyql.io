@@ -1,4 +1,4 @@
-import { KEY } from "@/constants/constants"
+import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useQueryParams } from "@/hooks"
 import { serializeProjectsToString } from "@/utils"
@@ -12,7 +12,7 @@ export const useProjectsQuery = () => {
     queryKey: ["projects", queryParams],
     queryFn: async () => {
       const res = await actor.getProjects({
-        secret: KEY,
+        secret: API_KEY,
         ...queryParams,
         selectedPage: BigInt(queryParams.selectedPage),
         itemsPerPage: BigInt(queryParams.itemsPerPage),

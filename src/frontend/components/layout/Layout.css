@@ -3,20 +3,12 @@
   font-family: var(--fontFamily);
 }
 
-/* body {
-  background-color: var(--primaryColor);
-} */
-
 ul {
   list-style-type: none;
 }
 
 ::placeholder {
   color: var(--tertiaryColor);
-}
-
-img {
-  width: 100%;
 }
 
 /* global classes */
@@ -37,12 +29,6 @@ img {
 
 .wrapper1280 {
   max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.wrapper1024 {
-  max-width: 1024px;
   width: 100%;
   margin: 0 auto;
 }

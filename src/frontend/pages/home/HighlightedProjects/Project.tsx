@@ -2,7 +2,6 @@ import { iCircleNodes, iGithub } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui"
 import { useNav } from "@/hooks"
 import type { Project as ProjectType } from "@/state/types/curated_projects_types"
-import { trimName } from "@/utils/index"
 import { Logo } from "."
 
 interface ProjectProps {
@@ -23,7 +22,7 @@ export default function Project({ project }: ProjectProps) {
         <Logo name={project.name} logo={project.logoDataUrl} />
         <div className="w-full">
           <div className="flex items-baseline justify-between gap-1">
-            <h4 className="group-hover:text-accent-3 font-bold text-wrap transition-colors">{trimName(name)}</h4> <UpvotesNum upvotesNum={upvotesNum} />
+            <h4 className="group-hover:text-accent-3 line-clamp-1 font-bold text-wrap transition-colors">{name}</h4> <UpvotesNum upvotesNum={upvotesNum} />
           </div>
           <p className="text-coolgray-500 line-clamp-2 text-sm font-light">{description}</p>
         </div>

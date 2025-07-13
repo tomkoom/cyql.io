@@ -1,4 +1,4 @@
-import { KEY } from "@/constants/constants"
+import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useQueryParams } from "@/hooks"
 import { useAppDispatch } from "@/hooks/useRedux"
@@ -47,7 +47,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getUserUpvotedProjects(KEY)
+      const res = await actor.getUserUpvotedProjects(API_KEY)
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setProfileUpvotedProjects(serialized))
     } catch (error) {
@@ -59,7 +59,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getCategoriesWithSize(KEY)
+      const res = await actor.getCategoriesWithSize(API_KEY)
       const sorted = sortCategoriesByNum(bigintToNumber(res))
       dispatch(setCategoriesWithSize(bigintToNumber(sorted)))
     } catch (error) {
@@ -71,7 +71,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getAllProjects(KEY)
+      const res = await actor.getAllProjects(API_KEY)
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setAdminAllProjects(serialized))
     } catch (error) {
@@ -86,7 +86,7 @@ export const useProjects = (): UseBackend => {
     dispatch(setPaginatedIsLoading(true))
     try {
       const res = await actor.getProjects({
-        secret: KEY,
+        secret: API_KEY,
         ...queryParams,
         selectedPage: BigInt(queryParams.selectedPage),
         itemsPerPage: BigInt(queryParams.itemsPerPage),
@@ -158,7 +158,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getNewProjects(KEY, BigInt(length))
+      const res = await actor.getNewProjects(API_KEY, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeNew(serialized))
     } catch (error) {
@@ -170,7 +170,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getMostUpvotedProjects(KEY, BigInt(length))
+      const res = await actor.getMostUpvotedProjects(API_KEY, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeMostUpvoted(serialized))
     } catch (error) {
@@ -186,7 +186,7 @@ export const useProjects = (): UseBackend => {
       const replacement = "_"
       var key = str.replace(/\//g, replacement).toLowerCase() // change slashes to underscores
       key = key.replace(" ", "_") // change spaces to underscores
-      const res = await actor.getHighlightedProjects(KEY, category, BigInt(length))
+      const res = await actor.getHighlightedProjects(API_KEY, category, BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       dispatch(setHomeHighlighted({ [key as string]: serialized }))
     } catch (error) {
@@ -200,7 +200,7 @@ export const useProjects = (): UseBackend => {
     if (!actor) return
 
     try {
-      const res = await actor.getActiveProjectsNum(KEY)
+      const res = await actor.getActiveProjectsNum(API_KEY)
       dispatch(setActiveProjectsNum(Number(res)))
     } catch (error) {
       throw new Error(error)
@@ -214,7 +214,7 @@ export const useProjects = (): UseBackend => {
 
     try {
       dispatch(setIsLoading(true))
-      const res = await actor.getProjectById(KEY, BigInt(id))
+      const res = await actor.getProjectById(API_KEY, BigInt(id))
       if (res.length > 0) {
         const project = { ...res[0], id: res[0].id.toString() }
         dispatch(setProject({ ...project, id: project.id.toString() }))
@@ -232,7 +232,7 @@ export const useProjects = (): UseBackend => {
 
     try {
       dispatch(setIsLoading(true))
-      const res = await actor.getRelatedProjects(KEY, BigInt(id), BigInt(length))
+      const res = await actor.getRelatedProjects(API_KEY, BigInt(id), BigInt(length))
       const serialized = res.map((p) => ({ ...p, id: p.id.toString() }))
       // dispatch(setProjectRelated(serialized))
       return serialized
@@ -282,7 +282,7 @@ export const useProjects = (): UseBackend => {
 
     try {
       const id = BigInt(projectId)
-      const res = await actor.updateUpvote(KEY, id)
+      const res = await actor.updateUpvote(API_KEY, id)
       return res
     } catch (error) {
       throw new Error(error)

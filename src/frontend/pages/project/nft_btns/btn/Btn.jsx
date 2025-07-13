@@ -1,16 +1,12 @@
-import React from "react";
-import css from "./Btn.module.css";
+import { iExternalLink } from "@/components/icons/Icons"
+import { addSourceParam } from "@/utils/utils"
+import css from "./Btn.module.css"
 
-// icons
-import { iExternalLink } from "@/components/icons/Icons";
-
-const Btn = ({ label, url }) => {
+export default function Btn({ label, url }) {
   return (
-    <a className={css.btn} href={url} target="_blank" rel="norefferrer noopener">
+    <a className={css.btn} href={addSourceParam(url)} target="_blank" rel="norefferrer noopener">
       {label}
       <span className={css.icon}>{iExternalLink}</span>
     </a>
-  );
-};
-
-export default Btn;
+  )
+}

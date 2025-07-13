@@ -1,4 +1,4 @@
-import { KEY } from "@/constants/constants"
+import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useProjects } from "@/hooks"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -26,7 +26,7 @@ export const useUpvote = () => {
   const updateUpvote = async (projectId: string, location: string, setIsExploding: Dispatch<SetStateAction<boolean>>, duration: number): Promise<void> => {
     try {
       const res = await updateCuratedProjectUpvote(projectId)
-      const project = await actor.getProjectById(KEY, BigInt(projectId))
+      const project = await actor.getProjectById(API_KEY, BigInt(projectId))
 
       if (project.length > 0) {
         const p = { ...project[0], id: String(project[0].id) }

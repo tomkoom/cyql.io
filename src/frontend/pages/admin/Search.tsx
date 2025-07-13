@@ -1,6 +1,6 @@
 import { Btn } from "@/components/btns"
 import { TextInput2 } from "@/components/ui"
-import { KEY } from "@/constants/constants"
+import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useProjects, useQueryParams } from "@/hooks"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
@@ -24,7 +24,7 @@ const Search: FC = () => {
   const getBySearchQ = async (searchQ: string): Promise<void> => {
     try {
       if (searchQ) {
-        const res = await actor.getProjectsBySearchQ(KEY, searchQ)
+        const res = await actor.getProjectsBySearchQ(API_KEY, searchQ)
         const serialized = res.map((p) => ({ ...p, id: String(p.id) }))
         dispatch(setAdminSearchQProjects(serialized))
       } else {
