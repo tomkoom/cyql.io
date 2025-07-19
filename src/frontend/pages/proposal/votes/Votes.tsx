@@ -1,7 +1,7 @@
 import { Btn } from "@/components/btns"
 import { useAuth } from "@/context/Auth"
 import { useProposals } from "@/hooks"
-import { Vote, VoteArgs } from "@/state/types/dao_types"
+import { Vote, VoteArgs } from "@/state/types/DAO"
 import React, { FC } from "react"
 import styled from "styled-components"
 import { VotingBar } from "./_index"

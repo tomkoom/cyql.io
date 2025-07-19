@@ -1,7 +1,7 @@
 import { Btn } from "@/components/btns"
 import { iExternalLink } from "@/components/icons/Icons"
 import { WithdrawNftModal } from "@/modals"
-import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
+import { getTokenIdentifier } from "@/utils/ext-token/getTokenIdentifier"
 import React, { FC } from "react"
 import styled from "styled-components"
 

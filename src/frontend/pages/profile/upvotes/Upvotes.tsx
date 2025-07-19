@@ -1,15 +1,12 @@
 import { iCaretUp } from "@/components/icons/Icons"
 import { LogoLetter } from "@/components/ui"
 import { useNav, useProjects } from "@/hooks"
-import { trimDescription } from "@/utils/index"
-import React, { FC, useEffect } from "react"
-import styled from "styled-components"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProfile } from "@/state/profile/profile"
+import { useEffect } from "react"
+import styled from "styled-components"
 
-const Upvotes: FC = (): JSX.Element => {
+export default function Upvotes() {
   const { refreshUserUpvotedProjects } = useProjects()
   const { toProject } = useNav()
   const upvotedProjects = useAppSelector(selectProfile).upvotedProjects
@@ -36,7 +33,7 @@ const Upvotes: FC = (): JSX.Element => {
               {p.logoDataUrl ? <img src={p.logoDataUrl} alt={`${p.name} logo`} /> : <LogoLetter size="3rem" borderRadius="1.5rem" name={p.name} />}
               <div>
                 <p className="name">{p.name}</p>
-                <p className="description">{trimDescription(p.description, 70)}</p>
+                <p className="description line-clamp-2">{p.description}</p>
               </div>
             </div>
 
@@ -114,5 +111,3 @@ const UpvotesStyled = styled.div`
     }
   }
 `
-
-export default Upvotes

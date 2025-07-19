@@ -2,7 +2,7 @@ import { Btn } from "@/components/btns"
 import { useProjects } from "@/hooks"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminClearProject, setAdminCloseModal, setAdminIsLoading } from "@/state/admin/admin"
-import { Project } from "@/state/types/curated_projects_types"
+import { Project } from "@/state/types/Project"
 
 export default function Controls() {
   const dispatch = useAppDispatch()

@@ -1,5 +1,5 @@
 import { iAngleDown } from "@/components/icons/Icons"
-import { Option } from "@/state/types/curated_projects_types"
+import { Option } from "@/state/types/Project"
 import { FC } from "react"
 import styled from "styled-components"
 

@@ -1,6 +1,6 @@
 import { iEdit, iShareSquare } from "@/components/icons/Icons"
 import { useAuth } from "@/context/Auth"
-import { Project } from "@/state/types/curated_projects_types"
+import { Project } from "@/state/types/Project"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import React, { FC } from "react"
 import styled from "styled-components"

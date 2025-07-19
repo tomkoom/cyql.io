@@ -1,6 +1,6 @@
 import { LogoLetter } from "@/components/ui"
 import { useNav, useRelatedProjectsQuery } from "@/hooks"
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 import { shuffle } from "@/utils/index"
 import { useCallback, useMemo } from "react"
 import { useParams } from "react-router-dom"

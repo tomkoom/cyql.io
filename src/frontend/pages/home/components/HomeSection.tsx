@@ -1,6 +1,6 @@
 import { Loading } from "@/components/ui"
 import { Button } from "@/components/ui/button"
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 import { memo } from "react"
 import { HighlightedProjects } from ".."
 

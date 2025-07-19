@@ -1,4 +1,4 @@
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 import { FC } from "react"
 import styled from "styled-components"
 

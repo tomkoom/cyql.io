@@ -1,6 +1,6 @@
 import store from "@/state/_store"
 import { HighlightedItem } from "@/state/home/home"
-import { Project } from "@/state/types/curated_projects_types"
+import { Project } from "@/state/types/Project"
 
 const { dispatch } = store
 

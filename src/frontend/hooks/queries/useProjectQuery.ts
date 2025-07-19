@@ -1,6 +1,6 @@
 import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 import { useQuery } from "@tanstack/react-query"
 
 export const useProjectQuery = (projectId: string | undefined) => {

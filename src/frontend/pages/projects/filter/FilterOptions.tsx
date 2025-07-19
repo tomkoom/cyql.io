@@ -1,6 +1,6 @@
 import { iCheck } from "@/components/icons/Icons"
 import { useProjects, useQueryParams } from "@/hooks"
-import { Option } from "@/state/types/curated_projects_types"
+import { Option } from "@/state/types/Project"
 import { FC, MutableRefObject, useEffect, useRef } from "react"
 import styled from "styled-components"
 

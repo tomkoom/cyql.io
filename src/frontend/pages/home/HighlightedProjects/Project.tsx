@@ -1,7 +1,7 @@
 import { iCircleNodes, iGithub } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui"
 import { useNav } from "@/hooks"
-import type { Project as ProjectType } from "@/state/types/curated_projects_types"
+import type { Project as ProjectType } from "@/state/types/Project"
 import { Logo } from "."
 
 interface ProjectProps {

@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/Auth"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setProposals } from "@/state/dao/proposals"
-import type { ListProjectData, VoteArgs } from "@/state/types/dao_types"
+import type { ListProjectData, VoteArgs } from "@/state/types/DAO"
 import { bigintToString, notifyErr, notifySuccess } from "@/utils/index"
 
 interface UseProposals {

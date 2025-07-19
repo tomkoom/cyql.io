@@ -1,5 +1,5 @@
 import { iDiscord, iGithub, iMedium, iTelegram, iTwitter } from "@/components/icons/Icons"
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 
 interface SocialsProps {
   project: Project

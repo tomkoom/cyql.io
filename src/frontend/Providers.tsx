@@ -2,7 +2,7 @@ import AuthProvider from "@/context/Auth"
 import store from "@/state/_store"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import React from "react"
+import { ReactNode } from "react"
 import { Provider } from "react-redux"
 import { IS_DEV } from "./constants/constants"
 
@@ -17,7 +17,7 @@ const queryClient = new QueryClient({
   },
 })
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+export default function Providers({ children }: { children: ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>

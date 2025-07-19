@@ -1,12 +1,9 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { Wallet, Id, Header, Tabs, Upvotes } from "./_index"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProfile } from "@/state/profile/profile"
+import styled from "styled-components"
+import { Header, Id, Tabs, Upvotes, Wallet } from "."
 
-const Profile: FC = (): JSX.Element => {
+export default function Profile() {
   const tab = useAppSelector(selectProfile).tab
 
   return (
@@ -27,5 +24,3 @@ const ProfileStyled = styled.div`
   text-align: center;
   margin-bottom: 4rem;
 `
-
-export default Profile

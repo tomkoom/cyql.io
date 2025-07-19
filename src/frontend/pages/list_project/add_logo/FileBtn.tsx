@@ -1,6 +1,6 @@
 import { iPlus, iTimes } from "@/components/icons/Icons"
 import { CompressedFile } from "@/state/types/types"
-import { compressLogo } from "@/utils/process_img/_index"
+import { compressLogo } from "@/utils/process-img/_index"
 import React, { ChangeEvent, Dispatch, FC, SetStateAction, useRef } from "react"
 import { getImageSize } from "react-image-size"
 import styled from "styled-components"

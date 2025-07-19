@@ -1,5 +1,5 @@
 import { iDiscord, iExternalLink, iGithub, iLink, iMedium, iTelegram, iX } from "@/components/icons/Icons"
-import { Link, Project } from "@/state/types/curated_projects_types"
+import { Link, Project } from "@/state/types/Project"
 import { twitterUsername } from "@/utils/index"
 import { addSourceParam } from "@/utils/utils"
 import styled from "styled-components"

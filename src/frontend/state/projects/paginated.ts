@@ -1,5 +1,5 @@
 import type { RootState } from "@/state/_store"
-import type { Paginated, Project } from "@/state/types/curated_projects_types"
+import type { Paginated, Project } from "@/state/types/Project"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface PaginatedState {

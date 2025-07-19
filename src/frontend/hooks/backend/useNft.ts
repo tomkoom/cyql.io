@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/Auth"
 import { TransferRequest, User } from "@/idl/nft_idl_service"
 import { setNftIdsOwned, setVotingPower } from "@/state/user"
-import { getTokenIdentifier } from "@/utils/ext_token/getTokenIdentifier"
+import { getTokenIdentifier } from "@/utils/ext-token/getTokenIdentifier"
 import { useAppDispatch } from "../useRedux"
 
 interface UseNft {

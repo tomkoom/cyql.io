@@ -3,7 +3,7 @@ import { useProjectsQuery } from "@/hooks/queries/useProjectsQuery"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { AdminModal } from "@/modals"
 import { selectAdmin, setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 import { formatDiscord, formatStr16, formatWebsite, twitterUsername } from "@/utils/index"
 import { memo } from "react"
 

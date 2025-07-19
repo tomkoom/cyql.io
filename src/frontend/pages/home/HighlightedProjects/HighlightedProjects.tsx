@@ -1,5 +1,5 @@
 import { Loading } from "@/components/ui"
-import type { Project as ProjectType } from "@/state/types/curated_projects_types"
+import type { Project as ProjectType } from "@/state/types/Project"
 import { Project } from "."
 
 interface HighlightedProjectsProps {

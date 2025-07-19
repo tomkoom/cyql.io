@@ -1,6 +1,6 @@
 import type { RootState } from "@/state/_store"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import type { ListProjectData } from "./types/dao_types"
+import type { ListProjectData } from "./types/DAO"
 
 interface ListProjectInitialState {
   isLogoCompressLoading: boolean

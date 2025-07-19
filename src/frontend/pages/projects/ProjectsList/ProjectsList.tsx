@@ -1,6 +1,6 @@
 import { UpvoteBtn } from "@/components/btns"
 import { useNav, useProjectsQuery, useQueryParams } from "@/hooks"
-import type { Project } from "@/state/types/curated_projects_types"
+import type { Project } from "@/state/types/Project"
 import { useMemo } from "react"
 import { Main, Socials, SocialsIc, Tags } from "."
 import { filterBySearch } from "./utils/filterProjects"

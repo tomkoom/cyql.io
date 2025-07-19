@@ -1,7 +1,7 @@
 import { Btn } from "@/components/btns"
 import { CompressedFile } from "@/state/types/types"
 import { formatBytes } from "@/utils/formatBytes"
-import { dataUrlToBlob } from "@/utils/process_img/_index"
+import { dataUrlToBlob } from "@/utils/process-img/_index"
 import Compressor from "compressorjs"
 import React, { FC, useEffect, useRef, useState } from "react"
 import { ReactCropperElement } from "react-cropper"

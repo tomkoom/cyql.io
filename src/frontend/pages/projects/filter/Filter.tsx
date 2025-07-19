@@ -1,4 +1,4 @@
-import { Option } from "@/state/types/curated_projects_types"
+import { Option } from "@/state/types/Project"
 import { FC, useLayoutEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { FilterBtn, FilterOptions } from "."

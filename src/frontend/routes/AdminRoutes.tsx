@@ -1,9 +1,8 @@
-import React, { FC } from "react"
 import { ADMINS } from "@/constants/constants"
-import { Outlet, Navigate } from "react-router-dom"
 import { useAuth } from "@/context/Auth"
+import { Navigate, Outlet } from "react-router-dom"
 
-const AdminRoutes: FC = (): JSX.Element => {
+export default function AdminRoutes() {
   const { userId } = useAuth()
 
   const isAdmin = (): boolean => {
@@ -12,5 +11,3 @@ const AdminRoutes: FC = (): JSX.Element => {
 
   return isAdmin() ? <Outlet /> : <Navigate to="/" />
 }
-
-export default AdminRoutes

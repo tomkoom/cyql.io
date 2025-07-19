@@ -1,4 +1,4 @@
-import type { ListProjectData } from "@/state/types/dao_types"
+import type { ListProjectData } from "@/state/types/DAO"
 import React, { FC } from "react"
 import styled from "styled-components"
 import { DataItem } from "./_index"

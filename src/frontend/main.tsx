@@ -1,4 +1,4 @@
-import { FC, StrictMode } from "react"
+import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import App from "./App"
 import Providers from "./Providers"
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })
 
-const Index: FC = (): JSX.Element => {
+const Index = () => {
   return (
     <StrictMode>
       <Providers>

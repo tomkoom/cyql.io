@@ -11,7 +11,7 @@ import { setProfileUpvotedProjects } from "@/state/profile/profile"
 import { setProject } from "@/state/project"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setQueryParams } from "@/state/projects/queryParams"
-import type { Paginated, Project, ProjectId, QueryParams } from "@/state/types/curated_projects_types"
+import type { Paginated, Project, ProjectId, QueryParams } from "@/state/types/Project"
 import { bigintToNumber, filterToSearchParam, serializeProjectsToString, sortCategoriesByNum, sortToSearchParam, verifyAdmin } from "@/utils/index"
 import { useLocation } from "react-router-dom"
 

@@ -1,5 +1,5 @@
 import type { RootState } from "@/state/_store"
-import type { QueryParams } from "@/state/types/curated_projects_types"
+import type { QueryParams } from "@/state/types/Project"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const schema: QueryParams = {

@@ -1,5 +1,5 @@
 import { CompressedFile } from "@/state/types/types"
-import { blobToDataUrl } from "@/utils/process_img/_index"
+import { blobToDataUrl } from "@/utils/process-img/_index"
 import React, { FC, useEffect, useRef, useState } from "react"
 import { Dimensions, getImageSize } from "react-image-size"
 import styled from "styled-components"
