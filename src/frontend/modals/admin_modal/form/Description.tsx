@@ -1,11 +1,9 @@
-import React, { FC, ChangeEvent } from "react"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
+import { ChangeEvent } from "react"
 import styled from "styled-components"
 
-// state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
-import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
-
-const Description: FC = (): JSX.Element => {
+export default function Description() {
   const dispatch = useAppDispatch()
   const description = useAppSelector(selectAdmin).project.description
 
@@ -45,5 +43,3 @@ const DescriptionStyled = styled.div`
     outline: none;
   }
 `
-
-export default Description

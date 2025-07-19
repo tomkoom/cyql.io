@@ -1,13 +1,11 @@
-import React, { FC, ChangeEvent } from "react"
-import styled from "styled-components"
-import { Categories, Description, Input, Meta, Logo } from "./_index"
-import { main, web2Links, web3Links, token, additional, nft } from "./_inputs"
-
-// state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminProjectItemString } from "@/state/admin/admin"
+import { ChangeEvent } from "react"
+import styled from "styled-components"
+import { Categories, Description, Input, Logo, Meta } from "."
+import { additional, main, nft, token, web2Links, web3Links } from "./inputs"
 
-const Form: FC = (): JSX.Element => {
+export default function Form() {
   const dispatch = useAppDispatch()
   const project = useAppSelector(selectAdmin).project
 
@@ -102,5 +100,3 @@ const Section = styled.div`
     font-weight: var(--fwMedium);
   }
 `
-
-export default Form

@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from "react"
+import { ChangeEvent, FC } from "react"
 import styled from "styled-components"
 
 interface InputProps {

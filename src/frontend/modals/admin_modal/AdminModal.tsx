@@ -1,17 +1,14 @@
 import { CrossIcon } from "@/components/icons"
-import { useScrollLock } from "@/hooks"
-import React, { FC, useEffect } from "react"
-import { createPortal } from "react-dom"
-import styled from "styled-components"
-
-// components
 import { Loading } from "@/components/ui"
-import { Controls, Form, Header } from "./_index"
-
-// state
+import { useScrollLock } from "@/hooks"
+import { useProjects } from "@/hooks/backend/useProjects"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminCloseModal } from "@/state/admin/admin"
 import { selectTheme } from "@/state/theme"
+import { FC, useEffect } from "react"
+import { createPortal } from "react-dom"
+import styled from "styled-components"
+import { Controls, Form, Header } from "./_index"
 
 interface ProjectModalProps {
   isOpen: boolean
@@ -20,6 +17,7 @@ interface ProjectModalProps {
 const AdminModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { lockScroll, unlockScroll } = useScrollLock()
+  const { refreshCategories } = useProjects()
   const theme = useAppSelector(selectTheme)
   const isLoading = useAppSelector(selectAdmin).isLoading
   const mode = useAppSelector(selectAdmin).mode
@@ -31,6 +29,8 @@ const AdminModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
   useEffect(() => {
     if (isOpen) {
       lockScroll()
+      // Load categories when modal opens
+      refreshCategories().catch(console.error)
     } else {
       unlockScroll()
     }

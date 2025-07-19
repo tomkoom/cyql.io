@@ -1,7 +1,7 @@
 import { useAuth } from "@/context/Auth"
 
 export const useLogoUploader = () => {
-  const { actor } = useAuth() // Use the existing actor from auth context
+  const { actor } = useAuth()
 
   const uploadLogo = async (file: File, logoId: string): Promise<string> => {
     if (!actor) throw new Error("No actor available")

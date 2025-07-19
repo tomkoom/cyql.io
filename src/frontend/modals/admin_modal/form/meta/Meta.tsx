@@ -2,11 +2,11 @@ import React, { FC } from "react"
 import styled from "styled-components"
 
 // components
+import { Btn } from ".."
 import { Input } from "./_index"
-import { Btn } from "../_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminProjectItemBoolean } from "@/state/admin/admin"
 
 const archivedKey = "archived"
