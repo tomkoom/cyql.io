@@ -1,0 +1,1 @@
+dfx canister --network ic call uodzj-4aaaa-aaaag-auexa-cai list_authorized

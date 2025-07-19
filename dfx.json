@@ -12,6 +12,15 @@
       "main": "src/backend/main.mo",
       "type": "motoko"
     },
+    "assets": {
+      "type": "assets",
+      "source": ["src/assets"],
+      "metadata": [
+        {
+          "name": "candid:service"
+        }
+      ]
+    },
     "proposals": {
       "main": "src/backend/project_proposals/project_proposals.mo",
       "type": "motoko"

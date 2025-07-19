@@ -67,6 +67,7 @@ export default function Home() {
 
       {/* Highlighted Categories */}
       <HighlightedSection highlighted={highlighted} isLoading={isHighlightedLoading} onViewAll={handleViewAll} />
+      <SectionDivider />
 
       {/* Most Upvoted Section */}
       <HomeSection

@@ -17,8 +17,10 @@ import Constants "./_constants";
 import Category "./_categories";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
+import Assets "./assets/assets";
 
 shared actor class _CURATED_PROJECTS() = Self {
+  let assets_canister_id = "uodzj-4aaaa-aaaag-auexa-cai";
 
   private stable var secret : T.ApiKey = "";
   // private stable var apiKeys : [T.ApiKey] = [];
@@ -351,6 +353,22 @@ shared actor class _CURATED_PROJECTS() = Self {
   public shared query ({ caller }) func getAllProjectsNumAdmin() : async Nat {
     assert Utils.isAdmin(caller);
     return projects.size()
+  };
+
+  // logo uploader
+
+  // Get the assets canister instance
+  let assets = Assets.getAssetsCanister(assets_canister_id);
+
+  /// Public method to upload logo to the assets canister
+  public shared ({ caller }) func upload_logo(name : Text, content : [Nat8], content_type : Text) : async Text {
+    // Only allow authenticated admin users to upload
+    assert (not Principal.isAnonymous(caller));
+    assert (caller == adminPrincipal or caller == nodeAdminPrincipal or caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
+
+    let key = Assets.generateLogoKey(name);
+    await Assets.uploadFile(assets, key, content, content_type);
+    return key
   };
 
   // utils
