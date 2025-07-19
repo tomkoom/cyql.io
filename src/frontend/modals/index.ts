@@ -1,6 +1,5 @@
 export { default as AdminModal } from "./AdminModal/AdminModal"
 export { default as LoadingModal } from "./LoadingModal"
-export { default as PromoModal } from "./PromoModal"
 export { default as RootModal } from "./RootModal"
 export { default as ShareModal } from "./share_modal/ShareModal"
 export { default as SignInModal } from "./SignInModal/SignInModal"

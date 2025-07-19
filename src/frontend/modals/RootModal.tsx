@@ -1,17 +1,15 @@
-import React, { FC, useEffect, ReactNode } from "react"
-import { createPortal } from "react-dom"
-import { useScrollLock } from "@/hooks/useScrollLock"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
+import { useScrollLock } from "@/hooks/useScrollLock"
 import { selectTheme } from "@/state/theme"
+import { ReactNode, useEffect } from "react"
+import { createPortal } from "react-dom"
 
 interface RootModalProps {
   isOpen: boolean
   children: ReactNode
 }
 
-const RootModal: FC<RootModalProps> = ({ isOpen, children }): JSX.Element => {
+export default function RootModal({ isOpen, children }: RootModalProps) {
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
   const style = { zIndex: "1" }
@@ -33,5 +31,3 @@ const RootModal: FC<RootModalProps> = ({ isOpen, children }): JSX.Element => {
     document.getElementById("modal")
   )
 }
-
-export default RootModal

@@ -16,7 +16,7 @@ interface WithdrawNftModalProps {
   onClose: () => void
 }
 
-const WithdrawNftModal: FC<WithdrawNftModalProps> = ({ isOpen, onClose }): JSX.Element => {
+const WithdrawNftModal: FC<WithdrawNftModalProps> = ({ isOpen, onClose }) => {
   const dispatch = useAppDispatch()
   const nftIdx = useAppSelector(selectWithdrawNftModalNftIdx)
   const { accounntIdHex } = useAuth()
