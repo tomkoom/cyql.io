@@ -7,7 +7,6 @@ import { selectAdmin, setAdminCloseModal } from "@/state/admin/admin"
 import { selectTheme } from "@/state/theme"
 import { useEffect } from "react"
 import { createPortal } from "react-dom"
-import styled from "styled-components"
 import { Controls, Form, Header } from "."
 
 interface ProjectModalProps {
@@ -38,63 +37,26 @@ export default function AdminModal({ isOpen }: ProjectModalProps) {
 
   if (!isOpen) return null
 
-  if (isLoading) {
-    return (
-      <ProjectModalStyled className={theme}>
+  const modalContent = (
+    <div className={`fixed top-0 left-0 z-10 h-full w-screen overflow-auto bg-[var(--background)] px-4 py-8 text-[var(--primaryColor)] ${theme}`}>
+      {isLoading ? (
         <Loading />
-      </ProjectModalStyled>
-    )
-  }
+      ) : (
+        <div className="flex w-full flex-col items-center justify-center">
+          <div className="flex flex-col items-center gap-2">
+            <CrossIcon onClick={closeModal} />
+            <p>Mode: {mode}</p>
+            <Header />
+          </div>
 
-  return createPortal(
-    <ProjectModalStyled className={theme}>
-      <div className="content">
-        <div className="header">
-          <CrossIcon onClick={closeModal} />
-          <p>Mode: {mode}</p>
-          <Header />
+          <div className="my-8 mb-16">
+            <Form />
+            <Controls />
+          </div>
         </div>
-
-        <div className="form">
-          <Form />
-          <Controls />
-        </div>
-      </div>
-    </ProjectModalStyled>,
-    document.getElementById("modal")
+      )}
+    </div>
   )
+
+  return createPortal(modalContent, document.getElementById("modal"))
 }
-
-const ProjectModalStyled = styled.div`
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  color: var(--primaryColor);
-  background-color: var(--background);
-  padding: 1rem 2rem;
-
-  /* overflow */
-  height: 100%;
-  overflow: auto;
-
-  > div.content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    > div.header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    > div.form {
-      margin: 2rem 0 4rem 0;
-    }
-  }
-`

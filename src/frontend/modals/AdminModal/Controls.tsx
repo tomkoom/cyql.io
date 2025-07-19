@@ -1,26 +1,20 @@
 import { Btn } from "@/components/btns"
 import { useProjects } from "@/hooks"
-import { Project } from "@/state/types/curated_projects_types"
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminClearProject, setAdminCloseModal, setAdminIsLoading } from "@/state/admin/admin"
+import { Project } from "@/state/types/curated_projects_types"
 
-const Controls: FC = (): JSX.Element => {
+export default function Controls() {
   const dispatch = useAppDispatch()
   const { addCuratedProject, editCuratedProject, refreshAll, refreshById } = useProjects()
   const { project, mode } = useAppSelector(selectAdmin)
 
   const refresh = async (project: Project): Promise<void> => {
     try {
-      console.log("added / updated")
-      console.log(project)
       await refreshById(project.id)
       // await refreshAll()
     } catch (error) {
-      throw new Error(error)
+      console.error(error)
     }
   }
 
@@ -58,22 +52,13 @@ const Controls: FC = (): JSX.Element => {
   }
 
   return (
-    <ControlsStyled>
-      <Btn btnType="secondary" text="Cancel" onClick={closeModal} />
-      {mode === "add" ? <Btn btnType="primary" text="Add" onClick={add} /> : mode === "edit" ? <Btn btnType="primary" text="Save" onClick={edit} /> : ""}
-    </ControlsStyled>
+    <div className="mt-8 flex items-start gap-2">
+      <Btn className="flex-1" btnType="secondary" text="Cancel" onClick={closeModal} />
+      {mode === "add" ? (
+        <Btn className="flex-1" btnType="primary" text="Add" onClick={add} />
+      ) : mode === "edit" ? (
+        <Btn className="flex-1" btnType="primary" text="Save" onClick={edit} />
+      ) : null}
+    </div>
   )
 }
-
-const ControlsStyled = styled.div`
-  display: flex;
-  align-items: start;
-  gap: 0.5rem;
-  margin-top: 2rem;
-
-  > button {
-    flex: 1;
-  }
-`
-
-export default Controls
