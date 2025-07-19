@@ -10,7 +10,7 @@ export default function SignInMethods() {
       id: "internet_identity",
       label: "Internet Identity",
       logo: IC_LOGO,
-      click: signIn,
+      onClick: signIn,
       aboutUrl: "https://identity.ic0.app/",
     },
   ]
@@ -19,7 +19,7 @@ export default function SignInMethods() {
     <div className="space-y-4">
       {signInMethods.map((signInMethod) => (
         <div key={signInMethod.id} className="space-y-2">
-          <Btn label={signInMethod.label} logo={signInMethod.logo} onClick={signInMethod.click} />
+          <Btn label={signInMethod.label} logo={signInMethod.logo} onClick={signInMethod.onClick} />
         </div>
       ))}
     </div>

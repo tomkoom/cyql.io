@@ -1,9 +1,8 @@
 import { device } from "@/styles/breakpoints"
-import { FC } from "react"
 import styled from "styled-components"
 import { FooterBottom, FooterTop } from "."
 
-const Footer: FC = (): JSX.Element => {
+export default function Footer() {
   return (
     <FooterStyled>
       <Content>
@@ -32,5 +31,3 @@ const Content = styled.div`
   flex-direction: column;
   gap: 1.5rem;
 `
-
-export default Footer

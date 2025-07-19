@@ -43,7 +43,7 @@ export default function Projects() {
         <div className="relative flex-1">
           <Search className="text-coolgray-400 absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
           <Input
-            className="h-10 pr-10 pl-10 lg:h-12"
+            className="h-10 pr-10 pl-10 lg:h-11"
             placeholder="Search projects by name..."
             value={searchInput}
             onChange={updateSearchInput}
@@ -58,7 +58,7 @@ export default function Projects() {
             </button>
           )}
         </div>
-        <Button variant="accent" className="h-10 lg:h-12" onClick={submitSearch} disabled={isLoading}>
+        <Button variant="accent" className="h-10 lg:h-11" onClick={submitSearch} disabled={isLoading}>
           {isLoading ? "Searching..." : "Search Projects"}
         </Button>
       </div>

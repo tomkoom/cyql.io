@@ -7,7 +7,7 @@ import { selectIsLoading } from "@/state/loading"
 import { selectSignInModalIsOpen } from "@/state/modals/signInModal"
 import { selectTheme } from "@/state/theme"
 import { device } from "@/styles/breakpoints"
-import { FC, useEffect } from "react"
+import { useEffect } from "react"
 import { Toaster } from "react-hot-toast"
 import { Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
@@ -23,7 +23,7 @@ const toasterStyle = {
   borderRadius: "unset",
 }
 
-const Layout: FC = (): JSX.Element => {
+export default function Layout() {
   const pathname = useLocation().pathname
   const { isAuthenticated, actor, users } = useAuth()
   const { toHome } = useNav()
@@ -116,5 +116,3 @@ const LayoutStyled = styled.div`
     }
   }
 `
-
-export default Layout

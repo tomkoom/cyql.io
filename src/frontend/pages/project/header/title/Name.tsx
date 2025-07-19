@@ -1,12 +1,11 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import { device } from "@/styles/breakpoints"
+import styled from "styled-components"
 
 interface NameProps {
   name: string
 }
 
-const Name: FC<NameProps> = ({ name }) => {
+export default function Name({ name }: NameProps) {
   return <NameStyled>{name}</NameStyled>
 }
 
@@ -18,5 +17,3 @@ const NameStyled = styled.h3`
     font-size: var(--fs4);
   }
 `
-
-export default Name

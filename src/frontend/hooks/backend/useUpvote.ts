@@ -16,8 +16,6 @@ export const useUpvote = () => {
   const dispatch = useAppDispatch()
   const { actor } = useAuth()
   const { updateCuratedProjectUpvote } = useProjects()
-
-  // ...
   const paginatedProjects = useAppSelector(selectPaginated).data
   const newProjects = useAppSelector(selectHome).new
   const mostUpvoted = useAppSelector(selectHome).mostUpvoted

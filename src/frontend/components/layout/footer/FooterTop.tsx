@@ -1,11 +1,10 @@
 import { iComments, iHeart, iPlus } from "@/components/icons/Icons"
 import { CYQL_MSG_URL, DONATION_WALLET_URL } from "@/constants/constants"
 import { device } from "@/styles/breakpoints"
-import { FC } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const FooterTop: FC = (): JSX.Element => {
+export default function FooterTop() {
   return (
     <FooterUpperStyled>
       {/* submit */}
@@ -75,5 +74,3 @@ const FooterUpperStyled = styled.ul`
     }
   }
 `
-
-export default FooterTop

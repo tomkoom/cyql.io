@@ -1,9 +1,9 @@
 import Layout from "@/components/layout/Layout"
-import { Admin, Home, ListProject, NotFound, Profile, Project, Projects, Proposal, Proposals, Test } from "@/pages"
+import { Admin, Home, NotFound, Profile, Project, Projects, Test } from "@/pages"
 import { AdminRoutes, ProtectedRoutes } from "@/routes"
 import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
 
-const router = createHashRouter(
+export default createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<NotFound text="Something went wrong" />}>
       <Route index element={<Home />} />
@@ -12,12 +12,12 @@ const router = createHashRouter(
       <Route path="projects/:id" element={<Project />} />
 
       {/* proposals */}
-      <Route path="proposals" element={<Proposals />} />
-      <Route path="proposals/:id" element={<Proposal />} />
+      {/* <Route path="proposals" element={<Proposals />} /> */}
+      {/* <Route path="proposals/:id" element={<Proposal />} /> */}
 
       {/* add */}
-      <Route path="list" element={<ListProject />} />
-      <Route path="add" element={<ListProject />} />
+      {/* <Route path="list" element={<ListProject />} /> */}
+      {/* <Route path="add" element={<ListProject />} /> */}
 
       {/* icrc scan */}
       {/* <Route path="icrc_scan" element={<IcrcScan />} /> */}
@@ -37,5 +37,3 @@ const router = createHashRouter(
     </Route>
   )
 )
-
-export default router
