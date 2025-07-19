@@ -5,16 +5,16 @@ import { useProjects } from "@/hooks/backend/useProjects"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminCloseModal } from "@/state/admin/admin"
 import { selectTheme } from "@/state/theme"
-import { FC, useEffect } from "react"
+import { useEffect } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
-import { Controls, Form, Header } from "./_index"
+import { Controls, Form, Header } from "."
 
 interface ProjectModalProps {
   isOpen: boolean
 }
 
-const AdminModal: FC<ProjectModalProps> = ({ isOpen }): JSX.Element => {
+export default function AdminModal({ isOpen }: ProjectModalProps) {
   const dispatch = useAppDispatch()
   const { lockScroll, unlockScroll } = useScrollLock()
   const { refreshCategories } = useProjects()
@@ -98,5 +98,3 @@ const ProjectModalStyled = styled.div`
     }
   }
 `
-
-export default AdminModal

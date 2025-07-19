@@ -1,41 +1,30 @@
-import { Btn } from "@/components/btns"
+import { Button } from "@/components/ui/button"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setAdminIsModalOpen, setAdminMode } from "@/state/admin/admin"
-import { device } from "@/styles/breakpoints"
-import { FC } from "react"
-import styled from "styled-components"
 import { Projects, Search } from "."
 
-const Admin: FC = () => {
+export default function Admin() {
   const dispatch = useAppDispatch()
 
-  const openAdminModal = (): void => {
+  const openAdminModal = () => {
     dispatch(setAdminMode("add"))
     dispatch(setAdminIsModalOpen(true))
   }
 
   return (
-    <AdminStyled>
-      <Title>
-        <h2 className="pageTitle">Admin</h2>
-        <Btn btnType="primary" text="Add Project" onClick={openAdminModal} />
-      </Title>
-      <Search />
-      <Projects />
-    </AdminStyled>
+    <div className="laptop:px-4">
+      <header className="flex flex-col">
+        <div className="flex items-center justify-between">
+          <h2 className="pageTitle">Admin</h2>
+          <Button variant="accent" className="h-11 font-bold" onClick={openAdminModal}>
+            Add Project
+          </Button>
+        </div>
+        <Search />
+      </header>
+      <main>
+        <Projects />
+      </main>
+    </div>
   )
 }
-
-const AdminStyled = styled.div`
-  @media ${device.laptop} {
-    padding: 0 1rem;
-  }
-`
-
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`
-
-export default Admin

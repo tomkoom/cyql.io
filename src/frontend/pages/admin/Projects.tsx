@@ -1,117 +1,101 @@
 import { Loading } from "@/components/ui"
+import { useProjectsQuery } from "@/hooks/queries/useProjectsQuery"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { AdminModal } from "@/modals"
 import { selectAdmin, setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
-import { selectPaginated } from "@/state/projects/paginated"
 import type { Project } from "@/state/types/curated_projects_types"
 import { formatDiscord, formatStr16, formatWebsite, twitterUsername } from "@/utils/index"
-import { FC, useEffect, useState } from "react"
-import styled, { css } from "styled-components"
+import { memo } from "react"
 
-const Projects: FC = (): JSX.Element => {
+interface Column {
+  key: string
+  label: string
+  width?: string
+}
+
+const COLUMNS: Column[] = [
+  { key: "number", label: "#", width: "w-8" },
+  { key: "id", label: "id" },
+  { key: "name", label: "name" },
+  { key: "archived", label: "archived" },
+  { key: "category", label: "category" },
+  { key: "logoUrl", label: "logoUrl" },
+  { key: "twitter", label: "twitter" },
+  { key: "discord", label: "discord" },
+]
+
+// Memoized table row component
+const ProjectRow = memo(({ project, index, onEdit }: { project: Project; index: number; onEdit: (project: Project) => void }) => {
+  const formatValue = (key: string, value: any) => {
+    switch (key) {
+      case "name":
+        return formatStr16(value)
+      case "logoUrl":
+        return formatWebsite(value)
+      case "twitter":
+        return twitterUsername(value)
+      case "discord":
+        return formatDiscord(value)
+      case "category":
+        return Array.isArray(value) ? value.join(", ").toLowerCase() : value
+      case "archived":
+        return value.toString()
+      default:
+        return value
+    }
+  }
+
+  return (
+    <div
+      onClick={() => onEdit(project)}
+      className="flex cursor-pointer items-center gap-4 py-3 transition-colors even:bg-[var(--underlay1)] hover:bg-[var(--underlay2)]"
+    >
+      <span className="w-8">{index + 1}</span>
+      {COLUMNS.slice(1).map((col) => (
+        <span key={col.key} className="flex-1 text-[0.9rem]">
+          {formatValue(col.key, project[col.key as keyof Project])}
+        </span>
+      ))}
+    </div>
+  )
+})
+
+const TableHeader = () => (
+  <div className="flex items-center gap-4 py-3 font-bold">
+    {COLUMNS.map((col) => (
+      <span key={col.key} className={`${col.width || "flex-1"} text-[0.9rem]`}>
+        {col.label}
+      </span>
+    ))}
+  </div>
+)
+
+export default function Projects() {
   const dispatch = useAppDispatch()
-  const [p, setP] = useState<Project[]>([])
   const { isModalOpen, searchQProjects } = useAppSelector(selectAdmin)
-  const projects = useAppSelector(selectPaginated).data
+  const { data: projectsData, isLoading } = useProjectsQuery()
 
-  const editProject = (project: Project): void => {
+  const handleEditProject = (project: Project): void => {
     dispatch(setAdminProject(project))
     dispatch(setAdminMode("edit"))
     dispatch(setAdminIsModalOpen(true))
   }
 
-  useEffect(() => {
-    if (searchQProjects.length > 0) {
-      setP(searchQProjects)
-    } else {
-      setP(projects)
-    }
-  }, [searchQProjects])
+  const projects = searchQProjects.length > 0 ? searchQProjects : projectsData?.data || []
 
-  if (p.length < 1) {
+  if (isLoading || !projects) {
     return <Loading />
   }
 
   return (
-    <div>
+    <>
       <AdminModal isOpen={isModalOpen} />
-
-      <Table>
-        <RowHeader>
-          <span className="num">#</span>
-          <span>id</span>
-          <span>name</span>
-          <span>archived</span>
-          <span>category</span>
-          <span>logoUrl</span>
-          <span>twitter</span>
-          <span>discord</span>
-        </RowHeader>
-
-        {p.map((project: Project, i: number) => (
-          <Row key={project.id} onClick={() => editProject(project)}>
-            <span className="num">{p.length - i}</span>
-            <span>{project.id}</span>
-            <span>{project.name && formatStr16(project.name)}</span>
-            <span>{project.archived.toString()}</span>
-            <span>{project.category.join(", ").toLowerCase()}</span>
-            <span>{project.logoUrl && formatWebsite(project.logoUrl)}</span>
-            <span>{project.twitter && twitterUsername(project.twitter)}</span>
-            <span>{project.discord && formatDiscord(project.discord)}</span>
-          </Row>
+      <div className="mt-4 w-full text-base">
+        <TableHeader />
+        {projects.map((project, i) => (
+          <ProjectRow key={project.id} project={project} index={i} onEdit={handleEditProject} />
         ))}
-      </Table>
-    </div>
+      </div>
+    </>
   )
 }
-
-const Table = styled.div`
-  margin-top: 1rem;
-  width: 100%;
-  font-size: var(--fs6);
-`
-
-const row = css`
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 0;
-  gap: 1rem;
-`
-
-const RowHeader = styled.div`
-  ${row}
-  font-weight: var(--fwBold);
-
-  > span.num {
-    width: 2rem;
-  }
-
-  > span:not(.num) {
-    flex: 1;
-    font-size: var(--fsText);
-  }
-`
-
-const Row = styled.div`
-  ${row}
-  cursor: pointer;
-
-  &:nth-child(even) {
-    background-color: var(--underlay1);
-  }
-
-  &:hover {
-    background-color: var(--underlay2);
-  }
-
-  > span.num {
-    width: 2rem;
-  }
-
-  > span:not(.num) {
-    flex: 1;
-    font-size: var(--fsText);
-  }
-`
-
-export default Projects

@@ -1,11 +1,8 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin } from "@/state/admin/admin"
+import styled from "styled-components"
 
-const Header: FC = (): JSX.Element => {
+export default function Header() {
   const project = useAppSelector(selectAdmin).project
 
   return (
@@ -40,7 +37,3 @@ const HeaderStyled = styled.div`
     }
   }
 `
-
-const Title = styled.div``
-
-export default Header

@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminProjectItemArray } from "@/state/admin/admin"
 import { selectCategories } from "@/state/categories/categories"
 
-const categoryKey = "category"
+const CATEGORY_KEY = "category"
 
 export default function Categories() {
   const dispatch = useAppDispatch()
@@ -17,7 +17,7 @@ export default function Categories() {
     } else {
       copy.push(label)
     }
-    dispatch(setAdminProjectItemArray({ [categoryKey]: copy }))
+    dispatch(setAdminProjectItemArray({ [CATEGORY_KEY]: copy }))
   }
 
   return (
@@ -31,8 +31,8 @@ export default function Categories() {
           .map((c) => (
             <li
               key={c.category.id}
-              className={`bg-coolgray-950 text-coolgray-300 hover:bg-coolgray-800 cursor-pointer rounded-md px-3 py-2 text-sm transition-all ${
-                copy.includes(c.category.lbl) ? "bg-coolgray-800 text-white" : ""
+              className={`hover:bg-coolgray-800 cursor-pointer rounded-md px-3 py-2 text-sm transition-all ${
+                copy.includes(c.category.lbl) ? "bg-coolgray-800 text-white" : "bg-coolgray-950 text-coolgray-500"
               }`}
               onClick={() => setCategory(c.category.lbl)}
             >
