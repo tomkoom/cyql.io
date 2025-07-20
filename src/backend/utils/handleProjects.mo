@@ -30,9 +30,13 @@ module {
 
     // calculate total pages
     let totalItems = projects.size();
+
+    // Avoid division by zero
+    if (itemsPerPage == 0) return null;
+
     let totalPages = Int.abs(Float.toInt(Float.ceil(Float.fromInt(totalItems) / Float.fromInt(itemsPerPage))));
 
-    // ...
+    // Ensure page is within bounds
     if (page > totalPages) {
       if (totalPages == 0) {
         page := 1
@@ -41,13 +45,9 @@ module {
       }
     };
 
-    // calculate the start and end indexes for the requested page
-    let startIndex = (page - 1) * itemsPerPage;
-    var endIndex = page * itemsPerPage;
-
-    if (endIndex > totalItems) {
-      endIndex := totalItems
-    };
+    // Safe calculation of start and end indexes
+    let startIndex = if (page > 1) (page - 1) * itemsPerPage else 0;
+    let endIndex = Nat.min(page * itemsPerPage, totalItems);
 
     // slice array based on the indexes
     let slice = Array.slice<T.Project>(projects, startIndex, endIndex);

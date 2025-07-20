@@ -20,7 +20,7 @@ import Handle "./utils/handleProjects";
 import Assets "./assets/assets";
 
 shared actor class _CURATED_PROJECTS() = Self {
-  let assetsCanisterId = "uodzj-4aaaa-aaaag-auexa-cai";
+  let assets_canister_id = "uodzj-4aaaa-aaaag-auexa-cai";
 
   private stable var secret : T.ApiKey = "";
   // private stable var apiKeys : [T.ApiKey] = [];
@@ -29,8 +29,13 @@ shared actor class _CURATED_PROJECTS() = Self {
   let frontendAdmin1Principal = Principal.fromText(Constants.clientAdmin1);
   let frontendAdmin2Principal = Principal.fromText(Constants.clientAdmin2);
 
-  // ...
+  // Reference to categories
   let categories = Category.categories;
+
+  // Custom hash function for Nat values
+  private func natHash(n : Nat) : Hash.Hash {
+    Text.hash(Nat.toText(n)) // Use text-based hashing for large numbers
+  };
 
   // maps
 
@@ -52,7 +57,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // projects
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
-  let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, Hash.hash);
+  let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, natHash);
 
   // Category management functions
   public shared ({ caller }) func addCategory(category : Category.Category) : async Bool {
@@ -419,7 +424,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   // logo uploader
 
   // Get the assets canister instance
-  let assets = Assets.getAssetsCanister(assetsCanisterId);
+  let assets = Assets.getAssetsCanister(assets_canister_id);
 
   /// Public method to upload logo to the assets canister
   public shared ({ caller }) func upload_logo(name : Text, content : [Nat8], content_type : Text) : async Text {
