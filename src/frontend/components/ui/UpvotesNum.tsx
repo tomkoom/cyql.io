@@ -1,6 +1,6 @@
-import React, { FC } from "react"
-import styled from "styled-components"
 import { iArrowUp } from "@/components/icons/Icons"
+import { FC } from "react"
+import styled from "styled-components"
 
 interface UpvotesNumProps {
   upvotesNum: number
