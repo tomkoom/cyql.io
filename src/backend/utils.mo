@@ -6,8 +6,8 @@ import Blob "mo:base/Blob";
 import Int "mo:base/Int";
 
 // ...
-import C "_constants";
-import PPT "./project_proposals/project_proposals_types";
+import C "constants";
+import PPT "./proposals/project_proposals_types";
 import Hex "./utils/hex";
 
 module {
@@ -46,7 +46,7 @@ module {
   };
 
   public func isAdmin(caller : Principal) : Bool {
-    return caller == Principal.fromText(C.adminId)
+    return caller == Principal.fromText(C.admin1)
   };
 
   // accounts

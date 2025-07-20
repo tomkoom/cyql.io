@@ -12,31 +12,92 @@ import Bool "mo:base/Bool";
 import Order "mo:base/Order";
 
 // ...
-import T "./main_types";
-import Constants "./_constants";
-import Category "./_categories";
+import T "./types";
+import Constants "./constants";
+import Category "./categories";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
 import Assets "./assets/assets";
 
 shared actor class _CURATED_PROJECTS() = Self {
-  let assets_canister_id = "uodzj-4aaaa-aaaag-auexa-cai";
+  let assetsCanisterId = "uodzj-4aaaa-aaaag-auexa-cai";
 
   private stable var secret : T.ApiKey = "";
   // private stable var apiKeys : [T.ApiKey] = [];
-  let adminPrincipal = Principal.fromText(Constants.adminId);
-  let nodeAdminPrincipal = Principal.fromText(Constants.nodeAdminId);
-  let frontendAdmin1Principal = Principal.fromText(Constants.frontendAdminId1);
-  let frontendAdmin2Principal = Principal.fromText(Constants.frontendAdminId2);
+  let adminPrincipal = Principal.fromText(Constants.admin1);
+  let nodeAdminPrincipal = Principal.fromText(Constants.nodeAdmin1);
+  let frontendAdmin1Principal = Principal.fromText(Constants.clientAdmin1);
+  let frontendAdmin2Principal = Principal.fromText(Constants.clientAdmin2);
 
   // ...
   let categories = Category.categories;
 
   // maps
 
-  // curated projects
+  // categories map for efficient lookups
+  stable var categoriesEntries : [(Text, Category.Category)] = [];
+  let categoriesMap = HashMap.fromIter<Text, Category.Category>(
+    categoriesEntries.vals(),
+    50, // Initial capacity - adjust based on expected number of categories
+    Text.equal,
+    Text.hash,
+  );
+
+  // Initialize categories map if empty
+  if (categoriesMap.size() == 0) {
+    for (category in Category.categories.vals()) {
+      categoriesMap.put(category.id, category)
+    }
+  };
+
+  // projects
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, Hash.hash);
+
+  // Category management functions
+  public shared ({ caller }) func addCategory(category : Category.Category) : async Bool {
+    assert (caller == adminPrincipal or caller == frontendAdmin1Principal);
+
+    switch (categoriesMap.get(category.id)) {
+      case (?existing) {
+        // Category already exists
+        return false
+      };
+      case null {
+        categoriesMap.put(category.id, category);
+        return true
+      }
+    }
+  };
+
+  public shared ({ caller }) func updateCategory(id : Text, category : Category.Category) : async Bool {
+    assert (caller == adminPrincipal or caller == frontendAdmin1Principal);
+
+    switch (categoriesMap.get(id)) {
+      case (?existing) {
+        categoriesMap.put(id, category);
+        return true
+      };
+      case null { return false }
+    }
+  };
+
+  public shared ({ caller }) func removeCategory(id : Text) : async Bool {
+    assert (caller == adminPrincipal);
+
+    switch (categoriesMap.remove(id)) {
+      case (?existing) { return true };
+      case null { return false }
+    }
+  };
+
+  public query func getCategory(id : Text) : async ?Category.Category {
+    categoriesMap.get(id)
+  };
+
+  public query func getAllCategories() : async [Category.Category] {
+    Iter.toArray(categoriesMap.vals())
+  };
 
   // update
 
@@ -358,7 +419,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   // logo uploader
 
   // Get the assets canister instance
-  let assets = Assets.getAssetsCanister(assets_canister_id);
+  let assets = Assets.getAssetsCanister(assetsCanisterId);
 
   /// Public method to upload logo to the assets canister
   public shared ({ caller }) func upload_logo(name : Text, content : [Nat8], content_type : Text) : async Text {

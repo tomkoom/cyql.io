@@ -7,7 +7,7 @@ import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 
 // ...
-import T "../main_types";
+import T "../types";
 
 module {
 

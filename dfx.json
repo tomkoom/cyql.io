@@ -22,7 +22,7 @@
       ]
     },
     "proposals": {
-      "main": "src/backend/project_proposals/project_proposals.mo",
+      "main": "src/backend/proposals/project_proposals.mo",
       "type": "motoko"
     },
     "users": {

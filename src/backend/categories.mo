@@ -7,6 +7,12 @@ module {
     size : Nat
   };
 
+  public type ProjectCategory = {
+    id : Text;
+    title : Text;
+    size : Nat
+  };
+
   public let categories : [Category] = [
     { id = "all"; lbl = "All" },
 

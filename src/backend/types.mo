@@ -1,4 +1,4 @@
-import Category "./_categories";
+import Category "./categories";
 
 module {
 
@@ -7,8 +7,7 @@ module {
   // filter, sort, pagination
 
   public type GetProjectsBase = {
-    // search query
-    q : Text;
+    q : Text; // search query
 
     // filter
     category : Text;

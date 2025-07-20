@@ -17,7 +17,7 @@ import Nft "../nft_interface";
 // import UT "../users/users_types";
 import T "./project_proposals_types";
 import U "../utils";
-import C "../_constants";
+import C "../constants";
 
 shared actor class DAO(init : T.DaoStableStorage) = Self {
 

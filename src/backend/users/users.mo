@@ -5,15 +5,15 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 
 // ...
-import T "../main_types";
+import T "../types";
 import UT "./users_types";
 import U "../utils";
-import Constants "../_constants";
+import Constants "../constants";
 
 actor {
 
   private stable var secret : T.ApiKey = "";
-  let adminPrincipal = Principal.fromText(Constants.adminId);
+  let adminPrincipal = Principal.fromText(Constants.admin1);
 
   // maps
 
