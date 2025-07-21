@@ -2,6 +2,7 @@ import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import type { Project } from "@/state/types/Project"
 import { useQuery } from "@tanstack/react-query"
+import { logQueryAnalytics, logSummaryAnalytics } from "./analytics"
 
 export interface CategoryProjects {
   categoryId: string
@@ -37,8 +38,14 @@ const useNewProjects = () => {
     queryFn: async () => {
       if (!actor) throw new Error("Actor not available")
 
+      const startTime = performance.now()
       const result = await actor.getNewProjects(API_KEY, BigInt(HOMEPAGE_CONFIG.newProjectsCount))
-      return serializeProjects(result)
+      const serializedResult = serializeProjects(result)
+
+      // Log analytics after serialization to avoid interfering with data flow
+      logQueryAnalytics("getNewProjects", result, startTime)
+
+      return serializedResult
     },
     enabled: !!actor,
     staleTime: 2 * 60 * 1000,
@@ -54,8 +61,14 @@ const useMostUpvotedProjects = () => {
     queryFn: async () => {
       if (!actor) throw new Error("Actor not available")
 
+      const startTime = performance.now()
       const result = await actor.getMostUpvotedProjects(API_KEY, BigInt(HOMEPAGE_CONFIG.mostUpvotedCount))
-      return serializeProjects(result)
+      const serializedResult = serializeProjects(result)
+
+      // Log analytics after serialization to avoid interfering with data flow
+      logQueryAnalytics("getMostUpvotedProjects", result, startTime)
+
+      return serializedResult
     },
     enabled: !!actor,
     staleTime: 2 * 60 * 1000,
@@ -72,8 +85,15 @@ const useHighlightedProjects = () => {
       if (!actor) throw new Error("Actor not available")
 
       // Fetch each category individually for progressive loading
+      const overallStartTime = performance.now()
+
       const categoryPromises = HOMEPAGE_CATEGORIES.map(async (categoryLabel) => {
+        const startTime = performance.now()
         const projects = await actor.getHighlightedProjects(API_KEY, categoryLabel, BigInt(HOMEPAGE_CONFIG.itemsPerCategory))
+        const serializedProjects = serializeProjects(projects)
+
+        // Log analytics after serialization to avoid interfering with data flow
+        logQueryAnalytics(`getHighlightedProjects (${categoryLabel})`, projects, startTime)
 
         // Find the category ID for response structure
         const categoryId = categoryLabel.toLowerCase().replace(/\s+/g, "_")
@@ -81,11 +101,19 @@ const useHighlightedProjects = () => {
         return {
           categoryId,
           categoryLabel,
-          projects: serializeProjects(projects),
+          projects: serializedProjects,
         }
       })
 
-      return await Promise.all(categoryPromises)
+      const result = await Promise.all(categoryPromises)
+
+      // Log overall highlighted query analytics
+      logSummaryAnalytics("getHighlightedProjects (ALL)", result, overallStartTime, {
+        "Total Categories": result.length,
+        "Total Projects": result.reduce((acc, cat) => acc + cat.projects.length, 0),
+      })
+
+      return result
     },
     enabled: !!actor,
     staleTime: 2 * 60 * 1000,
