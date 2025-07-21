@@ -539,6 +539,25 @@ shared actor class _CURATED_PROJECTS() = Self {
     return key
   };
 
+  /// Public method to upload any file to any route in the assets canister
+  public shared ({ caller }) func upload_file(route : Text, filename : Text, content : [Nat8], content_type : Text) : async Text {
+    // Only allow authenticated admin users to upload
+    assert (not Principal.isAnonymous(caller));
+    assert (caller == nodeAdmin1);
+
+    // Generate the key based on the route and filename
+    let key = if (route == "/" or route == "") {
+      "/" # filename // Root route
+    } else if (Text.startsWith(route, #text "/")) {
+      route # "/" # filename // Route already has leading slash
+    } else {
+      "/" # route # "/" # filename // Add leading slash to route
+    };
+
+    await Assets.uploadFile(assets, key, content, content_type);
+    return key
+  };
+
   // utils
 
   private func _getActiveProjects() : [T.Project] {
