@@ -19,12 +19,12 @@ export interface HomeData {
 }
 
 // Using category labels (not IDs)
-const HOMEPAGE_CATEGORIES = ["DeFi", "Games", "dApps", "Social Networks", "Marketplace", "Tokens"]
+const HOMEPAGE_CATEGORIES = ["DeFi", "Games", "Betting", "dApps", "Social Networks", "Marketplace", "Tokens"]
 
 const HOMEPAGE_CONFIG = {
   newProjectsCount: 15,
   mostUpvotedCount: 10,
-  itemsPerCategory: 5,
+  itemsPerCategory: 10,
 }
 
 const serializeProjects = (projects: any[]) => projects?.map((p) => ({ ...p, id: p.id.toString() })) || []

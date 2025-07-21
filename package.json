@@ -14,7 +14,8 @@
     "deploy": "dfx deploy --network=ic",
     "deploy_backend:local": "dfx deploy backend && dfx generate backend",
     "start:clean": "dfx start --clean",
-    "status:assets": "dfx canister --network=ic status assets"
+    "status:assets": "dfx canister --network=ic status assets",
+    "cycles": "chmod +x src/scripts/check-cycles.sh && ./src/scripts/check-cycles.sh"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",
