@@ -24,8 +24,8 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   private stable var secret : T.ApiKey = "";
   // private stable var apiKeys : [T.ApiKey] = [];
-  let adminPrincipal = Principal.fromText(Constants.admin1);
-  let nodeAdminPrincipal = Principal.fromText(Constants.nodeAdmin1);
+  let admin1 = Principal.fromText(Constants.admin1);
+  let nodeAdmin1 = Principal.fromText(Constants.nodeAdmin1);
   let clientAdmin1 = Principal.fromText(Constants.clientAdmin1);
   let clientAdmin2 = Principal.fromText(Constants.clientAdmin2);
 
@@ -61,7 +61,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // Category management functions
   public shared ({ caller }) func addCategory(category : Category.Category) : async Bool {
-    assert (caller == adminPrincipal or caller == clientAdmin1);
+    assert (caller == admin1 or caller == clientAdmin1);
 
     switch (categoriesMap.get(category.id)) {
       case (?existing) {
@@ -76,7 +76,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func updateCategory(id : Text, category : Category.Category) : async Bool {
-    assert (caller == adminPrincipal or caller == clientAdmin1);
+    assert (caller == admin1 or caller == clientAdmin1);
 
     switch (categoriesMap.get(id)) {
       case (?existing) {
@@ -88,7 +88,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func removeCategory(id : Text) : async Bool {
-    assert (caller == adminPrincipal);
+    assert (caller == admin1);
 
     switch (categoriesMap.remove(id)) {
       case (?existing) { return true };
@@ -107,13 +107,13 @@ shared actor class _CURATED_PROJECTS() = Self {
   // update
 
   public shared ({ caller }) func addProjectNode(project : T.Project) : async ?T.ProjectId {
-    assert (caller == nodeAdminPrincipal);
+    assert (caller == nodeAdmin1);
     projects.put(project.id, project);
     return ?project.id
   };
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
-    assert (caller == clientAdmin1 or caller == clientAdmin2);
+    assert (caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
 
     // Generate new ID if project.id is 0 or if the ID doesn't exist in the project record
     let projectId = switch (project.id) {
@@ -132,13 +132,22 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
-    assert (caller == clientAdmin1 or caller == clientAdmin2);
-    projects.put(projectId, project);
-    return ?projectId
+    assert (caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
+
+    // Check if the project exists before updating
+    switch (projects.get(projectId)) {
+      case (?existingProject) {
+        projects.put(projectId, project);
+        return ?projectId
+      };
+      case (null) {
+        return null // Project not found
+      }
+    }
   };
 
   public shared ({ caller }) func removeProject(projectId : T.ProjectId) : async ?T.Project {
-    assert (caller == clientAdmin1 or caller == clientAdmin2);
+    assert (caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
     let removed = projects.remove(projectId);
     return removed
   };
@@ -178,6 +187,50 @@ shared actor class _CURATED_PROJECTS() = Self {
     // Remove the project from the database
     let removed = projects.remove(projectId);
     return removed
+  };
+
+  public shared ({ caller }) func removeDuplicatesUsingBackup(apiKey : T.ApiKey, backupProjects : [T.Project]) : async { removed : Nat; kept : Nat } {
+    assert (caller == admin1 or caller == clientAdmin1 or caller == clientAdmin2);
+    assert (secret == apiKey);
+
+    // Create a map of project names from backup data (source of truth)
+    let backupNames = HashMap.HashMap<Text, T.ProjectId>(backupProjects.size(), Text.equal, Text.hash);
+    for (project in backupProjects.vals()) {
+      backupNames.put(project.name, project.id)
+    };
+
+    // Find projects in current database that should be removed
+    var removedCount = 0;
+    var keptCount = 0;
+    let projectsToRemove = Buffer.Buffer<T.ProjectId>(0);
+
+    for ((currentId, currentProject) in projects.entries()) {
+      switch (backupNames.get(currentProject.name)) {
+        case (?backupId) {
+          // Project name exists in backup
+          if (currentId != backupId) {
+            // This is a duplicate with wrong ID - remove it
+            projectsToRemove.add(currentId)
+          } else {
+            // This is the correct project from backup - keep it
+            keptCount += 1
+          }
+        };
+        case null {
+          // Project name not in backup - this might be a newer project or duplicate
+          // For safety, we'll keep projects not in backup
+          keptCount += 1
+        }
+      }
+    };
+
+    // Remove the duplicates
+    for (idToRemove in projectsToRemove.vals()) {
+      ignore projects.remove(idToRemove);
+      removedCount += 1
+    };
+
+    { removed = removedCount; kept = keptCount }
   };
 
   public shared ({ caller }) func updateUpvote(apiKey : T.ApiKey, projectId : T.ProjectId) : async Text {
@@ -455,12 +508,12 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared query ({ caller }) func showApiKey() : async Text {
-    assert (caller == adminPrincipal);
+    assert (caller == admin1);
     return secret
   };
 
   public shared ({ caller }) func updateApiKey(newApiKey : T.ApiKey) : async Text {
-    assert (caller == adminPrincipal);
+    assert (caller == admin1);
     secret := newApiKey;
     return "ok"
   };
@@ -479,7 +532,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   public shared ({ caller }) func upload_logo(name : Text, content : [Nat8], content_type : Text) : async Text {
     // Only allow authenticated admin users to upload
     assert (not Principal.isAnonymous(caller));
-    assert (caller == adminPrincipal or caller == nodeAdminPrincipal or caller == clientAdmin1 or caller == clientAdmin2);
+    assert (caller == admin1 or caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
 
     let key = Assets.generateLogoKey(name);
     await Assets.uploadFile(assets, key, content, content_type);
