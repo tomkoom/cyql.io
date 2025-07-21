@@ -14,6 +14,7 @@ interface AdminState {
   isModalOpen: boolean
   mode: Mode
   project: Project
+  projectId: string | null // Add project ID to state
   // ...
   allProjects: Project[]
 
@@ -27,6 +28,7 @@ const initialState: AdminState = {
   isModalOpen: false,
   mode: "add",
   project: projectInitialState,
+  projectId: null, // Initialize as null
 
   // ...
   allProjects: [],
@@ -68,6 +70,10 @@ const admin = createSlice({
     },
     setAdminClearProject(state) {
       state.project = projectInitialState
+      state.projectId = null
+    },
+    setAdminGenerateProjectId(state) {
+      state.projectId = Date.now().toString()
     },
 
     // ...
@@ -85,6 +91,7 @@ const admin = createSlice({
       state.isModalOpen = false
       state.mode = "add"
       state.project = projectInitialState
+      state.projectId = null
     },
   },
 })
@@ -101,6 +108,7 @@ export const {
   setAdminProjectItemArray,
   setAdminProjectItemBoolean,
   setAdminClearProject,
+  setAdminGenerateProjectId,
   // ...
   setAdminAllProjects,
   setAdminSearchQ,

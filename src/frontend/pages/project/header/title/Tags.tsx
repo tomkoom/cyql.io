@@ -1,13 +1,12 @@
 import { iCircleNodes, iGithub } from "@/components/icons/Icons"
 import { Project } from "@/state/types/Project"
-import React, { FC } from "react"
 import styled from "styled-components"
 
 interface TagsProps {
   project: Project
 }
 
-const Tags: FC<TagsProps> = ({ project }) => {
+export default function Tags({ project }: TagsProps) {
   return (
     <TagsStyled>
       {/* category */}
@@ -47,5 +46,3 @@ const TagsStyled = styled.ul`
     }
   }
 `
-
-export default Tags

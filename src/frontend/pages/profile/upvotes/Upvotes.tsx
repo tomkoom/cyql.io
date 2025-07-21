@@ -3,6 +3,7 @@ import { LogoLetter } from "@/components/ui"
 import { useNav, useProjects } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProfile } from "@/state/profile/profile"
+import { getLogoUrl } from "@/utils/utils"
 import { useEffect } from "react"
 import styled from "styled-components"
 
@@ -27,23 +28,26 @@ export default function Upvotes() {
       </div>
 
       <ul>
-        {upvotedProjects.map((p) => (
-          <li key={p.id} onClick={() => nav(p.id)}>
-            <div className="left">
-              {p.logoDataUrl ? <img src={p.logoDataUrl} alt={`${p.name} logo`} /> : <LogoLetter size="3rem" borderRadius="1.5rem" name={p.name} />}
-              <div>
-                <p className="name">{p.name}</p>
-                <p className="description line-clamp-2">{p.description}</p>
+        {upvotedProjects.map((p) => {
+          const logoUrl = getLogoUrl(p)
+          return (
+            <li key={p.id} onClick={() => nav(p.id)}>
+              <div className="left">
+                {logoUrl ? <img src={logoUrl} alt={`${p.name} logo`} /> : <LogoLetter size="3rem" borderRadius="1.5rem" name={p.name} />}
+                <div>
+                  <p className="name">{p.name}</p>
+                  <p className="description line-clamp-2">{p.description}</p>
+                </div>
               </div>
-            </div>
 
-            <div className="right">
-              <p>
-                {iCaretUp} {p.upvotedBy.length}
-              </p>
-            </div>
-          </li>
-        ))}
+              <div className="right">
+                <p>
+                  {iCaretUp} {p.upvotedBy.length}
+                </p>
+              </div>
+            </li>
+          )
+        })}
       </ul>
     </UpvotesStyled>
   )

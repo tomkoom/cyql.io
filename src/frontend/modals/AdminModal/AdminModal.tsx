@@ -3,7 +3,7 @@ import { Loading } from "@/components/ui"
 import { useScrollLock } from "@/hooks"
 import { useProjects } from "@/hooks/backend/useProjects"
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
-import { selectAdmin, setAdminCloseModal } from "@/state/admin/admin"
+import { selectAdmin, setAdminCloseModal, setAdminGenerateProjectId } from "@/state/admin/admin"
 import { selectTheme } from "@/state/theme"
 import { useEffect } from "react"
 import { createPortal } from "react-dom"
@@ -18,8 +18,7 @@ export default function AdminModal({ isOpen }: ProjectModalProps) {
   const { lockScroll, unlockScroll } = useScrollLock()
   const { refreshCategories } = useProjects()
   const theme = useAppSelector(selectTheme)
-  const isLoading = useAppSelector(selectAdmin).isLoading
-  const mode = useAppSelector(selectAdmin).mode
+  const { isLoading, mode, projectId } = useAppSelector(selectAdmin)
 
   const closeModal = (): void => {
     dispatch(setAdminCloseModal())
@@ -30,10 +29,15 @@ export default function AdminModal({ isOpen }: ProjectModalProps) {
       lockScroll()
       // Load categories when modal opens
       refreshCategories().catch(console.error)
+
+      // Generate project ID if in add mode and no ID exists
+      if (mode === "add" && !projectId) {
+        dispatch(setAdminGenerateProjectId())
+      }
     } else {
       unlockScroll()
     }
-  }, [isOpen])
+  }, [isOpen, mode, projectId, dispatch, refreshCategories, lockScroll, unlockScroll])
 
   if (!isOpen) return null
 
@@ -46,6 +50,7 @@ export default function AdminModal({ isOpen }: ProjectModalProps) {
           <div className="flex flex-col items-center gap-2">
             <CrossIcon onClick={closeModal} />
             <p>Mode: {mode}</p>
+            {projectId && <p style={{ fontSize: "0.875rem", color: "var(--secondaryColor)" }}>Project ID: {projectId}</p>}
             <Header />
           </div>
 

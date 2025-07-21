@@ -2,10 +2,6 @@ import Category "./categories";
 
 module {
 
-  public type Length = Nat;
-
-  // filter, sort, pagination
-
   public type GetProjectsBase = {
     q : Text; // search query
 
@@ -53,7 +49,6 @@ module {
 
   public type ProjectId = Nat;
   public type Project = {
-    // main
     id : Nat;
     name : Text;
     description : Text;

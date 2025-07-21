@@ -1,13 +1,12 @@
 import { Project } from "@/state/types/Project"
-import React, { FC } from "react"
 import styled from "styled-components"
-import { Name, Tags } from "./_index"
+import { Name, Tags } from "."
 
 interface TitleProps {
   project: Project
 }
 
-const Title: FC<TitleProps> = ({ project }) => {
+export default function Title({ project }: TitleProps) {
   return (
     <TitleStyled>
       <Name name={project.name} />
@@ -21,5 +20,3 @@ const TitleStyled = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 `
-
-export default Title

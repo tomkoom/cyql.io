@@ -2,6 +2,7 @@ import { LogoLetter } from "@/components/ui"
 import { useNav, useRelatedProjectsQuery } from "@/hooks"
 import type { Project } from "@/state/types/Project"
 import { shuffle } from "@/utils/index"
+import { getLogoUrl } from "@/utils/utils"
 import { useCallback, useMemo } from "react"
 import { useParams } from "react-router-dom"
 
@@ -11,11 +12,13 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, onClick }: ProjectCardProps) {
+  const logoUrl = getLogoUrl(project)
+
   return (
     <li onClick={onClick} className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 cursor-pointer rounded-lg transition-all">
       <div className="flex items-center gap-4 p-4">
-        {project.logoDataUrl ? (
-          <img src={project.logoDataUrl} alt={`${project.name} logo`} className="h-18 w-18 shrink-0 rounded-3xl object-cover" />
+        {logoUrl ? (
+          <img src={logoUrl} alt={`${project.name} logo`} className="h-18 w-18 shrink-0 rounded-3xl object-cover" />
         ) : (
           <LogoLetter size="4.5rem" borderRadius="2.25rem" name={project.name} />
         )}

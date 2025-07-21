@@ -1,22 +1,24 @@
 import { LogoLetter } from "@/components/ui"
-import React, { FC } from "react"
+import { Project } from "@/state/types/Project"
+import { getLogoUrl } from "@/utils/utils"
+import { FC } from "react"
 import styled from "styled-components"
 
 interface LogoProps {
-  logo: string
-  name: string
+  project: Project
 }
 
-const Logo: FC<LogoProps> = ({ logo, name }) => {
+const Logo: FC<LogoProps> = ({ project }) => {
   const size = "6rem"
   const borderRadius = "3rem"
+  const logoUrl = getLogoUrl(project)
 
   return (
     <div>
-      {logo ? (
-        <LogoStyled size={size} borderRadius={borderRadius} src={logo} alt={`${name} logo`} />
+      {logoUrl ? (
+        <LogoStyled size={size} borderRadius={borderRadius} src={logoUrl} alt={`${project.name} logo`} />
       ) : (
-        <LogoLetter size={size} borderRadius={borderRadius} name={name} />
+        <LogoLetter size={size} borderRadius={borderRadius} name={project.name} />
       )}
     </div>
   )

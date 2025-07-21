@@ -10,7 +10,7 @@ interface MainProps {
 const Main: FC<MainProps> = ({ project }): JSX.Element => {
   return (
     <MainStyled>
-      <Logo logo={project.logoDataUrl} name={project.name} />
+      <Logo project={project} />
       <Title project={project} />
     </MainStyled>
   )

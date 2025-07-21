@@ -26,8 +26,8 @@ shared actor class _CURATED_PROJECTS() = Self {
   // private stable var apiKeys : [T.ApiKey] = [];
   let adminPrincipal = Principal.fromText(Constants.admin1);
   let nodeAdminPrincipal = Principal.fromText(Constants.nodeAdmin1);
-  let frontendAdmin1Principal = Principal.fromText(Constants.clientAdmin1);
-  let frontendAdmin2Principal = Principal.fromText(Constants.clientAdmin2);
+  let clientAdmin1 = Principal.fromText(Constants.clientAdmin1);
+  let clientAdmin2 = Principal.fromText(Constants.clientAdmin2);
 
   // Reference to categories
   let categories = Category.categories;
@@ -61,7 +61,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // Category management functions
   public shared ({ caller }) func addCategory(category : Category.Category) : async Bool {
-    assert (caller == adminPrincipal or caller == frontendAdmin1Principal);
+    assert (caller == adminPrincipal or caller == clientAdmin1);
 
     switch (categoriesMap.get(category.id)) {
       case (?existing) {
@@ -76,7 +76,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func updateCategory(id : Text, category : Category.Category) : async Bool {
-    assert (caller == adminPrincipal or caller == frontendAdmin1Principal);
+    assert (caller == adminPrincipal or caller == clientAdmin1);
 
     switch (categoriesMap.get(id)) {
       case (?existing) {
@@ -113,20 +113,69 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
-    assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
-    let projectId = Int.abs(Time.now());
+    assert (caller == clientAdmin1 or caller == clientAdmin2);
+
+    // Generate new ID if project.id is 0 or if the ID doesn't exist in the project record
+    let projectId = switch (project.id) {
+      case (0) { Int.abs(Time.now()) };
+      case (id) {
+        // Check if this ID already exists
+        switch (projects.get(id)) {
+          case (?_) { Int.abs(Time.now()) }; // ID exists, generate new one
+          case (null) { id }; // ID is valid and unique, use it
+        }
+      }
+    };
+
     projects.put(projectId, { project with id = projectId });
     return ?projectId
   };
 
   public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
-    assert (caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
+    assert (caller == clientAdmin1 or caller == clientAdmin2);
     projects.put(projectId, project);
     return ?projectId
   };
 
   public shared ({ caller }) func removeProject(projectId : T.ProjectId) : async ?T.Project {
-    assert Utils.isAdmin(caller);
+    assert (caller == clientAdmin1 or caller == clientAdmin2);
+    let removed = projects.remove(projectId);
+    return removed
+  };
+
+  public shared ({ caller }) func removeProjectWithLogo(projectId : T.ProjectId) : async ?T.Project {
+    assert (caller == clientAdmin1 or caller == clientAdmin2);
+
+    // Get the project first to extract logo information
+    let ?project = projects.get(projectId) else return null;
+
+    // If project has a logo URL pointing to our assets canister, delete it
+    if (project.logoUrl != "" and Text.contains(project.logoUrl, #text assets_canister_id)) {
+      try {
+        // Extract the key from the logoUrl
+        // URL format: https://uodzj-4aaaa-aaaag-auexa-cai.icp0.io/logos/123456.png
+        // We need to extract: /logos/123456.png
+
+        // Split by domain and take the path part
+        let parts = Text.split(project.logoUrl, #text ".icp0.io");
+        let partsArray = Iter.toArray(parts);
+
+        // Get the path part (after the domain)
+        if (partsArray.size() >= 2) {
+          let pathPart = partsArray[1];
+
+          // The pathPart should be "/logos/123456.png"
+          if (Text.startsWith(pathPart, #text "/logos/")) {
+            await Assets.deleteFile(assets, pathPart)
+          }
+        }
+      } catch (error) {
+        // Log error but continue with project removal
+        // In production, you might want to handle this differently
+      }
+    };
+
+    // Remove the project from the database
     let removed = projects.remove(projectId);
     return removed
   };
@@ -321,14 +370,14 @@ shared actor class _CURATED_PROJECTS() = Self {
     }
   };
 
-  public query func getNewProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
+  public query func getNewProjects(apiKey : T.ApiKey, length : Nat) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sortedByNewest = Handle.sort(activeProjects, #newest_first);
     return safeTake(sortedByNewest, length)
   };
 
-  public query func getHighlightedProjects(apiKey : T.ApiKey, category : Category.CategoryLabel, length : T.Length) : async [T.Project] {
+  public query func getHighlightedProjects(apiKey : T.ApiKey, category : Category.CategoryLabel, length : Nat) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
@@ -336,7 +385,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return safeTake(sortedByNewest, length)
   };
 
-  public query func getMultipleHighlightedProjects(apiKey : T.ApiKey, categories : [Category.CategoryLabel], length : T.Length) : async [T.CategoryProjects] {
+  public query func getMultipleHighlightedProjects(apiKey : T.ApiKey, categories : [Category.CategoryLabel], length : Nat) : async [T.CategoryProjects] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
 
@@ -364,7 +413,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return highlighted
   };
 
-  public query func getMostUpvotedProjects(apiKey : T.ApiKey, length : T.Length) : async [T.Project] {
+  public query func getMostUpvotedProjects(apiKey : T.ApiKey, length : Nat) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sortedByMostUpvoted = Handle.sort(activeProjects, #most_upvoted);
@@ -373,7 +422,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // project
 
-  public query func getRelatedProjects(apiKey : T.ApiKey, projectId : T.ProjectId, length : T.Length) : async [T.Project] {
+  public query func getRelatedProjects(apiKey : T.ApiKey, projectId : T.ProjectId, length : Nat) : async [T.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let ?project = projects.get(projectId) else return [];
@@ -430,7 +479,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   public shared ({ caller }) func upload_logo(name : Text, content : [Nat8], content_type : Text) : async Text {
     // Only allow authenticated admin users to upload
     assert (not Principal.isAnonymous(caller));
-    assert (caller == adminPrincipal or caller == nodeAdminPrincipal or caller == frontendAdmin1Principal or caller == frontendAdmin2Principal);
+    assert (caller == adminPrincipal or caller == nodeAdminPrincipal or caller == clientAdmin1 or caller == clientAdmin2);
 
     let key = Assets.generateLogoKey(name);
     await Assets.uploadFile(assets, key, content, content_type);

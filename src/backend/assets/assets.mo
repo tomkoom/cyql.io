@@ -8,6 +8,10 @@ module Assets {
       sha256 : ?[Nat8];
       content_type : Text;
       content_encoding : Text
+    } -> async ();
+
+    delete_asset : shared {
+      key : Text
     } -> async ()
   };
 
@@ -29,6 +33,16 @@ module Assets {
       sha256 = null;
       content_type = contentType;
       content_encoding = "identity"
+    })
+  };
+
+  // Delete a file from the assets canister
+  public func deleteFile(
+    assets : AssetsCanister,
+    key : Text,
+  ) : async () {
+    await assets.delete_asset({
+      key = key
     })
   };
 

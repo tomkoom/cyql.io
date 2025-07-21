@@ -1,8 +1,8 @@
 import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useQueryParams } from "@/hooks"
-import { useAppDispatch } from "@/hooks/useRedux"
-import { setAdminAllProjects } from "@/state/admin/admin"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
+import { selectAdmin, setAdminAllProjects } from "@/state/admin/admin"
 import { setCategoriesWithSize } from "@/state/categories/categories"
 import { setActiveProjectsNum } from "@/state/curatedProjects"
 import { setHomeHighlighted, setHomeMostUpvoted, setHomeNew } from "@/state/home/home"
@@ -34,6 +34,7 @@ interface UseBackend {
   refreshActiveNum: () => Promise<void>
   addCuratedProject: (project: Project) => Promise<void>
   editCuratedProject: (project: Project) => Promise<void>
+  removeCuratedProject: (projectId: ProjectId) => Promise<void>
   updateCuratedProjectUpvote: (id: ProjectId) => Promise<string>
 }
 
@@ -42,6 +43,7 @@ export const useProjects = (): UseBackend => {
   const locationPathname = useLocation().pathname
   const { actor, userId } = useAuth()
   const { updateQueryParams } = useQueryParams()
+  const { projectId } = useAppSelector(selectAdmin)
 
   const refreshUserUpvotedProjects = async (): Promise<void> => {
     if (!actor) return
@@ -246,12 +248,14 @@ export const useProjects = (): UseBackend => {
   const addCuratedProject = async (project: Project): Promise<void> => {
     if (!actor) return
     if (!verifyAdmin(userId)) return
-    if (project.id) return
+
+    // Use projectId from state if available, otherwise generate one
+    const finalProjectId = projectId ? parseInt(projectId) : Date.now()
 
     try {
       await actor.addProject({
         ...project,
-        id: BigInt(0), // placeholder id
+        id: BigInt(finalProjectId),
         createdAt: String(Date.now()),
       })
     } catch (error) {
@@ -272,6 +276,18 @@ export const useProjects = (): UseBackend => {
         updatedAt: String(Date.now()),
       }
       await actor.editProject(id, p)
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  const removeCuratedProject = async (projectId: ProjectId): Promise<void> => {
+    if (!actor) return
+    if (!verifyAdmin(userId)) return
+
+    try {
+      const id = BigInt(projectId)
+      await actor.removeProjectWithLogo(id)
     } catch (error) {
       throw new Error(error)
     }
@@ -306,10 +322,9 @@ export const useProjects = (): UseBackend => {
 
     // ...
     refreshActiveNum,
-
-    // ...
     addCuratedProject,
     editCuratedProject,
+    removeCuratedProject,
     updateCuratedProjectUpvote,
   }
 }

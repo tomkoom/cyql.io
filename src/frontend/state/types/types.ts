@@ -10,9 +10,10 @@ export interface Pagination {
 
 export interface CompressedFile {
   url: string
-  name: string
+  name?: string
   size: number
   blob: Blob
+  file?: File
 }
 
 export interface PromoModalData {

@@ -3,26 +3,26 @@ import { DISCORD_URL, X_URL } from "@/constants/constants"
 import { faDiscord, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-export default function JoinCommunity() {
-  const links = [
-    {
-      id: "x",
-      label: "X",
-      fullLabel: "Follow us on X",
-      link: X_URL,
-      icon: <FontAwesomeIcon icon={faXTwitter} className="text-xl transition-all duration-300 ease-out" />,
-      description: "Latest updates & announcements",
-    },
-    {
-      id: "discord",
-      label: "Discord",
-      fullLabel: "Join our Discord",
-      link: DISCORD_URL,
-      icon: <FontAwesomeIcon icon={faDiscord} className="text-xl transition-all duration-300 ease-out" />,
-      description: "Community discussions & support",
-    },
-  ]
+const LINKS = [
+  {
+    id: "x",
+    label: "X",
+    fullLabel: "Follow us on X",
+    link: X_URL,
+    icon: <FontAwesomeIcon icon={faXTwitter} className="text-xl transition-all duration-300 ease-out" />,
+    description: "Latest updates & announcements",
+  },
+  {
+    id: "discord",
+    label: "Discord",
+    fullLabel: "Join our Discord",
+    link: DISCORD_URL,
+    icon: <FontAwesomeIcon icon={faDiscord} className="text-xl transition-all duration-300 ease-out" />,
+    description: "Community discussions & support",
+  },
+]
 
+export default function JoinCommunity() {
   return (
     <>
       <section className="animate-fadeInUp">
@@ -32,7 +32,7 @@ export default function JoinCommunity() {
         </header>
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 max-md:grid-cols-1 max-md:gap-3.5">
-          {links.map(({ id, fullLabel, link, icon, description }, index) => (
+          {LINKS.map(({ id, fullLabel, link, icon, description }, index) => (
             <div
               key={`${id}-url`}
               className="animate-scaleIn opacity-0"

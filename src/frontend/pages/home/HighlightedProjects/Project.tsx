@@ -19,7 +19,7 @@ export default function Project({ project }: ProjectProps) {
       onClick={() => toProject(project.id)}
     >
       <div className="flex items-start gap-3">
-        <Logo name={project.name} logo={project.logoDataUrl} />
+        <Logo project={project} />
         <div className="w-full">
           <div className="flex items-baseline justify-between gap-1">
             <h4 className="group-hover:text-accent-3 line-clamp-1 font-bold text-wrap transition-colors">{name}</h4>

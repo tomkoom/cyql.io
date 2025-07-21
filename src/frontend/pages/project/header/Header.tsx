@@ -1,18 +1,14 @@
+import { UpvoteBtn } from "@/components/btns"
 import { iEdit, iShareSquare } from "@/components/icons/Icons"
 import { useAuth } from "@/context/Auth"
-import { Project } from "@/state/types/Project"
-import { verifyAdmin } from "@/utils/verifyAdmin"
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// components
-import { UpvoteBtn } from "@/components/btns"
-import { Btn, Logo, Title } from "./_index"
-
-// state
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setAdminIsModalOpen, setAdminMode, setAdminProject } from "@/state/admin/admin"
 import { setShareModal } from "@/state/modals/shareModal"
+import { Project } from "@/state/types/Project"
+import { verifyAdmin } from "@/utils/verifyAdmin"
+import { FC } from "react"
+import styled from "styled-components"
+import { Btn, Logo, Title } from "."
 
 interface HeaderProps {
   project: Project
@@ -35,7 +31,7 @@ const Header: FC<HeaderProps> = ({ project }): JSX.Element => {
   return (
     <HeaderStyled>
       <Main>
-        <Logo logo={project.logoDataUrl} name={project.name} />
+        <Logo project={project} />
         <Title project={project} />
       </Main>
 

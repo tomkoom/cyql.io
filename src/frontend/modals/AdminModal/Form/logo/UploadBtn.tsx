@@ -1,6 +1,6 @@
-import React, { FC, Dispatch, SetStateAction, ChangeEvent, useRef } from "react"
-import styled from "styled-components"
 import { iPlus, iTimes } from "@/components/icons/Icons"
+import { ChangeEvent, Dispatch, FC, SetStateAction, useRef } from "react"
+import styled from "styled-components"
 
 interface FileBtnProps {
   logo: File
@@ -36,14 +36,7 @@ const FileBtn: FC<FileBtnProps> = ({ logo, setLogo, reset }): JSX.Element => {
 
         <p>No image chosen</p>
 
-        <input
-          type="file"
-          id="logo"
-          name="logo"
-          accept="image/png, image/jpeg"
-          onChange={(e) => onImageChange(e)}
-          ref={fileInputRef}
-        />
+        <input type="file" id="logo" name="logo" accept="image/png, image/jpeg" onChange={(e) => onImageChange(e)} ref={fileInputRef} />
       </div>
 
       <div>
