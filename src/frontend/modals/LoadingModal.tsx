@@ -1,24 +1,20 @@
 import { Spinner } from "@/components/ui"
 import { useScrollLock } from "@/hooks"
-import React, { FC, useEffect } from "react"
-import { createPortal } from "react-dom"
-import styled from "styled-components"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectTheme } from "@/state/theme"
+import { useEffect } from "react"
+import { createPortal } from "react-dom"
+import styled from "styled-components"
 
 interface LoadingModalProps {
   isOpen: boolean
 }
 
-const LoadingModal: FC<LoadingModalProps> = ({ isOpen }): JSX.Element => {
+export default function LoadingModal({ isOpen }: LoadingModalProps) {
   const { lockScroll, unlockScroll } = useScrollLock()
   const theme = useAppSelector(selectTheme)
-  // const text = ["Writing to chain 🔗..."]
-  const text2 = ["Loading..."]
+  const text = ["Loading..."]
 
-  // hide scrollbar
   useEffect(() => {
     if (isOpen) {
       lockScroll()
@@ -32,7 +28,7 @@ const LoadingModal: FC<LoadingModalProps> = ({ isOpen }): JSX.Element => {
   return createPortal(
     <LoadingModalStyled className={theme}>
       <Spinner />
-      <p>{text2[0]}</p>
+      <p>{text[0]}</p>
     </LoadingModalStyled>,
     document.getElementById("modal")
   )
@@ -60,5 +56,3 @@ const LoadingModalStyled = styled.div`
     font-size: var(--fsText);
   }
 `
-
-export default LoadingModal

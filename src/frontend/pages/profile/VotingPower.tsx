@@ -1,13 +1,10 @@
 import { iBolt } from "@/components/icons/Icons"
 import { Spinner } from "@/components/ui"
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectVotingPower } from "@/state/user"
+import styled from "styled-components"
 
-const VotingPower: FC = (): JSX.Element => {
+export default function VotingPower() {
   const votingPower = useAppSelector(selectVotingPower)
 
   return (
@@ -72,5 +69,3 @@ const VotingPowerStyled = styled.div`
     }
   }
 `
-
-export default VotingPower

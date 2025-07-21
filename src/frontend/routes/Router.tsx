@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout"
-import { Admin, Home, NotFound, Profile, Project, Projects, Test } from "@/pages"
+import { Admin, Home, NotFound, Profile, Project, Projects } from "@/pages"
 import { AdminRoutes, ProtectedRoutes } from "@/routes"
 import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
 
@@ -21,9 +21,6 @@ export default createHashRouter(
 
       {/* icrc scan */}
       {/* <Route path="icrc_scan" element={<IcrcScan />} /> */}
-
-      {/* test */}
-      <Route path="test-upload" element={<Test />} />
 
       {/* protected routes */}
       <Route element={<ProtectedRoutes />}>
