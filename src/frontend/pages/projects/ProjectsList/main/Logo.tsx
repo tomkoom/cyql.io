@@ -1,4 +1,4 @@
-import { LogoLetter } from "@/components/ui"
+import { ProjectLogoLetter } from "@/components/ui"
 import { Project } from "@/state/types/Project"
 import { getLogoUrl } from "@/utils/utils"
 import React, { FC } from "react"
@@ -17,7 +17,7 @@ const Logo: FC<LogoProps> = ({ project }): JSX.Element => {
     return <LogoStyled size={size} borderRadius={borderRadius} src={logoUrl} alt={`${project.name} logo`} />
   }
 
-  return <LogoLetter size={size} borderRadius={borderRadius} name={project.name} />
+  return <ProjectLogoLetter size={size} borderRadius={borderRadius} name={project.name} />
 }
 
 const LogoStyled = styled.img<{ size: string; borderRadius: string }>`

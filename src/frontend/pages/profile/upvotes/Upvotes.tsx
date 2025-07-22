@@ -1,5 +1,5 @@
 import { iCaretUp } from "@/components/icons/Icons"
-import { LogoLetter } from "@/components/ui"
+import { ProjectLogoLetter } from "@/components/ui"
 import { useNav, useProjects } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProfile } from "@/state/profile/profile"
@@ -33,7 +33,7 @@ export default function Upvotes() {
           return (
             <li key={p.id} onClick={() => nav(p.id)}>
               <div className="left">
-                {logoUrl ? <img src={logoUrl} alt={`${p.name} logo`} /> : <LogoLetter size="3rem" borderRadius="1.5rem" name={p.name} />}
+                {logoUrl ? <img src={logoUrl} alt={`${p.name} logo`} /> : <ProjectLogoLetter size="3rem" borderRadius="1.5rem" name={p.name} />}
                 <div>
                   <p className="name">{p.name}</p>
                   <p className="description line-clamp-2">{p.description}</p>

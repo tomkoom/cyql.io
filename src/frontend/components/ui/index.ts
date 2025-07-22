@@ -1,7 +1,7 @@
+export { default as ProjectLogoLetter } from "../ProjectLogoLetter"
 export { default as ExpandableText } from "./ExpandableText"
 export { default as Loading } from "./Loading"
 export { default as Logo } from "./Logo"
-export { default as LogoLetter } from "./LogoLetter"
 export { default as Price } from "./price/Price"
 export { default as Spinner } from "./Spinner"
 export { default as TextInput } from "./TextInput"

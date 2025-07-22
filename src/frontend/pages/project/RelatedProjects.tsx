@@ -1,41 +1,11 @@
-import { LogoLetter } from "@/components/ui"
-import { useNav, useRelatedProjectsQuery } from "@/hooks"
-import type { Project } from "@/state/types/Project"
+import { ProjectCard } from "@/components"
+import { useRelatedProjectsQuery } from "@/hooks"
 import { shuffle } from "@/utils/index"
-import { getLogoUrl } from "@/utils/utils"
-import { useCallback, useMemo } from "react"
+import { useMemo } from "react"
 import { useParams } from "react-router-dom"
-
-interface ProjectCardProps {
-  project: Project
-  onClick: () => void
-}
-
-function ProjectCard({ project, onClick }: ProjectCardProps) {
-  const logoUrl = getLogoUrl(project)
-
-  return (
-    <li onClick={onClick} className="group bg-coolgray-950/50 hover:bg-coolgray-950/80 cursor-pointer rounded-lg transition-all">
-      <div className="flex items-center gap-4 p-4">
-        {logoUrl ? (
-          <img src={logoUrl} alt={`${project.name} logo`} className="h-18 w-18 shrink-0 rounded-3xl object-cover" />
-        ) : (
-          <LogoLetter size="4.5rem" borderRadius="2.25rem" name={project.name} />
-        )}
-
-        <div>
-          <p className="group-hover:text-accent-3 line-clamp-1 leading-[150%] font-bold transition-all">{project.name}</p>
-          <p className="text-coolgray-400 text-sm leading-[150%] font-medium">{project.category.join(", ").toLowerCase()}</p>
-          <p className="text-coolgray-600 line-clamp-2 text-sm leading-[150%] break-words">{project.description}</p>
-        </div>
-      </div>
-    </li>
-  )
-}
 
 export default function RelatedProjects() {
   const { id } = useParams<{ id: string }>()
-  const { toProject } = useNav()
   const { data: relatedProjects, isLoading, isError } = useRelatedProjectsQuery(id)
 
   const filteredAndShuffled = useMemo(() => {
@@ -46,13 +16,6 @@ export default function RelatedProjects() {
   }, [relatedProjects, id])
 
   const displayedProjects = useMemo(() => filteredAndShuffled.slice(0, 12), [filteredAndShuffled])
-
-  const handleProjectClick = useCallback(
-    (projectId: string) => {
-      toProject(projectId)
-    },
-    [toProject]
-  )
 
   if (isLoading) {
     return (
@@ -82,11 +45,11 @@ export default function RelatedProjects() {
     <section>
       <h4 className="mb-8 text-center text-2xl font-bold">More Projects Like This</h4>
 
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4" role="list">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4" role="list">
         {displayedProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} onClick={() => handleProjectClick(project.id)} />
+          <ProjectCard key={project.id} project={project} />
         ))}
-      </ul>
+      </div>
     </section>
   )
 }

@@ -6,7 +6,7 @@ interface LogoLetterProps {
   name: string
 }
 
-export default function LogoLetter({ size, borderRadius, name }: LogoLetterProps) {
+export default function ProjectLogoLetter({ size, borderRadius, name }: LogoLetterProps) {
   const firstLetter = name.charAt(0)
   const style = {
     width: size,
