@@ -1,4 +1,5 @@
 import { BackBtn } from "@/components/btns"
+import { Icon } from "@/components/Icon"
 import { X_DIRECT_MSG_URL } from "@/constants/constants"
 import { useProjectQuery } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
@@ -38,7 +39,7 @@ export default function Project() {
       <div className="main">
         <AdminModal isOpen={isAdminModalOpen} />
         <BackBtn className="mb-4" />
-        <div className="content">
+        <div className="content w-full">
           <Header project={project} />
           <Description name={project.name} description={project.description} />
           <NftPreviews project={project} />
@@ -46,11 +47,11 @@ export default function Project() {
           <Links project={project} />
           <a
             href={X_DIRECT_MSG_URL}
-            className="mb-4 inline-block text-sm text-[var(--tertiaryColor)] transition-[var(--transition1)] hover:shadow-[0_2px_0_var(--tertiaryColor)]"
+            className="text-coolgray-400 hover:text-coolgray-500 mb-4 flex items-center justify-end gap-1 self-end text-sm transition-all"
             target="_blank"
             rel="noreferrer noopener"
           >
-            Update project info
+            Update project <Icon lucideName="ExternalLink" className="text-coolgray-400" size={16} strokeWidth={2} />
           </a>
           <Disclaimer />
 
