@@ -1,4 +1,5 @@
 import { BackBtn } from "@/components/btns"
+import { X_DIRECT_MSG_URL } from "@/constants/constants"
 import { useProjectQuery } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { AdminModal, ShareModal } from "@/modals"
@@ -7,7 +8,7 @@ import { selectShareModal } from "@/state/modals/shareModal"
 import type { Project } from "@/state/types/Project"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
-import { CollStats, Description, Disclaimer, Header, Links, Meta, NftPreviews, RelatedProjects } from "."
+import { CollStats, Description, Disclaimer, Header, Links, NftPreviews, RelatedProjects } from "."
 
 export default function Project() {
   const { id } = useParams<{ id: string }>()
@@ -36,14 +37,21 @@ export default function Project() {
     <ProjectStyled>
       <div className="main">
         <AdminModal isOpen={isAdminModalOpen} />
-        <BackBtn />
+        <BackBtn className="mb-4" />
         <div className="content">
           <Header project={project} />
           <Description name={project.name} description={project.description} />
           <NftPreviews project={project} />
           <CollStats project={project} />
           <Links project={project} />
-          <Meta />
+          <a
+            href={X_DIRECT_MSG_URL}
+            className="mb-4 inline-block text-sm text-[var(--tertiaryColor)] transition-[var(--transition1)] hover:shadow-[0_2px_0_var(--tertiaryColor)]"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Update project info
+          </a>
           <Disclaimer />
 
           {/* modal */}
@@ -51,9 +59,7 @@ export default function Project() {
         </div>
       </div>
 
-      <div className="related_projects">
-        <RelatedProjects />
-      </div>
+      <RelatedProjects />
     </ProjectStyled>
   )
 }

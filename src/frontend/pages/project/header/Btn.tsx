@@ -1,18 +1,18 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+import { ReactNode } from "react"
+import styled from "styled-components"
 
 interface BtnProps {
-  icon: React.ReactNode;
-  onClick: () => void;
+  icon: ReactNode
+  onClick: () => void
 }
 
-const Btn: FC<BtnProps> = ({ icon, onClick }): JSX.Element => {
+export default function Btn({ icon, onClick }: BtnProps) {
   return (
     <BtnStyled onClick={onClick}>
       <span>{icon}</span>
     </BtnStyled>
-  );
-};
+  )
+}
 
 const BtnStyled = styled.button`
   width: 3.5rem;
@@ -32,6 +32,4 @@ const BtnStyled = styled.button`
     font-size: var(--fs5);
     color: var(--secondaryColor);
   }
-`;
-
-export default Btn;
+`

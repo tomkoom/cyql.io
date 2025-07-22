@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import { FC } from "react"
 import styled, { keyframes } from "styled-components"
 
 const Spinner: FC = (): JSX.Element => {

@@ -1,5 +1,5 @@
+import { Icon } from "@/components/Icon"
 import CrossIcon from "@/components/icons/CrossIcon"
-import { Icon } from "@/components/ui/Icon"
 import { useAppDispatch } from "@/hooks/useRedux"
 import Modal from "@/modals/Modal"
 import { setSignInModalIsOpen } from "@/state/modals/signInModal"

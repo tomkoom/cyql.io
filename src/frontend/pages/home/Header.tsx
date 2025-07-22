@@ -1,4 +1,4 @@
-import { Icon, LucideIconsKeys } from "@/components/ui/Icon"
+import { Icon, LucideIconsKeys } from "@/components/Icon"
 import { useNav } from "@/hooks"
 import { useFormattedProjectsCount } from "@/hooks/queries/useProjectsStats"
 

@@ -2,16 +2,15 @@ import styled from "styled-components"
 
 interface LogoLetterProps {
   size: string
-  borderRadius: string
   name: string
 }
 
-export default function ProjectLogoLetter({ size, borderRadius, name }: LogoLetterProps) {
+export default function ProjectLogoLetter({ size, name }: LogoLetterProps) {
   const firstLetter = name.charAt(0)
   const style = {
     width: size,
     height: size,
-    borderRadius: borderRadius,
+    borderRadius: "100%",
   }
 
   return <LogoLetterStyled style={style}>{firstLetter}</LogoLetterStyled>

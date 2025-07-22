@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon"
 import { iSignOut, iUser } from "@/components/icons/Icons"
 import { Button } from "@/components/ui/button"
 import {
@@ -8,7 +9,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Icon } from "@/components/ui/Icon"
 import { useAuth } from "@/context/Auth"
 import { useAuthenticate, useNav } from "@/hooks"
 import { formatIdNormal } from "@/utils/index"

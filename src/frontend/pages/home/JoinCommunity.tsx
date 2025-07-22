@@ -1,4 +1,4 @@
-import { Icon } from "@/components/ui/Icon"
+import { Icon } from "@/components/Icon"
 import { DISCORD_URL, X_URL } from "@/constants/constants"
 import { faDiscord, faXTwitter } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

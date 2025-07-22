@@ -1,36 +1,15 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-
 interface DescriptionProps {
   name: string
   description: string
 }
 
-const Description: FC<DescriptionProps> = ({ name, description }): JSX.Element => {
+export default function Description({ name, description }: DescriptionProps) {
   if (!description) return null
 
   return (
-    <DescriptionStyled>
-      <h4>About {name}</h4>
-      <p>{description}</p>
-    </DescriptionStyled>
+    <div className="bg-coolgray-950/50 rounded-lg p-4">
+      <h2 className="text-coolgray-400 mb-1 text-lg font-bold">About {name}</h2>
+      <p className="text-coolgray-500 text-sm leading-[150%] md:text-base">{description}</p>
+    </div>
   )
 }
-
-const DescriptionStyled = styled.div`
-  background-color: var(--underlay1);
-  padding: 1rem;
-
-  > h4 {
-    font-size: var(--fs5);
-    margin-bottom: 0.25rem;
-  }
-
-  > p {
-    color: var(--secondaryColor);
-    font-size: var(--fs6);
-    line-height: 150%;
-  }
-`
-
-export default Description

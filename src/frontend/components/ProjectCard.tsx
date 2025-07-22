@@ -1,5 +1,5 @@
+import { Icon } from "@/components/Icon"
 import { iCircleNodes, iGithub } from "@/components/icons/Icons"
-import { Icon } from "@/components/ui/Icon"
 import { useNav } from "@/hooks"
 import type { Project as ProjectType } from "@/state/types/Project"
 import { ProjectLogo } from "."
@@ -19,7 +19,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onClick={() => toProject(project.id)}
     >
       <div className="flex items-start gap-3">
-        <ProjectLogo project={project} sizeRem="4rem" borderRadiusRem="2rem" />
+        <ProjectLogo project={project} sizeRem="4rem" />
         <div className="w-full">
           <div className="flex items-baseline justify-between gap-1">
             <h4 className="group-hover:text-accent-3 line-clamp-1 font-bold text-wrap transition-colors">{name}</h4>

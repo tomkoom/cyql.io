@@ -1,5 +1,5 @@
+import { Icon } from "@/components/Icon"
 import { Button } from "@/components/ui/button"
-import { Icon } from "@/components/ui/Icon"
 import { Input } from "@/components/ui/input"
 import { useProjectsQuery, useQueryParams } from "@/hooks"
 import { Search } from "lucide-react"

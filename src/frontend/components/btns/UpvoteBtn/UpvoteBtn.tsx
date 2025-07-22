@@ -1,6 +1,6 @@
 import { useAuth } from "@/context/Auth"
 import { useUpvote } from "@/hooks"
-import { FC, useState } from "react"
+import { useState } from "react"
 import styled from "styled-components"
 import { NotSignedBtn, UnUpvotedBtn, UpvotedBtn } from "."
 // https://www.npmjs.com/package/react-confetti-explosion
@@ -15,7 +15,7 @@ interface UpvoteBtnProps {
   upvotedBy: string[]
 }
 
-const UpvoteBtn: FC<UpvoteBtnProps> = ({ projectId, btnLocation, upvotedBy }): JSX.Element => {
+export default function UpvoteBtn({ projectId, btnLocation, upvotedBy }: UpvoteBtnProps) {
   const dispatch = useAppDispatch()
   const { userId, isAuthenticated } = useAuth()
   const { updateUpvote } = useUpvote()
@@ -86,5 +86,3 @@ const ConfettiStyled = styled.div`
     bottom: 70%;
   }
 `
-
-export default UpvoteBtn

@@ -1,12 +1,11 @@
 import { iArrowUp } from "@/components/icons/Icons"
-import { FC } from "react"
 import styled from "styled-components"
 
 interface UpvotesNumProps {
   upvotesNum: number
 }
 
-const UpvotesNum: FC<UpvotesNumProps> = ({ upvotesNum }) => {
+export default function UpvotesNum({ upvotesNum }: UpvotesNumProps) {
   if (upvotesNum < 1) return null
 
   return (
@@ -21,5 +20,3 @@ const UpvotesNumStyled = styled.span`
   font-size: var(--fs7);
   color: var(--colorOk);
 `
-
-export default UpvotesNum

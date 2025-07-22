@@ -1,5 +1,4 @@
 export { default as ProjectLogoLetter } from "../ProjectLogoLetter"
-export { default as ExpandableText } from "./ExpandableText"
 export { default as Loading } from "./Loading"
 export { default as Logo } from "./Logo"
 export { default as Price } from "./price/Price"

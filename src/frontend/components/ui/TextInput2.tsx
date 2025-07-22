@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes } from "react"
+import { FC, InputHTMLAttributes } from "react"
 import styled from "styled-components"
 
 const TextInput2: FC<InputHTMLAttributes<HTMLInputElement>> = (props): JSX.Element => {

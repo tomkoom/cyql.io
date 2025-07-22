@@ -8,12 +8,17 @@ interface ProjectLogoProps {
   borderRadiusRem?: string
 }
 
-export default function ProjectLogo({ project, sizeRem = "4rem", borderRadiusRem = "2rem" }: ProjectLogoProps) {
+export default function ProjectLogo({ project, sizeRem = "4rem", borderRadiusRem = "1.25rem" }: ProjectLogoProps) {
   const logoUrl = getLogoUrl(project)
 
   return logoUrl ? (
-    <img className="flex-shrink-0 rounded-2xl object-cover" style={{ width: sizeRem, height: sizeRem }} src={logoUrl} alt={`${project.name} logo`} />
+    <img
+      className="flex-shrink-0 object-cover"
+      style={{ width: sizeRem, height: sizeRem, borderRadius: borderRadiusRem }}
+      src={logoUrl}
+      alt={`${project.name} logo`}
+    />
   ) : (
-    <ProjectLogoLetter size={sizeRem} borderRadius={borderRadiusRem} name={project.name} />
+    <ProjectLogoLetter size={sizeRem} name={project.name} />
   )
 }
