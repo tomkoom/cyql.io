@@ -3,7 +3,7 @@ import { IS_DEV } from "@/constants/constants"
 // Configuration for analytics
 const ANALYTICS_CONFIG = {
   enabled: false,
-  //   enabled: IS_DEV, // Enable only in development mode
+  // enabled: IS_DEV, // Enable only in development mode
   verbose: true, // Show detailed logs
 }
 
