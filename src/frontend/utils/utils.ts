@@ -9,18 +9,19 @@ export function addSourceParam(url: string) {
   return u.toString()
 }
 
-// Utility function to get the correct logo URL
 export const getLogoUrl = (project: Project): string => {
-  // Check if logoUrl contains the assets canister ID
   if (project.logoUrl && project.logoUrl.includes(CANISTER_IDS.MAINNET.ASSETS)) {
     return project.logoUrl
   }
 
-  // Fallback to logoDataUrl if available
-  if (project.logoDataUrl) {
-    return project.logoDataUrl
-  }
-
-  // Return empty string if no logo available
   return ""
+}
+
+// Utility function to sort collections alphabetically by category ID
+export const sortCollectionsByCategory = (collections: any[], categoriesMap: any[]) => {
+  return collections.sort((a, b) => {
+    const categoryA = categoriesMap.find((cat) => cat.id === a.categoryId)?.lbl || a.categoryId
+    const categoryB = categoriesMap.find((cat) => cat.id === b.categoryId)?.lbl || b.categoryId
+    return categoryA.localeCompare(categoryB)
+  })
 }

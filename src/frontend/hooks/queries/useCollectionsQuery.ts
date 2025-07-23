@@ -1,16 +1,7 @@
 import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
-import { bigintToString } from "@/utils"
+import { bigintToString, sortCollectionsByCategory } from "@/utils"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-
-// Utility function to sort collections alphabetically by category ID
-const sortCollectionsByCategory = (collections: any[], categoriesMap: any[]) => {
-  return collections.sort((a, b) => {
-    const categoryA = categoriesMap.find((cat) => cat.id === a.categoryId)?.lbl || a.categoryId
-    const categoryB = categoriesMap.find((cat) => cat.id === b.categoryId)?.lbl || b.categoryId
-    return categoryA.localeCompare(categoryB)
-  })
-}
 
 export const useCollectionsQuery = () => {
   const { actor } = useAuth()
@@ -32,11 +23,8 @@ export const useActiveCollectionsQuery = () => {
     queryKey: ["collections", "active"],
     queryFn: async () => {
       const [collectionsRes, categoriesRes] = await Promise.all([actor.getActiveCollections(API_KEY), actor.getAllCategories()])
-
       const collections = bigintToString(collectionsRes) as any[]
       const categories = categoriesRes as any[]
-
-      // Sort collections alphabetically by category label
       const sortedCollections = sortCollectionsByCategory(collections, categories)
 
       return sortedCollections
