@@ -331,6 +331,24 @@ shared actor class _CURATED_PROJECTS() = Self {
     return projects.get(id)
   };
 
+  public query func getProjectsByIds(apiKey : T.ApiKey, ids : [T.ProjectId]) : async [T.Project] {
+    assert (secret == apiKey);
+    let result = Buffer.Buffer<T.Project>(0);
+
+    for (id in ids.vals()) {
+      switch (projects.get(id)) {
+        case (?project) {
+          if (not project.archived) {
+            result.add(project)
+          }
+        };
+        case null { /* skip missing projects */ }
+      }
+    };
+
+    Buffer.toArray(result)
+  };
+
   public query func getAllProjects(apiKey : T.ApiKey) : async [T.Project] {
     assert (secret == apiKey);
     let iter : Iter.Iter<T.Project> = projects.vals();

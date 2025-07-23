@@ -15,9 +15,6 @@ export default function CollectionBlock({ collection, categoryLabel, onClick }: 
     <div className="bg-coolgray-950 hover:bg-coolgray-900 cursor-pointer rounded-lg p-4 transition-colors" onClick={onClick}>
       <div className="mb-2 flex items-center justify-between">
         <h3 className="text-lg font-semibold text-white">{categoryLabel}</h3>
-        <span className={`rounded px-2 py-1 text-xs ${collection.isActive ? "bg-green-900/30 text-green-400" : "bg-gray-900/30 text-gray-500"}`}>
-          {collection.isActive ? "Active" : "Inactive"}
-        </span>
       </div>
 
       <p className="text-coolgray-400 mb-3 text-sm">

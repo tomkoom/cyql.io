@@ -1,6 +1,7 @@
 import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useQueryParams } from "@/hooks"
+import type { Project } from "@/state/types/Project"
 import { bigintToString } from "@/utils"
 import { useQuery } from "@tanstack/react-query"
 
@@ -42,5 +43,24 @@ export const useProjectsQuery = () => {
       }
     },
     enabled: !!actor,
+  })
+}
+
+export const useProjectsByIdsQuery = (projectIds: string[]) => {
+  const { actor } = useAuth()
+
+  return useQuery({
+    queryKey: ["projects", "byIds", projectIds],
+    queryFn: async (): Promise<Project[]> => {
+      if (!projectIds || projectIds.length === 0) return []
+
+      const bigintIds = projectIds.map((id) => BigInt(id))
+      const res = await actor.getProjectsByIds(API_KEY, bigintIds)
+
+      return res.map((p: any) => ({ ...p, id: p.id.toString() }))
+    },
+    enabled: !!actor && projectIds.length > 0,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
   })
 }

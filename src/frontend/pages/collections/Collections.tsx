@@ -4,8 +4,8 @@ import { useActiveCollectionsQuery } from "@/hooks/queries/useCollectionsQuery"
 import { useSearchParams } from "react-router-dom"
 import { CollectionBlock, CollectionDetail, CollectionsBreadcrumb } from "."
 
-const TITLE = "Featured Collections"
-const DESCRIPTION = "Featured projects by category"
+const TITLE = "Collections"
+const DESCRIPTION = "Collections of projects Featured by category"
 
 export default function Collections() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -29,7 +29,7 @@ export default function Collections() {
 
   if (isLoading) {
     return (
-      <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionsBreadcrumb />
         <div className="mb-6">
           <h1 className="text- 4xl mb-2 font-bold text-white">{TITLE}</h1>
@@ -44,7 +44,7 @@ export default function Collections() {
 
   if (error) {
     return (
-      <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionsBreadcrumb />
         <div className="mb-6">
           <h1 className="text- 4xl mb-2 font-bold text-white">{TITLE}</h1>
@@ -64,14 +64,14 @@ export default function Collections() {
   if (selectedCategoryId) {
     const categoryLabel = getCategoryLabel(selectedCategoryId)
     return (
-      <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionDetail categoryId={selectedCategoryId} categoryLabel={categoryLabel} />
       </div>
     )
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
+    <div className="mx-auto max-w-[1440px] px-4 py-8">
       <CollectionsBreadcrumb />
 
       <div className="mb-6">
