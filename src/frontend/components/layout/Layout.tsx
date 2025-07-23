@@ -11,7 +11,7 @@ import { useEffect } from "react"
 import { Toaster } from "react-hot-toast"
 import { Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
-import { Cookie, Footer, Nav, Summary } from "."
+import { Cookie, Footer, Navigation, Summary } from "."
 import "./Layout.css"
 
 const toasterStyle = {
@@ -81,7 +81,7 @@ export default function Layout() {
 
       {/* ... */}
       <Summary />
-      <Nav />
+      <Navigation />
 
       <main className="main">
         <Outlet />

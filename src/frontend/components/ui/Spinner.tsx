@@ -1,7 +1,6 @@
-import { FC } from "react"
 import styled, { keyframes } from "styled-components"
 
-const Spinner: FC = (): JSX.Element => {
+export default function Spinner() {
   return <SpinnerStyled />
 }
 
@@ -19,5 +18,3 @@ const SpinnerStyled = styled.div`
   border-radius: 50%;
   animation: ${spin} 0.75s linear infinite;
 `
-
-export default Spinner

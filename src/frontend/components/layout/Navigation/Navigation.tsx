@@ -16,13 +16,13 @@ export default function Navigation() {
     <div className="flex w-full flex-wrap items-center justify-between px-4 py-2 lg:px-8">
       <Logo onClick={toHome} />
       <div className="flex flex-wrap items-center justify-center gap-4">
-        <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="flex flex-wrap items-center justify-center gap-3">
           {navlinks.map((link) => (
             <Link
               key={link.pathname}
               to={link.pathname}
               className={twMerge(
-                "hover:text-accent-3 relative px-3 py-2 text-xl text-white transition-all duration-200 ease-in-out",
+                "hover:text-accent-3 text-coolgray-200 relative px-1 py-1 font-semibold transition-all duration-200 ease-in-out",
                 link.isActive && "text-accent-3 shadow-[0_2px_0_0_theme(colors.accent.3)]"
               )}
             >
