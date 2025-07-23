@@ -6,7 +6,6 @@ import Order "mo:base/Order";
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 
-// ...
 import T "../types";
 
 module {
@@ -131,7 +130,7 @@ module {
     func filter(p : T.Project) : Bool {
       switch (Array.find<Text>(p.category, func(category) { Text.toLowercase(category) == Text.toLowercase(value) })) {
         case (null) return false;
-        case (?some) return true
+        case (?_some) return true
       }
     };
 

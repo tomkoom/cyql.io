@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout"
-import { Admin, Home, NotFound, Profile, Project, Projects } from "@/pages"
+import { Admin, Home, NotFound, Profile, Project, Projects, Promote } from "@/pages"
 import { AdminRoutes, ProtectedRoutes } from "@/routes"
 import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
 
@@ -7,9 +7,9 @@ export default createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<NotFound text="Something went wrong" />}>
       <Route index element={<Home />} />
-      {/* projects */}
       <Route path="projects" element={<Projects />} />
       <Route path="projects/:id" element={<Project />} />
+      <Route path="promote" element={<Promote />} />
 
       {/* proposals */}
       {/* <Route path="proposals" element={<Proposals />} /> */}
@@ -22,12 +22,12 @@ export default createHashRouter(
       {/* icrc scan */}
       {/* <Route path="icrc_scan" element={<IcrcScan />} /> */}
 
-      {/* protected routes */}
+      {/* protected */}
       <Route element={<ProtectedRoutes />}>
         <Route path="profile" element={<Profile />} />
       </Route>
 
-      {/* admin routes */}
+      {/* admin */}
       <Route element={<AdminRoutes />}>
         <Route path="admin" element={<Admin />} />
       </Route>

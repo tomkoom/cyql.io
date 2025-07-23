@@ -11,13 +11,15 @@ import Array "mo:base/Array";
 import Bool "mo:base/Bool";
 import Order "mo:base/Order";
 
-// ...
 import T "./types";
 import Constants "./constants";
 import Category "./categories";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
 import Assets "./assets/assets";
+import Collections "./collections/collections";
+import AdminAuth "./utils/adminAuth";
+import ApiKeyAuth "./utils/apiKeyAuth";
 
 shared actor class _CURATED_PROJECTS() = Self {
   let assets_canister_id = "uodzj-4aaaa-aaaag-auexa-cai";
@@ -43,7 +45,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   stable var categoriesEntries : [(Text, Category.Category)] = [];
   let categoriesMap = HashMap.fromIter<Text, Category.Category>(
     categoriesEntries.vals(),
-    50, // Initial capacity - adjust based on expected number of categories
+    50, // Initial capacity
     Text.equal,
     Text.hash,
   );
@@ -59,12 +61,21 @@ shared actor class _CURATED_PROJECTS() = Self {
   stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
   let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, natHash);
 
+  // collections
+  stable var collectionsEntries : [(Text, Collections.Collection)] = [];
+  let collections = HashMap.fromIter<Text, Collections.Collection>(
+    collectionsEntries.vals(),
+    50,
+    Text.equal,
+    Text.hash,
+  );
+
   // Category management functions
   public shared ({ caller }) func addCategory(category : Category.Category) : async Bool {
-    assert (caller == admin1 or caller == clientAdmin1);
+    assert (AdminAuth.verifyAnyAdmin(caller));
 
     switch (categoriesMap.get(category.id)) {
-      case (?existing) {
+      case (?_existing) {
         // Category already exists
         return false
       };
@@ -76,10 +87,10 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func updateCategory(id : Text, category : Category.Category) : async Bool {
-    assert (caller == admin1 or caller == clientAdmin1);
+    assert (AdminAuth.verifyAnyAdmin(caller));
 
     switch (categoriesMap.get(id)) {
-      case (?existing) {
+      case (?_existing) {
         categoriesMap.put(id, category);
         return true
       };
@@ -88,10 +99,10 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public shared ({ caller }) func removeCategory(id : Text) : async Bool {
-    assert (caller == admin1);
+    assert (AdminAuth.verifyAnyAdmin(caller));
 
     switch (categoriesMap.remove(id)) {
-      case (?existing) { return true };
+      case (?_existing) { return true };
       case null { return false }
     }
   };
@@ -102,6 +113,50 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   public query func getAllCategories() : async [Category.Category] {
     Iter.toArray(categoriesMap.vals())
+  };
+
+  // Collections management
+
+  public shared ({ caller }) func addCollection(categoryId : Text, projectIds : [T.ProjectId]) : async Bool {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    Collections.addCollection(collections, categoriesMap, categoryId, projectIds)
+  };
+
+  public shared ({ caller }) func updateCollection(categoryId : Text, projectIds : [T.ProjectId]) : async Bool {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    Collections.updateCollection(collections, categoryId, projectIds)
+  };
+
+  public shared ({ caller }) func removeCollection(categoryId : Text) : async Bool {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    Collections.removeCollection(collections, categoryId)
+  };
+
+  public shared ({ caller }) func toggleCollectionStatus(categoryId : Text) : async Bool {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    Collections.toggleCollectionStatus(collections, categoryId)
+  };
+
+  // Collections query
+
+  public query func getCollection(apiKey : T.ApiKey, categoryId : Text) : async ?Collections.Collection {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    Collections.getCollection(collections, categoryId)
+  };
+
+  public query func getAllCollections(apiKey : T.ApiKey) : async [Collections.Collection] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    Collections.getAllCollections(collections)
+  };
+
+  public query func getActiveCollections(apiKey : T.ApiKey) : async [Collections.Collection] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    Collections.getActiveCollections(collections)
+  };
+
+  public query func getCollectionWithProjects(apiKey : T.ApiKey, categoryId : Text) : async ?Collections.CategoryProjects {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    Collections.getCollectionWithProjects(collections, categoriesMap, projects, categoryId)
   };
 
   // update
@@ -136,7 +191,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
     // Check if the project exists before updating
     switch (projects.get(projectId)) {
-      case (?existingProject) {
+      case (?_existing) {
         projects.put(projectId, project);
         return ?projectId
       };
@@ -299,7 +354,7 @@ shared actor class _CURATED_PROJECTS() = Self {
 
           switch (exists) {
             case (null) return false;
-            case (?some) return true
+            case (?_some) return true
           }
         };
 
@@ -319,7 +374,7 @@ shared actor class _CURATED_PROJECTS() = Self {
       let idx = Array.indexOf<Text>(userId, x.upvotedBy, func(a : Text, b : Text) : Bool { a == b });
       switch (idx) {
         case (null) return false;
-        case (?some) return true
+        case (?_some) return true
       }
     };
 
@@ -576,10 +631,14 @@ shared actor class _CURATED_PROJECTS() = Self {
   // stable
 
   system func preupgrade() {
-    projectsEntries := Iter.toArray(projects.entries())
+    projectsEntries := Iter.toArray(projects.entries());
+    categoriesEntries := Iter.toArray(categoriesMap.entries());
+    collectionsEntries := Iter.toArray(collections.entries())
   };
 
   system func postupgrade() {
-    projectsEntries := []
+    projectsEntries := [];
+    categoriesEntries := [];
+    collectionsEntries := []
   }
 }
