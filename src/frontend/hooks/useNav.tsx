@@ -1,23 +1,23 @@
-import { useNavigate, createSearchParams } from "react-router-dom"
 import { useQueryParams } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
+import { createSearchParams, useNavigate } from "react-router-dom"
 
 export const useNav = () => {
   const navigate = useNavigate()
   const { queryParamsString } = useQueryParams()
   const icrcLedgerId = useAppSelector(selectIcrcLedgerId)
 
-  const goBack = (): void => navigate(-1)
+  const goBack = () => navigate(-1)
 
-  const toHome = (): void => {
+  const toHome = () => {
     navigate({
       pathname: "/",
       search: "",
     })
   }
 
-  const toProjects = (): void => {
+  const toProjects = () => {
     navigate({
       pathname: "projects",
       search: `?${createSearchParams({
@@ -26,7 +26,14 @@ export const useNav = () => {
     })
   }
 
-  const toMostUpvoted = (): void => {
+  const toCollections = () => {
+    navigate({
+      pathname: "collections",
+      search: "",
+    })
+  }
+
+  const toMostUpvoted = () => {
     navigate({
       pathname: "projects",
       search: `?${createSearchParams({
@@ -36,7 +43,7 @@ export const useNav = () => {
     })
   }
 
-  const toProject = (id: string): void =>
+  const toProject = (id: string) =>
     navigate({
       pathname: `/projects/${id}`,
       search: "",
@@ -44,19 +51,19 @@ export const useNav = () => {
 
   // proposals
 
-  const toList = (): void =>
+  const toList = () =>
     navigate({
       pathname: "/list",
       search: "",
     })
 
-  const toProposals = (): void =>
+  const toProposals = () =>
     navigate({
       pathname: "/proposals",
       search: "",
     })
 
-  const toProposal = (id: string): void =>
+  const toProposal = (id: string) =>
     navigate({
       pathname: `/proposals/${id}`,
       search: "",
@@ -64,7 +71,7 @@ export const useNav = () => {
 
   // icrc scan
 
-  const toIcrcScan = (): void => {
+  const toIcrcScan = () => {
     const params = {
       ledger_id: icrcLedgerId,
     }
@@ -77,13 +84,13 @@ export const useNav = () => {
 
   // ...
 
-  const toProfile = (): void =>
+  const toProfile = () =>
     navigate({
       pathname: "/profile",
       search: "",
     })
 
-  const toAdmin = (): void =>
+  const toAdmin = () =>
     navigate({
       pathname: "/admin",
       search: "",
@@ -92,6 +99,7 @@ export const useNav = () => {
   return {
     goBack,
     toHome,
+    toCollections,
 
     // projects
     toProjects,

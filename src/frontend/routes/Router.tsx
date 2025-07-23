@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout"
 import { ROUTES } from "@/constants"
-import { Admin, Home, NotFound, Profile, Project, Projects, Promote } from "@/pages"
+import { Admin, Collections, Home, NotFound, Profile, Project, Projects, Promote } from "@/pages"
 import { AdminRoutes, ProtectedRoutes } from "@/routes"
 import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
 
@@ -10,15 +10,13 @@ export default createHashRouter(
       <Route index element={<Home />} />
       <Route path={ROUTES.PROJECTS} element={<Projects />} />
       <Route path={`${ROUTES.PROJECTS}/:id`} element={<Project />} />
+      <Route path={ROUTES.COLLECTIONS} element={<Collections />} />
       <Route path={ROUTES.PROMOTE} element={<Promote />} />
+      {/* <Route path="list" element={<ListProject />} /> */}
 
       {/* proposals */}
       {/* <Route path="proposals" element={<Proposals />} /> */}
       {/* <Route path="proposals/:id" element={<Proposal />} /> */}
-
-      {/* add */}
-      {/* <Route path="list" element={<ListProject />} /> */}
-      {/* <Route path="add" element={<ListProject />} /> */}
 
       {/* icrc scan */}
       {/* <Route path="icrc_scan" element={<IcrcScan />} /> */}
