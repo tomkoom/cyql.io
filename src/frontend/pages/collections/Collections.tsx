@@ -87,13 +87,13 @@ export default function Collections() {
     return (
       <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionsBreadcrumb />
-        <div className="mb-6">
+        <header className="mb-6">
           <h1 className="text- 4xl mb-2 font-bold text-white">{TITLE}</h1>
           <p className="text-coolgray-400">{DESCRIPTION}</p>
-        </div>
-        <div className="flex items-center justify-center gap-2">
+        </header>
+        <main className="flex items-center justify-center gap-2">
           Loading... <Spinner />
-        </div>
+        </main>
       </div>
     )
   }
@@ -102,14 +102,14 @@ export default function Collections() {
     return (
       <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionsBreadcrumb />
-        <div className="mb-6">
+        <header className="mb-6">
           <h1 className="text- 4xl mb-2 font-bold text-white">{TITLE}</h1>
           <p className="text-coolgray-400">{DESCRIPTION}</p>
-        </div>
-        <div className="rounded-lg bg-red-950/20 p-6 text-center">
+        </header>
+        <main className="rounded-lg bg-red-950/20 p-6 text-center">
           <p className="mb-2 text-red-400">Failed to load collections</p>
           <p className="text-coolgray-500 text-sm">Please try again later</p>
-        </div>
+        </main>
       </div>
     )
   }
@@ -130,18 +130,18 @@ export default function Collections() {
     <div className="mx-auto max-w-[1440px] px-4 py-8">
       <CollectionsBreadcrumb />
 
-      <div className="mb-6">
+      <header className="mb-6">
         <h1 className="mb-2 text-4xl font-black text-white">{TITLE}</h1>
         <p className="text-coolgray-400">{DESCRIPTION}</p>
-      </div>
+      </header>
 
       {activeCollections.length === 0 ? (
-        <div className="bg-coolgray-950 rounded-lg p-12 text-center">
+        <main className="bg-coolgray-950 rounded-lg p-12 text-center">
           <p className="text-coolgray-400 mb-2">No collections available</p>
           <p className="text-coolgray-500 text-sm">Collections will appear here once they are created and activated</p>
-        </div>
+        </main>
       ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <main className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {activeCollections.map((collection: any) => (
             <CollectionBlock
               key={collection.categoryId}
@@ -153,7 +153,7 @@ export default function Collections() {
               onClick={() => handleCollectionClick(collection.categoryId)}
             />
           ))}
-        </div>
+        </main>
       )}
     </div>
   )
