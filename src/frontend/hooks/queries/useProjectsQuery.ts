@@ -1,7 +1,7 @@
 import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
 import { useQueryParams } from "@/hooks"
-import { serializeProjectsToString } from "@/utils"
+import { bigintToString } from "@/utils"
 import { useQuery } from "@tanstack/react-query"
 
 export const useProjectsQuery = () => {
@@ -19,7 +19,7 @@ export const useProjectsQuery = () => {
       })
 
       if (res.length > 0) {
-        const serializedData = serializeProjectsToString(res[0].data)
+        const serializedData = bigintToString(res[0].data)
         return {
           data: serializedData,
           selectedPage: Number(res[0].selectedPage),

@@ -132,6 +132,11 @@ shared actor class _CURATED_PROJECTS() = Self {
     Collections.removeCollection(collections, categoryId)
   };
 
+  public shared ({ caller }) func removeProjectFromCollection(categoryId : Text, projectId : T.ProjectId) : async Bool {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    Collections.removeProjectFromCollection(collections, categoryId, projectId)
+  };
+
   public shared ({ caller }) func toggleCollectionStatus(categoryId : Text) : async Bool {
     assert (AdminAuth.verifyAnyAdmin(caller));
     Collections.toggleCollectionStatus(collections, categoryId)

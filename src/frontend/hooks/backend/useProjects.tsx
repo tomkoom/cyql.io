@@ -12,7 +12,7 @@ import { setProject } from "@/state/project"
 import { setPaginated, setPaginatedIsLoading } from "@/state/projects/paginated"
 import { setQueryParams } from "@/state/projects/queryParams"
 import type { Paginated, Project, ProjectId, QueryParams } from "@/state/types/Project"
-import { bigintToNumber, filterToSearchParam, serializeProjectsToString, sortCategoriesByNum, sortToSearchParam, verifyAdmin } from "@/utils/index"
+import { bigintToNumber, bigintToString, filterToSearchParam, sortCategoriesByNum, sortToSearchParam, verifyAdmin } from "@/utils/index"
 import { useLocation } from "react-router-dom"
 
 interface UseBackend {
@@ -95,7 +95,7 @@ export const useProjects = (): UseBackend => {
       })
 
       if (res.length > 0) {
-        const serializedData = serializeProjectsToString(res[0].data)
+        const serializedData = bigintToString(res[0].data)
         const selectedPage = Number(res[0].selectedPage)
         const itemsPerPage = Number(res[0].itemsPerPage)
 

@@ -4,6 +4,7 @@ import Text "mo:base/Text";
 import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Buffer "mo:base/Buffer";
+import Array "mo:base/Array";
 
 import T "./collections_types";
 import Category "../categories";
@@ -27,16 +28,40 @@ module Collections {
       case null { false };
       case (?_) {
         let now = Int.toText(Time.now());
-        let collection : Collection = {
-          categoryId = categoryId;
-          projectIds = projectIds;
-          isActive = true;
-          createdAt = now;
-          updatedAt = now
-        };
 
-        collections.put(categoryId, collection);
-        true
+        switch (collections.get(categoryId)) {
+          case null {
+            // Create new collection
+            let collection : Collection = {
+              categoryId = categoryId;
+              projectIds = projectIds;
+              isActive = true;
+              createdAt = now;
+              updatedAt = now
+            };
+            collections.put(categoryId, collection);
+            true
+          };
+          case (?existing) {
+            // Add to existing collection (merge project IDs)
+            let existingIds = Buffer.fromArray<ProjectId>(existing.projectIds);
+            for (projectId in projectIds.vals()) {
+              // Only add if not already present
+              let alreadyExists = Array.find<ProjectId>(existing.projectIds, func(id) = id == projectId);
+              if (alreadyExists == null) {
+                existingIds.add(projectId)
+              }
+            };
+
+            let updated : Collection = {
+              existing with
+              projectIds = Buffer.toArray(existingIds);
+              updatedAt = now
+            };
+            collections.put(categoryId, updated);
+            true
+          }
+        }
       }
     }
   };
@@ -68,6 +93,29 @@ module Collections {
     switch (collections.remove(categoryId)) {
       case null { false };
       case (?_) { true }
+    }
+  };
+
+  public func removeProjectFromCollection(
+    collections : HashMap.HashMap<Text, Collection>,
+    categoryId : Text,
+    projectId : ProjectId,
+  ) : Bool {
+    switch (collections.get(categoryId)) {
+      case null { false };
+      case (?existing) {
+        // Filter out the project ID to remove
+        let filteredIds = Array.filter<ProjectId>(existing.projectIds, func(id) = id != projectId);
+
+        let updated : Collection = {
+          existing with
+          projectIds = filteredIds;
+          updatedAt = Int.toText(Time.now())
+        };
+
+        collections.put(categoryId, updated);
+        true
+      }
     }
   };
 

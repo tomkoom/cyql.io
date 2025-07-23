@@ -1,6 +1,6 @@
 import { API_KEY } from "@/constants/constants"
 import { useAuth } from "@/context/Auth"
-import { bigintToNumber } from "@/utils"
+import { bigintToString } from "@/utils"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 export const useCollectionsQuery = () => {
@@ -10,7 +10,7 @@ export const useCollectionsQuery = () => {
     queryKey: ["collections"],
     queryFn: async () => {
       const res = await actor.getAllCollections(API_KEY)
-      return bigintToNumber(res)
+      return bigintToString(res)
     },
     enabled: !!actor,
   })
@@ -23,7 +23,7 @@ export const useActiveCollectionsQuery = () => {
     queryKey: ["collections", "active"],
     queryFn: async () => {
       const res = await actor.getActiveCollections(API_KEY)
-      return bigintToNumber(res)
+      return bigintToString(res)
     },
     enabled: !!actor,
   })
@@ -36,7 +36,7 @@ export const useCollectionQuery = (categoryId: string) => {
     queryKey: ["collection", categoryId],
     queryFn: async () => {
       const res = await actor.getCollection(API_KEY, categoryId)
-      return res.length > 0 ? bigintToNumber(res[0]) : null
+      return res.length > 0 ? bigintToString(res[0]) : null
     },
     enabled: !!actor && !!categoryId,
   })
@@ -49,7 +49,7 @@ export const useCollectionWithProjectsQuery = (categoryId: string) => {
     queryKey: ["collection", categoryId, "projects"],
     queryFn: async () => {
       const res = await actor.getCollectionWithProjects(API_KEY, categoryId)
-      return res.length > 0 ? bigintToNumber(res[0]) : null
+      return res.length > 0 ? bigintToString(res[0]) : null
     },
     enabled: !!actor && !!categoryId,
   })
@@ -61,9 +61,8 @@ export const useAddCollectionMutation = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async ({ categoryId, projectIds }: { categoryId: string; projectIds: number[] }) => {
-      const bigIntProjectIds = projectIds.map((id) => BigInt(id))
-      return await actor.addCollection(categoryId, bigIntProjectIds)
+    mutationFn: async ({ categoryId, projectIds }: { categoryId: string; projectIds: bigint[] }) => {
+      return await actor.addCollection(categoryId, projectIds)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["collections"] })
@@ -76,9 +75,8 @@ export const useUpdateCollectionMutation = () => {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: async ({ categoryId, projectIds }: { categoryId: string; projectIds: number[] }) => {
-      const bigIntProjectIds = projectIds.map((id) => BigInt(id))
-      return await actor.updateCollection(categoryId, bigIntProjectIds)
+    mutationFn: async ({ categoryId, projectIds }: { categoryId: string; projectIds: bigint[] }) => {
+      return await actor.updateCollection(categoryId, projectIds)
     },
     onSuccess: (_, variables) => {
       queryClient.invalidateQueries({ queryKey: ["collections"] })
@@ -113,6 +111,21 @@ export const useToggleCollectionStatusMutation = () => {
     onSuccess: (_, categoryId) => {
       queryClient.invalidateQueries({ queryKey: ["collections"] })
       queryClient.invalidateQueries({ queryKey: ["collection", categoryId] })
+    },
+  })
+}
+
+export const useRemoveProjectFromCollectionMutation = () => {
+  const { actor } = useAuth()
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: async ({ categoryId, projectId }: { categoryId: string; projectId: bigint }) => {
+      return await actor.removeProjectFromCollection(categoryId, projectId)
+    },
+    onSuccess: (_, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["collections"] })
+      queryClient.invalidateQueries({ queryKey: ["collection", variables.categoryId] })
     },
   })
 }
