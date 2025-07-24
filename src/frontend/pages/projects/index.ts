@@ -1,4 +1,4 @@
-export { default as Category } from "./category/Category"
+export { default as Category } from "./Category/Category"
 export { default as Filter } from "./Filter/Filter"
 export { default as Pagination } from "./Pagination/Pagination"
 export { default as ProjectsList } from "./ProjectsList/ProjectsList"

@@ -46,7 +46,7 @@ export default function CollectionBlock({ collection, categoryLabel, projectLogo
   const remainingCount = Math.max(0, collection.projectIds.length - projectLogos.length)
 
   return (
-    <div className="bg-coolgray-950/80 hover:bg-coolgray-900 cursor-pointer rounded-lg p-4 transition-colors" onClick={onClick}>
+    <div className="bg-coolgray-950/80 hover:bg-coolgray-900 cursor-pointer rounded-2xl p-5 transition-colors" onClick={onClick}>
       <div className="mb-3 flex items-baseline justify-between">
         <div className="flex items-center gap-2">
           <h3 className="text-2xl font-bold text-white">{categoryLabel}</h3>

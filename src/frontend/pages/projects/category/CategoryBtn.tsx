@@ -1,49 +1,14 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { iAngleDown } from "@/components/icons/Icons"
+import { Icon } from "@/components/Icon"
 import { useQueryParams } from "@/hooks"
 
-const CategoryBtn: FC = (): JSX.Element => {
+export default function CategoryBtn() {
   const { queryParams } = useQueryParams()
 
   return (
-    <CategoryBtnStyled>
+    <button className="bg-coolgray-950 text-coolgray-300 hover:bg-coolgray-900 flex h-10 cursor-pointer items-center gap-1 rounded-md px-2 text-sm transition-colors">
       Category:
-      <span className="category">{queryParams.category}</span>
-      <span className="icon">{iAngleDown}</span>
-    </CategoryBtnStyled>
+      <span className="bg-accent-1 flex h-5 items-center rounded-sm px-1 text-xs text-white">{queryParams.category}</span>
+      <Icon lucideName="ChevronDown" className="text-coolgray-500" size={16} />
+    </button>
   )
 }
-
-const CategoryBtnStyled = styled.button`
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0 1rem;
-  font-size: var(--fsText);
-  font-weight: var(--fwMedium);
-  color: var(--secondaryColor);
-  background-color: var(--underlay1);
-  cursor: pointer;
-  transition: var(--transition1);
-
-  &:hover {
-    background-color: var(--underlay2);
-  }
-
-  > span.category {
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    background-color: var(--highlight1);
-    padding: 0 0.3rem;
-  }
-
-  > span.icon {
-    color: var(--tertiaryColor);
-  }
-`
-
-export default CategoryBtn

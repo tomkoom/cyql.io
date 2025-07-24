@@ -19,7 +19,6 @@ export default function SignInModal({ isOpen }: SingInModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={closeModal} showCloseIcon={false}>
       <div className="w-full space-y-4" onClick={(e) => e.stopPropagation()}>
-        {/* Header */}
         <div className="space-y-2 text-center">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -27,15 +26,12 @@ export default function SignInModal({ isOpen }: SingInModalProps) {
               <h3 className="text-primary text-3xl font-semibold">Sign In</h3>
             </div>
 
-            <div className="flex items-center justify-center">
-              <CrossIcon onClick={closeModal} />
-            </div>
+            <CrossIcon onClick={closeModal} />
           </div>
         </div>
 
         <SignInMethods />
 
-        {/* Security Notice */}
         <div className="bg-muted/50 space-y-2 rounded-lg p-4 text-sm">
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-green-500"></div>
