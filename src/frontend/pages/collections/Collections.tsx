@@ -87,7 +87,7 @@ export default function Collections() {
       <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionsBreadcrumb />
         <header className="mb-6">
-          <h1 className="text- 4xl mb-2 font-bold text-white">{TITLE}</h1>
+          <h1 className="page-title mb-2">{TITLE}</h1>
           <p className="text-coolgray-400">{DESCRIPTION}</p>
         </header>
         <main className="flex items-center justify-center gap-2">
@@ -102,7 +102,7 @@ export default function Collections() {
       <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionsBreadcrumb />
         <header className="mb-6">
-          <h1 className="text- 4xl mb-2 font-bold text-white">{TITLE}</h1>
+          <h1 className="page-title mb-2">{TITLE}</h1>
           <p className="text-coolgray-400">{DESCRIPTION}</p>
         </header>
         <main className="rounded-lg bg-red-950/20 p-6 text-center">
@@ -130,8 +130,8 @@ export default function Collections() {
       <CollectionsBreadcrumb />
 
       <header className="mb-6">
-        <h1 className="mb-2 text-4xl font-black text-white">{TITLE}</h1>
-        <p className="text-coolgray-400">{DESCRIPTION}</p>
+        <h1 className="page-title mb-2">{TITLE}</h1>
+        <p className="text-coolgray-400 text-sm">{DESCRIPTION}</p>
       </header>
 
       {activeCollections.length === 0 ? (
