@@ -12,7 +12,6 @@ const DESCRIPTION = "Collections of projects featured by category"
 export default function Collections() {
   const [searchParams, setSearchParams] = useSearchParams()
   const selectedCategoryId = searchParams.get("category")
-
   const { data: collections = [], isLoading, error } = useActiveCollectionsQuery()
   const { data: categories = [] } = useCategoriesQuery()
 
@@ -138,10 +137,9 @@ export default function Collections() {
       {activeCollections.length === 0 ? (
         <main className="bg-coolgray-950 rounded-lg p-12 text-center">
           <p className="text-coolgray-400 mb-2">No collections available</p>
-          <p className="text-coolgray-500 text-sm">Collections will appear here once they are created and activated</p>
         </main>
       ) : (
-        <main className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <main className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {activeCollections.map((collection: any) => (
             <CollectionBlock
               key={collection.categoryId}

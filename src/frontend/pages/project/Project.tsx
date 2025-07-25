@@ -51,7 +51,7 @@ export default function Project() {
             target="_blank"
             rel="noreferrer noopener"
           >
-            Update project <Icon lucideName="ExternalLink" className="text-coolgray-400" size={16} strokeWidth={2} />
+            Update project data <Icon lucideName="ExternalLink" className="text-coolgray-400" size={16} strokeWidth={2} />
           </a>
           <Disclaimer />
 
@@ -65,7 +65,7 @@ export default function Project() {
   )
 }
 
-const ProjectStyled = styled.div`
+const ProjectStyled = styled.article`
   display: flex;
   flex-direction: column;
   gap: 4rem;

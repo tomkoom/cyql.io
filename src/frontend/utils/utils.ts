@@ -4,9 +4,21 @@ import { Project } from "@/state/types/Project"
 
 export function addSourceParam(url: string) {
   const source = APP_NAME_TLD
-  const u = new URL(url)
-  u.searchParams.set("utm_source", source)
-  return u.toString()
+
+  // Handle URLs without protocol by adding https://
+  let fullUrl = url
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    fullUrl = `https://${url}`
+  }
+
+  try {
+    const u = new URL(fullUrl)
+    u.searchParams.set("utm_source", source)
+    return u.toString()
+  } catch (error) {
+    console.warn(`Failed to add UTM source to URL: ${url}`, error)
+    return url
+  }
 }
 
 export const getLogoUrl = (project: Project): string => {
