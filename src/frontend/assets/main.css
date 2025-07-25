@@ -438,27 +438,32 @@
 }
 
 /* Dark scrollbar styles */
-.dark ::-webkit-scrollbar {
+.dark ::-webkit-scrollbar,
+::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
-.dark ::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
   background: var(--coolGray100); /* Darkest background - matches app background */
 }
 
-.dark ::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
   background-color: var(--coolGray70); /* Medium gray for visibility */
   border-radius: 8px;
   border: 2px solid var(--coolGray100); /* Border matches track for inset effect */
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
   background-color: var(--coolGray60); /* Lighter on hover for feedback */
 }
 
 /* Firefox support */
-.dark {
+.dark,
+* {
   scrollbar-color: var(--coolGray70) var(--coolGray100); /* thumb + track */
   scrollbar-width: thin;
 }

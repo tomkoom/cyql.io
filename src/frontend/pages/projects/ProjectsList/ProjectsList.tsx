@@ -3,7 +3,7 @@ import { useNav, useProjectsQuery, useQueryParams } from "@/hooks"
 import type { Project } from "@/state/types/Project"
 import { useMemo } from "react"
 import { Main, Socials, SocialsIc, Tags } from "."
-import { filterBySearch } from "./utils/filterProjects"
+import { filterBySearch } from "../utils"
 
 interface ProjectListItemProps {
   project: Project
