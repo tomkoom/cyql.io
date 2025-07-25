@@ -1,16 +1,28 @@
-/* –––FONTS––– */
-
-/* Inter */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-
-/* Inconsolata */
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&display=swap");
-
 /* Tailwind */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+
+/* Font Configuration */
+@theme {
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, "Courier New", monospace;
+}
+
+@layer components {
+  .page-title {
+    @apply text-4xl font-bold text-white;
+  }
+}
+
+.font-mono-default {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, "Courier New", monospace !important;
+}
+
+.font-mono-courier-new {
+  font-family: "Courier New", monospace !important;
+}
 
 /* –––ROOT––– */
 
@@ -194,10 +206,10 @@
   --sidebar-foreground: var(--coolGray10); /* #f2f4f8 - Light sidebar text */
   --sidebar-primary: var(--coolGray10); /* #f2f4f8 - Light sidebar primary */
   --sidebar-primary-foreground: var(--black); /* #000000 - Black text on sidebar primary */
-  --sidebar-accent: var(--coolGray100); /* #121619 - Darkest Cool Gray sidebar accent */
-  --sidebar-accent-foreground: var(--coolGray10); /* #f2f4f8 - Light text on sidebar accent */
-  --sidebar-border: var(--coolGray90); /* #21272a - Very dark sidebar border */
-  --sidebar-ring: var(--coolGray50); /* #878d96 - Medium sidebar focus ring */
+  --sidebar-accent: var(--coolGray20); /* #dde1e6 - Light sidebar accent */
+  --sidebar-accent-foreground: var(--coolGray90); /* #21272a - Dark text on sidebar accent */
+  --sidebar-border: var(--coolGray30); /* #c1c7cd - Medium sidebar border */
+  --sidebar-ring: var(--coolGray60); /* #697077 - Medium sidebar focus ring */
 }
 
 /* –––THEME––– */
@@ -433,13 +445,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@layer components {
-  .page-title {
-    @apply text-4xl font-bold text-white;
+    @apply bg-background text-foreground font-sans;
   }
 }
 

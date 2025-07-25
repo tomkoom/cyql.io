@@ -54,12 +54,17 @@ const ProjectListItem = ({ project, index, onProjectClick }: ProjectListItemProp
 )
 
 const ProjectsListHeader = () => (
-  <div className="border-coolgray-900 text-coolgray-500 font-regular flex items-center gap-4 border-b py-3 text-sm">
+  <div className="border-coolgray-900 text-coolgray-500 flex items-center gap-4 border-b py-3 text-sm font-medium">
     <div className={columnClasses.index}>#</div>
+
     <div className={columnClasses.name}>Name</div>
+
     <div className={columnClasses.category}>Category</div>
+
     <div className={columnClasses.socials}>Socials</div>
+
     <div className={columnClasses.icLinks}>IC Links</div>
+
     <div className={columnClasses.votes}>Votes</div>
   </div>
 )

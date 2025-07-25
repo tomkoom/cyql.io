@@ -37,7 +37,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="flex flex-wrap items-center gap-1">
           <ul className="flex flex-wrap items-center gap-1">
             {category.map((category) => (
-              <li key={category} className="bg-coolgray-900/60 text-coolgray-300 flex h-[22px] items-center rounded-sm px-1 !font-mono text-xs">
+              <li key={category} className="bg-coolgray-900/60 text-coolgray-300 font-mono-default flex h-[22px] items-center rounded-sm px-1 text-xs">
                 {category}
               </li>
             ))}
@@ -46,12 +46,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {(frontendCanisterId || github) && (
             <ul className="flex flex-wrap items-center gap-1">
               {frontendCanisterId && (
-                <li className="text-coolgray-300 bg-coolgray-900/60 text-coolgray-300 flex h-[22px] items-center gap-1 rounded-sm px-1 !font-mono text-xs">
+                <li className="text-coolgray-300 bg-coolgray-900/60 text-coolgray-300 font-mono-default flex h-[22px] items-center gap-1 rounded-sm px-1 text-xs">
                   <span className="text-sm text-indigo-700">{iCircleNodes}</span> Onchain
                 </li>
               )}
               {github && (
-                <li className="text-coolgray-300 bg-coolgray-900/60 text-coolgray-300 flex h-[22px] items-center gap-1 rounded-sm px-1 !font-mono text-xs">
+                <li className="text-coolgray-300 bg-coolgray-900/60 text-coolgray-300 font-mono-default flex h-[22px] items-center gap-1 rounded-sm px-1 text-xs">
                   <span className="text-sm text-sky-700">{iGithub}</span> Open
                 </li>
               )}

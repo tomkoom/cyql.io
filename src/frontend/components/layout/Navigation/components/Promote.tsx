@@ -25,7 +25,7 @@ export default function Promote({ dialogOpen, setDialogOpen }: PromoteProps) {
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger asChild>
-        <button className="bg-coolgray-950 hover:bg-coolgray-900 flex cursor-pointer items-center gap-2 rounded-sm px-3 py-2 !font-mono text-xs font-bold transition-colors">
+        <button className="bg-coolgray-950 hover:bg-coolgray-900 font-mono-default flex cursor-pointer items-center gap-2 rounded-sm px-3 py-2 text-xs font-bold transition-colors">
           <span className="text-accent-2">
             <Icon lucideName="Zap" />
           </span>{" "}

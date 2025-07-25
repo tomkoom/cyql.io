@@ -81,7 +81,7 @@ export default function Controls() {
       {mode === "add" && projectId && (
         <div className="text-center">
           <p className="text-sm text-gray-600">
-            Project ID: <span className="font-mono">{projectId}</span>
+            Project ID: <span className="font-mono-default">{projectId}</span>
           </p>
           {project.logoUrl && <p className="text-sm text-green-600">✓ Logo uploaded to assets canister</p>}
         </div>

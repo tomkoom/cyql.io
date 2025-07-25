@@ -139,7 +139,7 @@ export default function Collections() {
           <p className="text-coolgray-400 mb-2">No collections available</p>
         </main>
       ) : (
-        <main className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <main className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {activeCollections.map((collection: any) => (
             <CollectionBlock
               key={collection.categoryId}

@@ -13,16 +13,16 @@ interface ProjectsCountProps {
 const ProjectsCount = ({ totalItems, startIndex, endIndex, isFiltered }: ProjectsCountProps) => (
   <div>
     {isFiltered ? (
-      <span className="!text-coolgray-400 !font-mono !text-sm">
+      <span className="!text-coolgray-400 font-mono-default !text-sm">
         {totalItems} project{totalItems !== 1 ? "s" : ""} found.
       </span>
     ) : (
-      <span className="!text-coolgray-400 !font-mono !text-sm">
+      <span className="!text-coolgray-400 font-mono-default !text-sm">
         {totalItems} project{totalItems !== 1 ? "s" : ""} total.
       </span>
     )}{" "}
     {totalItems > 0 && (
-      <span className="!text-coolgray-400 !font-mono !text-sm">
+      <span className="!text-coolgray-400 font-mono-default !text-sm">
         Showing {startIndex + 1}-{endIndex} of {totalItems}
       </span>
     )}

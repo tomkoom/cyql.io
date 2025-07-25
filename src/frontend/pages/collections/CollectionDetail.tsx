@@ -44,14 +44,6 @@ export default function CollectionDetail({ categoryId, categoryLabel }: Collecti
         </div>
       )}
 
-      {/* Empty State */}
-      {!isLoading && !hasError && projects.length === 0 && (
-        <div className="bg-coolgray-950 rounded-lg p-12 text-center">
-          <p className="text-coolgray-400 mb-2">No projects in this collection</p>
-          <p className="text-coolgray-500 text-sm">Projects will appear here when added to the collection</p>
-        </div>
-      )}
-
       {/* Projects Grid */}
       {!isLoading && !hasError && projects.length > 0 && (
         <div className="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4 max-[480px]:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]">
