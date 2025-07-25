@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { useProjectsQuery, useQueryParams } from "@/hooks"
 import { Search } from "lucide-react"
 import { ChangeEvent, KeyboardEvent, useState } from "react"
-import { Category, Filter, Pagination, ProjectsList, Sort } from "."
+import { Categories, Filter, Pagination, ProjectsList, Sort } from "."
 
 export default function Projects() {
   const { queryParams, updateQueryParam } = useQueryParams()
@@ -33,7 +33,7 @@ export default function Projects() {
   }
 
   return (
-    <div className="mx-auto mb-16 flex max-w-[1920px] flex-col gap-2">
+    <div className="mx-auto mb-16 flex max-w-[1440px] flex-col gap-2">
       <div className="mb-2 flex flex-col gap-1">
         <h1 className="text-4xl font-bold">Discover New Projects</h1>
         <p className="text-coolgray-600 text-xs">Web3-native data on the Internet Computer</p>
@@ -63,10 +63,10 @@ export default function Projects() {
         </Button>
       </div>
 
-      {/* filters */}
+      <Categories />
+
       <div className="mt-1 flex flex-wrap items-center justify-between gap-1">
         <div className="flex flex-wrap items-center justify-start gap-1">
-          <Category />
           <Filter filterId="openSource" label="Open-source:" filter={queryParams.openSource} />
           <Filter filterId="onChain" label="On-chain:" filter={queryParams.onChain} />
         </div>

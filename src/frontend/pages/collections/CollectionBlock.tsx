@@ -60,7 +60,7 @@ export default function CollectionBlock({ collection, categoryLabel, projectLogo
     <div className="bg-coolgray-950/80 hover:bg-coolgray-900 cursor-pointer rounded-3xl p-5 transition-colors" onClick={onClick}>
       <div className="mb-3 flex items-baseline justify-between">
         <div className="flex items-center gap-2">
-          <h3 className="text-2xl font-bold text-white">{categoryLabel}</h3>
+          <h3 className="!font-mono text-2xl font-bold text-white">{categoryLabel}</h3>
           {isRecentlyUpdated && <span className="rounded-full bg-green-900/30 px-2 py-1 text-xs text-green-400">New</span>}
         </div>
 
