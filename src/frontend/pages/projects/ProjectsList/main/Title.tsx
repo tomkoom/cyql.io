@@ -1,14 +1,13 @@
 import { iCircleNodes, iGithub } from "@/components/icons/Icons"
 import { UpvotesNum } from "@/components/ui"
 import type { Project } from "@/state/types/Project"
-import React, { FC } from "react"
 import styled from "styled-components"
 
 interface TitleProps {
   project: Project
 }
 
-const Title: FC<TitleProps> = ({ project }): JSX.Element => {
+export default function Title({ project }: TitleProps) {
   const upvotesNum = project.upvotedBy.length
 
   const format = (description: string): string => {
@@ -69,5 +68,3 @@ const Description = styled.p`
   color: var(--tertiaryColor);
   line-height: 140%;
 `
-
-export default Title

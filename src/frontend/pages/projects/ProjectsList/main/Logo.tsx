@@ -1,14 +1,13 @@
 import { ProjectLogoLetter } from "@/components/ui"
 import { Project } from "@/state/types/Project"
 import { getLogoUrl } from "@/utils/utils"
-import React, { FC } from "react"
 import styled from "styled-components"
 
 interface LogoProps {
   project: Project
 }
 
-const Logo: FC<LogoProps> = ({ project }): JSX.Element => {
+export default function Logo({ project }: LogoProps) {
   const size = "4.25rem"
   const borderRadius = "2.125rem"
   const logoUrl = getLogoUrl(project)
@@ -17,7 +16,7 @@ const Logo: FC<LogoProps> = ({ project }): JSX.Element => {
     return <LogoStyled size={size} borderRadius={borderRadius} src={logoUrl} alt={`${project.name} logo`} />
   }
 
-  return <ProjectLogoLetter size={size} borderRadius={borderRadius} name={project.name} />
+  return <ProjectLogoLetter size={size} name={project.name} />
 }
 
 const LogoStyled = styled.img<{ size: string; borderRadius: string }>`
@@ -27,5 +26,3 @@ const LogoStyled = styled.img<{ size: string; borderRadius: string }>`
   flex-shrink: 0;
   object-fit: cover;
 `
-
-export default Logo

@@ -1,25 +1,15 @@
 import type { Project } from "@/state/types/Project"
-import React, { FC } from "react"
-import styled from "styled-components"
-import { Logo, Title } from "./_index"
+import { Logo, Title } from "."
 
 interface MainProps {
   project: Project
 }
 
-const Main: FC<MainProps> = ({ project }): JSX.Element => {
+export default function Main({ project }: MainProps) {
   return (
-    <MainStyled>
+    <div className="flex items-center gap-4">
       <Logo project={project} />
       <Title project={project} />
-    </MainStyled>
+    </div>
   )
 }
-
-const MainStyled = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-`
-
-export default Main
