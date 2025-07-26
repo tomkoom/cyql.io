@@ -4,7 +4,7 @@ import { useActiveCollectionsQuery } from "@/hooks/queries/useCollectionsQuery"
 import { useProjectsByIdsQuery } from "@/hooks/queries/useProjectsQuery"
 import { useMemo } from "react"
 import { useSearchParams } from "react-router-dom"
-import { CollectionBlock, CollectionDetail, CollectionsBreadcrumb } from "."
+import { CollectionBlock, CollectionDetail, CollectionsBreadcrumb, CollectionsFooter } from "."
 
 const TITLE = "Collections"
 const DESCRIPTION = "Collections of projects featured by category"
@@ -121,6 +121,7 @@ export default function Collections() {
     return (
       <div className="mx-auto max-w-[1440px] px-4 py-8">
         <CollectionDetail categoryId={selectedCategoryId} categoryLabel={categoryLabel} />
+        <CollectionsFooter />
       </div>
     )
   }
@@ -153,6 +154,7 @@ export default function Collections() {
           ))}
         </main>
       )}
+      <CollectionsFooter />
     </div>
   )
 }
