@@ -33,7 +33,7 @@ const ProjectListItem = ({ project, index, onProjectClick }: ProjectListItemProp
 
     <div className={columnClasses.name}>
       <div className="flex items-center gap-4">
-        <ProjectLogo project={project} sizeRem="3.5rem" borderRadiusRem="1.25rem" />
+        <ProjectLogo project={project} sizeRem="3.25rem" borderRadiusRem="1.125rem" />
         <Title project={project} />
       </div>
     </div>
