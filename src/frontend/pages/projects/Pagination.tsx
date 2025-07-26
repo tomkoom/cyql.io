@@ -1,7 +1,5 @@
 import { useProjectsQuery, useQueryParams } from "@/hooks"
-import { LoadingModal } from "@/modals"
 import ReactPaginate from "react-paginate"
-import "./Pagination.css"
 
 interface ProjectsCountProps {
   totalItems: number
@@ -13,16 +11,16 @@ interface ProjectsCountProps {
 const ProjectsCount = ({ totalItems, startIndex, endIndex, isFiltered }: ProjectsCountProps) => (
   <div>
     {isFiltered ? (
-      <span className="!text-coolgray-500 !text-sm">
+      <span className="text-coolgray-500 text-sm">
         {totalItems} project{totalItems !== 1 ? "s" : ""} found.
       </span>
     ) : (
-      <span className="!text-coolgray-500 !text-sm">
+      <span className="text-coolgray-500 text-sm">
         {totalItems} project{totalItems !== 1 ? "s" : ""} total.
       </span>
     )}{" "}
     {totalItems > 0 && (
-      <span className="!text-coolgray-500 !text-sm">
+      <span className="text-coolgray-500 text-sm">
         Showing {startIndex + 1}-{endIndex} of {totalItems}
       </span>
     )}
@@ -52,30 +50,31 @@ export default function Pagination() {
     return null
   }
 
-  return (
-    <div className="pagination">
-      <LoadingModal isOpen={isLoading} />
+  if (isLoading) {
+    return <div className="text-coolgray-500 text-sm">Loading...</div>
+  }
 
-      <div className="main flex items-center justify-between">
+  return (
+    <div className="w-full">
+      <div className="my-4 flex flex-wrap items-center justify-between gap-4">
         <ProjectsCount totalItems={totalItems} startIndex={startIndex} endIndex={endIndex} isFiltered={isFiltered} />
 
         <ReactPaginate
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel="Next >"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           pageCount={totalPages}
-          previousLabel="< prev"
+          previousLabel="< Prev"
           renderOnZeroPageCount={null}
           // styles
-          containerClassName="containerClassName"
-          pageLinkClassName="pageLinkClassName"
-          previousLinkClassName="previousLinkClassName"
-          nextLinkClassName="nextLinkClassName"
-          breakLinkClassName="breakLinkClassName"
-          // ...
-          activeLinkClassName="activeLinkClassName"
-          // sync components
+          containerClassName="flex items-center gap-1 flex-wrap"
+          pageLinkClassName="w-9 h-9 flex items-center justify-center text-sm border border-coolgray-900 text-coolgray-300 hover:bg-coolgray-900 transition-colors cursor-pointer rounded-md"
+          previousLinkClassName="px-3 py-2 text-sm border border-coolgray-900 text-coolgray-300 hover:bg-coolgray-900 transition-colors cursor-pointer rounded-md"
+          nextLinkClassName="px-3 py-2 text-sm border border-coolgray-900 text-coolgray-300 hover:bg-coolgray-900 transition-colors cursor-pointer rounded-md"
+          breakLinkClassName="w-9 h-9 flex items-center justify-center text-sm border border-coolgray-900 text-coolgray-300 hover:bg-coolgray-900 transition-colors cursor-pointer rounded-md"
+          activeLinkClassName="!bg-accent-2 !border-accent-2 !text-white"
+          // sync
           forcePage={page}
         />
       </div>
