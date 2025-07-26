@@ -1,10 +1,14 @@
 import { Icon } from "@/components/Icon"
+import PageHeader from "@/components/PageHeader"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useProjectsQuery, useQueryParams } from "@/hooks"
 import { Search } from "lucide-react"
 import { ChangeEvent, KeyboardEvent, useState } from "react"
-import { Categories, Filter, Pagination, ProjectsList, Sort } from "."
+import { Categories, Filter, Pagination, ProjectsBreadcrumb, ProjectsList, Sort } from "."
+
+const TITLE = "Discover New Projects"
+const DESCRIPTION = "Web3-native data on the Internet Computer"
 
 export default function Projects() {
   const { queryParams, updateQueryParam } = useQueryParams()
@@ -34,10 +38,7 @@ export default function Projects() {
 
   return (
     <div className="mx-auto mb-16 flex max-w-[1440px] flex-col gap-2">
-      <div className="mb-2 flex flex-col gap-1">
-        <h1 className="page-title">Discover New Projects</h1>
-        <p className="text-coolgray-600 text-sm">Web3-native data on the Internet Computer</p>
-      </div>
+      <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<ProjectsBreadcrumb />} />
 
       <div className="flex items-center gap-2">
         <div className="relative flex-1">

@@ -1,3 +1,4 @@
+import PageHeader from "@/components/PageHeader"
 import { Spinner } from "@/components/ui"
 import { useCategoriesQuery } from "@/hooks/queries/useCategoriesQuery"
 import { useActiveCollectionsQuery } from "@/hooks/queries/useCollectionsQuery"
@@ -84,12 +85,8 @@ export default function Collections() {
 
   if (isLoading) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 py-8">
-        <CollectionsBreadcrumb />
-        <header className="mb-6">
-          <h1 className="page-title mb-2">{TITLE}</h1>
-          <p className="text-coolgray-400">{DESCRIPTION}</p>
-        </header>
+      <div className="mx-auto max-w-[1440px] px-4 pb-8">
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<CollectionsBreadcrumb />} />
         <main className="flex items-center justify-center gap-2">
           Loading... <Spinner />
         </main>
@@ -99,12 +96,8 @@ export default function Collections() {
 
   if (error) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 py-8">
-        <CollectionsBreadcrumb />
-        <header className="mb-6">
-          <h1 className="page-title mb-2">{TITLE}</h1>
-          <p className="text-coolgray-400">{DESCRIPTION}</p>
-        </header>
+      <div className="mx-auto max-w-[1440px] px-4 pb-8">
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<CollectionsBreadcrumb />} />
         <main className="rounded-lg bg-red-950/20 p-6 text-center">
           <p className="mb-2 text-red-400">Failed to load collections</p>
           <p className="text-coolgray-500 text-sm">Please try again later</p>
@@ -119,7 +112,7 @@ export default function Collections() {
   if (selectedCategoryId) {
     const categoryLabel = getCategoryLabel(selectedCategoryId)
     return (
-      <div className="mx-auto max-w-[1440px] px-4 py-8">
+      <div className="mx-auto max-w-[1440px] px-4 pb-8">
         <CollectionDetail categoryId={selectedCategoryId} categoryLabel={categoryLabel} />
         <CollectionsFooter />
       </div>
@@ -127,13 +120,8 @@ export default function Collections() {
   }
 
   return (
-    <div className="mx-auto max-w-[1440px] px-4 py-8">
-      <CollectionsBreadcrumb />
-
-      <header className="mb-6">
-        <h1 className="page-title mb-2">{TITLE}</h1>
-        <p className="text-coolgray-400 text-sm">{DESCRIPTION}</p>
-      </header>
+    <div className="mx-auto max-w-[1440px] pb-8">
+      <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<CollectionsBreadcrumb />} />
 
       {activeCollections.length === 0 ? (
         <main className="bg-coolgray-950 rounded-lg p-12 text-center">
