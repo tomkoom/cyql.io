@@ -1,16 +1,14 @@
 import { Logo } from "@/components/ui"
 import { useAuth } from "@/context/Auth"
 import { useNavigation, useNavlinks } from "@/hooks"
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
-import { ProfileBtn, Promote, SignInBtn, Socials } from "./components"
+import { ProfileBtn, SignInBtn, Socials } from "./components"
 
 export default function Navigation() {
   const { navlinks } = useNavlinks()
   const { toHome } = useNavigation()
   const { isAuthenticated } = useAuth()
-  const [dialogOpen, setDialogOpen] = useState(false)
 
   return (
     <div className="flex w-full flex-wrap items-center justify-between px-4 py-2 lg:px-8">
@@ -30,7 +28,6 @@ export default function Navigation() {
             </Link>
           ))}
         </div>
-        <Promote dialogOpen={dialogOpen} setDialogOpen={setDialogOpen} />
         <Socials />
         {isAuthenticated ? <ProfileBtn /> : <SignInBtn />}
       </div>

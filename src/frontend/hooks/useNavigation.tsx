@@ -33,6 +33,13 @@ export const useNavigation = () => {
     })
   }
 
+  const toPromote = () => {
+    navigate({
+      pathname: "promote",
+      search: "",
+    })
+  }
+
   const toMostUpvoted = () => {
     navigate({
       pathname: "projects",
@@ -100,6 +107,7 @@ export const useNavigation = () => {
     goBack,
     toHome,
     toCollections,
+    toPromote,
 
     // projects
     toProjects,

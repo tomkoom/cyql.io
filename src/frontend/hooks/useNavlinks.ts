@@ -18,7 +18,7 @@ interface UseNavlinks {
 }
 
 export const useNavlinks = (): UseNavlinks => {
-  const { toHome, toProjects, toCollections, toAdmin } = useNavigation()
+  const { toHome, toProjects, toCollections, toPromote, toAdmin } = useNavigation()
   const { userId } = useAuth()
   const location = useLocation()
   const currentPathname = location.pathname
@@ -44,6 +44,13 @@ export const useNavlinks = (): UseNavlinks => {
       route: toCollections,
       icon: undefined,
       isActive: currentPathname.startsWith(ROUTES.COLLECTIONS),
+    },
+    {
+      label: "Promote",
+      pathname: ROUTES.PROMOTE,
+      route: toPromote,
+      icon: undefined,
+      isActive: currentPathname.startsWith(ROUTES.PROMOTE),
     },
 
     // { label: "List Project", pathname: "/list", route: toList, icon: iPlus, isActive: currentPathname === "/list" },
