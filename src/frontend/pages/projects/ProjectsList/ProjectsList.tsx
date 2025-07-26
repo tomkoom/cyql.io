@@ -2,7 +2,7 @@ import { UpvoteBtn } from "@/components/btns"
 import { useNav, useProjectsQuery, useQueryParams } from "@/hooks"
 import type { Project } from "@/state/types/Project"
 import { useMemo } from "react"
-import { Main, Socials, SocialsIc, Tags } from "."
+import { Main, SocialLinks, Tags } from "."
 import { filterBySearch } from "../utils"
 
 interface ProjectListItemProps {
@@ -14,10 +14,9 @@ interface ProjectListItemProps {
 // Shared column classes for consistent spacing
 const columnClasses = {
   index: "hidden md:flex md:w-12 justify-center",
-  name: "flex-auto sm:flex-[calc(70%-1rem)] md:flex-[45%]",
-  category: "hidden sm:flex sm:flex-[calc(30%-1rem)] md:flex-[20%]",
-  socials: "hidden md:flex md:flex-[15%]",
-  icLinks: "hidden md:flex md:flex-[15%]",
+  name: "flex-auto sm:flex-[calc(60%-1rem)] md:flex-[50%]",
+  category: "hidden sm:flex sm:flex-[calc(40%-1rem)] md:flex-[25%]",
+  socials: "hidden md:flex md:flex-[20%]",
   votes: "w-16 flex justify-center shrink-0",
 }
 
@@ -40,11 +39,7 @@ const ProjectListItem = ({ project, index, onProjectClick }: ProjectListItemProp
     </div>
 
     <div className={columnClasses.socials}>
-      <Socials project={project} />
-    </div>
-
-    <div className={columnClasses.icLinks}>
-      <SocialsIc project={project} />
+      <SocialLinks project={project} />
     </div>
 
     <div className={columnClasses.votes} onClick={(e) => e.stopPropagation()}>
@@ -56,15 +51,9 @@ const ProjectListItem = ({ project, index, onProjectClick }: ProjectListItemProp
 const ProjectsListHeader = () => (
   <div className="border-coolgray-900 text-coolgray-500 flex items-center gap-4 border-b py-3 text-sm font-medium">
     <div className={columnClasses.index}>#</div>
-
     <div className={columnClasses.name}>Name</div>
-
     <div className={columnClasses.category}>Category</div>
-
-    <div className={columnClasses.socials}>Socials</div>
-
-    <div className={columnClasses.icLinks}>IC Links</div>
-
+    <div className={columnClasses.socials}>Links</div>
     <div className={columnClasses.votes}>Votes</div>
   </div>
 )
