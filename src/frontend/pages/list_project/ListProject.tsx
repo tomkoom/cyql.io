@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react"
 import styled from "styled-components"
-import { Steps, Step1, Step2 } from "./_index"
+import { Step1, Step2, Steps } from "./_index"
 
 const ListProject: FC = (): JSX.Element => {
   const [step, setStep] = useState<number>(1)
@@ -9,7 +9,7 @@ const ListProject: FC = (): JSX.Element => {
     <ListProjectStyled>
       <div className="content">
         <div className="header">
-          <h2 className="pageTitle">List New #ic Project</h2>
+          <h2 className="page-title">List New #ic Project</h2>
           <p>Under dev</p>
           {/* <p>
             The project will be listed as a proposal and will be voted and moderated by the

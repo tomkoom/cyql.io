@@ -1,6 +1,6 @@
 import { iCaretUp } from "@/components/icons/Icons"
 import { ProjectLogoLetter } from "@/components/ui"
-import { useNav, useProjects } from "@/hooks"
+import { useNavigation, useProjects } from "@/hooks"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProfile } from "@/state/profile/profile"
 import { getLogoUrl } from "@/utils/utils"
@@ -9,7 +9,7 @@ import styled from "styled-components"
 
 export default function Upvotes() {
   const { refreshUserUpvotedProjects } = useProjects()
-  const { toProject } = useNav()
+  const { toProject } = useNavigation()
   const upvotedProjects = useAppSelector(selectProfile).upvotedProjects
 
   const nav = (id: string): void => {

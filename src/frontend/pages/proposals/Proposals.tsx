@@ -1,7 +1,7 @@
+import { useNavigation } from "@/hooks"
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { useNav } from "@/hooks"
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 
 // state
 import { useAppSelector } from "@/hooks/useRedux"
@@ -9,7 +9,7 @@ import { selectProposals } from "@/state/dao/proposals"
 import { formatDateTime } from "@/utils/formatDateTime"
 
 const Proposals: FC = (): JSX.Element => {
-  const { toProposal } = useNav()
+  const { toProposal } = useNavigation()
   const proposals = useAppSelector(selectProposals)
   const proposalsCopy = [...proposals]
 
@@ -17,7 +17,7 @@ const Proposals: FC = (): JSX.Element => {
     <ProposalsStyled>
       <div>
         <div className="title">
-          <h2 className="pageTitle">Proposed Projects</h2>
+          <h2 className="page-title">Proposed Projects</h2>
           <p>Under dev</p>
           {/* <p>Vote to list add projects to the registry</p> */}
         </div>

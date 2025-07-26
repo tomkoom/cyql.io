@@ -1,6 +1,6 @@
 import { ProjectLogo } from "@/components"
 import { UpvoteBtn } from "@/components/btns"
-import { useNav, useProjectsQuery, useQueryParams } from "@/hooks"
+import { useNavigation, useProjectsQuery, useQueryParams } from "@/hooks"
 import type { Project } from "@/state/types/Project"
 import { useMemo } from "react"
 import { SocialLinks, Tags, Title } from "."
@@ -63,7 +63,7 @@ const ProjectsListHeader = () => (
 )
 
 export default function ProjectsList() {
-  const { toProject } = useNav()
+  const { toProject } = useNavigation()
   const { queryParams } = useQueryParams()
   const { data: projectsData, isLoading, error } = useProjectsQuery()
 

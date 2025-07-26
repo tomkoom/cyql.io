@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/context/Auth"
-import { useAuthenticate, useNav } from "@/hooks"
+import { useAuthenticate, useNavigation } from "@/hooks"
 import { formatIdNormal } from "@/utils/index"
 import { useLocation } from "react-router-dom"
 import stc from "string-to-color"
@@ -18,7 +18,7 @@ import stc from "string-to-color"
 export default function ProfileBtn() {
   const { userId } = useAuth()
   const pathname = useLocation().pathname
-  const { toProfile } = useNav()
+  const { toProfile } = useNavigation()
   const { signOut } = useAuthenticate()
   const color = stc(userId)
 

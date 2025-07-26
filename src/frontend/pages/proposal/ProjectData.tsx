@@ -1,7 +1,7 @@
 import type { ListProjectData } from "@/state/types/DAO"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { DataItem } from "./_index"
+import { DataItem } from "."
 
 interface ProjectDataProps {
   project: ListProjectData

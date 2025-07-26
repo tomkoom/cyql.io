@@ -1,11 +1,11 @@
 import { Logo } from "@/components/ui"
-import { useNav, useNavlinks } from "@/hooks"
+import { useNavigation, useNavlinks } from "@/hooks"
 import { device } from "@/styles/breakpoints"
 import styled from "styled-components"
 import { Meta, NavLink, Socials } from "."
 
 export default function FooterBottom() {
-  const { toHome } = useNav()
+  const { toHome } = useNavigation()
   const { navlinks } = useNavlinks()
 
   return (

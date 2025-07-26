@@ -1,5 +1,5 @@
 import { Icon, LucideIconsKeys } from "@/components/Icon"
-import { useNav } from "@/hooks"
+import { useNavigation } from "@/hooks"
 import { useFormattedProjectsCount } from "@/hooks/queries/useProjectsStats"
 
 type HeaderElement = {
@@ -39,7 +39,7 @@ const HEADER_ELEMENTS: HeaderElement[] = [
 ]
 
 export default function Header() {
-  const { toProjects } = useNav()
+  const { toProjects } = useNavigation()
   const { formattedCount } = useFormattedProjectsCount()
 
   return (

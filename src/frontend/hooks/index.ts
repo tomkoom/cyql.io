@@ -1,7 +1,7 @@
 export { useAuthenticate } from "./useAuthenticate"
 export { useIcpLedger } from "./useIcpLedger"
 export { useIcrcScan } from "./useIcrcScan"
-export { useNav } from "./useNav"
+export { useNavigation } from "./useNavigation"
 export { useNavlinks } from "./useNavlinks"
 export { useQueryParams } from "./useQueryParams"
 export { useScrollLock } from "./useScrollLock"
@@ -16,3 +16,6 @@ export { useUsers } from "./backend/useUsers"
 export { useHomeQuery } from "./queries/useHomeQuery"
 export { useProjectQuery, useProjectWithRelated, useRelatedProjectsQuery } from "./queries/useProjectQuery"
 export { useProjectsQuery } from "./queries/useProjectsQuery"
+
+// Price hooks
+export { useIcpPriceQuery } from "./queries/usePriceQuery"

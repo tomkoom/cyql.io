@@ -3,32 +3,14 @@
   font-family: var(--fontFamily);
 }
 
-ul {
-  list-style-type: none;
-}
-
 ::placeholder {
   color: var(--tertiaryColor);
 }
 
 /* global classes */
 
-.pageTitle {
-  font-size: var(--fs2);
-  font-weight: var(--fwBlack);
-  line-height: 125%;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
 .wrapper1440 {
   max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.wrapper1280 {
-  max-width: 1280px;
   width: 100%;
   margin: 0 auto;
 }

@@ -6,12 +6,12 @@ import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcLedgerId, setIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 import { selectIcrcTransactionsData, selectIcrcTransactionsPagination } from "@/state/icrc_scan/icrcTransactions"
 import { notifyErr } from "@/utils/index"
-import { FC, useEffect } from "react"
+import { useEffect } from "react"
 import { useSearchParams } from "react-router-dom"
 import styled from "styled-components"
-import { Dashboard, Ledgers, Pagination, Table } from "./_index"
+import { Dashboard, Ledgers, Pagination, Table } from "."
 
-const IcrcScan: FC = (): JSX.Element => {
+export default function IcrcScan() {
   const dispatch = useAppDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const ledgerIdParam = searchParams.get("ledger_id")
@@ -57,7 +57,7 @@ const IcrcScan: FC = (): JSX.Element => {
   return (
     <IcrcScanStyled>
       <div className="title">
-        <h2 className="pageTitle">ICRC Explorer</h2>
+        <h2 className="page-title">ICRC Explorer</h2>
         <p>Explore ICRC tokens transactions and stats</p>
       </div>
 
@@ -112,5 +112,3 @@ const IcrcScanStyled = styled.div`
     }
   }
 `
-
-export default IcrcScan

@@ -1,6 +1,6 @@
 import { Icon } from "@/components/Icon"
 import { iCircleNodes, iGithub } from "@/components/icons/Icons"
-import { useNav } from "@/hooks"
+import { useNavigation } from "@/hooks"
 import type { Project as ProjectType } from "@/state/types/Project"
 import { ProjectLogo } from "."
 
@@ -9,7 +9,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const { toProject } = useNav()
+  const { toProject } = useNavigation()
   const { name, upvotedBy, category, frontendCanisterId, github, description } = project
   const upvotesNum = upvotedBy.length
 

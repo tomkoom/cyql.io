@@ -36,7 +36,7 @@ export default function Projects() {
     <div className="mx-auto mb-16 flex max-w-[1440px] flex-col gap-2">
       <div className="mb-2 flex flex-col gap-1">
         <h1 className="page-title">Discover New Projects</h1>
-        <p className="text-coolgray-600 text-xs">Web3-native data on the Internet Computer</p>
+        <p className="text-coolgray-600 text-sm">Web3-native data on the Internet Computer</p>
       </div>
 
       <div className="flex items-center gap-2">

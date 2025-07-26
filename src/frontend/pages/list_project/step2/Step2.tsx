@@ -1,13 +1,13 @@
-import React, { FC, Dispatch, SetStateAction } from "react"
-import styled from "styled-components"
-import { camelCaseToWords, notifyErr, notifySuccess } from "@/utils/index"
 import { Btn } from "@/components/btns"
-import { useNav, useProposals } from "@/hooks"
-import { DataItem } from "./_index"
 import { useAuth } from "@/context/Auth"
+import { useNavigation, useProposals } from "@/hooks"
+import { camelCaseToWords, notifyErr, notifySuccess } from "@/utils/index"
+import React, { Dispatch, FC, SetStateAction } from "react"
+import styled from "styled-components"
+import { DataItem } from "./_index"
 
 // state
-import { useAppSelector, useAppDispatch } from "@/hooks/useRedux"
+import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectListProject, setClearProposedProject } from "@/state/listProject"
 import { setIsLoading } from "@/state/loading"
 
@@ -19,7 +19,7 @@ const Step2: FC<Step2Props> = ({ setStep }): JSX.Element => {
   const dispatch = useAppDispatch()
   const { isAuthenticated } = useAuth()
   const { createProposal, refreshProposals } = useProposals()
-  const { toProposals } = useNav()
+  const { toProposals } = useNavigation()
   const proposalPayload = useAppSelector(selectListProject)
 
   const previousStep = (): void => {
@@ -53,11 +53,7 @@ const Step2: FC<Step2Props> = ({ setStep }): JSX.Element => {
 
       <ul>
         {Object.entries(proposalPayload).map(([key, value]) => (
-          <DataItem
-            key={key}
-            label={camelCaseToWords(key)}
-            value={Array.isArray(value) ? value.join(", ").toUpperCase() : value}
-          />
+          <DataItem key={key} label={camelCaseToWords(key)} value={Array.isArray(value) ? value.join(", ").toUpperCase() : value} />
         ))}
       </ul>
 

@@ -1,4 +1,4 @@
-import { useHomeQuery, useNav } from "@/hooks"
+import { useHomeQuery, useNavigation } from "@/hooks"
 import { memo, useCallback, useMemo } from "react"
 import { Header, JoinCommunity } from "."
 import { ErrorState, HighlightedSection, HomeSection } from "./components"
@@ -7,7 +7,7 @@ import { HOME_CONSTANTS } from "./constants"
 const SectionDivider = memo(() => <div className="bg-coolgray-950 my-4 h-px" />)
 
 export default function Home() {
-  const { toProjects } = useNav()
+  const { toProjects } = useNavigation()
   const { data: homeData, isError, error } = useHomeQuery()
 
   const handleViewAll = useCallback(() => {

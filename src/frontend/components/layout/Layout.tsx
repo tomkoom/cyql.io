@@ -1,5 +1,5 @@
 import { useAuth } from "@/context/Auth"
-import { useNav, useScrollLock, useUsers } from "@/hooks"
+import { useNavigation, useScrollLock, useUsers } from "@/hooks"
 import { useHomeQuery } from "@/hooks/queries/useHomeQuery"
 import { useAppSelector } from "@/hooks/useRedux"
 import { LoadingModal, SignInModal } from "@/modals"
@@ -11,7 +11,7 @@ import { useEffect } from "react"
 import { Toaster } from "react-hot-toast"
 import { Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
-import { Cookie, Footer, Navigation, Summary } from "."
+import { Cookie, Footer, Navigation, StatsHeader } from "."
 import "./Layout.css"
 
 const toasterStyle = {
@@ -26,7 +26,7 @@ const toasterStyle = {
 export default function Layout() {
   const pathname = useLocation().pathname
   const { isAuthenticated, actor, users } = useAuth()
-  const { toHome } = useNav()
+  const { toHome } = useNavigation()
   const { lockScroll, unlockScroll } = useScrollLock()
   const { registerUser, listUsers } = useUsers()
   const theme = useAppSelector(selectTheme)
@@ -80,7 +80,7 @@ export default function Layout() {
       <SignInModal isOpen={isSignInModalOpen} />
 
       {/* ... */}
-      <Summary />
+      <StatsHeader />
       <Navigation />
 
       <main className="main">

@@ -3,7 +3,7 @@ import { useAuth } from "@/context/Auth"
 import { verifyAdmin } from "@/utils/verifyAdmin"
 import { ReactNode } from "react"
 import { useLocation } from "react-router-dom"
-import { useNav } from "."
+import { useNavigation } from "."
 
 interface Navlink {
   label: string
@@ -18,7 +18,7 @@ interface UseNavlinks {
 }
 
 export const useNavlinks = (): UseNavlinks => {
-  const { toHome, toProjects, toCollections, toAdmin } = useNav()
+  const { toHome, toProjects, toCollections, toAdmin } = useNavigation()
   const { userId } = useAuth()
   const location = useLocation()
   const currentPathname = location.pathname

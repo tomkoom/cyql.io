@@ -60,7 +60,7 @@ export const logSummaryAnalytics = (endpoint: string, results: any[], startTime:
       return acc + 1
     }, 0)
 
-    console.group(`🔍 Backend Analytics Summary: ${endpoint}`)
+    console.group(`🔍 Backend Analytics StatsHeader: ${endpoint}`)
     console.log(`⏱️  Total Response Time: ${totalDuration.toFixed(2)}ms`)
     console.log(`📊 Total Queries: ${results.length}`)
     console.log(`📊 Total Items: ${totalItems}`)
@@ -71,7 +71,7 @@ export const logSummaryAnalytics = (endpoint: string, results: any[], startTime:
     }
     console.groupEnd()
   } catch (error) {
-    console.warn("Summary analytics logging failed:", error)
+    console.warn("StatsHeader analytics logging failed:", error)
   }
 }
 

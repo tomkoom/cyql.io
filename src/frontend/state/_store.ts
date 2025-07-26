@@ -1,10 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit"
 import template from "./_template"
-
-// ...
 import categories from "./categories/categories"
 import proposedProjectCategories from "./categories/proposedProjectCategories"
-import icpPrice from "./icpPrice"
 import listProject from "./listProject"
 import project from "./project"
 import theme from "./theme"
@@ -50,9 +47,6 @@ const store = configureStore({
     }),
   reducer: {
     template,
-
-    // ...
-    icpPrice,
     theme,
     categories,
     user,

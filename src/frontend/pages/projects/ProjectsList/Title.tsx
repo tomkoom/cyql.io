@@ -22,7 +22,7 @@ export default function Title({ project }: TitleProps) {
         <UpvotesNum upvotesNum={upvotesNum} />
       </div>
 
-      <p className="text-coolgray-500 -mt-0.5 line-clamp-1 text-sm font-normal">{project.description}</p>
+      <p className="text-coolgray-500 line-clamp-1 text-sm font-normal">{project.description}</p>
     </div>
   )
 }

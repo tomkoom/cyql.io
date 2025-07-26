@@ -1,14 +1,11 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { useParams } from "react-router-dom"
 import { BackBtn } from "@/components/btns"
-import { Details, Votes, ProjectData, Header } from "./_index"
-
-// state
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectProposals } from "@/state/dao/proposals"
+import { useParams } from "react-router-dom"
+import styled from "styled-components"
+import { Details, Header, ProjectData, Votes } from "."
 
-const Proposal: FC = (): JSX.Element => {
+export default function Proposal() {
   const { id } = useParams<{ id: string }>()
   const proposals = useAppSelector(selectProposals)
   const proposal = proposals.filter((p) => p.id === id)[0]
@@ -17,7 +14,7 @@ const Proposal: FC = (): JSX.Element => {
   if (!proposal) return null
 
   return (
-    <ProposalStyled className="wrapper1280">
+    <ProposalStyled className="mx-auto w-full max-w-[1280px]">
       <BackBtn />
       <div className="content">
         <Header proposal={proposal} />
@@ -63,5 +60,3 @@ const ProposalStyled = styled.div`
     }
   }
 `
-
-export default Proposal

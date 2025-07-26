@@ -1,15 +1,12 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-import { useNavigate } from "react-router-dom"
-import { E8S } from "@/constants/constants"
 import { Btn } from "@/components/btns"
-
-// state
+import { E8S } from "@/constants/constants"
 import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcTotalSupply } from "@/state/icrc_scan/icrcTotalSupply"
 import { selectIcrcTransactionsPagination } from "@/state/icrc_scan/icrcTransactions"
+import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
 
-const TotalSupply: FC = (): JSX.Element => {
+export default function TotalSupply() {
   const navigate = useNavigate()
   const totalSupply = useAppSelector(selectIcrcTotalSupply)
   const pagination = useAppSelector(selectIcrcTransactionsPagination)
@@ -29,9 +26,9 @@ const TotalSupply: FC = (): JSX.Element => {
   }
 
   return (
-    <TotalSupplyStyled className="wrapper1280">
+    <TotalSupplyStyled className="mx-auto w-full max-w-[1280px]">
       <div className="title">
-        <h2 className="pageTitle" style={{ margin: "unset" }}>
+        <h2 className="page-title" style={{ margin: "unset" }}>
           ckBTC TVL
         </h2>
         <Btn btnType={"primary"} text={"Mint"} onClick={toMint} />
@@ -96,5 +93,3 @@ const TotalSupplyStyled = styled.div`
     }
   }
 `
-
-export default TotalSupply

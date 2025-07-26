@@ -1,6 +1,6 @@
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 import React, { FC } from "react"
 import styled from "styled-components"
-import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter"
 
 interface HeaderProps {
   proposal: any
@@ -11,7 +11,7 @@ const Header: FC<HeaderProps> = ({ proposal }): JSX.Element => {
 
   return (
     <HeaderStyled>
-      <h2 className="pageTitle">
+      <h2 className="page-title">
         Proposal to List <span className="name">{payload.name || "[...]"}</span>
       </h2>
       <span className="id">Proposal id: {proposal.id}</span>

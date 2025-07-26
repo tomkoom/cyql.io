@@ -3,7 +3,7 @@ import { useAppSelector } from "@/hooks/useRedux"
 import { selectIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 import { createSearchParams, useNavigate } from "react-router-dom"
 
-export const useNav = () => {
+export const useNavigation = () => {
   const navigate = useNavigate()
   const { queryParamsString } = useQueryParams()
   const icrcLedgerId = useAppSelector(selectIcrcLedgerId)

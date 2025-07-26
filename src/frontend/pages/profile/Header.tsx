@@ -6,7 +6,7 @@ export default function Header() {
 
   return (
     <div>
-      <h2 className="pageTitle">{formatId(userId)}</h2>
+      <h2 className="page-title">{formatId(userId)}</h2>
       <p className="text-coolgray-500">{userId}</p>
     </div>
   )

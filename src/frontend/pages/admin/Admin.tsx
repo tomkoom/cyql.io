@@ -17,7 +17,7 @@ export default function Admin() {
     <div className="laptop:px-4">
       <header className="flex flex-col">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="pageTitle">Admin</h2>
+          <h2 className="page-title">Admin</h2>
           {activeTab === "projects" && (
             <Button variant="accent" className="h-11 font-bold" onClick={openAdminModal}>
               Add Project

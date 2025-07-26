@@ -1,4 +1,4 @@
-import { useNav } from "@/hooks"
+import { useNavigation } from "@/hooks"
 import { FC } from "react"
 import styled from "styled-components"
 
@@ -91,7 +91,7 @@ const staffPicksItems = [
 ]
 
 const StaffPicks: FC = () => {
-  const { toProject } = useNav()
+  const { toProject } = useNavigation()
 
   const openProject = (id: string): void => {
     toProject(id)

@@ -1,11 +1,11 @@
-import { useNav } from "@/hooks"
+import { useNavigation } from "@/hooks"
 
 interface NotFoundProps {
   text: string
 }
 
 export default function NotFound({ text }: NotFoundProps) {
-  const { toHome } = useNav()
+  const { toHome } = useNavigation()
 
   return (
     <div className="p-4 text-center">
