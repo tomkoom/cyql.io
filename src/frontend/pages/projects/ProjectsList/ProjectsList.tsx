@@ -1,8 +1,9 @@
+import { ProjectLogo } from "@/components"
 import { UpvoteBtn } from "@/components/btns"
 import { useNav, useProjectsQuery, useQueryParams } from "@/hooks"
 import type { Project } from "@/state/types/Project"
 import { useMemo } from "react"
-import { Main, SocialLinks, Tags } from "."
+import { SocialLinks, Tags, Title } from "."
 import { filterBySearch } from "../utils"
 
 interface ProjectListItemProps {
@@ -31,7 +32,10 @@ const ProjectListItem = ({ project, index, onProjectClick }: ProjectListItemProp
     <div className={`${columnClasses.index} text-coolgray-500 text-sm`}>{index}</div>
 
     <div className={columnClasses.name}>
-      <Main project={project} />
+      <div className="flex items-center gap-4">
+        <ProjectLogo project={project} sizeRem="3.5rem" borderRadiusRem="1.25rem" />
+        <Title project={project} />
+      </div>
     </div>
 
     <div className={columnClasses.category}>
