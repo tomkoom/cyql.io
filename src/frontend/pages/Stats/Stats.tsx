@@ -11,28 +11,37 @@ interface StatCardProps {
   value: string
   unit?: string
   subtitle?: string
+  trend?: "up" | "down" | "neutral"
+  isHighlight?: boolean
 }
 
-const StatCard = ({ label, value, unit = "", subtitle = "" }: StatCardProps) => (
-  <div className="bg-coolgray-950 rounded-lg p-4">
-    <h3 className="text-coolgray-400 mb-1 text-sm font-medium">{label}</h3>
-    <p className="text-lg font-bold text-white">
-      {value} <span className="text-coolgray-500 text-sm font-normal">{unit}</span>
-    </p>
-    {subtitle && <p className="text-coolgray-500 mt-1 text-xs">{subtitle}</p>}
+const StatCard = ({ label, value, unit = "", subtitle = "", isHighlight = false }: StatCardProps) => (
+  <div className={`${isHighlight ? "bg-accent-1" : "bg-coolgray-950"} hover:bg-coolgray-925 rounded-xl p-5 transition-colors`}>
+    <div className="mb-3">
+      <h3 className="text-coolgray-400 text-sm leading-tight font-medium">{label}</h3>
+    </div>
+    <div className="mb-2">
+      <span className={`text-3xl font-bold ${isHighlight ? "text-accent-300" : "text-white"}`}>{value}</span>
+      {unit && <span className="text-coolgray-500 ml-1 text-sm font-medium">{unit}</span>}
+    </div>
+    {subtitle && <p className="text-coolgray-500 text-xs leading-relaxed">{subtitle}</p>}
   </div>
 )
 
 interface StatsSectionProps {
   title: string
   children: ReactNode
+  description?: string
 }
 
-const StatsSection = ({ title, children }: StatsSectionProps) => (
-  <div className="mb-8">
-    <h2 className="mb-4 text-xl font-bold text-white">{title}</h2>
+const StatsSection = ({ title, children, description }: StatsSectionProps) => (
+  <section className="mb-12">
+    <div className="mb-6">
+      <h2 className="mb-1 text-2xl font-bold text-white">{title}</h2>
+      {description && <p className="text-coolgray-400 text-sm">{description}</p>}
+    </div>
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{children}</div>
-  </div>
+  </section>
 )
 
 export default function Stats() {
@@ -41,10 +50,15 @@ export default function Stats() {
 
   if (isLoading) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 py-8">
-        <div className="flex items-center justify-center gap-2">
+      <div className="mx-auto max-w-[1920px] px-4 pb-8">
+        <PageHeader
+          title="Internet Computer Stats"
+          description="Real-time network statistics and metrics from the Internet Computer blockchain"
+          breadcrumbs={<UnifiedBreadcrumb items={[{ label: "Stats", isCurrentPage: true }]} />}
+        />
+        <div className="flex items-center justify-center gap-3 py-16">
           <Spinner />
-          <span>Loading IC Stats...</span>
+          <span className="text-coolgray-400">Loading IC Stats...</span>
         </div>
       </div>
     )
@@ -52,16 +66,31 @@ export default function Stats() {
 
   if (error) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 py-8">
-        <div className="text-center text-red-400">Error loading stats: {error.message}</div>
+      <div className="mx-auto max-w-[1920px] px-4 pb-8">
+        <PageHeader
+          title="Internet Computer Stats"
+          description="Real-time network statistics and metrics from the Internet Computer blockchain"
+          breadcrumbs={<UnifiedBreadcrumb items={[{ label: "Stats", isCurrentPage: true }]} />}
+        />
+        <div className="rounded-lg bg-red-950/20 p-8 text-center">
+          <p className="mb-2 text-lg font-medium text-red-400">Failed to load stats</p>
+          <p className="text-coolgray-500 text-sm">Please try again later</p>
+        </div>
       </div>
     )
   }
 
   if (!data?.daily_stats?.length) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 py-8">
-        <div className="text-coolgray-400 text-center">No stats data available</div>
+      <div className="mx-auto max-w-[1920px] px-4 pb-8">
+        <PageHeader
+          title="Internet Computer Stats"
+          description="Real-time network statistics and metrics from the Internet Computer blockchain"
+          breadcrumbs={<UnifiedBreadcrumb items={[{ label: "Stats", isCurrentPage: true }]} />}
+        />
+        <div className="bg-coolgray-950 rounded-lg p-8 text-center">
+          <p className="text-coolgray-400">No stats data available</p>
+        </div>
       </div>
     )
   }
@@ -73,220 +102,233 @@ export default function Stats() {
   const breadcrumbItems = [{ label: "Stats", isCurrentPage: true }]
 
   return (
-    <div className="mx-auto max-w-[1440px] px-4 py-8">
-      <header className="mb-8">
-        <PageHeader
-          title="Internet Computer Stats"
-          description="Real-time network statistics and metrics from the Internet Computer blockchain"
-          breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />}
-        />
-
-        {/* Time Range Selector */}
-        <div className="mb-4 flex gap-2">
-          {[7, 30, 90].map((days) => (
-            <Button key={days} variant={selectedDays === days ? "default" : "secondary"} size="sm" onClick={() => setSelectedDays(days)}>
-              {days} days
-            </Button>
-          ))}
-        </div>
-
-        {/* Period Info */}
-        <div className="bg-coolgray-950 mb-6 rounded-lg p-3">
-          <p className="text-coolgray-300 text-sm">
-            <span className="font-medium text-white">Period:</span> {periodLabel}
-            <span className="mx-2">•</span>
-            <span className="font-medium text-white">Data Points:</span> {stats.length} days
-            <span className="mx-2">•</span>
-            <span className="font-medium text-white">Latest:</span> {latestStats.day}
-          </p>
-        </div>
-      </header>
+    <div className="mx-auto max-w-[1920px] pb-8">
+      <PageHeader
+        title="Internet Computer Stats"
+        description="Real-time network statistics and metrics from the Internet Computer blockchain"
+        breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />}
+      />
 
       <div className="space-y-8">
-        {/* Network Activity - Show averages over period */}
-        <StatsSection title={`Network Activity (${periodLabel})`}>
+        {/* Controls */}
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap gap-2">
+            {[7, 30, 90].map((days) => (
+              <Button
+                key={days}
+                variant={selectedDays === days ? "accent" : "secondary"}
+                size="sm"
+                onClick={() => setSelectedDays(days)}
+                className="min-w-[80px]"
+              >
+                {days} days
+              </Button>
+            ))}
+          </div>
+
+          <div className="text-coolgray-400 text-sm">
+            <span className="text-coolgray-200 font-medium">Period:</span> {periodLabel}
+            <span className="mx-2">•</span>
+            <span className="text-coolgray-200 font-medium">Latest:</span> {latestStats.day}
+          </div>
+        </div>
+
+        {/* Key Metrics Overview */}
+        <StatsSection title="Key Metrics" description="At a glance">
           <StatCard
-            label="Avg Transactions/sec"
+            label="ICP Circulating Supply"
+            value={formatNumber(Number(latestStats.circulating_supply) / 100_000_000)}
+            unit="ICP"
+            subtitle="Current token supply"
+            isHighlight
+          />
+          <StatCard
+            label="Total Locked ICP"
+            value={formatNumber(Number(latestStats.governance_total_locked_e8s) / 100_000_000)}
+            unit="ICP"
+            subtitle="Currently staked"
+            isHighlight
+          />
+          <StatCard
+            label="Total ICP Burned"
+            value={formatNumber(Number(latestStats.icp_burned_total) / 100_000_000)}
+            unit="ICP"
+            subtitle="All-time total burned"
+            isHighlight
+          />
+          <StatCard
+            label="Total Transactions/sec"
             value={formatNumber(calculateAverage(stats, "average_transactions_per_second"))}
             unit="TPS"
             subtitle={`Latest: ${formatNumber(latestStats.average_transactions_per_second)} TPS`}
+            isHighlight
+          />
+          <StatCard label="Total Canisters" value={formatNumber(latestStats.registered_canisters_count)} subtitle="Smart contracts on IC" isHighlight />
+          <StatCard
+            label="New Canisters"
+            value={formatNumber(calculateSum(stats, "gross_new_canisters"))}
+            subtitle={`Created in last ${selectedDays} days`}
+            isHighlight
           />
           <StatCard
-            label="Avg Query Transactions/sec"
+            label="ICP Burned (Fees)"
+            value={formatNumber(Number(calculateSum(stats, "icp_burned_fees")) / 100_000_000)}
+            unit="ICP"
+            subtitle={`Total in last ${selectedDays} days`}
+            isHighlight
+          />
+          <StatCard
+            label="Internet Identity Users"
+            value={formatNumber(latestStats.internet_identity_user_count)}
+            subtitle="Total registered users"
+            isHighlight
+          />
+        </StatsSection>
+
+        {/* Network Activity */}
+        <StatsSection title="Network Activity" description="Transaction throughput and block production metrics">
+          <StatCard
+            label="Query Transactions/sec"
             value={formatNumber(calculateAverage(stats, "average_query_transactions_per_second"))}
             unit="TPS"
             subtitle={`Latest: ${formatNumber(latestStats.average_query_transactions_per_second)} TPS`}
           />
           <StatCard
-            label="Avg Update Transactions/sec"
+            label="Update Transactions/sec"
             value={formatNumber(calculateAverage(stats, "average_update_transactions_per_second"))}
             unit="TPS"
             subtitle={`Latest: ${formatNumber(latestStats.average_update_transactions_per_second)} TPS`}
           />
           <StatCard
-            label="Avg Blocks per Second"
+            label="Blocks per Second"
             value={formatNumber(calculateAverage(stats, "blocks_per_second_average"))}
             unit="BPS"
             subtitle={`Latest: ${formatNumber(latestStats.blocks_per_second_average)} BPS`}
           />
-        </StatsSection>
-
-        {/* Peak Network Performance */}
-        <StatsSection title={`Peak Performance (${periodLabel})`}>
           <StatCard
-            label="Max Total TPS"
+            label="Peak Total TPS"
             value={formatNumber(calculateMax(stats, "max_total_transactions_per_second"))}
             unit="TPS"
-            subtitle={`Highest transaction rate achieved`}
-          />
-          <StatCard
-            label="Max Query TPS"
-            value={formatNumber(calculateMax(stats, "max_query_transactions_per_second"))}
-            unit="TPS"
-            subtitle={`Peak query transaction rate`}
-          />
-          <StatCard
-            label="Max Update TPS"
-            value={formatNumber(calculateMax(stats, "max_update_transactions_per_second"))}
-            unit="TPS"
-            subtitle={`Peak update transaction rate`}
-          />
-          <StatCard label="Total Boundary Nodes" value={latestStats.total_boundary_nodes} subtitle={`Network edge infrastructure`} />
-        </StatsSection>
-
-        {/* Canisters & Infrastructure - Show totals and growth */}
-        <StatsSection title={`Canisters & Infrastructure (${periodLabel})`}>
-          <StatCard label="Total Canisters" value={formatNumber(latestStats.registered_canisters_count)} subtitle={`Current total (latest)`} />
-          <StatCard label="New Canisters" value={formatNumber(calculateSum(stats, "gross_new_canisters"))} subtitle={`Total created in ${selectedDays} days`} />
-          <StatCard label="Canister Memory Usage" value={formatBytes(latestStats.canister_memory_usage_bytes)} subtitle={`Current usage (latest)`} />
-          <StatCard label="Total Nodes in Subnets" value={latestStats.total_nodes_in_subnets} subtitle={`Current count (latest)`} />
-        </StatsSection>
-
-        {/* Tokens & Economy - Show latest values and averages */}
-        <StatsSection title={`Tokens & Economy (${periodLabel})`}>
-          <StatCard label="ICP Circulating Supply" value={formatNumber(latestStats.circulating_supply)} unit="ICP" subtitle={`Current supply (latest)`} />
-          <StatCard label="ckBTC Total Supply" value={formatNumber(latestStats.ckbtc_total_supply)} unit="ckBTC" subtitle={`Chain-key Bitcoin (latest)`} />
-          <StatCard label="ckETH Total Supply" value={formatNumber(latestStats.cketh_total_supply)} unit="ckETH" subtitle={`Chain-key Ethereum (latest)`} />
-          <StatCard
-            label="Total ICP Burned (Fees)"
-            value={formatNumber(calculateSum(stats, "icp_burned_fees"))}
-            unit="e8s"
-            subtitle={`Total burned in ${selectedDays} days`}
+            subtitle="Highest rate achieved"
           />
         </StatsSection>
 
-        {/* Cycles & Energy */}
-        <StatsSection title={`Cycles & Energy (${periodLabel})`}>
+        {/* Infrastructure */}
+        <StatsSection title="Infrastructure" description="Canisters, nodes, and network infrastructure">
+          <StatCard label="New Canisters" value={formatNumber(calculateSum(stats, "gross_new_canisters"))} subtitle={`Created in last ${selectedDays} days`} />
+          <StatCard label="Canister Memory Usage" value={formatBytes(latestStats.canister_memory_usage_bytes)} subtitle="Current total usage" />
+          <StatCard label="Total Subnet Nodes" value={latestStats.total_nodes_in_subnets} subtitle="Active consensus nodes" />
+          <StatCard label="Boundary Nodes" value={latestStats.total_boundary_nodes} subtitle="Network edge infrastructure" />
+        </StatsSection>
+
+        {/* Token Economy */}
+        <StatsSection title="Token Economy" description="ICP tokens, chain-key assets, and economic metrics">
+          <StatCard label="ckBTC Supply" value={formatNumber(latestStats.ckbtc_total_supply)} unit="ckBTC" subtitle="Chain-key Bitcoin" />
+          <StatCard label="ckETH Supply" value={formatNumber(latestStats.cketh_total_supply)} unit="ckETH" subtitle="Chain-key Ethereum" />
           <StatCard
-            label="Avg Cycle Burn Rate"
+            label="ICP Burned (Fees)"
+            value={formatNumber(Number(calculateSum(stats, "icp_burned_fees")) / 100_000_000)}
+            unit="ICP"
+            subtitle={`Total in last ${selectedDays} days`}
+          />
+          <StatCard
+            label="Total ICP Burned"
+            value={formatNumber(Number(latestStats.icp_burned_total) / 100_000_000)}
+            unit="ICP"
+            subtitle="All-time total burned"
+          />
+        </StatsSection>
+
+        {/* Energy & Cycles */}
+        <StatsSection title="Energy & Cycles" description="Network energy consumption and computation cycles">
+          <StatCard
+            label="Cycle Burn Rate"
             value={formatNumber(calculateAverage(stats, "cycle_burn_rate_average"))}
             unit="cycles/day"
             subtitle={`Average over ${selectedDays} days`}
           />
-          <StatCard label="Total Cycle Burn" value={formatNumber(latestStats.total_cycle_burn_till_date)} unit="cycles" subtitle={`All-time total (latest)`} />
           <StatCard
-            label="IC Energy Consumption"
+            label="Total Cycles Burned"
+            value={formatNumber(latestStats.total_cycle_burn_till_date)}
+            unit="cycles"
+            subtitle="All-time computation used"
+          />
+          <StatCard
+            label="Network Energy Rate"
             value={formatKwh(latestStats.total_ic_energy_consumption_rate_kwh)}
             unit="h"
-            subtitle={`Total network power usage`}
+            subtitle="Total power consumption"
           />
-          <StatCard
-            label="Node Energy Rate"
-            value={formatKwh(latestStats.node_energy_consumption_rate_kwh)}
-            unit="h per node"
-            subtitle={`Average per node consumption`}
-          />
+          <StatCard label="Per Node Energy Rate" value={formatKwh(latestStats.node_energy_consumption_rate_kwh)} unit="h" subtitle="Average per node" />
         </StatsSection>
 
-        {/* Users & Identity - Show totals and averages */}
-        <StatsSection title={`Users & Identity (${periodLabel})`}>
-          <StatCard label="Internet Identity Users" value={formatNumber(latestStats.internet_identity_user_count)} subtitle={`Total users (latest)`} />
+        {/* User Activity */}
+        <StatsSection title="User Activity" description="Internet Identity usage and account activity">
           <StatCard
-            label="Total II Logins"
+            label="Daily II Logins"
             value={formatNumber(calculateSum(stats, "daily_internet_identity_logins"))}
-            subtitle={`Total logins in ${selectedDays} days`}
+            subtitle={`Total in last ${selectedDays} days`}
           />
           <StatCard
-            label="Avg Daily Unique Accounts"
+            label="Daily Unique Accounts"
             value={formatNumber(calculateAverage(stats, "unique_accounts_per_day"))}
             subtitle={`Average over ${selectedDays} days`}
           />
-          <StatCard
-            label="Peak Daily Unique Accounts"
-            value={formatNumber(calculateMax(stats, "unique_accounts_per_day"))}
-            subtitle={`Highest daily activity`}
-          />
+          <StatCard label="Peak Daily Accounts" value={formatNumber(calculateMax(stats, "unique_accounts_per_day"))} subtitle="Highest daily activity" />
         </StatsSection>
 
-        {/* Governance & Community Fund */}
-        <StatsSection title={`Governance & Community Fund (${periodLabel})`}>
-          <StatCard label="Total Neurons" value={formatNumber(latestStats.governance_neurons_total)} subtitle={`Current count (latest)`} />
-          <StatCard label="Total Proposals" value={formatNumber(latestStats.proposals_count)} subtitle={`Current total (latest)`} />
-          <StatCard label="Total Locked ICP" value={formatNumber(latestStats.governance_total_locked_e8s)} unit="e8s" subtitle={`Current locked (latest)`} />
+        {/* Governance */}
+        <StatsSection title="Governance & Staking" description="Network governance, neurons, and staking rewards">
+          <StatCard label="Total Neurons" value={formatNumber(latestStats.governance_neurons_total)} subtitle="Staking participants" />
+          <StatCard label="Total Proposals" value={formatNumber(latestStats.proposals_count)} subtitle="Governance proposals" />
+          <StatCard
+            label="Total Locked ICP"
+            value={formatNumber(Number(latestStats.governance_total_locked_e8s) / 100_000_000)}
+            unit="ICP"
+            subtitle="Currently staked"
+          />
           <StatCard
             label="Community Fund Maturity"
-            value={formatNumber(latestStats.community_fund_total_maturity)}
-            unit="e8s"
-            subtitle={`Total maturity available`}
+            value={formatNumber(Number(latestStats.community_fund_total_maturity) / 100_000_000)}
+            unit="ICP"
+            subtitle="Available maturity"
           />
         </StatsSection>
 
-        {/* Neuron Fund Details */}
-        <StatsSection title={`Neuron Fund Details (Latest)`}>
-          <StatCard
-            label="Fund Total Staked"
-            value={formatNumber(latestStats.governance_neuron_fund_total_staked_e8s)}
-            unit="e8s"
-            subtitle={`Total ICP staked in fund`}
-          />
-          <StatCard
-            label="Fund Maturity Equivalent"
-            value={formatNumber(latestStats.governance_neuron_fund_total_maturity_e8s_equivalent)}
-            unit="e8s"
-            subtitle={`Maturity in e8s equivalent`}
-          />
-          <StatCard
-            label="Latest Reward Round"
-            value={formatNumber(latestStats.governance_latest_reward_round_total_available_e8s)}
-            unit="e8s"
-            subtitle={`Most recent reward distribution`}
-          />
-          <StatCard label="Total ICP Burned" value={formatNumber(latestStats.icp_burned_total)} unit="e8s" subtitle={`All-time total burned`} />
-        </StatsSection>
-
-        {/* Staking Rewards - Show latest values */}
-        <StatsSection title="Staking Rewards (Estimated %, Latest)">
-          <StatCard label="1 Year" value={latestStats.estimated_rewards_percentage["1_year"].toFixed(2)} unit="%" />
-          <StatCard label="2 Years" value={latestStats.estimated_rewards_percentage["2_year"].toFixed(2)} unit="%" />
-          <StatCard label="4 Years" value={latestStats.estimated_rewards_percentage["4_year"].toFixed(2)} unit="%" />
-          <StatCard label="8 Years" value={latestStats.estimated_rewards_percentage["8_year"].toFixed(2)} unit="%" />
+        {/* Staking Rewards */}
+        <StatsSection title="Current Staking Rewards" description="Estimated annual percentage yields for different staking periods">
+          <StatCard label="1 Year Staking" value={latestStats.estimated_rewards_percentage["1_year"].toFixed(2)} unit="% APY" />
+          <StatCard label="2 Year Staking" value={latestStats.estimated_rewards_percentage["2_year"].toFixed(2)} unit="% APY" />
+          <StatCard label="4 Year Staking" value={latestStats.estimated_rewards_percentage["4_year"].toFixed(2)} unit="% APY" />
+          <StatCard label="8 Year Staking" value={latestStats.estimated_rewards_percentage["8_year"].toFixed(2)} unit="% APY" />
         </StatsSection>
 
         {/* Raw Data Section - Only in DEV mode */}
         {IS_DEV && (
-          <div className="mt-12">
-            <div className="-blue-700/50 mb-4 rounded-lg bg-blue-900/20 p-3">
-              <p className="text-sm font-medium text-blue-300">🛠️ Development Mode Only - This section is only visible when IS_DEV = true</p>
+          <section className="mt-16">
+            <div className="mb-6 rounded-lg bg-blue-900/20 p-4">
+              <p className="text-sm font-medium text-blue-300">🛠️ Development Mode - Raw data section</p>
             </div>
 
-            <h2 className="mb-4 text-xl font-bold text-white">Raw Data Sample (Latest Entry from {periodLabel})</h2>
+            <StatsSection title="Raw Data Sample" description={`Latest entry from ${periodLabel}`}>
+              <div className="col-span-full">
+                <div className="bg-coolgray-900 mb-4 rounded-lg p-4">
+                  <h3 className="text-coolgray-300 mb-2 text-sm font-medium">API Query URL:</h3>
+                  <code className="text-xs break-all text-blue-400">
+                    {(() => {
+                      const now = Math.floor(Date.now() / 1000)
+                      const startTime = now - selectedDays * 24 * 60 * 60
+                      return `https://ic-api.internetcomputer.org/api/v3/daily-stats?start=${startTime}&end=${now}&format=json`
+                    })()}
+                  </code>
+                </div>
 
-            {/* Query URL */}
-            <div className="bg-coolgray-900 -coolgray-700 mb-4 rounded-lg p-3">
-              <h3 className="text-coolgray-300 mb-2 text-sm font-medium">API Query URL:</h3>
-              <code className="text-xs break-all text-blue-400">
-                {(() => {
-                  const now = Math.floor(Date.now() / 1000)
-                  const startTime = now - selectedDays * 24 * 60 * 60
-                  return `https://ic-api.internetcomputer.org/api/v3/daily-stats?start=${startTime}&end=${now}&format=json`
-                })()}
-              </code>
-            </div>
-
-            <div className="bg-coolgray-950 overflow-x-auto rounded-lg p-4">
-              <pre className="text-coolgray-300 text-sm whitespace-pre">{JSON.stringify(latestStats, null, 2)}</pre>
-            </div>
-          </div>
+                <div className="bg-coolgray-950 overflow-x-auto rounded-lg p-4">
+                  <pre className="text-coolgray-300 text-sm whitespace-pre">{JSON.stringify(latestStats, null, 2)}</pre>
+                </div>
+              </div>
+            </StatsSection>
+          </section>
         )}
       </div>
     </div>
