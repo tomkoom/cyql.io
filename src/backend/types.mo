@@ -2,6 +2,9 @@ import Category "./categories";
 
 module {
 
+  public type Tokens = { e8s : Nat };
+  public type ApiKey = Text;
+
   public type GetProjectsBase = {
     q : Text; // search query
 
@@ -40,65 +43,6 @@ module {
     #most_upvoted;
     #least_upvoted;
     #recently_updated
-  };
-
-  // ...
-
-  public type Tokens = { e8s : Nat };
-  public type ApiKey = Text;
-
-  public type ProjectV2 = {
-    id : Text;
-    name : Text;
-    description : Text;
-    category : [Category.CategoryId];
-    website : Text;
-
-    // logo
-    logoUrl : Text;
-
-    // social links
-    twitter : Text;
-    discord : Text;
-    telegram : Text;
-    github : Text;
-    medium : Text;
-
-    // ic links
-    dscvr : Text;
-    distrikt : Text;
-    openchat : Text;
-    taggr : Text;
-    seers : Text;
-    nuance : Text;
-    catalyze : Text;
-    funded : Text;
-
-    // token ledger
-    tokenCanisterId : Text;
-    tokenStandard : Text;
-
-    // nft ledger
-    nftCanisterId : Text;
-    nftStandard : Text;
-
-    // canisters
-    frontendCanisterId : Text;
-    backendCanisterId : Text;
-
-    // links
-    dfinityForumShowcase : Text;
-    nnsLaunchpadUrl : Text;
-    app : Text;
-    docs : Text;
-    faq : Text;
-    whitepaper : Text;
-
-    // meta
-    isActive : Bool;
-    createdAt : Text;
-    updatedAt : Text;
-    listedBy : Text
   };
 
   public type ProjectId = Nat;

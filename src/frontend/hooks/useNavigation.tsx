@@ -40,6 +40,13 @@ export const useNavigation = () => {
     })
   }
 
+  const toStats = () => {
+    navigate({
+      pathname: "stats",
+      search: "",
+    })
+  }
+
   const toMostUpvoted = () => {
     navigate({
       pathname: "projects",
@@ -108,6 +115,7 @@ export const useNavigation = () => {
     toHome,
     toCollections,
     toPromote,
+    toStats,
 
     // projects
     toProjects,

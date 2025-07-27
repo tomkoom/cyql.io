@@ -1,8 +1,8 @@
-import { ProjectCard } from "@/components"
+import { ProjectCard, UnifiedBreadcrumb } from "@/components"
 import { Spinner } from "@/components/ui"
+import { ROUTES } from "@/constants"
 import { useCollectionQuery } from "@/hooks/queries/useCollectionsQuery"
 import { useProjectsByIdsQuery } from "@/hooks/queries/useProjectsQuery"
-import { CollectionsBreadcrumb } from "."
 
 interface CollectionDetailProps {
   categoryId: string
@@ -17,9 +17,14 @@ export default function CollectionDetail({ categoryId, categoryLabel }: Collecti
   const isLoading = isCollectionLoading || isProjectsLoading
   const hasError = collectionError || projectsError
 
+  const breadcrumbItems = [
+    { label: "Collections", href: ROUTES.COLLECTIONS },
+    { label: categoryLabel, isCurrentPage: true },
+  ]
+
   return (
     <section>
-      <CollectionsBreadcrumb categoryId={categoryId} categoryLabel={categoryLabel} />
+      <UnifiedBreadcrumb items={breadcrumbItems} />
 
       <div className="mb-6">
         <h1 className="mb-2 text-4xl font-bold text-white">{categoryLabel} Collection</h1>

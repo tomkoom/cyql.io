@@ -1,11 +1,11 @@
+import { PageHeader, UnifiedBreadcrumb } from "@/components"
 import { Icon } from "@/components/Icon"
-import PageHeader from "@/components/PageHeader"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useProjectsQuery, useQueryParams } from "@/hooks"
 import { Search } from "lucide-react"
 import { ChangeEvent, KeyboardEvent, useState } from "react"
-import { Categories, Filter, Pagination, ProjectsBreadcrumb, ProjectsList, Sort } from "."
+import { Categories, Filter, Pagination, ProjectsList, Sort } from "."
 
 const TITLE = "Discover New Projects"
 const DESCRIPTION = "Web3-native data on the Internet Computer"
@@ -36,9 +36,13 @@ export default function Projects() {
     }
   }
 
+  const breadcrumbItems = [{ label: "Projects", isCurrentPage: true }]
+
   return (
     <div className="mx-auto mb-16 flex max-w-[1440px] flex-col gap-2">
-      <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<ProjectsBreadcrumb />} />
+      <header>
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />} />
+      </header>
 
       <div className="flex items-center gap-2">
         <div className="relative flex-1">

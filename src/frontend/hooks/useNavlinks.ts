@@ -18,7 +18,7 @@ interface UseNavlinks {
 }
 
 export const useNavlinks = (): UseNavlinks => {
-  const { toHome, toProjects, toCollections, toPromote, toAdmin } = useNavigation()
+  const { toAdmin, toHome, toProjects, toCollections, toPromote, toStats } = useNavigation()
   const { userId } = useAuth()
   const location = useLocation()
   const currentPathname = location.pathname
@@ -46,13 +46,19 @@ export const useNavlinks = (): UseNavlinks => {
       isActive: currentPathname.startsWith(ROUTES.COLLECTIONS),
     },
     {
+      label: "Stats",
+      pathname: ROUTES.STATS,
+      route: toStats,
+      icon: undefined,
+      isActive: currentPathname.startsWith(ROUTES.STATS),
+    },
+    {
       label: "Promote",
       pathname: ROUTES.PROMOTE,
       route: toPromote,
       icon: undefined,
       isActive: currentPathname.startsWith(ROUTES.PROMOTE),
     },
-
     // { label: "List Project", pathname: "/list", route: toList, icon: iPlus, isActive: currentPathname === "/list" },
     // { label: "Proposals", pathname: "/proposals", route: toProposals, icon: undefined, isActive: currentPathname.startsWith("/proposals") },
     // { label: "ICRC Explorer", pathname: "/icrc_scan", route: toIcrcScan, icon: undefined, isActive: currentPathname.startsWith("/icrc_scan") },

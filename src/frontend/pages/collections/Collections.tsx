@@ -1,11 +1,13 @@
+import { UnifiedBreadcrumb } from "@/components"
 import PageHeader from "@/components/PageHeader"
 import { Spinner } from "@/components/ui"
+import { ROUTES } from "@/constants"
 import { useCategoriesQuery } from "@/hooks/queries/useCategoriesQuery"
 import { useActiveCollectionsQuery } from "@/hooks/queries/useCollectionsQuery"
 import { useProjectsByIdsQuery } from "@/hooks/queries/useProjectsQuery"
 import { useMemo } from "react"
 import { useSearchParams } from "react-router-dom"
-import { CollectionBlock, CollectionDetail, CollectionsBreadcrumb, CollectionsFooter } from "."
+import { CollectionBlock, CollectionDetail, CollectionsFooter } from "."
 
 const TITLE = "Collections"
 const DESCRIPTION = "Collections of projects featured by category"
@@ -83,10 +85,24 @@ export default function Collections() {
     setSearchParams({})
   }
 
+  // Create breadcrumb items
+  const createBreadcrumbs = () => {
+    if (selectedCategoryId) {
+      const categoryLabel = getCategoryLabel(selectedCategoryId)
+      return [
+        { label: "Collections", href: ROUTES.COLLECTIONS },
+        { label: categoryLabel, isCurrentPage: true },
+      ]
+    }
+    return [{ label: "Collections", isCurrentPage: true }]
+  }
+
   if (isLoading) {
     return (
       <div className="mx-auto max-w-[1440px] px-4 pb-8">
-        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<CollectionsBreadcrumb />} />
+        <header>
+          <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={createBreadcrumbs()} />} />
+        </header>
         <main className="flex items-center justify-center gap-2">
           Loading... <Spinner />
         </main>
@@ -97,7 +113,7 @@ export default function Collections() {
   if (error) {
     return (
       <div className="mx-auto max-w-[1440px] px-4 pb-8">
-        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<CollectionsBreadcrumb />} />
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={createBreadcrumbs()} />} />
         <main className="rounded-lg bg-red-950/20 p-6 text-center">
           <p className="mb-2 text-red-400">Failed to load collections</p>
           <p className="text-coolgray-500 text-sm">Please try again later</p>
@@ -121,7 +137,7 @@ export default function Collections() {
 
   return (
     <div className="mx-auto max-w-[1440px] pb-8">
-      <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<CollectionsBreadcrumb />} />
+      <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={createBreadcrumbs()} />} />
 
       {activeCollections.length === 0 ? (
         <main className="bg-coolgray-950 rounded-lg p-12 text-center">
