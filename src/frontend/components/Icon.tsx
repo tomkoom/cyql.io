@@ -15,7 +15,17 @@ interface IconProps {
 export const Icon: FC<IconProps> = ({ lucideName, color, size = 18, strokeWidth = 3, fill, className }) => {
   if (lucideName) {
     const LucideIcon = lucideIcons[lucideName]
-    return <LucideIcon color={color} size={size} strokeWidth={strokeWidth} fill={fill} className={className} />
+
+    // Only pass fill prop if it's explicitly provided
+    const iconProps = {
+      color,
+      size,
+      strokeWidth,
+      className,
+      ...(fill && { fill }),
+    }
+
+    return <LucideIcon {...iconProps} />
   }
   return null
 }

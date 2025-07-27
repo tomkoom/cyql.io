@@ -5,7 +5,7 @@ import { X_PROMOTE_URL } from "@/constants/constants"
 
 const FEATURES = [
   {
-    icon: THIINGS.STAR_2,
+    icon: THIINGS.STAR,
     title: "Featured Listings",
     description: "Get top placement in our project directory for maximum visibility and increased user discovery",
   },
