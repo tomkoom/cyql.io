@@ -4,4 +4,3 @@ export { default as Pagination } from "./Pagination"
 export { default as ProjectsBreadcrumb } from "./ProjectsBreadcrumb"
 export { default as ProjectsList } from "./ProjectsList/ProjectsList"
 export { default as Sort } from "./Sort"
-
