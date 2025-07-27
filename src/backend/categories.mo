@@ -1,7 +1,8 @@
 module {
 
+  public type CategoryId = Text;
   public type CategoryLabel = Text;
-  public type Category = { id : Text; lbl : CategoryLabel };
+  public type Category = { id : CategoryId; lbl : CategoryLabel };
   public type CategoryWithSize = {
     category : Category;
     size : Nat

@@ -93,10 +93,11 @@ export default function ProjectsList() {
   const projects = projectsData?.data || []
   const startIndex = projectsData?.startIndex || 0
   const filteredProjects = useMemo(() => projects.filter((project) => filterBySearch(project, queryParams.q)), [projects, queryParams.q])
+  const blankStyle = "text-coolgray-400 flex justify-center text-sm"
 
-  if (isLoading) return <div className="text-coolgray-400 flex justify-center text-sm">Loading...</div>
-  if (error) return <div className="text-coolgray-400 flex justify-center text-sm">Error loading projects. Please try again.</div>
-  if (filteredProjects.length < 1) return <div className="text-coolgray-400 flex justify-center text-sm">No projects found.</div>
+  if (isLoading) return <div className={blankStyle}>Loading...</div>
+  if (error) return <div className={blankStyle}>Error loading projects. Please try again.</div>
+  if (filteredProjects.length < 1) return <div className={blankStyle}>No projects found.</div>
 
   return (
     <main>
