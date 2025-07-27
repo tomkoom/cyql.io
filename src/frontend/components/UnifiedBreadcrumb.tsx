@@ -1,5 +1,6 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { ROUTES } from "@/constants"
+import { Fragment } from "react"
 import { Link } from "react-router-dom"
 
 export interface BreadcrumbItem {
@@ -26,9 +27,9 @@ export default function UnifiedBreadcrumb({ items, className = "mb-6" }: Unified
 
         {/* Render provided items with separators */}
         {items.map((item, index) => (
-          <>
-            <BreadcrumbSeparator key={`separator-${index}`} />
-            <BreadcrumbItem key={`item-${index}`}>
+          <Fragment key={index}>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
               {item.isCurrentPage || !item.href ? (
                 <BreadcrumbPage>{item.label}</BreadcrumbPage>
               ) : (
@@ -37,7 +38,7 @@ export default function UnifiedBreadcrumb({ items, className = "mb-6" }: Unified
                 </BreadcrumbLink>
               )}
             </BreadcrumbItem>
-          </>
+          </Fragment>
         ))}
       </BreadcrumbList>
     </Breadcrumb>

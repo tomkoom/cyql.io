@@ -44,3 +44,8 @@ export const calculateMax = (stats: ICDailyStats[], field: keyof ICDailyStats): 
 export const getLatest = (stats: ICDailyStats[], field: keyof ICDailyStats): string => {
   return (stats[0]?.[field] as string) || "0"
 }
+
+// Convert e8s (smallest unit) to token amount
+export const formatE8sToTokens = (e8sValue: string | number | bigint): number => {
+  return Number(e8sValue) / 100_000_000
+}
