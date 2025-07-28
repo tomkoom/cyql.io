@@ -49,3 +49,19 @@ export const getLatest = (stats: ICDailyStats[], field: keyof ICDailyStats): str
 export const formatE8sToTokens = (e8sValue: string | number | bigint): number => {
   return Number(e8sValue) / 100_000_000
 }
+
+// Generate chart data from stats array for a specific field
+export const generateChartData = (stats: any[], field: string, limit = 14): number[] => {
+  return stats
+    .slice(0, limit) // Take last N days
+    .reverse() // Reverse to show chronological order
+    .map((stat) => Number(stat[field]) || 0)
+}
+
+// Generate chart data with e8s conversion
+export const generateChartDataE8s = (stats: any[], field: string, limit = 14): number[] => {
+  return stats
+    .slice(0, limit)
+    .reverse()
+    .map((stat) => formatE8sToTokens(stat[field]))
+}

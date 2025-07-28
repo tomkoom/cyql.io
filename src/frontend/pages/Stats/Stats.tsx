@@ -4,7 +4,17 @@ import { Button } from "@/components/ui/button"
 import { useICStatsQuery } from "@/hooks/queries/useICStatsQuery"
 import { useState } from "react"
 import { RawData, StatCard, StatsSection } from "./components"
-import { calculateAverage, calculateMax, calculateSum, formatBytes, formatE8sToTokens, formatKwh, formatNumber } from "./utils"
+import {
+  calculateAverage,
+  calculateMax,
+  calculateSum,
+  formatBytes,
+  formatE8sToTokens,
+  formatKwh,
+  formatNumber,
+  generateChartData,
+  generateChartDataE8s,
+} from "./utils"
 
 const TITLE = "Internet Computer Stats"
 const DESCRIPTION = "Real-time network statistics and metrics from the Internet Computer"
@@ -90,6 +100,7 @@ export default function Stats() {
             unit="ICP"
             subtitle="Current token supply"
             isHighlight
+            chartData={generateChartDataE8s(stats, "circulating_supply")}
           />
           <StatCard
             label="Total Locked ICP"
@@ -97,6 +108,7 @@ export default function Stats() {
             unit="ICP"
             subtitle="Currently staked"
             isHighlight
+            chartData={generateChartDataE8s(stats, "governance_total_locked_e8s")}
           />
           <StatCard
             label="Total ICP Burned"
@@ -104,6 +116,7 @@ export default function Stats() {
             unit="ICP"
             subtitle="All-time total burned"
             isHighlight
+            chartData={generateChartDataE8s(stats, "icp_burned_total")}
           />
           <StatCard
             label="Total Transactions/sec"
@@ -111,13 +124,21 @@ export default function Stats() {
             unit="TPS"
             subtitle={`Latest: ${formatNumber(latestStats.average_transactions_per_second)} TPS`}
             isHighlight
+            chartData={generateChartData(stats, "average_transactions_per_second")}
           />
-          <StatCard label="Total Canisters" value={formatNumber(latestStats.registered_canisters_count)} subtitle="Smart contracts on IC" isHighlight />
+          <StatCard
+            label="Total Canisters"
+            value={formatNumber(latestStats.registered_canisters_count)}
+            subtitle="Smart contracts on IC"
+            isHighlight
+            chartData={generateChartData(stats, "registered_canisters_count")}
+          />
           <StatCard
             label="New Canisters"
             value={formatNumber(calculateSum(stats, "gross_new_canisters"))}
             subtitle={`Created in last ${selectedDays} days`}
             isHighlight
+            chartData={generateChartData(stats, "gross_new_canisters")}
           />
           <StatCard
             label="ICP Burned (Fees)"
@@ -125,12 +146,14 @@ export default function Stats() {
             unit="ICP"
             subtitle={`Total in last ${selectedDays} days`}
             isHighlight
+            chartData={generateChartDataE8s(stats, "icp_burned_fees")}
           />
           <StatCard
             label="Internet Identity Users"
             value={formatNumber(latestStats.internet_identity_user_count)}
             subtitle="Total registered users"
             isHighlight
+            chartData={generateChartData(stats, "internet_identity_user_count")}
           />
         </StatsSection>
 
