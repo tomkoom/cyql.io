@@ -26,7 +26,7 @@ export const MiniChart = ({ data, color = "#ffffff", isHighlight = false }: Mini
     const ctx = canvasRef.current.getContext("2d")
     if (!ctx) return
 
-    const chartColor = isHighlight ? "#ffffff" : "#ffffff"
+    const chartColor = isHighlight ? "#6200ea" : "#ffffff"
     const borderWidth = 4
     const padding = Math.ceil(borderWidth / 2) + 2 // Half the border width plus 2px buffer
 
@@ -37,8 +37,8 @@ export const MiniChart = ({ data, color = "#ffffff", isHighlight = false }: Mini
         datasets: [
           {
             data: data,
-            // borderColor: chartColor,
-            borderColor: `${chartColor}70`,
+            borderColor: chartColor,
+            // borderColor: `${chartColor}70`,
             // backgroundColor: `${chartColor}20`, // 20% opacity
             backgroundColor: "transparent", // No background fill
             borderWidth: borderWidth,
