@@ -9,7 +9,12 @@ module {
     name : Text
   };
 
-  public type ProjectV2 = {
+  public type ETH_Project = {
+    id : Text;
+    name : Text
+  };
+
+  public type ICP_Project = {
     id : Text;
     name : Text;
     description : Text;

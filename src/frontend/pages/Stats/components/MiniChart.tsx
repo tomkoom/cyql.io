@@ -10,7 +10,7 @@ interface MiniChartProps {
   isHighlight?: boolean
 }
 
-export const MiniChart = ({ data, color = "#6366f1", isHighlight = false }: MiniChartProps) => {
+export const MiniChart = ({ data, color = "#ffffff", isHighlight = false }: MiniChartProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const chartRef = useRef<ChartJS | null>(null)
 
@@ -26,7 +26,9 @@ export const MiniChart = ({ data, color = "#6366f1", isHighlight = false }: Mini
     const ctx = canvasRef.current.getContext("2d")
     if (!ctx) return
 
-    const chartColor = isHighlight ? "#22d3ee" : color // Use accent color for highlights
+    const chartColor = isHighlight ? "#ffffff" : "#ffffff"
+    const borderWidth = 4
+    const padding = Math.ceil(borderWidth / 2) + 2 // Half the border width plus 2px buffer
 
     const config: ChartConfiguration<"line"> = {
       type: "line",
@@ -35,10 +37,12 @@ export const MiniChart = ({ data, color = "#6366f1", isHighlight = false }: Mini
         datasets: [
           {
             data: data,
-            borderColor: chartColor,
-            backgroundColor: `${chartColor}20`, // 20% opacity
-            borderWidth: 1.5,
-            fill: true,
+            // borderColor: chartColor,
+            borderColor: `${chartColor}70`,
+            // backgroundColor: `${chartColor}20`, // 20% opacity
+            backgroundColor: "transparent", // No background fill
+            borderWidth: borderWidth,
+            fill: false, // No fill - just the line
             tension: 0, // No smoothing - rough edges
             pointRadius: 0,
             pointHoverRadius: 0,
@@ -48,6 +52,14 @@ export const MiniChart = ({ data, color = "#6366f1", isHighlight = false }: Mini
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: {
+          padding: {
+            top: padding,
+            bottom: padding,
+            left: padding,
+            right: padding,
+          },
+        },
         interaction: {
           intersect: false,
           mode: "index",
