@@ -1,4 +1,5 @@
 import { PageHeader, UnifiedBreadcrumb } from "@/components"
+import { Icon } from "@/components/Icon"
 import { Spinner } from "@/components/ui"
 import { Button } from "@/components/ui/button"
 import { useICStatsQuery } from "@/hooks/queries/useICStatsQuery"
@@ -78,8 +79,9 @@ export default function Stats() {
                 variant={selectedDays === days ? "accent" : "secondary"}
                 size="sm"
                 onClick={() => setSelectedDays(days)}
-                className="min-w-[80px]"
+                className="font-mono-default min-w-[80px] transition-none"
               >
+                {selectedDays === days && <Icon lucideName="Check" />}
                 {days} days
               </Button>
             ))}

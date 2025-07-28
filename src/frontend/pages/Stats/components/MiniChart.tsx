@@ -29,7 +29,7 @@ export const MiniChart = ({ data, color = currentColor, isHighlight = false }: M
     if (!ctx) return
 
     const chartColor = isHighlight ? color : "#ffffff"
-    const borderWidth = 4
+    const borderWidth = 2
     const padding = Math.ceil(borderWidth / 2) + 2 // Half the border width plus 2px buffer
 
     const config: ChartConfiguration<"line"> = {
