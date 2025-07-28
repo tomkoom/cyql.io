@@ -10,7 +10,9 @@ interface MiniChartProps {
   isHighlight?: boolean
 }
 
-export const MiniChart = ({ data, color = "#ffffff", isHighlight = false }: MiniChartProps) => {
+const currentColor = "#00bc7d"
+
+export const MiniChart = ({ data, color = currentColor, isHighlight = false }: MiniChartProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const chartRef = useRef<ChartJS | null>(null)
 
@@ -26,7 +28,7 @@ export const MiniChart = ({ data, color = "#ffffff", isHighlight = false }: Mini
     const ctx = canvasRef.current.getContext("2d")
     if (!ctx) return
 
-    const chartColor = isHighlight ? "#6200ea" : "#ffffff"
+    const chartColor = isHighlight ? color : "#ffffff"
     const borderWidth = 4
     const padding = Math.ceil(borderWidth / 2) + 2 // Half the border width plus 2px buffer
 
