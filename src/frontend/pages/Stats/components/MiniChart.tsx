@@ -10,7 +10,7 @@ interface MiniChartProps {
   isHighlight?: boolean
 }
 
-const currentColor = "#00bc7d"
+const currentColor = "#00d492"
 
 export const MiniChart = ({ data, color = currentColor, isHighlight = false }: MiniChartProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)

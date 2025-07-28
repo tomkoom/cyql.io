@@ -10,7 +10,7 @@ interface PriceLabelProps {
 }
 
 export default function PriceLabel({ price, change, isLoading = false, showCurrency = true, currencySymbol = "$", className = "" }: PriceLabelProps) {
-  const changeColor = change > 0 ? "text-lime-500" : change < 0 ? "text-red-500" : "text-coolgray-400"
+  const changeColor = change > 0 ? "text-emerald-500" : change < 0 ? "text-red-500" : "text-coolgray-400"
 
   const changeIcon = change > 0 ? "ArrowUp" : change < 0 ? "ArrowDown" : null
 

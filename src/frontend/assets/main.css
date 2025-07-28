@@ -438,8 +438,8 @@
   --color-accent-1: #6200ea;
   --color-accent-2: #651fff;
   --color-accent-3: #7c4dff;
-  --color-chart-1: #a2f4fd;
-  --color-chart-2: #96f7e4;
+  /* emerald */
+  --color-secondary-1: #00d492;
 }
 
 @layer base {
