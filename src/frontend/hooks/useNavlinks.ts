@@ -1,7 +1,7 @@
+import { LucideIconsKeys } from "@/components/Icon"
 import { ROUTES } from "@/constants"
 import { useAuth } from "@/context/Auth"
 import { verifyAdmin } from "@/utils/verifyAdmin"
-import { ReactNode } from "react"
 import { useLocation } from "react-router-dom"
 import { useNavigation } from "."
 
@@ -9,7 +9,7 @@ interface Navlink {
   label: string
   pathname: string
   route: () => void
-  icon?: ReactNode
+  icon?: LucideIconsKeys
   isActive: boolean
 }
 
@@ -18,7 +18,7 @@ interface UseNavlinks {
 }
 
 export const useNavlinks = (): UseNavlinks => {
-  const { toAdmin, toHome, toProjects, toCollections, toPromote, toStats } = useNavigation()
+  const { toAdmin, toHome, toProjects, toCollections, toStats, toPromote, toListProject } = useNavigation()
   const { userId } = useAuth()
   const location = useLocation()
   const currentPathname = location.pathname
@@ -46,7 +46,7 @@ export const useNavlinks = (): UseNavlinks => {
       isActive: currentPathname.startsWith(ROUTES.COLLECTIONS),
     },
     {
-      label: "Stats",
+      label: "IC Stats",
       pathname: ROUTES.STATS,
       route: toStats,
       icon: undefined,
@@ -58,6 +58,13 @@ export const useNavlinks = (): UseNavlinks => {
       route: toPromote,
       icon: undefined,
       isActive: currentPathname.startsWith(ROUTES.PROMOTE),
+    },
+    {
+      label: "List Project",
+      pathname: ROUTES.LIST_PROJECT,
+      route: toListProject,
+      icon: "Plus",
+      isActive: currentPathname.startsWith(ROUTES.LIST_PROJECT),
     },
     // { label: "List Project", pathname: "/list", route: toList, icon: iPlus, isActive: currentPathname === "/list" },
     // { label: "Proposals", pathname: "/proposals", route: toProposals, icon: undefined, isActive: currentPathname.startsWith("/proposals") },

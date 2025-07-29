@@ -8,7 +8,7 @@ export const useNavigation = () => {
   const { queryParamsString } = useQueryParams()
   const icrcLedgerId = useAppSelector(selectIcrcLedgerId)
 
-  const goBack = () => navigate(-1)
+  const toBack = () => navigate(-1)
 
   const toHome = () => {
     navigate({
@@ -33,6 +33,13 @@ export const useNavigation = () => {
     })
   }
 
+  const toStats = () => {
+    navigate({
+      pathname: "stats",
+      search: "",
+    })
+  }
+
   const toPromote = () => {
     navigate({
       pathname: "promote",
@@ -40,9 +47,9 @@ export const useNavigation = () => {
     })
   }
 
-  const toStats = () => {
+  const toListProject = () => {
     navigate({
-      pathname: "stats",
+      pathname: "list-project",
       search: "",
     })
   }
@@ -64,12 +71,6 @@ export const useNavigation = () => {
     })
 
   // proposals
-
-  const toList = () =>
-    navigate({
-      pathname: "/list",
-      search: "",
-    })
 
   const toProposals = () =>
     navigate({
@@ -111,11 +112,12 @@ export const useNavigation = () => {
     })
 
   return {
-    goBack,
+    toBack,
     toHome,
     toCollections,
-    toPromote,
     toStats,
+    toPromote,
+    toListProject,
 
     // projects
     toProjects,
@@ -123,7 +125,6 @@ export const useNavigation = () => {
     toProject,
 
     // proposals
-    toList,
     toProposals,
     toProposal,
 

@@ -7,10 +7,10 @@ interface BackBtnProps {
 }
 
 export default function BackBtn({ className }: BackBtnProps) {
-  const { goBack } = useNavigation()
+  const { toBack } = useNavigation()
 
   return (
-    <Button variant="secondary" onClick={goBack} className={className}>
+    <Button variant="secondary" onClick={toBack} className={className}>
       {iArrowLeft} Back
     </Button>
   )

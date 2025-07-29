@@ -1,4 +1,5 @@
 import { Icon, LucideIconsKeys } from "@/components/Icon"
+import { Button } from "@/components/ui/button"
 import { useNavigation } from "@/hooks"
 import { useFormattedProjectsCount } from "@/hooks/queries/useProjectsStats"
 
@@ -39,7 +40,7 @@ const HEADER_ELEMENTS: HeaderElement[] = [
 ]
 
 export default function Header() {
-  const { toProjects } = useNavigation()
+  const { toProjects, toListProject } = useNavigation()
   const { formattedCount } = useFormattedProjectsCount()
 
   return (
@@ -59,13 +60,19 @@ export default function Header() {
           </li>
         ))}
       </ul>
-      <p className="text-coolgray-500 text-xl">
-        Explore{" "}
-        <span className="text-accent-3 hover:text-accent-1 cursor-pointer font-bold underline transition-all duration-300" onClick={toProjects}>
-          {formattedCount}
-        </span>{" "}
-        #ic projects
-      </p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Button
+          variant="outline"
+          size="lg"
+          className="!border-accent-3 !bg-accent-3/10 !text-accent-3 hover:!bg-accent-3/20 px-4 text-lg font-bold hover:!text-white"
+          onClick={toProjects}
+        >
+          Explore {formattedCount} projects
+        </Button>
+        {/* <Button variant="outline" size="lg" className="text-coolgray-400 px-4 text-lg font-bold" onClick={toListProject}>
+          List a project
+        </Button> */}
+      </div>
     </header>
   )
 }

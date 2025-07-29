@@ -1,3 +1,4 @@
+import { Icon } from "@/components/Icon"
 import { Logo } from "@/components/ui"
 import { useAuth } from "@/context/Auth"
 import { useNavigation, useNavlinks } from "@/hooks"
@@ -20,10 +21,11 @@ export default function Navigation() {
               key={link.pathname}
               to={link.pathname}
               className={twMerge(
-                "hover:text-accent-3 text-coolgray-200 relative px-1 py-1 font-semibold transition-all duration-200 ease-in-out",
+                "hover:text-accent-3 text-coolgray-200 relative flex items-center gap-1 px-1 py-1 font-semibold transition-all duration-200 ease-in-out",
                 link.isActive && "text-accent-3 shadow-[0_2px_0_0_theme(colors.accent.3)]"
               )}
             >
+              {link.icon && <Icon lucideName={link.icon} />}
               {link.label}
             </Link>
           ))}
