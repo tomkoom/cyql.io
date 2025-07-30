@@ -17,7 +17,7 @@ export const HomeSection = memo(({ title, projects, isLoading, onViewAll, emptyM
   return (
     <section className={className}>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-xl">{title}</h3>
+        <h3 className="text-xl font-bold">{title}</h3>
         <Button variant="secondary" size="sm" onClick={onViewAll} aria-label={`View all ${title.toLowerCase()} projects`}>
           View All
         </Button>

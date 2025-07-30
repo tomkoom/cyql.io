@@ -1,7 +1,7 @@
 import { useHomeQuery, useNavigation } from "@/hooks"
 import { memo, useCallback, useMemo } from "react"
 import { Header, JoinCommunity } from "."
-import { ErrorState, HighlightedSection, HomeSection } from "./components"
+import { CompactStatsBar, ErrorState, HighlightedSection, HomeSection } from "./components"
 import { HOME_CONSTANTS } from "./constants"
 
 const SectionDivider = memo(() => <div className="bg-coolgray-950 my-4 h-px" />)
@@ -54,6 +54,10 @@ export default function Home() {
   return (
     <div className="mx-auto flex max-w-[1920px] flex-col gap-8">
       <Header />
+
+      {/* Network Stats Bar */}
+      <CompactStatsBar />
+      <SectionDivider />
 
       {/* New Projects Section */}
       <HomeSection

@@ -7,7 +7,7 @@ export default function Profile() {
   const tab = useAppSelector(selectProfile).tab
 
   return (
-    <ProfileStyled className="wrapper1440">
+    <ProfileStyled className="mx-auto w-full max-w-[1440px]">
       <Header />
       <Id />
       <Tabs />

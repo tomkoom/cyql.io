@@ -61,12 +61,7 @@ export default function Header() {
         ))}
       </ul>
       <div className="mt-4 flex flex-wrap gap-2">
-        <Button
-          variant="outline"
-          size="lg"
-          className="!border-accent-3 !bg-accent-3/10 !text-accent-3 hover:!bg-accent-3/20 px-4 text-lg font-bold hover:!text-white"
-          onClick={toProjects}
-        >
+        <Button variant="accentOutline" size="lg" className="px-4 text-lg font-bold" onClick={toProjects}>
           Explore {formattedCount} projects
         </Button>
         {/* <Button variant="outline" size="lg" className="text-coolgray-400 px-4 text-lg font-bold" onClick={toListProject}>

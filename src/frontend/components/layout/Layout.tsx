@@ -12,7 +12,6 @@ import { Toaster } from "react-hot-toast"
 import { Outlet, useLocation } from "react-router-dom"
 import styled from "styled-components"
 import { Cookie, Footer, Navigation, StatsHeader } from "."
-import "./Layout.css"
 
 const toasterStyle = {
   border: "none",

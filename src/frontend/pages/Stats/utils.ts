@@ -65,3 +65,54 @@ export const generateChartDataE8s = (stats: any[], field: string, limit = 14): n
     .reverse()
     .map((stat) => formatE8sToTokens(stat[field]))
 }
+
+// Format large numbers with appropriate units (K, M, B) - compact version
+export const formatCompactNumber = (num: string | number): string => {
+  const numValue = typeof num === "string" ? parseFloat(num) : num
+
+  if (numValue >= 1_000_000_000) {
+    return `${(numValue / 1_000_000_000).toFixed(1)}B`
+  }
+  if (numValue >= 1_000_000) {
+    return `${(numValue / 1_000_000).toFixed(1)}M`
+  }
+  if (numValue >= 1_000) {
+    return `${(numValue / 1_000).toFixed(1)}K`
+  }
+  return numValue.toFixed(0)
+}
+
+// Calculate percentage change between two values
+export const calculatePercentageChange = (current: number, previous: number): { value: string; isPositive: boolean } => {
+  if (previous === 0) return { value: "N/A", isPositive: true }
+
+  const change = ((current - previous) / previous) * 100
+  const isPositive = change >= 0
+  const formattedChange = Math.abs(change) >= 0.1 ? `${Math.abs(change).toFixed(1)}%` : "<0.1%"
+
+  return {
+    value: formattedChange,
+    isPositive,
+  }
+}
+
+// Get value from 7 days ago for comparison
+export const getPreviousValue = (stats: ICDailyStats[], field: keyof ICDailyStats): number => {
+  if (stats.length < 7) return getLatestNumber(stats, field)
+  const value = stats[6][field] // 7 days ago (0-indexed)
+  return typeof value === "string" ? parseFloat(value) : (value as number)
+}
+
+// Get latest value as number (separate from existing getLatest which returns string)
+export const getLatestNumber = (stats: ICDailyStats[], field: keyof ICDailyStats): number => {
+  if (stats.length === 0) return 0
+  const value = stats[0][field]
+  return typeof value === "string" ? parseFloat(value) : (value as number)
+}
+
+// Calculate staking percentage (locked ICP / circulating supply)
+export const calculateStakingPercentage = (lockedE8s: string, circulatingE8s: string): number => {
+  const locked = formatE8sToTokens(lockedE8s)
+  const circulating = formatE8sToTokens(circulatingE8s)
+  return circulating > 0 ? (locked / circulating) * 100 : 0
+}

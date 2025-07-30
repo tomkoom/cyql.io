@@ -1,3 +1,5 @@
+export { CompactStatCard } from "./CompactStatCard"
+export { CompactStatsBar } from "./CompactStatsBar"
 export { ErrorState } from "./ErrorState"
 export { HighlightedSection } from "./HighlightedSection"
 export { HomeSection } from "./HomeSection"

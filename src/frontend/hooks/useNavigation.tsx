@@ -1,136 +1,132 @@
+import { ROUTES } from "@/constants"
 import { useQueryParams } from "@/hooks"
-import { useAppSelector } from "@/hooks/useRedux"
-import { selectIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
+// import { useAppSelector } from "@/hooks/useRedux"
+// import { selectIcrcLedgerId } from "@/state/icrc_scan/icrcLedger"
 import { createSearchParams, useNavigate } from "react-router-dom"
 
 export const useNavigation = () => {
   const navigate = useNavigate()
   const { queryParamsString } = useQueryParams()
-  const icrcLedgerId = useAppSelector(selectIcrcLedgerId)
+  // const icrcLedgerId = useAppSelector(selectIcrcLedgerId)
 
   const toBack = () => navigate(-1)
 
   const toHome = () => {
     navigate({
-      pathname: "/",
+      pathname: ROUTES.HOME,
       search: "",
     })
   }
 
   const toProjects = () => {
     navigate({
-      pathname: "projects",
+      pathname: ROUTES.PROJECTS,
       search: `?${createSearchParams({
         ...queryParamsString,
-      })}`,
-    })
-  }
-
-  const toCollections = () => {
-    navigate({
-      pathname: "collections",
-      search: "",
-    })
-  }
-
-  const toStats = () => {
-    navigate({
-      pathname: "stats",
-      search: "",
-    })
-  }
-
-  const toPromote = () => {
-    navigate({
-      pathname: "promote",
-      search: "",
-    })
-  }
-
-  const toListProject = () => {
-    navigate({
-      pathname: "list-project",
-      search: "",
-    })
-  }
-
-  const toMostUpvoted = () => {
-    navigate({
-      pathname: "projects",
-      search: `?${createSearchParams({
-        ...queryParamsString,
-        sort: "most_upvoted",
       })}`,
     })
   }
 
   const toProject = (id: string) =>
     navigate({
-      pathname: `/projects/${id}`,
+      pathname: `${ROUTES.PROJECTS}/${id}`,
       search: "",
     })
 
-  // proposals
-
-  const toProposals = () =>
+  const toCollections = () => {
     navigate({
-      pathname: "/proposals",
+      pathname: ROUTES.COLLECTIONS,
       search: "",
-    })
-
-  const toProposal = (id: string) =>
-    navigate({
-      pathname: `/proposals/${id}`,
-      search: "",
-    })
-
-  // icrc scan
-
-  const toIcrcScan = () => {
-    const params = {
-      ledger_id: icrcLedgerId,
-    }
-
-    navigate({
-      pathname: "icrc_scan",
-      search: `?${createSearchParams(params)}`,
     })
   }
 
-  // ...
+  const toStats = () => {
+    navigate({
+      pathname: ROUTES.STATS,
+      search: "",
+    })
+  }
+
+  const toPromote = () => {
+    navigate({
+      pathname: ROUTES.PROMOTE,
+      search: "",
+    })
+  }
+
+  const toListProject = () => {
+    navigate({
+      pathname: ROUTES.LIST_PROJECT,
+      search: "",
+    })
+  }
 
   const toProfile = () =>
     navigate({
-      pathname: "/profile",
+      pathname: ROUTES.PROFILE,
       search: "",
     })
 
   const toAdmin = () =>
     navigate({
-      pathname: "/admin",
+      pathname: ROUTES.ADMIN,
       search: "",
     })
 
+  // const toMostUpvoted = () => {
+  //   navigate({
+  //     pathname: ROUTES.PROJECTS,
+  //     search: `?${createSearchParams({
+  //       ...queryParamsString,
+  //       sort: "most_upvoted",
+  //     })}`,
+  //   })
+  // }
+
+  // proposals
+
+  // const toProposals = () =>
+  //   navigate({
+  //     pathname: "/proposals",
+  //     search: "",
+  //   })
+
+  // const toProposal = (id: string) =>
+  //   navigate({
+  //     pathname: `/proposals/${id}`,
+  //     search: "",
+  //   })
+
+  // icrc scan
+
+  // const toIcrcScan = () => {
+  //   const params = {
+  //     ledger_id: icrcLedgerId,
+  //   }
+
+  //   navigate({
+  //     pathname: "icrc_scan",
+  //     search: `?${createSearchParams(params)}`,
+  //   })
+  // }
+
   return {
-    toBack,
     toHome,
+    toProjects,
+    // toMostUpvoted,
+    toProject,
     toCollections,
     toStats,
     toPromote,
     toListProject,
-
-    // projects
-    toProjects,
-    toMostUpvoted,
-    toProject,
-
-    // proposals
-    toProposals,
-    toProposal,
-
-    // ...
-    toIcrcScan,
     toProfile,
     toAdmin,
+    // ...
+    toBack,
+
+    // ...
+    // toProposals,
+    // toProposal,
+    // toIcrcScan,
   }
 }
