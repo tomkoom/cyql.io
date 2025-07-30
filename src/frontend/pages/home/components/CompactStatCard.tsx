@@ -20,7 +20,7 @@ export const CompactStatCard = ({ label, value, unit = "", change, icon, isLoadi
 
   return (
     <div className="bg-coolgray-950/80 rounded-xl p-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap items-center justify-between">
         {/* Title with icon */}
         <div className="flex items-center gap-2">
           {icon && <Icon lucideName={icon} size={16} className="text-coolgray-400" />}
