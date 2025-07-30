@@ -1,8 +1,7 @@
 import { socialLinks } from "@/constants/socialLinks"
-import { FC } from "react"
 import styled from "styled-components"
 
-const Socials: FC = (): JSX.Element => {
+export default function Socials() {
   return (
     <SocialsStyled>
       {socialLinks.map((s) => (
@@ -41,5 +40,3 @@ const SocialsStyled = styled.ul`
     }
   }
 `
-
-export default Socials

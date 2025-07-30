@@ -1,4 +1,3 @@
-import { FC } from "react"
 import styled from "styled-components"
 
 interface NavLinkProps {
@@ -6,7 +5,7 @@ interface NavLinkProps {
   route: () => void
 }
 
-const NavLink: FC<NavLinkProps> = ({ label, route }): JSX.Element => {
+export default function NavLink({ label, route }: NavLinkProps) {
   return <NavLinkStyled onClick={route}>{label}</NavLinkStyled>
 }
 
@@ -22,5 +21,3 @@ const NavLinkStyled = styled.li`
     color: var(--primaryColor);
   }
 `
-
-export default NavLink

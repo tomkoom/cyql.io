@@ -5,10 +5,10 @@ import { FooterBottom, FooterTop } from "."
 export default function Footer() {
   return (
     <FooterStyled>
-      <Content>
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6">
         <FooterTop />
         <FooterBottom />
-      </Content>
+      </div>
     </FooterStyled>
   )
 }
@@ -22,12 +22,4 @@ const FooterStyled = styled.footer`
   @media ${device.laptop} {
     padding: 3rem 1rem;
   }
-`
-
-const Content = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
 `

@@ -1,5 +1,5 @@
 import { iComments, iHeart, iPlus } from "@/components/icons/Icons"
-import { CYQL_MSG_URL, DONATION_WALLET_URL } from "@/constants/constants"
+import { DONATION_WALLET_URL, X_DIRECT_MSG_URL } from "@/constants/constants"
 import { device } from "@/styles/breakpoints"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
@@ -17,7 +17,7 @@ export default function FooterTop() {
 
       {/* reach out */}
       <li>
-        <a href={CYQL_MSG_URL} rel="noreferrer noopener" target="_blank">
+        <a href={X_DIRECT_MSG_URL} rel="noreferrer noopener" target="_blank">
           <h5>{iComments}&nbsp;&nbsp;Reach Out</h5>
           <p>Didn't find what you were looking for or want to collaborate? Reach out for us, we are happy to support and cooperate</p>
         </a>
