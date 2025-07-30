@@ -13,8 +13,10 @@ import {
   formatE8sToTokens,
   formatKwh,
   formatNumber,
-  generateChartData,
-  generateChartDataE8s,
+  // generateChartData,
+  // generateChartDataE8s,
+  generateChartDataE8sWithLabels,
+  generateChartDataWithLabels,
 } from "./utils"
 
 const TITLE = "Internet Computer Stats"
@@ -23,11 +25,12 @@ const DESCRIPTION = "Real-time network statistics and metrics from the Internet 
 export default function Stats() {
   const [selectedDays, setSelectedDays] = useState(30)
   const { data, isLoading, error } = useICStatsQuery({ days: selectedDays })
+  const breadcrumbItems = [{ label: "IC Stats", isCurrentPage: true }]
 
   if (isLoading) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 pb-8">
-        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={[{ label: "Stats", isCurrentPage: true }]} />} />
+      <div className="mx-auto max-w-[1920px] px-4 pb-8">
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />} />
         <div className="flex items-center justify-center gap-3 py-16">
           <Spinner />
           <span className="text-coolgray-400">Loading IC Stats...</span>
@@ -38,8 +41,8 @@ export default function Stats() {
 
   if (error) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 pb-8">
-        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={[{ label: "Stats", isCurrentPage: true }]} />} />
+      <div className="mx-auto max-w-[1920px] px-4 pb-8">
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />} />
         <div className="rounded-lg bg-red-950/20 p-8 text-center">
           <p className="mb-2 text-lg font-medium text-red-400">Failed to load stats</p>
           <p className="text-coolgray-500 text-sm">Please try again later</p>
@@ -50,8 +53,8 @@ export default function Stats() {
 
   if (!data?.daily_stats?.length) {
     return (
-      <div className="mx-auto max-w-[1440px] px-4 pb-8">
-        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={[{ label: "Stats", isCurrentPage: true }]} />} />
+      <div className="mx-auto max-w-[1920px] px-4 pb-8">
+        <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />} />
         <div className="bg-coolgray-950 rounded-lg p-8 text-center">
           <p className="text-coolgray-400">No stats data available</p>
         </div>
@@ -63,10 +66,8 @@ export default function Stats() {
   const latestStats = stats[0]
   const periodLabel = selectedDays === 1 ? "Today" : `Last ${selectedDays} days`
 
-  const breadcrumbItems = [{ label: "Stats", isCurrentPage: true }]
-
   return (
-    <div className="mx-auto max-w-[1440px] pb-8">
+    <div className="mx-auto max-w-[1920px] pb-8">
       <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={breadcrumbItems} />} />
 
       <div className="space-y-8">
@@ -102,7 +103,8 @@ export default function Stats() {
             unit="ICP"
             subtitle="Current token supply"
             isHighlight
-            chartData={generateChartDataE8s(stats, "circulating_supply")}
+            chartData={generateChartDataE8sWithLabels(stats, "circulating_supply", selectedDays).data}
+            chartLabels={generateChartDataE8sWithLabels(stats, "circulating_supply", selectedDays).labels}
           />
           <StatCard
             label="Total Locked ICP"
@@ -110,7 +112,8 @@ export default function Stats() {
             unit="ICP"
             subtitle="Currently staked"
             isHighlight
-            chartData={generateChartDataE8s(stats, "governance_total_locked_e8s")}
+            chartData={generateChartDataE8sWithLabels(stats, "governance_total_locked_e8s", selectedDays).data}
+            chartLabels={generateChartDataE8sWithLabels(stats, "governance_total_locked_e8s", selectedDays).labels}
           />
           <StatCard
             label="Total ICP Burned"
@@ -118,7 +121,8 @@ export default function Stats() {
             unit="ICP"
             subtitle="All-time total burned"
             isHighlight
-            chartData={generateChartDataE8s(stats, "icp_burned_total")}
+            chartData={generateChartDataE8sWithLabels(stats, "icp_burned_total", selectedDays).data}
+            chartLabels={generateChartDataE8sWithLabels(stats, "icp_burned_total", selectedDays).labels}
           />
           <StatCard
             label="Total Transactions/sec"
@@ -126,21 +130,24 @@ export default function Stats() {
             unit="TPS"
             subtitle={`Latest: ${formatNumber(latestStats.average_transactions_per_second)} TPS`}
             isHighlight
-            chartData={generateChartData(stats, "average_transactions_per_second")}
+            chartData={generateChartDataWithLabels(stats, "average_transactions_per_second", selectedDays).data}
+            chartLabels={generateChartDataWithLabels(stats, "average_transactions_per_second", selectedDays).labels}
           />
           <StatCard
             label="Total Canisters"
             value={formatNumber(latestStats.registered_canisters_count)}
             subtitle="Smart contracts on IC"
             isHighlight
-            chartData={generateChartData(stats, "registered_canisters_count")}
+            chartData={generateChartDataWithLabels(stats, "registered_canisters_count", selectedDays).data}
+            chartLabels={generateChartDataWithLabels(stats, "registered_canisters_count", selectedDays).labels}
           />
           <StatCard
             label="New Canisters"
             value={formatNumber(calculateSum(stats, "gross_new_canisters"))}
             subtitle={`Created in last ${selectedDays} days`}
             isHighlight
-            chartData={generateChartData(stats, "gross_new_canisters")}
+            chartData={generateChartDataWithLabels(stats, "gross_new_canisters", selectedDays).data}
+            chartLabels={generateChartDataWithLabels(stats, "gross_new_canisters", selectedDays).labels}
           />
           <StatCard
             label="ICP Burned (Fees)"
@@ -148,14 +155,16 @@ export default function Stats() {
             unit="ICP"
             subtitle={`Total in last ${selectedDays} days`}
             isHighlight
-            chartData={generateChartDataE8s(stats, "icp_burned_fees")}
+            chartData={generateChartDataE8sWithLabels(stats, "icp_burned_fees", selectedDays).data}
+            chartLabels={generateChartDataE8sWithLabels(stats, "icp_burned_fees", selectedDays).labels}
           />
           <StatCard
             label="Internet Identity Users"
             value={formatNumber(latestStats.internet_identity_user_count)}
             subtitle="Total registered users"
             isHighlight
-            chartData={generateChartData(stats, "internet_identity_user_count")}
+            chartData={generateChartDataWithLabels(stats, "internet_identity_user_count", selectedDays).data}
+            chartLabels={generateChartDataWithLabels(stats, "internet_identity_user_count", selectedDays).labels}
           />
         </StatsSection>
 

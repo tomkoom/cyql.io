@@ -1,17 +1,12 @@
-import React, { FC } from "react"
-import styled from "styled-components"
-
-// components
-import { Btn } from ".."
-import { Input } from "./_index"
-
-// state
 import { useAppDispatch, useAppSelector } from "@/hooks/useRedux"
 import { selectAdmin, setAdminProjectItemBoolean } from "@/state/admin/admin"
+import styled from "styled-components"
+import { Input } from "."
+import { Btn } from ".."
 
 const archivedKey = "archived"
 
-const Meta: FC = (): JSX.Element => {
+export default function Meta() {
   const dispatch = useAppDispatch()
   const project = useAppSelector(selectAdmin).project
 
@@ -50,5 +45,3 @@ const BtnsList = styled.div`
   align-items: center;
   gap: 0.5rem;
 `
-
-export default Meta

@@ -1,4 +1,3 @@
-import React, { FC } from "react"
 import styled from "styled-components"
 
 interface InputProps {
@@ -7,7 +6,7 @@ interface InputProps {
   id: string
 }
 
-const Input: FC<InputProps> = ({ label, value, id }): JSX.Element => {
+export default function Input({ label, value, id }: InputProps) {
   return (
     <InputStyled>
       <label htmlFor={id}>{label}</label>
@@ -40,5 +39,3 @@ const InputStyled = styled.div`
     outline: none;
   }
 `
-
-export default Input

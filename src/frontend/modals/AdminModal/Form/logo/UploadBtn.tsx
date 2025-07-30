@@ -1,5 +1,5 @@
 import { iPlus, iTimes } from "@/components/icons/Icons"
-import { ChangeEvent, Dispatch, FC, SetStateAction, useRef } from "react"
+import { ChangeEvent, Dispatch, SetStateAction, useRef } from "react"
 import styled from "styled-components"
 
 interface FileBtnProps {
@@ -8,7 +8,7 @@ interface FileBtnProps {
   reset: () => void
 }
 
-const FileBtn: FC<FileBtnProps> = ({ logo, setLogo, reset }): JSX.Element => {
+export default function FileBtn({ logo, setLogo, reset }: FileBtnProps) {
   const fileInputRef = useRef<HTMLInputElement>()
 
   const clickInput = (): void => {
@@ -94,5 +94,3 @@ const FileBtnStyled = styled.div`
     }
   }
 `
-
-export default FileBtn

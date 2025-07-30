@@ -1,9 +1,6 @@
-import React, { FC, MutableRefObject, SetStateAction, Dispatch } from "react"
-import styled from "styled-components"
-
-// cropper
-import Cropper, { ReactCropperElement } from "react-cropper"
 import "cropperjs/dist/cropper.css"
+import { Dispatch, MutableRefObject, SetStateAction } from "react"
+import Cropper, { ReactCropperElement } from "react-cropper"
 
 interface ImgCropperProps {
   logo: File
@@ -13,13 +10,13 @@ interface ImgCropperProps {
   cropperRef: MutableRefObject<ReactCropperElement>
 }
 
-const ImgCropper: FC<ImgCropperProps> = ({
+export default function ImgCropper({
   logo,
   setLogoDataUrl,
   // setLogoBlob,
   logoObjectUrl,
   cropperRef,
-}) => {
+}: ImgCropperProps) {
   const onCrop = (): void => {
     const cropper = cropperRef.current?.cropper
     const url = cropper.getCroppedCanvas().toDataURL(logo.type)
@@ -32,7 +29,7 @@ const ImgCropper: FC<ImgCropperProps> = ({
   if (!cropperRef) return null
 
   return (
-    <ImgCropperStyled>
+    <div>
       <Cropper
         src={logoObjectUrl}
         style={{ height: 400, width: "100%" }}
@@ -55,10 +52,6 @@ const ImgCropper: FC<ImgCropperProps> = ({
         crop={onCrop}
         ref={cropperRef}
       />
-    </ImgCropperStyled>
+    </div>
   )
 }
-
-const ImgCropperStyled = styled.div``
-
-export default ImgCropper

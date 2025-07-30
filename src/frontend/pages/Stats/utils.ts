@@ -51,19 +51,41 @@ export const formatE8sToTokens = (e8sValue: string | number | bigint): number =>
 }
 
 // Generate chart data from stats array for a specific field
-export const generateChartData = (stats: any[], field: string, limit = 14): number[] => {
+export const generateChartData = (stats: any[], field: string, limit?: number): number[] => {
+  const actualLimit = limit || stats.length // Use all data if no limit specified
   return stats
-    .slice(0, limit) // Take last N days
+    .slice(0, actualLimit) // Take last N days
     .reverse() // Reverse to show chronological order
     .map((stat) => Number(stat[field]) || 0)
 }
 
 // Generate chart data with e8s conversion
-export const generateChartDataE8s = (stats: any[], field: string, limit = 14): number[] => {
+export const generateChartDataE8s = (stats: any[], field: string, limit?: number): number[] => {
+  const actualLimit = limit || stats.length // Use all data if no limit specified
   return stats
-    .slice(0, limit)
+    .slice(0, actualLimit)
     .reverse()
     .map((stat) => formatE8sToTokens(stat[field]))
+}
+
+// Generate chart data with proper labels for meaningful grids
+export const generateChartDataWithLabels = (stats: ICDailyStats[], field: string, limit?: number) => {
+  const actualLimit = limit || stats.length // Use all data if no limit specified
+  const slicedStats = stats.slice(0, actualLimit).reverse() // Chronological order
+  return {
+    labels: slicedStats.map((stat) => stat.day), // Actual dates like "2024-07-25"
+    data: slicedStats.map((stat) => Number(stat[field]) || 0),
+  }
+}
+
+// Generate chart data with e8s conversion and proper labels
+export const generateChartDataE8sWithLabels = (stats: ICDailyStats[], field: string, limit?: number) => {
+  const actualLimit = limit || stats.length // Use all data if no limit specified
+  const slicedStats = stats.slice(0, actualLimit).reverse() // Chronological order
+  return {
+    labels: slicedStats.map((stat) => stat.day), // Actual dates like "2024-07-25"
+    data: slicedStats.map((stat) => formatE8sToTokens(stat[field])),
+  }
 }
 
 // Format large numbers with appropriate units (K, M, B) - compact version
