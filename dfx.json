@@ -12,10 +12,6 @@
       "main": "src/backend/main.mo",
       "type": "motoko"
     },
-    "proposals": {
-      "main": "src/backend/proposals/project_proposals.mo",
-      "type": "motoko"
-    },
     "users": {
       "main": "src/backend/users/users.mo",
       "type": "motoko"

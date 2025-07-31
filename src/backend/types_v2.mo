@@ -13,7 +13,15 @@ module {
 
   public type ETH_Project = {
     id : Text;
-    name : Text
+    chainId : ChainId;
+    name : Text;
+    description : Text;
+    category : [Category.CategoryId];
+    tags : [Text];
+    website : Text;
+    logoUrl : Text;
+    twitter : Text;
+    discord : Text
   };
 
   // Unified Project Management System

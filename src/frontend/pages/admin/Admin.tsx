@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button"
 import { useAppDispatch } from "@/hooks/useRedux"
 import { setAdminIsModalOpen, setAdminMode } from "@/state/admin/admin"
 import { useState } from "react"
-import { Collections, Projects, Search } from "."
+import { Collections, Projects, Search, Users } from "."
 
 export default function Admin() {
   const dispatch = useAppDispatch()
-  const [activeTab, setActiveTab] = useState<"projects" | "collections">("projects")
+  const [activeTab, setActiveTab] = useState<"projects" | "collections" | "users">("projects")
 
   const openAdminModal = () => {
     dispatch(setAdminMode("add"))
@@ -43,12 +43,24 @@ export default function Admin() {
           >
             Collections
           </button>
+          <button
+            onClick={() => setActiveTab("users")}
+            className={`rounded-lg px-4 py-2 font-medium transition-colors ${
+              activeTab === "users" ? "bg-blue-600 text-white" : "bg-coolgray-800 text-coolgray-300 hover:bg-coolgray-700"
+            }`}
+          >
+            Users
+          </button>
         </div>
 
         {activeTab === "projects" && <Search />}
       </header>
 
-      <main>{activeTab === "projects" ? <Projects /> : <Collections />}</main>
+      <main>
+        {activeTab === "projects" && <Projects />}
+        {activeTab === "collections" && <Collections />}
+        {activeTab === "users" && <Users />}
+      </main>
     </div>
   )
 }

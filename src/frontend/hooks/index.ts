@@ -16,6 +16,7 @@ export { useUsers } from "./backend/useUsers"
 export { useHomeQuery } from "./queries/useHomeQuery"
 export { useProjectQuery, useProjectWithRelated, useRelatedProjectsQuery } from "./queries/useProjectQuery"
 export { useProjectsQuery } from "./queries/useProjectsQuery"
+export { useUsersQuery } from "./queries/useUsersQuery"
 
 // Price hooks
 export { useIcpPriceQuery } from "./queries/usePriceQuery"
