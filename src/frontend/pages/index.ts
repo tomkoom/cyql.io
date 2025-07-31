@@ -1,4 +1,7 @@
 export { default as Admin } from "./Admin/Admin"
+export { default as AdminCollections } from "./Admin/AdminCollections"
+export { default as AdminProjects } from "./Admin/AdminProjects"
+export { default as AdminUsers } from "./Admin/AdminUsers"
 export { default as Collections } from "./Collections/Collections"
 export { default as Home } from "./Home/Home"
 export { default as ListProject } from "./ListProject/ListProject"

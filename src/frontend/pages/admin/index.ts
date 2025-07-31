@@ -1,3 +1,6 @@
+export { default as AdminCollections } from "./AdminCollections"
+export { default as AdminProjects } from "./AdminProjects"
+export { default as AdminUsers } from "./AdminUsers"
 export { default as Collections } from "./Collections"
 export { default as Projects } from "./Projects"
 export { default as Search } from "./Search"

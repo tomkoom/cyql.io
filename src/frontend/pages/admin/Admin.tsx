@@ -1,65 +1,24 @@
-import { Button } from "@/components/ui/button"
-import { useAppDispatch } from "@/hooks/useRedux"
-import { setAdminIsModalOpen, setAdminMode } from "@/state/admin/admin"
-import { useState } from "react"
-import { Collections, Projects, Search, Users } from "."
+import { AdminNavigation } from "@/components"
+import { ROUTES } from "@/constants"
+import { useEffect } from "react"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
 
 export default function Admin() {
-  const dispatch = useAppDispatch()
-  const [activeTab, setActiveTab] = useState<"projects" | "collections" | "users">("projects")
+  const location = useLocation()
+  const navigate = useNavigate()
 
-  const openAdminModal = () => {
-    dispatch(setAdminMode("add"))
-    dispatch(setAdminIsModalOpen(true))
-  }
+  // Redirect to projects by default when on /admin
+  useEffect(() => {
+    if (location.pathname === ROUTES.ADMIN) {
+      navigate(ROUTES.ADMIN_PROJECTS, { replace: true })
+    }
+  }, [location.pathname, navigate])
 
   return (
     <div className="laptop:px-4">
-      <header className="flex flex-col">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="page-title">Admin</h2>
-          {activeTab === "projects" && (
-            <Button variant="accent" className="h-11 font-bold" onClick={openAdminModal}>
-              Add Project
-            </Button>
-          )}
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="mb-6 flex space-x-1">
-          <button
-            onClick={() => setActiveTab("projects")}
-            className={`rounded-lg px-4 py-2 font-medium transition-colors ${
-              activeTab === "projects" ? "bg-blue-600 text-white" : "bg-coolgray-800 text-coolgray-300 hover:bg-coolgray-700"
-            }`}
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => setActiveTab("collections")}
-            className={`rounded-lg px-4 py-2 font-medium transition-colors ${
-              activeTab === "collections" ? "bg-blue-600 text-white" : "bg-coolgray-800 text-coolgray-300 hover:bg-coolgray-700"
-            }`}
-          >
-            Collections
-          </button>
-          <button
-            onClick={() => setActiveTab("users")}
-            className={`rounded-lg px-4 py-2 font-medium transition-colors ${
-              activeTab === "users" ? "bg-blue-600 text-white" : "bg-coolgray-800 text-coolgray-300 hover:bg-coolgray-700"
-            }`}
-          >
-            Users
-          </button>
-        </div>
-
-        {activeTab === "projects" && <Search />}
-      </header>
-
+      <AdminNavigation />
       <main>
-        {activeTab === "projects" && <Projects />}
-        {activeTab === "collections" && <Collections />}
-        {activeTab === "users" && <Users />}
+        <Outlet />
       </main>
     </div>
   )

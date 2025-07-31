@@ -1,6 +1,20 @@
 import Layout from "@/components/layout/Layout"
 import { ROUTES } from "@/constants"
-import { Admin, Collections, Home, ListProject, NotFound, Profile, Project, Projects, Promote, Stats } from "@/pages"
+import {
+  Admin,
+  AdminCollections,
+  AdminProjects,
+  AdminUsers,
+  Collections,
+  Home,
+  ListProject,
+  NotFound,
+  Profile,
+  Project,
+  Projects,
+  Promote,
+  Stats,
+} from "@/pages"
 import { AdminRoutes, ProtectedRoutes } from "@/routes"
 import { createHashRouter, createRoutesFromElements, Route } from "react-router-dom"
 
@@ -29,7 +43,11 @@ export default createHashRouter(
 
       {/* admin */}
       <Route element={<AdminRoutes />}>
-        <Route path="admin" element={<Admin />} />
+        <Route path="admin" element={<Admin />}>
+          <Route path="projects" element={<AdminProjects />} />
+          <Route path="collections" element={<AdminCollections />} />
+          <Route path="users" element={<AdminUsers />} />
+        </Route>
       </Route>
     </Route>
   )
