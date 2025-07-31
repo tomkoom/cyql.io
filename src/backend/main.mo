@@ -13,13 +13,14 @@ import Order "mo:base/Order";
 
 import Types "./types";
 import TypesV2 "./types_v2";
+import TypesV3 "./types_v3";
 import Constants "./constants";
 import Category "./categories";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
 import Assets "./assets/assets";
 import Collections "./collections/collections";
-import ProjectsV2 "./projects_v2/projects_v2";
+import Projects "./projects/projects";
 import AdminAuth "./utils/adminAuth";
 import ApiKeyAuth "./utils/apiKeyAuth";
 
@@ -72,11 +73,15 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
     Text.hash,
   );
 
-  // projects v2 - unified collection for both user-submitted and curated projects
+  // OLD - projects v2 (for migration only, will be discarded)
+  // Using old type for IC compatibility, but will explicitly discard since it was empty
+  var projectsV2Entries : [(TypesV2.ICP_ProjectId, TypesV2.ICP_ProjectV2)] = [];
+
+  // NEW - projects v3 - unified collection for both user-submitted and curated projects
   // Use listingStatus and isCurated fields to distinguish project states
-  var projectsV2Entries : [(TypesV2.ICP_ProjectId, TypesV2.ICP_Project)] = [];
-  transient let projectsV2 = HashMap.fromIter<TypesV2.ICP_ProjectId, TypesV2.ICP_Project>(
-    projectsV2Entries.vals(),
+  var projectsV3Entries : [(TypesV3.ICP_ProjectId, TypesV3.ICP_ProjectV3)] = [];
+  transient let projectsV3 = HashMap.fromIter<TypesV3.ICP_ProjectId, TypesV3.ICP_ProjectV3>(
+    projectsV3Entries.vals(),
     1_000,
     Text.equal,
     Text.hash,
@@ -176,35 +181,35 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
     Collections.getCollectionWithProjects(collections, categoriesMap, projects, categoryId)
   };
 
-  // Projects V2 management
+  // Projects V3 management
 
-  public shared ({ caller }) func addProjectV2(project : TypesV2.ICP_Project) : async Text {
+  public shared ({ caller }) func addProjectV3(project : TypesV3.ICP_ProjectV3) : async Text {
     assert (AdminAuth.verifyAnyAdmin(caller));
-    switch (ProjectsV2.addProject(projectsV2, project)) {
+    switch (Projects.addProject(projectsV3, project)) {
       case (#ok(projectId)) { "Success: Project added with ID " # projectId };
       case (#err(error)) { "Error: " # error }
     }
   };
 
-  public shared ({ caller }) func updateProjectV2(projectId : TypesV2.ICP_ProjectId, project : TypesV2.ICP_Project) : async Text {
+  public shared ({ caller }) func updateProjectV3(projectId : TypesV3.ICP_ProjectId, project : TypesV3.ICP_ProjectV3) : async Text {
     assert (AdminAuth.verifyAnyAdmin(caller));
-    switch (ProjectsV2.updateProject(projectsV2, projectId, project)) {
+    switch (Projects.updateProject(projectsV3, projectId, project)) {
       case (#ok(id)) { "Success: Project updated with ID " # id };
       case (#err(error)) { "Error: " # error }
     }
   };
 
-  public shared ({ caller }) func removeProjectV2(projectId : TypesV2.ICP_ProjectId) : async Text {
+  public shared ({ caller }) func removeProjectV3(projectId : TypesV3.ICP_ProjectId) : async Text {
     assert (AdminAuth.verifyAnyAdmin(caller));
-    switch (ProjectsV2.removeProject(projectsV2, projectId)) {
+    switch (Projects.removeProject(projectsV3, projectId)) {
       case (#ok(_removed)) { "Success: Project removed" };
       case (#err(error)) { "Error: " # error }
     }
   };
 
-  public shared ({ caller }) func toggleProjectV2Status(projectId : TypesV2.ICP_ProjectId) : async Text {
+  public shared ({ caller }) func toggleProjectV3Status(projectId : TypesV3.ICP_ProjectId) : async Text {
     assert (AdminAuth.verifyAnyAdmin(caller));
-    switch (ProjectsV2.toggleProjectStatus(projectsV2, projectId)) {
+    switch (Projects.toggleProjectStatus(projectsV3, projectId)) {
       case (#ok(isActive)) {
         "Success: Project status changed to " # (if (isActive) "active" else "inactive")
       };
@@ -212,51 +217,51 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
     }
   };
 
-  // Projects V2 queries
+  // Projects V3 queries
 
-  public query func getProjectV2(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async ?TypesV2.ICP_Project {
+  public query func getProjectV3(apiKey : Types.ApiKey, projectId : TypesV3.ICP_ProjectId) : async ?TypesV3.ICP_ProjectV3 {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getProject(projectsV2, projectId)
+    Projects.getProject(projectsV3, projectId)
   };
 
-  public query func getAllProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+  public query func getAllProjectsV3(apiKey : Types.ApiKey) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getAllProjects(projectsV2)
+    Projects.getAllProjects(projectsV3)
   };
 
-  public query func getActiveProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+  public query func getActiveProjectsV3(apiKey : Types.ApiKey) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getActiveProjects(projectsV2)
+    Projects.getActiveProjects(projectsV3)
   };
 
-  public query func getProjectsV2ByCategory(apiKey : Types.ApiKey, categoryId : Text) : async [TypesV2.ICP_Project] {
+  public query func getProjectsV3ByCategory(apiKey : Types.ApiKey, categoryId : Text) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getProjectsByCategory(projectsV2, categoryId)
+    Projects.getProjectsByCategory(projectsV3, categoryId)
   };
 
-  public query func searchProjectsV2(apiKey : Types.ApiKey, searchQuery : Text) : async [TypesV2.ICP_Project] {
+  public query func searchProjectsV3(apiKey : Types.ApiKey, searchQuery : Text) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.searchProjects(projectsV2, searchQuery)
+    Projects.searchProjects(projectsV3, searchQuery)
   };
 
-  public query func getProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+  public query func getProjectsV3Count(apiKey : Types.ApiKey) : async Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getProjectsCount(projectsV2)
+    Projects.getProjectsCount(projectsV3)
   };
 
-  public query func getActiveProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+  public query func getActiveProjectsV3Count(apiKey : Types.ApiKey) : async Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getActiveProjectsCount(projectsV2)
+    Projects.getActiveProjectsCount(projectsV3)
   };
 
-  public query func projectV2Exists(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async Bool {
+  public query func projectV3Exists(apiKey : Types.ApiKey, projectId : TypesV3.ICP_ProjectId) : async Bool {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.projectExists(projectsV2, projectId)
+    Projects.projectExists(projectsV3, projectId)
   };
 
-  // Unified Projects V2 management with status filtering
+  // Unified Projects V3 management with status filtering
 
-  public shared ({ caller }) func submitProjectV2(project : TypesV2.ICP_Project) : async Text {
+  public shared ({ caller }) func submitProjectV3(project : TypesV3.ICP_ProjectV3) : async Text {
     assert (not Principal.isAnonymous(caller));
 
     // Set project as user-submitted with pending status
@@ -266,19 +271,19 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
       isCurated = false;
       isUserSubmitted = true;
       listedBy = Principal.toText(caller);
-      submittedAt = Int.toText(Time.now())
+      // submittedAt = Int.toText(Time.now())
     };
 
-    switch (ProjectsV2.addProject(projectsV2, submittedProject)) {
+    switch (Projects.addProject(projectsV3, submittedProject)) {
       case (#ok(projectId)) { "Success: Project submitted for review with ID " # projectId };
       case (#err(error)) { "Error: " # error }
     }
   };
 
-  public shared ({ caller }) func approveProjectV2(projectId : TypesV2.ICP_ProjectId, _reviewNotes : Text) : async Text {
+  public shared ({ caller }) func approveProjectV3(projectId : TypesV3.ICP_ProjectId, _reviewNotes : Text) : async Text {
     assert (AdminAuth.verifyAnyAdmin(caller));
 
-    switch (ProjectsV2.getProject(projectsV2, projectId)) {
+    switch (Projects.getProject(projectsV3, projectId)) {
       case (?project) {
         let approvedProject = {
           project with
@@ -289,7 +294,7 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
           approvedAt = Int.toText(Time.now())
         };
 
-        switch (ProjectsV2.updateProject(projectsV2, projectId, approvedProject)) {
+        switch (Projects.updateProject(projectsV3, projectId, approvedProject)) {
           case (#ok(id)) { "Success: Project approved and curated with ID " # id };
           case (#err(error)) { "Error: " # error }
         }
@@ -298,10 +303,10 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
     }
   };
 
-  public shared ({ caller }) func rejectProjectV2(projectId : TypesV2.ICP_ProjectId, reason : Text) : async Text {
+  public shared ({ caller }) func rejectProjectV3(projectId : TypesV3.ICP_ProjectId, reason : Text) : async Text {
     assert (AdminAuth.verifyAnyAdmin(caller));
 
-    switch (ProjectsV2.getProject(projectsV2, projectId)) {
+    switch (Projects.getProject(projectsV3, projectId)) {
       case (?project) {
         let rejectedProject = {
           project with
@@ -313,7 +318,7 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
           rejectionReason = reason
         };
 
-        switch (ProjectsV2.updateProject(projectsV2, projectId, rejectedProject)) {
+        switch (Projects.updateProject(projectsV3, projectId, rejectedProject)) {
           case (#ok(id)) { "Success: Project rejected with ID " # id # ". Reason: " # reason };
           case (#err(error)) { "Error: " # error }
         }
@@ -324,65 +329,65 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
 
   // Unified query functions with status filtering
 
-  public query func getSubmittedProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+  public query func getSubmittedProjectsV3(apiKey : Types.ApiKey) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getSubmittedProjects(projectsV2)
+    Projects.getSubmittedProjects(projectsV3)
   };
 
-  public query func getCuratedProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+  public query func getCuratedProjectsV3(apiKey : Types.ApiKey) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getCuratedProjects(projectsV2)
+    Projects.getCuratedProjects(projectsV3)
   };
 
-  public shared query ({ caller }) func getUserSubmittedProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+  public shared query ({ caller }) func getUserSubmittedProjectsV3(apiKey : Types.ApiKey) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
     assert (not Principal.isAnonymous(caller));
 
     let userId = Principal.toText(caller);
-    ProjectsV2.getProjectsByLister(projectsV2, userId)
+    Projects.getProjectsByLister(projectsV3, userId)
   };
 
-  public query func getProjectsByStatusV2(apiKey : Types.ApiKey, status : Text) : async [TypesV2.ICP_Project] {
+  public query func getProjectsByStatusV3(apiKey : Types.ApiKey, status : Text) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getProjectsByListingStatus(projectsV2, status)
+    Projects.getProjectsByListingStatus(projectsV3, status)
   };
 
   // Optimized count functions
 
-  public query func getCuratedProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+  public query func getCuratedProjectsV3Count(apiKey : Types.ApiKey) : async Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getCuratedProjectsCount(projectsV2)
+    Projects.getCuratedProjectsCount(projectsV3)
   };
 
-  public query func getSubmittedProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+  public query func getSubmittedProjectsV3Count(apiKey : Types.ApiKey) : async Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getSubmittedProjectsCount(projectsV2)
+    Projects.getSubmittedProjectsCount(projectsV3)
   };
 
-  public query func getProjectsV2CountByStatus(apiKey : Types.ApiKey, status : Text) : async Nat {
+  public query func getProjectsV3CountByStatus(apiKey : Types.ApiKey, status : Text) : async Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getProjectsCountByStatus(projectsV2, status)
+    Projects.getProjectsCountByStatus(projectsV3, status)
   };
 
   // Engagement utility functions
 
-  public query func getMostUpvotedProjectsV2(apiKey : Types.ApiKey, limit : Nat) : async [TypesV2.ICP_Project] {
+  public query func getMostUpvotedProjectsV3(apiKey : Types.ApiKey, limit : Nat) : async [TypesV3.ICP_ProjectV3] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    ProjectsV2.getMostUpvotedProjects(projectsV2, limit)
+    Projects.getMostUpvotedProjects(projectsV3, limit)
   };
 
-  public query func getProjectUpvoteCount(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async ?Nat {
+  public query func getProjectUpvoteCount(apiKey : Types.ApiKey, projectId : TypesV3.ICP_ProjectId) : async ?Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    switch (ProjectsV2.getProject(projectsV2, projectId)) {
-      case (?project) { ?ProjectsV2.getUpvoteCount(project) };
+    switch (Projects.getProject(projectsV3, projectId)) {
+      case (?project) { ?Projects.getUpvoteCount(project) };
       case null { null }
     }
   };
 
-  public query func getProjectWatchCount(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async ?Nat {
+  public query func getProjectWatchCount(apiKey : Types.ApiKey, projectId : TypesV3.ICP_ProjectId) : async ?Nat {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
-    switch (ProjectsV2.getProject(projectsV2, projectId)) {
-      case (?project) { ?ProjectsV2.getWatchCount(project) };
+    switch (Projects.getProject(projectsV3, projectId)) {
+      case (?project) { ?Projects.getWatchCount(project) };
       case null { null }
     }
   };
@@ -880,15 +885,26 @@ shared persistent actor class _CURATED_PROJECTS() = Self {
     projectsEntries := Iter.toArray(projects.entries());
     categoriesEntries := Iter.toArray(categoriesMap.entries());
     collectionsEntries := Iter.toArray(collections.entries());
-    // v2
-    projectsV2Entries := Iter.toArray(projectsV2.entries())
+    // Keep old entries for IC compatibility (will be empty)
+    projectsV2Entries := [];
+    // Save new projects
+    projectsV3Entries := Iter.toArray(projectsV3.entries())
+  };
+
+  // Migration function to handle the type conversion
+  private func migrateOldProjectsV2() {
+    // Since projectsV2Entries was empty anyway, we explicitly discard it
+    // and start fresh with projectsV3Entries
+    projectsV2Entries := []; // Discard old empty data
+    projectsV3Entries := [] // Start new clean
   };
 
   system func postupgrade() {
     projectsEntries := [];
     categoriesEntries := [];
     collectionsEntries := [];
-    // v2
-    projectsV2Entries := []
+
+    // Handle migration from old projectsV2 to new projectsV3
+    migrateOldProjectsV2()
   }
 }

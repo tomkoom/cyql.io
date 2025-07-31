@@ -1,5 +1,5 @@
-actor {
+persistent actor {
   public func test() : async () {
-    return;
-  };
-};
+    return
+  }
+}

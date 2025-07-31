@@ -11,6 +11,14 @@ module {
     name : Text
   };
 
+  // Resource link structure for project-related external content
+  public type ResourceLink = {
+    title : Text; // display name for the link (e.g., "Dfinity Forum Post", "CoinDesk Article")
+    url : Text; // the actual URL
+    description : Text; // optional description or summary of the content
+    category : Text; // "news" | "tutorial" | "review" | "partnership" | "other"
+  };
+
   public type ETH_Project = {
     id : Text;
     chainId : ChainId;
@@ -28,7 +36,7 @@ module {
   // This type handles both user-submitted projects (for review) and admin-curated projects (public display)
   // Status workflow: submitted -> approved/rejected -> curated (if approved)
   // Use listingStatus and isCurated fields to distinguish project states
-  public type ICP_ProjectV2 = {
+  public type ICP_ProjectV3 = {
     id : ICP_ProjectId;
     chainId : ChainId;
     name : Text;
@@ -75,9 +83,14 @@ module {
     faq : Text;
     whitepaper : Text;
 
+    // relevant content links - external links to project-related content
+    // Array-based structure for managing multiple resources with metadata
+    newsLinks : [ResourceLink]; // news articles, announcements, or major updates
+    resourceLinks : [ResourceLink]; // other relevant resources (tutorials, reviews, partnerships, etc.)
+
     // engagement metrics (counts derived from arrays for consistency)
     upvotedBy : [UserId];
-    watchlistedBy : [UserId];
+    watchedBy : [UserId];
 
     // promotion
     isPromoted : Bool;

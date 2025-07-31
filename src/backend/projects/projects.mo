@@ -5,11 +5,11 @@ import Array "mo:base/Array";
 import Result "mo:base/Result";
 import Order "mo:base/Order";
 
-import TypesV2 "../types_v2";
+import TypesV3 "../types_v3";
 
 module {
-  public type ProjectId = TypesV2.ICP_ProjectId;
-  public type Project = TypesV2.ICP_Project;
+  public type ProjectId = TypesV3.ICP_ProjectId;
+  public type Project = TypesV3.ICP_ProjectV3;
   public type ProjectsMap = HashMap.HashMap<ProjectId, Project>;
 
   // Create a new projects map
@@ -265,7 +265,7 @@ module {
 
   // Get watch count for a project
   public func getWatchCount(project : Project) : Nat {
-    project.watchlistedBy.size()
+    project.watchedBy.size()
   };
 
   // Check if user has upvoted a project
@@ -278,7 +278,7 @@ module {
 
   // Check if user has watchlisted a project
   public func hasUserWatchlisted(project : Project, userId : Text) : Bool {
-    switch (Array.find<Text>(project.watchlistedBy, func(id : Text) : Bool { id == userId })) {
+    switch (Array.find<Text>(project.watchedBy, func(id : Text) : Bool { id == userId })) {
       case (?_) { true };
       case null { false }
     }
