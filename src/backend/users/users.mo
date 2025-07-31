@@ -4,24 +4,23 @@ import Principal "mo:base/Principal";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
 
-// ...
 import T "../types";
 import UT "./users_types";
 import U "../utils";
 import Constants "../constants";
 
-actor {
+persistent actor {
 
   private stable var secret : T.ApiKey = "";
-  let adminPrincipal = Principal.fromText(Constants.admin1);
+  transient let adminPrincipal = Principal.fromText(Constants.admin1);
 
   // maps
 
   stable var usersEntries : [(UT.UserId, UT.User)] = [];
-  let users = HashMap.fromIter<UT.UserId, UT.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
+  transient let users = HashMap.fromIter<UT.UserId, UT.User>(usersEntries.vals(), 10, Principal.equal, Principal.hash);
 
   stable var usersNewEntries : [(UT.UserIdNew, UT.UserNew)] = [];
-  let usersNew = HashMap.fromIter<UT.UserIdNew, UT.UserNew>(usersNewEntries.vals(), 10, Text.equal, Text.hash);
+  transient let usersNew = HashMap.fromIter<UT.UserIdNew, UT.UserNew>(usersNewEntries.vals(), 10, Text.equal, Text.hash);
 
   // -- manage --
 
@@ -32,7 +31,7 @@ actor {
     let userId = Principal.toText(caller);
 
     switch (usersNew.get(userId)) {
-      case (?u) return null;
+      case (?_u) return null;
       case null {
         usersNew.put(
           userId,

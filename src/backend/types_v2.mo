@@ -2,8 +2,10 @@ import Category "./categories";
 
 module {
 
-  public type UserId = Text;
+  public type ICP_ProjectId = Text;
+  public type ChainId = Text;
 
+  public type UserId = Text;
   public type UserV2 = {
     id : UserId; // principal
     name : Text
@@ -14,8 +16,13 @@ module {
     name : Text
   };
 
+  // Unified Project Management System
+  // This type handles both user-submitted projects (for review) and admin-curated projects (public display)
+  // Status workflow: submitted -> approved/rejected -> curated (if approved)
+  // Use listingStatus and isCurated fields to distinguish project states
   public type ICP_Project = {
-    id : Text;
+    id : ICP_ProjectId;
+    chainId : ChainId;
     name : Text;
     description : Text;
     category : [Category.CategoryId];
@@ -60,10 +67,8 @@ module {
     faq : Text;
     whitepaper : Text;
 
-    // engagement metrics
-    upvoteCount : Text;
+    // engagement metrics (counts derived from arrays for consistency)
     upvotedBy : [UserId];
-    watchCount : Text;
     watchlistedBy : [UserId];
 
     // promotion
@@ -80,6 +85,8 @@ module {
 
     // featuring
     isFeatured : Bool;
+    featuredBy : Text;
+    featuredAt : Text;
 
     // verification
     isVerified : Bool;
@@ -91,6 +98,16 @@ module {
     status : Text;
     listedBy : Text;
     createdAt : Text;
-    updatedAt : Text
+    updatedAt : Text;
+
+    // unified listing/curation management
+    listingStatus : Text; // "submitted" | "approved" | "rejected" | "draft"
+    isCurated : Bool; // true when admin-approved for public display
+    isUserSubmitted : Bool; // true when submitted by user (vs admin-created)
+    reviewedBy : Text; // admin who reviewed the project
+    reviewedAt : Text; // when the project was reviewed
+    approvedAt : Text; // when the project was approved (if applicable)
+    rejectionReason : Text; // reason for rejection (if applicable)
+    submissionNotes : Text // user notes when submitting project
   }
 }

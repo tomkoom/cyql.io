@@ -5,14 +5,13 @@ import Nat8 "mo:base/Nat8";
 import Blob "mo:base/Blob";
 import Int "mo:base/Int";
 
-// ...
-import C "constants";
-import PPT "./proposals/project_proposals_types";
+import Constants "constants";
+import Proposal_Types "./proposals/project_proposals_types";
 import Hex "./utils/hex";
 
 module {
 
-  public func generateProposal(proposer : Principal, payload : PPT.Payload) : PPT.Proposal {
+  public func generateProposal(proposer : Principal, payload : Proposal_Types.Payload) : Proposal_Types.Proposal {
     let proposal = {
       id = Int.abs(Time.now());
       createdAt = Time.now();
@@ -42,11 +41,11 @@ module {
   };
 
   public func isMain(caller : Principal) : Bool {
-    return caller == Principal.fromText(C.mainCanisterId)
+    return caller == Principal.fromText(Constants.mainCanisterId)
   };
 
   public func isAdmin(caller : Principal) : Bool {
-    return caller == Principal.fromText(C.admin1)
+    return caller == Principal.fromText(Constants.admin1)
   };
 
   // accounts

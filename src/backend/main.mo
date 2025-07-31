@@ -11,28 +11,30 @@ import Array "mo:base/Array";
 import Bool "mo:base/Bool";
 import Order "mo:base/Order";
 
-import T "./types";
+import Types "./types";
+import TypesV2 "./types_v2";
 import Constants "./constants";
 import Category "./categories";
 import Utils "./utils";
 import Handle "./utils/handleProjects";
 import Assets "./assets/assets";
 import Collections "./collections/collections";
+import ProjectsV2 "./projects_v2/projects_v2";
 import AdminAuth "./utils/adminAuth";
 import ApiKeyAuth "./utils/apiKeyAuth";
 
-shared actor class _CURATED_PROJECTS() = Self {
-  let assets_canister_id = "uodzj-4aaaa-aaaag-auexa-cai";
+shared persistent actor class _CURATED_PROJECTS() = Self {
+  transient let assets_canister_id = "uodzj-4aaaa-aaaag-auexa-cai";
 
-  private stable var secret : T.ApiKey = "";
-  // private stable var apiKeys : [T.ApiKey] = [];
-  let admin1 = Principal.fromText(Constants.admin1);
-  let nodeAdmin1 = Principal.fromText(Constants.nodeAdmin1);
-  let clientAdmin1 = Principal.fromText(Constants.clientAdmin1);
-  let clientAdmin2 = Principal.fromText(Constants.clientAdmin2);
+  private var secret : Types.ApiKey = "";
+  // private var apiKeys : [Types.ApiKey] = [];
+  transient let admin1 = Principal.fromText(Constants.admin1);
+  transient let nodeAdmin1 = Principal.fromText(Constants.nodeAdmin1);
+  transient let clientAdmin1 = Principal.fromText(Constants.clientAdmin1);
+  transient let clientAdmin2 = Principal.fromText(Constants.clientAdmin2);
 
   // Reference to categories
-  let categories = Category.categories;
+  transient let categories = Category.categories;
 
   // Custom hash function for Nat values
   private func natHash(n : Nat) : Hash.Hash {
@@ -42,8 +44,8 @@ shared actor class _CURATED_PROJECTS() = Self {
   // maps
 
   // categories map for efficient lookups
-  stable var categoriesEntries : [(Text, Category.Category)] = [];
-  let categoriesMap = HashMap.fromIter<Text, Category.Category>(
+  var categoriesEntries : [(Text, Category.Category)] = [];
+  transient let categoriesMap = HashMap.fromIter<Text, Category.Category>(
     categoriesEntries.vals(),
     50, // Initial capacity
     Text.equal,
@@ -58,14 +60,24 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   // projects
-  stable var projectsEntries : [(T.ProjectId, T.Project)] = [];
-  let projects = HashMap.fromIter<T.ProjectId, T.Project>(projectsEntries.vals(), 100, Nat.equal, natHash);
+  var projectsEntries : [(Types.ProjectId, Types.Project)] = [];
+  transient let projects = HashMap.fromIter<Types.ProjectId, Types.Project>(projectsEntries.vals(), 100, Nat.equal, natHash);
 
   // collections
-  stable var collectionsEntries : [(Text, Collections.Collection)] = [];
-  let collections = HashMap.fromIter<Text, Collections.Collection>(
+  var collectionsEntries : [(Text, Collections.Collection)] = [];
+  transient let collections = HashMap.fromIter<Text, Collections.Collection>(
     collectionsEntries.vals(),
     50,
+    Text.equal,
+    Text.hash,
+  );
+
+  // projects v2 - unified collection for both user-submitted and curated projects
+  // Use listingStatus and isCurated fields to distinguish project states
+  var projectsV2Entries : [(TypesV2.ICP_ProjectId, TypesV2.ICP_Project)] = [];
+  transient let projectsV2 = HashMap.fromIter<TypesV2.ICP_ProjectId, TypesV2.ICP_Project>(
+    projectsV2Entries.vals(),
+    1_000,
     Text.equal,
     Text.hash,
   );
@@ -117,12 +129,12 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // Collections management
 
-  public shared ({ caller }) func addCollection(categoryId : Text, projectIds : [T.ProjectId]) : async Bool {
+  public shared ({ caller }) func addCollection(categoryId : Text, projectIds : [Types.ProjectId]) : async Bool {
     assert (AdminAuth.verifyAnyAdmin(caller));
     Collections.addCollection(collections, categoriesMap, categoryId, projectIds)
   };
 
-  public shared ({ caller }) func updateCollection(categoryId : Text, projectIds : [T.ProjectId]) : async Bool {
+  public shared ({ caller }) func updateCollection(categoryId : Text, projectIds : [Types.ProjectId]) : async Bool {
     assert (AdminAuth.verifyAnyAdmin(caller));
     Collections.updateCollection(collections, categoryId, projectIds)
   };
@@ -132,7 +144,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     Collections.removeCollection(collections, categoryId)
   };
 
-  public shared ({ caller }) func removeProjectFromCollection(categoryId : Text, projectId : T.ProjectId) : async Bool {
+  public shared ({ caller }) func removeProjectFromCollection(categoryId : Text, projectId : Types.ProjectId) : async Bool {
     assert (AdminAuth.verifyAnyAdmin(caller));
     Collections.removeProjectFromCollection(collections, categoryId, projectId)
   };
@@ -144,35 +156,246 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // Collections query
 
-  public query func getCollection(apiKey : T.ApiKey, categoryId : Text) : async ?Collections.Collection {
+  public query func getCollection(apiKey : Types.ApiKey, categoryId : Text) : async ?Collections.Collection {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
     Collections.getCollection(collections, categoryId)
   };
 
-  public query func getAllCollections(apiKey : T.ApiKey) : async [Collections.Collection] {
+  public query func getAllCollections(apiKey : Types.ApiKey) : async [Collections.Collection] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
     Collections.getAllCollections(collections)
   };
 
-  public query func getActiveCollections(apiKey : T.ApiKey) : async [Collections.Collection] {
+  public query func getActiveCollections(apiKey : Types.ApiKey) : async [Collections.Collection] {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
     Collections.getActiveCollections(collections)
   };
 
-  public query func getCollectionWithProjects(apiKey : T.ApiKey, categoryId : Text) : async ?Collections.CategoryProjects {
+  public query func getCollectionWithProjects(apiKey : Types.ApiKey, categoryId : Text) : async ?Collections.CategoryProjects {
     assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
     Collections.getCollectionWithProjects(collections, categoriesMap, projects, categoryId)
   };
 
+  // Projects V2 management
+
+  public shared ({ caller }) func addProjectV2(project : TypesV2.ICP_Project) : async Text {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    switch (ProjectsV2.addProject(projectsV2, project)) {
+      case (#ok(projectId)) { "Success: Project added with ID " # projectId };
+      case (#err(error)) { "Error: " # error }
+    }
+  };
+
+  public shared ({ caller }) func updateProjectV2(projectId : TypesV2.ICP_ProjectId, project : TypesV2.ICP_Project) : async Text {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    switch (ProjectsV2.updateProject(projectsV2, projectId, project)) {
+      case (#ok(id)) { "Success: Project updated with ID " # id };
+      case (#err(error)) { "Error: " # error }
+    }
+  };
+
+  public shared ({ caller }) func removeProjectV2(projectId : TypesV2.ICP_ProjectId) : async Text {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    switch (ProjectsV2.removeProject(projectsV2, projectId)) {
+      case (#ok(_removed)) { "Success: Project removed" };
+      case (#err(error)) { "Error: " # error }
+    }
+  };
+
+  public shared ({ caller }) func toggleProjectV2Status(projectId : TypesV2.ICP_ProjectId) : async Text {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+    switch (ProjectsV2.toggleProjectStatus(projectsV2, projectId)) {
+      case (#ok(isActive)) {
+        "Success: Project status changed to " # (if (isActive) "active" else "inactive")
+      };
+      case (#err(_error)) { "Error: " # _error }
+    }
+  };
+
+  // Projects V2 queries
+
+  public query func getProjectV2(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async ?TypesV2.ICP_Project {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getProject(projectsV2, projectId)
+  };
+
+  public query func getAllProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getAllProjects(projectsV2)
+  };
+
+  public query func getActiveProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getActiveProjects(projectsV2)
+  };
+
+  public query func getProjectsV2ByCategory(apiKey : Types.ApiKey, categoryId : Text) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getProjectsByCategory(projectsV2, categoryId)
+  };
+
+  public query func searchProjectsV2(apiKey : Types.ApiKey, searchQuery : Text) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.searchProjects(projectsV2, searchQuery)
+  };
+
+  public query func getProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getProjectsCount(projectsV2)
+  };
+
+  public query func getActiveProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getActiveProjectsCount(projectsV2)
+  };
+
+  public query func projectV2Exists(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async Bool {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.projectExists(projectsV2, projectId)
+  };
+
+  // Unified Projects V2 management with status filtering
+
+  public shared ({ caller }) func submitProjectV2(project : TypesV2.ICP_Project) : async Text {
+    assert (not Principal.isAnonymous(caller));
+
+    // Set project as user-submitted with pending status
+    let submittedProject = {
+      project with
+      listingStatus = "submitted";
+      isCurated = false;
+      isUserSubmitted = true;
+      listedBy = Principal.toText(caller);
+      submittedAt = Int.toText(Time.now())
+    };
+
+    switch (ProjectsV2.addProject(projectsV2, submittedProject)) {
+      case (#ok(projectId)) { "Success: Project submitted for review with ID " # projectId };
+      case (#err(error)) { "Error: " # error }
+    }
+  };
+
+  public shared ({ caller }) func approveProjectV2(projectId : TypesV2.ICP_ProjectId, _reviewNotes : Text) : async Text {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+
+    switch (ProjectsV2.getProject(projectsV2, projectId)) {
+      case (?project) {
+        let approvedProject = {
+          project with
+          listingStatus = "approved";
+          isCurated = true;
+          reviewedBy = Principal.toText(caller);
+          reviewedAt = Int.toText(Time.now());
+          approvedAt = Int.toText(Time.now())
+        };
+
+        switch (ProjectsV2.updateProject(projectsV2, projectId, approvedProject)) {
+          case (#ok(id)) { "Success: Project approved and curated with ID " # id };
+          case (#err(error)) { "Error: " # error }
+        }
+      };
+      case null { "Error: Project not found" }
+    }
+  };
+
+  public shared ({ caller }) func rejectProjectV2(projectId : TypesV2.ICP_ProjectId, reason : Text) : async Text {
+    assert (AdminAuth.verifyAnyAdmin(caller));
+
+    switch (ProjectsV2.getProject(projectsV2, projectId)) {
+      case (?project) {
+        let rejectedProject = {
+          project with
+          listingStatus = "rejected";
+          isCurated = false;
+          isActive = false;
+          reviewedBy = Principal.toText(caller);
+          reviewedAt = Int.toText(Time.now());
+          rejectionReason = reason
+        };
+
+        switch (ProjectsV2.updateProject(projectsV2, projectId, rejectedProject)) {
+          case (#ok(id)) { "Success: Project rejected with ID " # id # ". Reason: " # reason };
+          case (#err(error)) { "Error: " # error }
+        }
+      };
+      case null { "Error: Project not found" }
+    }
+  };
+
+  // Unified query functions with status filtering
+
+  public query func getSubmittedProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getSubmittedProjects(projectsV2)
+  };
+
+  public query func getCuratedProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getCuratedProjects(projectsV2)
+  };
+
+  public shared query ({ caller }) func getUserSubmittedProjectsV2(apiKey : Types.ApiKey) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    assert (not Principal.isAnonymous(caller));
+
+    let userId = Principal.toText(caller);
+    ProjectsV2.getProjectsByLister(projectsV2, userId)
+  };
+
+  public query func getProjectsByStatusV2(apiKey : Types.ApiKey, status : Text) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getProjectsByListingStatus(projectsV2, status)
+  };
+
+  // Optimized count functions
+
+  public query func getCuratedProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getCuratedProjectsCount(projectsV2)
+  };
+
+  public query func getSubmittedProjectsV2Count(apiKey : Types.ApiKey) : async Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getSubmittedProjectsCount(projectsV2)
+  };
+
+  public query func getProjectsV2CountByStatus(apiKey : Types.ApiKey, status : Text) : async Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getProjectsCountByStatus(projectsV2, status)
+  };
+
+  // Engagement utility functions
+
+  public query func getMostUpvotedProjectsV2(apiKey : Types.ApiKey, limit : Nat) : async [TypesV2.ICP_Project] {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    ProjectsV2.getMostUpvotedProjects(projectsV2, limit)
+  };
+
+  public query func getProjectUpvoteCount(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async ?Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    switch (ProjectsV2.getProject(projectsV2, projectId)) {
+      case (?project) { ?ProjectsV2.getUpvoteCount(project) };
+      case null { null }
+    }
+  };
+
+  public query func getProjectWatchCount(apiKey : Types.ApiKey, projectId : TypesV2.ICP_ProjectId) : async ?Nat {
+    assert (ApiKeyAuth.verifyApiKey(apiKey, secret));
+    switch (ProjectsV2.getProject(projectsV2, projectId)) {
+      case (?project) { ?ProjectsV2.getWatchCount(project) };
+      case null { null }
+    }
+  };
+
   // update
 
-  public shared ({ caller }) func addProjectNode(project : T.Project) : async ?T.ProjectId {
+  public shared ({ caller }) func addProjectNode(project : Types.Project) : async ?Types.ProjectId {
     assert (caller == nodeAdmin1);
     projects.put(project.id, project);
     return ?project.id
   };
 
-  public shared ({ caller }) func addProject(project : T.Project) : async ?T.ProjectId {
+  public shared ({ caller }) func addProject(project : Types.Project) : async ?Types.ProjectId {
     assert (caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
 
     // Generate new ID if project.id is 0 or if the ID doesn't exist in the project record
@@ -191,7 +414,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return ?projectId
   };
 
-  public shared ({ caller }) func editProject(projectId : T.ProjectId, project : T.Project) : async ?T.ProjectId {
+  public shared ({ caller }) func editProject(projectId : Types.ProjectId, project : Types.Project) : async ?Types.ProjectId {
     assert (caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
 
     // Check if the project exists before updating
@@ -206,13 +429,13 @@ shared actor class _CURATED_PROJECTS() = Self {
     }
   };
 
-  public shared ({ caller }) func removeProject(projectId : T.ProjectId) : async ?T.Project {
+  public shared ({ caller }) func removeProject(projectId : Types.ProjectId) : async ?Types.Project {
     assert (caller == nodeAdmin1 or caller == clientAdmin1 or caller == clientAdmin2);
     let removed = projects.remove(projectId);
     return removed
   };
 
-  public shared ({ caller }) func removeProjectWithLogo(projectId : T.ProjectId) : async ?T.Project {
+  public shared ({ caller }) func removeProjectWithLogo(projectId : Types.ProjectId) : async ?Types.Project {
     assert (caller == clientAdmin1 or caller == clientAdmin2);
 
     // Get the project first to extract logo information
@@ -238,7 +461,7 @@ shared actor class _CURATED_PROJECTS() = Self {
             await Assets.deleteFile(assets, pathPart)
           }
         }
-      } catch (error) {
+      } catch (_error) {
         // Log error but continue with project removal
         // In production, you might want to handle this differently
       }
@@ -249,12 +472,12 @@ shared actor class _CURATED_PROJECTS() = Self {
     return removed
   };
 
-  public shared ({ caller }) func removeDuplicatesUsingBackup(apiKey : T.ApiKey, backupProjects : [T.Project]) : async { removed : Nat; kept : Nat } {
+  public shared ({ caller }) func removeDuplicatesUsingBackup(apiKey : Types.ApiKey, backupProjects : [Types.Project]) : async { removed : Nat; kept : Nat } {
     assert (caller == admin1 or caller == clientAdmin1 or caller == clientAdmin2);
     assert (secret == apiKey);
 
     // Create a map of project names from backup data (source of truth)
-    let backupNames = HashMap.HashMap<Text, T.ProjectId>(backupProjects.size(), Text.equal, Text.hash);
+    let backupNames = HashMap.HashMap<Text, Types.ProjectId>(backupProjects.size(), Text.equal, Text.hash);
     for (project in backupProjects.vals()) {
       backupNames.put(project.name, project.id)
     };
@@ -262,7 +485,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     // Find projects in current database that should be removed
     var removedCount = 0;
     var keptCount = 0;
-    let projectsToRemove = Buffer.Buffer<T.ProjectId>(0);
+    let projectsToRemove = Buffer.Buffer<Types.ProjectId>(0);
 
     for ((currentId, currentProject) in projects.entries()) {
       switch (backupNames.get(currentProject.name)) {
@@ -293,7 +516,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     { removed = removedCount; kept = keptCount }
   };
 
-  public shared ({ caller }) func updateUpvote(apiKey : T.ApiKey, projectId : T.ProjectId) : async Text {
+  public shared ({ caller }) func updateUpvote(apiKey : Types.ApiKey, projectId : Types.ProjectId) : async Text {
 
     // verify
     assert (not Principal.isAnonymous(caller));
@@ -320,20 +543,20 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // query
 
-  public query func getActiveProjectsNum(apiKey : T.ApiKey) : async Nat {
+  public query func getActiveProjectsNum(apiKey : Types.ApiKey) : async Nat {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     return activeProjects.size()
   };
 
-  public query func getProjectById(apiKey : T.ApiKey, id : T.ProjectId) : async ?T.Project {
+  public query func getProjectById(apiKey : Types.ApiKey, id : Types.ProjectId) : async ?Types.Project {
     assert (secret == apiKey);
     return projects.get(id)
   };
 
-  public query func getProjectsByIds(apiKey : T.ApiKey, ids : [T.ProjectId]) : async [T.Project] {
+  public query func getProjectsByIds(apiKey : Types.ApiKey, ids : [Types.ProjectId]) : async [Types.Project] {
     assert (secret == apiKey);
-    let result = Buffer.Buffer<T.Project>(0);
+    let result = Buffer.Buffer<Types.Project>(0);
 
     for (id in ids.vals()) {
       switch (projects.get(id)) {
@@ -349,19 +572,19 @@ shared actor class _CURATED_PROJECTS() = Self {
     Buffer.toArray(result)
   };
 
-  public query func getAllProjects(apiKey : T.ApiKey) : async [T.Project] {
+  public query func getAllProjects(apiKey : Types.ApiKey) : async [Types.Project] {
     assert (secret == apiKey);
-    let iter : Iter.Iter<T.Project> = projects.vals();
-    let allProjects = Iter.toArray<T.Project>(iter);
+    let iter : Iter.Iter<Types.Project> = projects.vals();
+    let allProjects = Iter.toArray<Types.Project>(iter);
     return Handle.sort(allProjects, #newest_first)
   };
 
-  public query func getCategories(apiKey : T.ApiKey) : async [Category.Category] {
+  public query func getCategories(apiKey : Types.ApiKey) : async [Category.Category] {
     assert (secret == apiKey);
     return categories
   };
 
-  public query func getCategoriesWithSize(apiKey : T.ApiKey) : async [Category.CategoryWithSize] {
+  public query func getCategoriesWithSize(apiKey : Types.ApiKey) : async [Category.CategoryWithSize] {
     assert (secret == apiKey);
 
     let activeProjects = _getActiveProjects();
@@ -372,7 +595,7 @@ shared actor class _CURATED_PROJECTS() = Self {
         buff.add({ category; size = activeProjects.size() })
 
       } else {
-        let filter = func(p : T.Project) : Bool {
+        let filter = func(p : Types.Project) : Bool {
           let exists = Array.find<Category.CategoryLabel>(p.category, func(x) { x == category.lbl });
 
           switch (exists) {
@@ -388,12 +611,12 @@ shared actor class _CURATED_PROJECTS() = Self {
     return Buffer.toArray(buff)
   };
 
-  public shared query ({ caller }) func getUserUpvotedProjects(apiKey : T.ApiKey) : async [T.Project] {
+  public shared query ({ caller }) func getUserUpvotedProjects(apiKey : Types.ApiKey) : async [Types.Project] {
     assert (secret == apiKey);
     let sortedByNewest = Handle.sort(_getActiveProjects(), #newest_first);
     let userId = Principal.toText(caller);
 
-    let filter = func(x : T.Project) : Bool {
+    let filter = func(x : Types.Project) : Bool {
       let idx = Array.indexOf<Text>(userId, x.upvotedBy, func(a : Text, b : Text) : Bool { a == b });
       switch (idx) {
         case (null) return false;
@@ -406,13 +629,13 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // filter, sort, paginate
 
-  public query func getProjects(args : T.GetProjectsArgs) : async ?T.GetProjectsResult {
+  public query func getProjects(args : Types.GetProjectsArgs) : async ?Types.GetProjectsResult {
     assert (secret == args.secret);
     let { q; category; openSource; onChain; sort; selectedPage; itemsPerPage } = args;
 
     // get projects
     let activeProjects = _getActiveProjects();
-    var result : [T.Project] = [];
+    var result : [Types.Project] = [];
 
     // search query
     if (q != "") {
@@ -428,7 +651,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     let sorted = Handle.sort(filteredByOnchain, sort);
     let ?paginated = Handle.paginate(sorted, selectedPage, itemsPerPage) else return null;
 
-    let res : T.GetProjectsResult = {
+    let res : Types.GetProjectsResult = {
       paginated with
       q;
       category;
@@ -453,12 +676,12 @@ shared actor class _CURATED_PROJECTS() = Self {
   };
 
   public query func getHomepageData(
-    apiKey : T.ApiKey,
+    apiKey : Types.ApiKey,
     categories : [Text],
     itemsPerCategory : Nat,
     newProjectsCount : Nat,
     mostUpvotedCount : Nat,
-  ) : async T.HomepageData {
+  ) : async Types.HomepageData {
     assert (secret == apiKey);
 
     let activeProjects = _getActiveProjects();
@@ -472,9 +695,9 @@ shared actor class _CURATED_PROJECTS() = Self {
     let mostUpvoted = safeTake(sortedByMostUpvoted, mostUpvotedCount);
 
     // Get highlighted projects by category
-    let highlighted = Array.map<Text, T.CategoryProjects>(
+    let highlighted = Array.map<Text, Types.CategoryProjects>(
       categories,
-      func(categoryLabel : Text) : T.CategoryProjects {
+      func(categoryLabel : Text) : Types.CategoryProjects {
         // Use the category label directly for filtering since that's what projects store
         let filteredByCategory = Handle.filterByCategory(activeProjects, categoryLabel);
         let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
@@ -501,14 +724,14 @@ shared actor class _CURATED_PROJECTS() = Self {
     }
   };
 
-  public query func getNewProjects(apiKey : T.ApiKey, length : Nat) : async [T.Project] {
+  public query func getNewProjects(apiKey : Types.ApiKey, length : Nat) : async [Types.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sortedByNewest = Handle.sort(activeProjects, #newest_first);
     return safeTake(sortedByNewest, length)
   };
 
-  public query func getHighlightedProjects(apiKey : T.ApiKey, category : Category.CategoryLabel, length : Nat) : async [T.Project] {
+  public query func getHighlightedProjects(apiKey : Types.ApiKey, category : Category.CategoryLabel, length : Nat) : async [Types.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let filteredByCategory = Handle.filterByCategory(activeProjects, category);
@@ -516,13 +739,13 @@ shared actor class _CURATED_PROJECTS() = Self {
     return safeTake(sortedByNewest, length)
   };
 
-  public query func getMultipleHighlightedProjects(apiKey : T.ApiKey, categories : [Category.CategoryLabel], length : Nat) : async [T.CategoryProjects] {
+  public query func getMultipleHighlightedProjects(apiKey : Types.ApiKey, categories : [Category.CategoryLabel], length : Nat) : async [Types.CategoryProjects] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
 
-    let highlighted = Array.map<Category.CategoryLabel, T.CategoryProjects>(
+    let highlighted = Array.map<Category.CategoryLabel, Types.CategoryProjects>(
       categories,
-      func(categoryLabel : Category.CategoryLabel) : T.CategoryProjects {
+      func(categoryLabel : Category.CategoryLabel) : Types.CategoryProjects {
         let filteredByCategory = Handle.filterByCategory(activeProjects, categoryLabel);
         let sortedByNewest = Handle.sort(filteredByCategory, #newest_first);
         let projects = safeTake(sortedByNewest, length);
@@ -544,7 +767,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return highlighted
   };
 
-  public query func getMostUpvotedProjects(apiKey : T.ApiKey, length : Nat) : async [T.Project] {
+  public query func getMostUpvotedProjects(apiKey : Types.ApiKey, length : Nat) : async [Types.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let sortedByMostUpvoted = Handle.sort(activeProjects, #most_upvoted);
@@ -553,36 +776,36 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // project
 
-  public query func getRelatedProjects(apiKey : T.ApiKey, projectId : T.ProjectId, length : Nat) : async [T.Project] {
+  public query func getRelatedProjects(apiKey : Types.ApiKey, projectId : Types.ProjectId, length : Nat) : async [Types.Project] {
     assert (secret == apiKey);
     let activeProjects = _getActiveProjects();
     let ?project = projects.get(projectId) else return [];
     let categories = project.category;
-    let buf = Buffer.Buffer<T.Project>(10);
+    let buf = Buffer.Buffer<Types.Project>(10);
 
     for (c in categories.vals()) {
       let filtered = Handle.filterByCategory(activeProjects, c);
-      buf.append(Buffer.fromArray<T.Project>(filtered))
+      buf.append(Buffer.fromArray<Types.Project>(filtered))
     };
 
-    let compare = func(a : T.Project, b : T.Project) : Order.Order {
+    let compare = func(a : Types.Project, b : Types.Project) : Order.Order {
       if (a.id > b.id) return #greater;
       if (a.id < b.id) return #less;
       return #equal
     };
 
-    Buffer.removeDuplicates<T.Project>(buf, compare);
-    return Buffer.toArray<T.Project>(buf)
+    Buffer.removeDuplicates<Types.Project>(buf, compare);
+    return Buffer.toArray<Types.Project>(buf)
   };
 
   // admin
 
-  public query func getProjectsBySearchQ(apiKey : T.ApiKey, searchQ : Text) : async [T.Project] {
+  public query func getProjectsBySearchQ(apiKey : Types.ApiKey, searchQ : Text) : async [Types.Project] {
     assert (secret == apiKey);
-    let allProjects = Iter.toArray<T.Project>(projects.vals());
+    let allProjects = Iter.toArray<Types.Project>(projects.vals());
     let sortedByNewest = Handle.sort(allProjects, #newest_first);
     let q = Text.toLowercase(searchQ);
-    return Array.filter<T.Project>(sortedByNewest, func(x) { Text.contains(Text.toLowercase(x.name), #text q) })
+    return Array.filter<Types.Project>(sortedByNewest, func(x) { Text.contains(Text.toLowercase(x.name), #text q) })
   };
 
   public shared query ({ caller }) func showApiKey() : async Text {
@@ -590,7 +813,7 @@ shared actor class _CURATED_PROJECTS() = Self {
     return secret
   };
 
-  public shared ({ caller }) func updateApiKey(newApiKey : T.ApiKey) : async Text {
+  public shared ({ caller }) func updateApiKey(newApiKey : Types.ApiKey) : async Text {
     assert (caller == admin1);
     secret := newApiKey;
     return "ok"
@@ -604,7 +827,7 @@ shared actor class _CURATED_PROJECTS() = Self {
   // logo uploader
 
   // Get the assets canister instance
-  let assets = Assets.getAssetsCanister(assets_canister_id);
+  transient let assets = Assets.getAssetsCanister(assets_canister_id);
 
   /// Public method to upload logo to the assets canister
   public shared ({ caller }) func upload_logo(name : Text, content : [Nat8], content_type : Text) : async Text {
@@ -638,10 +861,10 @@ shared actor class _CURATED_PROJECTS() = Self {
 
   // utils
 
-  private func _getActiveProjects() : [T.Project] {
-    let iter : Iter.Iter<T.Project> = projects.vals();
-    let allProjects = Iter.toArray<T.Project>(iter);
-    let activeProjects = Array.filter<T.Project>(allProjects, func(p) { p.archived == false });
+  private func _getActiveProjects() : [Types.Project] {
+    let iter : Iter.Iter<Types.Project> = projects.vals();
+    let allProjects = Iter.toArray<Types.Project>(iter);
+    let activeProjects = Array.filter<Types.Project>(allProjects, func(p) { p.archived == false });
     return activeProjects
   };
 
@@ -656,12 +879,16 @@ shared actor class _CURATED_PROJECTS() = Self {
   system func preupgrade() {
     projectsEntries := Iter.toArray(projects.entries());
     categoriesEntries := Iter.toArray(categoriesMap.entries());
-    collectionsEntries := Iter.toArray(collections.entries())
+    collectionsEntries := Iter.toArray(collections.entries());
+    // v2
+    projectsV2Entries := Iter.toArray(projectsV2.entries())
   };
 
   system func postupgrade() {
     projectsEntries := [];
     categoriesEntries := [];
-    collectionsEntries := []
+    collectionsEntries := [];
+    // v2
+    projectsV2Entries := []
   }
 }
