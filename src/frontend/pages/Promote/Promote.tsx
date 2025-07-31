@@ -1,21 +1,27 @@
+import { FAIcon, FAIconKeys } from "@/components/FAIcon"
 import { Icon } from "@/components/Icon"
 import { Button } from "@/components/ui/button"
-import { THIINGS } from "@/constants"
 import { X_PROMOTE_URL } from "@/constants/constants"
 
-const FEATURES = [
+interface Feature {
+  icon: FAIconKeys
+  title: string
+  description: string
+}
+
+const FEATURES: Feature[] = [
   {
-    icon: THIINGS.STAR_2,
+    icon: "FaStar",
     title: "Featured Listings",
     description: "Get top placement in our project directory for maximum visibility and increased user discovery",
   },
   {
-    icon: THIINGS.TRENDING_UP,
+    icon: "FaChartLine",
     title: "Social Promotion",
     description: "We'll showcase your dapp on our social media channels to boost your reach and engagement",
   },
   {
-    icon: THIINGS.SPACE_CRAFT,
+    icon: "FaUsers",
     title: "Community Exposure",
     description: "Connect with the growing Internet Computer ecosystem and find your target audience",
   },
@@ -42,10 +48,9 @@ export default function Promote() {
             <div key={feature.title} className="group bg-coolgray-950/80 hover:border-coolgray-700 rounded-3xl p-6 transition-colors duration-300">
               <div className="mb-6 flex justify-center">
                 <div className="bg-coolgray-900/60 rounded-full p-6">
-                  <img
-                    src={feature.icon}
-                    alt={feature.title}
-                    className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-130 group-hover:rotate-9"
+                  <FAIcon
+                    name={feature.icon}
+                    className="text-accent-3 h-12 w-12 transition-transform duration-300 group-hover:scale-130 group-hover:rotate-9"
                   />
                 </div>
               </div>

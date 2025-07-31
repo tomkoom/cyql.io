@@ -38,9 +38,9 @@ export const CompactStatCard = ({ label, value, unit = "", change, icon, isLoadi
             <Icon
               lucideName={change.isPositive ? "TrendingUp" : "TrendingDown"}
               size={12}
-              className={cn("transition-colors", change.isPositive ? "text-emerald-400" : "text-red-400")}
+              className={cn("transition-colors", change.isPositive ? "text-lime-400" : "text-red-400")}
             />
-            <span className={cn("text-xs font-medium transition-colors", change.isPositive ? "text-emerald-400" : "text-red-400")}>{change.value}</span>
+            <span className={cn("text-xs font-medium transition-colors", change.isPositive ? "text-lime-400" : "text-red-400")}>{change.value}</span>
             <span className="text-coolgray-500 text-xs">7d</span>
           </div>
         )}

@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <div className="flex items-baseline justify-between gap-1">
             <h4 className="group-hover:text-accent-3 line-clamp-1 font-bold text-wrap transition-colors">{name}</h4>
             {upvotesNum > 0 && (
-              <p className="flex items-center gap-1 rounded-sm bg-emerald-500/10 px-1 py-0.5 text-xs font-bold text-emerald-500 tabular-nums">
+              <p className="flex items-center gap-1 rounded-sm bg-lime-500/10 px-1 py-0.5 text-xs font-bold text-lime-500 tabular-nums">
                 <Icon lucideName="ArrowUp" size={14} strokeWidth={2} /> {upvotesNum}
               </p>
             )}

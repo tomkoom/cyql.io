@@ -70,7 +70,7 @@ const PromotionalBanner = () => (
     className="group border-coolgray-950 to-accent-1/10 hover:to-accent-1/20 flex items-center justify-between border-b bg-gradient-to-r from-blue-950/30 px-4 py-3 transition-all duration-200 hover:from-blue-950/40 hover:shadow-sm"
   >
     <div className="flex items-center gap-3">
-      <div className="to-accent-1 flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-tr from-blue-500">
+      <div className="to-accent-1 flex h-8 w-8 flex-nowrap items-center justify-center rounded-full bg-gradient-to-tr from-blue-500">
         <Icon lucideName="Star" className="h-4 w-4 text-white" strokeWidth={2} fill="currentColor" />
       </div>
       <div className="flex flex-col gap-0.5">

@@ -26,8 +26,8 @@ export const StatCard = ({ label, value, unit = "", subtitle = "", isHighlight =
     )}
 
     <div className="mb-0.5">
-      <span className={cn("text-xl font-bold", isHighlight ? "text-emerald-400" : "text-white")}>{value}</span>
-      {unit && <span className={cn("ml-1 text-sm font-medium", isHighlight ? "text-emerald-400" : "text-coolgray-500")}>{unit}</span>}
+      <span className={cn("text-xl font-bold", isHighlight ? "text-lime-400" : "text-white")}>{value}</span>
+      {unit && <span className={cn("ml-1 text-sm font-medium", isHighlight ? "text-lime-400" : "text-coolgray-500")}>{unit}</span>}
     </div>
     {subtitle && <p className={cn("text-xs leading-tight", isHighlight ? "text-coolgray-500" : "text-coolgray-500")}>{subtitle}</p>}
   </div>
