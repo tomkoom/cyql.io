@@ -15,7 +15,15 @@ interface CompactStatCardProps {
 
 export const CompactStatCard = ({ label, value, unit = "", change, icon, isLoading = false }: CompactStatCardProps) => {
   if (isLoading) {
-    return <div className="flex items-center justify-center">Loading...</div>
+    return (
+      <div className="bg-coolgray-950/80 rounded-xl p-4">
+        {/* Label skeleton */}
+        <div className="bg-coolgray-800 mb-3 h-2 w-24 animate-pulse rounded" />
+
+        {/* Value skeleton */}
+        <div className="bg-coolgray-800 h-4 w-20 animate-pulse rounded" />
+      </div>
+    )
   }
 
   return (
