@@ -4,41 +4,37 @@ import Principal "mo:base/Principal";
 import Nat "mo:base/Nat";
 import Hash "mo:base/Hash";
 import Buffer "mo:base/Buffer";
-// import Array "mo:base/Array";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
 import Result "mo:base/Result";
 
+import T "./project_proposals_types";
+import U "../../utils";
+import C "../../constants";
 // services
-import Users "../users/users_interface";
+import Users "../../users/users_interface";
 import Nft "../nft_interface";
 
-// ...
-// import UT "../users/users_types";
-import T "./project_proposals_types";
-import U "../utils";
-import C "../constants";
-
-shared actor class DAO(init : T.DaoStableStorage) = Self {
+shared persistent actor class DAO(init : T.DaoStableStorage) = Self {
 
   // constants
 
-  stable var initialVp = 1;
-  stable var nftVpMultiplier = 10;
+  var initialVp = 1;
+  var nftVpMultiplier = 10;
 
   // dao params
 
-  stable var systemParams = init.systemParams;
+  var systemParams = init.systemParams;
 
   // canisters
 
-  let users = actor (C.usersCanisterId) : Users.Self;
-  let nft = actor (C.nftCanisterId) : Nft.Self;
+  transient let users = actor (C.usersCanisterId) : Users.Self;
+  transient let nft = actor (C.nftCanisterId) : Nft.Self;
 
   // maps
 
-  stable var proposalsEntries : [(T.ProposalId, T.Proposal)] = [];
-  let proposals = HashMap.fromIter<T.ProposalId, T.Proposal>(proposalsEntries.vals(), 10, Nat.equal, Hash.hash);
+  var proposalsEntries : [(T.ProposalId, T.Proposal)] = [];
+  transient let proposals = HashMap.fromIter<T.ProposalId, T.Proposal>(proposalsEntries.vals(), 10, Nat.equal, Hash.hash);
 
   // -- manage --
 
@@ -49,7 +45,7 @@ shared actor class DAO(init : T.DaoStableStorage) = Self {
     // verify caller
     switch (u) {
       case (null) { return #err("User not found.") };
-      case (user) {
+      case (_user) {
         let proposal = U.generateProposal(caller, payload);
         _proposalsPut(proposal.id, proposal);
         return #ok(proposal.id)
@@ -79,7 +75,7 @@ shared actor class DAO(init : T.DaoStableStorage) = Self {
 
     switch (u) {
       case (null) { return #err("User not found.") };
-      case (user) {
+      case (_user) {
         var state = proposal.state;
         var votersYes = proposal.votersYes;
         var votersNo = proposal.votersNo;
@@ -152,7 +148,7 @@ shared actor class DAO(init : T.DaoStableStorage) = Self {
         let votingPower = initialVp + nftVp;
         return votingPower
       };
-      case (#err(msg)) {
+      case (#err(_msg)) {
         return 0
       }
     }

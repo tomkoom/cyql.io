@@ -1,6 +1,4 @@
 import Principal "mo:base/Principal";
-// import Principal "mo:base/Principal";
-// import Buffer "mo:base/Buffer";
 
 module {
   public type Tokens = { amount_e8s : Nat };
