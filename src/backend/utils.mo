@@ -6,7 +6,7 @@ import Blob "mo:base/Blob";
 import Int "mo:base/Int";
 
 import Constants "constants";
-import Proposal_Types "./proposals/project_proposals_types";
+import Proposal_Types "./_archive/proposals/project_proposals_types";
 import Hex "./utils/hex";
 
 module {
@@ -63,6 +63,5 @@ module {
 
   public func nat8ArrToHex(arr : [Nat8]) : Text {
     return Hex.toHex(arr)
-  };
-
+  }
 }

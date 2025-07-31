@@ -11,8 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "dfx deploy --network=ic",
-    "deploy_backend:local": "dfx deploy backend && dfx generate backend",
+    "deploy": "DFX_WARNING=-mainnet_plaintext_identity dfx deploy --network=ic",
     "start:clean": "dfx start --clean",
     "status:assets": "dfx canister --network=ic status assets",
     "cycles": "chmod +x src/scripts/check-cycles.sh && ./src/scripts/check-cycles.sh"
