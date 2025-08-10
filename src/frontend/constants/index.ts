@@ -1,3 +1,5 @@
 export { ADMINS } from "./admins"
+export { IC_LOGO, LOGO_COLOR, LOGO_GRAY } from "./assets"
 export { CANISTER_IDS } from "./canisters"
+export { NOTION_LIST_PROJECT_EMBED_URL, NOTION_LIST_PROJECT_FORM_URL } from "./notion"
 export { ROUTES } from "./routes"
