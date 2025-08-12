@@ -73,7 +73,7 @@ export default function CollectionBlock({ collection, categoryLabel, projectLogo
       {projectLogos.length > 0 && (
         <div className="mb-3 flex items-center gap-1">
           <div className="flex -space-x-2">
-            {projectLogos.slice(0, 5).map((project, index) => (
+            {projectLogos.slice(0, 12).map((project, index) => (
               <div key={project.id} className="relative" style={{ zIndex: index + 1 }}>
                 <ProjectLogo project={project} />
               </div>

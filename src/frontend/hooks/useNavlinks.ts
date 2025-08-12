@@ -60,10 +60,11 @@ export const useNavlinks = (): UseNavlinks => {
       isActive: currentPathname.startsWith(ROUTES.PROMOTE),
     },
     {
-      label: "List Project",
+      label: "Get Listed",
       pathname: ROUTES.LIST_PROJECT,
       route: toListProject,
-      icon: "Plus",
+      icon: undefined,
+      // icon: "Plus",
       isActive: currentPathname.startsWith(ROUTES.LIST_PROJECT),
     },
     // { label: "List Project", pathname: "/list", route: toList, icon: iPlus, isActive: currentPathname === "/list" },

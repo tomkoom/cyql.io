@@ -2,16 +2,13 @@ import logo_color from "@/assets/logos/cyql_logo_color.svg"
 import logo_gray from "@/assets/logos/cyql_logo_gray.svg"
 import iclogo from "@/assets/logos/ic-logo.svg"
 export { ADMINS, CLIENT_ADMIN_1, CLIENT_ADMIN_2 } from "./admins"
+export { API_KEY, DONATION_WALLET } from "./env"
 
 export const APP_NAME = "cyql"
 export const APP_NAME_TLD = "cyql.io"
 export const MODE = process.env.NODE_ENV
 export const IS_DEV = MODE === "development"
 export const IS_PROD = MODE === "production"
-
-// env
-export const DONATION_WALLET = process.env.DONATION_WALLET
-export const API_KEY = process.env.API_KEY
 
 // newtwork, host
 export const NETWORK = process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local")

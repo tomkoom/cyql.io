@@ -15,11 +15,10 @@ import { Cookie, Footer, Navigation, StatsHeader } from "."
 
 const toasterStyle = {
   border: "none",
-  padding: "0.7rem 1rem",
-  fontSize: "var(--fsText)",
-  color: "var(--primaryColor)",
-  backgroundColor: "var(--underlay1)",
-  borderRadius: "unset",
+  padding: "0.5rem 0.75rem",
+  fontSize: "0.9rem",
+  color: "white",
+  backgroundColor: "#21272a",
 }
 
 export default function Layout() {
@@ -68,6 +67,7 @@ export default function Layout() {
 
   return (
     <LayoutStyled className={theme}>
+      {/* modals */}
       <Toaster
         position={"top-center"}
         toastOptions={{
@@ -78,7 +78,7 @@ export default function Layout() {
       <LoadingModal isOpen={isLoading} />
       <SignInModal isOpen={isSignInModalOpen} />
 
-      {/* ... */}
+      {/* header */}
       <StatsHeader />
       <Navigation />
 
@@ -103,7 +103,6 @@ const LayoutStyled = styled.div`
 
   > main.main {
     padding: 0 2rem;
-    max-width: calc(2048px + 4rem);
     margin: 2rem auto;
     width: 100%;
 
