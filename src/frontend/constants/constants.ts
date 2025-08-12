@@ -1,29 +1,32 @@
-export { IC_LOGO, iclogo, logo_color, LOGO_COLOR, logo_gray, LOGO_GRAY } from "."
-export { ADMINS, CLIENT_ADMIN_1, CLIENT_ADMIN_2 } from "./admins"
-export { API_KEY, DONATION_WALLET } from "./env"
+import { CANISTER_IDS } from "./canisters"
 import { DONATION_WALLET } from "./env"
 
-export const APP_NAME = "cyql"
-export const APP_NAME_TLD = "cyql.io"
-export const MODE = process.env.NODE_ENV
-export const IS_DEV = MODE === "development"
-export const IS_PROD = MODE === "production"
-
-// newtwork, host
-export const NETWORK = process.env.DFX_NETWORK || (process.env.NODE_ENV === "production" ? "ic" : "local")
-export const HOST = "https://icp0.io"
+export {
+  APP_ALTERNATIVE_ORIGIN,
+  APP_DERIVATION_ORIGIN,
+  APP_NAME,
+  APP_NAME_TLD,
+  CANISTER_IDS,
+  HOST,
+  IC_LOGO,
+  iclogo,
+  IS_DEV,
+  IS_PROD,
+  logo_color,
+  LOGO_COLOR,
+  logo_gray,
+  LOGO_GRAY,
+} from "."
+export { ADMINS, CLIENT_ADMIN_1, CLIENT_ADMIN_2 } from "./admins"
+export { API_KEY, DONATION_WALLET, MODE, NETWORK } from "./env"
 
 // canister ids
-export const BACKEND_CANISTER_ID_IC = "nrkmt-haaaa-aaaai-qagmq-cai"
-export const USERS_CANISTER_ID_IC = "dnqgz-fyaaa-aaaag-abxia-cai"
-export const PROPOSALS_CANISTER_ID_IC = "bqnir-wqaaa-aaaag-abxhq-cai"
-export const NFT_CANISTER_ID_IC = "dtlqp-nqaaa-aaaak-abwna-cai"
-export const ICP_LEDGER_CANISTER_ID_IC = "ryjl3-tyaaa-aaaaa-aaaba-cai"
-export const CKBTC_LEDGER_CANISTER_ID_IC = "mxzaz-hqaaa-aaaar-qaada-cai"
-
-// ii
-export const APP_DERIVATION_ORIGIN = "https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io"
-export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io"
+export const BACKEND_CANISTER_ID_IC = CANISTER_IDS.MAINNET.BACKEND
+export const USERS_CANISTER_ID_IC = CANISTER_IDS.MAINNET.USERS
+export const PROPOSALS_CANISTER_ID_IC = CANISTER_IDS.MAINNET.PROPOSALS
+export const NFT_CANISTER_ID_IC = CANISTER_IDS.MAINNET.NFT
+export const ICP_LEDGER_CANISTER_ID_IC = CANISTER_IDS.MAINNET.ICP_LEDGER
+export const CKBTC_LEDGER_CANISTER_ID_IC = CANISTER_IDS.MAINNET.CKBTC_LEDGER
 
 // links
 // x

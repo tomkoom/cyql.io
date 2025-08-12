@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto max-w-xl px-4 py-16 text-center">
       <h1 className="page-title mb-2">Page not found</h1>
-      <p className="text-coolgray-400 mb-6 leading-snug">{"The page you're looking for doesn't exist or has moved."}</p>
+      <p className="text-coolgray-400 mb-6 leading-snug">The page you're looking for doesn't exist or has moved.</p>
 
       <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
         <Button variant="accent" size="lg" className="h-11" onClick={toHome}>
