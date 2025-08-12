@@ -1,8 +1,7 @@
-import logo_color from "@/assets/logos/cyql_logo_color.svg"
-import logo_gray from "@/assets/logos/cyql_logo_gray.svg"
-import iclogo from "@/assets/logos/ic-logo.svg"
+export { IC_LOGO, iclogo, logo_color, LOGO_COLOR, logo_gray, LOGO_GRAY } from "."
 export { ADMINS, CLIENT_ADMIN_1, CLIENT_ADMIN_2 } from "./admins"
 export { API_KEY, DONATION_WALLET } from "./env"
+import { DONATION_WALLET } from "./env"
 
 export const APP_NAME = "cyql"
 export const APP_NAME_TLD = "cyql.io"
@@ -46,11 +45,6 @@ export const DONATION_WALLET_URL = `https://dashboard.internetcomputer.org/accou
 export const CYQL_NFT_FUNDED_URL = "https://marketplace.funded.app/collections/ic-apps"
 export const CYQL_NFT_ENTREPOT_URL = "https://entrepot.app/marketplace/ic-apps"
 export const CYQL_NFT_STATS_URL = "https://t5t44-naaaa-aaaah-qcutq-cai.raw.ic0.app/collection/dtlqp-nqaaa-aaaak-abwna-cai/summary"
-
-// assets
-export const IC_LOGO = iclogo
-export const LOGO_COLOR = logo_color
-export const LOGO_GRAY = logo_gray
 
 // ...
 export const E8S = 10 ** 8

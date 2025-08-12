@@ -20,7 +20,7 @@ import { createHashRouter, createRoutesFromElements, Route } from "react-router-
 
 export default createHashRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />} errorElement={<NotFound text="Something went wrong" />}>
+    <Route path="/" element={<Layout />} errorElement={<NotFound />}>
       <Route index element={<Home />} />
       <Route path={ROUTES.PROJECTS} element={<Projects />} />
       <Route path={`${ROUTES.PROJECTS}/:id`} element={<Project />} />
