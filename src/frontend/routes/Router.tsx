@@ -27,7 +27,7 @@ export default createHashRouter(
       <Route path={ROUTES.COLLECTIONS} element={<Collections />} />
       <Route path={ROUTES.STATS} element={<Stats />} />
       <Route path={ROUTES.PROMOTE} element={<Promote />} />
-      <Route path={ROUTES.LIST_PROJECT} element={<ListProject />} />
+      <Route path={ROUTES.GET_LISTED} element={<ListProject />} />
 
       {/* proposals */}
       {/* <Route path="proposals" element={<Proposals />} /> */}

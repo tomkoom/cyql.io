@@ -47,12 +47,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <ul className="flex flex-wrap items-center gap-1">
               {frontendCanisterId && (
                 <li className="bg-coolgray-900/60 text-coolgray-300 font-mono-default flex h-[22px] items-center gap-1 rounded-sm px-1 text-xs">
-                  <span className="text-sm text-indigo-700">{iCircleNodes}</span> Onchain
+                  <span className="text-sm">{iCircleNodes}</span> On-Chain
                 </li>
               )}
               {github && (
                 <li className="bg-coolgray-900/60 text-coolgray-300 font-mono-default flex h-[22px] items-center gap-1 rounded-sm px-1 text-xs">
-                  <span className="text-sm text-sky-700">{iGithub}</span> Open
+                  <span className="text-sm">{iGithub}</span> Open-Source
                 </li>
               )}
             </ul>

@@ -4,7 +4,7 @@ export const ROUTES = {
   COLLECTIONS: "/collections",
   STATS: "/ic-stats",
   PROMOTE: "/promote",
-  LIST_PROJECT: "/list-project",
+  GET_LISTED: "/get-listed",
   PROFILE: "/profile",
   ADMIN: "/admin",
   ADMIN_PROJECTS: "/admin/projects",

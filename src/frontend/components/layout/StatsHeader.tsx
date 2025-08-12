@@ -1,19 +1,16 @@
 import { Icon } from "@/components/Icon"
 import PriceLabel from "@/components/PriceLabel"
+import { REFERRAL_LINKS } from "@/constants"
 import { IC_LOGO } from "@/constants/constants"
 import { useIcpPriceQuery } from "@/hooks"
 import { useFormattedProjectsCount } from "@/hooks/queries/useProjectsStats"
-
-const REFERRAL_LINKS = {
-  kairos: "https://www.kairos.win?ref=cyqlio",
-}
 
 export default function StatsHeader() {
   const { formattedCount, isLoading: isProjectsLoading } = useFormattedProjectsCount()
   const { price, change24h, isLoading: isPriceLoading } = useIcpPriceQuery()
 
   return (
-    <div className="bg-coolgray-950 flex flex-wrap items-center justify-center gap-2 px-2 py-1 text-xs font-medium">
+    <div className="bg-coolgray-950 flex flex-wrap items-center justify-center gap-2 px-2 py-2 text-xs font-medium">
       <p className="text-coolgray-400">
         Projects: <span className={`text-white ${isProjectsLoading ? "animate-pulse opacity-70" : ""}`}>{formattedCount}</span>
       </p>

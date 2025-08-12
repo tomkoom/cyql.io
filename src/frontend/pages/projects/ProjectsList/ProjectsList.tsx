@@ -1,17 +1,50 @@
 import { ProjectLogo } from "@/components"
 import { UpvoteBtn } from "@/components/btns"
-import { Icon } from "@/components/Icon"
 import { useNavigation, useProjectsQuery, useQueryParams } from "@/hooks"
+import { useProjectsByIdsQuery } from "@/hooks/queries/useProjectsQuery"
 import type { Project } from "@/state/types/Project"
 import { useMemo } from "react"
-import { Link } from "react-router-dom"
-import { SocialLinks, Tags, Title } from "."
+import { PromotionalBanner, SocialLinks, Tags, Title } from "."
 import { filterBySearch } from "../utils"
 
 interface ProjectListItemProps {
   project: Project
   index: number
   onProjectClick: (id: string) => void
+}
+
+const HIGHLIGHTED_PROJECT_IDS = ["1754974310201"]
+
+const FEATURED_TAGLINES: Record<string, string> = {
+  // Kairos
+  "1754974310201": "Bitcoin prediction markets",
+}
+
+const HighlightedProjects = ({ projects, onProjectClick }: { projects: Project[]; onProjectClick: (id: string) => void }) => {
+  if (!projects || projects.length === 0) return null
+
+  return (
+    <div className="border-coolgray-950 bg-coolgray-950/40 mb-2 flex items-center gap-2 overflow-x-auto rounded-lg border px-3 py-2">
+      <span className="text-coolgray-400 shrink-0 text-xs font-medium">Featured:</span>
+      <div className="flex items-center gap-2">
+        {projects.map((project) => (
+          <button
+            key={project.id}
+            onClick={() => onProjectClick(project.id.toString())}
+            className="border-coolgray-900 hover:border-coolgray-800 hover:bg-coolgray-900/50 group inline-flex cursor-pointer items-center gap-2 rounded-full border px-2 py-1 transition-colors"
+          >
+            <ProjectLogo project={project} sizeRem="1.25rem" borderRadiusRem="0.375rem" />
+            <span className="text-coolgray-100 max-w-[10rem] truncate text-xs font-medium group-hover:text-white">{project.name}</span>
+            {FEATURED_TAGLINES[project.id] && (
+              <span className="text-coolgray-400 -ml-1 hidden max-w-[12rem] truncate text-[11px] md:inline" title={FEATURED_TAGLINES[project.id]}>
+                — {FEATURED_TAGLINES[project.id]}
+              </span>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 // Shared column classes for consistent spacing
@@ -55,7 +88,7 @@ const ProjectListItem = ({ project, index, onProjectClick }: ProjectListItemProp
 )
 
 const ProjectsListHeader = () => (
-  <div className="border-coolgray-900 text-coolgray-500 flex items-center gap-4 border-b py-3 text-sm font-medium">
+  <div className="border-coolgray-950 text-coolgray-500 flex items-center gap-4 border-b py-3 text-sm font-medium">
     <div className={columnClasses.index}>#</div>
     <div className={columnClasses.name}>Name</div>
     <div className={columnClasses.category}>Category</div>
@@ -64,31 +97,11 @@ const ProjectsListHeader = () => (
   </div>
 )
 
-const PromotionalBanner = () => (
-  <Link
-    to="/promote"
-    className="group border-coolgray-950 to-accent-1/10 hover:to-accent-1/20 flex items-center justify-between border-b bg-gradient-to-r from-blue-950/30 px-4 py-3 transition-all duration-200 hover:from-blue-950/40 hover:shadow-sm"
-  >
-    <div className="flex items-center gap-3">
-      <div className="to-accent-1 flex h-8 w-8 flex-nowrap items-center justify-center rounded-full bg-gradient-to-tr from-blue-500">
-        <Icon lucideName="Star" className="h-4 w-4 text-white" strokeWidth={2} fill="currentColor" />
-      </div>
-      <div className="flex flex-col gap-0.5">
-        <p className="text-sm font-medium text-white">Boost Your Project's Visibility</p>
-        <p className="text-coolgray-400 text-xs">Get featured at the top of the projects list and reach more users</p>
-      </div>
-    </div>
-    <div className="text-accent-2 group-hover:text-accent-3 flex items-center gap-2 transition-colors">
-      <span className="hidden text-sm font-medium sm:inline">Learn More</span>
-      <Icon lucideName="ArrowRight" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-    </div>
-  </Link>
-)
-
 export default function ProjectsList() {
   const { toProject } = useNavigation()
   const { queryParams } = useQueryParams()
   const { data: projectsData, isLoading, error } = useProjectsQuery()
+  const { data: highlightedProjects = [] } = useProjectsByIdsQuery(HIGHLIGHTED_PROJECT_IDS)
 
   const projects = projectsData?.data || []
   const startIndex = projectsData?.startIndex || 0
@@ -101,8 +114,11 @@ export default function ProjectsList() {
 
   return (
     <main>
+      <div className="mb-2 flex flex-col gap-2">
+        <PromotionalBanner />
+        <HighlightedProjects projects={highlightedProjects} onProjectClick={toProject} />
+      </div>
       <ProjectsListHeader />
-      <PromotionalBanner />
       <ul className="flex flex-col" role="list">
         {filteredProjects.map((project, idx) => (
           <ProjectListItem key={project.id} project={project} index={startIndex + idx + 1} onProjectClick={toProject} />

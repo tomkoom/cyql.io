@@ -17,3 +17,7 @@ export const IS_PROD = MODE === "production"
 // ii
 export const APP_DERIVATION_ORIGIN = "https://n7ib3-4qaaa-aaaai-qagnq-cai.icp0.io"
 export const APP_ALTERNATIVE_ORIGIN = "https://cyql.io"
+
+export const REFERRAL_LINKS = {
+  kairos: "https://www.kairos.win?ref=cyqlio",
+}

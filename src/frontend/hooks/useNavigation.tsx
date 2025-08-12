@@ -56,7 +56,7 @@ export const useNavigation = () => {
 
   const toListProject = () => {
     navigate({
-      pathname: ROUTES.LIST_PROJECT,
+      pathname: ROUTES.GET_LISTED,
       search: "",
     })
   }

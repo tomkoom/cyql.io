@@ -61,11 +61,11 @@ export const useNavlinks = (): UseNavlinks => {
     },
     {
       label: "Get Listed",
-      pathname: ROUTES.LIST_PROJECT,
+      pathname: ROUTES.GET_LISTED,
       route: toListProject,
       icon: undefined,
       // icon: "Plus",
-      isActive: currentPathname.startsWith(ROUTES.LIST_PROJECT),
+      isActive: currentPathname.startsWith(ROUTES.GET_LISTED),
     },
     // { label: "List Project", pathname: "/list", route: toList, icon: iPlus, isActive: currentPathname === "/list" },
     // { label: "Proposals", pathname: "/proposals", route: toProposals, icon: undefined, isActive: currentPathname.startsWith("/proposals") },
