@@ -17,7 +17,7 @@ export default function Navigation() {
       <Logo onClick={toHome} />
 
       {/* Desktop nav */}
-      <div className={twMerge("items-center justify-center gap-4", NAV_RESPONSIVE.desktopOnly)}>
+      <nav className={twMerge("items-center justify-center gap-4", NAV_RESPONSIVE.desktopOnly)}>
         <div className="flex flex-wrap items-center justify-center gap-2">
           {navlinks.map((link) => (
             <Link
@@ -32,7 +32,7 @@ export default function Navigation() {
         </div>
         <Socials />
         {isAuthenticated ? <ProfileBtn /> : <SignInBtn />}
-      </div>
+      </nav>
 
       <MobileNavigation />
     </div>

@@ -1,4 +1,4 @@
-import { UnifiedBreadcrumb } from "@/components"
+import { FeaturedProjectsBanner, PromotionalBanner, UnifiedBreadcrumb } from "@/components"
 import PageHeader from "@/components/PageHeader"
 import { Spinner } from "@/components/ui"
 import { ROUTES } from "@/constants"
@@ -138,6 +138,10 @@ export default function Collections() {
   return (
     <div className="mx-auto max-w-[1440px] pb-8">
       <PageHeader title={TITLE} description={DESCRIPTION} breadcrumbs={<UnifiedBreadcrumb items={createBreadcrumbs()} />} />
+      <section className="mb-2 flex flex-col gap-2">
+        <PromotionalBanner />
+        <FeaturedProjectsBanner />
+      </section>
 
       {activeCollections.length === 0 ? (
         <main className="bg-coolgray-950 rounded-lg p-12 text-center">
