@@ -1,5 +1,6 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
+import Analytics from "./Analytics"
 import App from "./App"
 import Providers from "./Providers"
 
@@ -17,6 +18,7 @@ const Index = () => {
   return (
     <StrictMode>
       <Providers>
+        <Analytics />
         <App />
       </Providers>
     </StrictMode>
