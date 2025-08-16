@@ -1,5 +1,6 @@
-import { iComments, iHeart, iPlus } from "@/components/icons/Icons"
-import { DONATION_WALLET_URL, X_DIRECT_MSG_URL } from "@/constants/constants"
+import { FAIcon } from "@/components/FAIcon"
+import { APP_NAME_TLD, DONATION_WALLET_URL, X_DIRECT_MSG_URL } from "@/constants/constants"
+import { ROUTES } from "@/constants/routes"
 import { device } from "@/styles/breakpoints"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
@@ -7,27 +8,30 @@ import styled from "styled-components"
 export default function FooterTop() {
   return (
     <FooterUpperStyled>
-      {/* submit */}
       <li>
-        <Link to="/list">
-          <h5>{iPlus}&nbsp;&nbsp;List Your Project</h5>
+        <Link to={ROUTES.GET_LISTED}>
+          <h5 className="flex items-center gap-2">
+            <FAIcon name="FaPlus" /> List Your Project
+          </h5>
           <p>Submit your project to the cyql db</p>
         </Link>
       </li>
 
-      {/* reach out */}
       <li>
         <a href={X_DIRECT_MSG_URL} rel="noreferrer noopener" target="_blank">
-          <h5>{iComments}&nbsp;&nbsp;Reach Out</h5>
+          <h5 className="flex items-center gap-2">
+            <FAIcon name="FaComments" /> Reach Out
+          </h5>
           <p>Didn't find what you were looking for or want to collaborate? Reach out for us, we are happy to support and cooperate</p>
         </a>
       </li>
 
-      {/* donate */}
       <li>
         <a href={DONATION_WALLET_URL} rel="noreferrer noopener" target="_blank">
-          <h5>{iHeart}&nbsp;&nbsp;Donate</h5>
-          <p>cyql is developed and maintained by the IC enthusiasts. You can support the project by making a donation</p>
+          <h5 className="flex items-center gap-2">
+            <FAIcon name="FaHeart" /> Donate
+          </h5>
+          <p>{APP_NAME_TLD} is developed and maintained by the IC enthusiasts. You can support the project by making a donation</p>
         </a>
       </li>
     </FooterUpperStyled>
