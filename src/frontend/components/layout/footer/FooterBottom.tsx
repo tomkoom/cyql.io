@@ -1,9 +1,7 @@
 import { Logo } from "@/components/ui"
 import { APP_NAME_TLD, AUTHOR_X_URL, FRONTEND_CANISTER_URL, IC_LOGO, IC_URL } from "@/constants/constants"
 import { useNavigation, useNavlinks } from "@/hooks"
-import { device } from "@/styles/breakpoints"
-import styled from "styled-components"
-import { NavLink, Socials } from "."
+import { NavLink, Socials } from "./components"
 
 export default function FooterBottom() {
   const { toHome } = useNavigation()
@@ -11,12 +9,12 @@ export default function FooterBottom() {
   const year = new Date().getFullYear()
 
   return (
-    <FooterLowerStyled>
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <div>
         <Logo onClick={toHome} />
       </div>
 
-      <ul className="nav">
+      <ul className="flex flex-col items-start justify-start">
         {navlinks.map((navlink) => (
           <NavLink key={navlink.label} label={navlink.label} route={navlink.route} />
         ))}
@@ -47,23 +45,6 @@ export default function FooterBottom() {
           &copy; 2023-{year.toString()} {APP_NAME_TLD}. All rights reserved.
         </p>
       </div>
-    </FooterLowerStyled>
+    </div>
   )
 }
-
-const FooterLowerStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-  gap: 1.5rem;
-
-  > ul.nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  @media ${device.mobileL} {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  }
-`
