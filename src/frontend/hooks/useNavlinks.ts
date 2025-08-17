@@ -15,6 +15,7 @@ interface Navlink {
 
 interface UseNavlinks {
   navlinks: Navlink[]
+  legalNavlinks: Navlink[]
 }
 
 export const useNavlinks = (): UseNavlinks => {
@@ -22,6 +23,30 @@ export const useNavlinks = (): UseNavlinks => {
   const { userId } = useAuth()
   const location = useLocation()
   const currentPathname = location.pathname
+
+  const legalNavlinks: Navlink[] = [
+    {
+      label: "Privacy Policy",
+      pathname: ROUTES.PRIVACY_POLICY,
+      route: () => {},
+      icon: undefined,
+      isActive: false,
+    },
+    {
+      label: "Terms of Service",
+      pathname: ROUTES.TERMS_OF_SERVICE,
+      route: () => {},
+      icon: undefined,
+      isActive: false,
+    },
+    {
+      label: "Cookie Policy",
+      pathname: ROUTES.COOKIE_POLICY,
+      route: () => {},
+      icon: undefined,
+      isActive: false,
+    },
+  ]
 
   const navlinks: Navlink[] = [
     {
@@ -83,5 +108,5 @@ export const useNavlinks = (): UseNavlinks => {
     })
   }
 
-  return { navlinks }
+  return { navlinks, legalNavlinks }
 }

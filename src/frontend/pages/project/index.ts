@@ -1,8 +1,5 @@
-export { default as CollStats } from "./CollStats"
 export { default as Description } from "./Description"
 export { default as Disclaimer } from "./Disclaimer"
-export { default as Header } from "./Header/Header"
 export { default as Links } from "./Links"
-export { default as NftBtns } from "./nft_btns/NftBtns"
 export { default as NftPreviews } from "./NftPreviews"
 export { default as RelatedProjects } from "./RelatedProjects"

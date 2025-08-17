@@ -1,12 +1,11 @@
 import type { Project } from "@/state/types/Project"
-import React, { FC } from "react"
 import styled from "styled-components"
 
 interface CollStatsProps {
   project: Project
 }
 
-const CollStats: FC<CollStatsProps> = ({ project }) => {
+export default function CollStats({ project }: CollStatsProps) {
   const { nftSaleDate, nftUnits, nftUnitPrice } = project
 
   if (!project.category.includes("NFTs")) {
@@ -75,5 +74,3 @@ const CollStatsStyled = styled.div`
     }
   }
 `
-
-export default CollStats

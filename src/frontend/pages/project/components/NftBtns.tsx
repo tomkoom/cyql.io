@@ -1,22 +1,19 @@
-import React, { FC } from "react";
-import styled from "styled-components";
-
-// components
-import Btn from "./btn/Btn";
+import styled from "styled-components"
+import Btn from "./Btn"
 
 interface NftBtnsProps {
-  nftMarket: string;
-  nftRarity: string;
+  nftMarket: string
+  nftRarity: string
 }
 
-const NftBtns: FC<NftBtnsProps> = ({ nftMarket, nftRarity }): JSX.Element => {
+export default function NftBtns({ nftMarket, nftRarity }: NftBtnsProps) {
   return (
     <NftBtnsStyled>
       {nftMarket && <Btn label="Trade" url={nftMarket} />}
       {nftRarity && <Btn label="Rarity" url={nftRarity} />}
     </NftBtnsStyled>
-  );
-};
+  )
+}
 
 const NftBtnsStyled = styled.div`
   display: flex;
@@ -25,6 +22,4 @@ const NftBtnsStyled = styled.div`
   gap: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 2rem;
-`;
-
-export default NftBtns;
+`

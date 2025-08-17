@@ -9,7 +9,8 @@ import { selectShareModal } from "@/state/modals/shareModal"
 import type { Project } from "@/state/types/Project"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
-import { CollStats, Description, Disclaimer, Header, Links, NftPreviews, RelatedProjects } from "."
+import { Description, Disclaimer, Links, NftPreviews, RelatedProjects } from "."
+import { CollStats, Header } from "./components"
 
 export default function Project() {
   const { id } = useParams<{ id: string }>()

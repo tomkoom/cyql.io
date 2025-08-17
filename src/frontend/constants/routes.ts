@@ -10,4 +10,9 @@ export const ROUTES = {
   ADMIN_PROJECTS: "/admin/projects",
   ADMIN_COLLECTIONS: "/admin/collections",
   ADMIN_USERS: "/admin/users",
+
+  // legal
+  PRIVACY_POLICY: "/privacy-policy",
+  TERMS_OF_SERVICE: "/terms-of-service",
+  COOKIE_POLICY: "/cookie-policy",
 }
