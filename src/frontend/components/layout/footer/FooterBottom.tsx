@@ -1,11 +1,12 @@
 import { Logo } from "@/components/ui"
 import { APP_NAME_TLD, AUTHOR_X_URL, FRONTEND_CANISTER_URL, IC_LOGO, IC_URL } from "@/constants/constants"
 import { useNavigation, useNavlinks } from "@/hooks"
-import { NavLink, Socials } from "./components"
+import { Link } from "react-router-dom"
+import { Socials } from "./components"
 
 export default function FooterBottom() {
   const { toHome } = useNavigation()
-  const { navlinks } = useNavlinks()
+  const { navlinks, legalNavlinks } = useNavlinks()
   const year = new Date().getFullYear()
 
   return (
@@ -14,12 +15,27 @@ export default function FooterBottom() {
         <Logo onClick={toHome} />
       </div>
 
-      <ul className="flex flex-col items-start justify-start">
-        {navlinks.map((navlink) => (
-          <NavLink key={navlink.label} label={navlink.label} route={navlink.route} />
-        ))}
-      </ul>
-      <Socials />
+      <div>
+        <p className="text-coolgray-600 font-serif">Navigation</p>
+        <ul className="flex flex-col items-start justify-start">
+          {navlinks.map((navlink) => (
+            <li key={navlink.label} className="text-coolgray-400 hover:text-accent-3 font-medium transition-colors">
+              <Link to={navlink.pathname}>{navlink.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p className="text-coolgray-600 font-serif">Legal</p>
+        <ul className="flex flex-col items-start justify-start">
+          {legalNavlinks.map((navlink) => (
+            <li key={navlink.label} className="text-coolgray-400 hover:text-accent-3 font-medium transition-colors">
+              <Link to={navlink.pathname}>{navlink.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <div className="flex flex-col space-y-1">
         <p className="text-coolgray-400 flex items-center gap-2">
@@ -45,6 +61,8 @@ export default function FooterBottom() {
           &copy; 2023-{year.toString()} {APP_NAME_TLD}. All rights reserved.
         </p>
       </div>
+
+      <Socials />
     </div>
   )
 }

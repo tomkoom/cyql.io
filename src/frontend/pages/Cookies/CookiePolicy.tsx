@@ -1,6 +1,6 @@
 export default function CookiePolicy() {
   return (
-    <div className="text-primary/90 mx-auto max-w-2xl p-6">
+    <div className="text-primary/90 mx-auto w-full max-w-2xl p-6">
       <h2 className="mb-4 text-2xl font-bold">Cookie Policy</h2>
       <p>This policy explains how we use cookies and similar technologies on this site.</p>
 

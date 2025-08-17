@@ -1,6 +1,6 @@
 export default function TermsOfService() {
   return (
-    <div className="mx-auto max-w-3xl p-6 text-neutral-300">
+    <div className="text-primary/90 mx-auto w-full max-w-2xl p-6">
       <h1 className="mb-4 text-3xl font-bold">Terms of Service</h1>
 
       <p className="mb-4">By using this site, you agree to the Terms below.</p>

@@ -2,7 +2,7 @@ import { X_DIRECT_MSG_URL } from "@/constants/constants"
 
 export default function PrivacyPolicy() {
   return (
-    <div className="mx-auto max-w-2xl p-6 text-neutral-200">
+    <div className="text-primary/90 mx-auto w-full max-w-2xl p-6">
       <h1 className="mb-4 text-3xl font-bold">Privacy Policy</h1>
       <p className="mb-4 text-neutral-300">This policy explains how we handle information for our project directory.</p>
 

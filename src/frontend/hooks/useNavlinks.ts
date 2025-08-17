@@ -30,21 +30,21 @@ export const useNavlinks = (): UseNavlinks => {
       pathname: ROUTES.PRIVACY_POLICY,
       route: () => {},
       icon: undefined,
-      isActive: false,
+      isActive: currentPathname.startsWith(ROUTES.PRIVACY_POLICY),
     },
     {
       label: "Terms of Service",
       pathname: ROUTES.TERMS_OF_SERVICE,
       route: () => {},
       icon: undefined,
-      isActive: false,
+      isActive: currentPathname.startsWith(ROUTES.TERMS_OF_SERVICE),
     },
     {
       label: "Cookie Policy",
       pathname: ROUTES.COOKIE_POLICY,
       route: () => {},
       icon: undefined,
-      isActive: false,
+      isActive: currentPathname.startsWith(ROUTES.COOKIE_POLICY),
     },
   ]
 
