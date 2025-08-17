@@ -11,3 +11,8 @@ export { default as Project } from "./Project/Project"
 export { default as Projects } from "./Projects/Projects"
 export { default as Promote } from "./Promote/Promote"
 export { default as Stats } from "./Stats/Stats"
+
+// legal
+export { default as CookiePolicy } from "./Cookies/CookiePolicy"
+export { default as PrivacyPolicy } from "./Privacy/PrivacyPolicy"
+export { default as TermsOfService } from "./Terms/TermsOfService"

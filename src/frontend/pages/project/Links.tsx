@@ -216,6 +216,7 @@ const LinksStyled = styled.div`
       background-color: var(--underlay1);
       font-size: var(--fsText);
       transition: var(--transition1);
+      border-radius: 0.5rem;
 
       &:hover {
         background-color: var(--underlay2);

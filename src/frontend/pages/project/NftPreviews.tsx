@@ -1,12 +1,11 @@
 import type { Project } from "@/state/types/Project"
-import { FC } from "react"
 import styled from "styled-components"
 
 interface NftPreviewsProps {
   project: Project
 }
 
-const NftPreviews: FC<NftPreviewsProps> = ({ project }) => {
+export default function NftPreviews({ project }: NftPreviewsProps) {
   const { name, nftImg1, nftImg2, nftImg3, nftImg4 } = project
 
   if (nftImg1 || nftImg2 || nftImg3 || nftImg4) {
@@ -34,5 +33,3 @@ const NftPreviewsStyled = styled.div`
     vertical-align: middle;
   }
 `
-
-export default NftPreviews
