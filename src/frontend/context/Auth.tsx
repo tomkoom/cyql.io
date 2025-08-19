@@ -21,8 +21,8 @@ import * as CuratedProjects from "../../declarations/backend/index"
 import * as Users from "../../declarations/users/index"
 import { _SERVICE as USERS_SERVICE } from "../../declarations/users/users.did"
 
-import * as Proposals from "../../declarations/proposals/index"
-import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
+// import * as Proposals from "../../declarations/proposals/index"
+// import { _SERVICE as PROPOSALS_SERVICE } from "../../declarations/proposals/proposals.did"
 
 import { idlFactory as NFT_IDL } from "@/idl/nft_idl"
 import { _SERVICE as NFT_SERVICE } from "@/idl/nft_idl_service"
@@ -39,7 +39,7 @@ interface AuthContextValue {
   logout: () => Promise<void>
   actor: BACKEND_SERVICE
   users: USERS_SERVICE
-  proposals: PROPOSALS_SERVICE
+  // proposals: PROPOSALS_SERVICE
   nft: NFT_SERVICE
   icp: ICP_LEDGER_SERVICE
 }
@@ -56,7 +56,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
   const [actor, setActor] = useState<BACKEND_SERVICE>(null)
   const [users, setUsers] = useState<USERS_SERVICE>(null)
-  const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null)
+  // const [proposals, setProposals] = useState<PROPOSALS_SERVICE>(null)
   const [nft, setNft] = useState<NFT_SERVICE>(null)
   const [icp, setIcp] = useState<ICP_LEDGER_SERVICE>(null)
 
@@ -130,7 +130,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
     const backendActor = CuratedProjects.createActor(BACKEND_CANISTER_ID_IC, { agent })
     const usersActor = Users.createActor(USERS_CANISTER_ID_IC, { agent })
-    const proposalsActor = Proposals.createActor(PROPOSALS_CANISTER_ID_IC, { agent })
+    // const proposalsActor = Proposals.createActor(PROPOSALS_CANISTER_ID_IC, { agent })
     const nftActor = Actor.createActor(NFT_IDL, {
       agent,
       canisterId: NFT_CANISTER_ID_IC,
@@ -148,7 +148,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
     setActor(backendActor)
     setUsers(usersActor)
-    setProposals(proposalsActor)
+    // setProposals(proposalsActor)
     setNft(nftActor)
     setIcp(icpActor)
   }
@@ -183,7 +183,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
     userId,
     actor,
     users,
-    proposals,
+    // proposals,
     nft,
     icp,
     login,
