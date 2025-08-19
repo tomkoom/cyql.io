@@ -1,5 +1,14 @@
 # cyql.io
 
+## Archived – Legacy Version
+
+This repository is archived and read-only. Version 1 (MIT-licensed) remains here for reference.  
+Version 2 and all future releases are proprietary and closed-source, and are not available in a public repository.
+
+If you wish to get in touch regarding Version 2 or commercial use, you may find contact information on my GitHub profile page.
+
+---
+
 [cyql.io](https://cyql.io/) is a curated gallery of projects built on the [Internet Computer](https://internetcomputer.org/).
 
 It serves as a visual and functional directory for exploring the growing ecosystem of decentralized applications (dApps) powered by ICP. cyql.io highlights projects across categories like DeFi, NFTs, gaming, infrastructure, and more — all running natively on-chain.
